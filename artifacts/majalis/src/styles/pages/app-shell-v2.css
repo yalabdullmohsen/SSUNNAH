@@ -117,7 +117,7 @@ html[data-v2-app="1"] .mj-card::before {
 
 html[data-v2-app="1"] .soft-card--accent,
 html[data-v2-app="1"] .hub-card--accent {
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   border-color: color-mix(in srgb, var(--v2-color-emerald) 28%, transparent);
 }
 
@@ -128,7 +128,7 @@ html[data-v2-app="1"] .card__icon {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
-  background: var(--cs-primary-soft, var(--v2-color-emerald-soft, #e2efe8)) !important;
+  background: var(--cs-primary-soft, var(--v2-color-emerald-soft, var(--sn-primary-soft))) !important;
   color: var(--cs-primary-deep, var(--v2-color-emerald-deep, var(--sf-color-deep-emerald-deep))) !important;
 }
 
@@ -137,7 +137,7 @@ html[data-v2-app="1"] .soft-card:not(.hub-card) .icon-tile {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
@@ -184,7 +184,7 @@ html[data-v2-app="1"] .ph2__desc {
   max-width: 40rem;
   font-size: 0.95rem;
   line-height: 1.65;
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 /* عناوين لوبي/قانون قديمة → حبر V2 */
@@ -217,7 +217,7 @@ html[data-v2-app="1"] .es2__icon {
   display: grid;
   place-items: center;
   border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
 }
 
@@ -247,7 +247,7 @@ html[data-v2-app="1"] .es2__nav-path {
 html[data-v2-app="1"] .es2__desc {
   margin: 0;
   max-width: 28rem;
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
   line-height: 1.6;
 }
 
@@ -282,7 +282,7 @@ html[data-v2-app="1"] .mj-empty b {
 }
 
 html[data-v2-app="1"] .mj-empty span {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 /* أزرار أولية عامة */
@@ -473,7 +473,7 @@ html[data-v2-app="1"] .section-hero__back,
 html[data-v2-app="1"] .section-hero__back-row .app-back-btn {
   border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   box-shadow: var(--v2-shadow-soft);
 }
@@ -499,7 +499,7 @@ html[data-v2-app="1"] .dua-card,
 html[data-v2-app="1"] .kp-list--packs li {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   color: var(--v2-color-ink, var(--v2-color-ink));
 }
@@ -517,7 +517,7 @@ html[data-v2-app="1"] .tarikh-card::before {
 html[data-v2-app="1"] .legal-page-hero {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   margin-block-end: var(--v2-space-4, 1rem);
   padding: var(--v2-space-5, 1.25rem);
@@ -527,7 +527,7 @@ html[data-v2-app="1"] .legal-page-eyebrow {
   display: inline-flex;
   padding: 0.25rem 0.75rem;
   border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   font-weight: 700;
   font-size: 0.8rem;
@@ -551,7 +551,7 @@ html[data-v2-app="1"] .legal-page-hero h1::after {
 html[data-v2-app="1"] .legal-section {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow: var(--v2-shadow-soft);
   padding: var(--v2-space-4, 1rem) var(--v2-space-5, 1.25rem);
   margin-block-end: var(--v2-space-4, 1rem);

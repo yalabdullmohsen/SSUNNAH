@@ -3,7 +3,7 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import { adminGetUsers } from "@/lib/supabase";
 import { v3Mutate } from "@/admin-v3/data/admin-v3-api";
 import { syncLegacyRoles } from "@/lib/governance-service";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { useAdminShell } from "./AdminShell";
 

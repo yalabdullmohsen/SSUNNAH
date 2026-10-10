@@ -26,11 +26,10 @@ import {
   type HadithSearchScope,
   type HadithSortMode,
 } from "@/lib/hadith-access";
-import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { SectionEntryCard } from "@/components/ui/HubCard";
 import { HadithEntryCard } from "@/components/hadith/HadithEntryCard";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader, SkeletonCardGrid, IconButton } from "@/design-system";
 import { ExclusiveChoiceGroup } from "@/components/ui/ExclusiveChoiceGroup";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import { ShareButtons } from "@/components/ContentActions";
@@ -74,7 +73,6 @@ import "@/styles/pages/knowledge-dashboards-v2.css";
 import "@/styles/sunnah-identity-sections.css";
 
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type HadithItem = HadithRecord & { created_at: string };

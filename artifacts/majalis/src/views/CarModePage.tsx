@@ -4,9 +4,8 @@ import { Link } from "wouter";
 import { supabase } from "@/lib/supabase";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/car-mode.css";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, IconButton } from "@/design-system";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 
 type AudioLesson = {
   id: string;

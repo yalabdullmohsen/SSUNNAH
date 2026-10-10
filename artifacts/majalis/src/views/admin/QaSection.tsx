@@ -18,7 +18,7 @@ const RULING_CSS: Record<string, string> = {
   "حلال": "halal", "مباح": "mubah", "سنة": "sunnah",
   "مندوب": "mandub", "مكروه": "makruh", "حرام": "haram",
 };
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminModal, Field, FieldRow } from "./AdminModal";
 import { BulkImport } from "./BulkImport";
 

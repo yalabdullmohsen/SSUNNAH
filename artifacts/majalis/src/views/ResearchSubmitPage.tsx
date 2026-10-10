@@ -18,8 +18,7 @@ import {
   type ResearchSubmissionInput,
 } from "@/lib/researches";
 import "@/styles/pages/researches.css";
-import { NavigationBar } from "@/design-system";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { NavigationBar, FieldLabel } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import {
   Select,

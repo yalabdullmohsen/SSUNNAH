@@ -13,7 +13,7 @@ import {
   getFawaidSeedCached,
 } from "@/lib/demo-content";
 import { canSubmitForm } from "@/lib/form-rate-limit";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { FilterBottomSheet, FilterToggle } from "@/components/layout/FilterBottomSheet";
 import { useAuth } from "@/components/AuthProvider";
 import { FaidahCard } from "@/components/fawaid/FaidahCard";

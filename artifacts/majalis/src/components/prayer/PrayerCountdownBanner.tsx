@@ -11,7 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useSharedPrayerCountdownLive } from "@/components/prayer/PrayerCountdownProvider";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import { PRE_ALERT_MINUTES, isBannerDismissedFor, dismissBannerFor, loadPrayerAlertPrefs } from "@/lib/prayer-alert-preferences";
 import { formatAdhanRemainingPhrase, formatElapsedSincePhrase } from "@/lib/prayer-ticker-copy";
 import "@/styles/components/prayer-countdown-banner.css";

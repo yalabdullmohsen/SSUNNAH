@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Ban, CheckCircle2, XCircle } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { adminFetch } from "@/lib/admin-api";
 import registry from "../../../data/feature-registry.json";
 

@@ -1,7 +1,6 @@
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader, IconButton, FieldLabel } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
-import { PageHeader } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
 import { calculateInheritance } from "@/lib/inheritance/engine";
@@ -24,8 +23,6 @@ import { ActionButton } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
-import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
   SelectContent,

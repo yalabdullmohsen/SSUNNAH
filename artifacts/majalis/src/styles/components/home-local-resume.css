@@ -8,7 +8,7 @@
   margin: 0;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--mj-ink-muted, color-mix(in srgb, var(--mj-ink, #0f1f1a) 72%, transparent));
+  color: var(--mj-ink-muted, color-mix(in srgb, var(--mj-ink, var(--sn-text-primary)) 72%, transparent));
 }
 
 .hlr__list {
@@ -26,7 +26,7 @@
   min-height: 52px;
   padding: 0.65rem 0.8rem;
   border-radius: var(--radius-card, 1.5rem);
-  background: color-mix(in srgb, var(--mj-brand, #0f3d2e) 8%, transparent);
+  background: color-mix(in srgb, var(--mj-brand, var(--sn-primary-strong)) 8%, transparent);
   color: inherit;
   text-decoration: none;
   transition: transform 80ms ease, background 120ms ease;
@@ -43,7 +43,7 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-icon, 12px);
-  color: var(--mj-brand, #0f3d2e);
+  color: var(--mj-brand, var(--sn-primary-strong));
   flex-shrink: 0;
 }
 
@@ -58,7 +58,7 @@
 .hlr__section {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--mj-brand, #0f3d2e);
+  color: var(--mj-brand, var(--sn-primary-strong));
   opacity: 0.9;
 }
 
@@ -79,6 +79,6 @@
   border-radius: var(--radius-pill, 999rem);
   font-size: 0.8rem;
   font-weight: 600;
-  background: color-mix(in srgb, var(--mj-brand, #0f3d2e) 16%, transparent);
-  color: var(--mj-brand, #0f3d2e);
+  background: color-mix(in srgb, var(--mj-brand, var(--sn-primary-strong)) 16%, transparent);
+  color: var(--mj-brand, var(--sn-primary-strong));
 }

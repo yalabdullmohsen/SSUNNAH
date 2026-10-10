@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, type ChangeEvent, type DragEvent, type For
 import { AlertTriangle, CheckCircle2, FolderOpen, GraduationCap, ScrollText, Upload, XCircle } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { submitLesson } from "@/lib/user-submissions-service";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,

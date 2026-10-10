@@ -32,6 +32,11 @@ export function PageHero({ tag, title, description, className }: { tag?: string;
   );
 }
 
+/** ترويسة صفحة: PageHero بتسمية eyebrow/subtitle المستعملة في الشاشات المهاجَرة. */
+export function PageHeader({ eyebrow, title, subtitle, className }: { eyebrow?: string; title: string; subtitle?: string; className?: string }) {
+  return <PageHero tag={eyebrow} title={title} description={subtitle} className={className} />;
+}
+
 /** بطاقة إحصاء: رقم كبير + تسمية صغيرة. `value` نص جاهز من formatNumber (لا أرقام خام). */
 export function StatTile({ value, label }: { value: string; label: string }) {
   return (

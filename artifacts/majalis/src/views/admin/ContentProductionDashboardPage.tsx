@@ -6,7 +6,7 @@ import {
   runContentProductionJob,
   type ContentProductionDashboard,
 } from "@/lib/content-production-api";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminShell } from "@/views/admin/AdminShell";
 
 function StatCard({ label, value, color }: { label: string; value: number | string; color?: string }) {

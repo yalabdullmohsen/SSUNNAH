@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { NavigationBar, SearchField } from "@/design-system";
 import { CalendarDays, Star } from "lucide-react";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { CompactSectionHeader } from "@/components/ui/CompactSectionHeader";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";

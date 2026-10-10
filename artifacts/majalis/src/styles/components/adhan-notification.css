@@ -76,7 +76,7 @@
 html.dark .anb-toast--reminder {
   background: #0f2f28;
   border-color: rgba(227, 203, 140, 0.28);
-  color: #fafaf8;
+  color: var(--sn-text-on-primary);
 }
 
 /* ── emoji badge ── */

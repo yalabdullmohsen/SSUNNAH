@@ -19,7 +19,7 @@ import "@/styles/components/muezzin-picker.css";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 function previewSourceId(muezzinId: string): string {
   return `muezzin-picker-${muezzinId}`;
 }

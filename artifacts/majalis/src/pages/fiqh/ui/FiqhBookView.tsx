@@ -1,4 +1,4 @@
-import { NavigationBar } from "@/design-system";
+import { EmptyState, NavigationBar } from "@/design-system";
 import { Link, useParams } from "wouter";
 import { useEffect, useState } from "react";
 import { InternalLinkCard } from "@/components/ui/InternalCards";
@@ -6,7 +6,6 @@ import { applyPageSeo } from "@/lib/seo";
 import { breadcrumbJsonLd, bookJsonLd } from "@/lib/seo-structured-data";
 import { usePageView } from "@/hooks/usePageView";
 import { LazyRouteFallback } from "@/components/LazyRouteFallback";
-import { Empty } from "@/components/ui-common";
 import {
   chapterHref,
   ensureFiqhCatalogLoaded,
@@ -73,7 +72,7 @@ export default function FiqhBookPage() {
   if (!book) {
     return (
       <KnowledgeLayout kind="library" className="fiqh-lux-shell fiqh-lux-book page-shell ve-page" data-kx="1">
-        <Empty title="كتاب غير منشور" text="هذا الكتاب غير مدرج في الكتب الظاهرة، أو لا أبواب منشورة فيه." />
+        <EmptyState title="كتاب غير منشور" description="هذا الكتاب غير مدرج في الكتب الظاهرة، أو لا أبواب منشورة فيه." />
         <p className="fiqh-lux-empty">
           <Link href="/fiqh">العودة إلى الفقه</Link>
         </p>

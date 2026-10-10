@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "wouter";
 import { getAutomationDashboard } from "@/lib/lesson-automation-api";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminShell } from "@/views/admin/AdminShell";
 
 type DashboardStats = {

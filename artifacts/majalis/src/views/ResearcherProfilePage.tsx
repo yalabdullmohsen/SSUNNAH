@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader, IconButton, FieldLabel } from "@/design-system";
 import { Link } from "wouter";
 import { Link2, Lock } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
-import { PageHeader, PageStatusShell } from "@/components/ui-common";
+import { PageStatusShell } from "@/components/ui-common";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import {
@@ -15,7 +15,6 @@ import {
 } from "@/lib/researcher-profile-service";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/researcher-profile.css";
-import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
   SelectContent,
@@ -24,7 +23,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 
 const SPEC_NONE = "__none__";
 

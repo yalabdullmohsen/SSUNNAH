@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { PageHeader } from "@/components/ui-common";
+import { PageHeader } from "@/design-system";
 import { applyPageSeo } from "@/lib/seo";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
 

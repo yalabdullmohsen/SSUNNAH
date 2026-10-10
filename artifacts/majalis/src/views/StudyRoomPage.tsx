@@ -3,7 +3,6 @@ import { Coffee, Pause, Target } from "lucide-react";
 import { Link } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
 import { ShareButtons } from "@/components/ContentActions";
-import { PageHeader } from "@/components/ui-common";
 import {
   logStudySession,
   getDailyStudyStats,
@@ -14,7 +13,7 @@ import {
 import { applyPageSeo } from "@/lib/seo";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/study-room.css";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 
 import { Button } from "@/components/ui/button";
 // ─── Pomodoro config ──────────────────────────────────────────────────────────

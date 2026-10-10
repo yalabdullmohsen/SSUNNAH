@@ -74,7 +74,8 @@ platform :ios do
       # الجزء JS يحتاج VITE_TASMEE_DIAGNOSTICS=1 عند بناء الويب قبل cap sync (انظر docs/tasmee/TESTFLIGHT.md).
       diagnostics = ENV["TASMEE_DIAGNOSTICS"].to_s == "1"
       UI.important("بناء قياس التسميع (TASMEE_DIAGNOSTICS) — للـTestFlight الداخلي فقط، لا يُرسَل لمراجعة App Store") if diagnostics
-      swift_flags = diagnostics ? " SWIFT_ACTIVE_COMPILATION_CONDITIONS=TASMEE_DIAGNOSTICS" : ""
+      # $(inherited) إلزامي: تعيين الشرط وحده يمحو شروط الحزم (swift-crypto: unable to resolve module dependency)
+      swift_flags = diagnostics ? " SWIFT_ACTIVE_COMPILATION_CONDITIONS='$(inherited) TASMEE_DIAGNOSTICS'" : ""
       # التوقيع السحابي على مشغّل نظيف يحتاج مصادقة xcodebuild بمفتاح ASC نفسه
       signing_xcargs = "-allowProvisioningUpdates"
       unless key_path.empty?

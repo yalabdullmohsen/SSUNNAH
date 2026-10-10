@@ -21,7 +21,7 @@ import {
   updateSunnahChannel,
   type SunnahNotificationPrefs,
 } from "@/lib/sunnah-notifications";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,

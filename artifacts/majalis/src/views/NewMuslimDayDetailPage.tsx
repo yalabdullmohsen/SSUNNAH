@@ -1,7 +1,6 @@
-import { EmptyState } from "@/design-system";
+import { EmptyState, PageHeader } from "@/design-system";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "wouter";
-import { PageHeader } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { useAuth } from "@/components/AuthProvider";

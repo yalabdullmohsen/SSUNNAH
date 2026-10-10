@@ -262,3 +262,10 @@
   .gl-cat { font-size: 0.8rem; padding: .3rem .7rem; }
 }
 
+
+/* الغلاف (main + topic-page + topic-page__body) يوفّر الهوامش الجانبية؛
+   تكديس padding الصفحة والحاوية فوقها ضيّق بطاقة المصطلح إلى 235px من 390. */
+.topic-page__body > .gl-page.mj-page,
+.gl-page.mj-page > .gl-container {
+  padding-inline: 0;
+}

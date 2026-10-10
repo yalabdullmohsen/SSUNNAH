@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { AdminShell, useAdminShell } from "@/views/admin/AdminShell";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import {
   adminApproveAutoContent,
   adminGetAutoImportedContent,

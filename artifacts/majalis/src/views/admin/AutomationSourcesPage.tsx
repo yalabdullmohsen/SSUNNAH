@@ -11,7 +11,7 @@ import {
   SOURCE_TYPES,
   type TrustedLessonSource,
 } from "@/lib/lesson-automation-api";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminShell, useAdminShell } from "@/views/admin/AdminShell";
 import { InstagramManualAssistPanel } from "@/views/admin/InstagramManualAssistPanel";
 

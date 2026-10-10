@@ -9,7 +9,7 @@ import {
 import { runImportJob, previewDedup } from "@/lib/cms";
 import { getCmsDashboardStats, getRecentImportJobs, getDuplicateReport } from "@/lib/cms/supabase-cms";
 import { getRecentAuditLogs } from "@/lib/cms/audit-log";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminSectionToolbar } from "./AdminSectionToolbar";
 import { useAdminShell } from "./AdminShell";
 import { ContentFileImport } from "./ContentFileImport";

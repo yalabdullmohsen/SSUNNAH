@@ -5,7 +5,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import { HIJRI_MONTHS } from "@/lib/hijri-utils";
 
 export type HijriMonthSelectProps = {

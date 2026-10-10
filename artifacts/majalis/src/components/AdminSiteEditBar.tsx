@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Pencil, X, Check, ChevronDown, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 import { useAuth } from "@/components/AuthProvider";
 import { safeLocationReload } from "@/lib/safe-reload";
 import { isImmersiveChromePath } from "@/lib/immersive-chrome";

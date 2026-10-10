@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { NavigationBar, EmptyState } from "@/design-system";
+import { NavigationBar, EmptyState, PageHeader } from "@/design-system";
 import { Link } from "wouter";
-import { PageHeader } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { STATUS } from "@/lib/ui-copy";
 import { useAuth } from "@/components/AuthProvider";

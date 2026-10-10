@@ -5,7 +5,7 @@ import { EMPTY, STATUS } from "@/lib/ui-copy";
 import "@/styles/pages/mawarith.css";
 
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
+import { IconButton } from "@/design-system";
 export function AssessmentModal({
   assessmentId,
   learningItemId,

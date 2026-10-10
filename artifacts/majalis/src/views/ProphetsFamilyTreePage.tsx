@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, IconButton } from "@/design-system";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import { PROPHETS_LINEAGE, type LineageNode } from "@/lib/prophets-lineage";
 import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { truncateAtWord } from "@/lib/utils";
-import { IconButton } from "@/components/design-system/Buttons";
 import "@/styles/pages/prophet-stories.css";
 
 // ── ثوابت التخطيط ──────────────────────────────────────────────────────────

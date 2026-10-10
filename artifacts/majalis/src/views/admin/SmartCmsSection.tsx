@@ -9,7 +9,7 @@ import {
   listContentDrafts,
   rejectContentDraft,
 } from "@/lib/smart-cms-api";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { useAdminShell } from "./AdminShell";
 
 import { Button } from "@/components/ui/button";

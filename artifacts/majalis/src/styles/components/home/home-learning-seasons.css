@@ -43,7 +43,7 @@
 }
 .religious-kind-badge--recommended_deed {
   background: color-mix(in srgb, var(--mj-brand) 14%, white);
-  color: #145A45;
+  color: var(--sn-primary);
 }
 .religious-kind-badge--personal_suggestion {
   background: color-mix(in srgb, #92400E 12%, white);

@@ -36,7 +36,7 @@ export default function QuranSevenAhrufView() {
   }, []);
 
   return (
-    <div className="sn-screen">
+    <div className="sn-screen" data-quran-seven-ahruf>
     <NavigationBar title="الأحرف السبعة" large={false} />
     <SectionTemplatePage
       route="/quran-hub/seven-ahruf"

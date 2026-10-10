@@ -1,7 +1,7 @@
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { BookOpen, Pause, Play, Plus, X } from "lucide-react";
-import { PageHeader, Loading, Empty, Card } from "@/components/ui-common";
+import { Loading, Empty, Card } from "@/components/ui-common";
 import { useAuth } from "@/components/AuthProvider";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";

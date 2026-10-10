@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { FileText, Gavel, Landmark, Scale } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
-import { PageHeader } from "@/components/ui-common";
+import { PageHeader } from "@/design-system";
 import { SectionEntryCard } from "@/components/ui/InternalCards";
 
 /**

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAdminShell } from "@/views/admin/AdminShell";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import {
   adminListDawahQueue,

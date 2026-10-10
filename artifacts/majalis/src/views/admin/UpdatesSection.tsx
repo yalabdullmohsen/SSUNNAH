@@ -3,7 +3,7 @@ import { adminGetAllUpdates, adminUpsertUpdate, adminDeleteUpdate } from "@/lib/
 import { UPDATES_SEED } from "@/lib/updates-seed";
 import { UPDATE_TYPES } from "@/lib/platform-types";
 import { Button } from "@/components/ui/button";
-import { SkeletonCardGrid } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { AdminModal, Field } from "./AdminModal";
 import { useAdminShell } from "./AdminShell";
 import { useAdminConfirm } from "@/components/admin/AdminConfirmDialog";

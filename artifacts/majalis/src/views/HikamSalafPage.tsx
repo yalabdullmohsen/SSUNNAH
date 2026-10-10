@@ -7,10 +7,9 @@ import { ShareButtons } from "@/components/ContentActions";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/hikam-salaf.css";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, IconButton } from "@/design-system";
 import { truncateAtWord } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { IconButton } from "@/components/design-system/Buttons";
 
 /* ─── أنواع البيانات ─── */
 type Hikma = {

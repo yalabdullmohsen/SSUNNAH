@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 import { Link, useParams } from "wouter";
 import {
   getKnowledgeItem,
@@ -11,7 +11,6 @@ import {
   readKnowledgeProgress,
   type KnowledgeItem,
 } from "@/lib/knowledge-loader";
-import { PageHeader } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, SEARCH } from "@/lib/ui-copy";
 import { truncateAtWord } from "@/lib/utils";
