@@ -3091,9 +3091,11 @@
     "question": "ما الدليل على أن الله موجود؟",
     "answer": "الأدلة الفطرية والعقلية؛ كوجود المخلوقات التي تستلزم خالقاً، وقال تعالى: ﴿أَمْ خُلِقُوا مِنْ غَيْرِ شَيْءٍ أَمْ هُمُ الْخَالِقُونَ﴾.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "إبراهيم: 10",
+    "explanation": "نص الآية (Tanzil): ﴿۞ قَالَتْ رُسُلُهُمْ أَفِى ٱللَّهِ شَكٌّۭ فَاطِرِ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ ۖ يَدْعُوكُمْ لِيَغْفِرَ لَكُم مِّن ذُنُوبِكُمْ وَيُؤَخِّرَكُمْ إِلَىٰٓ أَجَلٍۢ مُّسَمًّۭى ۚ قَالُوٓا۟ إِنْ أَنتُمْ إِلَّا بَشَرٌۭ مِّثْلُنَا تُرِيدُونَ أَن تَصُدُّونَا عَمَّا كَانَ يَعْبُدُ ءَابَآؤُنَا فَأْتُونَا بِسُلْطَٰنٍۢ مُّبِينٍۢ﴾ [إبراهيم: 10]"
   },
   {
     "source_class": "fiqh_aqeedah",
@@ -3117,9 +3119,11 @@
     "question": "ما أركان الإيمان الستة؟",
     "answer": "الإيمان بالله وملائكته وكتبه ورسله واليوم الآخر والقدر خيره وشره، كما في حديث جبريل في صحيح مسلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 285",
+    "explanation": "نص الآية (Tanzil): ﴿ءَامَنَ ٱلرَّسُولُ بِمَآ أُنزِلَ إِلَيْهِ مِن رَّبِّهِۦ وَٱلْمُؤْمِنُونَ ۚ كُلٌّ ءَامَنَ بِٱللَّهِ وَمَلَٰٓئِكَتِهِۦ وَكُتُبِهِۦ وَرُسُلِهِۦ لَا نُفَرِّقُ بَيْنَ أَحَدٍۢ مِّن رُّسُلِهِۦ ۚ وَقَالُوا۟ سَمِعْنَا وَأَطَعْنَا ۖ غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ ٱلْمَصِيرُ﴾ [البقرة: 285]"
   },
   {
     "source_class": "fiqh_aqeedah",
@@ -3160,9 +3164,11 @@
     "question": "هل الإيمان يزيد وينقص؟",
     "answer": "نعم، الإيمان يزيد بالطاعة وينقص بالمعصية، وهذا قول أهل السنة والجماعة؛ وهذا من مسائل العقيدة التي أجمع عليها أهل السنة والجماعة في كتب الاعتقاد.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الفتح: 4",
+    "explanation": "نص الآية (Tanzil): ﴿هُوَ ٱلَّذِىٓ أَنزَلَ ٱلسَّكِينَةَ فِى قُلُوبِ ٱلْمُؤْمِنِينَ لِيَزْدَادُوٓا۟ إِيمَٰنًۭا مَّعَ إِيمَٰنِهِمْ ۗ وَلِلَّهِ جُنُودُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ ۚ وَكَانَ ٱللَّهُ عَلِيمًا حَكِيمًۭا﴾ [الفتح: 4]"
   },
   {
     "source_class": "fiqh_aqeedah",
@@ -3186,9 +3192,11 @@
     "question": "ما المقصود بالقدر الخير والشر؟",
     "answer": "الإيمان بأن الله قدّر كل شيء سلفاً وكتبه، والخير والشر كلاهما بعلم الله وإرادته، لكن الشر لا يُنسب إليه إلا خلقاً لا أمراً ولا رضاً.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "القمر: 49",
+    "explanation": "نص الآية (Tanzil): ﴿إِنَّا كُلَّ شَىْءٍ خَلَقْنَٰهُ بِقَدَرٍۢ﴾ [القمر: 49]"
   },
   {
     "id": "seed-qa-179",
@@ -7939,9 +7947,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -8008,9 +8018,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -8066,9 +8078,11 @@
     "question": "من النبي الذي بُشّر بلقب «كليم الله»؟",
     "answer": "موسى عليه السلام، كلّمه الله تكليماً بلا واسطة؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -8385,9 +8399,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -8454,9 +8470,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -8525,9 +8543,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -8594,9 +8614,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -8665,9 +8687,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -8734,9 +8758,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -8805,9 +8831,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -8874,9 +8902,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -8945,9 +8975,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -9014,9 +9046,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -9085,9 +9119,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -9154,9 +9190,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -9225,9 +9263,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -9294,9 +9334,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -9365,9 +9407,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -9434,9 +9478,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -9505,9 +9551,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -9574,9 +9622,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -9645,9 +9695,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -9714,9 +9766,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -9785,9 +9839,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -9854,9 +9910,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -9925,9 +9983,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -9994,9 +10054,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -10065,9 +10127,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10134,9 +10198,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -10205,9 +10271,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10274,9 +10342,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -10390,9 +10460,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -10416,9 +10488,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -10444,9 +10518,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -10530,9 +10606,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -10556,9 +10634,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -10584,9 +10664,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -10670,9 +10752,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -10696,9 +10780,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -10724,9 +10810,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -10810,9 +10898,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -10836,9 +10926,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -10864,9 +10956,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -10950,9 +11044,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -10976,9 +11072,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -11004,9 +11102,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -11090,9 +11190,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -11116,9 +11218,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -11144,9 +11248,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -11230,9 +11336,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -11256,9 +11364,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -11284,9 +11394,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -11370,9 +11482,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -11396,9 +11510,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -11424,9 +11540,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -11510,9 +11628,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -11536,9 +11656,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -11564,9 +11686,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -11650,9 +11774,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -11676,9 +11802,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -11704,9 +11832,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -11790,9 +11920,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -11816,9 +11948,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -11844,9 +11978,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -11930,9 +12066,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -11956,9 +12094,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -11984,9 +12124,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -12070,9 +12212,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -12096,9 +12240,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -12124,9 +12270,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -12210,9 +12358,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -12236,9 +12386,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -12264,9 +12416,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -12350,9 +12504,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -12376,9 +12532,11 @@
     "question": "من والد إسماعيل عليه السلام؟",
     "answer": "إبراهيم عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 127",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ يَرْفَعُ إِبْرَٰهِۦمُ ٱلْقَوَاعِدَ مِنَ ٱلْبَيْتِ وَإِسْمَٰعِيلُ رَبَّنَا تَقَبَّلْ مِنَّآ ۖ إِنَّكَ أَنتَ ٱلسَّمِيعُ ٱلْعَلِيمُ﴾ [البقرة: 127]"
   },
   {
     "source_class": "history",
@@ -12404,9 +12562,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "fiqh_aqeedah",
@@ -19293,9 +19453,11 @@
     "question": "متى يجب قضاء الصيام؟",
     "answer": "يجب القضاء على من أفطر بعذر شرعي (مرض أو سفر أو حيض)، ويكون قبل رمضان التالي؛ وهذا من أحكام الصيام الثابتة في الكتاب والسنة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 184",
+    "explanation": "نص الآية (Tanzil): ﴿أَيَّامًۭا مَّعْدُودَٰتٍۢ ۚ فَمَن كَانَ مِنكُم مَّرِيضًا أَوْ عَلَىٰ سَفَرٍۢ فَعِدَّةٌۭ مِّنْ أَيَّامٍ أُخَرَ ۚ وَعَلَى ٱلَّذِينَ يُطِيقُونَهُۥ فِدْيَةٌۭ طَعَامُ مِسْكِينٍۢ ۖ فَمَن تَطَوَّعَ خَيْرًۭا فَهُوَ خَيْرٌۭ لَّهُۥ ۚ وَأَن تَصُومُوا۟ خَيْرٌۭ لَّكُمْ ۖ إِن كُنتُمْ تَعْلَمُونَ﴾ [البقرة: 184]"
   },
   {
     "id": "seed-qa-225",
@@ -20777,9 +20939,11 @@
     "question": "ما المحرمات في الإحرام؟",
     "answer": "الجماع ومقدماته، وإزالة الشعر والظفر، والصيد، وتغطية الرأس للرجل، ولبس المخيط للرجل.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 197",
+    "explanation": "نص الآية (Tanzil): ﴿ٱلْحَجُّ أَشْهُرٌۭ مَّعْلُومَٰتٌۭ ۚ فَمَن فَرَضَ فِيهِنَّ ٱلْحَجَّ فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِى ٱلْحَجِّ ۗ وَمَا تَفْعَلُوا۟ مِنْ خَيْرٍۢ يَعْلَمْهُ ٱللَّهُ ۗ وَتَزَوَّدُوا۟ فَإِنَّ خَيْرَ ٱلزَّادِ ٱلتَّقْوَىٰ ۚ وَٱتَّقُونِ يَٰٓأُو۟لِى ٱلْأَلْبَٰبِ﴾ [البقرة: 197]"
   },
   {
     "source_class": "fiqh_aqeedah",
