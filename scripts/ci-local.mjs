@@ -89,11 +89,11 @@ else {
 const today = new Date().toISOString().slice(0, 10);
 const knownBroken = new Set(JSON.parse(readFileSync(resolve(APP, "scripts/known-broken-tests.json"), "utf8")).filter((e) => e.expires >= today).map((e) => e.file));
 // تحتاج مخرجات vite build (لا يعمل على ماك)؛ تبقى إلزامية في CI
-const needsDist = new Set(["scripts/test-bundle-budget.mjs"]);
+const needsDist = new Set(["scripts/test-bundle-budget.mjs", "scripts/test-prerender-output.mjs", "scripts/test-more-hub-contrast-gate.mjs", "scripts/test-dynamic-404-safety.mjs"]);
 for (const t of [...selected].sort()) {
   if (knownBroken.has(t.split("/").pop())) { console.log(`↷ ${t} (معلن في known-broken-tests.json)`); continue; }
   if (needsDist.has(t) && !existsSync(resolve(APP, "dist/assets"))) { console.log(`↷ ${t} (يحتاج dist — يعمل في CI)`); continue; }
-  ok = run(t, "node", t.endsWith(".mjs") ? [t] : ["--import", "tsx", t]) && ok;
+  ok = run(t, "node", ["--import", "tsx", t]) && ok;
 }
 // الاختبارات تعيد كتابة تقارير مولَّدة؛ أعدها لحالتها قبل التشغيل
 const stray = gitRaw("status", "--porcelain").split("\n").filter((l) => l && !dirtyBefore.has(l) && /^ M .*(reports\/|docs\/)/.test(l)).map((l) => l.slice(3));
