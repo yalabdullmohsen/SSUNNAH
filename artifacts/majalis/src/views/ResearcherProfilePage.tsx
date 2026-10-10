@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader } from "@/design-system";
 import { Link } from "wouter";
 import { Link2, Lock } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
-import { PageHeader, PageStatusShell } from "@/components/ui-common";
+import { PageStatusShell } from "@/components/ui-common";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import {

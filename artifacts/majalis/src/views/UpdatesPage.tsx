@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { NavigationBar, SearchField } from "@/design-system";
+import { NavigationBar, SearchField, PageHeader, SkeletonCardGrid } from "@/design-system";
 import { Link } from "wouter";
-import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { getMergedPlatformUpdates } from "@/lib/auto-content-service";
 import { UPDATE_TYPES } from "@/lib/platform-types";
 import { usePageView } from "@/hooks/usePageView";

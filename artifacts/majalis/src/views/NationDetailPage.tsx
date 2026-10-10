@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useRoute } from "wouter";
 import { ChevronLeft, ChevronRight, BookOpen, ListTree, Clock, MapPin, Heart } from "lucide-react";
-import { PageHeader } from "@/components/ui-common";
+import { PageHeader } from "@/design-system";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";

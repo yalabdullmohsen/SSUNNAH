@@ -26,11 +26,10 @@ import {
   type HadithSearchScope,
   type HadithSortMode,
 } from "@/lib/hadith-access";
-import { PageHeader, SkeletonCardGrid } from "@/components/ui-common";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { SectionEntryCard } from "@/components/ui/HubCard";
 import { HadithEntryCard } from "@/components/hadith/HadithEntryCard";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, PageHeader, SkeletonCardGrid } from "@/design-system";
 import { ExclusiveChoiceGroup } from "@/components/ui/ExclusiveChoiceGroup";
 import { ExploreAlsoNav } from "@/components/ExploreAlsoNav";
 import { ShareButtons } from "@/components/ContentActions";

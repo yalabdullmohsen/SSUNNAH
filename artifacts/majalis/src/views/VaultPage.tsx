@@ -5,7 +5,8 @@ import { Link } from "wouter";
 import { useAuth } from "@/components/AuthProvider";
 import { applyPageSeo } from "@/lib/seo";
 import { ShareButtons } from "@/components/ContentActions";
-import { PageHeader, PageStatusShell } from "@/components/ui-common";
+import { PageStatusShell } from "@/components/ui-common";
+import { PageHeader } from "@/design-system";
 import { arabicMatchAny } from "@/lib/arabic-search";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import {

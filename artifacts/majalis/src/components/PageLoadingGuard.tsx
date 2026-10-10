@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Empty, ErrorState, SkeletonCardGrid } from "@/components/ui-common";
+import { Empty, ErrorState } from "@/components/ui-common";
+import { SkeletonCardGrid } from "@/design-system";
 import { useDeferredLoading } from "@/hooks/useDeferredLoading";
 import { PAGE_LOAD_TIMEOUT_MS } from "@/lib/request-manager";
 import { EMPTY, STATUS } from "@/lib/ui-copy";

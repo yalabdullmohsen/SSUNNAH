@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { SkeletonCardGrid, Empty } from "@/components/ui-common";
+import { Empty } from "@/components/ui-common";
 import { ContentDetailLayout } from "@/components/platform/ContentDetailLayout";
 import { fetchLiveAutoContentBySlug, getPublishedAutoContentBySlug } from "@/lib/auto-content-service";
 import { mapContentTypeToUpdateType } from "@/lib/auto-content/auto-content-utils";
@@ -9,7 +9,7 @@ import { EMPTY } from "@/lib/ui-copy";
 import { breadcrumbJsonLd } from "@/lib/seo-structured-data";
 import { usePageView } from "@/hooks/usePageView";
 import type { AutoImportedContent } from "@/lib/auto-content/auto-content-utils";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, SkeletonCardGrid } from "@/design-system";
 import { truncateAtWord } from "@/lib/utils";
 
 export default function AutoContentDetailPage({ params }: { params: { slug: string } }) {
