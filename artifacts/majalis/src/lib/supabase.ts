@@ -73,6 +73,7 @@ const LESSON_DETAIL_COLUMNS = [
   "course_id",
   "session_count",
   "linked_titles",
+  "verification_status",
 ].join(",");
 import { writeAuditLog } from "@/lib/cms/audit-log";
 import { validateSheikhImage, safeUploadFileName } from "./file-validation";
@@ -1589,6 +1590,7 @@ async function searchLessonsFallback(term: string) {
       .from("lessons")
       .select(`id, title, category, description, mosque, schedule, ${SHEIKH_EMBED_MIN}`)
       .eq("status", "approved")
+      .neq("verification_status", "needs_review")
       .or(orIlikeFilter(["title", "description", "category", "mosque", "city"], chunk))
       .limit(40),
   );

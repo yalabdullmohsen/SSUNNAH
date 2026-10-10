@@ -293,7 +293,7 @@ async function fetchContentMeta(admin, type, ids) {
   if (!ids.length) return [];
   try {
     if (type === "lesson") {
-      const { data } = await admin.from("lessons").select("id, title, category, status").in("id", ids).eq("status", "approved");
+      const { data } = await admin.from("lessons").select("id, title, category, status").in("id", ids).eq("status", "approved").neq("verification_status", "needs_review");
       return data || [];
     }
     if (type === "hadith") {

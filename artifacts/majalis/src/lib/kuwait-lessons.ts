@@ -35,6 +35,8 @@ export type {
 
 export type KuwaitLessonRecord = {
   id: string;
+  /** حالة التوثيق من القاعدة؛ needs_review ⇒ شارة «قيد المراجعة الشرعية» وnoindex */
+  verificationStatus?: string;
   title: string;
   sheikhName: string;
   /** منظّم الدورة — يُعرض منفصلاً عن المحاضر */
@@ -304,6 +306,7 @@ export function mapLessonRow(row: any): KuwaitLessonRecord {
     womenAttendanceNote: women.womenAttendanceNote,
     hasWomenSection: women.womenAttendance === "متاح",
     courseId: row.course_id,
+    verificationStatus: row.verification_status || undefined,
     recurring: row.is_recurring !== false && !row.end_date,
     archivedAt: row.archived_at || null,
     attendanceMode,
