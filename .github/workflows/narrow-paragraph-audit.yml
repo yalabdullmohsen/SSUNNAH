@@ -1,0 +1,25 @@
+name: narrow-paragraph-audit
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "عنوان الموقع المُقاس"
+        default: "https://www.ssunnah.com"
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm i --no-save playwright@1.61.1 && npx playwright install --with-deps chromium
+      - name: أضيق فقرة في أعلى الصفحات (390×844)
+        env:
+          BASE_URL: ${{ inputs.base_url || 'https://www.ssunnah.com' }}
+        run: node artifacts/majalis/scripts/narrow-paragraph-audit.mjs
