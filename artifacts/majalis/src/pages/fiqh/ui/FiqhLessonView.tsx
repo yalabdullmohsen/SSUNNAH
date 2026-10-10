@@ -1,11 +1,10 @@
-import { NavigationBar } from "@/design-system";
+import { EmptyState, NavigationBar } from "@/design-system";
 import { Link, useParams } from "wouter";
 import { useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { usePageView } from "@/hooks/usePageView";
 import { LazyRouteFallback } from "@/components/LazyRouteFallback";
-import { Empty } from "@/components/ui-common";
 import {
   adjacentFiqhLessons,
   ensureFiqhCatalogLoaded,
@@ -156,7 +155,7 @@ export default function FiqhLessonPage() {
   if (!hit) {
     return (
       <div className="fiqh-lux-shell fiqh-lux-lesson page-shell" dir="rtl">
-        <Empty title="مسألة غير موجودة" text="هذه المسألة غير مسجّلة في كتب الفقه." />
+        <EmptyState title="مسألة غير موجودة" description="هذه المسألة غير مسجّلة في كتب الفقه." />
         <p className="fiqh-lux-empty">
           <Link href="/fiqh">العودة إلى الفقه</Link>
         </p>

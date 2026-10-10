@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Heart } from "lucide-react";
-import { Empty } from "@/components/ui-common";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
 import { fetchPublishedArbaeenLove, type ArbaeenHadith } from "@/lib/arbaeen-love-service";
-import { NavigationBar, PageHeader, SkeletonCardGrid } from "@/design-system";
+import { EmptyState, NavigationBar, PageHeader, SkeletonCardGrid } from "@/design-system";
 import "@/styles/components/topic-page.css";
 
 export default function ArbaeenLovePage() {
@@ -68,9 +67,9 @@ export default function ArbaeenLovePage() {
       {loading && items.length === 0 ? (
         <SkeletonCardGrid count={4} />
       ) : loadFailed ? (
-        <Empty text={STATUS.networkError} />
+        <EmptyState title={STATUS.networkError} />
       ) : items.length === 0 ? (
-        <Empty text={EMPTY.data} />
+        <EmptyState title={EMPTY.data} />
       ) : (
         <div className="fiqh-review-list" aria-busy={loading}>
           {items.map((item) => (

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "wouter";
-import { Empty } from "@/components/ui-common";
-import { PageHeader } from "@/design-system";
+import { EmptyState, PageHeader } from "@/design-system";
 import { ShareButtons } from "@/components/ContentActions";
 import { applyPageSeo } from "@/lib/seo";
 import { EMPTY } from "@/lib/ui-copy";
@@ -50,7 +49,7 @@ export default function DiscoverIslamDoubtDetailPage() {
   if (item === null) {
     return (
       <DiscoverIslamShell detail>
-        <Empty text={EMPTY.data} />
+        <EmptyState title={EMPTY.data} />
       </DiscoverIslamShell>
     );
   }

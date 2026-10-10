@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Empty } from "@/components/ui-common";
-import { PageHeader, SkeletonCardGrid } from "@/design-system";
+import { EmptyState, PageHeader, SkeletonCardGrid } from "@/design-system";
 import { HubCard } from "@/components/ui/HubCard";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
 import { applyPageSeo } from "@/lib/seo";
@@ -29,7 +28,7 @@ export default function DiscoverIslamDoubtsPage() {
       {items === null ? (
         <SkeletonCardGrid />
       ) : items.length === 0 ? (
-        <Empty text={EMPTY.data} />
+        <EmptyState title={EMPTY.data} />
       ) : (
         <div className="hub-card-grid dii-list-grid dii-section">
           {items.map((s) => (

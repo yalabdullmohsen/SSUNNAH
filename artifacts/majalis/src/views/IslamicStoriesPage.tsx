@@ -3,8 +3,7 @@ import { AlertTriangle, Bird, BookOpen, Castle, Compass, Flower2, Gem, Landmark,
 import type { LucideIcon } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { isSupabaseConfigured } from "@/lib/supabase-config";
-import { Empty } from "@/components/ui-common";
-import { SkeletonCardGrid } from "@/design-system";
+import { EmptyState, SkeletonCardGrid } from "@/design-system";
 import { SectionTemplatePage } from "@/components/topic/TopicPage";
 import { getIslamicStoriesCached, loadIslamicStoriesSeed } from "@/lib/islamic-stories-seed";
 import { applyPageSeo } from "@/lib/seo";
@@ -382,9 +381,9 @@ export default function IslamicStoriesPage() {
           <span>{error}</span>
         </div>
       ) : stories.length === 0 ? (
-        <Empty title={EMPTY.data} text={EMPTY.generic} />
+        <EmptyState title={EMPTY.data} description={EMPTY.generic} />
       ) : filtered.length === 0 ? (
-        <Empty text={EMPTY.search} />
+        <EmptyState title={EMPTY.search} />
       ) : (
         <div className="isp-grid" aria-busy={loading}>
           {filtered.map((story) => (
