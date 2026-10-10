@@ -1,43 +1,33 @@
 # تقرير نطاق التغييرات
 
-**التاريخ:** 2026-10-08T19:53:14.788Z
-**عدد الملفات:** 13
-**النطاقات:** other، ui/layout، quran/mushaf، content/data
+**التاريخ:** 2026-10-10T01:46:58.220Z
+**عدد الملفات:** 3
+**النطاقات:** ci/config، other
 **docs-only:** لا
 
 ## البوابات المقترحة
 
 | البوابة | مطلوب |
 |---------|-------|
-| ui | ✓ |
+| ui | — |
 | api | — |
-| seo | ✓ |
+| seo | — |
 | pwa | — |
-| content | ✓ |
+| content | — |
 | ios | — |
 | full | ✓ |
-| mushaf | ✓ |
+| mushaf | — |
 | build | ✓ |
-| visual | ✓ |
-| lighthouse | ✓ |
-| color_contrast | ✓ |
-| data_audit | ✓ |
+| visual | — |
+| lighthouse | — |
+| color_contrast | — |
+| data_audit | — |
 
 ## الملفات المتغيرة (أول 40)
 
-- `artifacts/majalis/scripts/ui-ratchet-baseline.json` → other
-- `artifacts/majalis/src/components/adhan/AdhanNotificationBar.tsx` → ui_layout
-- `artifacts/majalis/src/components/adhan/PrayerAudioPicker.tsx` → ui_layout
-- `artifacts/majalis/src/components/adhan/PrayerRespectBanner.tsx` → ui_layout
-- `artifacts/majalis/src/components/home/HomeCustomizeSheet.tsx` → ui_layout
-- `artifacts/majalis/src/components/quran/HifzAudioLoopPlayer.tsx` → quran_mushaf
-- `artifacts/majalis/src/components/quran/ImmersivePrefsDrawer.tsx` → quran_mushaf
-- `artifacts/majalis/src/components/quran/ImmersiveVerseOptionsSheet.tsx` → quran_mushaf
-- `artifacts/majalis/src/components/quran/QuranSurahJumpSearch.tsx` → quran_mushaf
-- `artifacts/majalis/src/components/quran/TafsirModalViewer.tsx` → quran_mushaf
-- `artifacts/majalis/src/design-system/primitives.tsx` → ui_layout
-- `artifacts/majalis/src/pages/quran/ui/QuranSearchView.tsx` → quran_mushaf
-- `artifacts/majalis/src/pages/worship/ui/AdhkarDhikrSheet.tsx` → content_data
+- `package.json` → ci_config
+- `scripts/__tests__/ci-local-lock.test.mjs` → other
+- `scripts/ci-local-lock.sh` → other
 
 
 ## سياسات

@@ -14,7 +14,8 @@ mkdir -p "$(dirname "$LOCK")"
 
 lock_age() {
   local m
-  m=$(stat -f %m "$LOCK" 2>/dev/null || stat -c %Y "$LOCK" 2>/dev/null) || { echo 0; return; }
+  # GNU أولًا: stat -f على Linux يطبع معلومات نظام الملفات قبل أن يفشل فيُفسد العمر
+  m=$(stat -c %Y "$LOCK" 2>/dev/null || stat -f %m "$LOCK" 2>/dev/null) || { echo 0; return; }
   echo $(( $(date +%s) - m ))
 }
 
