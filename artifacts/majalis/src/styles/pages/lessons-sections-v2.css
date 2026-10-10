@@ -22,7 +22,7 @@ html[data-v2-lessons="1"] .lesson-filters__search-field,
 html[data-v2-lessons="1"] .lesson-filters__search-field input {
   border-radius: var(--v2-radius-lg, 22px);
   border-color: var(--v2-hairline);
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   color: var(--v2-color-ink);
   min-height: 44px;
 }
@@ -31,7 +31,7 @@ html[data-v2-lessons="1"] .lesson-filters__icon-btn {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
-  background: var(--v2-color-emerald-soft, #e2efe8);
+  background: var(--v2-color-emerald-soft, var(--sn-primary-soft));
   color: var(--v2-color-emerald-deep, var(--mj-brand-deep));
   border: 1px solid var(--v2-hairline);
 }
@@ -52,7 +52,7 @@ html[data-v2-lessons="1"] .lesson-unified-card {
 html[data-v2-lessons="1"] .lessons-v2-filters {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--v2-hairline) 90%, var(--v2-color-emerald, var(--mj-brand)));
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow:
     0 1px 0 color-mix(in srgb, var(--mj-white) 65%, transparent),
     var(--v2-shadow-soft);
@@ -104,7 +104,7 @@ html[data-v2-lessons="1"] .lesson-unified-card__status {
   font-weight: 700;
   border-radius: var(--v2-radius-pill, var(--sf-radius-pill));
   border: 1px solid var(--cs-border, rgba(15, 92, 63, 0.12));
-  background: var(--cs-primary-soft, #e2efe8);
+  background: var(--cs-primary-soft, var(--sn-primary-soft));
 }
 html[data-v2-lessons="1"] .lesson-unified-card__category,
 html[data-v2-lessons="1"] .lesson-unified-card__delivery {
@@ -139,7 +139,7 @@ html[data-v2-lessons="1"] .section-lobby__title {
 
 html[data-v2-lessons="1"] .lessons-empty-state,
 html[data-v2-lessons="1"] .lessons-page-stats__item {
-  color: var(--v2-color-ink-muted, #5e6e67);
+  color: var(--v2-color-ink-muted, var(--sn-text-tertiary));
 }
 
 html[data-v2-lessons="1"] .mj-btn--ghost {
@@ -194,7 +194,7 @@ html[data-v2-sections="1"] .section-entry-card {
 html[data-v2-sections="1"] .more-page-tile {
   border-radius: var(--v2-radius-card, 1.5rem);
   border: 1px solid color-mix(in srgb, var(--v2-hairline) 88%, var(--v2-color-emerald, var(--mj-brand)));
-  background: var(--v2-color-ivory-surface, #fffcf8);
+  background: var(--v2-color-ivory-surface, var(--sn-bg));
   box-shadow:
     0 1px 0 color-mix(in srgb, var(--mj-white) 65%, transparent),
     var(--v2-shadow-soft);
@@ -224,7 +224,7 @@ html[data-v2-sections="1"] .section-entry-card__icon {
   width: var(--v2-icon-tile, 2.75rem);
   height: var(--v2-icon-tile, 2.75rem);
   border-radius: var(--v2-radius-icon, var(--sf-radius-sm));
-  background: var(--cs-primary-soft, #e2efe8) !important;
+  background: var(--cs-primary-soft, var(--sn-primary-soft)) !important;
   color: var(--cs-primary-deep, var(--sf-color-deep-emerald-deep)) !important;
 }
 

@@ -179,7 +179,6 @@ html[data-v2-app="1"] .cr-shell > * + * {
 html[data-v2-app="1"] .rsc,
 html[data-v2-app="1"] .qr-section,
 html[data-v2-app="1"] .uq-section,
-html[data-v2-app="1"] .hs-card,
 html[data-v2-app="1"] .gl-term,
 html[data-v2-app="1"] .tf-card,
 html[data-v2-app="1"] .kx-block:not(.kx-block--definition),

@@ -1,6 +1,7 @@
 import { checkPasswordBreached, PASSWORD_BREACHED_AR } from "@/lib/password-breach-check";
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useLocation } from "wouter";
+import { goBackOrFallback } from "@/lib/navigation-back";
 import { useAuth } from "@/components/AuthProvider";
 import { ADMIN_ACCESS_DENIED_MESSAGE, mapAuthError } from "@/lib/auth-messages";
 import { hasUnrestrictedAdminAccess, isOwnerAuthUser, resolveUserEmail } from "@/lib/owner-config";
@@ -302,7 +303,7 @@ export default function AuthScreen() {
     <div className="sn-screen sn-auth" data-testid="auth-screen">
       <div className="sn-container sn-stack sn-stack--lg sn-auth__body">
         <div className="sn-row sn-auth__top">
-          <IconButton icon="close" label={S.overlays_01} tone="tinted" onClick={() => (window.history.length > 1 ? window.history.back() : navigate("/"))} />
+          <IconButton icon="close" label={S.overlays_01} tone="tinted" onClick={() => goBackOrFallback(location, "/")} />
         </div>
         <span className="sn-auth-mark" aria-hidden="true">{S.auth_08}</span>
         <h1 className="sn-t-title1 sn-auth__title">{title}</h1>
