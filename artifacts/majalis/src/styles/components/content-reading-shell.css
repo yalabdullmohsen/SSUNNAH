@@ -93,7 +93,6 @@
 .uq-dalil-box,
 .uq-info-box,
 .uq-fact-item,
-.hs-card,
 .gl-term,
 .tf-card,
 .content-detail-body > section,
@@ -206,12 +205,10 @@ html.dark .qr-section,
 html.dark .uq-section,
 html.dark .uq-dalil-box,
 html.dark .uq-info-box,
-html.dark .hs-card,
 html.dark .gl-term,
 html.dark .tf-card,
 html.dark .tawheed-principle-card,
 html[data-theme="dark"] .qr-section,
-html[data-theme="dark"] .hs-card,
 html[data-theme="dark"] .gl-term {
   background: var(--mj-surface, #1b2421) !important;
   border-color: color-mix(in srgb, var(--mj-brand, #5fbf98) 28%, #2a3832) !important;

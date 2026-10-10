@@ -591,7 +591,7 @@ html[dir="ltr"] .bottom-sheet--services .more-sheet-theme-switch__knob.is-on {
 /* —— شيت المزيد (هوية + حشو + زر وضع) —— */
 .app-sheet.more-hub-sheet,
 .bottom-sheet.bottom-sheet--services.more-hub-sheet {
-  background: var(--mj-bg, #f2f4f3) !important;
+  background: var(--mj-bg, var(--sn-bg)) !important;
   color: var(--mj-ink) !important;
 }
 
@@ -616,7 +616,7 @@ html.dark .app-sheet.more-hub-sheet {
   position: sticky;
   bottom: 0;
   z-index: 3;
-  background: color-mix(in srgb, var(--mj-bg, #f2f4f3) 96%, transparent);
+  background: color-mix(in srgb, var(--mj-bg, var(--sn-bg)) 96%, transparent);
 }
 
 html[data-theme="dark"] .more-hub-sheet .app-sheet__footer,

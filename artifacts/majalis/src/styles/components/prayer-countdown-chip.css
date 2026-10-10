@@ -31,7 +31,7 @@
   padding: 4px 8px;
   border-radius: var(--radius-pill, 999rem);
   border: 1px solid color-mix(in srgb, var(--mj-brand, #1c5244) 28%, transparent);
-  background: var(--mj-brand-deep, #12362a);
+  background: var(--mj-brand-deep, var(--sn-primary-strong));
   color: var(--mj-white);
   font-size: 0.68rem;
   font-weight: 700;
@@ -97,7 +97,7 @@
 /* ليلاً: خلفية خضراء فاتحة أوضح والنص أبيض للتباين ≥ ٤.٥:١ */
 html[data-theme="dark"] .prayer-countdown-chip {
   /* أخضر فاتح نسبيًا مع تباين أبيض ≥ ٤.٥:١ */
-  background: #247a5c;
+  background: var(--sn-success);
   border-color: color-mix(in srgb, #6bc4a0 45%, transparent);
   color: var(--mj-white);
 }
@@ -158,7 +158,7 @@ html[data-theme="dark"] .prayer-countdown-chip--now {
 
 .prayer-chip-sheet__name {
   font-weight: 700;
-  color: var(--mj-ink, #1a2e28);
+  color: var(--mj-ink, var(--sn-text-primary));
 }
 
 .prayer-chip-sheet__time {
@@ -172,7 +172,7 @@ html[data-theme="dark"] .prayer-countdown-chip--now {
 .prayer-chip-sheet__empty {
   margin: 0.5rem 0 0;
   font-size: 0.85rem;
-  color: var(--mj-muted, #5a6f68);
+  color: var(--mj-muted, var(--sn-text-tertiary));
 }
 
 html[data-theme="dark"] .prayer-chip-sheet__name {

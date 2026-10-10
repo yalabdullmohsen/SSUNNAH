@@ -1,0 +1,7 @@
+Sign-in is NOT required to review the app. All features work without an account: Quran, adhkar, prayer times, qibla, hadith, lessons, flashcards. An account only enables optional saving/syncing of bookmarks and progress; account deletion is available in-app (Settings > Delete account) and at https://www.ssunnah.com/account-deletion.
+
+Notifications (optional, off until the user enables them): local reminders for prayer times and adhkar, scheduled on-device. No marketing push.
+
+Guideline 2.5.4 - Background audio: open the Mushaf (/mushaf), play recitation on any ayah, press Home - audio continues; Control Center and the lock screen show Now Playing controls. UIBackgroundModes=audio is used only for real Quran/lesson playback.
+
+Privacy: no ads, no tracking. Privacy policy: https://www.ssunnah.com/privacy. Support: Majlisilm.app@gmail.com
