@@ -69,19 +69,13 @@ if (ver) {
   if (loc) await write("تحديث وصف/كلمات/ما الجديد", "PATCH", `/v1/appStoreVersionLocalizations/${loc.id}`, { data: { type: "appStoreVersionLocalizations", id: loc.id, attributes: attrs } });
   else await write("إنشاء توطين الإصدار", "POST", "/v1/appStoreVersionLocalizations", { data: { type: "appStoreVersionLocalizations", attributes: { locale: meta.locale, ...attrs }, relationships: { appStoreVersion: { data: { type: "appStoreVersions", id: ver.id } } } } });
 
-  // ملاحظات المراجعة
-  const pass = process.env.ASC_REVIEW_DEMO_PASSWORD;
-  let notes = readFileSync(meta.reviewDetail.notesFile, "utf8");
-  if (pass) notes = notes.replace(/<<OWNER:[^>]*>>/, pass);
-  else if (/<<OWNER/.test(notes)) log("  ⚠️ ASC_REVIEW_DEMO_PASSWORD غير مضبوط: ملاحظات المراجعة وحساب العرض لن تُكتب (بند يوسف)");
-  if (pass || !/<<OWNER/.test(notes)) {
-    const rd = meta.reviewDetail;
-    const a = { contactFirstName: rd.contactFirstName, contactLastName: rd.contactLastName, contactEmail: rd.contactEmail, contactPhone: process.env.ASC_REVIEW_CONTACT_PHONE || undefined, demoAccountRequired: true, demoAccountName: (notes.match(/Email:\s*(\S+)/) || [])[1], demoAccountPassword: pass, notes };
-    Object.keys(a).forEach((k) => a[k] === undefined && delete a[k]);
-    const cur = (await api("GET", `/v1/appStoreVersions/${ver.id}/appStoreReviewDetail`).catch(() => ({}))).data;
-    if (cur) await write("تحديث تفاصيل المراجعة", "PATCH", `/v1/appStoreReviewDetails/${cur.id}`, { data: { type: "appStoreReviewDetails", id: cur.id, attributes: a } });
-    else await write("إنشاء تفاصيل المراجعة", "POST", "/v1/appStoreReviewDetails", { data: { type: "appStoreReviewDetails", attributes: a, relationships: { appStoreVersion: { data: { type: "appStoreVersions", id: ver.id } } } } });
-  }
+  // ملاحظات المراجعة (لا تسجيل دخول مطلوبًا، بلا أسرار)
+  const rd = meta.reviewDetail;
+  const a = { contactFirstName: rd.contactFirstName, contactLastName: rd.contactLastName, contactEmail: rd.contactEmail, contactPhone: process.env.ASC_REVIEW_CONTACT_PHONE || undefined, demoAccountRequired: false, notes: readFileSync(rd.notesFile, "utf8") };
+  Object.keys(a).forEach((k) => a[k] === undefined && delete a[k]);
+  const cur = (await api("GET", `/v1/appStoreVersions/${ver.id}/appStoreReviewDetail`).catch(() => ({}))).data;
+  if (cur) await write("تحديث تفاصيل المراجعة", "PATCH", `/v1/appStoreReviewDetails/${cur.id}`, { data: { type: "appStoreReviewDetails", id: cur.id, attributes: a } });
+  else await write("إنشاء تفاصيل المراجعة", "POST", "/v1/appStoreReviewDetails", { data: { type: "appStoreReviewDetails", attributes: a, relationships: { appStoreVersion: { data: { type: "appStoreVersions", id: ver.id } } } } });
 
   // ربط أحدث بناء صالح
   const good = builds.find((b) => b.attributes.processingState === "VALID" && !b.attributes.expired);

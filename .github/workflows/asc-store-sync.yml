@@ -29,5 +29,4 @@ jobs:
           APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
-          ASC_REVIEW_DEMO_PASSWORD: ${{ secrets.ASC_REVIEW_DEMO_PASSWORD }}
         run: node scripts/asc-store-sync.mjs "${{ inputs.command }}" ${{ inputs.apply && '--apply' || '' }}
