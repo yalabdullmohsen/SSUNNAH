@@ -15,7 +15,7 @@ import {
   type PunishmentType,
 } from "@/lib/nations-seed";
 import { PunishmentIcon } from "@/components/nations/PunishmentIcon";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import {
   Select,

@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { GraduationCap } from "lucide-react";
 import { applyPageSeo } from "@/lib/seo";
 import { AppBackButton } from "@/components/common/AppBackButton";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,

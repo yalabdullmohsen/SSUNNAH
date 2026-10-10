@@ -4,11 +4,10 @@ import { STATUS } from "@/lib/ui-copy";
 import { useLanguage } from "@/components/LanguageProvider";
 import { submitDawahContactRequest, CONTACT_RELIGIONS, type ReligionCode } from "@/lib/dawah-service";
 import { DiscoverIslamShell } from "@/components/discover-islam/DiscoverIslamShell";
-import { NavigationBar, PageHeader } from "@/design-system";
+import { NavigationBar, PageHeader, FieldLabel } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
   SelectContent,

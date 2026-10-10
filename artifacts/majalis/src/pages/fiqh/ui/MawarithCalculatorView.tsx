@@ -1,4 +1,4 @@
-import { NavigationBar, PageHeader, IconButton } from "@/design-system";
+import { NavigationBar, PageHeader, IconButton, FieldLabel } from "@/design-system";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
@@ -23,7 +23,6 @@ import { ActionButton } from "@/components/design-system";
 import { KnowledgeLayout } from "@/components/knowledge";
 
 import { Button } from "@/components/ui/button";
-import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
   SelectContent,

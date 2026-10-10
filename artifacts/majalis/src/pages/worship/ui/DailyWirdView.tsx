@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavigationBar, PageHeader } from "@/design-system";
+import { NavigationBar, PageHeader, FieldLabel } from "@/design-system";
 import { Award, BookOpen, Flame, Leaf, TrendingUp } from "lucide-react";
 import { Link } from "wouter";
 import {
@@ -15,7 +15,6 @@ import { STATUS } from "@/lib/ui-copy";
 import { ShareButtons } from "@/components/ContentActions";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
 import "@/styles/pages/daily-wird.css";
-import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
 import {
   Select,

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavigationBar, PageHeader, IconButton } from "@/design-system";
+import { NavigationBar, PageHeader, IconButton, FieldLabel } from "@/design-system";
 import { Link } from "wouter";
 import { Link2, Lock } from "lucide-react";
 import { useAuth } from "@/components/AuthProvider";
@@ -15,7 +15,6 @@ import {
 } from "@/lib/researcher-profile-service";
 import { applyPageSeo } from "@/lib/seo";
 import "@/styles/pages/researcher-profile.css";
-import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
   SelectContent,

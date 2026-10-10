@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { NavigationBar } from "@/design-system";
+import { NavigationBar, FieldLabel } from "@/design-system";
 import { Link } from "wouter";
 import { applyPageSeo } from "@/lib/seo";
 import {
@@ -14,7 +14,6 @@ import {
   draftProposalOutline,
 } from "@/lib/researches";
 import "@/styles/pages/researches.css";
-import { FieldLabel } from "@/components/design-system/FormFields";
 import {
   Select,
   SelectContent,
