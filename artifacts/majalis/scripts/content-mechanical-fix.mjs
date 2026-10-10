@@ -5,12 +5,13 @@
  * --lines: يقصر الإصلاح على أسطر محددة لتقسيم ملف كبير على أكثر من PR (حد 400 سطر محذوف).
  */
 import fs from "node:fs";
-import { stripRlm, mapJsonStrings, RLM_SKELETON, latinDigits, DIGITS_SKELETON, stripTitleId, TITLE_ID_SKELETON } from "./lib/content-mechanical.mjs";
+import { stripRlm, mapJsonStrings, RLM_SKELETON, latinDigits, DIGITS_SKELETON, titleIdToRef, hadithTitleRef, TITLE_ID_SKELETON } from "./lib/content-mechanical.mjs";
 
 const FIXES = {
   rlm: { fn: stripRlm, skeleton: RLM_SKELETON },
   digits: { fn: latinDigits, skeleton: DIGITS_SKELETON },
-  "title-id": { fn: stripTitleId, skeleton: TITLE_ID_SKELETON },
+  /* المرجع من sources[0].book للسؤال نفسه: العنوان القديم (بمعرّفه) فريد في الملف */
+  "title-id": { fn: (s, refs) => (refs.has(s) ? titleIdToRef(s, refs.get(s)) : s), skeleton: TITLE_ID_SKELETON },
 };
 const args = process.argv.slice(2);
 const li = args.indexOf("--lines");
@@ -24,6 +25,7 @@ if (!fix || !files.length) {
 let fields = 0;
 for (const f of files) {
   const raw = fs.readFileSync(f, "utf8");
+  const refs = new Map((JSON.parse(raw).items ?? []).map((q) => [q.title, hadithTitleRef(q.sources?.[0]?.book ?? "")]));
   /* بدايات الأسطر مرة واحدة لكل ملف: رقم سطر الحقل ببحث ثنائي (لا مسح من أول الملف لكل حقل) */
   const starts = li < 0 ? null : [0, ...[...raw.matchAll(/\n/g)].map((m) => m.index + 1)];
   const lineAt = (at) => {
@@ -37,7 +39,7 @@ for (const f of files) {
   };
   const next = mapJsonStrings(raw, (body, at) => {
     if (starts && (lineAt(at) < lo || lineAt(at) > hi)) return body;
-    const out = fix.fn(body);
+    const out = fix.fn(body, refs);
     if (out !== body) {
       fields += 1;
       if (fix.skeleton(out) !== fix.skeleton(body)) throw new Error(`${f}: تغيّر خارج النمط: ${body.slice(0, 60)}`);

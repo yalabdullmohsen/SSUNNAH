@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { ROOT, KNOWLEDGE, loadQuran, getAyah, wordCount } from "./lib.mjs";
+import { hadithTitleRef } from "../lib/content-mechanical.mjs";
 
 const TODAY = "2026-08-13";
 const SRC_QURAN = { book: "القرآن الكريم برسم العثماني", author: "مصحف المشروع المحلي", locator: "public/data/quran" };
@@ -448,7 +449,7 @@ function genQuiz(prophets, nations, hadiths) {
           "حسب درجة السجل المحلي (صحيح)");
     items.push({
       id,
-      title: `حديث: ${h.title || "معنى حديث صحيح"}`,
+      title: `حديث (${hadithTitleRef(`${h.source_name || h.collection || "حديث صحيح"} ${h.hadith_number ?? ""}`)}): ${h.title || "معنى حديث صحيح"}`,
       body: `ما موضوع هذا الحديث الصحيح: «${snippet}…»؟`,
       evidences: [{
         type: "hadith",
