@@ -13,6 +13,7 @@ const gates = [
   "test-content-links.mjs",
   "test-content-quality.mjs",
   "test-content-lang.mjs",
+  "hadith-class-grade-gate.mjs",
 ];
 
 let failed = 0;

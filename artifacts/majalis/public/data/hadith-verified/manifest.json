@@ -7,12 +7,12 @@
   "chunks": [
     {
       "file": "daif-000.json",
-      "count": 200,
+      "count": 194,
       "key": "daif"
     },
     {
       "file": "daif-001.json",
-      "count": 126,
+      "count": 125,
       "key": "daif"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "file": "sahih-004.json",
-      "count": 199,
+      "count": 206,
       "key": "sahih"
     },
     {

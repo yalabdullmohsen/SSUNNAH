@@ -98,8 +98,8 @@ export const REGISTRY_SAHIHAYN = {
 
 /** البذرة المنسّقة — بعد مواءمة عدّ الـchunks مع أطوال الملفات الفعلية */
 export const REGISTRY_CURATED = {
-  sahih: 1154,
-  daif: 326,
+  sahih: 1161,
+  daif: 319,
   mawdu: 260,
   total: 1740,
   /** عيّنة حسب حقل collection داخل البذرة (قياس 2026-09-27) */
