@@ -539,6 +539,7 @@ export function useLessonSeo(lesson: KuwaitLessonRecord | null, path: string, lo
       image: meta.image,
       ogType: meta.ogType,
       canonicalPath: meta.canonicalPath,
+      ...(lesson.verificationStatus === "needs_review" ? { robots: "noindex, follow" } : {}),
       jsonLd: [lessonJsonLd(lesson), breadcrumbs],
     });
   }, [lesson, path, loading]);

@@ -59,6 +59,7 @@ export default function CarModePage() {
           .from("lessons")
           .select("id, title, speaker_name, live_url, audio_url, category, external_key")
           .eq("status", "approved")
+          .neq("verification_status", "needs_review")
           .not("live_url", "is", null)
           .order("created_at", { ascending: false })
           .limit(50);

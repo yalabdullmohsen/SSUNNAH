@@ -58,7 +58,7 @@ export async function fetchDynamicUrls() {
     lessons, updates, learningPaths,
     rulings, universities, annualCourses,
   ] = await Promise.all([
-    admin.from("lessons").select("id, updated_at, slug").eq("status", "approved").limit(2000),
+    admin.from("lessons").select("id, updated_at, slug").eq("status", "approved").neq("verification_status", "needs_review").limit(2000),
     // ملاحظة (2026-07-26، تدقيق جدول fawaid): استعلام fawaid أُزيل من هنا
     // لسببين معًا — (١) لا مسار `/fawaid/:id` في src/App.tsx إطلاقًا (المسار
     // الوحيد هو `/fawaid` صفحة القائمة)، فكل رابط كان سيُولَّد هنا هو 404
@@ -164,6 +164,7 @@ export async function buildFeedXml() {
         .from("lessons")
         .select("id, title, description, updated_at, slug")
         .eq("status", "approved")
+        .neq("verification_status", "needs_review")
         .order("updated_at", { ascending: false })
         .limit(30),
       admin
