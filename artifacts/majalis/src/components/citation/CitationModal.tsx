@@ -17,8 +17,7 @@ import {
   saveCitationToLibrary,
 } from "@/lib/citation-service";
 import "@/styles/components/citation-modal.css";
-import { FieldLabel } from "@/components/design-system/FormFields";
-import { IconButton } from "@/design-system";
+import { IconButton, FieldLabel } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import {
   Select,

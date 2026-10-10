@@ -11,7 +11,7 @@ import { getActivePrayerLocation } from "@/lib/prayer-location-prefs";
 import { toArabicIndicDigits } from "@/lib/numerals";
 import { STATUS } from "@/lib/ui-copy";
 import { Button } from "@/components/ui/button";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,

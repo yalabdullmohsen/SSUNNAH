@@ -36,7 +36,7 @@ import {
   searchPublishedScholarlyResearch,
 } from "@/lib/scholarly-research";
 import { BookOpen, GraduationCap, Plus, Search, Sparkles, Shield } from "lucide-react";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import { Button } from "@/components/ui/button";
 import {
   Select,

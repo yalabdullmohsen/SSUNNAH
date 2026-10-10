@@ -23,7 +23,7 @@ import { suggestMethodForRegion } from "@/lib/prayer-calc-prefs";
 import { EMPTY, STATUS } from "@/lib/ui-copy";
 
 import { Button } from "@/components/ui/button";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,

@@ -18,9 +18,8 @@ import {
 } from "@/lib/islamic-landmarks-data";
 import { ShareButtons } from "@/components/ContentActions";
 import { AppPage, PageHeaderV2, EmptyStateV2 } from "@/components/design-system";
-import { SearchField } from "@/design-system";
+import { SearchField, FieldLabel } from "@/design-system";
 import { SectionTitle, SupportingText } from "@/components/design-system/text";
-import { FieldLabel } from "@/components/design-system/FormFields";
 import { Button } from "@/components/ui/button";
 import {
   Select,

@@ -35,7 +35,7 @@ import "@/styles/pages/worship-history-v2.css";
 
 import { Button } from "@/components/ui/button";
 import { AppBackButton } from "@/components/common/AppBackButton";
-import { FieldLabel } from "@/components/design-system/FormFields";
+import { FieldLabel } from "@/design-system";
 import {
   Select,
   SelectContent,
