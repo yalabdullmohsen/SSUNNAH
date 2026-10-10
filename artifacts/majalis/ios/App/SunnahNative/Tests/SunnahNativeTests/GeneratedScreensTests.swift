@@ -1,15 +1,21 @@
 import XCTest
 @testable import SunnahNative
 
+@MainActor
 final class GeneratedScreensTests: XCTestCase {
-    func testKnownPathsResolve() {
-        for p in ["/hadith", "/hadith/5", "/lessons/3/audio", "/quizzes", "/search", "/knowledge", "/qa/9"] {
-            XCTAssertNotNil(GeneratedScreens.resolve(path: p, open: { _ in }), p)
+    func testNonParamRoutesRegister() {
+        let registry = TemplateRegistry()
+        GeneratedScreens.registerAll(in: registry)
+        for id in ["hadith", "knowledge", "knowledge.topics", "lessons", "fiqh.topics", "qa", "stories", "quizzes", "search"] {
+            XCTAssertNotNil(registry.view(for: id), id)
         }
     }
 
-    func testUnknownPathIsNil() {
-        XCTAssertNil(GeneratedScreens.resolve(path: "/prayer-times", open: { _ in }))
-        XCTAssertNil(GeneratedScreens.resolve(path: "/hadith/5/extra", open: { _ in }))
+    func testParamRoutesResolve() {
+        for p in ["/hadith/5", "/lessons/3/audio", "/lessons/3", "/knowledge/topics/7", "/qa/9"] {
+            XCTAssertNotNil(GeneratedScreens.resolve(path: p), p)
+        }
+        XCTAssertNil(GeneratedScreens.resolve(path: "/prayer-times"))
+        XCTAssertNil(GeneratedScreens.resolve(path: "/hadith/5/extra"))
     }
 }

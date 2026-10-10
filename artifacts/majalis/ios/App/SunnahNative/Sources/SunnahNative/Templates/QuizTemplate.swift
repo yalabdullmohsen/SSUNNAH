@@ -2,11 +2,10 @@ import SwiftUI
 
 /// قالب 5 — اختبار: سؤال واحد في كل مرة، تغذية راجعة فورية، نتيجة في النهاية.
 public struct QuizTemplate: View {
-    let section: String; let title: String
-    public init(section: String, title: String) { self.section = section; self.title = title }
+    let questions: [QuizQuestion]
+    public init(questions: [QuizQuestion]) { self.questions = questions }
     public var body: some View {
-        Loaded(load: { try await $0.quiz(section: section) }, isEmpty: { $0.isEmpty }) { QuizRunner(questions: $0) }
-            .background(Sunnah.Colors.bg).navigationTitle(title)
+        if questions.isEmpty { EmptyStateView() } else { QuizRunner(questions: questions).background(Sunnah.Colors.bg) }
     }
 }
 

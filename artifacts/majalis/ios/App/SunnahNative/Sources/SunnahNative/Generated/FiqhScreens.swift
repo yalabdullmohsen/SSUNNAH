@@ -1,13 +1,35 @@
 // مُولَّد بـ scripts/generate-native-screens.mjs من ROUTE_TEMPLATE_MAP.json — لا تعدّل يدويًا.
 import SwiftUI
 
-/// قسم «الفقه».
+struct FiqhScreen: ScreenTemplate {
+    static let id = "fiqh"
+    static let title = "الفقه"
+    static let source = ContentSource.bundled(name: "fiqh")
+    typealias Content = [SectionLink]
+    let content: Content
+    init(content: Content) { self.content = content }
+    var body: some View { SectionsListTemplate(links: content) }
+}
+
+struct FiqhTopicsScreen: ScreenTemplate {
+    static let id = "fiqh.topics"
+    static let title = "الفقه"
+    static let source = ContentSource.bundled(name: "fiqh-topics")
+    typealias Content = [ContentItem]
+    let content: Content
+    init(content: Content) { self.content = content }
+    var body: some View { ListTemplate(items: content, detailBase: "/fiqh/topics") }
+}
+
+/// قسم «الفقه». المسارات بلا معاملات تُسجَّل في TemplateRegistry (Route.native(id:))، وذات :id تُحلّ بـresolve.
 public enum FiqhScreens {
-    public static let title = "الفقه"
-    public static func resolve(_ c: [String], open: @escaping (String) -> Void) -> AnyView? {
-        if c.count == 2, c[0] == "fiqh", c[1] == "topics" { return AnyView(ListTemplate(section: "fiqh", title: "الفقه", open: { open($0.route ?? "/fiqh/topics" + "/" + $0.id) })) }
-        if c.count == 1, c[0] == "fiqh" { return AnyView(SectionsListTemplate(section: "fiqh", title: "الفقه", open: { open($0.route) })) }
-        if c.count == 3, c[0] == "fiqh", c[1] == "topics" { return AnyView(ArticleTemplate(section: "fiqh", id: c[2])) }
+    @MainActor public static func register(in registry: TemplateRegistry) {
+        registry.register(FiqhScreen.self)
+        registry.register(FiqhTopicsScreen.self)
+    }
+
+    static func resolve(_ c: [String]) -> AnyView? {
+        if c.count == 3, c[0] == "fiqh", c[1] == "topics" { return AnyView(ItemHost(source: .bundled(name: "fiqh-topics"), id: c[2]) { ArticleTemplate(item: $0) }) }
         return nil
     }
 }

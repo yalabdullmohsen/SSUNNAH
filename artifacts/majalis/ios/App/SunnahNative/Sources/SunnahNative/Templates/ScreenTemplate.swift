@@ -4,7 +4,6 @@ import SwiftUI
 /// ويتولى `TemplateHost` التحميل وحالات التحميل/الخطأ/الفراغ موحّدةً.
 public protocol ScreenTemplate: View {
     associatedtype Content: Decodable & Sendable
-    associatedtype Body: View
 
     /// معرّف الشاشة في `TemplateRegistry` (يطابق `Route.native`).
     static var id: String { get }

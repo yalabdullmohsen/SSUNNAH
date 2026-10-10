@@ -1,43 +1,31 @@
 import SwiftUI
 
-/// قالب 6 — بحث: حقل بحث أصلي + نتائج؛ section = nil يعني كل الأقسام.
+/// قالب 6 — بحث: حقل بحث أصلي يرشّح العناصر المحمّلة محليًا (عنوان/وصف/وسوم).
 public struct SearchTemplate: View {
-    @Environment(\.contentRepository) private var repo
-    let section: String?; let title: String; let open: (ContentItem) -> Void
+    @Environment(\.openRoute) private var openRoute
+    let items: [ContentItem]; let detailBase: String
     @State private var query = ""
-    @State private var state: LoadState<[ContentItem]>?
 
-    public init(section: String? = nil, title: String, open: @escaping (ContentItem) -> Void = { _ in }) {
-        self.section = section; self.title = title; self.open = open
+    public init(items: [ContentItem], detailBase: String) { self.items = items; self.detailBase = detailBase }
+
+    private var results: [ContentItem] {
+        let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard q.count >= 2 else { return [] }
+        return items.filter { ([$0.title, $0.subtitle ?? ""] + $0.tags).contains { $0.localizedCaseInsensitiveContains(q) } }
     }
 
     public var body: some View {
         Group {
-            if let state {
-                LoadStateView(state: state, isEmpty: { $0.isEmpty }, retry: { Task { await run() } }) { items in
-                    List(items) { item in
-                        Button { open(item) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                            .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
-                    }
-                    .listStyle(.plain).scrollContentBackground(.hidden)
+            if results.isEmpty { EmptyStateView(title: query.isEmpty ? "ابدأ بكتابة كلمة للبحث" : "لا نتائج") } else {
+                List(results) { item in
+                    Button { openRoute(item.path(base: detailBase)) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
+                        .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
                 }
-            } else {
-                Spacer()
+                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Sunnah.Colors.bg).navigationTitle(title)
+        .background(Sunnah.Colors.bg)
         .searchable(text: $query)
-        .task(id: query) { await run() }
-    }
-
-    private func run() async {
-        let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard q.count >= 2 else { state = nil; return }
-        state = .loading
-        do {
-            guard let repo else { throw ContentError.noRepository }
-            state = .loaded(try await repo.search(section: section, query: q))
-        } catch { if !Task.isCancelled { state = .failed } }
     }
 }

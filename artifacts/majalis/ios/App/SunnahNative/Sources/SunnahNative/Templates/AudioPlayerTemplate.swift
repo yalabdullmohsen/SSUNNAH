@@ -3,13 +3,13 @@ import AVFoundation
 
 /// قالب 7 — مشغّل صوت: عنوان + تشغيل/إيقاف + شريط تقدّم. الصوت من audioURL في العنصر.
 public struct AudioPlayerTemplate: View {
-    let section: String; let id: String
-    public init(section: String, id: String) { self.section = section; self.id = id }
+    let item: ContentItem
+    public init(item: ContentItem) { self.item = item }
     public var body: some View {
-        Loaded(load: { try await $0.item(section: section, id: id) }, isEmpty: { $0.audioURL == nil }) { item in
-            AudioPlayerBody(item: item, url: item.audioURL!)
+        Group {
+            if let url = item.audioURL { AudioPlayerBody(item: item, url: url) } else { EmptyStateView(title: "لا يوجد صوت لهذا العنصر") }
         }
-        .background(Sunnah.Colors.bg)
+        .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
     }
 }
 

@@ -1,20 +1,17 @@
 import SwiftUI
 
-/// قالب 1 — قائمة عناصر لقسم.
+/// قالب 1 — قائمة عناصر.
 public struct ListTemplate: View {
-    let section: String; let title: String; let open: (ContentItem) -> Void
-    public init(section: String, title: String, open: @escaping (ContentItem) -> Void = { _ in }) {
-        self.section = section; self.title = title; self.open = open
-    }
+    @Environment(\.openRoute) private var openRoute
+    let items: [ContentItem]; let detailBase: String
+    public init(items: [ContentItem], detailBase: String) { self.items = items; self.detailBase = detailBase }
     public var body: some View {
-        Loaded(load: { try await $0.items(section: section) }, isEmpty: { $0.isEmpty }) { items in
+        if items.isEmpty { EmptyStateView() } else {
             List(items) { item in
-                Button { open(item) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                    .buttonStyle(.plain)
-                    .listRowBackground(Sunnah.Colors.surface)
+                Button { openRoute(item.path(base: detailBase)) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
+                    .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
             }
-            .listStyle(.plain).scrollContentBackground(.hidden)
+            .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         }
-        .background(Sunnah.Colors.bg).navigationTitle(title)
     }
 }

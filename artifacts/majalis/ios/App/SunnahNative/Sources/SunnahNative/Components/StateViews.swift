@@ -34,18 +34,3 @@ public struct ErrorStateView: View {
         .frame(maxWidth: .infinity).padding(Sunnah.Spacing.s6)
     }
 }
-
-/// يعرض حالة التحميل المناسبة أو المحتوى.
-struct LoadStateView<Value, Content: View>: View {
-    let state: LoadState<Value>
-    let isEmpty: (Value) -> Bool
-    let retry: () -> Void
-    @ViewBuilder let content: (Value) -> Content
-    var body: some View {
-        switch state {
-        case .loading: LoadingStateView()
-        case .failed: ErrorStateView(retry: retry)
-        case .loaded(let v): if isEmpty(v) { EmptyStateView() } else { content(v) }
-        }
-    }
-}

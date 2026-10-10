@@ -1,11 +1,23 @@
 // مُولَّد بـ scripts/generate-native-screens.mjs من ROUTE_TEMPLATE_MAP.json — لا تعدّل يدويًا.
 import SwiftUI
 
-/// قسم «البحث».
+struct SearchScreen: ScreenTemplate {
+    static let id = "search"
+    static let title = "البحث"
+    static let source = ContentSource.bundled(name: "search")
+    typealias Content = [ContentItem]
+    let content: Content
+    init(content: Content) { self.content = content }
+    var body: some View { SearchTemplate(items: content, detailBase: "/search") }
+}
+
+/// قسم «البحث». المسارات بلا معاملات تُسجَّل في TemplateRegistry (Route.native(id:))، وذات :id تُحلّ بـresolve.
 public enum SearchScreens {
-    public static let title = "البحث"
-    public static func resolve(_ c: [String], open: @escaping (String) -> Void) -> AnyView? {
-        if c.count == 1, c[0] == "search" { return AnyView(SearchTemplate(section: nil, title: "البحث", open: { open($0.route ?? "/search" + "/" + $0.id) })) }
+    @MainActor public static func register(in registry: TemplateRegistry) {
+        registry.register(SearchScreen.self)
+    }
+
+    static func resolve(_ c: [String]) -> AnyView? {
         return nil
     }
 }

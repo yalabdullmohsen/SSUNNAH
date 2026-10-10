@@ -21,21 +21,26 @@ const fail = (m) => { console.error("generate-native-screens: " + m); process.ex
 const map = JSON.parse(readFileSync(mapPath, "utf8"));
 if (!Array.isArray(map.sections) || !map.sections.length) fail("sections مفقودة في الخريطة");
 
-function expr(sec, route, base) {
-  const t = route.template, s = q(sec.id), title = q(sec.title);
-  const idArg = () => `id: c[${route.params[0].at}]`;
-  const openItem = `{ open($0.route ?? ${q(base)} + "/" + $0.id) }`;
-  switch (t) {
-    case "list": return `ListTemplate(section: ${s}, title: ${title}, open: ${openItem})`;
-    case "grid": return `CardGridTemplate(section: ${s}, title: ${title}, open: ${openItem})`;
-    case "detail": return `DetailTemplate(section: ${s}, ${idArg()})`;
-    case "article": return `ArticleTemplate(section: ${s}, ${idArg()})`;
-    case "audio": return `AudioPlayerTemplate(section: ${s}, ${idArg()})`;
-    case "quiz": return `QuizTemplate(section: ${s}, title: ${title})`;
-    case "search": return `SearchTemplate(section: ${sec.id === "search" ? "nil" : s}, title: ${title}, open: ${openItem})`;
-    case "sections": return `SectionsListTemplate(section: ${s}, title: ${title}, open: { open($0.route) })`;
+const CONTENT = { list: "[ContentItem]", grid: "[ContentItem]", search: "[ContentItem]", quiz: "[QuizQuestion]", sections: "[SectionLink]" };
+
+// مصدر البيانات: route.source إن وُجد، وإلا ملف محزوم باسم المقاطع الحرفية قبل أول معامل (قائمة القسم نفسها لمسارات :id)
+function sourceName(r) {
+  if (r.source) return r.source;
+  const lit = r.params.length ? r.segs.slice(0, r.params[0].at) : r.segs;
+  return lit.join("-");
+}
+
+function templateExpr(r, base) {
+  switch (r.template) {
+    case "list": return `ListTemplate(items: content, detailBase: ${q(base)})`;
+    case "grid": return `CardGridTemplate(items: content, detailBase: ${q(base)})`;
+    case "search": return `SearchTemplate(items: content, detailBase: ${q(base)})`;
+    case "quiz": return "QuizTemplate(questions: content)";
+    case "sections": return "SectionsListTemplate(links: content)";
   }
 }
+
+const itemView = { detail: "DetailTemplate", article: "ArticleTemplate", audio: "AudioPlayerTemplate" };
 
 function parseRoute(r, secId) {
   if (!r.path?.startsWith("/")) fail(`مسار غير صالح في ${secId}: ${r.path}`);
@@ -55,21 +60,30 @@ for (const sec of map.sections) {
   if (!/^[a-z][a-z0-9-]*$/.test(sec.id)) fail(`معرّف قسم غير صالح: ${sec.id}`);
   const routes = sec.routes.map((r) => parseRoute(r, sec.id));
   for (const r of routes) { if (seen.has(r.path)) fail(`مسار مكرر: ${r.path}`); seen.add(r.path); }
-  // الأكثر حرفية أولًا حتى لا يبتلع :id المسارات الثابتة
-  routes.sort((a, b) => a.params.length - b.params.length || b.segs.length - a.segs.length);
-  const detail = routes.find((r) => r.params.length && !NEEDS_ID.has(r.template) === false);
-  const base = detail ? "/" + detail.segs.slice(0, detail.params[0].at).join("/") : "/" + sec.id;
+  const withId = routes.find((r) => r.params.length);
+  const base = withId ? "/" + withId.segs.slice(0, withId.params[0].at).join("/") : "/" + sec.id;
   const name = pascal(sec.id) + "Screens";
   sectionTypes.push(name);
-  const body = routes.map((r) => {
-    const conds = [`c.count == ${r.segs.length}`, ...r.segs.flatMap((x, i) => (x.startsWith(":") ? [] : [`c[${i}] == ${q(x)}`]))];
-    return `        if ${conds.join(", ")} { return AnyView(${expr(sec, r, base)}) }`;
-  }).join("\n");
-  files.set(`${name}.swift`, `${header}/// قسم «${sec.title}».\npublic enum ${name} {\n    public static let title = ${q(sec.title)}\n    public static func resolve(_ c: [String], open: @escaping (String) -> Void) -> AnyView? {\n${body}\n        return nil\n    }\n}\n`);
+  const structs = [], regs = [], param = [];
+  for (const r of routes) {
+    if (r.params.length) {
+      const conds = [`c.count == ${r.segs.length}`, ...r.segs.flatMap((x, i) => (x.startsWith(":") ? [] : [`c[${i}] == ${q(x)}`]))];
+      param.push({ r, line: `        if ${conds.join(", ")} { return AnyView(ItemHost(source: .bundled(name: ${q(sourceName(r))}), id: c[${r.params[0].at}]) { ${itemView[r.template]}(item: $0) }) }` });
+      continue;
+    }
+    const id = r.segs.join(".");
+    const sname = pascal(r.segs.join("-")) + "Screen";
+    structs.push(`struct ${sname}: ScreenTemplate {\n    static let id = ${q(id)}\n    static let title = ${q(sec.title)}\n    static let source = ContentSource.bundled(name: ${q(sourceName(r))})\n    typealias Content = ${CONTENT[r.template]}\n    let content: Content\n    init(content: Content) { self.content = content }\n    var body: some View { ${templateExpr(r, base)} }\n}\n`);
+    regs.push(`        registry.register(${sname}.self)`);
+  }
+  param.sort((a, b) => b.r.segs.length - a.r.segs.length);
+  const resolveBody = param.map((x) => x.line).join("\n");
+  files.set(`${name}.swift`, `${header}${structs.join("\n")}\n/// قسم «${sec.title}». المسارات بلا معاملات تُسجَّل في TemplateRegistry (Route.native(id:))، وذات :id تُحلّ بـresolve.\npublic enum ${name} {\n    @MainActor public static func register(in registry: TemplateRegistry) {\n${regs.join("\n") || "        _ = registry"}\n    }\n\n    static func resolve(_ c: [String]) -> AnyView? {\n${resolveBody ? resolveBody + "\n" : ""}        return nil\n    }\n}\n`);
 }
 
-const reg = sectionTypes.map((n) => `        if let v = ${n}.resolve(c, open: open) { return v }`).join("\n");
-files.set("GeneratedScreens.swift", `${header}public enum GeneratedScreens {\n    /// يحوّل مسارًا أصليًا إلى شاشته، أو nil إن لم يكن له قالب.\n    public static func resolve(path: String, open: @escaping (String) -> Void) -> AnyView? {\n        let c = path.split(separator: "/").map(String.init)\n${reg}\n        return nil\n    }\n}\n`);
+const regAll = sectionTypes.map((n) => `        ${n}.register(in: registry)`).join("\n");
+const resAll = sectionTypes.map((n) => `        if let v = ${n}.resolve(c) { return v }`).join("\n");
+files.set("GeneratedScreens.swift", `${header}public enum GeneratedScreens {\n    /// يسجّل كل القوالب بلا معاملات؛ يُستدعى مرة من نقطة الدخول.\n    @MainActor public static func registerAll(in registry: TemplateRegistry) {\n${regAll}\n    }\n\n    /// يحوّل مسار /section/:id إلى شاشته، أو nil.\n    public static func resolve(path: String) -> AnyView? {\n        let c = path.split(separator: "/").map(String.init)\n${resAll}\n        return nil\n    }\n}\n`);
 
 let stale = false;
 if (!check) mkdirSync(outDir, { recursive: true });
