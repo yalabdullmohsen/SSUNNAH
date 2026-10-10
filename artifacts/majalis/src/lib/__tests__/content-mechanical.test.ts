@@ -3,7 +3,7 @@
  */
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { DIGITS_SKELETON, latinDigits, mapJsonStrings, RLM_SKELETON, stripRlm } from "../../../scripts/lib/content-mechanical.mjs";
+import { DIGITS_SKELETON, latinDigits, mapJsonStrings, RLM_SKELETON, stripRlm, titleIdToRef, hadithTitleRef, TITLE_ID_SKELETON } from "../../../scripts/lib/content-mechanical.mjs";
 
 /* U+200F: يُحذف مع مسافاته عند علامات الفتح/الإغلاق وطرفي النص، ويبقى بين كلمتين مسافة واحدة */
 const rlm: Array<[string, string]> = [
@@ -50,6 +50,37 @@ for (const dir of ["public/data/qa", "public/data/quiz", "public/data/knowledge/
     const s = fs.readFileSync(`${dir}/${name}`, "utf8").replace(/﴿[^﴾]*(?:﴾|$)/gm, "");
     assert.ok(!/[٠-٩۰-۹]/.test(s), `${dir}/${name}: رقم هندي خارج ﴿…﴾`);
   }
+}
+
+const TITLE_ID_CLEAN = ["public/data/knowledge/quiz/batch-003.json"];
+
+/* المعرّف الداخلي في عنوان سؤال الحديث يُستبدل بمرجع المصدر وحده؛ ما بعده حرفيًا */
+const refs: Array<[string, string]> = [
+  ["البخاري 405", "البخاري 405"],
+  ["صحيح البخاري (6) وصحيح مسلم (7)", "البخاري 6 ومسلم 7"],
+  ["سنن الترمذي (2) وقال: حسن صحيح؛ وأبو داود (3)", "الترمذي 2"],
+  ["صحيح مسلم (9) — هذا اللفظ الصحيح؛ أما «x» فضعيف", "مسلم 9"],
+];
+for (const [book, want] of refs) assert.equal(hadithTitleRef(book), want);
+const titleIds: Array<[string, string]> = [
+  ["حديث sahih-fill-309: مَا رَأَيْتُ", "حديث (البخاري 1): مَا رَأَيْتُ"],
+  ["حديث sahih-b3-513:", "حديث (البخاري 1)"],
+  ["حديث: بلا معرّف", "حديث: بلا معرّف"],
+  ["قال: حديث sahih-b3-1: لا يُمسّ وسط النص", "قال: حديث sahih-b3-1: لا يُمسّ وسط النص"],
+  ["آية 7:135", "آية 7:135"],
+];
+for (const [input, want] of titleIds) {
+  const got = titleIdToRef(input, "البخاري 1");
+  assert.equal(got, want);
+  assert.equal(TITLE_ID_SKELETON(got), TITLE_ID_SKELETON(input), "لا تغيير خارج بادئة المعرّف");
+}
+assert.notEqual(TITLE_ID_SKELETON("حديث: أ"), TITLE_ID_SKELETON("حديث: ب"), "الهيكل يكشف أي مساس بالنص");
+
+/* الملفات المنظَّفة: لا عنوان بمعرّف داخلي، والعناوين فريدة (بوابة test:content-quality) */
+for (const f of TITLE_ID_CLEAN) {
+  const titles: string[] = JSON.parse(fs.readFileSync(f, "utf8")).items.map((q: { title: string }) => q.title);
+  assert.equal(titles.filter((t) => /^حديث [a-z]/.test(t)).length, 0, `${f}: معرّف داخلي في العنوان`);
+  assert.equal(new Set(titles).size, titles.length, `${f}: عنوان مكرر`);
 }
 
 console.log("content-mechanical: ok");
