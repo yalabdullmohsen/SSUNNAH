@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { AppCard } from "@/components/design-system/AppCard";
+import { Card } from "@/design-system";
 import { useAuth } from "@/components/AuthProvider";
 import { v3Get, v3List } from "../../data/admin-v3-api";
 import { can, resolveGovernanceRole } from "../../permissions";
@@ -88,13 +88,13 @@ export function SettingsOpsPage() {
         </h3>
         <div className="av3-tool-grid">
           {listCenterTools("settings").map((t) => (
-            <AppCard key={t.id} className="av3-tool-card" data-ss-surface="admin-tool">
+            <Card key={t.id} className="av3-tool-card" data-ss-surface="admin-tool">
               <h3 className="av3-tool-card__title">{t.title}</h3>
               <p className="av3-tool-card__desc">{t.description}</p>
               <Button asChild variant="secondary">
                 <Link href={t.href}>فتح</Link>
               </Button>
-            </AppCard>
+            </Card>
           ))}
         </div>
       </section>

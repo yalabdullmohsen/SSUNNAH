@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { AppCard } from "@/components/design-system/AppCard";
+import { Card } from "@/design-system";
 import { StatusCard } from "@/components/design-system/SurfacePrimitives";
 import { ADMIN_V3_NAV } from "./nav";
 import { emitAdminV3AuditEvent, listAdminV3AuditEvents } from "./audit-events";
@@ -24,7 +24,7 @@ export function AdminV3Dashboard() {
           const tools =
             ADMIN_V3_CENTERS[item.id as keyof typeof ADMIN_V3_CENTERS]?.tools.length ?? 0;
           return (
-            <AppCard key={item.id} className="av3-dash__card" data-ss-surface="admin-hub">
+            <Card key={item.id} className="av3-dash__card" data-ss-surface="admin-hub">
               <h2>{item.label}</h2>
               <p>{item.description}</p>
               <p className="av3-dash__meta">{tools} أداة موثّقة</p>
@@ -40,7 +40,7 @@ export function AdminV3Dashboard() {
                   </Link>
                 </Button>
               </div>
-            </AppCard>
+            </Card>
           );
         })}
       </section>
