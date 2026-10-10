@@ -99,9 +99,11 @@
     "question": "من هو صاحب النبي ﷺ في الغار؟",
     "answer": "أبو بكر الصديق رضي الله عنه؛ قال تعالى: ﴿إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا﴾.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "التوبة: 40",
+    "explanation": "نص الآية (Tanzil): ﴿إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ ٱللَّهُ إِذْ أَخْرَجَهُ ٱلَّذِينَ كَفَرُوا۟ ثَانِىَ ٱثْنَيْنِ إِذْ هُمَا فِى ٱلْغَارِ إِذْ يَقُولُ لِصَٰحِبِهِۦ لَا تَحْزَنْ إِنَّ ٱللَّهَ مَعَنَا ۖ فَأَنزَلَ ٱللَّهُ سَكِينَتَهُۥ عَلَيْهِ وَأَيَّدَهُۥ بِجُنُودٍۢ لَّمْ تَرَوْهَا وَجَعَلَ كَلِمَةَ ٱلَّذِينَ كَفَرُوا۟ ٱلسُّفْلَىٰ ۗ وَكَلِمَةُ ٱللَّهِ هِىَ ٱلْعُلْيَا ۗ وَٱللَّهُ عَزِيزٌ حَكِيمٌ﴾ [التوبة: 40]"
   },
   {
     "source_class": "history",
@@ -203,9 +205,11 @@
     "question": "من الصحابي الذي جمع القرآن في عهد النبي ﷺ؟",
     "answer": "أربعة من الأنصار: معاذ بن جبل وأُبيّ بن كعب وزيد بن ثابت وأبو زيد؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 5003",
+    "explanation": "نص الحديث (صحيح البخاري: 5003): حَدَّثَنَا حَفْصُ بْنُ عُمَرَ، حَدَّثَنَا هَمَّامٌ، حَدَّثَنَا قَتَادَةُ، قَالَ سَأَلْتُ أَنَسَ بْنَ مَالِكٍ ـ رضى الله عنه ـ مَنْ جَمَعَ الْقُرْآنَ عَلَى عَهْدِ النَّبِيِّ صلى الله عليه وسلم قَالَ أَرْبَعَةٌ كُلُّهُمْ مِنَ الأَنْصَارِ أُبَىُّ بْنُ كَعْبٍ وَمُعَاذُ بْنُ جَبَلٍ، وَزَيْدُ بْنُ ثَابِتٍ، وَأَبُو زَيْدٍ‏.‏ تَابَعَهُ الْفَضْلُ عَنْ حُسَيْنِ بْنِ وَاقِدٍ عَنْ ثُمَامَةَ عَنْ أَنَسٍ‏.‏"
   },
   {
     "source_class": "history",
@@ -216,9 +220,11 @@
     "question": "لمن قال النبي ﷺ «أنت مني وأنا منك»؟",
     "answer": "قالها لعلي بن أبي طالب رضي الله عنه يوم عمرة القضاء حين اختصم هو وجعفر وزيد في ابنة حمزة، فقال ﷺ لعلي: «أنت مني وأنا منك» — رواه البخاري (2699). وقالها أيضاً لجعفر رضي الله عنه في الموضع نفسه: «أشبهتَ خَلقي وخُلقي».",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 2699",
+    "explanation": "نص الحديث (صحيح البخاري: 2699): حَدَّثَنَا عُبَيْدُ اللَّهِ بْنُ مُوسَى، عَنْ إِسْرَائِيلَ، عَنْ أَبِي إِسْحَاقَ، عَنِ الْبَرَاءِ ـ رضى الله عنه ـ قَالَ اعْتَمَرَ النَّبِيُّ صلى الله عليه وسلم فِي ذِي الْقَعْدَةِ، فَأَبَى أَهْلُ مَكَّةَ أَنْ يَدَعُوهُ يَدْخُلُ مَكَّةَ، حَتَّى قَاضَاهُمْ عَلَى أَنْ يُقِيمَ بِهَا ثَلاَثَةَ أَيَّامٍ، فَلَمَّا كَتَبُوا الْكِتَابَ كَتَبُوا هَذَا مَا قَاضَى عَلَيْهِ مُحَمَّدٌ رَسُولُ اللَّهِ صلى الله عليه وسلم‏.‏ فَقَالُوا لاَ نُقِرُّ بِهَا، فَلَوْ نَعْلَمُ أَنَّكَ رَسُولُ اللَّهِ مَا مَنَعْنَاكَ، لَكِنْ أَنْتَ مُحَمَّدُ بْنُ عَبْدِ اللَّهِ‏.‏ قَالَ ‏\"‏ أَنَا رَسُولُ اللَّهِ وَأَنَا مُحَمَّدُ بْنُ عَبْدِ اللَّهِ ‏\"‏‏.‏ ثُمَّ قَالَ لِعَلِيٍّ ‏\"‏ امْحُ رَسُولُ اللَّهِ ‏\"‏‏.‏ قَالَ لاَ، وَاللَّهِ لاَ أَمْحُوكَ أَبَدًا، فَأَخَذَ رَسُولُ اللَّهِ صلى الله عليه وسلم الْكِتَابَ، فَكَتَبَ هَذَا مَا قَاضَى عَلَيْهِ مُحَمَّدُ بْنُ عَبْدِ اللَّهِ، لاَ يَدْخُلُ مَكَّةَ سِلاَحٌ إِلاَّ فِي الْقِرَابِ، وَأَنْ لاَ يَخْرُجَ مِنْ أَهْلِهَا بِأَحَدٍ، إِنْ أَرَادَ أَنْ يَتَّبِعَهُ، وَأَنْ لاَ يَمْنَعَ أَحَدًا مِنْ أَصْحَابِهِ أَرَادَ أَنْ يُقِيمَ بِهَا‏.‏ فَلَمَّا دَخَلَهَا، وَمَضَى الأَجَلُ أَتَوْا عَلِيًّا، فَقَالُوا قُلْ لِصَاحِبِكَ اخْرُجْ عَنَّا فَقَدْ مَضَى الأَجَلُ‏.‏ فَخَرَجَ النَّبِيُّ صلى الله عليه وسلم فَتَبِعَتْهُمُ ابْنَةُ حَمْزَةَ يَا عَمِّ يَا عَمِّ‏.‏ فَتَنَاوَلَهَا عَلِيٌّ فَأَخَذَ بِيَدِهَا، وَقَالَ لِفَاطِمَةَ عَلَيْهَا السَّلاَمُ دُونَكِ ابْنَةَ عَمِّكِ، احْمِلِيهَا‏.‏ فَاخْتَصَمَ فِيهَا عَلِيٌّ وَزَيْدٌ وَجَعْفَرٌ، فَقَالَ عَلِيٌّ أَنَا أَحَقُّ بِهَا وَهْىَ ابْنَةُ عَمِّي‏.‏ وَقَالَ جَعْفَرٌ ابْنَةُ عَمِّي وَخَالَتُهَا تَحْتِي‏.‏ وَقَالَ زَيْدٌ ابْنَةُ أَخِي‏.‏ فَقَضَى بِهَا النَّبِيُّ صلى الله عليه وسلم لِخَالَتِهَا‏.‏ وَقَالَ ‏\"‏ الْخَالَةُ بِمَنْزِلَةِ الأُمِّ ‏\"‏‏.‏ وَقَالَ لِعَلِيٍّ ‏\"‏ أَنْتَ مِنِّي وَأَنَا مِنْكَ ‏\"‏‏.‏ وَقَالَ لِجَعْفَرٍ ‏\"‏ أَشْبَهْتَ خَلْقِي وَخُلُقِي ‏\"‏‏.‏ وَقَالَ لِزَيْدٍ ‏\"‏ أَنْتَ أَخُونَا وَمَوْلاَنَا ‏\"‏‏.‏"
   },
   {
     "id": "seed-qa-325",
@@ -3124,9 +3130,11 @@
     "question": "ما الكبيرة التي لا يغفرها الله إلا بالتوبة؟",
     "answer": "الشرك بالله؛ قال تعالى: ﴿إِنَّ اللَّهَ لَا يَغْفِرُ أَن يُشْرَكَ بِهِ وَيَغْفِرُ مَا دُونَ ذَٰلِكَ لِمَن يَشَاءُ﴾.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 48",
+    "explanation": "نص الآية (Tanzil): ﴿إِنَّ ٱللَّهَ لَا يَغْفِرُ أَن يُشْرَكَ بِهِۦ وَيَغْفِرُ مَا دُونَ ذَٰلِكَ لِمَن يَشَآءُ ۚ وَمَن يُشْرِكْ بِٱللَّهِ فَقَدِ ٱفْتَرَىٰٓ إِثْمًا عَظِيمًا﴾ [النساء: 48]"
   },
   {
     "source_class": "fiqh_aqeedah",
@@ -3137,9 +3145,11 @@
     "question": "ما معنى الإحسان في حديث جبريل؟",
     "answer": "أن تعبد الله كأنك تراه، فإن لم تكن تراه فإنه يراك؛ وهذا من مسائل العقيدة التي أجمع عليها أهل السنة والجماعة في كتب الاعتقاد.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 50",
+    "explanation": "نص الحديث (صحيح البخاري: 50): حَدَّثَنَا مُسَدَّدٌ، قَالَ حَدَّثَنَا إِسْمَاعِيلُ بْنُ إِبْرَاهِيمَ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ، عَنْ أَبِي هُرَيْرَةَ، قَالَ كَانَ النَّبِيُّ صلى الله عليه وسلم بَارِزًا يَوْمًا لِلنَّاسِ، فَأَتَاهُ جِبْرِيلُ فَقَالَ مَا الإِيمَانُ قَالَ ‏\"‏ الإِيمَانُ أَنْ تُؤْمِنَ بِاللَّهِ وَمَلاَئِكَتِهِ وَبِلِقَائِهِ وَرُسُلِهِ، وَتُؤْمِنَ بِالْبَعْثِ ‏\"‏‏.‏ قَالَ مَا الإِسْلاَمُ قَالَ ‏\"‏ الإِسْلاَمُ أَنْ تَعْبُدَ اللَّهَ وَلاَ تُشْرِكَ بِهِ، وَتُقِيمَ الصَّلاَةَ، وَتُؤَدِّيَ الزَّكَاةَ الْمَفْرُوضَةَ، وَتَصُومَ رَمَضَانَ ‏\"‏‏.‏ قَالَ مَا الإِحْسَانُ قَالَ ‏\"‏ أَنْ تَعْبُدَ اللَّهَ كَأَنَّكَ تَرَاهُ، فَإِنْ لَمْ تَكُنْ تَرَاهُ فَإِنَّهُ يَرَاكَ ‏\"‏‏.‏ قَالَ مَتَى السَّاعَةُ قَالَ ‏\"‏ مَا الْمَسْئُولُ عَنْهَا بِأَعْلَمَ مِنَ السَّائِلِ، وَسَأُخْبِرُكَ عَنْ أَشْرَاطِهَا إِذَا وَلَدَتِ الأَمَةُ رَبَّهَا، وَإِذَا تَطَاوَلَ رُعَاةُ الإِبِلِ الْبُهْمُ فِي الْبُنْيَانِ، فِي خَمْسٍ لاَ يَعْلَمُهُنَّ إِلاَّ اللَّهُ ‏\"‏‏.‏ ثُمَّ تَلاَ النَّبِيُّ صلى الله عليه وسلم ‏{‏إِنَّ اللَّهَ عِنْدَهُ عِلْمُ السَّاعَةِ‏}‏ الآيَةَ‏.‏ ثُمَّ أَدْبَرَ فَقَالَ ‏\"‏ رُدُّوهُ ‏\"‏‏.‏ فَلَمْ يَرَوْا شَيْئًا‏.‏ فَقَالَ ‏\"‏ هَذَا جِبْرِيلُ جَاءَ يُعَلِّمُ النَّاسَ دِينَهُمْ ‏\"‏‏.‏ قَالَ أَبُو عَبْدِ اللَّهِ جَعَلَ ذَلِكَ كُلَّهُ مِنَ الإِيمَانِ‏.‏"
   },
   {
     "source_class": "fiqh_aqeedah",
@@ -3203,9 +3213,11 @@
     "question": "ما دليل اليوم الآخر؟",
     "answer": "قوله تعالى: ﴿يَوْمَ تَجِدُ كُلُّ نَفْسٍ مَّا عَمِلَتْ مِنْ خَيْرٍ مُّحْضَرًا﴾، والأحاديث المتواترة عن أهوال يوم القيامة.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "آل عمران: 30",
+    "explanation": "نص الآية (Tanzil): ﴿يَوْمَ تَجِدُ كُلُّ نَفْسٍۢ مَّا عَمِلَتْ مِنْ خَيْرٍۢ مُّحْضَرًۭا وَمَا عَمِلَتْ مِن سُوٓءٍۢ تَوَدُّ لَوْ أَنَّ بَيْنَهَا وَبَيْنَهُۥٓ أَمَدًۢا بَعِيدًۭا ۗ وَيُحَذِّرُكُمُ ٱللَّهُ نَفْسَهُۥ ۗ وَٱللَّهُ رَءُوفٌۢ بِٱلْعِبَادِ﴾ [آل عمران: 30]"
   },
   {
     "source_class": "fiqh_aqeedah",
@@ -3229,9 +3241,11 @@
     "question": "من الملائكة وما صفاتهم؟",
     "answer": "عباد الله المكرمون خُلقوا من نور، ﴿لَّا يَعْصُونَ اللَّهَ مَا أَمَرَهُمْ وَيَفْعَلُونَ مَا يُؤْمَرُونَ﴾.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "التحريم: 6",
+    "explanation": "نص الآية (Tanzil): ﴿يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ قُوٓا۟ أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًۭا وَقُودُهَا ٱلنَّاسُ وَٱلْحِجَارَةُ عَلَيْهَا مَلَٰٓئِكَةٌ غِلَاظٌۭ شِدَادٌۭ لَّا يَعْصُونَ ٱللَّهَ مَآ أَمَرَهُمْ وَيَفْعَلُونَ مَا يُؤْمَرُونَ﴾ [التحريم: 6]"
   },
   {
     "source_class": "fiqh_aqeedah",
@@ -3268,9 +3282,11 @@
     "question": "هل إبليس من الجن أم من الملائكة؟",
     "answer": "من الجن؛ وهذا من مسائل العقيدة التي أجمع عليها أهل السنة والجماعة في كتب الاعتقاد.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الكهف: 50",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِذْ قُلْنَا لِلْمَلَٰٓئِكَةِ ٱسْجُدُوا۟ لِءَادَمَ فَسَجَدُوٓا۟ إِلَّآ إِبْلِيسَ كَانَ مِنَ ٱلْجِنِّ فَفَسَقَ عَنْ أَمْرِ رَبِّهِۦٓ ۗ أَفَتَتَّخِذُونَهُۥ وَذُرِّيَّتَهُۥٓ أَوْلِيَآءَ مِن دُونِى وَهُمْ لَكُمْ عَدُوٌّۢ ۚ بِئْسَ لِلظَّٰلِمِينَ بَدَلًۭا﴾ [الكهف: 50]"
   },
   {
     "id": "seed-qa-312",
@@ -7908,9 +7924,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -7947,9 +7965,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -7960,9 +7980,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -7999,9 +8021,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -8012,9 +8036,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -8025,9 +8051,11 @@
     "question": "من هو أبو البشر؟",
     "answer": "آدم عليه السلام، خلقه الله من تراب وعلّمه الأسماء كلها؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "البقرة: 31",
+    "explanation": "نص الآية (Tanzil): ﴿وَعَلَّمَ ءَادَمَ ٱلْأَسْمَآءَ كُلَّهَا ثُمَّ عَرَضَهُمْ عَلَى ٱلْمَلَٰٓئِكَةِ فَقَالَ أَنۢبِـُٔونِى بِأَسْمَآءِ هَٰٓؤُلَآءِ إِن كُنتُمْ صَٰدِقِينَ﴾ [البقرة: 31]"
   },
   {
     "source_class": "history",
@@ -8064,9 +8092,11 @@
     "question": "من النبي الذي ابتُلي بالدود وصبر؟",
     "answer": "أيوب عليه السلام، ابتلاه الله في ماله وولده وجسده فصبر فكشف الله ضره؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -8090,9 +8120,11 @@
     "question": "ما معجزة نبي الله إبراهيم الكبرى؟",
     "answer": "إلقاؤه في النار فجعلها الله عليه برداً وسلاماً؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 69",
+    "explanation": "نص الآية (Tanzil): ﴿قُلْنَا يَٰنَارُ كُونِى بَرْدًۭا وَسَلَٰمًا عَلَىٰٓ إِبْرَٰهِيمَ﴾ [الأنبياء: 69]"
   },
   {
     "source_class": "history",
@@ -8103,9 +8135,11 @@
     "question": "من النبي الذي أُعطي ملكاً لا ينبغي لأحد من بعده؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 35",
+    "explanation": "نص الآية (Tanzil): ﴿قَالَ رَبِّ ٱغْفِرْ لِى وَهَبْ لِى مُلْكًۭا لَّا يَنۢبَغِى لِأَحَدٍۢ مِّنۢ بَعْدِىٓ ۖ إِنَّكَ أَنتَ ٱلْوَهَّابُ﴾ [ص: 35]"
   },
   {
     "source_class": "history",
@@ -8336,9 +8370,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -8375,9 +8411,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -8388,9 +8426,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -8427,9 +8467,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -8440,9 +8482,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -8466,9 +8510,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -8505,9 +8551,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -8518,9 +8566,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -8557,9 +8607,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -8570,9 +8622,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -8596,9 +8650,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -8635,9 +8691,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -8648,9 +8706,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -8687,9 +8747,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -8700,9 +8762,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -8726,9 +8790,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -8765,9 +8831,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -8778,9 +8846,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -8817,9 +8887,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -8830,9 +8902,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -8856,9 +8930,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -8895,9 +8971,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -8908,9 +8986,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -8947,9 +9027,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -8960,9 +9042,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -8986,9 +9070,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -9025,9 +9111,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -9038,9 +9126,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -9077,9 +9167,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -9090,9 +9182,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -9116,9 +9210,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -9155,9 +9251,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -9168,9 +9266,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -9207,9 +9307,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -9220,9 +9322,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -9246,9 +9350,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -9285,9 +9391,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -9298,9 +9406,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -9337,9 +9447,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -9350,9 +9462,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -9376,9 +9490,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -9415,9 +9531,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -9428,9 +9546,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -9467,9 +9587,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -9480,9 +9602,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -9506,9 +9630,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -9545,9 +9671,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -9558,9 +9686,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -9597,9 +9727,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -9610,9 +9742,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -9636,9 +9770,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -9675,9 +9811,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -9688,9 +9826,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -9727,9 +9867,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -9740,9 +9882,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -9766,9 +9910,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -9805,9 +9951,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -9818,9 +9966,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -9857,9 +10007,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -9870,9 +10022,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -9896,9 +10050,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -9935,9 +10091,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -9948,9 +10106,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -9987,9 +10147,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -10000,9 +10162,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -10026,9 +10190,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -10065,9 +10231,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -10078,9 +10246,11 @@
     "question": "من النبي الذي ابتلعه الحوت؟",
     "answer": "يونس عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الصافات: 142",
+    "explanation": "نص الآية (Tanzil): ﴿فَٱلْتَقَمَهُ ٱلْحُوتُ وَهُوَ مُلِيمٌۭ﴾ [الصافات: 142]"
   },
   {
     "source_class": "history",
@@ -10117,9 +10287,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -10130,9 +10302,11 @@
     "question": "من النبي الذي اشتهر بالصبر على البلاء؟",
     "answer": "أيوب عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "ص: 44",
+    "explanation": "نص الآية (Tanzil): ﴿وَخُذْ بِيَدِكَ ضِغْثًۭا فَٱضْرِب بِّهِۦ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَٰهُ صَابِرًۭا ۚ نِّعْمَ ٱلْعَبْدُ ۖ إِنَّهُۥٓ أَوَّابٌۭ﴾ [ص: 44]"
   },
   {
     "source_class": "history",
@@ -10143,9 +10317,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -10156,9 +10332,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -10169,9 +10347,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10195,9 +10375,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -10247,9 +10429,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -10273,9 +10457,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -10286,9 +10472,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -10299,9 +10487,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10325,9 +10515,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -10377,9 +10569,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -10403,9 +10597,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -10416,9 +10612,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -10429,9 +10627,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10455,9 +10655,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -10507,9 +10709,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -10533,9 +10737,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -10546,9 +10752,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -10559,9 +10767,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10585,9 +10795,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -10637,9 +10849,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -10663,9 +10877,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -10676,9 +10892,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -10689,9 +10907,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10715,9 +10935,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -10767,9 +10989,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -10793,9 +11017,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -10806,9 +11032,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -10819,9 +11047,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10845,9 +11075,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -10897,9 +11129,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -10923,9 +11157,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -10936,9 +11172,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -10949,9 +11187,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -10975,9 +11215,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -11027,9 +11269,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -11053,9 +11297,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -11066,9 +11312,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -11079,9 +11327,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -11105,9 +11355,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -11157,9 +11409,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -11183,9 +11437,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -11196,9 +11452,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -11209,9 +11467,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -11235,9 +11495,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -11287,9 +11549,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -11313,9 +11577,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -11326,9 +11592,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -11339,9 +11607,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -11365,9 +11635,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -11417,9 +11689,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -11443,9 +11717,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -11456,9 +11732,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -11469,9 +11747,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -11495,9 +11775,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -11547,9 +11829,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -11573,9 +11857,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -11586,9 +11872,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -11599,9 +11887,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -11625,9 +11915,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -11677,9 +11969,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -11703,9 +11997,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
@@ -11716,9 +12012,11 @@
     "question": "من النبي الذي اتخذه الله خليلاً؟",
     "answer": "إبراهيم عليه السلام؛ وهذه منزلة خصّ الله بها إبراهيم عليه السلام في القرآن الكريم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 125",
+    "explanation": "نص الآية (Tanzil): ﴿وَمَنْ أَحْسَنُ دِينًۭا مِّمَّنْ أَسْلَمَ وَجْهَهُۥ لِلَّهِ وَهُوَ مُحْسِنٌۭ وَٱتَّبَعَ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًۭا ۗ وَٱتَّخَذَ ٱللَّهُ إِبْرَٰهِيمَ خَلِيلًۭا﴾ [النساء: 125]"
   },
   {
     "source_class": "history",
@@ -11729,9 +12027,11 @@
     "question": "من النبي الذي كلمه الله تكليماً؟",
     "answer": "موسى عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "النساء: 164",
+    "explanation": "نص الآية (Tanzil): ﴿وَرُسُلًۭا قَدْ قَصَصْنَٰهُمْ عَلَيْكَ مِن قَبْلُ وَرُسُلًۭا لَّمْ نَقْصُصْهُمْ عَلَيْكَ ۚ وَكَلَّمَ ٱللَّهُ مُوسَىٰ تَكْلِيمًۭا﴾ [النساء: 164]"
   },
   {
     "source_class": "history",
@@ -11755,9 +12055,11 @@
     "question": "من النبي الذي أرسل إلى قوم ثمود؟",
     "answer": "صالح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأعراف: 73",
+    "explanation": "نص الآية (Tanzil): ﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَٰلِحًۭا ۗ قَالَ يَٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُۥ ۖ قَدْ جَآءَتْكُم بَيِّنَةٌۭ مِّن رَّبِّكُمْ ۖ هَٰذِهِۦ نَاقَةُ ٱللَّهِ لَكُمْ ءَايَةًۭ ۖ فَذَرُوهَا تَأْكُلْ فِىٓ أَرْضِ ٱللَّهِ ۖ وَلَا تَمَسُّوهَا بِسُوٓءٍۢ فَيَأْخُذَكُمْ عَذَابٌ أَلِيمٌۭ﴾ [الأعراف: 73]"
   },
   {
     "source_class": "history",
@@ -11807,9 +12109,11 @@
     "question": "من النبي الذي سخر الله له الريح؟",
     "answer": "سليمان عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "الأنبياء: 81",
+    "explanation": "نص الآية (Tanzil): ﴿وَلِسُلَيْمَٰنَ ٱلرِّيحَ عَاصِفَةًۭ تَجْرِى بِأَمْرِهِۦٓ إِلَى ٱلْأَرْضِ ٱلَّتِى بَٰرَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَىْءٍ عَٰلِمِينَ﴾ [الأنبياء: 81]"
   },
   {
     "source_class": "history",
@@ -11833,9 +12137,11 @@
     "question": "من أول الرسل إلى أهل الأرض بعد آدم؟",
     "answer": "نوح عليه السلام؛ وهذا ثابت في القرآن الكريم وفي كتب القصص والأنبياء المعتمدة عند أهل العلم.",
     "status": "approved",
-    "documentation_status": "unsourced",
+    "documentation_status": "sourced",
     "editorial_review_status": "approved",
-    "source": "migrated-from-qa"
+    "source": "migrated-from-qa",
+    "reference": "صحيح البخاري: 4712",
+    "explanation": "نص الحديث (صحيح البخاري: 4712): حَدَّثَنَا مُحَمَّدُ بْنُ مُقَاتِلٍ، أَخْبَرَنَا عَبْدُ اللَّهِ، أَخْبَرَنَا أَبُو حَيَّانَ التَّيْمِيُّ، عَنْ أَبِي زُرْعَةَ بْنِ عَمْرِو بْنِ جَرِيرٍ، عَنْ أَبِي هُرَيْرَةَ ـ رضى الله عنه ـ قَالَ أُتِيَ رَسُولُ اللَّهِ صلى الله عليه وسلم بِلَحْمٍ، فَرُفِعَ إِلَيْهِ الذِّرَاعُ، وَكَانَتْ تُعْجِبُهُ، فَنَهَسَ مِنْهَا نَهْسَةً ثُمَّ قَالَ ‏ \"‏ أَنَا سَيِّدُ النَّاسِ يَوْمَ الْقِيَامَةِ، وَهَلْ تَدْرُونَ مِمَّ ذَلِكَ يُجْمَعُ النَّاسُ الأَوَّلِينَ وَالآخِرِينَ فِي صَعِيدٍ وَاحِدٍ، يُسْمِعُهُمُ الدَّاعِي، وَيَنْفُذُهُمُ الْبَصَرُ، وَتَدْنُو الشَّمْسُ، فَيَبْلُغُ النَّاسَ مِنَ الْغَمِّ وَالْكَرْبِ مَا لاَ يُطِيقُونَ وَلاَ يَحْتَمِلُونَ فَيَقُولُ النَّاسُ أَلاَ تَرَوْنَ مَا قَدْ بَلَغَكُمْ أَلاَ تَنْظُرُونَ مَنْ يَشْفَعُ لَكُمْ إِلَى رَبِّكُمْ فَيَقُولُ بَعْضُ النَّاسِ لِبَعْضٍ عَلَيْكُمْ بِآدَمَ فَيَأْتُونَ آدَمَ عليه السلام فَيَقُولُونَ لَهُ أَنْتَ أَبُو الْبَشَرِ خَلَقَكَ اللَّهُ بِيَدِهِ‏.‏ وَنَفَخَ فِيكَ مِنْ رُوحِهِ، وَأَمَرَ الْمَلاَئِكَةَ فَسَجَدُوا لَكَ، اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ أَلاَ تَرَى إِلَى مَا قَدْ بَلَغَنَا فَيَقُولُ آدَمُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ نَهَانِي عَنِ الشَّجَرَةِ فَعَصَيْتُهُ، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى نُوحٍ، فَيَأْتُونَ نُوحًا فَيَقُولُونَ يَا نُوحُ إِنَّكَ أَنْتَ أَوَّلُ الرُّسُلِ إِلَى أَهْلِ الأَرْضِ، وَقَدْ سَمَّاكَ اللَّهُ عَبْدًا شَكُورًا اشْفَعْ لَنَا إِلَى رَبِّكَ، أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي عَزَّ وَجَلَّ قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنَّهُ قَدْ كَانَتْ لِي دَعْوَةٌ دَعَوْتُهَا عَلَى قَوْمِي نَفْسِي نَفْسِي نَفْسِي اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى إِبْرَاهِيمَ، فَيَأْتُونَ إِبْرَاهِيمَ، فَيَقُولُونَ يَا إِبْرَاهِيمُ، أَنْتَ نَبِيُّ اللَّهِ وَخَلِيلُهُ مِنْ أَهْلِ الأَرْضِ اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ لَهُمْ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ كُنْتُ كَذَبْتُ ثَلاَثَ كَذَبَاتٍ ـ فَذَكَرَهُنَّ أَبُو حَيَّانَ فِي الْحَدِيثِ ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُوسَى، فَيَأْتُونَ مُوسَى، فَيَقُولُونَ يَا مُوسَى أَنْتَ رَسُولُ اللَّهِ، فَضَّلَكَ اللَّهُ بِرِسَالَتِهِ وَبِكَلاَمِهِ عَلَى النَّاسِ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ، وَإِنِّي قَدْ قَتَلْتُ نَفْسًا لَمْ أُومَرْ بِقَتْلِهَا، نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي، اذْهَبُوا إِلَى عِيسَى، فَيَأْتُونَ عِيسَى فَيَقُولُونَ يَا عِيسَى أَنْتَ رَسُولُ اللَّهِ وَكَلِمَتُهُ أَلْقَاهَا إِلَى مَرْيَمَ وَرُوحٌ مِنْهُ، وَكَلَّمْتَ النَّاسَ فِي الْمَهْدِ صَبِيًّا اشْفَعْ لَنَا أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَيَقُولُ عِيسَى إِنَّ رَبِّي قَدْ غَضِبَ الْيَوْمَ غَضَبًا لَمْ يَغْضَبْ قَبْلَهُ مِثْلَهُ، وَلَنْ يَغْضَبَ بَعْدَهُ مِثْلَهُ ـ وَلَمْ يَذْكُرْ ذَنْبًا ـ نَفْسِي نَفْسِي نَفْسِي، اذْهَبُوا إِلَى غَيْرِي اذْهَبُوا إِلَى مُحَمَّدٍ صلى الله عليه وسلم فَيَأْتُونَ مُحَمَّدًا صلى الله عليه وسلم فَيَقُولُونَ يَا مُحَمَّدُ أَنْتَ رَسُولُ اللَّهِ وَخَاتَمُ الأَنْبِيَاءِ، وَقَدْ غَفَرَ اللَّهُ لَكَ مَا تَقَدَّمَ مِنْ ذَنْبِكَ وَمَا تَأَخَّرَ، اشْفَعْ لَنَا إِلَى رَبِّكَ أَلاَ تَرَى إِلَى مَا نَحْنُ فِيهِ فَأَنْطَلِقُ فَآتِي تَحْتَ الْعَرْشِ، فَأَقَعُ سَاجِدًا لِرَبِّي عَزَّ وَجَلَّ ثُمَّ يَفْتَحُ اللَّهُ عَلَىَّ مِنْ مَحَامِدِهِ وَحُسْنِ الثَّنَاءِ عَلَيْهِ شَيْئًا لَمْ يَفْتَحْهُ عَلَى أَحَدٍ قَبْلِي ثُمَّ يُقَالُ يَا مُحَمَّدُ ارْفَعْ رَأْسَكَ، سَلْ تُعْطَهْ، وَاشْفَعْ تُشَفَّعْ، فَأَرْفَعُ رَأْسِي، فَأَقُولُ أُمَّتِي يَا رَبِّ، أُمَّتِي يَا رَبِّ فَيُقَالُ يَا مُحَمَّدُ أَدْخِلْ مِنْ أُمَّتِكَ مَنْ لاَ حِسَابَ عَلَيْهِمْ مِنَ الْبَابِ الأَيْمَنِ مِنْ أَبْوَابِ الْجَنَّةِ وَهُمْ شُرَكَاءُ النَّاسِ فِيمَا سِوَى ذَلِكَ مِنَ الأَبْوَابِ، ثُمَّ قَالَ وَالَّذِي نَفْسِي بِيَدِهِ إِنَّ مَا بَيْنَ الْمِصْرَاعَيْنِ مِنْ مَصَارِيعِ الْجَنَّةِ كَمَا بَيْنَ مَكَّةَ وَحِمْيَرَ، أَوْ كَمَا بَيْنَ مَكَّةَ وَبُصْرَى ‏\"‏‏.‏"
   },
   {
     "source_class": "history",
