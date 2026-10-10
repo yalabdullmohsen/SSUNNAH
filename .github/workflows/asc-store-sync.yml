@@ -1,0 +1,32 @@
+name: ASC Store Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "status (قراءة فقط) أو sync"
+        required: true
+        default: status
+        type: choice
+        options: [status, sync]
+      apply:
+        description: "تطبيق فعلي (وإلا dry-run). لا يرسل للمراجعة أبدًا"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  asc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: ASC sync
+        env:
+          APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
+        run: node scripts/asc-store-sync.mjs "${{ inputs.command }}" ${{ inputs.apply && '--apply' || '' }}
