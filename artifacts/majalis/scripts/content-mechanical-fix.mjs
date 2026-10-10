@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 /**
  * يطبّق إصلاحًا آليًا من lib/content-mechanical.mjs على ملفات بيانات، ويرفض الكتابة إن تغيّر الهيكل خارج النمط.
- * الاستعمال: node scripts/content-mechanical-fix.mjs <rlm|digits> [--lines a-b] <ملف.json>...
+ * الاستعمال: node scripts/content-mechanical-fix.mjs <rlm|digits|title-id> [--lines a-b] <ملف.json>...
  * --lines: يقصر الإصلاح على أسطر محددة لتقسيم ملف كبير على أكثر من PR (حد 400 سطر محذوف).
  */
 import fs from "node:fs";
-import { stripRlm, mapJsonStrings, RLM_SKELETON, latinDigits, DIGITS_SKELETON } from "./lib/content-mechanical.mjs";
+import { stripRlm, mapJsonStrings, RLM_SKELETON, latinDigits, DIGITS_SKELETON, stripTitleId, TITLE_ID_SKELETON } from "./lib/content-mechanical.mjs";
 
 const FIXES = {
   rlm: { fn: stripRlm, skeleton: RLM_SKELETON },
   digits: { fn: latinDigits, skeleton: DIGITS_SKELETON },
+  "title-id": { fn: stripTitleId, skeleton: TITLE_ID_SKELETON },
 };
 const args = process.argv.slice(2);
 const li = args.indexOf("--lines");

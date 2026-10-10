@@ -3,7 +3,7 @@
  */
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { DIGITS_SKELETON, latinDigits, mapJsonStrings, RLM_SKELETON, stripRlm } from "../../../scripts/lib/content-mechanical.mjs";
+import { DIGITS_SKELETON, latinDigits, mapJsonStrings, RLM_SKELETON, stripRlm, stripTitleId, TITLE_ID_SKELETON } from "../../../scripts/lib/content-mechanical.mjs";
 
 /* U+200F: يُحذف مع مسافاته عند علامات الفتح/الإغلاق وطرفي النص، ويبقى بين كلمتين مسافة واحدة */
 const rlm: Array<[string, string]> = [
@@ -54,6 +54,29 @@ for (const dir of ["public/data/qa", "public/data/quiz", "public/data/knowledge/
     const s = fs.readFileSync(`${dir}/${name}`, "utf8").replace(/﴿[^﴾]*(?:﴾|$)/gm, "");
     assert.ok(!/[٠-٩۰-۹]/.test(s), `${dir}/${name}: رقم هندي خارج ﴿…﴾`);
   }
+}
+
+const TITLE_ID_CLEAN = ["public/data/knowledge/quiz/batch-003.json"];
+
+/* المعرّف الداخلي في عنوان سؤال الحديث يُحذف وحده؛ ما بعده حرفيًا */
+const titleIds: Array<[string, string]> = [
+  ["حديث sahih-fill-309: مَا رَأَيْتُ", "حديث: مَا رَأَيْتُ"],
+  ["حديث sahih-b3-513:", "حديث"],
+  ["حديث: بلا معرّف", "حديث: بلا معرّف"],
+  ["قال: حديث sahih-b3-1: لا يُمسّ وسط النص", "قال: حديث sahih-b3-1: لا يُمسّ وسط النص"],
+  ["آية 7:135", "آية 7:135"],
+];
+for (const [input, want] of titleIds) {
+  const got = stripTitleId(input);
+  assert.equal(got, want);
+  assert.equal(TITLE_ID_SKELETON(got), TITLE_ID_SKELETON(input), "لا تغيير خارج بادئة المعرّف");
+}
+assert.notEqual(TITLE_ID_SKELETON("حديث: أ"), TITLE_ID_SKELETON("حديث: ب"), "الهيكل يكشف أي مساس بالنص");
+
+/* الملفات المنظَّفة: لا عنوان بمعرّف داخلي */
+for (const f of TITLE_ID_CLEAN) {
+  const bad = JSON.parse(fs.readFileSync(f, "utf8")).items.filter((q: { title: string }) => /^حديث [a-z]/.test(q.title));
+  assert.equal(bad.length, 0, `${f}: معرّف داخلي في العنوان`);
 }
 
 console.log("content-mechanical: ok");

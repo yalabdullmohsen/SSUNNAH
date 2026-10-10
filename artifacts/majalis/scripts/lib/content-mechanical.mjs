@@ -38,3 +38,13 @@ export function latinDigits(s) {
 
 /** الهيكل: كل الأرقام لاتينية + مقاطع ﴿…﴾ حرفيًا كما هي. */
 export const DIGITS_SKELETON = (s) => `${toLatin(s)}\u0000${s.split(QURAN_SPAN).filter((_, i) => i % 2).join("\u0000")}`;
+
+/** معرّف داخلي في عنوان سؤال الحديث: «حديث sahih-b3-12: نص» → «حديث: نص»، و«حديث sahih-b3-12:» بلا نص → «حديث». */
+const TITLE_ID = /^حديث [a-z][a-z0-9]*(?:-[a-z0-9]+)+:(?: (?=\S)|$)/;
+
+export function stripTitleId(s) {
+  return s.replace(TITLE_ID, (m) => (m.endsWith(" ") ? "حديث: " : "حديث"));
+}
+
+/** الهيكل: ما بعد البادئة «حديث[ المعرّف][:][ ]» حرفيًا. */
+export const TITLE_ID_SKELETON = (s) => s.replace(/^حديث(?: [a-z][a-z0-9-]*)?(?:: ?)?/, "حديث");

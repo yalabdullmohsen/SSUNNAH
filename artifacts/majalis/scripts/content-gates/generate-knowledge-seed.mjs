@@ -448,7 +448,7 @@ function genQuiz(prophets, nations, hadiths) {
           "حسب درجة السجل المحلي (صحيح)");
     items.push({
       id,
-      title: `حديث ${h.id || i}: ${h.title || "معنى حديث صحيح"}`,
+      title: `حديث: ${h.title || "معنى حديث صحيح"}`,
       body: `ما موضوع هذا الحديث الصحيح: «${snippet}…»؟`,
       evidences: [{
         type: "hadith",
