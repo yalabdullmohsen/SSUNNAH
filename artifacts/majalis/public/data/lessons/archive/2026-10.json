@@ -2,6 +2,87 @@
   "month": "2026-10",
   "items": [
     {
+      "id": "33e4d329d9e478b014fbe106556ac86a62230f0b",
+      "type": "محاضرة",
+      "title_ar": "ندعوكم الليلة لحضور محاضرة بعنوان تأملات في سورة الكهف للشيخ عبدالرحمن بن محمد …",
+      "summary_ar": "ندعوكم الليله لحضور محاضره بعنوان: تاملات في سوره الكهف للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاه المغرب (كل جمعه) مسجد مالك بن دينار - خيطان https://maps.app.go…",
+      "sheikh": null,
+      "place": "سورة الكهف 🎙️ للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاة المغرب (كل جمعة) 🕌 مسجد",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28220",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-10T09:40:22.414Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "192aea594041342dfff8203b9a0f484715220537",
+      "type": "محاضرة",
+      "title_ar": "👇 جدول دروس اليوم الجمعة 👇",
+      "summary_ar": "جدول دروس اليوم الجمعه",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28218",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-10T09:40:22.414Z",
+      "confidence": 0.65
+    },
+    {
+      "id": "e743c41d119f5e695c2150b87a43eee7af2f418a",
+      "type": "محاضرة",
+      "title_ar": "تفسير سورة الإسراء",
+      "summary_ar": "تفسير سوره الاسراء درس اسبوعي — يوم الجمعه رقم المجلس: 4 وصلنا الي: هذه الاسبوع نبدا من الايه : 23 الوقت: بعد المغرب المكان: مسجد موضي - منطقه الصديق الموعد ال…",
+      "sheikh": "عثمان الخميس",
+      "place": "موضي - منطقة الصديق",
+      "audience": "عام",
+      "starts_at": "2026-10-16T00:00:00.000Z",
+      "time_text": "بعد المغرب",
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "web-othmanalkhamees_schedule",
+          "name_ar": "جدول دروس الشيخ عثمان الخميس",
+          "url": "https://www.othmanalkhamees.com/schedule",
+          "post_url": "https://www.othmanalkhamees.com/schedule",
+          "platform": "web"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-10T09:32:17.298Z",
+      "confidence": 0.95
+    },
+    {
       "id": "3a25341ccaf4cb3c26b57f56fc2666b255b98ff7",
       "type": "محاضرة",
       "title_ar": "بانتظاركن اليوم في لقاء مقتضيات الإيمان 🍃",
@@ -83,60 +164,6 @@
       "confidence": 0.9
     },
     {
-      "id": "398a375497dfefe116cd846441c67bfe14ee1e67",
-      "type": "محاضرة",
-      "title_ar": "ندعوكم الليلة لحضور محاضرة بعنوان تأملات في سورة الكهف للشيخ عبدالرحمن بن محمد …",
-      "summary_ar": "ندعوكم الليله لحضور محاضره بعنوان: تاملات في سوره الكهف للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاه المغرب (كل جمعه) مسجد مالك بن دينار - خيطان https://maps.app.go…",
-      "sheikh": null,
-      "place": "سورة الكهف 🎙️ للشيخ عبدالرحمن بن محمد جامع ⏰ بعد صلاة المغرب (كل جمعة) 🕌 مسجد",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28220",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-09T10:21:16.782Z",
-      "confidence": 0.8
-    },
-    {
-      "id": "c9b757511c7e9654771845cdf57794a88cb683c0",
-      "type": "محاضرة",
-      "title_ar": "👇 جدول دروس اليوم الجمعة 👇",
-      "summary_ar": "جدول دروس اليوم الجمعه",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28218",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-09T10:21:16.782Z",
-      "confidence": 0.65
-    },
-    {
       "id": "098ae21b61803f901ac7f6c72704f4b2c7c7d155",
       "type": "درس",
       "title_ar": "👇 جدول دروس اليوم الخميس 👇",
@@ -162,6 +189,33 @@
       "image_url": null,
       "published_at": "2026-10-09T10:21:16.781Z",
       "confidence": 0.65
+    },
+    {
+      "id": "368dc5c7be8b40e59889d9d61a000634b130eac4",
+      "type": "محاضرة",
+      "title_ar": "♦️اليوم الساعة 10:00 صباحاً بإذن الله",
+      "summary_ar": "اليوم الساعه 10:00 صباحا باذن الله بمسجد الياقوت قراءه صحيح مسلم وصلنا كتاب الهبات المجلس 36 للشيخ عثمان الخميس لتفاصيل المحاضرات وللبث المباشر في الموقع الالك…",
+      "sheikh": null,
+      "place": "الياقوت",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "10:00 ص",
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-othmanalkamees",
+          "name_ar": "د. عثمان الخميس",
+          "url": "https://instagram.com/othmanalkamees",
+          "post_url": "https://www.instagram.com/p/DeTd6qDDXVM/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-09T00:00:00.000Z",
+      "confidence": 0.85
     },
     {
       "id": "cb11c45d0bb402f024fdeaa2622e5a97f6701d18",
@@ -270,33 +324,6 @@
       "image_url": null,
       "published_at": "2026-10-08T20:49:16.353Z",
       "confidence": 0.9
-    },
-    {
-      "id": "789c20ac950f7999665a9ea87f3eedc60fe0748b",
-      "type": "محاضرة",
-      "title_ar": "♦️غداً الجمعة بعد المغرب بإذن الله",
-      "summary_ar": "غدا الجمعه بعد المغرب باذن الله تفسير سوره الاسراء (ايه 23) المجلس 4 مسجد موضي –الصديق لتفاصيل المحاضرات وللبث المباشر في الموقع الالكتروني للشيخ عثمان الخميس …",
-      "sheikh": null,
-      "place": "موضي –الصديق",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": "بعد المغرب",
-      "register_url": null,
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-othmanalkamees",
-          "name_ar": "د. عثمان الخميس",
-          "url": "https://instagram.com/othmanalkamees",
-          "post_url": "https://www.instagram.com/p/DePVmawG6iM/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-08T20:47:32.838Z",
-      "confidence": 0.85
     },
     {
       "id": "2c9372df3e429cb7f78aad2007b350d8f583b750",
