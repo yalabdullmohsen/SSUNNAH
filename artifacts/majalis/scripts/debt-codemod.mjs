@@ -13,7 +13,17 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
-const [mode = "--dry-run", ...argPaths] = process.argv.slice(2);
+const argv = process.argv.slice(2);
+const mode = argv[0] ?? "--dry-run";
+const reportIdx = argv.indexOf("--report");
+const reportFile = reportIdx > 0 ? argv[reportIdx + 1] : null;
+const skipIdx = argv.indexOf("--skip");
+const skip = new Set(skipIdx > 0 ? argv[skipIdx + 1].split(",") : []);
+const argPaths = argv.slice(1).filter((a, i, arr) => !a.startsWith("--") && arr[i - 1] !== "--report" && arr[i - 1] !== "--skip");
+/** سقف ΔE76 المعتمد للتحويل التلقائي (قرار المالك 2026-10-10: ≤5؛ ≤2.3 غير مرئي، 2.3–5 يُسرد في PR). */
+export const MAX_DELTA_E = 5;
+/** حدّ فرق اللقطة المسموح (نسبة بكسلات مختلفة) — تفرضه debt-codemod-verify.mjs. */
+export const MAX_SCREENSHOT_DIFF = 0.002;
 
 const CRITICAL = [
   // الرئيسية
@@ -55,18 +65,24 @@ const CONTEXT = [
   [/(^|[^-\w])(color|fill|stroke|caret-color)\s*:\s*$/i, ["--sn-text-on-primary", "--sn-text-on-danger"]],
   [/background(-color)?\s*:\s*$/i, ["--sn-surface", "--sn-surface-elevated"]],
 ];
-function pick(hex, before) {
-  const names = byHex.get(hex);
-  if (!names) return null;
-  if (names.length === 1) return { name: names[0], how: "unique" };
-  for (const [re, prefer] of CONTEXT) {
-    if (re.test(before)) {
-      const hit = names.find((n) => prefer.includes(n));
-      if (hit) return { name: hit, how: "context" };
-    }
-  }
-  return { name: null, how: "ambiguous" };
+/** الخاصية CSS التي تسبق القيمة (camelCase → kebab)؛ null إن لم تُعرف. */
+function propOf(before) {
+  const m = before.match(/([A-Za-z-]+)\s*:\s*[^;{}]*$/);
+  return m ? m[1].replace(/[A-Z]/g, (c) => "-" + c.toLowerCase()).toLowerCase() : null;
 }
+const STATUS = /^--sn-(primary|primary-strong|accent|success|warning|danger|focus)$/;
+/** رموز مسموحة لكل نوع خاصية (حارس دلالي: لا رمز نص كخلفية ولا العكس). */
+function allowed(prop) {
+  if (!prop) return null;
+  if (/^(color|fill|stroke|caret-color|text-decoration-color|-webkit-text-fill-color)$/.test(prop))
+    return (n) => /^--sn-text-/.test(n) || STATUS.test(n);
+  if (/^background(-color)?$/.test(prop))
+    return (n) => /^--sn-(bg|surface|surface-2|surface-elevated|primary-soft)$/.test(n) || STATUS.test(n);
+  if (/^(border|outline)(-(top|right|bottom|left|inline|block)(-\w+)?)?(-color)?$/.test(prop))
+    return (n) => n === "--sn-separator" || STATUS.test(n);
+  return null;
+}
+const byHexExact = (hex) => byHex.get(hex);
 
 // ΔE76 في فضاء Lab — للتقرير فقط (لا تحويل تلقائي إلا بمطابقة حرفية)
 const lab = (h) => {
@@ -79,12 +95,14 @@ const lab = (h) => {
   return [116 * y - 16, 500 * (x - y), 200 * (y - z)];
 };
 const tokenLab = [...byHex].map(([h, names]) => ({ h, names, lab: lab(h) }));
-const nearest = (h) => {
+const nearest = (h, ok) => {
   const l = lab(h);
   let best = { d: Infinity };
   for (const t of tokenLab) {
+    const names = ok ? t.names.filter(ok) : t.names;
+    if (!names.length) continue;
     const d = Math.hypot(l[0] - t.lab[0], l[1] - t.lab[1], l[2] - t.lab[2]);
-    if (d < best.d) best = { d, name: t.names[0] };
+    if (d < best.d) best = { d, names };
   }
   return best;
 };
@@ -103,9 +121,10 @@ const walk = (p, out = []) => {
 const rel = (f) => relative(root, f).split("\\").join("/");
 
 const targets = (argPaths.length ? argPaths : CRITICAL).flatMap((p) => walk(join(root, p)))
-  .filter((f) => /\.(tsx|ts|css)$/.test(f) && !TOKEN_FILES.test(rel(f)) && !PROTECTED.test(rel(f)));
+  .filter((f) => /\.(tsx|ts|css)$/.test(f) && !TOKEN_FILES.test(rel(f)) && !PROTECTED.test(rel(f)) && !skip.has(rel(f)));
 
 const HEX = /#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])/g;
+const conversions = [];
 const stats = { files: 0, hexBefore: 0, auto: 0, ambiguous: 0, noToken: 0 };
 const residue = new Map();
 const mapped = new Map();
@@ -119,22 +138,28 @@ for (const f of targets) {
     // تجاهل التعليقات/السلاسل التي ليست قيمة CSS (روابط #anchor لا تطابق لأن الأطوال 3/6/8 hex فقط)
     stats.hexBefore++;
     const h = norm(m);
-    if (h.length === 8) { stats.noToken++; residue.set(m.toLowerCase(), (residue.get(m.toLowerCase()) ?? 0) + 1); return m; }
-    const before = text.slice(Math.max(0, off - 40), off);
-    const r = pick(h, before);
-    if (!r) { const d = nearest(h).d; deltaBuckets[d <= 1 ? "≤1" : d <= 2.3 ? "≤2.3" : d <= 5 ? "≤5" : ">5"]++; stats.noToken++; residue.set(`#${h}`, (residue.get(`#${h}`) ?? 0) + 1); return m; }
-    if (!r.name) { stats.ambiguous++; residue.set(`#${h}`, (residue.get(`#${h}`) ?? 0) + 1); return m; }
+    if (h.length === 8 || (h.length === 3 && false)) { stats.noToken++; residue.set(m.toLowerCase(), (residue.get(m.toLowerCase()) ?? 0) + 1); return m; }
+    const before = text.slice(Math.max(0, off - 120), off);
+    const ok = allowed(propOf(before));
+    if (!ok) { stats.ambiguous++; residue.set(`#${h}`, (residue.get(`#${h}`) ?? 0) + 1); return m; }
+    const n = nearest(h, ok);
+    const dE = n.d;
+    if (!(dE <= MAX_DELTA_E)) { deltaBuckets[">5"]++; stats.noToken++; residue.set(`#${h}`, (residue.get(`#${h}`) ?? 0) + 1); return m; }
+    deltaBuckets[dE <= 1 ? "≤1" : dE <= 2.3 ? "≤2.3" : "≤5"]++;
+    const name = n.names[0];
     stats.auto++;
-    const k = `#${h} → var(${r.name})`;
+    const k = `#${h} → var(${name}) ΔE=${dE.toFixed(2)}`;
     mapped.set(k, (mapped.get(k) ?? 0) + 1);
+    conversions.push({ file: rel(f), from: `#${h}`, to: name, dE: Number(dE.toFixed(2)) });
     changed = true;
-    return `var(${r.name})`;
+    return `var(${name})`;
   });
   if (changed) {
     changedFiles++;
     if (mode === "--apply") writeFileSync(f, out);
   }
 }
+if (reportFile) writeFileSync(reportFile, JSON.stringify(conversions, null, 1));
 
 const after = stats.hexBefore - stats.auto;
 const top = (m, n = 12) => [...m].sort((a, b) => b[1] - a[1]).slice(0, n).map(([k, v]) => `  ${v}\t${k}`).join("\n");
