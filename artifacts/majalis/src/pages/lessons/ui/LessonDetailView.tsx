@@ -34,6 +34,7 @@ import { KnowledgeRelatedItems } from "@/components/knowledge/KnowledgeRelatedIt
 import { ScholarFollowButton } from "@/components/ScholarFollowButton";
 import { RecommendationWidget } from "@/components/recommendations/RecommendationWidget";
 import { SectionQuiz } from "@/components/ui/SectionQuiz";
+import { ContentTrustBox } from "@/components/content-trust/ContentTrustBox";
 import { canonicalizeLessonPublicId, isOrphanKuwaitLessonHashId } from "@/lib/lesson-id-aliases";
 import { getLessonsModule, type LessonDbRow } from "@/features/lessons";
 import { applyPageSeo } from "@/lib/seo";
@@ -296,6 +297,7 @@ export default function LessonDetailPage({
       note: unified.note,
       description: unified.description,
       keywords: Array.isArray(lesson.keywords) ? lesson.keywords : undefined,
+      verificationStatus: (lesson as { verification_status?: string }).verification_status,
       gregorianDate: unified.gregorianDate,
       hijriDate: unified.hijriDate,
       activityType: normalizeActivityLabel(unified.activityType) as KuwaitLessonRecord["activityType"],
@@ -309,6 +311,9 @@ export default function LessonDetailPage({
   }, [kuwaitLesson, lesson, unified]);
 
   useLessonSeo(seoLesson, `/lessons/${params.id}`, loading);
+  const needsShariaReview =
+    seoLesson?.verificationStatus === "needs_review" ||
+    (lesson as { verification_status?: string } | null)?.verification_status === "needs_review";
   usePageView("lesson", params.id);
 
   const [showSecondaryRail, setShowSecondaryRail] = useState(false);
@@ -576,6 +581,13 @@ export default function LessonDetailPage({
             <StatPill label="الحفظ" value={stats.saves} />
           </div>
         </details>
+
+        {needsShariaReview ? (
+          <ContentTrustBox
+            contentType="درس — قيد المراجعة الشرعية"
+            disclaimer="هذه المادة قيد المراجعة الشرعية ولم تُوثَّق بعد؛ لا تُعتمد مرجعًا قبل اكتمال المراجعة."
+          />
+        ) : null}
 
         <ShareButtons title={unified.title} />
 

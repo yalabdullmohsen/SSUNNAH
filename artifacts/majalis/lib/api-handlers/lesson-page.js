@@ -238,7 +238,12 @@ export default async function handler(req, res) {
 
     const shell = await readFile(DIST_INDEX_PATH, "utf8");
     const head = buildLessonHead(lesson, idParam);
-    const html = injectLessonHead(shell, head);
+    const needsReview = lesson.verification_status === "needs_review";
+    const html = injectLessonHead(shell, head).replace(
+      "</head>",
+      needsReview ? '<meta name="robots" content="noindex, follow" />\n  </head>' : "</head>",
+    );
+    if (needsReview) res.setHeader("X-Robots-Tag", "noindex, follow");
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/html; charset=utf-8");

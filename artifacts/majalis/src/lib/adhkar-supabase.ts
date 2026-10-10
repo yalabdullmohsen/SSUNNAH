@@ -61,7 +61,8 @@ export async function countVerifiedAdhkarItems(): Promise<number | null> {
   const { count, error } = await supabase
     .from("verified_adhkar_items")
     .select("id", { count: "exact", head: true })
-    .is("deleted_at", null);
+    .is("deleted_at", null)
+    .eq("verification_status", "verified");
 
   if (error) {
     if (error.code !== "PGRST205") logSupabaseError("countVerifiedAdhkarItems", error);

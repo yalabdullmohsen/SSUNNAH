@@ -22,7 +22,37 @@ const FORBIDDEN_PREFIXES = [
 ];
 
 /** مهارات مشروع مختارة يدويًا تُشارَك عبر المستودع (ليست حزم ECC مولَّدة). */
-const ALLOWED_PREFIXES = [".claude/skills/graphify/", ".claude/skills/sharia-content/"];
+const ALLOWED_PREFIXES = [
+  ".claude/skills/graphify/",
+  ".claude/skills/sharia-content/",
+  ".claude/skills/post-merge-verify/",
+  ".claude/skills/pre-merge-self-review/",
+  ".claude/skills/rtl-visual-verification/",
+  ".claude/skills/session-cost-tuning/",
+  ".claude/skills/session-handoff/",
+  ".claude/skills/surgical-changes/",
+  ".claude/skills/systematic-debugging/",
+  ".claude/skills/app-store-readiness/",
+  ".claude/skills/arabic-search/",
+  ".claude/skills/aso-growth/",
+  ".claude/skills/ci-failure-rootcause/",
+  ".claude/skills/deep-links-shell/",
+  ".claude/skills/final-report-ar/",
+  ".claude/skills/i18n-global/",
+  ".claude/skills/ios-accessibility/",
+  ".claude/skills/ios-audio-session/",
+  ".claude/skills/lean-context/",
+  ".claude/skills/mushaf-pitfalls/",
+  ".claude/skills/native-feel/",
+  ".claude/skills/prayer-notifications/",
+  ".claude/skills/security-public-repo/",
+  ".claude/skills/startup-performance/",
+  ".claude/skills/window-protocol/",
+  ".claude/skills/ios-native-swiftui/",
+  ".claude/skills/ios-widgets/",
+  ".claude/skills/tasmee-in-mushaf/",
+  ".claude/skills/release-1-1-0/",
+];
 
 function trackedFiles() {
   const out = execFileSync("git", ["ls-files", "-z", "--", ".claude", ".agents", ".codex"], {

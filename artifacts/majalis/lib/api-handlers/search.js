@@ -66,6 +66,7 @@ async function searchLessons(supabase, normQuery, limit) {
     .from("lessons")
     .select("id, title, description, speaker_name, category, mosque")
     .eq("status", "approved")
+    .neq("verification_status", "needs_review")
     .ilike("search_text", `%${normQuery}%`)
     .limit(limit);
   return (data || []).map((r) => ({

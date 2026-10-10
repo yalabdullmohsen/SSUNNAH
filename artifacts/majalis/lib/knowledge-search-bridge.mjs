@@ -46,7 +46,7 @@ function collectRpcResults(data, limit) {
 
 async function searchPlatformFallback(admin, query, limit) {
   const [{ data: lessons }, { data: qa }, { data: library }, { data: autoContent }, { data: hadith }, { data: stories }] = await Promise.all([
-    admin.from("lessons").select("id, title, description, category, external_key").eq("status", "approved").limit(limit * 3),
+    admin.from("lessons").select("id, title, description, category, external_key").eq("status", "approved").neq("verification_status", "needs_review").limit(limit * 3),
     admin.from("qa_questions").select("id, question, answer, status").eq("status", "published").limit(limit * 3),
     admin.from("library_items").select("id, title, description, category, type").eq("status", "approved").limit(limit * 3),
     admin

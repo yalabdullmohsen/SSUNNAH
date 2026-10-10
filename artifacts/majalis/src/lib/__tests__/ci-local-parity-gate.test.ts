@@ -24,6 +24,7 @@ assert.deepEqual(missing, [], `بوابات سقوف في CI لا يشغّلها
 assert.ok(plan.always.some((k: string) => /visual-system-inventory\.mjs --check/.test(k)), "visual-system-debt-budget غائب عن ci:local");
 
 const pkg = JSON.parse(readFileSync(resolve(root, "package.json"), "utf8"));
-assert.equal(pkg.scripts["ci:local"], "node scripts/ci-local.mjs");
+/* ci:local يمرّ عبر القفل المشترك (تشغيل واحد على الجهاز) ثم يشغّل ci-local.mjs نفسه */
+assert.equal(pkg.scripts["ci:local"], "bash scripts/ci-local-lock.sh node scripts/ci-local.mjs");
 assert.match(readFileSync(resolve(root, "scripts/install-ci-local-hook.sh"), "utf8"), /pnpm|PNPM_BIN.*run ci:local/);
 console.log(`ci-local-parity-gate.test.ts: ok (${ci.length} أمرًا في CI، ${plan.always.length} بوابة سقوف دائمة)`);
