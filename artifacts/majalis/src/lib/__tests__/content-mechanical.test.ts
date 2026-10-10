@@ -26,7 +26,7 @@ const raw = '{\n  "a": "\u200f نص \\"x\\"",\n  "b": 1\n}\n';
 assert.equal(mapJsonStrings(raw, stripRlm), '{\n  "a": "نص \\"x\\"",\n  "b": 1\n}\n');
 
 /* الملفات المنظَّفة: لا U+200F */
-const RLM_CLEAN = ["public/data/knowledge/quiz/batch-003.json"];
+const RLM_CLEAN = ["public/data/knowledge/quiz/batch-003.json", "public/data/knowledge/quiz/batch-005.json"];
 for (const f of RLM_CLEAN) assert.ok(!fs.readFileSync(f, "utf8").includes("\u200f"), `${f}: U+200F`);
 
 /* الأرقام الهندية → لاتينية خارج ﴿…﴾ فقط؛ نص الآية لا يُمسّ */
