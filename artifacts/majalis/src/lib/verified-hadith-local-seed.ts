@@ -2,6 +2,7 @@
  * بذرة محلية لأحاديث الصحيح/الضعيف/الموضوع — JSON تحت /public/data/hadith-verified.
  * المرجع الصحيحان منفصل في public/data/hadith.
  */
+import { isHeld } from "./content-hold";
 import { loadAllSeedChunks, loadSeedChunksByKey, peekSeedCache } from "./json-seed-loader";
 
 const HADITH_DATA_BASE = "/data/hadith-verified";
@@ -28,16 +29,17 @@ export type LocalVerifiedHadith = {
 export async function loadLocalVerifiedHadith(
   authenticityClass?: LocalHadithClass,
 ): Promise<LocalVerifiedHadith[]> {
-  if (authenticityClass) {
-    return loadSeedChunksByKey<LocalVerifiedHadith>(HADITH_DATA_BASE, authenticityClass);
-  }
-  return loadAllSeedChunks<LocalVerifiedHadith>(HADITH_DATA_BASE);
+  const rows = authenticityClass
+    ? await loadSeedChunksByKey<LocalVerifiedHadith>(HADITH_DATA_BASE, authenticityClass)
+    : await loadAllSeedChunks<LocalVerifiedHadith>(HADITH_DATA_BASE);
+  return rows.filter((h) => !isHeld(h.id));
 }
 
 export function getLocalVerifiedHadithCached(authenticityClass?: LocalHadithClass): LocalVerifiedHadith[] {
   const all = peekSeedCache<LocalVerifiedHadith>(HADITH_DATA_BASE) ?? [];
-  if (!authenticityClass) return all;
-  return all.filter((h) => h.authenticity_class === authenticityClass);
+  const visible = all.filter((h) => !isHeld(h.id));
+  if (!authenticityClass) return visible;
+  return visible.filter((h) => h.authenticity_class === authenticityClass);
 }
 
 /**
