@@ -28,7 +28,7 @@ assert.match(hero, /href="\/mushaf"/, "mushaf fallback link");
 const continueLearning = read("src/components/home/HomeContinueLearning.tsx");
 assert.match(continueLearning, /data-testid="home-continue-learning"/);
 
-const backlog = readRepo("docs/audit/MICRO_FRICTION_BACKLOG.md");
+const backlog = readRepo("docs/audit/MICRO_FRICTION_CLOSURE.md");
 assert.match(backlog, /MICRO_FRICTION_ZERO_OR_JUSTIFIED = true/);
 assert.match(backlog, /KEEP_JUSTIFIED_WITH_EVIDENCE/);
 
