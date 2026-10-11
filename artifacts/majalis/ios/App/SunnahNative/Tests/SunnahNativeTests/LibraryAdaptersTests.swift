@@ -51,12 +51,12 @@ final class LibraryAdaptersTests: XCTestCase {
 
     func testSourcesEnabledAndFeedForAccount() throws {
         let accounts: LibrarySourceAccountsFile = try decode(#"{"version":1,"accounts":[{"id":"a","platform":"x","handle":"h","name_ar":"أ","enabled":true},{"id":"b","name_ar":"ب","enabled":false}]}"#)
-        let feed: LibraryFeedFile = try decode(#"{"items":[{"id":"f1","title_ar":"إعلان","sources":[{"id":"a","name_ar":"أ"}]},{"id":"f2","title_ar":"آخر","sources":[{"id":"z"}]}]}"#)
+        let feed: LibraryFeedFile = try decode(#"{"items":[{"id":"f1","title_ar":"إعلان","sources":[{"id":"a","name_ar":"أ"}]},{"id":"f2","title_ar":"غيره","sources":[{"id":"z"}]}]}"#)
         XCTAssertEqual(LibraryAdapters.sources(accounts).map(\.id), ["a"])
         let item = LibraryAdapters.source(id: "a", accounts: accounts, feed: feed)
         XCTAssertEqual(item?.subtitle, "x · @h")
         XCTAssertTrue(item?.body?.contains("إعلان") == true)
-        XCTAssertFalse(item?.body?.contains("آخر") == true)
+        XCTAssertFalse(item?.body?.contains("غيره") == true)
         XCTAssertNil(LibraryAdapters.source(id: "b", accounts: accounts, feed: feed))
     }
 
