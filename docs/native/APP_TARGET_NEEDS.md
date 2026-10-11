@@ -21,3 +21,17 @@
 - Background Modes: audio (التشغيل)، fetch/processing (تحديث المواقيت).
 - Info.plist: `NSLocationWhenInUseUsageDescription` (المواقيت)، `NSMicrophoneUsageDescription` + `NSSpeechRecognitionUsageDescription` إن لزم (التسميع)، `NSSupportsLiveActivities = YES`، `UIBackgroundModes`، `CFBundleLocalizations`/اللغة الافتراضية ar، `UIAppFonts` (Almarai، Amiri، QPC لاحقًا).
 - Capabilities: Live Activities، Time Sensitive Notifications إن استُعملت.
+
+## الإشعارات (نظام واحد)
+- الجدولة كلها في حزمة SunnahPrayer (`NativeNotifications.rescheduleAll`: الصلاة + الأذكار + الورد + الدورية + المناسبات)، ويربطها `SunnahApp.swift` بدورة الحياة. لا تضف مجدولًا ثانيًا للأذكار.
+- Info.plist: `BGTaskSchedulerPermittedIdentifiers` = `com.yousef.majlisilm.prayer-refresh`، و`UIBackgroundModes` يتضمن `fetch`.
+- ملفات الأصوات المخصّصة (`NotificationSoundPack`) تُضاف إلى موارد الهدف.
+- لا حاجة لـ`NativeNotificationsGate` (بوابة الويب) ولا `LegacyWebNotifications` في الهدف الأصلي إلا إن بقي التنظيف من الجدولة القديمة مطلوبًا.
+
+## الويدجت والنشاط الحي (من ن3)
+- الويدجت التسعة (`PrayerWidget`, `SunnahWidgetKit`) والنشاط الحي (`PrayerLiveActivity`) أهداف امتداد قائمة وبلا Capacitor؛ تُنقل كما هي إلى مشروع SunnahApp بنفس Bundle IDs وEntitlements.
+- App Group `group.com.yousef.majlisilm` لكل من التطبيق والامتدادات.
+- `NSSupportsLiveActivities = YES` (و`NSSupportsLiveActivitiesFrequentUpdates` كما في Info.plist الحالي) في هدف التطبيق.
+- عضوية الملفات: `App/PrayerLiveActivityController.swift` + `App/PrayerActivityAttributes.swift` + `Shared/*` في هدف التطبيق؛ `PrayerActivityAttributes.swift` + `Shared/*` أيضًا في هدف PrayerLiveActivity.
+- `ios-native/SunnahApp/Platform/LiveActivityAdapter.swift` في هدف التطبيق (يُحقن عبر `PlatformServices.liveActivity`).
+- `PrayerLiveActivityPlugin.swift` يبقى للتطبيق القديم فقط ويُحذف مع Capacitor.
