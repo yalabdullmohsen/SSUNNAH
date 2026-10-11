@@ -505,7 +505,7 @@ ok(!/watchos|WatchKit/i.test(pbx), "no Watch app target yet");
 const otherGroups = [...pbx.matchAll(/group\.com\.[a-z0-9.]+/gi)].map((m) => m[0]);
 const unexpected = otherGroups.filter((g) => g !== APP_GROUP);
 ok(unexpected.length === 0, `no conflicting App Group ids in pbx (found ${unexpected.join(",") || "none"})`);
-const livePlugin = readFileSync(join(iosApp, "App", "PrayerLiveActivityPlugin.swift"), "utf8");
+const livePlugin = readFileSync(join(iosApp, "App", "PrayerLiveActivityPlugin.swift"), "utf8") + readFileSync(join(iosApp, "App", "PrayerLiveActivityController.swift"), "utf8"); // المنطق انتقل للمتحكم (native-app)
 ok(
   livePlugin.includes("SunnahSharedStore.publishLiveActivityState"),
   "PrayerLiveActivityPlugin mirrors state into App Group",
