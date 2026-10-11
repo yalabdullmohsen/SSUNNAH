@@ -8,6 +8,7 @@ public enum SpecialScreens {
         HadithScreens.register(in: registry)
         AdhkarExtraScreens.register(in: registry)
         AccountScreens.register(in: registry)
+        SettingsScreens.register(in: registry)
         registry.registerView(id: "prayer") { PrayerScreen() }
         registry.registerView(id: "home") { HomeScreen() }
     }

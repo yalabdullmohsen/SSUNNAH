@@ -6,7 +6,7 @@
 | ID | Action | Why agent cannot close | Evidence needed |
 |---|---|---|---|
 | OWN-01 | Approve or permanently exclude QPC store redistribution | Legal | Written QUL/KFGQPC / counsel note |
-| OWN-02 | Approve specific adhan CAF/MP3 files **or** confirm exclusion from Xcode/Android resources | Legal + signing machine | Signed list + Archive inspection |
+| OWN-02 | **مغلق:** تنبيه صوتي بعبارة بدل الأذان (لا أذان ولا ملفات أذان في التطبيق). يبقى سماع المالك للمقاطع العشرة قبل الإطلاق — المقاطع معلّقة حتى توليدها، انظر [NOTIFICATION_VOICE.md](NOTIFICATION_VOICE.md) | Owner | سماع المقاطع + اختيار محرك TTS مرخّص تجاريًا |
 | OWN-03 | Run device matrix on physical iPhone + Android | No device in this environment | `DEVICE_NOTIFICATION_MATRIX.md` rows WORKING |
 | OWN-04 | Supabase: backup → approve → apply security SQL / RLS | `REQUIRES_EXPLICIT_APPROVAL` | Checklist signed |
 | OWN-05 | Supabase Auth: MFA for admins + leaked-password (plan-dependent) | Dashboard only | Screenshots + date |
