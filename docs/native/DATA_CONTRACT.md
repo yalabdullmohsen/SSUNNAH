@@ -71,3 +71,11 @@
 - الشبهات وأدلة الدعوة (`discover-islam-questions/doubts`): كل آية قرآنية تُطابَق حرفيًا مع Tanzil (اسم السورة+الرقم+النص، والاقتباس المقطّع بـ`...` قطعةً قطعة)؛ ما لا يتحقق يُرفض (doubts: 1 من 12).
 - `discover-islam-articles/new-muslim`: تُمرَّر كما هي دون أدلة.
 - لا ملف لـ`discover-islam` (مركز) ولا `discover-islam-contact` (نموذج).
+
+### fiqh (18 ملفًا في `Data/fiqh/`)
+- `books` `{version,generatedAt,madhhab,books:[…]}` و`book-aliases` `{aliases:[…]}` من `content/fiqh/*.json`؛ الدرس/الباب/الكتاب المحجوز يُحذف (الآن `hajj-arkan-arafa`، فيزول تكرار `needsReview`)، والمرادفات تُرشَّح لتبقى أهدافها موجودة.
+- `guides/<slug>.json` (jumuah, nikah, riba, ruqya, sadaqa, talaq, udhiya, waqf): كائن `FiqhGuideSection` كما هو، بعد حذف البطاقات المحجوزة.
+- مصفوفات: `madhahib`, `maqasid-sharia`, `prayer-ranks`, `usul-topics`, `prophetic-medicine`.
+- `sins-and-rights` `{topics,categories}` و`amr-bil-maruf` `{levels,conditions,munkaraat,maaruf}`.
+- تمرير حرفي من مصدر الويب؛ لا إعادة صياغة ولا حقول جديدة. المسارات الـ17 المكتوبة داخل JSX (`/tahara` `/sawm`…) خارج هذا الـPR (تحتاج نقل نص إلى وحدة بيانات أولًا).
+
