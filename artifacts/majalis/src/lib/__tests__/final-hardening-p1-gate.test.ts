@@ -146,18 +146,19 @@ console.log("=== P2/P3 widget timeline + LA await ActivityKit ===");
 {
   const shared = read("ios/App/App/SunnahSharedDataPlugin.swift");
   assert.match(shared, /WidgetCenter\.shared\.reloadTimelines\(ofKind:\s*SunnahWidgetKind\.prayerTimes\)/);
-  const la = read("ios/App/App/PrayerLiveActivityPlugin.swift");
+  // منطق النشاط الحي نُقل إلى PrayerLiveActivityController.swift؛ الإضافة غلاف رقيق.
+  const la = read("ios/App/App/PrayerLiveActivityPlugin.swift") + "\n" + read("ios/App/App/PrayerLiveActivityController.swift");
   assert.match(la, /await activity\.update/);
   assert.match(la, /await activity\.end/);
   const update = la.match(/func updateActivity[\s\S]*?(?=\n {4}@objc|\n {4}\/\/\/|\n#if)/)?.[0] ?? "";
   assert.match(update, /Task\s*\{/);
   assert.match(update, /await activity\.update/);
   assert.match(update, /call\.resolve\(\["updated": true/);
+  // endActivity لا يُرجع قبل انتهاء ActivityKit: ينتظر نواة PrayerLiveActivityController.end() التي تنتظر activity.end.
   const end = la.match(/func endActivity[\s\S]*?(?=\n {4}@objc|\n {4}\/\/\/)/)?.[0] ?? "";
-  assert.match(end, /await activity\.end/);
-  assert.ok(
-    end.indexOf("await activity.end") < end.indexOf('call.resolve(["ended": true])'),
-  );
+  assert.match(end, /Task\s*\{\s*call\.resolve\(\["ended":\s*await PrayerLiveActivityController\.end\(\)\]\)/);
+  const coreEnd = la.match(/static func end\(\) async[\s\S]*?\n {4}\}/)?.[0] ?? "";
+  assert.match(coreEnd, /await activity\.end/);
 }
 
 console.log("=== P3 security UI gate walks admin ===");

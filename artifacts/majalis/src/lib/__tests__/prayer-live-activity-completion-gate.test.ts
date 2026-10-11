@@ -32,7 +32,11 @@ assert.match(ui, /SunnahBrandColors|typealias Brand = SunnahBrandColors/);
 assert.match(ui, /\.upcoming|\.active|\.completed|\.appLaunch/);
 assert.doesNotMatch(ui, /Quran|QPC|Hisn|Fatwa|recitation/i);
 
-const plugin = readFileSync(resolve(iosApp, "App/PrayerLiveActivityPlugin.swift"), "utf8");
+// منطق النشاط الحي نُقل إلى PrayerLiveActivityController.swift؛ الإضافة غلاف رقيق.
+const plugin =
+  readFileSync(resolve(iosApp, "App/PrayerLiveActivityPlugin.swift"), "utf8") +
+  "\n" +
+  readFileSync(resolve(iosApp, "App/PrayerLiveActivityController.swift"), "utf8");
 assert.match(plugin, /syncFromSharedSnapshot/);
 assert.match(plugin, /SunnahSharedStore/);
 assert.match(plugin, /PrayerLivePhase/);
