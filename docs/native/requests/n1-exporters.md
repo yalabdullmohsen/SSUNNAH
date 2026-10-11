@@ -120,3 +120,17 @@
 - `Data/learn/universities.json` ← Sections/learn/LearnSupport.swift
 - `Data/learn/chunk-000.json` ← Sections/learn/LearnSupport.swift
 
+
+## إسناد مجموعات «قيد الإعداد» (2026-10-11)
+القائمة الكاملة بالمسارات في `docs/native/PROGRESS.md`. الإسناد حسب نوع السبب:
+- **ERROR:تعذّر** (aqidah 33 · fiqh 19 · learn 22 · library 1 · account 2) ← **ن1**: مُصدِّرات الملفات الـ102 أعلاه؛ تزول بوصول الملف المطابق.
+- **DUP_SCREEN** (fiqh 58 · quran 34 · library 28 · sirah 26 · aqidah 14 · learn 5 · hadith 4) ← **ن2**: قالب شاشة مستقل لكل مسار بدل لقطة مكررة (أو تسجيل صريح أنها نفس الشاشة فتُستثنى من العدّ).
+- **PLACEHOLDER** (quran 31 · hadith 5) ← **ن3** (القرآن/الحديث): ربط الشاشة الحقيقية بالمسار.
+- **EMPTY** (quran 4 · hadith 3 · aqidah 2 · fiqh 1 · learn 1 · account 1) ← **ن1** للبيانات، ثم **ن2** لحالة الفراغ إن بقيت.
+
+## ملاحظة جديدة: الأذكار فارغة رغم عدم فقد ملف
+`Data/adhkar/verified-adhkar.json` = `[]`؛ `export-ios-data.mjs` لا يملأه إلا بالوسيط `--adhkar-json <لقطة صفوف Supabase>` ولم يُمرَّر. المطلوب (ن1): تمرير اللقطة المعتمدة في الدورة أو تضمين ملف مصدر. لقطة الأذكار الحالية: «لا أذكار موثّقة بعد».
+بوابة native-data-check يجب أن تفشل أيضًا على ملف bundled مصفوفته فارغة `[]` (تحسين لاحق).
+
+## تنبيه إلى ن3
+ن2 عدّل ملفين مشتركين: `RootTabView.swift` و`ScreenTemplate.swift` — أعد القاعدة (rebase على native-app) قبل أي تعديل عليهما.
