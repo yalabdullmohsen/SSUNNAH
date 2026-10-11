@@ -2,14 +2,8 @@ name: iOS SunnahNative tests
 
 # اختبارات حزمة الهيكل الأصلي (docs/program/PLAN.md) — تعمل فقط عند تغيّرها.
 on:
-  pull_request:
-    paths:
-      - "artifacts/majalis/ios/App/SunnahNative/**"
-      - ".github/workflows/ios-sunnah-native.yml"
-  push:
-    branches: [main]
-    paths:
-      - "artifacts/majalis/ios/App/SunnahNative/**"
+  # بقرار المالك 2026-10-11: لا runner مدفوع تلقائيًا؛ البوابة الوحيدة لـnative-app هي scripts/native-loop.sh المحلي.
+  workflow_dispatch:
 
 permissions:
   contents: read

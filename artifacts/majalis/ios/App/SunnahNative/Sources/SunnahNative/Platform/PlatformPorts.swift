@@ -46,15 +46,78 @@ public protocol PlaybackSessionControlling: AnyObject {
     func clearNowPlaying()
 }
 
+/// النشاط الحي لمواقيت الصلاة (Dynamic Island / شاشة القفل) — يقرأ من لقطة App Group فقط.
+public protocol LiveActivityControlling: Sendable {
+    var isSupported: Bool { get }
+    /// يبدأ/يحدّث النشاط من لقطة المواقيت المشتركة؛ true عند النجاح.
+    func sync() async -> Bool
+    /// يُنهي كل الأنشطة؛ true إن وُجد ما يُنهى.
+    func end() async -> Bool
+}
+
+public struct NoLiveActivity: LiveActivityControlling {
+    public init() {}
+    public var isSupported: Bool { false }
+    public func sync() async -> Bool { false }
+    public func end() async -> Bool { false }
+}
+
 /// حاوية الخدمات؛ الافتراضي ذاكرة مؤقتة آمنة للمعاينات والاختبارات.
+/// عميل مصادقة Supabase (كلمة مرور) خلف منفذ؛ المحوّل في SunnahApp.
+public protocol AuthServicing: Sendable {
+    var isConfigured: Bool { get }
+    var currentEmail: String? { get }
+    func signIn(email: String, password: String) async throws
+    /// يعيد true إن لزم تأكيد البريد قبل الدخول.
+    func signUp(email: String, password: String) async throws -> Bool
+    func resetPassword(email: String) async throws
+    func signOut() async
+    func deleteAccount() async throws
+    /// يحدّث كلمة المرور للجلسة الحالية (بعد رابط الاستعادة).
+    func updatePassword(_ newPassword: String) async throws
+    /// يقبل رابط العودة (sunnah://auth/callback#access_token=…) ويحفظ الجلسة؛ يعيد true عند النجاح.
+    func handleCallback(_ url: URL) -> Bool
+}
+
+public struct NoAuthService: AuthServicing {
+    public init() {}
+    public var isConfigured: Bool { false }
+    public var currentEmail: String? { nil }
+    public func signIn(email: String, password: String) async throws { throw AuthServiceError.notConfigured }
+    public func signUp(email: String, password: String) async throws -> Bool { throw AuthServiceError.notConfigured }
+    public func resetPassword(email: String) async throws { throw AuthServiceError.notConfigured }
+    public func signOut() async {}
+    public func deleteAccount() async throws { throw AuthServiceError.notConfigured }
+    public func updatePassword(_ newPassword: String) async throws { throw AuthServiceError.notConfigured }
+    public func handleCallback(_ url: URL) -> Bool { false }
+}
+
+public enum AuthServiceError: Error, LocalizedError, Sendable {
+    case notConfigured, offline, unauthorized
+    case server(String)
+    public var errorDescription: String? {
+        switch self {
+        case .notConfigured: return "خدمة الحساب غير مهيّأة في هذه النسخة."
+        case .offline: return "لا يوجد اتصال بالإنترنت."
+        case .unauthorized: return "انتهت الجلسة، سجّل الدخول من جديد."
+        case .server(let m): return m
+        }
+    }
+}
+
 public struct PlatformServices: Sendable {
     public var auth: AuthSessionStoring
     public var sharedData: SharedDataPublishing
     public var offlineAudio: OfflineAudioProviding
+    public var liveActivity: LiveActivityControlling
+    public var authService: AuthServicing
     public init(auth: AuthSessionStoring = InMemoryAuthStore(),
                 sharedData: SharedDataPublishing = NoSharedData(),
-                offlineAudio: OfflineAudioProviding = NoOfflineAudio()) {
+                offlineAudio: OfflineAudioProviding = NoOfflineAudio(),
+                liveActivity: LiveActivityControlling = NoLiveActivity(),
+                authService: AuthServicing = NoAuthService()) {
         self.auth = auth; self.sharedData = sharedData; self.offlineAudio = offlineAudio
+        self.liveActivity = liveActivity; self.authService = authService
     }
 }
 
@@ -93,4 +156,37 @@ public extension EnvironmentValues {
         get { self[PlatformServicesKey.self] }
         set { self[PlatformServicesKey.self] = newValue }
     }
+}
+
+/// نص جزئي من محرك التسميع (WhisperKit) — يطابق TasmeePartialEvent في عقد الجسر القديم.
+public struct RecitationPartial: Sendable, Equatable {
+    public let seq: Int
+    public let text: String
+    public let finishedAtMs: Double
+    public init(seq: Int, text: String, finishedAtMs: Double) {
+        self.seq = seq; self.text = text; self.finishedAtMs = finishedAtMs
+    }
+}
+
+public enum RecitationModelStatus: Sendable, Equatable {
+    case notInstalled
+    case downloading(progress: Double)
+    case installed
+    case unsupported
+}
+
+/// محرك التسميع على الجهاز: ينفّذه هدف التطبيق فوق TasmeeEngine/TasmeeModelStore. المطابقة في الحزمة لا فيه.
+@MainActor
+public protocol RecitationEngineControlling: AnyObject {
+    var modelStatus: RecitationModelStatus { get }
+    var onPartial: ((RecitationPartial) -> Void)? { get set }
+    /// كلام مرصود ولا يعود نص («لم يتضح الصوت»).
+    var onUnclear: (() -> Void)? { get set }
+    var onFailure: ((String) -> Void)? { get set }
+    func downloadModel(progress: @escaping @Sendable (Double) -> Void) async throws
+    func deleteModel() throws
+    func load() async throws
+    func start(prompt: String?) async throws
+    func setPrompt(_ text: String?) async
+    func stop() async
 }

@@ -781,6 +781,26 @@
    "id": "sahih-extra-075",
    "reason": "تناقض بين فئة الحديث وحكمه — بانتظار مراجعة شرعية (ن7)",
    "since": "2026-10-10"
+  },
+  {
+   "id": "dawah-shubha:hudud-punishments-explained",
+   "reason": "حديث «ادرءوا الحدود» منسوب للترمذي وليس في البخاري/مسلم المحليين — لم يُحقَّق حرفيًا",
+   "since": "2026-10-11"
+  },
+  {
+   "id": "dawah-shubha:meaning-of-jihad-general",
+   "reason": "حديث «الجهاد الأكبر» ضعيف ولا أصل له في الصحيحين — لم يُحقَّق",
+   "since": "2026-10-11"
+  },
+  {
+   "id": "dawah-shubha:quran-science-claims",
+   "reason": "بلا أدلة موثّقة — بانتظار مراجعة علمية",
+   "since": "2026-10-11"
+  },
+  {
+   "id": "dawah-shubha:islam-incompatible-with-modernity",
+   "reason": "بلا أدلة موثّقة — بانتظار مراجعة علمية",
+   "since": "2026-10-11"
   }
  ]
 }

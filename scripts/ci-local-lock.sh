@@ -40,6 +40,15 @@ trap 'rm -rf "$LOCK"' EXIT
 trap 'exit 130' INT TERM
 echo "pid=$$ cwd=$PWD" > "$LOCK/owner"
 
+# حارس القرص: يرفض التشغيل إن قلّ الفارغ عن CI_LOCAL_MIN_DISK_GB (10 افتراضيًا)؛ CI_LOCAL_DISK_GUARD=0 يعطّله
+if [[ "${CI_LOCAL_DISK_GUARD:-1}" != 0 ]]; then
+  free_gb=$(df -g "$PWD" | awk 'NR==2{print $4}')
+  if [[ "${free_gb:-999}" -lt "${CI_LOCAL_MIN_DISK_GB:-10}" ]]; then
+    echo "ci-local-lock: رفض — الفارغ على القرص ${free_gb}GB < ${CI_LOCAL_MIN_DISK_GB:-10}GB؛ شغّل scripts/disk-clean.sh" >&2
+    exit 1
+  fi
+fi
+
 # حارس الذاكرة (macOS): المتاح = free + speculative + inactive (قابلة للاسترجاع فورًا)
 avail_mb() {
   command -v vm_stat >/dev/null 2>&1 || { echo 999999; return; }
