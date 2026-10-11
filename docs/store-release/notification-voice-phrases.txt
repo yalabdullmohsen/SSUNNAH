@@ -1,0 +1,11 @@
+# عبارات تنبيه الصلاة المشكولة — الملف: النص (عدّل التشكيل هنا ثم أعد التوليد)
+prayer_pre_fajr.caf: اقتَرَبَ أذانُ الفَجْر
+prayer_pre_dhuhr.caf: اقتَرَبَ أذانُ الظُّهْر
+prayer_pre_asr.caf: اقتَرَبَ أذانُ العَصْر
+prayer_pre_maghrib.caf: اقتَرَبَ أذانُ المَغْرِب
+prayer_pre_isha.caf: اقتَرَبَ أذانُ العِشاء
+prayer_now_fajr.caf: حانَ الآنَ مَوعِدُ أذانِ الفَجْر
+prayer_now_dhuhr.caf: حانَ الآنَ مَوعِدُ أذانِ الظُّهْر
+prayer_now_asr.caf: حانَ الآنَ مَوعِدُ أذانِ العَصْر
+prayer_now_maghrib.caf: حانَ الآنَ مَوعِدُ أذانِ المَغْرِب
+prayer_now_isha.caf: حانَ الآنَ مَوعِدُ أذانِ العِشاء
