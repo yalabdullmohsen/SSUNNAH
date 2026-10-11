@@ -5,7 +5,7 @@
 
 | ID | Action | Why agent cannot close | Evidence needed |
 |---|---|---|---|
-| OWN-01 | Approve or permanently exclude QPC store redistribution | Legal | Written QUL/KFGQPC / counsel note |
+| OWN-01 | قرار المالك: استمرار استعمال خطوط QPC كما في الإصدار المنشور؛ على المالك مراجعة الترخيص قبل الإرسال (Approve or permanently exclude QPC store redistribution) | Legal | Written QUL/KFGQPC / counsel note |
 | OWN-02 | **مغلق:** تنبيه صوتي بعبارة بدل الأذان (لا أذان ولا ملفات أذان في التطبيق). يبقى سماع المالك للمقاطع العشرة قبل الإطلاق — المقاطع معلّقة حتى توليدها، انظر [NOTIFICATION_VOICE.md](NOTIFICATION_VOICE.md) | Owner | سماع المقاطع + اختيار محرك TTS مرخّص تجاريًا |
 | OWN-03 | Run device matrix on physical iPhone + Android | No device in this environment | `DEVICE_NOTIFICATION_MATRIX.md` rows WORKING |
 | OWN-04 | Supabase: backup → approve → apply security SQL / RLS | `REQUIRES_EXPLICIT_APPROVAL` | Checklist signed |

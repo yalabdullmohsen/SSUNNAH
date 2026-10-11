@@ -10,6 +10,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import os from "node:os";
+import { execFileSync } from "node:child_process";
 
 const args = process.argv.slice(2);
 const opt = (k) => (args.includes(k) ? args[args.indexOf(k) + 1] : null);
@@ -137,6 +139,52 @@ for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== 
 }
 json("quiz/manifest.json", { total: qn, chunks: qchunks });
 counts.quiz = qn;
+
+/* المصحف الأصلي (SwiftUI): بيانات صفحات QPC V2 الحالية + خطوطها مُعاد تغليفها TTF — لا بيانات ولا خطوط جديدة */
+{
+  const q2 = `${data}/quran-v2`;
+  const chapters = rd(`${q2}/chapters.json`);
+  const chById = new Map(chapters.map((c) => [c.id, c]));
+  const surahs = chapters.map((c) => ({ id: c.id, name: c.name_arabic, ayahs: c.verses_count, firstPage: c.pages[0], lastPage: c.pages[1], place: c.revelation_place, bismillahPre: c.bismillah_pre }));
+  const juzStart = {};
+  const ayahPage = {};
+  for (let p = 1; p <= 604; p++) {
+    const verses = rd(`${q2}/pages/page-${pad(p)}.json`);
+    const lines = new Map();
+    const starts = new Map();
+    for (const v of verses) {
+      const key = v.verse_key;
+      if (ayahPage[key] === undefined) ayahPage[key] = p;
+      juzStart[v.juz_number] ??= p;
+      for (const w of v.words) {
+        if (!lines.has(w.line_number)) lines.set(w.line_number, []);
+        lines.get(w.line_number).push({ id: w.id, c: w.code_v2, v: key, ...(w.char_type_name === "end" ? { e: 1 } : {}) });
+      }
+      if (v.verse_number === 1 && !starts.has(Number(key.split(":")[0]))) starts.set(Number(key.split(":")[0]), Math.min(...v.words.map((w) => w.line_number)));
+    }
+    const used = [...lines.keys()].sort((a, b) => a - b);
+    const rows = [];
+    let prev = 0;
+    for (const ln of used) {
+      const gap = ln - prev - 1;
+      const startSurah = [...starts.entries()].find(([, fl]) => fl === ln)?.[0];
+      const ch = startSurah ? chById.get(startSurah) : null;
+      let filled = 0;
+      if (ch) { rows.push({ k: "h", s: ch.id }); filled++; if (ch.bismillah_pre) { rows.push({ k: "b" }); filled++; } }
+      for (; filled < gap; filled++) rows.push({ k: "x" });
+      rows.push({ k: "l", n: ln, w: lines.get(ln).sort((a, b) => a.id - b.id).map(({ id, ...r }) => r) });
+      prev = ln;
+    }
+    json(`mushaf/pages/${pad(p)}.json`, { page: p, opening: p <= 2, rows });
+  }
+  if (Object.keys(ayahPage).length !== 6236) throw new Error("فهرس الآيات→الصفحات ناقص");
+  json("mushaf/index.json", { surahs, juzStart: Array.from({ length: 30 }, (_, i) => juzStart[i + 1]), ayahPage });
+  const tmp = fs.mkdtempSync(`${os.tmpdir()}/qpc-ttf-`);
+  execFileSync("python3", [`${appRoot}/scripts/native/woff2-to-ttf.py`, `${appRoot}/public/fonts/qpc-v2`, tmp], { stdio: "inherit" });
+  for (let p = 1; p <= 604; p++) put(`mushaf/fonts/p${p}.ttf`, fs.readFileSync(`${tmp}/p${p}.ttf`));
+  fs.rmSync(tmp, { recursive: true, force: true });
+  counts.mushafPages = 604;
+}
 
 json("MANIFEST.json", { version: 1, counts, rejected: rej, files: files.slice().sort((a, b) => a.path.localeCompare(b.path)) });
 console.log(JSON.stringify({ out: check ? "(check)" : out, files: files.length, counts, rejected: rej }));
