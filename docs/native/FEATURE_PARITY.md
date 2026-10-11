@@ -5,21 +5,21 @@
 
 ## الأذكار والأدعية — 8 (المسؤول: ن3)
 
-- [ ] `/adhan-help` — AdhanHelpPage — قائمة
-- [ ] `/adhan-settings` — AdhanSettingsPage — قائمة
-- [ ] `/adhkar` — AdhkarPage — قائمة
-- [ ] `/daily-wird` — DailyWirdPage — قائمة
-- [ ] `/duas` — DuasPage — قائمة
-- [ ] `/duas-quran` — DuasQuranPage — قائمة
-- [ ] `/sunan-yawmiyya` — SunanYawmiyyaPage — قائمة
-- [ ] `/tasbih` — TasbihPage — قائمة
+- [x] `/adhan-help` — AdhanHelpPage — قائمة
+- [x] `/adhan-settings` — AdhanSettingsPage — قائمة
+- [x] `/adhkar` — AdhkarPage — قائمة
+- [x] `/daily-wird` — DailyWirdPage — قائمة
+- [x] `/duas` — DuasPage — قائمة
+- [x] `/duas-quran` — DuasQuranPage — قائمة
+- [x] `/sunan-yawmiyya` — SunanYawmiyyaPage — قائمة
+- [x] `/tasbih` — TasbihPage — قائمة
 
 ## الحديث والسنة — 13 (المسؤول: ن3)
 
 - [ ] `/arbaeen-nawawi` — ArbaeenNawawiPage — قائمة
 - [ ] `/arbaeen-nawawi/:id` — ArbaeenHadithDetailPage — تفاصيل
 - [ ] `/dalail-nubuwwah` — DalailNubuwwahPage — قائمة
-- [ ] `/hadith` — HadithPage — قائمة
+- [x] `/hadith` — HadithPage — قائمة
 - [ ] `/hadith-science` — HadithSciencePage — قائمة
 - [ ] `/hadith/arbaeen-love-of-allah` — ArbaeenLovePage — قائمة
 - [ ] `/hadith/books` — HadithBooksPage — قائمة
@@ -32,34 +32,34 @@
 
 ## الحساب والإعدادات — 28 (المسؤول: ن3)
 
-- [ ] `/about` — AboutPage — قائمة
-- [ ] `/account-deletion` — AccountDeletionPage — خاصة
+- [x] `/about` — AboutPage — قائمة
+- [x] `/account-deletion` — AccountDeletionPage — خاصة
 - [ ] `/auth/callback` — AuthCallbackPage — خاصة
 - [ ] `/auth/update-password` — UpdatePasswordPage — خاصة
 - [ ] `/calendar` — CalendarPage — شبكة
-- [ ] `/car-mode` — CarModePage — قائمة
+- [x] `/car-mode` — CarModePage — قائمة
 - [ ] `/contact` — ContactPage — قائمة
-- [ ] `/data-licenses` — SourcesLicensesPage — قائمة
-- [ ] `/fatwa-policy` — FatwaPolicyPage — مقال
-- [ ] `/feature-tour` — FeatureTourPage — قائمة
-- [ ] `/islam-stats` — IslamStatsPage — قائمة
-- [ ] `/login` — LoginPage — خاصة
-- [ ] `/mosque-mode` — MosqueModePage — قائمة
-- [ ] `/my-submissions` — MySubmissionsPage — قائمة
-- [ ] `/notification-settings` — NotificationSettingsPage — قائمة
-- [ ] `/offline` — OfflineCenterPage — أقسام
-- [ ] `/privacy` — PrivacyPage — قائمة
-- [ ] `/privacy-center` — PrivacyCenterPage — أقسام
-- [ ] `/qibla` — QiblaPage — قائمة
-- [ ] `/register` — RegisterPage — قائمة
-- [ ] `/settings` — SettingsPage — خاصة
-- [ ] `/stats` — UserStatsPage — قائمة
-- [ ] `/submit` — SubmitContentPage — قائمة
+- [x] `/data-licenses` — SourcesLicensesPage — قائمة
+- [x] `/fatwa-policy` — FatwaPolicyPage — مقال
+- [x] `/feature-tour` — FeatureTourPage — قائمة
+- [x] `/islam-stats` — IslamStatsPage — قائمة
+- [x] `/login` — LoginPage — خاصة
+- [x] `/mosque-mode` — MosqueModePage — قائمة
+- [x] `/my-submissions` — MySubmissionsPage — قائمة
+- [x] `/notification-settings` — NotificationSettingsPage — قائمة
+- [x] `/offline` — OfflineCenterPage — أقسام
+- [x] `/privacy` — PrivacyPage — قائمة
+- [x] `/privacy-center` — PrivacyCenterPage — أقسام
+- [x] `/qibla` — QiblaPage — قائمة
+- [x] `/register` — RegisterPage — قائمة
+- [x] `/settings` — SettingsPage — خاصة
+- [x] `/stats` — UserStatsPage — قائمة
+- [x] `/submit` — SubmitContentPage — قائمة
 - [ ] `/updates` — UpdatesPage — قائمة
 - [ ] `/updates/auto/:slug` — AutoContentDetailPage — تفاصيل
-- [ ] `/upload` — UploadPage — خاصة
-- [ ] `/vault` — VaultPage — خاصة
-- [ ] `/widget-center` — WidgetCenterPage — خاصة
+- [x] `/upload` — UploadPage — خاصة
+- [x] `/vault` — VaultPage — خاصة
+- [x] `/widget-center` — WidgetCenterPage — خاصة
 
 ## الدروس والتعلم — 23 (المسؤول: ن3)
 
@@ -68,8 +68,8 @@
 - [ ] `/competitions/:id` — CompetitionDetailPage — اختبار
 - [ ] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
 - [ ] `/durus-mutanawwia` — DurusMutanawwiaPage — قائمة
-- [ ] `/fawaid` — FawaidPage — قائمة
-- [ ] `/flashcards` — FlashCardsPage — قائمة
+- [x] `/fawaid` — FawaidPage — قائمة
+- [x] `/flashcards` — FlashCardsPage — قائمة
 - [ ] `/institutions` — InstitutionsPage — قائمة
 - [ ] `/knowledge-graph` — KnowledgeGraphPage — قائمة
 - [ ] `/knowledge/:section` — KnowledgeSectionPage — تفاصيل
@@ -77,12 +77,12 @@
 - [ ] `/lessons` — LessonsPage — قائمة
 - [ ] `/lessons/:id` — LessonDetailPage — تفاصيل
 - [ ] `/lessons/archive` — LessonsArchivePage — قائمة
-- [ ] `/my-learning` — MyLearningPage — قائمة
-- [ ] `/progress` — ProgressCenterPage — أقسام
-- [ ] `/quiz` — QuizPage — اختبار
-- [ ] `/reading-plans` — ReadingPlansPage — قائمة
-- [ ] `/researcher` — ResearcherProfilePage — بحث
-- [ ] `/study-room` — StudyRoomPage — قائمة
+- [x] `/my-learning` — MyLearningPage — قائمة
+- [x] `/progress` — ProgressCenterPage — أقسام
+- [x] `/quiz` — QuizPage — اختبار
+- [x] `/reading-plans` — ReadingPlansPage — قائمة
+- [x] `/researcher` — ResearcherProfilePage — بحث
+- [x] `/study-room` — StudyRoomPage — قائمة
 - [ ] `/universities` — UniversitiesPage — قائمة
 - [ ] `/universities/:slug` — UniversityDetailPage — تفاصيل
 - [ ] `/universities/compare` — UniversitiesComparePage — قائمة
@@ -96,7 +96,7 @@
 - [ ] `/nations` — NationsPage — قائمة
 - [ ] `/nations/:slug` — NationDetailPage — تفاصيل
 - [ ] `/occasions` — OccasionsPage — قائمة
-- [ ] `/occasions-lessons` — OccasionsLessonsHubPage — أقسام
+- [x] `/occasions-lessons` — OccasionsLessonsHubPage — أقسام
 - [ ] `/prophets` — ProphetStoriesPage — مقال
 - [ ] `/prophets/tree` — ProphetsFamilyTreePage — قائمة
 - [ ] `/sahabah` — SahabahPage — قائمة
@@ -117,7 +117,7 @@
 - [ ] `/asma-husna` — AsmaaHusnaPage — قائمة
 - [ ] `/discover-islam` — DiscoverIslamPage — قائمة
 - [ ] `/discover-islam/articles/:slug` — DiscoverIslamArticleDetailPage — مقال
-- [ ] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
+- [x] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
 - [ ] `/discover-islam/doubts` — DiscoverIslamDoubtsPage — قائمة
 - [ ] `/discover-islam/doubts/:slug` — DiscoverIslamDoubtDetailPage — تفاصيل
 - [ ] `/discover-islam/how-to-convert` — HowToBecomeMuslimPage — قائمة
@@ -227,8 +227,8 @@
 - [ ] `/academic-research/assistant` — ResearchAssistantPage — بحث
 - [ ] `/academic-research/submit` — ResearchSubmitPage — بحث
 - [ ] `/arabic-language` — ArabicLanguagePage — قائمة
-- [ ] `/cards` — CardsPage — قائمة
-- [ ] `/islamic-directory` — IslamicDirectoryHubPage — أقسام
+- [x] `/cards` — CardsPage — قائمة
+- [x] `/islamic-directory` — IslamicDirectoryHubPage — أقسام
 - [ ] `/islamic-glossary` — IslamicGlossaryPage — قائمة
 - [ ] `/mawsuaat` — MawsuaatPage — قائمة
 - [ ] `/methodology` — MethodologyPage — قائمة
