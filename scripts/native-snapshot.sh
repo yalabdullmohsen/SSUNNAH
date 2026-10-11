@@ -19,13 +19,14 @@ for s in "$@"; do
   mkdir -p "$BOARD/snapshots/$sec"
   while read -r route; do
     [ -z "$route" ] && continue
+    eff=$(node -e 'try{const m=JSON.parse(require("fs").readFileSync("docs/native/ROUTE_SAMPLES.json","utf8"));console.log(m[process.argv[1]]||process.argv[1])}catch{console.log(process.argv[1])}' "$route")
     slug=$(echo "${route#/}" | tr '/:' '__'); L="$BOARD/snapshots/$sec/$slug-light.png"; D="$BOARD/snapshots/$sec/$slug-dark.png"
     for mode in light dark; do
       xcrun simctl ui "$SIM" appearance $mode; xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1
-      xcrun simctl launch "$SIM" $BID -snapshotRoute "$route" >/dev/null 2>&1; python3 -c "import time;time.sleep(4)"
+      xcrun simctl launch "$SIM" $BID -snapshotRoute "$eff" >/dev/null 2>&1; python3 -c "import time;time.sleep(4)"
       xcrun simctl io "$SIM" screenshot "$BOARD/snapshots/$sec/$slug-$mode.png" >/dev/null 2>&1
     done
-    why=""; ro=$(swift "$OCR" "$L" "$route" 2>/dev/null); r2=$(swift "$OCR" "$D" "$route" 2>/dev/null)
+    why=""; ro=$(swift "$OCR" "$L" "$eff" 2>/dev/null); r2=$(swift "$OCR" "$D" "$eff" 2>/dev/null)
     [ -s "$L" ] && [ -s "$D" ] || why="NOSHOT"
     # الأولوية لسبب المحتوى (خطأ/قيد الإعداد/فارغ) لأنه ينسب المسار للجهة الصحيحة؛ DUP فقط لشاشة سليمة مطابقة لمسار بمكوّن مختلف
     [ -z "$why" ] && { [ "$ro" != OK ] && why=$ro || { [ "$r2" != OK ] && why=$r2; }; }
