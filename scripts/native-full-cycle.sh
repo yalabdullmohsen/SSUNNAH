@@ -17,7 +17,11 @@ TICK="$BOARD/native-loop.ticks"; : > "$TICK"; : > "$BOARD/native-loop.invalid"
 bash scripts/native-snapshot.sh sirah aqidah fiqh library quran account learn hadith adhkar >/dev/null 2>&1
 while read -r route; do [ -n "$route" ] && sed -i '' "s#^- \[ \] \`$route\` #- [x] \`$route\` #" docs/native/FEATURE_PARITY.md; done < "$TICK"
 PCT=$(node scripts/native-progress.mjs | tr '\n' ' ')
-printf '| %s | %s | %s | دورة كاملة | — | 0 |\n' "full-$(date +%Y%m%d-%H%M)" "$(date +%F)" "$PCT" >> docs/native/PROGRESS.md
+PREV=$(grep -E 'مدموج ومبني: [0-9]+/' docs/native/PROGRESS.md | tail -1 | sed -E 's#.*مدموج ومبني: ([0-9]+)/.*مُتحقَّق بلقطة: ([0-9]+)/.*#\1 \2#')
+NB=$(echo "$PCT" | sed -E 's#.*مدموج ومبني: ([0-9]+)/.*#\1#'); NV=$(echo "$PCT" | sed -E 's#.*مُتحقَّق بلقطة: ([0-9]+)/.*#\1#')
+GATE=$(node scripts/native-data-check.mjs 2>&1 | head -1 | sed -E 's#.*مفقود: ([0-9]+).*فارغ \(تحذير\): ([0-9]+).*#مفقود \1 فارغ \2#')
+DELTA="الفرق: مبني $((NB-${PREV%% *})) · مُتحقَّق $((NV-${PREV##* })) · $GATE"
+printf '| %s | %s | %s | دورة كاملة | %s | 0 |\n' "full-$(date +%Y%m%d-%H%M)" "$(date +%F)" "$PCT" "$DELTA" >> docs/native/PROGRESS.md
 git add docs/native/FEATURE_PARITY.md docs/native/PROGRESS.md
 git commit -q -m "ن4 (native-full-cycle): تأشير $(sort -u "$TICK" | wc -l | tr -d ' ') بند — $PCT" && git push -q origin HEAD:native-app >> "$LOG" 2>&1 && log "دُفع التقدم: $PCT"
 log "انتهت الدورة الكاملة: $PCT"

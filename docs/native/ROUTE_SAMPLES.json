@@ -1,0 +1,9 @@
+{
+ "/discover-islam/articles/:slug": "/discover-islam/articles/what-is-islam",
+ "/discover-islam/doubts/:slug": "/discover-islam/doubts/too-many-rules",
+ "/discover-islam/questions/:slug": "/discover-islam/questions/why-believe-in-god",
+ "/tawhid/:slug": "/tawhid/tawhid-issues",
+ "/madhahib/:id": "/madhahib/hanafi",
+ "/sins-and-rights/:slug": "/sins-and-rights/tark-salah",
+ "/fiqh/books/:bookId": "/fiqh/books/taharah"
+}
