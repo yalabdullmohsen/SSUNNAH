@@ -146,8 +146,11 @@ struct SmallPrayerWidgetView: View {
                 SunnahCalmCard().foregroundStyle(PrayerHomeStyle.ink)
             } else {
                 VStack(alignment: .leading, spacing: 8) {
-                    SunnahCounterFace(entry: entry, size: 26)
-                        .foregroundStyle(SunnahBrandColors.gold)
+                    Text(entry.stateTitle)
+                        .font(WidgetType.secondary(13))
+                        .foregroundStyle(PrayerHomeStyle.sub)
+                    SunnahCounterFace(entry: entry, size: 26, showsIcon: false)
+                        .foregroundStyle(entry.homeCounterColor)
                     Spacer(minLength: 0)
                     if let key = entry.focus.key {
                         PrayerNameTime(key: key, date: entry.focus.date, timeZone: entry.displayTimeZone,
@@ -173,8 +176,13 @@ struct MediumPrayerWidgetView: View {
                 SunnahCalmCard().foregroundStyle(PrayerHomeStyle.ink)
             } else {
                 SunnahTwoZone {
-                    SunnahCounterFace(entry: entry, size: 34)
-                        .foregroundStyle(SunnahBrandColors.gold)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(entry.stateTitle)
+                            .font(WidgetType.secondary(14))
+                            .foregroundStyle(PrayerHomeStyle.sub)
+                        SunnahCounterFace(entry: entry, size: 34, showsIcon: false)
+                            .foregroundStyle(entry.homeCounterColor)
+                    }
                 } secondary: {
                     if let key = entry.focus.key {
                         PrayerNameTime(key: key, date: entry.focus.date, timeZone: entry.displayTimeZone,
@@ -202,7 +210,7 @@ struct LargePrayerWidgetView: View {
             } else {
                 VStack(alignment: .leading, spacing: 16) {
                     SunnahCounterFace(entry: entry, size: 42)
-                        .foregroundStyle(SunnahBrandColors.gold)
+                        .foregroundStyle(entry.homeCounterColor)
                     PrayerSixGrid(entry: entry)
                         .foregroundStyle(PrayerHomeStyle.ink)
                     Spacer(minLength: 0)
@@ -230,6 +238,39 @@ enum PrayerCounterA11y {
     }
 }
 
+extension PrayerWidgetEntry {
+    /// التنازلي ≤ 10 دقائق: يتغير الشكل بلون التنبيه (ذهبي الهوية).
+    var isAlertWindow: Bool {
+        guard !focus.isCurrent, let end = focus.date else { return false }
+        let left = end.timeIntervalSince(date)
+        return left > 0 && left <= 10 * 60
+    }
+
+    /// تقدم الفترة بين الصلاة السابقة والقادمة (أو بين الأذان ونهاية النافذة أثناء العدّ التصاعدي).
+    var intervalProgress: Double {
+        if let s = elapsedStart, let e = elapsedEnd, e > s {
+            return min(1, max(0, date.timeIntervalSince(s) / e.timeIntervalSince(s)))
+        }
+        guard let p = previousDate, let n = nextDate, n > p else { return 0 }
+        return min(1, max(0, date.timeIntervalSince(p) / n.timeIntervalSince(p)))
+    }
+
+    var focusTimeText: String? { focus.date.map { timeText($0) } }
+
+    /// رمز شاشة القفل: جرس عند التنبيه (لا ألوان ثابتة على القفل؛ النظام يلوّن).
+    var lockSymbol: String {
+        isAlertWindow ? "bell.fill" : (focus.key?.symbol(filled: focus.isCurrent) ?? "moon.stars")
+    }
+
+    /// لون العدّاد على الخلفية الزمردية: أبيض ← تنبيه عنبري (≤10د) ← ذهبي بعد الأذان.
+    var homeCounterColor: Color {
+        isAlertWindow ? SunnahWidgetTheme.alertText : (focus.isCurrent ? SunnahBrandColors.gold : SunnahWidgetTheme.primaryText)
+    }
+
+    /// عنوان الحالة: «القادمة» / «مضى على أذان» (يتغير مع العدّ التصاعدي).
+    var stateTitle: String { focus.isCurrent ? "مضى على أذان" : "القادمة" }
+}
+
 // MARK: - Lock Screen
 
 struct InlinePrayerWidgetView: View {
@@ -239,8 +280,12 @@ struct InlinePrayerWidgetView: View {
         if entry.needsAppOpenAction {
             Text("افتح سُنّة")
         } else {
+            let name = entry.focus.key?.nameAr ?? "الصلاة"
             Label {
-                PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
+                HStack(spacing: 4) {
+                    Text(entry.focus.isCurrent ? "\(name) منذ" : "\(name) بعد")
+                    PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
+                }
             } icon: {
                 Image(systemName: entry.focus.key?.symbol(filled: entry.focus.isCurrent) ?? "moon.stars")
             }
@@ -260,14 +305,16 @@ struct CircularPrayerWidgetView: View {
                     .font(WidgetType.icon(20))
                     .widgetAccentable()
             } else {
-                VStack(spacing: 2) {
-                    Image(systemName: entry.focus.key?.symbol(filled: entry.focus.isCurrent) ?? "moon.stars")
-                        .font(WidgetType.icon(WidgetType.minSize))
-                        .widgetAccentable()
-                    PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
+                Gauge(value: entry.intervalProgress) {
+                    Text(entry.focus.key?.nameAr ?? "الصلاة")
+                } currentValueLabel: {
+                    Text(entry.focus.key?.nameAr ?? "الصلاة")
                         .font(WidgetType.primary(WidgetType.minSize))
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
                 }
-                .padding(.horizontal, 2)
+                .gaugeStyle(.accessoryCircularCapacity)
+                                .padding(2)
             }
         }
         .accessibilityLabel(Text(PrayerCounterA11y.label(entry)))
@@ -281,15 +328,28 @@ struct RectangularPrayerWidgetView: View {
         if entry.needsAppOpenAction {
             SunnahCalmCard(compact: true).modifier(SunnahAccessoryInset())
         } else {
-            SunnahTwoZone {
-                SunnahCounterFace(entry: entry, size: 24, showsIcon: false)
-                    .widgetAccentable()
-            } secondary: {
-                Image(systemName: entry.focus.key?.symbol(filled: entry.focus.isCurrent) ?? "moon.stars")
-                    .font(WidgetType.icon(20))
-                    .widgetAccentable()
-                    .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 0) {
+                HStack(spacing: 4) {
+                    Image(systemName: entry.lockSymbol)
+                        .font(WidgetType.icon(WidgetType.minSize))
+                        .accessibilityHidden(true)
+                    Text("\(entry.stateTitle) \(entry.focus.key?.nameAr ?? "")")
+                        .font(WidgetType.primary(14))
+                        .lineLimit(1)
+                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                }
+                PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
+                    .font(WidgetType.primary(26))
+                    .lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                if let t = entry.focusTimeText {
+                    Text(t)
+                        .font(WidgetType.secondary(WidgetType.minSize))
+                        .lineLimit(1)
+                }
             }
+            .widgetAccentable()
+            .frame(maxWidth: .infinity, alignment: .leading)
             .modifier(SunnahAccessoryInset())
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(Text(PrayerCounterA11y.label(entry)))
