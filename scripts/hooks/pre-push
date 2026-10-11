@@ -67,6 +67,13 @@ if [[ -n "$BASE" ]]; then
   fi
 fi
 
+# فهرس البحث مشتقّ من المحتوى/الحجز: إن لمس الفرعُ مصدره فأعد التوليد وارفض الدفع إن اختلف المتتبَّع (مطابق لخطوة CI / build)
+if [[ -n "$BASE" ]] && git diff --name-only "$BASE" HEAD | grep -qE '^artifacts/majalis/(content/|public/data/|src/(lib|data)/)'; then
+  echo "⏳ فهرس البحث…"
+  bash "$APP_DIR/scripts/check-search-index-fresh.sh" || fail "فهرس البحث قديم"
+  pass "فهرس البحث"
+fi
+
 echo "⏳ ci:local…"
 "$PNPM_BIN" run ci:local || fail "ci:local"
 pass "ci:local"
