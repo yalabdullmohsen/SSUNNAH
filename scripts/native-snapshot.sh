@@ -33,7 +33,7 @@ for s in "$@"; do
       hl=$(shasum -a 256 "$L" | cut -c1-64); hd=$(shasum -a 256 "$D" | cut -c1-64)
       [ "$hl" = "$hd" ] && why="LIGHT=DARK"
       c=$(comp "$route")
-      for h in "$hl" "$hd"; do o=$(grep "^$h " "$SEEN" | head -1 | cut -d' ' -f2-); [ -n "$o" ] && [ "$o" != "$c" ] && why="${why:-DUP_SCREEN}"; [ -z "$o" ] && echo "$h $c" >> "$SEEN"; done
+      for h in "$hl" "$hd"; do o=$(grep "^$h " "$SEEN" | head -1 | cut -d' ' -f2-); ob="${o#* }"; oc="${o% *}"; [ -n "$o" ] && [ "$oc" != "$c" ] && [ "$ob" != "${route##*/}" ] && why="${why:-DUP_SCREEN}"; [ -z "$o" ] && echo "$h $c ${route##*/}" >> "$SEEN"; done
     fi
     [ -z "$why" ] && { ro=OK; r2=OK; why=OK; }
     if [ "$why" = OK ] && [ "$r2" = OK ]; then echo "$route" >> "$TICK"; else echo "$route|$sec|${why:-?}" >> "$INVALID"; fi
