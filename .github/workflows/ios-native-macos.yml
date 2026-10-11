@@ -3,18 +3,8 @@ name: iOS native (macOS)
 # Real Xcode build/test when iOS/Capacitor paths change.
 # Does NOT upload to TestFlight. Does NOT change signing settings.
 on:
-  pull_request:
-    paths:
-      - "artifacts/majalis/ios/**"
-      - "artifacts/majalis/capacitor.config.ts"
-      - "artifacts/majalis/src/lib/native-*.ts"
-      - "artifacts/majalis/src/lib/prayer-ticker.ts"
-      - ".github/workflows/ios-native-macos.yml"
-  push:
-    branches: [main]
-    paths:
-      - "artifacts/majalis/ios/**"
-      - "artifacts/majalis/capacitor.config.ts"
+  # بقرار المالك 2026-10-11: لا runner مدفوع تلقائيًا؛ البوابة الوحيدة لـnative-app هي scripts/native-loop.sh المحلي.
+  workflow_dispatch:
 
 concurrency:
   group: ios-native-${{ github.workflow }}-${{ github.ref }}
