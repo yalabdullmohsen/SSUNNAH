@@ -15,6 +15,18 @@ const SINCE = "2026-10-11";
 const SH = /رواه (?:البخاري|مسلم)|متفق عليه|صحيح (?:البخاري|مسلم)|البخاري ومسلم|رواه الشيخان|أخرجه (?:البخاري|مسلم)/;
 const strip = (s) => String(s || "").replace(/[ً-ٰٟ]/g, "");
 const NAMED = /صح+ح(?:ه|ها)\s+\S+/;
+const NAMED_HASAN = /حس+ن(?:ه|ها)\s+(?:الألباني|ابن حجر|النووي|الترمذي)/;
+const N = (s) => String(s || "").replace(/[ً-ٰٟـ]/g, "").replace(/[أإآٱ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه").replace(/[^ء-ي]/g, "");
+/* مرجع صريح من المدوَّنة المحلية المحقَّقة (public/data/hadith-verified): يُقبل فقط إن احتوى متنها نص الذكر كاملًا (≥25 حرفًا) ودرجتها مطابقة */
+const local = [];
+for (const f of fs.readdirSync("public/data/hadith-verified").filter((x) => x.startsWith("sahih")))
+  for (const r of JSON.parse(fs.readFileSync(`public/data/hadith-verified/${f}`, "utf8"))) local.push({ t: N(r.text), name: r.source_name, grade: r.grade, id: r.id });
+const localRef = (text, grade) => {
+  const n = N(text);
+  if (n.length < 25) return null;
+  const m = local.filter((x) => x.t.includes(n) && x.name && x.grade === grade);
+  return m.length === 1 ? m[0] : null;
+};
 const PRIORITY = ["adh-morning", "adh-evening", "adh-sleep"];
 
 const verify = makeQuranVerifier("public/data");
@@ -41,6 +53,12 @@ for (const i of ADHKAR_ITEMS) {
   }
   if (grade === "صحيح" && SH.test(src)) { rows.push(row("sahihayn")); bump("export:sahihayn"); continue; }
   if (grade === "صحيح" && NAMED.test(strip(`${src} ${ref}`)) && ref) { rows.push(row("named_grader")); bump("export:named_grader"); continue; }
+  if (grade === "حسن" && NAMED_HASAN.test(strip(`${src} ${ref}`)) && ref) { rows.push(row("named_grader_hasan")); bump("export:named_grader_hasan"); continue; }
+  if (grade === "صحيح" || grade === "حسن") {
+    const L = localRef(i.text, grade);
+    if (L) { rows.push(row("local_verified_corpus", { local_ref: L.name, local_id: L.id })); bump("export:local_verified_corpus"); continue; }
+  }
+  if (grade === "صحيح") { holds.push({ id: i.id, reason: "درجة «صحيح» بلا مصحِّح مسمّى ولا مرجع محلي محقَّق: لا يُصدَّر للتطبيق الأصلي", since: SINCE }); bump("hold:صحيح بلا مصحِّح"); continue; }
   deferred.push({ id: i.id, why: grade === "صحيح" ? "صحيح بلا مصحِّح مسمّى" : `درجة «${grade.slice(0, 20)}» لا تكفي` }); bump(`defer:${grade.slice(0, 12)}`);
 }
 

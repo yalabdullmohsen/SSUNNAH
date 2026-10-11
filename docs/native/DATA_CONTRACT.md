@@ -86,7 +86,7 @@
 - فارغة عمدًا (`[]`) لغياب مصدر/درجة في الويب وقرار المالك: `fikr-waqia`, `seerah-phases`, `shamail`.
 - `prophets-lineage` لا يُكتب (جذر واحد لا قائمة، ولا عقدة فارغة صالحة): غيابه = «قيد التوثيق».
 
-### adhkar (adhkar/verified-adhkar.json = 190 صفًا، من content/native/adhkar-verified.json)
-- المصدر: بذرة الأذكار الأصلية `src/lib/adhkar-seed.ts` عبر `scripts/native/build-adhkar-verified.mjs`؛ النص والمصدر والدرجة حرفيًا بلا إنشاء ولا مرجع جديد. الشكل هو صف `verified_adhkar_items` (§1) مع `metadata.basis`: `sahihayn` (140: درجة صحيح ومصدر صريح في البخاري/مسلم) أو `named_grader` (33: صحيح بمصحِّح مسمّى ومرجع الباب) أو `quran_tanzil` (17: يطابق Tanzil حرفيًا).
-- المحجوز (16 ← content-hold): درجة ضعيفة. المُرجأ (119، لا يُصدَّر ولا يُحجز): حسن 69، صحيح بلا مصحِّح مسمّى 49، صلاة على النبي ﷺ 1 (لا حديث مدّعى).
-- `native-export-data.sh` يمرّر الملف تلقائيًا عند وجوده؛ إن اعتمد المالك صفوف Supabase الـ51 دُمجت لاحقًا بنفس الشكل.
+### adhkar (adhkar/verified-adhkar.json = 207 صفوف، من content/native/adhkar-verified.json)
+- المصدر: بذرة الأذكار الأصلية `src/lib/adhkar-seed.ts` عبر `scripts/native/build-adhkar-verified.mjs`؛ النص والمصدر والدرجة حرفيًا بلا إنشاء ولا مرجع جديد، والدرجة كما هي (حسن تبقى «حسن»). الشكل هو صف `verified_adhkar_items` (§1) مع `metadata.basis`: `sahihayn` (140) · `named_grader` (33: صحيح بمصحِّح مسمّى) · `named_grader_hasan` (15: حسن بمصحِّح مسمّى) · `local_verified_corpus` (2: مطابقة متن كاملة لسجل في hadith-verified بمرجعه في `metadata.local_ref`) · `quran_tanzil` (17).
+- المحجوز (64 ← content-hold): 16 ضعيف + 48 صحيح بلا مصحِّح مسمّى ولا مرجع محلي. المُرجأ (54، لا يُصدَّر ولا يُحجز): حسن بلا مصحِّح مسمّى 53، وصيغة «صلى الله عليه وسلم» 1 (ليست نص حديث؛ صيغة الصلاة الإبراهيمية الثابتة في الصحيحين مصدَّرة أصلًا).
+- `native-export-data.sh` يمرّر الملف تلقائيًا؛ إن اعتمد المالك صفوف Supabase الـ51 دُمجت لاحقًا بنفس الشكل.
