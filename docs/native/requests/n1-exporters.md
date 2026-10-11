@@ -135,3 +135,6 @@
 
 ## تنبيه إلى ن3
 ن2 عدّل ملفين مشتركين: `RootTabView.swift` و`ScreenTemplate.swift` — أعد القاعدة (rebase على native-app) قبل أي تعديل عليهما.
+
+## قاعدة: فحص سريع بعد دمج أي PR تصدير
+بعد دمج أي PR يمسّ `scripts/native/sections/*` يُشغَّل فورًا: `scripts/native-quick-check.sh <الأقسام المتأثرة>` (تصدير + native-data-check + بناء + لقطات تلك الأقسام فقط). الدورة الكاملة تُصدِّر كل مرة الآن.
