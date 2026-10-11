@@ -5,9 +5,13 @@ import UserNotifications
 
 /// أصوات الإشعارات الأصلية المسموح بها. البوابة scripts/check-sound-pack.mjs تُفشل CI إن أُدرج هنا
 /// صوت غير معتمد في docs/audio-rights/sound-pack.manifest.json. الافتراضي صوت iOS النظامي؛
-/// اختيار صوت الأذان قرار المالك، فالقائمة فارغة حتى يُتخذ.
+/// القائمة فارغة: لا أذان ولا صوت ديني في التطبيق؛ مقاطع العبارة في phraseSounds.
 public enum NotificationSoundPack {
     public static let approvedNotificationSounds: Set<String> = []
+
+    /// عشرة مقاطع عبارة قصيرة (اقترب/حان الآن موعد أذان X) بأسماء ثابتة. لا أذان في التطبيق (قرار المالك).
+    /// تُستعمل فقط إن وُجد الملف فعلًا في حزمة التطبيق (وإلا صوت النظام)، فلا يُسكت الإشعار بملف غائب.
+    public static let phraseSounds: Set<String> = Set(PrayerNotificationPlanner.allSoundNames)
 
     /// اسم الملف إن كان معتمدًا، وإلا nil (يعني صوت النظام).
     public static func approvedName(_ name: String) -> String? {
@@ -15,8 +19,12 @@ public enum NotificationSoundPack {
     }
 
     #if canImport(UserNotifications)
-    public static func sound(named name: String) -> UNNotificationSound {
-        approvedName(name).map { UNNotificationSound(named: UNNotificationSoundName($0)) } ?? .default
+    public static func sound(named name: String, bundle: Bundle = .main) -> UNNotificationSound {
+        let base = (name as NSString).deletingPathExtension
+        if phraseSounds.contains(name), bundle.url(forResource: base, withExtension: "caf") != nil {
+            return UNNotificationSound(named: UNNotificationSoundName(name))
+        }
+        return approvedName(name).map { UNNotificationSound(named: UNNotificationSoundName($0)) } ?? .default
     }
     #endif
 }

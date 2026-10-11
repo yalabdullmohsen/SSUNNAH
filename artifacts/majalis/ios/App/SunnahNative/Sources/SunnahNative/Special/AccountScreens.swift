@@ -16,9 +16,9 @@ private struct AuthForm<Extra: View>: View {
         ScrollView {
             VStack(spacing: Sunnah.Spacing.s4) {
                 TextField("البريد الإلكتروني", text: $email)
-                    .textContentType(.emailAddress).autocorrectionDisabled()
+                    .autocorrectionDisabled()
                     #if os(iOS)
-                    .keyboardType(.emailAddress).textInputAutocapitalization(.never)
+                    .textContentType(.emailAddress).keyboardType(.emailAddress).textInputAutocapitalization(.never)
                     #endif
                     .textFieldStyle(.roundedBorder)
                 if showsPassword {
