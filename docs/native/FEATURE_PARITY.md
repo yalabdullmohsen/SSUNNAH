@@ -1,0 +1,459 @@
+# FEATURE_PARITY — جرد ميزات التطبيق للنقل إلى SwiftUI
+
+مولَّد من `artifacts/majalis/src/AppRoutes.tsx` عبر `scripts/native-route-inventory.mjs`. التأشير بـ[x] يدويًا عند اكتمال الميزة وفحصها؛ `scripts/native-progress.mjs` يحسب النسبة.
+ما ليس هنا لا يُبنى (انظر «المحذوف» في الأسفل).
+
+## الأذكار والأدعية — 8 (المسؤول: ن3)
+
+- [ ] `/adhan-help` — AdhanHelpPage — قائمة
+- [ ] `/adhan-settings` — AdhanSettingsPage — قائمة
+- [ ] `/adhkar` — AdhkarPage — قائمة
+- [ ] `/daily-wird` — DailyWirdPage — قائمة
+- [ ] `/duas` — DuasPage — قائمة
+- [ ] `/duas-quran` — DuasQuranPage — قائمة
+- [ ] `/sunan-yawmiyya` — SunanYawmiyyaPage — قائمة
+- [ ] `/tasbih` — TasbihPage — قائمة
+
+## الحديث والسنة — 13 (المسؤول: ن3)
+
+- [ ] `/arbaeen-nawawi` — ArbaeenNawawiPage — قائمة
+- [ ] `/arbaeen-nawawi/:id` — ArbaeenHadithDetailPage — تفاصيل
+- [ ] `/dalail-nubuwwah` — DalailNubuwwahPage — قائمة
+- [ ] `/hadith` — HadithPage — قائمة
+- [ ] `/hadith-science` — HadithSciencePage — قائمة
+- [ ] `/hadith/arbaeen-love-of-allah` — ArbaeenLovePage — قائمة
+- [ ] `/hadith/books` — HadithBooksPage — قائمة
+- [ ] `/hadith/books-and-rulings` — HadithBooksAndRulingsPage — قائمة
+- [ ] `/hadith/daif` — HadithDaifPage — قائمة
+- [ ] `/hadith/mawdu` — HadithMawduPage — قائمة
+- [ ] `/hadith/sahih` — HadithSahihPage — قائمة
+- [ ] `/sunnah-studies` — SunnahStudiesPage — قائمة
+- [ ] `/wasaya-nabawiyya` — WasayaNabawiyyaPage — قائمة
+
+## الحساب والإعدادات — 28 (المسؤول: ن3)
+
+- [ ] `/about` — AboutPage — قائمة
+- [ ] `/account-deletion` — AccountDeletionPage — خاصة
+- [ ] `/auth/callback` — AuthCallbackPage — خاصة
+- [ ] `/auth/update-password` — UpdatePasswordPage — خاصة
+- [ ] `/calendar` — CalendarPage — شبكة
+- [ ] `/car-mode` — CarModePage — قائمة
+- [ ] `/contact` — ContactPage — قائمة
+- [ ] `/data-licenses` — SourcesLicensesPage — قائمة
+- [ ] `/fatwa-policy` — FatwaPolicyPage — مقال
+- [ ] `/feature-tour` — FeatureTourPage — قائمة
+- [ ] `/islam-stats` — IslamStatsPage — قائمة
+- [ ] `/login` — LoginPage — خاصة
+- [ ] `/mosque-mode` — MosqueModePage — قائمة
+- [ ] `/my-submissions` — MySubmissionsPage — قائمة
+- [ ] `/notification-settings` — NotificationSettingsPage — قائمة
+- [ ] `/offline` — OfflineCenterPage — أقسام
+- [ ] `/privacy` — PrivacyPage — قائمة
+- [ ] `/privacy-center` — PrivacyCenterPage — أقسام
+- [ ] `/qibla` — QiblaPage — قائمة
+- [ ] `/register` — RegisterPage — قائمة
+- [ ] `/settings` — SettingsPage — خاصة
+- [ ] `/stats` — UserStatsPage — قائمة
+- [ ] `/submit` — SubmitContentPage — قائمة
+- [ ] `/updates` — UpdatesPage — قائمة
+- [ ] `/updates/auto/:slug` — AutoContentDetailPage — تفاصيل
+- [ ] `/upload` — UploadPage — خاصة
+- [ ] `/vault` — VaultPage — خاصة
+- [ ] `/widget-center` — WidgetCenterPage — خاصة
+
+## الدروس والتعلم — 23 (المسؤول: ن3)
+
+- [ ] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
+- [ ] `/competitions` — CompetitionsPage — اختبار
+- [ ] `/competitions/:id` — CompetitionDetailPage — اختبار
+- [ ] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
+- [ ] `/durus-mutanawwia` — DurusMutanawwiaPage — قائمة
+- [ ] `/fawaid` — FawaidPage — قائمة
+- [ ] `/flashcards` — FlashCardsPage — قائمة
+- [ ] `/institutions` — InstitutionsPage — قائمة
+- [ ] `/knowledge-graph` — KnowledgeGraphPage — قائمة
+- [ ] `/knowledge/:section` — KnowledgeSectionPage — تفاصيل
+- [ ] `/kuwait-lessons` — KuwaitLessonsPage — قائمة
+- [ ] `/lessons` — LessonsPage — قائمة
+- [ ] `/lessons/:id` — LessonDetailPage — تفاصيل
+- [ ] `/lessons/archive` — LessonsArchivePage — قائمة
+- [ ] `/my-learning` — MyLearningPage — قائمة
+- [ ] `/progress` — ProgressCenterPage — أقسام
+- [ ] `/quiz` — QuizPage — اختبار
+- [ ] `/reading-plans` — ReadingPlansPage — قائمة
+- [ ] `/researcher` — ResearcherProfilePage — بحث
+- [ ] `/study-room` — StudyRoomPage — قائمة
+- [ ] `/universities` — UniversitiesPage — قائمة
+- [ ] `/universities/:slug` — UniversityDetailPage — تفاصيل
+- [ ] `/universities/compare` — UniversitiesComparePage — قائمة
+
+## السيرة والتاريخ والأعلام — 18 (المسؤول: ن2)
+
+- [ ] `/fikr-waqia` — FikrWaqiaPage — قائمة
+- [ ] `/islamic-landmarks` — IslamicLandmarksPage — قائمة
+- [ ] `/islamic-landmarks/:id` — IslamicLandmarkDetailPage — تفاصيل
+- [ ] `/islamic-landmarks/map` — IslamicLandmarksMapExplorerPage — شبكة
+- [ ] `/nations` — NationsPage — قائمة
+- [ ] `/nations/:slug` — NationDetailPage — تفاصيل
+- [ ] `/occasions` — OccasionsPage — قائمة
+- [ ] `/occasions-lessons` — OccasionsLessonsHubPage — أقسام
+- [ ] `/prophets` — ProphetStoriesPage — مقال
+- [ ] `/prophets/tree` — ProphetsFamilyTreePage — قائمة
+- [ ] `/sahabah` — SahabahPage — قائمة
+- [ ] `/seerah` — SeerahPage — قائمة
+- [ ] `/shamael` — ShimaelPage — قائمة
+- [ ] `/stories` — IslamicStoriesPage — مقال
+- [ ] `/tarikh-islami` — TarikhIslamiPage — قائمة
+- [ ] `/tarikh-islami/:id` — TarikhIslamiDetailPage — تفاصيل
+- [ ] `/teachers` — TeachersIndexPage — أقسام
+- [ ] `/teachers/:slug` — TeacherDetailPage — تفاصيل
+
+## العقيدة والتزكية — 27 (المسؤول: ن2)
+
+- [ ] `/adab-talab-ilm` — AdabTalabIlmPage — قائمة
+- [ ] `/akhlaq` — AkhlaqPage — قائمة
+- [ ] `/alamat-saah` — AlamatSaahPage — قائمة
+- [ ] `/amrad-qalbiyya` — AmradQalbiyyaPage — قائمة
+- [ ] `/asma-husna` — AsmaaHusnaPage — قائمة
+- [ ] `/discover-islam` — DiscoverIslamPage — قائمة
+- [ ] `/discover-islam/articles/:slug` — DiscoverIslamArticleDetailPage — مقال
+- [ ] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
+- [ ] `/discover-islam/doubts` — DiscoverIslamDoubtsPage — قائمة
+- [ ] `/discover-islam/doubts/:slug` — DiscoverIslamDoubtDetailPage — تفاصيل
+- [ ] `/discover-islam/how-to-convert` — HowToBecomeMuslimPage — قائمة
+- [ ] `/discover-islam/new-muslim` — NewMuslimPathPage — قائمة
+- [ ] `/discover-islam/new-muslim/:day` — NewMuslimDayDetailPage — تفاصيل
+- [ ] `/discover-islam/questions` — DiscoverIslamQuestionsPage — قائمة
+- [ ] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
+- [ ] `/hikam-salaf` — HikamSalafPage — قائمة
+- [ ] `/iman-topics` — ImanTopicsPage — قائمة
+- [ ] `/islamic-sects` — IslamicSectsPage — قائمة
+- [ ] `/islamic-sects/:id` — IslamicSectsDetailPage — تفاصيل
+- [ ] `/janna-naar` — JannaNaarPage — قائمة
+- [ ] `/malaika` — MalaikaPage — قائمة
+- [ ] `/raqaiq` — RaqaiqPage — قائمة
+- [ ] `/tawhid` — TawhidPage — قائمة
+- [ ] `/tawhid/:slug` — TawhidTopicPage — تفاصيل
+- [ ] `/tazkiya` — TazkiyaHubPage — أقسام
+- [ ] `/tazkiya-topics` — TazkiyaTopicsPage — قائمة
+- [ ] `/usra-mujtama` — UsraMujtamaPage — شبكة
+
+## الفقه والعبادات — 39 (المسؤول: ن2)
+
+- [ ] `/amr-bil-maruf` — AmrBilMarufPage — قائمة
+- [ ] `/arkan` — ArkanIslamPage — قائمة
+- [ ] `/arkan-iman` — ArkanImanPage — قائمة
+- [ ] `/fadail-aamal` — FadailAamalPage — قائمة
+- [ ] `/family` — FamilyModePage — قائمة
+- [ ] `/fiqh` — FiqhPage — قائمة
+- [ ] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
+- [ ] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
+- [ ] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
+- [ ] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل
+- [ ] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
+- [ ] `/fiqh/usul` — FiqhUsulPage — قائمة
+- [ ] `/hajj` — HajjPage — قائمة
+- [ ] `/janaza` — JanazaPage — قائمة
+- [ ] `/jumuah` — JumuahPage — قائمة
+- [ ] `/madhahib` — MadhahibPage — قائمة
+- [ ] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
+- [ ] `/maqasid-sharia` — MaqasidShariaPage — قائمة
+- [ ] `/mawarith` — MawarithPage — قائمة
+- [ ] `/mawarith/calculator` — MawarithCalculatorPage — قائمة
+- [ ] `/nikah` — NikahPage — قائمة
+- [ ] `/prayer-ranks` — PrayerRanksPage — قائمة
+- [ ] `/prayer-times` — PrayerTimesPage — قائمة
+- [ ] `/prophetic-medicine` — PropheticMedicinePage — قائمة
+- [ ] `/riba` — RibaPage — قائمة
+- [ ] `/ruqya` — RuqyaPage — قائمة
+- [ ] `/sadaqa` — SadaqaPage — قائمة
+- [ ] `/salah-guide` — SalahGuidePage — قائمة
+- [ ] `/sawm` — SawmPage — قائمة
+- [ ] `/sins-and-rights` — SinsAndRightsPage — قائمة
+- [ ] `/sins-and-rights/:slug` — SinsAndRightsDetailPage — تفاصيل
+- [ ] `/sujood-sahw` — SujoodSahwPage — قائمة
+- [ ] `/tahara` — TaharaPage — قائمة
+- [ ] `/talaq` — TalaqPage — قائمة
+- [ ] `/tawba` — TawbaPage — قائمة
+- [ ] `/udhiya` — UdhiyaPage — قائمة
+- [ ] `/waqf` — WaqfPage — قائمة
+- [ ] `/worship` — WorshipPage — قائمة
+- [ ] `/zakat` — ZakatPage — قائمة
+
+## القرآن — 37 (المسؤول: ن3)
+
+- [ ] `/c/:slug` — CitationPublicPage — تفاصيل
+- [ ] `/hifz-path` — HifzPathPage — قائمة
+- [ ] `/hifz-path/c/:category` — HifzPathCategoryPage — تفاصيل
+- [ ] `/hifz-path/my` — HifzPathMyPage — قائمة
+- [ ] `/hifz-path/p/:slug` — HifzPathDetailPage — تفاصيل
+- [ ] `/hifz-path/p/:slug/u/:unitId` — HifzPathUnitPage — تفاصيل
+- [ ] `/memorization` — MemorizationHubPage — أقسام
+- [ ] `/miracles` — MiraclesPage — قائمة
+- [ ] `/mushaf` — MushafReaderPage — قائمة
+- [ ] `/mushaf/bookmarks` — MushafBookmarksPage — قائمة
+- [ ] `/mutashabihat` — MutashabihatPage — قائمة
+- [ ] `/quran-circles` — QuranCirclesPage — قائمة
+- [ ] `/quran-engine` — QuranEnginePage — قائمة
+- [ ] `/quran-hub` — QuranHubPage — أقسام
+- [ ] `/quran-hub/numbers` — QuranNumbersPage — أقسام
+- [ ] `/quran-hub/qiraat` — QuranQiraatPage — أقسام
+- [ ] `/quran-hub/seven-ahruf` — QuranSevenAhrufPage — أقسام
+- [ ] `/quran-hub/tajweed` — QuranTajweedPage — أقسام
+- [ ] `/quran-hub/tajweed/:chapter` — TajweedChapterPage — تفاصيل
+- [ ] `/quran-hub/terms` — QuranUlumTermsPage — أقسام
+- [ ] `/quran-hub/tilawa` — QuranTilawaPage — صوت
+- [ ] `/quran-knowledge` — QuranKnowledgeHubPage — أقسام
+- [ ] `/quran-memorization` — QuranMemorizationPage — قائمة
+- [ ] `/quran/hifz-loop` — QuranHifzLoopPage — قائمة
+- [ ] `/quran/makki-madani` — MakkiMadaniPage — قائمة
+- [ ] `/quran/memorization-plans` — QuranMemorizationPlansPage — قائمة
+- [ ] `/quran/offline-player` — QuranOfflinePlayerPage — قائمة
+- [ ] `/quran/people` — QuranPeoplePage — قائمة
+- [ ] `/quran/people/:slug` — QuranPersonDetailPage — تفاصيل
+- [ ] `/quran/revelation-order` — RevelationOrderPage — قائمة
+- [ ] `/quran/search` — QuranSearchPage — بحث
+- [ ] `/quran/surah-stories` — SurahStoriesPage — مقال
+- [ ] `/quran/surah-stories/:number` — SurahStoryDetailRoute — مقال
+- [ ] `/quran/surahs` — SurahIndexPage — أقسام
+- [ ] `/quran/worship-hub` — QuranWorshipHubPage — أقسام
+- [ ] `/tafsir` — TafsirPage — قائمة
+- [ ] `/ulum-quran` — UlumQuranPage — قائمة
+
+## اللغة والمكتبة والبحث — 19 (المسؤول: ن2)
+
+- [ ] `/academic-research` — AcademicResearchPage — بحث
+- [ ] `/academic-research/:id` — ResearchDetailPage — بحث
+- [ ] `/academic-research/assistant` — ResearchAssistantPage — بحث
+- [ ] `/academic-research/submit` — ResearchSubmitPage — بحث
+- [ ] `/arabic-language` — ArabicLanguagePage — قائمة
+- [ ] `/cards` — CardsPage — قائمة
+- [ ] `/islamic-directory` — IslamicDirectoryHubPage — أقسام
+- [ ] `/islamic-glossary` — IslamicGlossaryPage — قائمة
+- [ ] `/mawsuaat` — MawsuaatPage — قائمة
+- [ ] `/methodology` — MethodologyPage — قائمة
+- [ ] `/mind-map` — MindMapPage — شبكة
+- [ ] `/more` — MorePage — قائمة
+- [ ] `/scientific-announcements/:id` — ScientificAnnouncementDetailPage — تفاصيل
+- [ ] `/search` — SearchPage — بحث
+- [ ] `/sections` — SectionsPage — أقسام
+- [ ] `/sitemap` — SiteMapPage — شبكة
+- [ ] `/sources` — SourcesDirectoryPage — قائمة
+- [ ] `/sources/:id` — SourceDetailPage — تفاصيل
+- [ ] `/terms` — TermsPage — قائمة
+
+## المحذوف من الجرد (213)
+
+- `/quran-engine/viewer` — مكرر لـ /quran-engine (QuranEnginePage)
+- `/about-us` — تحويل إلى /about
+- `/who-we-are` — تحويل إلى /about
+- `/man-nahnu` — تحويل إلى /about
+- `/sources-licenses` — تحويل إلى /data-licenses
+- `/licenses` — تحويل إلى /data-licenses
+- `/privacy-policy` — تحويل إلى /privacy
+- `/delete-account` — تحويل إلى /account-deletion
+- `/account/delete` — تحويل إلى /account-deletion
+- `/support` — مكرر لـ /contact (ContactPage)
+- `/debug/tasmee` — تطوير/تصحيح
+- `/dev/design-system` — تطوير/تصحيح
+- `/search/:q` — مكرر لـ /search (SearchPage)
+- `/topics/:slug` — تحويل إلى /sections
+- `/topics` — تحويل إلى /sections
+- `/lessons/current` — تحويل إلى /lessons
+- `/announcements` — تحويل إلى /lessons
+- `/courses` — تحويل إلى /lessons
+- `/sheikhs/:id` — تحويل إلى /teachers
+- `/sheikhs` — تحويل إلى /teachers
+- `/library/:id` — تحويل إلى /search
+- `/library` — تحويل إلى /search
+- `/miracles/topic/:slug` — مكرر لـ /miracles/quran (MiraclesPage)
+- `/miracles/sunnah` — مكرر لـ /miracles/quran (MiraclesPage)
+- `/miracles/quran` — مكرر لـ /miracles (MiraclesPage)
+- `/hadith/arbaeen` — تحويل إلى /arbaeen-nawawi
+- `/hadith/:id` — تحويل إلى /hadith
+- `/prophets-stories` — تحويل إلى /prophets
+- `/prophets-stories/:slug` — مكرر لـ /prophet-stories/:slug (ProphetStoriesPage)
+- `/prophet-stories` — تحويل إلى /prophets
+- `/prophets/ishaq` — تحويل إلى /prophets/is-haq
+- `/prophets/ishaaq` — تحويل إلى /prophets/is-haq
+- `/prophets/alyasa` — تحويل إلى /prophets/al-yasa
+- `/prophets/al-yasaa` — تحويل إلى /prophets/al-yasa
+- `/prophets/zakariya` — تحويل إلى /prophets/zakariyya
+- `/prophets/zakaria` — تحويل إلى /prophets/zakariyya
+- `/prophet-stories/:slug` — مكرر لـ /prophets/:slug (ProphetStoriesPage)
+- `/prophets/:slug` — مكرر لـ /prophets (ProphetStoriesPage)
+- `/islamic-stories` — تحويل إلى /stories
+- `/adhkar/:slug` — مكرر لـ /adhkar (AdhkarPage)
+- `/qa` — تحويل إلى /quiz
+- `/qa/:rest*` — تحويل إلى /quiz
+- `/knowledge-map` — تحويل إلى /knowledge-graph
+- `/islamic-history/:rest*` — تحويل إلى /tarikh-islami
+- `/islamic-history` — تحويل إلى /tarikh-islami
+- `/scholars/:id` — تحويل إلى /sections
+- `/scholars` — تحويل إلى /sections
+- `/glossary` — تحويل إلى /islamic-glossary
+- `/anbiya` — تحويل إلى /prophets
+- `/quran/tafsir` — تحويل إلى /tafsir
+- `/profile` — مكرر لـ /stats (UserStatsPage)
+- `/learning-plan` — تحويل إلى /lessons
+- `/memorize` — تحويل إلى /flashcards
+- `/my-citations` — تحويل إلى /flashcards
+- `/citations` — تحويل إلى /flashcards
+- `/notifications-and-sound` — تحويل إلى /notification-settings
+- `/family-mode` — تحويل إلى /family
+- `/researcher-profile` — مكرر لـ /researcher (ResearcherProfilePage)
+- `/learning/paths/:slug` — تحويل إلى /lessons
+- `/learning/paths` — تحويل إلى /lessons
+- `/learn/series/:slug` — بلا مكوّن صفحة
+- `/learn/lesson/:id` — بلا مكوّن صفحة
+- `/learn/:slug` — تحويل إلى /lessons
+- `/learn` — تحويل إلى /lessons
+- `/learning/quiz/:slug` — تحويل إلى /quiz
+- `/learning/quiz` — تحويل إلى /quiz
+- `/learning/calendar` — تحويل إلى /calendar
+- `/learning/certificates/:code` — تحويل إلى /lessons
+- `/learning/certificates` — تحويل إلى /lessons
+- `/learning` — تحويل إلى /lessons
+- `/learning-paths` — تحويل إلى /lessons
+- `/tracks` — تحويل إلى /lessons
+- `/study-paths` — تحويل إلى /lessons
+- `/pathways` — تحويل إلى /lessons
+- `/lessons/paths` — تحويل إلى /lessons
+- `/courses/paths` — تحويل إلى /lessons
+- `/assistant` — بلا مكوّن صفحة
+- `/scholarly-research` — تحويل إلى /academic-research
+- `/researches` — تحويل إلى /academic-research
+- `/sharia-research` — تحويل إلى /academic-research
+- `/research` — تحويل إلى /academic-research
+- `/learning-path/dashboard` — تحويل إلى /my-learning
+- `/learning-path/book/:bookId` — تحويل إلى /lessons
+- `/learning-path/:scienceSlug` — تحويل إلى /lessons
+- `/learning-path` — تحويل إلى /lessons
+- `/start-here` — تحويل إلى /lessons
+- `/condolences` — تحويل إلى /
+- `/transcribe` — بلا مكوّن صفحة
+- `/quran` — تحويل إلى /quran-hub
+- `/mushaf/page/:page` — بلا مكوّن صفحة
+- `/mushaf/page` — تحويل إلى /mushaf
+- `/mushaf/about-edition` — تحويل إلى /mushaf?page=1
+- `/mushaf/:surah` — بلا مكوّن صفحة
+- `/quran/mushaf` — تحويل إلى /mushaf
+- `/mushaf-v2-preview` — تحويل إلى /mushaf
+- `/demo-ayah-reader` — تحويل إلى /mushaf
+- `/quran/terms` — تحويل إلى /quran-hub/terms
+- `/quran-index` — تحويل إلى /quran-knowledge
+- `/asbab-al-nuzul` — تحويل إلى /quran/surah-stories
+- `/quran-stories` — تحويل إلى /quran/surah-stories
+- `/memorization-tests` — تحويل إلى /memorization
+- `/memorization-plans` — تحويل إلى /memorization
+- `/islamic-institutions` — تحويل إلى /islamic-directory
+- `/mosques` — تحويل إلى /islamic-directory
+- `/reviewed-cards` — تحويل إلى /my-learning
+- `/scientific-library` — تحويل إلى /
+- `/latest` — تحويل إلى /
+- `/fatwas` — تحويل إلى /fiqh
+- `/explore` — تحويل إلى /sections
+- `/news` — تحويل إلى /
+- `/events` — تحويل إلى /occasions-lessons
+- `/islamic-events` — تحويل إلى /occasions-lessons
+- `/lesson-calendar` — تحويل إلى /occasions-lessons
+- `/review-plans` — تحويل إلى /memorization
+- `/masajid` — تحويل إلى /islamic-directory
+- `/quran-sciences` — تحويل إلى /quran-knowledge
+- `/quran/recitation-test-ai` — تحويل إلى /mushaf?tasmee=1
+- `/tajweed` — تحويل إلى /quran-hub/tajweed
+- `/surah-stories` — تحويل إلى /quran/surah-stories
+- `/quran/tajweed` — تحويل إلى /quran-hub/tajweed
+- `/aqidah` — تحويل إلى /tawhid
+- `/shubuhat` — تحويل إلى /discover-islam/doubts
+- `/knowledge/:section/:id` — مكرر لـ /knowledge/:section (KnowledgeSectionPage)
+- `/knowledge` — تحويل إلى /knowledge/intro-islam
+- `/prayer` — تحويل إلى /prayer-times
+- `/prayer-countdown` — تحويل إلى /prayer-times
+- `/muezzins/:rest` — تحويل إلى /adhan-settings
+- `/muezzins` — تحويل إلى /adhan-settings
+- `/features-in-progress` — تحويل إلى /
+- `/durus-imaniyya/:categoryId/:topicId` — مكرر لـ /durus-imaniyya/:categoryId (DurusImaniyyaPage)
+- `/durus-imaniyya/:categoryId` — مكرر لـ /durus-imaniyya (DurusImaniyyaPage)
+- `/durus-mutanawwia/:categoryId/:topicId` — مكرر لـ /durus-mutanawwia/:categoryId (DurusMutanawwiaPage)
+- `/durus-mutanawwia/:categoryId` — مكرر لـ /durus-mutanawwia (DurusMutanawwiaPage)
+- `/iman-topics/:categoryId/:topicId` — مكرر لـ /iman-topics/:categoryId (ImanTopicsPage)
+- `/iman-topics/:categoryId` — مكرر لـ /iman-topics (ImanTopicsPage)
+- `/quran-studies` — تحويل إلى /ulum-quran
+- `/sunnah-studies/:categoryId/:topicId` — مكرر لـ /sunnah-studies/:categoryId (SunnahStudiesPage)
+- `/sunnah-studies/:categoryId` — مكرر لـ /sunnah-studies (SunnahStudiesPage)
+- `/tazkiya-topics/:categoryId/:topicId` — مكرر لـ /tazkiya-topics/:categoryId (TazkiyaTopicsPage)
+- `/tazkiya-topics/:categoryId` — مكرر لـ /tazkiya-topics (TazkiyaTopicsPage)
+- `/usra-mujtama/:categoryId/:topicId` — مكرر لـ /usra-mujtama/:categoryId (UsraMujtamaPage)
+- `/usra-mujtama/:categoryId` — مكرر لـ /usra-mujtama (UsraMujtamaPage)
+- `/fikr-waqia/:categoryId/:topicId` — مكرر لـ /fikr-waqia/:categoryId (FikrWaqiaPage)
+- `/fikr-waqia/:categoryId` — مكرر لـ /fikr-waqia (FikrWaqiaPage)
+- `/mawsuaat/:categoryId/:topicId` — مكرر لـ /mawsuaat/:categoryId (MawsuaatPage)
+- `/mawsuaat/:categoryId` — مكرر لـ /mawsuaat (MawsuaatPage)
+- `/arabic-language/:categoryId/:topicId` — مكرر لـ /arabic-language/:categoryId (ArabicLanguagePage)
+- `/arabic-language/:categoryId` — مكرر لـ /arabic-language (ArabicLanguagePage)
+- `/maqasid-sharia/:categoryId/:topicId` — مكرر لـ /maqasid-sharia/:categoryId (MaqasidShariaPage)
+- `/maqasid-sharia/:categoryId` — مكرر لـ /maqasid-sharia (MaqasidShariaPage)
+- `/dalail-nubuwwah/:categoryId/:topicId` — مكرر لـ /dalail-nubuwwah/:categoryId (DalailNubuwwahPage)
+- `/dalail-nubuwwah/:categoryId` — مكرر لـ /dalail-nubuwwah (DalailNubuwwahPage)
+- `/masarat` — تحويل إلى /lessons
+- `/annual-courses` — تحويل إلى /lessons
+- `/fiqh-council/:rest*` — تحويل إلى /fiqh
+- `/fiqh-council` — تحويل إلى /fiqh
+- `/fatwa/:id` — تحويل إلى /fiqh
+- `/fatwa` — تحويل إلى /fiqh
+- `/rulings/:id` — تحويل إلى /fiqh
+- `/rulings` — تحويل إلى /fiqh
+- `/whats-new` — تحويل إلى /
+- `/auth/register` — تحويل إلى /register
+- `/internal/status` — إدارة/تطوير — خارج التطبيق
+- `/admin/sources` — إدارة/تطوير — خارج التطبيق
+- `/admin/automation/sources` — إدارة/تطوير — خارج التطبيق
+- `/admin/automation/dashboard` — إدارة/تطوير — خارج التطبيق
+- `/admin/automation/platform` — إدارة/تطوير — خارج التطبيق
+- `/admin/automation/center` — إدارة/تطوير — خارج التطبيق
+- `/admin/autonomous-platform` — إدارة/تطوير — خارج التطبيق
+- `/admin/automation` — تحويل إلى /admin/automation/center
+- `/admin/integrations/instagram` — إدارة/تطوير — خارج التطبيق
+- `/admin/review-hub` — إدارة/تطوير — خارج التطبيق
+- `/admin/review-center` — إدارة/تطوير — خارج التطبيق
+- `/admin/automation/review` — إدارة/تطوير — خارج التطبيق
+- `/admin/content-import/url` — إدارة/تطوير — خارج التطبيق
+- `/admin/content-import/image` — إدارة/تطوير — خارج التطبيق
+- `/admin/import` — تحويل إلى /admin/content-import/url
+- `/admin/content` — تحويل إلى /admin/auto-content
+- `/admin/auto-content` — إدارة/تطوير — خارج التطبيق
+- `/admin/fiqh-review` — تحويل إلى /admin/v3
+- `/admin/fiqh-quality` — تحويل إلى /admin/v3
+- `/admin/content-production` — إدارة/تطوير — خارج التطبيق
+- `/admin/automation/content-production` — إدارة/تطوير — خارج التطبيق
+- `/admin/feature-status` — إدارة/تطوير — خارج التطبيق
+- `/admin/dashboard` — إدارة/تطوير — خارج التطبيق
+- `/admin/users` — تحويل إلى /admin?section=users
+- `/admin/universities` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/content/lessons` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/content/sheikhs` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/content/fawaid` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/content/library` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/content/islamic-stories` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/content/prophet-stories` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/content/arbaeen` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/content` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/reviews` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/taxonomy` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/analytics` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/community/roles` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/community` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/settings` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/review` — تحويل إلى /admin/v3/reviews
+- `/admin/v3/users` — تحويل إلى /admin/v3/community
+- `/admin/v3/notifications` — تحويل إلى /admin/v3/settings
+- `/admin/v3/automation/sources` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/automation/auto-content` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/automation/integrations` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/automation` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3/system` — تحويل إلى /admin/v3/settings
+- `/admin/v3/audit` — إدارة/تطوير — خارج التطبيق
+- `/admin/v3` — إدارة/تطوير — خارج التطبيق
+- `/admin/legacy` — إدارة/تطوير — خارج التطبيق
+- `/admin` — إدارة/تطوير — خارج التطبيق
