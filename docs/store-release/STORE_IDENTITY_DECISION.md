@@ -1,16 +1,12 @@
-# Store Identity Decision — سُنّة 1.0.0
+# Store Identity Decision — سُنّة
 
-**Current Capacitor config (code):**
-- `appName`: سُنّة
-- `appId` / Bundle ID: `com.yousef.majlisilm`
-- Production server URL: `https://www.ssunnah.com`
+**القرار: موقَّع — المالك (يوسف) — 2026-10-11**
 
-## Options (owner must choose — do not auto-change)
+| # | القرار |
+|---|---|
+| 1 | **Bundle ID يبقى `com.yousef.majlisilm`** (الخيار A): تحديث للتطبيق المنشور، لا تطبيق جديد، وتستمر هوية TestFlight/المتجر السابقة. لا إعادة تسمية. |
+| 2 | **`SunnahApp.xcodeproj` (SwiftUI) يحل محل مشروع Capacitor عند الإصدار.** يحمل نفس Bundle ID والفريق (`5D8TX37HTS`)؛ ويُرفع رقم البناء فوق آخر بناء منشور (CURRENT_PROJECT_VERSION 56). |
 
-| Option | Action | Impact |
-|---|---|---|
-| A | Keep `com.yousef.majlisilm` | Continues existing TestFlight/App identity if already registered |
-| B | Rename to ssunnah-branded id | **New** store app listing; loses continuity with prior TestFlight |
+**السجل السابق (للتاريخ):** كان Capacitor يضبط `appName` = سُنّة و`appId` = `com.yousef.majlisilm` و`server.url` = `https://www.ssunnah.com`. الخيار B (اسم جديد) كان سيُنشئ إدراجًا جديدًا ويقطع الاستمرارية؛ رُفض.
 
-**Agent posture:** no Bundle ID change without explicit written owner approval.  
-**Status:** **OWNER_ACTION** — see `MANUAL_OWNER_ACTION.md` OWN-06.
+**Status:** **DECIDED** — يُغلق بند OWN-06 في `MANUAL_OWNER_ACTION.md`.

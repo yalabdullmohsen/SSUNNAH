@@ -28,3 +28,6 @@
 ## iOS static
 
 مطلوب عندما يمسّ الـPR مسارات iOS/Capacitor؛ وإلا قد يُتخطى. لا تُضعف البوابة عند فشلها — أصلح السبب.
+
+## الـ worktrees
+لا تنشئ نسخ clone أو worktrees خارج `~/ssunnah-wt` (n1..n4 فقط، أعد استخدامها بـ `scripts/wt-switch.sh`). التفاصيل: `docs/handover/WORKTREES.md`.
