@@ -132,6 +132,41 @@ platform :ios do
     end
   end
 
+  desc "SwiftUI الأصلي (SunnahApp): بناء + توقيع + TestFlight داخلي — محليًا فقط (1.2.0 / بناء ≥100)"
+  lane :native_beta do
+    key_path = File.expand_path(ENV.fetch("APP_STORE_CONNECT_API_KEY_PATH")) # .p8 خارج المستودع
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_ID"),
+      issuer_id: ENV.fetch("APP_STORE_CONNECT_ISSUER_ID"),
+      key_filepath: key_path, duration: 1200, in_house: false
+    )
+    app_id = ENV.fetch("APP_IDENTIFIER", "com.yousef.majlisilm")
+    proj = File.join(PLATFORM_ROOT, "ios-native/SunnahApp.xcodeproj")
+    out = File.join(PLATFORM_ROOT, "ios-native/build")
+    latest = begin
+      latest_testflight_build_number(api_key: api_key, app_identifier: app_id, initial_build_number: 0)
+    rescue StandardError
+      0
+    end
+    next_build = [latest.to_i + 1, 100].max
+    UI.success("SunnahApp 1.2.0 build #{next_build}")
+    increment_build_number(build_number: next_build, xcodeproj: proj)
+    build_app(
+      project: proj, scheme: "SunnahApp", clean: true, output_directory: out, output_name: "SunnahApp",
+      export_method: "app-store",
+      xcargs: "-allowProvisioningUpdates -authenticationKeyPath #{key_path}" \
+              " -authenticationKeyID #{ENV.fetch('APP_STORE_CONNECT_API_KEY_ID')}" \
+              " -authenticationKeyIssuerID #{ENV.fetch('APP_STORE_CONNECT_ISSUER_ID')}",
+      export_options: { method: "app-store", signingStyle: "automatic", teamID: ENV.fetch("APPLE_TEAM_ID", "5D8TX37HTS") }
+    )
+    upload_to_testflight(
+      api_key: api_key, app_identifier: app_id, ipa: File.join(out, "SunnahApp.ipa"),
+      skip_waiting_for_build_processing: true, skip_submission: true,
+      distribute_external: false, notify_external_testers: false,
+      changelog: ENV["TESTFLIGHT_CHANGELOG"].to_s.strip.then { |c| c.empty? ? "SunnahApp native #{next_build}" : c }
+    )
+  end
+
   desc "Local archive smoke (no upload) — useful for CI dry-run on macOS"
   lane :build_only do
     Dir.chdir(IOS_WORKSPACE_DIR) do

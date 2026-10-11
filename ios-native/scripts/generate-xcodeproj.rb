@@ -14,12 +14,13 @@ Dir[File.join(root, 'SunnahApp/*.swift')].sort.each { |f| t.add_file_references(
 plat = app.new_group('Platform', 'Platform')
 Dir[File.join(root, 'SunnahApp/Platform/*.swift')].sort.each { |f| t.add_file_references([plat.new_reference(File.basename(f))]) }
 shared = proj.main_group.new_group('Shared')
-%w[Shared/OfflineAudioStore Shared/PlaybackSessionController Shared/SunnahSharedData Shared/SunnahBrandColors Shared/SunnahWidgetEnvelope Shared/SunnahWidgetRefreshCoordinator Shared/SunnahPrayerDeepLink App/PrayerLiveActivityController App/Services/KeychainStore].each do |n|
+%w[Shared/OfflineAudioStore Shared/PlaybackSessionController Shared/SunnahSharedData Shared/SunnahBrandColors Shared/SunnahWidgetEnvelope Shared/SunnahWidgetRefreshCoordinator Shared/SunnahPrayerDeepLink App/PrayerActivityAttributes App/PrayerLiveActivityController App/Services/KeychainStore].each do |n|
   r = shared.new_reference("../artifacts/majalis/ios/App/#{n}.swift"); r.source_tree = 'SOURCE_ROOT'
   t.add_file_references([r])
 end
 app.new_reference('Info.plist'); app.new_reference('SunnahApp.entitlements')
 t.resources_build_phase.add_file_reference(app.new_reference('Resources/Assets.xcassets'))
+t.resources_build_phase.add_file_reference(app.new_reference('PrivacyInfo.xcprivacy'))
 # خطوط OFL (Almarai للواجهة، Amiri للنصوص) — تُنسخ إلى جذر الحزمة ليطابقها UIAppFonts
 %w[Almarai-Regular Almarai-Bold Almarai-ExtraBold Amiri-Regular Amiri-Bold].each do |f|
   t.resources_build_phase.add_file_reference(app.new_reference("Resources/Fonts/#{f}.ttf"))
@@ -48,7 +49,7 @@ t.build_configurations.each do |c|
   s['CODE_SIGN_ENTITLEMENTS'] = 'SunnahApp/SunnahApp.entitlements'
   s['ASSETCATALOG_COMPILER_APPICON_NAME'] = 'AppIcon'
   s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
-  s['MARKETING_VERSION'] = '1.1.0'; s['CURRENT_PROJECT_VERSION'] = '56'
+  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '100'
   s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '1,2'
   s['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'; s['GENERATE_INFOPLIST_FILE'] = 'NO'
   s['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'

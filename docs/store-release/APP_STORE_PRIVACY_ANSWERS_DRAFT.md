@@ -58,3 +58,6 @@ App Privacy → «Do you or your third-party partners collect data from this app
 1. **OWNER_ACTION:** تفعيل Zero Data Retention في Groq (Data Controls). قاعدة المالك: ZDR فقط. المصدر: https://console.groq.com/docs/your-data.
 2. في التغيير نفسه: إعادة `AudioData` (غير مرتبط، بلا تتبع، App Functionality) إلى PrivacyInfo، وتحديث نص الإذن وصفحة الخصوصية وجدول ASC، وشاشة موافقة صريحة قبل أول إرسال.
 3. هذا يتطلب نسخة متجر جديدة.
+
+## البناء الأصلي (SwiftUI — SunnahApp 1.2.0) — ما يشحنه فعلًا
+المصدر: `ios-native/SunnahApp/PrivacyInfo.xcprivacy`. يُجمَع فقط: **Email Address** و**User ID** (مصادقة Supabase، مرتبطة، بلا تتبع، App Functionality). لا Name/Phone/Device ID/Crash/Performance/Search/Product Interaction ما دام الأصلي لا يرسلها؛ أي ميزة تضيف جمعًا تُحدِّث هذا الملف في PR نفسه. Required Reason APIs: UserDefaults `CA92.1`، FileTimestamp `C617.1` (ملفات حاوية التطبيق). `NSPrivacyTracking=false`. إجابات ASC تتبع هذا القسم عند رفع 1.2.0.
