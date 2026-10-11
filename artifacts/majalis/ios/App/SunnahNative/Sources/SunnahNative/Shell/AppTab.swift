@@ -33,7 +33,7 @@ public enum AppTab: String, CaseIterable, Identifiable, Hashable {
     /// المسار الجذري للتبويب على الويب.
     public var rootPath: String {
         switch self {
-        case .quran: return "/quran"
+        case .quran: return "/quran-hub"
         case .lessons: return "/lessons"
         case .home: return "/"
         case .prayer: return "/prayer-times"

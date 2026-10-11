@@ -12,6 +12,7 @@ public enum SpecialScreens {
         registry.registerView(id: "prayer") { PrayerScreen() }
         registry.registerView(id: "home") { HomeScreen() }
         registry.registerView(id: "quran") { MushafScreen() }
+        registry.registerView(id: "quran-hub") { MushafScreen() }
         registry.registerView(id: "mushaf") { MushafScreen() }
     }
 }
