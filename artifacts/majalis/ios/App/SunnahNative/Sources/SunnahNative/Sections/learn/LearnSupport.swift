@@ -1,9 +1,9 @@
 import SwiftUI
 
-/// مصادر بيانات القسم. المحزوم تحت `Data/<مجموعة>/` في `Bundle.main` (مثل الأذكار)، والمتغيّر يوميًا من الشبكة
-/// بمسار الموقع نفسه (`/data/...`) عبر DataStore كما ينص DATA_CONTRACT §2.
+/// مصادر بيانات القسم: كلها من الحزمة المحقَّقة `Data/<مجموعة>/` في `Bundle.main` (scripts/native-export-data.sh)،
+/// فلا يُعرض إلا ما اجتاز فلاتر التصدير (content-hold، المرجع، التوثيق). لا جلب من الموقع.
 enum LearnSources {
-    static let lessons = ContentSource.remote(path: "/data/lessons/chunk-000.json", maxAge: 3600)
+    static let lessons = ContentSource.bundled(name: "chunk-000", subdirectory: "Data/lessons")
     static let quizManifest = ContentSource.bundled(name: "manifest", subdirectory: "Data/quiz")
     static func quizChunk(_ chunk: LearnQuizManifest.Chunk) -> ContentSource {
         .bundled(name: chunk.resourceName, subdirectory: "Data/quiz")
@@ -15,11 +15,16 @@ enum LearnSources {
     static let durusImaniyya = ContentSource.bundled(name: "durus-imaniyya", subdirectory: "Data/learn")
     static let durusMutanawwia = ContentSource.bundled(name: "durus-mutanawwia", subdirectory: "Data/learn")
     static let graph = ContentSource.bundled(name: "links", subdirectory: "Data/graph")
+    /// `prophets/adam.json` ⇒ `Data/knowledge/prophets/adam` (المسار النسبي نفسه في `public/data/knowledge`).
     static func knowledge(_ relativePath: String) -> ContentSource {
-        .remote(path: "/data/knowledge/" + relativePath, maxAge: 86_400)
+        var parts = relativePath.split(separator: "/").map(String.init)
+        let file = parts.popLast() ?? relativePath
+        let name = file.hasSuffix(".json") ? String(file.dropLast(5)) : file
+        return .bundled(name: name, subdirectory: (["Data/knowledge"] + parts).joined(separator: "/"))
     }
 
-    /// يحمّل عناصر قسم المعرفة من ملفاته (الملف الغائب يُتجاوز كما في الويب)، ويُبقي `verified` فقط.
+    /// يحمّل عناصر قسم المعرفة من ملفاته المحزومة ويُبقي `verified` فقط. الملف غير المُصدَّر يُتجاوز،
+    /// فإن لم يُصدَّر شيء من القسم ظهرت الحالة الفارغة لا الخطأ.
     static func loadKnowledge(section: String, with loader: ContentLoader) async throws -> [LearnKnowledgeItem] {
         guard let files = LearnKnowledgeSections.files(for: section) else { return [] }
         var items: [LearnKnowledgeItem] = []
@@ -29,6 +34,8 @@ enum LearnSources {
             do {
                 items += try await loader.load(LearnKnowledgeFile.self, from: knowledge(file)).items
                 loadedAny = true
+            } catch ContentError.missingBundledFile(_) {
+                continue
             } catch { lastError = error }
         }
         if !loadedAny, let lastError { throw lastError }

@@ -131,6 +131,20 @@ final class LearnSectionTests: XCTestCase {
         }
     }
 
+    func testSourcesAreBundledOnly() {
+        // مراجعة المحتوى: لا جلب من الموقع؛ الدروس والمعرفة من الحزمة المحقَّقة فقط.
+        guard case .bundled("chunk-000", "Data/lessons"?) = LearnSources.lessons else { return XCTFail("الدروس ليست محزومة") }
+        guard case .bundled("adam", "Data/knowledge/prophets"?) = LearnSources.knowledge("prophets/adam.json") else { return XCTFail("مسار نبي") }
+        guard case .bundled("history", "Data/knowledge"?) = LearnSources.knowledge("history.json") else { return XCTFail("ملف جذري") }
+        guard case .bundled("surah-003-batch-08", "Data/knowledge/tafsir/ayahs"?) = LearnSources.knowledge("tafsir/ayahs/surah-003-batch-08.json") else { return XCTFail("مسار متداخل") }
+    }
+
+    func testUnexportedKnowledgeIsEmptyNotError() async throws {
+        let loader = ContentLoader(bundle: Bundle(for: Self.self))
+        let items = try await LearnSources.loadKnowledge(section: "history", with: loader)
+        XCTAssertTrue(items.isEmpty)
+    }
+
     func testKnowledgeSectionFiles() {
         XCTAssertEqual(LearnKnowledgeSections.files(for: "quiz")?.first, "quiz/batch-001.json")
         XCTAssertEqual(LearnKnowledgeSections.files(for: "tafsir")?.last, "tafsir/ayahs/surah-003-batch-08.json")

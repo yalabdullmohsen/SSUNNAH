@@ -26,11 +26,13 @@
 | `Data/learn/competitions.json` | `src/lib/competitions/store.ts` | المنشور في الإنتاج 0 ⇒ `[]` (العيّنة demo لا تُصدَّر) |
 | `Data/learn/durus-imaniyya.json`، `durus-mutanawwia.json` | `src/lib/durus-*-data.ts` | **محتوى شرعي**: ملخصات فيها نسبة أحاديث ودرجات ⇒ مهارة `sharia-content` قبل التصدير |
 | `Data/graph/links.json` | `public/data/graph/links.json` | مذكور «اختياري» في DATA_CONTRACT |
+| `Data/lessons/chunk-000.json` | `public/data/lessons/chunk-000.json` | جدول الدروس بالشكل نفسه؛ يُحدَّث مع كل إصدار (لا جلب يومي من الموقع بقرار مراجعة المحتوى) |
+| `Data/knowledge/<المسار نفسه>.json` | `public/data/knowledge/**` | بالمسارات النسبية نفسها (`prophets/adam.json` ⇒ `Data/knowledge/prophets/adam.json`)، و`review_status = verified` فقط |
 | `Data/quiz/*` | موجود | يُستعمل كما هو |
 
-## 5) الشبكة (ن1/ن4)
-- `.remote(path:)` بمسار الموقع: `/data/lessons/chunk-000.json` و`/data/knowledge/<ملف>`. يلزم DataStore في `contentLoader` (اليوم `ContentLoader(bundle:)` بلا store ⇒ خطأ `noStore` وحالة «إعادة المحاولة»).
-- `/knowledge/:section` يُبقي `review_status = verified` فقط.
+## 5) لا شبكة
+- القسم لا يستعمل `.remote` إطلاقًا (مراجعة المحتوى ن1 على #2937): كل الشاشات تقرأ الحزمة المحقَّقة. القسم غير المُصدَّر يظهر فارغًا لا خطأ.
+- `/knowledge/:section` يُبقي `review_status = verified` فقط حتى بعد التصدير.
 
 ## 6) مسارات تنتظر منفذًا غير موجود (`LearnSection.pendingRoutes`)
 | المسار | ما يلزم |
