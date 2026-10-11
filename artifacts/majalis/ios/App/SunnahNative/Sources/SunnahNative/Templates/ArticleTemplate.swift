@@ -16,7 +16,7 @@ public struct ArticleTemplate: View {
 
     public var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s5) {
+            LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s5) {
                 Text(item.title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 ForEach(Array((item.body ?? "").components(separatedBy: "\n\n").enumerated()), id: \.offset) { _, p in
                     Text(p).font(Sunnah.Typography.body).lineSpacing(Sunnah.Spacing.s2).foregroundStyle(Sunnah.Colors.textPrimary)
