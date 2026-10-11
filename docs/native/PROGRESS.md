@@ -55,3 +55,9 @@
 - `node scripts/native-data-check.mjs`: 106 مرجع `ContentSource.bundled`، **102 مفقود** (0 تالف) — الأقسام aqidah/fiqh/sirah/library/learn.
 - سبب `Data/aqidah/malaika`: `export-ios-data.mjs` يصدّر 6 مجلدات فقط (adhkar/hadith/prayer/quiz/quran/tafsir)؛ لا مُصدِّر لـaqidah أصلًا (ليس رفضًا بسبب content-hold ولا اختلاف اسم). المطلوب: مُصدِّر لكل قسم (ن1) وفق `docs/native/requests/<section>.md`.
 - أُضيفت البوابة إلى native-loop (تعليق على PR صاحب الملف المرجِع)، مع MUSHAF_DATA/MUSHAF_SRC وفشل الدورة عند تخطي MushafGateTests.
+
+## دورة 2026-10-11 (ن4)
+- الرقمان بعد إعادة اللقطات على native-app الحالي: مبني 116/212 · مُتحقَّق 43/212 (لم يتغيّر: ملفات البيانات الـ102 ما زالت مفقودة).
+- أول archive Release محلي: .app = 197MB غير مضغوط، **IPA = 124MB** (<150MB، لا حاجة لضغط الخطوط).
+- مصفوفة الأجهزة (6 شاشات: quran/prayer/adhkar/hadith/quiz/settings × SE3 وiPad A16 وAX3) في `~/ssunnah-board/snapshots/device-matrix/` (18 لقطة).
+- الأذكار فارغة: `verified-adhkar.json = []` (انظر requests/n1-exporters.md).
