@@ -78,7 +78,8 @@ struct AccountCarModeScreen: View {
         Group {
             switch phase {
             case .loading: LoadingStateView()
-            case .failed, .ready where player.lessons.isEmpty: empty
+            case .failed: empty
+            case .ready where player.lessons.isEmpty: empty
             case .ready: content
             }
         }

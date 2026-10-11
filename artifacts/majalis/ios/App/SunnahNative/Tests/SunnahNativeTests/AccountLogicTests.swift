@@ -19,14 +19,13 @@ final class AccountLogicTests: XCTestCase {
     // MARK: القبلة
 
     func testQiblaBearingFromKuwaitPointsSouthWest() {
-        let b = AccountQiblaMath.bearing(latitude: 29.3759, longitude: 47.9774)
-        XCTAssertGreaterThan(b, 235)
-        XCTAssertLessThan(b, 250)
+        // الكويت → الكعبة: نحو 224.6° (دائرة عظمى).
+        XCTAssertEqual(AccountQiblaMath.bearing(latitude: 29.3759, longitude: 47.9774), 224.6, accuracy: 0.5)
     }
 
     func testQiblaDistanceAtKaabaIsZero() {
         XCTAssertEqual(AccountQiblaMath.distanceKm(latitude: AccountQiblaMath.kaabaLatitude, longitude: AccountQiblaMath.kaabaLongitude), 0, accuracy: 0.001)
-        XCTAssertEqual(AccountQiblaMath.distanceKm(latitude: 29.3759, longitude: 47.9774), 1_290, accuracy: 60)
+        XCTAssertEqual(AccountQiblaMath.distanceKm(latitude: 29.3759, longitude: 47.9774), 1_204, accuracy: 5)
     }
 
     func testQiblaShortestDeltaWrapsAround() {

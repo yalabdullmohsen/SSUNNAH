@@ -22,7 +22,8 @@ final class AccountNotificationSettingsModel: ObservableObject {
 
     private let defaults: UserDefaults
 
-    init(defaults: UserDefaults = UserDefaults(suiteName: PrayerPreferencesStore.appGroup) ?? .standard) {
+    init(defaults: UserDefaults? = nil) {
+        let defaults = defaults ?? UserDefaults(suiteName: PrayerPreferencesStore.appGroup) ?? .standard
         self.defaults = defaults
         optIn = NativeNotificationsOptIn.read(from: defaults)
         prayer = PrayerNotificationOptions.read(from: defaults)
@@ -36,6 +37,9 @@ final class AccountNotificationSettingsModel: ObservableObject {
         case .authorized, .provisional: permission = .granted
         case .denied: permission = .denied
         case .notDetermined: permission = .notDetermined
+        #if os(iOS)
+        case .ephemeral: permission = .granted
+        #endif
         @unknown default: permission = .unknown
         }
         #else
