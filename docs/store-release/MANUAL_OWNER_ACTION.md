@@ -10,9 +10,9 @@
 | OWN-03 | Run device matrix on physical iPhone + Android | No device in this environment | `DEVICE_NOTIFICATION_MATRIX.md` rows WORKING |
 | OWN-04 | Supabase: backup → approve → apply security SQL / RLS | `REQUIRES_EXPLICIT_APPROVAL` | Checklist signed |
 | OWN-05 | Supabase Auth: MFA for admins + leaked-password (plan-dependent) | Dashboard only | Screenshots + date |
-| OWN-06 | Confirm Bundle ID `com.yousef.majlisilm` vs rename | Creates new store app if changed | `STORE_IDENTITY_DECISION.md` signed |
-| OWN-07 | Provide signing certs/profiles on CI secrets (never in git) | Secrets | CI green Archive/AAB |
+| OWN-06 | ~~Confirm Bundle ID~~ — محسوم: يبقى `com.yousef.majlisilm` | — | `STORE_IDENTITY_DECISION.md` موقَّع 2026-10-11 |
+| OWN-07 | ~~Signing certs on CI secrets~~ — غير لازم: التوقيع والرفع محليًا بـ fastlane | — | `DEPLOYMENT_DECISION.md` موقَّع 2026-10-11 |
 | OWN-08 | Decide deployment policy A vs B | Docs conflict | `DEPLOYMENT_DECISION.md` signed |
 | OWN-09 | Final store submission click | Owner only | App Store / Play consoles |
 
-Do **not** mark Store GO while any OWN-01…OWN-03 / OWN-06 / OWN-07 is open.
+Do **not** mark Store GO while any OWN-01…OWN-03 is open.
