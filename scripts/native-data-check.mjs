@@ -14,15 +14,19 @@ for (const f of walk(SRC).filter(p => p.endsWith(".swift"))) {
     const k = `${m[2] ? m[2] + "/" : ""}${m[1]}`; (refs.get(k) ?? refs.set(k, new Set()).get(k)).add(f.replace(SRC + "/SunnahNative/", ""));
   }
 }
-const missing = [], broken = [];
+const missing = [], broken = [], empty = [];
 for (const [k, files] of refs) {
   const name = basename(k), sub = k.includes("/") ? k.slice(0, k.lastIndexOf("/")) : null;
   const cands = (have.get(name) ?? []).filter(p => !sub || p.includes(`${DATA}/${sub}/`) || p.includes(`/${sub}/`));
   if (!cands.length) { missing.push({ ref: k, from: [...files] }); continue; }
-  for (const p of cands) try { JSON.parse(readFileSync(p, "utf8")); } catch (e) { broken.push({ file: p, error: String(e.message).slice(0, 80) }); }
+  for (const p of cands) try {
+    const v = JSON.parse(readFileSync(p, "utf8"));
+    if (Array.isArray(v) ? !v.length : v && typeof v === "object" && !Object.keys(v).length) empty.push({ file: p, from: [...files] }); // تحذير فقط، لا فشل
+  } catch (e) { broken.push({ file: p, error: String(e.message).slice(0, 80) }); }
 }
-console.log(`مراجع bundled: ${refs.size} · مفقود: ${missing.length} · JSON تالف: ${broken.length}`);
+console.log(`مراجع bundled: ${refs.size} · مفقود: ${missing.length} · JSON تالف: ${broken.length} · فارغ (تحذير): ${empty.length}`);
 for (const m of missing) console.log(`MISSING ${m.ref}  ← ${m.from.join(", ")}`);
 for (const b of broken) console.log(`BROKEN ${b.file}: ${b.error}`);
-if (process.argv.includes("--json")) console.log(JSON.stringify({ missing, broken }));
+for (const e of empty) console.log(`WARN-EMPTY ${e.file} (فارغ [] أو {}) ← ${e.from.join(", ")}`);
+if (process.argv.includes("--json")) console.log(JSON.stringify({ missing, broken, empty }));
 process.exit(missing.length || broken.length ? 1 : 0);

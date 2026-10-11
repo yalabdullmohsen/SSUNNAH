@@ -128,9 +128,10 @@
 - **PLACEHOLDER** (quran 31 · hadith 5) ← **ن3** (القرآن/الحديث): ربط الشاشة الحقيقية بالمسار.
 - **EMPTY** (quran 4 · hadith 3 · aqidah 2 · fiqh 1 · learn 1 · account 1) ← **ن1** للبيانات، ثم **ن2** لحالة الفراغ إن بقيت.
 
-## ملاحظة جديدة: الأذكار فارغة رغم عدم فقد ملف
-`Data/adhkar/verified-adhkar.json` = `[]`؛ `export-ios-data.mjs` لا يملأه إلا بالوسيط `--adhkar-json <لقطة صفوف Supabase>` ولم يُمرَّر. المطلوب (ن1): تمرير اللقطة المعتمدة في الدورة أو تضمين ملف مصدر. لقطة الأذكار الحالية: «لا أذكار موثّقة بعد».
-بوابة native-data-check يجب أن تفشل أيضًا على ملف bundled مصفوفته فارغة `[]` (تحسين لاحق).
+## الأذكار فارغة — لا مصدر موثّق في المستودع (ن1)
+`Data/adhkar/verified-adhkar.json` = `[]` لأن `--adhkar-json` لم يُمرَّر، وبحث المستودع (2026-10-11) لم يجد ملف أذكار موثّقة يُمرَّر له: المصدر في DATA_CONTRACT §1 هو Supabase `verified_adhkar_items` (51 صفًا، كلها `needs_review` ⇒ لا تحزيم). `src/data/adhkar-fadl.json` فضائل فقط وليس نصوصًا. لم تُنشأ أذكار من عندنا.
+**المطلوب من ن1/المالك:** مراجعة الصفوف وتحويلها إلى `verified` ثم تصدير لقطتها إلى المسار المتوقع `artifacts/majalis/content/native/adhkar-verified.json` (حقول DATA_CONTRACT: id,category_id,text,repeat_count,source_name,grade,reference,verification_status). حين يوجد الملف يمرّره `scripts/native-export-data.sh` تلقائيًا (مُهيّأ مسبقًا، انظر السكربت).
+بوابة native-data-check تُحذّر الآن (لا تفشل) من ملف bundled فارغ `[]`/`{}`.
 
 ## تنبيه إلى ن3
 ن2 عدّل ملفين مشتركين: `RootTabView.swift` و`ScreenTemplate.swift` — أعد القاعدة (rebase على native-app) قبل أي تعديل عليهما.
