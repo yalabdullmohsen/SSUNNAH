@@ -66,6 +66,7 @@ public enum QuranSection {
 
     @MainActor public static func register(in registry: TemplateRegistry) {
         registry.registerView(id: "quran-hub") { SectionsListTemplate(links: QuranLinks.hub).navigationTitle(title) }
+        registry.registerView(id: "tafsir") { TafsirHomeView().navigationTitle("التفسير") }
         registry.registerView(id: "quran.surahs") {
             QuranRowsView { idx, rows in QuranSurahList(rows: rows, index: idx) }.navigationTitle("فهرس السور")
         }
