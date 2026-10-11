@@ -11,7 +11,7 @@
 - لا يُضاف أي ملف `*Plugin.swift` (أغلفة Capacitor) ولا `import Capacitor`.
 
 ## البيانات
-- مرجع مجلد `ios-native/Data` (غير مُلتزَم) + Run Script Phase قبل Copy Bundle Resources: `ios-native/scripts/prepare-data.sh` (يستدعي `scripts/native-export-data.sh` من ن1، معلّق على دمج #2921).
+- مرجع مجلد `ios-native/Data` (غير مُلتزَم) + Run Script Phase قبل Copy Bundle Resources: `ios-native/scripts/prepare-data.sh` (يستدعي `scripts/native-export-data.sh` من ن1، #2921 مدموج).
 - القوالب تقرأ `Bundle.main` تحت `Data/<مجموعة>/…`.
 
 ## الصلاحيات والـentitlements
