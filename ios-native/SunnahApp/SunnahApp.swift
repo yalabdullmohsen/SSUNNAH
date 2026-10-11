@@ -18,6 +18,12 @@ struct SunnahApp: App {
     var body: some Scene {
         WindowGroup {
             RootTabView(router: router, screen: Self.screen)
+                .onAppear {
+                    // لقطات native-loop: -snapshotRoute /path (للتصحيح فقط)
+                    #if DEBUG
+                    if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p) }
+                    #endif
+                }
                 .environment(\.contentLoader, ContentLoader(bundle: .main))
                 .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter()))
         }
