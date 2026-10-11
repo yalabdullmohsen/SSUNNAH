@@ -64,7 +64,7 @@ final class LibraryAdaptersTests: XCTestCase {
 
     func testMoreGroupsExcludeAccountHiddenAndComingSoon() throws {
         let nav: LibraryNavigation = try decode(navJSON)
-        let groups = LibraryAdapters.more(nav)
+        let groups = LibraryAdapters.more(nav, scope: { _ in true })
         XCTAssertEqual(groups.map(\.title), ["ق", "س", "الحساب والإعدادات"])
         XCTAssertEqual(groups[0].links.map(\.title), ["م2"])
         XCTAssertEqual(groups[1].links.map(\.id), ["s1"])
@@ -73,8 +73,8 @@ final class LibraryAdaptersTests: XCTestCase {
 
     func testSectionsHubAndSitemap() throws {
         let nav: LibraryNavigation = try decode(navJSON)
-        XCTAssertEqual(LibraryAdapters.sections(nav).map(\.id), ["s1", "acc"])
-        XCTAssertEqual(LibraryAdapters.sitemap(nav).map(\.title), ["ق"])
+        XCTAssertEqual(LibraryAdapters.sections(nav, scope: { _ in true }).map(\.id), ["s1", "acc"])
+        XCTAssertEqual(LibraryAdapters.sitemap(nav, scope: { _ in true }).map(\.title), ["ق"])
     }
 
     func testDocumentKeepsTextVerbatim() throws {
@@ -91,7 +91,7 @@ final class LibraryAdaptersTests: XCTestCase {
 
     func testSearchRanksPrefixFirstAndCarriesRoute() throws {
         let index: LibrarySearchIndex = try decode(#"{"version":3,"docs":[{"id":"1","kind":"qa","titleAr":"حكم الصلاة","href":"/qa/1","norm":"حكم الصلاه"},{"id":"2","kind":"history","titleAr":"الصلاة في السفر","href":"/h/2","norm":""},{"id":"3","kind":"surah","titleAr":"البقرة","href":"/quran/2"}]}"#)
-        let r = LibraryAdapters.search(index, query: "الصلاة")
+        let r = LibraryAdapters.search(index, query: "الصلاة", scope: { _ in true })
         XCTAssertEqual(r.map(\.id), ["2", "1"])
         XCTAssertEqual(r[0].route, "/h/2")
         XCTAssertEqual(r[0].subtitle, "تاريخ")
@@ -107,10 +107,49 @@ final class LibraryAdaptersTests: XCTestCase {
                    "sections", "sitemap", "sources", "terms"] {
             XCTAssertNotNil(registry.view(for: id), id)
         }
-        for p in ["/academic-research/pub-001", "/scientific-announcements/sci-1", "/sources/web-x", "/mind-map/aqeeda"] {
+        for p in ["/academic-research/pub-001", "/scientific-announcements/sci-1", "/sources/web-x"] {
             XCTAssertNotNil(LibrarySection.resolve(path: p), p)
+        }
+        // خارج ROUTE_TEMPLATE_MAP: تُقرأ داخل شاشتها ولا مسار تفاصيل لها.
+        for p in ["/mind-map/aqeeda", "/arabic-language/nahw", "/mawsuaat/x", "/islamic-glossary/1"] {
+            XCTAssertNil(LibrarySection.resolve(path: p), p)
         }
         XCTAssertNil(LibrarySection.resolve(path: "/academic-research/assistant"))
         XCTAssertNil(LibrarySection.resolve(path: "/search"))
+    }
+
+    func testRouteScopeMatchesKeptPathsAndParams() {
+        XCTAssertTrue(LibraryRouteScope.contains("/sources/web-x"))
+        XCTAssertTrue(LibraryRouteScope.contains("/teachers/ibn-baz?tab=1"))
+        XCTAssertTrue(LibraryRouteScope.contains("/islamic-landmarks"))
+        XCTAssertFalse(LibraryRouteScope.contains("/prophets/adam"))
+        XCTAssertFalse(LibraryRouteScope.contains("/mind-map/aqeeda"))
+        XCTAssertFalse(LibraryRouteScope.contains("/library"))
+    }
+
+    func testNavigationAndSearchDropRoutesOutsideScope() throws {
+        let nav: LibraryNavigation = try decode(navJSON)
+        let kept: (String) -> Bool = { $0 == "/q1" || $0 == "/terms" }
+        XCTAssertEqual(LibraryAdapters.more(nav, scope: kept).flatMap(\.links).map(\.route), ["/q1", "/terms"])
+        XCTAssertTrue(LibraryAdapters.sections(nav, scope: kept).isEmpty)
+        XCTAssertTrue(LibraryAdapters.sitemap(nav, scope: kept).isEmpty)
+        let index: LibrarySearchIndex = try decode(#"{"docs":[{"id":"1","kind":"qa","titleAr":"الصلاة","href":"/library/1"},{"id":"2","kind":"qa","titleAr":"الصلاة ٢","href":"/sources/2"}]}"#)
+        XCTAssertEqual(LibraryAdapters.search(index, query: "الصلاة").map(\.id), ["2"])
+    }
+
+    /// يمنع انحراف القائمة المضمّنة عن docs/native/ROUTE_TEMPLATE_MAP.json.
+    func testRouteScopeMatchesRouteTemplateMap() throws {
+        var dir = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
+        var map: URL?
+        while dir.path != "/" {
+            let candidate = dir.appendingPathComponent("docs/native/ROUTE_TEMPLATE_MAP.json")
+            if FileManager.default.fileExists(atPath: candidate.path) { map = candidate; break }
+            dir.deleteLastPathComponent()
+        }
+        guard let map else { return XCTFail("ROUTE_TEMPLATE_MAP.json غير موجود في المستودع") }
+        struct Map: Decodable { struct Route: Decodable { let path: String }; let routes: [Route] }
+        let paths = try JSONDecoder().decode(Map.self, from: Data(contentsOf: map)).routes.map(\.path)
+        XCTAssertEqual(Set(LibraryRouteScope.kept), Set(paths))
+        XCTAssertEqual(LibraryRouteScope.kept.count, paths.count)
     }
 }

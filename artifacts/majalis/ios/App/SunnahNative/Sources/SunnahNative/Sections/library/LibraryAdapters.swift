@@ -161,29 +161,29 @@ enum LibraryAdapters {
         let links: [SectionLink]
     }
 
-    /// /more: أقسام القائمة الجانبية لكل مجموعة (عدا الحساب) ثم صفوف الإعدادات.
-    static func more(_ nav: LibraryNavigation) -> [NavGroup] {
+    /// /more: أقسام القائمة الجانبية لكل مجموعة (عدا الحساب) ثم صفوف الإعدادات؛ المسارات المبقاة فقط.
+    static func more(_ nav: LibraryNavigation, scope: (String) -> Bool = LibraryRouteScope.contains) -> [NavGroup] {
         let groups = nav.groups.filter { $0.id != "account" }.sorted { $0.order < $1.order }.compactMap { g -> NavGroup? in
-            let links = nav.sections.filter { $0.group == g.id && $0.surfaces.contains("drawer") && visible($0) }
+            let links = nav.sections.filter { $0.group == g.id && $0.surfaces.contains("drawer") && visible($0) && scope($0.route) }
                 .sorted { $0.order < $1.order }
                 .map { SectionLink(id: $0.id, title: $0.navLabel ?? $0.label, subtitle: $0.navHint ?? $0.subtitle, route: $0.route) }
             return links.isEmpty ? nil : NavGroup(title: g.label, links: links)
         }
-        let settings = nav.settingsRows.map { SectionLink(id: $0.id, title: $0.title, subtitle: $0.description, route: $0.href) }
+        let settings = nav.settingsRows.filter { scope($0.href) }.map { SectionLink(id: $0.id, title: $0.title, subtitle: $0.description, route: $0.href) }
         return groups + (settings.isEmpty ? [] : [NavGroup(title: "الحساب والإعدادات", links: settings)])
     }
 
     /// /sections: الأقسام ذات hub «sections» مرتبة بالمجموعة ثم الترتيب.
-    static func sections(_ nav: LibraryNavigation) -> [SectionLink] {
+    static func sections(_ nav: LibraryNavigation, scope: (String) -> Bool = LibraryRouteScope.contains) -> [SectionLink] {
         let order = Dictionary(nav.groups.map { ($0.id, $0.order) }, uniquingKeysWith: { a, _ in a })
-        return nav.sections.filter { $0.hub == "sections" && visible($0) }
+        return nav.sections.filter { $0.hub == "sections" && visible($0) && scope($0.route) }
             .sorted { (order[$0.group] ?? .max, $0.order) < (order[$1.group] ?? .max, $1.order) }
             .map { SectionLink(id: $0.id, title: $0.label, subtitle: $0.subtitle, route: $0.route) }
     }
 
-    static func sitemap(_ nav: LibraryNavigation) -> [NavGroup] {
+    static func sitemap(_ nav: LibraryNavigation, scope: (String) -> Bool = LibraryRouteScope.contains) -> [NavGroup] {
         nav.sitemap.compactMap { g in
-            let links = g.links.map { SectionLink(id: $0.href, title: $0.label, subtitle: $0.desc, route: $0.href) }
+            let links = g.links.filter { scope($0.href) }.map { SectionLink(id: $0.href, title: $0.label, subtitle: $0.desc, route: $0.href) }
             return links.isEmpty ? nil : NavGroup(title: g.title, links: links)
         }
     }
@@ -216,12 +216,13 @@ enum LibraryAdapters {
     static let kindLabels = ["qa": "سؤال وجواب", "tafsir": "تفسير", "adhkar": "ذكر", "history": "تاريخ", "surah": "سورة",
                              "prophet": "نبي", "nation": "أمة", "lesson": "درس", "person": "علَم", "hadith": "حديث"]
 
-    /// يطابق كل كلمات الاستعلام بعد التطبيع؛ يقدّم ما يبدأ عنوانه بالاستعلام.
-    static func search(_ index: LibrarySearchIndex, query: String, limit: Int = 60) -> [ContentItem] {
+    /// يطابق كل كلمات الاستعلام بعد التطبيع؛ يقدّم ما يبدأ عنوانه بالاستعلام. نتيجة مسارها خارج المبقاة لا تُعرض.
+    static func search(_ index: LibrarySearchIndex, query: String, limit: Int = 60, scope: (String) -> Bool = LibraryRouteScope.contains) -> [ContentItem] {
         let q = normalize(query)
         let terms = q.split(separator: " ").map(String.init)
         guard q.count >= 2 else { return [] }
         return index.docs.compactMap { d -> (Int, LibrarySearchIndex.Doc)? in
+            guard scope(d.href) else { return nil }
             let title = normalize(d.titleAr)
             let hay = title + " " + normalize(d.norm ?? "")
             guard terms.allSatisfy({ hay.contains($0) }) else { return nil }

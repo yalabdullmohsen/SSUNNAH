@@ -34,3 +34,9 @@
 - `/cards`: مولّد بطاقات صورة (ShareLink + ImageRenderer)، بلا نص افتراضي (الويب يبدأ بحديث؛ لا محتوى شرعي من الكود).
 - `/mind-map`: لا قالب شجرة؛ التفاصيل مخطّط بالإزاحة داخل قالب التفاصيل.
 - `/more` و`/sitemap`: قائمة مجمّعة بعناوين (`LibraryGroupedLinksView`) لأن `SectionsListTemplate` بلا مجموعات.
+
+## 4) نطاق المسارات (قرار المالك 2026-10-11)
+- المرجع الوحيد `ROUTE_TEMPLATE_MAP.json`: لا مسارات `:id` إلا المبقاة (`/academic-research/:id`، `/scientific-announcements/:id`، `/sources/:id`).
+- `/arabic-language` و`/mawsuaat` و`/islamic-glossary` و`/mind-map`: العنصر يُقرأ في الشاشة نفسها (ورقة) كما في الويب حيث `/…/:categoryId` مكرر للصفحة نفسها.
+- روابط `/more` و`/sections` و`/sitemap` ونتائج `/search` تُرشَّح بـ`LibraryRouteScope` (نسخة من المسارات المبقاة، واختبار يمنع انحرافها). يُستحسن أن يرشّحها التصدير أيضًا.
+- فجوة قالب: `ListTemplate`/`CardGridTemplate` يفتحان دائمًا `base/id`؛ خيار «عرض داخل الشاشة» في القالب يغني عن `LibraryInlineItemsView`.

@@ -33,6 +33,54 @@ struct LibraryLoadedView<Raw: Decodable & Sendable, Output, V: View>: View {
     }
 }
 
+/// عناصر بلا مسار تفاصيل مبقى (ROUTE_TEMPLATE_MAP): تُقرأ في الشاشة نفسها كما في الويب، بورقة لا بمسار جديد.
+struct LibraryInlineItemsView: View {
+    enum Layout { case list, grid }
+    enum Reader { case article, detail }
+    let items: [ContentItem]
+    var layout: Layout = .list
+    var reader: Reader = .article
+    @State private var open: ContentItem?
+
+    var body: some View {
+        Group {
+            if items.isEmpty { EmptyStateView() } else {
+                switch layout {
+                case .list:
+                    List(items) { item in
+                        Button { open = item } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
+                            .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
+                    }
+                    .listStyle(.plain).scrollContentBackground(.hidden)
+                case .grid:
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: Sunnah.Spacing.cardMinWidth), spacing: Sunnah.Spacing.s3)], spacing: Sunnah.Spacing.s3) {
+                            ForEach(items) { item in
+                                Button { open = item } label: { ContentCard(item) }.buttonStyle(.plain)
+                            }
+                        }
+                        .padding(Sunnah.Spacing.pageX)
+                    }
+                }
+            }
+        }
+        .background(Sunnah.Colors.bg)
+        .sheet(item: $open) { item in
+            NavigationStack {
+                Group {
+                    switch reader {
+                    case .article: ArticleTemplate(item: item)
+                    case .detail: DetailTemplate(item: item)
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) { Button("إغلاق") { open = nil } }
+                }
+            }
+        }
+    }
+}
+
 /// قائمة روابط مجمّعة بعناوين (المزيد، خريطة الموقع).
 struct LibraryGroupedLinksView: View {
     @Environment(\.openRoute) private var openRoute
@@ -186,30 +234,30 @@ public enum LibrarySection {
         registry.registerView(id: "academic-research.submit") {
             LibrarySection.titled(EmptyStateView(title: "استقبال الأبحاث غير متاح في التطبيق بعد"))
         }
-        registry.registerView(id: "arabic-language") { LibrarySection.list(File.arabic, LibraryAdapters.darsSections, base: "/arabic-language") }
+        registry.registerView(id: "arabic-language") { LibrarySection.inline(File.arabic, LibraryAdapters.darsSections) }
         registry.registerView(id: "cards") { LibrarySection.titled(LibraryCardsView()) }
         registry.registerView(id: "islamic-directory") { LibrarySection.titled(SectionsListTemplate(links: LibraryLinks.directory)) }
         registry.registerView(id: "islamic-glossary") {
-            LibrarySection.titled(LibraryLoadedView(source: File.glossary, adapt: LibraryAdapters.glossary) { ListTemplate(items: $0, detailBase: "/islamic-glossary") })
+            LibrarySection.inline(File.glossary, LibraryAdapters.glossary, reader: .detail)
         }
-        registry.registerView(id: "mawsuaat") { LibrarySection.list(File.mawsuaat, LibraryAdapters.darsSections, base: "/mawsuaat") }
+        registry.registerView(id: "mawsuaat") { LibrarySection.inline(File.mawsuaat, LibraryAdapters.darsSections) }
         registry.registerView(id: "methodology") {
             LibraryLoadedView(source: File.methodology, adapt: { LibraryAdapters.document($0, id: "methodology") }) { ArticleTemplate(item: $0) }
         }
         registry.registerView(id: "mind-map") {
-            LibrarySection.titled(LibraryLoadedView(source: File.mindMaps, adapt: LibraryAdapters.mindMaps) { CardGridTemplate(items: $0, detailBase: "/mind-map") })
+            LibrarySection.inline(File.mindMaps, LibraryAdapters.mindMaps, layout: .grid, reader: .detail)
         }
         registry.registerView(id: "more") {
-            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: LibraryAdapters.more) { LibraryGroupedLinksView(groups: $0) })
+            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { LibraryAdapters.more($0) }) { LibraryGroupedLinksView(groups: $0) })
         }
         registry.registerView(id: "search") {
             LibrarySection.titled(LibraryLoadedView(source: File.searchIndex, adapt: { $0 as LibrarySearchIndex }) { LibrarySearchView(index: $0) })
         }
         registry.registerView(id: "sections") {
-            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: LibraryAdapters.sections) { SectionsListTemplate(links: $0) })
+            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { LibraryAdapters.sections($0) }) { SectionsListTemplate(links: $0) })
         }
         registry.registerView(id: "sitemap") {
-            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: LibraryAdapters.sitemap) { LibraryGroupedLinksView(groups: $0) })
+            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { LibraryAdapters.sitemap($0) }) { LibraryGroupedLinksView(groups: $0) })
         }
         registry.registerView(id: "sources") {
             LibrarySection.titled(LibraryLoadedView(source: File.accounts, adapt: LibraryAdapters.sources) { ListTemplate(items: $0, detailBase: "/sources") })
@@ -219,7 +267,7 @@ public enum LibrarySection {
         }
     }
 
-    /// مسارات :id للقسم.
+    /// مسارات :id المبقاة للقسم فقط (academic-research، scientific-announcements، sources)؛ غيرها لا يُبنى.
     public static func resolve(path: String) -> AnyView? {
         let c = path.split(separator: "/").map(String.init)
         guard c.count == 2 else { return nil }
@@ -230,10 +278,6 @@ public enum LibrarySection {
             return AnyView(LibraryLoadedView(source: File.research, adapt: { LibraryAdapters.research($0, id: id) }) { item in
                 if let item { DetailTemplate(item: item) } else { EmptyStateView() }
             })
-        case "arabic-language": return LibrarySection.article(File.arabic, LibraryAdapters.darsSections, id: id)
-        case "mawsuaat": return LibrarySection.article(File.mawsuaat, LibraryAdapters.darsSections, id: id)
-        case "islamic-glossary": return LibrarySection.detail(File.glossary, LibraryAdapters.glossary, id: id)
-        case "mind-map": return LibrarySection.detail(File.mindMaps, LibraryAdapters.mindMaps, id: id)
         case "scientific-announcements": return LibrarySection.detail(File.announcements, LibraryAdapters.announcements, id: id)
         case "sources":
             return AnyView(LibrarySourceDetailView(id: id))
@@ -245,8 +289,10 @@ public enum LibrarySection {
 
     static func titled<V: View>(_ view: V) -> some View { view.navigationTitle(LibrarySection.title) }
 
-    private static func list<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem], base: String) -> some View {
-        titled(LibraryLoadedView(source: source, adapt: adapt) { ListTemplate(items: $0, detailBase: base) })
+    private static func inline<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem],
+                                                          layout: LibraryInlineItemsView.Layout = .list,
+                                                          reader: LibraryInlineItemsView.Reader = .article) -> some View {
+        titled(LibraryLoadedView(source: source, adapt: adapt) { LibraryInlineItemsView(items: $0, layout: layout, reader: reader) })
     }
 
     private static func pick<Raw>(_ adapt: @escaping (Raw) -> [ContentItem], _ id: String) -> (Raw) -> ContentItem? {
@@ -256,12 +302,6 @@ public enum LibrarySection {
     private static func detail<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem], id: String) -> AnyView {
         AnyView(LibraryLoadedView(source: source, adapt: pick(adapt, id)) { item in
             if let item { DetailTemplate(item: item) } else { EmptyStateView() }
-        })
-    }
-
-    private static func article<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem], id: String) -> AnyView {
-        AnyView(LibraryLoadedView(source: source, adapt: pick(adapt, id)) { item in
-            if let item { ArticleTemplate(item: item) } else { EmptyStateView() }
         })
     }
 }
