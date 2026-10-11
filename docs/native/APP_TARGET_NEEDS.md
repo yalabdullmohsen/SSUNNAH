@@ -11,7 +11,7 @@
 - لا يُضاف أي ملف `*Plugin.swift` (أغلفة Capacitor) ولا `import Capacitor`.
 
 ## البيانات
-- مرجع مجلد `ios-native/Data` (غير مُلتزَم) + Run Script Phase قبل Copy Bundle Resources: `ios-native/scripts/prepare-data.sh` (يستدعي `scripts/native-export-data.sh` من ن1، معلّق على دمج #2921).
+- مرجع مجلد `ios-native/Data` (غير مُلتزَم) + Run Script Phase قبل Copy Bundle Resources: `ios-native/scripts/prepare-data.sh` (يستدعي `scripts/native-export-data.sh` من ن1، #2921 مدموج).
 - القوالب تقرأ `Bundle.main` تحت `Data/<مجموعة>/…`.
 
 ## الصلاحيات والـentitlements
@@ -27,3 +27,11 @@
 - Info.plist: `BGTaskSchedulerPermittedIdentifiers` = `com.yousef.majlisilm.prayer-refresh`، و`UIBackgroundModes` يتضمن `fetch`.
 - ملفات الأصوات المخصّصة (`NotificationSoundPack`) تُضاف إلى موارد الهدف.
 - لا حاجة لـ`NativeNotificationsGate` (بوابة الويب) ولا `LegacyWebNotifications` في الهدف الأصلي إلا إن بقي التنظيف من الجدولة القديمة مطلوبًا.
+
+## الويدجت والنشاط الحي (من ن3)
+- الويدجت التسعة (`PrayerWidget`, `SunnahWidgetKit`) والنشاط الحي (`PrayerLiveActivity`) أهداف امتداد قائمة وبلا Capacitor؛ تُنقل كما هي إلى مشروع SunnahApp بنفس Bundle IDs وEntitlements.
+- App Group `group.com.yousef.majlisilm` لكل من التطبيق والامتدادات.
+- `NSSupportsLiveActivities = YES` (و`NSSupportsLiveActivitiesFrequentUpdates` كما في Info.plist الحالي) في هدف التطبيق.
+- عضوية الملفات: `App/PrayerLiveActivityController.swift` + `App/PrayerActivityAttributes.swift` + `Shared/*` في هدف التطبيق؛ `PrayerActivityAttributes.swift` + `Shared/*` أيضًا في هدف PrayerLiveActivity.
+- `ios-native/SunnahApp/Platform/LiveActivityAdapter.swift` في هدف التطبيق (يُحقن عبر `PlatformServices.liveActivity`).
+- `PrayerLiveActivityPlugin.swift` يبقى للتطبيق القديم فقط ويُحذف مع Capacitor.

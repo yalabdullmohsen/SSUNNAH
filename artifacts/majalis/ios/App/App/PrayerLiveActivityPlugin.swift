@@ -21,7 +21,7 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func areActivitiesSupported(_ call: CAPPluginCall) {
         #if canImport(ActivityKit)
         if #available(iOS 16.2, *) {
-            call.resolve(["supported": ActivityAuthorizationInfo().areActivitiesEnabled])
+            call.resolve(["supported": PrayerLiveActivityController.isSupported])
             return
         }
         #endif
@@ -31,7 +31,7 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func startActivity(_ call: CAPPluginCall) {
         #if canImport(ActivityKit)
         if #available(iOS 16.2, *) {
-            guard ActivityAuthorizationInfo().areActivitiesEnabled else {
+            guard PrayerLiveActivityController.isSupported else {
                 call.resolve(["started": false])
                 return
             }
@@ -39,16 +39,9 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
             let locationLabel = call.getString("locationLabel") ?? ""
 
             if phase == .appLaunch {
-                let started = Self.request(
+                let started = PrayerLiveActivityController.request(
                     prayerKey: "launch",
-                    state: PrayerActivityAttributes.ContentState(
-                        prayerName: "مواقيت الصلاة",
-                        prayerTime: Date().addingTimeInterval(3600),
-                        locationLabel: locationLabel,
-                        hasStarted: false,
-                        phase: .appLaunch,
-                        statusLabel: "افتح مواقيت الصلاة"
-                    )
+                    state: PrayerLiveActivityController.launchState(locationLabel: locationLabel)
                 )
                 call.resolve(["started": started])
                 return
@@ -76,9 +69,9 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
                 nextPrayerKey: call.getString("nextPrayerKey"),
                 nextPrayerTime: Self.parseISO(call.getString("nextPrayerTimeIso"))
             )
-            let started = Self.request(prayerKey: prayerKey, state: state)
+            let started = PrayerLiveActivityController.request(prayerKey: prayerKey, state: state)
             if started {
-                Self.mirrorToAppGroup(prayerKey: prayerKey, state: state)
+                PrayerLiveActivityController.mirrorToAppGroup(prayerKey: prayerKey, state: state)
             }
             call.resolve(["started": started])
             return
@@ -131,7 +124,7 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
                 }
             }()
 
-            Self.mirrorToAppGroup(prayerKey: activity.attributes.prayerKey, state: state)
+            PrayerLiveActivityController.mirrorToAppGroup(prayerKey: activity.attributes.prayerKey, state: state)
             Task {
                 await activity.update(.init(state: state, staleDate: stale))
                 call.resolve(["updated": true, "phase": state.phase.rawValue])
@@ -145,17 +138,7 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func endActivity(_ call: CAPPluginCall) {
         #if canImport(ActivityKit)
         if #available(iOS 16.2, *) {
-            let activities = Activity<PrayerActivityAttributes>.activities
-            guard !activities.isEmpty else {
-                call.resolve(["ended": false])
-                return
-            }
-            Task {
-                for activity in activities {
-                    await activity.end(nil, dismissalPolicy: .immediate)
-                }
-                call.resolve(["ended": true])
-            }
+            Task { call.resolve(["ended": await PrayerLiveActivityController.end()]) }
             return
         }
         #endif
@@ -166,50 +149,13 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc func syncFromSharedSnapshot(_ call: CAPPluginCall) {
         #if canImport(ActivityKit)
         if #available(iOS 16.2, *) {
-            guard ActivityAuthorizationInfo().areActivitiesEnabled else {
-                call.resolve(["synced": false, "reason": "disabled"])
-                return
-            }
-            guard let snap = SunnahSharedStore.loadPrayer() else {
-                let started = Self.request(
-                    prayerKey: "launch",
-                    state: PrayerActivityAttributes.ContentState(
-                        prayerName: "مواقيت الصلاة",
-                        prayerTime: Date().addingTimeInterval(3600),
-                        locationLabel: "",
-                        hasStarted: false,
-                        phase: .appLaunch,
-                        statusLabel: "افتح مواقيت الصلاة"
-                    )
-                )
-                call.resolve(["synced": started, "phase": PrayerLivePhase.appLaunch.rawValue])
-                return
-            }
-            let phase: PrayerLivePhase = snap.nextHasStarted ? .active : .upcoming
-            let key = snap.nextPrayerKey ?? "fajr"
-            let name = snap.nextPrayerNameAr ?? key
-            let time: Date = {
-                if let ms = snap.nextPrayerEpochMs {
-                    return Date(timeIntervalSince1970: TimeInterval(ms) / 1000)
+            Task {
+                switch await PrayerLiveActivityController.syncFromSharedSnapshot() {
+                case .disabled: call.resolve(["synced": false, "reason": "disabled"])
+                case .started(let phase): call.resolve(["synced": true, "phase": phase.rawValue, "started": true])
+                case .updated(let phase): call.resolve(["synced": true, "phase": phase.rawValue, "updated": true])
+                case .failed: call.resolve(["synced": false])
                 }
-                return Date().addingTimeInterval(3600)
-            }()
-            let state = PrayerActivityAttributes.ContentState(
-                prayerName: name,
-                prayerTime: time,
-                locationLabel: snap.locationLabel,
-                hasStarted: snap.nextHasStarted,
-                phase: phase,
-                statusLabel: PrayerActivityAttributes.ContentState.defaultStatus(for: phase)
-            )
-            if let activity = Activity<PrayerActivityAttributes>.activities.first {
-                Task {
-                    await activity.update(.init(state: state, staleDate: time))
-                }
-                call.resolve(["synced": true, "phase": phase.rawValue, "updated": true])
-            } else {
-                let started = Self.request(prayerKey: key, state: state)
-                call.resolve(["synced": started, "phase": phase.rawValue, "started": started])
             }
             return
         }
@@ -218,43 +164,6 @@ public class PrayerLiveActivityPlugin: CAPPlugin, CAPBridgedPlugin {
     }
 
     // MARK: - Helpers
-
-    @available(iOS 16.2, *)
-    @discardableResult
-    private static func request(prayerKey: String, state: PrayerActivityAttributes.ContentState) -> Bool {
-        for activity in Activity<PrayerActivityAttributes>.activities {
-            Task { await activity.end(nil, dismissalPolicy: .immediate) }
-        }
-        let attributes = PrayerActivityAttributes(prayerKey: prayerKey)
-        let stale: Date? = {
-            switch state.phase {
-            case .upcoming, .active: return state.prayerTime
-            case .completed: return state.nextPrayerTime
-            case .appLaunch: return Date().addingTimeInterval(30 * 60)
-            }
-        }()
-        do {
-            _ = try Activity<PrayerActivityAttributes>.request(
-                attributes: attributes,
-                content: .init(state: state, staleDate: stale)
-            )
-            return true
-        } catch {
-            return false
-        }
-    }
-
-    @available(iOS 16.2, *)
-    private static func mirrorToAppGroup(prayerKey: String, state: PrayerActivityAttributes.ContentState) {
-        guard state.phase != .appLaunch else { return }
-        _ = SunnahSharedStore.publishLiveActivityState(
-            prayerKey: prayerKey,
-            prayerNameAr: state.prayerName,
-            prayerTime: state.prayerTime,
-            locationLabel: state.locationLabel,
-            hasStarted: state.phase == .active || state.hasStarted
-        )
-    }
 
     private static func parsePhase(_ raw: String?) -> PrayerLivePhase? {
         guard let raw else { return nil }
