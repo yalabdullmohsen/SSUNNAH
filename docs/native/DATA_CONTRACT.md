@@ -79,3 +79,9 @@
 - `sins-and-rights` `{topics,categories}` و`amr-bil-maruf` `{levels,conditions,munkaraat,maaruf}`.
 - تمرير حرفي من مصدر الويب؛ لا إعادة صياغة ولا حقول جديدة. المسارات الـ17 المكتوبة داخل JSX (`/tahara` `/sawm`…) خارج هذا الـPR (تحتاج نقل نص إلى وحدة بيانات أولًا).
 
+
+### sirah (10 ملفات في `Data/sirah/`)
+- مصفوفات بالشكل الحرفي للمصدر، بعد حذف المحجوز: `islamic-landmarks`, `nations`, `sahabah` (مضمَّنة في الصفحة؛ `quote` لا يُعرض).
+- بمرشحات القبول: `occasions-verified` (سجل موثّق مطابق لبذرة بـ`reviewStatus=approved` ومصدر)، `prophets-knowledge` (`review_status=verified` + مصادر)، `stories` (معتمدة + `reviewed` + مصادر)، `islamic-history` (لا `needs-review` ولا بلا مصادر).
+- فارغة عمدًا (`[]`) لغياب مصدر/درجة في الويب وقرار المالك: `fikr-waqia`, `seerah-phases`, `shamail`.
+- `prophets-lineage` لا يُكتب (جذر واحد لا قائمة، ولا عقدة فارغة صالحة): غيابه = «قيد التوثيق».
