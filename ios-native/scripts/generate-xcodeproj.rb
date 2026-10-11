@@ -14,7 +14,7 @@ Dir[File.join(root, 'SunnahApp/*.swift')].sort.each { |f| t.add_file_references(
 plat = app.new_group('Platform', 'Platform')
 Dir[File.join(root, 'SunnahApp/Platform/*.swift')].sort.each { |f| t.add_file_references([plat.new_reference(File.basename(f))]) }
 shared = proj.main_group.new_group('Shared')
-%w[Shared/OfflineAudioStore Shared/PlaybackSessionController Shared/SunnahSharedData Shared/SunnahBrandColors Shared/SunnahWidgetEnvelope Shared/SunnahWidgetRefreshCoordinator Shared/SunnahPrayerDeepLink App/Services/KeychainStore].each do |n|
+%w[Shared/OfflineAudioStore Shared/PlaybackSessionController Shared/SunnahSharedData Shared/SunnahBrandColors Shared/SunnahWidgetEnvelope Shared/SunnahWidgetRefreshCoordinator Shared/SunnahPrayerDeepLink App/PrayerLiveActivityController App/Services/KeychainStore].each do |n|
   r = shared.new_reference("../artifacts/majalis/ios/App/#{n}.swift"); r.source_tree = 'SOURCE_ROOT'
   t.add_file_references([r])
 end
