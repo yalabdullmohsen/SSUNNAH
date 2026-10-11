@@ -76,7 +76,6 @@ public struct AqidahAsmaHusnaNativeScreen: ScreenTemplate {
                     AqidahTextBlock(title: "الأثر", text: n.benefit)
                 }
             }
-            .environment(\.layoutDirection, .rightToLeft)
         }
     }
 
