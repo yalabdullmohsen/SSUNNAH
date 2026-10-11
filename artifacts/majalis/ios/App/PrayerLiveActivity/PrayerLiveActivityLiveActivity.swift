@@ -60,8 +60,12 @@ struct PrayerLiveActivityWidget: Widget {
                     bottomExpanded(state: state)
                 }
             } compactLeading: {
-                Image(systemName: prayerSymbol(for: key))
+                Text(centerTitle(state: state))
+                    .font(.caption2.bold())
                     .foregroundStyle(Brand.gold)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .frame(maxWidth: 48)
                     .accessibilityLabel(compactA11y(state: state))
             } compactTrailing: {
                 compactTrailing(state: state)

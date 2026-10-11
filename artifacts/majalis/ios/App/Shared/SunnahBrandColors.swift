@@ -20,6 +20,8 @@ enum SunnahWidgetTheme {
     static let raisedSurface = Color.white.opacity(0.10)
     static let focusFill = SunnahBrandColors.emerald.opacity(0.45)
     static let selectedFill = SunnahBrandColors.gold.opacity(0.22)
+    /// لون نص التنبيه (≤10 د) على الخلفية الزمردية — تباين ≥ 4.5:1
+    static let alertText = Color(red: 1.0, green: 0.78, blue: 0.36)
     static let warningFill = Color(red: 0.72, green: 0.45, blue: 0.12)
     static let errorFill = Color(red: 0.62, green: 0.18, blue: 0.16)
     static let infoFill = SunnahBrandColors.emerald

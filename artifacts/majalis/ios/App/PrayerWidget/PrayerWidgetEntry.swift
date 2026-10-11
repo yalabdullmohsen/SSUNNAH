@@ -349,6 +349,8 @@ enum PrayerWidgetTimelinePolicy {
             dates.append(next)
             let pre = next.addingTimeInterval(-15 * 60)
             if pre > now { dates.append(pre) }
+            let alert = next.addingTimeInterval(-10 * 60) // بدء شكل التنبيه
+            if alert > now { dates.append(alert) }
         }
         var boundaries: [Int64] = snapshot.map { Array($0.timesEpochMs.values) } ?? []
         for day in snapshot?.upcomingDays ?? [] { boundaries.append(contentsOf: day.timesEpochMs.values) }
