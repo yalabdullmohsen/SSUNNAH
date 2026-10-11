@@ -31,7 +31,7 @@ if [ "${1:-}" = "--inner" ]; then
     xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -destination "platform=iOS Simulator,id=$SIM" \
       -derivedDataPath "$DD" build -quiet 2>&1 | grep -E "error:" | grep -E "^/" | sort -u > "$OUT.build" )
   if [ -s "$OUT.build" ]; then echo BUILD_FAIL > "$OUT"; exit 0; fi
-  ( cd "$PKG" && swift test 2>&1 | grep -E "error:|failed \(" | grep -E "^/|failed" | sort -u > "$OUT.test" )
+  ( cd "$PKG" && xcodebuild test -scheme SunnahNative -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD-pkg" 2>&1 | grep -E "error:|failed \(|: error" | grep -E "^/|failed" | sort -u > "$OUT.test" )
   if [ -s "$OUT.test" ]; then echo TEST_FAIL > "$OUT"; else echo OK > "$OUT"; fi
   exit 0
 fi
@@ -42,6 +42,18 @@ git fetch -q origin native-app 2>&1 | tail -1
 [ -d "$WT" ] || git worktree add -q --detach "$WT" origin/native-app 2>&1 | tail -1
 for d in "$REPO/node_modules"; do [ -e "$WT/node_modules" ] || ln -s "$d" "$WT/node_modules"; done
 [ -e "$WT/artifacts/majalis/node_modules" ] || ln -s "$REPO/artifacts/majalis/node_modules" "$WT/artifacts/majalis/node_modules" 2>/dev/null
+
+# دمج main في native-app (merge فقط، لا rebase) قبل جمع الـPRs؛ التعارض يُسجَّل ويتوقف الدمج دون إيقاف الدورة
+if [ $DRY = 0 ]; then
+  git fetch -q origin main 2>&1 | tail -1
+  if [ -n "$(git rev-list -1 origin/native-app..origin/main 2>/dev/null)" ]; then
+    git -C "$WT" checkout -q -f -B native-loop/sync origin/native-app 2>&1 | tail -1
+    if git -C "$WT" merge -q --no-edit origin/main >>"$LOG" 2>&1; then
+      git -C "$WT" push -q origin HEAD:native-app >>"$LOG" 2>&1 && log "دُمج main في native-app" || log "تعذّر دفع دمج main (hook/تزامن)"
+    else git -C "$WT" merge --abort 2>/dev/null; log "تعارض دمج main→native-app — يحتاج تدخّلًا يدويًا"; fi
+    git fetch -q origin native-app 2>&1 | tail -1
+  fi
+fi
 
 PRS="${PRS_OVERRIDE:-$(gh pr list -R "$GHR" --label native-section --base native-app --state open --json number -q '.[].number' 2>>"$LOG")}"
 [ -z "$PRS" ] && { log "لا PRs بوسم native-section"; exit 0; }
