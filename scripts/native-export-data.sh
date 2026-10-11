@@ -11,6 +11,8 @@ export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=1536}"
 ADH=()
 [ -f content/native/adhkar-verified.json ] && ADH=(--adhkar-json content/native/adhkar-verified.json)
 node --import tsx scripts/native/export-ios-data.mjs --out "$OUT" ${ADH[@]+"${ADH[@]}"}
+# المحجوز/المحتوى يغيّر فهرس البحث المتتبَّع: أعد توليده هنا ليدخل الـPR (وإلا يفشل CI / build)
+bash scripts/check-search-index-fresh.sh --fix
 node --input-type=module -e '
 import fs from "node:fs"; import crypto from "node:crypto"; import path from "node:path";
 const out = process.argv[1]; const m = JSON.parse(fs.readFileSync(path.join(out, "MANIFEST.json"), "utf8"));
