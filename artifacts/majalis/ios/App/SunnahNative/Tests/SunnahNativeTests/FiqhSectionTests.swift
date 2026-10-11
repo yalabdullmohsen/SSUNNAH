@@ -196,19 +196,22 @@ final class FiqhSectionTests: XCTestCase {
     // MARK: البيانات الحقيقية (content/fiqh/books.json في المستودع)
 
     func testRealCatalogDecodesWithExpectedPublishedCounts() throws {
-        let url = URL(fileURLWithPath: #filePath)
+        let content = URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
-            .appendingPathComponent("content/fiqh/books.json")
-        guard FileManager.default.fileExists(atPath: url.path) else { throw XCTSkip("books.json غير متاح: \(url.path)") }
-        let c = try JSONDecoder().decode(FiqhCatalog.self, from: Data(contentsOf: url))
-        let books = c.publishedBooks
-        let chapters = books.flatMap(FiqhVisibility.publishedChapters)
-        let lessons = chapters.flatMap(FiqhVisibility.publishedLessons)
-        // محسوبة بقواعد fiqh-books.ts على النسخة الحالية (2026-10-11) قبل استبعاد المحجوز في التصدير.
-        XCTAssertEqual(books.count, 19)
+            .appendingPathComponent("content")
+        let books = content.appendingPathComponent("fiqh/books.json")
+        guard FileManager.default.fileExists(atPath: books.path) else { throw XCTSkip("books.json غير متاح: \(books.path)") }
+        let c = try JSONDecoder().decode(FiqhCatalog.self, from: Data(contentsOf: books))
+        // المحجوز يُستبعد في التصدير؛ ومنه درس فيه مفتاح needsReview مكرر بقيمتين، فلا يُعتمد على أيّهما يقرأ المفكّك.
+        struct Holds: Decodable { struct Hold: Decodable { let id: String }; let holds: [Hold] }
+        let held = Set(try JSONDecoder().decode(Holds.self, from: Data(contentsOf: content.appendingPathComponent("content-hold.json"))).holds.map(\.id))
+        let chapters = c.publishedBooks.flatMap(FiqhVisibility.publishedChapters)
+        let lessons = chapters.flatMap(FiqhVisibility.publishedLessons).filter { !held.contains($0.id) }
+        // محسوبة بقواعد fiqh-books.ts على النسخة الحالية (2026-10-11) بعد استبعاد المحجوز.
+        XCTAssertEqual(c.publishedBooks.count, 19)
         XCTAssertEqual(chapters.count, 283)
-        XCTAssertEqual(lessons.count, 1147)
+        XCTAssertEqual(lessons.count, 1146)
         XCTAssertNotNil(c.visibleLesson(book: "taharah", lesson: "taharah-miyah-overview"))
     }
 }

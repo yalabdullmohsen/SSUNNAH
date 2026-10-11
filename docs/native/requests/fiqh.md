@@ -19,6 +19,8 @@
 | `Data/fiqh/prophetic-medicine.json` | `src/lib/prophetic-medicine-seed.ts` → `PROPHETIC_MEDICINE_ITEMS` | مصفوفة |
 | `Data/fiqh/amr-bil-maruf.json` | `src/lib/amr-bil-maruf-seed.ts` | `{levels, conditions, munkaraat: MAJOR_MUNKARAAT, maaruf: MAJOR_MAARUF}` |
 
+ملاحظة بيانات: الدرس المحجوز `hajj-arkan-arafa` في `books.json` يحمل المفتاح `needsReview` مرتين (`true` ثم `false`)؛ JSON.parse يأخذ الأخير ومفكّك Swift قد لا يفعل. حذفه في التصدير (لأنه محجوز) يُنهي الالتباس.
+
 تحقّقتُ أن هذه الوحدات تُقيَّم بـ`node --experimental-strip-types` (بعد حذف `import type`) وأن كل عنصر فيها يحمل الحقول الإلزامية في النماذج: 0 مخالفة.
 قاعدة النشر للكتب منقولة في `FiqhVisibility` (مطابقة `isPublishedLesson/Chapter/Book`)، والذنوب تُعرض `reviewStatus == "reviewed"` فقط؛ استبعاد المحجوز يبقى في التصدير.
 
