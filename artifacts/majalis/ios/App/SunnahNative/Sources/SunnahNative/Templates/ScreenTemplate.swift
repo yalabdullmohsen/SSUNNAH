@@ -23,7 +23,7 @@ public struct TemplateHost<T: ScreenTemplate>: View {
     @State private var phase: Phase = .loading
 
     private enum Phase {
-        case loading, failed(String), ready(T.Content)
+        case loading, failed, ready(T.Content)
     }
 
     public init(_ template: T.Type = T.self) {}
@@ -32,12 +32,8 @@ public struct TemplateHost<T: ScreenTemplate>: View {
         Group {
             switch phase {
             case .loading: ProgressView()
-            case .failed(let message):
-                VStack(spacing: 12) {
-                    Text("تعذّر تحميل المحتوى").font(.headline)
-                    Text(message).font(.footnote).foregroundStyle(.secondary)
-                    Button("إعادة المحاولة") { Task { await load() } }
-                }.padding()
+            case .failed:
+                ErrorStateView { Task { await load() } }
             case .ready(let content): T(content: content)
             }
         }
@@ -48,7 +44,7 @@ public struct TemplateHost<T: ScreenTemplate>: View {
     private func load() async {
         phase = .loading
         do { phase = .ready(try await loader.load(T.Content.self, from: T.source)) }
-        catch { phase = .failed(String(describing: error)) }
+        catch { phase = .failed }
     }
 }
 
