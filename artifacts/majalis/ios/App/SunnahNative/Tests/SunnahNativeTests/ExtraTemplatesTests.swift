@@ -27,3 +27,10 @@ final class ExtraTemplatesTests: XCTestCase {
         _ = MapTemplate(places: [MapPlace(id: "1", title: "a", latitude: 0, longitude: 0)]).body
     }
 }
+
+final class PlaceholderStateTests: XCTestCase {
+    func testPlaceholderBuildsWithoutRawPath() {
+        _ = RootTabView.placeholder(Route.web(path: "/mawarith/calculator"))
+        _ = ErrorStateView(retry: {}).body
+    }
+}
