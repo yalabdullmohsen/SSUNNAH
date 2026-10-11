@@ -9,7 +9,7 @@ try? VNImageRequestHandler(cgImage: img).perform([req])
 let lines = (req.results ?? []).compactMap { $0.topCandidates(1).first?.string }
 let all = lines.joined(separator: "\n")
 if a.count > 3 { print(all); exit(0) }
-let bad = ["تعذّر", "تعذر تحميل", "محتوى مؤقت", "missingBundled", "إعادة المحاولة", "قيد التوثيق", "قيد الإعداد"]
+let bad = ["لا يوجد محتوى", "تعذّر", "تعذر تحميل", "محتوى مؤقت", "missingBundled", "إعادة المحاولة", "قيد التوثيق", "قيد الإعداد"]
 if let b = bad.first(where: { all.contains($0) }) { print("ERROR:\(b)"); exit(0) }
 if all.contains(route) { print("PLACEHOLDER"); exit(0) }
 // تبويبات فقط: بعد حذف التبويبات والرأس لا يبقى نص
