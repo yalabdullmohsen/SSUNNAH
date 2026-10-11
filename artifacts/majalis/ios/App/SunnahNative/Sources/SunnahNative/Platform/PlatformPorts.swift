@@ -73,6 +73,10 @@ public protocol AuthServicing: Sendable {
     func resetPassword(email: String) async throws
     func signOut() async
     func deleteAccount() async throws
+    /// يحدّث كلمة المرور للجلسة الحالية (بعد رابط الاستعادة).
+    func updatePassword(_ newPassword: String) async throws
+    /// يقبل رابط العودة (sunnah://auth/callback#access_token=…) ويحفظ الجلسة؛ يعيد true عند النجاح.
+    func handleCallback(_ url: URL) -> Bool
 }
 
 public struct NoAuthService: AuthServicing {
@@ -84,6 +88,8 @@ public struct NoAuthService: AuthServicing {
     public func resetPassword(email: String) async throws { throw AuthServiceError.notConfigured }
     public func signOut() async {}
     public func deleteAccount() async throws { throw AuthServiceError.notConfigured }
+    public func updatePassword(_ newPassword: String) async throws { throw AuthServiceError.notConfigured }
+    public func handleCallback(_ url: URL) -> Bool { false }
 }
 
 public enum AuthServiceError: Error, LocalizedError, Sendable {

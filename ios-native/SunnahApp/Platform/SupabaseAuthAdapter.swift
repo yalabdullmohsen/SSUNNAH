@@ -50,6 +50,26 @@ struct SupabaseAuthAdapter: AuthServicing {
         guard (resp as? HTTPURLResponse)?.statusCode == 200 else { throw AuthServiceError.server("تعذّر حذف الحساب، حاول لاحقًا.") }
     }
 
+    func updatePassword(_ newPassword: String) async throws {
+        guard let t = try store.value(forKey: "access_token"), let base = URL(string: urlString) else { throw AuthServiceError.unauthorized }
+        var req = URLRequest(url: base.appendingPathComponent("auth/v1/user"))
+        req.httpMethod = "PUT"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.setValue(anon, forHTTPHeaderField: "apikey")
+        req.setValue("Bearer \(t)", forHTTPHeaderField: "Authorization")
+        req.httpBody = try JSONSerialization.data(withJSONObject: ["password": newPassword])
+        let (_, resp) = try await run(req)
+        guard (resp as? HTTPURLResponse)?.statusCode == 200 else { throw AuthServiceError.server("تعذّر تحديث كلمة المرور.") }
+    }
+
+    func handleCallback(_ url: URL) -> Bool {
+        guard let frag = url.fragment else { return false }
+        var c = URLComponents(); c.query = frag
+        let q = Dictionary((c.queryItems ?? []).compactMap { i in i.value.map { (i.name, $0) } }, uniquingKeysWith: { a, _ in a })
+        guard let a = q["access_token"], let r = q["refresh_token"] else { return false }
+        return (try? store.setValue(a, forKey: "access_token")) != nil && (try? store.setValue(r, forKey: "refresh_token")) != nil
+    }
+
     private func save(_ r: [String: Any], email: String) throws {
         guard let a = r["access_token"] as? String, let rt = r["refresh_token"] as? String else {
             throw AuthServiceError.server("استجابة غير متوقعة من الخادم.")
