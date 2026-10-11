@@ -16,13 +16,13 @@
 
 ## الحديث والسنة — 13 (المسؤول: ن3)
 
-- [ ] `/arbaeen-nawawi` — ArbaeenNawawiPage — قائمة
+- [x] `/arbaeen-nawawi` — ArbaeenNawawiPage — قائمة
 - [ ] `/arbaeen-nawawi/:id` — ArbaeenHadithDetailPage — تفاصيل
 - [ ] `/dalail-nubuwwah` — DalailNubuwwahPage — قائمة
 - [x] `/hadith` — HadithPage — قائمة
 - [ ] `/hadith-science` — HadithSciencePage — قائمة
-- [ ] `/hadith/arbaeen-love-of-allah` — ArbaeenLovePage — قائمة
-- [ ] `/hadith/books` — HadithBooksPage — قائمة
+- [x] `/hadith/arbaeen-love-of-allah` — ArbaeenLovePage — قائمة
+- [x] `/hadith/books` — HadithBooksPage — قائمة
 - [ ] `/hadith/books-and-rulings` — HadithBooksAndRulingsPage — قائمة
 - [ ] `/hadith/daif` — HadithDaifPage — قائمة
 - [ ] `/hadith/mawdu` — HadithMawduPage — قائمة
@@ -63,7 +63,7 @@
 
 ## الدروس والتعلم — 23 (المسؤول: ن3)
 
-- [ ] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
+- [x] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
 - [ ] `/competitions` — CompetitionsPage — اختبار
 - [ ] `/competitions/:id` — CompetitionDetailPage — اختبار
 - [ ] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
@@ -85,7 +85,7 @@
 - [x] `/study-room` — StudyRoomPage — قائمة
 - [ ] `/universities` — UniversitiesPage — قائمة
 - [ ] `/universities/:slug` — UniversityDetailPage — تفاصيل
-- [ ] `/universities/compare` — UniversitiesComparePage — قائمة
+- [x] `/universities/compare` — UniversitiesComparePage — قائمة
 
 ## السيرة والتاريخ والأعلام — 18 (المسؤول: ن2)
 
@@ -133,20 +133,20 @@
 - [x] `/malaika` — MalaikaPage — قائمة
 - [x] `/raqaiq` — RaqaiqPage — قائمة
 - [x] `/tawhid` — TawhidPage — قائمة
-- [ ] `/tawhid/:slug` — TawhidTopicPage — تفاصيل
+- [x] `/tawhid/:slug` — TawhidTopicPage — تفاصيل
 - [x] `/tazkiya` — TazkiyaHubPage — أقسام
 - [x] `/tazkiya-topics` — TazkiyaTopicsPage — قائمة
 - [x] `/usra-mujtama` — UsraMujtamaPage — شبكة
 
 ## الفقه والعبادات — 39 (المسؤول: ن2)
 
-- [ ] `/amr-bil-maruf` — AmrBilMarufPage — قائمة
-- [ ] `/arkan` — ArkanIslamPage — قائمة
+- [x] `/amr-bil-maruf` — AmrBilMarufPage — قائمة
+- [x] `/arkan` — ArkanIslamPage — قائمة
 - [ ] `/arkan-iman` — ArkanImanPage — قائمة
 - [ ] `/fadail-aamal` — FadailAamalPage — قائمة
-- [ ] `/family` — FamilyModePage — قائمة
+- [x] `/family` — FamilyModePage — قائمة
 - [x] `/fiqh` — FiqhPage — قائمة
-- [ ] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
+- [x] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
 - [ ] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
 - [ ] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
 - [ ] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل
@@ -162,7 +162,7 @@
 - [ ] `/mawarith/calculator` — MawarithCalculatorPage — قائمة
 - [x] `/nikah` — NikahPage — قائمة
 - [x] `/prayer-ranks` — PrayerRanksPage — قائمة
-- [ ] `/prayer-times` — PrayerTimesPage — قائمة
+- [x] `/prayer-times` — PrayerTimesPage — قائمة
 - [x] `/prophetic-medicine` — PropheticMedicinePage — قائمة
 - [x] `/riba` — RibaPage — قائمة
 - [x] `/ruqya` — RuqyaPage — قائمة
@@ -170,7 +170,7 @@
 - [ ] `/salah-guide` — SalahGuidePage — قائمة
 - [ ] `/sawm` — SawmPage — قائمة
 - [x] `/sins-and-rights` — SinsAndRightsPage — قائمة
-- [ ] `/sins-and-rights/:slug` — SinsAndRightsDetailPage — تفاصيل
+- [x] `/sins-and-rights/:slug` — SinsAndRightsDetailPage — تفاصيل
 - [ ] `/sujood-sahw` — SujoodSahwPage — قائمة
 - [ ] `/tahara` — TaharaPage — قائمة
 - [x] `/talaq` — TalaqPage — قائمة
@@ -225,14 +225,14 @@
 - [ ] `/academic-research` — AcademicResearchPage — بحث
 - [ ] `/academic-research/:id` — ResearchDetailPage — بحث
 - [ ] `/academic-research/assistant` — ResearchAssistantPage — بحث
-- [ ] `/academic-research/submit` — ResearchSubmitPage — بحث
-- [ ] `/arabic-language` — ArabicLanguagePage — قائمة
+- [x] `/academic-research/submit` — ResearchSubmitPage — بحث
+- [x] `/arabic-language` — ArabicLanguagePage — قائمة
 - [x] `/cards` — CardsPage — قائمة
 - [x] `/islamic-directory` — IslamicDirectoryHubPage — أقسام
-- [ ] `/islamic-glossary` — IslamicGlossaryPage — قائمة
-- [ ] `/mawsuaat` — MawsuaatPage — قائمة
-- [ ] `/methodology` — MethodologyPage — قائمة
-- [ ] `/mind-map` — MindMapPage — شبكة
+- [x] `/islamic-glossary` — IslamicGlossaryPage — قائمة
+- [x] `/mawsuaat` — MawsuaatPage — قائمة
+- [x] `/methodology` — MethodologyPage — قائمة
+- [x] `/mind-map` — MindMapPage — شبكة
 - [ ] `/more` — MorePage — قائمة
 - [ ] `/scientific-announcements/:id` — ScientificAnnouncementDetailPage — تفاصيل
 - [ ] `/search` — SearchPage — بحث
