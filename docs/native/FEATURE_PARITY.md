@@ -18,17 +18,17 @@
 
 - [x] `/arbaeen-nawawi` — ArbaeenNawawiPage — قائمة
 - [ ] `/arbaeen-nawawi/:id` — ArbaeenHadithDetailPage — تفاصيل
-- [ ] `/dalail-nubuwwah` — DalailNubuwwahPage — قائمة
+- [x] `/dalail-nubuwwah` — DalailNubuwwahPage — قائمة
 - [x] `/hadith` — HadithPage — قائمة
-- [ ] `/hadith-science` — HadithSciencePage — قائمة
+- [x] `/hadith-science` — HadithSciencePage — قائمة
 - [x] `/hadith/arbaeen-love-of-allah` — ArbaeenLovePage — قائمة
 - [x] `/hadith/books` — HadithBooksPage — قائمة
 - [ ] `/hadith/books-and-rulings` — HadithBooksAndRulingsPage — قائمة
 - [ ] `/hadith/daif` — HadithDaifPage — قائمة
 - [ ] `/hadith/mawdu` — HadithMawduPage — قائمة
 - [ ] `/hadith/sahih` — HadithSahihPage — قائمة
-- [ ] `/sunnah-studies` — SunnahStudiesPage — قائمة
-- [ ] `/wasaya-nabawiyya` — WasayaNabawiyyaPage — قائمة
+- [x] `/sunnah-studies` — SunnahStudiesPage — قائمة
+- [x] `/wasaya-nabawiyya` — WasayaNabawiyyaPage — قائمة
 
 ## الحساب والإعدادات — 28 (المسؤول: ن3)
 
