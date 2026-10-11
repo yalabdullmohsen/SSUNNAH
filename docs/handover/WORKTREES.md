@@ -16,3 +16,5 @@
 ## قاعدة البناء
 DerivedData في مكان واحد: `~/ssunnah-build/DerivedData`، محاكٍ واحد: iPhone 17 Pro
 (`D6FD9993-ED1B-4659-9C3B-B74999C0F87E`). قفل البناء يحذف ما فيه الأقدم من 3 أيام قبل كل بناء.
+
+فروع `backup/*` لا تشغّل أي workflow (كل مشغّلات push مقيّدة بـ main). الخطاف يرجع إلى `scripts/hooks/bundled/ci-local-lock.sh` (منسوخة إلى `.git/ssunnah-hooks/`) إن غاب القفل في checkout قديم.
