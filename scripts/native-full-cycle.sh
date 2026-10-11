@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# دورة كاملة بلا PRs: تصدير كامل + بناء + لقطات كل الأقسام + تأشير [x] + دفع PROGRESS إلى native-app. الاستخدام: native-full-cycle.sh
+set -uo pipefail
+TOOLS="$HOME/.ssunnah-tools"; BOARD="$HOME/ssunnah-board"; LOG="$BOARD/native-loop.log"
+WT="$HOME/ssunnah-wt/native-loop"; DD="$HOME/ssunnah-build/DerivedData/mb"; SIM="${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+log() { echo "$(date '+%F %T') [full] $*" >> "$LOG"; }
+cd "$WT" || exit 9
+git fetch -q origin native-app && git checkout -q -f -B native-loop/progress origin/native-app || { log "فشل checkout"; exit 1; }
+bash scripts/native-export-data.sh >"$BOARD/export-full.out" 2>&1 || { log "فشل التصدير"; exit 1; }
+log "بوابة البيانات: $(node scripts/native-data-check.mjs | head -1)"
+( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1
+  xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD" build -quiet 2>&1 | grep -E "^/.*error:" | sort -u > "$BOARD/build-full.out" )
+[ -s "$BOARD/build-full.out" ] && { log "فشل البناء: $(head -1 "$BOARD/build-full.out")"; exit 1; }
+xcrun simctl boot "$SIM" >/dev/null 2>&1; xcrun simctl install "$SIM" "$DD/Build/Products/Debug-iphonesimulator/SunnahApp.app" || exit 1
+TICK="$BOARD/native-loop.ticks"; : > "$TICK"; : > "$BOARD/native-loop.invalid"
+bash scripts/native-snapshot.sh sirah aqidah fiqh library quran account learn hadith adhkar >/dev/null 2>&1
+while read -r route; do [ -n "$route" ] && sed -i '' "s#^- \[ \] \`$route\` #- [x] \`$route\` #" docs/native/FEATURE_PARITY.md; done < "$TICK"
+PCT=$(node scripts/native-progress.mjs | tr '\n' ' ')
+printf '| %s | %s | %s | دورة كاملة | — | 0 |\n' "full-$(date +%Y%m%d-%H%M)" "$(date +%F)" "$PCT" >> docs/native/PROGRESS.md
+git add docs/native/FEATURE_PARITY.md docs/native/PROGRESS.md
+git commit -q -m "ن4 (native-full-cycle): تأشير $(sort -u "$TICK" | wc -l | tr -d ' ') بند — $PCT" && git push -q origin HEAD:native-app >> "$LOG" 2>&1 && log "دُفع التقدم: $PCT"
+log "انتهت الدورة الكاملة: $PCT"

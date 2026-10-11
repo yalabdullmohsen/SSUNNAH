@@ -8,7 +8,8 @@ MAP=${MAP:-docs/native/ROUTE_TEMPLATE_MAP.json}; OCR="$(cd "$(dirname "$0")" && 
 touch "$TICK" "$INVALID"
 xcrun simctl boot "$SIM" >/dev/null 2>&1
 xcrun simctl status_bar "$SIM" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 >/dev/null 2>&1
-declare -a SEEN=()
+SEEN=$(mktemp); trap 'rm -f "$SEEN"' EXIT
+comp() { node -e 'const d=JSON.parse(require("fs").readFileSync(process.argv[1],"utf8"));const r=d.routes.find(x=>x.path===process.argv[2]);console.log(r?r.component||r.template:"?")' "$MAP" "$1"; }
 for s in "$@"; do
   if [[ "$s" == /* ]]; then sec=misc; routes="$s"; else sec=$s
     routes=$(node -e '
@@ -24,17 +25,17 @@ for s in "$@"; do
       xcrun simctl launch "$SIM" $BID -snapshotRoute "$route" >/dev/null 2>&1; python3 -c "import time;time.sleep(4)"
       xcrun simctl io "$SIM" screenshot "$BOARD/snapshots/$sec/$slug-$mode.png" >/dev/null 2>&1
     done
-    why=""
+    why=""; ro=$(swift "$OCR" "$L" "$route" 2>/dev/null); r2=$(swift "$OCR" "$D" "$route" 2>/dev/null)
     [ -s "$L" ] && [ -s "$D" ] || why="NOSHOT"
+    # الأولوية لسبب المحتوى (خطأ/قيد الإعداد/فارغ) لأنه ينسب المسار للجهة الصحيحة؛ DUP فقط لشاشة سليمة مطابقة لمسار بمكوّن مختلف
+    [ -z "$why" ] && { [ "$ro" != OK ] && why=$ro || { [ "$r2" != OK ] && why=$r2; }; }
     if [ -z "$why" ]; then
       hl=$(shasum -a 256 "$L" | cut -c1-64); hd=$(shasum -a 256 "$D" | cut -c1-64)
       [ "$hl" = "$hd" ] && why="LIGHT=DARK"
-      for h in "${SEEN[@]:-}"; do { [ "$h" = "$hl" ] || [ "$h" = "$hd" ]; } && why="${why:-DUP_SCREEN}"; done
-      SEEN+=("$hl" "$hd")
+      c=$(comp "$route")
+      for h in "$hl" "$hd"; do o=$(grep "^$h " "$SEEN" | head -1 | cut -d' ' -f2-); [ -n "$o" ] && [ "$o" != "$c" ] && why="${why:-DUP_SCREEN}"; [ -z "$o" ] && echo "$h $c" >> "$SEEN"; done
     fi
-    [ -z "$why" ] && why=$(swift "$OCR" "$L" "$route" 2>/dev/null); [ -z "$why" ] || [ "$why" = OK ] || true
-    r2=$(swift "$OCR" "$D" "$route" 2>/dev/null)
-    if [ -z "$why" ] ; then why=$r2; fi
+    [ -z "$why" ] && { ro=OK; r2=OK; why=OK; }
     if [ "$why" = OK ] && [ "$r2" = OK ]; then echo "$route" >> "$TICK"; else echo "$route|$sec|${why:-?}" >> "$INVALID"; fi
   done <<< "$routes"
 done
