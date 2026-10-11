@@ -138,5 +138,20 @@ for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== 
 json("quiz/manifest.json", { total: qn, chunks: qchunks });
 counts.quiz = qn;
 
+/* قرّاء السور الكاملة (mp3quran): المعرّف ورابط الأساس كما في RECITERS بلا ملفات صوت — المعرّف مفتاح التنزيل دون اتصال */
+const reciterSrc = fs.readFileSync(`${appRoot}/src/lib/quran-audio.ts`, "utf8").match(/^export const RECITERS[^=]*= \[([\s\S]*?)^\];/m)?.[1] ?? "";
+const audioOff = rd(`${data}/quran-audio-remote.json`);
+const reciters = [];
+for (const block of reciterSrc.split(/^\s{2}\{$/m).slice(1)) {
+  const f = (k) => block.match(new RegExp(`^\\s+${k}: "([^"]*)"`, "m"))?.[1];
+  const r = { id: f("id"), nameAr: f("nameAr"), surahBaseUrl: f("surahBaseUrl") };
+  if (!r.id || !r.nameAr || !/^https:\/\/[a-z0-9.]+\.mp3quran\.net\/[\w/-]+$/.test(r.surahBaseUrl || "")) throw new Error(`قارئ غير سليم: ${JSON.stringify(r)}`);
+  if ((audioOff.disabledSources || []).includes("mp3quran") || (audioOff.disabledReciterIds || []).includes(r.id)) { reject("reciters", "معطّل"); continue; }
+  reciters.push(r);
+}
+if (reciters.length < 1 || new Set(reciters.map((r) => r.id)).size !== reciters.length) throw new Error("قائمة القرّاء فارغة أو مكررة");
+json("audio/surah-reciters.json", reciters);
+counts.surahReciters = reciters.length;
+
 json("MANIFEST.json", { version: 1, counts, rejected: rej, files: files.slice().sort((a, b) => a.path.localeCompare(b.path)) });
 console.log(JSON.stringify({ out: check ? "(check)" : out, files: files.length, counts, rejected: rej }));

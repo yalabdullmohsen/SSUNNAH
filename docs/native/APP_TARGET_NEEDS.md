@@ -7,12 +7,13 @@
 - `artifacts/majalis/ios/App/App/Services/KeychainStore.swift`
 - `artifacts/majalis/ios/App/Shared/OfflineAudioStore.swift` و`PlaybackSessionController.swift` (بلا Capacitor؛ تحتاج Background Modes: audio)
 - `artifacts/majalis/ios/App/Shared/{SunnahSharedData,SunnahWidgetEnvelope,SunnahWidgetRefreshCoordinator,SunnahBrandColors,SunnahPrayerDeepLink}.swift` (نفسها لهدف الويدجت)
-- `ios-native/SunnahApp/SunnahApp.swift` و`ios-native/SunnahApp/Platform/*.swift` (محوّلات المنافذ)
+- `ios-native/SunnahApp/SunnahApp.swift` و`ios-native/SunnahApp/Platform/*.swift` (محوّلات المنافذ، ومنها `NativeAudioPlayer.swift`: مشغّل AVPlayer المحقون في `\.audioEngineFactory`)
 - لا يُضاف أي ملف `*Plugin.swift` (أغلفة Capacitor) ولا `import Capacitor`.
 
 ## البيانات
 - مرجع مجلد `ios-native/Data` (غير مُلتزَم) + Run Script Phase قبل Copy Bundle Resources: `ios-native/scripts/prepare-data.sh` (يستدعي `scripts/native-export-data.sh` من ن1، معلّق على دمج #2921).
 - القوالب تقرأ `Bundle.main` تحت `Data/<مجموعة>/…`.
+- `Data/audio/surah-reciters.json` (القرّاء ورابط أساس السور، بلا ملفات صوت): مفتاح التنزيل دون اتصال والمطابقة «المحلي أولًا». غيابه = بث فقط.
 
 ## الصلاحيات والـentitlements
 - App Group: `group.com.yousef.majlisilm` (التطبيق والويدجت والنشاط الحي).
