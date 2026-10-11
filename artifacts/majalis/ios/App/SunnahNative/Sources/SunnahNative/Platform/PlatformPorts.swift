@@ -63,17 +63,55 @@ public struct NoLiveActivity: LiveActivityControlling {
 }
 
 /// حاوية الخدمات؛ الافتراضي ذاكرة مؤقتة آمنة للمعاينات والاختبارات.
+/// عميل مصادقة Supabase (كلمة مرور) خلف منفذ؛ المحوّل في SunnahApp.
+public protocol AuthServicing: Sendable {
+    var isConfigured: Bool { get }
+    var currentEmail: String? { get }
+    func signIn(email: String, password: String) async throws
+    /// يعيد true إن لزم تأكيد البريد قبل الدخول.
+    func signUp(email: String, password: String) async throws -> Bool
+    func resetPassword(email: String) async throws
+    func signOut() async
+    func deleteAccount() async throws
+}
+
+public struct NoAuthService: AuthServicing {
+    public init() {}
+    public var isConfigured: Bool { false }
+    public var currentEmail: String? { nil }
+    public func signIn(email: String, password: String) async throws { throw AuthServiceError.notConfigured }
+    public func signUp(email: String, password: String) async throws -> Bool { throw AuthServiceError.notConfigured }
+    public func resetPassword(email: String) async throws { throw AuthServiceError.notConfigured }
+    public func signOut() async {}
+    public func deleteAccount() async throws { throw AuthServiceError.notConfigured }
+}
+
+public enum AuthServiceError: Error, LocalizedError, Sendable {
+    case notConfigured, offline, unauthorized
+    case server(String)
+    public var errorDescription: String? {
+        switch self {
+        case .notConfigured: return "خدمة الحساب غير مهيّأة في هذه النسخة."
+        case .offline: return "لا يوجد اتصال بالإنترنت."
+        case .unauthorized: return "انتهت الجلسة، سجّل الدخول من جديد."
+        case .server(let m): return m
+        }
+    }
+}
+
 public struct PlatformServices: Sendable {
     public var auth: AuthSessionStoring
     public var sharedData: SharedDataPublishing
     public var offlineAudio: OfflineAudioProviding
     public var liveActivity: LiveActivityControlling
+    public var authService: AuthServicing
     public init(auth: AuthSessionStoring = InMemoryAuthStore(),
                 sharedData: SharedDataPublishing = NoSharedData(),
                 offlineAudio: OfflineAudioProviding = NoOfflineAudio(),
-                liveActivity: LiveActivityControlling = NoLiveActivity()) {
+                liveActivity: LiveActivityControlling = NoLiveActivity(),
+                authService: AuthServicing = NoAuthService()) {
         self.auth = auth; self.sharedData = sharedData; self.offlineAudio = offlineAudio
-        self.liveActivity = liveActivity
+        self.liveActivity = liveActivity; self.authService = authService
     }
 }
 
