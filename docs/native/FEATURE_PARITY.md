@@ -38,7 +38,7 @@
 - [ ] `/auth/update-password` — UpdatePasswordPage — خاصة
 - [ ] `/calendar` — CalendarPage — شبكة
 - [x] `/car-mode` — CarModePage — قائمة
-- [ ] `/contact` — ContactPage — قائمة
+- [x] `/contact` — ContactPage — قائمة
 - [x] `/data-licenses` — SourcesLicensesPage — قائمة
 - [x] `/fatwa-policy` — FatwaPolicyPage — مقال
 - [x] `/feature-tour` — FeatureTourPage — قائمة
@@ -116,15 +116,15 @@
 - [x] `/amrad-qalbiyya` — AmradQalbiyyaPage — قائمة
 - [x] `/asma-husna` — AsmaaHusnaPage — قائمة
 - [x] `/discover-islam` — DiscoverIslamPage — قائمة
-- [ ] `/discover-islam/articles/:slug` — DiscoverIslamArticleDetailPage — مقال
+- [x] `/discover-islam/articles/:slug` — DiscoverIslamArticleDetailPage — مقال
 - [x] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
 - [ ] `/discover-islam/doubts` — DiscoverIslamDoubtsPage — قائمة
-- [ ] `/discover-islam/doubts/:slug` — DiscoverIslamDoubtDetailPage — تفاصيل
+- [x] `/discover-islam/doubts/:slug` — DiscoverIslamDoubtDetailPage — تفاصيل
 - [ ] `/discover-islam/how-to-convert` — HowToBecomeMuslimPage — قائمة
 - [ ] `/discover-islam/new-muslim` — NewMuslimPathPage — قائمة
 - [ ] `/discover-islam/new-muslim/:day` — NewMuslimDayDetailPage — تفاصيل
 - [ ] `/discover-islam/questions` — DiscoverIslamQuestionsPage — قائمة
-- [ ] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
+- [x] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
 - [x] `/hikam-salaf` — HikamSalafPage — قائمة
 - [x] `/iman-topics` — ImanTopicsPage — قائمة
 - [x] `/islamic-sects` — IslamicSectsPage — قائمة
@@ -147,7 +147,7 @@
 - [x] `/family` — FamilyModePage — قائمة
 - [x] `/fiqh` — FiqhPage — قائمة
 - [x] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
-- [ ] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
+- [x] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
 - [ ] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
 - [ ] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل
 - [x] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
@@ -156,7 +156,7 @@
 - [ ] `/janaza` — JanazaPage — قائمة
 - [x] `/jumuah` — JumuahPage — قائمة
 - [x] `/madhahib` — MadhahibPage — قائمة
-- [ ] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
+- [x] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
 - [x] `/maqasid-sharia` — MaqasidShariaPage — قائمة
 - [ ] `/mawarith` — MawarithPage — قائمة
 - [ ] `/mawarith/calculator` — MawarithCalculatorPage — قائمة
@@ -217,7 +217,7 @@
 - [ ] `/quran/surah-stories/:number` — SurahStoryDetailRoute — مقال
 - [ ] `/quran/surahs` — SurahIndexPage — أقسام
 - [ ] `/quran/worship-hub` — QuranWorshipHubPage — أقسام
-- [ ] `/tafsir` — TafsirPage — قائمة
+- [x] `/tafsir` — TafsirPage — قائمة
 - [ ] `/ulum-quran` — UlumQuranPage — قائمة
 
 ## اللغة والمكتبة والبحث — 19 (المسؤول: ن2)
