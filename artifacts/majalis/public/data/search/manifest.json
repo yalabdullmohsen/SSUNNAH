@@ -1,13 +1,13 @@
 {
   "version": 3,
   "contentType": "search.unified",
-  "checksum": "sha256:a5e988238f54c497e8d844b872694e061b0be5483d64b77c63b53a41e12708c5",
-  "count": 4639,
+  "checksum": "sha256:8db3be4f9c73fb9b147ad6f94476ea3175143ffce98a5cc45bb93e9f55f99ae9",
+  "count": 4601,
   "files": [
     {
       "file": "index.json",
-      "bytes": 1850726,
-      "itemCount": 4639
+      "bytes": 1835936,
+      "itemCount": 4601
     },
     {
       "file": "shards/adhkar.json",
@@ -138,9 +138,9 @@
     {
       "file": "shards/qa.json",
       "kind": "qa",
-      "bytes": 1141620,
-      "itemCount": 2295,
-      "checksum": "sha256:8281ed2527897defce4ba93b9b83d531480bdf1e387df7a873ad3c6e1622915a"
+      "bytes": 1126830,
+      "itemCount": 2257,
+      "checksum": "sha256:12fef8d636e773b8079a335112fdcf5a1ee22df8585889cdfc448073dece3cfd"
     },
     {
       "file": "shards/quran.json",
