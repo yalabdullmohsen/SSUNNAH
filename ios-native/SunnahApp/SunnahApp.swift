@@ -18,6 +18,7 @@ struct SunnahApp: App {
         LibrarySection.register(in: .shared)
         LearnSection.register(in: .shared)
         AccountSection.register(in: .shared)
+        QuranSection.register(in: .shared)
         SpecialScreens.registerAll(in: .shared)
         // نظام إشعارات واحد (الصلاة + الأذكار + الورد...) بموافقة المستخدم فقط؛ لا بوابة ويب في التطبيق الأصلي.
         NativeNotificationsLifecycle.didFinishLaunching(notificationsEnabled: true)
