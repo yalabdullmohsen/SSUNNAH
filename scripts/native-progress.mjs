@@ -1,14 +1,16 @@
 #!/usr/bin/env node
-// نسبة إنجاز إعادة البناء بـSwiftUI = المؤشَّر [x] / الكل في docs/native/FEATURE_PARITY.md
-import { readFileSync } from "node:fs";
+// رقمان منفصلان: «مدموج ومبني» = docs/native/MERGED_BUILT.txt، و«مُتحقَّق بلقطة» = [x] في FEATURE_PARITY (لا [x] إلا بلقطة فاتح/داكن صالحة).
+import { readFileSync, existsSync } from "node:fs";
 const md = readFileSync("docs/native/FEATURE_PARITY.md", "utf8");
-let sec = "", total = 0, done = 0; const by = new Map();
+const built = new Set(existsSync("docs/native/MERGED_BUILT.txt") ? readFileSync("docs/native/MERGED_BUILT.txt", "utf8").split("\n").filter(Boolean) : []);
+let sec = "", total = 0, ver = 0, bt = 0; const by = new Map();
 for (const l of md.split("\n")) {
   if (l.startsWith("## ")) { sec = l.slice(3); continue; }
   if (sec.startsWith("المحذوف")) continue;
-  const m = l.match(/^- \[( |x|X)\]/); if (!m) continue;
-  total++; const d = m[1] !== " "; if (d) done++;
-  const s = by.get(sec) ?? [0, 0]; s[1]++; if (d) s[0]++; by.set(sec, s);
+  const m = l.match(/^- \[( |x|X)\] `([^`]*)`/); if (!m) continue;
+  total++; const v = m[1] !== " ", b = built.has(m[2]) || v; if (v) ver++; if (b) bt++;
+  const s = by.get(sec) ?? [0, 0, 0]; s[2]++; if (b) s[0]++; if (v) s[1]++; by.set(sec, s);
 }
-if (process.argv.includes("--by-section")) for (const [k, [d, t]] of by) console.log(`${d}/${t}\t${k}`);
-console.log(`الإنجاز: ${done}/${total} = ${total ? ((done / total) * 100).toFixed(1) : 0}%`);
+if (process.argv.includes("--by-section")) for (const [k, [b, v, t]] of by) console.log(`مبني ${b}/${t} · متحقَّق ${v}/${t}\t${k}`);
+console.log(`مدموج ومبني: ${bt}/${total}`);
+console.log(`مُتحقَّق بلقطة: ${ver}/${total}`);

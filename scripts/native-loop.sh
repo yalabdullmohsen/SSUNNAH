@@ -31,7 +31,18 @@ if [ "${1:-}" = "--inner" ]; then
     xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -destination "platform=iOS Simulator,id=$SIM" \
       -derivedDataPath "$DD" build -quiet 2>&1 | grep -E "error:" | grep -E "^/" | sort -u > "$OUT.build" )
   if [ -s "$OUT.build" ]; then echo BUILD_FAIL > "$OUT"; exit 0; fi
-  ( cd "$PKG" && xcodebuild test -scheme SunnahNative -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD-pkg" 2>&1 | grep -E "error:|failed \(|: error" | grep -E "^/|failed" | sort -u > "$OUT.test" )
+  # بوابة المصحف: تُصدَّر البيانات وتُمرَّر MUSHAF_DATA/MUSHAF_SRC؛ التخطي (skipped) = فشل
+  MX="$WT/ios-native/Data"; if [ -d "$PKG/Sources/SunnahNative/Mushaf" ] && [ -f "$WT/artifacts/majalis/scripts/native/export-ios-data.mjs" ] && [ ! -f "$MX/mushaf/index.json" ]; then
+    ( cd "$WT/artifacts/majalis" && node scripts/native/export-ios-data.mjs "$MX" >"$BOARD/mushaf-export.log" 2>&1 )  # يكتب في ios-native/Data (المخرج المتجاهَل من git)
+  fi
+  ( cd "$PKG" && MUSHAF_DATA="$MX/mushaf" MUSHAF_SRC="$WT/artifacts/majalis" TEST_RUNNER_MUSHAF_DATA="$MX/mushaf" TEST_RUNNER_MUSHAF_SRC="$WT/artifacts/majalis" \
+      xcodebuild test -scheme SunnahNative -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD-pkg" > "$OUT.testlog" 2>&1 )
+  grep -E "error:|failed \(|: error" "$OUT.testlog" | grep -E "^/|failed" | sort -u > "$OUT.test"
+  if [ -d "$PKG/Tests/SunnahNativeTests" ] && [ -f "$PKG/Tests/SunnahNativeTests/MushafGateTests.swift" ]; then
+    mp=$(grep -cE "Test Case .*MushafGateTests.* passed" "$OUT.testlog"); ms=$(grep -cE "MushafGateTests.*skipped" "$OUT.testlog")
+    echo "MushafGateTests passed=$mp skipped=$ms" > "$BOARD/native-loop.mushaf"
+    if [ "$ms" -gt 0 ] || [ "$mp" -lt 4 ]; then echo "MushafGateTests: passed=$mp skipped=$ms (مطلوب 4/4 بلا تخطٍّ)" >> "$OUT.test"; fi
+  fi
   if [ -s "$OUT.test" ]; then echo TEST_FAIL > "$OUT"; else echo OK > "$OUT"; fi
   exit 0
 fi
@@ -98,6 +109,20 @@ for n in $PRS; do
   else CAND="$CAND $n"; fi
 done
 
+# 1b) بوابة البيانات: ملف bundled مفقود/تالف ⇒ تعليق على PR صاحب الملف المرجِع (لا دمج صامت)
+if [ -f "$WT/scripts/native-data-check.mjs" ]; then
+  ( cd "$WT" && node scripts/native-data-check.mjs --json > "$BOARD/native-data-check.out" 2>&1 )
+  log "بوابة البيانات: $(head -1 "$BOARD/native-data-check.out")"
+  for n in $CAND; do
+    files=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path')
+    miss=$(grep '^MISSING' "$BOARD/native-data-check.out" | while read -r _ ref _ src; do for f in $(echo "$src" | tr ',' ' '); do echo "$files" | grep -q "/$f$" && echo "$ref"; done; done | sort -u | head -15)
+    [ -n "$miss" ] && comment "$n" "data-$(date +%Y%m%d)" "بوابة البيانات: ملفات JSON مرجَعة بـ\`ContentSource.bundled\` ولا يقابلها ملف في \`ios-native/Data\` (الشاشة تعرض خطأ تحميل):
+\`\`\`
+$miss
+\`\`\`"
+  done
+fi
+
 # 2) بناء/عزل الفاشلين (حتى 3 جولات)
 for round in 1 2 3; do
   [ -z "${CAND// }" ] && break
@@ -131,28 +156,13 @@ done
 APP="$DD/Build/Products/Debug-iphonesimulator/SunnahApp.app"
 xcrun simctl boot "$SIM" >/dev/null 2>&1; xcrun simctl install "$SIM" "$APP" >/dev/null 2>&1
 TS=$(date +%Y%m%d-%H%M)
-TICK="$BOARD/native-loop.ticks"; : > "$TICK"
+TICK="$BOARD/native-loop.ticks"; : > "$TICK"; : > "$BOARD/native-loop.invalid"
 for n in "${MERGEDSET[@]}"; do
   secs=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path' | sed -n 's#.*Sections/\([a-z]*\)/.*#\1#p' | sort -u)
-  for s in $secs; do
-    node -e '
-      const m=require("fs").readFileSync(process.argv[1],"utf8"),d=JSON.parse(m);
-      const ID={"السيرة والتاريخ والأعلام":"sirah","العقيدة والتزكية":"aqidah","الفقه والعبادات":"fiqh","اللغة والمكتبة والبحث":"library","القرآن":"quran","الحساب والإعدادات":"account","الدروس والتعلم":"learn","الحديث والسنة":"hadith","الأذكار والأدعية":"adhkar"};
-      d.routes.filter(r=>ID[r.section]===process.argv[2]).slice(0,60).forEach(r=>console.log(r.path))' "$WT/docs/native/ROUTE_TEMPLATE_MAP.json" "$s" > "$BOARD/native-loop.routes.$s"
-    mkdir -p "$BOARD/snapshots/$s"
-    while read -r route; do
-      slug=$(echo "$route" | tr '/:' '__'); [ -z "$route" ] && continue
-      for mode in light dark; do
-        xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1
-        xcrun simctl ui "$SIM" appearance $mode
-        xcrun simctl launch "$SIM" $BID -snapshotRoute "$route" >/dev/null 2>&1
-        python3 -c "import time;time.sleep(3)"
-        xcrun simctl io "$SIM" screenshot "$BOARD/snapshots/$s/$TS$slug-$mode.png" >/dev/null 2>&1
-      done
-      L="$BOARD/snapshots/$s/$TS$slug-light.png"; D="$BOARD/snapshots/$s/$TS$slug-dark.png"
-      if [ -s "$L" ] && [ -s "$D" ] && ! cmp -s "$L" "$D"; then echo "$route" >> "$TICK"; fi
-    done < "$BOARD/native-loop.routes.$s"
-  done
+  (cd "$WT" && bash scripts/native-snapshot.sh $secs)
+  # شاشة غير صالحة (placeholder/خطأ/فارغة) → تعليق على الـPR بالمسار والخطأ؛ لا [x]
+  bad=$(grep -v '^$' "$BOARD/native-loop.invalid" | head -20 | sed 's/^/- `/; s/|/` ‏(/; s/|/): /' | tr '\n' ';')
+  [ -n "$bad" ] && [ $DRY = 0 ] && gh pr comment "$n" -R "$GHR" --body "ن4: لقطات غير صالحة (لا تأشير): $bad" >/dev/null 2>&1
 done
 
 # 4) دمج PRs الناجحة على GitHub (squash؛ بلا --admin)
@@ -166,7 +176,7 @@ if [ $DRY = 0 ] && { [ ${#MERGED[@]} -gt 0 ]; }; then
   git -C "$WT" fetch -q origin native-app; git -C "$WT" checkout -q -f -B native-loop/progress origin/native-app
   cd "$WT"
   while read -r route; do [ -n "$route" ] && sed -i '' "s#^- \[ \] \`$route\` #- [x] \`$route\` #" docs/native/FEATURE_PARITY.md; done < "$TICK"
-  PCT=$(node scripts/native-progress.mjs | tail -1)
+  PCT=$(node scripts/native-progress.mjs | tr '\n' ' ')
   printf '| %s | %s | %s | #%s | %s | %s |\n' "auto-$TS" "$(date +%F)" "$PCT" "$(IFS=,#; echo "${MERGED[*]}")" "${REJECTED[*]:-—}" "$ERRS" >> docs/native/PROGRESS.md
   git add docs/native/FEATURE_PARITY.md docs/native/PROGRESS.md
   git commit -q -m "ن4 (native-loop): دمج ${#MERGED[@]} PR + تأشير $(wc -l < "$TICK" | tr -d ' ') بند — $PCT" && git push -q origin HEAD:native-app >> "$LOG" 2>&1 && log "دُفع التقدم: $PCT"
