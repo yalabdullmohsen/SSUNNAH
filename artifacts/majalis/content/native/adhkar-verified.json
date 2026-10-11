@@ -1,0 +1,5637 @@
+[
+  {
+    "id": "adh-1",
+    "category_id": "adh-morning",
+    "text": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن مسعود",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "توحيد",
+      "حمد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-3",
+    "category_id": "adh-morning",
+    "text": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "تسبيح",
+      "صباح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-31",
+    "category_id": "adh-morning",
+    "text": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+    "repeat_count": 1,
+    "narrator": "شداد بن أوس",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، سيد الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "استغفار",
+      "سيد الاستغفار",
+      "توبة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-33",
+    "category_id": "adh-morning",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "استعاذة",
+      "هم",
+      "كرب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-35",
+    "category_id": "adh-morning",
+    "text": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+    "repeat_count": 3,
+    "narrator": "عثمان بن عفان",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "حماية",
+      "بسم الله"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-155",
+    "category_id": "adh-morning",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ وَخَيْرَ مَا فِيهِ، وَأَعُوذُ بِكَ مِنْ شَرِّ هَذَا الْيَوْمِ وَشَرِّ مَا فِيهِ",
+    "repeat_count": 1,
+    "narrator": "أبو مالك الأشعري",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "خير اليوم",
+      "دعاء",
+      "استعاذة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-159",
+    "category_id": "adh-morning",
+    "text": "اللَّهُمَّ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَشَرِّ الشَّيْطَانِ وَشِرْكِهِ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "استعاذة",
+      "شيطان",
+      "توحيد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-160",
+    "category_id": "adh-morning",
+    "text": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ، {اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ}، آيَةُ الْكُرْسِيِّ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "آية الكرسي",
+      "قرآن",
+      "حفظ"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-163",
+    "category_id": "adh-morning",
+    "text": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ عَدَدَ خَلْقِهِ وَرِضَا نَفْسِهِ وَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ",
+    "repeat_count": 3,
+    "narrator": "جويرية بنت الحارث",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "تسبيح",
+      "فضل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-287",
+    "category_id": "adh-morning",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه أبو داود وابن ماجه وأحمد، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "عافية",
+      "دنيا",
+      "آخرة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-288",
+    "category_id": "adh-morning",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه أبو داود وابن ماجه وأحمد، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "عافية",
+      "عفو",
+      "أهل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-330",
+    "category_id": "adh-morning",
+    "text": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن مسعود",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "ملك",
+      "خير",
+      "يوم",
+      "شر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-331",
+    "category_id": "adh-morning",
+    "text": "رَضِيتُ بِاللَّهِ رَبًّا وَبِالْإِسْلَامِ دِينًا وَبِمُحَمَّدٍ ﷺ نَبِيًّا",
+    "repeat_count": 3,
+    "narrator": "أبو سعيد الخدري",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — أذكار الصباح والمساء",
+    "explanation": null,
+    "keywords": [
+      "رضا",
+      "إسلام",
+      "رب",
+      "نبي",
+      "صباح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-4",
+    "category_id": "adh-evening",
+    "text": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن مسعود",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "توحيد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-5",
+    "category_id": "adh-evening",
+    "text": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+    "repeat_count": 3,
+    "narrator": "خولة بنت حكيم",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "استعاذة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-42",
+    "category_id": "adh-evening",
+    "text": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+    "repeat_count": 1,
+    "narrator": "شداد بن أوس",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، سيد الاستغفار (المساء)",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "استغفار",
+      "سيد الاستغفار",
+      "توبة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-45",
+    "category_id": "adh-evening",
+    "text": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+    "repeat_count": 3,
+    "narrator": "عثمان بن عفان",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "حماية",
+      "بسم الله"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-49",
+    "category_id": "adh-evening",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "استعاذة",
+      "هم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-165",
+    "category_id": "adh-evening",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا فِيهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ هَذِهِ اللَّيْلَةِ وَشَرِّ مَا فِيهَا",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن مسعود",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "خير الليلة",
+      "دعاء",
+      "استعاذة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-166",
+    "category_id": "adh-evening",
+    "text": "اللَّهُمَّ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَشَرِّ الشَّيْطَانِ وَشِرْكِهِ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "استعاذة",
+      "شيطان",
+      "توحيد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-169",
+    "category_id": "adh-evening",
+    "text": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ، آيَةُ الْكُرْسِيِّ، {اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ}",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "آية الكرسي",
+      "قرآن",
+      "حفظ"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-170",
+    "category_id": "adh-evening",
+    "text": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ عَدَدَ خَلْقِهِ وَرِضَا نَفْسِهِ وَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ",
+    "repeat_count": 3,
+    "narrator": "جويرية بنت الحارث",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "تسبيح",
+      "فضل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-299",
+    "category_id": "adh-evening",
+    "text": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن مسعود",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "توحيد",
+      "حمد",
+      "ملك"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-6",
+    "category_id": "adh-sleep",
+    "text": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+    "repeat_count": 1,
+    "narrator": "حذيفة والبراء بن عازب رضي الله عنهما",
+    "source_name": "رواه البخاري من حديث حذيفة، وله شاهد من حديث البراء",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — أذكار النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "دعاء",
+      "موت",
+      "حياة",
+      "اسم الله"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-51",
+    "category_id": "adh-sleep",
+    "text": "اللَّهُمَّ إِنِّي أَسْلَمْتُ نَفْسِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَوَجَّهْتُ وَجْهِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ",
+    "repeat_count": 1,
+    "narrator": "البراء بن عازب",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "توكل",
+      "تسليم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-52",
+    "category_id": "adh-sleep",
+    "text": "اللَّهُمَّ رَبَّ السَّمَاوَاتِ وَرَبَّ الْأَرْضِ وَرَبَّ الْعَرْشِ الْعَظِيمِ، رَبَّنَا وَرَبَّ كُلِّ شَيْءٍ، فَالِقَ الْحَبِّ وَالنَّوَى، وَمُنْزِلَ التَّوْرَاةِ وَالْإِنْجِيلِ وَالْقُرْآنِ، أَعُوذُ بِكَ مِنْ شَرِّ كُلِّ شَيْءٍ أَنْتَ آخِذٌ بِنَاصِيَتِهِ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم وأبو داود",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "استعاذة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-53",
+    "category_id": "adh-sleep",
+    "text": "بِسْمِكَ اللَّهُمَّ وَضَعْتُ جَنْبِي وَبِكَ أَرْفَعُهُ، فَإِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "دعاء",
+      "حفظ"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-54",
+    "category_id": "adh-sleep",
+    "text": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَكَفَانَا وَآوَانَا، فَكَمْ مِمَّنْ لَا كَافِيَ لَهُ وَلَا مُؤْوِيَ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "حمد",
+      "شكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-55",
+    "category_id": "adh-sleep",
+    "text": "سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَاللَّهُ أَكْبَرُ",
+    "repeat_count": 33,
+    "narrator": "علي بن أبي طالب",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، تسبيح فاطمة",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "تسبيح",
+      "تحميد",
+      "تكبير",
+      "تسبيح فاطمة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-56",
+    "category_id": "adh-sleep",
+    "text": "آيَةُ الْكُرْسِيِّ: اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "آية الكرسي",
+      "قرآن",
+      "حفظ"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-58",
+    "category_id": "adh-sleep",
+    "text": "اللَّهُمَّ أَسْلَمْتُ وَجْهِي إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ",
+    "repeat_count": 1,
+    "narrator": "البراء بن عازب",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "إيمان",
+      "تسليم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-269",
+    "category_id": "adh-sleep",
+    "text": "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي وَبِكَ أَرْفَعُهُ، فَإِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "حفظ",
+      "رحمة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-271",
+    "category_id": "adh-sleep",
+    "text": "سُبْحَانَ اللَّهِ [33] وَالْحَمْدُ لِلَّهِ [33] وَاللَّهُ أَكْبَرُ [34]",
+    "repeat_count": 1,
+    "narrator": "علي بن أبي طالب وفاطمة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، تسبيح النوم",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "تسبيح",
+      "تحميد",
+      "تكبير"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-329",
+    "category_id": "adh-sleep",
+    "text": "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+    "repeat_count": 3,
+    "narrator": "حفصة",
+    "source_name": "رواه أبو داود",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — أذكار النوم؛ صحَّحه الألباني في صحيح أبي داود (5045) دون زيادة \"ثلاث مرات\" التي نصّ على عدم ثبوتها",
+    "explanation": null,
+    "keywords": [
+      "نوم",
+      "عذاب",
+      "بعث",
+      "قيامة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-13",
+    "category_id": "adh-food",
+    "text": "بِسْمِ اللَّهِ",
+    "repeat_count": 1,
+    "narrator": "عمر بن أبي سلمة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "بسم الله"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-15",
+    "category_id": "adh-travel",
+    "text": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "ركوب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-17",
+    "category_id": "adh-wudu",
+    "text": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+    "repeat_count": 1,
+    "narrator": "عمر بن الخطاب",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الوضوء",
+    "explanation": null,
+    "keywords": [
+      "وضوء",
+      "شهادة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-18",
+    "category_id": "adh-salah",
+    "text": "اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء الاستفتاح",
+    "explanation": null,
+    "keywords": [
+      "صلاة",
+      "استفتاح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-19",
+    "category_id": "adh-after-salah",
+    "text": "أَسْتَغْفِرُ اللَّهَ، أَسْتَغْفِرُ اللَّهَ، أَسْتَغْفِرُ اللَّهَ",
+    "repeat_count": 3,
+    "narrator": "ثوبان",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "استغفار"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-22",
+    "category_id": "adh-distress",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "هم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-23",
+    "category_id": "adh-istikharah",
+    "text": "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ",
+    "repeat_count": 1,
+    "narrator": "جابر بن عبد الله",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء الاستخارة",
+    "explanation": null,
+    "keywords": [
+      "استخارة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-26",
+    "category_id": "adh-wind",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا، وَخَيْرَ مَا فِيهَا، وَخَيْرَ مَا أُرْسِلَتْ بِهِ، وَأَعُوذُ بِكَ مِنْ شَرِّهَا",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "رياح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-29",
+    "category_id": "adh-vehicle",
+    "text": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "سيارة",
+      "ركوب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-30",
+    "category_id": "adh-misc",
+    "text": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة البقرة، 201",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "البقرة: 201"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-59",
+    "category_id": "adh-wakeup",
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+    "repeat_count": 1,
+    "narrator": "عبادة بن الصامت",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار الاستيقاظ",
+    "explanation": null,
+    "keywords": [
+      "استيقاظ",
+      "توحيد",
+      "تسبيح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-63",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ أَنْتَ السَّلَامُ، وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+    "repeat_count": 1,
+    "narrator": "ثوبان",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "دعاء",
+      "السلام"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-66",
+    "category_id": "adh-after-salah",
+    "text": "سُبْحَانَ اللَّهِ، الْحَمْدُ لِلَّهِ، اللَّهُ أَكْبَرُ",
+    "repeat_count": 33,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، التسبيح بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "تسبيح",
+      "تحميد",
+      "تكبير"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-67",
+    "category_id": "adh-after-salah",
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد التسبيح",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "توحيد",
+      "تسبيح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-71",
+    "category_id": "adh-after-salah",
+    "text": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+    "repeat_count": 1,
+    "narrator": "أبو موسى الأشعري",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "حوقلة",
+      "توكل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-72",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ، وَلَا مُعْطِيَ لِمَا مَنَعْتَ، وَلَا يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ",
+    "repeat_count": 1,
+    "narrator": "المغيرة بن شعبة",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "دعاء",
+      "رزق"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-73",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ اغْفِرْ لِي مَا قَدَّمْتُ وَمَا أَخَّرْتُ، وَمَا أَسْرَرْتُ وَمَا أَعْلَنْتُ، وَمَا أَسْرَفْتُ، وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي، أَنْتَ الْمُقَدِّمُ وَأَنْتَ الْمُؤَخِّرُ، لَا إِلَهَ إِلَّا أَنْتَ",
+    "repeat_count": 1,
+    "narrator": "علي بن أبي طالب",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "استغفار",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-75",
+    "category_id": "adh-distress",
+    "text": "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",
+    "repeat_count": 1,
+    "narrator": "ابن عباس",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء الكرب",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "توكل",
+      "حسبنا الله"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-76",
+    "category_id": "adh-distress",
+    "text": "أَنِّي مَسَّنِيَ الضُّرُّ وَأَنْتَ أَرْحَمُ الرَّاحِمِينَ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة الأنبياء، 83",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم، دعاء أيوب",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "هم",
+      "ضر",
+      "دعاء أيوب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "الأنبياء: 83"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-82",
+    "category_id": "adh-distress",
+    "text": "تَوَكَّلْتُ عَلَى الْحَيِّ الَّذِي لَا يَمُوتُ، وَالْحَمْدُ لِلَّهِ الَّذِي لَمْ يَتَّخِذْ وَلَدًا وَلَمْ يَكُنْ لَهُ شَرِيكٌ فِي الْمُلْكِ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "توكل",
+      "توحيد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-84",
+    "category_id": "adh-istighfar",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِرِضَاكَ مِنْ سَخَطِكَ، وَبِمُعَافَاتِكَ مِنْ عُقُوبَتِكَ، وَأَعُوذُ بِكَ مِنْكَ، لَا أُحْصِي ثَنَاءً عَلَيْكَ أَنْتَ كَمَا أَثْنَيْتَ عَلَى نَفْسِكَ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "دعاء",
+      "ثناء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-85",
+    "category_id": "adh-istighfar",
+    "text": "اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ، دِقَّهُ وَجِلَّهُ، وَأَوَّلَهُ وَآخِرَهُ، وَعَلَانِيَتَهُ وَسِرَّهُ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "مغفرة",
+      "ذنوب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-87",
+    "category_id": "adh-istighfar",
+    "text": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه الترمذي وابن ماجه، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء ليلة القدر",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "عفو",
+      "ليلة القدر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-88",
+    "category_id": "adh-istighfar",
+    "text": "أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",
+    "repeat_count": 100,
+    "narrator": "الأغر المزني",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "توبة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-90",
+    "category_id": "adh-rain",
+    "text": "اللَّهُمَّ حَوَالَيْنَا وَلَا عَلَيْنَا، اللَّهُمَّ عَلَى الْآكَامِ وَالظِّرَابِ وَبُطُونِ الْأَوْدِيَةِ وَمَنَابِتِ الشَّجَرِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء رفع المطر",
+    "explanation": null,
+    "keywords": [
+      "مطر",
+      "دعاء",
+      "رفع المطر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-92",
+    "category_id": "adh-travel",
+    "text": "اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "دعاء",
+      "بر",
+      "تقوى"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-93",
+    "category_id": "adh-travel",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ الْمَنْظَرِ، وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "استعاذة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-94",
+    "category_id": "adh-travel",
+    "text": "اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ، وَالْخَلِيفَةُ فِي الْأَهْلِ، اللَّهُمَّ اصْحَبْنَا فِي سَفَرِنَا، وَاخْلُفْنَا فِي أَهْلِنَا",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "دعاء",
+      "أهل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-95",
+    "category_id": "adh-travel",
+    "text": "اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا، وَاطْوِ عَنَّا بُعْدَهُ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "دعاء",
+      "مسافة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-97",
+    "category_id": "adh-travel",
+    "text": "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء الركوب",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "ركوب",
+      "تكبير"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-99",
+    "category_id": "adh-misc",
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، فضل الذكر",
+    "explanation": null,
+    "keywords": [
+      "ذكر",
+      "توحيد",
+      "فضل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-100",
+    "category_id": "adh-misc",
+    "text": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ الْعَظِيمِ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الكلمتان الخفيفتان",
+    "explanation": null,
+    "keywords": [
+      "ذكر",
+      "تسبيح",
+      "فضل",
+      "كلمتان خفيفتان"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-102",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+    "repeat_count": 10,
+    "narrator": "كعب بن عجرة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الصلاة على النبي",
+    "explanation": null,
+    "keywords": [
+      "صلاة على النبي",
+      "إبراهيم",
+      "فضل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-104",
+    "category_id": "adh-misc",
+    "text": "سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَاللَّهُ أَكْبَرُ",
+    "repeat_count": 33,
+    "narrator": "علي بن أبي طالب",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، تسبيح فاطمة",
+    "explanation": null,
+    "keywords": [
+      "تسبيح",
+      "تحميد",
+      "تكبير",
+      "تسبيح فاطمة",
+      "ليلة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-105",
+    "category_id": "adh-misc",
+    "text": "لَا بَأْسَ طَهُورٌ إِنْ شَاءَ اللَّهُ",
+    "repeat_count": 1,
+    "narrator": "ابن عباس",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، عيادة المريض",
+    "explanation": null,
+    "keywords": [
+      "مرض",
+      "طهارة",
+      "تعزية"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-106",
+    "category_id": "adh-misc",
+    "text": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+    "repeat_count": 3,
+    "narrator": "خولة بنت حكيم",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، النزول بمكان",
+    "explanation": null,
+    "keywords": [
+      "استعاذة",
+      "حفظ",
+      "حماية"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-107",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه أبو داود وابن ماجه، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "عافية",
+      "دنيا",
+      "آخرة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-109",
+    "category_id": "adh-misc",
+    "text": "رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة نوح، 28",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "مغفرة",
+      "والدين",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "نوح: 28"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-110",
+    "category_id": "adh-misc",
+    "text": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة الفرقان، 74",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "أسرة",
+      "ذرية",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "الفرقان: 74"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-111",
+    "category_id": "adh-misc",
+    "text": "رَبِّ زِدْنِي عِلْمًا",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة طه، 114",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "علم",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "طه: 114"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-112",
+    "category_id": "adh-misc",
+    "text": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً، إِنَّكَ أَنْتَ الْوَهَّابُ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة آل عمران، 8",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "هداية",
+      "قلب",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "آل عمران: 8"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-113",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ مُصَرِّفَ الْقُلُوبِ صَرِّفْ قُلُوبَنَا عَلَى طَاعَتِكَ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن عمرو",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "قلب",
+      "طاعة",
+      "هداية",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-119",
+    "category_id": "adh-salah",
+    "text": "وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا مُسْلِمًا وَمَا أَنَا مِنَ الْمُشْرِكِينَ",
+    "repeat_count": 1,
+    "narrator": "علي بن أبي طالب",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء الاستفتاح",
+    "explanation": null,
+    "keywords": [
+      "صلاة",
+      "استفتاح",
+      "توحيد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-125",
+    "category_id": "adh-food",
+    "text": "بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، النسيان عند الأكل",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "بسم الله",
+      "نسيان"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-127",
+    "category_id": "adh-food",
+    "text": "الْحَمْدُ لِلَّهِ كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ، غَيْرَ مَكْفِيٍّ وَلَا مُوَدَّعٍ وَلَا مُسْتَغْنًى عَنْهُ رَبَّنَا",
+    "repeat_count": 1,
+    "narrator": "أبو أمامة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الطعام",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "حمد",
+      "شكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-131",
+    "category_id": "adh-wind",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذِهِ الرِّيحِ وَخَيْرَ مَا فِيهَا وَخَيْرَ مَا أُرْسِلَتْ بِهِ، وَأَعُوذُ بِكَ مِنْ شَرِّهَا وَشَرِّ مَا فِيهَا وَشَرِّ مَا أُرْسِلَتْ بِهِ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، هبوب الريح",
+    "explanation": null,
+    "keywords": [
+      "رياح",
+      "استعاذة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-133",
+    "category_id": "adh-istikharah",
+    "text": "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلَا أَقْدِرُ، وَتَعْلَمُ وَلَا أَعْلَمُ، وَأَنْتَ عَلَّامُ الْغُيُوبِ، اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنَّ هَذَا الْأَمْرَ خَيْرٌ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي، فَاقْدُرْهُ لِي وَيَسِّرْهُ لِي ثُمَّ بَارِكْ لِي فِيهِ",
+    "repeat_count": 1,
+    "narrator": "جابر بن عبد الله",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء الاستخارة الكامل",
+    "explanation": null,
+    "keywords": [
+      "استخارة",
+      "دعاء",
+      "توكل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-135",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",
+    "repeat_count": 1,
+    "narrator": "ابن مسعود",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "هداية",
+      "تقوى",
+      "عفاف",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-137",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ أَصْلِحْ لِي دِينِيَ الَّذِي هُوَ عِصْمَةُ أَمْرِي، وَأَصْلِحْ لِي دُنْيَايَ الَّتِي فِيهَا مَعَاشِي، وَأَصْلِحْ لِي آخِرَتِي الَّتِي فِيهَا مَعَادِي",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "دين",
+      "دنيا",
+      "آخرة",
+      "إصلاح",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-138",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ آتِ نَفْسِي تَقْوَاهَا، وَزَكِّهَا أَنْتَ خَيْرُ مَنْ زَكَّاهَا، أَنْتَ وَلِيُّهَا وَمَوْلَاهَا",
+    "repeat_count": 1,
+    "narrator": "زيد بن أرقم",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "تزكية",
+      "نفس",
+      "تقوى",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-139",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ اغْفِرْ لِي خَطِيئَتِي وَجَهْلِي، وَإِسْرَافِي فِي أَمْرِي، وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي",
+    "repeat_count": 1,
+    "narrator": "أبو موسى الأشعري",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "خطأ",
+      "جهل",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-145",
+    "category_id": "adh-misc",
+    "text": "رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ وَلَا تَجْعَلْ فِي قُلُوبِنَا غِلًّا لِلَّذِينَ آمَنُوا رَبَّنَا إِنَّكَ رَءُوفٌ رَحِيمٌ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة الحشر، 10",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "مغفرة",
+      "إخوة",
+      "قلب",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "الحشر: 10"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-146",
+    "category_id": "adh-misc",
+    "text": "رَبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَعُوذُ بِكَ رَبِّ أَنْ يَحْضُرُونِ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة المؤمنون، 97-98",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "استعاذة",
+      "شيطان",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "المؤمنون: 97-98"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-147",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ وَالْجُبْنِ وَالْهَرَمِ وَالْبُخْلِ وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "استعاذة",
+      "فتنة",
+      "قبر",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-148",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ، وَتَحَوُّلِ عَافِيَتِكَ، وَفُجَاءَةِ نِقْمَتِكَ، وَجَمِيعِ سَخَطِكَ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "نعمة",
+      "عافية",
+      "استعاذة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-149",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْفِرْدَوْسَ الْأَعْلَى مِنَ الْجَنَّةِ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "جنة",
+      "فردوس",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-150",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْجُبْنِ، وَأَعُوذُ بِكَ مِنَ الْبُخْلِ، وَأَعُوذُ بِكَ مِنْ أَنْ أُرَدَّ إِلَى أَرْذَلِ الْعُمُرِ",
+    "repeat_count": 1,
+    "narrator": "سعد بن أبي وقاص",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "جبن",
+      "بخل",
+      "عمر",
+      "استعاذة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-151",
+    "category_id": "adh-misc",
+    "text": "سُبْحَانَ اللَّهِ عَدَدَ خَلْقِهِ، سُبْحَانَ اللَّهِ رِضَا نَفْسِهِ، سُبْحَانَ اللَّهِ زِنَةَ عَرْشِهِ، سُبْحَانَ اللَّهِ مِدَادَ كَلِمَاتِهِ",
+    "repeat_count": 3,
+    "narrator": "جويرية بنت الحارث",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، التسبيح",
+    "explanation": null,
+    "keywords": [
+      "تسبيح",
+      "فضل",
+      "ذكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-153",
+    "category_id": "adh-misc",
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَلَا نَعْبُدُ إِلَّا إِيَّاهُ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن الزبير",
+    "source_name": "رواه مسلم وأبو داود",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "توحيد",
+      "حوقلة",
+      "ذكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-172",
+    "category_id": "adh-after-salah",
+    "text": "سُبْحَانَ اللَّهِ",
+    "repeat_count": 33,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، التسبيح بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "تسبيح",
+      "ذكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-173",
+    "category_id": "adh-after-salah",
+    "text": "الْحَمْدُ لِلَّهِ",
+    "repeat_count": 33,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، التسبيح بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "تحميد",
+      "ذكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-174",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُ أَكْبَرُ",
+    "repeat_count": 34,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، التسبيح بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "تكبير",
+      "ذكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-176",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْبُخْلِ، وَأَعُوذُ بِكَ مِنَ الْجُبْنِ، وَأَعُوذُ بِكَ مِنْ أَنْ أُرَدَّ إِلَى أَرْذَلِ الْعُمُرِ، وَأَعُوذُ بِكَ مِنْ فِتْنَةِ الدُّنْيَا وَعَذَابِ الْقَبْرِ",
+    "repeat_count": 1,
+    "narrator": "سعد بن أبي وقاص",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "استعاذة",
+      "فتنة",
+      "قبر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-177",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَاهْدِنِي وَعَافِنِي وَارْزُقْنِي",
+    "repeat_count": 1,
+    "narrator": "طارق بن أشيم",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "دعاء",
+      "مغفرة",
+      "رزق"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-178",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "دنيا",
+      "آخرة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-179",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْمَأْثَمِ وَالْمَغْرَمِ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "ذنب",
+      "دين",
+      "استعاذة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-180",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ، فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
+    "repeat_count": 1,
+    "narrator": "أبو بكر الصديق",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الصلاة",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "استغفار",
+      "مغفرة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-186",
+    "category_id": "adh-after-salah",
+    "text": "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي رَبَّنَا وَتَقَبَّلْ دُعَاءِ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة إبراهيم، 40",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "صلاة",
+      "ذرية",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "إبراهيم: 40"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-187",
+    "category_id": "adh-istighfar",
+    "text": "أَسْتَغْفِرُ اللَّهَ",
+    "repeat_count": 100,
+    "narrator": "الأغر المزني",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "توبة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-189",
+    "category_id": "adh-istighfar",
+    "text": "رَبِّ اغْفِرْ لِي",
+    "repeat_count": 100,
+    "narrator": "عبد الله بن عمر",
+    "source_name": "رواه أبو داود والترمذي وابن ماجه، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "مغفرة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-190",
+    "category_id": "adh-istighfar",
+    "text": "اللَّهُمَّ أَنْتَ رَبِّي، أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي، فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+    "repeat_count": 1,
+    "narrator": "شداد بن أوس",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، سيد الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "سيد الاستغفار",
+      "توبة",
+      "ذنوب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-191",
+    "category_id": "adh-istighfar",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "عفو",
+      "عافية",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-192",
+    "category_id": "adh-istighfar",
+    "text": "غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة البقرة، 285",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "مغفرة",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "البقرة: 285"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-193",
+    "category_id": "adh-istighfar",
+    "text": "رَبَّنَا ظَلَمْنَا أَنْفُسَنَا وَإِنْ لَمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة الأعراف، 23",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم، دعاء آدم",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "توبة",
+      "رحمة",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "الأعراف: 23"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-194",
+    "category_id": "adh-istighfar",
+    "text": "رَبِّ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة القصص، 16",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم، دعاء موسى",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "ذنب",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "القصص: 16"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-195",
+    "category_id": "adh-istighfar",
+    "text": "اللَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه الترمذي وابن ماجه، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء العفو",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "عفو",
+      "كرم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-196",
+    "category_id": "adh-misc",
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "متفق عليه (رواه البخاري ومسلم)",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "من قالها مئة مرة في يومه كانت له عدل عشر رقاب، وحُفظ من الشيطان يومه ذلك — حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "تهليل",
+      "توحيد",
+      "فضل",
+      "ذكر",
+      "لا إله إلا الله",
+      "ملك",
+      "قدير",
+      "مئة مرة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-197",
+    "category_id": "adh-misc",
+    "text": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "متفق عليه (رواه البخاري ومسلم)",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، فضل التسبيح",
+    "explanation": null,
+    "keywords": [
+      "تسبيح",
+      "فضل",
+      "ذكر",
+      "تحميد",
+      "غفران",
+      "ميزان"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-198",
+    "category_id": "adh-misc",
+    "text": "الْحَمْدُ لِلَّهِ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، فضل التحميد",
+    "explanation": null,
+    "keywords": [
+      "تحميد",
+      "فضل",
+      "ذكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-199",
+    "category_id": "adh-misc",
+    "text": "اللَّهُ أَكْبَرُ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، فضل التكبير",
+    "explanation": null,
+    "keywords": [
+      "تكبير",
+      "فضل",
+      "ذكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-201",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ، وَبَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+    "repeat_count": 1,
+    "narrator": "كعب بن عجرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الصلاة الإبراهيمية",
+    "explanation": null,
+    "keywords": [
+      "صلاة على النبي",
+      "إبراهيم",
+      "ذكر",
+      "فضل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-203",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِرِضَاكَ مِنْ سَخَطِكَ، وَبِمُعَافَاتِكَ مِنْ عُقُوبَتِكَ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "رضا",
+      "عفو",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-204",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ انْفَعْنِي بِمَا عَلَّمْتَنِي، وَعَلِّمْنِي مَا يَنْفَعُنِي، وَزِدْنِي عِلْمًا",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه الترمذي وابن ماجه، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء طلب العلم",
+    "explanation": null,
+    "keywords": [
+      "علم",
+      "نفع",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-205",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكَسَلِ وَالْهَرَمِ وَالْمَأْثَمِ وَالْمَغْرَمِ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "استعاذة",
+      "كسل",
+      "دين",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-209",
+    "category_id": "adh-misc",
+    "text": "سُبْحَانَ اللَّهِ الْعَظِيمِ وَبِحَمْدِهِ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الكلمتان الثقيلتان",
+    "explanation": null,
+    "keywords": [
+      "تسبيح",
+      "فضل",
+      "ميزان",
+      "جنة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-212",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ حَبِّبْ إِلَيْنَا الْإِيمَانَ وَزَيِّنْهُ فِي قُلُوبِنَا، وَكَرِّهْ إِلَيْنَا الْكُفْرَ وَالْفُسُوقَ وَالْعِصْيَانَ",
+    "repeat_count": 1,
+    "narrator": "رفاعة بن رافع الزرقي",
+    "source_name": "رواه أحمد (15492) والبخاري في الأدب المفرد (699) والحاكم والطبراني — من دعاء النبي ﷺ يوم أُحد؛ صححه ابن حجر العسقلاني في نتائج الأفكار",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "إيمان",
+      "قلب",
+      "هداية",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-213",
+    "category_id": "adh-misc",
+    "text": "رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنْتَ السَّمِيعُ الْعَلِيمُ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة البقرة، 127",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "قبول",
+      "عمل",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "البقرة: 127"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-214",
+    "category_id": "adh-misc",
+    "text": "رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة الحشر، 10",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "مغفرة",
+      "إخوة",
+      "مؤمنون",
+      "دعاء",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "الحشر: 10"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-221",
+    "category_id": "adh-distress",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء الكرب",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "هم",
+      "حزن",
+      "دين"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-225",
+    "category_id": "adh-distress",
+    "text": "وَأُفَوِّضُ أَمْرِي إِلَى اللَّهِ إِنَّ اللَّهَ بَصِيرٌ بِالْعِبَادِ",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة غافر، 44",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "توكل",
+      "تفويض",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "غافر: 44"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-226",
+    "category_id": "adh-distress",
+    "text": "إِنِّي تَوَكَّلْتُ عَلَى اللَّهِ رَبِّي وَرَبِّكُمْ مَا مِنْ دَابَّةٍ إِلَّا هُوَ آخِذٌ بِنَاصِيَتِهَا",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة هود، 56",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "توكل",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "هود: 56"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-231",
+    "category_id": "adh-food",
+    "text": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ",
+    "repeat_count": 1,
+    "narrator": "أبو سعيد الخدري",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الطعام",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "حمد",
+      "شكر",
+      "بعد الطعام"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-232",
+    "category_id": "adh-food",
+    "text": "اللَّهُمَّ أَطْعِمْ مَنْ أَطْعَمَنِي وَاسْقِ مَنْ سَقَانِي",
+    "repeat_count": 1,
+    "narrator": "المقداد بن الأسود",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء ضيف أهل البيت",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "دعاء",
+      "ضيافة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-234",
+    "category_id": "adh-travel",
+    "text": "اللَّهُمَّ إِنَّا نَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ وَكَآبَةِ الْمُنْقَلَبِ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "استعاذة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-236",
+    "category_id": "adh-travel",
+    "text": "أَسْتَوْدِعُكَ اللَّهَ الَّذِي لَا تَضِيعُ وَدَائِعُهُ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه أحمد وابن ماجه، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، توديع المسافر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "توديع",
+      "حفظ",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-237",
+    "category_id": "adh-travel",
+    "text": "اللَّهُمَّ اطْوِ لَنَا الْأَرْضَ وَهَوِّنْ عَلَيْنَا السَّفَرَ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "تيسير",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-238",
+    "category_id": "adh-travel",
+    "text": "اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "صحبة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-239",
+    "category_id": "adh-travel",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ فِي مَسِيرِي هَذَا الْبِرَّ وَالتَّقْوَى",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "بر",
+      "تقوى",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-243",
+    "category_id": "adh-wudu",
+    "text": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+    "repeat_count": 1,
+    "narrator": "عمر بن الخطاب",
+    "source_name": "رواه مسلم والترمذي",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد الوضوء",
+    "explanation": null,
+    "keywords": [
+      "وضوء",
+      "شهادة",
+      "توبة",
+      "طهارة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-247",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْفِتَنِ مَا ظَهَرَ مِنْهَا وَمَا بَطَنَ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء",
+    "explanation": null,
+    "keywords": [
+      "فتنة",
+      "استعاذة",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-253",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ أَصْلِحْ لِي دِينِيَ الَّذِي هُوَ عِصْمَةُ أَمْرِي، وَأَصْلِحْ لِي دُنْيَايَ الَّتِي فِيهَا مَعَاشِي، وَأَصْلِحْ لِي آخِرَتِي الَّتِي إِلَيْهَا مَعَادِي، وَاجْعَلِ الْحَيَاةَ زِيَادَةً لِي فِي كُلِّ خَيْرٍ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء الجامع",
+    "explanation": null,
+    "keywords": [
+      "دين",
+      "دنيا",
+      "آخرة",
+      "إصلاح",
+      "دعاء جامع"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-254",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ وَالْجُبْنِ وَالْبُخْلِ وَالْهَرَمِ وَعَذَابِ الْقَبْرِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستعاذة",
+    "explanation": null,
+    "keywords": [
+      "استعاذة",
+      "قبر",
+      "كسل",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-256",
+    "category_id": "adh-misc",
+    "text": "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِنْ لِسَانِي يَفْقَهُوا قَوْلِي",
+    "repeat_count": 1,
+    "narrator": "قرآن كريم",
+    "source_name": "سورة طه، 25-28",
+    "source_url": null,
+    "grade": "قرآن",
+    "reference": "القرآن الكريم، دعاء موسى",
+    "explanation": null,
+    "keywords": [
+      "دعاء",
+      "شرح صدر",
+      "تيسير",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "quran_tanzil",
+      "origin": "adhkar-seed",
+      "quran_ref": "طه: 25-28"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-260",
+    "category_id": "adh-mosque",
+    "text": "بِسْمِ اللَّهِ، وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ اغْفِرْ لِي ذُنُوبِي وَافْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+    "repeat_count": 1,
+    "narrator": "فاطمة بنت محمد",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دخول المسجد",
+    "explanation": null,
+    "keywords": [
+      "مسجد",
+      "دخول",
+      "رحمة",
+      "مغفرة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-261",
+    "category_id": "adh-mosque",
+    "text": "بِسْمِ اللَّهِ، وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ، اللَّهُمَّ اغْفِرْ لِي ذُنُوبِي وَافْتَحْ لِي أَبْوَابَ فَضْلِكَ",
+    "repeat_count": 1,
+    "narrator": "فاطمة بنت محمد",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الخروج من المسجد",
+    "explanation": null,
+    "keywords": [
+      "مسجد",
+      "خروج",
+      "فضل",
+      "مغفرة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-264",
+    "category_id": "adh-misc",
+    "text": "مَنْ صَلَّى عَلَيَّ صَلَاةً وَاحِدَةً، صَلَّى اللَّهُ عَلَيْهِ عَشْرًا",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "فضل الصلاة على النبي ﷺ",
+    "explanation": null,
+    "keywords": [
+      "صلاة على النبي",
+      "فضل",
+      "ثواب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-267",
+    "category_id": "adh-vehicle",
+    "text": "بِسْمِ اللَّهِ، {سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ}",
+    "repeat_count": 1,
+    "narrator": "علي بن ربيعة",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، ركوب الدابة",
+    "explanation": null,
+    "keywords": [
+      "ركوب",
+      "سفر",
+      "تسخير",
+      "قرآن"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-268",
+    "category_id": "adh-vehicle",
+    "text": "اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الدعاء في السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "دعاء",
+      "تقوى",
+      "عمل صالح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-273",
+    "category_id": "adh-wakeup",
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، الْحَمْدُ لِلَّهِ، وَسُبْحَانَ اللَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+    "repeat_count": 1,
+    "narrator": "عبادة بن الصامت",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستيقاظ من النوم",
+    "explanation": null,
+    "keywords": [
+      "استيقاظ",
+      "توحيد",
+      "تسبيح",
+      "حوقلة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-276",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عِلْمٍ لَا يَنْفَعُ وَمِنْ قَلْبٍ لَا يَخْشَعُ وَمِنْ نَفْسٍ لَا تَشْبَعُ وَمِنْ دَعْوَةٍ لَا يُسْتَجَابُ لَهَا",
+    "repeat_count": 1,
+    "narrator": "زيد بن أرقم",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح مسلم — كتاب الذكر والدعاء",
+    "explanation": null,
+    "keywords": [
+      "علم",
+      "خشوع",
+      "دعاء",
+      "استعاذة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-277",
+    "category_id": "adh-rain",
+    "text": "اللَّهُمَّ صَيِّبًا نَافِعًا",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، نزول المطر",
+    "explanation": null,
+    "keywords": [
+      "مطر",
+      "دعاء",
+      "نفع"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-278",
+    "category_id": "adh-rain",
+    "text": "مُطِرْنَا بِفَضْلِ اللَّهِ وَرَحْمَتِهِ",
+    "repeat_count": 1,
+    "narrator": "زيد بن خالد الجهني",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، بعد المطر",
+    "explanation": null,
+    "keywords": [
+      "مطر",
+      "فضل",
+      "رحمة",
+      "شكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-281",
+    "category_id": "adh-istikharah",
+    "text": "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلَا أَقْدِرُ، وَتَعْلَمُ وَلَا أَعْلَمُ، وَأَنْتَ عَلَّامُ الْغُيُوبِ",
+    "repeat_count": 1,
+    "narrator": "جابر بن عبد الله",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، صلاة الاستخارة",
+    "explanation": null,
+    "keywords": [
+      "استخارة",
+      "تفويض",
+      "علم الله",
+      "قدرة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-282",
+    "category_id": "adh-istighfar",
+    "text": "سَيِّدُ الِاسْتِغْفَارِ: اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ بِذَنْبِي، فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+    "repeat_count": 1,
+    "narrator": "شداد بن أوس",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، سيد الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "سيد الاستغفار",
+      "توبة",
+      "ذنوب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-284",
+    "category_id": "adh-istighfar",
+    "text": "رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ",
+    "repeat_count": 100,
+    "narrator": "ابن عمر",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "توبة",
+      "التواب",
+      "الرحيم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-291",
+    "category_id": "adh-home-out",
+    "text": "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الخروج من البيت",
+    "explanation": null,
+    "keywords": [
+      "خروج",
+      "بيت",
+      "توكل",
+      "حول"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-295",
+    "category_id": "adh-clothing",
+    "text": "اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ كَسَوْتَنِيهِ، أَسْأَلُكَ مِنْ خَيْرِهِ وَخَيْرِ مَا صُنِعَ لَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّهِ وَشَرِّ مَا صُنِعَ لَهُ",
+    "repeat_count": 1,
+    "narrator": "أبو سعيد الخدري",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، اللباس",
+    "explanation": null,
+    "keywords": [
+      "لباس",
+      "ثوب",
+      "كسوة",
+      "خير",
+      "شر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-296",
+    "category_id": "adh-vehicle",
+    "text": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنقَلِبُونَ",
+    "repeat_count": 1,
+    "narrator": "علي بن ربيعة",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، الركوب",
+    "explanation": null,
+    "keywords": [
+      "ركوب",
+      "سيارة",
+      "سفر",
+      "تسبيح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-297",
+    "category_id": "adh-vehicle",
+    "text": "اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ",
+    "repeat_count": 1,
+    "narrator": "ابن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء السفر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "ركوب",
+      "تيسير",
+      "بُعد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-300",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ اغْفِرْ لِي، وَارْحَمْنِي، وَاهْدِنِي، وَعَافِنِي، وَارْزُقْنِي",
+    "repeat_count": 1,
+    "narrator": "طارق بن أشيم الأشجعي",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، أذكار متنوعة",
+    "explanation": null,
+    "keywords": [
+      "دعاء",
+      "جامع",
+      "مغفرة",
+      "رحمة",
+      "هداية",
+      "عافية",
+      "رزق"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-302",
+    "category_id": "adh-home-out",
+    "text": "بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — الخروج من البيت",
+    "explanation": null,
+    "keywords": [
+      "خروج",
+      "توكل",
+      "بسملة",
+      "حول وقوة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-303",
+    "category_id": "adh-istikharah",
+    "text": "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلَا أَقْدِرُ، وَتَعْلَمُ وَلَا أَعْلَمُ، وَأَنْتَ عَلَّامُ الْغُيُوبِ. اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنَّ هَذَا الْأَمْرَ خَيْرٌ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي فَاقْدُرْهُ لِي وَيَسِّرْهُ لِي ثُمَّ بَارِكْ لِي فِيهِ، وَإِنْ كُنْتَ تَعْلَمُ أَنَّ هَذَا الْأَمْرَ شَرٌّ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي فَاصْرِفْهُ عَنِّي وَاصْرِفْنِي عَنْهُ وَاقْدُرْ لِي الْخَيْرَ حَيْثُ كَانَ ثُمَّ أَرْضِنِي بِهِ",
+    "repeat_count": 1,
+    "narrator": "جابر بن عبد الله",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — دعاء الاستخارة",
+    "explanation": null,
+    "keywords": [
+      "استخارة",
+      "توكل",
+      "خير",
+      "دعاء",
+      "أمر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-305",
+    "category_id": "adh-salah",
+    "text": "اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ، اللَّهُمَّ نَقِّنِي مِنَ الْخَطَايَا كَمَا يُنَقَّى الثَّوْبُ الْأَبْيَضُ مِنَ الدَّنَسِ، اللَّهُمَّ اغْسِلْ خَطَايَايَ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "متفق عليه",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — دعاء الافتتاح",
+    "explanation": null,
+    "keywords": [
+      "صلاة",
+      "افتتاح",
+      "مغفرة",
+      "تطهير",
+      "خطايا"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-306",
+    "category_id": "adh-salah",
+    "text": "اللَّهُمَّ اغْفِرْ لِي مَا قَدَّمْتُ وَمَا أَخَّرْتُ، وَمَا أَسْرَرْتُ وَمَا أَعْلَنْتُ، وَمَا أَسْرَفْتُ وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي، أَنْتَ الْمُقَدِّمُ وَأَنْتَ الْمُؤَخِّرُ، لَا إِلَهَ إِلَّا أَنْتَ",
+    "repeat_count": 1,
+    "narrator": "علي بن أبي طالب",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — دعاء الافتتاح",
+    "explanation": null,
+    "keywords": [
+      "صلاة",
+      "افتتاح",
+      "مغفرة",
+      "ذنوب",
+      "استغفار"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-307",
+    "category_id": "adh-wakeup",
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، الْحَمْدُ لِلَّهِ، وَسُبْحَانَ اللَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ، اللَّهُمَّ اغْفِرْ لِي",
+    "repeat_count": 1,
+    "narrator": "عبادة بن الصامت",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — أذكار الاستيقاظ",
+    "explanation": null,
+    "keywords": [
+      "استيقاظ",
+      "نوم",
+      "توحيد",
+      "استغفار",
+      "تحميد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-308",
+    "category_id": "adh-wakeup",
+    "text": "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+    "repeat_count": 1,
+    "narrator": "حذيفة بن اليمان",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — أذكار الاستيقاظ",
+    "explanation": null,
+    "keywords": [
+      "استيقاظ",
+      "نوم",
+      "حمد",
+      "إحياء",
+      "بعث"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-309",
+    "category_id": "adh-mosque",
+    "text": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+    "repeat_count": 1,
+    "narrator": "أبو حميد أو أبو أسيد",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — دخول المسجد",
+    "explanation": null,
+    "keywords": [
+      "مسجد",
+      "دخول",
+      "رحمة",
+      "أبواب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-310",
+    "category_id": "adh-mosque",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
+    "repeat_count": 1,
+    "narrator": "أبو حميد أو أبو أسيد",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — الخروج من المسجد",
+    "explanation": null,
+    "keywords": [
+      "مسجد",
+      "خروج",
+      "فضل",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-311",
+    "category_id": "adh-wind",
+    "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا وَخَيْرَ مَا فِيهَا وَخَيْرَ مَا أُرْسِلَتْ بِهِ، وَأَعُوذُ بِكَ مِنْ شَرِّهَا وَشَرِّ مَا فِيهَا وَشَرِّ مَا أُرْسِلَتْ بِهِ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — دعاء عند هبوب الريح",
+    "explanation": null,
+    "keywords": [
+      "ريح",
+      "رياح",
+      "خير",
+      "شر",
+      "استعاذة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-313",
+    "category_id": "adh-distress",
+    "text": "لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ",
+    "repeat_count": 1,
+    "narrator": "ابن عباس",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — ذكر الكرب",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "هم",
+      "ضيق",
+      "توحيد",
+      "العظيم",
+      "الحليم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-316",
+    "category_id": "adh-travel",
+    "text": "أَسْتَوْدِعُكُمُ اللَّهَ الَّذِي لَا تَضِيعُ وَدَائِعُهُ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه أحمد وابن ماجه — صححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — توديع المسافر",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "وداع",
+      "استيداع",
+      "توكل",
+      "الله"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-318",
+    "category_id": "adh-salawat",
+    "text": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+    "repeat_count": 10,
+    "narrator": "كعب بن عجرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — الصلاة الإبراهيمية",
+    "explanation": null,
+    "keywords": [
+      "صلاة على النبي",
+      "صلوات",
+      "إبراهيمية",
+      "محمد",
+      "إبراهيم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-320",
+    "category_id": "adh-misc",
+    "text": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",
+    "repeat_count": 100,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — الكلمتان الخفيفتان",
+    "explanation": null,
+    "keywords": [
+      "تسبيح",
+      "عظيم",
+      "حمد",
+      "ثقيل",
+      "ميزان"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-321",
+    "category_id": "adh-misc",
+    "text": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+    "repeat_count": 100,
+    "narrator": "أبو موسى الأشعري",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — الحوقلة",
+    "explanation": null,
+    "keywords": [
+      "حوقلة",
+      "حول",
+      "قوة",
+      "كنز",
+      "جنة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-323",
+    "category_id": "adh-salawat",
+    "text": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+    "repeat_count": 1,
+    "narrator": "كعب بن عجرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — الصلاة الإبراهيمية",
+    "explanation": null,
+    "keywords": [
+      "صلاة",
+      "إبراهيم",
+      "آل محمد",
+      "بارك",
+      "حميد",
+      "مجيد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-326",
+    "category_id": "adh-misc",
+    "text": "أَسْتَغْفِرُ اللَّهَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيَّ الْقَيُّومَ وَأَتُوبُ إِلَيْهِ",
+    "repeat_count": 3,
+    "narrator": "عبد الله بن مسعود",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "حي",
+      "قيوم",
+      "توبة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-327",
+    "category_id": "adh-misc",
+    "text": "رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ",
+    "repeat_count": 100,
+    "narrator": "ابن عمر",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — الاستغفار",
+    "explanation": null,
+    "keywords": [
+      "مغفرة",
+      "توبة",
+      "تواب",
+      "رحيم"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-332",
+    "category_id": "adh-wudu",
+    "text": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ",
+    "repeat_count": 1,
+    "narrator": "أبو سعيد الخدري",
+    "source_name": "رواه النسائي وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — ما يقال بعد الوضوء؛ خلاف علمي حول الرفع والوقف: النسائي والدارقطني صححا الوقف، والألباني صحح الرفع في السلسلة الصحيحة (2651)",
+    "explanation": null,
+    "keywords": [
+      "وضوء",
+      "تسبيح",
+      "حمد",
+      "استغفار",
+      "توبة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-333",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ زَوَالِ نِعْمَتِكَ وَتَحَوُّلِ عَافِيَتِكَ وَفُجَاءَةِ نِقْمَتِكَ وَجَمِيعِ سَخَطِكَ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن عمر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح مسلم — كتاب الرقاق",
+    "explanation": null,
+    "keywords": [
+      "عافية",
+      "نعمة",
+      "استعاذة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-335",
+    "category_id": "adh-salawat",
+    "text": "اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+    "repeat_count": 1,
+    "narrator": "كعب بن عجرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "الصلاة الإبراهيمية — صيغة البركة",
+    "explanation": null,
+    "keywords": [
+      "صلاة على النبي",
+      "بركة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-336",
+    "category_id": "adh-travel",
+    "text": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَىٰ رَبِّنَا لَمُنْقَلِبُونَ",
+    "repeat_count": 1,
+    "narrator": "علي بن ربيعة عن علي",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم — دعاء الركوب",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "ركوب",
+      "تسبيح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-338",
+    "category_id": "adh-distress",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَهْدِ الْبَلَاءِ وَدَرَكِ الشَّقَاءِ وَسُوءِ الْقَضَاءِ وَشَمَاتَةِ الْأَعْدَاءِ",
+    "repeat_count": 1,
+    "narrator": "أبو هريرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح البخاري — كتاب القدر",
+    "explanation": null,
+    "keywords": [
+      "بلاء",
+      "استعاذة",
+      "قضاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-339",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
+    "repeat_count": 1,
+    "narrator": "أبو بكر الصديق",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح البخاري — كتاب الأذان",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "ظلم النفس",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-340",
+    "category_id": "adh-salawat",
+    "text": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+    "repeat_count": 1,
+    "narrator": "كعب بن عجرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "الصلاة الإبراهيمية",
+    "explanation": null,
+    "keywords": [
+      "صلاة على النبي",
+      "تشهد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-341",
+    "category_id": "adh-istighfar",
+    "text": "أَسْتَغْفِرُ اللَّهَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ",
+    "repeat_count": 1,
+    "narrator": "زيد بن حارثة وقيل غيره",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "توبة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-343",
+    "category_id": "adh-distress",
+    "text": "رَبِّ أَعِنِّي وَلَا تُعِنْ عَلَيَّ، وَانْصُرْنِي وَلَا تَنْصُرْ عَلَيَّ، وَامْكُرْ لِي وَلَا تَمْكُرْ عَلَيَّ، وَاهْدِنِي وَيَسِّرِ الْهُدَى لِي، وَانْصُرْنِي عَلَى مَنْ بَغَى عَلَيَّ",
+    "repeat_count": 1,
+    "narrator": "ابن عباس",
+    "source_name": "رواه أبو داود والترمذي وابن ماجه، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "سنن أبي داود — كتاب الوتر",
+    "explanation": null,
+    "keywords": [
+      "عون",
+      "نصر",
+      "دعاء",
+      "كرب"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-344",
+    "category_id": "adh-food",
+    "text": "اللَّهُمَّ بَارِكْ لَهُمْ فِيمَا رَزَقْتَهُمْ، وَاغْفِرْ لَهُمْ، وَارْحَمْهُمْ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن بسر",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح مسلم — كتاب الأشربة",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "ضيافة",
+      "دعاء للضيف"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-346",
+    "category_id": "adh-after-salah",
+    "text": "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+    "repeat_count": 1,
+    "narrator": "ثوبان",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح مسلم — كتاب المساجد",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "سلام",
+      "ذكر"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-347",
+    "category_id": "adh-salawat",
+    "text": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَأَزْوَاجِهِ وَذُرِّيَّتِهِ، كَمَا صَلَّيْتَ عَلَى آلِ إِبْرَاهِيمَ، وَبَارِكْ عَلَى مُحَمَّدٍ وَأَزْوَاجِهِ وَذُرِّيَّتِهِ، كَمَا بَارَكْتَ عَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+    "repeat_count": 1,
+    "narrator": "أبو حميد الساعدي",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح البخاري — كتاب الأنبياء",
+    "explanation": null,
+    "keywords": [
+      "صلاة على النبي",
+      "آل",
+      "أزواج"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-353",
+    "category_id": "adh-misc",
+    "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ مَا عَمِلْتُ وَمِنْ شَرِّ مَا لَمْ أَعْمَلْ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح مسلم — الذكر",
+    "explanation": null,
+    "keywords": [
+      "استعاذة",
+      "عمل"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-355",
+    "category_id": "adh-distress",
+    "text": "حَسْبِيَ اللَّهُ وَنِعْمَ الْوَكِيلُ",
+    "repeat_count": 1,
+    "narrator": "ابن عباس",
+    "source_name": "رواه البخاري",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح البخاري — تفسير آل عمران",
+    "explanation": null,
+    "keywords": [
+      "توكل",
+      "حسبنا الله"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-356",
+    "category_id": "adh-food",
+    "text": "اللَّهُمَّ أَطْعِمْ مَنْ أَطْعَمَنِي، وَاسْقِ مَنْ سَقَانِي",
+    "repeat_count": 1,
+    "narrator": "المقداد",
+    "source_name": "رواه مسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "صحيح مسلم — الأشربة",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "ضيافة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-358",
+    "category_id": "adh-istighfar",
+    "text": "رَبِّ اغْفِرْ لِي خَطِيئَتِي وَجَهْلِي وَإِسْرَافِي فِي أَمْرِي وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي",
+    "repeat_count": 1,
+    "narrator": "أبو موسى",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "الصحيحان",
+    "explanation": null,
+    "keywords": [
+      "استغفار",
+      "خطيئة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-362",
+    "category_id": "adh-salawat",
+    "text": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+    "repeat_count": 1,
+    "narrator": "كعب بن عجرة",
+    "source_name": "رواه البخاري ومسلم",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "الصحيحان — الصلاة",
+    "explanation": null,
+    "keywords": [
+      "صلاة على النبي",
+      "إبراهيمية"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-365",
+    "category_id": "adh-travel",
+    "text": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ × وَإِنَّا إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ",
+    "repeat_count": 1,
+    "narrator": "علي بن ربيعة عن علي",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "سنن أبي داود — الجهاد",
+    "explanation": null,
+    "keywords": [
+      "سفر",
+      "ركوب",
+      "تسخير"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-367",
+    "category_id": "adh-misc",
+    "text": "رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا",
+    "repeat_count": 1,
+    "narrator": "أبو سعيد الخدري",
+    "source_name": "رواه أبو داود والترمذي، وصححه الألباني",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "سنن أبي داود — الأدب",
+    "explanation": null,
+    "keywords": [
+      "رضا",
+      "توحيد",
+      "إيمان"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  }
+]
