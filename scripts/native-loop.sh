@@ -27,9 +27,8 @@ FREEMB=$(vm_stat | awk '/page size/{ps=$8} /Pages free|Pages inactive/{gsub("\\.
 if [ "${1:-}" = "--inner" ]; then
   OUT="$2"; cd "$WT" || exit 9
   : > "$OUT"
-  MX="$WT/ios-native/Data"; if [ -d "$PKG/Sources/SunnahNative/Mushaf" ] && [ -f "$WT/artifacts/majalis/scripts/native/export-ios-data.mjs" ] && [ ! -f "$MX/mushaf/index.json" ]; then
-    ( cd "$WT/artifacts/majalis" && node scripts/native/export-ios-data.mjs "$MX" >"$BOARD/mushaf-export.log" 2>&1 )  # يُنفَّذ قبل بناء التطبيق كي تُضمَّن Data/mushaf والخطوط؛ يكتب في ios-native/Data (المخرج المتجاهَل من git)
-  fi
+  MX="$WT/ios-native/Data"
+  bash scripts/native-export-data.sh "$MX" >"$BOARD/mushaf-export.log" 2>&1 || echo "export failed" >> "$OUT.build"  # تصدير كامل كل دورة (كان يُنفَّذ مرة واحدة فيبقى التطبيق بلا بيانات الأقسام الجديدة)
   ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1; ruby scripts/test-xcodeproj-members.rb > "$OUT.members" 2>&1 || echo "members mismatch" >> "$OUT.build"
     xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -destination "platform=iOS Simulator,id=$SIM" \
       -derivedDataPath "$DD" build -quiet 2>&1 | grep -E "error:" | grep -E "^/" | sort -u > "$OUT.build" )
