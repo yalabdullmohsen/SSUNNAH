@@ -1,8 +1,8 @@
 import SwiftUI
 
 /// /islam-stats — «الإسلام في أرقام»: تبويبا «الإسلام في العالم» و«الحضارة الإسلامية» بنصوص IslamStatsPage حرفيًا.
-/// تبويبا «القرآن الكريم» و«الدلالات الكونية» لم يُنقلا: الأول يُبنى من كتالوج محسوب، والثاني آيات مكتوبة يدويًا
-/// وادعاءات إعجاز علمي لا تمر من الملفات المحزومة (CLOUD_RULES §7) — بانتظار قرار المالك (docs/native/requests/account.md).
+/// بقرار المالك (المرجع ROUTE_TEMPLATE_MAP/FEATURE_PARITY): تبويب «الدلالات الكونية» خارج المسارات المبقاة فلا يُبنى،
+/// وتبويب «القرآن الكريم» لا يُنقل هنا بل يُربط بمساره المبقى /quran-hub/numbers (قسم القرآن لـن3).
 struct AccountIslamStatsScreen: View {
     private enum Tab: String, CaseIterable, Identifiable {
         case global = "الإسلام في العالم", history = "الحضارة الإسلامية"
@@ -66,6 +66,7 @@ struct AccountIslamStatsScreen: View {
                         }
                     }
                 }
+                AccountLinkRow(title: "القرآن الكريم في أرقام", path: "/quran-hub/numbers")
                 AccountShareRow(title: "الإسلام في أرقام — سُنّة", path: "/islam-stats")
             }
             .padding(Sunnah.Spacing.pageX)
