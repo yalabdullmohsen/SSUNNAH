@@ -17,7 +17,7 @@
 | أحاديث موثّقة | `hadith-verified/{sahih,daif,mawdu}-NNN.json` + `manifest.json` | `[{id:str,collection,hadith_number:null\|str,title,text,narrator,source_name,grade,chapter,keywords:[str],explanation,authenticity_class:"sahih"\|"daif"\|"mawdu",metadata:{muhaddith,daraja_source},created_at}]` | 1.4 MB، 1740 | يُحزم `sahih` فقط (1160) → `hadith/verified-sahih.json` |
 | الأذكار | لا ملف في المستودع؛ Supabase `verified_adhkar_items`/`verified_adhkar_categories`، وفضل الأذكار `src/data/adhkar-fadl.json` | عنصر: `{id:text,category_id,text,repeat_count:int,narrator,source_name,source_url,grade,reference,explanation,keywords:[str],global_ref_id,verification_status,quality_score:int2,trust_level:int2,metadata:jsonb,deleted_at,version_number,created_at,updated_at}`؛ فئة: `{id,slug,name,description,sort_order,source_slug,verification_status,trust_level,metadata,…}`؛ fadl: `{version,prefix,items:[{id,dhikr,fadl,…}]}` | 51 عنصرًا؛ fadl 7 KB | **كل الـ51 `needs_review` بلا درجة ⇒ المُصدَّر 0** حتى يُوثَّق؛ يُصدَّر بـ`--adhkar-json` (نتيجة select من الجدول) |
 | فئات تذكير الأذكار | `src/data/adhkar-reminder-categories.json` | `{version,note,categories:[{id,group,t…,adhkarCategory}]}` | صغير | إعداد فقط، لا نصوص شرعية |
-| أسئلة الاختبار | `quiz/<قسم>-NNN.json` (113 ملفًا) + `manifest.json` | `[{id:str,documentation_status:"sourced"\|"unsourced",section,category,level,question,answer,reference?,explanation?,trust_level,editorial_review_status,last_updated_at,source_class?}]`؛ manifest `{version,total:8491,generatedAt,chunks:[{file,count,key}]}` | 8.6 MB | يُحزم الحيّ فقط: ليس `demo-*`، له شرح ومرجع وغير محجوز (2880 الآن) |
+| أسئلة الاختبار | `quiz/<قسم>-NNN.json` (113 ملفًا) + `manifest.json` | `[{id:str,documentation_status:"sourced"\|"unsourced",section,category,level,question,answer,reference?,explanation?,trust_level,editorial_review_status,last_updated_at,source_class?}]`؛ manifest `{version,total:8491,generatedAt,chunks:[{file,count,key}]}` | 8.6 MB | يُحزم: (أ) الموثّق `sourced` بشرح ومرجع، (ب) العام `unsourced` (سيرة/صحابة/أنبياء/معلومات معروفة) بلا مرجع ولا شرح؛ دائمًا ليس `demo-*` وغير محجوز وبسؤال/جواب غير فارغين. أحكام الفقه/العقيدة بلا مرجع محجوزة في content-hold ولا تُصدَّر. التطبيق يجب ألا يفترض وجود `reference`/`explanation` وألا يعرض شارة «موثّق» لـ`unsourced` |
 | مدن العالم/طرق الحساب | `prayer/world-cities.json` | `{v,generatedAt,count:927,countries:[{code,nameAr,method}],cities:[[…]]}` | 135 KB | الحساب نفسه داخل التطبيق (محمي) — لا جدول مواقيت |
 | الصوت (سجل) | `audio/audio-registry.json` | `{version,updatedAt,notes,reciters:[{id,name,style,granularity,bitrate,folder,urlPattern,source,verified,filesPresent,qaPassedAt}],adhan:[{id,name,full,short30,fajr}],tafsir:{clips:[]}}` | 6 KB | الملفات الصوتية نفسها من الشبكة |
 | أعلام القرآن | `quran-people/people.json` | `{version,updatedAt,notes,people:[{slug,nameAr,aliases:[],category,mentionType,prophetSlug,definition,whyMentioned,lessons:[],occurrences:[],status,relatedLinks:[]}]}` | 186 KB | غير مضمَّن في التصدير الحالي (يُضاف بعد مراجعة) |
@@ -59,3 +59,29 @@
 4. الأذكار: `verification_status=verified` ودرجة ومصدر وغير محذوف.
 5. القرآن: 114 سورة، 6236 آية، أرقام متسلسلة، لا نص فارغ؛ نسخ بايتي.
 6. المنافيست يسجّل العدّادات والمرفوض وsha256؛ `--check` يحسب دون كتابة.
+
+## 6) أقسام التصدير (`scripts/native/sections/*.mjs`)
+كل قسم ملف مستقل يُحمَّل تلقائيًا قبل كتابة المنافيست (`export-ios-data.mjs` يشغَّل عبر `node --import tsx`). الإخراج في `ios-native/Data/<قسم>/<اسم>.json` بالأسماء التي يتوقعها كود SunnahNative.
+
+### aqidah (20 ملفًا في `Data/aqidah/`)
+- الشكل: عناصر `{id,title,summary?,body?,reference?,...}` بحقول اختيارية تُحذف إن خلت؛ الملفات المجمَّعة (adab-talab-ilm, akhlaq, hikam-salaf, janna-naar, malaika, raqaiq, alamat-saah) مجموعات `{id,title,items:[...]}`.
+- المحجوز (`content-hold.json`) مستبعد من كل ملف، وتُسجَّل الرفوض في المنافيست.
+- `asma-husna`: تُرفض العناصر `documentation_status=unsourced` (91 من 99).
+- `islamic-sects`: `[]` **فارغ عمدًا** — لا سجل منشور (كلها NEEDS_SOURCE/NEEDS_HISTORICAL_REVIEW/NEEDS_SHARIA_REVIEW/CONFLICTING_SOURCES).
+- الشبهات وأدلة الدعوة (`discover-islam-questions/doubts`): كل آية قرآنية تُطابَق حرفيًا مع Tanzil (اسم السورة+الرقم+النص، والاقتباس المقطّع بـ`...` قطعةً قطعة)؛ ما لا يتحقق يُرفض (doubts: 1 من 12).
+- `discover-islam-articles/new-muslim`: تُمرَّر كما هي دون أدلة.
+- لا ملف لـ`discover-islam` (مركز) ولا `discover-islam-contact` (نموذج).
+
+### fiqh (18 ملفًا في `Data/fiqh/`)
+- `books` `{version,generatedAt,madhhab,books:[…]}` و`book-aliases` `{aliases:[…]}` من `content/fiqh/*.json`؛ الدرس/الباب/الكتاب المحجوز يُحذف (الآن `hajj-arkan-arafa`، فيزول تكرار `needsReview`)، والمرادفات تُرشَّح لتبقى أهدافها موجودة.
+- `guides/<slug>.json` (jumuah, nikah, riba, ruqya, sadaqa, talaq, udhiya, waqf): كائن `FiqhGuideSection` كما هو، بعد حذف البطاقات المحجوزة.
+- مصفوفات: `madhahib`, `maqasid-sharia`, `prayer-ranks`, `usul-topics`, `prophetic-medicine`.
+- `sins-and-rights` `{topics,categories}` و`amr-bil-maruf` `{levels,conditions,munkaraat,maaruf}`.
+- تمرير حرفي من مصدر الويب؛ لا إعادة صياغة ولا حقول جديدة. المسارات الـ17 المكتوبة داخل JSX (`/tahara` `/sawm`…) خارج هذا الـPR (تحتاج نقل نص إلى وحدة بيانات أولًا).
+
+
+### sirah (10 ملفات في `Data/sirah/`)
+- مصفوفات بالشكل الحرفي للمصدر، بعد حذف المحجوز: `islamic-landmarks`, `nations`, `sahabah` (مضمَّنة في الصفحة؛ `quote` لا يُعرض).
+- بمرشحات القبول: `occasions-verified` (سجل موثّق مطابق لبذرة بـ`reviewStatus=approved` ومصدر)، `prophets-knowledge` (`review_status=verified` + مصادر)، `stories` (معتمدة + `reviewed` + مصادر)، `islamic-history` (لا `needs-review` ولا بلا مصادر).
+- فارغة عمدًا (`[]`) لغياب مصدر/درجة في الويب وقرار المالك: `fikr-waqia`, `seerah-phases`, `shamail`.
+- `prophets-lineage` لا يُكتب (جذر واحد لا قائمة، ولا عقدة فارغة صالحة): غيابه = «قيد التوثيق».
