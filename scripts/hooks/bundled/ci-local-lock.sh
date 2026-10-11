@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+# قفل مشترك لـ ci:local: نافذة واحدة فقط تشغّله في كل مرة على الجهاز (التشغيل المتزامن يستنفد الذاكرة فيقتله النظام).
+# الاستعمال: bash scripts/ci-local-lock.sh <أمر…>  — يأخذ القفل ثم يشغّل الأمر ويحرّره عند الخروج حتى لو فشل.
+#   CI_LOCAL_LOCK_DIR    مسار القفل (افتراضيًا ~/.majalis-tools/ci-lock)
+#   CI_LOCAL_LOCK_WAIT   أقصى انتظار بالثواني (1500 = 25 دقيقة)، ثم يفشل بلا تشغيل
+#   CI_LOCAL_LOCK_STALE  قفل أقدم من هذا (2400 = 40 دقيقة) يُعدّ معلّقًا ويُكسر
+#   CI_LOCAL_LOCK_POLL   فترة الفحص بالثواني (10)
+#   CI_LOCAL_MIN_FREE_MB حارس الذاكرة: ينتظر حتى تتوفر هذه الذاكرة (1200 ميجا) قبل التشغيل
+#   CI_LOCAL_MEM_WAIT    أقصى انتظار للذاكرة بالثواني (600 = 10 دقائق)، ثم يُشغَّل مع تحذير
+#   CI_LOCAL_MEM_GUARD=0 يعطّل الحارس
+set -uo pipefail
+LOCK="${CI_LOCAL_LOCK_DIR:-$HOME/.majalis-tools/ci-lock}"
+WAIT="${CI_LOCAL_LOCK_WAIT:-1500}"
+STALE="${CI_LOCAL_LOCK_STALE:-2400}"
+POLL="${CI_LOCAL_LOCK_POLL:-10}"
+mkdir -p "$(dirname "$LOCK")"
+
+lock_age() {
+  local m
+  # GNU أولًا: stat -f على Linux يطبع معلومات نظام الملفات قبل أن يفشل فيُفسد العمر
+  m=$(stat -c %Y "$LOCK" 2>/dev/null || stat -f %m "$LOCK" 2>/dev/null) || { echo 0; return; }
+  echo $(( $(date +%s) - m ))
+}
+
+deadline=$(( $(date +%s) + WAIT ))
+until mkdir "$LOCK" 2>/dev/null; do
+  if (( $(lock_age) > STALE )); then
+    echo "ci-local-lock: قفل معلّق (أقدم من ${STALE}ث) — يُكسر" >&2
+    rm -rf "$LOCK"
+    continue
+  fi
+  if (( $(date +%s) >= deadline )); then
+    echo "ci-local-lock: القفل مأخوذ منذ $(lock_age)ث ($(cat "$LOCK/owner" 2>/dev/null)) — انتهى الانتظار" >&2
+    exit 75
+  fi
+  echo "ci-local-lock: نافذة أخرى تشغّل ci:local ($(cat "$LOCK/owner" 2>/dev/null)) — انتظار…" >&2
+  sleep "$POLL"
+done
+trap 'rm -rf "$LOCK"' EXIT
+trap 'exit 130' INT TERM
+echo "pid=$$ cwd=$PWD" > "$LOCK/owner"
+
+# حارس القرص: يرفض التشغيل إن قلّ الفارغ عن CI_LOCAL_MIN_DISK_GB (10 افتراضيًا)؛ CI_LOCAL_DISK_GUARD=0 يعطّله
+if [[ "${CI_LOCAL_DISK_GUARD:-1}" != 0 ]]; then
+  free_gb=$(df -g "$PWD" | awk 'NR==2{print $4}')
+  if [[ "${free_gb:-999}" -lt "${CI_LOCAL_MIN_DISK_GB:-10}" ]]; then
+    echo "ci-local-lock: رفض — الفارغ على القرص ${free_gb}GB < ${CI_LOCAL_MIN_DISK_GB:-10}GB؛ شغّل scripts/disk-clean.sh" >&2
+    exit 1
+  fi
+fi
+
+# تحذير DISK_LOW (يكتبه disk-clean.sh عند <15GB) + حذف DerivedData الأقدم من 3 أيام قبل كل بناء
+[[ -f "$HOME/ssunnah-board/DISK_LOW" ]] && echo "ci-local-lock: تحذير — $(cat "$HOME/ssunnah-board/DISK_LOW")" >&2
+for dd in "$HOME/ssunnah-build/DerivedData" "$HOME/Library/Developer/Xcode/DerivedData"; do
+  [[ -d "$dd" ]] && find "$dd" -mindepth 1 -maxdepth 1 -mtime +3 -exec rm -rf {} + 2>/dev/null
+done
+
+# حارس الذاكرة (macOS): المتاح = free + speculative + inactive (قابلة للاسترجاع فورًا)
+avail_mb() {
+  command -v vm_stat >/dev/null 2>&1 || { echo 999999; return; }
+  vm_stat | awk '/page size of/{ps=$8} /Pages free/{f=$3} /Pages speculative/{s=$3} /Pages inactive/{i=$3} END{printf "%d", (f+s+i)*ps/1048576}'
+}
+if [[ "${CI_LOCAL_MEM_GUARD:-1}" != 0 ]]; then
+  MIN_MB="${CI_LOCAL_MIN_FREE_MB:-1200}"
+  mdeadline=$(( $(date +%s) + ${CI_LOCAL_MEM_WAIT:-600} ))
+  while (( $(avail_mb) < MIN_MB )); do
+    if (( $(date +%s) >= mdeadline )); then
+      echo "ci-local-lock: تحذير — الذاكرة المتاحة $(avail_mb)MB < ${MIN_MB}MB بعد انتظار ${CI_LOCAL_MEM_WAIT:-600}ث؛ يُشغَّل على أي حال" >&2
+      break
+    fi
+    echo "ci-local-lock: ذاكرة متاحة $(avail_mb)MB < ${MIN_MB}MB — انتظار…" >&2
+    touch "$LOCK"; sleep "$POLL"
+  done
+fi
+"$@"
