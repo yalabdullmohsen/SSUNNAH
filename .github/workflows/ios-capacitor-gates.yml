@@ -4,6 +4,7 @@ name: iOS Capacitor Gates
 # Runs on Linux — does NOT invoke xcodebuild / TestFlight / App Store Connect.
 on:
   pull_request:
+    branches-ignore: [native-app]
     paths:
       - "artifacts/majalis/ios/**"
       - "artifacts/majalis/capacitor.config.ts"
@@ -35,6 +36,13 @@ permissions:
 jobs:
   ios-static:
     name: iOS static gates + unit tests
+    # قرار المالك 2026-10-11: لا يعمل على فروع الأصلي (البوابة هناك native-loop.sh المحلي).
+    if: >-
+      github.base_ref != 'native-app' &&
+      !startsWith(github.head_ref, 'native-section/') &&
+      !startsWith(github.head_ref, 'n2/') && !startsWith(github.head_ref, 'n3/') &&
+      !startsWith(github.head_ref, 'n4/') && !startsWith(github.head_ref, 'claude/') &&
+      github.head_ref != 'native-app'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
