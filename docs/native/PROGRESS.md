@@ -61,3 +61,4 @@
 - أول archive Release محلي: .app = 197MB غير مضغوط، **IPA = 124MB** (<150MB، لا حاجة لضغط الخطوط).
 - مصفوفة الأجهزة (6 شاشات: quran/prayer/adhkar/hadith/quiz/settings × SE3 وiPad A16 وAX3) في `~/ssunnah-board/snapshots/device-matrix/` (18 لقطة).
 - الأذكار فارغة: `verified-adhkar.json = []` (انظر requests/n1-exporters.md).
+| auto-20261011-2043 | 2026-10-11 | مدموج ومبني: 116/212 مُتحقَّق بلقطة: 43/212  | #2973 | — | 0 |
