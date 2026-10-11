@@ -7,6 +7,8 @@ import SunnahNative
 struct SunnahApp: App {
     @StateObject private var router = AppRouter()
 
+    init() { SpecialScreens.registerAll(in: .shared) }
+
     var body: some Scene {
         WindowGroup {
             RootTabView(router: router, screen: Self.screen)

@@ -75,5 +75,10 @@ public final class TemplateRegistry {
         builders[T.id] = { AnyView(TemplateHost<T>()) }
     }
 
+    /// شاشة خاصة بلا محتوى JSON (المواقيت، الرئيسية...).
+    public func registerView<V: View>(id: String, @ViewBuilder _ build: @escaping () -> V) {
+        builders[id] = { AnyView(build()) }
+    }
+
     public func view(for id: String) -> AnyView? { builders[id]?() }
 }

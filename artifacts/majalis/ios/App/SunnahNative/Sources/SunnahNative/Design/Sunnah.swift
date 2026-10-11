@@ -34,7 +34,11 @@ public enum Sunnah {
         public static let danger = dynamic(light: 0xB0352B, dark: 0xEF8B80)
 
         private static func dynamic(light: UInt32, dark: UInt32) -> Color {
+            #if canImport(UIKit)
             Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor(hex: dark) : UIColor(hex: light) })
+            #else
+            Color(NSColor(name: nil) { $0.bestMatch(from: [.darkAqua, .aqua]) == .darkAqua ? NSColor(hex: dark) : NSColor(hex: light) })
+            #endif
         }
     }
 
@@ -49,8 +53,16 @@ public enum Sunnah {
     }
 }
 
+#if canImport(UIKit)
 private extension UIColor {
     convenience init(hex: UInt32) {
         self.init(red: CGFloat((hex >> 16) & 0xFF) / 255, green: CGFloat((hex >> 8) & 0xFF) / 255, blue: CGFloat(hex & 0xFF) / 255, alpha: 1)
     }
 }
+#else
+private extension NSColor {
+    convenience init(hex: UInt32) {
+        self.init(red: CGFloat((hex >> 16) & 0xFF) / 255, green: CGFloat((hex >> 8) & 0xFF) / 255, blue: CGFloat(hex & 0xFF) / 255, alpha: 1)
+    }
+}
+#endif

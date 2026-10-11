@@ -10,10 +10,11 @@ let package = Package(
         .library(name: "SunnahNative", targets: ["SunnahNative"])
     ],
     dependencies: [
-        .package(path: "../SunnahDataKit")
+        .package(path: "../SunnahDataKit"),
+        .package(path: "../SunnahPrayer")
     ],
     targets: [
-        .target(name: "SunnahNative", dependencies: ["SunnahDataKit"]),
+        .target(name: "SunnahNative", dependencies: ["SunnahDataKit", "SunnahPrayer"]),
         .testTarget(name: "SunnahNativeTests", dependencies: ["SunnahNative"])
     ]
 )
