@@ -3,6 +3,7 @@ name: debt-codemod-verify
 # لا يغيّر أي فحص مطلوب؛ تقرير فقط (artifact) ويفشل إن تجاوز فرق اللقطة الحدّ.
 on:
   pull_request:
+    branches-ignore: [native-app]
     paths:
       - "artifacts/majalis/src/**/*.css"
       - "artifacts/majalis/scripts/debt-codemod*.mjs"
