@@ -8,7 +8,7 @@ free() { df -h / | awk 'NR==2{print $4}'; }
 step() { echo "[$1] الفارغ الآن: $(free)"; }
 step "قبل"
 # 1) Xcode
-rm -rf ~/Library/Developer/Xcode/DerivedData/* ~/Library/Developer/Xcode/Archives/* ~/Library/Caches/com.apple.dt.Xcode /private/tmp/claude-501/dd-* 2>/dev/null
+rm -rf ~/Library/Developer/Xcode/DerivedData/* ~/Library/Developer/Xcode/Archives/* ~/Library/Caches/com.apple.dt.Xcode /private/tmp/claude-501/dd-* "$HOME/ssunnah-build/DerivedData"/* 2>/dev/null
 rm -rf ~/Library/Developer/Xcode/iOS\ DeviceSupport/* 2>/dev/null; step "1 Xcode"
 # 2) المحاكيات: أبقِ KEEP_SIM فقط
 xcrun simctl shutdown all >/dev/null 2>&1; xcrun simctl delete unavailable >/dev/null 2>&1
@@ -42,4 +42,9 @@ git -C "$REPO" worktree list --porcelain | awk '/^worktree /{print $2}' | while 
   if [ "${DISK_CLEAN_DRY:-0}" = 1 ]; then echo "سيُزال: $w"; else git -C "$REPO" worktree remove --force "$w" 2>/dev/null && echo "أُزيل: $w"; fi
 done
 git -C "$REPO" worktree prune; git -C "$REPO" gc -q 2>/dev/null; step "7 worktrees"
+bash "$(dirname "$0")/post-merge-cleanup.sh" 2>/dev/null
+# DISK_LOW: يقرؤه ci-local-lock ويطبع تحذيرًا
+free_gb=$(df -g / | awk 'NR==2{print $4}'); LOW="$HOME/ssunnah-board/DISK_LOW"
+if [ "$free_gb" -lt 15 ]; then mkdir -p "$(dirname "$LOW")"; echo "$(date '+%F %T') الفارغ ${free_gb}GB < 15GB" > "$LOW"; else rm -f "$LOW"; fi
+echo "== $(date '+%F %T') انتهى؛ الفارغ ${free_gb}GB =="
 df -g / | awk 'NR==2 && $4<25{print "تحذير: الفارغ "$4"GB < 25GB"}'
