@@ -19,7 +19,7 @@ struct SunnahApp: App {
         WindowGroup {
             RootTabView(router: router, screen: Self.screen)
                 .environment(\.contentLoader, ContentLoader(bundle: .main))
-                .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter()))
+                .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter()))
         }
         .onChange(of: scenePhase) { phase in
             if phase == .active { NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: true) }

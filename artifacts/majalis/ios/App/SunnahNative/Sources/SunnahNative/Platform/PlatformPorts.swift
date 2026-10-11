@@ -46,15 +46,34 @@ public protocol PlaybackSessionControlling: AnyObject {
     func clearNowPlaying()
 }
 
+/// النشاط الحي لمواقيت الصلاة (Dynamic Island / شاشة القفل) — يقرأ من لقطة App Group فقط.
+public protocol LiveActivityControlling: Sendable {
+    var isSupported: Bool { get }
+    /// يبدأ/يحدّث النشاط من لقطة المواقيت المشتركة؛ true عند النجاح.
+    func sync() async -> Bool
+    /// يُنهي كل الأنشطة؛ true إن وُجد ما يُنهى.
+    func end() async -> Bool
+}
+
+public struct NoLiveActivity: LiveActivityControlling {
+    public init() {}
+    public var isSupported: Bool { false }
+    public func sync() async -> Bool { false }
+    public func end() async -> Bool { false }
+}
+
 /// حاوية الخدمات؛ الافتراضي ذاكرة مؤقتة آمنة للمعاينات والاختبارات.
 public struct PlatformServices: Sendable {
     public var auth: AuthSessionStoring
     public var sharedData: SharedDataPublishing
     public var offlineAudio: OfflineAudioProviding
+    public var liveActivity: LiveActivityControlling
     public init(auth: AuthSessionStoring = InMemoryAuthStore(),
                 sharedData: SharedDataPublishing = NoSharedData(),
-                offlineAudio: OfflineAudioProviding = NoOfflineAudio()) {
+                offlineAudio: OfflineAudioProviding = NoOfflineAudio(),
+                liveActivity: LiveActivityControlling = NoLiveActivity()) {
         self.auth = auth; self.sharedData = sharedData; self.offlineAudio = offlineAudio
+        self.liveActivity = liveActivity
     }
 }
 
