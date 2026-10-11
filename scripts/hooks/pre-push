@@ -6,6 +6,12 @@
 set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 APP_DIR="$ROOT/artifacts/majalis"
+# قفل البناء: من worktree الدافع، وإلا النسخة المضمّنة في المستودع المشترك (checkout قديم بلا scripts/ci-local-lock.sh)
+LOCK="$ROOT/scripts/ci-local-lock.sh"
+if [[ ! -f "$LOCK" ]]; then
+  COMMON="$(git rev-parse --git-common-dir)"
+  for c in "$COMMON/ssunnah-hooks/ci-local-lock.sh" "$HOME/.ssunnah-tools/scripts/ci-local-lock.sh"; do [[ -f "$c" ]] && LOCK="$c" && break; done
+fi
 PNPM_BIN="${PNPM_BIN:-$(command -v pnpm || true)}"
 [[ -z "$PNPM_BIN" && -x "$HOME/.local/bin/pnpm" ]] && PNPM_BIN="$HOME/.local/bin/pnpm"
 [[ -z "$PNPM_BIN" ]] && { echo "pnpm غير موجود في PATH" >&2; exit 1; }
@@ -56,7 +62,7 @@ if [[ -n "$BASE" ]]; then
   done < <(git diff --name-only "$BASE" HEAD)
   if [[ ${#ESLINT_FILES[@]} -gt 0 ]]; then
     echo "⏳ ESLint (${#ESLINT_FILES[@]} ملف متغيّر)…"
-    (cd "$APP_DIR" && bash "$ROOT/scripts/ci-local-lock.sh" "$PNPM_BIN" exec eslint "${ESLINT_FILES[@]}" --max-warnings=0 --no-warn-ignored) || fail "ESLint"
+    (cd "$APP_DIR" && bash "$LOCK" "$PNPM_BIN" exec eslint "${ESLINT_FILES[@]}" --max-warnings=0 --no-warn-ignored) || fail "ESLint"
     pass "ESLint"
   fi
 fi
@@ -78,12 +84,12 @@ if node scripts/verify-fingerprint.mjs check verify-ci >/dev/null 2>&1; then
   echo -e "${GREEN}✓ verify:ci fingerprint HIT — تخطّي typecheck/build${NC}"; exit 0
 fi
 echo "⏳ TypeScript typecheck…"
-(cd "$APP_DIR" && bash "$ROOT/scripts/ci-local-lock.sh" "$PNPM_BIN" run typecheck) || fail "TypeScript"
+(cd "$APP_DIR" && bash "$LOCK" "$PNPM_BIN" run typecheck) || fail "TypeScript"
 pass "TypeScript"
 (cd "$APP_DIR" && node scripts/verify-font-consistency.mjs) || fail "اتساق الخط"
 pass "اتساق الخط"
 echo "⏳ Vite build…"
-(cd "$APP_DIR" && bash "$ROOT/scripts/ci-local-lock.sh" npx vite build --config vite.config.ts --logLevel=warn) || fail "Vite Build"
+(cd "$APP_DIR" && bash "$LOCK" npx vite build --config vite.config.ts --logLevel=warn) || fail "Vite Build"
 pass "Vite Build"
 node scripts/verify-fingerprint.mjs write build >/dev/null || true
 echo -e "${GREEN}══ Pre-Push OK (كامل) ══${NC}"

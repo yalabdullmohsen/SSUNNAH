@@ -22,3 +22,6 @@
 
 ## التقرير النهائي (عربي، مرة واحدة)
 لكل مهمة: هل دُمجت ونُشرت (commit/`version.json`)، ما فشل وسببه، القرارات، والمتبقي.
+
+## Worktrees (إلزامي)
+كل worktrees المشروع تحت `~/ssunnah-wt/` فقط: n1 n2 n3 n4 (حد أقصى 4). أعد استخدام نسخة نافذتك وبدّل الفرع: `scripts/wt-switch.sh <nX> <branch>`. ممنوع clone/worktree جديد خارجها. التفاصيل: `docs/handover/WORKTREES.md`.

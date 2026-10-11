@@ -49,6 +49,12 @@ if [[ "${CI_LOCAL_DISK_GUARD:-1}" != 0 ]]; then
   fi
 fi
 
+# تحذير DISK_LOW (يكتبه disk-clean.sh عند <15GB) + حذف DerivedData الأقدم من 3 أيام قبل كل بناء
+[[ -f "$HOME/ssunnah-board/DISK_LOW" ]] && echo "ci-local-lock: تحذير — $(cat "$HOME/ssunnah-board/DISK_LOW")" >&2
+for dd in "$HOME/ssunnah-build/DerivedData" "$HOME/Library/Developer/Xcode/DerivedData"; do
+  [[ -d "$dd" ]] && find "$dd" -mindepth 1 -maxdepth 1 -mtime +3 -exec rm -rf {} + 2>/dev/null
+done
+
 # حارس الذاكرة (macOS): المتاح = free + speculative + inactive (قابلة للاسترجاع فورًا)
 avail_mb() {
   command -v vm_stat >/dev/null 2>&1 || { echo 999999; return; }
