@@ -55,7 +55,7 @@ if [ $DRY = 0 ]; then
   fi
 fi
 
-PRS="${PRS_OVERRIDE:-$(gh pr list -R "$GHR" --label native-section --base native-app --state open --json number -q '.[].number' 2>>"$LOG")}"
+PRS="${PRS_OVERRIDE:-$(gh pr list -R "$GHR" --base native-app --state open --search '-label:needs-owner draft:false' --json number -q '.[].number' 2>>"$LOG")}"
 [ -z "$PRS" ] && { log "لا PRs بوسم native-section"; exit 0; }
 
 comment() { # رقم نص (مرة واحدة لكل علامة)
@@ -80,15 +80,15 @@ build_set() { # PRs المرشّحة في $CAND → يملأ $RESULT
   RESULT=$(cat "$RES" 2>/dev/null || echo NOLOCK)
 }
 
-# 1) فرز: ملفات مشتركة ⇒ تخطٍّ
+# 1) فرز: قرار المالك 2026-10-11 — كل شيء يُدمج آليًا بعد نجاح البناء، عدا المحتوى المحمي
+PROTECTED='(^|/)(Quran|Mushaf|QPC|PrayerTime|PrayerCalc|Fonts)[^/]*(/|\.(swift|json|ttf|otf))|quran.*\.(json|txt|sqlite)|(^|/)mushaf|qpc|prayer[-_]?(time|calc)'
 CAND=""
 for n in $PRS; do
-  b=$(gh pr view "$n" -R "$GHR" --json headRefName -q .headRefName)
-  case "$b" in n2/*|n3/*) CAND="$CAND $n"; continue;; esac
-  bad=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path' | grep -Ev "$ALLOW" | head -5)
+  bad=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path' | grep -Eiv '^(docs/|\.github/)' | grep -Ei "$PROTECTED" | head -5)
   if [ -n "$bad" ]; then
-    comment "$n" shared "يحتاج مراجعة ن2/ن3: يعدّل ملفات خارج Sections/<قسمك>/ و Tests/: \`$(echo "$bad" | tr '\n' ' ')\`. ادفع التعديل المشترك عبر ن2/ن3 أو docs/native/requests/."
-    REJECTED+=("$n"); log "تخطي #$n (ملف مشترك)"
+    comment "$n" owner "محتوى محمي (القرآن/الصفحات/الخطوط/مواقيت الصلاة) ⇒ لا دمج آلي: \`$(echo "$bad" | tr '\n' ' ')\`"
+    [ $DRY = 1 ] || gh pr edit "$n" -R "$GHR" --add-label needs-owner >/dev/null 2>&1
+    REJECTED+=("$n"); log "تخطي #$n (محمي → needs-owner)"
   else CAND="$CAND $n"; fi
 done
 
