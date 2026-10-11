@@ -10,9 +10,14 @@ proj.root_object.development_region = 'ar'
 proj.root_object.known_regions = %w[ar en Base]
 t = proj.new_target(:application, 'SunnahApp', :ios, '16.2')
 app = proj.main_group.new_group('SunnahApp', 'SunnahApp')
-Dir[File.join(root, 'SunnahApp/*.swift')].sort.each { |f| t.add_file_references([app.new_reference(File.basename(f))]) }
-plat = app.new_group('Platform', 'Platform')
-Dir[File.join(root, 'SunnahApp/Platform/*.swift')].sort.each { |f| t.add_file_references([plat.new_reference(File.basename(f))]) }
+# glob متكرر: كل SunnahApp/**/*.swift عضو في الهدف تلقائيًا (مجموعة لكل مجلد) — لا قوائم يدوية تتعارض
+add_dir = lambda do |group, dir|
+  Dir[File.join(dir, '*.swift')].sort.each { |f| t.add_file_references([group.new_reference(File.basename(f))]) }
+  Dir[File.join(dir, '*')].sort.select { |d| File.directory?(d) && !d.end_with?('.xcassets') && Dir.exist?(d) && !Dir[File.join(d, '**/*.swift')].empty? }.each do |d|
+    add_dir.call(group.new_group(File.basename(d), File.basename(d)), d)
+  end
+end
+add_dir.call(app, File.join(root, 'SunnahApp'))
 shared = proj.main_group.new_group('Shared')
 %w[Shared/OfflineAudioStore Shared/PlaybackSessionController Shared/SunnahSharedData Shared/SunnahBrandColors Shared/SunnahWidgetEnvelope Shared/SunnahWidgetRefreshCoordinator Shared/SunnahPrayerDeepLink App/PrayerActivityAttributes App/PrayerLiveActivityController App/Services/KeychainStore].each do |n|
   r = shared.new_reference("../artifacts/majalis/ios/App/#{n}.swift"); r.source_tree = 'SOURCE_ROOT'

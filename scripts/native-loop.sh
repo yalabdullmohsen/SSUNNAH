@@ -30,7 +30,7 @@ if [ "${1:-}" = "--inner" ]; then
   MX="$WT/ios-native/Data"; if [ -d "$PKG/Sources/SunnahNative/Mushaf" ] && [ -f "$WT/artifacts/majalis/scripts/native/export-ios-data.mjs" ] && [ ! -f "$MX/mushaf/index.json" ]; then
     ( cd "$WT/artifacts/majalis" && node scripts/native/export-ios-data.mjs "$MX" >"$BOARD/mushaf-export.log" 2>&1 )  # يُنفَّذ قبل بناء التطبيق كي تُضمَّن Data/mushaf والخطوط؛ يكتب في ios-native/Data (المخرج المتجاهَل من git)
   fi
-  ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1
+  ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1; ruby scripts/test-xcodeproj-members.rb > "$OUT.members" 2>&1 || echo "members mismatch" >> "$OUT.build"
     xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -destination "platform=iOS Simulator,id=$SIM" \
       -derivedDataPath "$DD" build -quiet 2>&1 | grep -E "error:" | grep -E "^/" | sort -u > "$OUT.build" )
   if [ -s "$OUT.build" ]; then echo BUILD_FAIL > "$OUT"; exit 0; fi
@@ -113,6 +113,7 @@ done
 if [ -f "$WT/scripts/native-data-check.mjs" ]; then
   ( cd "$WT" && node scripts/native-data-check.mjs --json > "$BOARD/native-data-check.out" 2>&1 )
   log "بوابة البيانات: $(head -1 "$BOARD/native-data-check.out")"
+  grep "^WARN-EMPTY" "$BOARD/native-data-check.out" | while read -r l; do log "⚠️ $l"; done
   for n in $CAND; do
     files=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path')
     miss=$(grep '^MISSING' "$BOARD/native-data-check.out" | while read -r _ ref _ src; do for f in $(echo "$src" | tr ',' ' '); do echo "$files" | grep -q "/$f$" && echo "$ref"; done; done | sort -u | head -15)
