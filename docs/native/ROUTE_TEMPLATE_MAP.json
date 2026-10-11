@@ -1,0 +1,2370 @@
+{
+ "source": "artifacts/majalis/src/AppRoutes.tsx",
+ "totals": {
+  "routesInFile": 425,
+  "kept": 212,
+  "dropped": 213
+ },
+ "templates": {
+  "قائمة": 135,
+  "تفاصيل": 29,
+  "خاصة": 8,
+  "شبكة": 5,
+  "مقال": 6,
+  "أقسام": 18,
+  "اختبار": 3,
+  "بحث": 7,
+  "صوت": 1
+ },
+ "owners": {
+  "الفقه والعبادات": "ن2",
+  "القرآن": "ن3",
+  "الحساب والإعدادات": "ن3",
+  "العقيدة والتزكية": "ن2",
+  "الدروس والتعلم": "ن3",
+  "اللغة والمكتبة والبحث": "ن2",
+  "السيرة والتاريخ والأعلام": "ن2",
+  "الحديث والسنة": "ن3",
+  "الأذكار والأدعية": "ن3"
+ },
+ "routes": [
+  {
+   "path": "/adhan-help",
+   "component": "AdhanHelpPage",
+   "section": "الأذكار والأدعية",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/adhan-settings",
+   "component": "AdhanSettingsPage",
+   "section": "الأذكار والأدعية",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/adhkar",
+   "component": "AdhkarPage",
+   "section": "الأذكار والأدعية",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/daily-wird",
+   "component": "DailyWirdPage",
+   "section": "الأذكار والأدعية",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/duas",
+   "component": "DuasPage",
+   "section": "الأذكار والأدعية",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/duas-quran",
+   "component": "DuasQuranPage",
+   "section": "الأذكار والأدعية",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/sunan-yawmiyya",
+   "component": "SunanYawmiyyaPage",
+   "section": "الأذكار والأدعية",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/tasbih",
+   "component": "TasbihPage",
+   "section": "الأذكار والأدعية",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/arbaeen-nawawi",
+   "component": "ArbaeenNawawiPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/arbaeen-nawawi/:id",
+   "component": "ArbaeenHadithDetailPage",
+   "section": "الحديث والسنة",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/dalail-nubuwwah",
+   "component": "DalailNubuwwahPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hadith",
+   "component": "HadithPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hadith-science",
+   "component": "HadithSciencePage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hadith/arbaeen-love-of-allah",
+   "component": "ArbaeenLovePage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hadith/books",
+   "component": "HadithBooksPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hadith/books-and-rulings",
+   "component": "HadithBooksAndRulingsPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hadith/daif",
+   "component": "HadithDaifPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hadith/mawdu",
+   "component": "HadithMawduPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hadith/sahih",
+   "component": "HadithSahihPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/sunnah-studies",
+   "component": "SunnahStudiesPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/wasaya-nabawiyya",
+   "component": "WasayaNabawiyyaPage",
+   "section": "الحديث والسنة",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/about",
+   "component": "AboutPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/account-deletion",
+   "component": "AccountDeletionPage",
+   "section": "الحساب والإعدادات",
+   "template": "خاصة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/auth/callback",
+   "component": "AuthCallbackPage",
+   "section": "الحساب والإعدادات",
+   "template": "خاصة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/auth/update-password",
+   "component": "UpdatePasswordPage",
+   "section": "الحساب والإعدادات",
+   "template": "خاصة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/calendar",
+   "component": "CalendarPage",
+   "section": "الحساب والإعدادات",
+   "template": "شبكة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/car-mode",
+   "component": "CarModePage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/contact",
+   "component": "ContactPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/data-licenses",
+   "component": "SourcesLicensesPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/fatwa-policy",
+   "component": "FatwaPolicyPage",
+   "section": "الحساب والإعدادات",
+   "template": "مقال",
+   "owner": "ن3"
+  },
+  {
+   "path": "/feature-tour",
+   "component": "FeatureTourPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/islam-stats",
+   "component": "IslamStatsPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/login",
+   "component": "LoginPage",
+   "section": "الحساب والإعدادات",
+   "template": "خاصة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/mosque-mode",
+   "component": "MosqueModePage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/my-submissions",
+   "component": "MySubmissionsPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/notification-settings",
+   "component": "NotificationSettingsPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/offline",
+   "component": "OfflineCenterPage",
+   "section": "الحساب والإعدادات",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/privacy",
+   "component": "PrivacyPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/privacy-center",
+   "component": "PrivacyCenterPage",
+   "section": "الحساب والإعدادات",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/qibla",
+   "component": "QiblaPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/register",
+   "component": "RegisterPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/settings",
+   "component": "SettingsPage",
+   "section": "الحساب والإعدادات",
+   "template": "خاصة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/stats",
+   "component": "UserStatsPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/submit",
+   "component": "SubmitContentPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/updates",
+   "component": "UpdatesPage",
+   "section": "الحساب والإعدادات",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/updates/auto/:slug",
+   "component": "AutoContentDetailPage",
+   "section": "الحساب والإعدادات",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/upload",
+   "component": "UploadPage",
+   "section": "الحساب والإعدادات",
+   "template": "خاصة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/vault",
+   "component": "VaultPage",
+   "section": "الحساب والإعدادات",
+   "template": "خاصة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/widget-center",
+   "component": "WidgetCenterPage",
+   "section": "الحساب والإعدادات",
+   "template": "خاصة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/annual-courses/:id",
+   "component": "AnnualCourseDetailPage",
+   "section": "الدروس والتعلم",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/competitions",
+   "component": "CompetitionsPage",
+   "section": "الدروس والتعلم",
+   "template": "اختبار",
+   "owner": "ن3"
+  },
+  {
+   "path": "/competitions/:id",
+   "component": "CompetitionDetailPage",
+   "section": "الدروس والتعلم",
+   "template": "اختبار",
+   "owner": "ن3"
+  },
+  {
+   "path": "/durus-imaniyya",
+   "component": "DurusImaniyyaPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/durus-mutanawwia",
+   "component": "DurusMutanawwiaPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/fawaid",
+   "component": "FawaidPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/flashcards",
+   "component": "FlashCardsPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/institutions",
+   "component": "InstitutionsPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/knowledge-graph",
+   "component": "KnowledgeGraphPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/knowledge/:section",
+   "component": "KnowledgeSectionPage",
+   "section": "الدروس والتعلم",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/kuwait-lessons",
+   "component": "KuwaitLessonsPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/lessons",
+   "component": "LessonsPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/lessons/:id",
+   "component": "LessonDetailPage",
+   "section": "الدروس والتعلم",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/lessons/archive",
+   "component": "LessonsArchivePage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/my-learning",
+   "component": "MyLearningPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/progress",
+   "component": "ProgressCenterPage",
+   "section": "الدروس والتعلم",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quiz",
+   "component": "QuizPage",
+   "section": "الدروس والتعلم",
+   "template": "اختبار",
+   "owner": "ن3"
+  },
+  {
+   "path": "/reading-plans",
+   "component": "ReadingPlansPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/researcher",
+   "component": "ResearcherProfilePage",
+   "section": "الدروس والتعلم",
+   "template": "بحث",
+   "owner": "ن3"
+  },
+  {
+   "path": "/study-room",
+   "component": "StudyRoomPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/universities",
+   "component": "UniversitiesPage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/universities/:slug",
+   "component": "UniversityDetailPage",
+   "section": "الدروس والتعلم",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/universities/compare",
+   "component": "UniversitiesComparePage",
+   "section": "الدروس والتعلم",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/fikr-waqia",
+   "component": "FikrWaqiaPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/islamic-landmarks",
+   "component": "IslamicLandmarksPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/islamic-landmarks/:id",
+   "component": "IslamicLandmarkDetailPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/islamic-landmarks/map",
+   "component": "IslamicLandmarksMapExplorerPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "شبكة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/nations",
+   "component": "NationsPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/nations/:slug",
+   "component": "NationDetailPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/occasions",
+   "component": "OccasionsPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/occasions-lessons",
+   "component": "OccasionsLessonsHubPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "أقسام",
+   "owner": "ن2"
+  },
+  {
+   "path": "/prophets",
+   "component": "ProphetStoriesPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "مقال",
+   "owner": "ن2"
+  },
+  {
+   "path": "/prophets/tree",
+   "component": "ProphetsFamilyTreePage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sahabah",
+   "component": "SahabahPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/seerah",
+   "component": "SeerahPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/shamael",
+   "component": "ShimaelPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/stories",
+   "component": "IslamicStoriesPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "مقال",
+   "owner": "ن2"
+  },
+  {
+   "path": "/tarikh-islami",
+   "component": "TarikhIslamiPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/tarikh-islami/:id",
+   "component": "TarikhIslamiDetailPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/teachers",
+   "component": "TeachersIndexPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "أقسام",
+   "owner": "ن2"
+  },
+  {
+   "path": "/teachers/:slug",
+   "component": "TeacherDetailPage",
+   "section": "السيرة والتاريخ والأعلام",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/adab-talab-ilm",
+   "component": "AdabTalabIlmPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/akhlaq",
+   "component": "AkhlaqPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/alamat-saah",
+   "component": "AlamatSaahPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/amrad-qalbiyya",
+   "component": "AmradQalbiyyaPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/asma-husna",
+   "component": "AsmaaHusnaPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam",
+   "component": "DiscoverIslamPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/articles/:slug",
+   "component": "DiscoverIslamArticleDetailPage",
+   "section": "العقيدة والتزكية",
+   "template": "مقال",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/contact",
+   "component": "DiscoverIslamContactPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/doubts",
+   "component": "DiscoverIslamDoubtsPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/doubts/:slug",
+   "component": "DiscoverIslamDoubtDetailPage",
+   "section": "العقيدة والتزكية",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/how-to-convert",
+   "component": "HowToBecomeMuslimPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/new-muslim",
+   "component": "NewMuslimPathPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/new-muslim/:day",
+   "component": "NewMuslimDayDetailPage",
+   "section": "العقيدة والتزكية",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/questions",
+   "component": "DiscoverIslamQuestionsPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/discover-islam/questions/:slug",
+   "component": "DiscoverIslamQuestionDetailPage",
+   "section": "العقيدة والتزكية",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/hikam-salaf",
+   "component": "HikamSalafPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/iman-topics",
+   "component": "ImanTopicsPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/islamic-sects",
+   "component": "IslamicSectsPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/islamic-sects/:id",
+   "component": "IslamicSectsDetailPage",
+   "section": "العقيدة والتزكية",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/janna-naar",
+   "component": "JannaNaarPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/malaika",
+   "component": "MalaikaPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/raqaiq",
+   "component": "RaqaiqPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/tawhid",
+   "component": "TawhidPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/tawhid/:slug",
+   "component": "TawhidTopicPage",
+   "section": "العقيدة والتزكية",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/tazkiya",
+   "component": "TazkiyaHubPage",
+   "section": "العقيدة والتزكية",
+   "template": "أقسام",
+   "owner": "ن2"
+  },
+  {
+   "path": "/tazkiya-topics",
+   "component": "TazkiyaTopicsPage",
+   "section": "العقيدة والتزكية",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/usra-mujtama",
+   "component": "UsraMujtamaPage",
+   "section": "العقيدة والتزكية",
+   "template": "شبكة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/amr-bil-maruf",
+   "component": "AmrBilMarufPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/arkan",
+   "component": "ArkanIslamPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/arkan-iman",
+   "component": "ArkanImanPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/fadail-aamal",
+   "component": "FadailAamalPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/family",
+   "component": "FamilyModePage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/fiqh",
+   "component": "FiqhPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/fiqh-qawaid",
+   "component": "FiqhQawaidPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/fiqh/books/:bookId",
+   "component": "FiqhBookPage",
+   "section": "الفقه والعبادات",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/fiqh/books/:bookId/chapters/:chapterId",
+   "component": "FiqhChapterPage",
+   "section": "الفقه والعبادات",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/fiqh/books/:bookId/lessons/:lessonId",
+   "component": "FiqhLessonPage",
+   "section": "الفقه والعبادات",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/fiqh/topics/:topicId",
+   "component": "FiqhTopicPage",
+   "section": "الفقه والعبادات",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/fiqh/usul",
+   "component": "FiqhUsulPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/hajj",
+   "component": "HajjPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/janaza",
+   "component": "JanazaPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/jumuah",
+   "component": "JumuahPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/madhahib",
+   "component": "MadhahibPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/madhahib/:id",
+   "component": "MadhahibDetailPage",
+   "section": "الفقه والعبادات",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/maqasid-sharia",
+   "component": "MaqasidShariaPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/mawarith",
+   "component": "MawarithPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/mawarith/calculator",
+   "component": "MawarithCalculatorPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/nikah",
+   "component": "NikahPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/prayer-ranks",
+   "component": "PrayerRanksPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/prayer-times",
+   "component": "PrayerTimesPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/prophetic-medicine",
+   "component": "PropheticMedicinePage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/riba",
+   "component": "RibaPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/ruqya",
+   "component": "RuqyaPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sadaqa",
+   "component": "SadaqaPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/salah-guide",
+   "component": "SalahGuidePage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sawm",
+   "component": "SawmPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sins-and-rights",
+   "component": "SinsAndRightsPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sins-and-rights/:slug",
+   "component": "SinsAndRightsDetailPage",
+   "section": "الفقه والعبادات",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sujood-sahw",
+   "component": "SujoodSahwPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/tahara",
+   "component": "TaharaPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/talaq",
+   "component": "TalaqPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/tawba",
+   "component": "TawbaPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/udhiya",
+   "component": "UdhiyaPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/waqf",
+   "component": "WaqfPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/worship",
+   "component": "WorshipPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/zakat",
+   "component": "ZakatPage",
+   "section": "الفقه والعبادات",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/c/:slug",
+   "component": "CitationPublicPage",
+   "section": "القرآن",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hifz-path",
+   "component": "HifzPathPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hifz-path/c/:category",
+   "component": "HifzPathCategoryPage",
+   "section": "القرآن",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hifz-path/my",
+   "component": "HifzPathMyPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hifz-path/p/:slug",
+   "component": "HifzPathDetailPage",
+   "section": "القرآن",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/hifz-path/p/:slug/u/:unitId",
+   "component": "HifzPathUnitPage",
+   "section": "القرآن",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/memorization",
+   "component": "MemorizationHubPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/miracles",
+   "component": "MiraclesPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/mushaf",
+   "component": "MushafReaderPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/mushaf/bookmarks",
+   "component": "MushafBookmarksPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/mutashabihat",
+   "component": "MutashabihatPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-circles",
+   "component": "QuranCirclesPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-engine",
+   "component": "QuranEnginePage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-hub",
+   "component": "QuranHubPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-hub/numbers",
+   "component": "QuranNumbersPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-hub/qiraat",
+   "component": "QuranQiraatPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-hub/seven-ahruf",
+   "component": "QuranSevenAhrufPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-hub/tajweed",
+   "component": "QuranTajweedPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-hub/tajweed/:chapter",
+   "component": "TajweedChapterPage",
+   "section": "القرآن",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-hub/terms",
+   "component": "QuranUlumTermsPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-hub/tilawa",
+   "component": "QuranTilawaPage",
+   "section": "القرآن",
+   "template": "صوت",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-knowledge",
+   "component": "QuranKnowledgeHubPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran-memorization",
+   "component": "QuranMemorizationPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/hifz-loop",
+   "component": "QuranHifzLoopPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/makki-madani",
+   "component": "MakkiMadaniPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/memorization-plans",
+   "component": "QuranMemorizationPlansPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/offline-player",
+   "component": "QuranOfflinePlayerPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/people",
+   "component": "QuranPeoplePage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/people/:slug",
+   "component": "QuranPersonDetailPage",
+   "section": "القرآن",
+   "template": "تفاصيل",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/revelation-order",
+   "component": "RevelationOrderPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/search",
+   "component": "QuranSearchPage",
+   "section": "القرآن",
+   "template": "بحث",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/surah-stories",
+   "component": "SurahStoriesPage",
+   "section": "القرآن",
+   "template": "مقال",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/surah-stories/:number",
+   "component": "SurahStoryDetailRoute",
+   "section": "القرآن",
+   "template": "مقال",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/surahs",
+   "component": "SurahIndexPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/worship-hub",
+   "component": "QuranWorshipHubPage",
+   "section": "القرآن",
+   "template": "أقسام",
+   "owner": "ن3"
+  },
+  {
+   "path": "/tafsir",
+   "component": "TafsirPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/ulum-quran",
+   "component": "UlumQuranPage",
+   "section": "القرآن",
+   "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/academic-research",
+   "component": "AcademicResearchPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "بحث",
+   "owner": "ن2"
+  },
+  {
+   "path": "/academic-research/:id",
+   "component": "ResearchDetailPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "بحث",
+   "owner": "ن2"
+  },
+  {
+   "path": "/academic-research/assistant",
+   "component": "ResearchAssistantPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "بحث",
+   "owner": "ن2"
+  },
+  {
+   "path": "/academic-research/submit",
+   "component": "ResearchSubmitPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "بحث",
+   "owner": "ن2"
+  },
+  {
+   "path": "/arabic-language",
+   "component": "ArabicLanguagePage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/cards",
+   "component": "CardsPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/islamic-directory",
+   "component": "IslamicDirectoryHubPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "أقسام",
+   "owner": "ن2"
+  },
+  {
+   "path": "/islamic-glossary",
+   "component": "IslamicGlossaryPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/mawsuaat",
+   "component": "MawsuaatPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/methodology",
+   "component": "MethodologyPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/mind-map",
+   "component": "MindMapPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "شبكة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/more",
+   "component": "MorePage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/scientific-announcements/:id",
+   "component": "ScientificAnnouncementDetailPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/search",
+   "component": "SearchPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "بحث",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sections",
+   "component": "SectionsPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "أقسام",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sitemap",
+   "component": "SiteMapPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "شبكة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sources",
+   "component": "SourcesDirectoryPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "قائمة",
+   "owner": "ن2"
+  },
+  {
+   "path": "/sources/:id",
+   "component": "SourceDetailPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "تفاصيل",
+   "owner": "ن2"
+  },
+  {
+   "path": "/terms",
+   "component": "TermsPage",
+   "section": "اللغة والمكتبة والبحث",
+   "template": "قائمة",
+   "owner": "ن2"
+  }
+ ],
+ "dropped": [
+  {
+   "path": "/quran-engine/viewer",
+   "reason": "مكرر لـ /quran-engine (QuranEnginePage)"
+  },
+  {
+   "path": "/about-us",
+   "reason": "تحويل إلى /about"
+  },
+  {
+   "path": "/who-we-are",
+   "reason": "تحويل إلى /about"
+  },
+  {
+   "path": "/man-nahnu",
+   "reason": "تحويل إلى /about"
+  },
+  {
+   "path": "/sources-licenses",
+   "reason": "تحويل إلى /data-licenses"
+  },
+  {
+   "path": "/licenses",
+   "reason": "تحويل إلى /data-licenses"
+  },
+  {
+   "path": "/privacy-policy",
+   "reason": "تحويل إلى /privacy"
+  },
+  {
+   "path": "/delete-account",
+   "reason": "تحويل إلى /account-deletion"
+  },
+  {
+   "path": "/account/delete",
+   "reason": "تحويل إلى /account-deletion"
+  },
+  {
+   "path": "/support",
+   "reason": "مكرر لـ /contact (ContactPage)"
+  },
+  {
+   "path": "/debug/tasmee",
+   "reason": "تطوير/تصحيح"
+  },
+  {
+   "path": "/dev/design-system",
+   "reason": "تطوير/تصحيح"
+  },
+  {
+   "path": "/search/:q",
+   "reason": "مكرر لـ /search (SearchPage)"
+  },
+  {
+   "path": "/topics/:slug",
+   "reason": "تحويل إلى /sections"
+  },
+  {
+   "path": "/topics",
+   "reason": "تحويل إلى /sections"
+  },
+  {
+   "path": "/lessons/current",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/announcements",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/courses",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/sheikhs/:id",
+   "reason": "تحويل إلى /teachers"
+  },
+  {
+   "path": "/sheikhs",
+   "reason": "تحويل إلى /teachers"
+  },
+  {
+   "path": "/library/:id",
+   "reason": "تحويل إلى /search"
+  },
+  {
+   "path": "/library",
+   "reason": "تحويل إلى /search"
+  },
+  {
+   "path": "/miracles/topic/:slug",
+   "reason": "مكرر لـ /miracles/quran (MiraclesPage)"
+  },
+  {
+   "path": "/miracles/sunnah",
+   "reason": "مكرر لـ /miracles/quran (MiraclesPage)"
+  },
+  {
+   "path": "/miracles/quran",
+   "reason": "مكرر لـ /miracles (MiraclesPage)"
+  },
+  {
+   "path": "/hadith/arbaeen",
+   "reason": "تحويل إلى /arbaeen-nawawi"
+  },
+  {
+   "path": "/hadith/:id",
+   "reason": "تحويل إلى /hadith"
+  },
+  {
+   "path": "/prophets-stories",
+   "reason": "تحويل إلى /prophets"
+  },
+  {
+   "path": "/prophets-stories/:slug",
+   "reason": "مكرر لـ /prophet-stories/:slug (ProphetStoriesPage)"
+  },
+  {
+   "path": "/prophet-stories",
+   "reason": "تحويل إلى /prophets"
+  },
+  {
+   "path": "/prophets/ishaq",
+   "reason": "تحويل إلى /prophets/is-haq"
+  },
+  {
+   "path": "/prophets/ishaaq",
+   "reason": "تحويل إلى /prophets/is-haq"
+  },
+  {
+   "path": "/prophets/alyasa",
+   "reason": "تحويل إلى /prophets/al-yasa"
+  },
+  {
+   "path": "/prophets/al-yasaa",
+   "reason": "تحويل إلى /prophets/al-yasa"
+  },
+  {
+   "path": "/prophets/zakariya",
+   "reason": "تحويل إلى /prophets/zakariyya"
+  },
+  {
+   "path": "/prophets/zakaria",
+   "reason": "تحويل إلى /prophets/zakariyya"
+  },
+  {
+   "path": "/prophet-stories/:slug",
+   "reason": "مكرر لـ /prophets/:slug (ProphetStoriesPage)"
+  },
+  {
+   "path": "/prophets/:slug",
+   "reason": "مكرر لـ /prophets (ProphetStoriesPage)"
+  },
+  {
+   "path": "/islamic-stories",
+   "reason": "تحويل إلى /stories"
+  },
+  {
+   "path": "/adhkar/:slug",
+   "reason": "مكرر لـ /adhkar (AdhkarPage)"
+  },
+  {
+   "path": "/qa",
+   "reason": "تحويل إلى /quiz"
+  },
+  {
+   "path": "/qa/:rest*",
+   "reason": "تحويل إلى /quiz"
+  },
+  {
+   "path": "/knowledge-map",
+   "reason": "تحويل إلى /knowledge-graph"
+  },
+  {
+   "path": "/islamic-history/:rest*",
+   "reason": "تحويل إلى /tarikh-islami"
+  },
+  {
+   "path": "/islamic-history",
+   "reason": "تحويل إلى /tarikh-islami"
+  },
+  {
+   "path": "/scholars/:id",
+   "reason": "تحويل إلى /sections"
+  },
+  {
+   "path": "/scholars",
+   "reason": "تحويل إلى /sections"
+  },
+  {
+   "path": "/glossary",
+   "reason": "تحويل إلى /islamic-glossary"
+  },
+  {
+   "path": "/anbiya",
+   "reason": "تحويل إلى /prophets"
+  },
+  {
+   "path": "/quran/tafsir",
+   "reason": "تحويل إلى /tafsir"
+  },
+  {
+   "path": "/profile",
+   "reason": "مكرر لـ /stats (UserStatsPage)"
+  },
+  {
+   "path": "/learning-plan",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/memorize",
+   "reason": "تحويل إلى /flashcards"
+  },
+  {
+   "path": "/my-citations",
+   "reason": "تحويل إلى /flashcards"
+  },
+  {
+   "path": "/citations",
+   "reason": "تحويل إلى /flashcards"
+  },
+  {
+   "path": "/notifications-and-sound",
+   "reason": "تحويل إلى /notification-settings"
+  },
+  {
+   "path": "/family-mode",
+   "reason": "تحويل إلى /family"
+  },
+  {
+   "path": "/researcher-profile",
+   "reason": "مكرر لـ /researcher (ResearcherProfilePage)"
+  },
+  {
+   "path": "/learning/paths/:slug",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learning/paths",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learn/series/:slug",
+   "reason": "بلا مكوّن صفحة"
+  },
+  {
+   "path": "/learn/lesson/:id",
+   "reason": "بلا مكوّن صفحة"
+  },
+  {
+   "path": "/learn/:slug",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learn",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learning/quiz/:slug",
+   "reason": "تحويل إلى /quiz"
+  },
+  {
+   "path": "/learning/quiz",
+   "reason": "تحويل إلى /quiz"
+  },
+  {
+   "path": "/learning/calendar",
+   "reason": "تحويل إلى /calendar"
+  },
+  {
+   "path": "/learning/certificates/:code",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learning/certificates",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learning",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learning-paths",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/tracks",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/study-paths",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/pathways",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/lessons/paths",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/courses/paths",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/assistant",
+   "reason": "بلا مكوّن صفحة"
+  },
+  {
+   "path": "/scholarly-research",
+   "reason": "تحويل إلى /academic-research"
+  },
+  {
+   "path": "/researches",
+   "reason": "تحويل إلى /academic-research"
+  },
+  {
+   "path": "/sharia-research",
+   "reason": "تحويل إلى /academic-research"
+  },
+  {
+   "path": "/research",
+   "reason": "تحويل إلى /academic-research"
+  },
+  {
+   "path": "/learning-path/dashboard",
+   "reason": "تحويل إلى /my-learning"
+  },
+  {
+   "path": "/learning-path/book/:bookId",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learning-path/:scienceSlug",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/learning-path",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/start-here",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/condolences",
+   "reason": "تحويل إلى /"
+  },
+  {
+   "path": "/transcribe",
+   "reason": "بلا مكوّن صفحة"
+  },
+  {
+   "path": "/quran",
+   "reason": "تحويل إلى /quran-hub"
+  },
+  {
+   "path": "/mushaf/page/:page",
+   "reason": "بلا مكوّن صفحة"
+  },
+  {
+   "path": "/mushaf/page",
+   "reason": "تحويل إلى /mushaf"
+  },
+  {
+   "path": "/mushaf/about-edition",
+   "reason": "تحويل إلى /mushaf?page=1"
+  },
+  {
+   "path": "/mushaf/:surah",
+   "reason": "بلا مكوّن صفحة"
+  },
+  {
+   "path": "/quran/mushaf",
+   "reason": "تحويل إلى /mushaf"
+  },
+  {
+   "path": "/mushaf-v2-preview",
+   "reason": "تحويل إلى /mushaf"
+  },
+  {
+   "path": "/demo-ayah-reader",
+   "reason": "تحويل إلى /mushaf"
+  },
+  {
+   "path": "/quran/terms",
+   "reason": "تحويل إلى /quran-hub/terms"
+  },
+  {
+   "path": "/quran-index",
+   "reason": "تحويل إلى /quran-knowledge"
+  },
+  {
+   "path": "/asbab-al-nuzul",
+   "reason": "تحويل إلى /quran/surah-stories"
+  },
+  {
+   "path": "/quran-stories",
+   "reason": "تحويل إلى /quran/surah-stories"
+  },
+  {
+   "path": "/memorization-tests",
+   "reason": "تحويل إلى /memorization"
+  },
+  {
+   "path": "/memorization-plans",
+   "reason": "تحويل إلى /memorization"
+  },
+  {
+   "path": "/islamic-institutions",
+   "reason": "تحويل إلى /islamic-directory"
+  },
+  {
+   "path": "/mosques",
+   "reason": "تحويل إلى /islamic-directory"
+  },
+  {
+   "path": "/reviewed-cards",
+   "reason": "تحويل إلى /my-learning"
+  },
+  {
+   "path": "/scientific-library",
+   "reason": "تحويل إلى /"
+  },
+  {
+   "path": "/latest",
+   "reason": "تحويل إلى /"
+  },
+  {
+   "path": "/fatwas",
+   "reason": "تحويل إلى /fiqh"
+  },
+  {
+   "path": "/explore",
+   "reason": "تحويل إلى /sections"
+  },
+  {
+   "path": "/news",
+   "reason": "تحويل إلى /"
+  },
+  {
+   "path": "/events",
+   "reason": "تحويل إلى /occasions-lessons"
+  },
+  {
+   "path": "/islamic-events",
+   "reason": "تحويل إلى /occasions-lessons"
+  },
+  {
+   "path": "/lesson-calendar",
+   "reason": "تحويل إلى /occasions-lessons"
+  },
+  {
+   "path": "/review-plans",
+   "reason": "تحويل إلى /memorization"
+  },
+  {
+   "path": "/masajid",
+   "reason": "تحويل إلى /islamic-directory"
+  },
+  {
+   "path": "/quran-sciences",
+   "reason": "تحويل إلى /quran-knowledge"
+  },
+  {
+   "path": "/quran/recitation-test-ai",
+   "reason": "تحويل إلى /mushaf?tasmee=1"
+  },
+  {
+   "path": "/tajweed",
+   "reason": "تحويل إلى /quran-hub/tajweed"
+  },
+  {
+   "path": "/surah-stories",
+   "reason": "تحويل إلى /quran/surah-stories"
+  },
+  {
+   "path": "/quran/tajweed",
+   "reason": "تحويل إلى /quran-hub/tajweed"
+  },
+  {
+   "path": "/aqidah",
+   "reason": "تحويل إلى /tawhid"
+  },
+  {
+   "path": "/shubuhat",
+   "reason": "تحويل إلى /discover-islam/doubts"
+  },
+  {
+   "path": "/knowledge/:section/:id",
+   "reason": "مكرر لـ /knowledge/:section (KnowledgeSectionPage)"
+  },
+  {
+   "path": "/knowledge",
+   "reason": "تحويل إلى /knowledge/intro-islam"
+  },
+  {
+   "path": "/prayer",
+   "reason": "تحويل إلى /prayer-times"
+  },
+  {
+   "path": "/prayer-countdown",
+   "reason": "تحويل إلى /prayer-times"
+  },
+  {
+   "path": "/muezzins/:rest",
+   "reason": "تحويل إلى /adhan-settings"
+  },
+  {
+   "path": "/muezzins",
+   "reason": "تحويل إلى /adhan-settings"
+  },
+  {
+   "path": "/features-in-progress",
+   "reason": "تحويل إلى /"
+  },
+  {
+   "path": "/durus-imaniyya/:categoryId/:topicId",
+   "reason": "مكرر لـ /durus-imaniyya/:categoryId (DurusImaniyyaPage)"
+  },
+  {
+   "path": "/durus-imaniyya/:categoryId",
+   "reason": "مكرر لـ /durus-imaniyya (DurusImaniyyaPage)"
+  },
+  {
+   "path": "/durus-mutanawwia/:categoryId/:topicId",
+   "reason": "مكرر لـ /durus-mutanawwia/:categoryId (DurusMutanawwiaPage)"
+  },
+  {
+   "path": "/durus-mutanawwia/:categoryId",
+   "reason": "مكرر لـ /durus-mutanawwia (DurusMutanawwiaPage)"
+  },
+  {
+   "path": "/iman-topics/:categoryId/:topicId",
+   "reason": "مكرر لـ /iman-topics/:categoryId (ImanTopicsPage)"
+  },
+  {
+   "path": "/iman-topics/:categoryId",
+   "reason": "مكرر لـ /iman-topics (ImanTopicsPage)"
+  },
+  {
+   "path": "/quran-studies",
+   "reason": "تحويل إلى /ulum-quran"
+  },
+  {
+   "path": "/sunnah-studies/:categoryId/:topicId",
+   "reason": "مكرر لـ /sunnah-studies/:categoryId (SunnahStudiesPage)"
+  },
+  {
+   "path": "/sunnah-studies/:categoryId",
+   "reason": "مكرر لـ /sunnah-studies (SunnahStudiesPage)"
+  },
+  {
+   "path": "/tazkiya-topics/:categoryId/:topicId",
+   "reason": "مكرر لـ /tazkiya-topics/:categoryId (TazkiyaTopicsPage)"
+  },
+  {
+   "path": "/tazkiya-topics/:categoryId",
+   "reason": "مكرر لـ /tazkiya-topics (TazkiyaTopicsPage)"
+  },
+  {
+   "path": "/usra-mujtama/:categoryId/:topicId",
+   "reason": "مكرر لـ /usra-mujtama/:categoryId (UsraMujtamaPage)"
+  },
+  {
+   "path": "/usra-mujtama/:categoryId",
+   "reason": "مكرر لـ /usra-mujtama (UsraMujtamaPage)"
+  },
+  {
+   "path": "/fikr-waqia/:categoryId/:topicId",
+   "reason": "مكرر لـ /fikr-waqia/:categoryId (FikrWaqiaPage)"
+  },
+  {
+   "path": "/fikr-waqia/:categoryId",
+   "reason": "مكرر لـ /fikr-waqia (FikrWaqiaPage)"
+  },
+  {
+   "path": "/mawsuaat/:categoryId/:topicId",
+   "reason": "مكرر لـ /mawsuaat/:categoryId (MawsuaatPage)"
+  },
+  {
+   "path": "/mawsuaat/:categoryId",
+   "reason": "مكرر لـ /mawsuaat (MawsuaatPage)"
+  },
+  {
+   "path": "/arabic-language/:categoryId/:topicId",
+   "reason": "مكرر لـ /arabic-language/:categoryId (ArabicLanguagePage)"
+  },
+  {
+   "path": "/arabic-language/:categoryId",
+   "reason": "مكرر لـ /arabic-language (ArabicLanguagePage)"
+  },
+  {
+   "path": "/maqasid-sharia/:categoryId/:topicId",
+   "reason": "مكرر لـ /maqasid-sharia/:categoryId (MaqasidShariaPage)"
+  },
+  {
+   "path": "/maqasid-sharia/:categoryId",
+   "reason": "مكرر لـ /maqasid-sharia (MaqasidShariaPage)"
+  },
+  {
+   "path": "/dalail-nubuwwah/:categoryId/:topicId",
+   "reason": "مكرر لـ /dalail-nubuwwah/:categoryId (DalailNubuwwahPage)"
+  },
+  {
+   "path": "/dalail-nubuwwah/:categoryId",
+   "reason": "مكرر لـ /dalail-nubuwwah (DalailNubuwwahPage)"
+  },
+  {
+   "path": "/masarat",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/annual-courses",
+   "reason": "تحويل إلى /lessons"
+  },
+  {
+   "path": "/fiqh-council/:rest*",
+   "reason": "تحويل إلى /fiqh"
+  },
+  {
+   "path": "/fiqh-council",
+   "reason": "تحويل إلى /fiqh"
+  },
+  {
+   "path": "/fatwa/:id",
+   "reason": "تحويل إلى /fiqh"
+  },
+  {
+   "path": "/fatwa",
+   "reason": "تحويل إلى /fiqh"
+  },
+  {
+   "path": "/rulings/:id",
+   "reason": "تحويل إلى /fiqh"
+  },
+  {
+   "path": "/rulings",
+   "reason": "تحويل إلى /fiqh"
+  },
+  {
+   "path": "/whats-new",
+   "reason": "تحويل إلى /"
+  },
+  {
+   "path": "/auth/register",
+   "reason": "تحويل إلى /register"
+  },
+  {
+   "path": "/internal/status",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/sources",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/automation/sources",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/automation/dashboard",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/automation/platform",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/automation/center",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/autonomous-platform",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/automation",
+   "reason": "تحويل إلى /admin/automation/center"
+  },
+  {
+   "path": "/admin/integrations/instagram",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/review-hub",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/review-center",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/automation/review",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/content-import/url",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/content-import/image",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/import",
+   "reason": "تحويل إلى /admin/content-import/url"
+  },
+  {
+   "path": "/admin/content",
+   "reason": "تحويل إلى /admin/auto-content"
+  },
+  {
+   "path": "/admin/auto-content",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/fiqh-review",
+   "reason": "تحويل إلى /admin/v3"
+  },
+  {
+   "path": "/admin/fiqh-quality",
+   "reason": "تحويل إلى /admin/v3"
+  },
+  {
+   "path": "/admin/content-production",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/automation/content-production",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/feature-status",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/dashboard",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/users",
+   "reason": "تحويل إلى /admin?section=users"
+  },
+  {
+   "path": "/admin/universities",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/content/lessons",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/content/sheikhs",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/content/fawaid",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/content/library",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/content/islamic-stories",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/content/prophet-stories",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/content/arbaeen",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/content",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/reviews",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/taxonomy",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/analytics",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/community/roles",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/community",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/settings",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/review",
+   "reason": "تحويل إلى /admin/v3/reviews"
+  },
+  {
+   "path": "/admin/v3/users",
+   "reason": "تحويل إلى /admin/v3/community"
+  },
+  {
+   "path": "/admin/v3/notifications",
+   "reason": "تحويل إلى /admin/v3/settings"
+  },
+  {
+   "path": "/admin/v3/automation/sources",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/automation/auto-content",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/automation/integrations",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/automation",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3/system",
+   "reason": "تحويل إلى /admin/v3/settings"
+  },
+  {
+   "path": "/admin/v3/audit",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/v3",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin/legacy",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  },
+  {
+   "path": "/admin",
+   "reason": "إدارة/تطوير — خارج التطبيق"
+  }
+ ]
+}
