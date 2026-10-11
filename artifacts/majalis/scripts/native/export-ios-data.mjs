@@ -196,5 +196,14 @@ counts.quiz = qn;
   mushafSources["public/data/quran-v2/chapters.json"] = sha(fs.readFileSync(`${q2}/chapters.json`));
 }
 
+/* أقسام التطبيق الأصلي: كل ملف في scripts/native/sections يصدّر دالة افتراضية تكتب Data/<قسم>/ (يبدأ بـ_ = مساعد) */
+{
+  const dir = path.join(import.meta.dirname, "sections");
+  const ctx = { put, json, rd, held, reject, counts, appRoot, data, check };
+  if (fs.existsSync(dir))
+    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".mjs") && !x.startsWith("_")).sort())
+      await (await import(path.join(dir, f))).default(ctx);
+}
+
 json("MANIFEST.json", { version: 1, counts, rejected: rej, mushafSources, files: files.slice().sort((a, b) => a.path.localeCompare(b.path)) });
 console.log(JSON.stringify({ out: check ? "(check)" : out, files: files.length, counts, rejected: rej }));

@@ -9,7 +9,7 @@ OUT="${1:-$ROOT/ios-native/Data}"
 cd "$ROOT/artifacts/majalis"
 export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=1536}"
 ADH=content/native/adhkar-verified.json  # لقطة الأذكار الموثّقة (تُمرَّر تلقائيًا إن وُجدت؛ لا تُنشأ أذكار)
-node scripts/native/export-ios-data.mjs --out "$OUT" ${ADH:+$( [ -f "$ADH" ] && echo "--adhkar-json $ADH" )}
+node --import tsx scripts/native/export-ios-data.mjs --out "$OUT" ${ADH:+$( [ -f "$ADH" ] && echo "--adhkar-json $ADH" )}
 node --input-type=module -e '
 import fs from "node:fs"; import crypto from "node:crypto"; import path from "node:path";
 const out = process.argv[1]; const m = JSON.parse(fs.readFileSync(path.join(out, "MANIFEST.json"), "utf8"));
