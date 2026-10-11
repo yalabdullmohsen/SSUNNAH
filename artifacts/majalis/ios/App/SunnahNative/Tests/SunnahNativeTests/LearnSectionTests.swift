@@ -266,12 +266,14 @@ final class LearnSectionTests: XCTestCase {
         let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
         defer { defaults.removePersistentDomain(forName: suite) }
         let store = LearnLocalStore(defaults: defaults)
-        var deck = LearnFlashcardDeck(); deck.record("a", quality: 5, now: Date())
+        // ثوانٍ صحيحة: ISO8601 لا يحفظ أجزاء الثانية، فالمقارنة بعد الحفظ تحتاج تاريخًا بلا كسور.
+        let now = Date(timeIntervalSince1970: 1_800_000_000)
+        var deck = LearnFlashcardDeck(); deck.record("a", quality: 5, now: now)
         store.save(deck, .flashcards)
         store.save([LearnReadingPlan(bookTitle: "ك", totalPages: 10, startDate: Date(), endDate: Date(), readingDays: [1], dailyMinutes: 10)], .readingPlans)
         store.save(3, .studyCycles)
         XCTAssertEqual(store.load(LearnFlashcardDeck.self, .flashcards), deck)
-        let summary = LearnLocalSummary.read(from: store)
+        let summary = LearnLocalSummary.read(from: store, now: now)
         XCTAssertEqual(summary.flashcards.total, 1); XCTAssertEqual(summary.activePlans.count, 1); XCTAssertEqual(summary.studyCycles, 3)
         store.clearAll()
         XCTAssertEqual(LearnLocalSummary.read(from: store), LearnLocalSummary(flashcards: .init(), activePlans: [], studyCycles: 0))
