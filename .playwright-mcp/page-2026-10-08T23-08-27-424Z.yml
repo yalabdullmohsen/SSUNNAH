@@ -1,0 +1,137 @@
+- generic [ref=e3]:
+  - link "تجاوز إلى المحتوى":
+    - /url: "#main-content"
+  - main "المحتوى الرئيسي":
+    - generic [ref=e4]:
+      - generic [ref=e6]:
+        - article [ref=e9]:
+          - group [ref=e10]:
+            - generic: الجزء ١
+            - generic: الحزب ١
+          - generic [ref=e13]:
+            - heading [level=2] [ref=e16]:
+              - generic [ref=e19]: سورة البقرة
+            - generic [ref=e25]: ﱁﱂﱃﱄ
+            - generic [ref=e28]:
+              - text: ﱁ
+              - button [ref=e29] [cursor=pointer]:
+                - generic [ref=e31]: ﱂ
+              - text: ﱃﱄﱅﱆﱇﱈﱉﱊ
+            - generic [ref=e33]:
+              - text: ﱋ
+              - button [ref=e34] [cursor=pointer]:
+                - generic [ref=e36]: ﱌ
+              - text: ﱍﱎﱏﱐﱑ
+            - generic [ref=e38]:
+              - text: ﱒﱓﱔ
+              - button [ref=e39] [cursor=pointer]:
+                - generic [ref=e41]: ﱕ
+              - text: ﱖﱗﱘﱙ
+            - generic [ref=e43]:
+              - text: ﱚﱛﱜﱝﱞﱟﱠﱡ
+              - button [ref=e44] [cursor=pointer]:
+                - generic [ref=e46]: ﱢ
+            - generic [ref=e47]: ﱣﱤﱥﱦﱧﱨﱩ
+            - generic [ref=e50]:
+              - text: ﱪﱫ
+              - button [ref=e51] [cursor=pointer]:
+                - generic [ref=e53]: ﱬ
+          - generic [ref=e54]:
+            - button [disabled]: ٢
+        - article "صفحة المصحف ١، الجزء ١، الحزب ١" [ref=e57]:
+          - group "الجزء ١، الحزب ١" [ref=e58]:
+            - generic: الجزء ١
+            - generic: الحزب ١
+          - generic [ref=e60]:
+            - img "بداية الحزب ١"
+            - generic [ref=e61]:
+              - heading "سورة الفاتحة" [level=2] [ref=e64]
+              - generic [ref=e74]:
+                - button "سورة الفاتحة آية ١" [ref=e75]: ﱁ
+                - button "سورة الفاتحة آية ١" [ref=e76]: ﱂ
+                - button "سورة الفاتحة آية ١" [ref=e77]: ﱃ
+                - button "سورة الفاتحة آية ١" [ref=e78]: ﱄ
+                - button "سورة الفاتحة آية ١" [ref=e79]:
+                  - generic [ref=e81]: ﱅ
+              - generic [ref=e83]:
+                - button "سورة الفاتحة آية ٢": ﱆ
+                - button "سورة الفاتحة آية ٢": ﱇ
+                - button "سورة الفاتحة آية ٢": ﱈ
+                - button "سورة الفاتحة آية ٢": ﱉ
+                - button "سورة الفاتحة آية ٢":
+                  - generic [aria-hidden]:
+                    - generic: ﱊ
+              - generic [ref=e85]:
+                - button "سورة الفاتحة آية ٣": ﱋ
+                - button "سورة الفاتحة آية ٣": ﱌ
+                - button "سورة الفاتحة آية ٣":
+                  - generic [aria-hidden]:
+                    - generic: ﱍ
+                - button "سورة الفاتحة آية ٤": ﱎ
+                - button "سورة الفاتحة آية ٤": ﱏ
+                - button "سورة الفاتحة آية ٤": ﱐ
+                - button "سورة الفاتحة آية ٤":
+                  - generic [aria-hidden]:
+                    - generic: ﱑ
+              - generic [ref=e87]:
+                - button "سورة الفاتحة آية ٥": ﱒ
+                - button "سورة الفاتحة آية ٥": ﱓ
+                - button "سورة الفاتحة آية ٥": ﱔ
+                - button "سورة الفاتحة آية ٥": ﱕ
+                - button "سورة الفاتحة آية ٥":
+                  - generic [aria-hidden]:
+                    - generic: ﱖ
+                - button "سورة الفاتحة آية ٦": ﱗ
+              - generic [ref=e89]:
+                - button "سورة الفاتحة آية ٦": ﱘ
+                - button "سورة الفاتحة آية ٦": ﱙ
+                - button "سورة الفاتحة آية ٦":
+                  - generic [aria-hidden]:
+                    - generic: ﱚ
+                - button "سورة الفاتحة آية ٧": ﱛ
+                - button "سورة الفاتحة آية ٧": ﱜ
+                - button "سورة الفاتحة آية ٧": ﱝ
+              - generic [ref=e91]:
+                - button "سورة الفاتحة آية ٧": ﱞ
+                - button "سورة الفاتحة آية ٧": ﱟ
+                - button "سورة الفاتحة آية ٧": ﱠ
+                - button "سورة الفاتحة آية ٧": ﱡ
+              - generic [ref=e93]:
+                - button "سورة الفاتحة آية ٧": ﱢ
+                - button "سورة الفاتحة آية ٧": ﱣ
+                - button "سورة الفاتحة آية ٧":
+                  - generic [aria-hidden]:
+                    - generic: ﱤ
+          - generic [ref=e94]:
+            - generic [ref=e95]: الحزب ١
+            - button "الصفحة 1 — انتقال إلى صفحة" [ref=e96] [cursor=pointer]: ١
+      - button "الصفحة التالية" [ref=e99] [cursor=pointer]
+      - button "الصفحة السابقة" [disabled]
+      - heading "المصحف الشريف" [level=1] [ref=e100]
+      - generic [ref=e101]: الصفحة ١ من ٦٠٤
+      - generic [aria-hidden]: theme=GOLD attr=gold page=1
+      - generic [aria-hidden]: p=1 settled=1 nbr=1 geo=390pxx844px@24px rM=1 pM=1 fL=2 gC=1
+      - generic:
+        - button "الصفحة التالية" [ref=e102] [cursor=pointer]:
+          - generic [aria-hidden]: ‹
+          - generic: التالية
+        - button "الصفحة السابقة" [disabled]:
+          - generic [aria-hidden]: ›
+          - generic: السابقة
+      - text: ١
+      - generic:
+        - toolbar "أدوات التسميع" [ref=e104]:
+          - 'button "أخطاء: 0" [ref=e105] [cursor=pointer]':
+            - generic [ref=e106]: أخطاء
+            - generic [ref=e107]: "0"
+          - 'button "نمط العرض: تركيز على الآية الحالية" [ref=e108] [cursor=pointer]'
+          - button "إخفاء الآيات" [pressed] [ref=e113] [cursor=pointer]
+          - button "رجوع كلمة" [ref=e119] [cursor=pointer]
+          - button "رجوع آية" [ref=e123] [cursor=pointer]
+          - button "من بداية المقطع" [ref=e126] [cursor=pointer]
+          - button "إظهار الكلمة التالية" [ref=e130] [cursor=pointer]
+          - button "تنبيهات الأخطاء" [ref=e133] [cursor=pointer]
+        - generic [ref=e137]:
+          - timer "مدة التسجيل" [ref=e142]:
+            - generic [ref=e144]: 00:00
+          - button "أوقف التسجيل" [active] [pressed] [ref=e145] [cursor=pointer]

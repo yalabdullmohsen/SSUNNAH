@@ -1,0 +1,40 @@
+[    1258ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5199/node_modules/.vite/deps/react-dom_client.js?v=d3105ac6:17986
+[    2422ms] [INFO] [lcp] candidate {selector: div, startTime: 2160, renderTime: 2160, loadTime: 0, size: 4408} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
+[    2441ms] [INFO] [lcp] candidate {selector: div.nm-basmala, startTime: 2196, renderTime: 2196, loadTime: 0, size: 5628} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
+[    2539ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:15
+[    2539ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:25
+[    2539ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:40
+[    2539ms] [INFO] [boot-vitals:after-shell-stable] {fcp: 644, lcp: null, cls: 0, tbtApprox: 0, atMs: 2295} @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:65
+[    2636ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:112
+[    2636ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:25
+[    2636ms] [INFO] [home-startup-layout] {firstRenderLayout: Object, finalLayout: Object, layoutShift: Array(0), cls: 0, themeApplyTime: null} @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:176
+[    5617ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5199/node_modules/.vite/deps/react-dom_client.js?v=d3105ac6:17986
+[    6806ms] [INFO] [lcp] candidate {selector: div, startTime: 1712, renderTime: 1712, loadTime: 0, size: 4408} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
+[    6834ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:15
+[    6834ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:25
+[    6834ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:40
+[    6834ms] [INFO] [boot-vitals:after-shell-stable] {fcp: 344, lcp: null, cls: 0, tbtApprox: 0, atMs: 1756} @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:65
+[    6852ms] [INFO] [lcp] candidate {selector: div.nm-basmala, startTime: 1760, renderTime: 1760, loadTime: 0, size: 5628} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
+[    6934ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:112
+[    6935ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:25
+[    6935ms] [INFO] [home-startup-layout] {firstRenderLayout: Object, finalLayout: Object, layoutShift: Array(0), cls: 0, themeApplyTime: null} @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:176
+[    7272ms] [INFO] [lcp] candidate {selector: p.nm-reading-coach__body, startTime: 2192, renderTime: 2192, loadTime: 0, size: 12242} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
+[   29999ms] [WARNING] GoTrueClient@sb-placeholder-auth-token:1 (2.108.2) 2026-10-08T23:10:23.493Z Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key. @ http://127.0.0.1:5199/node_modules/.vite/deps/@supabase_supabase-js.js?v=23e57a8f:15453
+[  129832ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:5199/@vite/client:864
+[ 8227039ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:5199/src/lib/adhan-diagnostics.ts:0
+[ 8227121ms] [ERROR] [vite] Error: send was called before connect
+    at Object.send (http://127.0.0.1:5199/@vite/client:395:15)
+    at HMRClient.send (http://127.0.0.1:5199/@vite/client:157:18)
+    at HMRContext.send (http://127.0.0.1:5199/@vite/client:119:18)
+    at sendError (http://127.0.0.1:5199/mushaf?tasmee=1:16:7)
+    at http://127.0.0.1:5199/mushaf?tasmee=1:32:3 @ http://127.0.0.1:5199/@vite/client:808
+[ 8227167ms] [ERROR] [majalis:client-error] {errorId: MJL-20261009-042700-DGQ27Z, message: Failed to fetch dynamically imported module: http://127.0.0.1:5199/src/lib/adhan-diagnostics.ts, name: TypeError, stack: TypeError: Failed to fetch dynamically imported mo…ttp://127.0.0.1:5199/src/lib/adhan-diagnostics.ts, componentStack: undefined} @ http://127.0.0.1:5199/src/lib/error-report.ts:72
+[ 8227184ms] [WARNING] [sovereign:guard] unhandledrejection: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:5199/src/lib/adhan-diagnostics.ts @ http://127.0.0.1:5199/src/lib/sovereign/isolation-guard.ts:6
+[ 8227262ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:5199/api/client-error:0
+[ 8228367ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:5199/src/lib/native-playback-audio.ts:0
+[ 8228426ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:5199/audio/adhan/adhan-makkah.mp3:0
+[ 8228517ms] [WARNING] [adhan] play failed: missing_file تعذر تشغيل الصوت، جرّب نوعًا آخر. /audio/adhan/adhan-makkah.mp3 @ http://127.0.0.1:5199/src/lib/adhan-playback.ts:84
+[ 8228524ms] [WARNING] [AudioEngine] native session deactivate: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:5199/src/lib/native-playback-audio.ts @ http://127.0.0.1:5199/src/core/audio/AudioEngine.ts:397
+[ 8228565ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:5199/src/lib/majlis-audio-service.ts:0
+[ 8228571ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:5199/src/lib/audio-reader/audio-reader-service.ts:0
+[ 8228588ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:5199/src/lib/speech-read-aloud.ts:0

@@ -1,0 +1,13 @@
+[    3184ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5199/node_modules/.vite/deps/react-dom_client.js?v=d3105ac6:17986
+[    3283ms] [INFO] [lcp] candidate {selector: ?, startTime: 1576, renderTime: 1576, loadTime: 0, size: 1439} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
+[    5836ms] [INFO] [prayer/migration] ok {from: 0, to: 3} @ http://127.0.0.1:5199/src/lib/prayer-settings-upgrade.ts:36
+[    6747ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:15
+[    6747ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:25
+[    6748ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:40
+[    6748ms] [INFO] [boot-vitals:after-shell-stable] {fcp: 1576, lcp: null, cls: 0, tbtApprox: 0, atMs: 6619} @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:65
+[    6819ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:112
+[    6820ms] [WARNING] Deprecated API for given entry type. @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:25
+[    6820ms] [INFO] [home-startup-layout] {firstRenderLayout: Object, finalLayout: Object, layoutShift: Array(0), cls: 0, themeApplyTime: null} @ http://127.0.0.1:5199/src/lib/boot-vitals-snapshot.ts:176
+[   11920ms] [INFO] [lcp] candidate {selector: div, startTime: 11708, renderTime: 11708, loadTime: 0, size: 4408} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
+[   12308ms] [INFO] [lcp] candidate {selector: div.nm-basmala, startTime: 12176, renderTime: 12176, loadTime: 0, size: 5628} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
+[   13157ms] [INFO] [lcp] candidate {selector: p.nm-reading-coach__body, startTime: 12944, renderTime: 12944, loadTime: 0, size: 12242} @ http://127.0.0.1:5199/src/lib/home-lcp-static-shell.ts:10
