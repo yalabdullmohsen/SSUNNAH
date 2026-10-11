@@ -7,6 +7,7 @@
 | 1 | **Bundle ID يبقى `com.yousef.majlisilm`** (الخيار A): تحديث للتطبيق المنشور، لا تطبيق جديد، وتستمر هوية TestFlight/المتجر السابقة. لا إعادة تسمية. |
 | 2 | **`SunnahApp.xcodeproj` (SwiftUI) يحل محل مشروع Capacitor عند الإصدار.** يحمل نفس Bundle ID والفريق (`5D8TX37HTS`)؛ ويُرفع رقم البناء فوق آخر بناء منشور. |
 | 5 | **الإصدار 1.2.0 وبناء `CURRENT_PROJECT_VERSION=100`** (قرار المالك 2026-10-11، يحل محل 1.1.0/56). **Capacitor 1.1.0 لا يُرفع.** |
+| 2 | **`SunnahApp.xcodeproj` (SwiftUI) يحل محل مشروع Capacitor عند الإصدار.** يحمل نفس Bundle ID والفريق (`5D8TX37HTS`)؛ ويُرفع رقم البناء فوق آخر بناء منشور (CURRENT_PROJECT_VERSION 56). |
 
 **السجل السابق (للتاريخ):** كان Capacitor يضبط `appName` = سُنّة و`appId` = `com.yousef.majlisilm` و`server.url` = `https://www.ssunnah.com`. الخيار B (اسم جديد) كان سيُنشئ إدراجًا جديدًا ويقطع الاستمرارية؛ رُفض.
 
