@@ -13,6 +13,7 @@ struct SunnahApp: App {
         WindowGroup {
             RootTabView(router: router, screen: Self.screen)
                 .environment(\.contentLoader, ContentLoader(bundle: .main))
+                .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher()))
         }
     }
 
