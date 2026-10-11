@@ -25,7 +25,7 @@ struct SunnahApp: App {
                     #endif
                 }
                 .environment(\.contentLoader, ContentLoader(bundle: .main))
-                .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter()))
+                .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore())))
         }
         .onChange(of: scenePhase) { phase in
             if phase == .active { NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: true) }
