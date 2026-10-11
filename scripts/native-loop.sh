@@ -50,7 +50,13 @@ if [ $DRY = 0 ]; then
     git -C "$WT" checkout -q -f -B native-loop/sync origin/native-app 2>&1 | tail -1
     if git -C "$WT" merge -q --no-edit origin/main >>"$LOG" 2>&1; then
       git -C "$WT" push -q origin HEAD:native-app >>"$LOG" 2>&1 && log "دُمج main في native-app" || log "تعذّر دفع دمج main (hook/تزامن)"
-    else git -C "$WT" merge --abort 2>/dev/null; log "تعارض دمج main→native-app — يحتاج تدخّلًا يدويًا"; fi
+    else
+      git -C "$WT" merge --abort 2>/dev/null
+      # الدمج squash يكسر merge-base فتتكرر تعارضات الوثائق؛ native-app هو المرجع فنفضّل طرفه
+      if git -C "$WT" merge -q --no-edit -X ours origin/main >>"$LOG" 2>&1; then
+        git -C "$WT" push -q origin HEAD:native-app >>"$LOG" 2>&1 && log "دُمج main (-X ours) في native-app" || log "تعذّر دفع دمج main"
+      else git -C "$WT" merge --abort 2>/dev/null; log "تعارض دمج main→native-app (حتى مع ours) — يدوي"; fi
+    fi
     git fetch -q origin native-app 2>&1 | tail -1
   fi
 fi
