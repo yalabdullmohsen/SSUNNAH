@@ -1,6 +1,6 @@
 # طلبات قسم «الدروس والتعلم» (learn) — لـن2/ن1/ن4
 
-القسم في `Sources/SunnahNative/Sections/learn/` (16 من 23 مسارًا أصلية). نقطة الربط الوحيدة: `LearnSection`.
+القسم في `Sources/SunnahNative/Sections/learn/` (الـ23 مسارًا المبقاة في ROUTE_TEMPLATE_MAP كلها أصلية). نقطة الربط الوحيدة: `LearnSection`.
 
 ## 1) ربط في جذر التطبيق (ملف مشترك — لا أعدّله)
 - `LearnSection.register(in: .shared)` بجانب `SpecialScreens.registerAll`، و`LearnSection.resolve(path:)` بجانب `GeneratedScreens.resolve(path:)`.
@@ -28,20 +28,23 @@
 | `Data/graph/links.json` | `public/data/graph/links.json` | مذكور «اختياري» في DATA_CONTRACT |
 | `Data/lessons/chunk-000.json` | `public/data/lessons/chunk-000.json` | جدول الدروس بالشكل نفسه؛ يُحدَّث مع كل إصدار (لا جلب يومي من الموقع بقرار مراجعة المحتوى) |
 | `Data/knowledge/<المسار نفسه>.json` | `public/data/knowledge/**` | بالمسارات النسبية نفسها (`prophets/adam.json` ⇒ `Data/knowledge/prophets/adam.json`)، و`review_status = verified` فقط |
+| `Data/learn/fawaid.json` | Supabase `fawaid` (approved) | **محتوى شرعي** ⇒ `sharia-content`؛ `{id,text,category,source,author_name}`، وما بلا مصدر/قائل لا يُعرض أصلًا. البذور `fawaid-*-seed.ts` لا تُصدَّر دون مراجعة |
+| `Data/learn/annual-courses.json` | Supabase `annual_courses` (approved) | الأعمدة كما في `db-select-columns.ts`؛ البذرة `annual-courses-seed.ts` تجريبية لا تُصدَّر |
+| `Data/hadith/verified-sahih.json` | موجود | بطاقات المراجعة (`/flashcards`) |
 | `Data/quiz/*` | موجود | يُستعمل كما هو |
 
 ## 5) لا شبكة
 - القسم لا يستعمل `.remote` إطلاقًا (مراجعة المحتوى ن1 على #2937): كل الشاشات تقرأ الحزمة المحقَّقة. القسم غير المُصدَّر يظهر فارغًا لا خطأ.
 - `/knowledge/:section` يُبقي `review_status = verified` فقط حتى بعد التصدير.
 
-## 6) مسارات تنتظر منفذًا غير موجود (`LearnSection.pendingRoutes`)
-| المسار | ما يلزم |
-|---|---|
-| `/annual-courses/:id` | Supabase `annual_courses` (approved). البذرة `annual-courses-seed.ts` بيانات تجريبية لا تُعرض. |
-| `/fawaid` | Supabase `fawaid` (approved) + إرسال فائدة بحساب. محتوى شرعي. |
-| `/flashcards` | Supabase `verified_hadith_items` + `flashcard_reviews` بحساب (SM-2). |
-| `/my-learning` | `user_learning_library`/`learning_paths`/`user_progress` بحساب. |
-| `/progress` | مخزن تقدّم محلي مشترك بين الأقسام (آخر صفحة مصحف، المحفوظات، النشاط). |
-| `/reading-plans` | `book_reading_plans` بحساب + فهرس المكتبة. |
-| `/researcher` | `researcher_profiles` بحساب. |
-المطلوب منفذ عميل Supabase (قراءة عامة + جلسة الحساب من `AuthSessionStoring`) في `PlatformServices`.
+## 6) الحساب والمزامنة (ن1/ن4)
+بقرار المالك (كل مسار مبقًى يُبنى بقالبه) بُنيت المسارات الشخصية **محليًا أولًا** (`LearnLocalStore`، UserDefaults، لا أسرار):
+| المسار | الآن | ما ينقص للمطابقة مع الويب |
+|---|---|---|
+| `/flashcards` | أحاديث `verified-sahih` المحزومة + SM-2 مطابق للويب، المراجعات محلية | مزامنة `flashcard_reviews` |
+| `/reading-plans` | خطط محلية (كتاب بعنوان حر، أيام القراءة، التأخر/التقدّم) | فهرس المكتبة المحقَّق في التصدير، ومزامنة `book_reading_plans`، و«الوتيرة/أيام المراجعة» |
+| `/researcher` | ملف محلي بقوائم الويب | نشره عامًا عبر `researcher_profiles` |
+| `/my-learning` | البريد من `AuthServicing` + إحصاءات محلية وروابط | الشهادات والمكتبة الشخصية والملاحظات (Supabase/`/api/digital-learning`) |
+| `/progress` | البطاقات والخطط ودورات المذاكرة + مسح البيانات المحلية | آخر صفحة مصحف والمحفوظات حين يوفّرها قسما المصحف/الخزانة كمخزن مشترك |
+| `/fawaid` | قراءة وبحث وتصفية | إرسال فائدة (يحتاج منفذ كتابة بحساب) |
+المطلوب لاحقًا: منفذ بيانات مستخدم Supabase في `PlatformServices` (قراءة/upsert بجلسة `AuthServicing`).

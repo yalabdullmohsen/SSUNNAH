@@ -18,10 +18,16 @@ public enum LearnSection {
         "/durus-imaniyya": "durus-imaniyya",
         "/durus-mutanawwia": "durus-mutanawwia",
         "/study-room": "study-room",
+        "/fawaid": "fawaid",
+        "/flashcards": "flashcards",
+        "/my-learning": "my-learning",
+        "/progress": "progress",
+        "/reading-plans": "reading-plans",
+        "/researcher": "researcher",
     ]
 
-    /// مسارات القسم التي تنتظر منفذًا غير موجود بعد في الحزمة (حساب/Supabase/تقدّم مشترك) — docs/native/requests/learn.md.
-    public static let pendingRoutes = ["/annual-courses/:id", "/fawaid", "/flashcards", "/my-learning", "/progress", "/reading-plans", "/researcher"]
+    /// مسارات القسم بمعاملات (تُحلّ في `resolve`)؛ مع `screenIds` تغطي الـ23 من ROUTE_TEMPLATE_MAP.
+    static let paramRoutes = ["/lessons/:id", "/competitions/:id", "/universities/:slug", "/knowledge/:section", "/annual-courses/:id"]
 
     @MainActor public static func register(in registry: TemplateRegistry) {
         for (path, id) in screenIds {
@@ -46,6 +52,12 @@ public enum LearnSection {
             case "durus-imaniyya": return AnyView(LearnDurusScreen(source: LearnSources.durusImaniyya, title: "الدروس الإيمانية والتربوية"))
             case "durus-mutanawwia": return AnyView(LearnDurusScreen(source: LearnSources.durusMutanawwia, title: "دروس متنوعة"))
             case "study-room": return AnyView(LearnStudyRoomScreen())
+            case "fawaid": return AnyView(LearnFawaidScreen())
+            case "flashcards": return AnyView(LearnFlashcardsScreen())
+            case "my-learning": return AnyView(LearnMyLearningScreen())
+            case "progress": return AnyView(LearnProgressScreen())
+            case "reading-plans": return AnyView(LearnReadingPlansScreen())
+            case "researcher": return AnyView(LearnResearcherScreen())
             default: return nil
             }
         case 2:
@@ -54,6 +66,7 @@ public enum LearnSection {
             case "lessons": return AnyView(id == "archive" ? AnyView(LearnLessonsScreen(archived: true)) : AnyView(LearnLessonDetailScreen(id: id)))
             case "universities": return AnyView(id == "compare" ? AnyView(LearnUniversitiesCompareScreen()) : AnyView(LearnUniversityDetailScreen(slug: id)))
             case "competitions": return AnyView(LearnCompetitionDetailScreen(id: id))
+            case "annual-courses": return AnyView(LearnAnnualCourseScreen(id: id))
             case "knowledge": return LearnKnowledgeSections.files(for: id) == nil ? nil : AnyView(LearnKnowledgeSectionScreen(section: id))
             default: return nil
             }

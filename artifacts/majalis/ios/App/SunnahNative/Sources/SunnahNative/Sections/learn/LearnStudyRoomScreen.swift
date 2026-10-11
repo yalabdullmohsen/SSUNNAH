@@ -51,8 +51,9 @@ struct LearnStudyTimer: Equatable {
     }
 }
 
-/// /study-room — مؤقّت مذاكرة محلي. سجلّ الجلسات في الويب يُحفظ في Supabase للمسجَّل؛ هنا محلي فقط حتى يتوفر منفذ الحساب.
+/// /study-room — مؤقّت مذاكرة محلي. سجلّ الجلسات في الويب يُحفظ في Supabase للمسجَّل؛ هنا يُعدّ محليًا لمركز التقدّم.
 struct LearnStudyRoomScreen: View {
+    var store = LearnLocalStore()
     @State private var timer = LearnStudyTimer()
 
     var body: some View {
@@ -85,6 +86,9 @@ struct LearnStudyRoomScreen: View {
                 .padding(Sunnah.Spacing.pageX)
             }
             .onChange(of: context.date) { now in timer.advanceIfDue(at: now) }
+        }
+        .onChange(of: timer.completedWork) { n in
+            if n > 0 { store.save((store.load(Int.self, .studyCycles) ?? 0) + 1, .studyCycles) }
         }
         .background(Sunnah.Colors.bg)
         .navigationTitle("غرفة المذاكرة")

@@ -175,10 +175,11 @@ final class LearnSectionTests: XCTestCase {
     func testResolveRoutes() {
         for p in ["/lessons", "/lessons/archive", "/lessons/kw-1", "/kuwait-lessons", "/quiz", "/competitions", "/competitions/x",
                   "/universities", "/universities/compare", "/universities/islamic-university-madinah", "/institutions",
-                  "/knowledge-graph", "/knowledge/history", "/durus-imaniyya", "/durus-mutanawwia", "/study-room", "/lessons/?x=1"] {
+                  "/knowledge-graph", "/knowledge/history", "/durus-imaniyya", "/durus-mutanawwia", "/study-room", "/lessons/?x=1",
+                  "/fawaid", "/flashcards", "/my-learning", "/progress", "/reading-plans", "/researcher", "/annual-courses/c-1"] {
             XCTAssertNotNil(LearnSection.resolve(path: p), p)
         }
-        for p in ["/", "/fawaid", "/knowledge/nope", "/lessons/a/b", "/progress"] {
+        for p in ["/", "/knowledge/nope", "/lessons/a/b", "/annual-courses", "/learning-plan"] {
             XCTAssertNil(LearnSection.resolve(path: p), p)
         }
     }
@@ -189,11 +190,120 @@ final class LearnSectionTests: XCTestCase {
         for id in LearnSection.screenIds.values { XCTAssertNotNil(registry.view(for: id), id) }
     }
 
-    func testEveryLearnRouteIsHandledOrPending() {
-        // الـ23 من FEATURE_PARITY: 16 أصلية + 7 تنتظر منفذًا.
-        let handled = Set(LearnSection.screenIds.keys).union(["/competitions/:id", "/knowledge/:section", "/lessons/:id", "/universities/:slug"])
-        XCTAssertEqual(handled.count, 16)
-        XCTAssertTrue(handled.isDisjoint(with: LearnSection.pendingRoutes))
-        XCTAssertEqual(handled.count + Set(LearnSection.pendingRoutes).count, 23)
+    func testAllTwentyThreeMapRoutesAreNative() {
+        // الـ23 المبقاة للقسم في docs/native/ROUTE_TEMPLATE_MAP.json — كلها أصلية، ولا مسار خارجها.
+        let all = Set(LearnSection.screenIds.keys).union(LearnSection.paramRoutes)
+        XCTAssertEqual(all.count, 23)
+        XCTAssertEqual(LearnSection.screenIds.count + LearnSection.paramRoutes.count, 23)
+    }
+
+    // MARK: بطاقات المراجعة
+
+    func testSM2MatchesWeb() {
+        var s = LearnSM2.State()
+        s = LearnSM2.review(s, quality: 4); XCTAssertEqual(s, LearnSM2.State(intervalDays: 1, easeFactor: 2.5, repetitions: 1))
+        s = LearnSM2.review(s, quality: 4); XCTAssertEqual(s, LearnSM2.State(intervalDays: 6, easeFactor: 2.5, repetitions: 2))
+        s = LearnSM2.review(s, quality: 5); XCTAssertEqual(s, LearnSM2.State(intervalDays: 15, easeFactor: 2.6, repetitions: 3))
+        s = LearnSM2.review(s, quality: 0); XCTAssertEqual(s, LearnSM2.State(intervalDays: 1, easeFactor: 1.8, repetitions: 0))
+        XCTAssertEqual(LearnSM2.review(LearnSM2.State(intervalDays: 1, easeFactor: 1.3, repetitions: 0), quality: 0).easeFactor, 1.3, "حد أدنى 1.3")
+    }
+
+    func testNextReviewIsUTCMidnightPlusDays() {
+        let now = ISO8601DateFormatter().date(from: "2026-10-11T20:00:00Z")!
+        XCTAssertEqual(LearnSM2.nextReview(from: now, days: 1), ISO8601DateFormatter().date(from: "2026-10-12T00:00:00Z"))
+    }
+
+    func testFlashcardSessionDueFirstThenNew() throws {
+        let hs: [LearnHadith] = try decode(#"[{"id":"a","text":"أ"},{"id":"b","text":"ب"},{"id":"c","text":"ج"},{"id":"d","text":"د"}]"#)
+        let t0 = Date(timeIntervalSince1970: 1_800_000_000)
+        var deck = LearnFlashcardDeck()
+        deck.record("c", quality: 0, now: t0)          // مستحقة غدًا
+        deck.record("a", quality: 4, now: t0)          // مستحقة غدًا أيضًا
+        deck.record("b", quality: 5, now: t0)
+        deck.record("b", quality: 5, now: t0)          // بعد 6 أيام
+        let tomorrow = t0.addingTimeInterval(2 * 86_400)
+        XCTAssertEqual(deck.session(from: hs, now: tomorrow, limit: 10).map(\.id).sorted(), ["a", "c", "d"])
+        XCTAssertEqual(deck.session(from: hs, now: tomorrow, limit: 10).last?.id, "d", "الجديدة بعد المستحقة")
+        XCTAssertEqual(deck.session(from: hs, now: tomorrow, limit: 1).count, 1)
+        XCTAssertEqual(deck.stats(now: tomorrow), LearnFlashcardDeck.Stats(total: 3, due: 2, mastered: 0))
+    }
+
+    func testHadithAttribution() throws {
+        let h: LearnHadith = try decode(#"{"id":"x","text":"ن","narrator":"أنس","source_name":"البخاري (13)","grade":"صحيح"}"#)
+        XCTAssertEqual(h.attribution, "رواه: أنس\nالمصدر: البخاري (13)\nالدرجة: صحيح")
+        let bare: LearnHadith = try decode(#"{"id":"y","text":"ن"}"#)
+        XCTAssertEqual(bare.attribution, "حديث موثّق")
+    }
+
+    func testRealSahihFileDecodes() throws {
+        let list = try JSONDecoder().decode([LearnHadith].self, from: repoFile("public/data/hadith-verified/sahih-004.json"))
+        XCTAssertFalse(list.isEmpty)
+    }
+
+    // MARK: خطط القراءة
+
+    func testReadingPlanPace() {
+        var cal = Calendar(identifier: .gregorian); cal.timeZone = TimeZone(identifier: "UTC")!
+        let f = ISO8601DateFormatter()
+        // 2026-10-03 سبت … 2026-10-16 جمعة: أسبوعان، القراءة السبت والاثنين والأربعاء ⇒ 6 أيام.
+        var plan = LearnReadingPlan(bookTitle: "ك", totalPages: 60, startDate: f.date(from: "2026-10-03T00:00:00Z")!,
+                                    endDate: f.date(from: "2026-10-16T00:00:00Z")!, readingDays: [7, 2, 4], dailyMinutes: 30)
+        XCTAssertEqual(plan.readingDayCount(from: plan.startDate, to: plan.endDate, calendar: cal), 6)
+        let mid = f.date(from: "2026-10-08T12:00:00Z")!   // مضى 3 أيام قراءة (السبت والاثنين والأربعاء)
+        XCTAssertEqual(plan.expectedPage(at: mid, calendar: cal), 30)
+        XCTAssertEqual(plan.pace(at: mid, calendar: cal), .behind)
+        XCTAssertEqual(plan.pagesPerRemainingDay(at: mid, calendar: cal), 20, "60 صفحة على 3 أيام متبقية (الخميس ليس منها)")
+        plan.logPage(40, at: mid)
+        XCTAssertEqual(plan.pace(at: mid, calendar: cal), .ahead)
+        plan.logPage(999, at: mid)
+        XCTAssertEqual(plan.currentPage, 60); XCTAssertEqual(plan.status, .completed); XCTAssertEqual(plan.log.count, 2)
+    }
+
+    // MARK: التخزين المحلي
+
+    func testLocalStoreRoundTripAndClear() throws {
+        let suite = "learn.tests.\(UUID().uuidString)"
+        let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let store = LearnLocalStore(defaults: defaults)
+        var deck = LearnFlashcardDeck(); deck.record("a", quality: 5, now: Date())
+        store.save(deck, .flashcards)
+        store.save([LearnReadingPlan(bookTitle: "ك", totalPages: 10, startDate: Date(), endDate: Date(), readingDays: [1], dailyMinutes: 10)], .readingPlans)
+        store.save(3, .studyCycles)
+        XCTAssertEqual(store.load(LearnFlashcardDeck.self, .flashcards), deck)
+        let summary = LearnLocalSummary.read(from: store)
+        XCTAssertEqual(summary.flashcards.total, 1); XCTAssertEqual(summary.activePlans.count, 1); XCTAssertEqual(summary.studyCycles, 3)
+        store.clearAll()
+        XCTAssertEqual(LearnLocalSummary.read(from: store), LearnLocalSummary(flashcards: .init(), activePlans: [], studyCycles: 0))
+    }
+
+    func testResearcherProfileCleaning() {
+        var p = LearnResearcherProfile(displayName: "  س  ", publications: ["", " بحث "])
+        p.toggleInterest("أصول الفقه"); p.toggleInterest("علم الرجال"); p.toggleInterest("أصول الفقه")
+        XCTAssertEqual(p.interests, ["علم الرجال"])
+        XCTAssertEqual(p.cleaned.displayName, "س"); XCTAssertEqual(p.cleaned.publications, ["بحث"])
+    }
+
+    // MARK: الفوائد والدورات
+
+    func testFawaidHideSourceless() throws {
+        let all: [LearnFaidah] = try decode(#"[{"id":"1","text":"ف","category":"فوائد فقهية","source":"المغني"},{"id":"2","text":"ب","category":"فوائد فقهية"},{"id":"3","text":"ج","author_name":"ابن القيم","category":"الأخلاق"}]"#)
+        XCTAssertEqual(LearnFaidah.filter(all, query: "", category: nil).map(\.id), ["1", "3"])
+        XCTAssertEqual(LearnFaidah.filter(all, query: "", category: "الأخلاق").map(\.id), ["3"])
+        XCTAssertEqual(LearnFaidah.filter(all, query: "المغني", category: nil).map(\.id), ["1"])
+    }
+
+    func testAnnualCourseDecodeAndFind() throws {
+        let all: [LearnAnnualCourse] = try decode(#"[{"id":"u1","external_key":"course-x","title":"د","year":2026,"season":"1447هـ","schedule":[{"day":"السبت","time":"بعد المغرب"}],"status":"approved"},{"id":"u2","title":"هـ","year":"1447","status":"pending"}]"#)
+        XCTAssertEqual(all[0].year, "2026"); XCTAssertEqual(all[1].year, "1447")
+        XCTAssertEqual(LearnAnnualCourse.find("course-x", in: all)?.id, "u1")
+        XCTAssertNil(LearnAnnualCourse.find("u2", in: all), "غير المعتمد لا يُعرض")
+        XCTAssertEqual(all[0].metaLine, "1447هـ · 2026")
+    }
+
+    func testUnexportedListsAreEmpty() async throws {
+        let loader = ContentLoader(bundle: Bundle(for: Self.self))
+        let f = try await LearnSources.loadIfExported([LearnFaidah].self, from: LearnSources.fawaid, with: loader)
+        XCTAssertTrue(f.isEmpty)
     }
 }

@@ -15,6 +15,14 @@ enum LearnSources {
     static let durusImaniyya = ContentSource.bundled(name: "durus-imaniyya", subdirectory: "Data/learn")
     static let durusMutanawwia = ContentSource.bundled(name: "durus-mutanawwia", subdirectory: "Data/learn")
     static let graph = ContentSource.bundled(name: "links", subdirectory: "Data/graph")
+    static let verifiedHadith = ContentSource.bundled(name: "verified-sahih", subdirectory: "Data/hadith")
+    static let fawaid = ContentSource.bundled(name: "fawaid", subdirectory: "Data/learn")
+    static let annualCourses = ContentSource.bundled(name: "annual-courses", subdirectory: "Data/learn")
+
+    /// قائمة لم تُصدَّر بعد تُعامل كفارغة (حالة «لا محتوى») لا كخطأ قابل لإعادة المحاولة.
+    static func loadIfExported<T: Decodable & Sendable>(_ type: [T].Type, from source: ContentSource, with loader: ContentLoader) async throws -> [T] {
+        do { return try await loader.load([T].self, from: source) } catch ContentError.missingBundledFile(_) { return [] }
+    }
     /// `prophets/adam.json` ⇒ `Data/knowledge/prophets/adam` (المسار النسبي نفسه في `public/data/knowledge`).
     static func knowledge(_ relativePath: String) -> ContentSource {
         var parts = relativePath.split(separator: "/").map(String.init)
@@ -51,6 +59,11 @@ struct LearnLoadHost<Value: Sendable, Content: View>: View {
     @ViewBuilder let content: (Value) -> Content
 
     private enum Phase { case loading, failed, ready(Value) }
+
+    init(load: @escaping @Sendable (ContentLoader) async throws -> Value, @ViewBuilder content: @escaping (Value) -> Content) {
+        self.load = load
+        self.content = content
+    }
 
     var body: some View {
         Group {
