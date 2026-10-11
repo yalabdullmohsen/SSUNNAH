@@ -85,3 +85,8 @@
 - بمرشحات القبول: `occasions-verified` (سجل موثّق مطابق لبذرة بـ`reviewStatus=approved` ومصدر)، `prophets-knowledge` (`review_status=verified` + مصادر)، `stories` (معتمدة + `reviewed` + مصادر)، `islamic-history` (لا `needs-review` ولا بلا مصادر).
 - فارغة عمدًا (`[]`) لغياب مصدر/درجة في الويب وقرار المالك: `fikr-waqia`, `seerah-phases`, `shamail`.
 - `prophets-lineage` لا يُكتب (جذر واحد لا قائمة، ولا عقدة فارغة صالحة): غيابه = «قيد التوثيق».
+
+### adhkar (adhkar/verified-adhkar.json = 190 صفًا، من content/native/adhkar-verified.json)
+- المصدر: بذرة الأذكار الأصلية `src/lib/adhkar-seed.ts` عبر `scripts/native/build-adhkar-verified.mjs`؛ النص والمصدر والدرجة حرفيًا بلا إنشاء ولا مرجع جديد. الشكل هو صف `verified_adhkar_items` (§1) مع `metadata.basis`: `sahihayn` (140: درجة صحيح ومصدر صريح في البخاري/مسلم) أو `named_grader` (33: صحيح بمصحِّح مسمّى ومرجع الباب) أو `quran_tanzil` (17: يطابق Tanzil حرفيًا).
+- المحجوز (16 ← content-hold): درجة ضعيفة. المُرجأ (119، لا يُصدَّر ولا يُحجز): حسن 69، صحيح بلا مصحِّح مسمّى 49، صلاة على النبي ﷺ 1 (لا حديث مدّعى).
+- `native-export-data.sh` يمرّر الملف تلقائيًا عند وجوده؛ إن اعتمد المالك صفوف Supabase الـ51 دُمجت لاحقًا بنفس الشكل.

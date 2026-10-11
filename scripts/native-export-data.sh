@@ -8,7 +8,9 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="${1:-$ROOT/ios-native/Data}"
 cd "$ROOT/artifacts/majalis"
 export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=1536}"
-node --import tsx scripts/native/export-ios-data.mjs --out "$OUT"
+ADH=()
+[ -f content/native/adhkar-verified.json ] && ADH=(--adhkar-json content/native/adhkar-verified.json)
+node --import tsx scripts/native/export-ios-data.mjs --out "$OUT" ${ADH[@]+"${ADH[@]}"}
 node --input-type=module -e '
 import fs from "node:fs"; import crypto from "node:crypto"; import path from "node:path";
 const out = process.argv[1]; const m = JSON.parse(fs.readFileSync(path.join(out, "MANIFEST.json"), "utf8"));
