@@ -11,7 +11,9 @@ const majalisRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../../..")
 const read = (rel: string) => readFileSync(resolve(majalisRoot, rel), "utf8");
 
 const plist = read("ios/App/App/Info.plist");
-const plugin = read("ios/App/App/MajlisPlaybackAudioPlugin.swift");
+// منطق الجلسة نُقل إلى Shared/PlaybackSessionController.swift (نواة بلا Capacitor)؛ الإضافة غلاف رقيق.
+const plugin =
+  read("ios/App/App/MajlisPlaybackAudioPlugin.swift") + "\n" + read("ios/App/Shared/PlaybackSessionController.swift");
 const engine = read("src/core/audio/AudioEngine.ts");
 const bridge = read("src/lib/native-playback-audio.ts");
 const reviewNotes = read("store/app-store/review-notes.md");

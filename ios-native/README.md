@@ -5,4 +5,4 @@
 - التحقق: `swift build --triple arm64-apple-ios16.0-simulator --sdk $(xcrun --sdk iphonesimulator --show-sdk-path)` داخل الحزمة؛ بناء Xcode الكامل لـن4.
 
 ## البيانات
-`ios-native/scripts/prepare-data.sh [--adhkar-json f]` يستدعي `scripts/native/export-ios-data.mjs` ويولّد `ios-native/Data` (غير مُلتزَم). يُضاف المجلد `Data` كمرجع مجلد لهدف SunnahApp مع Run Script Phase تستدعي السكربت قبل نسخ الموارد (ن4). القوالب تقرأ `Bundle.main` تحت `Data/<مجموعة>/…` (مثل `Data/adhkar/verified-adhkar.json`). الأذكار فارغة حتى يُوثَّق شيء في Supabase.
+`ios-native/scripts/prepare-data.sh [مجلد_الإخراج]` يستدعي `scripts/native-export-data.sh` (تصدير + MANIFEST + إعادة تحقق من المجموع) ويولّد `ios-native/Data` افتراضيًا (غير مُلتزَم). يُضاف المجلد `Data` كمرجع مجلد لهدف SunnahApp مع Run Script Phase تستدعي السكربت قبل نسخ الموارد (ن4). القوالب تقرأ `Bundle.main` تحت `Data/<مجموعة>/…` (مثل `Data/adhkar/verified-adhkar.json`). الأذكار فارغة حتى يُوثَّق شيء في Supabase.
