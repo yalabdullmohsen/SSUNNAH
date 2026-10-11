@@ -9,10 +9,12 @@
 ## إلى ن1 — بيانات ناقصة (تبقى «قيد التوثيق» حتى تصل)
 | المسار | الناقص |
 |---|---|
-| `/tafsir` | ملفات `tafsir/muyassar` و`tafsir/saadi` موجودة في الويب؛ المطلوب قرار المالك بتضمينها (≈8.6MB) أو تحميلها عن بُعد، وإظهار المصدر/الإذن من `tafsir-registry.json` |
 | `/quran-hub/tajweed`، `qiraat`، `seven-ahruf`، `terms`، `numbers` | لا مصدر موثّق مُصدَّر في المستودع بشكل جاهز للتصدير؛ يلزم ملف JSON معتمد بمصدره وترخيصه |
 | `/quran/surah-stories` | لا مصدر موثّق بالشكل المطلوب |
 | `/quran/people` | `quran-people/people.json` موجود؛ يلزم تأكيد حالة المراجعة (review_status) قبل التصدير |
 | `/hifz-path*`، `/memorization`، `/quran-memorization`، `/quran/memorization-plans` | يحتاج تصدير خطة الحفظ من `lib/memorization-path` بعد مراجعة |
 | `/mutashabihat` | `quran/mutashabihat-index.json` موجود؛ يلزم تصدير بعد مراجعة المصدر |
 | `/miracles`، `/ulum-quran`، `/quran-knowledge` | مصدرها بذور/Supabase؛ يلزم حالة اعتماد |
+
+## التفسير (مُنجز — قرار المالك: مُضمَّن)
+`/tafsir` (المعرّف `tafsir`) يقرأ `Data/tafsir/{muyassar,saadi}/NNN.json` و`tafsir-registry.json` المصدَّرة أصلًا عبر `export-ios-data.mjs` (MANIFEST + sha256، بلا تعديل نص). ن4: لا إضافة للمُصدِّر؛ يكفي ربط `QuranSection.register` (يسجّل `tafsir` الآن). الحجم الخام ≈ 8.5MB (≈ 2.3MB مضغوطًا).
