@@ -257,6 +257,13 @@ enum SirahAdapters {
         parts.compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }.joined(separator: "\n")
     }
 
+    /// صفحة مقال واحدة لقالب «مقال» (ROUTE_TEMPLATE_MAP): العناصر متتابعة بعناوينها، ولا مسار تفاصيل لكل عنصر.
+    static func article(_ items: [ContentItem], id: String, title: String) -> ContentItem? {
+        guard !items.isEmpty else { return nil }
+        let parts = items.map { paragraphs([$0.title, $0.subtitle, $0.body]) }
+        return ContentItem(sirahID: id, title: title, body: paragraphs(parts.map { Optional($0) }))
+    }
+
     static func paragraphs(_ parts: [String?]) -> String {
         parts.compactMap { $0?.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }.joined(separator: "\n\n")
     }

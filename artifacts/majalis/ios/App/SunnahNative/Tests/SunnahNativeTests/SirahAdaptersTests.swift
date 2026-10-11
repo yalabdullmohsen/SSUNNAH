@@ -111,11 +111,26 @@ final class SirahAdaptersTests: XCTestCase {
                    "prophets", "prophets.tree", "sahabah", "seerah", "shamael", "stories", "tarikh-islami", "teachers"] {
             XCTAssertNotNil(registry.view(for: id), id)
         }
-        for p in ["/islamic-landmarks/l1", "/nations/aad", "/tarikh-islami/x", "/teachers/a", "/stories/s", "/prophets/nuh"] {
+        for p in ["/islamic-landmarks/l1", "/nations/aad", "/tarikh-islami/x", "/teachers/a"] {
             XCTAssertNotNil(SirahSection.resolve(path: p), p)
+        }
+        // خارج ROUTE_TEMPLATE_MAP: لا مسار تفاصيل؛ العنصر يُقرأ في شاشته.
+        for p in ["/prophets/nuh", "/stories/s", "/sahabah/x", "/seerah/x", "/shamael/x", "/occasions/x", "/fikr-waqia/x"] {
+            XCTAssertNil(SirahSection.resolve(path: p), p)
         }
         XCTAssertNil(SirahSection.resolve(path: "/prophets/tree"))
         XCTAssertNil(SirahSection.resolve(path: "/nations"))
         XCTAssertNil(SirahSection.resolve(path: "/quran/1"))
+    }
+
+    func testFullArticleJoinsItemsUnderTheirTitles() throws {
+        let sections: [SirahDarsSection] = try decode(#"[{"id":"a","title":"ع1","lessons":[{"id":"a1","title":"ن1"}]},{"id":"b","title":"ع2","lessons":[{"id":"b1","title":"ن2"}]}]"#)
+        let items = SirahAdapters.darsSections(sections)
+        let article = SirahAdapters.article(items, id: "stories", title: "القصص")
+        XCTAssertEqual(article?.id, "stories")
+        XCTAssertEqual(article?.title, "القصص")
+        XCTAssertTrue(article?.body?.hasPrefix("ع1") == true)
+        XCTAssertTrue(article?.body?.contains("ع2") == true)
+        XCTAssertNil(SirahAdapters.article([], id: "stories", title: "القصص"))
     }
 }

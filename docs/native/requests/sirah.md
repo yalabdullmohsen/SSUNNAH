@@ -32,3 +32,9 @@
 - `/prophets` و`/stories` قالبهما في الخريطة «مقال» لعنصر واحد، والبيانات قوائم: عُرضتا قائمةً تفتح مقالًا عبر `/prophets/:slug` و`/stories/:slug` (مساران غير مدرجين في الجرد).
 - `/islamic-landmarks/map`: لا خريطة في القوالب؛ عُرضت شبكة بطاقات. خريطة MapKit تحتاج قالبًا جديدًا إن أُريدت.
 - `/prophets/tree`: لا قالب شجرة؛ عُرضت قائمة مسطّحة بالعمق («من ذرية…»، «الجيل n»).
+
+## نطاق المسارات (قرار المالك 2026-10-11)
+- المرجع الوحيد `ROUTE_TEMPLATE_MAP.json`: مسارات `:id` المبنية هي المبقاة فقط (`/islamic-landmarks/:id`، `/nations/:slug`، `/tarikh-islami/:id`، `/teachers/:slug`).
+- `/prophets` و`/stories` قالبهما «مقال»: صفحة واحدة تجمع العناصر المصدَّقة؛ `/prophets/:slug` و`/stories/:slug` غير مبنيين (مكرران في الخريطة).
+- `/fikr-waqia` و`/occasions` و`/sahabah` و`/seerah` و`/shamael` و`/prophets/tree`: العنصر يُقرأ في ورقة داخل الشاشة، بلا مسار تفاصيل.
+- فجوة قالب: `ListTemplate` يفتح دائمًا `base/id`؛ خيار «عرض داخل الشاشة» في القالب يغني عن `SirahInlineItemsView`، وعناوين فرعية في `ArticleTemplate` تحسّن صفحات «مقال» المجمّعة.
