@@ -146,6 +146,96 @@
     "updated_at": "2026-10-11"
   },
   {
+    "id": "adh-38",
+    "category_id": "adh-morning",
+    "text": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه الترمذي (3524) والحاكم — حسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "يا حي يا قيوم",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-40",
+    "category_id": "adh-morning",
+    "text": "أَعُوذُ بِاللَّهِ السَّمِيعِ الْعَلِيمِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
+    "repeat_count": 3,
+    "narrator": "أبو سعيد الخدري",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "استعاذة",
+      "شيطان"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-154",
+    "category_id": "adh-morning",
+    "text": "اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لَا شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ",
+    "repeat_count": 1,
+    "narrator": "عبد الله بن غنام",
+    "source_name": "رواه أبو داود",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "حمد",
+      "شكر",
+      "نعمة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "local_verified_corpus",
+      "origin": "adhkar-seed",
+      "local_ref": "سنن أبي داود (5073)",
+      "local_id": "nasai-01"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
     "id": "adh-155",
     "category_id": "adh-morning",
     "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ وَخَيْرَ مَا فِيهِ، وَأَعُوذُ بِكَ مِنْ شَرِّ هَذَا الْيَوْمِ وَشَرِّ مَا فِيهِ",
@@ -168,6 +258,35 @@
     "trust_level": null,
     "metadata": {
       "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-158",
+    "category_id": "adh-morning",
+    "text": "اللَّهُمَّ إِنِّي أَصْبَحْتُ أُشْهِدُكَ وَأُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلَائِكَتَكَ وَجَمِيعَ خَلْقِكَ أَنَّكَ أَنْتَ اللَّهُ لَا إِلَهَ إِلَّا أَنْتَ وَحْدَكَ لَا شَرِيكَ لَكَ، وَأَنَّ مُحَمَّدًا عَبْدُكَ وَرَسُولُكَ",
+    "repeat_count": 4,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، أذكار الصباح",
+    "explanation": null,
+    "keywords": [
+      "صباح",
+      "شهادة",
+      "توحيد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
       "origin": "adhkar-seed"
     },
     "deleted_at": null,
@@ -531,6 +650,35 @@
     "updated_at": "2026-10-11"
   },
   {
+    "id": "adh-50",
+    "category_id": "adh-evening",
+    "text": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه الترمذي (3524) والحاكم — حسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "يا حي يا قيوم",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
     "id": "adh-165",
     "category_id": "adh-evening",
     "text": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا فِيهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ هَذِهِ اللَّيْلَةِ وَشَرِّ مَا فِيهَا",
@@ -583,6 +731,35 @@
     "trust_level": null,
     "metadata": {
       "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-167",
+    "category_id": "adh-evening",
+    "text": "اللَّهُمَّ إِنِّي أَمْسَيْتُ أُشْهِدُكَ وَأُشْهِدُ حَمَلَةَ عَرْشِكَ وَمَلَائِكَتَكَ وَجَمِيعَ خَلْقِكَ أَنَّكَ أَنْتَ اللَّهُ الَّذِي لَا إِلَهَ إِلَّا أَنْتَ وَأَنَّ مُحَمَّدًا عَبْدُكَ وَرَسُولُكَ",
+    "repeat_count": 4,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، أذكار المساء",
+    "explanation": null,
+    "keywords": [
+      "مساء",
+      "شهادة",
+      "توحيد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
       "origin": "adhkar-seed"
     },
     "deleted_at": null,
@@ -1035,6 +1212,34 @@
     "updated_at": "2026-10-11"
   },
   {
+    "id": "adh-14",
+    "category_id": "adh-food",
+    "text": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+    "repeat_count": 1,
+    "narrator": "معاذ بن أنس",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "حمد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
     "id": "adh-15",
     "category_id": "adh-travel",
     "text": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
@@ -1147,6 +1352,38 @@
     "updated_at": "2026-10-11"
   },
   {
+    "id": "adh-21",
+    "category_id": "adh-distress",
+    "text": "لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
+    "repeat_count": 1,
+    "narrator": "سعد بن أبي وقاص",
+    "source_name": "رواه الترمذي",
+    "source_url": null,
+    "grade": "صحيح",
+    "reference": "حصن المسلم، دعاء يونس — سنن الترمذي",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "هم",
+      "يونس",
+      "تسبيح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "local_verified_corpus",
+      "origin": "adhkar-seed",
+      "local_ref": "سنن الترمذي (3505)",
+      "local_id": "ibnM-03"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
     "id": "adh-22",
     "category_id": "adh-distress",
     "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ",
@@ -1221,6 +1458,33 @@
     "trust_level": null,
     "metadata": {
       "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-28",
+    "category_id": "adh-clothing",
+    "text": "الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+    "repeat_count": 1,
+    "narrator": "أبو سعيد الخدري",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم",
+    "explanation": null,
+    "keywords": [
+      "لباس"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
       "origin": "adhkar-seed"
     },
     "deleted_at": null,
@@ -1395,6 +1659,37 @@
     "trust_level": null,
     "metadata": {
       "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-69",
+    "category_id": "adh-after-salah",
+    "text": "قُلْ هُوَ اللَّهُ أَحَدٌ، وَالْمُعَوِّذَتَانِ، بَعْدَ الْفَجْرِ وَالْمَغْرِبِ",
+    "repeat_count": 3,
+    "narrator": "عبد الله بن خبيب",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، بعد الفجر والمغرب",
+    "explanation": null,
+    "keywords": [
+      "بعد الصلاة",
+      "فجر",
+      "مغرب",
+      "قرآن",
+      "معوذتان"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
       "origin": "adhkar-seed"
     },
     "deleted_at": null,
@@ -2221,6 +2516,35 @@
     "trust_level": null,
     "metadata": {
       "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-118",
+    "category_id": "adh-salah",
+    "text": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ",
+    "repeat_count": 1,
+    "narrator": "عائشة",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، دعاء الاستفتاح",
+    "explanation": null,
+    "keywords": [
+      "صلاة",
+      "استفتاح",
+      "تسبيح"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
       "origin": "adhkar-seed"
     },
     "deleted_at": null,
@@ -3635,6 +3959,35 @@
     "updated_at": "2026-10-11"
   },
   {
+    "id": "adh-223",
+    "category_id": "adh-distress",
+    "text": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه الترمذي (3524) والحاكم — حسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، دعاء الكرب",
+    "explanation": null,
+    "keywords": [
+      "كرب",
+      "يا حي يا قيوم",
+      "استغاثة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
     "id": "adh-225",
     "category_id": "adh-distress",
     "text": "وَأُفَوِّضُ أَمْرِي إِلَى اللَّهِ إِنَّ اللَّهَ بَصِيرٌ بِالْعِبَادِ",
@@ -4134,6 +4487,36 @@
     "trust_level": null,
     "metadata": {
       "basis": "sahihayn",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-265",
+    "category_id": "adh-clothing",
+    "text": "الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا الثَّوْبَ وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+    "repeat_count": 1,
+    "narrator": "معاذ بن أنس",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم، لبس الثوب",
+    "explanation": null,
+    "keywords": [
+      "لباس",
+      "شكر",
+      "حمد",
+      "رزق"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
       "origin": "adhkar-seed"
     },
     "deleted_at": null,
@@ -4873,6 +5256,68 @@
     "updated_at": "2026-10-11"
   },
   {
+    "id": "adh-314",
+    "category_id": "adh-distress",
+    "text": "اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ، وَأَصْلِحْ لِي شَأْنِي كُلَّهُ، لَا إِلَهَ إِلَّا أَنْتَ",
+    "repeat_count": 1,
+    "narrator": "أبو بكرة",
+    "source_name": "رواه أبو داود — حسنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم — دعاء الكرب",
+    "explanation": null,
+    "keywords": [
+      "رحمة",
+      "كرب",
+      "شأن",
+      "اتكال",
+      "دعاء"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-315",
+    "category_id": "adh-distress",
+    "text": "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",
+    "repeat_count": 1,
+    "narrator": "أنس بن مالك",
+    "source_name": "رواه الترمذي (3524) والحاكم — حسّنه الألباني (حسن غريب عند الترمذي، لا صحيح)",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "الأذكار — الإمام النووي",
+    "explanation": null,
+    "keywords": [
+      "الحي",
+      "القيوم",
+      "استغاثة",
+      "صلاح",
+      "رحمة"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
     "id": "adh-316",
     "category_id": "adh-travel",
     "text": "أَسْتَوْدِعُكُمُ اللَّهَ الَّذِي لَا تَضِيعُ وَدَائِعُهُ",
@@ -5206,6 +5651,34 @@
     "updated_at": "2026-10-11"
   },
   {
+    "id": "adh-337",
+    "category_id": "adh-food",
+    "text": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَٰذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+    "repeat_count": 1,
+    "narrator": "معاذ بن أنس",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم — بعد الطعام",
+    "explanation": null,
+    "keywords": [
+      "طعام",
+      "حمد"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
     "id": "adh-338",
     "category_id": "adh-distress",
     "text": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ جَهْدِ الْبَلَاءِ وَدَرَكِ الشَّقَاءِ وَسُوءِ الْقَضَاءِ وَشَمَاتَةِ الْأَعْدَاءِ",
@@ -5312,6 +5785,35 @@
     "trust_level": null,
     "metadata": {
       "basis": "named_grader",
+      "origin": "adhkar-seed"
+    },
+    "deleted_at": null,
+    "version_number": 1,
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-11"
+  },
+  {
+    "id": "adh-342",
+    "category_id": "adh-clothing",
+    "text": "الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَٰذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+    "repeat_count": 1,
+    "narrator": "أبو أمامة",
+    "source_name": "رواه أبو داود والترمذي، وحسّنه الألباني",
+    "source_url": null,
+    "grade": "حسن",
+    "reference": "حصن المسلم — لباس الجديد",
+    "explanation": null,
+    "keywords": [
+      "لباس",
+      "حمد",
+      "رزق"
+    ],
+    "global_ref_id": null,
+    "verification_status": "verified",
+    "quality_score": null,
+    "trust_level": null,
+    "metadata": {
+      "basis": "named_grader_hasan",
       "origin": "adhkar-seed"
     },
     "deleted_at": null,
