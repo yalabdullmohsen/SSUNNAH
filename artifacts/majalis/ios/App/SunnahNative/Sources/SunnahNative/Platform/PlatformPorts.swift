@@ -157,3 +157,36 @@ public extension EnvironmentValues {
         set { self[PlatformServicesKey.self] = newValue }
     }
 }
+
+/// نص جزئي من محرك التسميع (WhisperKit) — يطابق TasmeePartialEvent في عقد الجسر القديم.
+public struct RecitationPartial: Sendable, Equatable {
+    public let seq: Int
+    public let text: String
+    public let finishedAtMs: Double
+    public init(seq: Int, text: String, finishedAtMs: Double) {
+        self.seq = seq; self.text = text; self.finishedAtMs = finishedAtMs
+    }
+}
+
+public enum RecitationModelStatus: Sendable, Equatable {
+    case notInstalled
+    case downloading(progress: Double)
+    case installed
+    case unsupported
+}
+
+/// محرك التسميع على الجهاز: ينفّذه هدف التطبيق فوق TasmeeEngine/TasmeeModelStore. المطابقة في الحزمة لا فيه.
+@MainActor
+public protocol RecitationEngineControlling: AnyObject {
+    var modelStatus: RecitationModelStatus { get }
+    var onPartial: ((RecitationPartial) -> Void)? { get set }
+    /// كلام مرصود ولا يعود نص («لم يتضح الصوت»).
+    var onUnclear: (() -> Void)? { get set }
+    var onFailure: ((String) -> Void)? { get set }
+    func downloadModel(progress: @escaping @Sendable (Double) -> Void) async throws
+    func deleteModel() throws
+    func load() async throws
+    func start(prompt: String?) async throws
+    func setPrompt(_ text: String?) async
+    func stop() async
+}
