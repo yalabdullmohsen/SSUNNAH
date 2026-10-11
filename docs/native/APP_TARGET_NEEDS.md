@@ -22,3 +22,9 @@
 - Background Modes: audio (التشغيل)، fetch/processing (تحديث المواقيت).
 - Info.plist: `NSLocationWhenInUseUsageDescription` (المواقيت)، `NSMicrophoneUsageDescription` + `NSSpeechRecognitionUsageDescription` إن لزم (التسميع)، `NSSupportsLiveActivities = YES`، `UIBackgroundModes`، `CFBundleLocalizations`/اللغة الافتراضية ar، `UIAppFonts` (Almarai، Amiri، QPC لاحقًا).
 - Capabilities: Live Activities، Time Sensitive Notifications إن استُعملت.
+
+## الإشعارات (نظام واحد)
+- الجدولة كلها في حزمة SunnahPrayer (`NativeNotifications.rescheduleAll`: الصلاة + الأذكار + الورد + الدورية + المناسبات)، ويربطها `SunnahApp.swift` بدورة الحياة. لا تضف مجدولًا ثانيًا للأذكار.
+- Info.plist: `BGTaskSchedulerPermittedIdentifiers` = `com.yousef.majlisilm.prayer-refresh`، و`UIBackgroundModes` يتضمن `fetch`.
+- ملفات الأصوات المخصّصة (`NotificationSoundPack`) تُضاف إلى موارد الهدف.
+- لا حاجة لـ`NativeNotificationsGate` (بوابة الويب) ولا `LegacyWebNotifications` في الهدف الأصلي إلا إن بقي التنظيف من الجدولة القديمة مطلوبًا.
