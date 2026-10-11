@@ -50,6 +50,9 @@ public enum Sunnah {
         public static let body = Font.custom("Almarai-Regular", size: 16, relativeTo: .body)
         public static let secondary = Font.custom("Almarai-Regular", size: 14, relativeTo: .subheadline)
         public static let tag = Font.custom("Almarai-Bold", size: 12, relativeTo: .caption)
+        /// نصوص شرعية بخط Amiri: الآية والحديث/الأثر (خط المصحف QPC غير مضمَّن بانتظار قرار الترخيص).
+        public static let quran = Font.custom("Amiri-Regular", size: 24, relativeTo: .title3)
+        public static let hadith = Font.custom("Amiri-Regular", size: 19, relativeTo: .body)
     }
 }
 

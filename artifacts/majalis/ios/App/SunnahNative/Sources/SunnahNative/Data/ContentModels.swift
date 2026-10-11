@@ -10,6 +10,11 @@ public struct ContentItem: Identifiable, Hashable, Sendable, Decodable {
     public var audioURL: URL?
     public var route: String?
 
+    public init(id: String, title: String, subtitle: String? = nil, body: String? = nil, tags: [String] = [], audioURL: URL? = nil, route: String? = nil) {
+        self.id = id; self.title = title; self.subtitle = subtitle; self.body = body
+        self.tags = tags; self.audioURL = audioURL; self.route = route
+    }
+
     /// يقبل شكل DATA_CONTRACT: id نصيًا أو رقميًا؛ العنوان title|question|titleAr|title_ar؛
     /// النص body|full_content|answer|text؛ الوصف subtitle|summary|category.
     private struct AnyKey: CodingKey {
@@ -51,6 +56,9 @@ public struct QuizQuestion: Identifiable, Hashable, Sendable, Decodable {
     public init(id: String, prompt: String, options: [String], answerIndex: Int, explanation: String? = nil) {
         self.id = id; self.prompt = prompt; self.options = options; self.answerIndex = answerIndex; self.explanation = explanation
     }
+
+    /// سؤال مفتوح: لا مشتّتات، فيُعرض الجواب ثم يقيّم المستخدم نفسه (عرفتها/لم أعرفها).
+    public var isOpen: Bool { options.count <= 1 }
 
     private enum CodingKeys: String, CodingKey { case id, prompt, question, options, choices, answerIndex, answer, explanation }
 
