@@ -89,24 +89,24 @@
 
 ## السيرة والتاريخ والأعلام — 18 (المسؤول: ن2)
 
-- [x] `/fikr-waqia` — FikrWaqiaPage — قائمة
-- [x] `/islamic-landmarks` — IslamicLandmarksPage — قائمة
-- [x] `/islamic-landmarks/:id` — IslamicLandmarkDetailPage — تفاصيل
-- [x] `/islamic-landmarks/map` — IslamicLandmarksMapExplorerPage — شبكة
-- [x] `/nations` — NationsPage — قائمة
-- [x] `/nations/:slug` — NationDetailPage — تفاصيل
-- [x] `/occasions` — OccasionsPage — قائمة
-- [x] `/occasions-lessons` — OccasionsLessonsHubPage — أقسام
-- [x] `/prophets` — ProphetStoriesPage — مقال
-- [x] `/prophets/tree` — ProphetsFamilyTreePage — قائمة
-- [x] `/sahabah` — SahabahPage — قائمة
-- [x] `/seerah` — SeerahPage — قائمة
-- [x] `/shamael` — ShimaelPage — قائمة
-- [x] `/stories` — IslamicStoriesPage — مقال
-- [x] `/tarikh-islami` — TarikhIslamiPage — قائمة
-- [x] `/tarikh-islami/:id` — TarikhIslamiDetailPage — تفاصيل
-- [x] `/teachers` — TeachersIndexPage — أقسام
-- [x] `/teachers/:slug` — TeacherDetailPage — تفاصيل
+- [ ] `/fikr-waqia` — FikrWaqiaPage — قائمة
+- [ ] `/islamic-landmarks` — IslamicLandmarksPage — قائمة
+- [ ] `/islamic-landmarks/:id` — IslamicLandmarkDetailPage — تفاصيل
+- [ ] `/islamic-landmarks/map` — IslamicLandmarksMapExplorerPage — شبكة
+- [ ] `/nations` — NationsPage — قائمة
+- [ ] `/nations/:slug` — NationDetailPage — تفاصيل
+- [ ] `/occasions` — OccasionsPage — قائمة
+- [ ] `/occasions-lessons` — OccasionsLessonsHubPage — أقسام
+- [ ] `/prophets` — ProphetStoriesPage — مقال
+- [ ] `/prophets/tree` — ProphetsFamilyTreePage — قائمة
+- [ ] `/sahabah` — SahabahPage — قائمة
+- [ ] `/seerah` — SeerahPage — قائمة
+- [ ] `/shamael` — ShimaelPage — قائمة
+- [ ] `/stories` — IslamicStoriesPage — مقال
+- [ ] `/tarikh-islami` — TarikhIslamiPage — قائمة
+- [ ] `/tarikh-islami/:id` — TarikhIslamiDetailPage — تفاصيل
+- [ ] `/teachers` — TeachersIndexPage — أقسام
+- [ ] `/teachers/:slug` — TeacherDetailPage — تفاصيل
 
 ## العقيدة والتزكية — 27 (المسؤول: ن2)
 
@@ -140,45 +140,45 @@
 
 ## الفقه والعبادات — 39 (المسؤول: ن2)
 
-- [x] `/amr-bil-maruf` — AmrBilMarufPage — قائمة
-- [x] `/arkan` — ArkanIslamPage — قائمة
-- [x] `/arkan-iman` — ArkanImanPage — قائمة
-- [x] `/fadail-aamal` — FadailAamalPage — قائمة
-- [x] `/family` — FamilyModePage — قائمة
-- [x] `/fiqh` — FiqhPage — قائمة
-- [x] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
-- [x] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
-- [x] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
-- [x] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل
-- [x] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
-- [x] `/fiqh/usul` — FiqhUsulPage — قائمة
-- [x] `/hajj` — HajjPage — قائمة
-- [x] `/janaza` — JanazaPage — قائمة
-- [x] `/jumuah` — JumuahPage — قائمة
-- [x] `/madhahib` — MadhahibPage — قائمة
-- [x] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
-- [x] `/maqasid-sharia` — MaqasidShariaPage — قائمة
-- [x] `/mawarith` — MawarithPage — قائمة
-- [x] `/mawarith/calculator` — MawarithCalculatorPage — قائمة
-- [x] `/nikah` — NikahPage — قائمة
-- [x] `/prayer-ranks` — PrayerRanksPage — قائمة
-- [x] `/prayer-times` — PrayerTimesPage — قائمة
-- [x] `/prophetic-medicine` — PropheticMedicinePage — قائمة
-- [x] `/riba` — RibaPage — قائمة
-- [x] `/ruqya` — RuqyaPage — قائمة
-- [x] `/sadaqa` — SadaqaPage — قائمة
-- [x] `/salah-guide` — SalahGuidePage — قائمة
-- [x] `/sawm` — SawmPage — قائمة
-- [x] `/sins-and-rights` — SinsAndRightsPage — قائمة
-- [x] `/sins-and-rights/:slug` — SinsAndRightsDetailPage — تفاصيل
-- [x] `/sujood-sahw` — SujoodSahwPage — قائمة
-- [x] `/tahara` — TaharaPage — قائمة
-- [x] `/talaq` — TalaqPage — قائمة
-- [x] `/tawba` — TawbaPage — قائمة
-- [x] `/udhiya` — UdhiyaPage — قائمة
-- [x] `/waqf` — WaqfPage — قائمة
-- [x] `/worship` — WorshipPage — قائمة
-- [x] `/zakat` — ZakatPage — قائمة
+- [ ] `/amr-bil-maruf` — AmrBilMarufPage — قائمة
+- [ ] `/arkan` — ArkanIslamPage — قائمة
+- [ ] `/arkan-iman` — ArkanImanPage — قائمة
+- [ ] `/fadail-aamal` — FadailAamalPage — قائمة
+- [ ] `/family` — FamilyModePage — قائمة
+- [ ] `/fiqh` — FiqhPage — قائمة
+- [ ] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
+- [ ] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
+- [ ] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
+- [ ] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل
+- [ ] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
+- [ ] `/fiqh/usul` — FiqhUsulPage — قائمة
+- [ ] `/hajj` — HajjPage — قائمة
+- [ ] `/janaza` — JanazaPage — قائمة
+- [ ] `/jumuah` — JumuahPage — قائمة
+- [ ] `/madhahib` — MadhahibPage — قائمة
+- [ ] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
+- [ ] `/maqasid-sharia` — MaqasidShariaPage — قائمة
+- [ ] `/mawarith` — MawarithPage — قائمة
+- [ ] `/mawarith/calculator` — MawarithCalculatorPage — قائمة
+- [ ] `/nikah` — NikahPage — قائمة
+- [ ] `/prayer-ranks` — PrayerRanksPage — قائمة
+- [ ] `/prayer-times` — PrayerTimesPage — قائمة
+- [ ] `/prophetic-medicine` — PropheticMedicinePage — قائمة
+- [ ] `/riba` — RibaPage — قائمة
+- [ ] `/ruqya` — RuqyaPage — قائمة
+- [ ] `/sadaqa` — SadaqaPage — قائمة
+- [ ] `/salah-guide` — SalahGuidePage — قائمة
+- [ ] `/sawm` — SawmPage — قائمة
+- [ ] `/sins-and-rights` — SinsAndRightsPage — قائمة
+- [ ] `/sins-and-rights/:slug` — SinsAndRightsDetailPage — تفاصيل
+- [ ] `/sujood-sahw` — SujoodSahwPage — قائمة
+- [ ] `/tahara` — TaharaPage — قائمة
+- [ ] `/talaq` — TalaqPage — قائمة
+- [ ] `/tawba` — TawbaPage — قائمة
+- [ ] `/udhiya` — UdhiyaPage — قائمة
+- [ ] `/waqf` — WaqfPage — قائمة
+- [ ] `/worship` — WorshipPage — قائمة
+- [ ] `/zakat` — ZakatPage — قائمة
 
 ## القرآن — 37 (المسؤول: ن3)
 
@@ -222,25 +222,25 @@
 
 ## اللغة والمكتبة والبحث — 19 (المسؤول: ن2)
 
-- [x] `/academic-research` — AcademicResearchPage — بحث
-- [x] `/academic-research/:id` — ResearchDetailPage — بحث
-- [x] `/academic-research/assistant` — ResearchAssistantPage — بحث
-- [x] `/academic-research/submit` — ResearchSubmitPage — بحث
-- [x] `/arabic-language` — ArabicLanguagePage — قائمة
-- [x] `/cards` — CardsPage — قائمة
-- [x] `/islamic-directory` — IslamicDirectoryHubPage — أقسام
-- [x] `/islamic-glossary` — IslamicGlossaryPage — قائمة
-- [x] `/mawsuaat` — MawsuaatPage — قائمة
-- [x] `/methodology` — MethodologyPage — قائمة
-- [x] `/mind-map` — MindMapPage — شبكة
-- [x] `/more` — MorePage — قائمة
-- [x] `/scientific-announcements/:id` — ScientificAnnouncementDetailPage — تفاصيل
-- [x] `/search` — SearchPage — بحث
-- [x] `/sections` — SectionsPage — أقسام
-- [x] `/sitemap` — SiteMapPage — شبكة
-- [x] `/sources` — SourcesDirectoryPage — قائمة
-- [x] `/sources/:id` — SourceDetailPage — تفاصيل
-- [x] `/terms` — TermsPage — قائمة
+- [ ] `/academic-research` — AcademicResearchPage — بحث
+- [ ] `/academic-research/:id` — ResearchDetailPage — بحث
+- [ ] `/academic-research/assistant` — ResearchAssistantPage — بحث
+- [ ] `/academic-research/submit` — ResearchSubmitPage — بحث
+- [ ] `/arabic-language` — ArabicLanguagePage — قائمة
+- [ ] `/cards` — CardsPage — قائمة
+- [ ] `/islamic-directory` — IslamicDirectoryHubPage — أقسام
+- [ ] `/islamic-glossary` — IslamicGlossaryPage — قائمة
+- [ ] `/mawsuaat` — MawsuaatPage — قائمة
+- [ ] `/methodology` — MethodologyPage — قائمة
+- [ ] `/mind-map` — MindMapPage — شبكة
+- [ ] `/more` — MorePage — قائمة
+- [ ] `/scientific-announcements/:id` — ScientificAnnouncementDetailPage — تفاصيل
+- [ ] `/search` — SearchPage — بحث
+- [ ] `/sections` — SectionsPage — أقسام
+- [ ] `/sitemap` — SiteMapPage — شبكة
+- [ ] `/sources` — SourcesDirectoryPage — قائمة
+- [ ] `/sources/:id` — SourceDetailPage — تفاصيل
+- [ ] `/terms` — TermsPage — قائمة
 
 ## المحذوف من الجرد (213)
 
