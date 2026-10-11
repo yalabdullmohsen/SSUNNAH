@@ -27,14 +27,14 @@ FREEMB=$(vm_stat | awk '/page size/{ps=$8} /Pages free|Pages inactive/{gsub("\\.
 if [ "${1:-}" = "--inner" ]; then
   OUT="$2"; cd "$WT" || exit 9
   : > "$OUT"
+  MX="$WT/ios-native/Data"; if [ -d "$PKG/Sources/SunnahNative/Mushaf" ] && [ -f "$WT/artifacts/majalis/scripts/native/export-ios-data.mjs" ] && [ ! -f "$MX/mushaf/index.json" ]; then
+    ( cd "$WT/artifacts/majalis" && node scripts/native/export-ios-data.mjs "$MX" >"$BOARD/mushaf-export.log" 2>&1 )  # يُنفَّذ قبل بناء التطبيق كي تُضمَّن Data/mushaf والخطوط؛ يكتب في ios-native/Data (المخرج المتجاهَل من git)
+  fi
   ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1
     xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -destination "platform=iOS Simulator,id=$SIM" \
       -derivedDataPath "$DD" build -quiet 2>&1 | grep -E "error:" | grep -E "^/" | sort -u > "$OUT.build" )
   if [ -s "$OUT.build" ]; then echo BUILD_FAIL > "$OUT"; exit 0; fi
   # بوابة المصحف: تُصدَّر البيانات وتُمرَّر MUSHAF_DATA/MUSHAF_SRC؛ التخطي (skipped) = فشل
-  MX="$WT/ios-native/Data"; if [ -d "$PKG/Sources/SunnahNative/Mushaf" ] && [ -f "$WT/artifacts/majalis/scripts/native/export-ios-data.mjs" ] && [ ! -f "$MX/mushaf/index.json" ]; then
-    ( cd "$WT/artifacts/majalis" && node scripts/native/export-ios-data.mjs "$MX" >"$BOARD/mushaf-export.log" 2>&1 )  # يكتب في ios-native/Data (المخرج المتجاهَل من git)
-  fi
   ( cd "$PKG" && MUSHAF_DATA="$MX/mushaf" MUSHAF_SRC="$WT/artifacts/majalis" TEST_RUNNER_MUSHAF_DATA="$MX/mushaf" TEST_RUNNER_MUSHAF_SRC="$WT/artifacts/majalis" \
       xcodebuild test -scheme SunnahNative -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD-pkg" > "$OUT.testlog" 2>&1 )
   grep -E "error:|failed \(|: error" "$OUT.testlog" | grep -E "^/|failed" | sort -u > "$OUT.test"
