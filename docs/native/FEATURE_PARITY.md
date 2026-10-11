@@ -89,20 +89,20 @@
 
 ## السيرة والتاريخ والأعلام — 18 (المسؤول: ن2)
 
-- [ ] `/fikr-waqia` — FikrWaqiaPage — قائمة
-- [ ] `/islamic-landmarks` — IslamicLandmarksPage — قائمة
+- [x] `/fikr-waqia` — FikrWaqiaPage — قائمة
+- [x] `/islamic-landmarks` — IslamicLandmarksPage — قائمة
 - [ ] `/islamic-landmarks/:id` — IslamicLandmarkDetailPage — تفاصيل
 - [ ] `/islamic-landmarks/map` — IslamicLandmarksMapExplorerPage — شبكة
-- [ ] `/nations` — NationsPage — قائمة
+- [x] `/nations` — NationsPage — قائمة
 - [ ] `/nations/:slug` — NationDetailPage — تفاصيل
-- [ ] `/occasions` — OccasionsPage — قائمة
+- [x] `/occasions` — OccasionsPage — قائمة
 - [x] `/occasions-lessons` — OccasionsLessonsHubPage — أقسام
-- [ ] `/prophets` — ProphetStoriesPage — مقال
+- [x] `/prophets` — ProphetStoriesPage — مقال
 - [ ] `/prophets/tree` — ProphetsFamilyTreePage — قائمة
-- [ ] `/sahabah` — SahabahPage — قائمة
+- [x] `/sahabah` — SahabahPage — قائمة
 - [ ] `/seerah` — SeerahPage — قائمة
 - [ ] `/shamael` — ShimaelPage — قائمة
-- [ ] `/stories` — IslamicStoriesPage — مقال
+- [x] `/stories` — IslamicStoriesPage — مقال
 - [ ] `/tarikh-islami` — TarikhIslamiPage — قائمة
 - [ ] `/tarikh-islami/:id` — TarikhIslamiDetailPage — تفاصيل
 - [ ] `/teachers` — TeachersIndexPage — أقسام
@@ -110,12 +110,12 @@
 
 ## العقيدة والتزكية — 27 (المسؤول: ن2)
 
-- [ ] `/adab-talab-ilm` — AdabTalabIlmPage — قائمة
-- [ ] `/akhlaq` — AkhlaqPage — قائمة
-- [ ] `/alamat-saah` — AlamatSaahPage — قائمة
-- [ ] `/amrad-qalbiyya` — AmradQalbiyyaPage — قائمة
-- [ ] `/asma-husna` — AsmaaHusnaPage — قائمة
-- [ ] `/discover-islam` — DiscoverIslamPage — قائمة
+- [x] `/adab-talab-ilm` — AdabTalabIlmPage — قائمة
+- [x] `/akhlaq` — AkhlaqPage — قائمة
+- [x] `/alamat-saah` — AlamatSaahPage — قائمة
+- [x] `/amrad-qalbiyya` — AmradQalbiyyaPage — قائمة
+- [x] `/asma-husna` — AsmaaHusnaPage — قائمة
+- [x] `/discover-islam` — DiscoverIslamPage — قائمة
 - [ ] `/discover-islam/articles/:slug` — DiscoverIslamArticleDetailPage — مقال
 - [x] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
 - [ ] `/discover-islam/doubts` — DiscoverIslamDoubtsPage — قائمة
@@ -125,18 +125,18 @@
 - [ ] `/discover-islam/new-muslim/:day` — NewMuslimDayDetailPage — تفاصيل
 - [ ] `/discover-islam/questions` — DiscoverIslamQuestionsPage — قائمة
 - [ ] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
-- [ ] `/hikam-salaf` — HikamSalafPage — قائمة
-- [ ] `/iman-topics` — ImanTopicsPage — قائمة
-- [ ] `/islamic-sects` — IslamicSectsPage — قائمة
+- [x] `/hikam-salaf` — HikamSalafPage — قائمة
+- [x] `/iman-topics` — ImanTopicsPage — قائمة
+- [x] `/islamic-sects` — IslamicSectsPage — قائمة
 - [ ] `/islamic-sects/:id` — IslamicSectsDetailPage — تفاصيل
-- [ ] `/janna-naar` — JannaNaarPage — قائمة
-- [ ] `/malaika` — MalaikaPage — قائمة
-- [ ] `/raqaiq` — RaqaiqPage — قائمة
-- [ ] `/tawhid` — TawhidPage — قائمة
+- [x] `/janna-naar` — JannaNaarPage — قائمة
+- [x] `/malaika` — MalaikaPage — قائمة
+- [x] `/raqaiq` — RaqaiqPage — قائمة
+- [x] `/tawhid` — TawhidPage — قائمة
 - [ ] `/tawhid/:slug` — TawhidTopicPage — تفاصيل
-- [ ] `/tazkiya` — TazkiyaHubPage — أقسام
-- [ ] `/tazkiya-topics` — TazkiyaTopicsPage — قائمة
-- [ ] `/usra-mujtama` — UsraMujtamaPage — شبكة
+- [x] `/tazkiya` — TazkiyaHubPage — أقسام
+- [x] `/tazkiya-topics` — TazkiyaTopicsPage — قائمة
+- [x] `/usra-mujtama` — UsraMujtamaPage — شبكة
 
 ## الفقه والعبادات — 39 (المسؤول: ن2)
 
@@ -145,38 +145,38 @@
 - [ ] `/arkan-iman` — ArkanImanPage — قائمة
 - [ ] `/fadail-aamal` — FadailAamalPage — قائمة
 - [ ] `/family` — FamilyModePage — قائمة
-- [ ] `/fiqh` — FiqhPage — قائمة
+- [x] `/fiqh` — FiqhPage — قائمة
 - [ ] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
 - [ ] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
 - [ ] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
 - [ ] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل
-- [ ] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
-- [ ] `/fiqh/usul` — FiqhUsulPage — قائمة
+- [x] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
+- [x] `/fiqh/usul` — FiqhUsulPage — قائمة
 - [ ] `/hajj` — HajjPage — قائمة
 - [ ] `/janaza` — JanazaPage — قائمة
-- [ ] `/jumuah` — JumuahPage — قائمة
-- [ ] `/madhahib` — MadhahibPage — قائمة
+- [x] `/jumuah` — JumuahPage — قائمة
+- [x] `/madhahib` — MadhahibPage — قائمة
 - [ ] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
-- [ ] `/maqasid-sharia` — MaqasidShariaPage — قائمة
+- [x] `/maqasid-sharia` — MaqasidShariaPage — قائمة
 - [ ] `/mawarith` — MawarithPage — قائمة
 - [ ] `/mawarith/calculator` — MawarithCalculatorPage — قائمة
-- [ ] `/nikah` — NikahPage — قائمة
-- [ ] `/prayer-ranks` — PrayerRanksPage — قائمة
+- [x] `/nikah` — NikahPage — قائمة
+- [x] `/prayer-ranks` — PrayerRanksPage — قائمة
 - [ ] `/prayer-times` — PrayerTimesPage — قائمة
-- [ ] `/prophetic-medicine` — PropheticMedicinePage — قائمة
-- [ ] `/riba` — RibaPage — قائمة
-- [ ] `/ruqya` — RuqyaPage — قائمة
-- [ ] `/sadaqa` — SadaqaPage — قائمة
+- [x] `/prophetic-medicine` — PropheticMedicinePage — قائمة
+- [x] `/riba` — RibaPage — قائمة
+- [x] `/ruqya` — RuqyaPage — قائمة
+- [x] `/sadaqa` — SadaqaPage — قائمة
 - [ ] `/salah-guide` — SalahGuidePage — قائمة
 - [ ] `/sawm` — SawmPage — قائمة
-- [ ] `/sins-and-rights` — SinsAndRightsPage — قائمة
+- [x] `/sins-and-rights` — SinsAndRightsPage — قائمة
 - [ ] `/sins-and-rights/:slug` — SinsAndRightsDetailPage — تفاصيل
 - [ ] `/sujood-sahw` — SujoodSahwPage — قائمة
 - [ ] `/tahara` — TaharaPage — قائمة
-- [ ] `/talaq` — TalaqPage — قائمة
+- [x] `/talaq` — TalaqPage — قائمة
 - [ ] `/tawba` — TawbaPage — قائمة
-- [ ] `/udhiya` — UdhiyaPage — قائمة
-- [ ] `/waqf` — WaqfPage — قائمة
+- [x] `/udhiya` — UdhiyaPage — قائمة
+- [x] `/waqf` — WaqfPage — قائمة
 - [ ] `/worship` — WorshipPage — قائمة
 - [ ] `/zakat` — ZakatPage — قائمة
 
@@ -190,12 +190,12 @@
 - [ ] `/hifz-path/p/:slug/u/:unitId` — HifzPathUnitPage — تفاصيل
 - [ ] `/memorization` — MemorizationHubPage — أقسام
 - [ ] `/miracles` — MiraclesPage — قائمة
-- [ ] `/mushaf` — MushafReaderPage — قائمة
+- [x] `/mushaf` — MushafReaderPage — قائمة
 - [ ] `/mushaf/bookmarks` — MushafBookmarksPage — قائمة
 - [ ] `/mutashabihat` — MutashabihatPage — قائمة
 - [ ] `/quran-circles` — QuranCirclesPage — قائمة
 - [ ] `/quran-engine` — QuranEnginePage — قائمة
-- [ ] `/quran-hub` — QuranHubPage — أقسام
+- [x] `/quran-hub` — QuranHubPage — أقسام
 - [ ] `/quran-hub/numbers` — QuranNumbersPage — أقسام
 - [ ] `/quran-hub/qiraat` — QuranQiraatPage — أقسام
 - [ ] `/quran-hub/seven-ahruf` — QuranSevenAhrufPage — أقسام
