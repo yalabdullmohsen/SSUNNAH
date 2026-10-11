@@ -59,3 +59,15 @@
 4. الأذكار: `verification_status=verified` ودرجة ومصدر وغير محذوف.
 5. القرآن: 114 سورة، 6236 آية، أرقام متسلسلة، لا نص فارغ؛ نسخ بايتي.
 6. المنافيست يسجّل العدّادات والمرفوض وsha256؛ `--check` يحسب دون كتابة.
+
+## 6) أقسام التصدير (`scripts/native/sections/*.mjs`)
+كل قسم ملف مستقل يُحمَّل تلقائيًا قبل كتابة المنافيست (`export-ios-data.mjs` يشغَّل عبر `node --import tsx`). الإخراج في `ios-native/Data/<قسم>/<اسم>.json` بالأسماء التي يتوقعها كود SunnahNative.
+
+### aqidah (20 ملفًا في `Data/aqidah/`)
+- الشكل: عناصر `{id,title,summary?,body?,reference?,...}` بحقول اختيارية تُحذف إن خلت؛ الملفات المجمَّعة (adab-talab-ilm, akhlaq, hikam-salaf, janna-naar, malaika, raqaiq, alamat-saah) مجموعات `{id,title,items:[...]}`.
+- المحجوز (`content-hold.json`) مستبعد من كل ملف، وتُسجَّل الرفوض في المنافيست.
+- `asma-husna`: تُرفض العناصر `documentation_status=unsourced` (91 من 99).
+- `islamic-sects`: `[]` **فارغ عمدًا** — لا سجل منشور (كلها NEEDS_SOURCE/NEEDS_HISTORICAL_REVIEW/NEEDS_SHARIA_REVIEW/CONFLICTING_SOURCES).
+- الشبهات وأدلة الدعوة (`discover-islam-questions/doubts`): كل آية قرآنية تُطابَق حرفيًا مع Tanzil (اسم السورة+الرقم+النص، والاقتباس المقطّع بـ`...` قطعةً قطعة)؛ ما لا يتحقق يُرفض (doubts: 1 من 12).
+- `discover-islam-articles/new-muslim`: تُمرَّر كما هي دون أدلة.
+- لا ملف لـ`discover-islam` (مركز) ولا `discover-islam-contact` (نموذج).

@@ -140,5 +140,14 @@ for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== 
 json("quiz/manifest.json", { total: qn, chunks: qchunks });
 counts.quiz = qn;
 
+/* أقسام التطبيق الأصلي: كل ملف في scripts/native/sections يصدّر دالة افتراضية تكتب Data/<قسم>/ (يبدأ بـ_ = مساعد) */
+{
+  const dir = path.join(import.meta.dirname, "sections");
+  const ctx = { put, json, rd, held, reject, counts, appRoot, data, check };
+  if (fs.existsSync(dir))
+    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".mjs") && !x.startsWith("_")).sort())
+      await (await import(path.join(dir, f))).default(ctx);
+}
+
 json("MANIFEST.json", { version: 1, counts, rejected: rej, files: files.slice().sort((a, b) => a.path.localeCompare(b.path)) });
 console.log(JSON.stringify({ out: check ? "(check)" : out, files: files.length, counts, rejected: rej }));
