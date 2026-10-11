@@ -70,6 +70,8 @@ final class GeneralNotificationPlannerTests: XCTestCase {
     func testSoundPackFallsBackToSystemForUnapproved() {
         XCTAssertNil(NotificationSoundPack.approvedName("adhan-short-makkah.caf"))
         XCTAssertNil(NotificationSoundPack.approvedName("prayer-alert.caf"))
+        XCTAssertEqual(NotificationSoundPack.phraseSounds.count, 10)
+        XCTAssertFalse(NotificationSoundPack.phraseSounds.contains { $0.contains("adhan") })
     }
 
     /// العنوان = الذكر، النص = «قال ﷺ: …» ≤160 (دون التشكيل)، بلا مصدر ولا راوٍ، ويشمل الصباح والمساء والدوري.
