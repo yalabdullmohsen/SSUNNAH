@@ -112,6 +112,7 @@ struct LibrarySearchView: View {
 
 /// بطاقات للمشاركة: يكتب المستخدم النص ومصدره، وتُصدَّر صورة. لا نص افتراضي (لا محتوى شرعي من الكود).
 struct LibraryCardsView: View {
+    @Environment(\.layoutDirection) private var direction
     @State private var text = ""
     @State private var source = ""
 
@@ -124,11 +125,10 @@ struct LibraryCardsView: View {
             }
             .padding(Sunnah.Spacing.s4)
         }
-        .environment(\.layoutDirection, .rightToLeft)
     }
 
     @MainActor private var rendered: Image? {
-        let renderer = ImageRenderer(content: card.frame(width: Sunnah.Spacing.cardMinWidth * 2).padding(Sunnah.Spacing.s4).background(Sunnah.Colors.bg))
+        let renderer = ImageRenderer(content: card.frame(width: Sunnah.Spacing.cardMinWidth * 2).padding(Sunnah.Spacing.s4).background(Sunnah.Colors.bg).environment(\.layoutDirection, direction))
         renderer.scale = 3
         return renderer.cgImage.map { Image(decorative: $0, scale: 3) }
     }
