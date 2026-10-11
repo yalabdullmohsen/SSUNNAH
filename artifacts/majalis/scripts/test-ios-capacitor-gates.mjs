@@ -57,22 +57,31 @@ ok(existsSync(join(iosApp, "App", "PrivacyInfo.xcprivacy")), "PrivacyInfo.xcpriv
 ok(existsSync(join(iosApp, "App", "MajlisPlaybackAudioPlugin.swift")), "MajlisPlaybackAudioPlugin.swift exists");
 
 const pluginSwift = readFileSync(join(iosApp, "App", "MajlisPlaybackAudioPlugin.swift"), "utf8");
+// سلوك الجلسة انتقل إلى النواة المشتركة بلا Capacitor (Shared/PlaybackSessionController.swift) والـplugin يفوّض إليها.
+const sessionCorePath = join(iosApp, "Shared", "PlaybackSessionController.swift");
+ok(existsSync(sessionCorePath), "PlaybackSessionController.swift exists");
+const sessionSwift = pluginSwift + "\n" + (existsSync(sessionCorePath) ? readFileSync(sessionCorePath, "utf8") : "");
+ok(
+  /504EC3001FED79650016851F \/\* Sources \*\/ = \{[\s\S]*PlaybackSessionController\.swift in Sources[\s\S]*?\};/.test(pbx) &&
+    /504EC3001FED79650016851F \/\* Sources \*\/ = \{[\s\S]*OfflineAudioStore\.swift in Sources[\s\S]*?\};/.test(pbx),
+  "PlaybackSessionController + OfflineAudioStore listed under App target Sources",
+);
 ok(pluginSwift.includes("CAPBridgedPlugin"), "plugin conforms to CAPBridgedPlugin");
 ok(pluginSwift.includes('jsName = "MajlisPlaybackAudio"'), "plugin jsName MajlisPlaybackAudio");
 ok(pluginSwift.includes("enablePlayback"), "enablePlayback method");
 ok(pluginSwift.includes("enableRecording"), "enableRecording method");
 ok(pluginSwift.includes("deactivate"), "deactivate method");
-ok(pluginSwift.includes("MPNowPlayingInfoCenter"), "Now Playing metadata center");
-ok(pluginSwift.includes("MPRemoteCommandCenter"), "remote transport commands");
-ok(pluginSwift.includes("reassertPlaybackIfNeeded"), "background session reassert");
-ok(pluginSwift.includes("interruptionNotification"), "handles audio interruptions");
-ok(pluginSwift.includes("routeChangeNotification"), "handles route changes");
-ok(!/try\?/.test(pluginSwift), "plugin does not swallow errors with try?");
+ok(sessionSwift.includes("MPNowPlayingInfoCenter"), "Now Playing metadata center");
+ok(sessionSwift.includes("MPRemoteCommandCenter"), "remote transport commands");
+ok(sessionSwift.includes("reassertPlaybackIfNeeded"), "background session reassert");
+ok(sessionSwift.includes("interruptionNotification"), "handles audio interruptions");
+ok(sessionSwift.includes("routeChangeNotification"), "handles route changes");
+ok(!/try\?/.test(sessionSwift), "plugin does not swallow errors with try?");
 ok(!/call\.resolve\(\[\]\)/.test(pluginSwift), "plugin does not resolve empty on failure");
 ok(pluginSwift.includes("AUDIO_SESSION_FAILED"), "playback rejects with AUDIO_SESSION_FAILED code");
-ok(pluginSwift.includes("mediaServicesWereResetNotification"), "playback observes media services reset");
+ok(sessionSwift.includes("mediaServicesWereResetNotification"), "playback observes media services reset");
 ok(
-  /setCategory\(\s*\.playback[\s\S]*?options:\s*\[\s*\.allowAirPlay,\s*\.allowBluetoothA2DP\s*\]/.test(pluginSwift),
+  /setCategory\(\s*\.playback[\s\S]*?options:\s*\[\s*\.allowAirPlay,\s*\.allowBluetoothA2DP\s*\]/.test(sessionSwift),
   "playback category without duckOthers (continuous media)",
 );
 

@@ -15,6 +15,8 @@
 		A0290001NATIVENOTIFGATEBF /* NativeNotificationsGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0290002NATIVENOTIFGATEFR /* NativeNotificationsGate.swift */; };
 		C9225C43F06EC1C5172AFD0A /* NativeShellGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */; };
 		A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */; };
+		A0500002OFFLINESTOREAPP1 /* OfflineAudioStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0500001OFFLINESTOREFILE /* OfflineAudioStore.swift */; };
+		A0510002PLAYBACKCTRLAPP1 /* PlaybackSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0510001PLAYBACKCTRLFILE /* PlaybackSessionController.swift */; };
 		A0280003SHAREDDATALA01 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */; };
 		A0280005SHAREDPLUGINAPP /* SunnahSharedDataPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */; };
 		A055BF01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A055FR01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift */; };
@@ -140,6 +142,8 @@
 		A0290002NATIVENOTIFGATEFR /* NativeNotificationsGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeNotificationsGate.swift; sourceTree = "<group>"; };
 		17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeShellGate.swift; sourceTree = "<group>"; };
 		A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedData.swift; sourceTree = "<group>"; };
+		A0500001OFFLINESTOREFILE /* OfflineAudioStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineAudioStore.swift; sourceTree = "<group>"; };
+		A0510001PLAYBACKCTRLFILE /* PlaybackSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSessionController.swift; sourceTree = "<group>"; };
 		A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedDataPlugin.swift; sourceTree = "<group>"; };
 		A055FR01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahAuthKeychainPlugin.swift; sourceTree = "<group>"; };
 		A0280006PLAENTITLEMENTS /* PrayerLiveActivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerLiveActivity.entitlements; sourceTree = "<group>"; };
@@ -374,6 +378,8 @@
 				A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */,
 				A040FR01ENVELOPEFILE0000 /* SunnahWidgetEnvelope.swift */,
 				A041FR01REFRESHFILE00000 /* SunnahWidgetRefreshCoordinator.swift */,
+				A0500001OFFLINESTOREFILE /* OfflineAudioStore.swift */,
+				A0510001PLAYBACKCTRLFILE /* PlaybackSessionController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -626,6 +632,8 @@
 				A0280005SHAREDPLUGINAPP /* SunnahSharedDataPlugin.swift in Sources */,
 				A055BF01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift in Sources */,
 				B2C3D4E5F6071890AB12CD01 /* MajlisPlaybackAudioPlugin.swift in Sources */,
+				A0500002OFFLINESTOREAPP1 /* OfflineAudioStore.swift in Sources */,
+				A0510002PLAYBACKCTRLAPP1 /* PlaybackSessionController.swift in Sources */,
 				C1D2E3F4A5B6071890AB12CD01 /* MajlisOfflineAudioPlugin.swift in Sources */,
 				E8FAF235C7ADB6B58001180E /* TasmeeModelStore.swift in Sources */,
 				16A433A5683F0C8686196108 /* TasmeeDiagnostics.swift in Sources */,

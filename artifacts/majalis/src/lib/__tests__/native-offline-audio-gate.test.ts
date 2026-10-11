@@ -9,7 +9,10 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 
-const swift = readFileSync(resolve(root, "ios/App/App/MajlisOfflineAudioPlugin.swift"), "utf8");
+// الـplugin يفوّض التخزين إلى النواة المشتركة بلا Capacitor (Shared/OfflineAudioStore.swift).
+const swift = ["ios/App/App/MajlisOfflineAudioPlugin.swift", "ios/App/Shared/OfflineAudioStore.swift"]
+  .map((rel) => readFileSync(resolve(root, rel), "utf8"))
+  .join("\n");
 assert.match(swift, /isExcludedFromBackup\s*=\s*true/);
 assert.match(swift, /applicationSupportDirectory/);
 assert.match(swift, /writeSurah/);
