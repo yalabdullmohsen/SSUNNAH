@@ -119,7 +119,7 @@ put("adhkar/adhkar-fadl.json", fs.readFileSync(`${appRoot}/src/data/adhkar-fadl.
 /* المواقيت: مدن العالم فقط (الحساب في التطبيق) */
 put("prayer/world-cities.json", fs.readFileSync(`${data}/prayer/world-cities.json`));
 
-/* الأسئلة: حيّة وموثّقة فقط */
+/* الأسئلة: الموثّقة (شرح+مرجع)، أو العامة غير الموثّقة (unsourced) إن لم تكن demo ولا محجوزة ولا فارغة — الأحكام الشرعية بلا مرجع محجوزة في content-hold */
 const qdir = `${data}/quiz`;
 let qn = 0;
 const qchunks = [];
@@ -129,8 +129,10 @@ for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== 
     if (/^demo[-_]/i.test(String(q.id))) { reject("quiz", "demo"); continue; }
     if (held(q.id)) { reject("quiz", "محجوز"); continue; }
     if (!String(q.question || "").trim() || !String(q.answer || "").trim()) { reject("quiz", "سؤال/جواب فارغ"); continue; }
-    if (!String(q.explanation || "").trim()) { reject("quiz", "بلا شرح"); continue; }
-    if (!String(q.reference || "").trim() || q.documentation_status === "unsourced") { reject("quiz", "بلا مرجع"); continue; }
+    if (q.documentation_status !== "unsourced") {
+      if (!String(q.explanation || "").trim()) { reject("quiz", "بلا شرح"); continue; }
+      if (!String(q.reference || "").trim()) { reject("quiz", "بلا مرجع"); continue; }
+    }
     live.push(q);
   }
   if (live.length) { json(`quiz/${f}`, live); qchunks.push({ file: f, count: live.length }); qn += live.length; }
