@@ -37,6 +37,7 @@ const rd = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const held = (...ids) => ids.some((i) => i != null && holds.has(String(i)));
 const pad = (n) => String(n).padStart(3, "0");
 const counts = {};
+let mushafSources = {};
 
 if (!check) fs.rmSync(out, { recursive: true, force: true });
 
@@ -184,7 +185,14 @@ counts.quiz = qn;
   for (let p = 1; p <= 604; p++) put(`mushaf/fonts/p${p}.ttf`, fs.readFileSync(`${tmp}/p${p}.ttf`));
   fs.rmSync(tmp, { recursive: true, force: true });
   counts.mushafPages = 604;
+  // أصل كل ملف يُصدَّر: sha256 للمصدر (الصفحات JSON وخطوط woff2) كي يقارنها اختبار البوابة بالمستودع
+  mushafSources = {};
+  for (let p = 1; p <= 604; p++) {
+    mushafSources[`public/data/quran-v2/pages/page-${pad(p)}.json`] = sha(fs.readFileSync(`${q2}/pages/page-${pad(p)}.json`));
+    mushafSources[`public/fonts/qpc-v2/p${p}.woff2`] = sha(fs.readFileSync(`${appRoot}/public/fonts/qpc-v2/p${p}.woff2`));
+  }
+  mushafSources["public/data/quran-v2/chapters.json"] = sha(fs.readFileSync(`${q2}/chapters.json`));
 }
 
-json("MANIFEST.json", { version: 1, counts, rejected: rej, files: files.slice().sort((a, b) => a.path.localeCompare(b.path)) });
+json("MANIFEST.json", { version: 1, counts, rejected: rej, mushafSources, files: files.slice().sort((a, b) => a.path.localeCompare(b.path)) });
 console.log(JSON.stringify({ out: check ? "(check)" : out, files: files.length, counts, rejected: rej }));

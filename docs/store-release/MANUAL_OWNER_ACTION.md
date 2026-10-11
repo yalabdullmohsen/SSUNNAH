@@ -15,4 +15,6 @@
 | OWN-08 | Decide deployment policy A vs B | Docs conflict | `DEPLOYMENT_DECISION.md` signed |
 | OWN-09 | Final store submission click | Owner only | App Store / Play consoles |
 
+- **DATA-2:181** — عيب بيانات موروث، يحتاج قرارًا شرعيًا ومصدر Tanzil: الآية 2:181 بلا علامة نهاية (end) في بيانات QPC المصدر (6235 علامة لـ6236 آية). لم يُعدَّل أي نص؛ الاختبار الحاسم يثبّت الفجوة كما هي.
+
 Do **not** mark Store GO while any OWN-01…OWN-03 is open.
