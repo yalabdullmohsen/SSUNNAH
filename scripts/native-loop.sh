@@ -116,7 +116,8 @@ if [ -f "$WT/scripts/native-data-check.mjs" ]; then
   for n in $CAND; do
     files=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path')
     miss=$(grep '^MISSING' "$BOARD/native-data-check.out" | while read -r _ ref _ src; do for f in $(echo "$src" | tr ',' ' '); do echo "$files" | grep -q "/$f$" && echo "$ref"; done; done | sort -u | head -15)
-    [ -n "$miss" ] && comment "$n" "data-$(date +%Y%m%d)" "بوابة البيانات: ملفات JSON مرجَعة بـ\`ContentSource.bundled\` ولا يقابلها ملف في \`ios-native/Data\` (الشاشة تعرض خطأ تحميل):
+    [ -n "$miss" ] && { ERRS=$((ERRS+1)); FAILED+=("$n"); CAND=$(echo " $CAND " | sed "s/ $n / /"); log "فشل #$n (بوابة البيانات: ملفات مفقودة)"; }
+    [ -n "$miss" ] && comment "$n" "data-$(date +%Y%m%d)" "فشل بناء — بوابة البيانات (إلزامية): ملفات JSON مرجَعة بـ\`ContentSource.bundled\` ولا يقابلها ملف في \`ios-native/Data\` (الشاشة تعرض خطأ تحميل):
 \`\`\`
 $miss
 \`\`\`"
