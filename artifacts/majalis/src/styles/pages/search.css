@@ -939,7 +939,7 @@ html.dark .srch-result-card__icon {
 
 html[data-theme="dark"] .search-home > .compact-section-header .compact-section-header__title,
 html.dark .search-home > .compact-section-header .compact-section-header__title {
-  color: var(--text-primary, var(--sn-text-on-primary));
+  color: var(--text-primary, var(--text-on-brand-secondary));
 }
 html[data-theme="dark"] .search-home > .compact-section-header .compact-section-header__desc,
 html.dark .search-home > .compact-section-header .compact-section-header__desc,
@@ -956,7 +956,7 @@ html.dark .srch-home-field,
 html[data-theme="dark"] .srch-scope-card,
 html.dark .srch-scope-card {
   background: color-mix(in srgb, var(--color-surface) 92%, var(--mj-brand-deep));
-  color: var(--text-primary, var(--sn-text-on-primary));
+  color: var(--text-primary, var(--text-on-brand-secondary));
   border-color: color-mix(in srgb, var(--mj-brand) 28%, var(--mj-ink-2));
   box-shadow: 0 1px 2px color-mix(in srgb, var(--mj-ink) 25%, transparent);
 }
@@ -978,11 +978,11 @@ html[data-theme="dark"] .srch-result-card__title,
 html.dark .srch-result-card__title,
 html[data-theme="dark"] .srch-scope-card__text strong,
 html.dark .srch-scope-card__text strong {
-  color: var(--text-primary, var(--sn-text-on-primary));
+  color: var(--text-primary, var(--text-on-brand-secondary));
 }
 html[data-theme="dark"] .search-no-results__msg,
 html.dark .search-no-results__msg {
-  color: var(--text-primary, var(--sn-text-on-primary));
+  color: var(--text-primary, var(--text-on-brand-secondary));
 }
 html[data-theme="dark"] .search-no-results__hint,
 html.dark .search-no-results__hint {
@@ -1186,7 +1186,7 @@ html[data-theme="dark"] .srch-chip,
 html.dark .srch-chip {
   background: color-mix(in srgb, var(--color-surface) 92%, var(--mj-brand-deep));
   border-color: color-mix(in srgb, var(--mj-brand) 22%, transparent);
-  color: var(--text-primary, var(--sn-text-on-primary));
+  color: var(--text-primary, var(--text-on-brand-secondary));
 }
 html[data-theme="dark"] .srch-result-card__reason,
 html.dark .srch-result-card__reason,
