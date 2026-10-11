@@ -16,7 +16,7 @@
 | auto-20261011-1639 | 2026-10-11 | الإنجاز: 76/212 = 35.8% | #2945 | — | 0 |
 
 ## تصحيح 2026-10-11 (ن4) — رقمان منفصلان
-- مدموج ومبني: **76/212**
+- مدموج ومبني: **116/212**
 - مُتحقَّق بلقطة فاتح/داكن (بصمة مختلفة + OCR بلا خطأ/placeholder/قيد التوثيق، شريط الحالة ثابت 9:41): **43/212**
 - الرقم السابق 76 كان بنجاح البناء فقط (الجذر: SunnahApp لم يسجّل الأقسام ولا يحلّ المسارات → كل مسار يعرض النص الخام؛ أُصلح).
 - السبب الرئيسي لتعذّر التحقق: بيانات الأقسام لا تُجمَّع في التطبيق (`Data/aqidah|fiqh|sirah|library|learn` غير مصدَّرة → «تعذّر تحميل المحتوى»)، والباقي «المحتوى قيد التوثيق».
@@ -50,3 +50,8 @@
 - **sirah** · EMPTY (1): `/islamic-landmarks/:id`
 - **sirah** · ERROR:تعذّر (2): `/teachers`، `/teachers/:slug`
 - **sirah** · PLACEHOLDER (1): `/prophets/tree`
+
+## بوابة البيانات (ن4، 2026-10-11)
+- `node scripts/native-data-check.mjs`: 106 مرجع `ContentSource.bundled`، **102 مفقود** (0 تالف) — الأقسام aqidah/fiqh/sirah/library/learn.
+- سبب `Data/aqidah/malaika`: `export-ios-data.mjs` يصدّر 6 مجلدات فقط (adhkar/hadith/prayer/quiz/quran/tafsir)؛ لا مُصدِّر لـaqidah أصلًا (ليس رفضًا بسبب content-hold ولا اختلاف اسم). المطلوب: مُصدِّر لكل قسم (ن1) وفق `docs/native/requests/<section>.md`.
+- أُضيفت البوابة إلى native-loop (تعليق على PR صاحب الملف المرجِع)، مع MUSHAF_DATA/MUSHAF_SRC وفشل الدورة عند تخطي MushafGateTests.

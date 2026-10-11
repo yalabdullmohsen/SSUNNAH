@@ -31,7 +31,18 @@ if [ "${1:-}" = "--inner" ]; then
     xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -destination "platform=iOS Simulator,id=$SIM" \
       -derivedDataPath "$DD" build -quiet 2>&1 | grep -E "error:" | grep -E "^/" | sort -u > "$OUT.build" )
   if [ -s "$OUT.build" ]; then echo BUILD_FAIL > "$OUT"; exit 0; fi
-  ( cd "$PKG" && xcodebuild test -scheme SunnahNative -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD-pkg" 2>&1 | grep -E "error:|failed \(|: error" | grep -E "^/|failed" | sort -u > "$OUT.test" )
+  # بوابة المصحف: تُصدَّر البيانات وتُمرَّر MUSHAF_DATA/MUSHAF_SRC؛ التخطي (skipped) = فشل
+  MX=""; if [ -d "$PKG/Sources/SunnahNative/Mushaf" ] && [ -f "$WT/artifacts/majalis/scripts/native/export-ios-data.mjs" ]; then
+    MX="$BOARD/mushaf-out"; if [ ! -f "$MX/mushaf/index.json" ]; then rm -rf "$MX"; ( cd "$WT/artifacts/majalis" && node scripts/native/export-ios-data.mjs "$MX" >"$BOARD/mushaf-export.log" 2>&1 ); fi
+  fi
+  ( cd "$PKG" && MUSHAF_DATA="$MX/mushaf" MUSHAF_SRC="$WT/artifacts/majalis" TEST_RUNNER_MUSHAF_DATA="$MX/mushaf" TEST_RUNNER_MUSHAF_SRC="$WT/artifacts/majalis" \
+      xcodebuild test -scheme SunnahNative -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD-pkg" > "$OUT.testlog" 2>&1 )
+  grep -E "error:|failed \(|: error" "$OUT.testlog" | grep -E "^/|failed" | sort -u > "$OUT.test"
+  if [ -d "$PKG/Tests/SunnahNativeTests" ] && [ -f "$PKG/Tests/SunnahNativeTests/MushafGateTests.swift" ]; then
+    mp=$(grep -cE "Test Case .*MushafGateTests.* passed" "$OUT.testlog"); ms=$(grep -cE "MushafGateTests.*skipped" "$OUT.testlog")
+    echo "MushafGateTests passed=$mp skipped=$ms" > "$BOARD/native-loop.mushaf"
+    if [ "$ms" -gt 0 ] || [ "$mp" -lt 4 ]; then echo "MushafGateTests: passed=$mp skipped=$ms (مطلوب 4/4 بلا تخطٍّ)" >> "$OUT.test"; fi
+  fi
   if [ -s "$OUT.test" ]; then echo TEST_FAIL > "$OUT"; else echo OK > "$OUT"; fi
   exit 0
 fi
@@ -97,6 +108,20 @@ for n in $PRS; do
     REJECTED+=("$n"); log "تخطي #$n (محمي → needs-owner)"
   else CAND="$CAND $n"; fi
 done
+
+# 1b) بوابة البيانات: ملف bundled مفقود/تالف ⇒ تعليق على PR صاحب الملف المرجِع (لا دمج صامت)
+if [ -f "$WT/scripts/native-data-check.mjs" ]; then
+  ( cd "$WT" && node scripts/native-data-check.mjs --json > "$BOARD/native-data-check.out" 2>&1 )
+  log "بوابة البيانات: $(head -1 "$BOARD/native-data-check.out")"
+  for n in $CAND; do
+    files=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path')
+    miss=$(grep '^MISSING' "$BOARD/native-data-check.out" | while read -r _ ref _ src; do for f in $(echo "$src" | tr ',' ' '); do echo "$files" | grep -q "/$f$" && echo "$ref"; done; done | sort -u | head -15)
+    [ -n "$miss" ] && comment "$n" "data-$(date +%Y%m%d)" "بوابة البيانات: ملفات JSON مرجَعة بـ\`ContentSource.bundled\` ولا يقابلها ملف في \`ios-native/Data\` (الشاشة تعرض خطأ تحميل):
+\`\`\`
+$miss
+\`\`\`"
+  done
+fi
 
 # 2) بناء/عزل الفاشلين (حتى 3 جولات)
 for round in 1 2 3; do
