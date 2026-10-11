@@ -5,6 +5,7 @@
 
 ## ملفات تُضاف للهدف بعضوية ملفات (كما هي، لم تُعدَّل)
 - `artifacts/majalis/ios/App/App/Services/KeychainStore.swift`
+- `artifacts/majalis/ios/App/Shared/OfflineAudioStore.swift` و`PlaybackSessionController.swift` (بلا Capacitor؛ تحتاج Background Modes: audio)
 - `artifacts/majalis/ios/App/Shared/{SunnahSharedData,SunnahWidgetEnvelope,SunnahWidgetRefreshCoordinator,SunnahBrandColors,SunnahPrayerDeepLink}.swift` (نفسها لهدف الويدجت)
 - `ios-native/SunnahApp/SunnahApp.swift` و`ios-native/SunnahApp/Platform/*.swift` (محوّلات المنافذ)
 - لا يُضاف أي ملف `*Plugin.swift` (أغلفة Capacitor) ولا `import Capacitor`.

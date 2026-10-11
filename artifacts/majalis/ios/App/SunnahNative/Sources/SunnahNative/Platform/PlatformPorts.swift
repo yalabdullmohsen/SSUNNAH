@@ -19,12 +19,42 @@ public protocol SharedDataPublishing: Sendable {
     func publishProgress(dailyWirdCompleted: Int, dailyWirdTarget: Int, mushafPagesReadToday: Int) -> Bool
 }
 
+/// تلاوات محمّلة دون اتصال (Application Support، خارج نسخ iCloud).
+public protocol OfflineAudioProviding: Sendable {
+    /// رابط الملف المحلي إن كانت السورة محمّلة وإلا nil.
+    func localURL(reciterId: String, surah: Int) -> URL?
+    func downloadedSurahs(reciterId: String) -> [Int]
+    func save(_ data: Data, reciterId: String, surah: Int) throws
+    func remove(reciterId: String, surah: Int) throws
+    func removeAll(reciterId: String) throws
+    func totalBytes() -> Int
+}
+
+public enum PlaybackSessionMode: String, Sendable { case inactive, playback, recording }
+
+public enum PlaybackRemoteCommand: String, Sendable { case play, pause, toggle, next, previous, stop }
+
+/// جلسة الصوت و«يُشغَّل الآن» وأوامر القفل/مركز التحكم. التشغيل نفسه (AVPlayer) في مشغّل الشاشات.
+@MainActor
+public protocol PlaybackSessionControlling: AnyObject {
+    var mode: PlaybackSessionMode { get }
+    var onRemoteCommand: ((PlaybackRemoteCommand) -> Void)? { get set }
+    func enablePlayback(title: String?, artist: String?, album: String?) throws
+    func enableRecording() throws
+    func deactivate() throws
+    func updateNowPlaying(playing: Bool, elapsed: Double?, duration: Double?, rate: Float)
+    func clearNowPlaying()
+}
+
 /// حاوية الخدمات؛ الافتراضي ذاكرة مؤقتة آمنة للمعاينات والاختبارات.
 public struct PlatformServices: Sendable {
     public var auth: AuthSessionStoring
     public var sharedData: SharedDataPublishing
-    public init(auth: AuthSessionStoring = InMemoryAuthStore(), sharedData: SharedDataPublishing = NoSharedData()) {
-        self.auth = auth; self.sharedData = sharedData
+    public var offlineAudio: OfflineAudioProviding
+    public init(auth: AuthSessionStoring = InMemoryAuthStore(),
+                sharedData: SharedDataPublishing = NoSharedData(),
+                offlineAudio: OfflineAudioProviding = NoOfflineAudio()) {
+        self.auth = auth; self.sharedData = sharedData; self.offlineAudio = offlineAudio
     }
 }
 
@@ -42,6 +72,16 @@ public struct NoSharedData: SharedDataPublishing {
     public init() {}
     public var isAvailable: Bool { false }
     public func publishProgress(dailyWirdCompleted: Int, dailyWirdTarget: Int, mushafPagesReadToday: Int) -> Bool { false }
+}
+
+public struct NoOfflineAudio: OfflineAudioProviding {
+    public init() {}
+    public func localURL(reciterId: String, surah: Int) -> URL? { nil }
+    public func downloadedSurahs(reciterId: String) -> [Int] { [] }
+    public func save(_ data: Data, reciterId: String, surah: Int) throws {}
+    public func remove(reciterId: String, surah: Int) throws {}
+    public func removeAll(reciterId: String) throws {}
+    public func totalBytes() -> Int { 0 }
 }
 
 private struct PlatformServicesKey: EnvironmentKey {
