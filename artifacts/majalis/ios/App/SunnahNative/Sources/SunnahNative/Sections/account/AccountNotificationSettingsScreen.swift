@@ -76,7 +76,7 @@ final class AccountNotificationSettingsModel: ObservableObject {
     }
 }
 
-/// /notification-settings — الإشعارات: الصلاة والأذان، وتذكيرات الأذكار، وساعات الهدوء.
+/// /notification-settings — الإشعارات: تنبيهات الصلاة (بلا أذان، قرار المالك)، وتذكيرات الأذكار، وساعات الهدوء.
 struct AccountNotificationSettingsScreen: View {
     @StateObject private var model = AccountNotificationSettingsModel()
     @Environment(\.openRoute) private var openRoute
@@ -92,10 +92,10 @@ struct AccountNotificationSettingsScreen: View {
                 permissionBanner
                 if explainFor != nil { explainCard }
 
-                AccountSectionCard(title: "الصلاة والأذان") {
+                AccountSectionCard(title: "الصلاة") {
                     Toggle(isOn: Binding(get: { model.optIn.prayer && model.permission == .granted },
                                          set: { on in withPermission(on) { model.optIn.prayer = $0 } })) {
-                        rowLabel("تنبيهات الصلاة والأذان", "بمواقيت موقعك — تُضبط من إعدادات الأذان")
+                        rowLabel("تنبيهات الصلاة", "تنبيه صوتي قصير قبل الوقت وعند دخوله، بمواقيت موقعك")
                     }
                     .tint(Sunnah.Colors.primary)
                     if model.optIn.prayer {
@@ -180,10 +180,6 @@ struct AccountNotificationSettingsScreen: View {
                 }
                 .tint(Sunnah.Colors.primary)
             }
-            Toggle(isOn: Binding(get: { model.prayer.adhanEnabled }, set: { model.prayer.adhanEnabled = $0; save() })) {
-                Text("صوت الأذان عند الدخول").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-            }
-            .tint(Sunnah.Colors.primary)
             minutesStepper("تنبيه قبل الدخول", value: $model.prayer.minutesBefore, range: 0...60, step: 5)
         }
     }
