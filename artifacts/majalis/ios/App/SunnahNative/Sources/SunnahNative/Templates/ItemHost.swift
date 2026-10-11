@@ -31,3 +31,31 @@ struct ItemHost<Content: View>: View {
         } catch { phase = .failed }
     }
 }
+
+/// يحمّل قائمة القسم كاملة ويعرضها بقالب جماعي (مسارات :id لقوالب البحث/القائمة/الشبكة).
+struct CollectionHost<Content: View>: View {
+    @Environment(\.contentLoader) private var loader
+    @State private var phase: Phase = .loading
+    let source: ContentSource
+    @ViewBuilder let content: ([ContentItem]) -> Content
+
+    private enum Phase { case loading, failed, ready([ContentItem]) }
+
+    var body: some View {
+        Group {
+            switch phase {
+            case .loading: LoadingStateView()
+            case .failed: ErrorStateView { Task { await load() } }
+            case .ready(let items): content(items)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Sunnah.Colors.bg)
+        .task { await load() }
+    }
+
+    private func load() async {
+        phase = .loading
+        do { phase = .ready(try await loader.load([ContentItem].self, from: source)) } catch { phase = .failed }
+    }
+}
