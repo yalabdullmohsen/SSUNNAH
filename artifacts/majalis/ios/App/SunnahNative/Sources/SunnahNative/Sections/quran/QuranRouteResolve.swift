@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// مسارات التفاصيل ذات المعاملات في القرآن: /quran-hub/tajweed/:chapter و/quran/people/:slug و/quran/surah-stories/:number.
+/// مسارات التفاصيل ذات المعاملات في القرآن: /quran-hub/tajweed/:chapter و/quran/people/:slug و/quran/surah-stories/:number، و/hifz-path/c/:category و/hifz-path/p/:slug و/hifz-path/p/:slug/u/:unitId.
 /// تُستشار من `SunnahApp.resolve` قبل المولَّد؛ المعرّف المجهول = «قيد التوثيق» لا عنصرًا نائبًا.
 extension QuranSection {
     @MainActor public static func resolve(path: String) -> AnyView? {
@@ -25,8 +25,29 @@ extension QuranSection {
                 if let st = s.first(where: { $0.number == key }) { SurahStoryView(story: st).navigationTitle(st.name) }
                 else { EmptyStateView(title: pendingTitle) }
             })
+        case (3, "hifz-path") where c[1] == "c":
+            let key = id(2)
+            return AnyView(hifzLoader { paths in
+                let rows = paths.filter { $0.category == key }
+                if rows.isEmpty { EmptyStateView(title: pendingTitle) }
+                else { HifzPathsListView(paths: rows).navigationTitle(PublishedAdapters.hifzCategories[key] ?? key) }
+            })
+        case (3, "hifz-path") where c[1] == "p", (5, "hifz-path") where c[1] == "p" && c[3] == "u":
+            let slug = id(2), unitId = c.count == 5 ? id(4) : nil
+            return AnyView(hifzLoader { paths in
+                if let p = paths.first(where: { $0.slug == slug }) {
+                    if let uid = unitId {
+                        if let u = p.units.first(where: { $0.id == uid }) { HifzUnitView(unit: u, surahNames: surahNames()).navigationTitle(u.title) }
+                        else { EmptyStateView(title: pendingTitle) }
+                    } else { HifzPathView(path: p) }
+                } else { EmptyStateView(title: pendingTitle) }
+            })
         default:
             return nil
         }
+    }
+
+    @MainActor private static func hifzLoader<V: View>(@ViewBuilder _ content: @escaping ([HifzPath]) -> V) -> some View {
+        QuranBundledLoader(name: "hifz-paths", isEmpty: { (p: [HifzPath]) in p.isEmpty }, content: content)
     }
 }

@@ -7,7 +7,7 @@ public enum AccountSection {
     public static let ids = [
         "about", "calendar", "car-mode", "contact", "data-licenses", "fatwa-policy", "feature-tour", "islam-stats",
         "mosque-mode", "my-submissions", "notification-settings", "offline", "privacy", "privacy-center", "qibla",
-        "stats", "submit", "updates",
+        "stats", "submit", "updates", "widget-center",
     ]
 
     @MainActor public static func register(in registry: TemplateRegistry) {
@@ -29,6 +29,7 @@ public enum AccountSection {
         registry.registerView(id: "stats") { AccountUserStatsScreen() }
         registry.registerView(id: "submit") { AccountSubmitContentScreen() }
         registry.registerView(id: "updates") { AccountUpdatesScreen() }
+        registry.registerView(id: "widget-center") { AccountWidgetCenterScreen() }
     }
 
     /// يحوّل مكوّنات المسار إلى شاشة ذات معامل، أو nil.
