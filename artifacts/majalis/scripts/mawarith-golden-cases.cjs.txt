@@ -1,0 +1,68 @@
+const { calculateInheritance } = require("./js/engine.js");
+const { computeEstateBreakdown } = require("./js/estate.js");
+const { INHERITANCE_PRESETS } = require("./js/presets.js");
+const { DEFAULT_FIQH_CONFIG } = require("./js/types.js");
+const cases = INHERITANCE_PRESETS.map(p => ({ id: "preset:" + p.id, heirs: p.heirs }));
+const extra = [
+  ["husband-daughters", { husband: 1, daughters: 2 }],
+  ["mother-brothers-sisters", { mother: 1, fullBrothers: 2, fullSisters: 1 }],
+  ["grandfather-sisters", { paternalGrandfather: 1, fullSisters: 2 }],
+  ["grandfather-paternal-sibs", { paternalGrandfather: 1, paternalBrothers: 1, paternalSisters: 1 }],
+  ["awl-minbariyya-like", { wife: 1, mother: 1, fullSisters: 2, maternalBrothers: 2 }],
+  ["awl-husband-sisters-mother", { husband: 1, mother: 1, fullSisters: 2 }],
+  ["radd-mother-maternal-sister", { mother: 1, maternalSisters: 1 }],
+  ["radd-husband-daughter", { husband: 1, daughters: 1 }],
+  ["gharrawayn-wife", { wife: 1, father: 1, mother: 1 }],
+  ["daughters-sister-asaba", { daughters: 2, fullSisters: 1 }],
+  ["daughter-sondaughter", { daughters: 1, daughtersOfSon: 2 }],
+  ["two-daughters-sondaughter-blocked", { daughters: 2, daughtersOfSon: 1 }],
+  ["sonofson-two-daughters-sondaughter", { daughters: 2, sonsOfSon: 1, daughtersOfSon: 1 }],
+  ["sisters-full-paternal", { fullSisters: 1, paternalSisters: 2 }],
+  ["maternal-siblings-three", { maternalBrothers: 1, maternalSisters: 2 }],
+  ["father-son-mother", { father: 1, mother: 1, sons: 1 }],
+  ["father-daughter-wife", { father: 1, daughters: 1, wife: 1 }],
+  ["grandmothers-grandfather", { paternalGrandmother: 1, maternalGrandmother: 1, paternalGrandfather: 1 }],
+  ["mother-two-siblings-husband", { husband: 1, mother: 1, fullBrothers: 1, paternalSisters: 1 }],
+  ["four-wives-sister", { wife: 4, fullSisters: 1 }],
+  ["none", {}],
+  ["maternal-only-sibling-blocked-by-daughter", { daughters: 1, maternalBrothers: 1, fullBrothers: 1 }],
+  ["bad-both-spouses", { husband: 1, wife: 1 }],
+  ["bad-two-husbands", { husband: 2 }],
+  ["bad-five-wives", { wife: 5 }],
+  ["bad-fraction", { sons: 1.5 }],
+];
+for (const [id, heirs] of extra) cases.push({ id, heirs });
+const configs = {
+  default: DEFAULT_FIQH_CONFIG,
+  gfExcludes: { ...DEFAULT_FIQH_CONFIG, grandfatherWithSiblings: "grandfatherExcludes" },
+  raddSpouse: { ...DEFAULT_FIQH_CONFIG, raddToSpouse: true },
+  noMush: { ...DEFAULT_FIQH_CONFIG, mushtarakaShareWithMaternalSiblings: false },
+};
+const f = x => `${x.num}/${x.den}`;
+const out = [];
+for (const c of cases) for (const [cn, cfg] of Object.entries(configs)) {
+  // الإعدادات غير الافتراضية فقط للحالات المعنيّة بها
+  if (cn !== "default" && !/grandfather|mushtaraka|radd|awl|gharr|husband/i.test(c.id)) continue;
+  let r;
+  try {
+    const x = calculateInheritance(c.heirs, cfg);
+    r = { ok: {
+      originalBase: x.originalBase.toString(), awlBase: x.awlBase === null ? null : x.awlBase.toString(), radd: x.radd,
+      shares: x.shares.map(s => ({ heir: s.heir, count: s.count, basis: s.basis, total: f(s.totalShare), per: f(s.perPersonShare), reason: s.reason })),
+      hajb: x.hajbLog.map(h => ({ heir: h.heir, type: h.type, reason: h.reason, by: h.excludedBy })),
+      steps: x.steps.map(s => ({ title: s.title, detail: s.detail })), warnings: x.warnings, net: f(x.netEstate) } };
+  } catch (e) { r = { error: e.message }; }
+  out.push({ id: c.id, config: cn, heirs: c.heirs, ...r });
+}
+const estates = [
+  { id: "plain", assets: [{ id: "a", label: "a", value: 90000 }], debts: 0, funeralCosts: 0, bequest: 0, bequestApprovedByHeirs: false },
+  { id: "debts-funeral", assets: [{ id: "a", label: "a", value: 100000 }, { id: "b", label: "b", value: 25000.5 }], debts: 12000, funeralCosts: 1500, bequest: 0, bequestApprovedByHeirs: false },
+  { id: "bequest-capped", assets: [{ id: "a", label: "a", value: 100000 }], debts: 10000, funeralCosts: 0, bequest: 60000, bequestApprovedByHeirs: false },
+  { id: "bequest-approved", assets: [{ id: "a", label: "a", value: 100000 }], debts: 10000, funeralCosts: 0, bequest: 60000, bequestApprovedByHeirs: true },
+  { id: "debts-exceed", assets: [{ id: "a", label: "a", value: 5000 }], debts: 9000, funeralCosts: 100, bequest: 1000, bequestApprovedByHeirs: false },
+  { id: "funeral-exceeds", assets: [{ id: "a", label: "a", value: 800 }], debts: 0, funeralCosts: 2000, bequest: 0, bequestApprovedByHeirs: false },
+  { id: "thirds", assets: [{ id: "a", label: "a", value: 100 }], debts: 0, funeralCosts: 0, bequest: 50, bequestApprovedByHeirs: false },
+  { id: "negative", assets: [{ id: "a", label: "a", value: 100 }], debts: -1, funeralCosts: 0, bequest: 0, bequestApprovedByHeirs: false },
+].map(e => { try { const b = computeEstateBreakdown(e); return { input: e, ok: { ...b, netForHeirsFraction: f(b.netForHeirsFraction) } }; } catch (err) { return { input: e, error: err.message }; } });
+require("fs").writeFileSync(process.argv[2], JSON.stringify({ inheritance: out, estates }, null, 1));
+console.log(out.length, "inheritance cases;", out.filter(x=>x.ok).length, "ok;", estates.length, "estates");

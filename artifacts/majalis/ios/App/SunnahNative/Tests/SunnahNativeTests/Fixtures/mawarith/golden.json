@@ -1,0 +1,4316 @@
+{
+ "inheritance": [
+  {
+   "id": "preset:simple-sons-daughters",
+   "config": "default",
+   "heirs": {
+    "wife": 1,
+    "sons": 2,
+    "daughters": 1
+   },
+   "ok": {
+    "originalBase": "8",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "الثمن لوجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "sons",
+      "count": 2,
+      "basis": "asaba",
+      "total": "7/10",
+      "per": "7/20",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "asaba-with-daughters",
+      "total": "7/40",
+      "per": "7/40",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:gharrawayn-husband",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "مسألة العمريتين (الغرّاوان): للأم ثلث الباقي بعد فرض الزوج/الزوجة، لا ثلث كل التركة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: العمريتان",
+      "detail": "زوج/زوجة + أب + أم بلا فرع وارث ولا إخوة — للأم ثلث ما يبقى بعد نصيب الزوجية، والباقي كله للأب."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:gharrawayn-husband",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "مسألة العمريتين (الغرّاوان): للأم ثلث الباقي بعد فرض الزوج/الزوجة، لا ثلث كل التركة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: العمريتان",
+      "detail": "زوج/زوجة + أب + أم بلا فرع وارث ولا إخوة — للأم ثلث ما يبقى بعد نصيب الزوجية، والباقي كله للأب."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:gharrawayn-husband",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "مسألة العمريتين (الغرّاوان): للأم ثلث الباقي بعد فرض الزوج/الزوجة، لا ثلث كل التركة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: العمريتان",
+      "detail": "زوج/زوجة + أب + أم بلا فرع وارث ولا إخوة — للأم ثلث ما يبقى بعد نصيب الزوجية، والباقي كله للأب."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:gharrawayn-husband",
+   "config": "noMush",
+   "heirs": {
+    "husband": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "مسألة العمريتين (الغرّاوان): للأم ثلث الباقي بعد فرض الزوج/الزوجة، لا ثلث كل التركة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: العمريتان",
+      "detail": "زوج/زوجة + أب + أم بلا فرع وارث ولا إخوة — للأم ثلث ما يبقى بعد نصيب الزوجية، والباقي كله للأب."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:mushtaraka",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "maternalBrothers": 2,
+    "fullBrothers": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "maternalBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/12",
+      "reason": "مسألة المشرَّكة (الحمارية): يُشرَّك مع إخوة الأم في الثلث بالتساوي للرأس (حكم الجمهور)"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/12",
+      "reason": "مسألة المشرَّكة (الحمارية): يُشرَّك مع إخوة الأم في الثلث بالتساوي للرأس (حكم الجمهور)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: المشرَّكة (الحمارية)",
+      "detail": "زوج + أم + إخوة لأم (٢ فأكثر) + إخوة أشقاء بلا أب ولا جد: يُشرَّك الإخوة الأشقاء مع إخوة الأم في ثلث التركة بالتساوي، بدل حرمانهم كليًا (حكم الجمهور، قابل للتعطيل في الإعداد الفقهي)."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:mushtaraka",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "maternalBrothers": 2,
+    "fullBrothers": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "maternalBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/12",
+      "reason": "مسألة المشرَّكة (الحمارية): يُشرَّك مع إخوة الأم في الثلث بالتساوي للرأس (حكم الجمهور)"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/12",
+      "reason": "مسألة المشرَّكة (الحمارية): يُشرَّك مع إخوة الأم في الثلث بالتساوي للرأس (حكم الجمهور)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: المشرَّكة (الحمارية)",
+      "detail": "زوج + أم + إخوة لأم (٢ فأكثر) + إخوة أشقاء بلا أب ولا جد: يُشرَّك الإخوة الأشقاء مع إخوة الأم في ثلث التركة بالتساوي، بدل حرمانهم كليًا (حكم الجمهور، قابل للتعطيل في الإعداد الفقهي)."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:mushtaraka",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "maternalBrothers": 2,
+    "fullBrothers": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "maternalBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/12",
+      "reason": "مسألة المشرَّكة (الحمارية): يُشرَّك مع إخوة الأم في الثلث بالتساوي للرأس (حكم الجمهور)"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/12",
+      "reason": "مسألة المشرَّكة (الحمارية): يُشرَّك مع إخوة الأم في الثلث بالتساوي للرأس (حكم الجمهور)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: المشرَّكة (الحمارية)",
+      "detail": "زوج + أم + إخوة لأم (٢ فأكثر) + إخوة أشقاء بلا أب ولا جد: يُشرَّك الإخوة الأشقاء مع إخوة الأم في ثلث التركة بالتساوي، بدل حرمانهم كليًا (حكم الجمهور، قابل للتعطيل في الإعداد الفقهي)."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:mushtaraka",
+   "config": "noMush",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "maternalBrothers": 2,
+    "fullBrothers": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "maternalBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/3",
+      "per": "1/6",
+      "reason": "الثلث يُقسَّم بالتساوي بين أولاد الأم (لا للذكر مثل حظ الأنثيين)"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 2,
+      "basis": "asaba",
+      "total": "0/1",
+      "per": "0/1",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: المشرَّكة (الحمارية)",
+      "detail": "بحسب الإعداد الفقهي الحالي، لا يُشرَّك الإخوة الأشقاء مع إخوة الأم؛ يُطبَّق القياس المجرَّد (فلا يبقى للإخوة الأشقاء شيء في هذه الصورة تحديدًا)."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:daughter-parents",
+   "config": "default",
+   "heirs": {
+    "daughters": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "السدس لوجود فرع وارث"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "السدس فرضًا، ويأخذ الباقي تعصيبًا لوجود بنات بلا ابن؛ وتعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لبنت واحدة بلا ابن"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:wife-daughters-father",
+   "config": "default",
+   "heirs": {
+    "wife": 1,
+    "daughters": 2,
+    "father": 1
+   },
+   "ok": {
+    "originalBase": "24",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "الثمن لوجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "5/24",
+      "per": "5/24",
+      "reason": "السدس فرضًا، ويأخذ الباقي تعصيبًا لوجود بنات بلا ابن؛ وتعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "الثلثان لبنتين فأكثر بلا ابن"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:parents-only",
+   "config": "default",
+   "heirs": {
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "3",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/3",
+      "per": "2/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:two-wives-son-daughters",
+   "config": "default",
+   "heirs": {
+    "wife": 2,
+    "sons": 1,
+    "daughters": 2
+   },
+   "ok": {
+    "originalBase": "8",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/8",
+      "per": "1/16",
+      "reason": "الثمن لوجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "sons",
+      "count": 1,
+      "basis": "asaba",
+      "total": "7/16",
+      "per": "7/16",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "asaba-with-daughters",
+      "total": "7/16",
+      "per": "7/32",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:awl-husband-two-sisters",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": "7",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/7",
+      "per": "3/7",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "4/7",
+      "per": "2/7",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (7/6) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:awl-husband-two-sisters",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": "7",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/7",
+      "per": "3/7",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "4/7",
+      "per": "2/7",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (7/6) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:awl-husband-two-sisters",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": "7",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/7",
+      "per": "3/7",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "4/7",
+      "per": "2/7",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (7/6) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:awl-husband-two-sisters",
+   "config": "noMush",
+   "heirs": {
+    "husband": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": "7",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/7",
+      "per": "3/7",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "4/7",
+      "per": "2/7",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (7/6) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:two-grandmothers-husband",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "paternalGrandmother": 1,
+    "maternalGrandmother": 1
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "paternalGrandmother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين + نصيب من الرد"
+     },
+     {
+      "heir": "maternalGrandmother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:two-grandmothers-husband",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 1,
+    "paternalGrandmother": 1,
+    "maternalGrandmother": 1
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "paternalGrandmother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين + نصيب من الرد"
+     },
+     {
+      "heir": "maternalGrandmother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:two-grandmothers-husband",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 1,
+    "paternalGrandmother": 1,
+    "maternalGrandmother": 1
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لعدم وجود فرع وارث + نصيب من الرد"
+     },
+     {
+      "heir": "paternalGrandmother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين + نصيب من الرد"
+     },
+     {
+      "heir": "maternalGrandmother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:two-grandmothers-husband",
+   "config": "noMush",
+   "heirs": {
+    "husband": 1,
+    "paternalGrandmother": 1,
+    "maternalGrandmother": 1
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "paternalGrandmother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين + نصيب من الرد"
+     },
+     {
+      "heir": "maternalGrandmother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:sons-of-son-daughters-of-son",
+   "config": "default",
+   "heirs": {
+    "sonsOfSon": 1,
+    "daughtersOfSon": 1
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "sonsOfSon",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/3",
+      "per": "2/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "daughtersOfSon",
+      "count": 1,
+      "basis": "asaba-with-daughters",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:radd-daughter-mother",
+   "config": "default",
+   "heirs": {
+    "daughters": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس لوجود فرع وارث + نصيب من الرد"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:radd-daughter-mother",
+   "config": "gfExcludes",
+   "heirs": {
+    "daughters": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس لوجود فرع وارث + نصيب من الرد"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:radd-daughter-mother",
+   "config": "raddSpouse",
+   "heirs": {
+    "daughters": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس لوجود فرع وارث + نصيب من الرد"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:radd-daughter-mother",
+   "config": "noMush",
+   "heirs": {
+    "daughters": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "السدس لوجود فرع وارث + نصيب من الرد"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:grandfather-with-siblings",
+   "config": "default",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "fullBrothers": 2
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 2,
+      "basis": "asaba",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:grandfather-with-siblings",
+   "config": "gfExcludes",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "fullBrothers": 2
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/1",
+      "per": "1/1",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "fullBrothers",
+      "type": "hirman",
+      "reason": "الجدّ يُسقط الإخوة والأخوات (حسب الإعداد الفقهي المختار)",
+      "by": [
+       "paternalGrandfather"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "بحسب الإعداد الفقهي الحالي، الجدّ يحجب جميع الإخوة والأخوات حجب حرمان (لا مقاسمة)."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:grandfather-with-siblings",
+   "config": "raddSpouse",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "fullBrothers": 2
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 2,
+      "basis": "asaba",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "preset:grandfather-with-siblings",
+   "config": "noMush",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "fullBrothers": 2
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 2,
+      "basis": "asaba",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "husband-daughters",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "daughters": 2
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لوجود فرع وارث"
+     },
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/8",
+      "reason": "الثلثان لبنتين فأكثر بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "husband-daughters",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 1,
+    "daughters": 2
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لوجود فرع وارث"
+     },
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/8",
+      "reason": "الثلثان لبنتين فأكثر بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "husband-daughters",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 1,
+    "daughters": 2
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/11",
+      "per": "3/11",
+      "reason": "الربع لوجود فرع وارث + نصيب من الرد"
+     },
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "radd",
+      "total": "8/11",
+      "per": "4/11",
+      "reason": "الثلثان لبنتين فأكثر بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "husband-daughters",
+   "config": "noMush",
+   "heirs": {
+    "husband": 1,
+    "daughters": 2
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لوجود فرع وارث"
+     },
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/8",
+      "reason": "الثلثان لبنتين فأكثر بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "mother-brothers-sisters",
+   "config": "default",
+   "heirs": {
+    "mother": 1,
+    "fullBrothers": 2,
+    "fullSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 2,
+      "basis": "asaba",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 1,
+      "basis": "asaba-with-daughters",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandfather-sisters",
+   "config": "default",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "3",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "asaba-with-daughters",
+      "total": "5/6",
+      "per": "5/12",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث؛ وتعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandfather-sisters",
+   "config": "gfExcludes",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "3",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     },
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "fullBrothers",
+      "type": "hirman",
+      "reason": "الجدّ يُسقط الإخوة والأخوات (حسب الإعداد الفقهي المختار)",
+      "by": [
+       "paternalGrandfather"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "بحسب الإعداد الفقهي الحالي، الجدّ يحجب جميع الإخوة والأخوات حجب حرمان (لا مقاسمة)."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandfather-sisters",
+   "config": "raddSpouse",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "3",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "asaba-with-daughters",
+      "total": "5/6",
+      "per": "5/12",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث؛ وتعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandfather-sisters",
+   "config": "noMush",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "3",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "asaba-with-daughters",
+      "total": "5/6",
+      "per": "5/12",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث؛ وتعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandfather-paternal-sibs",
+   "config": "default",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "paternalBrothers": 1,
+    "paternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/5",
+      "per": "2/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalBrothers",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/5",
+      "per": "2/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalSisters",
+      "count": 1,
+      "basis": "asaba-with-daughters",
+      "total": "1/5",
+      "per": "1/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandfather-paternal-sibs",
+   "config": "gfExcludes",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "paternalBrothers": 1,
+    "paternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/1",
+      "per": "1/1",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "fullBrothers",
+      "type": "hirman",
+      "reason": "الجدّ يُسقط الإخوة والأخوات (حسب الإعداد الفقهي المختار)",
+      "by": [
+       "paternalGrandfather"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "بحسب الإعداد الفقهي الحالي، الجدّ يحجب جميع الإخوة والأخوات حجب حرمان (لا مقاسمة)."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandfather-paternal-sibs",
+   "config": "raddSpouse",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "paternalBrothers": 1,
+    "paternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/5",
+      "per": "2/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalBrothers",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/5",
+      "per": "2/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalSisters",
+      "count": 1,
+      "basis": "asaba-with-daughters",
+      "total": "1/5",
+      "per": "1/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandfather-paternal-sibs",
+   "config": "noMush",
+   "heirs": {
+    "paternalGrandfather": 1,
+    "paternalBrothers": 1,
+    "paternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/5",
+      "per": "2/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalBrothers",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/5",
+      "per": "2/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalSisters",
+      "count": 1,
+      "basis": "asaba-with-daughters",
+      "total": "1/5",
+      "per": "1/5",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الجد مع الإخوة",
+      "detail": "الجد يقاسم الإخوة والأخوات الأشقاء/لأب (وفق قول الجمهور) — تُطبَّق المقاسمة ضمن توزيع الباقي."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "awl-minbariyya-like",
+   "config": "default",
+   "heirs": {
+    "wife": 1,
+    "mother": 1,
+    "fullSisters": 2,
+    "maternalBrothers": 2
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": "17",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/17",
+      "per": "3/17",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "2/17",
+      "per": "2/17",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "maternalBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "4/17",
+      "per": "2/17",
+      "reason": "الثلث يُقسَّم بالتساوي بين أولاد الأم (لا للذكر مثل حظ الأنثيين)"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "8/17",
+      "per": "4/17",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (17/12) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "awl-minbariyya-like",
+   "config": "gfExcludes",
+   "heirs": {
+    "wife": 1,
+    "mother": 1,
+    "fullSisters": 2,
+    "maternalBrothers": 2
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": "17",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/17",
+      "per": "3/17",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "2/17",
+      "per": "2/17",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "maternalBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "4/17",
+      "per": "2/17",
+      "reason": "الثلث يُقسَّم بالتساوي بين أولاد الأم (لا للذكر مثل حظ الأنثيين)"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "8/17",
+      "per": "4/17",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (17/12) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "awl-minbariyya-like",
+   "config": "raddSpouse",
+   "heirs": {
+    "wife": 1,
+    "mother": 1,
+    "fullSisters": 2,
+    "maternalBrothers": 2
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": "17",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/17",
+      "per": "3/17",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "2/17",
+      "per": "2/17",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "maternalBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "4/17",
+      "per": "2/17",
+      "reason": "الثلث يُقسَّم بالتساوي بين أولاد الأم (لا للذكر مثل حظ الأنثيين)"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "8/17",
+      "per": "4/17",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (17/12) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "awl-minbariyya-like",
+   "config": "noMush",
+   "heirs": {
+    "wife": 1,
+    "mother": 1,
+    "fullSisters": 2,
+    "maternalBrothers": 2
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": "17",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/17",
+      "per": "3/17",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "2/17",
+      "per": "2/17",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "maternalBrothers",
+      "count": 2,
+      "basis": "fixed",
+      "total": "4/17",
+      "per": "2/17",
+      "reason": "الثلث يُقسَّم بالتساوي بين أولاد الأم (لا للذكر مثل حظ الأنثيين)"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "8/17",
+      "per": "4/17",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (17/12) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "awl-husband-sisters-mother",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": "8",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/8",
+      "per": "3/8",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/4",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (4/3) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "awl-husband-sisters-mother",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": "8",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/8",
+      "per": "3/8",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/4",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (4/3) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "awl-husband-sisters-mother",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": "8",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/8",
+      "per": "3/8",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/4",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (4/3) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "awl-husband-sisters-mother",
+   "config": "noMush",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "fullSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": "8",
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "3/8",
+      "per": "3/8",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "السدس لوجود اثنين فأكثر من الإخوة/الأخوات"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/4",
+      "reason": "الثلثان لأختين شقيقتين فأكثر بلا معصِّب ولا فرع وارث مؤنَّث"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "العول",
+      "detail": "مجموع الفروض (4/3) يتجاوز أصل المسألة — تُعال المسألة فيُقسَّم كل نصيب على المجموع الفعلي بدل الواحد الصحيح."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "radd-mother-maternal-sister",
+   "config": "default",
+   "heirs": {
+    "mother": 1,
+    "maternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "radd",
+      "total": "2/3",
+      "per": "2/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة + نصيب من الرد"
+     },
+     {
+      "heir": "maternalSisters",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "السدس فرضًا لولد الأم الواحد (ذكرًا كان أو أنثى، كلالة) + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "radd-mother-maternal-sister",
+   "config": "gfExcludes",
+   "heirs": {
+    "mother": 1,
+    "maternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "radd",
+      "total": "2/3",
+      "per": "2/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة + نصيب من الرد"
+     },
+     {
+      "heir": "maternalSisters",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "السدس فرضًا لولد الأم الواحد (ذكرًا كان أو أنثى، كلالة) + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "radd-mother-maternal-sister",
+   "config": "raddSpouse",
+   "heirs": {
+    "mother": 1,
+    "maternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "radd",
+      "total": "2/3",
+      "per": "2/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة + نصيب من الرد"
+     },
+     {
+      "heir": "maternalSisters",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "السدس فرضًا لولد الأم الواحد (ذكرًا كان أو أنثى، كلالة) + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "radd-mother-maternal-sister",
+   "config": "noMush",
+   "heirs": {
+    "mother": 1,
+    "maternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "radd",
+      "total": "2/3",
+      "per": "2/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة + نصيب من الرد"
+     },
+     {
+      "heir": "maternalSisters",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "السدس فرضًا لولد الأم الواحد (ذكرًا كان أو أنثى، كلالة) + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "radd-husband-daughter",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "daughters": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لوجود فرع وارث"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "radd-husband-daughter",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 1,
+    "daughters": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لوجود فرع وارث"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "radd-husband-daughter",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 1,
+    "daughters": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "الربع لوجود فرع وارث + نصيب من الرد"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "2/3",
+      "per": "2/3",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "radd-husband-daughter",
+   "config": "noMush",
+   "heirs": {
+    "husband": 1,
+    "daughters": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لوجود فرع وارث"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "gharrawayn-wife",
+   "config": "default",
+   "heirs": {
+    "wife": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "مسألة العمريتين (الغرّاوان): للأم ثلث الباقي بعد فرض الزوج/الزوجة، لا ثلث كل التركة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: العمريتان",
+      "detail": "زوج/زوجة + أب + أم بلا فرع وارث ولا إخوة — للأم ثلث ما يبقى بعد نصيب الزوجية، والباقي كله للأب."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "gharrawayn-wife",
+   "config": "gfExcludes",
+   "heirs": {
+    "wife": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "مسألة العمريتين (الغرّاوان): للأم ثلث الباقي بعد فرض الزوج/الزوجة، لا ثلث كل التركة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: العمريتان",
+      "detail": "زوج/زوجة + أب + أم بلا فرع وارث ولا إخوة — للأم ثلث ما يبقى بعد نصيب الزوجية، والباقي كله للأب."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "gharrawayn-wife",
+   "config": "raddSpouse",
+   "heirs": {
+    "wife": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "مسألة العمريتين (الغرّاوان): للأم ثلث الباقي بعد فرض الزوج/الزوجة، لا ثلث كل التركة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: العمريتان",
+      "detail": "زوج/زوجة + أب + أم بلا فرع وارث ولا إخوة — للأم ثلث ما يبقى بعد نصيب الزوجية، والباقي كله للأب."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "gharrawayn-wife",
+   "config": "noMush",
+   "heirs": {
+    "wife": 1,
+    "father": 1,
+    "mother": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/4",
+      "reason": "مسألة العمريتين (الغرّاوان): للأم ثلث الباقي بعد فرض الزوج/الزوجة، لا ثلث كل التركة"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "حالة خاصة: العمريتان",
+      "detail": "زوج/زوجة + أب + أم بلا فرع وارث ولا إخوة — للأم ثلث ما يبقى بعد نصيب الزوجية، والباقي كله للأب."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "daughters-sister-asaba",
+   "config": "default",
+   "heirs": {
+    "daughters": 2,
+    "fullSisters": 1
+   },
+   "ok": {
+    "originalBase": "3",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "الثلثان لبنتين فأكثر بلا ابن"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "تعصيب مع الغير",
+      "detail": "الأخت الشقيقة أصبحت عصبة مع البنت/بنت الابن (تُعصِّبها البنات لا محجوبة ولا صاحبة فرض مستقل)."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "daughter-sondaughter",
+   "config": "default",
+   "heirs": {
+    "daughters": 1,
+    "daughtersOfSon": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "radd",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لبنت واحدة بلا ابن + نصيب من الرد"
+     },
+     {
+      "heir": "daughtersOfSon",
+      "count": 2,
+      "basis": "radd",
+      "total": "1/4",
+      "per": "1/8",
+      "reason": "السدس تكملةً للثلثين مع بنت واحدة + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "two-daughters-sondaughter-blocked",
+   "config": "default",
+   "heirs": {
+    "daughters": 2,
+    "daughtersOfSon": 1
+   },
+   "ok": {
+    "originalBase": "3",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "radd",
+      "total": "1/1",
+      "per": "1/2",
+      "reason": "الثلثان لبنتين فأكثر بلا ابن + نصيب من الرد"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "daughtersOfSon",
+      "type": "hirman",
+      "reason": "بنتان فأكثر يحجبان بنت الابن حرمانًا إذا لم يوجد ابن ابن يُعصِّبها",
+      "by": [
+       "daughters"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "حُجب 1 صنفًا من الورثة، راجع سجلّ الحجب للتفاصيل."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "sonofson-two-daughters-sondaughter",
+   "config": "default",
+   "heirs": {
+    "daughters": 2,
+    "sonsOfSon": 1,
+    "daughtersOfSon": 1
+   },
+   "ok": {
+    "originalBase": "3",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "daughters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "الثلثان لبنتين فأكثر بلا ابن"
+     },
+     {
+      "heir": "sonsOfSon",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/9",
+      "per": "2/9",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "daughtersOfSon",
+      "count": 1,
+      "basis": "asaba-with-daughters",
+      "total": "1/9",
+      "per": "1/9",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "sisters-full-paternal",
+   "config": "default",
+   "heirs": {
+    "fullSisters": 1,
+    "paternalSisters": 2
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "fullSisters",
+      "count": 1,
+      "basis": "asaba",
+      "total": "5/6",
+      "per": "5/6",
+      "reason": "النصف لأخت شقيقة واحدة بلا معصِّب ولا فرع وارث مؤنَّث؛ وتعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "paternalSisters",
+      "count": 2,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/12",
+      "reason": "السدس تكملةً للثلثين مع أخت شقيقة واحدة آخذة للنصف"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "maternal-siblings-three",
+   "config": "default",
+   "heirs": {
+    "maternalBrothers": 1,
+    "maternalSisters": 2
+   },
+   "ok": {
+    "originalBase": "9",
+    "awlBase": null,
+    "radd": true,
+    "shares": [
+     {
+      "heir": "maternalBrothers",
+      "count": 1,
+      "basis": "radd",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "الثلث يُقسَّم بالتساوي بين أولاد الأم (لا للذكر مثل حظ الأنثيين) + نصيب من الرد"
+     },
+     {
+      "heir": "maternalSisters",
+      "count": 2,
+      "basis": "radd",
+      "total": "2/3",
+      "per": "1/3",
+      "reason": "الثلث يُقسَّم بالتساوي بين أولاد الأم (لا للذكر مثل حظ الأنثيين) + نصيب من الرد"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     },
+     {
+      "title": "الرد",
+      "detail": "بقي جزء من التركة بعد الفروض بلا عصبة تستحقّه — يُرَدّ على أصحاب الفروض (غير الزوجين، ما لم يُفعَّل ردّ الزوجين في الإعداد) بنسبة أنصبتهم."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "father-son-mother",
+   "config": "default",
+   "heirs": {
+    "father": 1,
+    "mother": 1,
+    "sons": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "السدس لوجود فرع وارث"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "السدس فرضًا لوجود ابن أو ابن ابن"
+     },
+     {
+      "heir": "sons",
+      "count": 1,
+      "basis": "asaba",
+      "total": "2/3",
+      "per": "2/3",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "father-daughter-wife",
+   "config": "default",
+   "heirs": {
+    "father": 1,
+    "daughters": 1,
+    "wife": 1
+   },
+   "ok": {
+    "originalBase": "24",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/8",
+      "per": "1/8",
+      "reason": "الثمن لوجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "father",
+      "count": 1,
+      "basis": "asaba",
+      "total": "3/8",
+      "per": "3/8",
+      "reason": "السدس فرضًا، ويأخذ الباقي تعصيبًا لوجود بنات بلا ابن؛ وتعصيبًا (الباقي بعد أصحاب الفروض)"
+     },
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لبنت واحدة بلا ابن"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandmothers-grandfather",
+   "config": "default",
+   "heirs": {
+    "paternalGrandmother": 1,
+    "maternalGrandmother": 1,
+    "paternalGrandfather": 1
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandmother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/12",
+      "per": "1/12",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين"
+     },
+     {
+      "heir": "maternalGrandmother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/12",
+      "per": "1/12",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين"
+     },
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "5/6",
+      "per": "5/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandmothers-grandfather",
+   "config": "gfExcludes",
+   "heirs": {
+    "paternalGrandmother": 1,
+    "maternalGrandmother": 1,
+    "paternalGrandfather": 1
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandmother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/12",
+      "per": "1/12",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين"
+     },
+     {
+      "heir": "maternalGrandmother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/12",
+      "per": "1/12",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين"
+     },
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "5/6",
+      "per": "5/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandmothers-grandfather",
+   "config": "raddSpouse",
+   "heirs": {
+    "paternalGrandmother": 1,
+    "maternalGrandmother": 1,
+    "paternalGrandfather": 1
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandmother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/12",
+      "per": "1/12",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين"
+     },
+     {
+      "heir": "maternalGrandmother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/12",
+      "per": "1/12",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين"
+     },
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "5/6",
+      "per": "5/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "grandmothers-grandfather",
+   "config": "noMush",
+   "heirs": {
+    "paternalGrandmother": 1,
+    "maternalGrandmother": 1,
+    "paternalGrandfather": 1
+   },
+   "ok": {
+    "originalBase": "12",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "paternalGrandmother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/12",
+      "per": "1/12",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين"
+     },
+     {
+      "heir": "maternalGrandmother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/12",
+      "per": "1/12",
+      "reason": "السدس يُقسَّم بالتساوي بين الجدتين الوارثتين"
+     },
+     {
+      "heir": "paternalGrandfather",
+      "count": 1,
+      "basis": "asaba",
+      "total": "5/6",
+      "per": "5/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "mother-two-siblings-husband",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "fullBrothers": 1,
+    "paternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "paternalSisters",
+      "type": "hirman",
+      "reason": "يحجب الأخوات لأب: fullBrothers",
+      "by": [
+       "fullBrothers"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "حُجب 1 صنفًا من الورثة، راجع سجلّ الحجب للتفاصيل."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "mother-two-siblings-husband",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "fullBrothers": 1,
+    "paternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "paternalSisters",
+      "type": "hirman",
+      "reason": "يحجب الأخوات لأب: fullBrothers",
+      "by": [
+       "fullBrothers"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "حُجب 1 صنفًا من الورثة، راجع سجلّ الحجب للتفاصيل."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "mother-two-siblings-husband",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "fullBrothers": 1,
+    "paternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "paternalSisters",
+      "type": "hirman",
+      "reason": "يحجب الأخوات لأب: fullBrothers",
+      "by": [
+       "fullBrothers"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "حُجب 1 صنفًا من الورثة، راجع سجلّ الحجب للتفاصيل."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "mother-two-siblings-husband",
+   "config": "noMush",
+   "heirs": {
+    "husband": 1,
+    "mother": 1,
+    "fullBrothers": 1,
+    "paternalSisters": 1
+   },
+   "ok": {
+    "originalBase": "6",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "husband",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لعدم وجود فرع وارث"
+     },
+     {
+      "heir": "mother",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/3",
+      "per": "1/3",
+      "reason": "الثلث لعدم وجود فرع وارث ولا اثنين من الإخوة"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/6",
+      "per": "1/6",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "paternalSisters",
+      "type": "hirman",
+      "reason": "يحجب الأخوات لأب: fullBrothers",
+      "by": [
+       "fullBrothers"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "حُجب 1 صنفًا من الورثة، راجع سجلّ الحجب للتفاصيل."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "four-wives-sister",
+   "config": "default",
+   "heirs": {
+    "wife": 4,
+    "fullSisters": 1
+   },
+   "ok": {
+    "originalBase": "4",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "wife",
+      "count": 4,
+      "basis": "fixed",
+      "total": "1/4",
+      "per": "1/16",
+      "reason": "الربع لعدم وجود فرع وارث، يُقسَّم بين الزوجات بالتساوي"
+     },
+     {
+      "heir": "fullSisters",
+      "count": 1,
+      "basis": "asaba",
+      "total": "3/4",
+      "per": "3/4",
+      "reason": "النصف لأخت شقيقة واحدة بلا معصِّب ولا فرع وارث مؤنَّث؛ وتعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "لا يوجد وارث محجوب في هذه المسألة."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "none",
+   "config": "default",
+   "heirs": {},
+   "ok": {
+    "originalBase": "1",
+    "awlBase": null,
+    "radd": false,
+    "shares": [],
+    "hajb": [],
+    "steps": [],
+    "warnings": [
+     "لا يوجد أي وارث من الورثة المُدخَلين. إن لم يوجد صاحب فرض أو عصبة أو ذو رحم معروف، تؤول التركة لبيت المال — راجع مختصًا شرعيًا/قانونيًا."
+    ],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "maternal-only-sibling-blocked-by-daughter",
+   "config": "default",
+   "heirs": {
+    "daughters": 1,
+    "maternalBrothers": 1,
+    "fullBrothers": 1
+   },
+   "ok": {
+    "originalBase": "2",
+    "awlBase": null,
+    "radd": false,
+    "shares": [
+     {
+      "heir": "daughters",
+      "count": 1,
+      "basis": "fixed",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "النصف لبنت واحدة بلا ابن"
+     },
+     {
+      "heir": "fullBrothers",
+      "count": 1,
+      "basis": "asaba",
+      "total": "1/2",
+      "per": "1/2",
+      "reason": "تعصيبًا (الباقي بعد أصحاب الفروض)"
+     }
+    ],
+    "hajb": [
+     {
+      "heir": "maternalBrothers",
+      "type": "hirman",
+      "reason": "يحجب الإخوة لأم: daughters",
+      "by": [
+       "daughters"
+      ]
+     }
+    ],
+    "steps": [
+     {
+      "title": "الحجب",
+      "detail": "حُجب 1 صنفًا من الورثة، راجع سجلّ الحجب للتفاصيل."
+     }
+    ],
+    "warnings": [],
+    "net": "0/1"
+   }
+  },
+  {
+   "id": "bad-both-spouses",
+   "config": "default",
+   "heirs": {
+    "husband": 1,
+    "wife": 1
+   },
+   "error": "لا يجتمع زوج وزوجة في مسألة واحدة (المتوفى إما ذكر وله زوجة/زوجات، أو أنثى ولها زوج)"
+  },
+  {
+   "id": "bad-two-husbands",
+   "config": "default",
+   "heirs": {
+    "husband": 2
+   },
+   "error": "لا يمكن أن يكون هناك أكثر من زوج واحد"
+  },
+  {
+   "id": "bad-two-husbands",
+   "config": "gfExcludes",
+   "heirs": {
+    "husband": 2
+   },
+   "error": "لا يمكن أن يكون هناك أكثر من زوج واحد"
+  },
+  {
+   "id": "bad-two-husbands",
+   "config": "raddSpouse",
+   "heirs": {
+    "husband": 2
+   },
+   "error": "لا يمكن أن يكون هناك أكثر من زوج واحد"
+  },
+  {
+   "id": "bad-two-husbands",
+   "config": "noMush",
+   "heirs": {
+    "husband": 2
+   },
+   "error": "لا يمكن أن يكون هناك أكثر من زوج واحد"
+  },
+  {
+   "id": "bad-five-wives",
+   "config": "default",
+   "heirs": {
+    "wife": 5
+   },
+   "error": "لا يمكن أن يزيد عدد الزوجات عن 4"
+  },
+  {
+   "id": "bad-fraction",
+   "config": "default",
+   "heirs": {
+    "sons": 1.5
+   },
+   "error": "عدد الورثة غير صالح للصنف \"sons\": يجب أن يكون عددًا صحيحًا غير سالب"
+  }
+ ],
+ "estates": [
+  {
+   "input": {
+    "id": "plain",
+    "assets": [
+     {
+      "id": "a",
+      "label": "a",
+      "value": 90000
+     }
+    ],
+    "debts": 0,
+    "funeralCosts": 0,
+    "bequest": 0,
+    "bequestApprovedByHeirs": false
+   },
+   "ok": {
+    "grossEstate": 90000,
+    "funeralCosts": 0,
+    "debts": 0,
+    "afterDebts": 90000,
+    "bequestRequested": 0,
+    "bequestCap": 30000,
+    "bequestPaid": 0,
+    "bequestCapped": false,
+    "netForHeirs": 90000,
+    "netForHeirsFraction": "90000/1",
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "id": "debts-funeral",
+    "assets": [
+     {
+      "id": "a",
+      "label": "a",
+      "value": 100000
+     },
+     {
+      "id": "b",
+      "label": "b",
+      "value": 25000.5
+     }
+    ],
+    "debts": 12000,
+    "funeralCosts": 1500,
+    "bequest": 0,
+    "bequestApprovedByHeirs": false
+   },
+   "ok": {
+    "grossEstate": 125000.5,
+    "funeralCosts": 1500,
+    "debts": 12000,
+    "afterDebts": 111500.5,
+    "bequestRequested": 0,
+    "bequestCap": 37166.833333333336,
+    "bequestPaid": 0,
+    "bequestCapped": false,
+    "netForHeirs": 111500.5,
+    "netForHeirsFraction": "223001/2",
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "id": "bequest-capped",
+    "assets": [
+     {
+      "id": "a",
+      "label": "a",
+      "value": 100000
+     }
+    ],
+    "debts": 10000,
+    "funeralCosts": 0,
+    "bequest": 60000,
+    "bequestApprovedByHeirs": false
+   },
+   "ok": {
+    "grossEstate": 100000,
+    "funeralCosts": 0,
+    "debts": 10000,
+    "afterDebts": 90000,
+    "bequestRequested": 60000,
+    "bequestCap": 30000,
+    "bequestPaid": 30000,
+    "bequestCapped": true,
+    "netForHeirs": 60000,
+    "netForHeirsFraction": "60000/1",
+    "warnings": [
+     "الوصية (60000) تتجاوز ثلث ما بقي بعد الديون (30000.00) — نُفِّذت في حدود الثلث فقط. تُنفَّذ كاملة فقط إن أجازها جميع الورثة صراحة."
+    ]
+   }
+  },
+  {
+   "input": {
+    "id": "bequest-approved",
+    "assets": [
+     {
+      "id": "a",
+      "label": "a",
+      "value": 100000
+     }
+    ],
+    "debts": 10000,
+    "funeralCosts": 0,
+    "bequest": 60000,
+    "bequestApprovedByHeirs": true
+   },
+   "ok": {
+    "grossEstate": 100000,
+    "funeralCosts": 0,
+    "debts": 10000,
+    "afterDebts": 90000,
+    "bequestRequested": 60000,
+    "bequestCap": 30000,
+    "bequestPaid": 60000,
+    "bequestCapped": false,
+    "netForHeirs": 30000,
+    "netForHeirsFraction": "30000/1",
+    "warnings": []
+   }
+  },
+  {
+   "input": {
+    "id": "debts-exceed",
+    "assets": [
+     {
+      "id": "a",
+      "label": "a",
+      "value": 5000
+     }
+    ],
+    "debts": 9000,
+    "funeralCosts": 100,
+    "bequest": 1000,
+    "bequestApprovedByHeirs": false
+   },
+   "ok": {
+    "grossEstate": 5000,
+    "funeralCosts": 100,
+    "debts": 4900,
+    "afterDebts": 0,
+    "bequestRequested": 1000,
+    "bequestCap": 0,
+    "bequestPaid": 0,
+    "bequestCapped": true,
+    "netForHeirs": 0,
+    "netForHeirsFraction": "0/1",
+    "warnings": [
+     "الديون تستغرق التركة بالكامل بعد مؤن التجهيز — لا وصية ولا ميراث حتى تُسدَّد الديون.",
+     "الوصية (1000) تتجاوز ثلث ما بقي بعد الديون (0.00) — نُفِّذت في حدود الثلث فقط. تُنفَّذ كاملة فقط إن أجازها جميع الورثة صراحة."
+    ]
+   }
+  },
+  {
+   "input": {
+    "id": "funeral-exceeds",
+    "assets": [
+     {
+      "id": "a",
+      "label": "a",
+      "value": 800
+     }
+    ],
+    "debts": 0,
+    "funeralCosts": 2000,
+    "bequest": 0,
+    "bequestApprovedByHeirs": false
+   },
+   "ok": {
+    "grossEstate": 800,
+    "funeralCosts": 800,
+    "debts": 0,
+    "afterDebts": 0,
+    "bequestRequested": 0,
+    "bequestCap": 0,
+    "bequestPaid": 0,
+    "bequestCapped": false,
+    "netForHeirs": 0,
+    "netForHeirsFraction": "0/1",
+    "warnings": [
+     "مؤن التجهيز تتجاوز إجمالي التركة — لا يتبقّى شيء للديون أو الورثة."
+    ]
+   }
+  },
+  {
+   "input": {
+    "id": "thirds",
+    "assets": [
+     {
+      "id": "a",
+      "label": "a",
+      "value": 100
+     }
+    ],
+    "debts": 0,
+    "funeralCosts": 0,
+    "bequest": 50,
+    "bequestApprovedByHeirs": false
+   },
+   "ok": {
+    "grossEstate": 100,
+    "funeralCosts": 0,
+    "debts": 0,
+    "afterDebts": 100,
+    "bequestRequested": 50,
+    "bequestCap": 33.333333333333336,
+    "bequestPaid": 33.333333333333336,
+    "bequestCapped": true,
+    "netForHeirs": 66.66666666666666,
+    "netForHeirsFraction": "66666667/1000000",
+    "warnings": [
+     "الوصية (50) تتجاوز ثلث ما بقي بعد الديون (33.33) — نُفِّذت في حدود الثلث فقط. تُنفَّذ كاملة فقط إن أجازها جميع الورثة صراحة."
+    ]
+   }
+  },
+  {
+   "input": {
+    "id": "negative",
+    "assets": [
+     {
+      "id": "a",
+      "label": "a",
+      "value": 100
+     }
+    ],
+    "debts": -1,
+    "funeralCosts": 0,
+    "bequest": 0,
+    "bequestApprovedByHeirs": false
+   },
+   "error": "الديون ومؤن التجهيز والوصية يجب أن تكون قيمًا غير سالبة"
+  }
+ ]
+}

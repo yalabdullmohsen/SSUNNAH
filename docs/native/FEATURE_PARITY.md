@@ -127,7 +127,7 @@
 - [ ] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
 - [ ] `/hikam-salaf` — HikamSalafPage — قائمة
 - [ ] `/iman-topics` — ImanTopicsPage — قائمة
-- [ ] `/islamic-sects` — IslamicSectsPage — قائمة
+- [x] `/islamic-sects` — IslamicSectsPage — قائمة
 - [ ] `/islamic-sects/:id` — IslamicSectsDetailPage — تفاصيل
 - [ ] `/janna-naar` — JannaNaarPage — قائمة
 - [ ] `/malaika` — MalaikaPage — قائمة
