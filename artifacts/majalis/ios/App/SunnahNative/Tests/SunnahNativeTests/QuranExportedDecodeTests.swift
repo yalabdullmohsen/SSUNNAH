@@ -5,7 +5,7 @@ import XCTest
 /// فيظهر أي خلل في الشكل هنا لا في اللقطة. تُحدَّث الملفات بإعادة التصدير ونسخها.
 final class QuranExportedDecodeTests: XCTestCase {
     private func load<T: Decodable>(_ type: T.Type, _ name: String) throws -> T {
-        let url = try XCTUnwrap(Bundle.module.url(forResource: name, withExtension: "json", subdirectory: "Fixtures/quran"))
+        let url = URL(fileURLWithPath: #filePath).deletingLastPathComponent().appendingPathComponent("Fixtures/quran/\(name).json")
         return try JSONDecoder().decode(T.self, from: Data(contentsOf: url))
     }
 
