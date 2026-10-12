@@ -4,7 +4,7 @@ import SwiftUI
 public struct SectionsListTemplate: View {
     @Environment(\.openRoute) private var openRoute
     let links: [SectionLink]
-    public init(links: [SectionLink]) { self.links = links }
+    public init(links: [SectionLink]) { self.links = links.filter { ReleaseGate.isVisible($0.route) } }
     public var body: some View {
         if links.isEmpty { EmptyStateView() } else {
             ScrollView {

@@ -88,7 +88,7 @@ struct AccountOfflineCenterScreen: View {
                 }
 
                 AccountSectionCard(title: "اختصارات") {
-                    ForEach(Self.shortcuts) { AccountLinkRow(title: $0.title, path: $0.route) }
+                    ForEach(Self.shortcuts.filter { ReleaseGate.isVisible($0.route) }) { AccountLinkRow(title: $0.title, path: $0.route) }
                 }
             }
             .padding(Sunnah.Spacing.pageX)
