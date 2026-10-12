@@ -68,7 +68,7 @@ struct MemorizationPlansScreen: View {
             }
         }
         .onAppear { surahs = quranSurahList(); plans = store.load([MemorizationPlan].self, .plans) ?? [] }
-        .navigationTitle("خطط الحفظ")
+        .quranTitle("خطط الحفظ")
     }
 
     private func save() { store.save(plans, .plans) }
@@ -123,7 +123,7 @@ private struct NewMemorizationPlanForm: View {
                 Button("إنشاء الخطة") { onCreate(MemorizationPlan(surah: surah, ayahFrom: from, ayahTo: to, startDate: Date())) }
             }
         }
-        .navigationTitle("خطة جديدة")
+        .quranTitle("خطة جديدة")
     }
 }
 
@@ -154,7 +154,7 @@ struct HifzLoopScreen: View {
         .scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .onAppear { surahs = quranSurahList(); loop = store.load(HifzLoop.self, .loop) ?? HifzLoop() }
         .onChange(of: loop) { store.save($0, .loop) }
-        .navigationTitle("تكرار الحفظ")
+        .quranTitle("تكرار الحفظ")
     }
 }
 
@@ -231,6 +231,6 @@ struct MushafBookmarksScreen: View {
             }
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("علامات المصحف")
+        .quranTitle("علامات المصحف")
     }
 }

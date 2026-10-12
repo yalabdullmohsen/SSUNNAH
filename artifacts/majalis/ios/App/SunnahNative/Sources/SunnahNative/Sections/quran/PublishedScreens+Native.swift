@@ -136,6 +136,12 @@ struct HifzPathsListView: View {
 struct HifzPathView: View {
     let path: HifzPath
     var surahNames: [Int: String] = QuranSection.surahNames()
+    private func unitSubtitle(_ u: HifzUnit) -> String? {
+        var parts: [String] = []
+        if let r = u.ref { parts.append(PublishedAdapters.refText(r) { surahNames[$0] ?? "سورة \($0)" }) }
+        if let n = u.repetitionTarget { parts.append("التكرار المقترح: \(n)") }
+        return parts.isEmpty ? nil : parts.joined(separator: " · ")
+    }
     var body: some View {
         List {
             Section {
@@ -146,12 +152,12 @@ struct HifzPathView: View {
             }.listRowBackground(Sunnah.Colors.surface)
             Section("الوحدات") {
                 ForEach(path.units) { u in
-                    SunnahNavigationLink { HifzUnitView(unit: u, surahNames: surahNames) } label: { SunnahListRow(title: u.title, subtitle: nil) }
+                    SunnahNavigationLink { HifzUnitView(unit: u, surahNames: surahNames) } label: { SunnahListRow(title: u.title, subtitle: unitSubtitle(u)) }
                 }
             }.listRowBackground(Sunnah.Colors.surface)
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
-        .navigationTitle(path.title)
+        .quranTitle(path.title)
     }
 }
 
