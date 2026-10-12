@@ -31,10 +31,11 @@ for s in "$@"; do
     # الأولوية لسبب المحتوى (خطأ/قيد الإعداد/فارغ) لأنه ينسب المسار للجهة الصحيحة؛ DUP فقط لشاشة سليمة مطابقة لمسار بمكوّن مختلف
     [ -z "$why" ] && { [ "$ro" != OK ] && why=$ro || { [ "$r2" != OK ] && why=$r2; }; }
     if [ -z "$why" ]; then
-      hl=$(shasum -a 256 "$L" | cut -c1-64); hd=$(shasum -a 256 "$D" | cut -c1-64)
-      [ "$hl" = "$hd" ] && why="LIGHT=DARK"
+      # بصمة المحتوى (نصوص الشاشة بعد حذف التبويبات والرأس) لا بكسلات الصورة؛ DUP فقط إن تطابق المحتوى مع مسار بمكوّن مختلف
+      fl=$(swift "$OCR" "$L" "$eff" --text 2>/dev/null | python3 -c "import sys,hashlib;c={'الرئيسية','القرآن','الدروس','الصلاة','الأقسام','9:41'};t=sorted({l.strip() for l in sys.stdin if len(l.strip())>1 and l.strip() not in c});print(hashlib.sha256('\n'.join(t).encode()).hexdigest()[:32] if len(t)>=3 else 'few')")
+      fd=$(swift "$OCR" "$D" "$eff" --text 2>/dev/null | python3 -c "import sys,hashlib;c={'الرئيسية','القرآن','الدروس','الصلاة','الأقسام','9:41'};t=sorted({l.strip() for l in sys.stdin if len(l.strip())>1 and l.strip() not in c});print(hashlib.sha256('\n'.join(t).encode()).hexdigest()[:32] if len(t)>=3 else 'few')")
       c=$(comp "$route")
-      for h in "$hl" "$hd"; do o=$(grep "^$h " "$SEEN" | head -1 | cut -d' ' -f2-); ob="${o#* }"; oc="${o% *}"; [ -n "$o" ] && [ "$oc" != "$c" ] && [ "$ob" != "${route##*/}" ] && why="${why:-DUP_SCREEN}"; [ -z "$o" ] && echo "$h $c ${route##*/}" >> "$SEEN"; done
+      for h in "$fl" "$fd"; do [ "$h" = few ] && continue; o=$(grep "^$h " "$SEEN" | head -1 | cut -d' ' -f2-); ob="${o#* }"; oc="${o% *}"; [ -n "$o" ] && [ "$oc" != "$c" ] && [ "$ob" != "${route##*/}" ] && why="${why:-DUP_SCREEN}"; [ -z "$o" ] && echo "$h $c ${route##*/}" >> "$SEEN"; done
     fi
     [ -z "$why" ] && { ro=OK; r2=OK; why=OK; }
     if [ "$why" = OK ] && [ "$r2" = OK ]; then echo "$route" >> "$TICK"; else echo "$route|$sec|${why:-?}" >> "$INVALID"; fi
