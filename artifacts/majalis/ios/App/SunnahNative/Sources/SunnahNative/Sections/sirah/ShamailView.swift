@@ -47,16 +47,23 @@ public struct ShamailView: View {
                         ForEach(tabs) { Text($0.label).tag($0.id) }
                     }
                     .pickerStyle(.segmented)
-                    .padding()
-                    List(Array(current.abwab.enumerated()), id: \.offset) { _, bab in
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(bab.title).font(.headline)
-                            if let t = bab.text { Text(t).font(.subheadline) }
-                            ForEach(Array((bab.hadiths ?? []).enumerated()), id: \.offset) { _, h in
-                                Text(h.text).font(.subheadline)
-                                if let r = h.rawi { Text(r).font(.caption).foregroundStyle(.secondary) }
+                    .padding(Sunnah.Spacing.pageX)
+                    ScrollView {
+                        LazyVStack(spacing: Sunnah.Spacing.s3) {
+                            ForEach(Array(current.abwab.enumerated()), id: \.offset) { _, bab in
+                                SunnahCard {
+                                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                                        Text(bab.title).font(Sunnah.Typography.cardTitle)
+                                            .foregroundStyle(Sunnah.Colors.textPrimary).accessibilityAddTraits(.isHeader)
+                                        if let t = bab.text { Text(t).font(Sunnah.Typography.hadith).foregroundStyle(Sunnah.Colors.textPrimary) }
+                                        ForEach(Array((bab.hadiths ?? []).enumerated()), id: \.offset) { _, h in
+                                            Text(h.text).font(Sunnah.Typography.hadith).foregroundStyle(Sunnah.Colors.textPrimary)
+                                            if let r = h.rawi { Text(r).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
+                                        }
+                                    }
+                                }
                             }
-                        }
+                        }.padding(.horizontal, Sunnah.Spacing.pageX).padding(.bottom, Sunnah.Spacing.pageX)
                     }
                 }
             }
