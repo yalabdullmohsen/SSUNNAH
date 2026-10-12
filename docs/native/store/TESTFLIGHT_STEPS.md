@@ -55,4 +55,4 @@ bundle exec fastlane ios native_release submit:true build:101  # فعلي: بن�
 ## تنبيهات
 - بناء بـ`TASMEE_DIAGNOSTICS=1` يُرفع للاختبار الداخلي فقط ولا يُرسل للمراجعة.
 - lane `beta` القديم يبني تطبيق Capacitor (`artifacts/majalis/ios/App`) — **لا تستعمله لـ1.2.0**.
-- فشل التوقيع بـ`-allowProvisioningUpdates`: تأكد من أن دور مفتاح ASC App Manager على الأقل وأن `APPLE_TEAM_ID` صحيح (الافتراضي 5D8TX37HTS).
+- فشل التوقيع بـ`-allowProvisioningUpdates`: دور مفتاح ASC يجب أن يكون **Admin** (أو App Manager على الأقل)؛ إنشاء شهادة التوزيع السحابية وملفات التعريف (التطبيق + Widget Extension + App Group) يتطلب Admin عادةً، وApp Manager قد يفشل بـ«Cloud signing permission error». تأكد أيضًا أن `APPLE_TEAM_ID` صحيح (الافتراضي 5D8TX37HTS). الـlane تستعمل `export_method: app-store-connect` و`signingStyle: automatic` بلا هوية توزيع محلية.
