@@ -1,5 +1,8 @@
 # تقدم التطبيق الأصلي (SunnahApp) — يُحدَّث مع كل دفعة (ن4)
 
+## حارس «بلا ويب» (2026-10-12)
+`scripts/native-webview-guard.sh` يُشغَّل أول `native-quick-check.sh` ويفشل إن ظهر في `ios-native/*.swift` (خارج التعليقات): WKWebView أو SFSafariViewController أو WebView أو Capacitor أو فتح رابط الموقع (ssunnah.com/majlisilm.com) لعرض صفحة. النتيجة الحالية: ✓ نظيف (الإشارات الوحيدة تعليقات «بلا WebView/Capacitor»)؛ جُرّب سلبيًا بملف WKWebView فرُفض.
+
 ## فحص WKWebView / Capacitor / WebView (2026-10-12)
 - **هدف SunnahApp الأصلي نظيف:** `ios-native/` و`SunnahNative/` بلا أي استخدام فعلي لـWKWebView أو Capacitor أو WebView (تعليقات «بلا WebView/Capacitor» فقط في SunnahApp.swift وPlatform/*). الهدف لا يربط حزمة SunnahWeb.
 - **متبقٍّ للإزالة النهائية:** `artifacts/majalis/ios/App/SunnahWeb` (WebScreen.swift = WKWebView فعلي، لا يربطه SunnahApp)، `artifacts/majalis/capacitor.config.ts` (`server.url`=https://www.ssunnah.com)، مجلد `ios/App/App` + `CapApp-SPM`، وإشارات Capacitor في 89 ملفًا من `src/` و10 من `scripts/` وبوابات `verify-ci`/`release-verify`.

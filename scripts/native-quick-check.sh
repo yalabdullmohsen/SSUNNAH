@@ -7,7 +7,7 @@ SIM="${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"; DD="${DD:-$HOME/ssunnah-buil
 [ $# -ge 1 ] || { echo "usage: $0 <section>…"; exit 2; }
 bash scripts/native-lint-chevron.sh || exit 1
 bash scripts/native-plist-guard.sh || exit 1
-bash scripts/native-release-check.sh || echo "⚠ فحص Release الساكن: مسارات معلّقة (غير مانع)"
+bash scripts/native-webview-guard.sh || exit 1
 bash scripts/native-export-data.sh >/dev/null || { echo "فشل التصدير"; exit 1; }
 node scripts/native-data-check.mjs | head -1
 ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1
