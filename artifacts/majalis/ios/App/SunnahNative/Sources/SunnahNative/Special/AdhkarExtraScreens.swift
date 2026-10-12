@@ -42,8 +42,9 @@ public enum AdhkarExtraScreens {
     @MainActor
     public static func register(in registry: TemplateRegistry) {
         registry.registerView(id: "tasbih") { TasbihView() }
-        // أدعية وورد وسنن يومية: لا بيانات موثَّقة في العقد (الأذكار كلها needs_review ⇒ 0)، وإعدادات الأذان تتبع الإشعارات.
-        for (id, title) in [("duas", "الأدعية"), ("duas-quran", "أدعية القرآن"), ("sunan-yawmiyya", "السنن اليومية"),
+        registry.registerView(id: "duas") { ReaderDataScreens.duasScreen() }
+        // أدعية القرآن وورد وسنن يومية: لا بيانات موثَّقة في العقد، وإعدادات الأذان تتبع الإشعارات.
+        for (id, title) in [("duas-quran", "أدعية القرآن"), ("sunan-yawmiyya", "السنن اليومية"),
                             ("daily-wird", "الورد اليومي"), ("adhan-help", "مساعدة الأذان")] {
             registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق").navigationTitle(title) }
         }
