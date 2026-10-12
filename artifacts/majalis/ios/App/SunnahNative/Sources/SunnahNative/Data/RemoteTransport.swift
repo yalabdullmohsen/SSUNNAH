@@ -20,15 +20,26 @@ public struct RemoteConfig: Sendable {
         self.accessToken = accessToken
     }
 
+    /// قيم افتراضية عامة (anon key عامّ بطبيعته ومحمي بـRLS) كي لا نحتاج تعديل Info.plist.
+    static let defaultSupabaseURL = URL(string: "https://ngmvmlulzacrlicuagyp.supabase.co")
+    static let defaultAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5nbXZtbHVsemFjcmxpY3VhZ3lwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIwMTAxNzUsImV4cCI6MjA5NzU4NjE3NX0.zPCPSciPj5UwHZ7enFD4WOSfWaD2NvsoOLBtATSubcs"
+
     public static func fromBundle(_ bundle: Bundle = .main, accessToken: @escaping @Sendable () async -> String? = { nil }) -> RemoteConfig {
         func value(_ key: String) -> String? {
             let v = (bundle.object(forInfoDictionaryKey: key) as? String)?.trimmingCharacters(in: .whitespaces)
             return (v?.isEmpty == false) ? v : nil
         }
+        #if DEBUG
+        // محاكاة انقطاع الاتصال في التجارب: -SUNNAH_OFFLINE (DEBUG فقط، ولا يمسّ Info.plist)
+        if CommandLine.arguments.contains("-SUNNAH_OFFLINE") {
+            let dead = URL(string: "https://offline.invalid")!
+            return RemoteConfig(siteURL: dead, supabaseURL: dead, anonKey: value("SUPABASE_ANON_KEY") ?? Self.defaultAnonKey, accessToken: accessToken)
+        }
+        #endif
         return RemoteConfig(
             siteURL: value("VERCEL_API_BASE_URL").flatMap(URL.init(string:)) ?? URL(string: "https://www.ssunnah.com")!,
-            supabaseURL: value("SUPABASE_URL").flatMap(URL.init(string:)),
-            anonKey: value("SUPABASE_ANON_KEY"),
+            supabaseURL: value("SUPABASE_URL").flatMap(URL.init(string:)) ?? Self.defaultSupabaseURL,
+            anonKey: value("SUPABASE_ANON_KEY") ?? Self.defaultAnonKey,
             accessToken: accessToken
         )
     }
