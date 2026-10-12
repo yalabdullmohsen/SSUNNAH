@@ -7,13 +7,8 @@ import fs from "node:fs";
 
 /* صفحة الويب → كتاب books.json الذي يغطي موضوعها (تقدير؛ تُغيَّر هنا إن قرّر المالك غير ذلك) */
 const BOOK_OF = { tahara: "taharah", "salah-guide": "salah", zakat: "zakat", sawm: "sawm", hajj: "hajj", janaza: "janaza", mawarith: "wasaya-faraid", family: "nikah" };
+/* الصفحات الستة المضمَّنة (arkan، arkan-iman، fadail-aamal، sujood-sahw، tawba، fiqh-qawaid) يكتبها fiqh-jsx.mjs ببيانات حقيقية؛ لا تُدرَج هنا وإلا كُتبت فارغة فوقها */
 const EMPTY = {
-  arkan: "JSX مضمَّن بلا مصدر بيانات",
-  "arkan-iman": "JSX مضمَّن بلا مصدر بيانات",
-  "fadail-aamal": "JSX مضمَّن بلا مصدر بيانات",
-  "fiqh-qawaid": "لا مصدر بيانات مراجَع للقواعد",
-  "sujood-sahw": "JSX مضمَّن بلا مصدر بيانات",
-  tawba: "JSX مضمَّن بلا مصدر بيانات",
   worship: "شاشة مواقيت/تفضيلات لا محتوى",
   "mawarith-calculator": "حاسبة محلية",
   "prayer-times": "حساب المواقيت محمي — لا يُصدَّر",
