@@ -228,6 +228,20 @@ struct QiraatView: View {
     }
 }
 
+/// إشارات كونية للتأمل: المحرَّر وله مصدر علمي فقط (المُصدِّر يحجب needs_review). النص كما نُشر.
+struct MiraclesListView: View {
+    let items: [MiracleItem]
+    var body: some View {
+        List(items) { m in
+            SunnahNavigationLink {
+                QuranDocView(title: m.title, paragraphs: m.body.components(separatedBy: "\n\n").filter { !$0.isEmpty }, sources: [m.scholarlySource])
+            } label: { SunnahListRow(title: m.title, subtitle: "\(m.category) · \(m.reference)") }
+                .listRowBackground(Sunnah.Colors.surface)
+        }
+        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+    }
+}
+
 struct AhrufListView: View {
     let sections: [AhrufSection]
     var body: some View {
