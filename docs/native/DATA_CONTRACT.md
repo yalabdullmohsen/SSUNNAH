@@ -85,7 +85,7 @@
 
 ### sirah (10 ملفات في `Data/sirah/`)
 - مصفوفات بالشكل الحرفي للمصدر، بعد حذف المحجوز: `islamic-landmarks`, `nations`, `sahabah` (مضمَّنة في الصفحة؛ `quote` لا يُعرض).
-- بمرشحات القبول: `occasions-verified` (سجل موثّق مطابق لبذرة بـ`reviewStatus=approved` ومصدر)، `prophets-knowledge` (`review_status=verified` + مصادر)، `stories` (معتمدة + `reviewed` + مصادر)، `islamic-history` (لا `needs-review` ولا بلا مصادر).
+- بمرشحات القبول: `occasions-verified` (سجل موثّق مطابق لبذرة بـ`reviewStatus=approved` ومصدر)، `prophets-knowledge` (`review_status=verified` + مصادر)، `stories` (is_approved + مصادر كما يعرضها الموقع؛ الـ471 غير `reviewed` تحريريًا تُصدَّر الآن بقرار المالك 2026-10-12 — الموقع لا يعرض هذه الحالة)، `islamic-history` (لا `needs-review` ولا بلا مصادر).
 - فارغة عمدًا (`[]`) لغياب مصدر/درجة في الويب وقرار المالك: `fikr-waqia`, `seerah-phases`, `shamail`.
 - `prophets-lineage` لا يُكتب (جذر واحد لا قائمة، ولا عقدة فارغة صالحة): غيابه = «قيد التوثيق».
 
@@ -111,3 +111,12 @@
 - `fiqh/worship.json` و`fiqh/mawarith-calculator.json` و`fiqh/prayer-times.json`: **محسوبة داخل التطبيق** — لا ملف بيانات مطلوب (تبقى `[]` وتُستثنى من قائمة الناقص في native-data-check). المواقيت مطابقة لمخرجات الموقع حرفيًا ولا تُمسّ.
 - `learn/competitions.json`: `[]` مقصود (المنشور 0)؛ التطبيق يعرض «لا توجد مسابقات حالياً».
 - `aqidah/islamic-sects.json`: `[]`. الموقع لا يعرض إلا PUBLISHED ولا سجل منها، فلا يُصدَّر نص أي سجل. المُخفاة (35): NEEDS_SOURCE 13 (بلا مصدر)، NEEDS_HISTORICAL_REVIEW 15 (مراجعة تاريخية)، NEEDS_SHARIA_REVIEW 6 (مراجعة شرعية)، CONFLICTING_SOURCES 1 (مصادر متعارضة). تُصدَّر بعلامة «قيد المراجعة» عند نشر الموقع لها فقط.
+- **الأسئلة بلا مرجع:** تُصدَّر كما يعرضها الموقع (`documentation_status=unsourced`): 583 سؤالًا غير demo بلا مرجع؛ المحجوز في content-hold (94) يبقى محجوزًا.
+
+## تدقيق التطابق (موقع ↔ تطبيق)
+`node scripts/native-parity-audit.mjs [--data ios-native/Data] [--md docs/native/PARITY_AUDIT.md]` — الجدول في `docs/native/PARITY_AUDIT.md`. الفروق المقصودة الوحيدة (كلها «لا نص بلا تحقق» ولا يُحذف شيء من المصدر):
+- الأسئلة: 94 محجوزة في content-hold (أحكام شرعية بلا مرجع). الـ583 بلا مرجع مُصدَّرة كما يعرضها الموقع.
+- الحديث المصحّح: 1 محجوز. القصص: 479 = 479 (القصص الـ471 غير «reviewed» مُصدَّرة كما يعرضها الموقع).
+- asma-husna: 8 `unsourced` · aqidah/doubts: 11 بلا دليل متحقَّق · المعجم: 20 بلا مصدر · المناسبات: 13 بلا سجل موثّق · books-lessons: 1 محجوز → بانتظار قرار المالك إن أراد تصديرها كما هي.
+- islamic-sects: 35 مخفية بحالتها (NEEDS_*) كما يخفيها الموقع.
+- التفسير: 5 (الميسّر) و59 (السعدي) آيات بلا تفسير في المصدر نفسه — الموقع كذلك.
