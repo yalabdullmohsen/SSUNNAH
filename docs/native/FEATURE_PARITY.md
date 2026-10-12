@@ -56,7 +56,7 @@
 - [x] `/stats` — UserStatsPage — قائمة
 - [x] `/submit` — SubmitContentPage — قائمة
 - [ ] `/updates` — UpdatesPage — قائمة
-- [ ] `/updates/auto/:slug` — AutoContentDetailPage — تفاصيل
+- [x] `/updates/auto/:slug` — AutoContentDetailPage — تفاصيل
 - [x] `/upload` — UploadPage — خاصة
 - [x] `/vault` — VaultPage — خاصة
 - [x] `/widget-center` — WidgetCenterPage — خاصة
@@ -148,7 +148,7 @@
 - [x] `/fiqh` — FiqhPage — قائمة
 - [x] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
 - [x] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
-- [ ] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
+- [x] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
 - [ ] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل
 - [x] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
 - [x] `/fiqh/usul` — FiqhUsulPage — قائمة
@@ -188,7 +188,7 @@
 - [ ] `/hifz-path/my` — HifzPathMyPage — قائمة
 - [ ] `/hifz-path/p/:slug` — HifzPathDetailPage — تفاصيل
 - [ ] `/hifz-path/p/:slug/u/:unitId` — HifzPathUnitPage — تفاصيل
-- [ ] `/memorization` — MemorizationHubPage — أقسام
+- [x] `/memorization` — MemorizationHubPage — أقسام
 - [ ] `/miracles` — MiraclesPage — قائمة
 - [x] `/mushaf` — MushafReaderPage — قائمة
 - [ ] `/mushaf/bookmarks` — MushafBookmarksPage — قائمة
