@@ -167,6 +167,59 @@ platform :ios do
     )
   end
 
+  desc "SwiftUI الأصلي: يرفع ما الجديد وملاحظات المراجع ويختار البناء ويرسل للمراجعة. افتراضيًا dry-run (لا يلمس App Store Connect)؛ التنفيذ الفعلي فقط بـ submit=true"
+  lane :native_release do |options|
+    submit = options[:submit].to_s == "true"
+    version = options[:version] || "1.2.0"
+    store = File.join(PLATFORM_ROOT, "docs/native/store")
+    block = lambda do |file, heading|
+      txt = File.read(File.join(store, file), encoding: "UTF-8")
+      m = txt.match(/^## #{Regexp.escape(heading)}[^\n]*\n+```[^\n]*\n(.*?)```/m)
+      UI.user_error!("لم أجد كتلة «#{heading}» في #{file}") unless m
+      m[1].strip
+    end
+    notes = {
+      "ar-SA" => block.call("WHATS_NEW.md", "العربية"),
+      "en-US" => block.call("WHATS_NEW.md", "English")
+    }
+    review = block.call("REVIEW_NOTES.md", "Notes")
+    review = review.sub(/^Demo account:.*$/, "").strip
+    meta = File.join(OUTPUT_DIR, "native-metadata")
+    FileUtils.rm_rf(meta)
+    notes.each do |loc, txt|
+      UI.user_error!("release notes #{loc} تتجاوز 4000 حرف") if txt.length > 4000
+      FileUtils.mkdir_p(File.join(meta, loc))
+      File.write(File.join(meta, loc, "release_notes.txt"), txt)
+    end
+    FileUtils.mkdir_p(File.join(meta, "review_information"))
+    File.write(File.join(meta, "review_information", "notes.txt"), review)
+    demo_user = ENV["REVIEW_DEMO_USER"].to_s
+    demo_pass = ENV["REVIEW_DEMO_PASSWORD"].to_s
+    File.write(File.join(meta, "review_information", "demo_user.txt"), demo_user) unless demo_user.empty?
+    File.write(File.join(meta, "review_information", "demo_password.txt"), demo_pass) unless demo_pass.empty?
+    UI.message("الإصدار #{version} | اللغات: #{notes.keys.join(', ')} | ملاحظات المراجع #{review.length} حرفًا | حساب تجريبي: #{demo_user.empty? ? 'لا' : 'نعم'}")
+    unless submit
+      UI.important("DRY-RUN: لم يُرسل شيء إلى App Store Connect. للتنفيذ الفعلي: fastlane ios native_release submit:true [build:N]")
+      next
+    end
+    key_path = File.expand_path(ENV.fetch("APP_STORE_CONNECT_API_KEY_PATH"))
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_ID"),
+      issuer_id: ENV.fetch("APP_STORE_CONNECT_ISSUER_ID"),
+      key_filepath: key_path, duration: 1200, in_house: false
+    )
+    app_id = ENV.fetch("APP_IDENTIFIER", "com.yousef.majlisilm")
+    build = (options[:build] || latest_testflight_build_number(api_key: api_key, app_identifier: app_id, version: version)).to_s
+    UI.important("اختيار البناء #{version} (#{build}) والإرسال للمراجعة")
+    deliver(
+      api_key: api_key, app_identifier: app_id, app_version: version, build_number: build,
+      metadata_path: meta, skip_binary_upload: true, skip_screenshots: true, skip_app_version_update: false,
+      submit_for_review: true, automatic_release: ENV["AUTOMATIC_RELEASE"].to_s == "true",
+      force: true, run_precheck_before_submit: false,
+      submission_information: { export_compliance_uses_encryption: false, add_id_info_uses_idfa: false }
+    )
+  end
+
   desc "Local archive smoke (no upload) — useful for CI dry-run on macOS"
   lane :build_only do
     Dir.chdir(IOS_WORKSPACE_DIR) do

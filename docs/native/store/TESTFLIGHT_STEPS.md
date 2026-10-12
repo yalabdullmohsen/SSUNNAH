@@ -3,13 +3,19 @@
 > مبني على lane `native_beta` في `fastlane/Fastfile` (يبني `ios-native/SunnahApp.xcodeproj`، المخطط `SunnahApp`، الإصدار 1.2.0، رقم البناء = max(آخر بناء TestFlight + 1، 100)، يوقّع تلقائيًا بمفتاح ASC ويرفع إلى TestFlight **داخليًا** دون إرسال للمراجعة). **لا أحد يبني أو يرفع دون إذنك**؛ هذه الخطوات تُنفَّذ على جهازك أو بتفويضك.
 > أسماء الأزرار كما في App Store Connect بالإنجليزية (واجهتك قد تكون عربية: ابحث عن المقابل).
 
-## 0) شروط مسبقة (مرة واحدة)
+## 0) شروط مسبقة
 - Mac عليه Xcode وfastlane (`bundle install` أو `brew install fastlane`).
-- مفتاح ASC (App Store Connect ← **Users and Access** ← **Integrations** ← **App Store Connect API** ← **Generate API Key**، دور **App Manager**): احفظ ملف `.p8` **خارج المستودع** (مثل `~/.appstoreconnect/private_keys/`). المستودع عام: لا تضع `.p8` فيه.
-- تأكد أن ن4 أنهى التحقق بالبناء (الخصوصية والتوقيع) وأن بيان `PRIVACY_CHECK.md` مطابق.
+- **مفتاح ASC: استعمل المفتاح السابق نفسه** إن كان عندك (هو الذي يستعمله lane `beta` القديم)؛ لا حاجة لإنشاء جديد. أسماء المتغيرات (من `Fastfile` و`fastlane/README.md` و`docs/guides/AUTOMATION_SETUP.md`):
+  - `APP_STORE_CONNECT_API_KEY_ID` و`APP_STORE_CONNECT_ISSUER_ID`
+  - `.p8`: إمّا `APP_STORE_CONNECT_API_KEY_PATH` (مسار ملف **خارج المستودع**) أو `APP_STORE_CONNECT_API_KEY_KEY` (Base64) — لكن `native_beta` و`native_release` يقرآن **المسار** فقط، فاضبط `APP_STORE_CONNECT_API_KEY_PATH`.
+  - اختياري: `APPLE_TEAM_ID` (الافتراضي 5D8TX37HTS)، `APP_IDENTIFIER`.
+  - ملاحظة: `artifacts/majlisilm-flutter/release.sh` يستعمل أسماء أخرى (`ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_KEY_PATH`) لتطبيق Flutter القديم، لا لـ fastlane.
+  - لم أستطع التحقق أن المفتاح نفسه ما زال موجودًا/صالحًا عندك (الأسرار ليست في المستودع). إن فُقد: App Store Connect ← **Users and Access** ← **Integrations** ← **App Store Connect API** ← **Generate API Key** بدور **App Manager**.
+- تأكد أن ن4 أنهى التحقق بالبناء وأن `PRIVACY_CHECK.md` مطابق.
 
 ## 1) رفع البناء
 ```bash
+# القيم نفسها لمفتاحك السابق (انظر القسم 0)
 export APP_STORE_CONNECT_API_KEY_ID=XXXXXXXXXX
 export APP_STORE_CONNECT_ISSUER_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 export APP_STORE_CONNECT_API_KEY_PATH=~/.appstoreconnect/private_keys/AuthKey_XXXXXXXXXX.p8
@@ -26,17 +32,22 @@ App Store Connect ← **Apps** ← سُنّة ← تبويب **TestFlight** ← 
 ## 3) اختبار داخلي (موصى به قبل المراجعة)
 TestFlight ← **Internal Testing** ← **+** (أو اختر المجموعة) ← **Add Builds** ← اختر البناء ← **Add**. ثبّته من تطبيق TestFlight على جهاز حقيقي ونفّذ `DEVICE_NOTIFICATION_MATRIX.md`.
 
-## 4) تجهيز صفحة الإصدار
-**Apps** ← سُنّة ← تبويب **Distribution** (App Store) ← **+** بجانب **iOS App** ← اكتب **1.2.0** ← **Create**.
-1. **What's New in This Version**: الصق نص كل لغة من `WHATS_NEW.md`.
-2. **Build** (قسم Build) ← **Add Build** ← اختر البناء المرفوع ← **Done**.
-3. **App Review Information** ← الصق ملاحظات `REVIEW_NOTES.md` في **Notes**؛ أدخل الحساب التجريبي إن أردت (فعّل **Sign-in required** ثم **User name / Password**).
-4. **App Privacy** (القائمة الجانبية ← **App Privacy** ← **Edit**): اتبع القسم 5 من `PRIVACY_CHECK.md` ثم **Publish**.
-5. تأكد من **Privacy Policy URL** ولقطات الشاشة المطلوبة ومعلومات الإصدار.
+## 4) إرسال الإصدار للمراجعة — الطريقة المختصرة: `native_release`
+يقرأ `WHATS_NEW.md` (العربية → `ar-SA`، الإنجليزية → `en-US`) و`REVIEW_NOTES.md`، يختار البناء، ويرسل للمراجعة. **الافتراضي dry-run**: يجهّز الملفات ويطبع ملخصًا ولا يتصل بـ App Store Connect.
+```bash
+bundle exec fastlane ios native_release                      # dry-run: مراجعة ما سيُرسل
+bundle exec fastlane ios native_release submit:true          # فعلي: آخر بناء لـ1.2.0
+bundle exec fastlane ios native_release submit:true build:101  # فعلي: بناء محدد
+```
+اختياري: `REVIEW_DEMO_USER` و`REVIEW_DEMO_PASSWORD` (حساب تجريبي، يبقيان في بيئتك لا في المستودع)، و`AUTOMATIC_RELEASE=true` للإطلاق التلقائي بعد القبول.
+**شروط:** الإصدار 1.2.0 يجب أن يكون بحالة قابلة للتحرير (أنشئه يدويًا مرة: **Apps** ← سُنّة ← **+** بجانب **iOS App** ← `1.2.0` ← **Create**)، وأن يكون البناء قد أنهى **Processing**. اللغتان `ar-SA` و`en-US` يجب أن تكونا مضافتين للتطبيق في App Store Connect؛ إن اختلفت أسماء اللغات فعدّلها في الـlane. أول تشغيل فعلي لم يُجرَّب هنا (لا fastlane على هذه الآلة) فابدأ بـdry-run.
+**لا يُؤتمت — خطوات يدوية قليلة (مرة واحدة):**
+1. **App Privacy**: App Store Connect ← سُنّة ← **App Privacy** ← **Edit** ← اتبع §5 في `PRIVACY_CHECK.md` ← **Publish**.
+2. **Privacy Policy URL**: الصق `https://www.ssunnah.com/privacy` في **App Information** ← **Privacy Policy URL** (الصفحة تعمل: تحقق منها 200 بعنوان «سياسة الخصوصية | سُنّة»؛ `majlisilm.com/privacy` يعيد 308).
+3. لقطات الشاشة وبقية بيانات الصفحة إن لم تكن مكتملة من الإصدار السابق.
 
-## 5) الإرسال للمراجعة
-أعلى صفحة الإصدار ← **Add for Review** ← في صفحة **Draft Submission** راجع الجدول ← **Submit for Review**.
-اختر **Release** (يدوي/تلقائي بعد القبول) من **Version Release** قبل ذلك.
+### الطريقة اليدوية (بديل)
+**Distribution** ← **1.2.0** ← الصق **What's New in This Version** ← قسم **Build** ← **Add Build** ← اختر البناء ← **Done** ← **App Review Information** (الصق **Notes**، و**Sign-in required** إن أردت) ← **Add for Review** ← **Submit for Review**.
 
 ## 6) بعد الإرسال
 الحالة: **Waiting for Review** ← **In Review** ← **Pending Developer Release/Ready for Distribution**. عند الرفض: افتح **App Review** ← رسالة المراجع ← أجب في **Resolution Center** ولا تُعد الرفع قبل قراءة السبب.
