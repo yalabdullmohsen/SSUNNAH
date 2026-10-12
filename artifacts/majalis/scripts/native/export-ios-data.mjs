@@ -25,7 +25,10 @@ const rej = {};
 const reject = (area, why) => { rej[area] ??= {}; rej[area][why] = (rej[area][why] || 0) + 1; };
 const files = [];
 const sha = (b) => crypto.createHash("sha256").update(b).digest("hex");
+const written = new Set();
 const put = (rel, buf) => {
+  if (written.has(rel)) throw new Error(`مسار مكرَّر في التصدير: ${rel} (وحدتان تكتبانه)`);
+  written.add(rel);
   buf = Buffer.isBuffer(buf) ? buf : Buffer.from(buf);
   files.push({ path: rel, bytes: buf.length, sha256: sha(buf) });
   if (check) return;
