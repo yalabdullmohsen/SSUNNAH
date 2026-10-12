@@ -93,6 +93,7 @@
 - بيانات حقيقية: `lessons/chunk-000` (82)، `learn/universities` (37 متحقَّقة)، `learn/kuwait-sheikhs` (6)، `graph/links`، `audio/surah-reciters` (29: `{id,nameAr,surahBaseUrl}` بعد مفتاح التعطيل المركزي).
 - مُصدَّرة بدرجاتها ومصادرها كما يعرضها الموقع (ContentItem؛ الحالة في `tags`): `institutions` (44، وسم الحالة «قيد المراجعة»/«معتمد» ثم needs_review في tags، تُحدَّث من الشبكة لاحقًا فتتحول إلى معتمد بقرار المالك، الرابط في route)، `durus-imaniyya` / `durus-mutanawwia` (الدروس مسطّحة، القسم في tags)، `sirah/fikr-waqia`، `fawaid` (التصنيف + verification_status + trust_level في tags، المصدر في body)، `annual-courses` (approved فقط). فارغ بالشكل الصحيح `[]`: `competitions` (المنشور 0 والعيّنة demo).
 - `quran/ulum-quran.json` (79 ContentItem من ثوابت صفحة /ulum-quran؛ التبويب في `tags`، المصدر/المرجع في subtitle أو body كما عرضها الموقع). `aqidah/islamic-sects.json` يبقى `[]`: الموقع نفسه لا يعرض إلا PUBLISHED وكل السجلات الـ35 بحالة NEEDS_*.
+- `fiqh/{sujood-sahw,arkan,arkan-iman,fadail-aamal,tawba,fiqh-qawaid}.json` (ContentItem من ثوابت صفحات الموقع كما هي: الدليل/المصدر في body، الدرجة (صحيح/حسن) والتصنيف/التبويب في `tags`). تبقى `[]` عمدًا: worship (شاشة مواقيت)، mawarith-calculator (حاسبة)، prayer-times (محمي).
 
 ### library (11 ملفًا في `Data/library/`)
 - بالشكل الحرفي للمصدر بعد حذف المحجوز: `academic-research` (`{records, categories}`؛ منشور وغير تجريبي فقط)، `arabic-language` و`mawsuaat` (`DarsSection[]`)، `islamic-glossary` (ذو مصدر فقط؛ 20 بلا مصدر مستبعدة)، `mind-maps` (+ نسخة مطابقة `mind-map`)، `scientific-announcements`.
