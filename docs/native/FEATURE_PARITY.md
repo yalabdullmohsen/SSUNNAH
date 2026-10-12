@@ -117,7 +117,7 @@
 - [ ] `/asma-husna` — AsmaaHusnaPage — قائمة
 - [ ] `/discover-islam` — DiscoverIslamPage — قائمة
 - [ ] `/discover-islam/articles/:slug` — DiscoverIslamArticleDetailPage — مقال
-- [ ] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
+- [x] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
 - [ ] `/discover-islam/doubts` — DiscoverIslamDoubtsPage — قائمة
 - [ ] `/discover-islam/doubts/:slug` — DiscoverIslamDoubtDetailPage — تفاصيل
 - [ ] `/discover-islam/how-to-convert` — HowToBecomeMuslimPage — قائمة
@@ -224,11 +224,11 @@
 
 - [ ] `/academic-research` — AcademicResearchPage — بحث
 - [ ] `/academic-research/:id` — ResearchDetailPage — بحث
-- [ ] `/academic-research/assistant` — ResearchAssistantPage — بحث
-- [ ] `/academic-research/submit` — ResearchSubmitPage — بحث
+- [x] `/academic-research/assistant` — ResearchAssistantPage — بحث
+- [x] `/academic-research/submit` — ResearchSubmitPage — بحث
 - [ ] `/arabic-language` — ArabicLanguagePage — قائمة
 - [ ] `/cards` — CardsPage — قائمة
-- [ ] `/islamic-directory` — IslamicDirectoryHubPage — أقسام
+- [x] `/islamic-directory` — IslamicDirectoryHubPage — أقسام
 - [ ] `/islamic-glossary` — IslamicGlossaryPage — قائمة
 - [ ] `/mawsuaat` — MawsuaatPage — قائمة
 - [ ] `/methodology` — MethodologyPage — قائمة

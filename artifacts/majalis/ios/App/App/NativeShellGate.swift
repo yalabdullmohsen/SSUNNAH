@@ -117,6 +117,17 @@ struct NativeShellRoot: View {
             let data = Bundle.main.url(forResource: "islamic-sects", withExtension: "json")
                 .flatMap { try? Data(contentsOf: $0) } ?? Data("[]".utf8)
             return AnyView(IslamicSectsView(records: IslamicSectsView.records(fromJSON: data)))
+        case "/islamic-directory":
+            return AnyView(DirectoryHubView(onOpen: { router.open(path: $0) }))
+        case "/discover-islam/contact":
+            return AnyView(ConnectionGate(path: route.path, router: router,
+                title: "التواصل مع داعية", message: "يحتاج إرسال الطلب إلى اتصال بالإنترنت.", action: "فتح النموذج"))
+        case "/academic-research/assistant":
+            return AnyView(ConnectionGate(path: route.path, router: router,
+                title: "مساعد البحث", message: "يعتمد المساعد على الاتصال بالإنترنت.", action: "فتح المساعد"))
+        case "/academic-research/submit":
+            return AnyView(ConnectionGate(path: route.path, router: router,
+                title: "إرسال بحث", message: "يحتاج الإرسال إلى اتصال بالإنترنت.", action: "فتح النموذج"))
         default:
             return AnyView(
                 WebScreen(
@@ -126,6 +137,26 @@ struct NativeShellRoot: View {
                 .navigationTitle(AppTab.owning(path: route.path).title)
                 .navigationBarTitleDisplayMode(.inline)
             )
+        }
+    }
+}
+
+/// شاشة «تحتاج اتصالًا/حسابًا»: تظهر أصلية أولًا، ثم يفتح الزر النموذج الحي بالمسار نفسه.
+private struct ConnectionGate: View {
+    let path: String
+    let router: AppRouter
+    let title: String
+    let message: String
+    let action: String
+    @State private var live = false
+
+    var body: some View {
+        if live {
+            WebScreen(path: path, onPush: { router.open(path: $0) })
+        } else {
+            ConnectionRequiredView(title: title, message: message, actionTitle: action) { live = true }
+                .navigationTitle(title)
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
