@@ -157,11 +157,22 @@ struct AccountMySubmissionsScreen: View {
     @State private var error = ""
     @State private var player: AVPlayer?
     @State private var playingId: String?
+    @Environment(\.platform) private var platform
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 AccountHeader(eyebrow: "المساهمات", title: "مساهماتي", subtitle: "تتبّع حالة الأذانات والدروس التي أرسلتها للمراجعة.")
+
+                if AccountSession.read(from: platform.auth) == nil {
+                    SunnahCard {
+                        VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                            Text("سجّل الدخول لتربط مساهماتك بحسابك وتتابعها في أي وقت.")
+                                .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                            SunnahButton("تسجيل الدخول", style: .secondary) { openRoute("/login?next=/my-submissions") }
+                        }
+                    }
+                }
 
                 SunnahCard {
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
@@ -268,7 +279,7 @@ struct AccountMySubmissionsScreen: View {
         do {
             list = try await loader.load([AccountSubmission].self, from: AccountEndpoints.submissions(email: e))
         } catch {
-            self.error = "خطأ في البحث"
+            self.error = ErrorStateView.offlineMessage
         }
     }
 }
