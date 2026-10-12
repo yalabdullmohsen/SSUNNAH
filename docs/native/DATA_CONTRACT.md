@@ -106,3 +106,8 @@
 - المصدر: بذرة الأذكار الأصلية `src/lib/adhkar-seed.ts` عبر `scripts/native/build-adhkar-verified.mjs`؛ النص والمصدر والدرجة حرفيًا بلا إنشاء ولا مرجع جديد، والدرجة كما هي (حسن تبقى «حسن»). الشكل هو صف `verified_adhkar_items` (§1) مع `metadata.basis`: `sahihayn` (140) · `named_grader` (33: صحيح بمصحِّح مسمّى) · `named_grader_hasan` (15: حسن بمصحِّح مسمّى) · `local_verified_corpus` (2: مطابقة متن كاملة لسجل في hadith-verified بمرجعه في `metadata.local_ref`) · `quran_tanzil` (17).
 - المحجوز (64 ← content-hold): 16 ضعيف + 48 صحيح بلا مصحِّح مسمّى ولا مرجع محلي. المُرجأ (54، لا يُصدَّر ولا يُحجز): حسن بلا مصحِّح مسمّى 53، وصيغة «صلى الله عليه وسلم» 1 (ليست نص حديث؛ صيغة الصلاة الإبراهيمية الثابتة في الصحيحين مصدَّرة أصلًا).
 - `native-export-data.sh` يمرّر الملف تلقائيًا؛ إن اعتمد المالك صفوف Supabase الـ51 دُمجت لاحقًا بنفس الشكل.
+
+## محسوب داخل التطبيق / فارغ مقصود (قرار المالك)
+- `fiqh/worship.json` و`fiqh/mawarith-calculator.json` و`fiqh/prayer-times.json`: **محسوبة داخل التطبيق** — لا ملف بيانات مطلوب (تبقى `[]` وتُستثنى من قائمة الناقص في native-data-check). المواقيت مطابقة لمخرجات الموقع حرفيًا ولا تُمسّ.
+- `learn/competitions.json`: `[]` مقصود (المنشور 0)؛ التطبيق يعرض «لا توجد مسابقات حالياً».
+- `aqidah/islamic-sects.json`: `[]`. الموقع لا يعرض إلا PUBLISHED ولا سجل منها، فلا يُصدَّر نص أي سجل. المُخفاة (35): NEEDS_SOURCE 13 (بلا مصدر)، NEEDS_HISTORICAL_REVIEW 15 (مراجعة تاريخية)، NEEDS_SHARIA_REVIEW 6 (مراجعة شرعية)، CONFLICTING_SOURCES 1 (مصادر متعارضة). تُصدَّر بعلامة «قيد المراجعة» عند نشر الموقع لها فقط.
