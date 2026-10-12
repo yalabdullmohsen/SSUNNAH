@@ -128,12 +128,12 @@ final class LibraryAdaptersTests: XCTestCase {
     }
 
     func testDeferredRoutesAreHiddenFromNavigationAndSearch() {
-        for p in ["/islamic-sects", "/islamic-sects/x", "/fikr-waqia", "/competitions", "/competitions/1", "/durus-imaniyya",
-                  "/durus-mutanawwia", "/fawaid", "/annual-courses/7", "/institutions"] {
-            XCTAssertFalse(LibraryRouteScope.contains(p), p)
+        for p in ["/islamic-sects", "/islamic-sects/x"] { XCTAssertFalse(LibraryRouteScope.contains(p), p) }
+        // أُعيد إظهارها بعد وصول بياناتها (#3010).
+        for p in ["/fikr-waqia", "/competitions", "/competitions/1", "/durus-imaniyya", "/durus-mutanawwia", "/fawaid", "/annual-courses/7", "/institutions"] {
+            XCTAssertTrue(LibraryRouteScope.contains(p), p)
         }
         XCTAssertTrue(LibraryRouteScope.deferred.allSatisfy { LibraryRouteScope.kept.contains($0) })
-        XCTAssertFalse(LibraryLinks.directory.map(\.route).contains("/institutions"))
         XCTAssertTrue(LibraryRouteScope.contains("/universities"))
     }
 

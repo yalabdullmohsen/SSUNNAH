@@ -240,6 +240,25 @@ public struct LearnCompareSelection: Equatable, Sendable {
 // MARK: - المؤسسات (src/data/institutions-catalog.json → Data/learn/institutions.json)
 
 public struct LearnInstitution: Decodable, Identifiable, Hashable, Sendable {
+    /// شكل الجدول الخام (name/type/city…) أو شكل ContentItem المُصدَّر (title/subtitle/body/tags/route)؛ الحالة في الوسوم.
+    private enum K: String, CodingKey { case id, name, title, subtitle, body, tags, route, type, city, country, description, website, sourceUrl, contentStatus }
+
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: K.self)
+        func s(_ k: K) -> String? { (try? c.decodeIfPresent(String.self, forKey: k)).flatMap { $0 } }
+        let tags = (try? c.decodeIfPresent([String].self, forKey: .tags)).flatMap { $0 } ?? []
+        id = try c.decode(String.self, forKey: .id)
+        guard let n = s(.name) ?? s(.title) else { throw DecodingError.keyNotFound(K.name, .init(codingPath: c.codingPath, debugDescription: "name")) }
+        name = n
+        type = s(.type) ?? tags.first
+        city = s(.city) ?? s(.subtitle)
+        country = s(.country)
+        description = s(.description) ?? s(.body)
+        website = s(.website) ?? s(.route)
+        sourceUrl = s(.sourceUrl)
+        contentStatus = s(.contentStatus) ?? (tags.contains("needs_review") ? "needs_review" : tags.contains("معتمد") ? "approved" : nil)
+    }
+
     public let id: String
     public let name: String
     public var type: String?
@@ -252,6 +271,8 @@ public struct LearnInstitution: Decodable, Identifiable, Hashable, Sendable {
 
     /// قرار المالك (2026-10-12، docs/native/LEARN_INSTITUTIONS_DECISION.md): لا يُعرض إلا المراجَع؛ `needs_review` أو بلا حالة يُخفى.
     public var isReviewed: Bool { ["verified", "approved", "reviewed"].contains(contentStatus ?? "") }
+
+    static let pendingBadge = "قيد المراجعة"
 
     /// تسميات InstitutionDiscoverCard في الويب.
     public var typeLabel: String? {
@@ -448,6 +469,24 @@ public enum LearnKnowledgeSections {
 }
 
 // MARK: - الدروس الإيمانية والمتنوعة (src/lib/durus-*-data.ts → Data/learn/durus-*.json)
+
+/// ملف دروس: الشكل الخام `[قسم{lessons}]` أو ContentItem مسطّح يُجمَّع بحسب `tags[0]` (القسم) بترتيب ظهوره.
+public struct LearnDarsList: Decodable, Sendable {
+    public let sections: [LearnDarsSection]
+    public init(from decoder: Decoder) throws {
+        if let raw = try? [LearnDarsSection](from: decoder) { sections = raw; return }
+        let flat = try [ContentItem](from: decoder)
+        var order: [String] = []; var groups: [String: [LearnDarsSection.Item]] = [:]
+        for it in flat {
+            let key = it.tags.first ?? "دروس"
+            if groups[key] == nil { order.append(key) }
+            // متن الملف المسطّح يكرر العنوان والملخص («باب «…»: …»)؛ لا يُعرض إلا إن أضاف شيئًا.
+            let body = it.body.flatMap { b in (it.subtitle.map { b.contains($0) } ?? false) ? nil : b }
+            groups[key, default: []].append(.init(id: it.id, title: it.title, summary: it.subtitle, body: body))
+        }
+        sections = order.map { LearnDarsSection(id: $0, num: nil, title: $0, lessons: groups[$0] ?? []) }
+    }
+}
 
 public struct LearnDarsSection: Decodable, Identifiable, Hashable, Sendable {
     public struct Item: Decodable, Identifiable, Hashable, Sendable {

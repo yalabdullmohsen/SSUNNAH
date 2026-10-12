@@ -11,6 +11,21 @@ struct LearnFaidah: Codable, Identifiable, Hashable, Sendable {
     let authorName: String?
 
     enum CodingKeys: String, CodingKey { case id, text, category, source; case authorName = "author_name" }
+    /// شكل ContentItem المُصدَّر: النص في body والمصدر في subtitle والتصنيف أول الوسوم.
+    private enum Flat: String, CodingKey { case id, title, subtitle, body, tags }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        let f = try decoder.container(keyedBy: Flat.self)
+        id = try c.decode(String.self, forKey: .id)
+        guard let t = try c.decodeIfPresent(String.self, forKey: .text) ?? f.decodeIfPresent(String.self, forKey: .body) ?? f.decodeIfPresent(String.self, forKey: .title) else {
+            throw DecodingError.keyNotFound(CodingKeys.text, .init(codingPath: c.codingPath, debugDescription: "text"))
+        }
+        text = t
+        category = try c.decodeIfPresent(String.self, forKey: .category) ?? f.decodeIfPresent([String].self, forKey: .tags)?.first
+        source = try c.decodeIfPresent(String.self, forKey: .source) ?? f.decodeIfPresent(String.self, forKey: .subtitle)
+        authorName = try c.decodeIfPresent(String.self, forKey: .authorName)
+    }
 
     /// كـhasPublicSource في الويب: لا تُعرض فائدة بلا مصدر أو قائل.
     var hasPublicSource: Bool { !(source ?? "").trimmingCharacters(in: .whitespaces).isEmpty || !(authorName ?? "").trimmingCharacters(in: .whitespaces).isEmpty }
@@ -46,7 +61,7 @@ struct LearnFawaidScreen: View {
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                     }
                 }
-                LearnList(items: LearnFaidah.filter(all, query: query, category: category), emptyTitle: "المحتوى قيد التوثيق") { f in
+                LearnList(items: LearnFaidah.filter(all, query: query, category: category), emptyTitle: "لا نتائج") { f in
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                         Text(f.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                         if let line = learnLine(f.authorName, f.source, separator: " — ") {
@@ -95,14 +110,18 @@ struct LearnAnnualCourse: Codable, Identifiable, Hashable, Sendable {
         case registrationUrl = "registration_url", registrationOpen = "registration_open"
     }
 
+    /// شكل ContentItem المُصدَّر: الوصف المختصر في subtitle ونوع الدورة أول الوسوم.
+    private enum Flat: String, CodingKey { case subtitle, tags }
+
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
+        let f = try decoder.container(keyedBy: Flat.self)
         id = try c.decode(String.self, forKey: .id)
         title = try c.decode(String.self, forKey: .title)
         externalKey = try c.decodeIfPresent(String.self, forKey: .externalKey)
-        summary = try c.decodeIfPresent(String.self, forKey: .summary)
+        summary = try c.decodeIfPresent(String.self, forKey: .summary) ?? f.decodeIfPresent(String.self, forKey: .subtitle)
         body = try c.decodeIfPresent(String.self, forKey: .body)
-        courseType = try c.decodeIfPresent(String.self, forKey: .courseType)
+        courseType = try c.decodeIfPresent(String.self, forKey: .courseType) ?? f.decodeIfPresent([String].self, forKey: .tags)?.first
         season = try c.decodeIfPresent(String.self, forKey: .season)
         // السنة رقم في الجدول ونص أحيانًا.
         year = (try? c.decodeIfPresent(String.self, forKey: .year)) ?? (try? c.decodeIfPresent(Int.self, forKey: .year)).map { String($0) }
@@ -134,13 +153,19 @@ struct LearnAnnualCourseScreen: View {
     @Environment(\.openRoute) private var openRoute
     init(id: String) { self.id = id }
 
+    /// متن الدورة Markdown خفيف (**عنوان** وقوائم)؛ يحفظ الأسطر الجديدة.
+    static func markdown(_ s: String) -> AttributedString {
+        let o = AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+        return (try? AttributedString(markdown: s, options: o)) ?? AttributedString(s)
+    }
+
     var body: some View {
         LearnLoadHost(load: { try await LearnSources.loadIfExported([LearnAnnualCourse].self, from: LearnSources.annualCourses, with: $0) }) { (all: [LearnAnnualCourse]) in
             if let course = LearnAnnualCourse.find(id, in: all) {
                 LearnDetailPage(title: course.title) {
                     if let m = course.metaLine { SunnahChip(m) }
                     if let s = course.summary { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-                    if let b = course.body { Text(b).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    if let b = course.body { Text(Self.markdown(b)).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                     LearnInfoRow(label: "المشايخ", value: course.sheikhNames?.joined(separator: "، "))
                     LearnInfoRow(label: "المتون", value: course.mutoon?.joined(separator: "، "))
                     if let slots = course.schedule, !slots.isEmpty {

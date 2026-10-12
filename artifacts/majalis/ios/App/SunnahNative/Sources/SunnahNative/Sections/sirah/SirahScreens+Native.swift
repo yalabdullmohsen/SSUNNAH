@@ -92,7 +92,7 @@ public enum SirahSection {
 
     /// معرّف الشاشة ← (مصدر، بناء). المعرّفات مطابقة لـGenerated/SirahScreens.swift.
     @MainActor public static func register(in registry: TemplateRegistry) {
-        registry.registerView(id: "fikr-waqia") { SirahSection.inline(File.fikrWaqia, SirahAdapters.darsSections) }
+        registry.registerView(id: "fikr-waqia") { SirahSection.inline(File.fikrWaqia, { (f: SirahDarsFile) in SirahAdapters.darsSections(f.sections) }) }
         registry.registerView(id: "islamic-landmarks") { SirahSection.list(File.landmarks, SirahAdapters.landmarks, base: "/islamic-landmarks") }
         registry.registerView(id: "islamic-landmarks.map") {
             SirahLoadedView(source: File.landmarks, adapt: SirahAdapters.landmarks) { CardGridTemplate(items: $0, detailBase: "/islamic-landmarks") }

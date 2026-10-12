@@ -22,6 +22,23 @@ struct SirahDarsSection: Decodable, Sendable, Hashable {
     }
 }
 
+/// ملف fikr-waqia: الشكل الخام `[قسم{lessons}]` أو ContentItem مسطّح يُجمَّع بحسب `tags[0]`.
+struct SirahDarsFile: Decodable, Sendable {
+    let sections: [SirahDarsSection]
+    init(from decoder: Decoder) throws {
+        if let raw = try? [SirahDarsSection](from: decoder) { sections = raw; return }
+        let flat = try [ContentItem](from: decoder)
+        var order: [String] = []; var groups: [String: [SirahDarsSection.Lesson]] = [:]
+        for it in flat {
+            let key = it.tags.first ?? "فكر وواقع"
+            if groups[key] == nil { order.append(key) }
+            let body = it.body.flatMap { b in (it.subtitle.map { b.contains($0) } ?? false) ? nil : b }
+            groups[key, default: []].append(.init(id: it.id, title: it.title, summary: it.subtitle, body: body))
+        }
+        sections = order.map { SirahDarsSection(id: $0, num: nil, title: $0, lessons: groups[$0] ?? []) }
+    }
+}
+
 /// معلم (src/lib/islamic-landmarks-data.ts IslamicLandmark).
 struct SirahLandmark: Decodable, Sendable, Hashable {
     let id: String

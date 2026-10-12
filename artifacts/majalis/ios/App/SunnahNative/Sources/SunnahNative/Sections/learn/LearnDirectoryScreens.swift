@@ -147,7 +147,8 @@ struct LearnInstitutionsScreen: View {
 
     var body: some View {
         LearnLoadHost(load: { try await LearnSources.loadIfExported([LearnInstitution].self, from: LearnSources.institutions, with: $0) }) { (loaded: [LearnInstitution]) in
-            let all = loaded.filter(\.isReviewed)
+            // المؤسسة غير المعتمدة تُعرض بعلامة «قيد المراجعة» ظاهرة، وتتحول إلى «معتمد» حين تصل حالتها من الشبكة.
+            let all = loaded
             if all.isEmpty { EmptyStateView(title: "قيد التوثيق") } else {
                 VStack(spacing: Sunnah.Spacing.s2) {
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -164,13 +165,17 @@ struct LearnInstitutionsScreen: View {
                         SunnahNavigationLink {
                             LearnDetailPage(title: inst.name) {
                                 if let t = inst.typeLabel { SunnahChip(t) }
+                                if !inst.isReviewed { SunnahChip(LearnInstitution.pendingBadge) }
                                 LearnInfoRow(label: "المدينة", value: inst.city)
                                 LearnInfoRow(label: "الدولة", value: inst.country)
                                 if let d = inst.description { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                                 LearnExternalLink(title: "الموقع الرسمي", urlString: inst.website)
                             }
                         } label: {
-                            SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city))
+                            HStack(spacing: Sunnah.Spacing.s2) {
+                                SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city))
+                                if !inst.isReviewed { SunnahChip(LearnInstitution.pendingBadge) }
+                            }
                         }
                     }
                 }
@@ -187,7 +192,7 @@ struct LearnCompetitionsScreen: View {
     @Environment(\.openRoute) private var openRoute
     var body: some View {
         LearnLoadHost(LearnSources.competitions) { (list: [LearnCompetition]) in
-            LearnList(items: list, emptyTitle: "المحتوى قيد التوثيق") { c in
+            LearnList(items: list, emptyTitle: "لا توجد مسابقات حالياً") { c in
                 Button { openRoute("/competitions/" + c.id) } label: {
                     SunnahListRow(title: c.title, subtitle: learnLine(c.organizerName, c.registrationStatus))
                 }
