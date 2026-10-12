@@ -76,8 +76,8 @@ export default async function exportSirah({ json, held, reject, counts, appRoot 
     out("sahabah", SAHABAH.filter(keep("sahabah")));
   }
 
-  /* فارغ عمدًا: لا مصدر/درجة في الويب، وقرار المالك بعدم التصدير بلا توثيق */
-  for (const name of ["seerah-phases", "shamail"]) { out(name, []); reject(`${S}-${name}`, "فارغ عمدًا: بلا مصدر/درجة (قرار المالك)"); }
+  /* فارغ مؤقتًا: للموقع بيانات فعلية (SeerahPage/ShimaelPage) والتصدير مطلوب في docs/native/requests/sirah-seerah-shamael-tree.md */
+  for (const name of ["seerah-phases", "shamail"]) { out(name, []); reject(`${S}-${name}`, "لم يُصدَّر بعد: بيانات الموقع موجودة (طلب ن2)"); }
   /* prophets-lineage: جذر واحد لا قائمة؛ لا عقدة فارغة صالحة، فلا يُكتب الملف (الغياب = «قيد التوثيق») */
-  reject(`${S}-prophets-lineage`, "غير مُصدَّر: أسماء وأنساب بلا مصدر (قرار المالك)");
+  reject(`${S}-prophets-lineage`, "لم يُصدَّر بعد: prophets-lineage.ts موجود في الموقع (طلب ن2)");
 }
