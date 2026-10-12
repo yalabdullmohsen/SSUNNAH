@@ -160,7 +160,12 @@ export default async function exportLibrary({ json, held, reject, counts, appRoo
     out("sections", sections.map(link), sections.length);
     out("sitemap", siteItems, siteItems.length);
     out("search", [...byRoute.values()], byRoute.size);
-    for (const f of ["islamic-directory", "sources", "academic-research-assistant", "academic-research-submit"]) {
+    /* «مصادر المحتوى»: تعرضها صفحة /sources من public/data/sources/accounts.json (enabled فقط)؛ تمرير كما هي */
+    {
+      const accounts = JSON.parse(fs.readFileSync(`${appRoot}/public/data/sources/accounts.json`, "utf8")).accounts.filter((a) => a.enabled);
+      out("sources", accounts, accounts.length);
+    }
+    for (const f of ["islamic-directory", "academic-research-assistant", "academic-research-submit"]) {
       out(f, [], 0);
       reject(`${L}-${f}`, "فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع");
     }
