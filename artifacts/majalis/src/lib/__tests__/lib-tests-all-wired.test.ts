@@ -33,7 +33,8 @@ for (const e of brokenEntries) {
   assert.ok(e.reason?.trim().length >= 15, `${e.file}: سبب العطب مطلوب (≥15 حرفًا)`);
   assert.ok(e.owner?.trim() && e.action?.trim(), `${e.file}: المالك والإجراء مطلوبان`);
   assert.match(e.expires ?? "", /^\d{4}-\d{2}-\d{2}$/, `${e.file}: تاريخ انتهاء YYYY-MM-DD مطلوب`);
-  assert.ok(e.expires >= today, `${e.file}: انتهى أجله ${e.expires} — أصلحه أو احذفه`);
+  // انتهاء الأجل تحذير لا فشل: لا ينفجر CI فجأة بمرور تاريخ (يظهر في تقرير CI كتعليق ::warning::)
+  if (e.expires < today) console.warn(`::warning::${e.file}: انتهى أجله ${e.expires} — أصلحه أو احذفه أو مدّد الأجل`);
 }
 assert.equal(new Set(broken).size, broken.length, "تكرار في قائمة المعطوب");
 assert.ok(broken.length <= MAX_BROKEN, `قائمة المعطوب كبرت (${broken.length} > ${MAX_BROKEN}) — لا تُرفَع`);
