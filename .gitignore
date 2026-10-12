@@ -118,3 +118,10 @@ graphify-out/
 .graphify-venv-312/
 CLAUDE.local.md
 design-audit/*/full/
+
+# مخرجات بناء Swift/Xcode — لا تُضاف أبدًا
+.build/
+**/.build/
+*.xcresult
+DerivedData/
+**/DerivedData/
