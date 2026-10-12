@@ -22,3 +22,6 @@
 - `quran.people`: 104 علمًا (`status=published` كلها) من `Data/quran/people.json` عبر `scripts/native/sections/quran-people.mjs`؛ تفاصيل العلم داخل القائمة (تعريف، سبب الذكر، دروس، مواضع). روابط `relatedLinks` لم تُصدَّر (تُربط عند ن4 إن لزم).
 - `quran.search`: بحث حرفي بنص Tanzil المحزوم عبر `MushafSearch` ويفتح المصحف عند صفحة الآية.
 - ن4: يسجّلهما `QuranSection.register` نفسه؛ المُصدِّر يلتقط `quran-people.mjs` تلقائيًا.
+
+## الدفعة 3 — ملفات `Data/quran/` الجديدة
+tajweed.json، surah-stories.json، hifz-paths.json، stats.json، qiraat.json، ahruf.json (مولَّدة من `quran-ts.mjs`). الربط كما قبل: `QuranSection.register` (يسجّل الآن 6 شاشات إضافية + `pendingIDs`).

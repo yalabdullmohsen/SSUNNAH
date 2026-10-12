@@ -85,7 +85,35 @@ public enum QuranSection {
                 QuranSurahList(rows: QuranAdapters.makki(rows) + QuranAdapters.madani(rows), index: idx)
             }.navigationTitle("المكي والمدني")
         }
+        registry.registerView(id: "quran-hub.tajweed") {
+            QuranBundledLoader(name: "tajweed", isEmpty: { (f: TajweedFile) in f.chapters.isEmpty }) { TajweedListView(file: $0) }.navigationTitle("التجويد")
+        }
+        registry.registerView(id: "quran.surah-stories") {
+            QuranBundledLoader(name: "surah-stories", isEmpty: { (s: [SurahStory]) in s.isEmpty }) { SurahStoriesListView(stories: $0) }.navigationTitle("قصص السور")
+        }
+        registry.registerView(id: "hifz-path") {
+            QuranBundledLoader(name: "hifz-paths", isEmpty: { (p: [HifzPath]) in p.isEmpty }) { HifzPathsListView(paths: $0) }.navigationTitle("مسار الحفظ")
+        }
+        registry.registerView(id: "quran-hub.numbers") {
+            QuranBundledLoader(name: "stats", isEmpty: { (s: [QuranStat]) in s.isEmpty }) { QuranStatsView(stats: $0) }.navigationTitle("أرقام القرآن")
+        }
+        registry.registerView(id: "quran-hub.qiraat") {
+            QuranBundledLoader(name: "qiraat", isEmpty: { (f: QiraatFile) in f.sections.isEmpty && f.ashara.isEmpty }) { QiraatView(file: $0) }.navigationTitle("القراءات")
+        }
+        registry.registerView(id: "quran-hub.seven-ahruf") {
+            QuranBundledLoader(name: "ahruf", isEmpty: { (a: [AhrufSection]) in a.isEmpty }) { AhrufListView(sections: $0) }.navigationTitle("الأحرف السبعة")
+        }
+        // مسارات بلا مصدر موثّق/حالة اعتماد (متشابهات مراجع فقط، حالة مستخدم، صوت، علوم/مصطلحات غير مصدَّرة): «قيد التوثيق» بدل شاشة «تعرّف إلى الإسلام»
+        for id in pendingIDs {
+            registry.registerView(id: id) { EmptyStateView(title: pendingTitle) }
+        }
     }
+
+    static let pendingIDs = [
+        "mutashabihat", "memorization", "quran-memorization", "quran.hifz-loop", "quran.memorization-plans", "hifz-path.my",
+        "quran.offline-player", "quran-hub.tilawa", "quran-hub.terms", "quran-circles", "quran-engine", "quran.worship-hub",
+        "quran-knowledge", "miracles", "ulum-quran",
+    ]
 
     static func surahNames() -> [Int: String] {
         guard let idx = try? MushafRepository(bundle: .main)?.index() else { return [:] }
