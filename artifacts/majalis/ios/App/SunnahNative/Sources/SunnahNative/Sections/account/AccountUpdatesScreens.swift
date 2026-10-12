@@ -31,7 +31,7 @@ struct AccountAutoContent: Decodable, Sendable, Hashable, Identifiable {
         slug = try c.decode(String.self, forKey: .slug)
         contentType = try c.decodeIfPresent(String.self, forKey: .contentType) ?? ""
         category = try c.decodeIfPresent(String.self, forKey: .category)
-        summary = try c.decodeIfPresent(String.self, forKey: .summary)
+        summary = try c.decodeIfPresent(String.self, forKey: .summary) ?? c.decodeIfPresent(String.self, forKey: .content)
         content = try c.decodeIfPresent(String.self, forKey: .content)
         sourceName = try c.decodeIfPresent(String.self, forKey: .sourceName)
         originalURL = try c.decodeIfPresent(String.self, forKey: .originalURL)
@@ -61,7 +61,7 @@ struct AccountAutoContentResponse: Decodable, Sendable {
     var first: AccountAutoContent? { item ?? items.first }
 }
 
-/// صف platform_updates المعتمد.
+/// تحديث منصة: صف platform_updates المعتمد، أو عنصر /api/updates ({id,title,content}).
 struct AccountPlatformUpdate: Decodable, Sendable, Hashable {
     let id: String
     let title: String
@@ -71,7 +71,7 @@ struct AccountPlatformUpdate: Decodable, Sendable, Hashable {
     let publishedAt: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, title, summary
+        case id, title, summary, content
         case updateType = "update_type", sourceURL = "source_url", publishedAt = "published_at"
     }
 
@@ -79,7 +79,7 @@ struct AccountPlatformUpdate: Decodable, Sendable, Hashable {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         id = try c.decode(AccountAnyID.self, forKey: .id).value
         title = try c.decode(String.self, forKey: .title)
-        summary = try c.decodeIfPresent(String.self, forKey: .summary)
+        summary = try c.decodeIfPresent(String.self, forKey: .summary) ?? c.decodeIfPresent(String.self, forKey: .content)
         updateType = try c.decodeIfPresent(String.self, forKey: .updateType) ?? "خبر علمي"
         sourceURL = try c.decodeIfPresent(String.self, forKey: .sourceURL)
         publishedAt = try c.decodeIfPresent(String.self, forKey: .publishedAt)

@@ -13,7 +13,7 @@ enum RemoteSeeds {
             guard let slug = param("slug", in: query) else { return list }
             return detail(slug: slug, in: list)
         }
-        if route == "/rest/v1/platform_updates" { return file("platform-updates", "Data/seed", bundle) }
+        if route == "/api/updates" { return file("platform-updates", "Data/seed", bundle) }
         if route.hasPrefix("/data/"), route.hasSuffix(".json") {
             let comps = route.dropFirst("/data/".count).dropLast(".json".count).split(separator: "/")
             guard let name = comps.last else { return nil }
