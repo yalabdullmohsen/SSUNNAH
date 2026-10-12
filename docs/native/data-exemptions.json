@@ -1,6 +1,9 @@
 {
   "_note": "مصدر واحد لاستثناءات native-data-check (يشير إليه DATA_CONTRACT.md). قرار المالك 2026-10-12.",
   "computedInApp": ["fiqh/worship", "fiqh/mawarith-calculator", "fiqh/prayer-times"],
+  "redirects": {
+    "/widget-center": { "to": "/settings", "reason": "غير منطبق على iOS: لا ويدجت في الإصدار الأول (ويدجت بعد الإطلاق)؛ يُعدّ مبنيًا بإحالة" }
+  },
   "intentionallyEmpty": {
     "learn/competitions": "فارغ مقصود: المنشور 0، والتطبيق يعرض «لا توجد مسابقات حالياً»",
     "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة"

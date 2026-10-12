@@ -3,7 +3,6 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.platform) private var platform
     @State private var email: String?
-    @State private var laState = ""
 
     var body: some View {
         List {
@@ -17,17 +16,6 @@ struct SettingsView: View {
                     Text("لم تسجّل الدخول").foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }
-            if platform.liveActivity.isSupported {
-                Section("النشاط الحي للصلاة") {
-                    Button("تحديث النشاط الحي الآن") {
-                        Task { laState = await platform.liveActivity.sync() ? "تم التحديث" : "غير مفعّل أو لا يوجد موعد" }
-                    }
-                    Button("إيقاف النشاط الحي") {
-                        Task { laState = await platform.liveActivity.end() ? "تم الإيقاف" : "لا نشاط جارٍ" }
-                    }
-                    if !laState.isEmpty { Text(laState).font(Sunnah.Typography.secondary) }
-                }
-            }
             Section("الخصوصية") {
                 Text("تُعالج التلاوة في التسميع على جهازك فقط. لحذف حسابك وبياناتك افتح «حذف الحساب» من القائمة.")
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
@@ -37,25 +25,6 @@ struct SettingsView: View {
         .background(Sunnah.Colors.bg)
         .navigationTitle("الإعدادات")
         .onAppear { email = platform.authService.currentEmail }
-    }
-}
-
-struct WidgetCenterView: View {
-    @Environment(\.platform) private var platform
-    var body: some View {
-        List {
-            Section("الويدجت") {
-                Text("أضف ويدجت سُنّة من الشاشة الرئيسية: اضغط مطولًا على الشاشة ثم «+» ثم ابحث عن «سُنّة».")
-                Text("تتحدّث الويدجت من بيانات التطبيق المشتركة تلقائيًا.").font(Sunnah.Typography.secondary)
-                    .foregroundStyle(Sunnah.Colors.textSecondary)
-            }
-            Section("النشاط الحي") {
-                Text(platform.liveActivity.isSupported ? "مدعوم على هذا الجهاز؛ يظهر موعد الصلاة القادمة على شاشة القفل." : "غير مدعوم على هذا الجهاز.")
-            }
-        }
-        .scrollContentBackground(.hidden)
-        .background(Sunnah.Colors.bg)
-        .navigationTitle("مركز الويدجت")
     }
 }
 
@@ -113,7 +82,6 @@ enum SettingsScreens {
     @MainActor
     static func register(in registry: TemplateRegistry) {
         registry.registerView(id: "settings") { SettingsView() }
-        registry.registerView(id: "widget-center") { WidgetCenterView() }
         registry.registerView(id: "vault") { VaultView() }
         registry.registerView(id: "auth.update-password") { UpdatePasswordView() }
         registry.registerView(id: "auth.callback") { ContentPendingView(message: "تُعالَج روابط الدخول تلقائيًا عند فتحها من البريد").navigationTitle("تأكيد الحساب") }
