@@ -12,7 +12,7 @@ struct LearnKnowledgeGraphScreen: View {
                         Section(LearnKnowledgeGraph.kindLabel(group.kind)) {
                             ForEach(group.nodes) { node in
                                 NavigationLink { LearnGraphNodeView(graph: graph, node: node) } label: {
-                                    SunnahListRow(title: node.titleAr)
+                                    SunnahListRow(title: node.titleAr, showsChevron: false)
                                 }
                             }
                         }
@@ -32,7 +32,7 @@ struct LearnGraphNodeView: View {
         let relations = graph.relations(of: node)
         LearnList(items: relations, emptyTitle: "لا علاقات مسجّلة") { r in
             NavigationLink { LearnGraphNodeView(graph: graph, node: r.node) } label: {
-                SunnahListRow(title: r.node.titleAr, subtitle: r.label)
+                SunnahListRow(title: r.node.titleAr, subtitle: r.label, showsChevron: false)
             }
         }
         .navigationTitle(node.titleAr)
@@ -50,7 +50,7 @@ struct LearnKnowledgeSectionScreen: View {
         LearnLoadHost(load: { try await LearnSources.loadKnowledge(section: section, with: $0) }) { (items: [LearnKnowledgeItem]) in
             LearnList(items: items, emptyTitle: "لا محتوى معتمد في هذا القسم بعد") { item in
                 NavigationLink { LearnKnowledgeItemView(item: item) } label: {
-                    SunnahListRow(title: item.title, subtitle: item.summary)
+                    SunnahListRow(title: item.title, subtitle: item.summary, showsChevron: false)
                 }
             }
         }
@@ -110,12 +110,12 @@ struct LearnDurusScreen: View {
                                 if let b = lesson.body { Text(b).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                             }
                         } label: {
-                            SunnahListRow(title: lesson.title, subtitle: lesson.summary)
+                            SunnahListRow(title: lesson.title, subtitle: lesson.summary, showsChevron: false)
                         }
                     }
                     .navigationTitle(section.title)
                 } label: {
-                    SunnahListRow(title: section.title, subtitle: learnLine(section.num, "\(section.lessons.count) درسًا"))
+                    SunnahListRow(title: section.title, subtitle: learnLine(section.num, "\(section.lessons.count) درسًا"), showsChevron: false)
                 }
             }
         }

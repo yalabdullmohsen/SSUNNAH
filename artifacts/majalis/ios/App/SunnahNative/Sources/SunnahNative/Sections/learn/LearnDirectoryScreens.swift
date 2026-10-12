@@ -168,7 +168,7 @@ struct LearnInstitutionsScreen: View {
                             LearnExternalLink(title: "الموقع الرسمي", urlString: inst.website)
                         }
                     } label: {
-                        SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city))
+                        SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city), showsChevron: false)
                     }
                 }
             }
