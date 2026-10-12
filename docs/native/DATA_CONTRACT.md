@@ -7,6 +7,7 @@
 ## الفهرس
 العقد مقسّم إلى ملفات صغيرة لكل قسم في `docs/native/contract/` (تعديل قسمك في ملفه فقط؛ لا تكتب في هذا الفهرس إلا عند إضافة ملف). **أقسام التصدير (`scripts/native/sections/*.mjs`):** كل قسم ملف مستقل يُحمَّل تلقائيًا قبل كتابة المنافيست (`export-ios-data.mjs` يشغَّل عبر `node --import tsx`). الإخراج في `ios-native/Data/<قسم>/<اسم>.json` بالأسماء التي يتوقعها كود SunnahNative.
 
+- [6) أقسام التصدير](contract/sections.md)
 - [1) مُحزَّم داخل التطبيق](contract/bundled.md)
 - [2) يُجلب من الشبكة](contract/network.md)
 - [3) واجهات api/](contract/api.md)
