@@ -23,5 +23,8 @@
  "/tarikh-islami/:id": "/tarikh-islami/seerah-taif",
  "/academic-research/:id": "/academic-research/pub-001",
  "/fiqh/books/:bookId/chapters/:chapterId": "/fiqh/books/taharah/chapters/miyah",
- "/c/:slug": "/c/sample"
+ "/c/:slug": "/c/sample",
+ "/hifz-path/c/:category": "/hifz-path/c/quran",
+ "/hifz-path/p/:slug": "/hifz-path/p/juz-amma",
+ "/hifz-path/p/:slug/u/:unitId": "/hifz-path/p/juz-amma/u/s114"
 }
