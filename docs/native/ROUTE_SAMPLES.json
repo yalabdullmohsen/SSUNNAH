@@ -22,5 +22,6 @@
  "/lessons/:id": "/lessons/kw-othman-tafsir-nahl-0",
  "/tarikh-islami/:id": "/tarikh-islami/seerah-taif",
  "/academic-research/:id": "/academic-research/pub-001",
- "/fiqh/books/:bookId/chapters/:chapterId": "/fiqh/books/taharah/chapters/miyah"
+ "/fiqh/books/:bookId/chapters/:chapterId": "/fiqh/books/taharah/chapters/miyah",
+ "/c/:slug": "/c/sample"
 }
