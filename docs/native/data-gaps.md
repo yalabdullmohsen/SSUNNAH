@@ -14,4 +14,6 @@
 - `hadith/wasaya-nabawiyya.json` (الوصايا النبوية)
 - `sirah/prophets-lineage.json` (شجرة نسب الأنبياء؛ المصدر في رأس `prophets-lineage.ts`: البداية والنهاية، الكامل)
 - `fiqh/embedded/{tahara,sawm,hajj,janaza,salah-guide,mawarith}.json` و`aqidah/embedded/tawhid.json`: ثوابت الصفحات حرفيًا (`sections`)؛ الوسمان في رأس كل ملف.
+- `adhkar/{duas-quran,sunan-yawmiyya,adhan-help}.json` و`hadith/{hadith-science,sunnah-studies}.json` و`sirah/dalail-nubuwwah.json`: ثوابت الموقع حرفيًا؛ الوسمان في رأس الملف.
+- `hadith/arbaeen-love-of-allah.json`: لم يُصدَّر؛ صفوفه المنشورة في جدول Supabase `arbaeen_love_of_allah` (RLS: published فقط) لا في الكود، والمُصدِّر بلا وصول لقاعدة البيانات. يحتاج قراءة للمنشور فعليًا بإذن المالك؛ لا يُؤخذ من ملف الـmigration (قد يخالف الحالة الحيّة). ملاحظة: الجدول فيه عمود `review_status` خاص به فيُسمّى الوسم هناك `review_flag`.
 - `adhkar/daily-wird.json`: لم يُصدَّر؛ الصفحة متتبّع تقدّم بلا قائمة محتوى (ثابتات رسائل المداومة فقط).
