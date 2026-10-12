@@ -199,19 +199,21 @@ public enum HadithScreens {
             ContentPendingView(message: "لا يحزم التطبيق نصوص الأحاديث الموضوعة؛ المتاح الصحيح الموثَّق فقط").navigationTitle("الأحاديث الموضوعة")
         }
         // بياناتها ليست في عقد البيانات بعد (صفحات ويب مضمّنة): تنتظر تصديرًا من ن1.
-        for id in ["arbaeen-nawawi", "dalail-nubuwwah", "hadith-science", "hadith.arbaeen-love-of-allah",
-                   "hadith.books-and-rulings", "sunnah-studies", "wasaya-nabawiyya"] {
+        registry.registerView(id: "arbaeen-nawawi") { ReaderDataScreens.arbaeenList() }
+        registry.registerView(id: "wasaya-nabawiyya") { ReaderDataScreens.wasayaScreen() }
+        for id in ["dalail-nubuwwah", "hadith-science", "hadith.arbaeen-love-of-allah",
+                   "hadith.books-and-rulings", "sunnah-studies"] {
             registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق") }
         }
     }
 
-    /// مسارات بمعاملات لا تُسجَّل بمعرّف: `/arbaeen-nawawi/:id` (بيانات الأربعين غير مصدَّرة بعد) و`/c/:slug` (إحالة عامة تُجلب من الخادم).
+    /// مسارات بمعاملات لا تُسجَّل بمعرّف: `/arbaeen-nawawi/:id` (من hadith/arbaeen-nawawi) و`/c/:slug` (إحالة عامة تُجلب من الخادم).
     public static func resolve(path base: String) -> AnyView? {
         let c = base.split(separator: "/").map(String.init)
         guard c.count == 2 else { return nil }
         switch c[0] {
         case "arbaeen-nawawi":
-            return AnyView(ContentPendingView(message: "المحتوى قيد التوثيق").navigationTitle("الأربعون النووية"))
+            return AnyView(ReaderDataScreens.arbaeenDetail(id: c[1].removingPercentEncoding ?? c[1]))
         case "c":
             return AnyView(EmptyStateView(title: "تُعرض هذه الإحالة عبر رابطها على الإنترنت").navigationTitle("إحالة"))
         default:

@@ -110,7 +110,7 @@ final class AccountContentTests: XCTestCase {
     @MainActor func testAllScreensRegister() {
         let registry = TemplateRegistry()
         AccountSection.register(in: registry)
-        XCTAssertEqual(AccountSection.ids.count, 18)
+        XCTAssertEqual(AccountSection.ids.count, 19)
         for id in AccountSection.ids {
             XCTAssertNotNil(registry.view(for: id), id)
         }
