@@ -114,7 +114,7 @@ final class LibraryAdaptersTests: XCTestCase {
         for p in ["/mind-map/aqeeda", "/arabic-language/nahw", "/mawsuaat/x", "/islamic-glossary/1"] {
             XCTAssertNil(LibrarySection.resolve(path: p), p)
         }
-        XCTAssertNil(LibrarySection.resolve(path: "/academic-research/assistant"))
+        XCTAssertNotNil(LibrarySection.resolve(path: "/academic-research/assistant"), "يجب ألا يلتقطه مسار Generated العام")
         XCTAssertNil(LibrarySection.resolve(path: "/search"))
     }
 
