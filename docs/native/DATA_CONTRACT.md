@@ -106,3 +106,6 @@
 - المصدر: بذرة الأذكار الأصلية `src/lib/adhkar-seed.ts` عبر `scripts/native/build-adhkar-verified.mjs`؛ النص والمصدر والدرجة حرفيًا بلا إنشاء ولا مرجع جديد، والدرجة كما هي (حسن تبقى «حسن»). الشكل هو صف `verified_adhkar_items` (§1) مع `metadata.basis`: `sahihayn` (140) · `named_grader` (33: صحيح بمصحِّح مسمّى) · `named_grader_hasan` (15: حسن بمصحِّح مسمّى) · `local_verified_corpus` (2: مطابقة متن كاملة لسجل في hadith-verified بمرجعه في `metadata.local_ref`) · `quran_tanzil` (17).
 - المحجوز (64 ← content-hold): 16 ضعيف + 48 صحيح بلا مصحِّح مسمّى ولا مرجع محلي. المُرجأ (54، لا يُصدَّر ولا يُحجز): حسن بلا مصحِّح مسمّى 53، وصيغة «صلى الله عليه وسلم» 1 (ليست نص حديث؛ صيغة الصلاة الإبراهيمية الثابتة في الصحيحين مصدَّرة أصلًا).
 - `native-export-data.sh` يمرّر الملف تلقائيًا؛ إن اعتمد المالك صفوف Supabase الـ51 دُمجت لاحقًا بنفس الشكل.
+
+## قفل التصدير
+`ios-native/.export.lock/owner` يسجّل pid والمالك والبدء؛ لا يُكسر القفل إلا إن مات pid فعلًا (kill -0) ويُطبع مالكه وعمره عند الانتظار. لإيقاف تصديرك: `bash scripts/native-export-data.sh --abort` (يوقف تصدير هذه النافذة فقط)، ولا `pkill` أبدًا.

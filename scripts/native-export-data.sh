@@ -5,17 +5,29 @@
 # يرفض التصدير: المحجوز في content-hold، demo، الموثّقة بلا شرح/مرجع (والعامة unsourced مقبولة)، الضعيف/الموضوع. أقسام التطبيق (scripts/native/sections) بالقواعد نفسها؛ الشبهات لا تدخل إلا بدليل متحقَّق من Tanzil ومصدر.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-OUT="${1:-$ROOT/ios-native/Data}"
 cd "$ROOT/artifacts/majalis"
 export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=1536}"
 ADH=content/native/adhkar-verified.json  # لقطة الأذكار الموثّقة (تُمرَّر تلقائيًا إن وُجدت؛ لا تُنشأ أذكار)
-# قفل ذري (mkdir): تصدير واحد في الوقت؛ ينتظر حتى 10 دقائق ثم يفشل بلا كتابة. يُحذف عند الخروج دائمًا
+# قفل ذري (mkdir): تصدير واحد في الوقت؛ ينتظر حتى 10 دقائق ثم يفشل بلا كتابة. يُحذف عند الخروج دائمًا.
+# $LOCK/owner: pid + مالك الجلسة + وقت البدء. لا يُكسر قفل إلا إن كان pid المسجَّل ميتًا فعلًا (kill -0)؛ وإلا يُطبع مالكه وعمره.
+# بديل pkill: `bash scripts/native-export-data.sh --abort` يوقف تصديرك أنت فقط (pid من الملف، وبشرط أن يكون المالك هذه النافذة).
 LOCK="$ROOT/ios-native/.export.lock"; mkdir -p "$ROOT/ios-native"
+ME="${NATIVE_WINDOW:-${USER:-?}@$(basename "$ROOT")}"
+own() { sed -n "s/^$1=//p" "$LOCK/owner" 2>/dev/null | head -1; }
+describe() { local st; st=$(own started); echo "pid $(own pid) · مالك $(own owner) · عمره $(( st ? $(date +%s) - st : 0 ))ث"; }
+if [ "${1:-}" = "--abort" ]; then
+  [ -d "$LOCK" ] || { echo "لا قفل تصدير قائم" >&2; exit 0; }
+  [ -f "$LOCK/owner" ] || { echo "رُفض: قفل قديم بلا مالك مسجَّل (pid $(cat "$LOCK/pid" 2>/dev/null || echo ?)) — لا يُوقَف من هنا" >&2; exit 1; }
+  if [ "$(own owner)" != "$ME" ]; then echo "رُفض: القفل يخصّ غيرك ($(describe)) — لا يُوقَف من هنا" >&2; exit 1; fi
+  P=$(own pid); kill -0 "$P" 2>/dev/null && kill "$P" && echo "أُوقف تصديرك (pid $P)"; exit 0
+fi
+OUT="${1:-$ROOT/ios-native/Data}"
 for i in $(seq 1 120); do
-  if mkdir "$LOCK" 2>/dev/null; then echo $$ > "$LOCK/pid"; break; fi
-  OWNER=$(cat "$LOCK/pid" 2>/dev/null || true)
-  if [ -n "$OWNER" ] && ! kill -0 "$OWNER" 2>/dev/null; then rm -rf "$LOCK"; continue; fi  # قفل يتيم
-  [ "$i" -eq 120 ] && { echo "رُفض: تصدير آخر يعمل منذ أكثر من 10 دقائق (قفل $LOCK، pid ${OWNER:-?}) — لم يُكتب شيء" >&2; exit 1; }
+  if mkdir "$LOCK" 2>/dev/null; then printf 'pid=%s\nowner=%s\nstarted=%s\n' "$$" "$ME" "$(date +%s)" > "$LOCK/owner"; echo $$ > "$LOCK/pid"; break; fi
+  OWNER=$(own pid); [ -n "$OWNER" ] || OWNER=$(cat "$LOCK/pid" 2>/dev/null || true)
+  if [ -n "$OWNER" ] && ! kill -0 "$OWNER" 2>/dev/null; then echo "قفل يتيم (pid $OWNER ميت) — يُكسر" >&2; rm -rf "$LOCK"; continue; fi
+  [ "$i" -eq 1 ] && echo "ينتظر قفل غيره: $(describe)" >&2
+  [ "$i" -eq 120 ] && { echo "رُفض: تصدير آخر يعمل منذ أكثر من 10 دقائق ($(describe)) — لم يُكتب شيء" >&2; exit 1; }
   sleep 5
 done
 # حارس: يُصدَّر إلى مجلد مؤقت أولًا؛ فشل التصدير أو نقص عدد الملفات لا يمسّ $OUT
