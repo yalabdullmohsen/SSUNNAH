@@ -38,13 +38,20 @@ enum LibraryRouteScope {
         "/widget-center", "/worship", "/zakat"
     ]
 
-    private static let patterns: [[String]] = kept.map(segments)
+    /// مؤجَّل بقرار المالك (بلا مصدر أو محجوب): لا يظهر في القوائم والمراكز والبحث في نسخة الإصدار.
+    /// الأسباب في docs/native/DEFERRED.md؛ لرفع مسار احذفه من هنا بعد تصدير بياناته (n1).
+    static let deferred: [String] = [
+        "/islamic-sects", "/islamic-sects/:id", "/fikr-waqia", "/competitions", "/competitions/:id",
+        "/durus-imaniyya", "/durus-mutanawwia", "/fawaid", "/annual-courses/:id", "/institutions"
+    ]
+
+    private static let patterns: [[String]] = kept.filter { !deferred.contains($0) }.map(segments)
 
     private static func segments(_ path: String) -> [String] {
         path.split(separator: "/").map(String.init)
     }
 
-    /// يطابق المسار (بلا استعلام أو مرساة) مسارًا مبقى؛ المقطع `:param` يقبل أي قيمة.
+    /// يطابق المسار (بلا استعلام أو مرساة) مسارًا مبقى غير مؤجَّل؛ المقطع `:param` يقبل أي قيمة.
     static func contains(_ path: String) -> Bool {
         let cut = path.firstIndex { $0 == "?" || $0 == "#" } ?? path.endIndex
         let s = segments(String(path[..<cut]))

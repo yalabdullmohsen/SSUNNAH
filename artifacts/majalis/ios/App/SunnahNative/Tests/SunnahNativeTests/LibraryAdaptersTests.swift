@@ -127,6 +127,16 @@ final class LibraryAdaptersTests: XCTestCase {
         XCTAssertFalse(LibraryRouteScope.contains("/library"))
     }
 
+    func testDeferredRoutesAreHiddenFromNavigationAndSearch() {
+        for p in ["/islamic-sects", "/islamic-sects/x", "/fikr-waqia", "/competitions", "/competitions/1", "/durus-imaniyya",
+                  "/durus-mutanawwia", "/fawaid", "/annual-courses/7", "/institutions"] {
+            XCTAssertFalse(LibraryRouteScope.contains(p), p)
+        }
+        XCTAssertTrue(LibraryRouteScope.deferred.allSatisfy { LibraryRouteScope.kept.contains($0) })
+        XCTAssertFalse(LibraryLinks.directory.map(\.route).contains("/institutions"))
+        XCTAssertTrue(LibraryRouteScope.contains("/universities"))
+    }
+
     func testNavigationAndSearchDropRoutesOutsideScope() throws {
         let nav: LibraryNavigation = try decode(navJSON)
         let kept: (String) -> Bool = { $0 == "/q1" || $0 == "/terms" }
