@@ -12,6 +12,9 @@ const mapPath = resolve(arg("--map", join(root, "../../docs/native/ROUTE_TEMPLAT
 const owner = arg("--owner", "ن2");
 const outDir = resolve(arg("--out", join(pkg, "Sources/SunnahNative/Generated")));
 const check = process.argv.includes("--check");
+/* شاشات يحلّ محلها تسجيل أصلي بالمعرّف نفسه (registerView): لا تُولَّد، فلا مراجع bundled ميتة. المصدر: overriddenGenerated في docs/native/data-exemptions.json (قيمة «<id> ← ...») */
+const exFile = join(root, "../../docs/native/data-exemptions.json");
+const nativeOverridden = new Set(existsSync(exFile) ? Object.entries(JSON.parse(readFileSync(exFile, "utf8")).overriddenGenerated ?? {}).filter(([k]) => k[0] !== "_").map(([, v]) => String(v).split(" ←")[0]) : []);
 
 const NEEDS_ID = new Set(["detail", "article", "audio"]);
 const TEMPLATES = new Set(["list", "detail", "article", "grid", "quiz", "search", "audio", "sections"]);
@@ -93,6 +96,7 @@ for (const sec of map.sections) {
     const sname = pascal(sec.id) + pascal(r.segs.join("-")) + "Screen";
     if (seenIds.has(id) || seenNames.has(sname)) fail(`تعارض اسم/معرّف شاشة: ${r.path}`);
     seenIds.add(id); seenNames.add(sname);
+    if (sec.id === "sirah" && nativeOverridden.has(id)) continue;
     structs.push(`struct ${sname}: ScreenTemplate {\n    static let id = ${q(id)}\n    static let title = ${q(sec.title)}\n    static let source = ContentSource.bundled(name: ${q(sourceName(r))})\n    typealias Content = ${CONTENT[r.template]}\n    let content: Content\n    init(content: Content) { self.content = content }\n    var body: some View { ${templateExpr(r, "/" + r.segs.join("/"))} }\n}\n`);
     regs.push(`        registry.register(${sname}.self)`);
   }
