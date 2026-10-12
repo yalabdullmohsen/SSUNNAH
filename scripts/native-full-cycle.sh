@@ -27,5 +27,5 @@ if [ -n "$LASTM" ]; then AGE=$(( ( $(date +%s) - $(date -j -u -f %Y-%m-%dT%H:%M:
   [ "$AGE" -ge 60 ] && printf '\n> تنبيه: لا حركة منذ %s دقيقة (آخر دمج %s)\n\n' "$AGE" "$LASTM" >> docs/native/PROGRESS.md; fi
 printf '| %s | %s | %s | دورة كاملة | %s | 0 |\n' "full-$(date +%Y%m%d-%H%M)" "$(date +%F)" "$PCT" "$DELTA" >> docs/native/PROGRESS.md
 git add docs/native/FEATURE_PARITY.md docs/native/PROGRESS.md docs/native/BACKLOG.md
-git commit -q -m "ن4 (native-full-cycle): تأشير $(sort -u "$TICK" | wc -l | tr -d ' ') بند — $PCT" && git push -q origin HEAD:native-app >> "$LOG" 2>&1 && log "دُفع التقدم: $PCT"
+git commit -q -m "ن4 (native-full-cycle): تأشير $(sort -u "$TICK" | wc -l | tr -d ' ') بند — $PCT" && { git pull -q --rebase origin native-app >> "$LOG" 2>&1; git push -q origin HEAD:native-app >> "$LOG" 2>&1; } && log "دُفع التقدم: $PCT"
 log "انتهت الدورة الكاملة: $PCT"
