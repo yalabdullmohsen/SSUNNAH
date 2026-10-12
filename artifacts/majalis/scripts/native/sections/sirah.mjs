@@ -47,13 +47,13 @@ export default async function exportSirah({ json, held, reject, counts, appRoot 
     out("prophets-knowledge", rows);
   }
 
-  /* القصص: معتمدة ومراجَعة (reviewed) ولها مصادر */
+  /* القصص: كما يعرضها الموقع (is_approved) ولها مصادر — قرار المالك: بلا شرط editorial_review_status (الموقع لا يعرضه) */
   {
     const dir = `${appRoot}/public/data/stories`;
     const rows = [];
     for (const f of readDir(dir)) {
       for (const s of JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8"))) {
-        if (s.is_approved !== true || s.editorial_review_status !== "reviewed" || !hasSources(s.sources)) { reject(`${S}-stories`, "غير معتمد/بلا مصادر"); continue; }
+        if (s.is_approved !== true || !hasSources(s.sources)) { reject(`${S}-stories`, "غير معتمد/بلا مصادر"); continue; }
         if (keep("stories")(s)) rows.push(s);
       }
     }

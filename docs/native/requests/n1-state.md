@@ -1,0 +1,20 @@
+# حالة ن1 (2026-10-12)
+
+## صُدِّر (مدموج)
+- learn: institutions 44 (قيد المراجعة بلا إخفاء)، durus-imaniyya 205، durus-mutanawwia 372، sirah/fikr-waqia 105، fawaid 1128، annual-courses 63 (#3010)
+- quran/ulum-quran 79 (#3012)
+- quran-tracks: tilawa-reciters وcircles (#3031)
+- فحص اقتباسات القرآن (#3035): توثيق فقط في docs/native/QURAN_QUOTE_FIXES.md؛ لا تعديل لنص شرعي، والتطبيق يطابق الموقع حرفيًا
+- fiqh: sujood-sahw 8، arkan 5، arkan-iman 6، fadail-aamal 108، tawba 51، fiqh-qawaid 58 (#3017)
+
+## فارغ مقصود (مسجَّل في DATA_CONTRACT)
+- worship، mawarith-calculator، prayer-times: محسوبة داخل التطبيق
+- competitions: لا مسابقات حاليًا
+- islamic-sects: 35 سجلًا NEEDS_* غير منشورة في الموقع
+
+## خارج نطاقي
+- library (مُصدَّرة من ن4 على main) والأقسام الصغيرة (ن4)، seerah-phases وshamail (ن3)
+- 852 سؤالًا بلا مرجع، و471 قصة بلا مصادر: بانتظار المالك
+
+## المتبقي عندي
+- حساب نسبتي من 212، مراجعة PRs بوسم native-section؛ لا بنود تطبيق أصلي في docs/program/BACKLOG.md
