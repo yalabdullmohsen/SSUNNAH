@@ -8,6 +8,23 @@ IOS_WORKSPACE_DIR = File.join(PLATFORM_ROOT, "artifacts/majalis/ios/App")
 SCHEME = "App"
 OUTPUT_DIR = File.join(PLATFORM_ROOT, "artifacts/majalis/ios/build")
 
+# مفتاح ASC بطريقتين: APP_STORE_CONNECT_API_KEY_PATH (ملف .p8) أو APP_STORE_CONNECT_API_KEY_KEY (Base64).
+# عند Base64 يُفكّ إلى ملف مؤقت (0600) في مجلد النظام المؤقت خارج المستودع ويُحذف عند انتهاء العملية.
+def asc_key_file
+  path = ENV["APP_STORE_CONNECT_API_KEY_PATH"].to_s.strip
+  return File.expand_path(path) unless path.empty?
+  b64 = ENV["APP_STORE_CONNECT_API_KEY_KEY"].to_s.strip
+  UI.user_error!("اضبط APP_STORE_CONNECT_API_KEY_PATH (ملف .p8) أو APP_STORE_CONNECT_API_KEY_KEY (Base64)") if b64.empty?
+  require "base64"
+  require "tmpdir"
+  dir = Dir.mktmpdir("asc-key-")
+  file = File.join(dir, "AuthKey.p8")
+  File.write(file, Base64.decode64(b64))
+  File.chmod(0o600, file)
+  at_exit { FileUtils.rm_rf(dir) }
+  file
+end
+
 platform :ios do
   desc "Build, sign, and upload to TestFlight (ASC API Key JWT)"
   lane :beta do
@@ -134,7 +151,7 @@ platform :ios do
 
   desc "SwiftUI الأصلي (SunnahApp): بناء + توقيع + TestFlight داخلي — محليًا فقط (1.2.0 / بناء ≥100)"
   lane :native_beta do
-    key_path = File.expand_path(ENV.fetch("APP_STORE_CONNECT_API_KEY_PATH")) # .p8 خارج المستودع
+    key_path = asc_key_file # PATH أو Base64 (يُحذف المؤقت عند الخروج)
     api_key = app_store_connect_api_key(
       key_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_ID"),
       issuer_id: ENV.fetch("APP_STORE_CONNECT_ISSUER_ID"),
@@ -202,7 +219,7 @@ platform :ios do
       UI.important("DRY-RUN: لم يُرسل شيء إلى App Store Connect. للتنفيذ الفعلي: fastlane ios native_release submit:true [build:N]")
       next
     end
-    key_path = File.expand_path(ENV.fetch("APP_STORE_CONNECT_API_KEY_PATH"))
+    key_path = asc_key_file
     api_key = app_store_connect_api_key(
       key_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_ID"),
       issuer_id: ENV.fetch("APP_STORE_CONNECT_ISSUER_ID"),

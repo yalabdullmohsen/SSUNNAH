@@ -30,7 +30,10 @@ for (const l of par) {
   const why = reasons.get(m[1]); const e = bySec.get(sec) || { items: [], own, w: new Set() }; e.items.push(m[1]); if (why) e.w.add(why); bySec.set(sec, e);
 }
 for (const [s, e] of bySec) rows.push({ n: e.items.length, kind: "غير مؤشَّر", what: `${s}: ${e.items.slice(0, 5).join("، ")}${e.items.length > 5 ? "…" : ""}${e.w.size ? ` [${[...e.w].slice(0, 3).join("؛ ")}]` : ""}`, owner: [...e.w].length ? [...new Set([...e.w].map(ownerFor))].join(" / ") : e.own });
+const ph = [...reasons].filter(([, w]) => /قيد الإعداد|PLACEHOLDER/.test(w || "")).map(([r]) => r);
+if (ph.length) rows.push({ n: ph.length, kind: "placeholder «قيد الإعداد»", what: `يجب أن تكون صفرًا (يفشل native-release-check): ${ph.join("، ")}`, owner: "ن3 (الشاشة)" });
 rows.sort((a, b) => b.n - a.n);
+rows.push({ n: 0, kind: "بعد الإطلاق", what: "ويدجت + Live Activity (يحتاج Widget Extension؛ أُخفي مركز الويدجت وقسم النشاط الحي ومفتاح NSSupportsLiveActivities حتى ذلك الحين)", owner: "غير مُسنَد" });
 const head = gate[0] || "";
 let out = `# BACKLOG (مولَّد آليًا — لا يُحرَّر يدويًا)\n\n${head}\n\nمرتّب بالأكبر أثرًا أولًا (العدد = عدد الملفات/الشاشات المتأثرة).\n\n| # | الأثر | النوع | البند | المالك المقترح | النافذة المالكة (من PR/فرع مفتوح) |\n|---|---|---|---|---|---|\n`;
 rows.forEach((r, i) => { out += `| ${i + 1} | ${r.n} | ${r.kind} | ${r.what.replace(/\|/g, "/")} | ${r.owner} | ${windowFor(r.what, r.owner)} |\n`; });

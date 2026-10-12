@@ -7,7 +7,7 @@
 - Mac عليه Xcode وfastlane (`bundle install` أو `brew install fastlane`).
 - **مفتاح ASC: استعمل المفتاح السابق نفسه** إن كان عندك (هو الذي يستعمله lane `beta` القديم)؛ لا حاجة لإنشاء جديد. أسماء المتغيرات (من `Fastfile` و`fastlane/README.md` و`docs/guides/AUTOMATION_SETUP.md`):
   - `APP_STORE_CONNECT_API_KEY_ID` و`APP_STORE_CONNECT_ISSUER_ID`
-  - `.p8`: إمّا `APP_STORE_CONNECT_API_KEY_PATH` (مسار ملف **خارج المستودع**) أو `APP_STORE_CONNECT_API_KEY_KEY` (Base64) — لكن `native_beta` و`native_release` يقرآن **المسار** فقط، فاضبط `APP_STORE_CONNECT_API_KEY_PATH`.
+  - `.p8`: إمّا `APP_STORE_CONNECT_API_KEY_PATH` (مسار ملف **خارج المستودع**) أو `APP_STORE_CONNECT_API_KEY_KEY` (Base64) — و`native_beta` و`native_release` يدعمان الطريقتين: إن وُجد `..._PATH` استُعمل، وإلا يُفكّ `..._KEY` (Base64) تلقائيًا إلى ملف مؤقت 0600 في مجلد النظام المؤقت (خارج المستودع) ويُحذف عند انتهاء العملية.
   - اختياري: `APPLE_TEAM_ID` (الافتراضي 5D8TX37HTS)، `APP_IDENTIFIER`.
   - ملاحظة: `artifacts/majlisilm-flutter/release.sh` يستعمل أسماء أخرى (`ASC_KEY_ID`, `ASC_ISSUER_ID`, `ASC_KEY_PATH`) لتطبيق Flutter القديم، لا لـ fastlane.
   - لم أستطع التحقق أن المفتاح نفسه ما زال موجودًا/صالحًا عندك (الأسرار ليست في المستودع). إن فُقد: App Store Connect ← **Users and Access** ← **Integrations** ← **App Store Connect API** ← **Generate API Key** بدور **App Manager**.

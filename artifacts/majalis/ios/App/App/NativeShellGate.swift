@@ -129,3 +129,23 @@ struct NativeShellRoot: View {
         }
     }
 }
+
+/// شاشة «تحتاج اتصالًا/حسابًا»: تظهر أصلية أولًا، ثم يفتح الزر النموذج الحي بالمسار نفسه.
+private struct ConnectionGate: View {
+    let path: String
+    let router: AppRouter
+    let title: String
+    let message: String
+    let action: String
+    @State private var live = false
+
+    var body: some View {
+        if live {
+            WebScreen(path: path, onPush: { router.open(path: $0) })
+        } else {
+            ConnectionRequiredView(title: title, message: message, actionTitle: action) { live = true }
+                .navigationTitle(title)
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}

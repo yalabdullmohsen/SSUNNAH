@@ -43,3 +43,6 @@ App Store Connect ← التطبيق ← **App Privacy** ← **Edit** (Data Type
 3. لكل نوع: Purpose = **App Functionality** فقط؛ Linked to user = **Yes**؛ Used for tracking = **No**.
 4. **Publish**. رابط سياسة الخصوصية (Privacy Policy URL) إلزامي: استخدم `https://www.ssunnah.com/privacy` (تحقق منها ن1: HTTP 200 وصفحة «سياسة الخصوصية | سُنّة» حقيقية؛ لا تستعمل `/privacy-policy` فهو 404).
 القائمة الأوسع في `docs/store-release/APP_STORE_PRIVACY_ANSWERS_DRAFT.md` مبنية على تطبيق Capacitor (تشمل Phone/Device ID/Analytics)؛ **للأصلي استخدم هذا الملف**، وإن أبقيتم الأوسع فهو آمن (إفصاح زائد) لكنه غير دقيق.
+
+## رابط الخصوصية داخل التطبيق (فحص ن1)
+`AccountLegalScreens`/`AccountPrivacyCenterScreen` يستعملان المسار `/privacy` مع `siteURL = https://www.ssunnah.com` (`RemoteTransport`)؛ Info.plist بلا رابط خصوصية؛ لا `/privacy-policy` في كود التطبيق (يظهر فقط كتحويل إلى `/privacy` في `FEATURE_PARITY.md`). لا إصلاح لازم.

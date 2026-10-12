@@ -14,5 +14,12 @@ if let b = bad.first(where: { all.contains($0) }) { print("ERROR:\(b)"); exit(0)
 if all.contains(route) { print("PLACEHOLDER"); exit(0) }
 // تبويبات فقط: بعد حذف التبويبات والرأس لا يبقى نص
 let chrome = Set(["الرئيسية", "القرآن", "الدروس", "الصلاة", "الأقسام", "9:41"])
-if lines.filter({ !chrome.contains($0) && $0.count > 1 }).count < 2 { print("EMPTY"); exit(0) }
+if lines.filter({ !chrome.contains($0) && $0.count > 1 }).count < 2 {
+    // بياض/سواد كلي (لون واحد يغطي ≥ 90% بعد تقريب القنوات) = شاشة لم تُرسم؛ غير ذلك EMPTY (نص قليل)
+    let w = 60, h = 130, ctx = CGContext(data: nil, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+    ctx.draw(img, in: CGRect(x: 0, y: 0, width: w, height: h))
+    let px = ctx.data!.bindMemory(to: UInt8.self, capacity: w * h * 4); var hist = [UInt32: Int]()
+    for i in 0..<(w * h) { hist[(UInt32(px[i*4] >> 4) << 8) | (UInt32(px[i*4+1] >> 4) << 4) | UInt32(px[i*4+2] >> 4), default: 0] += 1 }
+    print((hist.values.max() ?? 0) * 10 >= w * h * 9 ? "WHITE_SCREEN" : "EMPTY"); exit(0)
+}
 print("OK")

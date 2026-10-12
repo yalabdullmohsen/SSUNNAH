@@ -54,6 +54,8 @@ struct SunnahApp: App {
     static func resolve(path raw: String) -> AnyView? {
         let path = Route.normalize(raw)
         let base = path.split(whereSeparator: { $0 == "?" || $0 == "#" }).first.map(String.init) ?? path
+        // /widget-center: لا ويدجت في الإصدار الأول (docs/native/data-exemptions.json → redirects)؛ إحالة صريحة إلى الإعدادات لا شاشة نائبة.
+        if base == "/widget-center" { return resolve(path: "/settings") }
         let comps = base.split(separator: "/").map(String.init)
         if let v = SirahSection.resolve(path: base) { return v }
         if let v = AqidahSection.resolve(path: base) { return v }
