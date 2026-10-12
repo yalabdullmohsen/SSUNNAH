@@ -2,7 +2,7 @@
 # دورة كاملة بلا PRs: تصدير كامل + بناء + لقطات كل الأقسام + تأشير [x] + دفع PROGRESS إلى native-app. الاستخدام: native-full-cycle.sh
 set -uo pipefail
 TOOLS="$HOME/.ssunnah-tools"; BOARD="$HOME/ssunnah-board"; LOG="$BOARD/native-loop.log"
-WT="$HOME/ssunnah-wt/native-loop"; DD="$HOME/ssunnah-build/DerivedData/mb"; SIM="${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"
+WT="$HOME/ssunnah-wt/native-loop"; DD="/tmp/dd-n4"; SIM="${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 log() { echo "$(date '+%F %T') [full] $*" >> "$LOG"; }
 cd "$WT" || exit 9

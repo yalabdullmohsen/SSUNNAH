@@ -201,7 +201,7 @@ enum SirahAdapters {
 
     static func history(_ rows: [SirahHistoryItem]) -> [ContentItem] {
         rows.filter { verificationLabel[$0.verification] != nil && !$0.sources.isEmpty && !$0.summary.isBlank }
-            .sorted { ($0.timelineOrder ?? .max) < ($1.timelineOrder ?? .max) }
+            .sorted { ($0.timelineOrder ?? .infinity) < ($1.timelineOrder ?? .infinity) }
             .map { h in
                 ContentItem(
                     sirahID: h.id, title: h.title,
