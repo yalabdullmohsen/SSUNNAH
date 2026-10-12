@@ -19,7 +19,7 @@ private struct MinuteFixture: Decodable {
 /// اللقطات من `TZ=UTC node scripts/gen-prayer-parity.mjs`. أي فرق دقيقة واحدة = فشل.
 final class PrayerMinuteParityTests: XCTestCase {
     func testMatchesWebToTheMinute() throws {
-        let url = try XCTUnwrap(Bundle.module.url(forResource: "web-minute-parity", withExtension: "json"))
+        let url = URL(fileURLWithPath: #filePath).deletingLastPathComponent().appendingPathComponent("Resources/web-minute-parity.json")
         let fixtures = try JSONDecoder().decode([MinuteFixture].self, from: Data(contentsOf: url))
         XCTAssertGreaterThanOrEqual(fixtures.count, 10)
         XCTAssertGreaterThanOrEqual(Set(fixtures.map(\.name)).count, 10)
