@@ -1,0 +1,4 @@
+### quran (مسارات القرآن — ملفان في `Data/quran/`)
+- `quran/tilawa-reciters.json` = `[{id,nameAr,order}]` — القرّاء المُحقَّقون كما تعرضهم `/quran-hub/tilawa` (ترتيب `DEFAULT_VERIFIED_RECITER_IDS`)، 13 قارئًا. روابط الصوت من `audio/surah-reciters.json` بالمعرّف نفسه.
+- `quran/circles.json` = حلقات التحفيظ (`QURAN_CIRCLES_SEED`) المعتمدة والنشطة فقط كما يعرضها الموقع: `{id,name,sheikh_name,level,track,mode,meeting_link,location,schedule_days,schedule_time,capacity,enrolled_count,description,cover_image,contact_info,registration_url,website_url,governorate,is_approved,is_active,created_at}`، 27 حلقة. الموقع يفضّل صفوف Supabase `quran_circles` (is_approved&is_active) ويرجع للبذرة عند الفراغ/الخطأ؛ التطبيق يحدّث من الشبكة بالقاعدة نفسها.
+- مركز العبادة (`/quran/worship-hub`): لا ملف خاص — يركّب `quran/surah-*.json` وقائمة القرّاء والمواقيت المحسوبة داخل التطبيق (محمية).

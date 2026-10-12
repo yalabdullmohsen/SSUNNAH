@@ -1,0 +1,6 @@
+### library (11 ملفًا في `Data/library/`)
+- بالشكل الحرفي للمصدر بعد حذف المحجوز: `academic-research` (`{records, categories}`؛ منشور وغير تجريبي فقط)، `arabic-language` و`mawsuaat` (`DarsSection[]`)، `islamic-glossary` (ذو مصدر فقط؛ 20 بلا مصدر مستبعدة)، `mind-maps` (+ نسخة مطابقة `mind-map`)، `scientific-announcements`.
+- `search-index` = `{docs:[{id,kind,titleAr,href,norm}]}` من `public/data/search/index.json` بعد الحجب العام والمحجوز.
+- `terms` و`methodology` = `{title, updatedAt, sections:[{title, paragraphs}]}` نصّ الصفحة حرفيًا (البريد من `site.config.json`).
+- `navigation` = `{groups, sections, settingsRows, sitemap}` من سجل الأقسام (بلا مجموعة account، بلا hidden/comingSoon) وصفوف «المزيد» ودليل الأقسام.
+- مشتقة من التنقل (`ContentItem`/`SectionLink`): `cards` (المجموعات)، `more` (صفوف الإعدادات)، `sections` (SectionLink)، `sitemap` (روابط خريطة الموقع)، `search` (أقسام+خريطة بلا تكرار مسار). فارغة عمدًا بالشكل نفسه `[]`: `islamic-directory`، `sources`، `academic-research-assistant`، `academic-research-submit` (شبكة/حساب/غير مراجَع).
