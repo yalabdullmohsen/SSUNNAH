@@ -210,11 +210,11 @@
 - [x] `/quran/memorization-plans` — QuranMemorizationPlansPage — قائمة
 - [ ] `/quran/offline-player` — QuranOfflinePlayerPage — قائمة
 - [x] `/quran/people` — QuranPeoplePage — قائمة
-- [ ] `/quran/people/:slug` — QuranPersonDetailPage — تفاصيل
+- [x] `/quran/people/:slug` — QuranPersonDetailPage — تفاصيل
 - [x] `/quran/revelation-order` — RevelationOrderPage — قائمة
 - [x] `/quran/search` — QuranSearchPage — بحث
 - [x] `/quran/surah-stories` — SurahStoriesPage — مقال
-- [ ] `/quran/surah-stories/:number` — SurahStoryDetailRoute — مقال
+- [x] `/quran/surah-stories/:number` — SurahStoryDetailRoute — مقال
 - [x] `/quran/surahs` — SurahIndexPage — أقسام
 - [x] `/quran/worship-hub` — QuranWorshipHubPage — أقسام
 - [x] `/tafsir` — TafsirPage — قائمة
