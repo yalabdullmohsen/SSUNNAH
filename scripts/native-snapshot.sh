@@ -2,7 +2,8 @@
 # لقطات فاتح/داكن لمسارات قسم (أو مسار مفرد) مع تحقق صارم. الاستخدام: native-snapshot.sh <قسم|route> [...]
 # يكتب ~/ssunnah-board/snapshots/<قسم>/<مسار>-{light,dark}.png ويُلحق المسارات الصالحة بـ$TICK والمرفوضة بـ$INVALID (مسار|سبب)
 set -uo pipefail
-SIM=${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}; BID=com.yousef.majlisilm
+. "$(cd "$(dirname "$0")" && pwd)/native-sim.sh" || exit 2
+BID=com.yousef.majlisilm
 BOARD=${BOARD:-$HOME/ssunnah-board}; TICK=${TICK:-$BOARD/native-loop.ticks}; INVALID=${INVALID:-$BOARD/native-loop.invalid}
 MAP=${MAP:-docs/native/ROUTE_TEMPLATE_MAP.json}; OCR="$(cd "$(dirname "$0")" && pwd)/native-snapshot-ocr.swift"
 touch "$TICK" "$INVALID"
