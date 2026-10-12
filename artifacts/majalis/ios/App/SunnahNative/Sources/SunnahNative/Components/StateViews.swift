@@ -23,12 +23,13 @@ public struct LoadingStateView: View {
 }
 
 public struct ErrorStateView: View {
+    public static let offlineMessage = "لا يوجد اتصال، حاول لاحقًا"
     let retry: (() -> Void)?
     public init(retry: (() -> Void)? = nil) { self.retry = retry }
     public var body: some View {
         VStack(spacing: Sunnah.Spacing.s3) {
-            Image(systemName: "exclamationmark.triangle").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.danger)
-            Text("تعذّر تحميل المحتوى").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+            Image(systemName: "wifi.slash").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textSecondary)
+            Text(ErrorStateView.offlineMessage).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
             if let retry { SunnahButton("إعادة المحاولة", style: .secondary, action: retry) }
         }
         .frame(maxWidth: .infinity).padding(Sunnah.Spacing.s6)

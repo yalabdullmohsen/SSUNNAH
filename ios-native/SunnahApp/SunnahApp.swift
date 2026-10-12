@@ -33,7 +33,7 @@ struct SunnahApp: App {
                     if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p) }
                     #endif
                 }
-                .environment(\.contentLoader, ContentLoader(bundle: .main))
+                .environment(\.contentLoader, ContentLoader.live(bundle: .main))
                 .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore())))
         }
         .onChange(of: scenePhase) { phase in
