@@ -204,4 +204,18 @@ public enum HadithScreens {
             registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق") }
         }
     }
+
+    /// مسارات بمعاملات لا تُسجَّل بمعرّف: `/arbaeen-nawawi/:id` (بيانات الأربعين غير مصدَّرة بعد) و`/c/:slug` (إحالة عامة تُجلب من الخادم).
+    public static func resolve(path base: String) -> AnyView? {
+        let c = base.split(separator: "/").map(String.init)
+        guard c.count == 2 else { return nil }
+        switch c[0] {
+        case "arbaeen-nawawi":
+            return AnyView(ContentPendingView(message: "المحتوى قيد التوثيق").navigationTitle("الأربعون النووية"))
+        case "c":
+            return AnyView(EmptyStateView(title: "تُعرض هذه الإحالة عبر رابطها على الإنترنت").navigationTitle("إحالة"))
+        default:
+            return nil
+        }
+    }
 }
