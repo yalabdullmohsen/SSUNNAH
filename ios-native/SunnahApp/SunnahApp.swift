@@ -62,6 +62,7 @@ struct SunnahApp: App {
         if let v = FiqhSection.resolve(path: base) { return v }
         if let v = LibrarySection.resolve(path: base) { return v }
         if let v = LearnSection.resolve(path: base) { return v }
+        if let v = QuranSection.resolve(path: base) { return v }
         if let v = AccountSection.resolve(comps) { return v }
         if let v = HadithScreens.resolve(path: base) { return v }
         if let v = GeneratedScreens.resolve(path: base) { return v }
