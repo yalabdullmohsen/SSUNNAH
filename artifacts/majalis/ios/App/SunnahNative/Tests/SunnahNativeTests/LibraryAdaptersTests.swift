@@ -60,9 +60,9 @@ final class LibraryAdaptersTests: XCTestCase {
         XCTAssertNil(LibraryAdapters.source(id: "b", accounts: accounts, feed: feed))
     }
 
-    private let navJSON = #"{"groups":[{"id":"sunnah","label":"س","order":2},{"id":"quran","label":"ق","order":1},{"id":"account","label":"ح","order":7}],"sections":[{"id":"s1","label":"ل1","route":"/s1","group":"sunnah","order":1,"surfaces":["drawer"],"status":"live","hub":"sections"},{"id":"q1","label":"ل2","navLabel":"م2","route":"/q1","group":"quran","order":1,"surfaces":["drawer"],"status":"live","hub":"quran"},{"id":"h","label":"مخفي","route":"/h","group":"quran","order":2,"surfaces":["drawer"],"status":"hidden","hub":"sections"},{"id":"cs","label":"قريبًا","route":"/cs","group":"sunnah","order":2,"surfaces":["drawer"],"status":"live","hub":"sections","comingSoon":true},{"id":"acc","label":"حساب","route":"/settings","group":"account","order":1,"surfaces":["drawer"],"status":"live","hub":"sections"}],"settingsRows":[{"id":"terms","title":"الشروط","href":"/terms"}],"sitemap":[{"title":"ق","links":[{"href":"/mushaf","label":"القرآن","desc":"م"}]},{"title":"فارغ","links":[]}]}"#
+    private let navJSON = #"{"groups":[{"id":"quran","title":"ق","sections":[{"id":"q1","title":"م2","route":"/q1"}]},{"id":"sunnah","title":"س","sections":[{"id":"s1","title":"ل1","route":"/s1"}]},{"id":"account","title":"ح","sections":[{"id":"acc","title":"حساب","route":"/settings"}]}],"sections":[{"id":"q1","title":"م2","route":"/q1"},{"id":"s1","title":"ل1","route":"/s1"}],"settingsRows":[{"id":"terms","title":"الشروط","href":"/terms","icon":"x"}],"sitemap":[{"title":"ق","icon":"quran","links":[{"href":"/mushaf","label":"القرآن","desc":"م"}]},{"title":"فارغ","links":[]}]}"#
 
-    func testMoreGroupsExcludeAccountHiddenAndComingSoon() throws {
+    func testMoreGroupsExcludeAccount() throws {
         let nav: LibraryNavigation = try decode(navJSON)
         let groups = LibraryAdapters.more(nav, scope: { _ in true })
         XCTAssertEqual(groups.map(\.title), ["ق", "س", "الحساب والإعدادات"])
@@ -73,7 +73,7 @@ final class LibraryAdaptersTests: XCTestCase {
 
     func testSectionsHubAndSitemap() throws {
         let nav: LibraryNavigation = try decode(navJSON)
-        XCTAssertEqual(LibraryAdapters.sections(nav, scope: { _ in true }).map(\.id), ["s1", "acc"])
+        XCTAssertEqual(LibraryAdapters.sections(nav, scope: { _ in true }).map(\.id), ["q1", "s1"])
         XCTAssertEqual(LibraryAdapters.sitemap(nav, scope: { _ in true }).map(\.title), ["ق"])
     }
 
@@ -141,7 +141,7 @@ final class LibraryAdaptersTests: XCTestCase {
         let nav: LibraryNavigation = try decode(navJSON)
         let kept: (String) -> Bool = { $0 == "/q1" || $0 == "/terms" }
         XCTAssertEqual(LibraryAdapters.more(nav, scope: kept).flatMap(\.links).map(\.route), ["/q1", "/terms"])
-        XCTAssertTrue(LibraryAdapters.sections(nav, scope: kept).isEmpty)
+        XCTAssertEqual(LibraryAdapters.sections(nav, scope: kept).map(\.id), ["q1"])
         XCTAssertTrue(LibraryAdapters.sitemap(nav, scope: kept).isEmpty)
         let index: LibrarySearchIndex = try decode(#"{"docs":[{"id":"1","kind":"qa","titleAr":"الصلاة","href":"/library/1"},{"id":"2","kind":"qa","titleAr":"الصلاة ٢","href":"/sources/2"}]}"#)
         XCTAssertEqual(LibraryAdapters.search(index, query: "الصلاة").map(\.id), ["2"])

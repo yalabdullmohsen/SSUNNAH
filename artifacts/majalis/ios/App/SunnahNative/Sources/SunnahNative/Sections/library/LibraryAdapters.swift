@@ -154,31 +154,26 @@ enum LibraryAdapters {
 
     // MARK: التنقل (المزيد، الأقسام، خريطة الموقع)
 
-    static func visible(_ s: LibraryNavigation.Section) -> Bool { s.status == "live" && s.comingSoon != true }
-
     struct NavGroup: Equatable {
         let title: String
         let links: [SectionLink]
     }
 
-    /// /more: أقسام القائمة الجانبية لكل مجموعة (عدا الحساب) ثم صفوف الإعدادات؛ المسارات المبقاة فقط.
+    /// /more: مجموعات القائمة الجانبية كما صدّرها الموقع (بلا الحساب، بلا المخفي/قريبًا) ثم صفوف الإعدادات؛ المسارات المبقاة فقط.
     static func more(_ nav: LibraryNavigation, scope: (String) -> Bool = LibraryRouteScope.contains) -> [NavGroup] {
-        let groups = nav.groups.filter { $0.id != "account" }.sorted { $0.order < $1.order }.compactMap { g -> NavGroup? in
-            let links = nav.sections.filter { $0.group == g.id && $0.surfaces.contains("drawer") && visible($0) && scope($0.route) }
-                .sorted { $0.order < $1.order }
-                .map { SectionLink(id: $0.id, title: $0.navLabel ?? $0.label, subtitle: $0.navHint ?? $0.subtitle, route: $0.route) }
-            return links.isEmpty ? nil : NavGroup(title: g.label, links: links)
+        let groups = nav.groups.filter { $0.id != "account" }.compactMap { g -> NavGroup? in
+            let links = g.sections.filter { scope($0.route) }
+                .map { SectionLink(id: $0.id, title: $0.title, subtitle: $0.subtitle, route: $0.route) }
+            return links.isEmpty ? nil : NavGroup(title: g.title, links: links)
         }
         let settings = nav.settingsRows.filter { scope($0.href) }.map { SectionLink(id: $0.id, title: $0.title, subtitle: $0.description, route: $0.href) }
         return groups + (settings.isEmpty ? [] : [NavGroup(title: "الحساب والإعدادات", links: settings)])
     }
 
-    /// /sections: الأقسام ذات hub «sections» مرتبة بالمجموعة ثم الترتيب.
+    /// /sections: أقسام التنقل بترتيب التصدير (مجموعة ثم ترتيب السجل).
     static func sections(_ nav: LibraryNavigation, scope: (String) -> Bool = LibraryRouteScope.contains) -> [SectionLink] {
-        let order = Dictionary(nav.groups.map { ($0.id, $0.order) }, uniquingKeysWith: { a, _ in a })
-        return nav.sections.filter { $0.hub == "sections" && visible($0) && scope($0.route) }
-            .sorted { (order[$0.group] ?? .max, $0.order) < (order[$1.group] ?? .max, $1.order) }
-            .map { SectionLink(id: $0.id, title: $0.label, subtitle: $0.subtitle, route: $0.route) }
+        nav.sections.filter { scope($0.route) }
+            .map { SectionLink(id: $0.id, title: $0.title, subtitle: $0.subtitle, route: $0.route) }
     }
 
     static func sitemap(_ nav: LibraryNavigation, scope: (String) -> Bool = LibraryRouteScope.contains) -> [NavGroup] {
