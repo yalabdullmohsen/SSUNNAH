@@ -65,8 +65,8 @@ struct HadithListView: View {
     var body: some View {
         if items.isEmpty { EmptyStateView() } else {
             List(filtered) { item in
-                NavigationLink { HadithDetailView(item: item) } label: {
-                    SunnahListRow(title: item.title, subtitle: item.sourceName ?? item.chapter, showsChevron: false)
+                SunnahNavigationLink { HadithDetailView(item: item) } label: {
+                    SunnahListRow(title: item.title, subtitle: item.sourceName ?? item.chapter)
                 }.listRowBackground(Sunnah.Colors.surface)
             }
             .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
@@ -127,11 +127,11 @@ struct HadithSahihScreen: ScreenTemplate {
 struct HadithBooksView: View {
     var body: some View {
         List {
-            NavigationLink { HadithCollectionView(file: "bukhari", title: "صحيح البخاري", showNumber: true) } label: {
-                SunnahListRow(title: "صحيح البخاري", subtitle: "الجامع الصحيح", showsChevron: false)
+            SunnahNavigationLink { HadithCollectionView(file: "bukhari", title: "صحيح البخاري", showNumber: true) } label: {
+                SunnahListRow(title: "صحيح البخاري", subtitle: "الجامع الصحيح")
             }.listRowBackground(Sunnah.Colors.surface)
-            NavigationLink { HadithCollectionView(file: "muslim", title: "صحيح مسلم", showNumber: false) } label: {
-                SunnahListRow(title: "صحيح مسلم", subtitle: "المسند الصحيح", showsChevron: false)
+            SunnahNavigationLink { HadithCollectionView(file: "muslim", title: "صحيح مسلم", showNumber: false) } label: {
+                SunnahListRow(title: "صحيح مسلم", subtitle: "المسند الصحيح")
             }.listRowBackground(Sunnah.Colors.surface)
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)

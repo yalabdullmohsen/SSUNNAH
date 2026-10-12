@@ -11,8 +11,8 @@ struct LearnKnowledgeGraphScreen: View {
                     ForEach(graph.groups) { group in
                         Section(LearnKnowledgeGraph.kindLabel(group.kind)) {
                             ForEach(group.nodes) { node in
-                                NavigationLink { LearnGraphNodeView(graph: graph, node: node) } label: {
-                                    SunnahListRow(title: node.titleAr, showsChevron: false)
+                                SunnahNavigationLink { LearnGraphNodeView(graph: graph, node: node) } label: {
+                                    SunnahListRow(title: node.titleAr)
                                 }
                             }
                         }
@@ -31,8 +31,8 @@ struct LearnGraphNodeView: View {
     var body: some View {
         let relations = graph.relations(of: node)
         LearnList(items: relations, emptyTitle: "لا علاقات مسجّلة") { r in
-            NavigationLink { LearnGraphNodeView(graph: graph, node: r.node) } label: {
-                SunnahListRow(title: r.node.titleAr, subtitle: r.label, showsChevron: false)
+            SunnahNavigationLink { LearnGraphNodeView(graph: graph, node: r.node) } label: {
+                SunnahListRow(title: r.node.titleAr, subtitle: r.label)
             }
         }
         .navigationTitle(node.titleAr)
@@ -49,8 +49,8 @@ struct LearnKnowledgeSectionScreen: View {
         let section = self.section
         LearnLoadHost(load: { try await LearnSources.loadKnowledge(section: section, with: $0) }) { (items: [LearnKnowledgeItem]) in
             LearnList(items: items, emptyTitle: "لا محتوى معتمد في هذا القسم بعد") { item in
-                NavigationLink { LearnKnowledgeItemView(item: item) } label: {
-                    SunnahListRow(title: item.title, subtitle: item.summary, showsChevron: false)
+                SunnahNavigationLink { LearnKnowledgeItemView(item: item) } label: {
+                    SunnahListRow(title: item.title, subtitle: item.summary)
                 }
             }
         }
@@ -102,20 +102,20 @@ struct LearnDurusScreen: View {
     var body: some View {
         LearnLoadHost(source) { (sections: [LearnDarsSection]) in
             LearnList(items: sections) { section in
-                NavigationLink {
+                SunnahNavigationLink {
                     LearnList(items: section.lessons) { lesson in
-                        NavigationLink {
+                        SunnahNavigationLink {
                             LearnDetailPage(title: lesson.title) {
                                 if let s = lesson.summary { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
                                 if let b = lesson.body { Text(b).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                             }
                         } label: {
-                            SunnahListRow(title: lesson.title, subtitle: lesson.summary, showsChevron: false)
+                            SunnahListRow(title: lesson.title, subtitle: lesson.summary)
                         }
                     }
                     .navigationTitle(section.title)
                 } label: {
-                    SunnahListRow(title: section.title, subtitle: learnLine(section.num, "\(section.lessons.count) درسًا"), showsChevron: false)
+                    SunnahListRow(title: section.title, subtitle: learnLine(section.num, "\(section.lessons.count) درسًا"))
                 }
             }
         }

@@ -22,9 +22,9 @@ struct QuranSearchView: View {
     private func results(_ l: Loaded) -> some View {
         let hits = l.search.search(query)
         return List {
-            if query.count >= 2 && hits.isEmpty { Text("لا نتائج").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
+            if query.count >= 2 && hits.isEmpty { EmptyStateView(title: "لا نتائج").frame(maxWidth: .infinity).listRowBackground(Color.clear).listRowSeparator(.hidden) }
             ForEach(hits) { h in
-                NavigationLink {
+                SunnahNavigationLink {
                     MushafReaderView(repo: l.repo, index: l.index, search: l.search, store: store, startPage: h.page)
                         .environment(\.layoutDirection, .rightToLeft)
                 } label: {

@@ -34,10 +34,10 @@ struct TafsirHomeView: View {
             .listRowBackground(Sunnah.Colors.surface)
             Section {
                 ForEach(idx.surahs, id: \.id) { s in
-                    NavigationLink {
+                    SunnahNavigationLink {
                         TafsirSurahView(book: book, surahId: s.id, surahName: s.name)
                     } label: {
-                        SunnahListRow(title: "\(s.id). \(s.name)", subtitle: "\(s.ayahs) آية", showsChevron: false)
+                        SunnahListRow(title: "\(s.id). \(s.name)", subtitle: "\(s.ayahs) آية")
                     }
                 }
             }

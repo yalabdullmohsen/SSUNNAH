@@ -40,7 +40,7 @@ struct QuranPeopleListView: View {
             ForEach(PeopleAdapters.grouped(people), id: \.title) { g in
                 Section(g.title) {
                     ForEach(g.people) { p in
-                        NavigationLink { QuranPersonView(person: p, surahNames: surahNames) } label: { SunnahListRow(title: p.nameAr, subtitle: nil) }
+                        SunnahNavigationLink { QuranPersonView(person: p, surahNames: surahNames) } label: { SunnahListRow(title: p.nameAr, subtitle: nil) }
                     }
                 }
                 .listRowBackground(Sunnah.Colors.surface)

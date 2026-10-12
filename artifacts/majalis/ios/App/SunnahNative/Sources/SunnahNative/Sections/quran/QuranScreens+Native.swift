@@ -43,13 +43,13 @@ struct QuranSurahList: View {
     var body: some View {
         if rows.isEmpty { EmptyStateView(title: QuranSection.pendingTitle) } else {
             List(rows) { r in
-                NavigationLink {
+                SunnahNavigationLink {
                     MushafReaderView(repo: MushafRepository(bundle: .main) ?? MushafRepository(root: URL(fileURLWithPath: "/")),
                                      index: index, search: nil, store: store, startPage: r.firstPage)
                         .environment(\.layoutDirection, .rightToLeft)
                 } label: {
                     SunnahListRow(title: "\(showOrder ? r.revelationOrder ?? r.id : r.id). \(r.name)",
-                                  subtitle: "\(r.placeName) · \(r.ayahs) آية · صفحة \(r.firstPage)", showsChevron: false)
+                                  subtitle: "\(r.placeName) · \(r.ayahs) آية · صفحة \(r.firstPage)")
                 }
                 .listRowBackground(Sunnah.Colors.surface)
             }

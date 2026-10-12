@@ -47,10 +47,10 @@ public struct AdhkarScreen: ScreenTemplate {
                 .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
         } else {
             List(categories) { category in
-                NavigationLink {
+                SunnahNavigationLink {
                     AdhkarListView(items: category.items)
                 } label: {
-                    SunnahListRow(title: category.id, subtitle: "\(category.items.count)", showsChevron: false)
+                    SunnahListRow(title: category.id, subtitle: "\(category.items.count)")
                 }
                 .listRowBackground(Sunnah.Colors.surface)
             }
