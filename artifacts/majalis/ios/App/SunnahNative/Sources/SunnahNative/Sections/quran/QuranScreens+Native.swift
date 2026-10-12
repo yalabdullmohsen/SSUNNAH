@@ -67,6 +67,12 @@ public enum QuranSection {
     @MainActor public static func register(in registry: TemplateRegistry) {
         registry.registerView(id: "quran-hub") { SectionsListTemplate(links: QuranLinks.hub).navigationTitle(title) }
         registry.registerView(id: "tafsir") { TafsirHomeView().navigationTitle("التفسير") }
+        registry.registerView(id: "quran.people") {
+            QuranPeopleLoader { people in
+                QuranPeopleListView(people: people, surahNames: Self.surahNames())
+            }.navigationTitle("أعلام القرآن")
+        }
+        registry.registerView(id: "quran.search") { QuranSearchView().navigationTitle("البحث في القرآن") }
         registry.registerView(id: "quran.surahs") {
             QuranRowsView { idx, rows in QuranSurahList(rows: rows, index: idx) }.navigationTitle("فهرس السور")
         }
@@ -79,5 +85,10 @@ public enum QuranSection {
                 QuranSurahList(rows: QuranAdapters.makki(rows) + QuranAdapters.madani(rows), index: idx)
             }.navigationTitle("المكي والمدني")
         }
+    }
+
+    static func surahNames() -> [Int: String] {
+        guard let idx = try? MushafRepository(bundle: .main)?.index() else { return [:] }
+        return Dictionary(uniqueKeysWithValues: idx.surahs.map { ($0.id, $0.name) })
     }
 }
