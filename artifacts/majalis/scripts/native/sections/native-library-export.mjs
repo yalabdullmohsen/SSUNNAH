@@ -3,7 +3,7 @@
  * تمرير كما هو من مصدر الويب بلا إعادة صياغة؛ المحجوز (content-hold) يُستبعد بالمعرّف. لا نص مولَّد.
  */
 import fs from "node:fs";
-import { loadConsts, ts } from "../lib/ts-literal.mjs";
+import { loadConsts, objectsWithKeys, ts } from "../lib/ts-literal.mjs";
 
 export default async function exportLibrary({ json, held, reject, counts, appRoot }) {
   const src = `${appRoot}/src`;
@@ -165,7 +165,12 @@ export default async function exportLibrary({ json, held, reject, counts, appRoo
       const accounts = JSON.parse(fs.readFileSync(`${appRoot}/public/data/sources/accounts.json`, "utf8")).accounts.filter((a) => a.enabled);
       out("sources", accounts, accounts.length);
     }
-    for (const f of ["islamic-directory", "academic-research-assistant", "academic-research-submit"]) {
+    /* «الدليل الإسلامي»: روابط البطاقات الثابتة في كود الصفحة (href,title)؛ وصف كل بطاقة يحوي عدّادًا ديناميكيًا فلا يُصدَّر */
+    {
+      const cards = objectsWithKeys(`${src}/views/IslamicDirectoryHubPage.tsx`, ["href", "title"]);
+      out("islamic-directory", cards, cards.length);
+    }
+    for (const f of ["academic-research-assistant", "academic-research-submit"]) {
       out(f, [], 0);
       reject(`${L}-${f}`, "فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع");
     }
