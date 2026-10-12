@@ -3,7 +3,7 @@
 # الاستعمال: bash scripts/ci-local-lock.sh <أمر…>  — يأخذ القفل ثم يشغّل الأمر ويحرّره عند الخروج حتى لو فشل.
 #   CI_LOCAL_LOCK_DIR    مسار القفل (افتراضيًا ~/.majalis-tools/ci-lock)
 #   CI_LOCAL_LOCK_WAIT   أقصى انتظار بالثواني (1500 = 25 دقيقة)، ثم يفشل بلا تشغيل
-#   CI_LOCAL_LOCK_STALE  قفل أقدم من هذا (2400 = 40 دقيقة) يُعدّ معلّقًا ويُكسر
+#   CI_LOCAL_LOCK_STALE  قفل أقدم من هذا (1500 = 25 دقيقة) يُعدّ معلّقًا ويُكسر
 #   CI_LOCAL_LOCK_POLL   فترة الفحص بالثواني (10)
 #   CI_LOCAL_MIN_FREE_MB حارس الذاكرة: ينتظر حتى تتوفر هذه الذاكرة (1200 ميجا) قبل التشغيل
 #   CI_LOCAL_MEM_WAIT    أقصى انتظار للذاكرة بالثواني (600 = 10 دقائق)، ثم يُشغَّل مع تحذير
@@ -11,7 +11,7 @@
 set -uo pipefail
 LOCK="${CI_LOCAL_LOCK_DIR:-$HOME/.majalis-tools/ci-lock}"
 WAIT="${CI_LOCAL_LOCK_WAIT:-1500}"
-STALE="${CI_LOCAL_LOCK_STALE:-2400}"
+STALE="${CI_LOCAL_LOCK_STALE:-1500}"
 POLL="${CI_LOCAL_LOCK_POLL:-10}"
 mkdir -p "$(dirname "$LOCK")"
 
@@ -24,6 +24,12 @@ lock_age() {
 
 deadline=$(( $(date +%s) + WAIT ))
 until mkdir "$LOCK" 2>/dev/null; do
+  owner_pid=$(sed -n 's/^pid=\([0-9]*\).*/\1/p' "$LOCK/owner" 2>/dev/null)
+  if [[ -n "$owner_pid" ]] && ! kill -0 "$owner_pid" 2>/dev/null; then
+    echo "ci-local-lock: مالك القفل (pid=$owner_pid) ميت — يُكسر" >&2
+    rm -rf "$LOCK"
+    continue
+  fi
   if (( $(lock_age) > STALE )); then
     echo "ci-local-lock: قفل معلّق (أقدم من ${STALE}ث) — يُكسر" >&2
     rm -rf "$LOCK"
@@ -33,7 +39,7 @@ until mkdir "$LOCK" 2>/dev/null; do
     echo "ci-local-lock: القفل مأخوذ منذ $(lock_age)ث ($(cat "$LOCK/owner" 2>/dev/null)) — انتهى الانتظار" >&2
     exit 75
   fi
-  echo "ci-local-lock: نافذة أخرى تشغّل ci:local ($(cat "$LOCK/owner" 2>/dev/null)) — انتظار…" >&2
+  echo "ci-local-lock: نافذة أخرى تشغّل ci:local ($(cat "$LOCK/owner" 2>/dev/null)) منذ $(lock_age)ث — انتظار…" >&2
   sleep "$POLL"
 done
 trap 'rm -rf "$LOCK"' EXIT
