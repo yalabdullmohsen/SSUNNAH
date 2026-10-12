@@ -183,7 +183,7 @@
 ## القرآن — 37 (المسؤول: ن3)
 
 - [ ] `/c/:slug` — CitationPublicPage — تفاصيل
-- [ ] `/hifz-path` — HifzPathPage — قائمة
+- [x] `/hifz-path` — HifzPathPage — قائمة
 - [ ] `/hifz-path/c/:category` — HifzPathCategoryPage — تفاصيل
 - [ ] `/hifz-path/my` — HifzPathMyPage — قائمة
 - [ ] `/hifz-path/p/:slug` — HifzPathDetailPage — تفاصيل
