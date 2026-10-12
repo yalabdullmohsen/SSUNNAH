@@ -15,7 +15,7 @@
 |---|--------|--------|--------------|
 | 1 | /calendar | /data/lessons/chunk-000.json | ساعة |
 | 2 | /car-mode | /data/lessons/chunk-000.json | ساعة |
-| 3 | /updates | /api/auto-content + تحديثات المنصة | 15 د |
+| 3 | /updates | /api/auto-content + /api/updates | 15 د |
 | 4 | /updates/auto/:slug | /api/auto-content?slug= | 15 د |
 | 5 | /teachers | /data/lessons/chunk-000.json | ساعة |
 | 6 | /teachers/:slug | /data/lessons/chunk-000.json | ساعة |
@@ -25,3 +25,9 @@
 | 10 | /my-submissions 🔒 | /rest/v1 (submissions) | بلا كاش |
 
 خارج الناقل (طلبات إرسال بعميلها الخاص، تحتاج اتصالًا بطبيعتها): /submit، /privacy-center (تصدير البيانات)، /contact.
+
+## التحقق من المصادر (2026-10-12، الإنتاج ngmvmlulzacrlicuagyp)
+- `/data/lessons/chunk-000.json`، `/data/sources/accounts.json`، `/data/lessons/feed.json`، `/api/auto-content`، `/api/updates`: كلها 200 من www.ssunnah.com.
+- جداول `user_submissions` و`bookmarks` و`achievements` و`lesson_registrations` و`reading_resume`: موجودة (200 بالمفتاح العام).
+- **`platform_updates` غير موجود** (PGRST205). الموقع نفسه يسقط منه إلى بذرته؛ التطبيق الآن يقرأ `/api/updates` (`[{id,title,content}]`) وبذرته لقطة منه (`content/native/remote-seeds/updates-snapshot.json`).
+- Supabase في Release: الرابط والمفتاح افتراضات Swift (`RemoteConfig.defaultSupabaseURL/defaultAnonKey`)؛ المفتاح JWT بدور `anon` ومرجع الإنتاج، ولا `service_role` ولا staging في الشيفرة (فحص rg).

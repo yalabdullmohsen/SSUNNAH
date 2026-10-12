@@ -67,7 +67,7 @@ final class RemoteSeedsTests: XCTestCase {
         let b = try bundle()
         XCTAssertNotNil(RemoteSeeds.data(forPath: "/data/sources/accounts.json", bundle: b))
         XCTAssertNotNil(RemoteSeeds.data(forPath: "/api/auto-content?limit=100", bundle: b))
-        XCTAssertNotNil(RemoteSeeds.data(forPath: "/rest/v1/platform_updates?select=id", bundle: b))
+        XCTAssertNotNil(RemoteSeeds.data(forPath: "/api/updates", bundle: b))
         XCTAssertNil(RemoteSeeds.data(forPath: "/rest/v1/bookmarks?select=id", bundle: b))
         let d = try XCTUnwrap(RemoteSeeds.data(forPath: "/api/auto-content?slug=a", bundle: b))
         XCTAssertTrue(String(decoding: d, as: UTF8.self).contains("\"item\""))

@@ -72,6 +72,12 @@ final class AccountContentTests: XCTestCase {
         XCTAssertEqual(AccountUpdates.filter(merged, type: "الكل", search: "مصدر").map(\.key), ["auto-a1"])
     }
 
+    func testPlatformUpdateDecodesSiteApiShape() throws {
+        let u = try decode([AccountPlatformUpdate].self, #"[{"id":"update-qa-330","title":"تحديث","content":"نص التحديث"}]"#)
+        XCTAssertEqual(u.first?.summary, "نص التحديث")
+        XCTAssertEqual(u.first?.updateType, "خبر علمي")
+    }
+
     func testAutoContentTypeMapping() {
         XCTAssertEqual(AccountAutoContent.updateType(for: "resolution"), "قرار")
         XCTAssertEqual(AccountAutoContent.updateType(for: "recommendation"), "قرار")

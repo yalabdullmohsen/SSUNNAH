@@ -9,9 +9,8 @@ enum AccountEndpoints {
 
     static let autoContent = ContentSource.remote(path: "/api/auto-content?limit=100", maxAge: 900)
 
-    static let platformUpdates = ContentSource.remote(
-        path: "/rest/v1/platform_updates?select=id,title,summary,update_type,source_url,published_at&status=eq.approved&order=published_at.desc&limit=100",
-        maxAge: 900)
+    /// مصدر الموقع الفعلي لتحديثات المنصة (جدول platform_updates غير موجود في Supabase الإنتاج): [{id,title,content}].
+    static let platformUpdates = ContentSource.remote(path: "/api/updates", maxAge: 900)
 
     static func autoContent(slug: String) -> ContentSource {
         .remote(path: "/api/auto-content?slug=" + query(slug), maxAge: 900)
