@@ -1,5 +1,11 @@
 # تقدم التطبيق الأصلي (SunnahApp) — يُحدَّث مع كل دفعة (ن4)
 
+## فحص WKWebView / Capacitor / WebView (2026-10-12)
+- **هدف SunnahApp الأصلي نظيف:** `ios-native/` و`SunnahNative/` بلا أي استخدام فعلي لـWKWebView أو Capacitor أو WebView (تعليقات «بلا WebView/Capacitor» فقط في SunnahApp.swift وPlatform/*). الهدف لا يربط حزمة SunnahWeb.
+- **متبقٍّ للإزالة النهائية:** `artifacts/majalis/ios/App/SunnahWeb` (WebScreen.swift = WKWebView فعلي، لا يربطه SunnahApp)، `artifacts/majalis/capacitor.config.ts` (`server.url`=https://www.ssunnah.com)، مجلد `ios/App/App` + `CapApp-SPM`، وإشارات Capacitor في 89 ملفًا من `src/` و10 من `scripts/` وبوابات `verify-ci`/`release-verify`.
+- الحارس النهائي (فشل عند WKWebView أو `server.url` في هدف SunnahApp) ينتظر مرحلة الإزالة؛ لم يُنفَّذ بعد.
+
+
 | الدفعة | التاريخ | الإنجاز من الجرد | PRs مدموجة | PRs مرفوضة | أخطاء بناء |
 |---|---|---|---|---|---|
 | 1 | 2026-10-11 | 0/212 (0.0%) | #2926، #2927 | #2928 (ملفات مشتركة/Capacitor) | 3 جولات (أعضاء الهدف المفقودة في المولّد) — أُصلحت في `generate-xcodeproj.rb` |
