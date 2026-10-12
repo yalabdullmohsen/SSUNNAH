@@ -47,5 +47,12 @@
     "action": "يُعاد كتابته",
     "owner": "ن5 (تسميع/صوت)",
     "expires": "2026-10-11"
+  },
+  {
+    "file": "test-seo-html.mjs",
+    "reason": "يفشل على main نفسه: 4 عناوين مكررة (الطحاوية: /annual-courses و/lessons) + اسم قديم في /tarikh-islami/andalus-cordoba-caliphate + رابط sitemap مصدر تحويل؛ مسجّل knownBroken في gate-registry",
+    "action": "أصلح عناوين prerender المكررة والاسم القديم ورابط sitemap",
+    "owner": "ن1 (يُبلَّغ المالك)",
+    "expires": "2026-10-19"
   }
 ]
