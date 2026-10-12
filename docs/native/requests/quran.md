@@ -25,3 +25,16 @@
 
 ## الدفعة 3 — ملفات `Data/quran/` الجديدة
 tajweed.json، surah-stories.json، hifz-paths.json، stats.json، qiraat.json، ahruf.json (مولَّدة من `quran-ts.mjs`). الربط كما قبل: `QuranSection.register` (يسجّل الآن 6 شاشات إضافية + `pendingIDs`).
+
+## اعتماد التجويد = وجود المصدر (لمراجعة شرعية بعد الإطلاق)
+
+- الموقع لا يحمل حالة اعتماد لفصول التجويد؛ فاعتمادها في التصدير (`scripts/native/sections/quran-ts.mjs`) يعني **وجود حقل `source` غير فارغ** لكل فصل، وليس مراجعة شرعية.
+- قصص السور وأحرف السبعة والقراءات والإحصاءات: تُصدَّر بمصدرها كما في الأصل؛ الحشو العام في القصص يُحجَب ويُسجَّل (`quran-surah-stories-filler`).
+- المطلوب بعد الإطلاق: مراجعة شرعية لفصول التجويد الـ19 قبل عدّها معتمدة.
+
+## دفعة 4: مسارات محلية
+
+- `memorization`, `quran.memorization-plans`, `quran.hifz-loop`, `hifz-path.my`: حالة مستخدم في UserDefaults (`QuranLocalStore`، مفاتيح `sunnah.quran.*.v1`)، بلا خادم ولا نص قرآني (مراجع سورة/آيات فقط).
+- `mushaf.bookmarks`: قائمة علامات `MushafStore` تفتح المصحف الحالي؛ لا تغيير في النص/الصفحات/الخطوط.
+- `/c/:slug` (CitationPublicPage) يجلب من الخادم: لا يُبنى الآن. التفاصيل `hifz-path/c|p|u` داخل القائمة.
+- اختبارات فك الترميز تقرأ ملفات فعلية في `Tests/SunnahNativeTests/Fixtures/quran` (تُجدَّد بإعادة التصدير).
