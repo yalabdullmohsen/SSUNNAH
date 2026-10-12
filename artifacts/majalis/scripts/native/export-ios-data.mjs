@@ -162,9 +162,12 @@ counts.quiz = qn;
       const key = v.verse_key;
       if (ayahPage[key] === undefined) ayahPage[key] = p;
       juzStart[v.juz_number] ??= p;
-      for (const w of v.words) {
+      // 2:181 في مصدر quran-v2 بلا كلمة من نوع end؛ آخر كلمة فيها هي رمز العلامة نفسه (التالي مباشرةً لما قبله) فتُعلَّم كغيرها دون مسّ الرمز أو النص
+      const noEnd = !v.words.some((w) => w.char_type_name === "end");
+      for (const [wi, w] of v.words.entries()) {
         if (!lines.has(w.line_number)) lines.set(w.line_number, []);
-        lines.get(w.line_number).push({ id: w.id, c: w.code_v2, v: key, ...(w.char_type_name === "end" ? { e: 1 } : {}) });
+        const isEnd = w.char_type_name === "end" || (noEnd && wi === v.words.length - 1);
+        lines.get(w.line_number).push({ id: w.id, c: w.code_v2, v: key, ...(isEnd ? { e: 1 } : {}) });
       }
       if (v.verse_number === 1 && !starts.has(Number(key.split(":")[0]))) starts.set(Number(key.split(":")[0]), Math.min(...v.words.map((w) => w.line_number)));
     }

@@ -27,9 +27,12 @@ final class MushafGateTests: XCTestCase {
         let verses = try json(env.src.appendingPathComponent("public/data/quran-v2/pages/page-\(pad(page)).json")) as! [[String: Any]]
         var out: [SrcWord] = []
         for v in verses {
-            for w in v["words"] as! [[String: Any]] {
+            let words = v["words"] as! [[String: Any]]
+            // 2:181 بلا كلمة end في المصدر: آخر كلمة فيها هي رمز العلامة فتُعلَّم كغيرها (الرمز والنص دون مساس)
+            let noEnd = !words.contains { ($0["char_type_name"] as? String) == "end" }
+            for (i, w) in words.enumerated() {
                 out.append(SrcWord(line: w["line_number"] as! Int, code: w["code_v2"] as! String, key: v["verse_key"] as! String,
-                                   end: (w["char_type_name"] as? String) == "end", id: w["id"] as! Int))
+                                   end: (w["char_type_name"] as? String) == "end" || (noEnd && i == words.count - 1), id: w["id"] as! Int))
             }
         }
         return out
@@ -83,8 +86,7 @@ final class MushafGateTests: XCTestCase {
             for (k, pg) in idx.ayahPage where pg == p { XCTAssertTrue(got.contains { $0.w.v == k }, "آية \(k) لا تظهر في صفحتها \(p)") }
         }
         XCTAssertEqual(keys.count, 6236)
-        // عيب موروث موثّق (MANUAL_OWNER_ACTION): 2:181 بلا علامة نهاية في المصدر؛ لا نُعدّله وننبّه إن تغيّر
-        XCTAssertEqual(Set(idx.ayahPage.keys).subtracting(ends), ["2:181"])
+        XCTAssertEqual(Set(idx.ayahPage.keys).subtracting(ends), [], "كل آية لها علامة نهاية (ومنها 2:181)")
         XCTAssertGreaterThan(totalWords, 80_000)
     }
 

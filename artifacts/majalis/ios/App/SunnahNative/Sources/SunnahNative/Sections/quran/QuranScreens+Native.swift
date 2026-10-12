@@ -66,6 +66,10 @@ public enum QuranSection {
 
     @MainActor public static func register(in registry: TemplateRegistry) {
         registry.registerView(id: "quran-hub") { SectionsListTemplate(links: QuranLinks.hub).navigationTitle(title) }
+        // مشغّل الأوفلاين: تنزيل/إيقاف/حذف التلاوات وتشغيل المحلي أولًا (التشغيل نفسه في المصحف)
+        registry.registerView(id: "quran.offline-player") { TemplateHost<OfflineAudioScreen>() }
+        // محرك القرآن: المصحف الأصلي بمتابعة آخر موضع (اللوحة والعارض سطحان لشاشة واحدة أصلية)
+        registry.registerView(id: "quran-engine") { MushafScreen() }
         registry.registerView(id: "tafsir") { TafsirHomeView().navigationTitle("التفسير") }
         registry.registerView(id: "quran.people") {
             QuranPeopleLoader { people in
@@ -131,7 +135,7 @@ public enum QuranSection {
     }
 
     static let pendingIDs = [
-        "quran.offline-player", "quran-hub.tilawa", "quran-circles", "quran-engine", "quran.worship-hub",
+        "quran-hub.tilawa", "quran-circles", "quran.worship-hub",
         "ulum-quran",
     ]
 

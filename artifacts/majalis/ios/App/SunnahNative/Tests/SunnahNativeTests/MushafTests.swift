@@ -22,7 +22,7 @@ final class MushafTests: XCTestCase {
             XCTAssertTrue(p.rows.contains { $0.k == "l" }, "صفحة \(n) بلا أسطر")
             ayahs.formUnion(p.rows.flatMap { $0.w ?? [] }.map(\.v))
         }
-        XCTAssertEqual(ayahs.count, 6236)  // ملاحظة: 2:181 بلا علامة نهاية في بيانات الإصدار المنشور (تُحفظ كما هي)
+        XCTAssertEqual(ayahs.count, 6236)
     }
 
     func testFontRegistersForSamplePages() throws {
