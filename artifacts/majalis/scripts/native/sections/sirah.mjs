@@ -4,7 +4,7 @@
  * ما يشترط قرار المالك أو توثيقًا غير متوفر في الويب يُصدَّر قائمة فارغة بالشكل الصحيح («فارغ عمدًا»)، لا نصًّا بلا مصدر.
  */
 import fs from "node:fs";
-import { loadConsts } from "../lib/ts-literal.mjs";
+import { loadConsts, objectsWithKeys } from "../lib/ts-literal.mjs";
 
 export default async function exportSirah({ json, held, reject, counts, appRoot }) {
   const src = `${appRoot}/src`;
@@ -76,8 +76,18 @@ export default async function exportSirah({ json, held, reject, counts, appRoot 
     out("sahabah", SAHABAH.filter(keep("sahabah")));
   }
 
-  /* فارغ عمدًا: لا مصدر/درجة في الويب، وقرار المالك بعدم التصدير بلا توثيق */
-  for (const name of ["seerah-phases", "shamail"]) { out(name, []); reject(`${S}-${name}`, "فارغ عمدًا: بلا مصدر/درجة (قرار المالك)"); }
+  /* مراحل السيرة وشمائل النبي: محتوى ثابت في كود صفحتي /seerah و/shamael؛ تمرير حرفي كما تعرضه الصفحة (بلا درجة ولا مصدر مضاف) */
+  {
+    const seerahFile = `${src}/views/SeerahPage.tsx`;
+    out("seerah-phases", objectsWithKeys(seerahFile, ["id", "num", "title", "year", "desc", "topics", "keyEvents"]));
+    const get = loadConsts(seerahFile);
+    json(`${S}/seerah-sources.json`, get("SOURCES")); cnt("seerah-sources", get("SOURCES").length);
+    const sh = loadConsts(`${src}/views/ShimaelPage.tsx`);
+    const tabs = sh("TABS");
+    const byTab = { khalq: "ABWAB_KHALQ", khuluq: "ABWAB_KHULUQ", sira: "ABWAB_SIRA", mahabbah: "MAHABBAH_ABWAB" };
+    out("shamail", tabs.map((t) => ({ id: t.id, label: t.label, abwab: sh(byTab[t.id]) })));
+    json(`${S}/shamail-facts.json`, sh("MAWLID_STATS")); cnt("shamail-facts", sh("MAWLID_STATS").length);
+  }
   /* prophets-lineage: جذر واحد لا قائمة؛ لا عقدة فارغة صالحة، فلا يُكتب الملف (الغياب = «قيد التوثيق») */
   reject(`${S}-prophets-lineage`, "غير مُصدَّر: أسماء وأنساب بلا مصدر (قرار المالك)");
 }

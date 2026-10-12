@@ -1,8 +1,15 @@
 {
   "_note": "مصدر واحد لاستثناءات native-data-check (يشير إليه DATA_CONTRACT.md). قرار المالك 2026-10-12.",
-  "computedInApp": ["fiqh/worship", "fiqh/mawarith-calculator", "fiqh/prayer-times"],
+  "computedInApp": [
+    "fiqh/worship",
+    "fiqh/mawarith-calculator",
+    "fiqh/prayer-times"
+  ],
   "intentionallyEmpty": {
     "learn/competitions": "فارغ مقصود: المنشور 0، والتطبيق يعرض «لا توجد مسابقات حالياً»",
-    "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة"
+    "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة",
+    "aqidah/discover-islam-contact": "تحتاج اتصالًا/حسابًا: صفحة نموذج تواصل بلا محتوى ثابت؛ تعرضها الشاشة بهذه الحالة",
+    "library/academic-research-assistant": "تحتاج اتصالًا/حسابًا: مساعد بحث يعتمد على شبكة/حساب؛ لا محتوى ثابت في الموقع",
+    "library/academic-research-submit": "تحتاج اتصالًا/حسابًا: نموذج إرسال بحث يعتمد على حساب؛ لا محتوى ثابت في الموقع"
   }
 }
