@@ -74,3 +74,6 @@
 /sources
 /sources/:id
 /terms
+/mutashabihat
+/quran-engine
+/quran/offline-player
