@@ -53,6 +53,7 @@ enum LibraryRouteScope {
 
     /// يطابق المسار (بلا استعلام أو مرساة) مسارًا مبقى غير مؤجَّل؛ المقطع `:param` يقبل أي قيمة.
     static func contains(_ path: String) -> Bool {
+        guard ReleaseGate.isVisible(path) else { return false }
         let cut = path.firstIndex { $0 == "?" || $0 == "#" } ?? path.endIndex
         let s = segments(String(path[..<cut]))
         return patterns.contains { p in

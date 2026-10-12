@@ -103,6 +103,11 @@ public enum QuranSection {
         registry.registerView(id: "quran-hub.seven-ahruf") {
             QuranBundledLoader(name: "ahruf", isEmpty: { (a: [AhrufSection]) in a.isEmpty }) { AhrufListView(sections: $0) }.navigationTitle("الأحرف السبعة")
         }
+        registry.registerView(id: "quran-hub.terms") {
+            LibraryLoadedView(source: LibrarySection.File.glossary, adapt: { (t: [LibraryGlossaryTerm]) in LibraryAdapters.glossary(t.filter { $0.category == "quran" }) }) {
+                LibraryInlineItemsView(items: $0, layout: .list, reader: .detail)
+            }.navigationTitle("مصطلحات علوم القرآن")
+        }
         registry.registerView(id: "miracles") {
             QuranBundledLoader(name: "miracles", isEmpty: { (m: [MiracleItem]) in m.isEmpty }) { MiraclesListView(items: $0) }.navigationTitle("الإشارات الكونية")
         }
@@ -124,7 +129,7 @@ public enum QuranSection {
 
     static let pendingIDs = [
         "mutashabihat",
-        "quran.offline-player", "quran-hub.tilawa", "quran-hub.terms", "quran-circles", "quran-engine", "quran.worship-hub",
+        "quran.offline-player", "quran-hub.tilawa", "quran-circles", "quran-engine", "quran.worship-hub",
         "ulum-quran",
     ]
 

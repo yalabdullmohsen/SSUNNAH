@@ -36,6 +36,8 @@ enum QuranLinks {
         SectionLink(id: "revelation-order", title: "ترتيب النزول", route: "/quran/revelation-order"),
         SectionLink(id: "surah-stories", title: "أسباب النزول ومحاور السور", route: "/quran/surah-stories"),
         SectionLink(id: "prophets", title: "قصص القرآن", route: "/prophets"),
+        SectionLink(id: "terms", title: "مصطلحات علوم القرآن", route: "/quran-hub/terms"),
+        SectionLink(id: "miracles", title: "الإشارات الكونية", route: "/miracles"),
     ]
     static let hub = [
         SectionLink(id: "surahs", title: "فهرس السور", route: "/quran/surahs"),
