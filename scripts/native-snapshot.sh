@@ -23,7 +23,7 @@ for s in "$@"; do
     slug=$(echo "${route#/}" | tr '/:' '__'); L="$BOARD/snapshots/$sec/$slug-light.png"; D="$BOARD/snapshots/$sec/$slug-dark.png"
     for mode in light dark; do
       xcrun simctl ui "$SIM" appearance $mode; xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1
-      xcrun simctl launch "$SIM" $BID -snapshotRoute "$eff" >/dev/null 2>&1; python3 -c "import time;time.sleep(4)"
+      xcrun simctl launch "$SIM" $BID -snapshotRoute "$eff" >/dev/null 2>&1; python3 -c "import time;time.sleep(${SNAP_WAIT:-4})"
       xcrun simctl io "$SIM" screenshot "$BOARD/snapshots/$sec/$slug-$mode.png" >/dev/null 2>&1
     done
     why=""; ro=$(swift "$OCR" "$L" "$eff" 2>/dev/null); r2=$(swift "$OCR" "$D" "$eff" 2>/dev/null)

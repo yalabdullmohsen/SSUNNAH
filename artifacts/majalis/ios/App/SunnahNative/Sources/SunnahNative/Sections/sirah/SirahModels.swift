@@ -244,7 +244,7 @@ struct SirahHistoryItem: Decodable, Sendable, Hashable {
     var lessons: String?
     var sources: [String]
     var verification: String
-    var timelineOrder: Int?
+    var timelineOrder: Double?
 }
 
 /// صف درس (DATA_CONTRACT §2 الدروس) — الحقول اللازمة لبناء فهرس المشايخ.

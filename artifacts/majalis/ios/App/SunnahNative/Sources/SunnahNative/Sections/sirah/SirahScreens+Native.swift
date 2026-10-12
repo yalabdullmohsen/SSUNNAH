@@ -29,6 +29,8 @@ struct SirahLoadedView<Raw: Decodable & Sendable, Output, V: View>: View {
         phase = .loading
         do { phase = .ready(adapt(try await loader.load(Raw.self, from: source))) }
         catch ContentError.missingBundledFile { phase = .unavailable }
+        catch is CancellationError { return }  // إلغاء .task عند إعادة بناء الواجهة ليس فشلًا
+        catch let e as URLError where e.code == .cancelled { return }
         catch { phase = .failed }
     }
 }
@@ -120,7 +122,9 @@ public enum SirahSection {
         guard c.count == 2 else { return nil }
         let id = c[1].removingPercentEncoding ?? c[1]
         switch c[0] {
-        case "islamic-landmarks": return SirahSection.detail(File.landmarks, SirahAdapters.landmarks, id: id)
+        case "islamic-landmarks":
+            if id == "map" { return nil }  // شاشة الخريطة مسجّلة بمعرّفها لا كتفصيل
+            return SirahSection.detail(File.landmarks, SirahAdapters.landmarks, id: id)
         case "nations": return SirahSection.article(File.nations, SirahAdapters.nations, id: id)
         case "tarikh-islami": return SirahSection.article(File.history, SirahAdapters.history, id: id)
         case "teachers":
