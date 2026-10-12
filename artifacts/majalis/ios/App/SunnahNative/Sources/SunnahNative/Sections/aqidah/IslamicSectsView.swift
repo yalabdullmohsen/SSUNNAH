@@ -23,23 +23,16 @@ public struct IslamicSectsView: View {
     public var body: some View {
         Group {
             if records.isEmpty {
-                VStack(spacing: 12) {
-                    Image(systemName: "books.vertical")
-                        .font(.system(size: 40))
-                        .foregroundStyle(.secondary)
-                        .accessibilityHidden(true)
-                    Text("لا توجد مواد منشورة بعد")
-                        .font(.headline)
-                    Text("يُنشر هذا القسم بعد اكتمال مراجعة مصادره الشرعية والتاريخية.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-                .padding(24)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .accessibilityElement(children: .combine)
+                SectionEmptyState(title: "لا توجد مواد منشورة بعد",
+                                  message: "يُنشر هذا القسم بعد اكتمال مراجعة مصادره الشرعية والتاريخية.")
             } else {
-                List(records) { Text($0.title) }
+                ScrollView {
+                    LazyVStack(spacing: Sunnah.Spacing.s3) {
+                        ForEach(records) { r in
+                            SunnahCard { Text(r.title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary) }
+                        }
+                    }.padding(Sunnah.Spacing.pageX)
+                }.background(Sunnah.Colors.bg)
             }
         }
         .navigationTitle("الفرق الإسلامية")

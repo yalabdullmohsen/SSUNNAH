@@ -1,16 +1,35 @@
 import SwiftUI
 
-public struct EmptyStateView: View {
-    let title: String
-    public init(title: String = "المحتوى قيد التوثيق") { self.title = title }
+/// حالة رسالة مشتركة (فارغ/خطأ/تحتاج اتصالًا): أيقونة + عنوان + نص اختياري + زر اختياري.
+/// تتبع رموز التصميم فتتكيّف مع الداكن وDynamic Type، والزر بارتفاع لمس كافٍ.
+public struct SunnahMessageState: View {
+    let symbol: String; let title: String; let message: String?
+    let actionTitle: String?; let action: (() -> Void)?
+    public init(symbol: String, title: String, message: String? = nil, actionTitle: String? = nil, action: (() -> Void)? = nil) {
+        self.symbol = symbol; self.title = title; self.message = message
+        self.actionTitle = actionTitle; self.action = action
+    }
     public var body: some View {
         VStack(spacing: Sunnah.Spacing.s3) {
-            Image(systemName: "tray").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textSecondary)
+            Image(systemName: symbol).font(Sunnah.Typography.sectionTitle)
+                .foregroundStyle(Sunnah.Colors.textSecondary).accessibilityHidden(true)
             Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                .multilineTextAlignment(.center).accessibilityAddTraits(.isHeader)
+            if let message {
+                Text(message).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+            }
+            if let actionTitle, let action { SunnahButton(actionTitle, style: .secondary, action: action) }
         }
         .frame(maxWidth: .infinity).padding(Sunnah.Spacing.s6)
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: actionTitle == nil ? .combine : .contain)
     }
+}
+
+public struct EmptyStateView: View {
+    let title: String; let message: String?
+    public init(title: String = "المحتوى قيد التوثيق", message: String? = nil) { self.title = title; self.message = message }
+    public var body: some View { SunnahMessageState(symbol: "tray", title: title, message: message) }
 }
 
 public struct LoadingStateView: View {
@@ -27,11 +46,29 @@ public struct ErrorStateView: View {
     let retry: (() -> Void)?
     public init(retry: (() -> Void)? = nil) { self.retry = retry }
     public var body: some View {
-        VStack(spacing: Sunnah.Spacing.s3) {
-            Image(systemName: "wifi.slash").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textSecondary)
-            Text(ErrorStateView.offlineMessage).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-            if let retry { SunnahButton("إعادة المحاولة", style: .secondary, action: retry) }
+        SunnahMessageState(symbol: "wifi.slash", title: ErrorStateView.offlineMessage,
+                           actionTitle: retry == nil ? nil : "إعادة المحاولة", action: retry)
+    }
+}
+
+/// عنوان قسم داخل صفحة: عنوان + إجراء اختياري («عرض الكل»)، ويُعلن كرأس لقارئ الشاشة.
+public struct SunnahSectionHeader: View {
+    let title: String; let actionTitle: String?; let action: (() -> Void)?
+    public init(_ title: String, actionTitle: String? = nil, action: (() -> Void)? = nil) {
+        self.title = title; self.actionTitle = actionTitle; self.action = action
+    }
+    public var body: some View {
+        HStack(alignment: .firstTextBaseline, spacing: Sunnah.Spacing.s3) {
+            Text(title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                .accessibilityAddTraits(.isHeader)
+            Spacer(minLength: Sunnah.Spacing.s2)
+            if let actionTitle, let action {
+                Button(action: action) {
+                    Text(actionTitle).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
+                        .frame(minHeight: Sunnah.Spacing.touch)
+                }.buttonStyle(.plain)
+            }
         }
-        .frame(maxWidth: .infinity).padding(Sunnah.Spacing.s6)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

@@ -23,18 +23,24 @@ public struct DirectoryHubView: View {
     }
 
     public var body: some View {
-        List(Self.entries) { e in
-            Button { onOpen(e.path) } label: {
-                HStack(spacing: 12) {
-                    Image(systemName: e.symbol).frame(width: 28).accessibilityHidden(true)
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(e.title).font(.body)
-                        Text(e.subtitle).font(.footnote).foregroundStyle(.secondary)
+        ScrollView {
+            LazyVStack(spacing: Sunnah.Spacing.s3) {
+                ForEach(Self.entries) { e in
+                    Button { onOpen(e.path) } label: {
+                        SunnahCard {
+                            HStack(spacing: Sunnah.Spacing.s3) {
+                                Image(systemName: e.symbol).font(Sunnah.Typography.sectionTitle)
+                                    .foregroundStyle(Sunnah.Colors.primary)
+                                    .frame(width: Sunnah.Spacing.touch).accessibilityHidden(true)
+                                SunnahListRow(title: e.title, subtitle: e.subtitle, showsChevron: true)
+                            }
+                        }
                     }
+                    .buttonStyle(.plain)
                 }
-            }
-            .buttonStyle(.plain)
+            }.padding(Sunnah.Spacing.pageX)
         }
+        .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
     }
 }

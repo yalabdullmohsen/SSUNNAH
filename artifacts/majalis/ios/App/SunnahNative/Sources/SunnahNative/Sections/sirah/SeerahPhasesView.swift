@@ -28,15 +28,23 @@ public struct SeerahPhasesView: View {
             if phases.isEmpty {
                 SectionEmptyState(title: "لا توجد مراحل منشورة بعد", message: "ستظهر مراحل السيرة هنا فور توفّر بياناتها.")
             } else {
-                List(phases.sorted { $0.num < $1.num }) { p in
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("\(p.num). \(p.title)").font(.headline)
-                        Text(p.year).font(.caption).foregroundStyle(.secondary)
-                        Text(p.desc).font(.subheadline)
-                        ForEach(p.keyEvents, id: \.self) { Text("• \($0)").font(.footnote) }
-                    }
-                    .padding(.vertical, 4)
-                }
+                ScrollView {
+                    LazyVStack(spacing: Sunnah.Spacing.s3) {
+                        ForEach(phases.sorted { $0.num < $1.num }) { p in
+                            SunnahCard {
+                                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                                    Text("\(p.num). \(p.title)").font(Sunnah.Typography.cardTitle)
+                                        .foregroundStyle(Sunnah.Colors.textPrimary).accessibilityAddTraits(.isHeader)
+                                    SunnahChip(p.year)
+                                    Text(p.desc).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                                    ForEach(p.keyEvents, id: \.self) {
+                                        Text("• \($0)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                                    }
+                                }
+                            }
+                        }
+                    }.padding(Sunnah.Spacing.pageX)
+                }.background(Sunnah.Colors.bg)
             }
         }
         .environment(\.layoutDirection, .rightToLeft)
@@ -54,16 +62,8 @@ public struct SectionEmptyState: View {
     }
 
     public var body: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "books.vertical")
-                .font(.system(size: 40))
-                .foregroundStyle(.secondary)
-                .accessibilityHidden(true)
-            Text(title).font(.headline)
-            Text(message).font(.subheadline).foregroundStyle(.secondary).multilineTextAlignment(.center)
-        }
-        .padding(24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .accessibilityElement(children: .combine)
+        SunnahMessageState(symbol: "books.vertical", title: title, message: message)
+            .frame(maxHeight: .infinity)
+            .background(Sunnah.Colors.bg)
     }
 }
