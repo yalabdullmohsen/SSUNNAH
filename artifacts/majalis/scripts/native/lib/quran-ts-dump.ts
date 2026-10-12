@@ -6,6 +6,7 @@ import { listAllHifzPathsInternal } from "../../../src/lib/memorization-path/cat
 import { loadQuranStatsCatalog } from "../../../src/lib/quran-stats/catalog";
 import { QIRAAT_SECTIONS, QIRAAT_ASHARA, QIRAAT_DIFF_EXAMPLES } from "../../../src/lib/quran-qiraat/catalog";
 import { MIRACLES_SEED } from "../../../src/lib/miracles-seed";
+import { MUTASHABIHAT } from "../../../src/lib/mutashabihat-data";
 import { AHRUF_SECTIONS } from "../../../src/lib/quran-ahruf/content";
 
 const stories = getAllSurahStories().map((s) => {
@@ -16,5 +17,5 @@ process.stdout.write(JSON.stringify({
   stories, tajweed: { intro: TAJWEED_HUB_INTRO, chapters: TAJWEED_CHAPTERS },
   hifz: listAllHifzPathsInternal(), stats: loadQuranStatsCatalog(),
   qiraat: { sections: QIRAAT_SECTIONS, ashara: QIRAAT_ASHARA, diffs: QIRAAT_DIFF_EXAMPLES },
-  ahruf: AHRUF_SECTIONS, miracles: MIRACLES_SEED,
+  ahruf: AHRUF_SECTIONS, miracles: MIRACLES_SEED, mutashabihat: MUTASHABIHAT,
 }));

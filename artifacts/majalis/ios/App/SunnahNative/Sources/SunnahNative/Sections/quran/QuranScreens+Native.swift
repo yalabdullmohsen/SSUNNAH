@@ -111,6 +111,9 @@ public enum QuranSection {
         registry.registerView(id: "miracles") {
             QuranBundledLoader(name: "miracles", isEmpty: { (m: [MiracleItem]) in m.isEmpty }) { MiraclesListView(items: $0) }.navigationTitle("الإشارات الكونية")
         }
+        registry.registerView(id: "mutashabihat") {
+            QuranBundledLoader(name: "mutashabihat", isEmpty: { (m: [MutashabihatPair]) in m.isEmpty }) { MutashabihatListView(pairs: $0) }.navigationTitle("المتشابهات")
+        }
         // حالة مستخدم محلية على الجهاز (UserDefaults) بلا خادم
         registry.registerView(id: "memorization") { MemorizationHubView().navigationTitle("الحفظ") }
         registry.registerView(id: "quran-memorization") { MemorizationHubView().navigationTitle("الحفظ") }
@@ -128,7 +131,6 @@ public enum QuranSection {
     }
 
     static let pendingIDs = [
-        "mutashabihat",
         "quran.offline-player", "quran-hub.tilawa", "quran-circles", "quran-engine", "quran.worship-hub",
         "ulum-quran",
     ]

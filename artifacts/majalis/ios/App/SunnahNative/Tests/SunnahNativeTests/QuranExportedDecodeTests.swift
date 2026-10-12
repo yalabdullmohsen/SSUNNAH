@@ -9,6 +9,12 @@ final class QuranExportedDecodeTests: XCTestCase {
         return try JSONDecoder().decode(T.self, from: Data(contentsOf: url))
     }
 
+    func testMutashabihat() throws {
+        let m = try load([MutashabihatPair].self, "mutashabihat")
+        XCTAssertFalse(m.isEmpty)
+        XCTAssertTrue(m.allSatisfy { $0.refs.count >= 2 && !$0.title.isEmpty && $0.refs.allSatisfy { (1...114).contains($0.surah) && $0.ayah >= 1 } })
+    }
+
     func testTajweed() throws {
         let f = try load(TajweedFile.self, "tajweed")
         XCTAssertEqual(f.chapters.count, 19)
