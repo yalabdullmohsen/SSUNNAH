@@ -35,7 +35,7 @@ echo "المسارات في MERGED_BUILT: $built"
 node scripts/native-progress.mjs | head -3
 
 if [ "${1:-}" = "--release" ]; then
-  SIM="${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"; DD="${DD:-$HOME/ssunnah-build/DerivedData/release}"
+  export NATIVE_WINDOW="${NATIVE_WINDOW:-n4}"; . "$(dirname "$0")/native-sim.sh"; DD="${DD:-$HOME/ssunnah-build/DerivedData/release}"
   ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1
     xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD" build -quiet 2>&1 | grep "error:" | sort -u ) | grep -q . && bad "فشل بناء Release"
   xcrun simctl install "$SIM" "$DD/Build/Products/Release-iphonesimulator/SunnahApp.app" && xcrun simctl launch "$SIM" com.yousef.majlisilm >/dev/null || bad "فشل التثبيت/التشغيل"

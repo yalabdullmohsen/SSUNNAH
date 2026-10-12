@@ -13,4 +13,5 @@
 - `adhkar/duas.json` (الأدعية)
 - `hadith/wasaya-nabawiyya.json` (الوصايا النبوية)
 - `sirah/prophets-lineage.json` (شجرة نسب الأنبياء؛ المصدر في رأس `prophets-lineage.ts`: البداية والنهاية، الكامل)
+- `fiqh/embedded/{tahara,sawm,hajj,janaza,salah-guide,mawarith}.json` و`aqidah/embedded/tawhid.json`: ثوابت الصفحات حرفيًا (`sections`)؛ الوسمان في رأس كل ملف.
 - `adhkar/daily-wird.json`: لم يُصدَّر؛ الصفحة متتبّع تقدّم بلا قائمة محتوى (ثابتات رسائل المداومة فقط).

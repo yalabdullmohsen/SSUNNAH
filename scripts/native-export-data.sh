@@ -13,7 +13,7 @@ ADH=content/native/adhkar-verified.json  # لقطة الأذكار الموثّ�
 # بديل pkill: `bash scripts/native-export-data.sh --abort` يوقف تصديرك أنت فقط (pid من الملف، وبشرط أن يكون المالك هذه النافذة).
 LOCK="$ROOT/ios-native/.export.lock"; mkdir -p "$ROOT/ios-native"
 ME="${NATIVE_WINDOW:-${USER:-?}@$(basename "$ROOT")}"
-own() { sed -n "s/^$1=//p" "$LOCK/owner" 2>/dev/null | head -1; }
+own() { sed -n "s/^$1=//p" "$LOCK/owner" 2>/dev/null | head -1 || true; }
 describe() { local st; st=$(own started); echo "pid $(own pid) · مالك $(own owner) · عمره $(( st ? $(date +%s) - st : 0 ))ث"; }
 if [ "${1:-}" = "--abort" ]; then
   [ -d "$LOCK" ] || { echo "لا قفل تصدير قائم" >&2; exit 0; }

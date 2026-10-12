@@ -7,7 +7,7 @@ TOOLS="$HOME/.ssunnah-tools"; BOARD="$HOME/ssunnah-board"; LOG="$BOARD/native-lo
 [ -f "$TOOLS/native-loop.env" ] && . "$TOOLS/native-loop.env"
 REPO="${REPO:-$HOME/majalis-correct}"; GHR="${GHR:-yalabdullmohsen/SSUNNAH}"
 WT="$HOME/ssunnah-wt/native-loop"; DD="$HOME/ssunnah-build/DerivedData/native-loop"
-SIM="${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"; BID=com.yousef.majlisilm
+export NATIVE_WINDOW="${NATIVE_WINDOW:-n4}"; . "$(dirname "$0")/native-sim.sh"; BID=com.yousef.majlisilm
 LOCK="$TOOLS/scripts/ci-local-lock.sh"; [ -x "$LOCK" ] || LOCK="$REPO/scripts/ci-local-lock.sh"
 PKG=artifacts/majalis/ios/App/SunnahNative
 ALLOW='^(artifacts/majalis/ios/App/SunnahNative/(Sources/SunnahNative/Sections/|Tests/)|docs/native/requests/)'
