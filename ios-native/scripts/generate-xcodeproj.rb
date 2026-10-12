@@ -33,6 +33,10 @@ end
 data = proj.main_group.new_reference('Data'); data.source_tree = 'SOURCE_ROOT'; data.path = 'Data'
 data.last_known_file_type = 'folder'
 t.resources_build_phase.add_file_reference(data)
+# مجلد الأصوات: مرجع مجلد فارغ من ملفات الصوت (README فقط) إلى أن يوافق المالك على الملفات
+sounds = proj.main_group.new_reference('Sounds'); sounds.source_tree = 'SOURCE_ROOT'; sounds.path = 'Sounds'
+sounds.last_known_file_type = 'folder'
+t.resources_build_phase.add_file_reference(sounds)
 # حزمة SunnahNative محلية
 ref = proj.new(Xcodeproj::Project::Object::XCLocalSwiftPackageReference)
 ref.relative_path = '../artifacts/majalis/ios/App/SunnahNative'
