@@ -13,6 +13,10 @@ pend=$(awk '/static let pendingIDs/{f=1} f{print} f&&/\]/{exit}' "$SRC/Sections/
 # 2) لا علم إظهار غير المكتمل في أي ملف مصدر أو plist
 grep -rqs --include='*.swift' --include='*.plist' "showUnfinished" "$SRC" ios-native && bad "وُجد sunnah.internal.showUnfinished"
 
+# 2ج) كل مسار ديناميكي (فيه ":") يلزمه عيّنة في ROUTE_SAMPLES.json أو إدراج موثَّق في data-exemptions.json → noSample (وإلا يُفتح بمعاملات حرفية فتظهر شاشة احتياط كاذبة)
+ns=$(node -e 'const f=require("fs"),m=JSON.parse(f.readFileSync("docs/native/ROUTE_SAMPLES.json")),x=(JSON.parse(f.readFileSync("docs/native/data-exemptions.json")).noSample)||{};console.log(JSON.parse(f.readFileSync("docs/native/ROUTE_TEMPLATE_MAP.json")).routes.map(r=>r.path).filter(p=>p.includes(":")&&!m[p]&&!x[p]).join(" "))')
+[ -z "$ns" ] || bad "مسارات ديناميكية بلا عيّنة ولا إدراج noSample: $ns"
+
 # 2ب) لا placeholder «هذه الشاشة قيد الإعداد»: النص مسموح فقط في تعريف RootTabView.placeholder والمستدعي الوحيد (آخر احتياط في resolve)
 ph=$(grep -rn --include='*.swift' "هذه الشاشة قيد الإعداد" "$SRC" ios-native/SunnahApp | grep -v "Shell/RootTabView.swift")
 [ -z "$ph" ] || bad "نص placeholder خارج RootTabView: $(echo "$ph" | cut -d: -f1,2 | tr '\n' ' ')"
