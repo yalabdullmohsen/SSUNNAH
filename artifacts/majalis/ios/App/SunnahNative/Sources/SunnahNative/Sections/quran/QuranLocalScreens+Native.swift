@@ -234,3 +234,56 @@ struct MushafBookmarksScreen: View {
         .quranTitle("علامات المصحف")
     }
 }
+
+// MARK: - /quran-memorization
+
+/// اختبارات الحفظ: أنواع الاختبار الاثنا عشر كما في الموقع (نصوص `quran-memorization.ts` حرفيًا) واختيار السورة.
+struct QuranMemorizationView: View {
+    static let types: [(id: String, label: String, desc: String)] = [
+        ("complete-ayah", "أكمل الآية", "أكمل النص الناقص من الآية الكريمة"),
+        ("which-surah", "حدّد السورة", "حدّد اسم السورة التي تنتمي إليها هذه الآية"),
+        ("next-ayah", "الآية التالية", "ما الآية التي تلي هذه الآية مباشرةً؟"),
+        ("prev-ayah", "الآية السابقة", "ما الآية التي تسبق هذه الآية مباشرةً؟"),
+        ("fill-blank", "أكمل الفراغ", "أكمل الكلمة المحذوفة من الآية الكريمة"),
+        ("ayah-number", "رقم الآية", "ما رقم هذه الآية في سورتها؟"),
+        ("surah-type", "مكية أم مدنية؟", "هل هذه السورة مكية أم مدنية؟"),
+        ("juz-number", "رقم الجزء", "في أي جزء من أجزاء القرآن تقع هذه الآية؟"),
+        ("multiple-choice", "اختيار من متعدد", "اختر تكملة الآية الصحيحة من بين الخيارات"),
+        ("surah-count", "عدد آيات السورة", "كم عدد آيات هذه السورة الكريمة؟"),
+        ("order-ayahs", "ترتيب الآيات", "رتّب هذه الآيات حسب ورودها في القرآن الكريم"),
+        ("first-word", "أول كلمة في الآية", "ما أول كلمة في هذه الآية الكريمة؟"),
+    ]
+    @State private var selected = "complete-ayah"
+    @State private var surah = 1
+    private let names = QuranSection.surahNames()
+
+    var body: some View {
+        List {
+            Section {
+                Text("12 نوعًا من اختبارات الحفظ مع نظام المراجعة المتباعدة")
+                    .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .listRowBackground(Sunnah.Colors.bg)
+            }
+            Section("اختر نوع الاختبار") {
+                ForEach(Array(Self.types.enumerated()), id: \.element.id) { i, t in
+                    Button { selected = t.id } label: {
+                        HStack {
+                            SunnahListRow(title: t.label, subtitle: "نوع \(i + 1) — \(t.desc)")
+                            if selected == t.id { Image(systemName: "checkmark").foregroundStyle(Sunnah.Colors.primary) }
+                        }
+                    }
+                    .buttonStyle(.plain)
+                    .listRowBackground(Sunnah.Colors.surface)
+                }
+            }
+            Section("اختر السورة") {
+                Picker("السورة", selection: $surah) {
+                    ForEach(names.keys.sorted(), id: \.self) { n in Text("\(n). \(names[n] ?? "")").tag(n) }
+                }
+                .listRowBackground(Sunnah.Colors.surface)
+            }
+        }
+        .listStyle(.plain).scrollContentBackground(.hidden)
+        .background(Sunnah.Colors.bg)
+    }
+}

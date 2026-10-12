@@ -130,7 +130,7 @@ public enum QuranSection {
         registry.registerView(id: "quran.worship-hub") { SectionsListTemplate(links: WorshipHubLinks.all).quranTitle("عبادات القرآن") }
         // حالة مستخدم محلية على الجهاز (UserDefaults) بلا خادم
         registry.registerView(id: "memorization") { MemorizationHubView().quranTitle("الحفظ") }
-        registry.registerView(id: "quran-memorization") { MemorizationHubView().quranTitle("الحفظ") }
+        registry.registerView(id: "quran-memorization") { QuranMemorizationView().quranTitle("حفظ القرآن") }
         registry.registerView(id: "quran-knowledge") { SectionsListTemplate(links: QuranLinks.knowledge).quranTitle("القرآن وعلومه") }
         registry.registerView(id: "quran.memorization-plans") { MemorizationPlansScreen() }
         registry.registerView(id: "quran.hifz-loop") { HifzLoopScreen() }
