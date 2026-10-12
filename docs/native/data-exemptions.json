@@ -5,12 +5,6 @@
   "fiqh/mawarith-calculator",
   "fiqh/prayer-times"
  ],
- "redirects": {
-  "/widget-center": {
-   "to": "/settings",
-   "reason": "غير منطبق على iOS: لا ويدجت في الإصدار الأول (ويدجت بعد الإطلاق)؛ يُعدّ مبنيًا بإحالة"
-  }
- },
  "intentionallyEmpty": {
   "learn/competitions": "فارغ مقصود: المنشور 0، والتطبيق يعرض «لا توجد مسابقات حالياً»",
   "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة",
