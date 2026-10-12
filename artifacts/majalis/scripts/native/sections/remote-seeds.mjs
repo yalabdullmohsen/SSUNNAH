@@ -7,7 +7,7 @@ export default function ({ put, appRoot, data }) {
     const p = `${data}/${rel}`;
     if (fs.existsSync(p)) put(rel, fs.readFileSync(p));
   }
-  const ac = `${appRoot}/content/native/remote-seeds/auto-content.json`;
+  const ac = `${appRoot}/content/native/remote-seeds/feed-snapshot.json`;
   if (fs.existsSync(ac)) put("seed/auto-content.json", fs.readFileSync(ac));
   put("seed/platform-updates.json", "[]");
 }
