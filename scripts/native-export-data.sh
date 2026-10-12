@@ -9,7 +9,20 @@ OUT="${1:-$ROOT/ios-native/Data}"
 cd "$ROOT/artifacts/majalis"
 export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=1536}"
 ADH=content/native/adhkar-verified.json  # لقطة الأذكار الموثّقة (تُمرَّر تلقائيًا إن وُجدت؛ لا تُنشأ أذكار)
+# قفل ذري (mkdir): تصدير واحد في الوقت؛ ينتظر حتى 10 دقائق ثم يفشل بلا كتابة. يُحذف عند الخروج دائمًا
+LOCK="$ROOT/ios-native/.export.lock"; mkdir -p "$ROOT/ios-native"
+for i in $(seq 1 120); do
+  if mkdir "$LOCK" 2>/dev/null; then echo $$ > "$LOCK/pid"; break; fi
+  OWNER=$(cat "$LOCK/pid" 2>/dev/null || true)
+  if [ -n "$OWNER" ] && ! kill -0 "$OWNER" 2>/dev/null; then rm -rf "$LOCK"; continue; fi  # قفل يتيم
+  [ "$i" -eq 120 ] && { echo "رُفض: تصدير آخر يعمل منذ أكثر من 10 دقائق (قفل $LOCK، pid ${OWNER:-?}) — لم يُكتب شيء" >&2; exit 1; }
+  sleep 5
+done
+# حارس: يُصدَّر إلى مجلد مؤقت أولًا؛ فشل التصدير أو نقص عدد الملفات لا يمسّ $OUT
+FINAL="$OUT"; OUT="$(mktemp -d "${TMPDIR:-/tmp}/native-data.XXXXXX")"; trap 'rm -rf "$OUT" "$LOCK"' EXIT
 node --import tsx scripts/native/export-ios-data.mjs --out "$OUT" ${ADH:+$( [ -f "$ADH" ] && echo "--adhkar-json $ADH" )}
+NEW=$(find "$OUT" -type f | wc -l | tr -d ' '); OLD=0; [ -d "$FINAL" ] && OLD=$(find "$FINAL" -type f | wc -l | tr -d ' ')
+if [ "$NEW" -lt "$OLD" ]; then echo "رُفض: الملفات الجديدة $NEW أقل من الحالية $OLD — لم يُمسّ $FINAL" >&2; exit 1; fi
 node --input-type=module -e '
 import fs from "node:fs"; import crypto from "node:crypto"; import path from "node:path";
 const out = process.argv[1]; const m = JSON.parse(fs.readFileSync(path.join(out, "MANIFEST.json"), "utf8"));
@@ -19,3 +32,4 @@ let q = 0;
 for (const f of m.files.filter((x) => /^quiz\/(?!manifest)/.test(x.path))) for (const r of JSON.parse(fs.readFileSync(path.join(out, f.path), "utf8"))) { q++; if (/^demo[-_]/i.test(String(r.id)) || holds.has(r.id) || !String(r.question || "").trim() || !String(r.answer || "").trim() || (r.documentation_status !== "unsourced" && (!String(r.reference || "").trim() || !String(r.explanation || "").trim()))) { console.error("سؤال غير مقبول:", r.id); process.exit(1); } }
 console.log(JSON.stringify({ ok: true, files: m.files.length, quizAccepted: q, manifest: path.join(out, "MANIFEST.json"), manifestSha256: crypto.createHash("sha256").update(fs.readFileSync(path.join(out, "MANIFEST.json"))).digest("hex") }));
 ' "$OUT"
+mkdir -p "$FINAL" && cp -R "$OUT"/. "$FINAL"/
