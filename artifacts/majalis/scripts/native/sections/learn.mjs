@@ -29,11 +29,36 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
   /* شبكة الروابط: كما هي */
   out("graph/links.json", read(`${appRoot}/public/data/graph/links.json`));
 
+  /* ما يعرضه الموقع بدرجاته ومصادره (قرار المالك 2026-10-12): الحالة تُحمل في tags ولا يُخترع نص */
+  const clip = (t, n = 180) => { const x = String(t ?? "").replace(/\s+/g, " ").trim(); return x.length > n ? `${x.slice(0, n - 1)}…` : x; };
+  const dars = async (file, mod, name) => {
+    const rows = (await import(`${src}/lib/${mod}.ts`))[name].flatMap((sec) => sec.lessons.map((l) => ({
+      id: l.id, title: l.title, subtitle: l.summary || undefined, body: l.body || l.summary || undefined, tags: [sec.title], route: undefined,
+    })));
+    out(file, rows.filter(keep(file)));
+  };
+  out("learn/institutions.json", read(`${src}/data/institutions-catalog.json`).filter(keep("institutions")).map((i) => ({
+    id: i.id, title: i.name, subtitle: [i.city, i.country].filter(Boolean).join("، "), body: i.description,
+    tags: [i.type, i.contentStatus ?? "needs_review", i.sourceType].filter(Boolean), route: i.website || i.sourceUrl || undefined,
+  })));
+  await dars("learn/durus-imaniyya.json", "durus-imaniyya-data", "DURUS_IMANIYYA");
+  await dars("learn/durus-mutanawwia.json", "durus-mutanawwia-data", "DURUS_MUTANAWWIA");
+  await dars("sirah/fikr-waqia.json", "fikr-waqia-data", "FIKR_WAQIA");
+  {
+    const { FAWAID_CURATED_SEED, filterCuratedFawaid } = await import(`${src}/lib/fawaid-curated-seed.ts`);
+    out("learn/fawaid.json", filterCuratedFawaid(FAWAID_CURATED_SEED).filter(keep("fawaid")).map((f) => ({
+      id: f.id, title: clip(f.text, 90), subtitle: f.author_name || undefined, body: [f.text, f.source].filter(Boolean).join("\n\n"),
+      tags: [f.category, f.verification_status, f.trust_level].filter(Boolean),
+    })));
+  }
+  {
+    const { ANNUAL_COURSES_SEED } = await import(`${src}/lib/annual-courses-seed.ts`);
+    out("learn/annual-courses.json", ANNUAL_COURSES_SEED.filter((c) => c.status === "approved").filter(keep("annual-courses")).map((c) => ({
+      id: c.id, title: c.title, subtitle: [c.season, ...(c.sheikh_names ?? [])].filter(Boolean).join(" — ") || undefined, body: c.body || c.summary,
+      tags: [c.course_type, c.venue_city].filter(Boolean), route: c.registration_url || undefined,
+    })));
+  }
+
   /* فارغ عمدًا */
-  empty("learn/institutions.json", "قرار المالك 2026-10-12: المراجَع فقط والـ44 كلها needs_review (LEARN_INSTITUTIONS_DECISION.md)");
   empty("learn/competitions.json", "المنشور في الإنتاج 0 والعيّنة demo");
-  empty("learn/durus-imaniyya.json", "ملخصات بنسبة أحاديث ودرجات بلا توثيق: تنتظر مراجعة sharia-content");
-  empty("learn/durus-mutanawwia.json", "نصوص مولَّدة من قالب بلا مصادر: تنتظر مراجعة sharia-content");
-  empty("learn/fawaid.json", "مصدره Supabase (approved) بلا لقطة محقَّقة؛ ما بلا مصدر/قائل لا يُعرض");
-  empty("learn/annual-courses.json", "مصدره Supabase (approved)؛ البذرة تجريبية");
 }
