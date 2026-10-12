@@ -1,4 +1,4 @@
-# BACKLOG — بيانات التطبيق الأصلي
+# فجوات بيانات التطبيق الأصلي
 
 ## ملفات بيانات فارغة (WARN-EMPTY) — للأخذ من ن1 أو ن4
 مصدر القائمة: `node scripts/native-data-check.mjs` (بعد الاستثناءات في docs/native/data-exemptions.json).

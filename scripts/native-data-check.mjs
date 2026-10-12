@@ -4,7 +4,7 @@
 import { readdirSync, readFileSync, statSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join, basename } from "node:path";
-const SRC = "artifacts/majalis/ios/App/SunnahNative/Sources", DATA = "ios-native/Data";
+const SRC = "artifacts/majalis/ios/App/SunnahNative/Sources", DATA = process.env.NATIVE_DATA_DIR ?? "ios-native/Data";
 const walk = (d, o = []) => { for (const e of readdirSync(d)) { const p = join(d, e), s = statSync(p); s.isDirectory() ? walk(p, o) : o.push(p); } return o; };
 const have = new Map(); // name -> [paths]
 if (existsSync(DATA)) for (const p of walk(DATA)) if (p.endsWith(".json")) { const n = basename(p, ".json"); (have.get(n) ?? have.set(n, []).get(n)).push(p); }
