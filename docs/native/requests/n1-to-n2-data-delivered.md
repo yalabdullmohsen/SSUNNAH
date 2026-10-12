@@ -7,3 +7,5 @@
 - `sirah/prophets-lineage.json`: جذر واحد (آدم) بـ`children`، 27 عقدة.
 - `adhkar/daily-wird.json`: لا يوجد؛ الصفحة متتبّع بلا قائمة محتوى.
 n3: ملفات `quran/people|surah-stories|tajweed` موجودة من قبل؛ لا جديد منّا.
+
+> duas وarbaeen وwasaya وprophets-lineage مُسلَّمة، وdaily-wird بلا ملف (متتبّع).
