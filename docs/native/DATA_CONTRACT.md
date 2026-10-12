@@ -86,6 +86,10 @@
 - فارغة عمدًا (`[]`) لغياب مصدر/درجة في الويب وقرار المالك: `fikr-waqia`, `seerah-phases`, `shamail`.
 - `prophets-lineage` لا يُكتب (جذر واحد لا قائمة، ولا عقدة فارغة صالحة): غيابه = «قيد التوثيق».
 
+### learn + audio (11 ملفًا: `Data/learn/`، `Data/lessons/`، `Data/graph/`، `Data/audio/`)
+- بيانات حقيقية: `lessons/chunk-000` (82)، `learn/universities` (37 متحقَّقة)، `learn/kuwait-sheikhs` (6)، `graph/links`، `audio/surah-reciters` (29: `{id,nameAr,surahBaseUrl}` بعد مفتاح التعطيل المركزي).
+- فارغة عمدًا بالشكل الصحيح `[]`: `institutions` (قرار المالك: المراجَع فقط)، `competitions`، `durus-imaniyya`، `durus-mutanawwia` (تنتظر sharia-content)، `fawaid`، `annual-courses` (مصدرها Supabase).
+
 ### library (11 ملفًا في `Data/library/`)
 - بالشكل الحرفي للمصدر بعد حذف المحجوز: `academic-research` (`{records, categories}`؛ منشور وغير تجريبي فقط)، `arabic-language` و`mawsuaat` (`DarsSection[]`)، `islamic-glossary` (ذو مصدر فقط؛ 20 بلا مصدر مستبعدة)، `mind-maps` (+ نسخة مطابقة `mind-map`)، `scientific-announcements`.
 - `search-index` = `{docs:[{id,kind,titleAr,href,norm}]}` من `public/data/search/index.json` بعد الحجب العام والمحجوز.
