@@ -81,6 +81,8 @@
 - تمرير حرفي من مصدر الويب؛ لا إعادة صياغة ولا حقول جديدة. المسارات الـ17 المكتوبة داخل JSX (`/tahara` `/sawm`…) خارج هذا الـPR (تحتاج نقل نص إلى وحدة بيانات أولًا).
 
 
+- ملفات `ContentItem[]` المتبقية (21): مشتقة من `books.json` المنشور وبطاقات البوابة/الأصول — `fiqh-books` (الكتب)، `fiqh-topics`+`fiqh` (بطاقات البوابة)، `fiqh-usul`، وأبواب كتاب لكل من `tahara`(taharah) `salah-guide`(salah) `zakat` `sawm` `hajj` `janaza` `mawarith`(wasaya-faraid) `family`(nikah) — الربط تقدير في `sections/fiqh-rest.mjs` يغيّره المالك إن شاء. **فارغة عمدًا بالشكل نفسه `[]`**: `arkan` `arkan-iman` `fadail-aamal` `sujood-sahw` `tawba` (JSX مضمَّن بلا مصدر مراجَع)، `fiqh-qawaid` `worship` `mawarith-calculator` (حاسبة/شاشة)، `prayer-times` (محمي، لا يُصدَّر).
+
 ### sirah (10 ملفات في `Data/sirah/`)
 - مصفوفات بالشكل الحرفي للمصدر، بعد حذف المحجوز: `islamic-landmarks`, `nations`, `sahabah` (مضمَّنة في الصفحة؛ `quote` لا يُعرض).
 - بمرشحات القبول: `occasions-verified` (سجل موثّق مطابق لبذرة بـ`reviewStatus=approved` ومصدر)، `prophets-knowledge` (`review_status=verified` + مصادر)، `stories` (معتمدة + `reviewed` + مصادر)، `islamic-history` (لا `needs-review` ولا بلا مصادر).
