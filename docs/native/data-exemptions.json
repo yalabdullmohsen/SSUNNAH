@@ -13,7 +13,10 @@
  },
  "intentionallyEmpty": {
   "learn/competitions": "فارغ مقصود: المنشور 0، والتطبيق يعرض «لا توجد مسابقات حالياً»",
-  "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة"
+  "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة",
+  "aqidah/discover-islam-contact": "فارغ مقصود: صفحة DiscoverIslamContactPage نموذج إرسال طلب تواصل (submitDawahContactRequest، شبكة/حساب) ولا قائمة محتوى منشورة",
+  "library/academic-research-assistant": "فارغ مقصود: ResearchAssistantPage أداة اقتراح تُحسب على بيانات academic-research المصدَّرة (lib/researches/assistant.ts)، لا ملف بيانات مستقل",
+  "library/academic-research-submit": "فارغ مقصود: ResearchSubmitPage نموذج تقديم يُحفظ في localStorage (lib/researches/service.ts) ولا محتوى منشور"
  },
  "noSample": {
   "/c/:slug": "لا بيانات مصدَّرة لاستخراج معرّف حقيقي (جلب حي/محتوى غير مصدَّر)؛ لا تُختلق عيّنة",
@@ -25,5 +28,20 @@
   "/hifz-path/c/:category": "لا بيانات مصدَّرة لاستخراج معرّف حقيقي (جلب حي/محتوى غير مصدَّر)؛ لا تُختلق عيّنة",
   "/hifz-path/p/:slug": "لا بيانات مصدَّرة لاستخراج معرّف حقيقي (جلب حي/محتوى غير مصدَّر)؛ لا تُختلق عيّنة",
   "/hifz-path/p/:slug/u/:unitId": "لا بيانات مصدَّرة لاستخراج معرّف حقيقي (جلب حي/محتوى غير مصدَّر)؛ لا تُختلق عيّنة"
+ },
+ "overriddenGenerated": {
+  "_note": "مراجع bundled في Generated/SirahScreens.swift تحلّ محلها SirahSection.register (registerView بالمعرّف نفسه) وتقرأ ملفات أخرى مُصدَّرة؛ المرجع المولَّد ميت فلا يُعدّ مفقودًا",
+  "islamic-landmarks-map": "islamic-landmarks.map ← sirah/islamic-landmarks.json",
+  "occasions": "occasions ← sirah/occasions-verified.json",
+  "occasions-lessons": "occasions-lessons ← SirahLinks (ثابت)",
+  "prophets": "prophets ← sirah/prophets-knowledge.json",
+  "prophets-tree": "prophets.tree ← sirah/prophets-lineage.json (غير مُصدَّر، انظر notExported)",
+  "seerah": "seerah ← sirah/seerah-phases.json",
+  "shamael": "shamael ← sirah/shamail.json",
+  "tarikh-islami": "tarikh-islami ← sirah/islamic-history.json",
+  "teachers": "teachers ← remote /data/lessons/chunk-000.json"
+ },
+ "notExported": {
+  "sirah/prophets-lineage": "غير مُصدَّر عمدًا: أسماء وأنساب بلا مصدر (قرار المالك)؛ الشاشة تعرض «قيد التوثيق» (DATA_CONTRACT)"
  }
 }
