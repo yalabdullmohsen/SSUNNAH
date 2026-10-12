@@ -39,7 +39,7 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
   };
   out("learn/institutions.json", read(`${src}/data/institutions-catalog.json`).filter(keep("institutions")).map((i) => ({
     id: i.id, title: i.name, subtitle: [i.city, i.country].filter(Boolean).join("، "), body: i.description,
-    tags: [i.type, i.contentStatus ?? "needs_review", i.sourceType].filter(Boolean), route: i.website || i.sourceUrl || undefined,
+    tags: [i.type, (i.contentStatus ?? "needs_review") === "needs_review" ? "قيد المراجعة" : "معتمد", i.contentStatus ?? "needs_review", i.sourceType].filter(Boolean), route: i.website || i.sourceUrl || undefined,
   })));
   await dars("learn/durus-imaniyya.json", "durus-imaniyya-data", "DURUS_IMANIYYA");
   await dars("learn/durus-mutanawwia.json", "durus-mutanawwia-data", "DURUS_MUTANAWWIA");
