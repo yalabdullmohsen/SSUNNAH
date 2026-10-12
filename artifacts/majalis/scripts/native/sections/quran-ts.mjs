@@ -87,4 +87,14 @@ export default async function exportQuranTs({ json, reject, counts, appRoot }) {
   const ahruf = d.ahruf.filter((x) => (x.sources ?? []).length || (reject(`${Q}-ahruf`, "قسم بلا مصادر"), false));
   json("quran/ahruf.json", ahruf);
   c.ahruf = ahruf.length;
+
+  // إشارات كونية للتأمل: المحرَّر (verified) وله مصدر علمي فقط؛ needs_review يُحجَب
+  const miracles = [];
+  for (const m of d.miracles) {
+    if (m.verification_status !== "verified" || !has(m.scholarly_source) || !has(m.reference) || !has(m.body)) { reject(`${Q}-miracles`, "غير محرَّر/بلا مصدر علمي"); continue; }
+    miracles.push({ id: m.id, slug: m.slug, title: m.title, category: m.category, sourceType: m.source_type, reference: m.reference, verse: m.verse ?? null,
+      body: m.body, tafsirSummary: m.tafsir_summary ?? null, scholarlySource: m.scholarly_source });
+  }
+  json("quran/miracles.json", miracles);
+  c.miracles = miracles.length;
 }

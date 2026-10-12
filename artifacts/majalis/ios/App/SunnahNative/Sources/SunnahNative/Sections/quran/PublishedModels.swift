@@ -44,6 +44,10 @@ struct QiraatQari: Decodable, Sendable, Hashable, Identifiable {
 struct QiraatDiff: Decodable, Sendable, Hashable, Identifiable { let id: String; let kind: String; let description: String; let surah: Int; let ayah: Int; let source: String }
 struct QiraatFile: Decodable, Sendable { let sections: [QiraatSection]; let ashara: [QiraatQari]; let diffs: [QiraatDiff] }
 
+struct MiracleItem: Decodable, Sendable, Hashable, Identifiable {
+    let id: String; let title: String; let category: String; let reference: String
+    let body: String; let scholarlySource: String
+}
 struct AhrufSection: Decodable, Sendable, Hashable, Identifiable { let id: String; let title: String; let body: [String]; let sources: [String] }
 
 enum PublishedAdapters {

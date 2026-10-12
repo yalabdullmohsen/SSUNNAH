@@ -38,3 +38,8 @@ tajweed.json، surah-stories.json، hifz-paths.json، stats.json، qiraat.json،
 - `mushaf.bookmarks`: قائمة علامات `MushafStore` تفتح المصحف الحالي؛ لا تغيير في النص/الصفحات/الخطوط.
 - `/c/:slug` (CitationPublicPage) يجلب من الخادم: لا يُبنى الآن. التفاصيل `hifz-path/c|p|u` داخل القائمة.
 - اختبارات فك الترميز تقرأ ملفات فعلية في `Tests/SunnahNativeTests/Fixtures/quran` (تُجدَّد بإعادة التصدير).
+
+## دفعة 5: الإشارات الكونية والمراكز
+- `miracles.json` (من `miracles-seed.ts`): 67 إشارة `verified` ولها مصدر علمي؛ `needs_review` (67) محجوب (`quran-miracles`). النص كما نُشر في الموقع.
+- `/quran-knowledge` فهرس روابط؛ `/quran-memorization` نفس مركز الحفظ.
+- ملفات sirah وshamael وquran/search وsurah-stories: لا مفقود فعليًا — surah-stories مُصدَّر (114)، والبحث حرفي على Tanzil المحزوم، وfikr-waqia/seerah-phases/shamail فارغة عمدًا (بلا مصدر/درجة: قرار المالك)، وprophets-lineage غير مكتوب.

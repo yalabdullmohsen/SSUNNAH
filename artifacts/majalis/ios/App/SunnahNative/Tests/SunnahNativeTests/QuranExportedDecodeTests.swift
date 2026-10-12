@@ -41,4 +41,10 @@ final class QuranExportedDecodeTests: XCTestCase {
     func testAhruf() throws {
         XCTAssertEqual(try load([AhrufSection].self, "ahruf").count, 8)
     }
+
+    func testMiraclesVerifiedWithSource() throws {
+        let m = try load([MiracleItem].self, "miracles")
+        XCTAssertEqual(m.count, 67)
+        XCTAssertTrue(m.allSatisfy { !$0.scholarlySource.isEmpty && !$0.reference.isEmpty })
+    }
 }
