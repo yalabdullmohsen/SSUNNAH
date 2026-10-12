@@ -17,13 +17,13 @@
 ## الحديث والسنة — 13 (المسؤول: ن3)
 
 - [x] `/arbaeen-nawawi` — ArbaeenNawawiPage — قائمة
-- [ ] `/arbaeen-nawawi/:id` — ArbaeenHadithDetailPage — تفاصيل
+- [x] `/arbaeen-nawawi/:id` — ArbaeenHadithDetailPage — تفاصيل
 - [x] `/dalail-nubuwwah` — DalailNubuwwahPage — قائمة
 - [x] `/hadith` — HadithPage — قائمة
 - [x] `/hadith-science` — HadithSciencePage — قائمة
 - [x] `/hadith/arbaeen-love-of-allah` — ArbaeenLovePage — قائمة
 - [x] `/hadith/books` — HadithBooksPage — قائمة
-- [ ] `/hadith/books-and-rulings` — HadithBooksAndRulingsPage — قائمة
+- [x] `/hadith/books-and-rulings` — HadithBooksAndRulingsPage — قائمة
 - [x] `/hadith/daif` — HadithDaifPage — قائمة
 - [x] `/hadith/mawdu` — HadithMawduPage — قائمة
 - [x] `/hadith/sahih` — HadithSahihPage — قائمة
@@ -64,11 +64,11 @@
 ## الدروس والتعلم — 23 (المسؤول: ن3)
 
 - [ ] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
-- [ ] `/competitions` — CompetitionsPage — اختبار
-- [ ] `/competitions/:id` — CompetitionDetailPage — اختبار
-- [ ] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
-- [ ] `/durus-mutanawwia` — DurusMutanawwiaPage — قائمة
-- [ ] `/fawaid` — FawaidPage — قائمة
+- [x] `/competitions` — CompetitionsPage — اختبار
+- [x] `/competitions/:id` — CompetitionDetailPage — اختبار
+- [x] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
+- [x] `/durus-mutanawwia` — DurusMutanawwiaPage — قائمة
+- [x] `/fawaid` — FawaidPage — قائمة
 - [x] `/flashcards` — FlashCardsPage — قائمة
 - [ ] `/institutions` — InstitutionsPage — قائمة
 - [x] `/knowledge-graph` — KnowledgeGraphPage — قائمة
@@ -122,7 +122,7 @@
 - [x] `/discover-islam/doubts/:slug` — DiscoverIslamDoubtDetailPage — تفاصيل
 - [x] `/discover-islam/how-to-convert` — HowToBecomeMuslimPage — قائمة
 - [x] `/discover-islam/new-muslim` — NewMuslimPathPage — قائمة
-- [ ] `/discover-islam/new-muslim/:day` — NewMuslimDayDetailPage — تفاصيل
+- [x] `/discover-islam/new-muslim/:day` — NewMuslimDayDetailPage — تفاصيل
 - [x] `/discover-islam/questions` — DiscoverIslamQuestionsPage — قائمة
 - [x] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
 - [x] `/hikam-salaf` — HikamSalafPage — قائمة
@@ -153,7 +153,7 @@
 - [x] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
 - [x] `/fiqh/usul` — FiqhUsulPage — قائمة
 - [ ] `/hajj` — HajjPage — قائمة
-- [ ] `/janaza` — JanazaPage — قائمة
+- [x] `/janaza` — JanazaPage — قائمة
 - [x] `/jumuah` — JumuahPage — قائمة
 - [x] `/madhahib` — MadhahibPage — قائمة
 - [x] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
@@ -171,13 +171,13 @@
 - [ ] `/sawm` — SawmPage — قائمة
 - [x] `/sins-and-rights` — SinsAndRightsPage — قائمة
 - [x] `/sins-and-rights/:slug` — SinsAndRightsDetailPage — تفاصيل
-- [ ] `/sujood-sahw` — SujoodSahwPage — قائمة
-- [ ] `/tahara` — TaharaPage — قائمة
+- [x] `/sujood-sahw` — SujoodSahwPage — قائمة
+- [x] `/tahara` — TaharaPage — قائمة
 - [x] `/talaq` — TalaqPage — قائمة
-- [ ] `/tawba` — TawbaPage — قائمة
+- [x] `/tawba` — TawbaPage — قائمة
 - [x] `/udhiya` — UdhiyaPage — قائمة
 - [x] `/waqf` — WaqfPage — قائمة
-- [ ] `/worship` — WorshipPage — قائمة
+- [x] `/worship` — WorshipPage — قائمة
 - [ ] `/zakat` — ZakatPage — قائمة
 
 ## القرآن — 37 (المسؤول: ن3)
@@ -189,20 +189,20 @@
 - [ ] `/hifz-path/p/:slug` — HifzPathDetailPage — تفاصيل
 - [ ] `/hifz-path/p/:slug/u/:unitId` — HifzPathUnitPage — تفاصيل
 - [x] `/memorization` — MemorizationHubPage — أقسام
-- [ ] `/miracles` — MiraclesPage — قائمة
+- [x] `/miracles` — MiraclesPage — قائمة
 - [x] `/mushaf` — MushafReaderPage — قائمة
 - [x] `/mushaf/bookmarks` — MushafBookmarksPage — قائمة
-- [ ] `/mutashabihat` — MutashabihatPage — قائمة
+- [x] `/mutashabihat` — MutashabihatPage — قائمة
 - [ ] `/quran-circles` — QuranCirclesPage — قائمة
-- [ ] `/quran-engine` — QuranEnginePage — قائمة
+- [x] `/quran-engine` — QuranEnginePage — قائمة
 - [x] `/quran-hub` — QuranHubPage — أقسام
 - [x] `/quran-hub/numbers` — QuranNumbersPage — أقسام
 - [x] `/quran-hub/qiraat` — QuranQiraatPage — أقسام
 - [x] `/quran-hub/seven-ahruf` — QuranSevenAhrufPage — أقسام
 - [x] `/quran-hub/tajweed` — QuranTajweedPage — أقسام
-- [ ] `/quran-hub/tajweed/:chapter` — TajweedChapterPage — تفاصيل
-- [ ] `/quran-hub/terms` — QuranUlumTermsPage — أقسام
-- [ ] `/quran-hub/tilawa` — QuranTilawaPage — صوت
+- [x] `/quran-hub/tajweed/:chapter` — TajweedChapterPage — تفاصيل
+- [x] `/quran-hub/terms` — QuranUlumTermsPage — أقسام
+- [x] `/quran-hub/tilawa` — QuranTilawaPage — صوت
 - [ ] `/quran-knowledge` — QuranKnowledgeHubPage — أقسام
 - [ ] `/quran-memorization` — QuranMemorizationPage — قائمة
 - [x] `/quran/hifz-loop` — QuranHifzLoopPage — قائمة
@@ -216,15 +216,15 @@
 - [x] `/quran/surah-stories` — SurahStoriesPage — مقال
 - [ ] `/quran/surah-stories/:number` — SurahStoryDetailRoute — مقال
 - [x] `/quran/surahs` — SurahIndexPage — أقسام
-- [ ] `/quran/worship-hub` — QuranWorshipHubPage — أقسام
+- [x] `/quran/worship-hub` — QuranWorshipHubPage — أقسام
 - [x] `/tafsir` — TafsirPage — قائمة
 - [ ] `/ulum-quran` — UlumQuranPage — قائمة
 
 ## اللغة والمكتبة والبحث — 19 (المسؤول: ن2)
 
 - [x] `/academic-research` — AcademicResearchPage — بحث
-- [ ] `/academic-research/:id` — ResearchDetailPage — بحث
-- [ ] `/academic-research/assistant` — ResearchAssistantPage — بحث
+- [x] `/academic-research/:id` — ResearchDetailPage — بحث
+- [x] `/academic-research/assistant` — ResearchAssistantPage — بحث
 - [x] `/academic-research/submit` — ResearchSubmitPage — بحث
 - [x] `/arabic-language` — ArabicLanguagePage — قائمة
 - [x] `/cards` — CardsPage — قائمة
