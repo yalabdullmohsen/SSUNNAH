@@ -248,6 +248,10 @@ public struct LearnInstitution: Decodable, Identifiable, Hashable, Sendable {
     public var description: String?
     public var website: String?
     public var sourceUrl: String?
+    public var contentStatus: String?
+
+    /// قرار المالك (2026-10-12، docs/native/LEARN_INSTITUTIONS_DECISION.md): لا يُعرض إلا المراجَع؛ `needs_review` أو بلا حالة يُخفى.
+    public var isReviewed: Bool { ["verified", "approved", "reviewed"].contains(contentStatus ?? "") }
 
     /// تسميات InstitutionDiscoverCard في الويب.
     public var typeLabel: String? {

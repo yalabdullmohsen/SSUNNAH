@@ -21,7 +21,7 @@
 | الملف | المصدر | ملاحظة |
 |---|---|---|
 | `Data/learn/universities.json` | `src/data/universities-catalog.json` | 37، كلها `is_verified` |
-| `Data/learn/institutions.json` | `src/data/institutions-catalog.json` | 44، كلها `contentStatus: needs_review` ⇒ قرار المالك قبل التصدير |
+| `Data/learn/institutions.json` | `src/data/institutions-catalog.json` | **قرار المالك 2026-10-12:** المراجَع فقط؛ الـ44 الحالية كلها `needs_review` فلا تُصدَّر (`docs/native/LEARN_INSTITUTIONS_DECISION.md`) |
 | `Data/learn/kuwait-sheikhs.json` | `src/lib/kuwait-sheikhs.ts` (`KUWAIT_SHEIKHS`) | TS ⇒ يحتاج تحويلًا إلى JSON |
 | `Data/learn/competitions.json` | `src/lib/competitions/store.ts` | المنشور في الإنتاج 0 ⇒ `[]` (العيّنة demo لا تُصدَّر) |
 | `Data/learn/durus-imaniyya.json`، `durus-mutanawwia.json` | `src/lib/durus-*-data.ts` | **محتوى شرعي**: ملخصات فيها نسبة أحاديث ودرجات ⇒ مهارة `sharia-content` قبل التصدير |
