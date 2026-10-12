@@ -6,13 +6,13 @@ struct LearnQuizScreen: View {
     var body: some View {
         LearnLoadHost(LearnSources.quizManifest) { (manifest: LearnQuizManifest) in
             LearnList(items: manifest.chunks.filter { $0.count > 0 }, emptyTitle: "لا أسئلة موثّقة بعد") { chunk in
-                NavigationLink {
+                SunnahNavigationLink {
                     LearnLoadHost(LearnSources.quizChunk(chunk)) { (questions: [LearnOpenQuestion]) in
                         LearnOpenQuizRunner(questions: questions)
                     }
                     .navigationTitle(chunk.title)
                 } label: {
-                    SunnahListRow(title: chunk.title, subtitle: "\(chunk.count) سؤالًا", showsChevron: false)
+                    SunnahListRow(title: chunk.title, subtitle: "\(chunk.count) سؤالًا")
                 }
             }
         }

@@ -161,7 +161,7 @@ struct LearnInstitutionsScreen: View {
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                     }
                     LearnList(items: all.filter { selectedType == nil || $0.type == selectedType }, emptyTitle: "لا مؤسسات في هذا النوع") { inst in
-                        NavigationLink {
+                        SunnahNavigationLink {
                             LearnDetailPage(title: inst.name) {
                                 if let t = inst.typeLabel { SunnahChip(t) }
                                 LearnInfoRow(label: "المدينة", value: inst.city)
@@ -170,7 +170,7 @@ struct LearnInstitutionsScreen: View {
                                 LearnExternalLink(title: "الموقع الرسمي", urlString: inst.website)
                             }
                         } label: {
-                            SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city), showsChevron: false)
+                            SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city))
                         }
                     }
                 }
