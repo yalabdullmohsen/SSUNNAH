@@ -121,6 +121,12 @@ public enum QuranSection {
         registry.registerView(id: "ulum-quran") {
             QuranBundledLoader(name: "ulum-quran", isEmpty: { (u: [UlumQuranItem]) in u.isEmpty }) { UlumQuranListView(items: $0) }.navigationTitle("علوم القرآن")
         }
+        registry.registerView(id: "quran-hub.tilawa") {
+            QuranBundledLoader(name: "tilawa-reciters", isEmpty: { (r: [TilawaReciter]) in r.isEmpty }) { TilawaListView(reciters: $0) }.navigationTitle("التلاوة")
+        }
+        registry.registerView(id: "quran-circles") {
+            QuranBundledLoader(name: "circles", isEmpty: { (c: [QuranCircle]) in c.isEmpty }) { QuranCirclesListView(circles: $0) }.navigationTitle("حلقات التحفيظ")
+        }
         registry.registerView(id: "quran.worship-hub") { SectionsListTemplate(links: WorshipHubLinks.all).navigationTitle("عبادات القرآن") }
         // حالة مستخدم محلية على الجهاز (UserDefaults) بلا خادم
         registry.registerView(id: "memorization") { MemorizationHubView().navigationTitle("الحفظ") }
@@ -138,9 +144,7 @@ public enum QuranSection {
         }
     }
 
-    static let pendingIDs = [
-        "quran-hub.tilawa", "quran-circles",
-    ]
+    static let pendingIDs: [String] = []
 
     static func surahNames() -> [Int: String] {
         guard let idx = try? MushafRepository(bundle: .main)?.index() else { return [:] }

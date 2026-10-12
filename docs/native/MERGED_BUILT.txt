@@ -79,3 +79,5 @@
 /quran/offline-player
 /ulum-quran
 /quran/worship-hub
+/quran-hub/tilawa
+/quran-circles

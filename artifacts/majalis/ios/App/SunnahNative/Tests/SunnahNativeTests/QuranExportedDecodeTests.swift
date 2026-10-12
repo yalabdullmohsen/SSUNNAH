@@ -22,6 +22,20 @@ final class QuranExportedDecodeTests: XCTestCase {
         XCTAssertTrue(u.allSatisfy { !$0.title.isEmpty && ($0.body != nil || $0.subtitle != nil) })
     }
 
+    func testTilawaReciters() throws {
+        let r = try load([TilawaReciter].self, "tilawa-reciters")
+        XCTAssertEqual(r.map(\.order), [1, 2])
+    }
+
+    func testCircles() throws {
+        let c = try load([QuranCircle].self, "circles")
+        XCTAssertEqual(c.count, 2)
+        XCTAssertEqual(c[0].facts.count, 8)
+        XCTAssertEqual(c[0].links.count, 1)
+        XCTAssertEqual(c[1].id, "7")
+        XCTAssertTrue(c[1].facts.isEmpty)
+    }
+
     func testWorshipHubLinksInScope() {
         XCTAssertTrue(WorshipHubLinks.all.allSatisfy { LibraryRouteScope.kept.contains($0.route) })
     }
