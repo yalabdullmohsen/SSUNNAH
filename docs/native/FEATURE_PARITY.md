@@ -24,9 +24,9 @@
 - [x] `/hadith/arbaeen-love-of-allah` — ArbaeenLovePage — قائمة
 - [x] `/hadith/books` — HadithBooksPage — قائمة
 - [ ] `/hadith/books-and-rulings` — HadithBooksAndRulingsPage — قائمة
-- [ ] `/hadith/daif` — HadithDaifPage — قائمة
-- [ ] `/hadith/mawdu` — HadithMawduPage — قائمة
-- [ ] `/hadith/sahih` — HadithSahihPage — قائمة
+- [x] `/hadith/daif` — HadithDaifPage — قائمة
+- [x] `/hadith/mawdu` — HadithMawduPage — قائمة
+- [x] `/hadith/sahih` — HadithSahihPage — قائمة
 - [x] `/sunnah-studies` — SunnahStudiesPage — قائمة
 - [x] `/wasaya-nabawiyya` — WasayaNabawiyyaPage — قائمة
 
@@ -34,8 +34,8 @@
 
 - [x] `/about` — AboutPage — قائمة
 - [x] `/account-deletion` — AccountDeletionPage — خاصة
-- [ ] `/auth/callback` — AuthCallbackPage — خاصة
-- [ ] `/auth/update-password` — UpdatePasswordPage — خاصة
+- [x] `/auth/callback` — AuthCallbackPage — خاصة
+- [x] `/auth/update-password` — UpdatePasswordPage — خاصة
 - [ ] `/calendar` — CalendarPage — شبكة
 - [x] `/car-mode` — CarModePage — قائمة
 - [x] `/contact` — ContactPage — قائمة
@@ -64,26 +64,26 @@
 ## الدروس والتعلم — 23 (المسؤول: ن3)
 
 - [x] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
-- [ ] `/competitions` — CompetitionsPage — اختبار
+- [x] `/competitions` — CompetitionsPage — اختبار
 - [ ] `/competitions/:id` — CompetitionDetailPage — اختبار
 - [ ] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
 - [ ] `/durus-mutanawwia` — DurusMutanawwiaPage — قائمة
 - [x] `/fawaid` — FawaidPage — قائمة
 - [x] `/flashcards` — FlashCardsPage — قائمة
 - [ ] `/institutions` — InstitutionsPage — قائمة
-- [ ] `/knowledge-graph` — KnowledgeGraphPage — قائمة
+- [x] `/knowledge-graph` — KnowledgeGraphPage — قائمة
 - [ ] `/knowledge/:section` — KnowledgeSectionPage — تفاصيل
-- [ ] `/kuwait-lessons` — KuwaitLessonsPage — قائمة
-- [ ] `/lessons` — LessonsPage — قائمة
+- [x] `/kuwait-lessons` — KuwaitLessonsPage — قائمة
+- [x] `/lessons` — LessonsPage — قائمة
 - [ ] `/lessons/:id` — LessonDetailPage — تفاصيل
-- [ ] `/lessons/archive` — LessonsArchivePage — قائمة
+- [x] `/lessons/archive` — LessonsArchivePage — قائمة
 - [x] `/my-learning` — MyLearningPage — قائمة
 - [x] `/progress` — ProgressCenterPage — أقسام
 - [x] `/quiz` — QuizPage — اختبار
 - [x] `/reading-plans` — ReadingPlansPage — قائمة
 - [x] `/researcher` — ResearcherProfilePage — بحث
 - [x] `/study-room` — StudyRoomPage — قائمة
-- [ ] `/universities` — UniversitiesPage — قائمة
+- [x] `/universities` — UniversitiesPage — قائمة
 - [ ] `/universities/:slug` — UniversityDetailPage — تفاصيل
 - [x] `/universities/compare` — UniversitiesComparePage — قائمة
 
@@ -118,12 +118,12 @@
 - [x] `/discover-islam` — DiscoverIslamPage — قائمة
 - [x] `/discover-islam/articles/:slug` — DiscoverIslamArticleDetailPage — مقال
 - [x] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
-- [ ] `/discover-islam/doubts` — DiscoverIslamDoubtsPage — قائمة
+- [x] `/discover-islam/doubts` — DiscoverIslamDoubtsPage — قائمة
 - [x] `/discover-islam/doubts/:slug` — DiscoverIslamDoubtDetailPage — تفاصيل
-- [ ] `/discover-islam/how-to-convert` — HowToBecomeMuslimPage — قائمة
-- [ ] `/discover-islam/new-muslim` — NewMuslimPathPage — قائمة
+- [x] `/discover-islam/how-to-convert` — HowToBecomeMuslimPage — قائمة
+- [x] `/discover-islam/new-muslim` — NewMuslimPathPage — قائمة
 - [ ] `/discover-islam/new-muslim/:day` — NewMuslimDayDetailPage — تفاصيل
-- [ ] `/discover-islam/questions` — DiscoverIslamQuestionsPage — قائمة
+- [x] `/discover-islam/questions` — DiscoverIslamQuestionsPage — قائمة
 - [x] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
 - [x] `/hikam-salaf` — HikamSalafPage — قائمة
 - [x] `/iman-topics` — ImanTopicsPage — قائمة
@@ -185,44 +185,44 @@
 - [ ] `/c/:slug` — CitationPublicPage — تفاصيل
 - [x] `/hifz-path` — HifzPathPage — قائمة
 - [ ] `/hifz-path/c/:category` — HifzPathCategoryPage — تفاصيل
-- [ ] `/hifz-path/my` — HifzPathMyPage — قائمة
+- [x] `/hifz-path/my` — HifzPathMyPage — قائمة
 - [ ] `/hifz-path/p/:slug` — HifzPathDetailPage — تفاصيل
 - [ ] `/hifz-path/p/:slug/u/:unitId` — HifzPathUnitPage — تفاصيل
 - [x] `/memorization` — MemorizationHubPage — أقسام
 - [ ] `/miracles` — MiraclesPage — قائمة
 - [x] `/mushaf` — MushafReaderPage — قائمة
-- [ ] `/mushaf/bookmarks` — MushafBookmarksPage — قائمة
+- [x] `/mushaf/bookmarks` — MushafBookmarksPage — قائمة
 - [ ] `/mutashabihat` — MutashabihatPage — قائمة
 - [ ] `/quran-circles` — QuranCirclesPage — قائمة
 - [ ] `/quran-engine` — QuranEnginePage — قائمة
 - [x] `/quran-hub` — QuranHubPage — أقسام
-- [ ] `/quran-hub/numbers` — QuranNumbersPage — أقسام
-- [ ] `/quran-hub/qiraat` — QuranQiraatPage — أقسام
-- [ ] `/quran-hub/seven-ahruf` — QuranSevenAhrufPage — أقسام
-- [ ] `/quran-hub/tajweed` — QuranTajweedPage — أقسام
+- [x] `/quran-hub/numbers` — QuranNumbersPage — أقسام
+- [x] `/quran-hub/qiraat` — QuranQiraatPage — أقسام
+- [x] `/quran-hub/seven-ahruf` — QuranSevenAhrufPage — أقسام
+- [x] `/quran-hub/tajweed` — QuranTajweedPage — أقسام
 - [ ] `/quran-hub/tajweed/:chapter` — TajweedChapterPage — تفاصيل
 - [ ] `/quran-hub/terms` — QuranUlumTermsPage — أقسام
 - [ ] `/quran-hub/tilawa` — QuranTilawaPage — صوت
 - [ ] `/quran-knowledge` — QuranKnowledgeHubPage — أقسام
 - [ ] `/quran-memorization` — QuranMemorizationPage — قائمة
-- [ ] `/quran/hifz-loop` — QuranHifzLoopPage — قائمة
-- [ ] `/quran/makki-madani` — MakkiMadaniPage — قائمة
-- [ ] `/quran/memorization-plans` — QuranMemorizationPlansPage — قائمة
+- [x] `/quran/hifz-loop` — QuranHifzLoopPage — قائمة
+- [x] `/quran/makki-madani` — MakkiMadaniPage — قائمة
+- [x] `/quran/memorization-plans` — QuranMemorizationPlansPage — قائمة
 - [ ] `/quran/offline-player` — QuranOfflinePlayerPage — قائمة
-- [ ] `/quran/people` — QuranPeoplePage — قائمة
+- [x] `/quran/people` — QuranPeoplePage — قائمة
 - [ ] `/quran/people/:slug` — QuranPersonDetailPage — تفاصيل
-- [ ] `/quran/revelation-order` — RevelationOrderPage — قائمة
-- [ ] `/quran/search` — QuranSearchPage — بحث
-- [ ] `/quran/surah-stories` — SurahStoriesPage — مقال
+- [x] `/quran/revelation-order` — RevelationOrderPage — قائمة
+- [x] `/quran/search` — QuranSearchPage — بحث
+- [x] `/quran/surah-stories` — SurahStoriesPage — مقال
 - [ ] `/quran/surah-stories/:number` — SurahStoryDetailRoute — مقال
-- [ ] `/quran/surahs` — SurahIndexPage — أقسام
+- [x] `/quran/surahs` — SurahIndexPage — أقسام
 - [ ] `/quran/worship-hub` — QuranWorshipHubPage — أقسام
 - [x] `/tafsir` — TafsirPage — قائمة
 - [ ] `/ulum-quran` — UlumQuranPage — قائمة
 
 ## اللغة والمكتبة والبحث — 19 (المسؤول: ن2)
 
-- [ ] `/academic-research` — AcademicResearchPage — بحث
+- [x] `/academic-research` — AcademicResearchPage — بحث
 - [ ] `/academic-research/:id` — ResearchDetailPage — بحث
 - [ ] `/academic-research/assistant` — ResearchAssistantPage — بحث
 - [x] `/academic-research/submit` — ResearchSubmitPage — بحث
@@ -240,7 +240,7 @@
 - [ ] `/sitemap` — SiteMapPage — شبكة
 - [ ] `/sources` — SourcesDirectoryPage — قائمة
 - [ ] `/sources/:id` — SourceDetailPage — تفاصيل
-- [ ] `/terms` — TermsPage — قائمة
+- [x] `/terms` — TermsPage — قائمة
 
 ## المحذوف من الجرد (213)
 
