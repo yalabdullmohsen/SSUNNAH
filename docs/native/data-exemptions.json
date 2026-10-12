@@ -6,6 +6,7 @@
   "fiqh/prayer-times"
  ],
  "intentionallyEmpty": {
+  "hadith/books-and-rulings": "فارغ مقصود: صفحة الموقع HadithBooksAndRulingsPage.tsx (تعليق الرأس) مركز تنقّل فقط وتنص على عدم عرض مادة هذه الكتب قبل اعتماد مصدر موثوق؛ لا نصوص لتصديرها",
   "learn/competitions": "فارغ مقصود: المنشور 0، والتطبيق يعرض «لا توجد مسابقات حالياً»",
   "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة",
   "aqidah/discover-islam-contact": "فارغ مقصود: صفحة DiscoverIslamContactPage نموذج إرسال طلب تواصل (submitDawahContactRequest، شبكة/حساب) ولا قائمة محتوى منشورة",
