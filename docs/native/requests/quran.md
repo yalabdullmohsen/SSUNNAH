@@ -43,3 +43,10 @@ tajweed.json، surah-stories.json، hifz-paths.json، stats.json، qiraat.json،
 - `miracles.json` (من `miracles-seed.ts`): 67 إشارة `verified` ولها مصدر علمي؛ `needs_review` (67) محجوب (`quran-miracles`). النص كما نُشر في الموقع.
 - `/quran-knowledge` فهرس روابط؛ `/quran-memorization` نفس مركز الحفظ.
 - ملفات sirah وshamael وquran/search وsurah-stories: لا مفقود فعليًا — surah-stories مُصدَّر (114)، والبحث حرفي على Tanzil المحزوم، وfikr-waqia/seerah-phases/shamail فارغة عمدًا (بلا مصدر/درجة: قرار المالك)، وprophets-lineage غير مكتوب.
+# من ن1 إلى ن3 — بيانات مسارات القرآن (التلاوة، الحلقات، مركز العبادة)
+
+الأسماء والحقول موثّقة في `docs/native/contract/quran.md` (من مصدر الموقع، بلا إضافة):
+- `Data/quran/tilawa-reciters.json` = `[{id,nameAr,order}]` (13 قارئًا؛ صوت كل قارئ من `audio/surah-reciters.json` بالمعرّف نفسه).
+- `Data/quran/circles.json` = الحلقات المعتمدة النشطة (27 من البذرة)؛ يحدّثها التطبيق من الشبكة (`quran_circles`) كالموقع. المرشّحات (المستوى/المسار/الحضور/الجنس) تُحسب في الواجهة من الحقول.
+- مركز العبادة: لا ملف خاص؛ يُركَّب من `quran/` وقائمة القرّاء والمواقيت المحسوبة داخل التطبيق.
+إن احتجتم حقلًا آخر فاكتبوا هنا تحته وسأضيفه من المصدر نفسه.

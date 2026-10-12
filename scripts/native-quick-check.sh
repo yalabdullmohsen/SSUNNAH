@@ -3,7 +3,8 @@
 # يعيد التصدير الكامل + بوابة البيانات + بناء التطبيق وتثبيته + لقطات الأقسام المذكورة فقط (لا دورة كاملة).
 set -uo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"; cd "$ROOT"
-SIM="${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"; DD="${DD:-$HOME/ssunnah-build/DerivedData/mb}"
+SIM="${SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"; DD="${DD:-/tmp/dd-$(basename "$PWD")}"
+if git status --porcelain | grep -E "(^|/)\.build(/|$)|\.xcresult|DerivedData" >/dev/null; then echo "✗ مسار .build/xcresult/DerivedData ظاهر في git status — أضِفه لـ.gitignore ولا تُضِفه"; exit 1; fi
 [ $# -ge 1 ] || { echo "usage: $0 <section>…"; exit 2; }
 bash scripts/native-lint-chevron.sh || exit 1
 bash scripts/native-plist-guard.sh || exit 1
