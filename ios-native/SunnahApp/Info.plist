@@ -17,10 +17,6 @@
 	<key>ITSAppUsesNonExemptEncryption</key><false/>
 	<key>LSRequiresIPhoneOS</key><true/>
 	<key>NSLocationWhenInUseUsageDescription</key><string>يستخدم التطبيق موقعك لحساب مواقيت الصلاة واتجاه القبلة. يُحفَظ الموقع التقريبي على جهازك فقط ولا يُرسَل إلى خوادمنا.</string>
-	<key>NSMicrophoneUsageDescription</key><string>يُستخدم الميكروفون لتسجيل تلاوتك في وضع التسميع داخل المصحف. تُعالج التلاوة على جهازك فقط ولا تُرسل ولا تُحفظ.</string>
-	<key>NSMotionUsageDescription</key><string>يستخدم التطبيق مستشعر الاتجاه لتوجيه بوصلة القبلة نحو الكعبة المشرفة.</string>
-	<key>NSUserNotificationsUsageDescription</key><string>يرسل التطبيق تذكيرات بأوقات الصلاة والأذكار والمستجدات. يمكنك التحكم بالإشعارات من إعدادات التطبيق.</string>
-	<key>NSSupportsLiveActivities</key><true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict><key>UIApplicationSupportsMultipleScenes</key><false/></dict>
 	<key>UIBackgroundModes</key><array><string>audio</string><string>fetch</string></array>
