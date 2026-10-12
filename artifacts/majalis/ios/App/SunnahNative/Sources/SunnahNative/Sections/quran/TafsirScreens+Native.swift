@@ -111,7 +111,7 @@ struct TafsirSurahView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .navigationTitle(surahName)
+        .quranTitle(surahName)
         .environment(\.layoutDirection, .rightToLeft)
         .task { await load() }
     }

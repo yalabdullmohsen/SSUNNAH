@@ -24,14 +24,14 @@ struct TilawaSurahListView: View {
                 List(1...114, id: \.self) { n in
                     SunnahNavigationLink {
                         AudioPlayerTemplate(item: ContentItem(id: "\(reciter.id)-\(n)", title: surahNames[n] ?? "سورة \(n)", subtitle: reciter.nameAr, audioURL: audio.surahURL(n)))
-                            .navigationTitle(surahNames[n] ?? "سورة \(n)")
+                            .quranTitle(surahNames[n] ?? "سورة \(n)")
                     } label: { SunnahListRow(title: surahNames[n] ?? "سورة \(n)", subtitle: nil) }
                         .listRowBackground(Sunnah.Colors.surface)
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             } else { EmptyStateView(title: "لا صوت متاح لهذا القارئ") }
         }
-        .background(Sunnah.Colors.bg).navigationTitle(reciter.nameAr)
+        .background(Sunnah.Colors.bg).quranTitle(reciter.nameAr)
     }
 }
 
@@ -120,6 +120,6 @@ struct QuranCircleDetailView: View {
             }
             .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
         }
-        .background(Sunnah.Colors.bg).navigationTitle(circle.name)
+        .background(Sunnah.Colors.bg).quranTitle(circle.name)
     }
 }
