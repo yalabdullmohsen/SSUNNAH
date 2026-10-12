@@ -52,20 +52,6 @@ for (let s = 1; s <= 114; s++) {
 if (ayahTotal !== 6236) throw new Error(`عدد الآيات ${ayahTotal} ≠ 6236`);
 counts.quranAyahs = ayahTotal;
 
-/* تصحيحات اقتباس آيات داخل نص التفسير: استبدال حرفي مطابق لـ Tanzil المقفول (انظر docs/native/QURAN_QUOTE_FIXES.md)؛ يفشل التصدير إن لم يوجد النص «قبل» مرة واحدة بالضبط */
-const quoteFixes = JSON.parse(fs.readFileSync(new URL("../../content/native/quran-quote-fixes.json", import.meta.url), "utf8"));
-const quoteFixesUsed = new Set();
-function applyQuoteFixes(file, ayah, text) {
-  let t = text;
-  for (const f of quoteFixes) {
-    if (f.file !== file || f.ayah !== String(ayah)) continue;
-    if (t.split(f.before).length !== 2) throw new Error(`تصحيح اقتباس: النص «قبل» غير موجود مرة واحدة (${file}:${ayah})`);
-    t = t.replace(f.before, () => f.after);
-    quoteFixesUsed.add(f);
-  }
-  return t;
-}
-
 /* التفسير: الميسّر والسعدي */
 counts.tafsir = {};
 for (const id of ["muyassar", "saadi"]) {
@@ -80,14 +66,13 @@ for (const id of ["muyassar", "saadi"]) {
     const clean = {};
     for (const k of ks) {
       if (!String(j.ayahs[k] || "").trim()) { reject(`tafsir-${id}`, "نص فارغ"); continue; }
-      clean[k] = applyQuoteFixes(`tafsir/${id}/${pad(s)}.json`, k, j.ayahs[k]);
+      clean[k] = j.ayahs[k];
       n++;
     }
     json(`tafsir/${id}/${pad(s)}.json`, { ...j, ayahs: clean });
   }
   counts.tafsir[id] = n;
 }
-if (quoteFixesUsed.size !== quoteFixes.length) throw new Error("تصحيح اقتباس لم يُطبَّق");
 put("tafsir/tafsir-registry.json", fs.readFileSync(`${data}/tafsir/tafsir-registry.json`));
 
 /* الحديث: البخاري ومسلم الكاملان (ترقيم مسلم تسلسلي محلي: لا يُستشهد به) + المصحّح من hadith-verified (صحيح فقط) */
