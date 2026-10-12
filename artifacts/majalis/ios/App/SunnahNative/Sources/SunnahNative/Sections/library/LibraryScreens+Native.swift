@@ -274,7 +274,11 @@ public enum LibrarySection {
         let id = c[1].removingPercentEncoding ?? c[1]
         switch c[0] {
         case "academic-research":
-            if id == "assistant" || id == "submit" { return nil }
+            // يلتقطها المسار العام ذو المقطعين في Generated فيفك ملفًا بشكل خاطئ؛ نعيد العرض المسجَّل صراحةً.
+            if id == "assistant" {
+                return AnyView(LibrarySection.titled(LibraryLoadedView(source: File.research, adapt: { LibraryAdapters.insights($0) }) { LibraryResearchAssistantView(insights: $0) }))
+            }
+            if id == "submit" { return AnyView(LibrarySection.titled(EmptyStateView(title: "استقبال الأبحاث غير متاح في التطبيق بعد"))) }
             return AnyView(LibraryLoadedView(source: File.research, adapt: { LibraryAdapters.research($0, id: id) }) { item in
                 if let item { DetailTemplate(item: item) } else { EmptyStateView() }
             })
