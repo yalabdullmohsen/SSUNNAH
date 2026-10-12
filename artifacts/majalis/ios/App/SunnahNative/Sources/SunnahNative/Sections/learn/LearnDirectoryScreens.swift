@@ -146,29 +146,32 @@ struct LearnInstitutionsScreen: View {
                                 TypeFilter(id: "library", label: "المكتبات"), TypeFilter(id: "university", label: "الجامعات")]
 
     var body: some View {
-        LearnLoadHost(LearnSources.institutions) { (all: [LearnInstitution]) in
-            VStack(spacing: Sunnah.Spacing.s2) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: Sunnah.Spacing.s2) {
-                        ForEach(Self.types, id: \.label) { t in
-                            Button { selectedType = t.id } label: { SunnahChip(t.label, selected: selectedType == t.id) }
-                                .buttonStyle(.plain)
-                                .accessibilityAddTraits(selectedType == t.id ? .isSelected : [])
+        LearnLoadHost(load: { try await LearnSources.loadIfExported([LearnInstitution].self, from: LearnSources.institutions, with: $0) }) { (loaded: [LearnInstitution]) in
+            let all = loaded.filter(\.isReviewed)
+            if all.isEmpty { EmptyStateView(title: "قيد التوثيق") } else {
+                VStack(spacing: Sunnah.Spacing.s2) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: Sunnah.Spacing.s2) {
+                            ForEach(Self.types, id: \.label) { t in
+                                Button { selectedType = t.id } label: { SunnahChip(t.label, selected: selectedType == t.id) }
+                                    .buttonStyle(.plain)
+                                    .accessibilityAddTraits(selectedType == t.id ? .isSelected : [])
+                            }
                         }
+                        .padding(.horizontal, Sunnah.Spacing.pageX)
                     }
-                    .padding(.horizontal, Sunnah.Spacing.pageX)
-                }
-                LearnList(items: all.filter { selectedType == nil || $0.type == selectedType }, emptyTitle: "لا مؤسسات في هذا النوع") { inst in
-                    NavigationLink {
-                        LearnDetailPage(title: inst.name) {
-                            if let t = inst.typeLabel { SunnahChip(t) }
-                            LearnInfoRow(label: "المدينة", value: inst.city)
-                            LearnInfoRow(label: "الدولة", value: inst.country)
-                            if let d = inst.description { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                            LearnExternalLink(title: "الموقع الرسمي", urlString: inst.website)
+                    LearnList(items: all.filter { selectedType == nil || $0.type == selectedType }, emptyTitle: "لا مؤسسات في هذا النوع") { inst in
+                        NavigationLink {
+                            LearnDetailPage(title: inst.name) {
+                                if let t = inst.typeLabel { SunnahChip(t) }
+                                LearnInfoRow(label: "المدينة", value: inst.city)
+                                LearnInfoRow(label: "الدولة", value: inst.country)
+                                if let d = inst.description { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                                LearnExternalLink(title: "الموقع الرسمي", urlString: inst.website)
+                            }
+                        } label: {
+                            SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city), showsChevron: false)
                         }
-                    } label: {
-                        SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city), showsChevron: false)
                     }
                 }
             }

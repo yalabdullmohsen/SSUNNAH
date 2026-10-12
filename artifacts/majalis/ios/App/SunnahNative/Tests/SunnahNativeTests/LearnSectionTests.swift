@@ -86,6 +86,8 @@ final class LearnSectionTests: XCTestCase {
         let list = try JSONDecoder().decode([LearnInstitution].self, from: repoFile("src/data/institutions-catalog.json"))
         XCTAssertFalse(list.isEmpty)
         XCTAssertTrue(list.allSatisfy { $0.typeLabel != nil })
+        // قرار المالك: الـ44 كلها needs_review فلا يُعرض منها شيء.
+        XCTAssertTrue(list.filter(\.isReviewed).isEmpty)
     }
 
     func testCompareSelectionCapsAtFour() {
@@ -287,6 +289,11 @@ final class LearnSectionTests: XCTestCase {
     }
 
     // MARK: الفوائد والدورات
+
+    func testInstitutionsShowReviewedOnly() throws {
+        let list: [LearnInstitution] = try decode(#"[{"id":"a","name":"أ","contentStatus":"needs_review"},{"id":"b","name":"ب","contentStatus":"verified"},{"id":"c","name":"ج"}]"#)
+        XCTAssertEqual(list.filter(\.isReviewed).map(\.id), ["b"])
+    }
 
     func testFawaidHideSourceless() throws {
         let all: [LearnFaidah] = try decode(#"[{"id":"1","text":"ف","category":"فوائد فقهية","source":"المغني"},{"id":"2","text":"ب","category":"فوائد فقهية"},{"id":"3","text":"ج","author_name":"ابن القيم","category":"الأخلاق"}]"#)
