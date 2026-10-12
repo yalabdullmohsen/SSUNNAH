@@ -9,4 +9,6 @@
 | `/quran/surah-stories/:number` | `/quran/surah-stories/1` | **لا resolver للتفصيل** (المسجَّل `quran.surah-stories` هو القائمة فقط، السطر ~95) | موجودة: `Data/quran/surah-stories.json` (114، حقل `number`) |
 | `/quran-hub/tajweed/:chapter` | `/quran-hub/tajweed/intro` | **لا resolver** لمسار `:chapter` | موجودة: `Data/quran/tajweed.json` (19 فصلًا، `id`/`title`/`body`) |
 
+**تنبيه (تحقّق مكرَّر):** العيّنات الحقيقية مضافة في ROUTE_SAMPLES.json وما زالت اللقطة تعرض الاحتياط على native-app الحالي؛ إن كان لديك فرع يحلّها فادمجه وأعدني اللقطة ولا تكرّر العمل.
+
 المطلوب: تسجيل شاشة تفصيل لكلٍّ (تقرأ من الملف أعلاه، العنصر المطابق للمعرّف) في `resolve(path:)` أو TemplateRegistry، ثم لقطة فاتح/داكن. المعرّفات في العيّنات صحيحة وليست سبب الفشل.

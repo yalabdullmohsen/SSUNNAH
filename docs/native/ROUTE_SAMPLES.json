@@ -16,5 +16,12 @@
  "/quran-hub/tajweed/:chapter": "/quran-hub/tajweed/intro",
  "/knowledge/:section": "/knowledge/intro-islam",
  "/arbaeen-nawawi/:id": "/arbaeen-nawawi/1",
+ "/annual-courses/:id": "/annual-courses/course-ijazah-tahrir-2026",
+ "/universities/:slug": "/universities/islamic-university-madinah",
+ "/fiqh/topics/:topicId": "/fiqh/topics/tahara",
+ "/lessons/:id": "/lessons/kw-othman-tafsir-nahl-0",
+ "/tarikh-islami/:id": "/tarikh-islami/seerah-taif",
+ "/academic-research/:id": "/academic-research/pub-001",
+ "/fiqh/books/:bookId/chapters/:chapterId": "/fiqh/books/taharah/chapters/miyah",
  "/c/:slug": "/c/sample"
 }
