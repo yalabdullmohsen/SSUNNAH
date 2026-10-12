@@ -5,5 +5,7 @@
  "/tawhid/:slug": "/tawhid/tawhid-issues",
  "/madhahib/:id": "/madhahib/hanafi",
  "/sins-and-rights/:slug": "/sins-and-rights/tark-salah",
- "/fiqh/books/:bookId": "/fiqh/books/taharah"
+ "/fiqh/books/:bookId": "/fiqh/books/taharah",
+ "/sources/:id": "/sources/web-aayatkw.com",
+ "/scientific-announcements/:id": "/scientific-announcements/sci-tawheed-saltaweel"
 }
