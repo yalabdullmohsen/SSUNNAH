@@ -5,7 +5,7 @@ import XCTest
 /// Fixtures/mawarith/golden.json مُولَّدة بـscripts/gen-mawarith-golden.mjs من الكود الحقيقي. أي اختلاف = فشل.
 final class MawarithParityTests: XCTestCase {
     private func golden() throws -> [String: Any] {
-        let url = try XCTUnwrap(Bundle.module.url(forResource: "golden", withExtension: "json", subdirectory: "Fixtures/mawarith"))
+        let url = URL(fileURLWithPath: #filePath).deletingLastPathComponent().appendingPathComponent("Fixtures/mawarith/golden.json")
         return try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
     }
 
