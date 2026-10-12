@@ -182,7 +182,7 @@
 
 ## القرآن — 37 (المسؤول: ن3)
 
-- [ ] `/c/:slug` — CitationPublicPage — تفاصيل (غير مبني: جلب من الخادم)
+- [x] `/c/:slug` — CitationPublicPage — أصلي بالجلب (CitationScreen؛ لقطتان فاتح/داكن على n3-quran؛ تظهر «غير موجود» للمجهول لأن البوابة تشترط دخولًا)
 - [x] `/hifz-path` — HifzPathPage — قائمة
 - [x] `/hifz-path/c/:category` — HifzPathCategoryPage — تفاصيل
 - [x] `/hifz-path/my` — HifzPathMyPage — قائمة
