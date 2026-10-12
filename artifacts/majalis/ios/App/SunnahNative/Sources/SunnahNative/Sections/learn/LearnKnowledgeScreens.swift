@@ -100,8 +100,8 @@ struct LearnDurusScreen: View {
     let source: ContentSource; let title: String
 
     var body: some View {
-        LearnLoadHost(source) { (sections: [LearnDarsSection]) in
-            LearnList(items: sections) { section in
+        LearnLoadHost(source) { (list: LearnDarsList) in
+            LearnList(items: list.sections) { section in
                 SunnahNavigationLink {
                     LearnList(items: section.lessons) { lesson in
                         SunnahNavigationLink {

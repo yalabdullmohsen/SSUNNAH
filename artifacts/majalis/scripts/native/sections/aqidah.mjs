@@ -226,6 +226,20 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
     cnt("discover-islam-new-muslim", nm.length);
   }
 
+  /* مدخل «التعريف بالإسلام»: أزرار التنقل في الصفحة كما هي (ContentItem بلا نص شرعي)؛ نموذج التواصل السري فارغ عمدًا (شبكة/حساب) */
+  {
+    const t = fs.readFileSync(`${src}/views/DiscoverIslamPage.tsx`, "utf8").split("\n").slice(125, 145).join("\n");
+    const seen = new Set();
+    const items = [...t.matchAll(/<Link href="(\/discover-islam\/[^"?]+)" className="asp-(?:run|add)-btn">([^<]+)<\/Link>/g)]
+      .filter((m) => !seen.has(m[1]) && seen.add(m[1]))
+      .map((m) => ({ id: m[1].replace(/^\/discover-islam\//, "").replace(/\//g, "-"), title: m[2], tags: [], route: m[1] }));
+    out("discover-islam", items);
+    cnt("discover-islam", items.length);
+    out("discover-islam-contact", []);
+    cnt("discover-islam-contact", 0);
+    reject(`${A}-contact`, "فارغ عمدًا: نموذج تواصل (شبكة/حساب)");
+  }
+
   /* مدخل التزكية: روابط تنقل فقط */
   {
     const cards = objectsWithKeys(`${src}/pages/tazkiya/TazkiyaHubPage.tsx`, ["href", "title", "desc"]);

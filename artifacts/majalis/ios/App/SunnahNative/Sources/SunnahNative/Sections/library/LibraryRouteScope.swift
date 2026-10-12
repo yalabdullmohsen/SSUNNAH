@@ -41,8 +41,7 @@ enum LibraryRouteScope {
     /// مؤجَّل بقرار المالك (بلا مصدر أو محجوب): لا يظهر في القوائم والمراكز والبحث في نسخة الإصدار.
     /// الأسباب في docs/native/DEFERRED.md؛ لرفع مسار احذفه من هنا بعد تصدير بياناته (n1).
     static let deferred: [String] = [
-        "/islamic-sects", "/islamic-sects/:id", "/fikr-waqia", "/competitions", "/competitions/:id",
-        "/durus-imaniyya", "/durus-mutanawwia", "/fawaid", "/annual-courses/:id", "/institutions"
+        "/islamic-sects", "/islamic-sects/:id"
     ]
 
     private static let patterns: [[String]] = kept.filter { !deferred.contains($0) }.map(segments)

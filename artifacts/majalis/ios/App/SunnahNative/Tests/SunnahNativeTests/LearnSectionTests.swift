@@ -315,4 +315,29 @@ final class LearnSectionTests: XCTestCase {
         let f = try await LearnSources.loadIfExported([LearnFaidah].self, from: LearnSources.fawaid, with: loader)
         XCTAssertTrue(f.isEmpty)
     }
+
+    // MARK: شكل ContentItem المُصدَّر (#3010)
+
+    func testInstitutionsDecodeFlatShapeWithPendingBadge() throws {
+        let list: [LearnInstitution] = try decode(#"[{"id":"a","title":"المسجد الحرام","subtitle":"مكة","body":"و","tags":["mosque","قيد المراجعة","needs_review"],"route":"https://x.sa"},{"id":"b","title":"ب","tags":["library","معتمد"]}]"#)
+        XCTAssertEqual(list.map(\.name), ["المسجد الحرام", "ب"])
+        XCTAssertEqual(list[0].type, "mosque"); XCTAssertEqual(list[0].website, "https://x.sa"); XCTAssertEqual(list[0].city, "مكة")
+        XCTAssertEqual(list.map(\.isReviewed), [false, true])
+    }
+
+    func testFawaidAndCoursesDecodeFlatShape() throws {
+        let f: [LearnFaidah] = try decode(#"[{"id":"f1","title":"ع","subtitle":"القرآن","body":"نص الفائدة","tags":["عقيدة","verified"]}]"#)
+        XCTAssertEqual(f[0].text, "نص الفائدة"); XCTAssertEqual(f[0].source, "القرآن"); XCTAssertEqual(f[0].category, "عقيدة")
+        XCTAssertEqual(LearnFaidah.filter(f, query: "", category: nil).count, 1)
+        let c: [LearnAnnualCourse] = try decode(#"[{"id":"c1","title":"دورة","subtitle":"1447هـ","body":"**عن**","tags":["سنوية"]}]"#)
+        XCTAssertEqual(c[0].summary, "1447هـ"); XCTAssertEqual(c[0].courseType, "سنوية"); XCTAssertNotNil(LearnAnnualCourse.find("c1", in: c))
+    }
+
+    func testDarsListGroupsFlatItemsByFirstTagAndKeepsRawShape() throws {
+        let flat: LearnDarsList = try decode(#"[{"id":"1","title":"أ","subtitle":"م","body":"باب «أ»: م","tags":["قلوب"]},{"id":"2","title":"ب","tags":["عقيدة"]},{"id":"3","title":"ج","tags":["قلوب"]}]"#)
+        XCTAssertEqual(flat.sections.map(\.title), ["قلوب", "عقيدة"])
+        XCTAssertEqual(flat.sections[0].lessons.map(\.id), ["1", "3"]); XCTAssertNil(flat.sections[0].lessons[0].body)
+        let raw: LearnDarsList = try decode(#"[{"id":"s","title":"ع","lessons":[{"id":"l","title":"د"}]}]"#)
+        XCTAssertEqual(raw.sections.first?.lessons.count, 1)
+    }
 }
