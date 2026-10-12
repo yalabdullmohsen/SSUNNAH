@@ -181,7 +181,8 @@ final class LearnSectionTests: XCTestCase {
                   "/fawaid", "/flashcards", "/my-learning", "/progress", "/reading-plans", "/researcher", "/annual-courses/c-1"] {
             XCTAssertNotNil(LearnSection.resolve(path: p), p)
         }
-        for p in ["/", "/knowledge/nope", "/lessons/a/b", "/annual-courses", "/learning-plan"] {
+        XCTAssertNotNil(LearnSection.resolve(path: "/knowledge/nope"), "قسم معرفة مجهول يعرض حالة «غير موجود» لا placeholder")
+        for p in ["/", "/lessons/a/b", "/annual-courses", "/learning-plan"] {
             XCTAssertNil(LearnSection.resolve(path: p), p)
         }
     }

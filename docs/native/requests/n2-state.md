@@ -27,3 +27,8 @@
 ## تحديث
 - /daily-wird مبنية أصليًا (DailyWirdScreen.swift + اختبار).
 - طلب ن1: n2-to-n1-embedded-texts-2.md؛ طلب ن4: n2-to-n4-snapshot-both-modes.md؛ books-and-rulings في data-exemptions.json.
+
+## دَين الاختبارات (swift test على native-app)
+- الثلاثة كلها كانت اختبارات قديمة لا أعطال شاشات: islamic-landmarks.map وprophets انتقل تسجيلهما إلى SirahScreens+Native (تغطيهما SirahAdaptersTests)، فأُزيلا من قائمة GeneratedScreensTests؛ /knowledge/nope يعرض عمدًا «هذا القسم غير موجود» داخل القسم فصار الاختبار يؤكد ذلك. صاحب الثلاثة: ن2 (اختبارات #2920 و#2937). النتيجة: 230 اختبارًا، 0 فشل.
+- /c/:slug عند ن3؛ لم ألمسه.
+- بعد /clear: جمال الشاشات غير القرآنية والفقه بمكوّنات مشتركة، ومراجعة لقطات ن4 بالوضعين.

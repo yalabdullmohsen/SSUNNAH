@@ -6,7 +6,7 @@ final class GeneratedScreensTests: XCTestCase {
     func testNonParamRoutesRegister() {
         let registry = TemplateRegistry()
         GeneratedScreens.registerAll(in: registry)
-        for id in ["fikr-waqia", "islamic-landmarks", "islamic-landmarks.map", "nations", "prophets"] {
+        for id in ["fikr-waqia", "islamic-landmarks", "nations"] {
             XCTAssertNotNil(registry.view(for: id), id)
         }
     }
