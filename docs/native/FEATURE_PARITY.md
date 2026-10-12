@@ -36,7 +36,7 @@
 - [x] `/account-deletion` — AccountDeletionPage — خاصة
 - [x] `/auth/callback` — AuthCallbackPage — خاصة
 - [x] `/auth/update-password` — UpdatePasswordPage — خاصة
-- [ ] `/calendar` — CalendarPage — شبكة
+- [x] `/calendar` — CalendarPage — شبكة
 - [x] `/car-mode` — CarModePage — قائمة
 - [x] `/contact` — ContactPage — قائمة
 - [x] `/data-licenses` — SourcesLicensesPage — قائمة
@@ -55,7 +55,7 @@
 - [x] `/settings` — SettingsPage — خاصة
 - [x] `/stats` — UserStatsPage — قائمة
 - [x] `/submit` — SubmitContentPage — قائمة
-- [ ] `/updates` — UpdatesPage — قائمة
+- [x] `/updates` — UpdatesPage — قائمة
 - [x] `/updates/auto/:slug` — AutoContentDetailPage — تفاصيل
 - [x] `/upload` — UploadPage — خاصة
 - [x] `/vault` — VaultPage — خاصة
@@ -63,19 +63,19 @@
 
 ## الدروس والتعلم — 23 (المسؤول: ن3)
 
-- [ ] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
+- [x] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
 - [x] `/competitions` — CompetitionsPage — اختبار
 - [x] `/competitions/:id` — CompetitionDetailPage — اختبار
 - [x] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
 - [x] `/durus-mutanawwia` — DurusMutanawwiaPage — قائمة
 - [x] `/fawaid` — FawaidPage — قائمة
 - [x] `/flashcards` — FlashCardsPage — قائمة
-- [ ] `/institutions` — InstitutionsPage — قائمة
+- [x] `/institutions` — InstitutionsPage — قائمة
 - [x] `/knowledge-graph` — KnowledgeGraphPage — قائمة
 - [ ] `/knowledge/:section` — KnowledgeSectionPage — تفاصيل
 - [x] `/kuwait-lessons` — KuwaitLessonsPage — قائمة
 - [x] `/lessons` — LessonsPage — قائمة
-- [ ] `/lessons/:id` — LessonDetailPage — تفاصيل
+- [x] `/lessons/:id` — LessonDetailPage — تفاصيل
 - [x] `/lessons/archive` — LessonsArchivePage — قائمة
 - [x] `/my-learning` — MyLearningPage — قائمة
 - [x] `/progress` — ProgressCenterPage — أقسام
@@ -84,7 +84,7 @@
 - [x] `/researcher` — ResearcherProfilePage — بحث
 - [x] `/study-room` — StudyRoomPage — قائمة
 - [x] `/universities` — UniversitiesPage — قائمة
-- [ ] `/universities/:slug` — UniversityDetailPage — تفاصيل
+- [x] `/universities/:slug` — UniversityDetailPage — تفاصيل
 - [x] `/universities/compare` — UniversitiesComparePage — قائمة
 
 ## السيرة والتاريخ والأعلام — 18 (المسؤول: ن2)
