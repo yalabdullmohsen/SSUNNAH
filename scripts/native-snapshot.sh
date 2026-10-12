@@ -8,6 +8,15 @@ MAP=${MAP:-docs/native/ROUTE_TEMPLATE_MAP.json}; OCR="$(cd "$(dirname "$0")" && 
 touch "$TICK" "$INVALID"
 xcrun simctl boot "$SIM" >/dev/null 2>&1
 xcrun simctl status_bar "$SIM" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 >/dev/null 2>&1
+# تحقق إلزامي قبل أول لقطة: التطبيق يعمل فعلًا في الواجهة (لا SpringBoard)؛ إعادة تثبيت وتشغيل مرة، ثم فشل صريح بدل لقطات باطلة.
+APP=${APP:-/tmp/dd-n4/Build/Products/Debug-iphonesimulator/SunnahApp.app}
+fg_ok() { xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1; xcrun simctl launch "$SIM" $BID >/dev/null 2>&1; sleep 4
+  xcrun simctl spawn "$SIM" launchctl list 2>/dev/null | grep -Eq "^[0-9]+[[:space:]]+[0-9-]+[[:space:]]+UIKitApplication:$BID"; }
+if ! fg_ok; then
+  echo "native-snapshot: $BID ليس في الواجهة — إعادة تثبيت وتشغيل" >&2
+  [ -d "$APP" ] && xcrun simctl install "$SIM" "$APP" >/dev/null 2>&1
+  fg_ok || { echo "native-snapshot: فشل — التطبيق لا يعمل في المحاكي (SpringBoard)؛ لا لقطات باطلة" >&2; exit 2; }
+fi
 SEEN=$(mktemp); trap 'rm -f "$SEEN"' EXIT
 comp() { node -e 'const d=JSON.parse(require("fs").readFileSync(process.argv[1],"utf8"));const r=d.routes.find(x=>x.path===process.argv[2]);console.log(r?r.component||r.template:"?")' "$MAP" "$1"; }
 for s in "$@"; do
