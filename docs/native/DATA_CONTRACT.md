@@ -91,7 +91,7 @@
 - `search-index` = `{docs:[{id,kind,titleAr,href,norm}]}` من `public/data/search/index.json` بعد الحجب العام والمحجوز.
 - `terms` و`methodology` = `{title, updatedAt, sections:[{title, paragraphs}]}` نصّ الصفحة حرفيًا (البريد من `site.config.json`).
 - `navigation` = `{groups, sections, settingsRows, sitemap}` من سجل الأقسام (بلا مجموعة account، بلا hidden/comingSoon) وصفوف «المزيد» ودليل الأقسام.
-- لا تُصدَّر: `sources` والدروس (شبكة)، `cards`/`academic-research-assistant`/`-submit` (محسوبة محليًا)، `more`/`sections`/`sitemap`/`search`/`islamic-directory` (أسماء الشاشات المولَّدة؛ المحتوى في `navigation`/`search-index`).
+- مشتقة من التنقل (`ContentItem`/`SectionLink`): `cards` (المجموعات)، `more` (صفوف الإعدادات)، `sections` (SectionLink)، `sitemap` (روابط خريطة الموقع)، `search` (أقسام+خريطة بلا تكرار مسار). فارغة عمدًا بالشكل نفسه `[]`: `islamic-directory`، `sources`، `academic-research-assistant`، `academic-research-submit` (شبكة/حساب/غير مراجَع).
 
 ### adhkar (adhkar/verified-adhkar.json = 207 صفوف، من content/native/adhkar-verified.json)
 - المصدر: بذرة الأذكار الأصلية `src/lib/adhkar-seed.ts` عبر `scripts/native/build-adhkar-verified.mjs`؛ النص والمصدر والدرجة حرفيًا بلا إنشاء ولا مرجع جديد، والدرجة كما هي (حسن تبقى «حسن»). الشكل هو صف `verified_adhkar_items` (§1) مع `metadata.basis`: `sahihayn` (140) · `named_grader` (33: صحيح بمصحِّح مسمّى) · `named_grader_hasan` (15: حسن بمصحِّح مسمّى) · `local_verified_corpus` (2: مطابقة متن كاملة لسجل في hadith-verified بمرجعه في `metadata.local_ref`) · `quran_tanzil` (17).

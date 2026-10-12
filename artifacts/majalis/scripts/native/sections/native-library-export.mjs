@@ -148,5 +148,21 @@ export default async function exportLibrary({ json, held, reject, counts, appRoo
       .map((sec) => ({ ...sec, links: filterNavItems(sec.links) })).filter((sec) => sec.links.length > 0);
     const sections = groups.flatMap((g) => g.sections);
     out("navigation", { groups, sections, settingsRows, sitemap }, sections.length);
+
+    /* الملفات التسعة بشكل ContentItem/SectionLink — مشتقة من التنقل نفسه؛ المعتمد على الشبكة فارغ عمدًا بالشكل ذاته */
+    const link = (x) => ({ id: x.id, title: x.title, ...(x.subtitle ? { subtitle: x.subtitle } : {}), route: x.route });
+    const item = (id, title, subtitle, route, tags = []) => ({ id, title, ...(subtitle ? { subtitle } : {}), tags, ...(route ? { route } : {}) });
+    const siteItems = sitemap.flatMap((sec) => sec.links.map((l) => item(l.href, l.label, l.desc, l.href, [sec.title])));
+    const byRoute = new Map();
+    for (const x of [...sections.map((s) => item(s.id, s.title, s.subtitle, s.route)), ...siteItems]) if (!byRoute.has(x.route)) byRoute.set(x.route, x);
+    out("cards", groups.map((g) => item(g.id, g.title, g.subtitle, undefined, g.sections.map((s) => s.id))), groups.length);
+    out("more", settingsRows.map((r) => item(r.id, r.title, r.description, r.href)), settingsRows.length);
+    out("sections", sections.map(link), sections.length);
+    out("sitemap", siteItems, siteItems.length);
+    out("search", [...byRoute.values()], byRoute.size);
+    for (const f of ["islamic-directory", "sources", "academic-research-assistant", "academic-research-submit"]) {
+      out(f, [], 0);
+      reject(`${L}-${f}`, "فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع");
+    }
   }
 }
