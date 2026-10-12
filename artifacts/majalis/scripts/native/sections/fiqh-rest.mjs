@@ -46,5 +46,5 @@ export default async function exportFiqhRest({ json, held, reject, counts, appRo
     if (!b) { out(page, []); reject(`${F}-${page}`, `كتاب ${bookId} غير منشور`); continue; }
     out(page, chaptersOf(b).map((c) => item(c.id, c.title, c.summary, `/fiqh/books/${b.id}/chapters/${c.id}`, [b.title])));
   }
-  for (const [page, why] of Object.entries(EMPTY)) { out(page, []); reject(`${F}-${page}`, `فارغ عمدًا: ${why}`); }
+  for (const [page, why] of Object.entries(EMPTY)) { if (counts.fiqh?.[page] > 0) continue; /* كتبها fiqh-jsx ببيانات فعلية */ out(page, []); reject(`${F}-${page}`, `فارغ عمدًا: ${why}`); }
 }
