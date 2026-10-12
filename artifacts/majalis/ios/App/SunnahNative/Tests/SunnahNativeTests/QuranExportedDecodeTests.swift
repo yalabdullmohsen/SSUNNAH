@@ -15,6 +15,17 @@ final class QuranExportedDecodeTests: XCTestCase {
         XCTAssertTrue(m.allSatisfy { $0.refs.count >= 2 && !$0.title.isEmpty && $0.refs.allSatisfy { (1...114).contains($0.surah) && $0.ayah >= 1 } })
     }
 
+    func testUlumQuran() throws {
+        let u = try load([UlumQuranItem].self, "ulum-quran")
+        XCTAssertEqual(u.count, 79)
+        XCTAssertEqual(Set(u.compactMap(\.tags.first)).count, 7)
+        XCTAssertTrue(u.allSatisfy { !$0.title.isEmpty && ($0.body != nil || $0.subtitle != nil) })
+    }
+
+    func testWorshipHubLinksInScope() {
+        XCTAssertTrue(WorshipHubLinks.all.allSatisfy { LibraryRouteScope.kept.contains($0.route) })
+    }
+
     func testTajweed() throws {
         let f = try load(TajweedFile.self, "tajweed")
         XCTAssertEqual(f.chapters.count, 19)
