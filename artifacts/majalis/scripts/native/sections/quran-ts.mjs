@@ -97,4 +97,10 @@ export default async function exportQuranTs({ json, reject, counts, appRoot }) {
   }
   json("quran/miracles.json", miracles);
   c.miracles = miracles.length;
+
+  // المتشابهات: مراجع (سورة/آية) فقط مع مصادرها العلمية؛ نص الآية يُقرأ من المصحف المحزوم لا من الملف
+  const msh = d.mutashabihat.filter((p) => (p.refs ?? []).length >= 2 && has(p.title) || (reject(`${Q}-mutashabihat`, "أقل من آيتين"), false))
+    .map((p) => ({ id: p.id, title: p.title, description: p.description, category: p.category, hint: p.hint ?? null, refs: p.refs }));
+  json("quran/mutashabihat.json", msh);
+  c.mutashabihat = msh.length;
 }
