@@ -68,6 +68,7 @@
 - المحجوز (`content-hold.json`) مستبعد من كل ملف، وتُسجَّل الرفوض في المنافيست.
 - `asma-husna`: تُرفض العناصر `documentation_status=unsourced` (91 من 99).
 - `islamic-sects`: `[]` **فارغ عمدًا** — لا سجل منشور (كلها NEEDS_SOURCE/NEEDS_HISTORICAL_REVIEW/NEEDS_SHARIA_REVIEW/CONFLICTING_SOURCES).
+- `discover-islam`: `ContentItem[]` روابط تنقل صفحة المدخل (id,title,tags[],route) بلا نص شرعي؛ `discover-islam-contact`: `[]` فارغ عمدًا (نموذج تواصل: شبكة/حساب).
 - الشبهات وأدلة الدعوة (`discover-islam-questions/doubts`): كل آية قرآنية تُطابَق حرفيًا مع Tanzil (اسم السورة+الرقم+النص، والاقتباس المقطّع بـ`...` قطعةً قطعة)؛ ما لا يتحقق يُرفض (doubts: 1 من 12).
 - `discover-islam-articles/new-muslim`: تُمرَّر كما هي دون أدلة.
 - لا ملف لـ`discover-islam` (مركز) ولا `discover-islam-contact` (نموذج).
@@ -80,6 +81,8 @@
 - تمرير حرفي من مصدر الويب؛ لا إعادة صياغة ولا حقول جديدة. المسارات الـ17 المكتوبة داخل JSX (`/tahara` `/sawm`…) خارج هذا الـPR (تحتاج نقل نص إلى وحدة بيانات أولًا).
 
 
+- ملفات `ContentItem[]` المتبقية (21): مشتقة من `books.json` المنشور وبطاقات البوابة/الأصول — `fiqh-books` (الكتب)، `fiqh-topics`+`fiqh` (بطاقات البوابة)، `fiqh-usul`، وأبواب كتاب لكل من `tahara`(taharah) `salah-guide`(salah) `zakat` `sawm` `hajj` `janaza` `mawarith`(wasaya-faraid) `family`(nikah) — الربط تقدير في `sections/fiqh-rest.mjs` يغيّره المالك إن شاء. **فارغة عمدًا بالشكل نفسه `[]`**: `arkan` `arkan-iman` `fadail-aamal` `sujood-sahw` `tawba` (JSX مضمَّن بلا مصدر مراجَع)، `fiqh-qawaid` `worship` `mawarith-calculator` (حاسبة/شاشة)، `prayer-times` (محمي، لا يُصدَّر).
+
 ### sirah (10 ملفات في `Data/sirah/`)
 - مصفوفات بالشكل الحرفي للمصدر، بعد حذف المحجوز: `islamic-landmarks`, `nations`, `sahabah` (مضمَّنة في الصفحة؛ `quote` لا يُعرض).
 - بمرشحات القبول: `occasions-verified` (سجل موثّق مطابق لبذرة بـ`reviewStatus=approved` ومصدر)، `prophets-knowledge` (`review_status=verified` + مصادر)، `stories` (معتمدة + `reviewed` + مصادر)، `islamic-history` (لا `needs-review` ولا بلا مصادر).
@@ -88,14 +91,15 @@
 
 ### learn + audio (11 ملفًا: `Data/learn/`، `Data/lessons/`، `Data/graph/`، `Data/audio/`)
 - بيانات حقيقية: `lessons/chunk-000` (82)، `learn/universities` (37 متحقَّقة)، `learn/kuwait-sheikhs` (6)، `graph/links`، `audio/surah-reciters` (29: `{id,nameAr,surahBaseUrl}` بعد مفتاح التعطيل المركزي).
-- فارغة عمدًا بالشكل الصحيح `[]`: `institutions` (قرار المالك: المراجَع فقط)، `competitions`، `durus-imaniyya`، `durus-mutanawwia` (تنتظر sharia-content)، `fawaid`، `annual-courses` (مصدرها Supabase).
+- مُصدَّرة بدرجاتها ومصادرها كما يعرضها الموقع (ContentItem؛ الحالة في `tags`): `institutions` (44، وسم الحالة «قيد المراجعة»/«معتمد» ثم needs_review في tags، تُحدَّث من الشبكة لاحقًا فتتحول إلى معتمد بقرار المالك، الرابط في route)، `durus-imaniyya` / `durus-mutanawwia` (الدروس مسطّحة، القسم في tags)، `sirah/fikr-waqia`، `fawaid` (التصنيف + verification_status + trust_level في tags، المصدر في body)، `annual-courses` (approved فقط). فارغ بالشكل الصحيح `[]`: `competitions` (المنشور 0 والعيّنة demo).
+- `quran/ulum-quran.json` (79 ContentItem من ثوابت صفحة /ulum-quran؛ التبويب في `tags`، المصدر/المرجع في subtitle أو body كما عرضها الموقع). `aqidah/islamic-sects.json` يبقى `[]`: الموقع نفسه لا يعرض إلا PUBLISHED وكل السجلات الـ35 بحالة NEEDS_*.
 
 ### library (11 ملفًا في `Data/library/`)
 - بالشكل الحرفي للمصدر بعد حذف المحجوز: `academic-research` (`{records, categories}`؛ منشور وغير تجريبي فقط)، `arabic-language` و`mawsuaat` (`DarsSection[]`)، `islamic-glossary` (ذو مصدر فقط؛ 20 بلا مصدر مستبعدة)، `mind-maps` (+ نسخة مطابقة `mind-map`)، `scientific-announcements`.
 - `search-index` = `{docs:[{id,kind,titleAr,href,norm}]}` من `public/data/search/index.json` بعد الحجب العام والمحجوز.
 - `terms` و`methodology` = `{title, updatedAt, sections:[{title, paragraphs}]}` نصّ الصفحة حرفيًا (البريد من `site.config.json`).
 - `navigation` = `{groups, sections, settingsRows, sitemap}` من سجل الأقسام (بلا مجموعة account، بلا hidden/comingSoon) وصفوف «المزيد» ودليل الأقسام.
-- لا تُصدَّر: `sources` والدروس (شبكة)، `cards`/`academic-research-assistant`/`-submit` (محسوبة محليًا)، `more`/`sections`/`sitemap`/`search`/`islamic-directory` (أسماء الشاشات المولَّدة؛ المحتوى في `navigation`/`search-index`).
+- مشتقة من التنقل (`ContentItem`/`SectionLink`): `cards` (المجموعات)، `more` (صفوف الإعدادات)، `sections` (SectionLink)، `sitemap` (روابط خريطة الموقع)، `search` (أقسام+خريطة بلا تكرار مسار). فارغة عمدًا بالشكل نفسه `[]`: `islamic-directory`، `sources`، `academic-research-assistant`، `academic-research-submit` (شبكة/حساب/غير مراجَع).
 
 ### adhkar (adhkar/verified-adhkar.json = 207 صفوف، من content/native/adhkar-verified.json)
 - المصدر: بذرة الأذكار الأصلية `src/lib/adhkar-seed.ts` عبر `scripts/native/build-adhkar-verified.mjs`؛ النص والمصدر والدرجة حرفيًا بلا إنشاء ولا مرجع جديد، والدرجة كما هي (حسن تبقى «حسن»). الشكل هو صف `verified_adhkar_items` (§1) مع `metadata.basis`: `sahihayn` (140) · `named_grader` (33: صحيح بمصحِّح مسمّى) · `named_grader_hasan` (15: حسن بمصحِّح مسمّى) · `local_verified_corpus` (2: مطابقة متن كاملة لسجل في hadith-verified بمرجعه في `metadata.local_ref`) · `quran_tanzil` (17).

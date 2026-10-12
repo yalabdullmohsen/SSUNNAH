@@ -1,7 +1,88 @@
 {
   "version": 1,
-  "generated_at": "2026-10-11T19:56:08.026Z",
+  "generated_at": "2026-10-12T10:46:27.085Z",
   "items": [
+    {
+      "id": "8b5c182153c38e02d3b3f501117c363053742c73",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح ثلاثة الأصول للشيخ د حمد بن محمد الهاجري ب…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: (شرح ثلاثه الاصول) للشيخ د. حمد بن محمد الهاجري ⏰ بعد صلاه المغرب (كل احد) مسجد عبدالمحسن الزبن - الفنيطيس https://maps.app.g…",
+      "sheikh": "حمد بن محمد الهاجري ⏰ بعد صلاة المغرب (كل أحد) 🕌 مسجد عبدال",
+      "place": "عبدالمحسن الزبن - الفنيطيس https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28247",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T10:29:30.883Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "1af77a3bd4a46206724d54f30bf820911adfb3a3",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح كتاب الروض المربع الشيخ حماد الأسلمي كل أح…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: «شرح كتاب الروض المربع» الشيخ حماد الاسلمي @H_alaslemi كل احد واربعاء ⏰ بعد صلاه العشاء مسجد عبدالعزيز الماجشون- المطلاع http…",
+      "sheikh": "حماد الأسلمي &rlm; @H_alaslemi 📆 كل أحد وأربعاء ⏰ بعد صلاة",
+      "place": "عبدالعزيز الماجشون- المطلاع https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28252",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T10:29:30.883Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "a37a822dbe4ab763d4ecb6b729306d9ad4ca8903",
+      "type": "درس",
+      "title_ar": "👇 جدول دروس اليوم الأحد 👇",
+      "summary_ar": "جدول دروس اليوم الاحد",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28246",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T10:29:30.883Z",
+      "confidence": 0.65
+    },
     {
       "id": "caa09d45fe3e0278c0bd55c07665ea2be8268e50",
       "type": "تسجيل",
@@ -28,87 +109,6 @@
       "image_url": null,
       "published_at": "2026-10-11T19:41:15.048Z",
       "confidence": 0.75
-    },
-    {
-      "id": "007a03f54a05427aced92fbbcf1ddd90ee7489d3",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح ثلاثة الأصول للشيخ د حمد بن محمد الهاجري ب…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: (شرح ثلاثه الاصول) للشيخ د. حمد بن محمد الهاجري ⏰ بعد صلاه المغرب (كل احد) مسجد عبدالمحسن الزبن - الفنيطيس https://maps.app.g…",
-      "sheikh": "حمد بن محمد الهاجري ⏰ بعد صلاة المغرب (كل أحد) 🕌 مسجد عبدال",
-      "place": "عبدالمحسن الزبن - الفنيطيس https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28247",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-11T19:35:19.297Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "890ef2dc23b7c251afc61584b1b5062f3649300a",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح كتاب الروض المربع الشيخ حماد الأسلمي كل أح…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: «شرح كتاب الروض المربع» الشيخ حماد الاسلمي @H_alaslemi كل احد واربعاء ⏰ بعد صلاه العشاء مسجد عبدالعزيز الماجشون- المطلاع http…",
-      "sheikh": "حماد الأسلمي &rlm; @H_alaslemi 📆 كل أحد وأربعاء ⏰ بعد صلاة",
-      "place": "عبدالعزيز الماجشون- المطلاع https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28252",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-11T19:35:19.297Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "f8f1d9d89ba00ce63dc907d315c9ef5f145a32f5",
-      "type": "درس",
-      "title_ar": "👇 جدول دروس اليوم الأحد 👇",
-      "summary_ar": "جدول دروس اليوم الاحد",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28246",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-11T19:35:19.297Z",
-      "confidence": 0.65
     },
     {
       "id": "5667fe171c7c11cfd177712f45972582a775c1b1",

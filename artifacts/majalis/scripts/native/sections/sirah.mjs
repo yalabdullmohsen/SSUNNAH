@@ -77,7 +77,7 @@ export default async function exportSirah({ json, held, reject, counts, appRoot 
   }
 
   /* فارغ عمدًا: لا مصدر/درجة في الويب، وقرار المالك بعدم التصدير بلا توثيق */
-  for (const name of ["fikr-waqia", "seerah-phases", "shamail"]) { out(name, []); reject(`${S}-${name}`, "فارغ عمدًا: بلا مصدر/درجة (قرار المالك)"); }
+  for (const name of ["seerah-phases", "shamail"]) { out(name, []); reject(`${S}-${name}`, "فارغ عمدًا: بلا مصدر/درجة (قرار المالك)"); }
   /* prophets-lineage: جذر واحد لا قائمة؛ لا عقدة فارغة صالحة، فلا يُكتب الملف (الغياب = «قيد التوثيق») */
   reject(`${S}-prophets-lineage`, "غير مُصدَّر: أسماء وأنساب بلا مصدر (قرار المالك)");
 }
