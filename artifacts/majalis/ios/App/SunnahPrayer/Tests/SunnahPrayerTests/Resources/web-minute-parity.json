@@ -1,0 +1,1224 @@
+[
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-01-15",
+  "times": {
+   "Fajr": "05:20",
+   "Sunrise": "06:43",
+   "Dhuhr": "11:57",
+   "Asr": "14:52",
+   "Maghrib": "17:12",
+   "Isha": "18:33"
+  }
+ },
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "03:13",
+   "Sunrise": "04:49",
+   "Dhuhr": "11:50",
+   "Asr": "15:24",
+   "Maghrib": "18:51",
+   "Isha": "20:23"
+  }
+ },
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-10-12",
+  "times": {
+   "Fajr": "04:28",
+   "Sunrise": "05:47",
+   "Dhuhr": "11:35",
+   "Asr": "14:52",
+   "Maghrib": "17:21",
+   "Isha": "18:38"
+  }
+ },
+ {
+  "name": "Riyadh",
+  "lat": 24.7136,
+  "lon": 46.6753,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-03-20",
+  "times": {
+   "Fajr": "04:40",
+   "Sunrise": "05:58",
+   "Dhuhr": "12:01",
+   "Asr": "15:27",
+   "Maghrib": "18:04",
+   "Isha": "19:34"
+  }
+ },
+ {
+  "name": "Riyadh",
+  "lat": 24.7136,
+  "lon": 46.6753,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-12-21",
+  "times": {
+   "Fajr": "05:09",
+   "Sunrise": "06:33",
+   "Dhuhr": "11:51",
+   "Asr": "14:50",
+   "Maghrib": "17:09",
+   "Isha": "18:39"
+  }
+ },
+ {
+  "name": "Makkah",
+  "lat": 21.3891,
+  "lon": 39.8579,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-09-23",
+  "times": {
+   "Fajr": "04:53",
+   "Sunrise": "06:10",
+   "Dhuhr": "12:13",
+   "Asr": "15:37",
+   "Maghrib": "18:16",
+   "Isha": "19:46"
+  }
+ },
+ {
+  "name": "Makkah",
+  "lat": 21.3891,
+  "lon": 39.8579,
+  "tz": "Asia/Riyadh",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-07-01",
+  "times": {
+   "Fajr": "04:17",
+   "Sunrise": "05:42",
+   "Dhuhr": "12:25",
+   "Asr": "15:43",
+   "Maghrib": "19:07",
+   "Isha": "20:27"
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-01-15",
+  "times": {
+   "Fajr": "05:21",
+   "Sunrise": "06:52",
+   "Dhuhr": "12:05",
+   "Asr": "14:58",
+   "Maghrib": "17:17",
+   "Isha": "18:39"
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "04:08",
+   "Sunrise": "05:54",
+   "Dhuhr": "12:58",
+   "Asr": "16:32",
+   "Maghrib": "19:59",
+   "Isha": "21:33"
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-04-24",
+  "times": {
+   "Fajr": "04:46",
+   "Sunrise": "06:19",
+   "Dhuhr": "12:54",
+   "Asr": "16:30",
+   "Maghrib": "19:28",
+   "Isha": "20:51"
+  }
+ },
+ {
+  "name": "Istanbul",
+  "lat": 41.0082,
+  "lon": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "Turkey",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-03-29",
+  "times": {
+   "Fajr": "05:19",
+   "Sunrise": "06:46",
+   "Dhuhr": "13:14",
+   "Asr": "16:46",
+   "Maghrib": "19:33",
+   "Isha": "20:54"
+  }
+ },
+ {
+  "name": "Istanbul",
+  "lat": 41.0082,
+  "lon": 28.9784,
+  "tz": "Europe/Istanbul",
+  "method": "Turkey",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-12-21",
+  "times": {
+   "Fajr": "06:46",
+   "Sunrise": "08:18",
+   "Dhuhr": "13:07",
+   "Asr": "15:25",
+   "Maghrib": "17:46",
+   "Isha": "19:13"
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-03-29",
+  "times": {
+   "Fajr": "05:07",
+   "Sunrise": "06:43",
+   "Dhuhr": "13:06",
+   "Asr": "16:35",
+   "Maghrib": "19:29",
+   "Isha": "21:05"
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "03:40",
+   "Sunrise": "04:43",
+   "Dhuhr": "13:03",
+   "Asr": "17:25",
+   "Maghrib": "21:22",
+   "Isha": "22:25"
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MoonsightingCommittee",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "02:43",
+   "Sunrise": "04:43",
+   "Dhuhr": "13:07",
+   "Asr": "17:25",
+   "Maghrib": "21:25",
+   "Isha": "22:42"
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MoonsightingCommittee",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-12-21",
+  "times": {
+   "Fajr": "06:22",
+   "Sunrise": "08:04",
+   "Dhuhr": "12:04",
+   "Asr": "13:38",
+   "Maghrib": "15:56",
+   "Isha": "17:32"
+  }
+ },
+ {
+  "name": "NewYork",
+  "lat": 40.7128,
+  "lon": -74.006,
+  "tz": "America/New_York",
+  "method": "NorthAmerica",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-03-08",
+  "times": {
+   "Fajr": "06:04",
+   "Sunrise": "07:19",
+   "Dhuhr": "13:08",
+   "Asr": "16:23",
+   "Maghrib": "18:55",
+   "Isha": "20:10"
+  }
+ },
+ {
+  "name": "NewYork",
+  "lat": 40.7128,
+  "lon": -74.006,
+  "tz": "America/New_York",
+  "method": "NorthAmerica",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-11-01",
+  "times": {
+   "Fajr": "05:10",
+   "Sunrise": "06:26",
+   "Dhuhr": "11:41",
+   "Asr": "14:28",
+   "Maghrib": "16:52",
+   "Isha": "18:09"
+  }
+ },
+ {
+  "name": "NewYork",
+  "lat": 40.7128,
+  "lon": -74.006,
+  "tz": "America/New_York",
+  "method": "NorthAmerica",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-07-04",
+  "times": {
+   "Fajr": "03:52",
+   "Sunrise": "05:30",
+   "Dhuhr": "13:02",
+   "Asr": "17:00",
+   "Maghrib": "20:31",
+   "Isha": "22:09"
+  }
+ },
+ {
+  "name": "Toronto",
+  "lat": 43.6532,
+  "lon": -79.3832,
+  "tz": "America/Toronto",
+  "method": "NorthAmerica",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "03:45",
+   "Sunrise": "05:36",
+   "Dhuhr": "13:20",
+   "Asr": "17:26",
+   "Maghrib": "21:03",
+   "Isha": "22:53"
+  }
+ },
+ {
+  "name": "Karachi",
+  "lat": 24.8607,
+  "lon": 67.0011,
+  "tz": "Asia/Karachi",
+  "method": "Karachi",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-05-01",
+  "times": {
+   "Fajr": "04:35",
+   "Sunrise": "05:57",
+   "Dhuhr": "12:30",
+   "Asr": "15:57",
+   "Maghrib": "19:02",
+   "Isha": "20:24"
+  }
+ },
+ {
+  "name": "Karachi",
+  "lat": 24.8607,
+  "lon": 67.0011,
+  "tz": "Asia/Karachi",
+  "method": "Karachi",
+  "madhab": "Hanafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-12-21",
+  "times": {
+   "Fajr": "05:51",
+   "Sunrise": "07:12",
+   "Dhuhr": "12:31",
+   "Asr": "16:12",
+   "Maghrib": "17:48",
+   "Isha": "19:09"
+  }
+ },
+ {
+  "name": "Jakarta",
+  "lat": -6.2088,
+  "lon": 106.8456,
+  "tz": "Asia/Jakarta",
+  "method": "Singapore",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-02-10",
+  "times": {
+   "Fajr": "04:37",
+   "Sunrise": "05:57",
+   "Dhuhr": "12:08",
+   "Asr": "15:24",
+   "Maghrib": "18:17",
+   "Isha": "19:29"
+  }
+ },
+ {
+  "name": "Singapore",
+  "lat": 1.3521,
+  "lon": 103.8198,
+  "tz": "Asia/Singapore",
+  "method": "Singapore",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-08-09",
+  "times": {
+   "Fajr": "05:46",
+   "Sunrise": "07:06",
+   "Dhuhr": "13:12",
+   "Asr": "16:32",
+   "Maghrib": "19:16",
+   "Isha": "20:27"
+  }
+ },
+ {
+  "name": "Tehran",
+  "lat": 35.6892,
+  "lon": 51.389,
+  "tz": "Asia/Tehran",
+  "method": "Tehran",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-03-21",
+  "times": {
+   "Fajr": "04:43",
+   "Sunrise": "06:07",
+   "Dhuhr": "12:12",
+   "Asr": "15:40",
+   "Maghrib": "18:35",
+   "Isha": "19:22"
+  }
+ },
+ {
+  "name": "Tehran",
+  "lat": 35.6892,
+  "lon": 51.389,
+  "tz": "Asia/Tehran",
+  "method": "Tehran",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-09-22",
+  "times": {
+   "Fajr": "04:28",
+   "Sunrise": "05:52",
+   "Dhuhr": "11:57",
+   "Asr": "15:24",
+   "Maghrib": "18:20",
+   "Isha": "19:07"
+  }
+ },
+ {
+  "name": "Dubai",
+  "lat": 25.2048,
+  "lon": 55.2708,
+  "tz": "Asia/Dubai",
+  "method": "Dubai",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "03:59",
+   "Sunrise": "05:26",
+   "Dhuhr": "12:24",
+   "Asr": "15:46",
+   "Maghrib": "19:15",
+   "Isha": "20:43"
+  }
+ },
+ {
+  "name": "Dubai",
+  "lat": 25.2048,
+  "lon": 55.2708,
+  "tz": "Asia/Dubai",
+  "method": "Dubai",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-01-15",
+  "times": {
+   "Fajr": "05:45",
+   "Sunrise": "07:03",
+   "Dhuhr": "12:31",
+   "Asr": "15:33",
+   "Maghrib": "17:54",
+   "Isha": "19:12"
+  }
+ },
+ {
+  "name": "Doha",
+  "lat": 25.2854,
+  "lon": 51.531,
+  "tz": "Asia/Qatar",
+  "method": "Qatar",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-04-10",
+  "times": {
+   "Fajr": "03:58",
+   "Sunrise": "05:17",
+   "Dhuhr": "11:35",
+   "Asr": "15:05",
+   "Maghrib": "17:54",
+   "Isha": "19:24"
+  }
+ },
+ {
+  "name": "Doha",
+  "lat": 25.2854,
+  "lon": 51.531,
+  "tz": "Asia/Qatar",
+  "method": "Qatar",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-11-20",
+  "times": {
+   "Fajr": "04:35",
+   "Sunrise": "05:54",
+   "Dhuhr": "11:19",
+   "Asr": "14:23",
+   "Maghrib": "16:44",
+   "Isha": "18:14"
+  }
+ },
+ {
+  "name": "Paris",
+  "lat": 48.8566,
+  "lon": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "FranceUOIF",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-03-29",
+  "times": {
+   "Fajr": "06:25",
+   "Sunrise": "07:35",
+   "Dhuhr": "13:55",
+   "Asr": "17:27",
+   "Maghrib": "20:17",
+   "Isha": "21:27"
+  }
+ },
+ {
+  "name": "Paris",
+  "lat": 48.8566,
+  "lon": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "FranceUOIF",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "04:40",
+   "Sunrise": "05:47",
+   "Dhuhr": "13:52",
+   "Asr": "18:10",
+   "Maghrib": "21:58",
+   "Isha": "23:05"
+  }
+ },
+ {
+  "name": "Paris",
+  "lat": 48.8566,
+  "lon": 2.3522,
+  "tz": "Europe/Paris",
+  "method": "FranceUOIF",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-12-21",
+  "times": {
+   "Fajr": "07:23",
+   "Sunrise": "08:41",
+   "Dhuhr": "12:49",
+   "Asr": "14:39",
+   "Maghrib": "16:56",
+   "Isha": "18:14"
+  }
+ },
+ {
+  "name": "Casablanca",
+  "lat": 33.5731,
+  "lon": -7.5898,
+  "tz": "Africa/Casablanca",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-10-25",
+  "times": {
+   "Fajr": "06:20",
+   "Sunrise": "07:43",
+   "Dhuhr": "13:15",
+   "Asr": "16:20",
+   "Maghrib": "18:45",
+   "Isha": "20:04"
+  }
+ },
+ {
+  "name": "Sydney",
+  "lat": -33.8688,
+  "lon": 151.2093,
+  "tz": "Australia/Sydney",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-04-05",
+  "times": {
+   "Fajr": "04:47",
+   "Sunrise": "06:10",
+   "Dhuhr": "11:59",
+   "Asr": "15:15",
+   "Maghrib": "17:45",
+   "Isha": "19:03"
+  }
+ },
+ {
+  "name": "Sydney",
+  "lat": -33.8688,
+  "lon": 151.2093,
+  "tz": "Australia/Sydney",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-10-04",
+  "times": {
+   "Fajr": "05:04",
+   "Sunrise": "06:29",
+   "Dhuhr": "12:45",
+   "Asr": "16:17",
+   "Maghrib": "19:00",
+   "Isha": "20:20"
+  }
+ },
+ {
+  "name": "Cairo",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "tz": "Africa/Cairo",
+  "method": "Egyptian",
+  "madhab": "Hanafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "04:08",
+   "Sunrise": "05:54",
+   "Dhuhr": "12:58",
+   "Asr": "17:50",
+   "Maghrib": "19:59",
+   "Isha": "21:33"
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "madhab": "Hanafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "03:40",
+   "Sunrise": "04:43",
+   "Dhuhr": "13:03",
+   "Asr": "18:40",
+   "Maghrib": "21:22",
+   "Isha": "22:25"
+  }
+ },
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "madhab": "Hanafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-01-15",
+  "times": {
+   "Fajr": "05:20",
+   "Sunrise": "06:43",
+   "Dhuhr": "11:57",
+   "Asr": "15:35",
+   "Maghrib": "17:12",
+   "Isha": "18:33"
+  }
+ },
+ {
+  "name": "Oslo",
+  "lat": 59.9139,
+  "lon": 10.7522,
+  "tz": "Europe/Oslo",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "03:09",
+   "Sunrise": "03:54",
+   "Dhuhr": "13:20",
+   "Asr": "18:00",
+   "Maghrib": "22:44",
+   "Isha": "23:28"
+  }
+ },
+ {
+  "name": "Oslo",
+  "lat": 59.9139,
+  "lon": 10.7522,
+  "tz": "Europe/Oslo",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "MiddleOfTheNight",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "01:19",
+   "Sunrise": "03:54",
+   "Dhuhr": "13:20",
+   "Asr": "18:00",
+   "Maghrib": "22:44",
+   "Isha": "01:19"
+  }
+ },
+ {
+  "name": "Oslo",
+  "lat": 59.9139,
+  "lon": 10.7522,
+  "tz": "Europe/Oslo",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "SeventhOfTheNight",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "03:09",
+   "Sunrise": "03:54",
+   "Dhuhr": "13:20",
+   "Asr": "18:00",
+   "Maghrib": "22:44",
+   "Isha": "23:28"
+  }
+ },
+ {
+  "name": "Oslo",
+  "lat": 59.9139,
+  "lon": 10.7522,
+  "tz": "Europe/Oslo",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "TwilightAngle",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "02:21",
+   "Sunrise": "03:54",
+   "Dhuhr": "13:20",
+   "Asr": "18:00",
+   "Maghrib": "22:44",
+   "Isha": "00:12"
+  }
+ },
+ {
+  "name": "Oslo",
+  "lat": 59.9139,
+  "lon": 10.7522,
+  "tz": "Europe/Oslo",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-12-21",
+  "times": {
+   "Fajr": "06:43",
+   "Sunrise": "09:18",
+   "Dhuhr": "12:16",
+   "Asr": "13:07",
+   "Maghrib": "15:12",
+   "Isha": "17:47"
+  }
+ },
+ {
+  "name": "London",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "tz": "Europe/London",
+  "method": "MuslimWorldLeague",
+  "madhab": "Shafi",
+  "highLatitude": "SeventhOfTheNight",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-06-21",
+  "times": {
+   "Fajr": "03:40",
+   "Sunrise": "04:43",
+   "Dhuhr": "13:03",
+   "Asr": "17:25",
+   "Maghrib": "21:22",
+   "Isha": "22:25"
+  }
+ },
+ {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": -2,
+   "sunrise": 1,
+   "dhuhr": 3,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": 5
+  },
+  "day": "2026-10-12",
+  "times": {
+   "Fajr": "04:26",
+   "Sunrise": "05:48",
+   "Dhuhr": "11:38",
+   "Asr": "14:51",
+   "Maghrib": "17:23",
+   "Isha": "18:43"
+  }
+ },
+ {
+  "name": "Riyadh",
+  "lat": 24.7136,
+  "lon": 46.6753,
+  "tz": "Asia/Riyadh",
+  "method": "UmmAlQura",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": 10
+  },
+  "day": "2026-10-12",
+  "times": {
+   "Fajr": "04:32",
+   "Sunrise": "05:50",
+   "Dhuhr": "11:40",
+   "Asr": "15:00",
+   "Maghrib": "17:32",
+   "Isha": "19:09"
+  }
+ }
+]

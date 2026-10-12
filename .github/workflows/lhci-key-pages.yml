@@ -16,6 +16,9 @@ on:
     branches: [main]
     paths:
       - "artifacts/majalis/**"
+      - "!artifacts/majalis/ios/**"
+      - "!artifacts/majalis/scripts/native/**"
+      - "!docs/native/**"
       - "lib/**"
       - "pnpm-lock.yaml"
       - ".github/workflows/lhci-key-pages.yml"
@@ -23,6 +26,9 @@ on:
     branches: [main]
     paths:
       - "artifacts/majalis/**"
+      - "!artifacts/majalis/ios/**"
+      - "!artifacts/majalis/scripts/native/**"
+      - "!docs/native/**"
       - "lib/**"
       - "pnpm-lock.yaml"
   workflow_dispatch:

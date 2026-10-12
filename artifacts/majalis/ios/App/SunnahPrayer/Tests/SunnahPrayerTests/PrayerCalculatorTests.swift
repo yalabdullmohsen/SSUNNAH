@@ -14,7 +14,7 @@ private struct Fixture: Decodable {
 final class PrayerCalculatorTests: XCTestCase {
     /// معيار اليوم 3-4: تطابق 5 مدن مرجعية مع الويب ±1 دقيقة (فعليًا ±60 ثانية).
     func testMatchesWebAdhanJsWithinOneMinute() throws {
-        let url = try XCTUnwrap(Bundle.module.url(forResource: "web-parity", withExtension: "json"))
+        let url = URL(fileURLWithPath: #filePath).deletingLastPathComponent().appendingPathComponent("Resources/web-parity.json")
         let fixtures = try JSONDecoder().decode([Fixture].self, from: Data(contentsOf: url))
         XCTAssertEqual(Set(fixtures.map(\.name)).count, 5)
 

@@ -19,7 +19,7 @@ let package = Package(
         .testTarget(
             name: "SunnahPrayerTests",
             dependencies: ["SunnahPrayer"],
-            resources: [.copy("Resources/web-parity.json")]
+            resources: [.copy("Resources/web-parity.json"), .copy("Resources/web-minute-parity.json")]
         )
     ]
 )
