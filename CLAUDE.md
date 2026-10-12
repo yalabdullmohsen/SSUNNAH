@@ -25,3 +25,6 @@
 
 ## Worktrees (إلزامي)
 كل worktrees المشروع تحت `~/ssunnah-wt/` فقط: n1 n2 n3 n4 (حد أقصى 4). أعد استخدام نسخة نافذتك وبدّل الفرع: `scripts/wt-switch.sh <nX> <branch>`. ممنوع clone/worktree جديد خارجها. التفاصيل: `docs/handover/WORKTREES.md`.
+
+## عمليات البناء على فروع native (ن1–ن4)
+- ابنِ عبر `scripts/native-build-locked.sh` فقط (قفل بـpid/مالك + إعادة تلقائية مرة واحدة). ممنوع `pkill`/`killall` أو `kill` لعملية لا تملكها؛ يُقتل فقط pid المسجَّل باسمك. التفاصيل: `docs/native/BUILD_PROCESS_RULES.md`.
