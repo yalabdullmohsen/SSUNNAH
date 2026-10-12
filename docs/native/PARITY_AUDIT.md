@@ -11,7 +11,7 @@
 | الحديث: muslim | 7360 | 7360 | 0 | محجوز/نص فارغ إن وُجد الفرق |
 | الحديث: المصحّح (صحيح) | 1161 | 1160 | -1 | فرق مقصود: صحيح محجوز في content-hold (1)؛ الضعيف والموضوع خارج المقارنة أصلًا (قاعدة العقد) |
 | الأذكار (معتمد) | 207 | 207 | 0 |  |
-| الأسئلة (غير demo) | 3545 | 3451 | -94 | منها 583 بلا مرجع تُعرض كما يعرضها الموقع؛ الفرق = المحجوز في content-hold لا يُحذف |
+| الأسئلة (غير demo) | 3545 | 3535 | -10 | منها 381 بلا مرجع تُعرض كما يعرضها الموقع؛ الفرق = المحجوز في content-hold لا يُحذف |
 | القصص | 479 | 479 | 0 |  |
 | aqidah/adab-talab-ilm | 80 | 80 | 0 |  |
 | aqidah/akhlaq | 67 | 67 | 0 |  |
@@ -94,12 +94,22 @@
 | library/sections | 25 | 25 | 0 |  |
 | library/sitemap | 98 | 98 | 0 |  |
 | library/search | 106 | 106 | 0 | فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1؛ فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1 |
-| library/islamic-directory | 0 | 0 | 0 | فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1 |
-| library/sources | 0 | 0 | 0 | فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1 |
+| library/sources | 56 | 56 | 0 |  |
+| library/islamic-directory | 3 | 3 | 0 |  |
 | library/academic-research-assistant | 0 | 0 | 0 | فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1 |
 | library/academic-research-submit | 0 | 0 | 0 | فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1 |
+| quran/people | 104 | 104 | 0 |  |
 | quran/tilawa-reciters | 13 | 13 | 0 |  |
 | quran/circles | 27 | 27 | 0 |  |
+| quran/tajweed | 19 | 19 | 0 |  |
+| quran/surah-stories | 270 | 114 | -156 | سطر عام غير محرَّر: 58؛ فضل عام: 98 |
+| quran/hifz-paths | 4 | 4 | 0 |  |
+| quran/stats | 95 | 95 | 0 |  |
+| quran/qiraat | 18 | 18 | 0 |  |
+| quran/ahruf | 8 | 8 | 0 |  |
+| quran/miracles | 67 | 67 | 0 |  |
+| quran/mutashabihat | 12 | 12 | 0 |  |
+| quran/surahs-meta | 114 | 114 | 0 |  |
 | quran/ulum-quran | 79 | 79 | 0 |  |
 | sirah/islamic-landmarks | 34 | 34 | 0 |  |
 | sirah/nations | 21 | 21 | 0 |  |
@@ -108,5 +118,7 @@
 | sirah/stories | 479 | 479 | 0 |  |
 | sirah/islamic-history | 217 | 217 | 0 |  |
 | sirah/sahabah | 63 | 63 | 0 |  |
-| sirah/seerah-phases | 0 | 0 | 0 | فارغ عمدًا: بلا مصدر/درجة (قرار المالك): 1 |
-| sirah/shamail | 0 | 0 | 0 | فارغ عمدًا: بلا مصدر/درجة (قرار المالك): 1 |
+| sirah/seerah-phases | 12 | 12 | 0 |  |
+| sirah/seerah-sources | 10 | 10 | 0 |  |
+| sirah/shamail | 4 | 4 | 0 |  |
+| sirah/shamail-facts | 10 | 10 | 0 |  |

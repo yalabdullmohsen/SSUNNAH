@@ -1,12 +1,7 @@
 # فجوات بيانات التطبيق الأصلي
 
-مصدر القائمة: `node scripts/native-data-check.mjs` على تصدير كامل جديد (`NATIVE_DATA_DIR=<out>`)، بعد الاستثناءات في `docs/native/data-exemptions.json`. البيانات المُلتزَمة في `ios-native/Data` قد تكون قديمة؛ التصدير الجديد هو المرجع.
+المصدر: `node scripts/native-data-check.mjs` (يقرأ `docs/native/data-exemptions.json`).
 
-## WARN-EMPTY — للأخذ من ن1 أو ن4 (7؛ 6 بعد #3042)
-- [ ] `aqidah/discover-islam-contact.json`
-- [ ] `library/academic-research-assistant.json`
-- [ ] `library/academic-research-submit.json`
-- [ ] `library/islamic-directory.json`
-- [x] `library/sources.json` — صُدِّر في #3042 (56 مصدرًا)
-- [ ] `sirah/seerah-phases.json`
-- [ ] `sirah/shamail.json`
+الحالة (2026-10-12): مفقود 0 · تالف 0 · فارغ غير مستثنى 0.
+- المفقودة التسعة (islamic-landmarks-map، occasions، occasions-lessons، prophets، prophets-tree، seerah، shamael، tarikh-islami، teachers) مراجع ميتة في `Generated/SirahScreens.swift` تحلّ محلها `SirahSection.register` بملفات مُصدَّرة أخرى؛ مسجَّلة في `overriddenGenerated`.
+- الفارغة مستثناة بدليل في `computedInApp` / `intentionallyEmpty`؛ `sirah/prophets-lineage` في `notExported` (قرار المالك).
