@@ -112,6 +112,11 @@ struct NativeShellRoot: View {
         switch Route.normalize(route.path) {
         case AppTab.prayer.rootPath:
             return AnyView(PrayerTimesScreen())
+        case "/islamic-sects":
+            // المصدَّر الحالي `[]` (لا سجلات منشورة)؛ لا ملف مضمَّن بعد فتظهر الحالة الفارغة.
+            let data = Bundle.main.url(forResource: "islamic-sects", withExtension: "json")
+                .flatMap { try? Data(contentsOf: $0) } ?? Data("[]".utf8)
+            return AnyView(IslamicSectsView(records: IslamicSectsView.records(fromJSON: data)))
         default:
             return AnyView(
                 WebScreen(
