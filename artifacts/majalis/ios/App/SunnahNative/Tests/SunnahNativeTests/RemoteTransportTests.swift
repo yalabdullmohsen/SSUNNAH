@@ -47,3 +47,39 @@ final class RemoteTransportTests: XCTestCase {
         XCTAssertEqual(ErrorStateView.offlineMessage, "لا يوجد اتصال، حاول لاحقًا")
     }
 }
+
+final class RemoteSeedsTests: XCTestCase {
+    private func bundle() throws -> Bundle {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent("seed-\(UUID().uuidString)")
+        for (dir, name, body) in [
+            ("Data/seed", "auto-content", #"{"ok":true,"items":[{"slug":"a","title":"x"}]}"#),
+            ("Data/seed", "platform-updates", "[]"),
+            ("Data/sources", "accounts", #"{"accounts":[]}"#),
+        ] {
+            let d = root.appendingPathComponent(dir)
+            try FileManager.default.createDirectory(at: d, withIntermediateDirectories: true)
+            try Data(body.utf8).write(to: d.appendingPathComponent(name + ".json"))
+        }
+        return try XCTUnwrap(Bundle(path: root.path))
+    }
+
+    func testSeedPathMapping() throws {
+        let b = try bundle()
+        XCTAssertNotNil(RemoteSeeds.data(forPath: "/data/sources/accounts.json", bundle: b))
+        XCTAssertNotNil(RemoteSeeds.data(forPath: "/api/auto-content?limit=100", bundle: b))
+        XCTAssertNotNil(RemoteSeeds.data(forPath: "/rest/v1/platform_updates?select=id", bundle: b))
+        XCTAssertNil(RemoteSeeds.data(forPath: "/rest/v1/bookmarks?select=id", bundle: b))
+        let d = try XCTUnwrap(RemoteSeeds.data(forPath: "/api/auto-content?slug=a", bundle: b))
+        XCTAssertTrue(String(decoding: d, as: UTF8.self).contains("\"item\""))
+        XCTAssertNil(RemoteSeeds.data(forPath: "/api/auto-content?slug=zzz", bundle: b))
+    }
+
+    func testSeedServedWhenOfflineAndNoCache() async throws {
+        struct F: Decodable, Sendable { let accounts: [String] }
+        let down = ClosureTransport { _, _ in throw URLError(.notConnectedToInternet) }
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("c-\(UUID().uuidString)")
+        let loader = ContentLoader(bundle: try bundle(), store: DataStore(transport: down, cache: DiskCache(directory: dir)))
+        let v = try await loader.load(F.self, from: .remote(path: "/data/sources/accounts.json"))
+        XCTAssertEqual(v.accounts, [])
+    }
+}

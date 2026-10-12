@@ -34,9 +34,17 @@ public struct ContentLoader: Sendable {
             }
             return try decoder().decode(Value.self, from: Data(contentsOf: url))
         case let .remote(path, maxAge, requireAuth):
-            guard let store else { throw ContentError.noStore }
-            let resource = Resource<Value>(path: path, maxAge: maxAge, requireAuth: requireAuth, decoder: decoder())
-            return try await store.load(resource).value
+            do {
+                guard let store else { throw ContentError.noStore }
+                let resource = Resource<Value>(path: path, maxAge: maxAge, requireAuth: requireAuth, decoder: decoder())
+                return try await store.load(resource).value
+            } catch {
+                // لا شبكة ولا كاش: البذرة المحزومة (إن وُجدت) بدل الخطأ.
+                if let seed = RemoteSeeds.data(forPath: path, bundle: bundle), let value = try? decoder().decode(Value.self, from: seed) {
+                    return value
+                }
+                throw error
+            }
         }
     }
 }
