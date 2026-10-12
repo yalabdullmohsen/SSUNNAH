@@ -21,12 +21,15 @@ for s in "$@"; do
     [ -z "$route" ] && continue
     eff=$(node -e 'try{const m=JSON.parse(require("fs").readFileSync("docs/native/ROUTE_SAMPLES.json","utf8"));console.log(m[process.argv[1]]||process.argv[1])}catch{console.log(process.argv[1])}' "$route")
     slug=$(echo "${route#/}" | tr '/:' '__'); L="$BOARD/snapshots/$sec/$slug-light.png"; D="$BOARD/snapshots/$sec/$slug-dark.png"
-    for mode in light dark; do
+    cap() { for mode in light dark; do
       xcrun simctl ui "$SIM" appearance $mode; xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1
-      xcrun simctl launch "$SIM" $BID -snapshotRoute "$eff" >/dev/null 2>&1; python3 -c "import time;time.sleep(${SNAP_WAIT:-4})"
+      xcrun simctl launch "$SIM" $BID -snapshotRoute "$eff" >/dev/null 2>&1; python3 -c "import time;time.sleep(${1:-${SNAP_WAIT:-4}})"
       xcrun simctl io "$SIM" screenshot "$BOARD/snapshots/$sec/$slug-$mode.png" >/dev/null 2>&1
-    done
+    done; }
+    cap
     why=""; ro=$(swift "$OCR" "$L" "$eff" 2>/dev/null); r2=$(swift "$OCR" "$D" "$eff" 2>/dev/null)
+    # بياض كلي: أعد المحاولة مرة بانتظار مضاعف قبل الرفض (WHITE_SCREEN = شاشة لم تُرسم)
+    if [ "$ro" = WHITE_SCREEN ] || [ "$r2" = WHITE_SCREEN ]; then cap $(( ${SNAP_WAIT:-4} * 2 + 4 )); ro=$(swift "$OCR" "$L" "$eff" 2>/dev/null); r2=$(swift "$OCR" "$D" "$eff" 2>/dev/null); fi
     [ -s "$L" ] && [ -s "$D" ] || why="NOSHOT"
     # الأولوية لسبب المحتوى (خطأ/قيد الإعداد/فارغ) لأنه ينسب المسار للجهة الصحيحة؛ DUP فقط لشاشة سليمة مطابقة لمسار بمكوّن مختلف
     [ -z "$why" ] && { [ "$ro" != OK ] && why=$ro || { [ "$r2" != OK ] && why=$r2; }; }
