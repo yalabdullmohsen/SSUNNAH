@@ -1,6 +1,6 @@
 # FEATURE_PARITY — جرد ميزات التطبيق للنقل إلى SwiftUI
 
-مولَّد من `artifacts/majalis/src/AppRoutes.tsx` عبر `scripts/native-route-inventory.mjs`. التأشير بـ[x] يدويًا عند اكتمال الميزة وفحصها؛ `scripts/native-progress.mjs` يحسب النسبة.
+مولَّد من `artifacts/majalis/src/AppRoutes.tsx` عبر `scripts/native-route-inventory.mjs`. التأشير بـ[x] يدويًا ([~] = مؤجل بقرار المالك، انظر DEFERRED.md) عند اكتمال الميزة وفحصها؛ `scripts/native-progress.mjs` يحسب النسبة.
 ما ليس هنا لا يُبنى (انظر «المحذوف» في الأسفل).
 
 ## الأذكار والأدعية — 8 (المسؤول: ن3)
@@ -63,14 +63,14 @@
 
 ## الدروس والتعلم — 23 (المسؤول: ن3)
 
-- [x] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
-- [x] `/competitions` — CompetitionsPage — اختبار
-- [ ] `/competitions/:id` — CompetitionDetailPage — اختبار
-- [ ] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
-- [ ] `/durus-mutanawwia` — DurusMutanawwiaPage — قائمة
-- [x] `/fawaid` — FawaidPage — قائمة
+- [~] `/annual-courses/:id` — AnnualCourseDetailPage — تفاصيل
+- [~] `/competitions` — CompetitionsPage — اختبار
+- [~] `/competitions/:id` — CompetitionDetailPage — اختبار
+- [~] `/durus-imaniyya` — DurusImaniyyaPage — قائمة
+- [~] `/durus-mutanawwia` — DurusMutanawwiaPage — قائمة
+- [~] `/fawaid` — FawaidPage — قائمة
 - [x] `/flashcards` — FlashCardsPage — قائمة
-- [ ] `/institutions` — InstitutionsPage — قائمة
+- [~] `/institutions` — InstitutionsPage — قائمة
 - [x] `/knowledge-graph` — KnowledgeGraphPage — قائمة
 - [ ] `/knowledge/:section` — KnowledgeSectionPage — تفاصيل
 - [x] `/kuwait-lessons` — KuwaitLessonsPage — قائمة
@@ -89,7 +89,7 @@
 
 ## السيرة والتاريخ والأعلام — 18 (المسؤول: ن2)
 
-- [x] `/fikr-waqia` — FikrWaqiaPage — قائمة
+- [~] `/fikr-waqia` — FikrWaqiaPage — قائمة
 - [x] `/islamic-landmarks` — IslamicLandmarksPage — قائمة
 - [ ] `/islamic-landmarks/:id` — IslamicLandmarkDetailPage — تفاصيل
 - [ ] `/islamic-landmarks/map` — IslamicLandmarksMapExplorerPage — شبكة
@@ -127,8 +127,8 @@
 - [x] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
 - [x] `/hikam-salaf` — HikamSalafPage — قائمة
 - [x] `/iman-topics` — ImanTopicsPage — قائمة
-- [x] `/islamic-sects` — IslamicSectsPage — قائمة
-- [ ] `/islamic-sects/:id` — IslamicSectsDetailPage — تفاصيل
+- [~] `/islamic-sects` — IslamicSectsPage — قائمة
+- [~] `/islamic-sects/:id` — IslamicSectsDetailPage — تفاصيل
 - [x] `/janna-naar` — JannaNaarPage — قائمة
 - [x] `/malaika` — MalaikaPage — قائمة
 - [x] `/raqaiq` — RaqaiqPage — قائمة

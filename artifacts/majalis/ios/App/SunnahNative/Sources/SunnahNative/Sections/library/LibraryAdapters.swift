@@ -255,7 +255,7 @@ enum LibraryLinks {
         SectionLink(id: "universities", title: "دليل الجامعات والكليات الشرعية", route: "/universities"),
         SectionLink(id: "institutions", title: "المؤسسات الإسلامية", route: "/institutions"),
         SectionLink(id: "islamic-landmarks", title: "المساجد والمشاهد", route: "/islamic-landmarks"),
-    ]
+    ].filter { LibraryRouteScope.contains($0.route) }
 }
 
 fileprivate extension ContentItem {
