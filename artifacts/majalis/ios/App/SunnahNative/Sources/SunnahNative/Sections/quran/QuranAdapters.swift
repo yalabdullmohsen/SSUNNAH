@@ -25,6 +25,12 @@ enum QuranAdapters {
 
 /// روابط ثابتة (ليست محتوى شرعيًا): مطابقة لـQuranHubScreen. الوجهات التي بلا شاشة أصلية بعد تُعرض «قيد التوثيق».
 enum QuranLinks {
+    static let memorization = [
+        SectionLink(id: "plans", title: "خطط الحفظ", route: "/quran/memorization-plans"),
+        SectionLink(id: "loop", title: "تكرار الحفظ", route: "/quran/hifz-loop"),
+        SectionLink(id: "path", title: "مسار الحفظ", route: "/hifz-path"),
+        SectionLink(id: "my-path", title: "مساري", route: "/hifz-path/my"),
+    ]
     static let hub = [
         SectionLink(id: "surahs", title: "فهرس السور", route: "/quran/surahs"),
         SectionLink(id: "makki-madani", title: "المكي والمدني", route: "/quran/makki-madani"),

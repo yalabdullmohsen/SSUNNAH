@@ -103,6 +103,14 @@ public enum QuranSection {
         registry.registerView(id: "quran-hub.seven-ahruf") {
             QuranBundledLoader(name: "ahruf", isEmpty: { (a: [AhrufSection]) in a.isEmpty }) { AhrufListView(sections: $0) }.navigationTitle("الأحرف السبعة")
         }
+        // حالة مستخدم محلية على الجهاز (UserDefaults) بلا خادم
+        registry.registerView(id: "memorization") { MemorizationHubView().navigationTitle("الحفظ") }
+        registry.registerView(id: "quran.memorization-plans") { MemorizationPlansScreen() }
+        registry.registerView(id: "quran.hifz-loop") { HifzLoopScreen() }
+        registry.registerView(id: "hifz-path.my") {
+            QuranBundledLoader(name: "hifz-paths", isEmpty: { (p: [HifzPath]) in p.isEmpty }) { MyHifzPathsView(paths: $0) }.navigationTitle("مساري في الحفظ")
+        }
+        registry.registerView(id: "mushaf.bookmarks") { MushafBookmarksScreen() }
         // مسارات بلا مصدر موثّق/حالة اعتماد (متشابهات مراجع فقط، حالة مستخدم، صوت، علوم/مصطلحات غير مصدَّرة): «قيد التوثيق» بدل شاشة «تعرّف إلى الإسلام»
         for id in pendingIDs {
             registry.registerView(id: id) { EmptyStateView(title: pendingTitle) }
@@ -110,7 +118,7 @@ public enum QuranSection {
     }
 
     static let pendingIDs = [
-        "mutashabihat", "memorization", "quran-memorization", "quran.hifz-loop", "quran.memorization-plans", "hifz-path.my",
+        "mutashabihat", "quran-memorization",
         "quran.offline-player", "quran-hub.tilawa", "quran-hub.terms", "quran-circles", "quran-engine", "quran.worship-hub",
         "quran-knowledge", "miracles", "ulum-quran",
     ]
