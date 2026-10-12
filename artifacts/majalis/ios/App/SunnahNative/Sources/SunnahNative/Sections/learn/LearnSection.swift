@@ -67,7 +67,7 @@ public enum LearnSection {
             case "universities": return AnyView(id == "compare" ? AnyView(LearnUniversitiesCompareScreen()) : AnyView(LearnUniversityDetailScreen(slug: id)))
             case "competitions": return AnyView(LearnCompetitionDetailScreen(id: id))
             case "annual-courses": return AnyView(LearnAnnualCourseScreen(id: id))
-            case "knowledge": return LearnKnowledgeSections.files(for: id) == nil ? nil : AnyView(LearnKnowledgeSectionScreen(section: id))
+            case "knowledge": return LearnKnowledgeSections.files(for: id) == nil ? AnyView(EmptyStateView(title: "هذا القسم غير موجود")) : AnyView(LearnKnowledgeSectionScreen(section: id))
             default: return nil
             }
         default:

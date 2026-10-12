@@ -35,6 +35,6 @@ public struct RootTabView: View {
     }
 
     public static func placeholder(_ route: Route) -> AnyView {
-        AnyView(EmptyStateView(title: "هذه الشاشة قيد الإعداد").navigationTitle(AppTab.owning(path: route.path).title))
+        AnyView(EmptyStateView(title: "تعذّر فتح هذه الشاشة").navigationTitle(AppTab.owning(path: route.path).title))
     }
 }

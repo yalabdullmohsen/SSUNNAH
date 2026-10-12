@@ -63,6 +63,7 @@ struct SunnahApp: App {
         if let v = LibrarySection.resolve(path: base) { return v }
         if let v = LearnSection.resolve(path: base) { return v }
         if let v = AccountSection.resolve(comps) { return v }
+        if let v = HadithScreens.resolve(path: base) { return v }
         if let v = GeneratedScreens.resolve(path: base) { return v }
         // صفحات القوائم مسجَّلة كقوالب بمعرّف = المسار (أو مقاطعه مضمومة بشرطة).
         for id in [comps.joined(separator: "/"), comps.joined(separator: "-"), comps.joined(separator: "."), comps.last ?? ""] where !id.isEmpty {

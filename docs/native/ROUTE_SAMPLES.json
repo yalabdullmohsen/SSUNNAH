@@ -15,5 +15,6 @@
  "/quran/surah-stories/:number": "/quran/surah-stories/1",
  "/quran-hub/tajweed/:chapter": "/quran-hub/tajweed/intro",
  "/knowledge/:section": "/knowledge/intro-islam",
- "/arbaeen-nawawi/:id": "/arbaeen-nawawi/1"
+ "/arbaeen-nawawi/:id": "/arbaeen-nawawi/1",
+ "/c/:slug": "/c/sample"
 }
