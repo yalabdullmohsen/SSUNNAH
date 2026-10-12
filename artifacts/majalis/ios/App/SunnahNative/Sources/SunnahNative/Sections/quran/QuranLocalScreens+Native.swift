@@ -220,7 +220,7 @@ struct MushafBookmarksScreen: View {
                 EmptyStateView(title: "لا علامات بعد").frame(maxHeight: .infinity, alignment: .top)
             } else {
                 List(store.bookmarks) { b in
-                    NavigationLink {
+                    SunnahNavigationLink {
                         MushafScreen().onAppear { store.visit(page: b.page) }
                     } label: {
                         SunnahListRow(title: "آية \(b.ayah)", subtitle: "صفحة \(b.page)")
