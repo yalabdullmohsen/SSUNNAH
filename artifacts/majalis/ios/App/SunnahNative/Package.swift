@@ -12,6 +12,6 @@ let package = Package(
     ],
     targets: [
         .target(name: "SunnahNative"),
-        .testTarget(name: "SunnahNativeTests", dependencies: ["SunnahNative"])
+        .testTarget(name: "SunnahNativeTests", dependencies: ["SunnahNative"], resources: [.copy("Fixtures")])
     ]
 )
