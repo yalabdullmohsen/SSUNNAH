@@ -7,6 +7,14 @@ const reasons = new Map();
 const inv = `${process.env.HOME}/ssunnah-board/native-loop.invalid`;
 if (existsSync(inv)) for (const l of readFileSync(inv, "utf8").split("\n")) { const [r, , why] = l.split("|"); if (r) reasons.set(r, why); }
 const ownerFor = (why = "") => /تعذّر|MISSING|EMPTY/.test(why) ? "ن1 (البيانات)" : /DUP/.test(why) ? "ن2" : /PLACEHOLDER|قيد الإعداد/.test(why) ? "ن3 (الشاشة)" : /قيد التوثيق/.test(why) ? "ن1 (التوثيق)" : "ن3";
+const prs = JSON.parse(sh("gh pr list -R yalabdullmohsen/SSUNNAH --base native-app --state open --json number,title,headRefName --limit 60") || "[]");
+const winOf = (pr) => (pr.title.match(/ن\s?(\d)/) || pr.headRefName.match(/(?:^|[\/-])n(\d)(?:[\/-]|$)/) || [])[1];
+/* النافذة المالكة: PR مفتوح يذكر قسم البند أو ملف شاشته؛ وإلا فالمالك المقترح */
+const windowFor = (text, fallback) => {
+  const keys = (text.toLowerCase().match(/[a-z][a-z-]{3,}/g) || []).map((k) => k.replace(/screens?$/, "")).filter(Boolean);
+  const hit = prs.find((pr) => keys.some((k) => (pr.title + " " + pr.headRefName).toLowerCase().includes(k)));
+  return hit && winOf(hit) ? `ن${winOf(hit)} (#${hit.number} مفتوح)` : `${fallback} — بلا PR مفتوح`;
+};
 const rows = [];
 const byScreen = new Map();
 for (const l of gate) {
@@ -24,6 +32,6 @@ for (const l of par) {
 for (const [s, e] of bySec) rows.push({ n: e.items.length, kind: "غير مؤشَّر", what: `${s}: ${e.items.slice(0, 5).join("، ")}${e.items.length > 5 ? "…" : ""}${e.w.size ? ` [${[...e.w].slice(0, 3).join("؛ ")}]` : ""}`, owner: [...e.w].length ? [...new Set([...e.w].map(ownerFor))].join(" / ") : e.own });
 rows.sort((a, b) => b.n - a.n);
 const head = gate[0] || "";
-let out = `# BACKLOG (مولَّد آليًا — لا يُحرَّر يدويًا)\n\n${head}\n\nمرتّب بالأكبر أثرًا أولًا (العدد = عدد الملفات/الشاشات المتأثرة).\n\n| # | الأثر | النوع | البند | المالك المقترح |\n|---|---|---|---|---|\n`;
-rows.forEach((r, i) => { out += `| ${i + 1} | ${r.n} | ${r.kind} | ${r.what.replace(/\|/g, "/")} | ${r.owner} |\n`; });
+let out = `# BACKLOG (مولَّد آليًا — لا يُحرَّر يدويًا)\n\n${head}\n\nمرتّب بالأكبر أثرًا أولًا (العدد = عدد الملفات/الشاشات المتأثرة).\n\n| # | الأثر | النوع | البند | المالك المقترح | النافذة المالكة (من PR/فرع مفتوح) |\n|---|---|---|---|---|---|\n`;
+rows.forEach((r, i) => { out += `| ${i + 1} | ${r.n} | ${r.kind} | ${r.what.replace(/\|/g, "/")} | ${r.owner} | ${windowFor(r.what, r.owner)} |\n`; });
 writeFileSync("docs/native/BACKLOG.md", out); console.log(`BACKLOG: ${rows.length} بند`);

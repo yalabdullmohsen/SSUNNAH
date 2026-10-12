@@ -72,7 +72,7 @@ if [ $DRY = 0 ]; then
 fi
 
 PRS="${PRS_OVERRIDE:-$(gh pr list -R "$GHR" --base native-app --state open --search '-label:needs-owner draft:false' --json number -q '.[].number' 2>>"$LOG")}"
-[ -z "$PRS" ] && { log "لا PRs بوسم native-section → دورة كاملة"; [ "$(date +%Y%m%d)" -le 20261020 ] && exec bash "$(dirname "$0")/native-full-cycle.sh"; exit 0; }
+[ -z "$PRS" ] && { log "لا PRs بوسم native-section → دورة كاملة"; [ "$(date +%Y%m%d)" -le 20261017 ] && exec bash "$(dirname "$0")/native-full-cycle.sh"; exit 0; }
 
 comment() { # رقم نص (مرة واحدة لكل علامة)
   [ $DRY = 1 ] && { log "[dry] تعليق #$1: $3"; return; }

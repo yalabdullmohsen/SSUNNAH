@@ -22,6 +22,9 @@ PREV=$(grep -E 'مدموج ومبني: [0-9]+/' docs/native/PROGRESS.md | tail -
 NB=$(echo "$PCT" | sed -E 's#.*مدموج ومبني: ([0-9]+)/.*#\1#'); NV=$(echo "$PCT" | sed -E 's#.*مُتحقَّق بلقطة: ([0-9]+)/.*#\1#')
 GATE=$(node scripts/native-data-check.mjs 2>&1 | head -1 | sed -E 's#.*مفقود: ([0-9]+).*فارغ \(تحذير\): ([0-9]+).*#مفقود \1 فارغ \2#')
 DELTA="الفرق: مبني $((NB-${PREV%% *})) · مُتحقَّق $((NV-${PREV##* })) · $GATE"
+LASTM=$(gh pr list -R yalabdullmohsen/SSUNNAH --base native-app --state merged --limit 1 --json mergedAt -q '.[0].mergedAt' 2>/dev/null)
+if [ -n "$LASTM" ]; then AGE=$(( ( $(date +%s) - $(date -j -u -f %Y-%m-%dT%H:%M:%SZ "$LASTM" +%s 2>/dev/null || echo $(date +%s)) ) / 60 ))
+  [ "$AGE" -ge 60 ] && printf '\n> تنبيه: لا حركة منذ %s دقيقة (آخر دمج %s)\n\n' "$AGE" "$LASTM" >> docs/native/PROGRESS.md; fi
 printf '| %s | %s | %s | دورة كاملة | %s | 0 |\n' "full-$(date +%Y%m%d-%H%M)" "$(date +%F)" "$PCT" "$DELTA" >> docs/native/PROGRESS.md
 git add docs/native/FEATURE_PARITY.md docs/native/PROGRESS.md docs/native/BACKLOG.md
 git commit -q -m "ن4 (native-full-cycle): تأشير $(sort -u "$TICK" | wc -l | tr -d ' ') بند — $PCT" && git push -q origin HEAD:native-app >> "$LOG" 2>&1 && log "دُفع التقدم: $PCT"
