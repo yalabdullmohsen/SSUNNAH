@@ -1,0 +1,2 @@
+[{"id":"c1","name":"حلقة عيّنة","sheikh_name":"الشيخ س","level":"مبتدئ","track":"حفظ","mode":"حضوري","location":"مسجد","schedule_days":["السبت","الاثنين"],"schedule_time":"بعد العصر","capacity":20,"enrolled_count":5,"description":"وصف","registration_url":"https://example.org/r","is_approved":true,"is_active":true},
+{"id":7,"name":"حلقة أدنى حقول"}]
