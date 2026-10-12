@@ -184,16 +184,16 @@
 
 - [ ] `/c/:slug` — CitationPublicPage — تفاصيل (غير مبني: جلب من الخادم)
 - [x] `/hifz-path` — HifzPathPage — قائمة
-- [ ] `/hifz-path/c/:category` — HifzPathCategoryPage — تفاصيل
+- [x] `/hifz-path/c/:category` — HifzPathCategoryPage — تفاصيل
 - [x] `/hifz-path/my` — HifzPathMyPage — قائمة
-- [ ] `/hifz-path/p/:slug` — HifzPathDetailPage — تفاصيل
-- [ ] `/hifz-path/p/:slug/u/:unitId` — HifzPathUnitPage — تفاصيل
+- [x] `/hifz-path/p/:slug` — HifzPathDetailPage — تفاصيل
+- [x] `/hifz-path/p/:slug/u/:unitId` — HifzPathUnitPage — تفاصيل
 - [x] `/memorization` — MemorizationHubPage — أقسام
 - [x] `/miracles` — MiraclesPage — قائمة
 - [x] `/mushaf` — MushafReaderPage — قائمة
 - [x] `/mushaf/bookmarks` — MushafBookmarksPage — قائمة
 - [x] `/mutashabihat` — MutashabihatPage — قائمة
-- [ ] `/quran-circles` — QuranCirclesPage — قائمة
+- [x] `/quran-circles` — QuranCirclesPage — قائمة
 - [x] `/quran-engine` — QuranEnginePage — قائمة
 - [x] `/quran-hub` — QuranHubPage — أقسام
 - [x] `/quran-hub/numbers` — QuranNumbersPage — أقسام
@@ -203,12 +203,12 @@
 - [x] `/quran-hub/tajweed/:chapter` — TajweedChapterPage — تفاصيل
 - [x] `/quran-hub/terms` — QuranUlumTermsPage — أقسام
 - [x] `/quran-hub/tilawa` — QuranTilawaPage — صوت
-- [ ] `/quran-knowledge` — QuranKnowledgeHubPage — أقسام
+- [x] `/quran-knowledge` — QuranKnowledgeHubPage — أقسام
 - [x] `/quran-memorization` — QuranMemorizationPage — قائمة (اختيار النوع والسورة؛ توليد الأسئلة غير مبني)
 - [x] `/quran/hifz-loop` — QuranHifzLoopPage — قائمة
 - [x] `/quran/makki-madani` — MakkiMadaniPage — قائمة
 - [x] `/quran/memorization-plans` — QuranMemorizationPlansPage — قائمة
-- [ ] `/quran/offline-player` — QuranOfflinePlayerPage — قائمة
+- [x] `/quran/offline-player` — QuranOfflinePlayerPage — قائمة
 - [x] `/quran/people` — QuranPeoplePage — قائمة
 - [x] `/quran/people/:slug` — QuranPersonDetailPage — تفاصيل
 - [x] `/quran/revelation-order` — RevelationOrderPage — قائمة
@@ -218,7 +218,7 @@
 - [x] `/quran/surahs` — SurahIndexPage — أقسام
 - [x] `/quran/worship-hub` — QuranWorshipHubPage — أقسام
 - [x] `/tafsir` — TafsirPage — قائمة
-- [ ] `/ulum-quran` — UlumQuranPage — قائمة
+- [x] `/ulum-quran` — UlumQuranPage — قائمة
 
 ## اللغة والمكتبة والبحث — 19 (المسؤول: ن2)
 
