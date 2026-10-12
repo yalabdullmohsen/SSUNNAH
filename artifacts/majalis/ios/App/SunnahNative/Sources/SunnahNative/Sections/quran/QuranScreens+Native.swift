@@ -118,6 +118,10 @@ public enum QuranSection {
         registry.registerView(id: "mutashabihat") {
             QuranBundledLoader(name: "mutashabihat", isEmpty: { (m: [MutashabihatPair]) in m.isEmpty }) { MutashabihatListView(pairs: $0) }.navigationTitle("المتشابهات")
         }
+        registry.registerView(id: "ulum-quran") {
+            QuranBundledLoader(name: "ulum-quran", isEmpty: { (u: [UlumQuranItem]) in u.isEmpty }) { UlumQuranListView(items: $0) }.navigationTitle("علوم القرآن")
+        }
+        registry.registerView(id: "quran.worship-hub") { SectionsListTemplate(links: WorshipHubLinks.all).navigationTitle("عبادات القرآن") }
         // حالة مستخدم محلية على الجهاز (UserDefaults) بلا خادم
         registry.registerView(id: "memorization") { MemorizationHubView().navigationTitle("الحفظ") }
         registry.registerView(id: "quran-memorization") { MemorizationHubView().navigationTitle("الحفظ") }
@@ -135,8 +139,7 @@ public enum QuranSection {
     }
 
     static let pendingIDs = [
-        "quran-hub.tilawa", "quran-circles", "quran.worship-hub",
-        "ulum-quran",
+        "quran-hub.tilawa", "quran-circles",
     ]
 
     static func surahNames() -> [Int: String] {
