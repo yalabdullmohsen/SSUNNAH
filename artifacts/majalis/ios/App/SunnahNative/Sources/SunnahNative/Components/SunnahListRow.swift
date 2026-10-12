@@ -1,8 +1,11 @@
 import SwiftUI
 
 public struct SunnahListRow: View {
-    let title: String; let subtitle: String?
-    public init(title: String, subtitle: String? = nil) { self.title = title; self.subtitle = subtitle }
+    let title: String; let subtitle: String?; let showsChevron: Bool
+    /// `showsChevron: false` عند الاستخدام داخل `NavigationLink` في `List`، فالنظام يرسم مؤشر الانتقال بنفسه.
+    public init(title: String, subtitle: String? = nil, showsChevron: Bool = true) {
+        self.title = title; self.subtitle = subtitle; self.showsChevron = showsChevron
+    }
     public var body: some View {
         HStack(spacing: Sunnah.Spacing.s3) {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {

@@ -43,14 +43,14 @@ public struct AdhkarScreen: ScreenTemplate {
 
     public var body: some View {
         if categories.isEmpty {
-            Text("لا أذكار موثَّقة بعد").font(Sunnah.Typography.body)
+            EmptyStateView(title: "الأذكار قيد التوثيق")
                 .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
         } else {
             List(categories) { category in
                 NavigationLink {
                     AdhkarListView(items: category.items)
                 } label: {
-                    SunnahListRow(title: category.id, subtitle: "\(category.items.count)")
+                    SunnahListRow(title: category.id, subtitle: "\(category.items.count)", showsChevron: false)
                 }
                 .listRowBackground(Sunnah.Colors.surface)
             }

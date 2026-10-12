@@ -12,7 +12,7 @@ struct LearnQuizScreen: View {
                     }
                     .navigationTitle(chunk.title)
                 } label: {
-                    SunnahListRow(title: chunk.title, subtitle: "\(chunk.count) سؤالًا")
+                    SunnahListRow(title: chunk.title, subtitle: "\(chunk.count) سؤالًا", showsChevron: false)
                 }
             }
         }
