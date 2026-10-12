@@ -86,6 +86,10 @@
 - فارغة عمدًا (`[]`) لغياب مصدر/درجة في الويب وقرار المالك: `fikr-waqia`, `seerah-phases`, `shamail`.
 - `prophets-lineage` لا يُكتب (جذر واحد لا قائمة، ولا عقدة فارغة صالحة): غيابه = «قيد التوثيق».
 
+### learn + audio (11 ملفًا: `Data/learn/`، `Data/lessons/`، `Data/graph/`، `Data/audio/`)
+- بيانات حقيقية: `lessons/chunk-000` (82)، `learn/universities` (37 متحقَّقة)، `learn/kuwait-sheikhs` (6)، `graph/links`، `audio/surah-reciters` (29: `{id,nameAr,surahBaseUrl}` بعد مفتاح التعطيل المركزي).
+- فارغة عمدًا بالشكل الصحيح `[]`: `institutions` (قرار المالك: المراجَع فقط)، `competitions`، `durus-imaniyya`، `durus-mutanawwia` (تنتظر sharia-content)، `fawaid`، `annual-courses` (مصدرها Supabase).
+
 ### adhkar (adhkar/verified-adhkar.json = 207 صفوف، من content/native/adhkar-verified.json)
 - المصدر: بذرة الأذكار الأصلية `src/lib/adhkar-seed.ts` عبر `scripts/native/build-adhkar-verified.mjs`؛ النص والمصدر والدرجة حرفيًا بلا إنشاء ولا مرجع جديد، والدرجة كما هي (حسن تبقى «حسن»). الشكل هو صف `verified_adhkar_items` (§1) مع `metadata.basis`: `sahihayn` (140) · `named_grader` (33: صحيح بمصحِّح مسمّى) · `named_grader_hasan` (15: حسن بمصحِّح مسمّى) · `local_verified_corpus` (2: مطابقة متن كاملة لسجل في hadith-verified بمرجعه في `metadata.local_ref`) · `quran_tanzil` (17).
 - المحجوز (64 ← content-hold): 16 ضعيف + 48 صحيح بلا مصحِّح مسمّى ولا مرجع محلي. المُرجأ (54، لا يُصدَّر ولا يُحجز): حسن بلا مصحِّح مسمّى 53، وصيغة «صلى الله عليه وسلم» 1 (ليست نص حديث؛ صيغة الصلاة الإبراهيمية الثابتة في الصحيحين مصدَّرة أصلًا).
