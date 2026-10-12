@@ -191,24 +191,16 @@ struct LibraryNavigation: Decodable, Sendable, Hashable {
 
     struct Group: Decodable, Sendable, Hashable {
         let id: String
-        let label: String
+        let title: String
         var subtitle: String?
-        var order: Int
+        var sections: [Section]
     }
 
     struct Section: Decodable, Sendable, Hashable {
         let id: String
-        let label: String
-        var navLabel: String?
+        let title: String
         var subtitle: String?
-        var navHint: String?
         let route: String
-        let group: String
-        var order: Int
-        var surfaces: [String]
-        var status: String
-        var hub: String?
-        var comingSoon: Bool?
     }
 
     struct Row: Decodable, Sendable, Hashable {
