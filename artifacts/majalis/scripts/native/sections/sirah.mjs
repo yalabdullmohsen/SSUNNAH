@@ -88,6 +88,6 @@ export default async function exportSirah({ json, held, reject, counts, appRoot 
     out("shamail", tabs.map((t) => ({ id: t.id, label: t.label, abwab: sh(byTab[t.id]) })));
     json(`${S}/shamail-facts.json`, sh("MAWLID_STATS")); cnt("shamail-facts", sh("MAWLID_STATS").length);
   }
-  /* prophets-lineage: جذر واحد لا قائمة؛ لا عقدة فارغة صالحة، فلا يُكتب الملف (الغياب = «قيد التوثيق») */
-  reject(`${S}-prophets-lineage`, "غير مُصدَّر: أسماء وأنساب بلا مصدر (قرار المالك)");
+  /* شجرة الأنبياء: جذر واحد (PROPHETS_LINEAGE كما في الموقع، مصدره في رأس الملف: البداية والنهاية/الكامل) يُمرَّر حرفيًا مع وسمين */
+  json(`${S}/prophets-lineage.json`, { ...loadConsts(`${src}/lib/prophets-lineage.ts`)("PROPHETS_LINEAGE"), source_origin: "site-embedded", review_status: "pending-owner-review" });
 }

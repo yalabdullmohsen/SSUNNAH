@@ -24,18 +24,15 @@
   "/hifz-path/p/:slug/u/:unitId": "لا بيانات مصدَّرة لاستخراج معرّف حقيقي (جلب حي/محتوى غير مصدَّر)؛ لا تُختلق عيّنة"
  },
  "overriddenGenerated": {
-  "_note": "مراجع bundled في Generated/SirahScreens.swift تحلّ محلها SirahSection.register (registerView بالمعرّف نفسه) وتقرأ ملفات أخرى مُصدَّرة؛ المرجع المولَّد ميت فلا يُعدّ مفقودًا",
+  "_note": "شاشات يسجّلها SirahSection.registerView بالمعرّف نفسه؛ المولّد generate-native-screens.mjs يتخطاها قراءةً من هذا القسم فلا مراجع bundled ميتة في Generated/SirahScreens.swift. القيمة «<معرّف الشاشة> ← مصدرها الفعلي»",
   "islamic-landmarks-map": "islamic-landmarks.map ← sirah/islamic-landmarks.json",
   "occasions": "occasions ← sirah/occasions-verified.json",
   "occasions-lessons": "occasions-lessons ← SirahLinks (ثابت)",
   "prophets": "prophets ← sirah/prophets-knowledge.json",
-  "prophets-tree": "prophets.tree ← sirah/prophets-lineage.json (غير مُصدَّر، انظر notExported)",
+  "prophets-tree": "prophets.tree ← sirah/prophets-lineage.json",
   "seerah": "seerah ← sirah/seerah-phases.json",
   "shamael": "shamael ← sirah/shamail.json",
   "tarikh-islami": "tarikh-islami ← sirah/islamic-history.json",
   "teachers": "teachers ← remote /data/lessons/chunk-000.json"
- },
- "notExported": {
-  "sirah/prophets-lineage": "غير مُصدَّر عمدًا: أسماء وأنساب بلا مصدر (قرار المالك)؛ الشاشة تعرض «قيد التوثيق» (DATA_CONTRACT)"
  }
 }

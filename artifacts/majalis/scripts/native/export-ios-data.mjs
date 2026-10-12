@@ -36,6 +36,7 @@ const put = (rel, buf) => {
   fs.writeFileSync(`${out}/${rel}`, buf);
 };
 const json = (rel, v) => put(rel, JSON.stringify(v));
+const EMBEDDED = { source_origin: "site-embedded", review_status: "pending-owner-review" };
 const rd = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const held = (...ids) => ids.some((i) => i != null && holds.has(String(i)));
 const pad = (n) => String(n).padStart(3, "0");
@@ -105,6 +106,34 @@ for (const f of fs.readdirSync(`${data}/hadith-verified`).filter((x) => /^(sahih
 }
 counts.hadith.verifiedSahih = hv.length;
 json("hadith/verified-sahih.json", hv);
+
+/* الأربعون النووية: ARBAEEN_NAWAWI كما في الموقع (id,title,text,explanation,benefits,source)؛ ما بلا نص أو مصدر يُرفض */
+{
+  const { loadConsts } = await import("./lib/ts-literal.mjs");
+  const rows = [];
+  for (const h of loadConsts(`${appRoot}/src/lib/arbaeen-nawawi-seed.ts`)("ARBAEEN_NAWAWI")) {
+    if (!String(h.text || "").trim() || !String(h.source || "").trim()) { reject("hadith-arbaeen-nawawi", "نقص نص/مصدر"); continue; }
+    if (held(h.id, `arbaeen-nawawi-${h.id}`)) { reject("hadith-arbaeen-nawawi", "محجوز"); continue; }
+    rows.push({ ...h, ...EMBEDDED });
+  }
+  counts.hadith.arbaeenNawawi = rows.length;
+  json("hadith/arbaeen-nawawi.json", rows);
+}
+
+/* نصوص مضمَّنة في كود الموقع بلا درجة/مراجعة: تمرير حرفي (بقرار المالك 2026-10-12) مع وسمين فقط، وحقل source الأصلي لا يُمسّ */
+{
+  const { loadConsts } = await import("./lib/ts-literal.mjs");
+  const mark = (rows) => rows.map((r) => ({ ...r, ...EMBEDDED }));
+  const du = loadConsts(`${appRoot}/src/pages/worship/ui/DuasView.tsx`);
+  json("adhkar/duas.json", { categories: du("CATEGORIES"), duas: mark(du("DUAS")) });
+  counts.adhkar ??= {}; counts.adhkar.duas = du("DUAS").length;
+  const wa = loadConsts(`${appRoot}/src/views/WasayaNabawiyyaPage.tsx`);
+  json("hadith/wasaya-nabawiyya.json", {
+    kabira: mark(wa("WASAYA_KABIRA")), khasisa: mark(wa("WASAYA_KHASISA")),
+    ummah: mark(wa("WASAYA_UMMA")), amal: mark(wa("AMAL_LIST").map((text) => ({ text }))),
+  });
+  counts.hadith.wasayaNabawiyya = wa("WASAYA_KABIRA").length + wa("WASAYA_KHASISA").length + wa("WASAYA_UMMA").length;
+}
 
 /* الأذكار: من لقطة صفوف Supabase المعتمدة فقط */
 const adh = [];
