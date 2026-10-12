@@ -63,7 +63,7 @@ struct SunnahApp: App {
         if let v = AccountSection.resolve(comps) { return v }
         if let v = GeneratedScreens.resolve(path: base) { return v }
         // صفحات القوائم مسجَّلة كقوالب بمعرّف = المسار (أو مقاطعه مضمومة بشرطة).
-        for id in [comps.joined(separator: "/"), comps.joined(separator: "-"), comps.last ?? ""] where !id.isEmpty {
+        for id in [comps.joined(separator: "/"), comps.joined(separator: "-"), comps.joined(separator: "."), comps.last ?? ""] where !id.isEmpty {
             if let v = TemplateRegistry.shared.view(for: id) { return v }
         }
         return nil
