@@ -201,7 +201,7 @@ public enum HadithScreens {
         // بياناتها ليست في عقد البيانات بعد (صفحات ويب مضمّنة): تنتظر تصديرًا من ن1.
         for id in ["arbaeen-nawawi", "dalail-nubuwwah", "hadith-science", "hadith.arbaeen-love-of-allah",
                    "hadith.books-and-rulings", "sunnah-studies", "wasaya-nabawiyya"] {
-            registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التجهيز") }
+            registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق") }
         }
     }
 }

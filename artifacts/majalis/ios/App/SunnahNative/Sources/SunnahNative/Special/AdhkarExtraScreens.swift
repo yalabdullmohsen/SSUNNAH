@@ -45,7 +45,7 @@ public enum AdhkarExtraScreens {
         // أدعية وورد وسنن يومية: لا بيانات موثَّقة في العقد (الأذكار كلها needs_review ⇒ 0)، وإعدادات الأذان تتبع الإشعارات.
         for (id, title) in [("duas", "الأدعية"), ("duas-quran", "أدعية القرآن"), ("sunan-yawmiyya", "السنن اليومية"),
                             ("daily-wird", "الورد اليومي"), ("adhan-help", "مساعدة الأذان"), ("adhan-settings", "إعدادات الأذان")] {
-            registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التجهيز").navigationTitle(title) }
+            registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق").navigationTitle(title) }
         }
     }
 }
