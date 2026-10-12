@@ -23,3 +23,7 @@
 ## ملاحظات
 - التطبيق المثبَّت على المحاكي قد يكون قديمًا: عند «قيد التوثيق» رغم وجود الملف في الحزمة، `simctl uninstall` ثم install من ناتج البناء.
 - فشل 3 اختبارات لا تخصني: islamic-landmarks.map وprophets و/knowledge/nope.
+
+## تحديث
+- /daily-wird مبنية أصليًا (DailyWirdScreen.swift + اختبار).
+- طلب ن1: n2-to-n1-embedded-texts-2.md؛ طلب ن4: n2-to-n4-snapshot-both-modes.md؛ books-and-rulings في data-exemptions.json.
