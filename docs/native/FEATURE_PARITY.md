@@ -182,7 +182,7 @@
 
 ## القرآن — 37 (المسؤول: ن3)
 
-- [ ] `/c/:slug` — CitationPublicPage — تفاصيل
+- [ ] `/c/:slug` — CitationPublicPage — تفاصيل (غير مبني: جلب من الخادم)
 - [x] `/hifz-path` — HifzPathPage — قائمة
 - [ ] `/hifz-path/c/:category` — HifzPathCategoryPage — تفاصيل
 - [x] `/hifz-path/my` — HifzPathMyPage — قائمة
@@ -204,7 +204,7 @@
 - [x] `/quran-hub/terms` — QuranUlumTermsPage — أقسام
 - [x] `/quran-hub/tilawa` — QuranTilawaPage — صوت
 - [ ] `/quran-knowledge` — QuranKnowledgeHubPage — أقسام
-- [ ] `/quran-memorization` — QuranMemorizationPage — قائمة
+- [x] `/quran-memorization` — QuranMemorizationPage — قائمة (اختيار النوع والسورة؛ توليد الأسئلة غير مبني)
 - [x] `/quran/hifz-loop` — QuranHifzLoopPage — قائمة
 - [x] `/quran/makki-madani` — MakkiMadaniPage — قائمة
 - [x] `/quran/memorization-plans` — QuranMemorizationPlansPage — قائمة
