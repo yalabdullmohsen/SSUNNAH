@@ -98,6 +98,9 @@
 | library/sources | 0 | 0 | 0 | فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1 |
 | library/academic-research-assistant | 0 | 0 | 0 | فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1 |
 | library/academic-research-submit | 0 | 0 | 0 | فارغ عمدًا: مصدره شبكة/حساب أو غير مراجَع: 1 |
+| quran/tilawa-reciters | 13 | 13 | 0 |  |
+| quran/circles | 27 | 27 | 0 |  |
+| quran/ulum-quran | 79 | 79 | 0 |  |
 | sirah/islamic-landmarks | 34 | 34 | 0 |  |
 | sirah/nations | 21 | 21 | 0 |  |
 | sirah/occasions-verified | 34 | 21 | -13 | بلا سجل موثّق: 13 |
@@ -107,4 +110,3 @@
 | sirah/sahabah | 63 | 63 | 0 |  |
 | sirah/seerah-phases | 0 | 0 | 0 | فارغ عمدًا: بلا مصدر/درجة (قرار المالك): 1 |
 | sirah/shamail | 0 | 0 | 0 | فارغ عمدًا: بلا مصدر/درجة (قرار المالك): 1 |
-| quran/ulum-quran | 79 | 79 | 0 |  |
