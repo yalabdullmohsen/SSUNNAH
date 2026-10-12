@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct EmptyStateView: View {
     let title: String
-    public init(title: String = "لا يوجد محتوى بعد") { self.title = title }
+    public init(title: String = "المحتوى قيد التوثيق") { self.title = title }
     public var body: some View {
         VStack(spacing: Sunnah.Spacing.s3) {
             Image(systemName: "tray").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textSecondary)

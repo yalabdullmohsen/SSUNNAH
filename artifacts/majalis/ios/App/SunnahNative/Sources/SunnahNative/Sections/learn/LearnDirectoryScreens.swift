@@ -9,7 +9,7 @@ struct LearnUniversitiesScreen: View {
 
     var body: some View {
         LearnLoadHost(LearnSources.universities) { (all: [LearnUniversity]) in
-            LearnList(items: filter(all), emptyTitle: query.isEmpty ? "لا جامعات بعد" : "لا نتائج") { u in
+            LearnList(items: filter(all), emptyTitle: query.isEmpty ? "المحتوى قيد التوثيق" : "لا نتائج") { u in
                 Button { openRoute("/universities/" + u.slug) } label: {
                     SunnahListRow(title: u.nameAr, subtitle: learnLine(u.country, u.city))
                 }
@@ -187,7 +187,7 @@ struct LearnCompetitionsScreen: View {
     @Environment(\.openRoute) private var openRoute
     var body: some View {
         LearnLoadHost(LearnSources.competitions) { (list: [LearnCompetition]) in
-            LearnList(items: list, emptyTitle: "لا مسابقات منشورة حاليًا") { c in
+            LearnList(items: list, emptyTitle: "المحتوى قيد التوثيق") { c in
                 Button { openRoute("/competitions/" + c.id) } label: {
                     SunnahListRow(title: c.title, subtitle: learnLine(c.organizerName, c.registrationStatus))
                 }

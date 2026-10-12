@@ -144,7 +144,7 @@ struct LearnDetailPage<Content: View>: View {
 /// قائمة مُنسَّقة بنمط القوالب (ListTemplate) لعناصر غير ContentItem.
 struct LearnList<Item: Identifiable, Row: View>: View {
     let items: [Item]
-    var emptyTitle: String = "لا يوجد محتوى بعد"
+    var emptyTitle: String = "المحتوى قيد التوثيق"
     @ViewBuilder let row: (Item) -> Row
     var body: some View {
         if items.isEmpty { EmptyStateView(title: emptyTitle) } else {

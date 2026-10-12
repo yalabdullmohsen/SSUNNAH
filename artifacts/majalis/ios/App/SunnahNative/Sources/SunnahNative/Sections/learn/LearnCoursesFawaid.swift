@@ -46,7 +46,7 @@ struct LearnFawaidScreen: View {
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                     }
                 }
-                LearnList(items: LearnFaidah.filter(all, query: query, category: category), emptyTitle: "لا فوائد موثّقة بعد") { f in
+                LearnList(items: LearnFaidah.filter(all, query: query, category: category), emptyTitle: "المحتوى قيد التوثيق") { f in
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                         Text(f.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                         if let line = learnLine(f.authorName, f.source, separator: " — ") {
