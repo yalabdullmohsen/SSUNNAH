@@ -22,3 +22,4 @@ App Store Connect ← سُنّة ← **App Information** ← **Age Rating** ← 
 4. **App Review Information**: الصق `store/REVIEW_NOTES.md` (مسار الدخول: «مساهماتي» ← «تسجيل الدخول»)، وحساب تجريبي إن أردت.
 5. الاسم والوصف والكلمات المفتاحية (ar-SA وen-US) من `store/APPSTORE_METADATA.md`، و«ما الجديد» من `store/WHATS_NEW.md`.
 6. اللقطات: `store/SCREENSHOTS.md`.
+7. **حاسبة المواريث (`/mawarith/calculator`) بالواجهة على iPhone**: 5 حالات من `Fixtures/mawarith/golden.json` بلوحة المفاتيح، مع الأرقام الهندية (٠–٩) والفاصلة «٫»/«,». تُنفَّذ على الجهاز لأن المحاكي بلا أداة نقر؛ التكافؤ الحسابي مغطّى باختبار `MawarithParityTests` فقط.
