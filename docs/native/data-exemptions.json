@@ -11,7 +11,8 @@
   "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة",
   "aqidah/discover-islam-contact": "فارغ مقصود: صفحة DiscoverIslamContactPage نموذج إرسال طلب تواصل (submitDawahContactRequest، شبكة/حساب) ولا قائمة محتوى منشورة",
   "library/academic-research-assistant": "فارغ مقصود: ResearchAssistantPage أداة اقتراح تُحسب على بيانات academic-research المصدَّرة (lib/researches/assistant.ts)، لا ملف بيانات مستقل",
-  "library/academic-research-submit": "فارغ مقصود: ResearchSubmitPage نموذج تقديم يُحفظ في localStorage (lib/researches/service.ts) ولا محتوى منشور"
+  "library/academic-research-submit": "فارغ مقصود: ResearchSubmitPage نموذج تقديم يُحفظ في localStorage (lib/researches/service.ts) ولا محتوى منشور",
+  "hadith/arbaeen-love-of-allah": "فارغ رسمي بقرار المالك 2026-10-13: الصفحة المنشورة للزائر (HTML) تحوي العنوان والمقدمة فقط؛ صفوفها في جدول Supabase arbaeen_love_of_allah (published) وتُجلب من المتصفح بمفتاح قاعدة بيانات، وهو غير مسموح للمُصدِّر. لا واجهة عامة (GET) تعرضها: لا /api ولا /data. يعرض التطبيق الحالة الفارغة الموحّدة كما يعرض الزائر بلا مفتاح"
  },
  "noSample": {
   "/c/:slug": "شاشة أصلية بالجلب الحي (CitationScreen)؛ المعرّفات تُنشأ بحساب المستخدم فلا عيّنة حقيقية — ROUTE_SAMPLES يحوي /c/sample للقطة حالة «غير متاح» فقط",
