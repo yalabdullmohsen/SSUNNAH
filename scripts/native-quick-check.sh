@@ -13,6 +13,9 @@ bash scripts/native-webview-guard.sh || exit 1
 bash scripts/native-gnu-guard.sh || exit 1
 bash scripts/native-export-data.sh >/dev/null || { echo "فشل التصدير"; exit 1; }
 node scripts/native-data-check.mjs | head -1
+# أسبقية الحلّ + كل مسار في الجرد يُحلّ (RouteResolverTests) — يفشل الفحص إن فشل
+( cd artifacts/majalis/ios/App/SunnahNative && bash "$ROOT/scripts/native-build-locked.sh" "$(basename "$ROOT")" "/tmp/qc-routes-$$.log" test -scheme SunnahNative -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD-pkg" -only-testing:SunnahNativeTests/RouteResolverTests )
+grep -q "TEST FAILED\|build_rc=[1-9]" "/tmp/qc-routes-$$.log" && { grep -E "error:|failed" "/tmp/qc-routes-$$.log" | head -8; echo "✗ RouteResolverTests فشل"; exit 1; }
 ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1
   xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD" build -quiet 2>&1 | grep -E "^/.*error:" | sort -u )
 xcrun simctl install "$SIM" "$DD/Build/Products/Debug-iphonesimulator/SunnahApp.app" || exit 1

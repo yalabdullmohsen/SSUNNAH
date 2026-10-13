@@ -11,6 +11,8 @@ let all = lines.joined(separator: "\n")
 if a.count > 3 { print(all); exit(0) }
 let bad = ["لا يوجد محتوى", "تعذّر", "تعذر تحميل", "محتوى مؤقت", "missingBundled", "إعادة المحاولة", "قيد التوثيق", "قيد الإعداد"]
 if let b = bad.first(where: { all.contains($0) }) { print("ERROR:\(b)"); exit(0) }
+// معرّف خام (kebab-case لاتيني مثل adh-morning) ظاهر كنص في أي شاشة = فشل
+if let raw = lines.first(where: { $0.range(of: "^[a-z]+(-[a-z]+)+$", options: .regularExpression) != nil }) { print("ERROR:RAW_ID(\(raw))"); exit(0) }
 if all.contains(route) { print("PLACEHOLDER"); exit(0) }
 // تبويبات فقط: بعد حذف التبويبات والرأس لا يبقى نص
 let chrome = Set(["الرئيسية", "القرآن", "الدروس", "الصلاة", "الأقسام", "9:41"])

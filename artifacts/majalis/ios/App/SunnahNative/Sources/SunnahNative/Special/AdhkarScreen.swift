@@ -19,6 +19,9 @@ public struct AdhkarItem: Decodable, Identifiable, Hashable, Sendable {
     }
 }
 
+/// عنوان تصنيف كما في ADHKAR_CATEGORIES بالموقع (حرفيًا، من `Data/adhkar/categories.json`).
+struct AdhkarCategoryTitle: Decodable, Sendable { let id: String; let name: String }
+
 public struct AdhkarCategory: Identifiable, Hashable, Sendable {
     public let id: String
     public let items: [AdhkarItem]
@@ -31,6 +34,8 @@ public struct AdhkarScreen: ScreenTemplate {
     public static let source = ContentSource.bundled(name: "verified-adhkar", subdirectory: "Data/adhkar")
 
     let categories: [AdhkarCategory]
+    @Environment(\.contentLoader) private var loader
+    @State private var titles: [String: String] = [:]
     public init(content: [AdhkarItem]) {
         var order: [String] = []
         var grouped: [String: [AdhkarItem]] = [:]
@@ -48,15 +53,22 @@ public struct AdhkarScreen: ScreenTemplate {
         } else {
             List(categories) { category in
                 SunnahNavigationLink {
-                    AdhkarListView(items: category.items)
+                    AdhkarListView(items: category.items).navigationTitle(titles[category.id] ?? Self.fallbackTitle)
                 } label: {
-                    SunnahListRow(title: category.id, subtitle: "\(category.items.count)")
+                    SunnahListRow(title: titles[category.id] ?? Self.fallbackTitle, subtitle: "\(category.items.count)")
                 }
                 .listRowBackground(Sunnah.Colors.surface)
             }
             .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+            .task {
+                let rows: [AdhkarCategoryTitle]? = try? await loader.load(from: .bundled(name: "categories", subdirectory: "Data/adhkar"))
+                titles = Dictionary((rows ?? []).map { ($0.id, $0.name) }, uniquingKeysWith: { a, _ in a })
+            }
         }
     }
+
+    /// لا يُعرض معرّف خام أبدًا؛ التصنيف بلا عنوان في الموقع يظهر بهذا الاسم العام.
+    static let fallbackTitle = "أذكار"
 }
 
 struct AdhkarListView: View {
