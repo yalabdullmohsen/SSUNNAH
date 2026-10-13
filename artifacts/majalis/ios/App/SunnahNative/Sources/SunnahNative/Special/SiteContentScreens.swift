@@ -13,9 +13,33 @@ enum SiteContent {
     struct Lessons: Decodable, Sendable { var sections: [LessonSection] = [] }
     struct LessonSection: Decodable, Sendable { let id: String; let title: String; var lessons: [Lesson] = [] }
     struct Lesson: Decodable, Sendable { let id: String; let title: String; var summary: String?; var body: String? }
+    /// صفوف جدول `arbaeen_love_of_allah` المنشورة كما صدّرها ن1 (مصفوفة أو كائن يحوي `rows`/`items`/`data`)؛ المعرّف نص أو رقم.
     struct Love: Decodable, Sendable {
         let id: String; var order_number: Int?; let title: String; var hadith_text: String?; var source: String?
         var hadith_number: String?; var grade: String?; var verified_by: String?
+        private enum K: String, CodingKey { case id, order_number, title, hadith_text, source, hadith_number, grade, verified_by }
+        init(from decoder: Decoder) throws {
+            let c = try decoder.container(keyedBy: K.self)
+            if let s = try? c.decode(String.self, forKey: .id) { id = s } else { id = String((try? c.decode(Int.self, forKey: .id)) ?? 0) }
+            order_number = try? c.decode(Int.self, forKey: .order_number)
+            title = (try? c.decode(String.self, forKey: .title)) ?? ""
+            hadith_text = try? c.decode(String.self, forKey: .hadith_text)
+            source = try? c.decode(String.self, forKey: .source)
+            if let s = try? c.decode(String.self, forKey: .hadith_number) { hadith_number = s } else { hadith_number = (try? c.decode(Int.self, forKey: .hadith_number)).map(String.init) }
+            grade = try? c.decode(String.self, forKey: .grade)
+            verified_by = try? c.decode(String.self, forKey: .verified_by)
+        }
+    }
+    struct LoveFile: Decodable, Sendable {
+        let rows: [Love]
+        private enum K: String, CodingKey { case rows, items, data }
+        init(from decoder: Decoder) throws {
+            if let list = try? [Love](from: decoder) { rows = list; return }
+            let c = try decoder.container(keyedBy: K.self)
+            if let r = try? c.decode([Love].self, forKey: .rows) { rows = r }
+            else if let r = try? c.decode([Love].self, forKey: .items) { rows = r }
+            else { rows = try c.decode([Love].self, forKey: .data) }
+        }
     }
 
     static let all = "الكل"
@@ -129,17 +153,7 @@ enum SiteContentScreens {
         registry.registerView(id: "sunnah-studies") { lessonScreen(file: "sunnah-studies", dir: "Data/hadith", title: "جوامع الكلم والسنن اليومية") }
         registry.registerView(id: "dalail-nubuwwah") { lessonScreen(file: "dalail-nubuwwah", dir: "Data/sirah", title: "دلائل النبوة") }
         registry.registerView(id: "hadith.arbaeen-love-of-allah") {
-            VStack(alignment: .trailing, spacing: 16) {
-                Text("مجموعة قيد الاستكمال من الأحاديث النبوية الموثقة في محبة الله لعباده ومحبة العبد لربه — لا يُنشر أي حديث إلا بعد مراجعة عالِم شرعي فعلي.")
-                    .font(.callout).foregroundStyle(.secondary)
-                    .multilineTextAlignment(.trailing)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .padding(.horizontal, 16)
-                EmptyStateView(title: "لا يتوفر محتوى هنا الآن.")
-                Spacer(minLength: 0)
-            }
-            .padding(.top, 16)
-            .navigationTitle("الأربعون في محبة رب العالمين")
+            ArbaeenLoveView().navigationTitle("الأربعون في محبة رب العالمين")
         }
         registry.registerView(id: "hadith.books-and-rulings") { HadithBooksAndRulingsView().navigationTitle("المتون الحديثية وأحاديث الأحكام") }
     }
@@ -161,5 +175,27 @@ private struct LessonSectionsView: View {
             ReaderChipPicker(options: sections.map { ($0.id, $0.title) }, selection: $selected)
             LibraryInlineItemsView(items: sections.first { $0.id == id }.map(SiteContent.lessons) ?? []).id(id)
         }
+    }
+}
+
+private struct ArbaeenLoveView: View {
+    private static let intro = "مجموعة قيد الاستكمال من الأحاديث النبوية الموثقة في محبة الله لعباده ومحبة العبد لربه — لا يُنشر أي حديث إلا بعد مراجعة عالِم شرعي فعلي."
+    private var hasExport: Bool { Bundle.main.url(forResource: "arbaeen-love-of-allah", withExtension: "json", subdirectory: "Data/hadith") != nil }
+
+    var body: some View {
+        VStack(alignment: .trailing, spacing: 16) {
+            Text(Self.intro).font(.callout).foregroundStyle(.secondary)
+                .multilineTextAlignment(.trailing).frame(maxWidth: .infinity, alignment: .trailing).padding(.horizontal, 16)
+            if hasExport {
+                LibraryLoadedView(source: .bundled(name: "arbaeen-love-of-allah", subdirectory: "Data/hadith"),
+                                  adapt: { (f: SiteContent.LoveFile) in SiteContent.love(f.rows) }) { items in
+                    if items.isEmpty { EmptyStateView(title: "لا يتوفر محتوى هنا الآن.") } else { LibraryInlineItemsView(items: items) }
+                }
+            } else {
+                EmptyStateView(title: "لا يتوفر محتوى هنا الآن.")
+                Spacer(minLength: 0)
+            }
+        }
+        .padding(.top, 16)
     }
 }
