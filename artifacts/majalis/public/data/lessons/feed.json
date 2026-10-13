@@ -1,7 +1,61 @@
 {
   "version": 1,
-  "generated_at": "2026-10-13T10:50:50.480Z",
+  "generated_at": "2026-10-13T21:07:40.448Z",
   "items": [
+    {
+      "id": "90238d8e8dd0161a5f2cc507a042c2eebf91240e",
+      "type": "درس",
+      "title_ar": "ندعوكم اليوم لحضور الدرس العلمي شرح كتاب منهج السالكين للشيخ حسين المويزري بعد …",
+      "summary_ar": "ندعوكم اليوم لحضور الدرس العلمي: ( شرح كتاب منهج السالكين ) للشيخ حسين المويزري @H_Almuwizri ⌚ بعد صلاه العصر ( كل ثلاثاء) مسجد قبيصه الخزاعي - المطلاع https:/…",
+      "sheikh": null,
+      "place": "قبيصة الخزاعي - المطلاع https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28278",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-13T20:49:16.419Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "d21cd778868dbc39b6bc569086ededdf70cd8b73",
+      "type": "محاضرة",
+      "title_ar": "♦️ غداً الأربعاء بعد صلاة المغرب بإذن الله",
+      "summary_ar": "غدا الاربعاء بعد صلاه المغرب باذن الله مسجد الياقوت درس تلخيص مختصر المقنع المجلس (138) – باب تعليق الطلاق بالشروط للشيخ عثمان الخميس لتفاصيل المحاضرات وللبث ا…",
+      "sheikh": null,
+      "place": "الياقوت",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "upcoming",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "ig-othmanalkamees",
+          "name_ar": "د. عثمان الخميس",
+          "url": "https://instagram.com/othmanalkamees",
+          "post_url": "https://www.instagram.com/p/Decb3GijBZp/",
+          "platform": "instagram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-13T20:46:34.546Z",
+      "confidence": 0.75
+    },
     {
       "id": "438c2a418733181f4797f1d7a94daad897105317",
       "type": "دورة",
@@ -103,33 +157,6 @@
           "name_ar": "دروس الكويت",
           "url": "https://t.me/DrosQ8",
           "post_url": "https://t.me/DrosQ8/28269",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-13T10:27:04.678Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "abe5dac1442218005fba5ccc63a36b1715519ba0",
-      "type": "درس",
-      "title_ar": "ندعوكم اليوم لحضور الدرس العلمي شرح كتاب عمدة الأحكام لفضيلة الشيخ د دهام الفضل…",
-      "summary_ar": "ندعوكم اليوم لحضور الدرس العلمي: (شرح كتاب عمده الاحكام ) لفضيله الشيخ د. دهام الفضلي @DrEdham ⏰ بعد صلاه العصر (كل ثلاثاء) مسجد ابو طاهر السلفي - صباح الاحمد …",
-      "sheikh": "دهام الفضلي @DrEdham ⏰ بعد صلاة العصر (كل ثلاثاء) 🕌 مسجد أب",
-      "place": "أبو طاهر السلفي - صباح الأحمد https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28277",
           "platform": "telegram"
         }
       ],
@@ -838,33 +865,6 @@
       "image_url": null,
       "published_at": "2026-10-09T10:21:16.781Z",
       "confidence": 0.65
-    },
-    {
-      "id": "368dc5c7be8b40e59889d9d61a000634b130eac4",
-      "type": "محاضرة",
-      "title_ar": "♦️اليوم الساعة 10:00 صباحاً بإذن الله",
-      "summary_ar": "اليوم الساعه 10:00 صباحا باذن الله بمسجد الياقوت قراءه صحيح مسلم وصلنا كتاب الهبات المجلس 36 للشيخ عثمان الخميس لتفاصيل المحاضرات وللبث المباشر في الموقع الالك…",
-      "sheikh": null,
-      "place": "الياقوت",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": "10:00 ص",
-      "register_url": null,
-      "schedule_kind": "upcoming",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "ig-othmanalkamees",
-          "name_ar": "د. عثمان الخميس",
-          "url": "https://instagram.com/othmanalkamees",
-          "post_url": "https://www.instagram.com/p/DeTd6qDDXVM/",
-          "platform": "instagram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-09T00:00:00.000Z",
-      "confidence": 0.85
     },
     {
       "id": "cb11c45d0bb402f024fdeaa2622e5a97f6701d18",
