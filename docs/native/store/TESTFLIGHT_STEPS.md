@@ -26,6 +26,8 @@ bundle exec fastlane ios native_beta
 ```
 نجاحه ينتهي برسالة `SunnahApp 1.2.0 build N` ثم رفع. (الـlane لا ينتظر المعالجة.)
 
+**بناء وتوقيع بلا رفع (للتحقق دون لمس TestFlight):** `bundle exec fastlane ios native_beta upload:false` ينتج `ios-native/build/SunnahApp.ipa` فقط ولا يتصل برفع. الافتراضي `upload:true`. (`export_method` هو `app-store` لأن fastlane 2.241.0 لا يقبل `app-store-connect`.)
+
 ## 2) انتظار المعالجة
 App Store Connect ← **Apps** ← سُنّة ← تبويب **TestFlight** ← **Builds** ← **iOS**: يظهر البناء بحالة **Processing** (عادةً 10–30 دقيقة) ثم يصل بريد. إن ظهر **Missing Compliance** اضغطه واختر **No** للتشفير المستثنى (الـplist يصرّح `ITSAppUsesNonExemptEncryption=false` فالسؤال لا يفترض أن يظهر).
 
