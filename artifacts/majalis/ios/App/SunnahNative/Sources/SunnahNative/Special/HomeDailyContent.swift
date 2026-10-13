@@ -3,12 +3,17 @@ import Foundation
 /// آية اليوم وحديث اليوم: مجموعتان وخوارزمية مصدّرة من كود الموقع (ن1). لا يُعرض شيء إلا باكتمال التصدير بحقوله الثلاثة.
 public struct HomeDailyAyah: Decodable, Equatable, Sendable {
     public let id: String
-    public let surah: Int
+    public let surah: String
     public let ayahNumber: Int
     public let reference: String
     public let meaning: String?
     public let reviewStatus: String
     public let sourceOrigin: String
+    /// رقم السورة من المرجع المصدَّر («القرآن الكريم — 94:6»)، لا من اسمها.
+    public var surahNumber: Int? {
+        guard let r = reference.range(of: #"(\d+):(\d+)\s*$"#, options: .regularExpression) else { return nil }
+        return Int(reference[r].split(separator: ":")[0])
+    }
     enum CodingKeys: String, CodingKey {
         case id, surah, ayahNumber, reference, meaning
         case reviewStatus = "review_status", sourceOrigin = "source_origin"
@@ -78,7 +83,7 @@ public struct HomeDailyContent: Equatable, Sendable {
         }
         guard let ayahs: [HomeDailyAyah] = read("daily-ayah"), let hadiths: [HomeDailyHadith] = read("daily-hadith"),
               let a = HomeDailyPick.pick(ayahs, on: date), let h = HomeDailyPick.pick(hadiths, on: date),
-              let text = ayahText(surah: a.surah, ayah: a.ayahNumber, bundle: bundle) else { return nil }
+              let text = ayahText(surah: a.surahNumber ?? 0, ayah: a.ayahNumber, bundle: bundle) else { return nil }
         return HomeDailyContent(ayah: a, ayahText: text, hadith: h)
     }
 
