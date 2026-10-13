@@ -9,6 +9,7 @@ public struct HomeScreen: View {
     @AppStorage("mushaf.lastPage") private var lastPage = 0
     @Environment(\.openRoute) private var openRoute
     @Environment(\.dynamicTypeSize) private var typeSize
+    @State private var daily: HomeDailyContent?
 
     private struct Shortcut: Identifiable { let title: String; let symbol: String; let route: String; var id: String { route } }
 
@@ -36,6 +37,10 @@ public struct HomeScreen: View {
                     nextPrayerCard(now: ctx.date)
                 }
                 wirdCard
+                if let daily {
+                    ayahCard(daily)
+                    hadithCard(daily.hadith)
+                }
                 if lastPage > 0 { lastReadCard }
                 VStack(spacing: Sunnah.Spacing.s3) {
                     SunnahSectionHeader("أقسام التطبيق")
@@ -48,6 +53,40 @@ public struct HomeScreen: View {
         }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
+        .onAppear { daily = HomeDailyContent.load(on: Date()) }
+    }
+
+    private func ayahCard(_ d: HomeDailyContent) -> some View {
+        Button { openRoute("/mushaf") } label: {
+            SunnahCard {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                    Label("آية اليوم", systemImage: "book.closed").font(Sunnah.Typography.cardTitle)
+                        .foregroundStyle(Sunnah.Colors.textPrimary)
+                    Text(d.ayahText).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(d.ayah.reference).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                }
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
+    }
+
+    private func hadithCard(_ h: HomeDailyHadith) -> some View {
+        Button { openRoute("/hadith") } label: {
+            SunnahCard {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                    Label("حديث اليوم", systemImage: "text.book.closed").font(Sunnah.Typography.cardTitle)
+                        .foregroundStyle(Sunnah.Colors.textPrimary)
+                    Text(h.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text([h.narrator, h.source, h.number].compactMap { $0 }.joined(separator: " — "))
+                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                }
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityElement(children: .combine)
     }
 
     private var columns: [GridItem] {
