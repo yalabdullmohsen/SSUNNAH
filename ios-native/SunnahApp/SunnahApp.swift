@@ -56,6 +56,8 @@ struct SunnahApp: App {
         let path = Route.normalize(raw)
         let base = path.split(whereSeparator: { $0 == "?" || $0 == "#" }).first.map(String.init) ?? path
         let comps = base.split(separator: "/").map(String.init)
+        // جذر تبويب «الرئيسية» هو "/": مقاطعه فارغة فلا يطابق أي معرّف أدناه → كانت تظهر «تعذّر فتح هذه الشاشة» عند الإقلاع
+        if comps.isEmpty, let v = TemplateRegistry.shared.view(for: "home") { return v }
         if let v = SirahSection.resolve(path: base) { return v }
         if let v = AqidahSection.resolve(path: base) { return v }
         if let v = FiqhSection.resolve(path: base) { return v }
