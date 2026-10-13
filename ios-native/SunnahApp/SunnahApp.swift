@@ -58,6 +58,11 @@ struct SunnahApp: App {
         let comps = base.split(separator: "/").map(String.init)
         // جذر تبويب «الرئيسية» هو "/": مقاطعه فارغة فلا يطابق أي معرّف أدناه → كانت تظهر «تعذّر فتح هذه الشاشة» عند الإقلاع
         if comps.isEmpty, let v = TemplateRegistry.shared.view(for: "home") { return v }
+        // «/prayer-times» يملكه PrayerScreen؛ قالب الفقه المولَّد بالمعرّف نفسه قائمة فارغة («قيد التوثيق»)
+        if comps == ["prayer-times"], let v = TemplateRegistry.shared.view(for: "prayer") { return v }
+        // تحويلات الموقع (FEATURE_PARITY)
+        let redirects = ["aqidah": "/tawhid", "library": "/search", "profile": "/stats"]
+        if comps.count == 1, let to = redirects[comps[0]] { return resolve(path: to) }
         if let v = SirahSection.resolve(path: base) { return v }
         if let v = AqidahSection.resolve(path: base) { return v }
         if let v = FiqhSection.resolve(path: base) { return v }
