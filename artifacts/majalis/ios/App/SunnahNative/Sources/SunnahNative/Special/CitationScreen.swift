@@ -33,7 +33,7 @@ enum CitationPath {
 }
 
 public struct CitationScreen: View {
-    @Environment(\.contentLoader) private var loader
+    @Environment(\.platform) private var platform
     let slug: String
     @State private var phase: Phase = .loading
     private enum Phase { case loading, offline, notFound, ready(CitationPayload.Citation) }
@@ -87,13 +87,24 @@ public struct CitationScreen: View {
         return parts.joined(separator: "\n")
     }
 
+    /// البوابة تشترط دخولًا لـ/api/citations؛ لا جلسة ⇒ «غير متاح» (مطابق للموقع)، وبجلسة يُرسَل الرمز.
+    /// ContentLoader.live لا يربط الرمز بمخزن الجلسة، فيُجلب هنا مباشرة (مهلة 8ث، بلا كاش لمحتوى مشروط بالحساب).
     private func load() async {
         phase = .loading
+        guard let session = AccountSession.read(from: platform.auth) else { phase = .notFound; return }
         do {
-            let r = try await loader.load(CitationPayload.self, from: .remote(path: CitationPath.path(slug: slug)))
+            var req = URLRequest(url: AccountAPI().baseURL.appendingPathComponent(String(CitationPath.path(slug: slug).dropFirst())))
+            req.timeoutInterval = RemoteTransport.timeout
+            req.setValue("Bearer \(session.accessToken)", forHTTPHeaderField: "Authorization")
+            let (data, response) = try await URLSession.shared.data(for: req)
+            if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
+                phase = (http.statusCode == 404 || http.statusCode == 401) ? .notFound : .offline
+                return
+            }
+            let r = try JSONDecoder().decode(CitationPayload.self, from: data)
             if r.ok, let c = r.citation { phase = .ready(c) } else { phase = .notFound }
         } catch {
-            phase = CitationPath.isNotFound(error) ? .notFound : .offline
+            phase = .offline
         }
     }
 }
