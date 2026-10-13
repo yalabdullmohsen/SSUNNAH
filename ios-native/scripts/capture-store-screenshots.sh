@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# يلتقط 6 لقطات App Store بالعربية على محاكٍ مخصص (لا يلمس المحاكيات المشتركة) من بناء Release.
+# يلتقط 6 لقطات App Store بالعربية على محاكٍ مخصص (لا يلمس المحاكيات المشتركة) من بناء Debug (لا Release: -snapshotRoute للتصحيح فقط).
 # الاستعمال: ios-native/scripts/capture-store-screenshots.sh /path/SunnahApp.app [اسم نوع الجهاز]
 # الإخراج:   ios-native/build/screenshots/ar-SA/{01-home..06-library}.png  (1320×2868 = iPhone 6.9")
 # غير مُجرَّب بعد: يشغّله ن4 بعد بناء Release (انظر docs/native/store/SCREENSHOTS.md).
 set -euo pipefail
-APP="${1:?مسار SunnahApp.app (بناء Release لمحاكي iphonesimulator)}"
+APP="${1:?مسار SunnahApp.app (بناء Debug لمحاكي iphonesimulator)}"
 DEVICE_TYPE="${2:-iPhone 17 Pro Max}"
 BUNDLE="com.yousef.majlisilm"
 WANT_SIZE="1320x2868"
@@ -28,20 +28,20 @@ xcrun simctl privacy "$UDID" grant location "$BUNDLE" || true
 # اللغة والمنطقة عربيتان لهذا التشغيل فقط (وسائط التشغيل لا تغيّر إعدادات الجهاز)
 LAUNCH=(-AppleLanguages "(ar)" -AppleLocale ar_SA)
 
-shot() { # <رقم-اسم> <رابط>
+shot() { # <رقم-اسم> <مسار> — -snapshotRoute يعمل في بناء Debug فقط؛ openurl لمخطط مخصص يُظهر حوار «فتح في سنّة؟» يحجب اللقطة
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1 || true
-  xcrun simctl launch "$UDID" "$BUNDLE" "${LAUNCH[@]}" >/dev/null
-  sleep 3
-  [ "$2" = "majlisilm://" ] || { xcrun simctl openurl "$UDID" "$2"; sleep 4; }
+  if [ "$2" = "/" ]; then xcrun simctl launch "$UDID" "$BUNDLE" "${LAUNCH[@]}" >/dev/null
+  else xcrun simctl launch "$UDID" "$BUNDLE" "${LAUNCH[@]}" -snapshotRoute "$2" >/dev/null; fi
+  sleep 9
   xcrun simctl io "$UDID" screenshot --type=png "$OUT/$1.png" >/dev/null
   local size; size="$(sips -g pixelWidth -g pixelHeight "$OUT/$1.png" | awk '/pixel/{a[++n]=$2} END{print a[1]"x"a[2]}')"
   [ "$size" = "$WANT_SIZE" ] || echo "تحذير: $1 بحجم $size لا $WANT_SIZE (اختر جهازًا بشاشة 6.9\")" >&2
   echo "✓ $1 ($size)"
 }
-shot 01-home        "majlisilm://"
-shot 02-mushaf      "majlisilm://mushaf"
-shot 03-prayer-times "majlisilm://prayer-times"
-shot 04-qibla       "majlisilm://qibla"
-shot 05-adhkar      "majlisilm://adhkar"
-shot 06-library     "majlisilm://library"
+shot 01-home        "/"
+shot 02-mushaf      "/mushaf"
+shot 03-prayer-times "/prayer-times"
+shot 04-qibla       "/qibla"
+shot 05-adhkar      "/adhkar"
+shot 06-library     "/sources"
 echo "الملفات: $OUT"
