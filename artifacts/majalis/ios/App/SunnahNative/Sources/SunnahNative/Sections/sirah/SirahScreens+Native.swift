@@ -107,7 +107,10 @@ public enum SirahSection {
         registry.registerView(id: "prophets.tree") { SirahSection.inline(File.lineage, SirahAdapters.lineage, reader: .detail) }
         registry.registerView(id: "sahabah") { SirahSection.inline(File.sahabah, SirahAdapters.sahabah, reader: .detail) }
         registry.registerView(id: "seerah") { SirahSection.inline(File.seerah, SirahAdapters.seerah) }
-        registry.registerView(id: "shamael") { SirahSection.inline(File.shamail, SirahAdapters.shamail) }
+        registry.registerView(id: "shamael") {
+            SirahLoadedView(source: File.shamail, adapt: { (tabs: [ShamailTab]) in tabs }) { ShamailView(tabs: $0) }
+                .navigationTitle(SirahSection.title)
+        }
         registry.registerView(id: "stories") { SirahSection.fullArticle(File.stories, SirahAdapters.stories, id: "stories", title: "القصص الإسلامية") }
         registry.registerView(id: "tarikh-islami") { SirahSection.list(File.history, SirahAdapters.history, base: "/tarikh-islami") }
         registry.registerView(id: "teachers") {

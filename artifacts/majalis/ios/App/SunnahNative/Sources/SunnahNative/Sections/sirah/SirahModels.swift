@@ -143,7 +143,7 @@ struct SirahLineageNode: Decodable, Sendable, Hashable {
     var era: String?
     var people: String?
     var linkNote: String?
-    var generationsGap: Bool?
+    var generationsGap: Int?
     var isUlulAzm: Bool?
     var children: [SirahLineageNode]?
 }

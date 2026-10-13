@@ -9,7 +9,7 @@ public struct ShamailHadith: Codable, Hashable, Sendable {
 }
 
 public struct ShamailBab: Codable, Hashable, Sendable {
-    public let id: String?
+    public let id: Int?
     public let title: String
     public let icon: String?
     public let hadiths: [ShamailHadith]?
@@ -58,7 +58,9 @@ public struct ShamailView: View {
                                         if let t = bab.text { Text(t).font(Sunnah.Typography.hadith).foregroundStyle(Sunnah.Colors.textPrimary) }
                                         ForEach(Array((bab.hadiths ?? []).enumerated()), id: \.offset) { _, h in
                                             Text(h.text).font(Sunnah.Typography.hadith).foregroundStyle(Sunnah.Colors.textPrimary)
-                                            if let r = h.rawi { Text(r).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
+                                            if let r = [h.rawi, h.source].compactMap({ $0 }).filter({ !$0.isEmpty }).joined(separator: " — ") as String?, !r.isEmpty {
+                                                Text(r).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                                            }
                                         }
                                     }
                                 }

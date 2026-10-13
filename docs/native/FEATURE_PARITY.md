@@ -98,10 +98,10 @@
 - [x] `/occasions` — OccasionsPage — قائمة
 - [x] `/occasions-lessons` — OccasionsLessonsHubPage — أقسام
 - [x] `/prophets` — ProphetStoriesPage — مقال
-- [ ] `/prophets/tree` — ProphetsFamilyTreePage — قائمة
+- [x] `/prophets/tree` — ProphetsFamilyTreePage — قائمة
 - [x] `/sahabah` — SahabahPage — قائمة
-- [ ] `/seerah` — SeerahPage — قائمة
-- [ ] `/shamael` — ShimaelPage — قائمة
+- [x] `/seerah` — SeerahPage — قائمة
+- [x] `/shamael` — ShimaelPage — قائمة
 - [x] `/stories` — IslamicStoriesPage — مقال
 - [ ] `/tarikh-islami` — TarikhIslamiPage — قائمة
 - [ ] `/tarikh-islami/:id` — TarikhIslamiDetailPage — تفاصيل

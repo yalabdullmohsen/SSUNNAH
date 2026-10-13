@@ -10,6 +10,7 @@ if git status --porcelain | grep -E "(^|/)\.build(/|$)|\.xcresult|DerivedData" >
 bash scripts/native-lint-chevron.sh || exit 1
 bash scripts/native-plist-guard.sh || exit 1
 bash scripts/native-webview-guard.sh || exit 1
+bash scripts/native-gnu-guard.sh || exit 1
 bash scripts/native-export-data.sh >/dev/null || { echo "فشل التصدير"; exit 1; }
 node scripts/native-data-check.mjs | head -1
 ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1

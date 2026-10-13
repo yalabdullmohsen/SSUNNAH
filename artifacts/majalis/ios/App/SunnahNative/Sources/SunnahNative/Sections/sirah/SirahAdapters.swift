@@ -122,7 +122,7 @@ enum SirahAdapters {
             let sub = [parent.map { "من ذرية \($0)" }, n.people.map { "أُرسل إلى \($0)" }, n.era, kind]
                 .compactMap { $0 }.filter { !$0.isBlank }.joined(separator: " · ")
             out.append(ContentItem(sirahID: n.id, title: n.name, subtitle: sub.isEmpty ? nil : sub,
-                                   body: paragraphs([n.linkNote, n.generationsGap == true ? "بينهما أجيال لم تُسمَّ" : nil]),
+                                   body: paragraphs([n.linkNote, n.generationsGap.map { "عدد الأجيال غير المسمّاة بينهما: \($0)" }]),
                                    tags: depth == 0 ? [] : ["الجيل \(depth + 1)"]))
             for c in n.children ?? [] { walk(c, depth: depth + 1, parent: n.name) }
         }

@@ -28,6 +28,7 @@ struct SunnahApp: App {
         WindowGroup {
             RootTabView(router: router, screen: Self.screen)
                 .onAppear {
+                    PrayerWidgetPublisher.publish()
                     // لقطات native-loop: -snapshotRoute /path (للتصحيح فقط)
                     #if DEBUG
                     if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p) }
@@ -37,7 +38,7 @@ struct SunnahApp: App {
                 .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore())))
         }
         .onChange(of: scenePhase) { phase in
-            if phase == .active { NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: true) }
+            if phase == .active { PrayerWidgetPublisher.publish(); NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: true) }
         }
     }
 
