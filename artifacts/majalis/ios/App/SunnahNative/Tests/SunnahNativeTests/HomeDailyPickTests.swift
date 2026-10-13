@@ -27,19 +27,23 @@ final class HomeDailyPickTests: XCTestCase {
         struct Row: Decodable { let iso: String; let ayahId: String; let hadithId: String }
         let rows = try JSONDecoder().decode([Row].self, from: Data(contentsOf: url))
         XCTAssertGreaterThanOrEqual(rows.count, 10)
+        let (ayahs, hadiths) = try pools()
         for r in rows {
             let d = date(r.iso)
-            XCTAssertEqual(try pickedIds(d).0, r.ayahId, r.iso)
-            XCTAssertEqual(try pickedIds(d).1, r.hadithId, r.iso)
+            XCTAssertEqual(HomeDailyPick.pick(ayahs, on: d)?.id, r.ayahId, r.iso)
+            XCTAssertEqual(HomeDailyPick.pick(hadiths, on: d)?.id, r.hadithId, r.iso)
         }
     }
 
-    private func pickedIds(_ d: Date) throws -> (String, String) {
+    /// المجموعتان المصدّرتان (ios-native/Data/home، يولّدهما native-export-data.sh) — نفس ما يحزمه التطبيق.
+    private func pools() throws -> ([HomeDailyAyah], [HomeDailyHadith]) {
+        var root = URL(fileURLWithPath: #filePath)
+        for _ in 0..<8 { root.deleteLastPathComponent() }
         func pool<T: Decodable>(_ n: String) throws -> [T] {
-            let u = try XCTUnwrap(Bundle.module.url(forResource: n, withExtension: "json", subdirectory: "Fixtures/daily"))
+            let u = root.appendingPathComponent("ios-native/Data/home/\(n).json")
+            guard FileManager.default.fileExists(atPath: u.path) else { throw XCTSkip("شغّل scripts/native-export-data.sh أولًا") }
             return try JSONDecoder().decode([T].self, from: Data(contentsOf: u))
         }
-        let a: [HomeDailyAyah] = try pool("daily-ayah"), h: [HomeDailyHadith] = try pool("daily-hadith")
-        return (try XCTUnwrap(HomeDailyPick.pick(a, on: d)).id, try XCTUnwrap(HomeDailyPick.pick(h, on: d)).id)
+        return (try pool("daily-ayah"), try pool("daily-hadith"))
     }
 }
