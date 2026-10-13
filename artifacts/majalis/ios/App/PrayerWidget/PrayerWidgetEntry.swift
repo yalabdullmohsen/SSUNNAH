@@ -8,7 +8,7 @@ typealias PrayerWidgetDeepLink = SunnahPrayerDeepLink
 
 private let widgetLog = Logger(subsystem: "com.yousef.majlisilm", category: "PrayerWidget")
 
-enum PrayerSlotKey: String, CaseIterable {
+enum PrayerSlotKey: String, CaseIterable, Codable {
     case fajr, sunrise, dhuhr, asr, maghrib, isha
 
     var nameAr: String {
@@ -48,7 +48,7 @@ enum SunnahWidgetPresentation: String {
     case configurationRequired
 }
 
-struct PrayerTimelineSlot: Hashable {
+struct PrayerTimelineSlot: Hashable, Codable {
     let key: PrayerSlotKey
     let date: Date
 }
