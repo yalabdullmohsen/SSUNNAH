@@ -11,9 +11,9 @@ public struct HomeScreen: View {
     @Environment(\.dynamicTypeSize) private var typeSize
     @State private var daily: HomeDailyContent?
 
-    private struct Shortcut: Identifiable { let title: String; let symbol: String; let route: String; var id: String { route } }
+    struct Shortcut: Identifiable { let title: String; let symbol: String; let route: String; var id: String { route } }
 
-    private static let shortcuts: [Shortcut] = [
+    static let shortcuts: [Shortcut] = [
         .init(title: "القرآن", symbol: "book.closed", route: "/quran-hub"),
         .init(title: "الحديث", symbol: "text.book.closed", route: "/hadith"),
         .init(title: "الدروس", symbol: "graduationcap", route: "/lessons"),
@@ -23,7 +23,7 @@ public struct HomeScreen: View {
         .init(title: "الأذكار", symbol: "hands.sparkles", route: "/native/adhkar"),
         .init(title: "القبلة", symbol: "location.north.line", route: "/qibla"),
         .init(title: "التقويم", symbol: "calendar", route: "/calendar"),
-        .init(title: "البحث", symbol: "magnifyingglass", route: "/search"),
+        .init(title: "الصلاة", symbol: "clock", route: "/prayer-times"),
         .init(title: "الإحصاءات", symbol: "chart.bar", route: "/stats"),
         .init(title: "كل الأقسام", symbol: "square.grid.2x2", route: "/sections")
     ]
@@ -70,6 +70,7 @@ public struct HomeScreen: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("home.card.ayah")
     }
 
     private func hadithCard(_ h: HomeDailyHadith) -> some View {
@@ -87,6 +88,7 @@ public struct HomeScreen: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("home.card.hadith")
     }
 
     private var columns: [GridItem] {
@@ -109,6 +111,7 @@ public struct HomeScreen: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("home.tile.\(item.route)")
     }
 
     @ViewBuilder
@@ -128,6 +131,7 @@ public struct HomeScreen: View {
             }
             .buttonStyle(.plain)
             .accessibilityElement(children: .combine)
+            .accessibilityIdentifier("home.card.prayer")
         } else {
             Button { openRoute("/native/prayer") } label: {
                 SunnahCard {
@@ -136,6 +140,7 @@ public struct HomeScreen: View {
                 }
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("home.card.prayer")
         }
     }
 
@@ -168,6 +173,7 @@ public struct HomeScreen: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("home.card.wird")
     }
 
     private var lastReadCard: some View {
@@ -186,6 +192,7 @@ public struct HomeScreen: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("home.card.continue")
     }
 
     private func ar(_ n: Int) -> String { PrayerTimeFormat.arabicDigits(String(n)) }

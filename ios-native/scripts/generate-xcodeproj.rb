@@ -103,8 +103,20 @@ emb = t.new_copy_files_build_phase('Embed Foundation Extensions')
 emb.symbol_dst_subfolder_spec = :plug_ins
 ebf = emb.add_file_reference(wt.product_reference, true)
 ebf.settings = { 'ATTRIBUTES' => ['RemoveHeadersOnCopy'] }
+# هدف XCUITest: نقر فعلي على بلاطات الرئيسية (xcodebuild test) — يلتقط ما لا تلتقطه لقطات -snapshotRoute
+ut = proj.new_target(:ui_test_bundle, 'SunnahAppUITests', :ios, '16.2')
+ug = proj.main_group.new_group('SunnahAppUITests', 'SunnahAppUITests')
+Dir[File.join(root, 'SunnahAppUITests/*.swift')].sort.each { |f| ut.add_file_references([ug.new_reference(File.basename(f))]) }
+ut.add_dependency(t)
+ut.build_configurations.each do |c|
+  b = c.build_settings
+  b['TEST_TARGET_NAME'] = 'SunnahApp'; b['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.yousef.majlisilm.UITests'
+  b['SWIFT_VERSION'] = '5.0'; b['GENERATE_INFOPLIST_FILE'] = 'YES'; b['TARGETED_DEVICE_FAMILY'] = '1'
+  b['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
+end
 proj.save
 scheme = Xcodeproj::XCScheme.new
 scheme.add_build_target(t); scheme.set_launch_target(t)
+scheme.add_test_target(ut)
 scheme.save_as(path, 'SunnahApp', true)
 puts "✓ #{path}"

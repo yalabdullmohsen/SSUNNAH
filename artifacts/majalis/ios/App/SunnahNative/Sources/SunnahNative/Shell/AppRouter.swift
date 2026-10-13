@@ -1,41 +1,19 @@
 import SwiftUI
 
-/// حالة التنقل: التبويب المختار ومكدّس كل تبويب مستقل.
+/// حالة التنقل: مكدّس واحد جذره الرئيسية (بلا شريط تبويب).
 @MainActor
 public final class AppRouter: ObservableObject {
-    @Published public var selectedTab: AppTab
-    @Published public var stacks: [AppTab: [Route]]
+    @Published public var stack: [Route] = []
 
-    public init(selectedTab: AppTab = .home) {
-        self.selectedTab = selectedTab
-        self.stacks = Dictionary(uniqueKeysWithValues: AppTab.allCases.map { ($0, []) })
-    }
+    public init() {}
 
-    public func binding(for tab: AppTab) -> Binding<[Route]> {
-        Binding(
-            get: { self.stacks[tab] ?? [] },
-            set: { self.stacks[tab] = $0 }
-        )
-    }
-
-    /// إعادة اختيار التبويب الحالي ترجع إلى جذره (سلوك iOS المعتاد).
-    public func select(_ tab: AppTab) {
-        if tab == selectedTab {
-            stacks[tab] = []
-        } else {
-            selectedTab = tab
-        }
-    }
-
-    /// يفتح مسارًا في التبويب المالك له؛ جذر التبويب يصفّر مكدّسه.
+    /// يدفع المسار فوق الرئيسية؛ جذر الرئيسية "/" يصفّر المكدّس، ولا تكرار للوجهة نفسها.
     public func open(path raw: String) {
         let path = Route.normalize(raw)
-        let tab = AppTab.owning(path: path)
-        selectedTab = tab
-        if path == tab.rootPath {
-            stacks[tab] = []
-        } else if stacks[tab]?.last != .web(path: path) {
-            stacks[tab, default: []].append(.web(path: path))
+        if path == AppTab.home.rootPath {
+            stack = []
+        } else if stack.last != .web(path: path) {
+            stack.append(.web(path: path))
         }
     }
 

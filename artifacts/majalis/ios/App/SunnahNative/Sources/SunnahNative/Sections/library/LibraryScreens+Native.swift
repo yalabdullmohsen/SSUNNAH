@@ -94,6 +94,7 @@ struct LibraryGroupedLinksView: View {
                         ForEach(group.links) { link in
                             Button { openRoute(link.route) } label: { SunnahListRow(title: link.title, subtitle: link.subtitle) }
                                 .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
+                                .accessibilityIdentifier("sections.item.\(link.route)")
                         }
                     } header: {
                         Text(group.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
@@ -258,7 +259,10 @@ public enum LibrarySection {
             LibrarySection.titled(LibraryLoadedView(source: File.searchIndex, adapt: { $0 as LibrarySearchIndex }) { LibrarySearchView(index: $0) })
         }
         registry.registerView(id: "sections") {
-            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { LibraryAdapters.sections($0) }) { SectionsListTemplate(links: $0) })
+            // «كل الأقسام» لا تربط بنفسها (النقر كان لا يفعل شيئًا)
+            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { nav in
+                LibraryAdapters.more(nav).map { LibraryAdapters.NavGroup(title: $0.title, links: $0.links.filter { $0.route != "/sections" }) }.filter { !$0.links.isEmpty }
+            }) { LibraryGroupedLinksView(groups: $0) })
         }
         registry.registerView(id: "sitemap") {
             LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { LibraryAdapters.sitemap($0) }) { LibraryGroupedLinksView(groups: $0) })

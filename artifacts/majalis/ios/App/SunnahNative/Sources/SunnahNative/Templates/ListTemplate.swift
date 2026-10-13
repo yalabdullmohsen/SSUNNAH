@@ -27,7 +27,7 @@ public struct ListTemplate: View {
     }
     private func tap(_ item: ContentItem) {
         guard inline, item.body != nil else { openRoute(item.path(base: detailBase)); return }
-        withAnimation(.easeInOut(duration: 0.2)) {
+        sunnahAnimate {
             if expanded.contains(item.id) { expanded.remove(item.id) } else { expanded.insert(item.id) }
         }
     }

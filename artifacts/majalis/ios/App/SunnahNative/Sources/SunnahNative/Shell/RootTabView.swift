@@ -14,24 +14,32 @@ public struct RootTabView: View {
     }
 
     public var body: some View {
-        TabView(selection: tabSelection) {
-            ForEach(AppTab.allCases) { tab in
-                NavigationStack(path: router.binding(for: tab)) {
-                    screen(tab.rootRoute)
-                        .navigationDestination(for: Route.self) { screen($0) }
+        NavigationStack(path: $router.stack) {
+            screen(AppTab.home.rootRoute)
+                .navigationTitle("الرئيسية")
+                #if os(iOS)
+                .navigationBarTitleDisplayMode(.large)
+                #endif
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button { router.open(path: "/search") } label: { Image(systemName: "magnifyingglass") }
+                            .accessibilityLabel("البحث")
+                    }
+                    ToolbarItem(placement: .primaryAction) {
+                        Menu {
+                            Button { router.open(path: "/my-submissions") } label: { Label("مساهماتي", systemImage: "tray.full") }
+                            Button { router.open(path: "/login") } label: { Label("تسجيل الدخول", systemImage: "person.crop.circle.badge.plus") }
+                            Button { router.open(path: "/settings") } label: { Label("الإعدادات", systemImage: "gearshape") }
+                        } label: { Image(systemName: "person.crop.circle") }
+                            .accessibilityLabel("الحساب")
+                    }
                 }
-                .tabItem { Label(tab.title, systemImage: tab.systemImage) }
-                .tag(tab)
-            }
+                .navigationDestination(for: Route.self) { screen($0) }
         }
+        .environment(\.openRoute) { [router] in Sunnah.Haptics.select(); router.open(path: $0) }
         .environment(\.layoutDirection, .rightToLeft)
         .environment(\.locale, Locale(identifier: "ar"))
         .onOpenURL { router.open(url: $0) }
-    }
-
-    /// يمرّ عبر `select` كي تعيد إعادةُ النقر على التبويب الحالي مكدّسَه إلى الجذر.
-    private var tabSelection: Binding<AppTab> {
-        Binding(get: { router.selectedTab }, set: { router.select($0) })
     }
 
     public static func placeholder(_ route: Route) -> AnyView {
