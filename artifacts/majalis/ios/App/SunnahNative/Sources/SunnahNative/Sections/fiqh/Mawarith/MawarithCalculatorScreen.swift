@@ -86,10 +86,13 @@ struct MawarithCalculatorScreen: View {
         return VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
             Text("حدّد الورثة والتركة، وستحصل على توزيع الأنصبة الشرعية مع شرح كل خطوة.")
                 .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-            HStack(spacing: Sunnah.Spacing.s2) {
-                ForEach(Array(["الورثة", "التركة", "النتيجة"].enumerated()), id: \.offset) { i, t in
-                    SunnahChip("\(i + 1). \(t)", selected: i + 1 == n)
-                }
+            // بأحجام Dynamic Type الكبرى لا تتسع الرقائق الثلاث أفقيًا فكانت «النتيجة» تنكسر وسط الكلمة → تُرصّ عموديًا
+            let chips = ForEach(Array(["الورثة", "التركة", "النتيجة"].enumerated()), id: \.offset) { i, t in
+                SunnahChip("\(i + 1). \(t)", selected: i + 1 == n)
+            }
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: Sunnah.Spacing.s2) { chips }
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) { chips }
             }
         }
     }
@@ -267,7 +270,12 @@ struct MawarithCalculatorScreen: View {
     }
 
     private func calculate() {
-        func num(_ s: String) -> Double { Double(s.replacingOccurrences(of: ",", with: ".")) ?? 0 }
+        // لوحات المفاتيح العربية تُنتج أرقامًا هندية وفاصلة «٫»؛ Double() يرفضها فكانت تُحتسب صفرًا بصمت
+        func num(_ s: String) -> Double {
+            var t = s
+            for (i, d) in "٠١٢٣٤٥٦٧٨٩".enumerated() { t = t.replacingOccurrences(of: String(d), with: String(i)) }
+            return Double(t.replacingOccurrences(of: "٫", with: ".").replacingOccurrences(of: ",", with: ".")) ?? 0
+        }
         var raw: [String: Double] = [:]
         for (k, v) in counts { raw[k.rawValue] = Double(v) }
         raw[MawarithHeirKey.husband.rawValue] = spouse == .husband ? 1 : 0
