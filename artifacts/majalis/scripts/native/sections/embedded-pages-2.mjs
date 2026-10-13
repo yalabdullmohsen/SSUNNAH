@@ -23,7 +23,9 @@ const MODULE = [
 export default async function exportEmbeddedPages2({ json, counts, appRoot }) {
   const put = (section, name, body) => {
     json(`${section}/${name}.json`, { ...EMBEDDED, ...body });
-    (counts[section] ??= {})[name] = Object.values(body).reduce((a, v) => a + (Array.isArray(v) ? v.length : 1), 0);
+    /* counts[قسم] قد يكون رقمًا (عدّاد القسم الرئيسي) فلا يُكتب عليه خاصية */
+    const key = typeof counts[section] === "object" || counts[section] === undefined ? section : `${section}-embedded`;
+    (counts[key] ??= {})[name] = Object.values(body).reduce((a, v) => a + (Array.isArray(v) ? v.length : 1), 0);
   };
   for (const [section, name, file, map] of LITERAL) {
     const c = loadConsts(`${appRoot}/${file}`);

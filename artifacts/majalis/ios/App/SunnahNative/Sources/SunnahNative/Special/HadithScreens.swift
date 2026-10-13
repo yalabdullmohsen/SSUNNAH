@@ -207,7 +207,7 @@ public enum HadithScreens {
         }
     }
 
-    /// مسارات بمعاملات لا تُسجَّل بمعرّف: `/arbaeen-nawawi/:id` (من hadith/arbaeen-nawawi) و`/c/:slug` (إحالة عامة تُجلب من الخادم).
+    /// مسارات بمعاملات لا تُسجَّل بمعرّف: `/arbaeen-nawawi/:id` (من hadith/arbaeen-nawawi) و`/c/:slug` (استشهاد عام يُجلب من الخادم: CitationScreen).
     public static func resolve(path base: String) -> AnyView? {
         let c = base.split(separator: "/").map(String.init)
         guard c.count == 2 else { return nil }
@@ -215,7 +215,7 @@ public enum HadithScreens {
         case "arbaeen-nawawi":
             return AnyView(ReaderDataScreens.arbaeenDetail(id: c[1].removingPercentEncoding ?? c[1]))
         case "c":
-            return AnyView(EmptyStateView(title: "تُعرض هذه الإحالة عبر رابطها على الإنترنت").navigationTitle("إحالة"))
+            return AnyView(CitationScreen(slug: c[1].removingPercentEncoding ?? c[1]))
         default:
             return nil
         }

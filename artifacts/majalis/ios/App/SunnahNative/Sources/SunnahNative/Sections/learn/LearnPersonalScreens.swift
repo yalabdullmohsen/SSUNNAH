@@ -21,7 +21,7 @@ struct LearnProgressScreen: View {
                 .listRowBackground(Sunnah.Colors.surface)
                 Section("خطط القراءة") {
                     if s.activePlans.isEmpty {
-                        Text("لا خطط جارية").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                        SunnahMessageState(symbol: "book.closed", title: "لا خطط جارية", message: "ابدأ خطة قراءة من المكتبة.")
                     }
                     ForEach(s.activePlans) { plan in
                         SunnahListRow(title: plan.bookTitle, subtitle: "\(plan.currentPage) من \(plan.totalPages) صفحة · \(plan.statusLabel)")
