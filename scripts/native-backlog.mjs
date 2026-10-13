@@ -33,7 +33,10 @@ for (const [s, e] of bySec) rows.push({ n: e.items.length, kind: "غير مؤش�
 const ph = [...reasons].filter(([, w]) => /قيد الإعداد|PLACEHOLDER/.test(w || "")).map(([r]) => r);
 if (ph.length) rows.push({ n: ph.length, kind: "placeholder «قيد الإعداد»", what: `يجب أن تكون صفرًا (يفشل native-release-check): ${ph.join("، ")}`, owner: "ن3 (الشاشة)" });
 rows.sort((a, b) => b.n - a.n);
-rows.push({ n: 0, kind: "بعد الإطلاق", what: "ويدجت + Live Activity (يحتاج Widget Extension؛ أُخفي مركز الويدجت وقسم النشاط الحي ومفتاح NSSupportsLiveActivities حتى ذلك الحين)", owner: "غير مُسنَد" });
+const mb = new Set(existsSync("docs/native/MERGED_BUILT.txt") ? readFileSync("docs/native/MERGED_BUILT.txt", "utf8").split("\n").filter(Boolean) : []);
+const unbuilt = par.map(l => l.match(/^- \[ \] `([^`]+)`/)?.[1]).filter(r => r && !mb.has(r));
+if (unbuilt.length) rows.unshift({ n: unbuilt.length, kind: "غير مبني (من الـ212)", what: unbuilt.map(r => `${r} ← ${/^\/knowledge/.test(r) ? "ن3" : "ن2"}`).join("، "), owner: "ن2 (/islamic-sects، /islamic-sects/:id) / ن3 (/knowledge/:section)" });
+rows.push({ n: 0, kind: "بعد الإطلاق", what: "Live Activity فقط (ويدجت «الصلاة القادمة» بُنيت وتُرسم على n4-sim؛ يبقى النشاط الحي ومفتاح NSSupportsLiveActivities مخفيَّين حتى بعد الإطلاق)", owner: "غير مُسنَد" });
 const head = gate[0] || "";
 let out = `# BACKLOG (مولَّد آليًا — لا يُحرَّر يدويًا)\n\n${head}\n\nمرتّب بالأكبر أثرًا أولًا (العدد = عدد الملفات/الشاشات المتأثرة).\n\n| # | الأثر | النوع | البند | المالك المقترح | النافذة المالكة (من PR/فرع مفتوح) |\n|---|---|---|---|---|---|\n`;
 rows.forEach((r, i) => { out += `| ${i + 1} | ${r.n} | ${r.kind} | ${r.what.replace(/\|/g, "/")} | ${r.owner} | ${windowFor(r.what, r.owner)} |\n`; });
