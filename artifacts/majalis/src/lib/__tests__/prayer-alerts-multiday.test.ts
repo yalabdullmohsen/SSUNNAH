@@ -8,11 +8,15 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { listNativePrayerScheduleSlotsAhead, NATIVE_PRAYER_WINDOW_DAYS } from "../prayer-alert-scheduler";
 import { epochAtZoneMinutes, getPrayerTimes } from "../prayer-times";
+import { getActivePrayerLocation } from "../prayer-location-prefs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const tz = "Asia/Kuwait";
+// المجدول يستعمل الموقع النشط (ما تعرضه /prayer-times)؛ إحداثيات مقرّبة (29.37/47.98) تعبر حدّ تقريب الدقيقة في بعض الأيام (2026-10-19 الفجر 272 مقابل 273).
+const loc = getActivePrayerLocation();
+const here = { lat: loc.lat, lon: loc.lon, label: loc.label, timeZone: tz };
 const key = (d: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: tz }).format(d);
-const today = await getPrayerTimes(key(new Date()), { lat: 29.37, lon: 47.98, label: "الكويت", timeZone: tz });
+const today = await getPrayerTimes(key(new Date()), here);
 const slots = await listNativePrayerScheduleSlotsAhead(today.prayers, tz);
 
 const days = [...new Set(slots.map((s) => s.dateISO))];
@@ -24,7 +28,7 @@ const ids = slots.map((s) => `${s.slot.key}@${s.dateISO}`);
 assert.equal(new Set(ids).size, ids.length, "لا تكرار");
 // كل يوم بمواقيته من المحرك — لا إعادة استعمال دقائق اليوم
 for (const d of days.slice(1)) {
-  const real = await getPrayerTimes(d, { lat: 29.37, lon: 47.98, label: "الكويت", timeZone: tz });
+  const real = await getPrayerTimes(d, here);
   for (const s of slots.filter((x) => x.dateISO === d)) {
     const r = real.prayers.find((p) => p.key === s.slot.key)!;
     assert.equal(s.slot.minutes, r.minutes, `${d} ${s.slot.key}`);
