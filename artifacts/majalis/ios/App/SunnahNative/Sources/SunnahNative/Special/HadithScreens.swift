@@ -201,10 +201,6 @@ public enum HadithScreens {
         // بياناتها ليست في عقد البيانات بعد (صفحات ويب مضمّنة): تنتظر تصديرًا من ن1.
         registry.registerView(id: "arbaeen-nawawi") { ReaderDataScreens.arbaeenList() }
         registry.registerView(id: "wasaya-nabawiyya") { ReaderDataScreens.wasayaScreen() }
-        for id in ["dalail-nubuwwah", "hadith-science", "hadith.arbaeen-love-of-allah",
-                   "hadith.books-and-rulings", "sunnah-studies"] {
-            registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق") }
-        }
     }
 
     /// مسارات بمعاملات لا تُسجَّل بمعرّف: `/arbaeen-nawawi/:id` (من hadith/arbaeen-nawawi) و`/c/:slug` (استشهاد عام يُجلب من الخادم: CitationScreen).

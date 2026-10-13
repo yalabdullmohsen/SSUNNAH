@@ -1,15 +1,14 @@
 # إغلاق native-loop.invalid — ن3 (2026-10-13)
 
-أُغلق 11 من 19 وبقي 8 في `~/ssunnah-board/native-loop.invalid`.
+أُغلقت الثمانية المتبقية؛ `native-loop.invalid` فارغ.
 
-## لـن4 (الأذكار) — لم يُكرَّر إصلاحها
-- `/adhan-help`
-- `/duas-quran`
-- `/sunan-yawmiyya`
+## الأذكار (مطابقة الموقع حرفيًا، دون لمس ملفات ن4)
+- `/adhan-help` و`/duas-quran` و`/sunan-yawmiyya`: تسجيل لاحق في `Special/SiteContentScreens.swift` يتجاوز عنصر الحجز في `AdhkarExtraScreens.swift`.
 
-## للمالك / نافذة الحديث (ن1) — قيد التوثيق عمدًا
-- `/dalail-nubuwwah` و`/hadith-science` و`/sunnah-studies`: البيانات موجودة لكنها `pending-owner-review`؛ لا تُنشر دون موافقة المالك.
-- `/hadith/arbaeen-love-of-allah` و`/hadith/books-and-rulings`: لا ملف بيانات بعد (تسجيلها في `HadithScreens.swift` ~204).
+## الحديث (حسب قرار المالك 2026-10-13)
+- `/dalail-nubuwwah` و`/hadith-science` و`/sunnah-studies`: تُعرض كالموقع من البيانات المصدَّرة (`pending-owner-review`, `site-embedded`).
+- `/hadith/arbaeen-love-of-allah`: العنوان والمقدمة + الحالة الفارغة الرسمية «لا يتوفر محتوى هنا الآن.» (الموقع لا يعرض للزائر شيئًا غير ذلك؛ لا جلب من الإنتاج).
+- `/hadith/books-and-rulings`: شاشة أصلية بتنقّل ثابت مطابقة لـHadithBooksAndRulingsPage.
 
 ## ما أُغلق
 - سبب العيّنة: `/fiqh/books/:bookId/lessons/:lessonId` و`/discover-islam/new-muslim/:day` (أُضيفت عيّنات حقيقية في ROUTE_SAMPLES).

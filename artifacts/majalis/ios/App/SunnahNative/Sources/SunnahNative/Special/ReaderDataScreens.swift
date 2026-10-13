@@ -71,7 +71,7 @@ enum ReaderData {
     }
 }
 
-private struct ReaderChipPicker: View {
+struct ReaderChipPicker: View {
     let options: [(id: String, label: String)]
     @Binding var selection: String
     var body: some View {
