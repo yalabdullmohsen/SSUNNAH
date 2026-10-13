@@ -18,4 +18,11 @@ export default async function exportHome({ json, counts, appRoot }) {
 
   /* خوارزمية الاختيار حرفيًا (getDayIndex/pickDailyItem) */
   json("home/daily-algorithm.json", { timeZone: "Asia/Kuwait", index: "floor(Date.UTC(y,m-1,d)/86400000) % pool.length" });
+
+  /* الأربعون في محبة رب العالمين: لقطة قراءة الزائر العامة (read-arbaeen-love-public.mjs) حرفيًا؛ لا يتصل المُصدِّر بالشبكة. */
+  const snap = `${appRoot}/scripts/native/snapshots/arbaeen-love-of-allah.site-public-read.json`;
+  const fs = await import("node:fs");
+  const love = (fs.existsSync(snap) ? JSON.parse(fs.readFileSync(snap, "utf8")) : []).map((r) => ({ ...r, source_origin: "site-public-read", review_status_site: r.review_status, review_status: "pending-owner-review" }));
+  json("hadith/arbaeen-love-of-allah.json", love);
+  (counts.hadith ??= {})["arbaeen-love-of-allah"] = love.length;
 }
