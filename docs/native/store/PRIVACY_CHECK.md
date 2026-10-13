@@ -29,10 +29,7 @@
 - `PrivacyInfo.xcprivacy`: أضيف سبب `1C8F.1`، وأنواع: Name، Other User Content، Product Interaction (كانت Email وUser ID فقط)، وحُدّث التعليق.
 
 ## 4) ملاحظات لا تُعدَّل دون بناء (قرار ن4)
-- `NSMicrophoneUsageDescription`: لا كود تسجيل في الأصلي (AVAudioSession/Engine في هدف Capacitor فقط). نصّه يَعِد بالتسميع؛ إن لم يُشحن التسميع فاحذف المفتاح وإلا فسيسأل المراجع.
-- `NSMotionUsageDescription`: البوصلة تستخدم `CLLocationManager` heading لا CoreMotion؛ المفتاح غير ضروري.
-- `NSUserNotificationsUsageDescription`: ليس مفتاح iOS صالحًا (بلا أثر)؛ طلب الإذن يتم بـ `UNUserNotificationCenter`.
-- `SunnahApp.entitlements`: `aps-environment=development` — التوقيع التلقائي عند التصدير لـ App Store يحوّله إلى `production`؛ تأكّد من ذلك في الـIPA (`codesign -d --entitlements :-`). إن لم تُستخدم الإشعارات البعيدة فاحذف القيمة والقدرة.
+- (محلول) لا `NSMicrophoneUsageDescription` ولا `NSMotionUsageDescription` ولا `NSUserNotificationsUsageDescription` في `Info.plist` الحالي، ولا `aps-environment` في الـentitlements؛ البوصلة تستخدم heading وطلب الإشعار بـ`UNUserNotificationCenter`.
 - ملحقات الويدجت وLive Activity: `generate-xcodeproj.rb` لا يولّد لها أهدافًا (هدف `SunnahApp` فقط، `MARKETING_VERSION=1.2.0`، `CURRENT_PROJECT_VERSION=100`)، فلا حاجة لبيان خصوصية لها الآن؛ إن أُضيفت لاحقًا فلكلٍّ `PrivacyInfo.xcprivacy` (UserDefaults لمجموعة التطبيق `1C8F.1`). لذلك `NSSupportsLiveActivities` بلا أثر حتى ذلك الحين.
 - `UIBackgroundModes`: `audio` (تشغيل القرآن) و`fetch` (BGTask `…prayer-refresh`) — كلاهما له استخدام؛ لا `remote-notification`.
 
