@@ -17,7 +17,7 @@ struct SettingsView: View {
                 }
             }
             Section("الخصوصية") {
-                Text("تُعالج التلاوة في التسميع على جهازك فقط. لحذف حسابك وبياناتك افتح «حذف الحساب» من القائمة.")
+                Text("لحذف حسابك وبياناتك افتح «حذف الحساب» من القائمة.")
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
             }
         }

@@ -31,6 +31,7 @@
 ## 4) ملاحظات لا تُعدَّل دون بناء (قرار ن4)
 - (محلول) لا `NSMicrophoneUsageDescription` ولا `NSMotionUsageDescription` ولا `NSUserNotificationsUsageDescription` في `Info.plist` الحالي، ولا `aps-environment` في الـentitlements؛ البوصلة تستخدم heading وطلب الإشعار بـ`UNUserNotificationCenter`.
 - ملحقات الويدجت وLive Activity: `generate-xcodeproj.rb` لا يولّد لها أهدافًا (هدف `SunnahApp` فقط، `MARKETING_VERSION=1.2.0`، `CURRENT_PROJECT_VERSION=100`)، فلا حاجة لبيان خصوصية لها الآن؛ إن أُضيفت لاحقًا فلكلٍّ `PrivacyInfo.xcprivacy` (UserDefaults لمجموعة التطبيق `1C8F.1`). لذلك `NSSupportsLiveActivities` بلا أثر حتى ذلك الحين.
+- (محلول) نصوص الخصوصية والإعدادات والمساعدة في التطبيق طُوبقت مع الكود: حُذف ذكر «التسميع» والميكروفون وتسجيل الصوت ونموذج التعرّف الصوتي (لا ميزة ولا إذن)، وقسم «المساعد العلمي» (لا مساعد محادثة)، وصُحّح ذكر ملفات تعريف الارتباط إلى «التخزين على جهازك»، والإشعارات إلى تذكيرات محلية، وأرصدة المكتبات إلى التطبيق الأصلي (حزم محلية).
 - `UIBackgroundModes`: `audio` (تشغيل القرآن) و`fetch` (BGTask `…prayer-refresh`) — كلاهما له استخدام؛ لا `remote-notification`.
 
 ## 5) ملء «App Privacy» في App Store Connect
