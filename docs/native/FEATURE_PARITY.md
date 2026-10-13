@@ -142,23 +142,23 @@
 
 - [x] `/amr-bil-maruf` — AmrBilMarufPage — قائمة
 - [x] `/arkan` — ArkanIslamPage — قائمة
-- [ ] `/arkan-iman` — ArkanImanPage — قائمة
-- [ ] `/fadail-aamal` — FadailAamalPage — قائمة
+- [x] `/arkan-iman` — ArkanImanPage — قائمة (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
+- [x] `/fadail-aamal` — FadailAamalPage — قائمة (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
 - [x] `/family` — FamilyModePage — قائمة
 - [x] `/fiqh` — FiqhPage — قائمة
 - [x] `/fiqh-qawaid` — FiqhQawaidPage — قائمة
 - [x] `/fiqh/books/:bookId` — FiqhBookPage — تفاصيل
 - [x] `/fiqh/books/:bookId/chapters/:chapterId` — FiqhChapterPage — تفاصيل
-- [ ] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل
+- [x] `/fiqh/books/:bookId/lessons/:lessonId` — FiqhLessonPage — تفاصيل (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
 - [x] `/fiqh/topics/:topicId` — FiqhTopicPage — تفاصيل
 - [x] `/fiqh/usul` — FiqhUsulPage — قائمة
-- [ ] `/hajj` — HajjPage — قائمة
+- [x] `/hajj` — HajjPage — قائمة (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
 - [x] `/janaza` — JanazaPage — قائمة
 - [x] `/jumuah` — JumuahPage — قائمة
 - [x] `/madhahib` — MadhahibPage — قائمة
 - [x] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
 - [x] `/maqasid-sharia` — MaqasidShariaPage — قائمة
-- [ ] `/mawarith` — MawarithPage — قائمة
+- [x] `/mawarith` — MawarithPage — قائمة (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
 - [ ] `/mawarith/calculator` — MawarithCalculatorPage — قائمة
 - [x] `/nikah` — NikahPage — قائمة
 - [x] `/prayer-ranks` — PrayerRanksPage — قائمة
@@ -167,8 +167,8 @@
 - [x] `/riba` — RibaPage — قائمة
 - [x] `/ruqya` — RuqyaPage — قائمة
 - [x] `/sadaqa` — SadaqaPage — قائمة
-- [ ] `/salah-guide` — SalahGuidePage — قائمة
-- [ ] `/sawm` — SawmPage — قائمة
+- [x] `/salah-guide` — SalahGuidePage — قائمة (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
+- [x] `/sawm` — SawmPage — قائمة (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
 - [x] `/sins-and-rights` — SinsAndRightsPage — قائمة
 - [x] `/sins-and-rights/:slug` — SinsAndRightsDetailPage — تفاصيل
 - [x] `/sujood-sahw` — SujoodSahwPage — قائمة
@@ -178,7 +178,7 @@
 - [x] `/udhiya` — UdhiyaPage — قائمة
 - [x] `/waqf` — WaqfPage — قائمة
 - [x] `/worship` — WorshipPage — قائمة
-- [ ] `/zakat` — ZakatPage — قائمة
+- [x] `/zakat` — ZakatPage — قائمة (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
 
 ## القرآن — 37 (المسؤول: ن3)
 

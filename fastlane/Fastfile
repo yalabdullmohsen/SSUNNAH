@@ -149,8 +149,14 @@ platform :ios do
     end
   end
 
+  desc "يعيد توليد ios-native/SunnahApp.xcodeproj من الملفات (الأمر الوحيد بعد إضافة/حذف أي .swift)"
+  lane :native_xcodeproj do
+    sh("ruby #{File.join(PLATFORM_ROOT, 'ios-native/scripts/generate-xcodeproj.rb')}") # gem xcodeproj يأتي مع fastlane (bundle exec)
+  end
+
   desc "SwiftUI الأصلي (SunnahApp): بناء + توقيع + TestFlight داخلي — محليًا فقط (1.2.0 / بناء ≥100)"
   lane :native_beta do
+    native_xcodeproj # مشروع قديم = «cannot find … in scope» عند ملف جديد غير مُدرج
     key_path = asc_key_file # PATH أو Base64 (يُحذف المؤقت عند الخروج)
     api_key = app_store_connect_api_key(
       key_id: ENV.fetch("APP_STORE_CONNECT_API_KEY_ID"),
