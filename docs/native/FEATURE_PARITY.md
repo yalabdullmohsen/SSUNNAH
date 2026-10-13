@@ -72,7 +72,7 @@
 - [x] `/flashcards` — FlashCardsPage — قائمة
 - [x] `/institutions` — InstitutionsPage — قائمة
 - [x] `/knowledge-graph` — KnowledgeGraphPage — قائمة
-- [ ] `/knowledge/:section` — KnowledgeSectionPage — تفاصيل
+- [x] `/knowledge/:section` — KnowledgeSectionPage — تفاصيل (لقطتان فاتح/داكن؛ صُدِّر public/data/knowledge المتحقَّق فقط فصارت العيّنة intro-islam تعرض 16 موضوعًا بدل الفراغ)
 - [x] `/kuwait-lessons` — KuwaitLessonsPage — قائمة
 - [x] `/lessons` — LessonsPage — قائمة
 - [x] `/lessons/:id` — LessonDetailPage — تفاصيل
@@ -89,12 +89,12 @@
 
 ## السيرة والتاريخ والأعلام — 18 (المسؤول: ن2)
 
-- [ ] `/fikr-waqia` — FikrWaqiaPage — قائمة
+- [x] `/fikr-waqia` — FikrWaqiaPage — قائمة (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
 - [x] `/islamic-landmarks` — IslamicLandmarksPage — قائمة
-- [ ] `/islamic-landmarks/:id` — IslamicLandmarkDetailPage — تفاصيل
-- [ ] `/islamic-landmarks/map` — IslamicLandmarksMapExplorerPage — شبكة
+- [x] `/islamic-landmarks/:id` — IslamicLandmarkDetailPage — تفاصيل (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/islamic-landmarks/map` — IslamicLandmarksMapExplorerPage — شبكة (لقطتان فاتح/داكن؛ أُصلح التقاط المولَّد للمسار كتفصيل id=map فصار يعرض شبكة المعالم)
 - [x] `/nations` — NationsPage — قائمة
-- [ ] `/nations/:slug` — NationDetailPage — تفاصيل
+- [x] `/nations/:slug` — NationDetailPage — تفاصيل (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
 - [x] `/occasions` — OccasionsPage — قائمة
 - [x] `/occasions-lessons` — OccasionsLessonsHubPage — أقسام
 - [x] `/prophets` — ProphetStoriesPage — مقال
@@ -103,10 +103,10 @@
 - [x] `/seerah` — SeerahPage — قائمة
 - [x] `/shamael` — ShimaelPage — قائمة
 - [x] `/stories` — IslamicStoriesPage — مقال
-- [ ] `/tarikh-islami` — TarikhIslamiPage — قائمة
-- [ ] `/tarikh-islami/:id` — TarikhIslamiDetailPage — تفاصيل
-- [ ] `/teachers` — TeachersIndexPage — أقسام
-- [ ] `/teachers/:slug` — TeacherDetailPage — تفاصيل
+- [x] `/tarikh-islami` — TarikhIslamiPage — قائمة (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/tarikh-islami/:id` — TarikhIslamiDetailPage — تفاصيل (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/teachers` — TeachersIndexPage — أقسام (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/teachers/:slug` — TeacherDetailPage — تفاصيل (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
 
 ## العقيدة والتزكية — 27 (المسؤول: ن2)
 
@@ -233,13 +233,13 @@
 - [x] `/mawsuaat` — MawsuaatPage — قائمة
 - [x] `/methodology` — MethodologyPage — قائمة
 - [x] `/mind-map` — MindMapPage — شبكة
-- [ ] `/more` — MorePage — قائمة
-- [ ] `/scientific-announcements/:id` — ScientificAnnouncementDetailPage — تفاصيل
-- [ ] `/search` — SearchPage — بحث
-- [ ] `/sections` — SectionsPage — أقسام
-- [ ] `/sitemap` — SiteMapPage — شبكة
-- [ ] `/sources` — SourcesDirectoryPage — قائمة
-- [ ] `/sources/:id` — SourceDetailPage — تفاصيل
+- [x] `/more` — MorePage — قائمة (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/scientific-announcements/:id` — ScientificAnnouncementDetailPage — تفاصيل (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/search` — SearchPage — بحث (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/sections` — SectionsPage — أقسام (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/sitemap` — SiteMapPage — شبكة (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/sources` — SourcesDirectoryPage — قائمة (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
+- [x] `/sources/:id` — SourceDetailPage — تفاصيل (لقطتان فاتح/داكن على n3-quran بلا «قيد التوثيق» أو فراغ)
 - [x] `/terms` — TermsPage — قائمة
 
 ## المحذوف من الجرد (213)

@@ -7,79 +7,79 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02EBF2EFD4D74C2F812CB9E0 /* SupabaseAuthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C572B0B4353F137639D1EE4 /* SupabaseAuthAdapter.swift */; };
-		08A92BAEDE3568BFEDAB0A53 /* SunnahPrayerWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BF2DA240C430E2EE67210B /* SunnahPrayerWidgetCatalog.swift */; };
-		09CB575F0A38D136DA516CA2 /* PrayerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC05629E1E7FD2F8985FDC54 /* PrayerWidgetBundle.swift */; };
-		0DCCFEF6BD002634E8D51B54 /* SunnahBrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C49FF618F7E7840491D66 /* SunnahBrandColors.swift */; };
-		1025F01139368E6769E7732B /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15CCEA589B69707763D3432 /* KeychainStore.swift */; };
-		181894D24B5C84E04BB5621C /* PlaybackSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA922B56897F27278077DE76 /* PlaybackSessionController.swift */; };
-		18BDF4D6535F9CEE94D50EED /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EED2CC0276BF83413950EA /* SunnahSharedData.swift */; };
-		1C889241807102C62BD09474 /* SunnahStandBySupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45189DB60D01C2580E5FA0 /* SunnahStandBySupport.swift */; };
-		25B00ECD97A44B3B2207B3B9 /* OfflineAudioStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC418E6050CA8F7EB5DC99A /* OfflineAudioStore.swift */; };
-		26CED8696530041DCFA5CD44 /* PrayerWidgetPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D83085EEAA50CC9E4EADD13 /* PrayerWidgetPublisher.swift */; };
-		29A91471FCE4FFB2F829370C /* PrayerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2DA44D1F0E9247DAA9971D /* PrayerActivityAttributes.swift */; };
-		323EBB6AA78B96A5EB5A3D85 /* KeychainAuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC950A233D2E17E039F5DF42 /* KeychainAuthStore.swift */; };
-		3C8E26F8EC2DEB34338F9261 /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD755387FD21820621A473E /* SunnahPrayerDeepLink.swift */; };
-		3D5A24B5CDDF9828E2A15D0B /* Almarai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF14B79C8328D98220CBA0BB /* Almarai-Regular.ttf */; };
-		483D95CDEBC66CA9345F396F /* SunnahWidgetPreviewFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4633C16976054CDA79321031 /* SunnahWidgetPreviewFixtures.swift */; };
-		4B84FD4371F5BD5D86E85723 /* SunnahQuranMushafWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5816EB2D667047B65E229B95 /* SunnahQuranMushafWidgetCatalog.swift */; };
-		4D2BADC6603D5564A046582C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3322435BEB162E75C62F1F /* Foundation.framework */; };
-		51E51D95E631BCDFEA702B76 /* SunnahWidgetKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5410171AB1CEA6BA90BBFECF /* SunnahWidgetKit */; };
-		5DACBB2C3CC3E0BAE5999FEA /* SunnahWidgetRefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6558B31DFA14AECC86E7C11 /* SunnahWidgetRefreshCoordinator.swift */; };
-		6599BB4D99A985EB51F408B8 /* SharedDataPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866949BA411C9074FC6F518 /* SharedDataPublisher.swift */; };
-		6BAAC9E090107CFE11F88B83 /* OfflineAudioAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CF090D5F5AC3E4BB837339 /* OfflineAudioAdapter.swift */; };
-		6D4866708B5F9ADDF7A2CCBE /* SunnahWidgetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F3A3C7E4A8C5EA7BAA5A06 /* SunnahWidgetIntents.swift */; };
-		6EFE58B950B2D23C02DA6699 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B33277A4CF0C9AB35DF9AA8A /* PrivacyInfo.xcprivacy */; };
-		7D82A329824B76EA7449C4E0 /* Amiri-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78E3B93F62A2A50C64144AA2 /* Amiri-Bold.ttf */; };
-		7EEE77B84F31EC2B658D3B2D /* SunnahWidgetEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167B16B08D920317D9160086 /* SunnahWidgetEnvelope.swift */; };
-		82DC2534809984DAD0AC7829 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = B1702B49AABECC9992964540 /* Sounds */; };
-		8406EE0AAA36EDF4B80C672D /* SunnahWidgetRefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D75935C21A13FF170CDA5 /* SunnahWidgetRefreshCoordinator.swift */; };
-		850406ECBA193CE49F883FC3 /* SunnahWidgetEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D51E9CC503F710676A0A5 /* SunnahWidgetEnvelope.swift */; };
-		881CB7DD09AC9CFBE78AE48F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B3322435BEB162E75C62F1F /* Foundation.framework */; };
-		88EDB66C2670FBD7B4B3E240 /* SunnahCustomWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F082763C0F98DEA57004048 /* SunnahCustomWidgetCatalog.swift */; };
-		894EDC644314A406C68E1782 /* SunnahWidgetPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1851B51747354891AAE1BF6 /* SunnahWidgetPlatform.swift */; };
-		8B918B99A2687F77E411A1D0 /* SunnahBrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF726A0505149D1E1F945C /* SunnahBrandColors.swift */; };
-		9D9E9001CDDE18D7988BBAE7 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 6C876C346C9E4D4D562991D6 /* Data */; };
-		A7A1CB4764661F63C2B162F2 /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4553D6AA9D1196D45DD09F4 /* SunnahSharedData.swift */; };
-		A9A99965DC4427FDA84A3C8D /* SunnahWidgetAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6904D46808D2BBD1B68F93 /* SunnahWidgetAdapters.swift */; };
-		AD291A2657813CE0A2BE82DF /* SunnahCalendarWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2870F9D8F6481D275FC6105 /* SunnahCalendarWidgetCatalog.swift */; };
-		B5F8D647657ACE38C04EAED0 /* SunnahApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2FDD00CC1061AB3F3A4A7B /* SunnahApp.swift */; };
-		B7E0EE8590D01146DD486676 /* Almarai-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74D765CBE556DD9BED846918 /* Almarai-ExtraBold.ttf */; };
-		BC6333D2CBCA5526B0696BA0 /* Amiri-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05A1EF8BFE9340D22D0AE86B /* Amiri-Regular.ttf */; };
-		BE68554D79FE0D6B365BCACA /* PrayerTimesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29437A81DA130E1DE783EC57 /* PrayerTimesWidget.swift */; };
-		C392E2BAA7DC35FCB6F03808 /* LiveActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAAFC1ECB2F4B6048DF5A5C /* LiveActivityAdapter.swift */; };
-		C833D03E9E32B9A66F8CF407 /* PrayerWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C189071C30148B87A794EA /* PrayerWidgetEntry.swift */; };
-		CCB63DD3CA494857594F94EF /* PlaybackSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86E09D4F10CAABC5124E196 /* PlaybackSessionAdapter.swift */; };
-		CF29E5D6F40D6A490DDBBE18 /* PrayerLiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D2A5989B4DC27DC63D0FF /* PrayerLiveActivityController.swift */; };
-		D7988B8EB555C8A5F0814D2E /* SunnahNative in Frameworks */ = {isa = PBXBuildFile; productRef = CFBA4EEA97B9FCE450DCE680 /* SunnahNative */; };
-		D995BA103456EC26E611B6AE /* PrayerWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 226EDE4F3478397A6041C116 /* PrayerWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D9BA471D99C6EF01DAEFF949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9CB42DDCDC25E89EE961E8 /* Assets.xcassets */; };
-		DC7215BA2AA3472E9027DB0A /* SunnahAdhkarWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5874E00A1C0C2E51C1813 /* SunnahAdhkarWidgetCatalog.swift */; };
-		E2558529788973800AA4AA3D /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8225447DF7DD6A3ADF5BCD7F /* SunnahPrayerDeepLink.swift */; };
-		E458BF653DD6FCA84F5E8598 /* SunnahContentExperienceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA93AFFA698080D1383688C /* SunnahContentExperienceCatalog.swift */; };
-		F24D10D47BCED504E7AC3887 /* PrayerWidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2573D4AEAE7A2DD10E3AC1E3 /* PrayerWidgetViews.swift */; };
-		F9C1BC9F60FA52A27C9EE75E /* SunnahHomeWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3B5CC3064AE757D6B524A /* SunnahHomeWidgetCatalog.swift */; };
-		FF906241C79B9FA1E5FC440C /* Almarai-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6313E160DE6FD9E430B15144 /* Almarai-Bold.ttf */; };
+		02594EC6FA13A8F2E34F7EC8 /* SunnahNative in Frameworks */ = {isa = PBXBuildFile; productRef = F4C4EE40AC70AC1F76BBDDE3 /* SunnahNative */; };
+		05DDBE3A2ECFE7C058891199 /* PrayerLiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3521D7F0D3DCDE2F34A64258 /* PrayerLiveActivityController.swift */; };
+		0668E84B242FAA632C38973A /* SunnahAdhkarWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B19C4A2D5E55010E390EF51 /* SunnahAdhkarWidgetCatalog.swift */; };
+		07BDE404EBCC3AC7C5DBB096 /* SunnahBrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A3B54F5FFACD92404221B4 /* SunnahBrandColors.swift */; };
+		0B515EFCB00C9E6504265499 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E81F7DEC696F83C212E256 /* Foundation.framework */; };
+		0FA8B1B922A2568ACF93CDEB /* SunnahContentExperienceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21178A986459CC3020DBEA6B /* SunnahContentExperienceCatalog.swift */; };
+		0FF044C8DBE286B82550C5D2 /* SunnahWidgetAdapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D4D07ACCBBA581B8C1B52B /* SunnahWidgetAdapters.swift */; };
+		185BE899FA58C6389F21BDF3 /* SunnahWidgetPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD9BF2E16D88FE83C6696F9 /* SunnahWidgetPlatform.swift */; };
+		19575D070215B06B019303A5 /* PlaybackSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362E6BD8984E8E19052B7A12 /* PlaybackSessionController.swift */; };
+		1BEB7FEF28597A69C1D54BA8 /* SunnahHomeWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC013DC8E8DDE925C6D4BE4 /* SunnahHomeWidgetCatalog.swift */; };
+		1F070568A3CDFE6951054167 /* PrayerWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC6D72EDC63C7B53EA7C415 /* PrayerWidgetEntry.swift */; };
+		27164C3A719865F99958A3AB /* SunnahWidgetRefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868252084860AD2EABB1615D /* SunnahWidgetRefreshCoordinator.swift */; };
+		2A0504E37712BA352DD2A0A0 /* SunnahPrayerWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02908D8607D6F94F0D657B1E /* SunnahPrayerWidgetCatalog.swift */; };
+		2C5F4E153316FBD2BAAD9331 /* Amiri-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D3F6A1789222DC22CC61C67 /* Amiri-Regular.ttf */; };
+		2CED5DE3BAF1F4964673D2D5 /* PrayerWidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C4B7709395841FB14C8470 /* PrayerWidgetViews.swift */; };
+		30B4A5D0505D591A0B97000D /* PrayerWidgetPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9703737D904A4CEED9CCA5B8 /* PrayerWidgetPublisher.swift */; };
+		34B1F0EEDD418D4CD0207D24 /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A5D154F8FDD95C4E75814C /* SunnahPrayerDeepLink.swift */; };
+		393411297A308C2896E178FF /* Almarai-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 228437D69C365E0D0792E80E /* Almarai-ExtraBold.ttf */; };
+		40FACCF576A91C06F08E6A1C /* LiveActivityAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD827619CBB7CBDDB0225DF4 /* LiveActivityAdapter.swift */; };
+		44AC106DBFAFDEEC89C64ECC /* SunnahWidgetRefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BF7A7FF7C119B541A84F46 /* SunnahWidgetRefreshCoordinator.swift */; };
+		48999C5D9A33332B7A97C8A2 /* PrayerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142164271464ECD96FBABD96 /* PrayerWidgetBundle.swift */; };
+		4CE67B8DF569EA03681BD118 /* OfflineAudioStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B68B98598F28490796E3A6D /* OfflineAudioStore.swift */; };
+		525295E46C71691C4250C70F /* KeychainAuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CD955FBD1187D538B8AD0D /* KeychainAuthStore.swift */; };
+		5C6BBE48BD61D2422327FB0A /* Almarai-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45047590AB0BDDAD3AB7792D /* Almarai-Bold.ttf */; };
+		67ADCD5D2876791C57147F00 /* SunnahApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF44845A1741F39AFD9B3B84 /* SunnahApp.swift */; };
+		79E865D0B825B497F0622AE3 /* Amiri-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 337C2DA8EFEE302F2A824978 /* Amiri-Bold.ttf */; };
+		886C12010D1D266ADADCE604 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 297B2220A3005A7341DE4B41 /* Sounds */; };
+		913A065AB9F2C365F09CCDFC /* SunnahWidgetPreviewFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611E0B81A570295F185BEFA /* SunnahWidgetPreviewFixtures.swift */; };
+		92CAF0393B311927135BB172 /* Almarai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F72EB263019699D8FC060B29 /* Almarai-Regular.ttf */; };
+		9602E2B3B0AC534F8519509F /* SupabaseAuthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D880898012806A1F9605BB /* SupabaseAuthAdapter.swift */; };
+		A11CD8F31528854C3D49CB66 /* PrayerTimesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D791F188982A238F4713E /* PrayerTimesWidget.swift */; };
+		ABF9A637BE8F87F912D7F69A /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46266042C37A66DB82EFB16 /* KeychainStore.swift */; };
+		BA54538D63E67C5C627DBD1C /* SunnahBrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0811D9A40546E484D0BC528B /* SunnahBrandColors.swift */; };
+		BAAEB6AD6BB051E289208733 /* SunnahWidgetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1EB6F29196D5DB479E80E6 /* SunnahWidgetIntents.swift */; };
+		CDE93CFE40F4ACFD2052A5CF /* SunnahStandBySupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90E1FF22201BC9E7E3560AF /* SunnahStandBySupport.swift */; };
+		D151CEC9E77D00A4ED7AA3CA /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65D662604ACC02FD651CBF /* SunnahSharedData.swift */; };
+		D17596589B5F440293F2AA5A /* PlaybackSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6812BCD04C4E9ECE4967DFA0 /* PlaybackSessionAdapter.swift */; };
+		D2E7BFCD34C90A2865EE13DE /* SharedDataPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB3C9B10F44885E252403D /* SharedDataPublisher.swift */; };
+		D5FE92557536BFD0007F1062 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E1B10640311A712DBFC50EBB /* PrivacyInfo.xcprivacy */; };
+		D84B0CCA74DAFD5C16098F2C /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 399DCF1F3837274B3F5A8154 /* Data */; };
+		D9B72DDDEA01CB6A19AD1A4E /* PrayerActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAF080F47985A7494285D9B /* PrayerActivityAttributes.swift */; };
+		DCD02F641F1F86310864A048 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E81F7DEC696F83C212E256 /* Foundation.framework */; };
+		DD86FC06F900039BB78A659B /* SunnahWidgetKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7CCA1F6EE9B9E86EF53D4723 /* SunnahWidgetKit */; };
+		E60A8DEA8F65F95CFF1E20D3 /* PrayerWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C0270F9F3C0AFD16914F3119 /* PrayerWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E7F7E46B300350B577C6AA34 /* SunnahCalendarWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019C7025AE30B42065A3DBFD /* SunnahCalendarWidgetCatalog.swift */; };
+		E80A106593C239D29EE71392 /* SunnahPrayerDeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22FBA95530032F44E4CE6B0 /* SunnahPrayerDeepLink.swift */; };
+		E9339D5A7B765929363930CE /* SunnahWidgetEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D768DBB32B1EF274B51B5E0 /* SunnahWidgetEnvelope.swift */; };
+		E99D59D238A9A21BD83EE27A /* SunnahQuranMushafWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E95CC19BEB8B40ED663410E /* SunnahQuranMushafWidgetCatalog.swift */; };
+		EE25C160ED022B6C420FDBCD /* SunnahWidgetEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4260A514594DB287DDB9720 /* SunnahWidgetEnvelope.swift */; };
+		F0B22DA51674747AB8A806E1 /* OfflineAudioAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B38C8AD73861603C410F445 /* OfflineAudioAdapter.swift */; };
+		F462648847B382288F438655 /* SunnahCustomWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CB3266C93212AAE3F4E1F6 /* SunnahCustomWidgetCatalog.swift */; };
+		FDEC9084184DF72F799A6EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CFBB8DC44EF6CD05C46CF77 /* Assets.xcassets */; };
+		FED9A45A04DCDE01F07FA68B /* SunnahSharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5179F6F0503D5CF405BC94EF /* SunnahSharedData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9F6D93FDB0B0C46F970EF8E8 /* PBXContainerItemProxy */ = {
+		8969F2078F145DF7DBDCF0E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 975F2D893F5001F2AF1F9A0C /* Project object */;
+			containerPortal = 953980DCF64B3D6C4BA2EC3E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 82A00FAEE7B7ECF26501C754;
+			remoteGlobalIDString = 32A58C692D807A382BDD6F6E;
 			remoteInfo = PrayerWidget;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		07B946A7A338BC1516F9B00D /* Embed Foundation Extensions */ = {
+		E161576BDD04C242FACB0B21 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D995BA103456EC26E611B6AE /* PrayerWidget.appex in Embed Foundation Extensions */,
+				E60A8DEA8F65F95CFF1E20D3 /* PrayerWidget.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,237 +87,214 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		05A1EF8BFE9340D22D0AE86B /* Amiri-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Amiri-Regular.ttf"; path = "Resources/Fonts/Amiri-Regular.ttf"; sourceTree = "<group>"; };
-		07C189071C30148B87A794EA /* PrayerWidgetEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerWidgetEntry.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidgetEntry.swift; sourceTree = SOURCE_ROOT; };
-		0A4D51E9CC503F710676A0A5 /* SunnahWidgetEnvelope.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetEnvelope.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahWidgetEnvelope.swift; sourceTree = SOURCE_ROOT; };
-		0F0D75935C21A13FF170CDA5 /* SunnahWidgetRefreshCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetRefreshCoordinator.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahWidgetRefreshCoordinator.swift; sourceTree = SOURCE_ROOT; };
-		167B16B08D920317D9160086 /* SunnahWidgetEnvelope.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetEnvelope.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahWidgetEnvelope.swift; sourceTree = SOURCE_ROOT; };
-		1C572B0B4353F137639D1EE4 /* SupabaseAuthAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseAuthAdapter.swift; sourceTree = "<group>"; };
-		226EDE4F3478397A6041C116 /* PrayerWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrayerWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		23BF2DA240C430E2EE67210B /* SunnahPrayerWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahPrayerWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahPrayerWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
-		2573D4AEAE7A2DD10E3AC1E3 /* PrayerWidgetViews.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerWidgetViews.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidgetViews.swift; sourceTree = SOURCE_ROOT; };
-		2866949BA411C9074FC6F518 /* SharedDataPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SharedDataPublisher.swift; sourceTree = "<group>"; };
-		29437A81DA130E1DE783EC57 /* PrayerTimesWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerTimesWidget.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerTimesWidget.swift; sourceTree = SOURCE_ROOT; };
-		2F2FDD00CC1061AB3F3A4A7B /* SunnahApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunnahApp.swift; sourceTree = "<group>"; };
-		386D14618A1C12A11EEF7EF3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B45189DB60D01C2580E5FA0 /* SunnahStandBySupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahStandBySupport.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahStandBySupport.swift; sourceTree = SOURCE_ROOT; };
-		3DD5874E00A1C0C2E51C1813 /* SunnahAdhkarWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahAdhkarWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahAdhkarWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
-		3F2DA44D1F0E9247DAA9971D /* PrayerActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerActivityAttributes.swift; path = ../artifacts/majalis/ios/App/App/PrayerActivityAttributes.swift; sourceTree = SOURCE_ROOT; };
-		4633C16976054CDA79321031 /* SunnahWidgetPreviewFixtures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetPreviewFixtures.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetPreviewFixtures.swift; sourceTree = SOURCE_ROOT; };
-		4FC418E6050CA8F7EB5DC99A /* OfflineAudioStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OfflineAudioStore.swift; path = ../artifacts/majalis/ios/App/Shared/OfflineAudioStore.swift; sourceTree = SOURCE_ROOT; };
-		5816EB2D667047B65E229B95 /* SunnahQuranMushafWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahQuranMushafWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahQuranMushafWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
-		5D83085EEAA50CC9E4EADD13 /* PrayerWidgetPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrayerWidgetPublisher.swift; sourceTree = "<group>"; };
-		5EA93AFFA698080D1383688C /* SunnahContentExperienceCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahContentExperienceCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahContentExperienceCatalog.swift; sourceTree = SOURCE_ROOT; };
-		6313E160DE6FD9E430B15144 /* Almarai-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Almarai-Bold.ttf"; path = "Resources/Fonts/Almarai-Bold.ttf"; sourceTree = "<group>"; };
-		6521BF09AC3C53C4D17E79F7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../artifacts/majalis/ios/App/PrayerWidget/Info.plist; sourceTree = SOURCE_ROOT; };
-		6BB3B5CC3064AE757D6B524A /* SunnahHomeWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahHomeWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahHomeWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
-		6C876C346C9E4D4D562991D6 /* Data */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = Data; sourceTree = SOURCE_ROOT; };
-		712D2A5989B4DC27DC63D0FF /* PrayerLiveActivityController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerLiveActivityController.swift; path = ../artifacts/majalis/ios/App/App/PrayerLiveActivityController.swift; sourceTree = SOURCE_ROOT; };
-		73CF090D5F5AC3E4BB837339 /* OfflineAudioAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OfflineAudioAdapter.swift; sourceTree = "<group>"; };
-		74D765CBE556DD9BED846918 /* Almarai-ExtraBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Almarai-ExtraBold.ttf"; path = "Resources/Fonts/Almarai-ExtraBold.ttf"; sourceTree = "<group>"; };
-		78E3B93F62A2A50C64144AA2 /* Amiri-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Amiri-Bold.ttf"; path = "Resources/Fonts/Amiri-Bold.ttf"; sourceTree = "<group>"; };
-		7B3322435BEB162E75C62F1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8225447DF7DD6A3ADF5BCD7F /* SunnahPrayerDeepLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahPrayerDeepLink.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahPrayerDeepLink.swift; sourceTree = SOURCE_ROOT; };
-		8BD755387FD21820621A473E /* SunnahPrayerDeepLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahPrayerDeepLink.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahPrayerDeepLink.swift; sourceTree = SOURCE_ROOT; };
-		8F082763C0F98DEA57004048 /* SunnahCustomWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahCustomWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahCustomWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
-		A1851B51747354891AAE1BF6 /* SunnahWidgetPlatform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetPlatform.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetPlatform.swift; sourceTree = SOURCE_ROOT; };
-		AC2C49FF618F7E7840491D66 /* SunnahBrandColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahBrandColors.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahBrandColors.swift; sourceTree = SOURCE_ROOT; };
-		AF6904D46808D2BBD1B68F93 /* SunnahWidgetAdapters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetAdapters.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetAdapters.swift; sourceTree = SOURCE_ROOT; };
-		B1702B49AABECC9992964540 /* Sounds */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = Sounds; sourceTree = SOURCE_ROOT; };
-		B33277A4CF0C9AB35DF9AA8A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		B6558B31DFA14AECC86E7C11 /* SunnahWidgetRefreshCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetRefreshCoordinator.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahWidgetRefreshCoordinator.swift; sourceTree = SOURCE_ROOT; };
-		BC950A233D2E17E039F5DF42 /* KeychainAuthStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeychainAuthStore.swift; sourceTree = "<group>"; };
-		C1D723F31DF641805C3BFE41 /* PrayerWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; name = PrayerWidget.entitlements; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidget.entitlements; sourceTree = SOURCE_ROOT; };
-		C3BE3D593CB47484FFCFCAC0 /* SunnahApp.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = SunnahApp.entitlements; sourceTree = "<group>"; };
-		C4553D6AA9D1196D45DD09F4 /* SunnahSharedData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahSharedData.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahSharedData.swift; sourceTree = SOURCE_ROOT; };
-		CE9CB42DDCDC25E89EE961E8 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
-		CFAF726A0505149D1E1F945C /* SunnahBrandColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahBrandColors.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahBrandColors.swift; sourceTree = SOURCE_ROOT; };
-		D3EED2CC0276BF83413950EA /* SunnahSharedData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahSharedData.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahSharedData.swift; sourceTree = SOURCE_ROOT; };
-		D6F3A3C7E4A8C5EA7BAA5A06 /* SunnahWidgetIntents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetIntents.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetIntents.swift; sourceTree = SOURCE_ROOT; };
-		D86E09D4F10CAABC5124E196 /* PlaybackSessionAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlaybackSessionAdapter.swift; sourceTree = "<group>"; };
-		DC05629E1E7FD2F8985FDC54 /* PrayerWidgetBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerWidgetBundle.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidgetBundle.swift; sourceTree = SOURCE_ROOT; };
-		E15CCEA589B69707763D3432 /* KeychainStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainStore.swift; path = ../artifacts/majalis/ios/App/App/Services/KeychainStore.swift; sourceTree = SOURCE_ROOT; };
-		E2870F9D8F6481D275FC6105 /* SunnahCalendarWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahCalendarWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahCalendarWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
-		EF14B79C8328D98220CBA0BB /* Almarai-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Almarai-Regular.ttf"; path = "Resources/Fonts/Almarai-Regular.ttf"; sourceTree = "<group>"; };
-		F81C977B7988F87CC9C643FD /* SunnahApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunnahApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA922B56897F27278077DE76 /* PlaybackSessionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlaybackSessionController.swift; path = ../artifacts/majalis/ios/App/Shared/PlaybackSessionController.swift; sourceTree = SOURCE_ROOT; };
-		FBAAFC1ECB2F4B6048DF5A5C /* LiveActivityAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LiveActivityAdapter.swift; sourceTree = "<group>"; };
+		019C7025AE30B42065A3DBFD /* SunnahCalendarWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahCalendarWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahCalendarWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
+		02908D8607D6F94F0D657B1E /* SunnahPrayerWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahPrayerWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahPrayerWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
+		07A3B54F5FFACD92404221B4 /* SunnahBrandColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahBrandColors.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahBrandColors.swift; sourceTree = SOURCE_ROOT; };
+		0811D9A40546E484D0BC528B /* SunnahBrandColors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahBrandColors.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahBrandColors.swift; sourceTree = SOURCE_ROOT; };
+		0B68B98598F28490796E3A6D /* OfflineAudioStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OfflineAudioStore.swift; path = ../artifacts/majalis/ios/App/Shared/OfflineAudioStore.swift; sourceTree = SOURCE_ROOT; };
+		142164271464ECD96FBABD96 /* PrayerWidgetBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerWidgetBundle.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidgetBundle.swift; sourceTree = SOURCE_ROOT; };
+		18E81F7DEC696F83C212E256 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		1B19C4A2D5E55010E390EF51 /* SunnahAdhkarWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahAdhkarWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahAdhkarWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
+		1B38C8AD73861603C410F445 /* OfflineAudioAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OfflineAudioAdapter.swift; sourceTree = "<group>"; };
+		21178A986459CC3020DBEA6B /* SunnahContentExperienceCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahContentExperienceCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahContentExperienceCatalog.swift; sourceTree = SOURCE_ROOT; };
+		228437D69C365E0D0792E80E /* Almarai-ExtraBold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Almarai-ExtraBold.ttf"; path = "Resources/Fonts/Almarai-ExtraBold.ttf"; sourceTree = "<group>"; };
+		297B2220A3005A7341DE4B41 /* Sounds */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = Sounds; sourceTree = SOURCE_ROOT; };
+		2D768DBB32B1EF274B51B5E0 /* SunnahWidgetEnvelope.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetEnvelope.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahWidgetEnvelope.swift; sourceTree = SOURCE_ROOT; };
+		337C2DA8EFEE302F2A824978 /* Amiri-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Amiri-Bold.ttf"; path = "Resources/Fonts/Amiri-Bold.ttf"; sourceTree = "<group>"; };
+		3521D7F0D3DCDE2F34A64258 /* PrayerLiveActivityController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerLiveActivityController.swift; path = ../artifacts/majalis/ios/App/App/PrayerLiveActivityController.swift; sourceTree = SOURCE_ROOT; };
+		362E6BD8984E8E19052B7A12 /* PlaybackSessionController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlaybackSessionController.swift; path = ../artifacts/majalis/ios/App/Shared/PlaybackSessionController.swift; sourceTree = SOURCE_ROOT; };
+		399DCF1F3837274B3F5A8154 /* Data */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = Data; sourceTree = SOURCE_ROOT; };
+		39D4D07ACCBBA581B8C1B52B /* SunnahWidgetAdapters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetAdapters.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetAdapters.swift; sourceTree = SOURCE_ROOT; };
+		45047590AB0BDDAD3AB7792D /* Almarai-Bold.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Almarai-Bold.ttf"; path = "Resources/Fonts/Almarai-Bold.ttf"; sourceTree = "<group>"; };
+		4A65D662604ACC02FD651CBF /* SunnahSharedData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahSharedData.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahSharedData.swift; sourceTree = SOURCE_ROOT; };
+		5179F6F0503D5CF405BC94EF /* SunnahSharedData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahSharedData.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahSharedData.swift; sourceTree = SOURCE_ROOT; };
+		56BDA34C607F57EEDA6882E6 /* SunnahApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunnahApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DD9BF2E16D88FE83C6696F9 /* SunnahWidgetPlatform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetPlatform.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetPlatform.swift; sourceTree = SOURCE_ROOT; };
+		5E51D46B61082821E7E14E99 /* SunnahApp.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = SunnahApp.entitlements; sourceTree = "<group>"; };
+		6812BCD04C4E9ECE4967DFA0 /* PlaybackSessionAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlaybackSessionAdapter.swift; sourceTree = "<group>"; };
+		6AC013DC8E8DDE925C6D4BE4 /* SunnahHomeWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahHomeWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahHomeWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
+		6B1EB6F29196D5DB479E80E6 /* SunnahWidgetIntents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetIntents.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetIntents.swift; sourceTree = SOURCE_ROOT; };
+		6CC6D72EDC63C7B53EA7C415 /* PrayerWidgetEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerWidgetEntry.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidgetEntry.swift; sourceTree = SOURCE_ROOT; };
+		7AAF080F47985A7494285D9B /* PrayerActivityAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerActivityAttributes.swift; path = ../artifacts/majalis/ios/App/App/PrayerActivityAttributes.swift; sourceTree = SOURCE_ROOT; };
+		7E95CC19BEB8B40ED663410E /* SunnahQuranMushafWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahQuranMushafWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahQuranMushafWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
+		84C4B7709395841FB14C8470 /* PrayerWidgetViews.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerWidgetViews.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidgetViews.swift; sourceTree = SOURCE_ROOT; };
+		8611E0B81A570295F185BEFA /* SunnahWidgetPreviewFixtures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetPreviewFixtures.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetPreviewFixtures.swift; sourceTree = SOURCE_ROOT; };
+		868252084860AD2EABB1615D /* SunnahWidgetRefreshCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetRefreshCoordinator.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahWidgetRefreshCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		89C912623558BA4C12A2F9BE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91CD955FBD1187D538B8AD0D /* KeychainAuthStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KeychainAuthStore.swift; sourceTree = "<group>"; };
+		9703737D904A4CEED9CCA5B8 /* PrayerWidgetPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PrayerWidgetPublisher.swift; sourceTree = "<group>"; };
+		9CFBB8DC44EF6CD05C46CF77 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		9D3F6A1789222DC22CC61C67 /* Amiri-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Amiri-Regular.ttf"; path = "Resources/Fonts/Amiri-Regular.ttf"; sourceTree = "<group>"; };
+		A46A5F0A94CC58B4BB28AB72 /* PrayerWidget.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; name = PrayerWidget.entitlements; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidget.entitlements; sourceTree = SOURCE_ROOT; };
+		A90E1FF22201BC9E7E3560AF /* SunnahStandBySupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahStandBySupport.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahStandBySupport.swift; sourceTree = SOURCE_ROOT; };
+		AD827619CBB7CBDDB0225DF4 /* LiveActivityAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LiveActivityAdapter.swift; sourceTree = "<group>"; };
+		B3CB3266C93212AAE3F4E1F6 /* SunnahCustomWidgetCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahCustomWidgetCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahCustomWidgetCatalog.swift; sourceTree = SOURCE_ROOT; };
+		B46266042C37A66DB82EFB16 /* KeychainStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainStore.swift; path = ../artifacts/majalis/ios/App/App/Services/KeychainStore.swift; sourceTree = SOURCE_ROOT; };
+		B898EEA1DC2665BA1F505E0F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../artifacts/majalis/ios/App/PrayerWidget/Info.plist; sourceTree = SOURCE_ROOT; };
+		BF44845A1741F39AFD9B3B84 /* SunnahApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SunnahApp.swift; sourceTree = "<group>"; };
+		C0270F9F3C0AFD16914F3119 /* PrayerWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrayerWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6D880898012806A1F9605BB /* SupabaseAuthAdapter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SupabaseAuthAdapter.swift; sourceTree = "<group>"; };
+		CC3D791F188982A238F4713E /* PrayerTimesWidget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrayerTimesWidget.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/PrayerTimesWidget.swift; sourceTree = SOURCE_ROOT; };
+		D8BF7A7FF7C119B541A84F46 /* SunnahWidgetRefreshCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetRefreshCoordinator.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahWidgetRefreshCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		E1B10640311A712DBFC50EBB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		E3BB3C9B10F44885E252403D /* SharedDataPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SharedDataPublisher.swift; sourceTree = "<group>"; };
+		E4A5D154F8FDD95C4E75814C /* SunnahPrayerDeepLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahPrayerDeepLink.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahPrayerDeepLink.swift; sourceTree = SOURCE_ROOT; };
+		F22FBA95530032F44E4CE6B0 /* SunnahPrayerDeepLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahPrayerDeepLink.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahPrayerDeepLink.swift; sourceTree = SOURCE_ROOT; };
+		F4260A514594DB287DDB9720 /* SunnahWidgetEnvelope.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahWidgetEnvelope.swift; path = ../artifacts/majalis/ios/App/Shared/SunnahWidgetEnvelope.swift; sourceTree = SOURCE_ROOT; };
+		F72EB263019699D8FC060B29 /* Almarai-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "Almarai-Regular.ttf"; path = "Resources/Fonts/Almarai-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		180F9A4D803E7423557079AB /* Frameworks */ = {
+		84F3CC582894AD77E91F03E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				881CB7DD09AC9CFBE78AE48F /* Foundation.framework in Frameworks */,
-				D7988B8EB555C8A5F0814D2E /* SunnahNative in Frameworks */,
+				DCD02F641F1F86310864A048 /* Foundation.framework in Frameworks */,
+				DD86FC06F900039BB78A659B /* SunnahWidgetKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		90ABCDD1D477302494418264 /* Frameworks */ = {
+		EDAFFCED133F18B66F5C40AA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D2BADC6603D5564A046582C /* Foundation.framework in Frameworks */,
-				51E51D95E631BCDFEA702B76 /* SunnahWidgetKit in Frameworks */,
+				0B515EFCB00C9E6504265499 /* Foundation.framework in Frameworks */,
+				02594EC6FA13A8F2E34F7EC8 /* SunnahNative in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07DB31CA38DD93947F054A79 /* Platform */ = {
+		17103FAC2DAD33B6C3C9C31B /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				BC950A233D2E17E039F5DF42 /* KeychainAuthStore.swift */,
-				FBAAFC1ECB2F4B6048DF5A5C /* LiveActivityAdapter.swift */,
-				73CF090D5F5AC3E4BB837339 /* OfflineAudioAdapter.swift */,
-				D86E09D4F10CAABC5124E196 /* PlaybackSessionAdapter.swift */,
-				5D83085EEAA50CC9E4EADD13 /* PrayerWidgetPublisher.swift */,
-				2866949BA411C9074FC6F518 /* SharedDataPublisher.swift */,
-				1C572B0B4353F137639D1EE4 /* SupabaseAuthAdapter.swift */,
+				18E81F7DEC696F83C212E256 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		6E77486979ED058FB9D3B868 /* PrayerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CC3D791F188982A238F4713E /* PrayerTimesWidget.swift */,
+				142164271464ECD96FBABD96 /* PrayerWidgetBundle.swift */,
+				6CC6D72EDC63C7B53EA7C415 /* PrayerWidgetEntry.swift */,
+				84C4B7709395841FB14C8470 /* PrayerWidgetViews.swift */,
+				1B19C4A2D5E55010E390EF51 /* SunnahAdhkarWidgetCatalog.swift */,
+				019C7025AE30B42065A3DBFD /* SunnahCalendarWidgetCatalog.swift */,
+				21178A986459CC3020DBEA6B /* SunnahContentExperienceCatalog.swift */,
+				B3CB3266C93212AAE3F4E1F6 /* SunnahCustomWidgetCatalog.swift */,
+				6AC013DC8E8DDE925C6D4BE4 /* SunnahHomeWidgetCatalog.swift */,
+				02908D8607D6F94F0D657B1E /* SunnahPrayerWidgetCatalog.swift */,
+				7E95CC19BEB8B40ED663410E /* SunnahQuranMushafWidgetCatalog.swift */,
+				A90E1FF22201BC9E7E3560AF /* SunnahStandBySupport.swift */,
+				39D4D07ACCBBA581B8C1B52B /* SunnahWidgetAdapters.swift */,
+				6B1EB6F29196D5DB479E80E6 /* SunnahWidgetIntents.swift */,
+				5DD9BF2E16D88FE83C6696F9 /* SunnahWidgetPlatform.swift */,
+				8611E0B81A570295F185BEFA /* SunnahWidgetPreviewFixtures.swift */,
+				B898EEA1DC2665BA1F505E0F /* Info.plist */,
+				A46A5F0A94CC58B4BB28AB72 /* PrayerWidget.entitlements */,
+			);
+			name = PrayerWidget;
+			sourceTree = "<group>";
+		};
+		7B38D5C9F45294D50B24079A /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				91CD955FBD1187D538B8AD0D /* KeychainAuthStore.swift */,
+				AD827619CBB7CBDDB0225DF4 /* LiveActivityAdapter.swift */,
+				1B38C8AD73861603C410F445 /* OfflineAudioAdapter.swift */,
+				6812BCD04C4E9ECE4967DFA0 /* PlaybackSessionAdapter.swift */,
+				9703737D904A4CEED9CCA5B8 /* PrayerWidgetPublisher.swift */,
+				E3BB3C9B10F44885E252403D /* SharedDataPublisher.swift */,
+				C6D880898012806A1F9605BB /* SupabaseAuthAdapter.swift */,
 			);
 			name = Platform;
 			path = Platform;
 			sourceTree = "<group>";
 		};
-		1C07F54FF9B86C770034281D /* SunnahApp */ = {
+		9FF2A4A1887A1E9409EA035D /* SunnahApp */ = {
 			isa = PBXGroup;
 			children = (
-				2F2FDD00CC1061AB3F3A4A7B /* SunnahApp.swift */,
-				07DB31CA38DD93947F054A79 /* Platform */,
-				386D14618A1C12A11EEF7EF3 /* Info.plist */,
-				C3BE3D593CB47484FFCFCAC0 /* SunnahApp.entitlements */,
-				CE9CB42DDCDC25E89EE961E8 /* Assets.xcassets */,
-				B33277A4CF0C9AB35DF9AA8A /* PrivacyInfo.xcprivacy */,
-				EF14B79C8328D98220CBA0BB /* Almarai-Regular.ttf */,
-				6313E160DE6FD9E430B15144 /* Almarai-Bold.ttf */,
-				74D765CBE556DD9BED846918 /* Almarai-ExtraBold.ttf */,
-				05A1EF8BFE9340D22D0AE86B /* Amiri-Regular.ttf */,
-				78E3B93F62A2A50C64144AA2 /* Amiri-Bold.ttf */,
+				BF44845A1741F39AFD9B3B84 /* SunnahApp.swift */,
+				7B38D5C9F45294D50B24079A /* Platform */,
+				89C912623558BA4C12A2F9BE /* Info.plist */,
+				5E51D46B61082821E7E14E99 /* SunnahApp.entitlements */,
+				9CFBB8DC44EF6CD05C46CF77 /* Assets.xcassets */,
+				E1B10640311A712DBFC50EBB /* PrivacyInfo.xcprivacy */,
+				F72EB263019699D8FC060B29 /* Almarai-Regular.ttf */,
+				45047590AB0BDDAD3AB7792D /* Almarai-Bold.ttf */,
+				228437D69C365E0D0792E80E /* Almarai-ExtraBold.ttf */,
+				9D3F6A1789222DC22CC61C67 /* Amiri-Regular.ttf */,
+				337C2DA8EFEE302F2A824978 /* Amiri-Bold.ttf */,
 			);
 			name = SunnahApp;
 			path = SunnahApp;
 			sourceTree = "<group>";
 		};
-		2C4E172B0F6801A5CEA1A0A6 /* Products */ = {
+		A6277BC233B777E4F7DC6038 = {
 			isa = PBXGroup;
 			children = (
-				F81C977B7988F87CC9C643FD /* SunnahApp.app */,
-				226EDE4F3478397A6041C116 /* PrayerWidget.appex */,
+				EA9E0C86B3A9CF8E25FD74BA /* Products */,
+				F68364C8F6E88DFA07AD3586 /* Frameworks */,
+				9FF2A4A1887A1E9409EA035D /* SunnahApp */,
+				C6D35C2DB6FD457B7D2C59ED /* Shared */,
+				399DCF1F3837274B3F5A8154 /* Data */,
+				297B2220A3005A7341DE4B41 /* Sounds */,
+				6E77486979ED058FB9D3B868 /* PrayerWidget */,
 			);
-			name = Products;
 			sourceTree = "<group>";
 		};
-		3DD4B6AFF6BCE5728C709529 /* PrayerWidget */ = {
+		C6D35C2DB6FD457B7D2C59ED /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				29437A81DA130E1DE783EC57 /* PrayerTimesWidget.swift */,
-				DC05629E1E7FD2F8985FDC54 /* PrayerWidgetBundle.swift */,
-				07C189071C30148B87A794EA /* PrayerWidgetEntry.swift */,
-				2573D4AEAE7A2DD10E3AC1E3 /* PrayerWidgetViews.swift */,
-				3DD5874E00A1C0C2E51C1813 /* SunnahAdhkarWidgetCatalog.swift */,
-				E2870F9D8F6481D275FC6105 /* SunnahCalendarWidgetCatalog.swift */,
-				5EA93AFFA698080D1383688C /* SunnahContentExperienceCatalog.swift */,
-				8F082763C0F98DEA57004048 /* SunnahCustomWidgetCatalog.swift */,
-				6BB3B5CC3064AE757D6B524A /* SunnahHomeWidgetCatalog.swift */,
-				23BF2DA240C430E2EE67210B /* SunnahPrayerWidgetCatalog.swift */,
-				5816EB2D667047B65E229B95 /* SunnahQuranMushafWidgetCatalog.swift */,
-				3B45189DB60D01C2580E5FA0 /* SunnahStandBySupport.swift */,
-				AF6904D46808D2BBD1B68F93 /* SunnahWidgetAdapters.swift */,
-				D6F3A3C7E4A8C5EA7BAA5A06 /* SunnahWidgetIntents.swift */,
-				A1851B51747354891AAE1BF6 /* SunnahWidgetPlatform.swift */,
-				4633C16976054CDA79321031 /* SunnahWidgetPreviewFixtures.swift */,
-				6521BF09AC3C53C4D17E79F7 /* Info.plist */,
-				C1D723F31DF641805C3BFE41 /* PrayerWidget.entitlements */,
-			);
-			name = PrayerWidget;
-			sourceTree = "<group>";
-		};
-		5155F1E1B96CDD937B5ED4C3 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				7B3322435BEB162E75C62F1F /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		75839F42A75AF778C280FE65 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5155F1E1B96CDD937B5ED4C3 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8C123CA5A19E365139ACB78E /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				4FC418E6050CA8F7EB5DC99A /* OfflineAudioStore.swift */,
-				FA922B56897F27278077DE76 /* PlaybackSessionController.swift */,
-				D3EED2CC0276BF83413950EA /* SunnahSharedData.swift */,
-				CFAF726A0505149D1E1F945C /* SunnahBrandColors.swift */,
-				0A4D51E9CC503F710676A0A5 /* SunnahWidgetEnvelope.swift */,
-				B6558B31DFA14AECC86E7C11 /* SunnahWidgetRefreshCoordinator.swift */,
-				8BD755387FD21820621A473E /* SunnahPrayerDeepLink.swift */,
-				3F2DA44D1F0E9247DAA9971D /* PrayerActivityAttributes.swift */,
-				712D2A5989B4DC27DC63D0FF /* PrayerLiveActivityController.swift */,
-				E15CCEA589B69707763D3432 /* KeychainStore.swift */,
-				C4553D6AA9D1196D45DD09F4 /* SunnahSharedData.swift */,
-				AC2C49FF618F7E7840491D66 /* SunnahBrandColors.swift */,
-				8225447DF7DD6A3ADF5BCD7F /* SunnahPrayerDeepLink.swift */,
-				167B16B08D920317D9160086 /* SunnahWidgetEnvelope.swift */,
-				0F0D75935C21A13FF170CDA5 /* SunnahWidgetRefreshCoordinator.swift */,
+				0B68B98598F28490796E3A6D /* OfflineAudioStore.swift */,
+				362E6BD8984E8E19052B7A12 /* PlaybackSessionController.swift */,
+				4A65D662604ACC02FD651CBF /* SunnahSharedData.swift */,
+				0811D9A40546E484D0BC528B /* SunnahBrandColors.swift */,
+				F4260A514594DB287DDB9720 /* SunnahWidgetEnvelope.swift */,
+				D8BF7A7FF7C119B541A84F46 /* SunnahWidgetRefreshCoordinator.swift */,
+				F22FBA95530032F44E4CE6B0 /* SunnahPrayerDeepLink.swift */,
+				7AAF080F47985A7494285D9B /* PrayerActivityAttributes.swift */,
+				3521D7F0D3DCDE2F34A64258 /* PrayerLiveActivityController.swift */,
+				B46266042C37A66DB82EFB16 /* KeychainStore.swift */,
+				5179F6F0503D5CF405BC94EF /* SunnahSharedData.swift */,
+				07A3B54F5FFACD92404221B4 /* SunnahBrandColors.swift */,
+				E4A5D154F8FDD95C4E75814C /* SunnahPrayerDeepLink.swift */,
+				2D768DBB32B1EF274B51B5E0 /* SunnahWidgetEnvelope.swift */,
+				868252084860AD2EABB1615D /* SunnahWidgetRefreshCoordinator.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		FE9DA3784E46063FA8F92C40 = {
+		EA9E0C86B3A9CF8E25FD74BA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C4E172B0F6801A5CEA1A0A6 /* Products */,
-				75839F42A75AF778C280FE65 /* Frameworks */,
-				1C07F54FF9B86C770034281D /* SunnahApp */,
-				8C123CA5A19E365139ACB78E /* Shared */,
-				6C876C346C9E4D4D562991D6 /* Data */,
-				B1702B49AABECC9992964540 /* Sounds */,
-				3DD4B6AFF6BCE5728C709529 /* PrayerWidget */,
+				56BDA34C607F57EEDA6882E6 /* SunnahApp.app */,
+				C0270F9F3C0AFD16914F3119 /* PrayerWidget.appex */,
 			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F68364C8F6E88DFA07AD3586 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17103FAC2DAD33B6C3C9C31B /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7DD6B57F36F5DC4E5AB34F58 /* SunnahApp */ = {
+		32A58C692D807A382BDD6F6E /* PrayerWidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D28CB03CBF690BF087BE5A66 /* Build configuration list for PBXNativeTarget "SunnahApp" */;
+			buildConfigurationList = 4181524A79ADDB0EF098CEB9 /* Build configuration list for PBXNativeTarget "PrayerWidget" */;
 			buildPhases = (
-				9FB9FE1E7C23B124AF4C631D /* Sources */,
-				180F9A4D803E7423557079AB /* Frameworks */,
-				67C74BFCF777A95482E6BC70 /* تجهيز البيانات (prepare-data.sh) */,
-				3E1FDCFE2D7826355C2D1CF4 /* Resources */,
-				07B946A7A338BC1516F9B00D /* Embed Foundation Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8578FC3A5B83066E6FBC55FD /* PBXTargetDependency */,
-			);
-			name = SunnahApp;
-			packageProductDependencies = (
-				CFBA4EEA97B9FCE450DCE680 /* SunnahNative */,
-			);
-			productName = SunnahApp;
-			productReference = F81C977B7988F87CC9C643FD /* SunnahApp.app */;
-			productType = "com.apple.product-type.application";
-		};
-		82A00FAEE7B7ECF26501C754 /* PrayerWidget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = ABCD9211E142BB017B8E3E75 /* Build configuration list for PBXNativeTarget "PrayerWidget" */;
-			buildPhases = (
-				821BB54947B353B64F04713B /* Sources */,
-				90ABCDD1D477302494418264 /* Frameworks */,
-				6F6A77666A6B2D07154A0DD8 /* Resources */,
+				11201140E96B1E7FF456B03A /* Sources */,
+				84F3CC582894AD77E91F03E8 /* Frameworks */,
+				736199A3499B306496A5C109 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -325,22 +302,45 @@
 			);
 			name = PrayerWidget;
 			packageProductDependencies = (
-				5410171AB1CEA6BA90BBFECF /* SunnahWidgetKit */,
+				7CCA1F6EE9B9E86EF53D4723 /* SunnahWidgetKit */,
 			);
 			productName = PrayerWidget;
-			productReference = 226EDE4F3478397A6041C116 /* PrayerWidget.appex */;
+			productReference = C0270F9F3C0AFD16914F3119 /* PrayerWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		A8E47508BAD3F5CA3D5851E7 /* SunnahApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE3FDBA6BD060DB1EA84875C /* Build configuration list for PBXNativeTarget "SunnahApp" */;
+			buildPhases = (
+				D0FF7704A162829633F8D134 /* Sources */,
+				EDAFFCED133F18B66F5C40AA /* Frameworks */,
+				0491795DAF8BDD7BA8D9ACBD /* تجهيز البيانات (prepare-data.sh) */,
+				A1DFE602A279D7A6E3C3DC3B /* Resources */,
+				E161576BDD04C242FACB0B21 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80EFA7BA8A501C66C795E50B /* PBXTargetDependency */,
+			);
+			name = SunnahApp;
+			packageProductDependencies = (
+				F4C4EE40AC70AC1F76BBDDE3 /* SunnahNative */,
+			);
+			productName = SunnahApp;
+			productReference = 56BDA34C607F57EEDA6882E6 /* SunnahApp.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		975F2D893F5001F2AF1F9A0C /* Project object */ = {
+		953980DCF64B3D6C4BA2EC3E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1600;
 			};
-			buildConfigurationList = D4E3902C58392FDDE7F0F511 /* Build configuration list for PBXProject "SunnahApp" */;
+			buildConfigurationList = 93840F8014E70E33C9CBCE9E /* Build configuration list for PBXProject "SunnahApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = ar;
 			hasScannedForEncodings = 0;
@@ -349,51 +349,51 @@
 				en,
 				Base,
 			);
-			mainGroup = FE9DA3784E46063FA8F92C40;
+			mainGroup = A6277BC233B777E4F7DC6038;
 			minimizedProjectReferenceProxies = 0;
 			packageReferences = (
-				011387B01EB7690D3AF75BD5 /* XCLocalSwiftPackageReference "SunnahNative" */,
-				32404E1107CC3F6A305F6C7A /* XCLocalSwiftPackageReference "SunnahWidgetKit" */,
+				E70D76BCF20A6635474761F5 /* XCLocalSwiftPackageReference "SunnahNative" */,
+				0ED320B4827CA4F345A7028C /* XCLocalSwiftPackageReference "SunnahWidgetKit" */,
 			);
 			preferredProjectObjectVersion = 100;
-			productRefGroup = 2C4E172B0F6801A5CEA1A0A6 /* Products */;
+			productRefGroup = EA9E0C86B3A9CF8E25FD74BA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7DD6B57F36F5DC4E5AB34F58 /* SunnahApp */,
-				82A00FAEE7B7ECF26501C754 /* PrayerWidget */,
+				A8E47508BAD3F5CA3D5851E7 /* SunnahApp */,
+				32A58C692D807A382BDD6F6E /* PrayerWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3E1FDCFE2D7826355C2D1CF4 /* Resources */ = {
+		736199A3499B306496A5C109 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9BA471D99C6EF01DAEFF949 /* Assets.xcassets in Resources */,
-				6EFE58B950B2D23C02DA6699 /* PrivacyInfo.xcprivacy in Resources */,
-				3D5A24B5CDDF9828E2A15D0B /* Almarai-Regular.ttf in Resources */,
-				FF906241C79B9FA1E5FC440C /* Almarai-Bold.ttf in Resources */,
-				B7E0EE8590D01146DD486676 /* Almarai-ExtraBold.ttf in Resources */,
-				BC6333D2CBCA5526B0696BA0 /* Amiri-Regular.ttf in Resources */,
-				7D82A329824B76EA7449C4E0 /* Amiri-Bold.ttf in Resources */,
-				9D9E9001CDDE18D7988BBAE7 /* Data in Resources */,
-				82DC2534809984DAD0AC7829 /* Sounds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6F6A77666A6B2D07154A0DD8 /* Resources */ = {
+		A1DFE602A279D7A6E3C3DC3B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDEC9084184DF72F799A6EF5 /* Assets.xcassets in Resources */,
+				D5FE92557536BFD0007F1062 /* PrivacyInfo.xcprivacy in Resources */,
+				92CAF0393B311927135BB172 /* Almarai-Regular.ttf in Resources */,
+				5C6BBE48BD61D2422327FB0A /* Almarai-Bold.ttf in Resources */,
+				393411297A308C2896E178FF /* Almarai-ExtraBold.ttf in Resources */,
+				2C5F4E153316FBD2BAAD9331 /* Amiri-Regular.ttf in Resources */,
+				79E865D0B825B497F0622AE3 /* Amiri-Bold.ttf in Resources */,
+				D84B0CCA74DAFD5C16098F2C /* Data in Resources */,
+				886C12010D1D266ADADCE604 /* Sounds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		67C74BFCF777A95482E6BC70 /* تجهيز البيانات (prepare-data.sh) */ = {
+		0491795DAF8BDD7BA8D9ACBD /* تجهيز البيانات (prepare-data.sh) */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -415,72 +415,113 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		821BB54947B353B64F04713B /* Sources */ = {
+		11201140E96B1E7FF456B03A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE68554D79FE0D6B365BCACA /* PrayerTimesWidget.swift in Sources */,
-				09CB575F0A38D136DA516CA2 /* PrayerWidgetBundle.swift in Sources */,
-				C833D03E9E32B9A66F8CF407 /* PrayerWidgetEntry.swift in Sources */,
-				F24D10D47BCED504E7AC3887 /* PrayerWidgetViews.swift in Sources */,
-				DC7215BA2AA3472E9027DB0A /* SunnahAdhkarWidgetCatalog.swift in Sources */,
-				AD291A2657813CE0A2BE82DF /* SunnahCalendarWidgetCatalog.swift in Sources */,
-				E458BF653DD6FCA84F5E8598 /* SunnahContentExperienceCatalog.swift in Sources */,
-				88EDB66C2670FBD7B4B3E240 /* SunnahCustomWidgetCatalog.swift in Sources */,
-				F9C1BC9F60FA52A27C9EE75E /* SunnahHomeWidgetCatalog.swift in Sources */,
-				08A92BAEDE3568BFEDAB0A53 /* SunnahPrayerWidgetCatalog.swift in Sources */,
-				4B84FD4371F5BD5D86E85723 /* SunnahQuranMushafWidgetCatalog.swift in Sources */,
-				1C889241807102C62BD09474 /* SunnahStandBySupport.swift in Sources */,
-				A9A99965DC4427FDA84A3C8D /* SunnahWidgetAdapters.swift in Sources */,
-				6D4866708B5F9ADDF7A2CCBE /* SunnahWidgetIntents.swift in Sources */,
-				894EDC644314A406C68E1782 /* SunnahWidgetPlatform.swift in Sources */,
-				483D95CDEBC66CA9345F396F /* SunnahWidgetPreviewFixtures.swift in Sources */,
-				A7A1CB4764661F63C2B162F2 /* SunnahSharedData.swift in Sources */,
-				0DCCFEF6BD002634E8D51B54 /* SunnahBrandColors.swift in Sources */,
-				E2558529788973800AA4AA3D /* SunnahPrayerDeepLink.swift in Sources */,
-				7EEE77B84F31EC2B658D3B2D /* SunnahWidgetEnvelope.swift in Sources */,
-				8406EE0AAA36EDF4B80C672D /* SunnahWidgetRefreshCoordinator.swift in Sources */,
+				A11CD8F31528854C3D49CB66 /* PrayerTimesWidget.swift in Sources */,
+				48999C5D9A33332B7A97C8A2 /* PrayerWidgetBundle.swift in Sources */,
+				1F070568A3CDFE6951054167 /* PrayerWidgetEntry.swift in Sources */,
+				2CED5DE3BAF1F4964673D2D5 /* PrayerWidgetViews.swift in Sources */,
+				0668E84B242FAA632C38973A /* SunnahAdhkarWidgetCatalog.swift in Sources */,
+				E7F7E46B300350B577C6AA34 /* SunnahCalendarWidgetCatalog.swift in Sources */,
+				0FA8B1B922A2568ACF93CDEB /* SunnahContentExperienceCatalog.swift in Sources */,
+				F462648847B382288F438655 /* SunnahCustomWidgetCatalog.swift in Sources */,
+				1BEB7FEF28597A69C1D54BA8 /* SunnahHomeWidgetCatalog.swift in Sources */,
+				2A0504E37712BA352DD2A0A0 /* SunnahPrayerWidgetCatalog.swift in Sources */,
+				E99D59D238A9A21BD83EE27A /* SunnahQuranMushafWidgetCatalog.swift in Sources */,
+				CDE93CFE40F4ACFD2052A5CF /* SunnahStandBySupport.swift in Sources */,
+				0FF044C8DBE286B82550C5D2 /* SunnahWidgetAdapters.swift in Sources */,
+				BAAEB6AD6BB051E289208733 /* SunnahWidgetIntents.swift in Sources */,
+				185BE899FA58C6389F21BDF3 /* SunnahWidgetPlatform.swift in Sources */,
+				913A065AB9F2C365F09CCDFC /* SunnahWidgetPreviewFixtures.swift in Sources */,
+				FED9A45A04DCDE01F07FA68B /* SunnahSharedData.swift in Sources */,
+				07BDE404EBCC3AC7C5DBB096 /* SunnahBrandColors.swift in Sources */,
+				34B1F0EEDD418D4CD0207D24 /* SunnahPrayerDeepLink.swift in Sources */,
+				E9339D5A7B765929363930CE /* SunnahWidgetEnvelope.swift in Sources */,
+				27164C3A719865F99958A3AB /* SunnahWidgetRefreshCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9FB9FE1E7C23B124AF4C631D /* Sources */ = {
+		D0FF7704A162829633F8D134 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5F8D647657ACE38C04EAED0 /* SunnahApp.swift in Sources */,
-				323EBB6AA78B96A5EB5A3D85 /* KeychainAuthStore.swift in Sources */,
-				C392E2BAA7DC35FCB6F03808 /* LiveActivityAdapter.swift in Sources */,
-				6BAAC9E090107CFE11F88B83 /* OfflineAudioAdapter.swift in Sources */,
-				CCB63DD3CA494857594F94EF /* PlaybackSessionAdapter.swift in Sources */,
-				26CED8696530041DCFA5CD44 /* PrayerWidgetPublisher.swift in Sources */,
-				6599BB4D99A985EB51F408B8 /* SharedDataPublisher.swift in Sources */,
-				02EBF2EFD4D74C2F812CB9E0 /* SupabaseAuthAdapter.swift in Sources */,
-				25B00ECD97A44B3B2207B3B9 /* OfflineAudioStore.swift in Sources */,
-				181894D24B5C84E04BB5621C /* PlaybackSessionController.swift in Sources */,
-				18BDF4D6535F9CEE94D50EED /* SunnahSharedData.swift in Sources */,
-				8B918B99A2687F77E411A1D0 /* SunnahBrandColors.swift in Sources */,
-				850406ECBA193CE49F883FC3 /* SunnahWidgetEnvelope.swift in Sources */,
-				5DACBB2C3CC3E0BAE5999FEA /* SunnahWidgetRefreshCoordinator.swift in Sources */,
-				3C8E26F8EC2DEB34338F9261 /* SunnahPrayerDeepLink.swift in Sources */,
-				29A91471FCE4FFB2F829370C /* PrayerActivityAttributes.swift in Sources */,
-				CF29E5D6F40D6A490DDBBE18 /* PrayerLiveActivityController.swift in Sources */,
-				1025F01139368E6769E7732B /* KeychainStore.swift in Sources */,
+				67ADCD5D2876791C57147F00 /* SunnahApp.swift in Sources */,
+				525295E46C71691C4250C70F /* KeychainAuthStore.swift in Sources */,
+				40FACCF576A91C06F08E6A1C /* LiveActivityAdapter.swift in Sources */,
+				F0B22DA51674747AB8A806E1 /* OfflineAudioAdapter.swift in Sources */,
+				D17596589B5F440293F2AA5A /* PlaybackSessionAdapter.swift in Sources */,
+				30B4A5D0505D591A0B97000D /* PrayerWidgetPublisher.swift in Sources */,
+				D2E7BFCD34C90A2865EE13DE /* SharedDataPublisher.swift in Sources */,
+				9602E2B3B0AC534F8519509F /* SupabaseAuthAdapter.swift in Sources */,
+				4CE67B8DF569EA03681BD118 /* OfflineAudioStore.swift in Sources */,
+				19575D070215B06B019303A5 /* PlaybackSessionController.swift in Sources */,
+				D151CEC9E77D00A4ED7AA3CA /* SunnahSharedData.swift in Sources */,
+				BA54538D63E67C5C627DBD1C /* SunnahBrandColors.swift in Sources */,
+				EE25C160ED022B6C420FDBCD /* SunnahWidgetEnvelope.swift in Sources */,
+				44AC106DBFAFDEEC89C64ECC /* SunnahWidgetRefreshCoordinator.swift in Sources */,
+				E80A106593C239D29EE71392 /* SunnahPrayerDeepLink.swift in Sources */,
+				D9B72DDDEA01CB6A19AD1A4E /* PrayerActivityAttributes.swift in Sources */,
+				05DDBE3A2ECFE7C058891199 /* PrayerLiveActivityController.swift in Sources */,
+				ABF9A637BE8F87F912D7F69A /* KeychainStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8578FC3A5B83066E6FBC55FD /* PBXTargetDependency */ = {
+		80EFA7BA8A501C66C795E50B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PrayerWidget;
-			target = 82A00FAEE7B7ECF26501C754 /* PrayerWidget */;
-			targetProxy = 9F6D93FDB0B0C46F970EF8E8 /* PBXContainerItemProxy */;
+			target = 32A58C692D807A382BDD6F6E /* PrayerWidget */;
+			targetProxy = 8969F2078F145DF7DBDCF0E6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		19411B92FCE0A9619D044E23 /* Release */ = {
+		0B5ADF1CABEEA85534816D10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = 5D8TX37HTS;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ../artifacts/majalis/ios/App/PrayerWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm.PrayerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7009B7F30CA79B35CC243227 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = 5D8TX37HTS;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ../artifacts/majalis/ios/App/PrayerWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm.PrayerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		73786E5112B2088291B8198C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -534,7 +575,29 @@
 			};
 			name = Release;
 		};
-		39AAC4DA4191FF711271B7E7 /* Release */ = {
+		78E385D3ED0AE4181ACF6456 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = SunnahApp/SunnahApp.entitlements;
+				CURRENT_PROJECT_VERSION = 100;
+				DEVELOPMENT_TEAM = 5D8TX37HTS;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SunnahApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8CD86ABE048C3021EA172E04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -557,48 +620,7 @@
 			};
 			name = Release;
 		};
-		745DA46BCDF66F22E389B504 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_ENTITLEMENTS = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidget.entitlements;
-				CURRENT_PROJECT_VERSION = 100;
-				DEVELOPMENT_TEAM = 5D8TX37HTS;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = ../artifacts/majalis/ios/App/PrayerWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm.PrayerWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		D72203591158D3805938B1FB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_ENTITLEMENTS = ../artifacts/majalis/ios/App/PrayerWidget/PrayerWidget.entitlements;
-				CURRENT_PROJECT_VERSION = 100;
-				DEVELOPMENT_TEAM = 5D8TX37HTS;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = ../artifacts/majalis/ios/App/PrayerWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm.PrayerWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		DF60EDD37C69FA652520859B /* Debug */ = {
+		DBAA0F1929250173E3F9EF1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -659,54 +681,32 @@
 			};
 			name = Debug;
 		};
-		F3D06200B509A7455D60FF68 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_ENTITLEMENTS = SunnahApp/SunnahApp.entitlements;
-				CURRENT_PROJECT_VERSION = 100;
-				DEVELOPMENT_TEAM = 5D8TX37HTS;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = SunnahApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yousef.majlisilm;
-				SDKROOT = iphoneos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ABCD9211E142BB017B8E3E75 /* Build configuration list for PBXNativeTarget "PrayerWidget" */ = {
+		4181524A79ADDB0EF098CEB9 /* Build configuration list for PBXNativeTarget "PrayerWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				745DA46BCDF66F22E389B504 /* Release */,
-				D72203591158D3805938B1FB /* Debug */,
+				7009B7F30CA79B35CC243227 /* Release */,
+				0B5ADF1CABEEA85534816D10 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D28CB03CBF690BF087BE5A66 /* Build configuration list for PBXNativeTarget "SunnahApp" */ = {
+		93840F8014E70E33C9CBCE9E /* Build configuration list for PBXProject "SunnahApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				39AAC4DA4191FF711271B7E7 /* Release */,
-				F3D06200B509A7455D60FF68 /* Debug */,
+				DBAA0F1929250173E3F9EF1E /* Debug */,
+				73786E5112B2088291B8198C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4E3902C58392FDDE7F0F511 /* Build configuration list for PBXProject "SunnahApp" */ = {
+		EE3FDBA6BD060DB1EA84875C /* Build configuration list for PBXNativeTarget "SunnahApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DF60EDD37C69FA652520859B /* Debug */,
-				19411B92FCE0A9619D044E23 /* Release */,
+				8CD86ABE048C3021EA172E04 /* Release */,
+				78E385D3ED0AE4181ACF6456 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -714,26 +714,26 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		011387B01EB7690D3AF75BD5 /* XCLocalSwiftPackageReference "SunnahNative" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../artifacts/majalis/ios/App/SunnahNative;
-		};
-		32404E1107CC3F6A305F6C7A /* XCLocalSwiftPackageReference "SunnahWidgetKit" */ = {
+		0ED320B4827CA4F345A7028C /* XCLocalSwiftPackageReference "SunnahWidgetKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../artifacts/majalis/ios/App/SunnahWidgetKit;
+		};
+		E70D76BCF20A6635474761F5 /* XCLocalSwiftPackageReference "SunnahNative" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../artifacts/majalis/ios/App/SunnahNative;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5410171AB1CEA6BA90BBFECF /* SunnahWidgetKit */ = {
+		7CCA1F6EE9B9E86EF53D4723 /* SunnahWidgetKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SunnahWidgetKit;
 		};
-		CFBA4EEA97B9FCE450DCE680 /* SunnahNative */ = {
+		F4C4EE40AC70AC1F76BBDDE3 /* SunnahNative */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SunnahNative;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 975F2D893F5001F2AF1F9A0C /* Project object */;
+	rootObject = 953980DCF64B3D6C4BA2EC3E /* Project object */;
 }

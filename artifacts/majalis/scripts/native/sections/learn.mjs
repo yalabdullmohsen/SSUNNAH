@@ -59,6 +59,26 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
     })));
   }
 
+  /* أقسام المعرفة (/knowledge/:section): ملفات public/data/knowledge كما هي بمساراتها النسبية، و review_status = verified فقط (يطابق LearnKnowledgeSections.files) */
+  {
+    const root = `${appRoot}/public/data/knowledge`;
+    const files = ["intro-islam/topics.json", "history/timeline.json", "discover-islam/path-and-faq.json", "quran-people/people.json",
+      ...fs.readdirSync(`${root}/prophets`).filter((f) => f.endsWith(".json")).map((f) => `prophets/${f}`),
+      ...fs.readdirSync(`${root}/nations`).filter((f) => f.endsWith(".json")).map((f) => `nations/${f}`),
+      ...fs.readdirSync(`${root}/quiz`).filter((f) => f.endsWith(".json")).map((f) => `quiz/${f}`),
+      "tafsir/surahs/all-surah-intros.json",
+      ...fs.readdirSync(`${root}/tafsir/ayahs`).filter((f) => f.endsWith(".json")).map((f) => `tafsir/ayahs/${f}`)];
+    const ok = (x) => x?.review_status === "verified" && !held(String(idOf(x)));
+    for (const f of files) {
+      const d = read(`${root}/${f}`);
+      const rows = Array.isArray(d) ? d : Array.isArray(d?.items) ? d.items : [d];
+      const kept = rows.filter(ok);
+      if (kept.length < rows.length) reject(`${S}-knowledge`, `${f}: ${rows.length - kept.length} غير متحقَّق/محجوز`);
+      json(`knowledge/${f}`, Array.isArray(d) ? kept : Array.isArray(d?.items) ? { ...d, items: kept } : kept[0] ?? { items: [] });
+      (counts.knowledge ??= {})[f] = kept.length;
+    }
+  }
+
   /* فارغ عمدًا */
   empty("learn/competitions.json", "المنشور في الإنتاج 0 والعيّنة demo");
 }
