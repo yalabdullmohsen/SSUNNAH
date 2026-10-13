@@ -78,6 +78,8 @@ end
 end
 winfo = wg.new_reference("#{wroot}/PrayerWidget/Info.plist"); winfo.source_tree = 'SOURCE_ROOT'
 wg.new_reference("#{wroot}/PrayerWidget/PrayerWidget.entitlements").source_tree = 'SOURCE_ROOT'
+# بيان الخصوصية الخاص بالامتداد (UserDefaults لمجموعة التطبيق → 1C8F.1) — مطلوب لكل حزمة تستعمل API ذا سبب مطلوب
+wt.resources_build_phase.add_file_reference(wg.new_reference('PrayerWidgetResources/PrivacyInfo.xcprivacy'))
 wref = proj.new(Xcodeproj::Project::Object::XCLocalSwiftPackageReference)
 wref.relative_path = '../artifacts/majalis/ios/App/SunnahWidgetKit'
 proj.root_object.package_references << wref
