@@ -78,6 +78,32 @@
   }
  },
  {
+  "name": "Kuwait",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "tz": "Asia/Kuwait",
+  "method": "Kuwait",
+  "madhab": "Shafi",
+  "highLatitude": "auto",
+  "adjustments": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "day": "2026-10-19",
+  "times": {
+   "Fajr": "04:33",
+   "Sunrise": "05:52",
+   "Dhuhr": "11:33",
+   "Asr": "14:47",
+   "Maghrib": "17:14",
+   "Isha": "18:31"
+  }
+ },
+ {
   "name": "Riyadh",
   "lat": 24.7136,
   "lon": 46.6753,

@@ -60,7 +60,7 @@ const CITIES = {
 // [مدينة، طريقة، يوم، مذهب، خط عرض عالٍ، تعديلات]
 const M = "Shafi", H = "Hanafi", A = "auto";
 const CASES = [
-  ["Kuwait", "Kuwait", "2026-01-15"], ["Kuwait", "Kuwait", "2026-06-21"], ["Kuwait", "Kuwait", "2026-10-12"],
+  ["Kuwait", "Kuwait", "2026-01-15"], ["Kuwait", "Kuwait", "2026-06-21"], ["Kuwait", "Kuwait", "2026-10-12"], ["Kuwait", "Kuwait", "2026-10-19"],
   ["Riyadh", "UmmAlQura", "2026-03-20"], ["Riyadh", "UmmAlQura", "2026-12-21"],
   ["Makkah", "UmmAlQura", "2026-09-23"], ["Makkah", "MuslimWorldLeague", "2026-07-01"],
   ["Cairo", "Egyptian", "2026-01-15"], ["Cairo", "Egyptian", "2026-06-21"], ["Cairo", "Egyptian", "2026-04-24"],
