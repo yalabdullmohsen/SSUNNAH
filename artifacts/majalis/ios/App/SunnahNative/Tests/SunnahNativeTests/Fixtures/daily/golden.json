@@ -1,0 +1,72 @@
+[
+  {
+    "iso": "2026-10-13T12:00:00Z",
+    "ayahId": "da-10",
+    "hadithId": "nawawi-34"
+  },
+  {
+    "iso": "2026-10-13T20:59:59Z",
+    "ayahId": "da-10",
+    "hadithId": "nawawi-34"
+  },
+  {
+    "iso": "2026-10-13T21:00:00Z",
+    "ayahId": "da-11",
+    "hadithId": "nawawi-35"
+  },
+  {
+    "iso": "2026-10-14T20:59:59Z",
+    "ayahId": "da-11",
+    "hadithId": "nawawi-35"
+  },
+  {
+    "iso": "2026-10-14T21:00:00Z",
+    "ayahId": "da-12",
+    "hadithId": "nawawi-37"
+  },
+  {
+    "iso": "2026-12-31T20:59:59Z",
+    "ayahId": "da-29",
+    "hadithId": "nawawi-29"
+  },
+  {
+    "iso": "2026-12-31T21:00:00Z",
+    "ayahId": "da-30",
+    "hadithId": "nawawi-32"
+  },
+  {
+    "iso": "2027-02-28T21:00:00Z",
+    "ayahId": "da-29",
+    "hadithId": "nawawi-4"
+  },
+  {
+    "iso": "2028-02-28T21:00:00Z",
+    "ayahId": "da-4",
+    "hadithId": "dh-6"
+  },
+  {
+    "iso": "2028-02-29T12:00:00Z",
+    "ayahId": "da-4",
+    "hadithId": "dh-6"
+  },
+  {
+    "iso": "2026-11-02T23:59:59Z",
+    "ayahId": "da-1",
+    "hadithId": "nawawi-9"
+  },
+  {
+    "iso": "2026-11-02T03:00:00Z",
+    "ayahId": "da-30",
+    "hadithId": "nawawi-8"
+  },
+  {
+    "iso": "2026-11-03T03:00:00Z",
+    "ayahId": "da-1",
+    "hadithId": "nawawi-9"
+  },
+  {
+    "iso": "2026-11-04T00:00:00Z",
+    "ayahId": "da-2",
+    "hadithId": "nawawi-10"
+  }
+]
