@@ -155,7 +155,8 @@ platform :ios do
   end
 
   desc "SwiftUI الأصلي (SunnahApp): بناء + توقيع + TestFlight داخلي — محليًا فقط (1.2.0 / بناء ≥100)"
-  lane :native_beta do
+  lane :native_beta do |options|
+    upload = options[:upload].to_s != "false" # upload:false = بناء وتوقيع وIPA فقط بلا رفع
     native_xcodeproj # مشروع قديم = «cannot find … in scope» عند ملف جديد غير مُدرج
     key_path = asc_key_file # PATH أو Base64 (يُحذف المؤقت عند الخروج)
     api_key = app_store_connect_api_key(
@@ -176,12 +177,13 @@ platform :ios do
     increment_build_number(build_number: next_build, xcodeproj: proj)
     build_app(
       project: proj, scheme: "SunnahApp", clean: true, output_directory: out, output_name: "SunnahApp",
-      export_method: "app-store-connect",
+      export_method: "app-store",
       xcargs: "-allowProvisioningUpdates -authenticationKeyPath #{key_path}" \
               " -authenticationKeyID #{ENV.fetch('APP_STORE_CONNECT_API_KEY_ID')}" \
               " -authenticationKeyIssuerID #{ENV.fetch('APP_STORE_CONNECT_ISSUER_ID')}",
-      export_options: { method: "app-store-connect", signingStyle: "automatic", teamID: ENV.fetch("APPLE_TEAM_ID", "5D8TX37HTS") }
+      export_options: { method: "app-store", signingStyle: "automatic", teamID: ENV.fetch("APPLE_TEAM_ID", "5D8TX37HTS") }
     )
+    next UI.important("upload:false — الـIPA في #{out} ولم يُرفع") unless upload
     upload_to_testflight(
       api_key: api_key, app_identifier: app_id, ipa: File.join(out, "SunnahApp.ipa"),
       skip_waiting_for_build_processing: true, skip_submission: true,
