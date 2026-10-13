@@ -40,4 +40,5 @@ rows.push({ n: 0, kind: "بعد الإطلاق", what: "Live Activity فقط (و
 const head = gate[0] || "";
 let out = `# BACKLOG (مولَّد آليًا — لا يُحرَّر يدويًا)\n\n${head}\n\nمرتّب بالأكبر أثرًا أولًا (العدد = عدد الملفات/الشاشات المتأثرة).\n\n| # | الأثر | النوع | البند | المالك المقترح | النافذة المالكة (من PR/فرع مفتوح) |\n|---|---|---|---|---|---|\n`;
 rows.forEach((r, i) => { out += `| ${i + 1} | ${r.n} | ${r.kind} | ${r.what.replace(/\|/g, "/")} | ${r.owner} | ${windowFor(r.what, r.owner)} |\n`; });
-writeFileSync("docs/native/BACKLOG.md", out); console.log(`BACKLOG: ${rows.length} بند`);
+const tail = existsSync("docs/native/BACKLOG_POST_LAUNCH.md") ? "\n" + readFileSync("docs/native/BACKLOG_POST_LAUNCH.md", "utf8") : "";
+writeFileSync("docs/native/BACKLOG.md", out + tail); console.log(`BACKLOG: ${rows.length} بند`);
