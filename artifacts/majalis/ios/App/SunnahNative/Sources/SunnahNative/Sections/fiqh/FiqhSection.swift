@@ -47,7 +47,7 @@ public enum FiqhSection {
 
     /// المسارات بلا معاملات التي يتولاها القسم (معرّف السجل = المقاطع مفصولة بنقطة، كما في المولّد).
     static let staticPaths = ["/fiqh", "/fiqh/usul", "/madhahib", "/maqasid-sharia", "/prayer-ranks",
-                              "/sins-and-rights", "/prophetic-medicine", "/amr-bil-maruf"] + guideSlugs.map { "/" + $0 }
+                              "/sins-and-rights", "/prophetic-medicine", "/amr-bil-maruf", "/mawarith/calculator"] + guideSlugs.map { "/" + $0 }
 
     static func registryId(_ path: String) -> String {
         path.split(separator: "/").joined(separator: ".")
@@ -100,6 +100,8 @@ public enum FiqhSection {
                 let related = (topic.relatedSlugs ?? []).compactMap { slug in reviewed.first { $0.slug == slug } }
                 return FiqhAdapters.sin(topic, related: related)
             }
+        case ("mawarith", 2) where c[1] == "calculator":
+            return AnyView(MawarithCalculatorScreen())
         case ("prophetic-medicine", 1):
             return reading(FiqhSources.medicine) { (i: [PropheticMedicineItem]) in FiqhAdapters.propheticMedicine(i) }
         case ("amr-bil-maruf", 1):

@@ -142,7 +142,10 @@ public struct AqidahIslamicSectsNativeScreen: ScreenTemplate {
     public var body: some View {
         let shown = sects.filter { AqidahContent.matches(query, [$0.name, $0.fullName, $0.category, $0.era]) }
         Group {
-            if sects.isEmpty { EmptyStateView() }
+            if sects.isEmpty {
+                EmptyStateView(title: "لا توجد سجلات منشورة",
+                               message: "يُعرض للعامة ما اكتملت مراجعته واعتماده فقط. لا فتوى شرعية من التطبيق.")
+            }
             else if shown.isEmpty { EmptyStateView(title: "لا نتائج مطابقة") }
             else {
                 ScrollView {

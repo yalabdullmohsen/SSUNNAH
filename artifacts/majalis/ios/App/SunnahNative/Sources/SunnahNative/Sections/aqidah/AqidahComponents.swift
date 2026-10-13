@@ -5,6 +5,8 @@ struct AqidahItemHost<Value: Decodable & Sendable, Item, Content: View>: View {
     @Environment(\.contentLoader) private var loader
     @State private var phase: Phase = .loading
     let file: String
+    var missingTitle = "المحتوى قيد التوثيق"
+    var missingMessage: String? = nil
     let pick: (Value) -> Item?
     @ViewBuilder let content: (Item) -> Content
 
@@ -15,7 +17,7 @@ struct AqidahItemHost<Value: Decodable & Sendable, Item, Content: View>: View {
             switch phase {
             case .loading: LoadingStateView()
             case .failed: ErrorStateView { Task { await load() } }
-            case .missing: EmptyStateView()
+            case .missing: EmptyStateView(title: missingTitle, message: missingMessage)
             case .ready(let item): content(item)
             }
         }
