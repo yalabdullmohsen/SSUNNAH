@@ -95,7 +95,7 @@ struct AccountCalendarScreen: View {
         let monthHasEvents = days.contains { calendar.isDate($0, equalTo: cursor, toGranularity: .month) && !AccountCalendarMath.events(on: $0, in: events, calendar: calendar).isEmpty }
         return VStack(spacing: Sunnah.Spacing.s2) {
             if !monthHasEvents {
-                Text("لا دروس في هذا الشهر.").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                SunnahMessageState(symbol: "calendar", title: "لا دروس في هذا الشهر")
             }
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: Sunnah.Spacing.s1), count: 7), spacing: Sunnah.Spacing.s1) {
                 ForEach(AccountCalendarMath.weekdayLabels, id: \.self) { label in
@@ -138,7 +138,7 @@ struct AccountCalendarScreen: View {
                 .font(Sunnah.Typography.cardTitle)
                 .foregroundStyle(calendar.isDateInToday(date) ? Sunnah.Colors.primary : Sunnah.Colors.textPrimary)
             if events.isEmpty {
-                Text("لا دروس في هذا اليوم.").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                SunnahMessageState(symbol: "calendar", title: "لا دروس في هذا اليوم")
             }
             ForEach(events) { event in
                 Button { openEvent = event } label: {

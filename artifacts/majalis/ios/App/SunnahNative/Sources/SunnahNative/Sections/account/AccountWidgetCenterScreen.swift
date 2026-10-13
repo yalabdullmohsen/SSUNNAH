@@ -80,11 +80,9 @@ struct AccountWidgetCenterScreen: View {
     private var ayahCard: some View {
         switch phase {
         case .loading:
-            SunnahCard { ProgressView().frame(maxWidth: .infinity) }
+            LoadingStateView()
         case .unavailable:
-            SunnahCard {
-                Text("تعذّر تحميل آية اليوم").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
-            }
+            SunnahCard { SunnahMessageState(symbol: "exclamationmark.triangle", title: "تعذّر تحميل آية اليوم") }
         case let .ready(entry):
             SunnahCard {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
