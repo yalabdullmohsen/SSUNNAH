@@ -27,9 +27,9 @@ public struct SunnahMessageState: View {
 }
 
 public struct EmptyStateView: View {
-    let title: String; let message: String?
-    public init(title: String = "المحتوى قيد التوثيق", message: String? = nil) { self.title = title; self.message = message }
-    public var body: some View { SunnahMessageState(symbol: "tray", title: title, message: message) }
+    let title: String; let message: String?; let symbol: String
+    public init(title: String = "المحتوى قيد التوثيق", message: String? = nil, symbol: String = "tray") { self.title = title; self.message = message; self.symbol = symbol }
+    public var body: some View { SunnahMessageState(symbol: symbol, title: title, message: message) }
 }
 
 public struct LoadingStateView: View {

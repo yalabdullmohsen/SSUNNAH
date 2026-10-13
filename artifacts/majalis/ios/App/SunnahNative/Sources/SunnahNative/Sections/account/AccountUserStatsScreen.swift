@@ -113,13 +113,8 @@ struct AccountUserStatsScreen: View {
     }
 
     private var loginPrompt: some View {
-        VStack(spacing: Sunnah.Spacing.s4) {
-            Image(systemName: "lock").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textSecondary).accessibilityHidden(true)
-            Text("سجّل الدخول لعرض ملفك الشخصي وإنجازاتك.").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                .multilineTextAlignment(.center)
-            SunnahButton("تسجيل الدخول", style: .secondary) { openRoute("/login?next=/profile") }
-        }
-        .padding(Sunnah.Spacing.pageX)
+        SunnahMessageState(symbol: "lock", title: "إحصائياتك بانتظارك", message: "سجّل الدخول لعرض ملفك الشخصي وإنجازاتك.",
+                           actionTitle: "تسجيل الدخول") { openRoute("/login?next=/profile") }
     }
 
     private func content(_ stats: AccountUserStats, resume: [AccountResumeRow]) -> some View {

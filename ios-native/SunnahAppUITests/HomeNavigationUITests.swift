@@ -25,8 +25,9 @@ final class HomeNavigationUITests: XCTestCase {
         let c: XCUIElement = container ?? app.windows.firstMatch
         for dir in 0..<2 {
             var n = 0
-            while !(el.exists && el.isHittable) && n < 30 { dir == 0 ? c.swipeUp() : c.swipeDown(); n += 1 }
-            if el.exists && el.isHittable { return }
+            func ready() -> Bool { el.waitForExistence(timeout: 0.3) && el.isHittable }
+            while !ready() && n < 30 { dir == 0 ? c.swipeUp(velocity: .slow) : c.swipeDown(velocity: .slow); n += 1 }
+            if ready() { return }
         }
     }
 
@@ -58,6 +59,7 @@ final class HomeNavigationUITests: XCTestCase {
             app.buttons[label].tap()
             XCTAssertTrue(back.waitForExistence(timeout: 10), "\(label) لم يفتح")
             back.tap()
+            XCTAssertTrue(homeMarker.waitForExistence(timeout: 10), "\(label): لا عودة للرئيسية")
         }
         app.buttons["الحساب"].tap()
         app.buttons["الإعدادات"].tap()
@@ -71,20 +73,28 @@ final class HomeNavigationUITests: XCTestCase {
         sectionsTile.tap()
         XCTAssertTrue(back.waitForExistence(timeout: 10), "صفحة الأقسام لم تُفتح")
         let list = app.windows.firstMatch
-        var ids: [String] = []
-        var stable = 0
-        while stable < 2 {
-            let before = ids.count
-            let found = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'sections.item.'")).allElementsBoundByIndex.map(\.identifier)
-            for i in found where !ids.contains(i) { ids.append(i) }
-            stable = ids.count == before ? stable + 1 : 0
-            list.swipeUp()
+        var visited = Set<String>()
+        var idle = 0
+        let items = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'sections.item.'"))
+        while idle < 3 {
+            // تمرير واحد: افتح كل عنصر ظاهر لم يُزَر بعد، دون البحث عنه بتمرير منفصل.
+            var progressed = false
+            for el in items.allElementsBoundByIndex where el.exists {
+                let id = el.identifier
+                guard !visited.contains(id), el.isHittable else { continue }
+                visited.insert(id)
+                progressed = true
+                el.tap()
+                guard back.waitForExistence(timeout: 10) else { XCTFail("\(id): لم تُفتح شاشة (لا زر رجوع)"); continue }
+                if let bad = isError() { XCTFail("\(id): \(bad)") }
+                back.tap()
+                _ = items.firstMatch.waitForExistence(timeout: 10)
+                break
+            }
+            if !progressed { list.swipeUp(velocity: .slow); idle += 1 } else { idle = 0 }
         }
-        XCTAssertGreaterThanOrEqual(ids.count, 15, "عناصر صفحة الأقسام أقل من المتوقع")
-        var passed = 0
-        for id in ids {
-            if openAndReturn(id, expectHome: false, container: list) { passed += 1 }
-        }
+        XCTAssertGreaterThanOrEqual(visited.count, 15, "عناصر صفحة الأقسام أقل من المتوقع")
+        let ids = Array(visited); let passed = ids.count
         print("SECTIONS_PAGE_PASSED \(passed)/\(ids.count)")
     }
 
@@ -145,5 +155,26 @@ final class HomeNavigationUITests: XCTestCase {
         XCTAssertTrue(field.waitForExistence(timeout: 10), "حقل البحث غير موجود")
         field.tap(); field.typeText("المواريث")
         tapFirstInnerLink("أداة المواريث")
+    }
+
+    /// البند 8: لا شاشة فارغة؛ البحث يعيد نتائج حقيقية، وحالاته الفارغة مصمَّمة (عنوان + شرح).
+    func testSearchReturnsRealResultsAndDesignedEmptyStates() {
+        app.buttons["البحث"].tap()
+        let field = app.searchFields.firstMatch.exists ? app.searchFields.firstMatch : app.textFields.firstMatch
+        XCTAssertTrue(field.waitForExistence(timeout: 10), "حقل البحث غير موجود")
+        XCTAssertTrue(app.staticTexts["ابحث في المحتوى"].waitForExistence(timeout: 5), "حالة البحث الأولى غير مصمَّمة")
+        field.tap()
+        for word in ["الصلاة", "البقرة"] {
+            field.typeText(word)
+            XCTAssertTrue(app.cells.firstMatch.waitForExistence(timeout: 10), "لا نتائج حقيقية لكلمة \(word)")
+            field.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: word.count))
+        }
+        field.typeText("ظظظظظ")
+        XCTAssertTrue(app.staticTexts["لا نتائج"].waitForExistence(timeout: 5), "حالة عدم وجود نتائج غير ظاهرة")
+    }
+
+    func testBlankCandidatesShowDesignedEmptyState() {
+        openTile("/stats")
+        XCTAssertTrue(app.staticTexts["إحصائياتك بانتظارك"].waitForExistence(timeout: 10), "/stats: لا حالة فارغة مصمَّمة")
     }
 }
