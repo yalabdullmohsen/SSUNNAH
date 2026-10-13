@@ -1,11 +1,7 @@
 name: iOS TestFlight Deploy
 
 on:
-  # لا بناء عند push (بقرار المالك 2026-10-09): البناء يدوي أو مجدول يومي فقط.
-  # المجدول 00:00 UTC (03:00 الكويت) يُبنى فقط إن تغيّر ios/ أو fastlane/ منذ آخر بناء ناجح،
-  # وبحدّ بناء واحد يوميًا؛ التشغيل اليدوي يتجاوز الحدّ.
-  schedule:
-    - cron: "0 0 * * *"
+  # يدوي حصرًا (قرار المالك 2026-10-13): أُزيل trigger الـschedule بعد أن نزل بناء آلي قديم من main في TestFlight.
   workflow_dispatch:
     inputs:
       changelog:
