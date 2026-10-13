@@ -8,12 +8,12 @@
 Sunnah (com.yousef.majlisilm) is an Arabic Islamic-learning app (Qur'an mushaf, adhkar, hadith, fiqh, seerah, prayer times). Version 1.2.0 is a full rewrite of the already-published app in SwiftUI; the bundle ID and App Store listing are unchanged.
 
 - Most content is bundled and works offline. Features that need a connection: sign-in/account, bookmarks and reading-progress sync, user submissions, and newly published content. Offline, these screens show an explanatory empty state.
-- Sign-in is optional. Browsing, Qur'an, adhkar and prayer times work without an account.
+- Sign-in is optional. Browsing, Qur'an, adhkar, prayer times and the inheritance (Fara'id) calculator work without an account.
 - Location (when in use) is used only to compute prayer times and the Qibla direction on the device; it is not sent to our servers.
 - Notifications are local prayer/adhkar reminders (no marketing). Default sound is the system sound.
 - Religious texts (Qur'an, hadith, adhkar, fiqh) are carried over unchanged from our published website https://www.ssunnah.com; they are curated content, not user-generated. There is no social feed or public user-generated content.
 - No tracking, no ads, no third-party analytics SDK.
-How to test sign-in (optional): open the Sign in screen and use e-mail and password (credentials, if provided, are in the App Review Information fields). All other features can be reviewed without signing in.
+How to test sign-in (optional): there is no Sign-in button in Settings (Settings only shows the signed-in e-mail and Sign out). Steps: 1) open the personal screen "My Contributions" (مساهماتي, route /my-submissions), which shows a "تسجيل الدخول" button when signed out; 2) tap "تسجيل الدخول" (Sign in); 3) enter e-mail and password (credentials, if provided, are in the App Review Information fields) and tap "دخول". New accounts: "إنشاء حساب" (Register) sends a confirmation e-mail first. Account deletion: "حذف الحساب" screen (type «حذف» to confirm). All other features can be reviewed without signing in.
 Religious content note: all Qur'an, hadith, adhkar and fiqh texts are published from our approved website https://www.ssunnah.com and are shown unchanged; the app does not author or edit religious texts.
 Demo account: not required (sign-in is optional); if provided, see App Review Information fields.
 ```
