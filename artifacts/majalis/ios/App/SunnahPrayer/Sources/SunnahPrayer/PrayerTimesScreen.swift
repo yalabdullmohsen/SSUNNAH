@@ -13,6 +13,11 @@ public enum PrayerTimeFormat {
         return f.string(from: date)
     }
 
+    /// يحوّل 0-9 إلى ٠-٩ للعرض فقط (يطابق toArabicIndicDigits في الموقع)؛ لا يلمس أي حرف آخر.
+    public static func arabicDigits(_ s: String) -> String {
+        String(s.unicodeScalars.map { (48...57).contains($0.value) ? Character(Unicode.Scalar(0x0660 + $0.value - 48)!) : Character($0) })
+    }
+
     /// المتبقي بصيغة س:د:ث.
     public static func countdown(_ interval: TimeInterval) -> String {
         let total = max(0, Int(interval.rounded(.down)))
