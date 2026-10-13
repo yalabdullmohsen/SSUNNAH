@@ -127,8 +127,8 @@
 - [x] `/discover-islam/questions/:slug` — DiscoverIslamQuestionDetailPage — تفاصيل
 - [x] `/hikam-salaf` — HikamSalafPage — قائمة
 - [x] `/iman-topics` — ImanTopicsPage — قائمة
-- [ ] `/islamic-sects` — IslamicSectsPage — قائمة
-- [ ] `/islamic-sects/:id` — IslamicSectsDetailPage — تفاصيل
+- [x] `/islamic-sects` — IslamicSectsPage — قائمة (لقطتان فاتح/داكن: حالة فارغة رسمية «لا توجد سجلات منشورة» مطابقة للموقع؛ بوابة PUBLISHED سليمة)
+- [x] `/islamic-sects/:id` — IslamicSectsDetailPage — تفاصيل (لقطتان: «سجل غير متاح» مطابقة للموقع؛ بوابة PUBLISHED سليمة)
 - [x] `/janna-naar` — JannaNaarPage — قائمة
 - [x] `/malaika` — MalaikaPage — قائمة
 - [x] `/raqaiq` — RaqaiqPage — قائمة
@@ -159,7 +159,7 @@
 - [x] `/madhahib/:id` — MadhahibDetailPage — تفاصيل
 - [x] `/maqasid-sharia` — MaqasidShariaPage — قائمة
 - [x] `/mawarith` — MawarithPage — قائمة (أصلي؛ لقطتان فاتح/داكن حقيقيتان على n2-sim، التطبيق في المقدمة)
-- [ ] `/mawarith/calculator` — MawarithCalculatorPage — قائمة
+- [x] `/mawarith/calculator` — MawarithCalculatorPage — قائمة (MawarithEngine حرفي + 89 حالة ذهبية +8 تركة من كود الموقع، 2 اختبار أخضر؛ لقطتان فاتح/داكن)
 - [x] `/nikah` — NikahPage — قائمة
 - [x] `/prayer-ranks` — PrayerRanksPage — قائمة
 - [x] `/prayer-times` — PrayerTimesPage — قائمة

@@ -175,14 +175,14 @@ final class FiqhSectionTests: XCTestCase {
         ]
         for p in handled { XCTAssertNotNil(FiqhSection.resolve(path: p), p) }
         // تبقى للمولّد/الويب حتى تُصدَّر بياناتها أو تُكتب شاشتها (docs/native/requests/fiqh.md).
-        for p in ["/hajj", "/zakat", "/mawarith/calculator", "/prayer-times", "/fiqh/books/x/other/y", "/fiqh/usul/x", "/"] {
+        for p in ["/hajj", "/zakat", "/mawarith/calculator/x", "/prayer-times", "/fiqh/books/x/other/y", "/fiqh/usul/x", "/"] {
             XCTAssertNil(FiqhSection.resolve(path: p), p)
         }
     }
 
     func testRegistryIdsMatchGenerator() {
         XCTAssertEqual(FiqhSection.registryId("/fiqh/usul"), "fiqh.usul")
-        XCTAssertEqual(FiqhSection.staticPaths.count, 16)
+        XCTAssertEqual(FiqhSection.staticPaths.count, 17)
         XCTAssertEqual(FiqhRoutes.topicRedirect("islamic-finance"), "/riba")
         XCTAssertEqual(FiqhRoutes.topicRedirect("unknown"), "/fiqh")
     }

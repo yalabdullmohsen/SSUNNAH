@@ -80,6 +80,8 @@ public enum AqidahSection {
                                           content: { AqidahNewMuslimDayView(day: $0) }))
         case .sect(let id):
             return AnyView(AqidahItemHost(file: "islamic-sects",
+                                          missingTitle: "سجل غير متاح",
+                                          missingMessage: "هذا السجل غير متاح للعامة بعد. تصفّح الأقسام الأخرى أو عد لاحقًا.",
                                           pick: { (v: [IslamicSect]) in AqidahContent.accepted(v).first { $0.id == id } },
                                           content: { AqidahIslamicSectView(sect: $0) }))
         case .tawhidTopic(let slug):
