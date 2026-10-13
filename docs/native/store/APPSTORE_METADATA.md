@@ -7,9 +7,9 @@
 | Bundle ID | `com.yousef.majlisilm` (بلا تغيير، تحديث للتطبيق المنشور) |
 | الإصدار / البناء | 1.2.0 / 100 |
 | الأجهزة | iPhone وiPad (iOS 16.2+) |
-| الفئة الأساسية | Reference — **قرار المالك** (بديل: Lifestyle) |
+| الفئة الأساسية | Reference — **قرار المالك (مؤكَّد)** |
 | الفئة الثانوية | Lifestyle (اختياري) |
-| التصنيف العمري | 4+ — كل أسئلة المحتوى «None»؛ لا محتوى مستخدمين عامًّا ولا شبكات اجتماعية ولا إعلانات ولا ويب مفتوح |
+| التصنيف العمري | 4+ — قرار المالك مشروط بتأكيد الاستبيان أدناه |
 | رابط الدعم | https://www.ssunnah.com/support (تحقق: 200) |
 | رابط الخصوصية | https://www.ssunnah.com/privacy (تحقق: 200) |
 | التتبع (ATT) | لا تتبع، لا إعلانات، لا SDK تحليلات (انظر `PRIVACY_CHECK.md`) |
@@ -24,6 +24,7 @@
 سُنّة تطبيق عربي أصلي بالكامل لتعلّم الدين ومرافقتك اليومية، لـ iPhone وiPad.
 
 • المصحف الكامل: 604 صفحات بالرسم العثماني.
+• حاسبة الفرائض (المواريث): تعمل على جهازك بلا اتصال.
 • الأذكار والأدعية، والأحاديث، والفقه، والسيرة، وغيرها من أقسام العلم الشرعي.
 • مواقيت الصلاة واتجاه القبلة تُحسَب على جهازك بحسب موقعك، مع تذكيرات الصلاة.
 • يعمل بلا اتصال: المحتوى الأساسي مضمَّن في التطبيق. الميزات المرتبطة بالحساب أو بمحتوى جديد تحتاج اتصالًا.
@@ -43,6 +44,7 @@
 Sunnah is a fully native Arabic app for learning and daily companionship, for iPhone and iPad.
 
 • Complete Mushaf: all 604 pages in Uthmani script.
+• Inheritance (Fara'id) calculator: runs on your device, offline.
 • Adhkar and supplications, hadith, fiqh, seerah and more sections of Islamic knowledge.
 • Prayer times and Qibla direction calculated on your device from your location, with prayer reminders.
 • Works offline: core content is bundled in the app. Account features and newly published content need a connection.
@@ -56,5 +58,16 @@ Religious content is carried over unchanged from the published Sunnah website.
 ## ملاحظات اتساق
 - الاسم العربي يطابق `CFBundleDisplayName` («سُنّة»)؛ الاسم الإنجليزي «Sunnah» اسم الإدراج في en-US فقط.
 - `Info.plist` لا يحمل `LSApplicationCategoryType`؛ الفئة تُضبط في ASC فقط.
-- يُضاف سطر «حاسبة المواريث» إلى الوصف و`WHATS_NEW.md` فقط بعد أن يسلّمها ن2 ويتحقق منها ن4 على البناء.
+- «حاسبة الفرائض» أُضيفت بعد دمج #3110 (الشاشة `/mawarith/calculator` موجودة في `MawarithCalculatorScreen.swift`، عنوانها «حاسبة المواريث الإسلامية»).
 - لا يُعدَّل أي نص علمي؛ هذه نصوص تسويقية للمتجر.
+
+## إجابات استبيان التصنيف العمري (من كود SunnahNative، لا من الافتراض)
+| السؤال | الجواب | الدليل |
+|---|---|---|
+| محتوى مستخدمين عام / تواصل بين المستخدمين | **لا** | الوحيد: «مساهماتي» ترسل `POST /api/submissions` وتعرض حالة مساهمات المستخدم نفسه فقط (`AccountSubmissionsScreens.swift`)؛ تخضع لمراجعة، ولا تُنشر لمستخدمين آخرين، ولا تعليقات ولا رسائل |
+| ويب مفتوح / متصفح داخل التطبيق | **لا** | لا `WKWebView` ولا `SFSafariViewController`؛ الروابط الخارجية تُفتح بـ`openURL` في Safari خارج التطبيق |
+| إعلانات | **لا** | لا SDK إعلانات (لا GoogleMobileAds ولا AdSupport) |
+| شراء داخل التطبيق / اشتراكات | **لا** | لا `StoreKit` ولا منتجات |
+| تتبع | **لا** | انظر `PRIVACY_CHECK.md` |
+| محتوى بالغ/عنف/قمار/مخدرات/رعب | **لا** (None) | المحتوى شرعي تعليمي فقط |
+**النتيجة:** كل الأسئلة «None/No» ⇒ 4+. يبقى القرار مشروطًا بتأكيد المالك للاستبيان في ASC (سؤال «User-generated content» يُجاب بـ No لأن المساهمات خاصة بصاحبها ومُراجَعة).
