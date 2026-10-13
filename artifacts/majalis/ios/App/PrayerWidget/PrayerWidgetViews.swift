@@ -87,8 +87,6 @@ struct PrayerLiveClock: View {
         .monospacedDigit()
         .lineLimit(1)
         .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
-        // Text(timerInterval:) يتمدد لكامل العرض افتراضيًا؛ نثبّته على عرض محتواه.
-        .fixedSize(horizontal: true, vertical: false)
         // أرقام هندية موحّدة في النص الحي أيضًا.
         .environment(\.locale, WidgetFormat.locale)
     }
