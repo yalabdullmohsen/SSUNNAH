@@ -6,10 +6,12 @@ import SwiftUI
 final class AccountContentTests: XCTestCase {
     // MARK: النصوص المستخرجة (أعداد مطابقة لمصادر الويب وقت الاستخراج)
 
+    // تحديث 2026-10-13: بعد 85df5e781 (حذف وعود التسميع/الميكروفون/المساعد غير الموجودة): privacy 17→16، fatwaPolicy 6→5 (حُذف قسم المساعد العلمي)،
+    // sourceTypes 17→16 (حُذف نموذج التسميع)، وإدخالاتها 33→28 (حُذفت 7 وأُضيفت 2).
     func testExtractedTextCounts() {
         XCTAssertEqual(AccountTexts.about.sections.count, 6)
-        XCTAssertEqual(AccountTexts.privacy.sections.count, 17)
-        XCTAssertEqual(AccountTexts.fatwaPolicy.sections.count, 6)
+        XCTAssertEqual(AccountTexts.privacy.sections.count, 16)
+        XCTAssertEqual(AccountTexts.fatwaPolicy.sections.count, 5)
         XCTAssertEqual(AccountTexts.contactFAQ.count, 5)
         XCTAssertEqual(AccountTexts.contactTopics.count, 5)
         XCTAssertEqual(AccountTexts.tourSlides.count, 6)
@@ -19,8 +21,8 @@ final class AccountContentTests: XCTestCase {
         XCTAssertEqual(AccountTexts.historyAchievements.count, 12)
         XCTAssertEqual(AccountTexts.qiblaCities.count, 20)
         XCTAssertEqual(AccountTexts.badges.count, 17)
-        XCTAssertEqual(AccountTexts.sourceTypes.count, 17)
-        XCTAssertEqual(AccountTexts.sourceTypes.reduce(0) { $0 + $1.entries.count }, 33)
+        XCTAssertEqual(AccountTexts.sourceTypes.count, 16)
+        XCTAssertEqual(AccountTexts.sourceTypes.reduce(0) { $0 + $1.entries.count }, 28)
     }
 
     func testTextIdsAreUnique() {

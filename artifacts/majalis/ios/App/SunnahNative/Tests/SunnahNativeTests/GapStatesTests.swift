@@ -10,7 +10,7 @@ final class GapStatesTests: XCTestCase {
     }
 
     func testShamailDecodesBothBabShapes() {
-        let json = #"[{"id":"khalq","label":"الخَلق","abwab":[{"id":"b","title":"باب","icon":"i","hadiths":[{"text":"نص","rawi":"أنس","source":"م"}]}]},{"id":"mahabbah","label":"المحبة","abwab":[{"title":"ب","text":"ن","source":"س"}]}]"#
+        let json = #"[{"id":"khalq","label":"الخَلق","abwab":[{"id":1,"title":"باب","icon":"i","hadiths":[{"text":"نص","rawi":"أنس","source":"م"}]}]},{"id":"mahabbah","label":"المحبة","abwab":[{"title":"ب","text":"ن","source":"س"}]}]"#
         let tabs = ShamailView.tabs(fromJSON: Data(json.utf8))
         XCTAssertEqual(tabs.count, 2)
         XCTAssertEqual(tabs[0].abwab[0].hadiths?.first?.rawi, "أنس")
