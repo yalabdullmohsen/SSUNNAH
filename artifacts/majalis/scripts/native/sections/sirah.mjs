@@ -1,7 +1,7 @@
 /**
  * قسم «السيرة والتاريخ والأعلام» → Data/sirah/*.json (انظر docs/native/requests/sirah.md).
  * تمرير كما هو من مصدر الويب بلا إعادة صياغة؛ المحجوز (content-hold) يُستبعد بالمعرّف أو slug.
- * ما يشترط قرار المالك أو توثيقًا غير متوفر في الويب يُصدَّر قائمة فارغة بالشكل الصحيح («فارغ عمدًا»)، لا نصًّا بلا مصدر.
+ * ما يشترط توثيقًا غير متوفر في الويب يُصدَّر قائمة فارغة بالشكل الصحيح («فارغ عمدًا»)، لا نصًّا بلا مصدر.
  */
 import fs from "node:fs";
 import { loadConsts, objectsWithKeys } from "../lib/ts-literal.mjs";
@@ -47,7 +47,7 @@ export default async function exportSirah({ json, held, reject, counts, appRoot 
     out("prophets-knowledge", rows);
   }
 
-  /* القصص: كما يعرضها الموقع (is_approved) ولها مصادر — قرار المالك: بلا شرط editorial_review_status (الموقع لا يعرضه) */
+  /* القصص: كما يعرضها الموقع (is_approved) ولها مصادر — بلا شرط editorial_review_status لأن الموقع لا يشترطه (مطابقة للويب) */
   {
     const dir = `${appRoot}/public/data/stories`;
     const rows = [];

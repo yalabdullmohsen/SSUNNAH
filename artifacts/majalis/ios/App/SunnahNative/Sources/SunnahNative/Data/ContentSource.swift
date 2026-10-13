@@ -29,7 +29,8 @@ public struct ContentLoader: Sendable {
     public func load<Value: Decodable & Sendable>(_ type: Value.Type = Value.self, from source: ContentSource) async throws -> Value {
         switch source {
         case let .bundled(name, subdirectory):
-            guard let url = bundle.url(forResource: name, withExtension: "json", subdirectory: subdirectory) else {
+            guard let url = bundle.url(forResource: name, withExtension: "json", subdirectory: subdirectory)
+                    ?? (subdirectory == nil ? BundledDataIndex.url(named: name, in: bundle) : nil) else {
                 throw ContentError.missingBundledFile([subdirectory, name].compactMap { $0 }.joined(separator: "/"))
             }
             return try decoder().decode(Value.self, from: Data(contentsOf: url))
@@ -46,5 +47,32 @@ public struct ContentLoader: Sendable {
                 throw error
             }
         }
+    }
+}
+
+/// الشاشات المولَّدة تسمّي الملف بلا مجلد، والحزمة تحفظه تحت `Data/<قسم>/`؛ فيُبحث عنه هناك (الأقرب جذرًا، ثم غير `embedded`، ثم أبجديًا).
+enum BundledDataIndex {
+    private static let lock = NSLock()
+    nonisolated(unsafe) private static var cache: [String: [String: URL]] = [:]
+
+    static func url(named name: String, in bundle: Bundle) -> URL? {
+        lock.lock(); defer { lock.unlock() }
+        let key = bundle.bundlePath
+        if cache[key] == nil { cache[key] = build(bundle) }
+        return cache[key]?[name]
+    }
+
+    private static func build(_ bundle: Bundle) -> [String: URL] {
+        guard let root = bundle.resourceURL?.appendingPathComponent("Data"),
+              let walker = FileManager.default.enumerator(at: root, includingPropertiesForKeys: nil) else { return [:] }
+        var best: [String: (rank: [Int], url: URL)] = [:]
+        for case let url as URL in walker where url.pathExtension == "json" {
+            let parts = url.pathComponents.dropFirst(root.pathComponents.count).dropLast()
+            let rank = [parts.count, parts.contains("embedded") ? 1 : 0]
+            let name = url.deletingPathExtension().lastPathComponent
+            if let cur = best[name], !(rank.lexicographicallyPrecedes(cur.rank) || (rank == cur.rank && url.path < cur.url.path)) { continue }
+            best[name] = (rank, url)
+        }
+        return best.mapValues(\.url)
     }
 }

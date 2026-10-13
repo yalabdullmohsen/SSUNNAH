@@ -16,21 +16,9 @@ public struct ConnectionRequiredView: View {
     }
 
     public var body: some View {
-        VStack(spacing: 14) {
-            Image(systemName: "wifi")
-                .font(.system(size: 40))
-                .foregroundStyle(.secondary)
-                .accessibilityHidden(true)
-            Text(title).font(.headline)
-            Text(message)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-            Button(actionTitle, action: action)
-                .buttonStyle(.borderedProminent)
-        }
-        .padding(24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .environment(\.layoutDirection, .rightToLeft)
+        SunnahMessageState(symbol: "wifi", title: title, message: message, actionTitle: actionTitle, action: action)
+            .frame(maxHeight: .infinity)
+            .background(Sunnah.Colors.bg)
+            .environment(\.layoutDirection, .rightToLeft)
     }
 }

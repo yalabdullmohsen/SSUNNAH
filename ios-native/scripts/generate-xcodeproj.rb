@@ -63,6 +63,44 @@ t.build_configurations.each do |c|
   s['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'; s['GENERATE_INFOPLIST_FILE'] = 'NO'
   s['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
 end
+# امتداد الودجت «الصلاة القادمة»: يعيد استخدام مصادر PrayerWidget المعتمدة كما هي (لا تعديل لها) + SunnahWidgetKit
+wroot = '../artifacts/majalis/ios/App'
+wt = proj.new_target(:app_extension, 'PrayerWidget', :ios, '16.2')
+wg = proj.main_group.new_group('PrayerWidget')
+Dir[File.join(root, wroot, 'PrayerWidget/*.swift')].sort.each do |f|
+  r = wg.new_reference("#{wroot}/PrayerWidget/#{File.basename(f)}"); r.source_tree = 'SOURCE_ROOT'
+  r.set_path("#{wroot}/PrayerWidget/#{File.basename(f)}")
+  wt.add_file_references([r])
+end
+%w[SunnahSharedData SunnahBrandColors SunnahPrayerDeepLink SunnahWidgetEnvelope SunnahWidgetRefreshCoordinator].each do |n|
+  r = shared.new_reference("../artifacts/majalis/ios/App/Shared/#{n}.swift"); r.source_tree = 'SOURCE_ROOT'
+  wt.add_file_references([r])
+end
+winfo = wg.new_reference("#{wroot}/PrayerWidget/Info.plist"); winfo.source_tree = 'SOURCE_ROOT'
+wg.new_reference("#{wroot}/PrayerWidget/PrayerWidget.entitlements").source_tree = 'SOURCE_ROOT'
+wref = proj.new(Xcodeproj::Project::Object::XCLocalSwiftPackageReference)
+wref.relative_path = '../artifacts/majalis/ios/App/SunnahWidgetKit'
+proj.root_object.package_references << wref
+wdep = proj.new(Xcodeproj::Project::Object::XCSwiftPackageProductDependency); wdep.product_name = 'SunnahWidgetKit'
+wt.package_product_dependencies << wdep
+wbf = proj.new(Xcodeproj::Project::Object::PBXBuildFile); wbf.product_ref = wdep
+wt.frameworks_build_phase.files << wbf
+wt.build_configurations.each do |c|
+  s = c.build_settings
+  s['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.yousef.majlisilm.PrayerWidget'
+  s['INFOPLIST_FILE'] = "#{wroot}/PrayerWidget/Info.plist"
+  s['CODE_SIGN_ENTITLEMENTS'] = "#{wroot}/PrayerWidget/PrayerWidget.entitlements"
+  s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
+  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '100'
+  s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '1,2'
+  s['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'; s['GENERATE_INFOPLIST_FILE'] = 'NO'
+  s['SKIP_INSTALL'] = 'YES'; s['PRODUCT_NAME'] = '$(TARGET_NAME)'
+end
+t.add_dependency(wt)
+emb = t.new_copy_files_build_phase('Embed Foundation Extensions')
+emb.symbol_dst_subfolder_spec = :plug_ins
+ebf = emb.add_file_reference(wt.product_reference, true)
+ebf.settings = { 'ATTRIBUTES' => ['RemoveHeadersOnCopy'] }
 proj.save
 scheme = Xcodeproj::XCScheme.new
 scheme.add_build_target(t); scheme.set_launch_target(t)
