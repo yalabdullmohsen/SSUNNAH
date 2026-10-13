@@ -29,6 +29,11 @@ if [ -f "$INV" ]; then
   [ -z "$phr" ] || bad "مسارات تظهر بها «قيد الإعداد» في اللقطات: $(echo $phr | tr '\n' ' ')"
 fi
 
+# 2د) كل ملف .swift تحت ios-native/SunnahApp وامتداد الويدجت يجب أن يكون ضمن Sources في project.pbxproj المُلتزَم (وإلا يفشل بناء Release بـ«cannot find … in scope»)؛ الإصلاح: ruby ios-native/scripts/generate-xcodeproj.rb ثم أضِف project.pbxproj
+PBX=ios-native/SunnahApp.xcodeproj/project.pbxproj
+miss=$(find ios-native/SunnahApp artifacts/majalis/ios/App/PrayerWidget -name '*.swift' 2>/dev/null | while read -r f; do grep -qF "/* $(basename "$f") in Sources */" "$PBX" || echo "$f"; done)
+[ -z "$miss" ] || bad "ملفات .swift غير مدرجة في project.pbxproj (أعد التوليد: ruby ios-native/scripts/generate-xcodeproj.rb): $(echo $miss | tr '\n' ' ')"
+
 # 3) عدد المسارات المبنية مقابل 212
 built=$(grep -c . docs/native/MERGED_BUILT.txt)
 echo "المسارات في MERGED_BUILT: $built"
