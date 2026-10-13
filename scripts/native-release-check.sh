@@ -29,6 +29,14 @@ if [ -f "$INV" ]; then
   [ -z "$phr" ] || bad "مسارات تظهر بها «قيد الإعداد» في اللقطات: $(echo $phr | tr '\n' ' ')"
 fi
 
+# 2هـ) لا معرّف خام (نمط ^[a-z]+(-[a-z]+)+$) ظاهرًا في أي شاشة: OCR اللقطات يرفضه (RAW_ID) وهنا يُفشل الإصدار؛ وعناوين تصنيفات الأذكار تُصدَّر حرفيًا
+if [ -f "$INV" ]; then
+  rawr=$(grep -E "RAW_ID" "$INV" | cut -d'|' -f1 | sort -u)
+  [ -z "$rawr" ] || bad "مسارات يظهر بها معرّف خام في اللقطات: $(echo $rawr | tr '\n' ' ')"
+fi
+grep -q "adhkar/categories.json" artifacts/majalis/scripts/native/export-ios-data.mjs || bad "تصدير عناوين تصنيفات الأذكار (adhkar/categories.json) مفقود"
+grep -q 'SunnahListRow(title: category.id' "$SRC/Special/AdhkarScreen.swift" && bad "AdhkarScreen يعرض category.id خامًا"
+
 # 2د) كل ملف .swift تحت ios-native/SunnahApp وامتداد الويدجت يجب أن يكون ضمن Sources في project.pbxproj المُلتزَم (وإلا يفشل بناء Release بـ«cannot find … in scope»)؛ الإصلاح: ruby ios-native/scripts/generate-xcodeproj.rb ثم أضِف project.pbxproj
 PBX=ios-native/SunnahApp.xcodeproj/project.pbxproj
 miss=$(find ios-native/SunnahApp artifacts/majalis/ios/App/PrayerWidget -name '*.swift' 2>/dev/null | while read -r f; do grep -qF "/* $(basename "$f") in Sources */" "$PBX" || echo "$f"; done)

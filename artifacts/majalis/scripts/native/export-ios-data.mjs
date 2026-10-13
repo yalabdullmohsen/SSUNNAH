@@ -125,6 +125,8 @@ json("hadith/verified-sahih.json", hv);
   const { loadConsts } = await import("./lib/ts-literal.mjs");
   const mark = (rows) => rows.map((r) => ({ ...r, ...EMBEDDED }));
   const du = loadConsts(`${appRoot}/src/pages/worship/ui/DuasView.tsx`);
+  /* عناوين تصنيفات الأذكار حرفيًا من ADHKAR_CATEGORIES (id/name/slug فقط؛ لا نص ذكر) لتعرضها شاشة /adhkar بدل المعرّف الخام */
+  json("adhkar/categories.json", loadConsts(`${appRoot}/src/lib/adhkar-seed.ts`)("ADHKAR_CATEGORIES").map(({ id, name, slug }) => ({ id, name, slug })));
   json("adhkar/duas.json", { categories: du("CATEGORIES"), duas: mark(du("DUAS")) });
   counts.adhkar ??= {}; counts.adhkar.duas = du("DUAS").length;
   const wa = loadConsts(`${appRoot}/src/views/WasayaNabawiyyaPage.tsx`);
