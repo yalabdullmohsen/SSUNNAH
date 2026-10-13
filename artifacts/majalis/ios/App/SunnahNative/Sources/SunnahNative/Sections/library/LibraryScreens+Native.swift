@@ -185,8 +185,12 @@ struct LibraryCardsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 card
-                TextField("النص", text: $text, axis: .vertical).font(Sunnah.Typography.body).textFieldStyle(.roundedBorder)
-                TextField("المصدر (مثل: رواه البخاري)", text: $source).font(Sunnah.Typography.body).textFieldStyle(.roundedBorder)
+                TextField("النص", text: $text, axis: .vertical).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    .padding(Sunnah.Spacing.s3).frame(minHeight: 44)
+                    .background(Sunnah.Colors.surface2, in: RoundedRectangle(cornerRadius: Sunnah.Radius.small))
+                TextField("المصدر (مثل: رواه البخاري)", text: $source).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    .padding(Sunnah.Spacing.s3).frame(minHeight: 44)
+                    .background(Sunnah.Colors.surface2, in: RoundedRectangle(cornerRadius: Sunnah.Radius.small))
                 if !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, let image = rendered {
                     ShareLink(item: image, preview: SharePreview(text, image: image)) {
                         Text("مشاركة البطاقة").font(Sunnah.Typography.cardTitle)
