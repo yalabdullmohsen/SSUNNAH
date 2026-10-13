@@ -107,7 +107,7 @@ struct AccountMosqueModeScreen: View {
                 case let .countdown(prayer, at, remaining)?:
                     Text("الصلاة القادمة").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     Text(prayer.nameAr).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                    Text(remaining > 0 ? AccountMosqueModeScreen.countdown(remaining) : "حان الآن")
+                    Text(remaining > 0 ? AccountMosqueModeScreen.countdown(remaining).arabicIndicDigits : "حان الآن")
                         .font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.primary).monospacedDigit()
                     Text(PrayerTimeFormat.clock(at, in: prefs.location.timeZone))
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
@@ -120,10 +120,19 @@ struct AccountMosqueModeScreen: View {
         .accessibilityElement(children: .combine)
     }
 
+    /// أرقام عربية-هندية للعرض فقط، كما في MosqueModePage على الموقع وكبقية عدّادات الصلاة (PrayerTimeFormat).
     /// س:د:ث، أو د:ث إن قلّ عن ساعة (مطابق لـ formatCountdown في الويب).
     static func countdown(_ interval: TimeInterval) -> String {
         let s = max(0, Int(interval))
         let (h, m, sec) = (s / 3600, s % 3600 / 60, s % 60)
         return h > 0 ? String(format: "%02d:%02d:%02d", h, m, sec) : String(format: "%02d:%02d", m, sec)
+    }
+}
+
+private extension String {
+    var arabicIndicDigits: String {
+        String(unicodeScalars.map { s in
+            (48...57).contains(s.value) ? Character(Unicode.Scalar(0x0660 + s.value - 48)!) : Character(s)
+        })
     }
 }
