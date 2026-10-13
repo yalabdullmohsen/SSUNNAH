@@ -34,6 +34,14 @@ PBX=ios-native/SunnahApp.xcodeproj/project.pbxproj
 miss=$(find ios-native/SunnahApp artifacts/majalis/ios/App/PrayerWidget -name '*.swift' 2>/dev/null | while read -r f; do grep -qF "/* $(basename "$f") in Sources */" "$PBX" || echo "$f"; done)
 [ -z "$miss" ] || bad "ملفات .swift غير مدرجة في project.pbxproj (أعد التوليد: ruby ios-native/scripts/generate-xcodeproj.rb): $(echo $miss | tr '\n' ' ')"
 
+# 2هـ) حجم حزمة البيانات ios-native/Data: إجمالي + أكبر 10 مجلدات؛ تحذير > 250 MB وفشل > 500 MB
+DSK=$(du -sk ios-native/Data | cut -f1); DMB=$((DSK/1024))
+echo "حجم ios-native/Data: ${DMB} MB — أكبر 10 مجلدات:"
+du -sk ios-native/Data/* | sort -rn | head -10 | awk '{printf "  %7.1f MB  %s\n", $1/1024, $2}'
+[ "${DATA_ZIP:-0}" != 1 ] || echo "المضغوط التقديري (zip): $(( $(cd ios-native && zip -qr - Data | wc -c) / 1048576 )) MB"
+[ "$DMB" -le 500 ] || bad "حجم ios-native/Data ${DMB} MB يتجاوز السقف 500 MB"
+[ "$DMB" -le 250 ] || echo "⚠ تحذير: حجم ios-native/Data ${DMB} MB يتجاوز 250 MB"
+
 # 3) عدد المسارات المبنية مقابل 212
 built=$(grep -c . docs/native/MERGED_BUILT.txt)
 echo "المسارات في MERGED_BUILT: $built"
