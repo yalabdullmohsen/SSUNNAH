@@ -64,7 +64,7 @@ public struct HomeScreen: View {
                         .foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(d.ayahText).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(d.ayah.reference).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    Text(PrayerTimeFormat.arabicDigits(d.ayah.reference)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }
         }
@@ -80,7 +80,7 @@ public struct HomeScreen: View {
                         .foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(h.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text([h.narrator, h.source, h.number].compactMap { $0 }.joined(separator: " — "))
+                    Text(PrayerTimeFormat.arabicDigits([h.narrator, h.source, h.number].compactMap { $0 }.joined(separator: " — ")))
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }
@@ -188,5 +188,5 @@ public struct HomeScreen: View {
         .accessibilityElement(children: .combine)
     }
 
-    private func ar(_ n: Int) -> String { n.formatted(.number.grouping(.never).locale(Locale(identifier: "ar"))) }
+    private func ar(_ n: Int) -> String { PrayerTimeFormat.arabicDigits(String(n)) }
 }
