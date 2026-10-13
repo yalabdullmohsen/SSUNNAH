@@ -13,4 +13,10 @@ if [ -z "$SIM" ]; then
   SIM=$(xcrun simctl create "$SIM_NAME" com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro "$RT") || { echo "native-sim: تعذّر إنشاء $SIM_NAME" >&2; exit 2; }
   echo "native-sim: أُنشئ $SIM_NAME ($SIM)" >&2
 fi
+# المحاكي المطفأ (مثلًا بعد إنشائه الآن) يفشل معه simctl install/launch بـ405؛ شغّله وانتظر الجاهزية (محاكي النافذة نفسها فقط)
+if ! xcrun simctl list devices | grep -F "$SIM" | grep -q "(Booted)"; then
+  echo "native-sim: تشغيل $SIM_NAME" >&2
+  xcrun simctl boot "$SIM" >/dev/null 2>&1
+  xcrun simctl bootstatus "$SIM" -b >/dev/null 2>&1 || { echo "native-sim: تعذّر تشغيل $SIM_NAME" >&2; exit 2; }
+fi
 export SIM SIM_NAME
