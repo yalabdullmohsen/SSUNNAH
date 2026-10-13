@@ -2,6 +2,222 @@
   "month": "2026-10",
   "items": [
     {
+      "id": "4eaee7045ab2e32c0dad835b944dd1116b352678",
+      "type": "دورة",
+      "title_ar": "ندعوكم لحضور الدورة العلمية شرح المذكرة على العقيدة الواسطية للشيخ د راشد صليهم…",
+      "summary_ar": "ندعوكم لحضور الدوره العلميه: شرح المذكره علي العقيده الواسطيه للشيخ د. راشد صليهم الهاجري ⏰ بعد صلاه المغرب (كل اثنين) مسجد ابي واقد الليثي-القيروان https://ma…",
+      "sheikh": "راشد صليهم الهاجري ⏰ بعد صلاة المغرب (كل اثنين) 🕌 مسجد أبي",
+      "place": "أبي واقد الليثي-القيروان https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28266",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T22:43:55.498Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "7c6f408e0ef9a17ccb18fff055ce7eedd871f315",
+      "type": "درس",
+      "title_ar": "ندعوكم لحضور الدرس العلمي التعليق على روضة الأفهام في شرح زوائد المحرر على بلوغ…",
+      "summary_ar": "ندعوكم لحضور الدرس العلمي: التعليق علي « روضه الافهام في شرح زوائد المحرر علي بلوغ المرام» للشيخ حسين المويزري @H_Almuwizri ⌚ (كل اثنين) بعد صلاه العصر مسجد سع…",
+      "sheikh": null,
+      "place": "شرح زوائد المحرر على بلوغ المرام» 🎙️ للشيخ حسين المويزري @H_Almuwizri ⌚ (كل اثن",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28262",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T22:43:55.498Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "b1bd62d9a870025de0ff98d1175d49e2a0eda2af",
+      "type": "درس",
+      "title_ar": "ندعوكم لحضور الدرس العلمي شرح كتاب الباعث الحثيث اختصار علوم الحديث للشيخ د عبد…",
+      "summary_ar": "ندعوكم لحضور الدرس العلمي: شرح كتاب(الباعث الحثيث اختصار علوم الحديث) للشيخ د.عبدالعزيز ندي العتيبي ⏰ بعدصلاه العصر (كل اثنين) مسجد عبدالمحسن الزبن - الفنيطيس …",
+      "sheikh": "عبدالعزيز ندى العتيبي ⏰ بعدصلاة العصر (كل اثنين) 🕌 مسجد عبد",
+      "place": "عبدالمحسن الزبن - الفنيطيس https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28263",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T22:43:55.498Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "dedeca6049b7a7da9ee7dda4ec9d7c97e2f8eec1",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح القواعد الأربع للشيخ فهد محارب الديحاني بع…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: شرح القواعد الاربع للشيخ فهد محارب الديحاني @Fahad_Muhareb ⏰ بعد صلاه المغرب (كل اثنين) مسجد محمد الصباح - الفروانيه https://…",
+      "sheikh": null,
+      "place": "محمد الصباح - الفروانية https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28264",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T22:43:55.498Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "fcaf8ff88e753053e617bc8617f3132a8093068e",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح العقيدة الطحاوية للشيخ د محمد فهد الشلاحي …",
+      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: « شرح العقيده الطحاويه » للشيخ د. محمد فهد الشلاحي @Drmohammedalmu5 كل اثنين واربعاء ⏰ بعد صلاه المغرب مسجد عبيدالله العباس- …",
+      "sheikh": "محمد فهد الشلاحي &rlm; @Drmohammedalmu5 📆 كل اثنين وأربعاء",
+      "place": "عبيدالله العباس- غ عبدالله المبارك https://maps",
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28265",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T22:43:55.498Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "bf7ee1ed167f6796b85d8f61ef00daba21861eb1",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس الأسبوعي شرح كتاب الشريعة للآجري للشيخ محمد بن عبدالل…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس الاسبوعي: [ شرح كتاب الشريعه للاجري ] للشيخ محمد بن عبدالله العتيبي ⏰ الساعه: 7:45 م ديوان عبدالرحمن الجش - القرين https://maps.app.g…",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "7:45 م",
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28267",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T22:43:55.498Z",
+      "confidence": 0.8
+    },
+    {
+      "id": "16c508be53a912b33a7f8fb94ada9873d7a3e195",
+      "type": "درس",
+      "title_ar": "ندعوكم الليلة لحضور الدرس الأسبوعي التعليق على كتاب تنبيه الأفهام بشرح عمدة الأ…",
+      "summary_ar": "ندعوكم الليله لحضور الدرس الاسبوعي: ( التعليق علي كتاب تنبيه الافهام بشرح عمده الاحكام ) لفضيله الشيخ سالم الطويل ⏱ الساعه: 8:00 م ديوان الجنفاوي - سعد العبدال…",
+      "sheikh": "سالم الطويل ⏱️ الساعة: 8:00 م 📍 &rlm;ديوان الجنفاوي - سعد ا",
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": "8:00 م",
+      "register_url": "https://t.me/DrosQ8",
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28269",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T22:43:55.498Z",
+      "confidence": 0.9
+    },
+    {
+      "id": "3b61ad8305f2349f80f49c85f6eadc1d7f7b2690",
+      "type": "درس",
+      "title_ar": "👇 جدول دروس اليوم الأثنين 👇",
+      "summary_ar": "جدول دروس اليوم الاثنين",
+      "sheikh": null,
+      "place": null,
+      "audience": "عام",
+      "starts_at": null,
+      "time_text": null,
+      "register_url": null,
+      "schedule_kind": "weekly",
+      "women_attendance": "men_only",
+      "women_attendance_note": null,
+      "sources": [
+        {
+          "id": "telegram-DrosQ8",
+          "name_ar": "دروس الكويت",
+          "url": "https://t.me/DrosQ8",
+          "post_url": "https://t.me/DrosQ8/28261",
+          "platform": "telegram"
+        }
+      ],
+      "image_url": null,
+      "published_at": "2026-10-12T22:43:55.498Z",
+      "confidence": 0.65
+    },
+    {
       "id": "8b5c182153c38e02d3b3f501117c363053742c73",
       "type": "درس",
       "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح ثلاثة الأصول للشيخ د حمد بن محمد الهاجري ب…",
@@ -782,195 +998,6 @@
       ],
       "image_url": null,
       "published_at": "2026-10-07T10:05:12.775Z",
-      "confidence": 0.65
-    },
-    {
-      "id": "64cac92508d972195b7ffc4d0474c1290f441987",
-      "type": "دورة",
-      "title_ar": "ندعوكم لحضور الدورة العلمية شرح المذكرة على العقيدة الواسطية للشيخ د راشد صليهم…",
-      "summary_ar": "ندعوكم لحضور الدوره العلميه: شرح المذكره علي العقيده الواسطيه للشيخ د. راشد صليهم الهاجري ⏰ بعد صلاه المغرب (كل اثنين) مسجد ابي واقد الليثي-القيروان https://ma…",
-      "sheikh": "راشد صليهم الهاجري ⏰ بعد صلاة المغرب (كل اثنين) 🕌 مسجد أبي",
-      "place": "أبي واقد الليثي-القيروان https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28166",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-06T10:02:08.219Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "17af748b9f6cc294e94c7b751b0a249b7cc0c523",
-      "type": "درس",
-      "title_ar": "ندعوكم لحضور الدرس العلمي التعليق على روضة الأفهام في شرح زوائد المحرر على بلوغ…",
-      "summary_ar": "ندعوكم لحضور الدرس العلمي: التعليق علي « روضه الافهام في شرح زوائد المحرر علي بلوغ المرام» للشيخ حسين المويزري @H_Almuwizri ⌚ (كل اثنين) بعد صلاه العصر مسجد سع…",
-      "sheikh": null,
-      "place": "شرح زوائد المحرر على بلوغ المرام» 🎙️ للشيخ حسين المويزري @H_Almuwizri ⌚ (كل اثن",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28162",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-06T10:02:08.219Z",
-      "confidence": 0.8
-    },
-    {
-      "id": "89d8aaf6bc93792d314f3c7cc798e39b30007c7e",
-      "type": "درس",
-      "title_ar": "ندعوكم لحضور الدرس العلمي شرح كتاب الباعث الحثيث اختصار علوم الحديث للشيخ د عبد…",
-      "summary_ar": "ندعوكم لحضور الدرس العلمي: شرح كتاب(الباعث الحثيث اختصار علوم الحديث) للشيخ د.عبدالعزيز ندي العتيبي ⏰ بعدصلاه العصر (كل اثنين) مسجد عبدالمحسن الزبن - الفنيطيس …",
-      "sheikh": "عبدالعزيز ندى العتيبي ⏰ بعدصلاة العصر (كل اثنين) 🕌 مسجد عبد",
-      "place": "عبدالمحسن الزبن - الفنيطيس https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28163",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-06T10:02:08.219Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "a932308f5bbed40c05a3957e2fb99288ec60f718",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح القواعد الأربع للشيخ فهد محارب الديحاني بع…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: شرح القواعد الاربع للشيخ فهد محارب الديحاني @Fahad_Muhareb ⏰ بعد صلاه المغرب (كل اثنين) مسجد محمد الصباح - الفروانيه https://…",
-      "sheikh": null,
-      "place": "محمد الصباح - الفروانية https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28164",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-06T10:02:08.219Z",
-      "confidence": 0.8
-    },
-    {
-      "id": "7ff510a2bc575e9c9a9c27583d83c2225329a867",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس العلمي شرح العقيدة الطحاوية للشيخ د محمد فهد الشلاحي …",
-      "summary_ar": "ندعوكم الليله لحضور الدرس العلمي: « شرح العقيده الطحاويه » للشيخ د. محمد فهد الشلاحي @Drmohammedalmu5 كل اثنين واربعاء ⏰ بعد صلاه المغرب مسجد عبيدالله العباس- …",
-      "sheikh": "محمد فهد الشلاحي &rlm; @Drmohammedalmu5 📆 كل اثنين وأربعاء",
-      "place": "عبيدالله العباس- غ عبدالله المبارك https://maps",
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28165",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-06T10:02:08.219Z",
-      "confidence": 0.9
-    },
-    {
-      "id": "38ab5bf0acb5ba6aad0eec00110b0c2cb67423d2",
-      "type": "درس",
-      "title_ar": "ندعوكم الليلة لحضور الدرس الأسبوعي شرح كتاب الشريعة للآجري للشيخ محمد بن عبدالل…",
-      "summary_ar": "ندعوكم الليله لحضور الدرس الاسبوعي: [ شرح كتاب الشريعه للاجري ] للشيخ محمد بن عبدالله العتيبي ⏰ الساعه: 8:15 م ديوان عبدالرحمن الجش - القرين https://maps.app.g…",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": "8:15 م",
-      "register_url": "https://t.me/DrosQ8",
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28168",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-06T10:02:08.219Z",
-      "confidence": 0.8
-    },
-    {
-      "id": "4397d600688ea5899184d923ff7b5917c3bf0aaa",
-      "type": "درس",
-      "title_ar": "👇 جدول دروس اليوم الأثنين 👇",
-      "summary_ar": "جدول دروس اليوم الاثنين",
-      "sheikh": null,
-      "place": null,
-      "audience": "عام",
-      "starts_at": null,
-      "time_text": null,
-      "register_url": null,
-      "schedule_kind": "weekly",
-      "women_attendance": "men_only",
-      "women_attendance_note": null,
-      "sources": [
-        {
-          "id": "telegram-DrosQ8",
-          "name_ar": "دروس الكويت",
-          "url": "https://t.me/DrosQ8",
-          "post_url": "https://t.me/DrosQ8/28161",
-          "platform": "telegram"
-        }
-      ],
-      "image_url": null,
-      "published_at": "2026-10-06T10:02:08.219Z",
       "confidence": 0.65
     },
     {
