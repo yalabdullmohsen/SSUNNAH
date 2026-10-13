@@ -120,13 +120,13 @@ public enum SirahSection {
     }
 
     /// مسارات :id المبقاة فقط في ROUTE_TEMPLATE_MAP (المعالم، الأمم، التاريخ، المشايخ)؛ غيرها لا يُبنى.
-    public static func resolve(path: String) -> AnyView? {
+    @MainActor public static func resolve(path: String) -> AnyView? {
         let c = path.split(separator: "/").map(String.init)
         guard c.count == 2 else { return nil }
         let id = c[1].removingPercentEncoding ?? c[1]
         switch c[0] {
         case "islamic-landmarks":
-            if id == "map" { return nil }  // شاشة الخريطة مسجّلة بمعرّفها لا كتفصيل
+            if id == "map" { return TemplateRegistry.shared.view(for: "islamic-landmarks.map") }  // شاشة الخريطة مسجّلة بمعرّفها لا كتفصيل؛ بدونها يلتقطها المولَّد كتفصيل id=map
             return SirahSection.detail(File.landmarks, SirahAdapters.landmarks, id: id)
         case "nations": return SirahSection.article(File.nations, SirahAdapters.nations, id: id)
         case "tarikh-islami": return SirahSection.article(File.history, SirahAdapters.history, id: id)
