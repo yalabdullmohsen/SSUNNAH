@@ -19,6 +19,8 @@
  "/arbaeen-nawawi/:id": "/arbaeen-nawawi/1",
  "/annual-courses/:id": "/annual-courses/course-ijazah-tahrir-2026",
  "/universities/:slug": "/universities/islamic-university-madinah",
+ "/fiqh/books/:bookId/lessons/:lessonId": "/fiqh/books/taharah/lessons/taharah-miyah-overview",
+ "/discover-islam/new-muslim/:day": "/discover-islam/new-muslim/1",
  "/fiqh/topics/:topicId": "/fiqh/topics/tahara",
  "/lessons/:id": "/lessons/kw-othman-tafsir-nahl-0",
  "/tarikh-islami/:id": "/tarikh-islami/seerah-taif",
