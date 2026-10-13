@@ -147,7 +147,7 @@ if (adhFile) {
     adh.push(r);
   }
 }
-counts.adhkar = adh.length;
+counts.adhkar = { ...(typeof counts.adhkar === "object" ? counts.adhkar : {}), total: adh.length };
 json("adhkar/verified-adhkar.json", adh);
 put("adhkar/adhkar-fadl.json", fs.readFileSync(`${appRoot}/src/data/adhkar-fadl.json`));
 
