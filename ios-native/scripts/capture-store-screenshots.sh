@@ -7,9 +7,9 @@ set -euo pipefail
 APP="${1:?مسار SunnahApp.app (بناء Debug لمحاكي iphonesimulator)}"
 DEVICE_TYPE="${2:-iPhone 17 Pro Max}"
 BUNDLE="com.yousef.majlisilm"
-WANT_SIZE="1320x2868"
+WANT_SIZE="${3:-1320x2868}"
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-OUT="$ROOT/ios-native/build/screenshots/ar-SA"
+OUT="${4:-$ROOT/ios-native/build/screenshots/ar-SA}"
 NAME="sunnah-store-shots-$$"
 mkdir -p "$OUT"; rm -f "$OUT"/*.png
 
