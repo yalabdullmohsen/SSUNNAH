@@ -144,7 +144,7 @@ struct LibrarySearchView: View {
         let results = LibraryAdapters.search(index, query: query)
         Group {
             if results.isEmpty {
-                EmptyStateView(title: query.trimmingCharacters(in: .whitespacesAndNewlines).count < 2 ? "ابدأ بكتابة كلمة للبحث" : "لا نتائج")
+                (query.trimmingCharacters(in: .whitespacesAndNewlines).count < 2 ? EmptyStateView(title: "ابحث في المحتوى", message: "اكتب كلمة أو عبارة، مثل «الصلاة» أو «البقرة»، لتظهر النتائج هنا.", symbol: "magnifyingglass") : EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass"))
             } else {
                 List(results) { item in
                     Button { openRoute(item.route ?? "/") } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
@@ -261,7 +261,7 @@ public enum LibrarySection {
         registry.registerView(id: "sections") {
             // «كل الأقسام» لا تربط بنفسها (النقر كان لا يفعل شيئًا)
             LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { nav in
-                LibraryAdapters.more(nav).map { LibraryAdapters.NavGroup(title: $0.title, links: $0.links.filter { $0.route != "/sections" }) }.filter { !$0.links.isEmpty }
+                LibraryAdapters.sectionsPage(nav)
             }) { LibraryGroupedLinksView(groups: $0) })
         }
         registry.registerView(id: "sitemap") {

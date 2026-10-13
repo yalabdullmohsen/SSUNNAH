@@ -170,6 +170,21 @@ enum LibraryAdapters {
         return groups + (settings.isEmpty ? [] : [NavGroup(title: "الحساب والإعدادات", links: settings)])
     }
 
+    /// صفحة «كل الأقسام»: كل مسار في SectionsCatalog داخل نطاق التطبيق، مجمَّعًا بمجموعته، والعنوان الفرعي من التصدير إن وُجد.
+    static func sectionsPage(_ nav: LibraryNavigation?, scope: (String) -> Bool = LibraryRouteScope.contains) -> [NavGroup] {
+        var sub: [String: String] = [:]
+        if let nav {
+            for s in nav.sections { sub[s.route] = s.subtitle }
+            for g in nav.groups { for s in g.sections { sub[s.route] = s.subtitle } }
+            for r in nav.settingsRows { sub[r.href] = r.description }
+        }
+        return SectionsCatalog.groupOrder.compactMap { group in
+            let links = SectionsCatalog.entries.filter { $0.group == group && scope($0.route) }
+                .map { SectionLink(id: $0.route, title: $0.title, subtitle: sub[$0.route], route: $0.route) }
+            return links.isEmpty ? nil : NavGroup(title: group, links: links)
+        }
+    }
+
     /// /sections: أقسام التنقل بترتيب التصدير (مجموعة ثم ترتيب السجل).
     static func sections(_ nav: LibraryNavigation, scope: (String) -> Bool = LibraryRouteScope.contains) -> [SectionLink] {
         nav.sections.filter { scope($0.route) }
