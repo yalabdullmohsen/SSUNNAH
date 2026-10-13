@@ -22,6 +22,7 @@ trap cleanup EXIT
 
 xcrun simctl boot "$UDID"; xcrun simctl bootstatus "$UDID" -b >/dev/null
 xcrun simctl status_bar "$UDID" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3
+xcrun simctl ui "$UDID" appearance "${5:-light}"
 xcrun simctl location "$UDID" set 24.7136,46.6753          # الرياض: مواقيت وقبلة معقولة
 xcrun simctl install "$UDID" "$APP"
 xcrun simctl privacy "$UDID" grant location "$BUNDLE" || true
