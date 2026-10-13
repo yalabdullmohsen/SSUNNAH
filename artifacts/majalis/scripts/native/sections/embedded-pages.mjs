@@ -23,6 +23,8 @@ export default async function exportEmbeddedPages({ json, counts, appRoot }) {
     const c = loadConsts(`${appRoot}/${file}`);
     const sections = Object.fromEntries(names.map((n) => [n, c(n)]));
     json(`${section}/embedded/${page}.json`, { ...EMBEDDED, sections });
-    (counts[section] ??= {})[`embedded-${page}`] = Object.values(sections).reduce((a, v) => a + (Array.isArray(v) ? v.length : Object.keys(v).length), 0);
+    /* counts[قسم] قد يكون رقمًا (عدّاد القسم الرئيسي) فلا يُكتب عليه خاصية */
+    const key = typeof counts[section] === "object" || counts[section] === undefined ? section : `${section}-embedded`;
+    (counts[key] ??= {})[`embedded-${page}`] = Object.values(sections).reduce((a, v) => a + (Array.isArray(v) ? v.length : Object.keys(v).length), 0);
   }
 }
