@@ -37,7 +37,7 @@ struct AccountFeatureTourScreen: View {
 
             HStack(spacing: Sunnah.Spacing.s2) {
                 ForEach(slides.indices, id: \.self) { i in
-                    Button { withAnimation { index = i } } label: {
+                    Button { sunnahAnimate { index = i } } label: {
                         Capsule().fill(i == index ? Sunnah.Colors.primary : Sunnah.Colors.surface2)
                             .frame(width: i == index ? Sunnah.Spacing.s5 : Sunnah.Spacing.s2, height: Sunnah.Spacing.s2)
                             .frame(minWidth: Sunnah.Spacing.s5, minHeight: Sunnah.Spacing.touch)
@@ -51,10 +51,10 @@ struct AccountFeatureTourScreen: View {
             HStack(spacing: Sunnah.Spacing.s3) {
                 SunnahButton(isLast ? "إغلاق" : "تخطّي", style: .secondary) { dismiss() }
                 if index > 0 {
-                    SunnahButton("السابق", style: .secondary) { withAnimation { index -= 1 } }
+                    SunnahButton("السابق", style: .secondary) { sunnahAnimate { index -= 1 } }
                 }
                 SunnahButton(isLast ? "تم" : "التالي") {
-                    if isLast { dismiss() } else { withAnimation { index += 1 } }
+                    if isLast { dismiss() } else { sunnahAnimate { index += 1 } }
                 }
             }
 

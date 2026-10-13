@@ -290,7 +290,7 @@ struct AccountQiblaDial: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .aspectRatio(1, contentMode: .fit)
-        .animation(.easeOut(duration: 0.15), value: heading)
+        .animation(Sunnah.Motion.reduced ? nil : .easeOut(duration: 0.15), value: heading)
         .accessibilityElement()
         .accessibilityLabel("بوصلة القبلة، الزاوية \(Int(bearing.rounded())) درجة")
     }

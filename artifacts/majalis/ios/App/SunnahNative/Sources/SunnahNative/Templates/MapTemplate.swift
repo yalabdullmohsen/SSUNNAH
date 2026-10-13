@@ -56,7 +56,7 @@ public struct MapTemplate: View {
                         .buttonStyle(.plain).padding(Sunnah.Spacing.pageX).background(Sunnah.Colors.surface)
                 }
                 List(places) { p in
-                    Button { selected = p; withAnimation { region.center = p.coordinate } } label: { SunnahListRow(title: p.title, subtitle: p.subtitle) }
+                    Button { selected = p; sunnahAnimate { region.center = p.coordinate } } label: { SunnahListRow(title: p.title, subtitle: p.subtitle) }
                         .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)

@@ -42,6 +42,26 @@ public enum Sunnah {
         }
     }
 
+    /// حركة خفيفة تحترم «تقليل الحركة»، وارتجاج لمسي موحّد.
+    public enum Motion {
+        public static var reduced: Bool {
+            #if canImport(UIKit)
+            UIAccessibility.isReduceMotionEnabled
+            #else
+            false
+            #endif
+        }
+        public static let standard = Animation.easeInOut(duration: 0.2)
+    }
+
+    @MainActor public enum Haptics {
+        public static func select() {
+            #if canImport(UIKit) && !os(watchOS)
+            UISelectionFeedbackGenerator().selectionChanged()
+            #endif
+        }
+    }
+
     /// 6 مستويات فقط، مرتبطة بـ Dynamic Type.
     public enum Typography {
         public static let pageTitle = Font.custom("Almarai-ExtraBold", size: 28, relativeTo: .title)
@@ -53,6 +73,24 @@ public enum Sunnah {
         /// نصوص شرعية بخط Amiri: الآية والحديث/الأثر (خط المصحف QPC غير مضمَّن بانتظار قرار الترخيص).
         public static let quran = Font.custom("Amiri-Regular", size: 24, relativeTo: .title3)
         public static let hadith = Font.custom("Amiri-Regular", size: 19, relativeTo: .body)
+    }
+}
+
+/// يُنفّذ التغيير بحركة قياسية، أو فورًا عند تفعيل «تقليل الحركة».
+@discardableResult
+public func sunnahAnimate<R>(_ body: () throws -> R) rethrows -> R {
+    try withAnimation(Sunnah.Motion.reduced ? nil : Sunnah.Motion.standard, body)
+}
+
+public extension View {
+    /// ظل البطاقة: خفيف في الفاتح، بلا ظل في الداكن (الحدّ يكفي).
+    func sunnahElevation() -> some View { modifier(SunnahElevation()) }
+}
+
+private struct SunnahElevation: ViewModifier {
+    @Environment(\.colorScheme) private var scheme
+    func body(content: Content) -> some View {
+        content.shadow(color: scheme == .dark ? .clear : .black.opacity(0.06), radius: 8, y: 2)
     }
 }
 

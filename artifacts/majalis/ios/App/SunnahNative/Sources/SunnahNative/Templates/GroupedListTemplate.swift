@@ -54,7 +54,7 @@ public struct GroupedListTemplate: View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
             Button {
                 if let r = item.route { openRoute(r) }
-                else if item.body != nil { withAnimation(.easeInOut(duration: 0.2)) { toggle(item.id) } }
+                else if item.body != nil { sunnahAnimate { toggle(item.id) } }
             } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
                 .buttonStyle(.plain)
                 .accessibilityValue(item.body == nil || item.route != nil ? "" : (open ? "موسَّع" : "مطوي"))

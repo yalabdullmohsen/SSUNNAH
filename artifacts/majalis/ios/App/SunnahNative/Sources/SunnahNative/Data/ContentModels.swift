@@ -93,7 +93,15 @@ public struct SectionLink: Identifiable, Hashable, Sendable, Decodable {
 }
 
 private struct OpenRouteKey: EnvironmentKey {
-    static let defaultValue: (String) -> Void = { _ in }
+    /// غياب الحقن عطل صامت (النقر لا يفتح شيئًا): يفشل صراحةً في Debug وفي اختبارات الواجهة (`-strictOpenRoute`).
+    static let defaultValue: (String) -> Void = { path in
+        #if DEBUG
+        assertionFailure("openRoute غير محقون — \(path)")
+        #endif
+        if ProcessInfo.processInfo.arguments.contains("-strictOpenRoute") {
+            fatalError("openRoute غير محقون — \(path)")
+        }
+    }
 }
 
 public extension EnvironmentValues {
