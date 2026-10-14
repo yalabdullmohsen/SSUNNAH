@@ -1,0 +1,19 @@
+name: native ownership warning
+# تحذير فقط (لا يفشل): يعدّل PR ملفات تملكها نافذة أخرى؟ (OWNERSHIP.md). ubuntu رخيص، لا macOS.
+on:
+  pull_request:
+    branches: [native-app]
+    paths: ['ios-native/**', 'artifacts/majalis/ios/**', 'scripts/native-*', 'docs/native/**']
+permissions:
+  contents: read
+jobs:
+  ownership:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with: { fetch-depth: 0 }
+      - run: node scripts/native-ownership-check.mjs "$HEAD_REF" "origin/${BASE_REF}"
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          BASE_REF: ${{ github.base_ref }}
