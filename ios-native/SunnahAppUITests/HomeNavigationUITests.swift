@@ -177,4 +177,20 @@ final class HomeNavigationUITests: XCTestCase {
         openTile("/stats")
         XCTAssertTrue(app.staticTexts["إحصائياتك بانتظارك"].waitForExistence(timeout: 10), "/stats: لا حالة فارغة مصمَّمة")
     }
+
+    /// أيقونة التطبيق: الإعدادات ← المظهر ← ثلاث بطاقات، والأساسية محدَّدة عند الفتح.
+    func testAppIconPickerShowsThreeCards() {
+        app.buttons["الحساب"].tap()
+        app.buttons["الإعدادات"].tap()
+        let row = app.buttons["settings.appIcon"].firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 10), "صف أيقونة التطبيق غير موجود")
+        row.tap()
+        for id in ["primary", "starDish", "zellijDark"] {
+            XCTAssertTrue(app.buttons["appicon.\(id)"].waitForExistence(timeout: 10), "بطاقة \(id) غير موجودة")
+        }
+        XCTAssertEqual(app.buttons["appicon.primary"].value as? String, "محدَّدة")
+        if let dir = ProcessInfo.processInfo.environment["APPICON_SHOT_DIR"] {
+            try? XCUIScreen.main.screenshot().pngRepresentation.write(to: URL(fileURLWithPath: dir + "/appicon-picker.png"))
+        }
+    }
 }
