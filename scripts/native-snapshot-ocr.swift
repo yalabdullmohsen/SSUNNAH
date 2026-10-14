@@ -25,4 +25,6 @@ if lines.filter({ !chrome.contains($0) && $0.count > 1 }).count < 2 {
     for i in 0..<(w * h) { hist[(UInt32(px[i*4] >> 4) << 8) | (UInt32(px[i*4+1] >> 4) << 4) | UInt32(px[i*4+2] >> 4), default: 0] += 1 }
     print((hist.values.max() ?? 0) * 10 >= w * h * 9 ? "WHITE_SCREEN" : "EMPTY"); exit(0)
 }
+// النص المقطوع (يُفعَّل بـAUDIT_TRUNC=1 في تدقيق أكبر خط): سطر ينتهي بـ«…» = اقتطاع من النظام
+if ProcessInfo.processInfo.environment["AUDIT_TRUNC"] == "1", let t = lines.first(where: { $0.hasSuffix("…") || $0.hasSuffix("...") }) { print("TRUNCATED:\(t.prefix(40))"); exit(0) }
 print("OK")

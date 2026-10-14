@@ -31,6 +31,12 @@ struct SunnahApp: App {
                     #endif
                 }
                 #if DEBUG
+                // حلقة التدقيق السريعة: جلسة واحدة؛ كل رابط عميق (simctl openurl) يُقلِّص المكدّس لوجهته ويبدأ انتظار الجاهزية.
+                .onChange(of: router.stack) { stack in
+                    guard UserDefaults.standard.bool(forKey: "auditLoop") else { return }
+                    if stack.count > 1, let last = stack.last { router.stack = [last]; return }
+                    if let last = stack.last { readiness.begin(route: last.path) }
+                }
                 // screen.ready: يعلن اكتمال التحميل (لا حالة خطأ/تحميل عالقة)؛ يقرؤه XCUITest، والسكربتات تقرأ snapshot-ready.json
                 .overlay(alignment: .topLeading) {
                     if readiness.isReady { Color.clear.frame(width: 1, height: 1).accessibilityIdentifier(ScreenState.ready) }
