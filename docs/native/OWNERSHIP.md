@@ -73,3 +73,4 @@
 - ن4 → ن1: `Design/Sunnah.swift` — `Sunnah.Motion.standard` يصير مرادفًا لـ`SunnahMotion.standard`؛ لن ألمس الملف.
 - ن3 → ن4: `Shell/RouteResolver.swift` — أُضيف سطر واحد (فوق سطر `MushafRoute`) لمسار `/tafsir/{سورة}:{آية}` ← `TafsirAyahView` (في `Mushaf/MushafTafsirView.swift`)؛ لا تغيير آخر في الملف.
 - ن1 → ن4: `Shell/RouteResolver.swift` — أضفتُ سطرًا واحدًا فقط في `redirects`: `"adhan-settings": "/notification-settings"` (لا ميزة أذان في التطبيق؛ قرار المالك). أبقِه عند أي إعادة كتابة للموجّه. اختبار `NoAdhanNamingTests` يحميه.
+- ن3 → ن4: `ios-native/SunnahApp.xcodeproj/project.pbxproj` — أُضيف ملف `ios-native/SunnahAppUITests/MushafFlipHitchUITests.swift` (قياس تقطيع تقليب المصحف على n3-sim) لهدف `SunnahAppUITests`: 4 أسطر فقط (PBXBuildFile وPBXFileReference وعنصر المجموعة وSources)؛ لا تغيير آخر.
