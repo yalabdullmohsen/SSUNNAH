@@ -35,6 +35,13 @@ public enum Sunnah {
         public static let gold = dynamic(light: 0x8A6D32, dark: 0xD9C089)
         /// لون محيط صفحة المصحف (ترويسة، علامة نهاية الآية، الصفحة): أخضر هادئ؛ الداكن درجة أفتح بتباين ≥ 4.5:1.
         public static let mushafAccent = dynamic(light: 0x5C8A72, dark: 0x8FBFA6)
+        /// ورق صفحة المصحف (مرجع التصميم الجديد): عاجي دافئ فاتحًا، ونفس الخلفية الليلية داكنًا.
+        public static let mushafPaper = dynamic(light: 0xFFFBF7, dark: 0x0F1A15)
+        /// لافتة السورة وخرطوشة الصفحة (مرجع التصميم): سلوي عاجي، سلطع أخضر، ذهبي بُنّي هادئ، حبر أخضر.
+        public static let mushafIvory = dynamic(light: 0xFBF6EA, dark: 0x1A2A22)
+        public static let mushafSage = dynamic(light: 0x9EB7A4, dark: 0x2F4A3B)
+        public static let mushafGoldBrown = dynamic(light: 0xB5A177, dark: 0xB5A177)
+        public static let mushafInk = dynamic(light: 0x265440, dark: 0xCFE3D6)
         public static let goldDeco = dynamic(light: 0xB08D4A, dark: 0xD9C089)
         public static let goldSoft = dynamic(light: 0xD9C089, dark: 0x3A3320)
         public static let textPrimary = dynamic(light: 0x17241E, dark: 0xEFECE2)
