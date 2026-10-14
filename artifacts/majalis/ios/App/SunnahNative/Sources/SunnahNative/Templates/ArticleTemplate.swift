@@ -19,7 +19,7 @@ public struct ArticleTemplate: View {
             LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s5) {
                 DetailHero(title: item.title, subtitle: item.subtitle, tags: item.tags)
                 ForEach(Array((item.body ?? "").components(separatedBy: "\n\n").enumerated()), id: \.offset) { _, p in
-                    Text(p).font(Sunnah.Typography.body).lineSpacing(Sunnah.Spacing.s2).foregroundStyle(Sunnah.Colors.textPrimary)
+                    SunnahArabicText(p, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
             }

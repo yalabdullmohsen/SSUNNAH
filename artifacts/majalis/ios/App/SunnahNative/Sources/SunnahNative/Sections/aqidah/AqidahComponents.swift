@@ -78,7 +78,7 @@ struct AqidahParagraphs: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
             ForEach(Array(text.components(separatedBy: "\n\n").enumerated()), id: \.offset) { _, p in
-                Text(p).font(Sunnah.Typography.body).lineSpacing(Sunnah.Spacing.s1)
+                SunnahArabicText(p, style: .body)
                     .foregroundStyle(Sunnah.Colors.textPrimary)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }

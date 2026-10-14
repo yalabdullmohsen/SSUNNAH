@@ -83,7 +83,7 @@ struct AdhkarListView: View {
                     Button { if taps < item.repeatCount { done[item.id] = taps + 1 } } label: {
                         SunnahCard {
                             VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                                Text(item.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                                SunnahArabicText(item.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                                 if let source = item.sourceName ?? item.reference {
                                     Text(source).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                                 }

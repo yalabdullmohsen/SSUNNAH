@@ -94,16 +94,16 @@ struct FiqhBlockCard: View {
                         .accessibilityAddTraits(.isHeader)
                 }
                 ForEach(Array(block.paragraphs.enumerated()), id: \.offset) { _, p in
-                    Text(p).font(Sunnah.Typography.body).lineSpacing(Sunnah.Spacing.s1).foregroundStyle(Sunnah.Colors.textPrimary)
+                    SunnahArabicText(p, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                 }
                 ForEach(Array(block.bullets.enumerated()), id: \.offset) { _, b in
                     HStack(alignment: .firstTextBaseline, spacing: Sunnah.Spacing.s2) {
                         Text("•").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.primary).accessibilityHidden(true)
-                        Text(b).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        SunnahArabicText(b, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                     }
                 }
                 if let q = block.quote {
-                    Text(q).font(Sunnah.Typography.body).lineSpacing(Sunnah.Spacing.s1).foregroundStyle(Sunnah.Colors.primary)
+                    SunnahArabicText(q, style: .body).foregroundStyle(Sunnah.Colors.primary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(Sunnah.Spacing.s3)
                         .background(Sunnah.Colors.primarySoft, in: RoundedRectangle(cornerRadius: Sunnah.Radius.small))

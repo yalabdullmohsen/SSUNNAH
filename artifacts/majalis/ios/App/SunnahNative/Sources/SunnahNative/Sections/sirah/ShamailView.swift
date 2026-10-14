@@ -55,9 +55,9 @@ public struct ShamailView: View {
                                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                                         Text(bab.title).font(Sunnah.Typography.cardTitle)
                                             .foregroundStyle(Sunnah.Colors.textPrimary).accessibilityAddTraits(.isHeader)
-                                        if let t = bab.text { Text(t).font(Sunnah.Typography.hadith).foregroundStyle(Sunnah.Colors.textPrimary) }
+                                        if let t = bab.text { SunnahArabicText(t, style: .hadith).foregroundStyle(Sunnah.Colors.textPrimary) }
                                         ForEach(Array((bab.hadiths ?? []).enumerated()), id: \.offset) { _, h in
-                                            Text(h.text).font(Sunnah.Typography.hadith).foregroundStyle(Sunnah.Colors.textPrimary)
+                                            SunnahArabicText(h.text, style: .hadith).foregroundStyle(Sunnah.Colors.textPrimary)
                                             if let r = [h.rawi, h.source].compactMap({ $0 }).filter({ !$0.isEmpty }).joined(separator: " — ") as String?, !r.isEmpty {
                                                 Text(r).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                                             }

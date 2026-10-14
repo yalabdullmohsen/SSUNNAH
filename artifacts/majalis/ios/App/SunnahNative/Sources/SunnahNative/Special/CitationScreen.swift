@@ -62,7 +62,7 @@ public struct CitationScreen: View {
                         if let t = c.source?.title_ar, !t.isEmpty {
                             Text(t).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                         }
-                        Text(c.quoted_text).font(Sunnah.Typography.hadith).foregroundStyle(Sunnah.Colors.textPrimary)
+                        SunnahArabicText(c.quoted_text, style: .hadith).foregroundStyle(Sunnah.Colors.textPrimary)
                             .textSelection(.enabled)
                         if let line = Self.meta(c.source), !line.isEmpty {
                             Text(line).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)

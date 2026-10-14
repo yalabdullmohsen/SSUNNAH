@@ -89,8 +89,7 @@ public struct HomeScreen: View {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                     Label("آية اليوم", systemImage: "book.closed").font(Sunnah.Typography.cardTitle)
                         .foregroundStyle(Sunnah.Colors.textPrimary)
-                    Text(d.ayahText).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    SunnahArabicText(d.ayahText, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(PrayerTimeFormat.arabicDigits(d.ayah.reference)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }
@@ -106,8 +105,7 @@ public struct HomeScreen: View {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                     Label("حديث اليوم", systemImage: "text.book.closed").font(Sunnah.Typography.cardTitle)
                         .foregroundStyle(Sunnah.Colors.textPrimary)
-                    Text(h.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    SunnahArabicText(h.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(PrayerTimeFormat.arabicDigits([h.narrator, h.source, h.number].compactMap { $0 }.joined(separator: " — ")))
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }

@@ -82,7 +82,7 @@ struct HadithDetailView: View {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                 SunnahCard {
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        Text(item.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        SunnahArabicText(item.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                         if let narrator = item.narrator {
                             Text(narrator).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                         }
@@ -96,7 +96,7 @@ struct HadithDetailView: View {
                     }
                 }
                 if let explanation = item.explanation {
-                    SunnahCard { Text(explanation).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    SunnahCard { SunnahArabicText(explanation, style: .body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 }
             }.padding(Sunnah.Spacing.pageX)
         }
@@ -156,7 +156,7 @@ struct HadithCollectionView: View {
                 let rows = q.isEmpty ? all : all.filter { ArabicSearch.normalize($0.t).contains(q) }
                 List(rows) { row in
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                        Text(row.t).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        SunnahArabicText(row.t, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                         if showNumber { Text("رقم \(row.n)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
                     }.sunnahRowChrome()
                 }
