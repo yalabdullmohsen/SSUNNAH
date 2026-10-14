@@ -4,6 +4,8 @@
 `SN` = `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative`.
 
 ## n1 — التصميم والهوية
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Shell/RootTabView.swift` (شكل الشريط والقائمة الجانبية: ألوان/أيقونات/ترتيب/تخطيط). ن4 يملك فيه سطري الحركة فقط: `.sunnahDestination($0)` و`.sunnahNavigationMotion(depth:)`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Shell/AppTab.swift`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Design/**`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Components/**`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Templates/**`
@@ -41,7 +43,10 @@
 - `tools/tasmee-bench/**`
 
 ## n4 — البنية التحتية والأداء والتنقل
-- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Shell/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Shell/AppRouter.swift`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Shell/Route.swift`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Shell/RouteResolver.swift`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Shell/Motion.swift`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Platform/**`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Support/**`
 - `artifacts/majalis/ios/App/SunnahNative/Package.swift`
