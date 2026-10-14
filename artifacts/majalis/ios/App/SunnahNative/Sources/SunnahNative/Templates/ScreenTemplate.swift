@@ -89,3 +89,16 @@ extension View {
         #endif
     }
 }
+
+extension String {
+    /// أرقام لاتينية في كل نص معروض (أمر المالك): يحوّل ٠-٩ و۰-۹ ويُبقي غيرها.
+    var asLatinDigits: String {
+        String(unicodeScalars.map { u -> Character in
+            switch u.value {
+            case 0x0660...0x0669: return Character(UnicodeScalar(u.value - 0x0660 + 0x30)!)
+            case 0x06F0...0x06F9: return Character(UnicodeScalar(u.value - 0x06F0 + 0x30)!)
+            default: return Character(u)
+            }
+        })
+    }
+}

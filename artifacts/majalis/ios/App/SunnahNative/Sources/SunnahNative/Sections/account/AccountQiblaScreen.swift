@@ -182,7 +182,7 @@ struct AccountQiblaScreen: View {
         )) {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 Text("معايرة البوصلة").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                Text("دقة المستشعر منخفضة. حرّك الهاتف على شكل الرقم «٨» في الهواء عدة مرات بعيدًا عن المعادن والمغناطيس، ثم أعد المحاولة.")
+                Text("دقة المستشعر منخفضة. حرّك الهاتف على شكل الرقم «8» في الهواء عدة مرات بعيدًا عن المعادن والمغناطيس، ثم أعد المحاولة.")
                     .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                 SunnahButton("حسنًا", style: .secondary) { calibrationDismissed = true }
             }

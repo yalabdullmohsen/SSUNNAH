@@ -348,7 +348,7 @@ struct MawarithCalculatorScreen: View {
                     DisclosureGroup("خطوات الحساب بالتفصيل") {
                         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                             ForEach(Array(result.steps.enumerated()), id: \.offset) { _, s in
-                                Text("\(s.title): \(s.detail)").font(Sunnah.Typography.secondary)
+                                Text("\(s.title): \(s.detail)".asLatinDigits).font(Sunnah.Typography.secondary)
                                     .foregroundStyle(Sunnah.Colors.textPrimary)
                             }
                         }.padding(.top, Sunnah.Spacing.s2)
