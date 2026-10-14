@@ -246,7 +246,7 @@ enum SirahAdapters {
         let body = mine.map { pair -> String in
             let r = pair.1
             return lines([r.title, [r.mosque, r.city].compactMap { $0 }.filter { !$0.isBlank }.joined(separator: "، "),
-                   [r.schedule, r.lessonTime].compactMap { $0 }.filter { !$0.isBlank }.joined(separator: " · ")])
+                   [r.schedule, r.lessonTime].compactMap { $0 }.map(LessonTimeFormat.display).filter { !$0.isBlank }.joined(separator: " · ")])
         }
         return ContentItem(sirahID: slug, title: name, subtitle: "\(mine.count) درسًا", body: paragraphs(body))
     }

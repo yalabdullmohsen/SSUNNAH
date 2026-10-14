@@ -142,7 +142,7 @@ struct AccountCalendarScreen: View {
             }
             ForEach(events) { event in
                 Button { openEvent = event } label: {
-                    SunnahCard { SunnahListRow(title: event.title, subtitle: [event.sheikh, event.mosque, event.time].filter { !$0.isEmpty }.joined(separator: " · ")) }
+                    SunnahCard { SunnahListRow(title: event.title, subtitle: [event.sheikh, event.mosque, event.displayTime].filter { !$0.isEmpty }.joined(separator: " · ")) }
                 }
                 .buttonStyle(.plain)
             }
@@ -152,10 +152,10 @@ struct AccountCalendarScreen: View {
     private func eventSheet(_ event: AccountCalendarEvent) -> some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
             Text(event.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-            ForEach([("الشيخ", event.sheikh), ("المكان", event.mosque), ("اليوم", event.day), ("الوقت", event.time)], id: \.0) { key, value in
+            ForEach([("الشيخ", event.sheikh), ("المكان", event.mosque), ("اليوم", event.day), ("الوقت", event.displayTime)], id: \.0) { key, value in
                 HStack(alignment: .firstTextBaseline) {
                     Text(key).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                    Text(value).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    Text(value).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary).lineLimit(key == "الوقت" ? 1 : nil).minimumScaleFactor(0.8)
                 }
             }
             if let d = event.description, !d.isEmpty {
