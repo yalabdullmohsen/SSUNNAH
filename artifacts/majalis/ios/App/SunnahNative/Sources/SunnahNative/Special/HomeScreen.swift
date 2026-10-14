@@ -33,6 +33,7 @@ public struct HomeScreen: View {
     public var body: some View {
         ScrollView {
             VStack(spacing: Sunnah.Spacing.s5) {
+                header
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
                     nextPrayerCard(now: ctx.date)
                 }
@@ -54,6 +55,31 @@ public struct HomeScreen: View {
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
         .onAppear { daily = HomeDailyContent.load(on: Date()) }
+    }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+            Text(Self.greeting(Date())).font(Sunnah.Typography.pageTitle).foregroundStyle(.white)
+            Text(Self.hijriDate(Date())).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.goldSoft)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(Sunnah.Spacing.s5)
+        .sunnahPatternedBackground(radius: Sunnah.Radius.hero)
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("home.header")
+    }
+
+    static func greeting(_ d: Date) -> String {
+        Calendar.current.component(.hour, from: d) < 12 ? "صباح الخير" : "مساء الخير"
+    }
+
+    /// التاريخ الهجري (أم القرى) بأرقام لاتينية.
+    static func hijriDate(_ d: Date) -> String {
+        let f = DateFormatter()
+        f.calendar = Calendar(identifier: .islamicUmmAlQura)
+        f.locale = Locale(identifier: "ar-u-nu-latn")
+        f.dateFormat = "d MMMM y"
+        return f.string(from: d)
     }
 
     private func ayahCard(_ d: HomeDailyContent) -> some View {
