@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/../../scripts/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # يلتقط 6 لقطات App Store بالعربية على محاكٍ مخصص (لا يلمس المحاكيات المشتركة) من بناء Debug (لا Release: -snapshotRoute للتصحيح فقط).
 # الاستعمال: ios-native/scripts/capture-store-screenshots.sh /path/SunnahApp.app [اسم نوع الجهاز]
 # الإخراج:   ios-native/build/screenshots/ar-SA/{01-home..06-library}.png  (1320×2868 = iPhone 6.9")

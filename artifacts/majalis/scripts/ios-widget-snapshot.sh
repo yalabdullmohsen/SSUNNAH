@@ -1,4 +1,5 @@
 #!/bin/bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/../../../scripts/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # بوابة اقتطاع الودجات (ImageRenderer) + لقطات المصفوفة. تتطلب macOS + Xcode + محاكي iOS مُقلَع.
 # الاستخدام: scripts/ios-widget-snapshot.sh [مجلد_الإخراج]   — تخرج بـ1 عند أي ملامسة لحافة الإطار.
 set -euo pipefail

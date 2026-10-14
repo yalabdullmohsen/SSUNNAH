@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/../../../scripts/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # اختبار تكامل التسميع على محاكي iOS — يُشغَّل يدويًا (CI لا يملك نموذج WhisperKit ولا محاكيًا بزمن حقيقي).
 #
 # السلسلة المختبَرة كلها حقيقية ما عدا مصدر الصوت:

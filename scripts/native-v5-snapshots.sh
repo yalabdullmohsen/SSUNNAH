@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # لقطات تحقق v5 لكل مسارات الـ212 على محاكي ن1، ثم تحديث V5_TRACKING.json تلقائيًا (معيار الاحتساب في native-v5-progress.mjs --from-snapshots).
 # الاستخدام: bash scripts/native-v5-snapshots.sh [مسار ...]   (بلا وسائط = كل المسارات)
 set -uo pipefail

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # حلقة البناء الأصلي (ن4) — بلا Claude: PRs بوسم native-section → temp → بناء + اختبارات تحت القفل
 # → تعليق بالأخطاء / دمج الناجح / لقطات فاتح+داكن / تأشير [x] / PROGRESS.md. تُشغَّل من launchd كل ساعتين.
 # استعمال: native-loop.sh            (دورة كاملة)    native-loop.sh --dry  (بلا دمج/تعليق/دفع)

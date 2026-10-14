@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # لقطات فاتح/داكن لمسارات قسم (أو مسار مفرد) مع تحقق صارم. الاستخدام: native-snapshot.sh <قسم|route> [...]
 # يكتب ~/ssunnah-board/snapshots/<قسم>/<مسار>-{light,dark}.png ويُلحق المسارات الصالحة بـ$TICK والمرفوضة بـ$INVALID (مسار|سبب)
 set -uo pipefail
@@ -10,7 +11,7 @@ touch "$TICK" "$INVALID"
 xcrun simctl boot "$SIM" >/dev/null 2>&1
 xcrun simctl status_bar "$SIM" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 >/dev/null 2>&1
 # تحقق إلزامي قبل أول لقطة: التطبيق يعمل فعلًا في الواجهة (لا SpringBoard)؛ إعادة تثبيت وتشغيل مرة، ثم فشل صريح بدل لقطات باطلة.
-APP=${APP:-/tmp/dd-n4/Build/Products/Debug-iphonesimulator/SunnahApp.app}
+APP=${APP:-$HOME/.majalis-tools/dd/n4/Build/Products/Debug-iphonesimulator/SunnahApp.app}
 fg_ok() { xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1; xcrun simctl launch "$SIM" $BID >/dev/null 2>&1
   for _ in 1 2 3 4 5 6 7 8; do sleep 2
     xcrun simctl spawn "$SIM" launchctl list 2>/dev/null | grep -Eq "^[0-9]+[[:space:]]+[0-9-]+[[:space:]]+UIKitApplication:$BID" && return 0

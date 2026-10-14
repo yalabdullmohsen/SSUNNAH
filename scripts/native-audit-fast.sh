@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # تدقيق المسارات السريع: جلسة تطبيق واحدة على محاكي النافذة؛ التنقل بالروابط العميقة (simctl openurl majlisilm://…)
 # لكل مسار: انتظار screen.ready (snapshot-ready.json) ثم لقطة وتسجيل الحالة. التحليل (OCR مُجمَّع) يجري بعد الالتقاط بالتوازي.
 # الاستعمال: NATIVE_WINDOW=n2 APP=<SunnahApp.app> [MODE=light|dark] [FONT=accessibility-extra-extra-extra-large] [LIMIT=n] bash scripts/native-audit-fast.sh
@@ -11,7 +12,7 @@ cd "$(cd "$(dirname "$0")/.." && pwd)"
 # إعادة تشغيل المحاكي قبل كل جولة: يزيل حوارات SpringBoard العالقة («فتح في سُنّة؟») من اللقطات. REBOOT=0 لتخطّيها.
 if [ "${REBOOT:-1}" = 1 ]; then xcrun simctl shutdown "$SIM" >/dev/null 2>&1; xcrun simctl boot "$SIM" >/dev/null 2>&1; xcrun simctl bootstatus "$SIM" -b >/dev/null 2>&1; sleep 3; fi
 BID=com.yousef.majlisilm; MODE=${MODE:-light}; FONT=${FONT:-large}; LIMIT=${LIMIT:-999}
-APP=${APP:-/tmp/dd-n2/Build/Products/Debug-iphonesimulator/SunnahApp.app}
+APP=${APP:-$HOME/.majalis-tools/dd/n2/Build/Products/Debug-iphonesimulator/SunnahApp.app}
 TAG=${TAG:-$MODE-$FONT}; BOARD=${BOARD:-/tmp/route-audit-fast}/$TAG; mkdir -p "$BOARD/shots"; : > "$BOARD/states.tsv"
 TO=${SNAP_TIMEOUT:-15}
 xcrun simctl status_bar "$SIM" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 >/dev/null 2>&1

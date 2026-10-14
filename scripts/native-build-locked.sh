@@ -15,7 +15,7 @@ until mkdir "$LOCK" 2>/dev/null; do
 done
 trap 'rm -rf "$LOCK"' EXIT
 echo "pid=$$ owner=$OWNER started=$(date +%s)" > "$LOCK/owner"
-run() { xcodebuild "$@" > "$LOG" 2>&1; }
+run() { bash "$(dirname "$0")/build-slot.sh" -- xcodebuild "$@" > "$LOG" 2>&1; }  # خانة عالمية (≤2 بناءين عبر النوافذ)
 run "$@"; rc=$?
 # 143/137 أو 65 مع "Terminated": عملية قُتلت من الخارج → محاولة ثانية واحدة قبل إعلان الفشل
 if [[ $rc -ne 0 ]] && { [[ $rc -ge 128 ]] || grep -q "Terminated" "$LOG"; }; then

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # تدقيق شامل: يفتح كل مسارات ROUTE_TEMPLATE_MAP.json على محاكي النافذة (NATIVE_WINDOW=n2) ويكتب docs/native/qa/route-audit.md
 # الاستعمال: NATIVE_WINDOW=n2 APP=<SunnahApp.app> bash scripts/native-route-audit.sh [حدّ-اختياري-لعدد-المسارات]
 # يعيد استعمال native-snapshot.sh (OCR: تعذّر الفتح/فارغ/قيد الإعداد/بياض/نص مقطوع) بلوحة منفصلة حتى لا يلمس ticks النافذة الأخرى.
