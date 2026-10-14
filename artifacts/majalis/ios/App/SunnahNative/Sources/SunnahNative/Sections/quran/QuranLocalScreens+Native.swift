@@ -44,11 +44,9 @@ struct MemorizationPlansScreen: View {
     var body: some View {
         Group {
             if plans.isEmpty {
-                VStack(spacing: Sunnah.Spacing.s4) {
-                    EmptyStateView(title: "لا خطط حفظ بعد")
-                    SunnahButton("خطة جديدة") { creating = true }.padding(.horizontal, Sunnah.Spacing.pageX)
-                }
-                .frame(maxHeight: .infinity, alignment: .top)
+                SunnahInviteState(symbol: "checklist", title: "لا خطط حفظ بعد", message: "اختر سورة ووتيرة المراجعة ونرتّب لك الورد.",
+                                  actionTitle: "ابدأ خطة حفظ") { creating = true }
+                    .frame(maxHeight: .infinity, alignment: .top)
             } else {
                 List {
                     ForEach($plans) { $plan in
@@ -213,11 +211,14 @@ struct MemorizationHubView: View {
 /// علامات المصحف المحفوظة محليًا؛ الضغط يفتح المصحف على صفحة العلامة (لا تغيير في النص أو الصفحات).
 struct MushafBookmarksScreen: View {
     @StateObject private var store = MushafStore()
+    @Environment(\.openRoute) private var openRoute
 
     var body: some View {
         Group {
             if store.bookmarks.isEmpty {
-                EmptyStateView(title: "لا علامات بعد").frame(maxHeight: .infinity, alignment: .top)
+                SunnahInviteState(symbol: "bookmark", title: "لا علامات بعد", message: "ضع علامة على أي صفحة لتعود إليها بسرعة.",
+                                  actionTitle: "أضف علامة من المصحف") { openRoute("/mushaf") }
+                    .frame(maxHeight: .infinity, alignment: .top)
             } else {
                 List(store.bookmarks) { b in
                     SunnahNavigationLink {

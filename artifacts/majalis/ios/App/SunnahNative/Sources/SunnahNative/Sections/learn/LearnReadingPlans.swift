@@ -87,11 +87,9 @@ struct LearnReadingPlansScreen: View {
     var body: some View {
         Group {
             if plans.isEmpty {
-                VStack(spacing: Sunnah.Spacing.s4) {
-                    EmptyStateView(title: "لا خطط قراءة بعد")
-                    SunnahButton("خطة جديدة") { creating = true }.padding(.horizontal, Sunnah.Spacing.pageX)
-                }
-                .frame(maxHeight: .infinity, alignment: .top)
+                SunnahInviteState(symbol: "book.closed", title: "لا خطط قراءة بعد", message: "حدّد كتابًا وعدد الصفحات وسنتابع تقدّمك.",
+                                  actionTitle: "أنشئ خطتك الأولى") { creating = true }
+                    .frame(maxHeight: .infinity, alignment: .top)
             } else {
                 List {
                     ForEach($plans) { $plan in
