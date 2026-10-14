@@ -13,6 +13,7 @@ struct SunnahApp: App {
     #endif
 
     init() {
+        PerformanceMetrics.shared.start()
         RouteResolver.registerAll(in: .shared)
         // نظام إشعارات واحد (الصلاة + الأذكار + الورد...) بموافقة المستخدم فقط؛ لا بوابة ويب في التطبيق الأصلي.
         NativeNotificationsLifecycle.didFinishLaunching(notificationsEnabled: true)
