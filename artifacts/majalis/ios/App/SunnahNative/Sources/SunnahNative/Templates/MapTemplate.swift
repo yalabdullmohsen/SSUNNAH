@@ -57,7 +57,7 @@ public struct MapTemplate: View {
                 }
                 List(places) { p in
                     Button { selected = p; sunnahAnimate { region.center = p.coordinate } } label: { SunnahListRow(title: p.title, subtitle: p.subtitle) }
-                        .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
+                        .buttonStyle(.plain).sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             }

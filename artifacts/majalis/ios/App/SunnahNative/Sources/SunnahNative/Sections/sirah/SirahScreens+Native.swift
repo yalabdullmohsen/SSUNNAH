@@ -47,7 +47,7 @@ struct SirahInlineItemsView: View {
             if items.isEmpty { EmptyStateView() } else {
                 List(items) { item in
                     Button { open = item } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                        .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
+                        .buttonStyle(.plain).sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             }

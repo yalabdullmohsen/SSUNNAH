@@ -63,7 +63,7 @@ public struct GroupedListTemplate: View {
                     .frame(maxWidth: .infinity, alignment: .leading).transition(.opacity)
             }
         }
-        .listRowBackground(Sunnah.Colors.surface)
+        .sunnahRowChrome()
     }
 
     private func toggle(_ id: String) {

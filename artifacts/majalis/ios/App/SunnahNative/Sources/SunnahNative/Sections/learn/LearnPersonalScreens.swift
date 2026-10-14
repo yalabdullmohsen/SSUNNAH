@@ -18,7 +18,7 @@ struct LearnProgressScreen: View {
                     LearnInfoRow(label: "متقنة", value: "\(s.flashcards.mastered)")
                     Button("افتح البطاقات") { openRoute("/flashcards") }
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
                 Section("خطط القراءة") {
                     if s.activePlans.isEmpty {
                         SunnahMessageState(symbol: "book.closed", title: "لا خطط جارية", message: "ابدأ خطة قراءة من المكتبة.")
@@ -28,18 +28,18 @@ struct LearnProgressScreen: View {
                     }
                     Button("خطط القراءة") { openRoute("/reading-plans") }
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
                 Section("غرفة المذاكرة") {
                     LearnInfoRow(label: "دورات عمل مكتملة", value: "\(s.studyCycles)")
                     Button("غرفة المذاكرة") { openRoute("/study-room") }
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
             }
             Section("الخصوصية") {
                 Text("هذه البيانات محفوظة على جهازك فقط.").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 Button("مسح بيانات التعلّم المحلية", role: .destructive) { confirmClear = true }
             }
-            .listRowBackground(Sunnah.Colors.surface)
+            .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .confirmationDialog("مسح مراجعات البطاقات وخطط القراءة والملف البحثي وسجلّ المذاكرة؟", isPresented: $confirmClear, titleVisibility: .visible) {
@@ -76,7 +76,7 @@ struct LearnMyLearningScreen: View {
                     Button("تسجيل الدخول") { openRoute("/login") }
                 }
             }
-            .listRowBackground(Sunnah.Colors.surface)
+            .sunnahRowChrome()
             if let s = summary {
                 if !s.activePlans.isEmpty {
                     Section("أكمل من حيث توقفت") {
@@ -90,7 +90,7 @@ struct LearnMyLearningScreen: View {
                             .buttonStyle(.plain)
                         }
                     }
-                    .listRowBackground(Sunnah.Colors.surface)
+                    .sunnahRowChrome()
                 }
                 Section("إحصائياتي") {
                     LearnInfoRow(label: "بطاقات روجعت", value: "\(s.flashcards.total)")
@@ -98,14 +98,14 @@ struct LearnMyLearningScreen: View {
                     LearnInfoRow(label: "خطط قراءة جارية", value: "\(s.activePlans.count)")
                     LearnInfoRow(label: "دورات مذاكرة", value: "\(s.studyCycles)")
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
             }
             Section("روابط سريعة") {
                 ForEach(Self.links) { link in
                     Button { openRoute(link.id) } label: { SunnahListRow(title: link.title) }.buttonStyle(.plain)
                 }
             }
-            .listRowBackground(Sunnah.Colors.surface)
+            .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .onAppear { summary = LearnLocalSummary.read(from: store) }

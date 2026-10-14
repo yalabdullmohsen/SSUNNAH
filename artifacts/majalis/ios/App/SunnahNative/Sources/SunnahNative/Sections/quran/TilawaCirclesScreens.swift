@@ -8,7 +8,7 @@ struct TilawaListView: View {
     var body: some View {
         List(reciters.sorted { $0.order < $1.order }) { r in
             SunnahNavigationLink { TilawaSurahListView(reciter: r) } label: { SunnahListRow(title: r.nameAr, subtitle: nil) }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
@@ -26,7 +26,7 @@ struct TilawaSurahListView: View {
                         AudioPlayerTemplate(item: ContentItem(id: "\(reciter.id)-\(n)", title: surahNames[n] ?? "سورة \(n)", subtitle: reciter.nameAr, audioURL: audio.surahURL(n)))
                             .quranTitle(surahNames[n] ?? "سورة \(n)")
                     } label: { SunnahListRow(title: surahNames[n] ?? "سورة \(n)", subtitle: nil) }
-                        .listRowBackground(Sunnah.Colors.surface)
+                        .sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             } else { EmptyStateView(title: "لا صوت متاح لهذا القارئ") }
@@ -96,7 +96,7 @@ struct QuranCirclesListView: View {
     var body: some View {
         List(circles) { c in
             SunnahNavigationLink { QuranCircleDetailView(circle: c) } label: { SunnahListRow(title: c.name, subtitle: c.sheikh_name) }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }

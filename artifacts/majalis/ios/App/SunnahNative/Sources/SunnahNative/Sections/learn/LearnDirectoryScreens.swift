@@ -94,7 +94,7 @@ struct LearnUniversitiesCompareScreen: View {
                             LearnCompareRow(label: "الدرجات", values: chosen.map { $0.degreeLevels.isEmpty ? "—" : $0.degreeLevels.joined(separator: "، ") })
                             LearnCompareRow(label: "منح", values: chosen.map { $0.offersScholarship ? "نعم" : "لا" })
                         }
-                        .listRowBackground(Sunnah.Colors.surface)
+                        .sunnahRowChrome()
                     }
                     Section(selection.canAdd ? "اختر جامعتين إلى أربع" : "بلغت الحد الأقصى (أربع)") {
                         ForEach(all) { u in
@@ -111,7 +111,7 @@ struct LearnUniversitiesCompareScreen: View {
                             .accessibilityAddTraits(selection.contains(u.slug) ? .isSelected : [])
                         }
                     }
-                    .listRowBackground(Sunnah.Colors.surface)
+                    .sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
             }

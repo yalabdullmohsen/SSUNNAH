@@ -51,7 +51,7 @@ struct QuranSurahList: View {
                     SunnahListRow(title: "\(showOrder ? r.revelationOrder ?? r.id : r.id). \(r.name)",
                                   subtitle: "\(r.placeName) · \(r.ayahs) آية · صفحة \(r.firstPage)")
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
             }
             .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         }

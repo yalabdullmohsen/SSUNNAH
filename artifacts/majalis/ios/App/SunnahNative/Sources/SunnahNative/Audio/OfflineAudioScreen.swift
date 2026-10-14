@@ -44,7 +44,7 @@ private struct OfflineAudioList: View {
                 Section {
                     ForEach(reciters) { reciter in
                         OfflineReciterRow(reciter: reciter, reciters: reciters, downloader: downloader)
-                            .listRowBackground(Sunnah.Colors.surface)
+                            .sunnahRowChrome()
                     }
                 } header: {
                     Text("المساحة المستعملة: \(OfflineAudioScreen.megabytes(downloader.store.totalBytes()))")

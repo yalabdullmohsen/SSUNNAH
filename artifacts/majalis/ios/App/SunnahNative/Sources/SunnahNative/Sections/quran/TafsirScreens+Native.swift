@@ -31,7 +31,7 @@ struct TafsirHomeView: View {
                 }.pickerStyle(.segmented)
                 TafsirAttributionView(entry: book)
             }
-            .listRowBackground(Sunnah.Colors.surface)
+            .sunnahRowChrome()
             Section {
                 ForEach(idx.surahs, id: \.id) { s in
                     SunnahNavigationLink {
@@ -41,7 +41,7 @@ struct TafsirHomeView: View {
                     }
                 }
             }
-            .listRowBackground(Sunnah.Colors.surface)
+            .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
@@ -103,7 +103,7 @@ struct TafsirSurahView: View {
                             }
                         }
                         .padding(.vertical, Sunnah.Spacing.s2)
-                        .listRowBackground(Sunnah.Colors.surface)
+                        .sunnahRowChrome()
                     }
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)

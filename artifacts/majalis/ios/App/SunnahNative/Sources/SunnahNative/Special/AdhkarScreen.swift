@@ -57,7 +57,7 @@ public struct AdhkarScreen: ScreenTemplate {
                 } label: {
                     SunnahListRow(title: titles[category.id] ?? Self.fallbackTitle, subtitle: "\(category.items.count)")
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
             }
             .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
             .task {

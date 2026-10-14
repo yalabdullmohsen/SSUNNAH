@@ -27,3 +27,15 @@ public struct ContentCard: View {
         }
     }
 }
+
+extension View {
+    /// صف قائمة بشكل بطاقة «سُنّة»: أبيض بحد #E6DFCF وزوايا 20 بلا فواصل النظام.
+    func sunnahRowChrome() -> some View {
+        self.padding(.horizontal, 14).padding(.vertical, 12)
+            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+            .listRowInsets(EdgeInsets(top: 5, leading: Sunnah.Spacing.s4, bottom: 5, trailing: Sunnah.Spacing.s4))
+    }
+}
