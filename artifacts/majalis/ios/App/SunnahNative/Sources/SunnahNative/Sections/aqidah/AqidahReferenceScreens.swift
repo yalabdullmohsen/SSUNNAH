@@ -166,7 +166,7 @@ struct AqidahIslamicSectView: View {
     var body: some View {
         AqidahPage(title: sect.name, hero: sect.fullName) {
             HStack(spacing: Sunnah.Spacing.s2) {
-                SunnahChip(sect.category, selected: true); SunnahChip(sect.status)
+                SunnahChip(sect.category, selected: true); if !sect.status.aqidahIsBlank { SunnahChip(sect.status) }
                 if sect.publicationStatus == AqidahContent.underReview { SunnahChip("قيد المراجعة") }
             }
             block("النشأة", [sect.era, sect.origin].filter { !$0.isEmpty }.joined(separator: "\n\n"))
