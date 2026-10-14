@@ -10,6 +10,7 @@ public final class MushafRepository: @unchecked Sendable {
     private let lock = NSLock()
     private var pages: [Int: MushafPage] = [:]
     private var fonts: Set<Int> = []
+    private var surahNameFontReady = false
     private var cachedIndex: MushafIndex?
 
     public init(root: URL) { self.root = root }
@@ -53,6 +54,21 @@ public final class MushafRepository: @unchecked Sendable {
         }
         fonts.insert(n)
         return Mushaf.fontFamily(page: n)
+    }
+
+    /// يسجّل خط أسماء السور مرة واحدة (من الحزمة كخطوط الصفحات) ويعيد اسم العائلة.
+    public func ensureSurahNameFont() throws -> String {
+        lock.lock(); defer { lock.unlock() }
+        if surahNameFontReady { return Mushaf.surahNameFontFamily }
+        let url = root.appendingPathComponent("fonts/sura_names.ttf")
+        guard FileManager.default.fileExists(atPath: url.path) else { throw MushafError.missing("fonts/sura_names.ttf") }
+        var err: Unmanaged<CFError>?
+        if !CTFontManagerRegisterFontsForURL(url as CFURL, .process, &err) {
+            let code = err.map { CFErrorGetCode($0.takeRetainedValue()) } ?? -1
+            if code != 105 { throw MushafError.fontRegistration(code) }
+        }
+        surahNameFontReady = true
+        return Mushaf.surahNameFontFamily
     }
 
     private func read(_ rel: String) throws -> Data {

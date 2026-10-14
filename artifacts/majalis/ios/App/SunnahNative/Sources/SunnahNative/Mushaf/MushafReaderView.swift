@@ -61,7 +61,7 @@ public struct MushafPageView: View {
         switch row.k {
         case "h":
             let name = self.index.surahs.first { $0.id == row.s }?.name ?? ""
-            SurahBanner(name: name).padding(.vertical, 1)
+            SurahBanner(surah: row.s ?? 0, name: name, repo: repo).padding(.vertical, 1)
         case "b":
             Text("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ")
                 .font(Sunnah.Typography.cardTitle)
@@ -316,42 +316,5 @@ public struct MushafIndexView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .sunnahMotifCorner(size: 220, alignment: .bottomLeading, opacity: 0.06)
         .background(Sunnah.Colors.bg)
-    }
-}
-
-/// لافتة اسم السورة: إطار ذهبي بُنّي مزدوج، حقل سلوي، وردتان جانبيتان، وحبر أخضر (مرسومة بلا أصول صورية).
-struct SurahBanner: View {
-    let name: String
-    var body: some View {
-        GeometryReader { g in
-            ZStack {
-                RoundedRectangle(cornerRadius: 5).fill(Sunnah.Colors.mushafIvory)
-                RoundedRectangle(cornerRadius: 3).fill(Sunnah.Colors.mushafSage).padding(3)
-                RoundedRectangle(cornerRadius: 5).stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 1.2)
-                RoundedRectangle(cornerRadius: 3).stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.8), lineWidth: 0.6).padding(3)
-                HStack {
-                    rosette(g.size.height)
-                    Spacer()
-                    rosette(g.size.height)
-                }.padding(.horizontal, g.size.width * 0.05)
-                Text("سورة \(name)")
-                    .font(Sunnah.Typography.cardTitle)
-                    .foregroundStyle(Sunnah.Colors.mushafInk)
-                    .padding(.horizontal, g.size.width * 0.08).padding(.vertical, 3)
-                    .background(Sunnah.Colors.mushafIvory, in: RoundedRectangle(cornerRadius: 8))
-                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 0.8))
-            }
-        }
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("سورة \(name)")
-    }
-
-    private func rosette(_ h: CGFloat) -> some View {
-        let d = h * 0.62
-        return ZStack {
-            Circle().fill(Sunnah.Colors.mushafIvory)
-            Circle().stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 0.8)
-            Circle().fill(Sunnah.Colors.mushafSage).padding(d * 0.28)
-        }.frame(width: d, height: d)
     }
 }

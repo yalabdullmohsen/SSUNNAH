@@ -40,6 +40,8 @@ public enum Sunnah {
         /// لافتة السورة وخرطوشة الصفحة (مرجع التصميم): سلوي عاجي، سلطع أخضر، ذهبي بُنّي هادئ، حبر أخضر.
         public static let mushafIvory = dynamic(light: 0xFBF6EA, dark: 0x1A2A22)
         public static let mushafSage = dynamic(light: 0x9EB7A4, dark: 0x2F4A3B)
+        /// ذهبي زخرفة لافتة السورة (أصل متجهي): #D6BE8C.
+        public static let mushafGold = dynamic(light: 0xD6BE8C, dark: 0xD6BE8C)
         public static let mushafGoldBrown = dynamic(light: 0xB5A177, dark: 0xB5A177)
         public static let mushafInk = dynamic(light: 0x265440, dark: 0xCFE3D6)
         public static let goldDeco = dynamic(light: 0xB08D4A, dark: 0xD9C089)
