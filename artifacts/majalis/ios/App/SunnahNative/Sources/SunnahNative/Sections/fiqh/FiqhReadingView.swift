@@ -17,6 +17,9 @@ struct FiqhReadingView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
         .navigationTitle(reading?.title ?? "")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)   // العنوان في الـHero؛ لا عنوان كبير مكرَّر
+        #endif
     }
 
     private func content(_ reading: FiqhReading) -> some View {
