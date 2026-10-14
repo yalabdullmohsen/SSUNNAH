@@ -20,7 +20,7 @@ struct ItemHost<Content: View>: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .task { await load() }
+        .task(id: "\(String(describing: source))|\(id)") { await load() }
     }
 
     private func load() async {
@@ -51,7 +51,7 @@ struct CollectionHost<Content: View>: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .task { await load() }
+        .task(id: String(describing: source)) { await load() }
     }
 
     private func load() async {

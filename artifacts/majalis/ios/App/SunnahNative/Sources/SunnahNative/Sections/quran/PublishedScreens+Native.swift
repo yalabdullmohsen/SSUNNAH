@@ -21,7 +21,7 @@ struct QuranBundledLoader<T: Decodable & Sendable, V: View>: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .task { await load() }
+        .task(id: name) { await load() }
     }
 
     private func load() async {

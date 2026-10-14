@@ -76,7 +76,7 @@ struct WeakHadithListView: View {
                 case .failed: ErrorStateView { Task { await load() } }
                 case .ready(let all):
                     let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
-                    let rows = all.filter { !$0.hidden && (q.isEmpty || ArabicSearch.normalize($0.title + " " + $0.text).contains(q)) }
+                    let rows = Self.visibleRows(all, file: file, normalizedQuery: q)
                     List(rows) { item in
                         SunnahNavigationLink { WeakHadithDetailView(item: item) } label: {
                             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
@@ -94,6 +94,13 @@ struct WeakHadithListView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
         .navigationTitle(title)
         .task(id: file) { phase = .loading; await load() }
+    }
+
+    /// حاجز أخير: لا يُعرض عنصر إلا إن طابق حكمُه الملفَّ المفتوح (weak-daif ← daif، weak-mawdu ← mawdu)، حتى لو بقيت بيانات ملف آخر في الحالة.
+    static func expectedClass(for file: String) -> String { file.replacingOccurrences(of: "weak-", with: "") }
+    static func visibleRows(_ all: [WeakHadithItem], file: String, normalizedQuery q: String) -> [WeakHadithItem] {
+        let cls = expectedClass(for: file)
+        return all.filter { $0.authenticityClass == cls && !$0.hidden && (q.isEmpty || ArabicSearch.normalize($0.title + " " + $0.text).contains(q)) }
     }
 
     private func load() async {

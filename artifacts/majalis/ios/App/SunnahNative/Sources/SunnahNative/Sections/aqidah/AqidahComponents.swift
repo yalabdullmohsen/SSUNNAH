@@ -23,7 +23,7 @@ struct AqidahItemHost<Value: Decodable & Sendable, Item, Content: View>: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .task { await load() }
+        .task(id: file) { await load() }
     }
 
     private func load() async {

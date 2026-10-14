@@ -166,7 +166,7 @@ struct HadithCollectionView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
         .navigationTitle(title)
-        .task { await load() }
+        .task(id: file) { await load() }
     }
 
     private func load() async {
