@@ -19,7 +19,7 @@ public struct SearchTemplate: View {
 
     public var body: some View {
         Group {
-            if results.isEmpty { query.isEmpty ? EmptyStateView(title: "ابحث في المحتوى", message: "اكتب كلمة أو عبارة، مثل «الصلاة» أو «البقرة»، لتظهر النتائج هنا.", symbol: "magnifyingglass") : EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass") } else {
+            if results.isEmpty { query.isEmpty ? EmptyStateView(title: "ابحث في المحتوى", message: "اكتب كلمة أو عبارة، مثل «الصلاة» أو «البقرة»، لتظهر النتائج هنا.", symbol: "magnifyingglass", declaresEmpty: false) : EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass") } else {
                 List(results) { item in
                     Button { openRoute(item.path(base: detailBase)) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
                         .buttonStyle(.plain).sunnahRowChrome()

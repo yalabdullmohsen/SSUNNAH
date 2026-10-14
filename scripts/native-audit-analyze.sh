@@ -10,7 +10,7 @@ one() { IFS=$'\t' read -r route eff comp st <<< "$1"; slug=$(echo "${route#/}" |
   txt=$("$BIN" "$png" "$eff" --text 2>/dev/null | python3 -c "import sys,hashlib;c={'الرئيسية','القرآن','الدروس','الصلاة','الأقسام','9:41'};t=sorted({l.strip() for l in sys.stdin if len(l.strip())>1 and l.strip() not in c});print(hashlib.sha256('\n'.join(t).encode()).hexdigest()[:16] if len(t)>=3 else 'few')")
   printf '%s\t%s\t%s\t%s\n' "$route" "$comp" "$v" "$txt"; }
 export -f one
-tr '\n' '\0' < "$B/states.tsv" | xargs -0 -P 4 -I{} bash -c 'one "$1"' _ {} > "$B/verdicts.raw"
+tr '\n' '\0' < "$B/states.tsv" | xargs -0 -P 4 -S 4096 -I{} bash -c 'one "$1"' _ {} > "$B/verdicts.raw"
 python3 - "$B" <<'PY'
 import sys,collections
 B=sys.argv[1]; rows=[l.rstrip('\n').split('\t') for l in open(B+'/verdicts.raw')]
