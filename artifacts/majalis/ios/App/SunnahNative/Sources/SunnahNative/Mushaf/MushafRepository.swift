@@ -9,6 +9,14 @@ public final class MushafRepository: @unchecked Sendable {
     private let root: URL
     private let lock = NSLock()
     private var pages: [Int: MushafPage] = [:]
+    private var pageOrder: [Int] = []
+    private var layouts: [LayoutKey: MushafMetrics.Layout] = [:]
+    private var layoutOrder: [LayoutKey] = []
+    private var inflight: Set<Int> = []
+    private let prefetchQueue = DispatchQueue(label: "mushaf.prefetch", qos: .utility)
+    static let pageCacheLimit = 24, layoutCacheLimit = 24
+    var cachedPageCount: Int { lock.lock(); defer { lock.unlock() }; return pages.count }
+    private struct LayoutKey: Hashable { let page: Int, w: Int, h: Int }
     private var fonts: Set<Int> = []
     private var surahNameFontReady = false
     private var cachedIndex: MushafIndex?
@@ -33,9 +41,39 @@ public final class MushafRepository: @unchecked Sendable {
         lock.lock(); defer { lock.unlock() }
         if let hit = pages[n] { return hit }
         let p = try JSONDecoder().decode(MushafPage.self, from: read(String(format: "pages/%03d.json", n)))
-        if pages.count > 12 { pages.removeAll() }
-        pages[n] = p
+        pages[n] = p; pageOrder.append(n)
+        if pageOrder.count > Self.pageCacheLimit { pages[pageOrder.removeFirst()] = nil }
         return p
+    }
+
+    /// توزيع الصفحة (أسطر + حجم الخط + الفراغات) من ذاكرة LRU؛ الحساب بـCore Text مرة واحدة لكل مقاس.
+    /// نفس المعادلات التي كانت داخل العرض حرفيًا، فلا يتغيّر ناتج الرسم.
+    func pageLayout(_ page: MushafPage, family: String, size: CGSize) -> (m: (rowHeight: Double, top: Double, rows: [MushafRow]), layout: MushafMetrics.Layout, width: CGFloat, inset: CGFloat) {
+        let inset = size.width * 0.03, width = size.width - inset * 2
+        let m = MushafPageLayout.metrics(for: page, height: size.height)
+        let key = LayoutKey(page: page.page, w: Int((size.width * 10).rounded()), h: Int((size.height * 10).rounded()))
+        lock.lock(); let hit = layouts[key]; lock.unlock()
+        if let hit { return (m, hit, width, inset) }
+        let l = MushafMetrics.layout(rows: m.rows, family: family, width: width, maxFont: CGFloat(m.rowHeight) * 0.8)
+        lock.lock()
+        if layouts[key] == nil { layoutOrder.append(key); layouts[key] = l }
+        if layoutOrder.count > Self.layoutCacheLimit { layouts[layoutOrder.removeFirst()] = nil }
+        lock.unlock()
+        return (m, l, width, inset)
+    }
+
+    /// تحميل مسبق في الخلفية للصفحات المجاورة (خط + JSON + تخطيط) فلا يعمل الخيط الرئيسي عند التقليب.
+    public func prefetch(around n: Int, radius: Int = 2, size: CGSize) {
+        let targets = (-radius...radius).map { Mushaf.clamp(n + $0) }.reduce(into: [Int]()) { if !$0.contains($1) { $0.append($1) } }
+        for t in targets {
+            lock.lock(); let busy = !inflight.insert(t).inserted; lock.unlock()
+            if busy { continue }
+            prefetchQueue.async { [self] in
+                defer { lock.lock(); inflight.remove(t); lock.unlock() }
+                guard let family = try? ensureFont(page: t), let page = try? page(t) else { return }
+                _ = pageLayout(page, family: family, size: size)
+            }
+        }
     }
 
     /// يسجّل خط الصفحة في العملية (مرة واحدة) ويُرجع اسم عائلته.
