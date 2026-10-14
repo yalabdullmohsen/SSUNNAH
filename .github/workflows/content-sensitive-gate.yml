@@ -1,0 +1,32 @@
+name: content-sensitive gate
+# قاعدة يوسف: PR يمسّ نصًا شرعيًا (قرآن/حديث/حكم/بيانات شرعية) لا يُدمج إلا بوسم visually-verified بعد فحص لقطة.
+# يفشل إن كان الوسم content-sensitive موجودًا أو مسّ الـPR مسارًا حسّاسًا، ولا وسم visually-verified. أضِف الوسم يدويًا بعد الفحص.
+on:
+  pull_request:
+    branches: [native-app]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with: { fetch-depth: 0 }
+      - name: فحص الحساسية
+        env:
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          PATHS='^(ios-native/Data/|artifacts/majalis/public/data/|docs/native/DATA_CONTRACT\.md|artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/(Sections/(quran|aqidah|fiqh|sirah)/|Special/(Hadith|WeakHadith|Adhkar|Dua|Citation)|Mushaf/|Data/))'
+          HIT=$(git diff --name-only "origin/${BASE_REF}...HEAD" | grep -E "$PATHS" | head -5 || true)
+          SENSITIVE=no
+          case ",$LABELS," in *,content-sensitive,*) SENSITIVE=yes;; esac
+          [ -n "$HIT" ] && SENSITIVE=yes
+          [ "$SENSITIVE" = no ] && { echo "غير حسّاس."; exit 0; }
+          case ",$LABELS," in *,visually-verified,*) echo "حسّاس + visually-verified ✓"; exit 0;; esac
+          echo "::error::PR يمسّ نصًا شرعيًا (أو يحمل content-sensitive) ولا يحمل visually-verified. افحص لقطة الشاشة ثم أضف الوسم."
+          [ -n "$HIT" ] && echo "$HIT"
+          exit 1
