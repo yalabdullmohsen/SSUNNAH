@@ -31,11 +31,19 @@ struct SunnahApp: App {
                     #endif
                 }
                 #if DEBUG
-                // حلقة التدقيق السريعة: جلسة واحدة؛ كل رابط عميق (simctl openurl) يُقلِّص المكدّس لوجهته ويبدأ انتظار الجاهزية.
-                .onChange(of: router.stack) { stack in
+                // حلقة التدقيق السريعة: جلسة واحدة؛ السكربت يكتب "<تسلسل> <مسار>" في tmp/audit-route.txt فيفتحه التطبيق
+                // (قناة ملف لا simctl openurl: الأخير يُظهر حوار «فتح في التطبيق؟» ويعلّق التنقل).
+                .task {
                     guard UserDefaults.standard.bool(forKey: "auditLoop") else { return }
-                    if stack.count > 1, let last = stack.last { router.stack = [last]; return }
-                    if let last = stack.last { readiness.begin(route: last.path) }
+                    let f = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("audit-route.txt")
+                    var lastSeq = ""
+                    while !Task.isCancelled {
+                        try? await Task.sleep(for: .milliseconds(150))
+                        guard let t = try? String(contentsOf: f, encoding: .utf8) else { continue }
+                        let parts = t.trimmingCharacters(in: .whitespacesAndNewlines).split(separator: " ", maxSplits: 1).map(String.init)
+                        guard parts.count == 2, parts[0] != lastSeq else { continue }
+                        lastSeq = parts[0]; router.stack = []; router.open(path: parts[1]); readiness.begin(route: parts[1])
+                    }
                 }
                 // screen.ready: يعلن اكتمال التحميل (لا حالة خطأ/تحميل عالقة)؛ يقرؤه XCUITest، والسكربتات تقرأ snapshot-ready.json
                 .overlay(alignment: .topLeading) {

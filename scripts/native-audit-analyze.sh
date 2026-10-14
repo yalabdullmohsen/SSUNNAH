@@ -2,15 +2,16 @@
 # تحليل لقطات native-audit-fast.sh: الحالة المعلنة (screen.*) + OCR مُجمَّع بالتوازي + DUP؛ يكتب verdicts.tsv وsummary.md
 set -uo pipefail
 cd "$(cd "$(dirname "$0")/.." && pwd)"; B=$1
-BIN=/tmp/native-ocr-bin; [ "$BIN" -nt scripts/native-snapshot-ocr.swift ] || swiftc -O -o "$BIN" scripts/native-snapshot-ocr.swift 2>&1 | head -3
+# swiftc يُنتج ثنائيًا يتجمّد في Vision خارج المفسِّر (جُرّب -O/-Onone)؛ نستعمل المفسِّر بالتوازي
+BIN="swift $PWD/scripts/native-snapshot-ocr.swift"
 export BIN B AUDIT_TRUNC=${AUDIT_TRUNC:-$([[ "${FONT:-}" == accessibility* || "$B" == *accessibility* ]] && echo 1 || echo 0)}
 one() { IFS=$'\t' read -r route eff comp st <<< "$1"; slug=$(echo "${route#/}" | tr '/:' '__'); [ -z "$slug" ] && slug=root; png="$B/shots/$slug.png"
   v=""; case "$st" in error) v="ERROR:screen.error";; empty) v="EMPTY:screen.empty";; ok) ;; *) v="NOT_READY:$st";; esac
-  [ -z "$v" ] && { [ -s "$png" ] && v=$("$BIN" "$png" "$eff" 2>/dev/null) || v=NOSHOT; }
-  txt=$("$BIN" "$png" "$eff" --text 2>/dev/null | python3 -c "import sys,hashlib;c={'الرئيسية','القرآن','الدروس','الصلاة','الأقسام','9:41'};t=sorted({l.strip() for l in sys.stdin if len(l.strip())>1 and l.strip() not in c});print(hashlib.sha256('\n'.join(t).encode()).hexdigest()[:16] if len(t)>=3 else 'few')")
+  [ -z "$v" ] && { [ -s "$png" ] && v=$($BIN "$png" "$eff" 2>/dev/null) || v=NOSHOT; }
+  txt=$($BIN "$png" "$eff" --text 2>/dev/null | python3 -c "import sys,hashlib;c={'الرئيسية','القرآن','الدروس','الصلاة','الأقسام','9:41'};t=sorted({l.strip() for l in sys.stdin if len(l.strip())>1 and l.strip() not in c});print(hashlib.sha256('\n'.join(t).encode()).hexdigest()[:16] if len(t)>=3 else 'few')")
   printf '%s\t%s\t%s\t%s\n' "$route" "$comp" "$v" "$txt"; }
 export -f one
-tr '\n' '\0' < "$B/states.tsv" | xargs -0 -P 4 -I{} bash -c 'one "$1"' _ {} > "$B/verdicts.raw"
+tr '\n' '\0' < "$B/states.tsv" | xargs -0 -P 6 -I{} bash -c 'one "$1"' _ {} > "$B/verdicts.raw"
 python3 - "$B" <<'PY'
 import sys,collections
 B=sys.argv[1]; rows=[l.rstrip('\n').split('\t') for l in open(B+'/verdicts.raw')]

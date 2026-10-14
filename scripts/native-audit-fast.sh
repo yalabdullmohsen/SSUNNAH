@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# تدقيق المسارات السريع: جلسة تطبيق واحدة على محاكي النافذة؛ التنقل بالروابط العميقة (simctl openurl majlisilm://…)
+# تدقيق المسارات السريع: جلسة تطبيق واحدة على محاكي النافذة؛ التنقل بملف أوامر في tmp الحاوية (audit-route.txt، يستطلعه التطبيق DEBUG بـ-auditLoop)؛ simctl openurl يُظهر حوار «فتح في التطبيق؟»
 # لكل مسار: انتظار screen.ready (snapshot-ready.json) ثم لقطة وتسجيل الحالة. التحليل (OCR مُجمَّع) يجري بعد الالتقاط بالتوازي.
 # الاستعمال: NATIVE_WINDOW=n2 APP=<SunnahApp.app> [MODE=light|dark] [FONT=accessibility-extra-extra-extra-large] [LIMIT=n] bash scripts/native-audit-fast.sh
 # المخرجات: $BOARD/<tag>/states.tsv, verdicts.tsv, *.png, summary.md. الهدف: 212 مسارًا < 20 دقيقة.
@@ -18,14 +18,14 @@ const fs=require("fs");const m=JSON.parse(fs.readFileSync("docs/native/ROUTE_TEM
 let s={};try{s=JSON.parse(fs.readFileSync("docs/native/ROUTE_SAMPLES.json","utf8"))}catch{}
 m.routes.forEach(r=>console.log(r.path+"\t"+(s[r.path]||r.path)+"\t"+(r.component||r.template||"?")))' | head -"$LIMIT" > "$BOARD/routes.tsv"
 launch() { xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1; xcrun simctl launch "$SIM" $BID -auditLoop YES "$@" >/dev/null 2>&1
-  for _ in 1 2 3 4 5 6 7 8; do sleep 1; xcrun simctl spawn "$SIM" launchctl list 2>/dev/null | grep -Eq "UIKitApplication:$BID" && return 0; done; return 1; }
+  for _ in $(seq 20); do sleep 1; case "$(xcrun simctl spawn "$SIM" launchctl list 2>/dev/null)" in *"UIKitApplication:$BID"*) return 0;; esac; done; return 1; }
 launch || { echo "native-audit-fast: التطبيق لا يعمل" >&2; exit 2; }
 CT=$(xcrun simctl get_app_container "$SIM" $BID data)/tmp
-START=$(date +%s)
+START=$(date +%s); SEQ=0
 while IFS=$'\t' read -r route eff comp; do
   slug=$(echo "${route#/}" | tr '/:' '__'); [ -z "$slug" ] && slug=root
   rm -f "$CT/snapshot-ready.json"
-  if [ "$eff" = "/" ]; then launch -snapshotRoute / >/dev/null; else xcrun simctl openurl "$SIM" "majlisilm://${eff#/}" >/dev/null 2>&1; fi
+  if [ "$eff" = "/" ]; then launch -snapshotRoute / >/dev/null; else echo "$((++SEQ)) $eff" > "$CT/audit-route.txt"; fi
   st=NOT_READY; end=$(( $(date +%s) + TO ))
   while [ "$(date +%s)" -lt "$end" ]; do
     [ -s "$CT/snapshot-ready.json" ] && { st=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['state'])" "$CT/snapshot-ready.json" 2>/dev/null || echo NOT_READY); break; }
