@@ -64,5 +64,20 @@ final class MushafPerfTests: XCTestCase {
         let m1 = rss()
         print("MUSHAF_PERF_AFTER cold_open_ms=\(cold) warm_open_ms=\(warm) flip50_mean_ms=\(per.reduce(0, +) / 50) flip50_p95_ms=\(per[47]) flip50_max_ms=\(per[49]) over_16_7ms=\(dropped) rss_before_mb=\(m0) rss_after50_mb=\(m1) cached_pages=\(repo.cachedPageCount)")
     }
+
+    /// بناء MushafSearch (كان على الخيط الرئيسي عند فتح الشاشة) وزمن الاستعلام.
+    func testSearchBaseline() throws {
+        guard let q = ProcessInfo.processInfo.environment["MUSHAF_QURAN"], let p = ProcessInfo.processInfo.environment["MUSHAF_DATA"] else { throw XCTSkip("MUSHAF_QURAN/MUSHAF_DATA غير محدد") }
+        let idx = try MushafRepository(root: URL(fileURLWithPath: p)).index()
+        var s: MushafSearch!
+        let build = try ms { s = try MushafSearch(surahDirectory: URL(fileURLWithPath: q), ayahPage: idx.ayahPage) }
+        var per: [Double] = []
+        for w in ["الله", "الصلاة", "الحمد لله رب العالمين", "ولا", "إنا", "قل هو الله احد"] { per.append(ms { _ = s.search(w) }) }
+        let miss = ms { _ = s.search("ضضضضض") }
+        for w in ["الله", "الصلاة", "الحمد لله رب العالمين", "ولا", "إنا", "قل هو الله احد", "ضضضضض", "ا", "بسم الله الرحمن الرحيم"] {
+            XCTAssertEqual(s.search(w).map(\.ayah), s.linearSearch(w), "تطابق الفهرس مع المسح الخطي: \(w)")
+        }
+        print("MUSHAF_SEARCH build_ms=\(build) query_ms=\(per.map { String(format: "%.2f", $0) }) miss_ms=\(miss)")
+    }
 }
 #endif

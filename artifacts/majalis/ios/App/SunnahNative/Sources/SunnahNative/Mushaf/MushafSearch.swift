@@ -11,29 +11,46 @@ public struct MushafSearchHit: Equatable, Sendable, Identifiable {
 public struct MushafSearch: Sendable {
     private struct Entry: Sendable { let ayah: String; let text: String; let norm: String }
     private let entries: [Entry]
+    /// النصوص المطبَّعة متجاورة بـUTF-8 تفصل بينها «\n»؛ البحث بايتي (UTF-8 ذاتي التزامن فالتطابق البايتي = تطابق سكالارات).
+    private let haystack: [UInt8]
+    private let starts: [Int]
     private let ayahPage: [String: Int]
     private let byAyah: [String: String]
 
     private struct SurahFile: Decodable { struct A: Decodable { let numberInSurah: Int; let text: String }; let number: Int; let ayahs: [A] }
 
     public init(surahDirectory: URL, ayahPage: [String: Int]) throws {
-        var out: [Entry] = []
-        var basmala = ""
-        for s in 1...114 {
-            let d = try Data(contentsOf: surahDirectory.appendingPathComponent(String(format: "surah-%03d.json", s)))
-            let f = try JSONDecoder().decode(SurahFile.self, from: d)
-            for a in f.ayahs {
+        func load(_ s: Int) throws -> SurahFile {
+            try JSONDecoder().decode(SurahFile.self, from: Data(contentsOf: surahDirectory.appendingPathComponent(String(format: "surah-%03d.json", s))))
+        }
+        // البسملة من آية 1:1 أولًا، ثم تُحمَّل السور الباقية بالتوازي (القراءة + التطبيع هما الكلفة)؛ الترتيب محفوظ.
+        let fatiha = try load(1)
+        let basmala = fatiha.ayahs.first { $0.numberInSurah == 1 }?.text.replacingOccurrences(of: "\u{FEFF}", with: "") ?? ""
+        func make(_ f: SurahFile) -> [Entry] {
+            f.ayahs.map { a in
                 var t = a.text.replacingOccurrences(of: "\u{FEFF}", with: "")
-                if f.number == 1, a.numberInSurah == 1 { basmala = t }
                 // بيانات Tanzil تسبق آية 1 من كل سورة (عدا الفاتحة والتوبة) بالبسملة؛ وهي ليست من الآية.
-                else if a.numberInSurah == 1, f.number != 9, !basmala.isEmpty, t.hasPrefix(basmala) {
+                if a.numberInSurah == 1, f.number != 1, f.number != 9, !basmala.isEmpty, t.hasPrefix(basmala) {
                     t = String(t.dropFirst(basmala.count)).trimmingCharacters(in: .whitespaces)
                 }
-                out.append(.init(ayah: "\(f.number):\(a.numberInSurah)", text: t, norm: Self.normalize(t)))
+                return Entry(ayah: "\(f.number):\(a.numberInSurah)", text: t, norm: Self.normalize(t))
             }
         }
+        let lock = NSLock()
+        var perSurah = [[Entry]](repeating: [], count: 115), failure: Error?
+        perSurah[1] = make(fatiha)
+        DispatchQueue.concurrentPerform(iterations: 113) { i in
+            let n = i + 2
+            do { let e = make(try load(n)); lock.lock(); perSurah[n] = e; lock.unlock() }
+            catch { lock.lock(); failure = error; lock.unlock() }
+        }
+        if let failure { throw failure }
+        let out = perSurah.flatMap { $0 }
         entries = out; self.ayahPage = ayahPage
         byAyah = Dictionary(uniqueKeysWithValues: out.map { ($0.ayah, $0.text) })
+        var hay: [UInt8] = [], st: [Int] = []
+        for e in out { st.append(hay.count); hay.append(contentsOf: e.norm.utf8); hay.append(0x0A) }
+        haystack = hay; starts = st
     }
 
     static func normalize(_ text: String) -> String {
@@ -44,10 +61,31 @@ public struct MushafSearch: Sendable {
     public func ayahText(_ ayah: String) -> String? { byAyah[ayah] }
 
     public func search(_ query: String, limit: Int = 50) -> [MushafSearchHit] {
+        let q = Array(Self.normalize(query).utf8)
+        guard Self.normalize(query).count >= 2, !q.isEmpty else { return [] }
+        var hits: [MushafSearchHit] = []
+        var from = 0
+        haystack.withUnsafeBufferPointer { h in
+            q.withUnsafeBufferPointer { qb in
+                while hits.count < limit, from < h.count, let base = h.baseAddress, let qa = qb.baseAddress {
+                    guard let r = memmem(base + from, h.count - from, qa, qb.count) else { break }
+                    let pos = base.distance(to: r.assumingMemoryBound(to: UInt8.self))
+                    // أكبر i مع starts[i] <= pos
+                    var lo = 0, hi = starts.count - 1
+                    while lo < hi { let mid = (lo + hi + 1) / 2; if starts[mid] <= pos { lo = mid } else { hi = mid - 1 } }
+                    let e = entries[lo]
+                    hits.append(MushafSearchHit(ayah: e.ayah, page: ayahPage[e.ayah] ?? 1, text: e.text))
+                    from = lo + 1 < starts.count ? starts[lo + 1] : h.count
+                }
+            }
+        }
+        return hits
+    }
+
+    /// المسح الخطي القديم (مرجع للمقارنة في الاختبارات فقط).
+    func linearSearch(_ query: String, limit: Int = 50) -> [String] {
         let q = Self.normalize(query)
         guard q.count >= 2 else { return [] }
-        return entries.lazy.filter { $0.norm.contains(q) }.prefix(limit).map {
-            MushafSearchHit(ayah: $0.ayah, page: ayahPage[$0.ayah] ?? 1, text: $0.text)
-        }
+        return entries.lazy.filter { $0.norm.contains(q) }.prefix(limit).map(\.ayah)
     }
 }

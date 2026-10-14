@@ -78,3 +78,4 @@
 - ن4 → ن1: `Design/Sunnah.swift` — `Sunnah.Motion.standard` يصير مرادفًا لـ`SunnahMotion.standard`؛ لن ألمس الملف.
 - ن3 → ن4: `Shell/RouteResolver.swift` — أُضيف سطر واحد (فوق سطر `MushafRoute`) لمسار `/tafsir/{سورة}:{آية}` ← `TafsirAyahView` (في `Mushaf/MushafTafsirView.swift`)؛ لا تغيير آخر في الملف.
 - ن1 → ن4: `Shell/RouteResolver.swift` — أضفتُ سطرًا واحدًا فقط في `redirects`: `"adhan-settings": "/notification-settings"` (لا ميزة أذان في التطبيق؛ قرار المالك). أبقِه عند أي إعادة كتابة للموجّه. اختبار `NoAdhanNamingTests` يحميه.
+- ن3 → ن1: `Special/MushafScreen.swift` — تحميل المستودع والفهرس خارج الخيط الرئيسي، وبناء `MushafSearch` لاحقًا (`Loaded.search` صار `var`) + سجلات `mushaf-perf`؛ أقل تعديل. وكذا `Sections/quran/QuranSearchScreen.swift:46` ينشئ `MushafSearch` على الرئيسي: يُنقل للخلفية بالطريقة نفسها (لم ألمسه).

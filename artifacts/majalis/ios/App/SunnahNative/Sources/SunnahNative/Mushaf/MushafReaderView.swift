@@ -1,4 +1,5 @@
 import SwiftUI
+import os
 #if os(macOS)
 import AppKit
 #endif
@@ -34,7 +35,7 @@ public struct MushafPageView: View {
         .ignoresSafeArea()
         .task(id: number) {
             guard page == nil else { return }
-            do { family = try repo.ensureFont(page: number); page = try repo.page(number) } catch { failed = true }
+            do { family = try repo.ensureFont(page: number); page = try repo.page(number); Logger(subsystem: "com.yousef.majlisilm", category: "mushaf-perf").notice("MUSHAF_PERF page_ready \(number)") } catch { failed = true }
         }
     }
 
