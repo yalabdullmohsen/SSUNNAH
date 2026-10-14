@@ -65,3 +65,15 @@ final class CalendarCorrectnessTests: XCTestCase {
 private extension Calendar {
     func withSunday() -> Calendar { var c = self; c.firstWeekday = 1; return c }
 }
+
+final class LessonTimeFormatTests: XCTestCase {
+    func testUnifiedFormats() {
+        let nb = "\u{00A0}"
+        XCTAssertEqual(LessonTimeFormat.display("بعد صلاة المغرب"), "بعد\(nb)المغرب")
+        XCTAssertEqual(LessonTimeFormat.display("6:00 مساءً"), "6:00\(nb)م")
+        XCTAssertEqual(LessonTimeFormat.display("10:00 صباحًا"), "10:00\(nb)ص")
+        XCTAssertEqual(LessonTimeFormat.display("6:00 م — 8:50 م"), "6:00\(nb)م – 8:50\(nb)م")
+        XCTAssertEqual(LessonTimeFormat.display("٦:٠٠ مساءً إلى صلاة العشاء"), "6:00\(nb)م إلى العشاء")
+        XCTAssertEqual(LessonTimeFormat.display(""), "")
+    }
+}

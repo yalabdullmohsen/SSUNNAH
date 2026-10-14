@@ -73,6 +73,7 @@ struct AccountCalendarEvent: Hashable, Sendable, Identifiable {
     let sheikh: String
     let mosque: String
     let time: String
+    var displayTime: String { LessonTimeFormat.display(time) }
     let day: String
     let date: String?
     let recurring: Bool
@@ -212,5 +213,24 @@ enum AccountCalendarMath {
         }
         lines.append("END:VCALENDAR")
         return lines.joined(separator: "\r\n")
+    }
+}
+
+/// صيغة موحّدة لوقت الدرس في كل الواجهات: «6:00 م» للساعات و«بعد المغرب» للصلوات، بلا التفاف لسطرين.
+enum LessonTimeFormat {
+    private static let nbsp = "\u{00A0}"
+
+    static func display(_ raw: String) -> String {
+        var s = raw.asLatinDigits.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !s.isEmpty else { return "" }
+        s = s.replacingOccurrences(of: "بعد صلاة ", with: "بعد ")
+            .replacingOccurrences(of: "إلى صلاة ", with: "إلى ")
+        for (long, short) in [("مساءً", "م"), ("مساءا", "م"), ("مساء", "م"), ("صباحًا", "ص"), ("صباحاً", "ص"), ("صباحا", "ص"), ("صباح", "ص")] {
+            s = s.replacingOccurrences(of: long, with: short)
+        }
+        s = s.replacingOccurrences(of: "—", with: "–").replacingOccurrences(of: " - ", with: " – ")
+        s = s.replacingOccurrences(of: #"(\d{1,2}:\d{2}) ([مص])"#, with: "$1\(nbsp)$2", options: .regularExpression)
+        s = s.replacingOccurrences(of: "بعد ", with: "بعد\(nbsp)")
+        return s
     }
 }
