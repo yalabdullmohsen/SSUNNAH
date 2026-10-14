@@ -1,0 +1,16 @@
+# مسارات «النص الشرعي الذي يراه المستخدم أو ينسخه أو يشاركه» (قاعدة يوسف 2026-10-14).
+# مصدر وحيد لبوابة content-sensitive (.github/workflows/content-sensitive-gate.yml) واختبارها (scripts/test-content-sensitive-paths.sh).
+# كل سطر تعبير ERE يُطابَق على مسار الملف؛ سطر يبدأ بـ ! استثناء يُطبَّق بعد الإدراج؛ # تعليق.
+# لا تُدرج هنا: الأداء/التخزين المؤقت/التخطيط/الحالات الفارغة/المكوّنات. أضف المسار فقط إن كان الملف يُنتج نصًا شرعيًا معروضًا أو منسوخًا أو مشاركًا.
+
+# --- بيانات شرعية مُصدَّرة (قرآن، حديث، أحكام، تفسير، عقيدة، أذكار، سيرة…) ---
+^ios-native/Data/
+!^ios-native/Data/(audio|home|graph)/
+!^ios-native/Data/MANIFEST\.json$
+^artifacts/majalis/public/data/
+
+# --- شاشات ومحوّلات تعرض النص الشرعي ---
+^artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Sections/(quran|aqidah|fiqh|sirah)/[A-Za-z+]*(Adapters|Models|Content|Reading|Screens)[A-Za-z+]*\.swift$
+^artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Special/(HadithScreens|WeakHadithScreens|AdhkarScreen|AdhkarExtraScreens|CitationScreen|DailyWirdScreen|HomeDailyContent)\.swift$
+# قارئ المصحف: نسخ ومشاركة نص الآيات
+^artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Mushaf/MushafReaderView\.swift$
