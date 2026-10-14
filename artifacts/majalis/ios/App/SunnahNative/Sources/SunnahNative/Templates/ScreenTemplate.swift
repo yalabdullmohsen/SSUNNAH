@@ -102,3 +102,20 @@ extension String {
         })
     }
 }
+
+extension Data {
+    /// أرقام لاتينية في بيانات JSON المعروضة (٠-٩ ۰-۹ والفواصل العشرية/الآلاف). حروف الآيات لا تتأثر.
+    var asLatinDigitsJSON: Data {
+        guard contains(where: { $0 == 0xD9 || $0 == 0xDB }), let s = String(data: self, encoding: .utf8) else { return self }
+        let t = String(s.unicodeScalars.map { u -> Character in
+            switch u.value {
+            case 0x0660...0x0669: return Character(UnicodeScalar(u.value - 0x0660 + 0x30)!)
+            case 0x06F0...0x06F9: return Character(UnicodeScalar(u.value - 0x06F0 + 0x30)!)
+            case 0x066B: return "."
+            case 0x066C: return ","
+            default: return Character(u)
+            }
+        })
+        return Data(t.utf8)
+    }
+}

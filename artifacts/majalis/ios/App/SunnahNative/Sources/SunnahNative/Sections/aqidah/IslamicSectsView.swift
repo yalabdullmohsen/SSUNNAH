@@ -17,7 +17,7 @@ public struct IslamicSectsView: View {
 
     /// يفك JSON المُصدَّر؛ أي خلل في البيانات يعطي قائمة فارغة لا انهيارًا.
     public static func records(fromJSON data: Data) -> [IslamicSectRecord] {
-        (try? JSONDecoder().decode([IslamicSectRecord].self, from: data)) ?? []
+        (try? JSONDecoder().decode([IslamicSectRecord].self, from: data.asLatinDigitsJSON)) ?? []
     }
 
     public var body: some View {

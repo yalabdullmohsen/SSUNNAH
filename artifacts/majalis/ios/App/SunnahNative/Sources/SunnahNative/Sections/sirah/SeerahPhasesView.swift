@@ -20,7 +20,7 @@ public struct SeerahPhasesView: View {
 
     /// أي خلل في البيانات يعطي قائمة فارغة لا انهيارًا.
     public static func phases(fromJSON data: Data) -> [SeerahPhase] {
-        (try? JSONDecoder().decode([SeerahPhase].self, from: data)) ?? []
+        (try? JSONDecoder().decode([SeerahPhase].self, from: data.asLatinDigitsJSON)) ?? []
     }
 
     public var body: some View {

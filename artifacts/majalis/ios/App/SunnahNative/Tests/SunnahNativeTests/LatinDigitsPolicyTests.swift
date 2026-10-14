@@ -30,3 +30,26 @@ final class LatinDigitsHelperTests: XCTestCase {
         XCTAssertEqual("٢ فأكثر ۱۲ و٣".asLatinDigits, "2 فأكثر 12 و3")
     }
 }
+
+final class LatinDigitsDataTests: XCTestCase {
+    struct Row: Decodable, Sendable { let t: String }
+
+    func testDataConversionKeepsLetters() {
+        let raw = Data("{\"t\":\"رواه البخاري ٢٣٠٠ و۲۵٫٥ ﴿آية﴾\"}".utf8)
+        let s = String(data: raw.asLatinDigitsJSON, encoding: .utf8)
+        XCTAssertEqual(s, "{\"t\":\"رواه البخاري 2300 و25.5 ﴿آية﴾\"}")
+    }
+
+    func testLoaderConvertsBundledButNotMushaf() async throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent("latin-\(UUID().uuidString)")
+        for dir in ["Data/x", "Data/mushaf"] {
+            try FileManager.default.createDirectory(at: root.appendingPathComponent(dir), withIntermediateDirectories: true)
+            try Data("{\"t\":\"٣\"}".utf8).write(to: root.appendingPathComponent("\(dir)/f.json"))
+        }
+        let loader = ContentLoader(bundle: Bundle(path: root.path)!)
+        let x = try await loader.load(Row.self, from: .bundled(name: "f", subdirectory: "Data/x"))
+        let m = try await loader.load(Row.self, from: .bundled(name: "f", subdirectory: "Data/mushaf"))
+        XCTAssertEqual(x.t, "3")
+        XCTAssertEqual(m.t, "٣")
+    }
+}

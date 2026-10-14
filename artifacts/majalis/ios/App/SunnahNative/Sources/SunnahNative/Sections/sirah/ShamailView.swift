@@ -33,7 +33,7 @@ public struct ShamailView: View {
     }
 
     public static func tabs(fromJSON data: Data) -> [ShamailTab] {
-        (try? JSONDecoder().decode([ShamailTab].self, from: data)) ?? []
+        (try? JSONDecoder().decode([ShamailTab].self, from: data.asLatinDigitsJSON)) ?? []
     }
 
     public var body: some View {

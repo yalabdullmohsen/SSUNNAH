@@ -33,7 +33,9 @@ public struct ContentLoader: Sendable {
                     ?? (subdirectory == nil ? BundledDataIndex.url(named: name, in: bundle) : nil) else {
                 throw ContentError.missingBundledFile([subdirectory, name].compactMap { $0 }.joined(separator: "/"))
             }
-            return try decoder().decode(Value.self, from: Data(contentsOf: url))
+            let raw = try Data(contentsOf: url)
+            // المصحف خارج هذا المسار؛ كل محتوى معروض آخر بأرقام لاتينية.
+            return try decoder().decode(Value.self, from: url.path.contains("/mushaf/") ? raw : raw.asLatinDigitsJSON)
         case let .remote(path, maxAge, requireAuth):
             do {
                 guard let store else { throw ContentError.noStore }
@@ -41,7 +43,7 @@ public struct ContentLoader: Sendable {
                 return try await store.load(resource).value
             } catch {
                 // لا شبكة ولا كاش: البذرة المحزومة (إن وُجدت) بدل الخطأ.
-                if let seed = RemoteSeeds.data(forPath: path, bundle: bundle), let value = try? decoder().decode(Value.self, from: seed) {
+                if let seed = RemoteSeeds.data(forPath: path, bundle: bundle), let value = try? decoder().decode(Value.self, from: seed.asLatinDigitsJSON) {
                     return value
                 }
                 throw error
