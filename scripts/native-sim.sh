@@ -1,8 +1,8 @@
 # يُحمَّل بـ source: يحدد $SIM لمحاكٍ خاص بالنافذة (SIM_NAME أو NATIVE_WINDOW)، وينشئه إن لم يوجد، ويرفض المحاكي المشترك الافتراضي.
-# النوافذ: n4-sim (ن4)، n3-quran (ن3)، n2-sim (ن2)، n1-sim (ن1).
+# النوافذ: n4-sim (ن4)، n3-quran (ن3)، n2-sim (ن2)، n1-sim (ن1: للقياس) وn1-sim-b (ن1 فقط: للتحقق البصري والبناء؛ NATIVE_WINDOW=n1-b).
 SIM_NAME="${SIM_NAME:-}"
 if [ -z "$SIM_NAME" ] && [ -n "${NATIVE_WINDOW:-}" ]; then
-  case "$NATIVE_WINDOW" in n3) SIM_NAME=n3-quran;; n1|n2|n4) SIM_NAME="$NATIVE_WINDOW-sim";; *) SIM_NAME="$NATIVE_WINDOW";; esac
+  case "$NATIVE_WINDOW" in n3) SIM_NAME=n3-quran;; n1-b) SIM_NAME=n1-sim-b;; n1|n2|n4) SIM_NAME="$NATIVE_WINDOW-sim";; *) SIM_NAME="$NATIVE_WINDOW";; esac
 fi
 if [ -z "$SIM_NAME" ]; then
   echo "native-sim: اضبط SIM_NAME (مثل n4-sim) أو NATIVE_WINDOW (n1|n2|n3|n4)؛ مرفوض العمل على المحاكي المشترك الافتراضي (تصادم simctl بين النوافذ). انظر docs/native/SIMULATOR_PER_WINDOW.md" >&2; exit 2
