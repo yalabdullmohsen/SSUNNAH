@@ -12,6 +12,7 @@ public struct MushafSearch: Sendable {
     private struct Entry: Sendable { let ayah: String; let text: String; let norm: String }
     private let entries: [Entry]
     private let ayahPage: [String: Int]
+    private let byAyah: [String: String]
 
     private struct SurahFile: Decodable { struct A: Decodable { let numberInSurah: Int; let text: String }; let number: Int; let ayahs: [A] }
 
@@ -26,11 +27,15 @@ public struct MushafSearch: Sendable {
             }
         }
         entries = out; self.ayahPage = ayahPage
+        byAyah = Dictionary(uniqueKeysWithValues: out.map { ($0.ayah, $0.text) })
     }
 
     static func normalize(_ text: String) -> String {
         text.split(whereSeparator: \.isWhitespace).map { QuranWordMatch.normalizeQuranWord(String($0)) }.filter { !$0.isEmpty }.joined(separator: " ")
     }
+
+    /// نص الآية الحرفي (Tanzil) لمفتاح «سورة:آية»؛ للنسخ والمشاركة.
+    public func ayahText(_ ayah: String) -> String? { byAyah[ayah] }
 
     public func search(_ query: String, limit: Int = 50) -> [MushafSearchHit] {
         let q = Self.normalize(query)
