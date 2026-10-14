@@ -1,4 +1,5 @@
 import XCTest
+@testable import SunnahNative
 
 /// يمنع تكرار العنوان: شاشة تعرض navigationTitle(X) لا تعرض كذلك AccountHeader(title: X) ظاهرًا.
 final class NoDuplicateTitleTests: XCTestCase {
@@ -34,5 +35,12 @@ final class NoDuplicateTemplateTitleTests: XCTestCase {
             XCTAssertTrue(s.contains("Text(item.title)"), f)
             XCTAssertFalse(s.contains(".navigationTitle(item.title)"), "\(f): عنوان مكرر")
         }
+    }
+}
+
+final class SourcesRightsTextTests: XCTestCase {
+    func testRightsHeadlineIsExact() {
+        XCTAssertEqual(AccountTexts.rightsHeadline, "الحقوق غير محفوظة (لوجه الله)")
+        XCTAssertTrue(AccountTexts.rightsSentence.contains("غير محفوظة لوجه الله"))
     }
 }

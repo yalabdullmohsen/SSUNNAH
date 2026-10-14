@@ -23,6 +23,7 @@ struct AccountDataLicensesScreen: View {
                 AccountHeader(eyebrow: "الشفافية", title: "المصادر والتراخيص", subtitle: "آخر تحديث: 2026-10-09")
 
                 AccountSectionCard(title: "الحقوق") {
+                    AccountRichText("**" + AccountTexts.rightsHeadline + "**")
                     AccountRichText(AccountTexts.rightsSentence)
                     AccountRichText("لا نعيد استضافة الدروس والمنشورات الخارجية؛ تُعرض كمعلومة وجدول ورابط للمصدر. [منهجية التوثيق](majlisilm://methodology) · [دليل الجهات](majlisilm://sources) · الجرد الكامل للمكتبات والأصول في docs/LICENSES.md")
                 }
