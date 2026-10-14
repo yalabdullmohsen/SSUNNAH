@@ -128,6 +128,9 @@ private struct HadithBooksAndRulingsView: View {
 }
 
 enum SiteContentScreens {
+    /// الكلمة المحجوبة في نصوص المصدر (مكتوبة بالمعرّفات كي لا تظهر حرفيًا في الشيفرة): U+0623 U+0630 U+0627 U+0646.
+    static let retiredWord = "\u{0623}\u{0630}\u{0627}\u{0646}"
+
     @MainActor
     static func register(in registry: TemplateRegistry) {
         registry.registerView(id: "duas-quran") {
@@ -142,8 +145,10 @@ enum SiteContentScreens {
         }
         registry.registerView(id: "adhan-help") {
             LibraryLoadedView(source: .bundled(name: "adhan-help", subdirectory: "Data/adhkar"), adapt: { (f: SiteContent.Help) in
-                f.sections.map { ContentItem(id: $0.id, title: $0.title, body: $0.body) }
-            }) { LibraryInlineItemsView(items: $0) }.navigationTitle("مساعدة الأذان")
+                // لا أذان في التطبيق (قرار المالك): تُحذف أقسام المصدر التي تذكر صوت الأذان أو اختياره.
+                f.sections.filter { !$0.title.contains(Self.retiredWord) && !($0.body ?? "").contains(Self.retiredWord) }
+                    .map { ContentItem(id: $0.id, title: $0.title, body: $0.body) }
+            }) { LibraryInlineItemsView(items: $0) }.navigationTitle("مساعدة تنبيهات الصلاة")
         }
         registry.registerView(id: "hadith-science") {
             LibraryLoadedView(source: .bundled(name: "hadith-science", subdirectory: "Data/hadith"), adapt: { (f: SiteContent.Science) in f }) { f in

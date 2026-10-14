@@ -7,7 +7,8 @@ public enum RouteResolver {
     /// مسار ويب → معرّف شاشة خاصة مسجَّلة في `SpecialScreens` (يسبق القالب المولَّد المطابق للمسار).
     public static let specialAliases: [String: String] = ["prayer-times": "prayer"]
     /// تحويلات الموقع (FEATURE_PARITY)
-    public static let redirects: [String: String] = ["aqidah": "/tawhid", "library": "/search", "profile": "/stats", "sirah": "/seerah"]
+    public static let redirects: [String: String] = ["aqidah": "/tawhid", "library": "/search", "profile": "/stats", "sirah": "/seerah",
+        "adhan-settings": "/notification-settings"]
 
     public static func registerAll(in registry: TemplateRegistry) {
         // التسجيل: مولَّد القوالب أولًا ثم الأقسام (تستبدل المعرّفات نفسها) ثم الشاشات الخاصة.

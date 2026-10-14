@@ -56,7 +56,7 @@ final class AccountLogicTests: XCTestCase {
         XCTAssertEqual(remaining, 5 * 3600, accuracy: 0.5)
 
         guard case .elapsed(let e, let since, let next, _)? = AccountPrayerPhase.resolve(now: base.addingTimeInterval(11 * 3600 + 600), slots: slots) else {
-            return XCTFail("متوقع «مضى على الأذان»")
+            return XCTFail("متوقع «مضى على دخول الوقت»")
         }
         XCTAssertEqual(e, .dhuhr)
         XCTAssertEqual(since, 600, accuracy: 0.5)
