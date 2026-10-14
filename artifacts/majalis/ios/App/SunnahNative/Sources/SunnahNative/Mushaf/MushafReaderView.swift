@@ -61,6 +61,7 @@ public struct MushafPageView: View {
                 .foregroundStyle(Sunnah.Colors.primary)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Sunnah.Colors.primarySoft, in: RoundedRectangle(cornerRadius: Sunnah.Radius.small))
+                .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.small).stroke(Sunnah.Colors.goldDeco, lineWidth: 1))
                 .padding(.vertical, 2)
         case "b":
             Text("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ")
@@ -131,6 +132,7 @@ public struct MushafReaderView: View {
             .environment(\.layoutDirection, .rightToLeft)
         }
         .background(Sunnah.Colors.bg)
+        .overlay(alignment: .bottom) { if let sel = selected { selectionSheet(sel) } }
         .sheet(isPresented: $showIndex) {
             MushafIndexView(index: index, search: search, store: store) { page in current = page; showIndex = false }
         }
@@ -157,6 +159,22 @@ public struct MushafReaderView: View {
         .foregroundStyle(Sunnah.Colors.primary)
     }
 
+    private func selectionSheet(_ ayah: String) -> some View {
+        HStack(spacing: Sunnah.Spacing.s3) {
+            Text("آية \(ayah)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+            Spacer()
+            SunnahButton(isMarked ? "إزالة العلامة" : "علامة", style: .secondary) { store.toggleBookmark(ayah: ayah, page: current) }
+            SunnahButton("إغلاق", style: .outline) { selected = nil }
+        }
+        .padding(Sunnah.Spacing.s4)
+        .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.goldDeco.opacity(0.6), lineWidth: 1))
+        .shadow(color: .black.opacity(0.12), radius: 16, y: 6)
+        .padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, Sunnah.Spacing.s3)
+        .transition(.move(edge: .bottom).combined(with: .opacity))
+        .accessibilityIdentifier("mushaf.selection")
+    }
+
     private var isMarked: Bool { (selected ?? firstAyah(on: current)).map(store.isBookmarked) ?? false }
 
     private func firstAyah(on page: Int) -> String? {
@@ -180,37 +198,49 @@ public struct MushafIndexView: View {
 
     public var body: some View {
         VStack(spacing: Sunnah.Spacing.s2) {
-            Picker("", selection: $tab) { ForEach(Tab.allCases, id: \.self) { Text($0.rawValue).tag($0) } }
-                .pickerStyle(.segmented).padding(.horizontal, Sunnah.Spacing.s4).padding(.top, Sunnah.Spacing.s4)
+            SunnahSegmented(Tab.allCases.map { ($0, $0.rawValue) }, selection: $tab)
+                .padding(.horizontal, Sunnah.Spacing.s4).padding(.top, Sunnah.Spacing.s4)
             switch tab {
             case .surahs:
                 List(index.surahs) { s in
                     Button { open(s.firstPage) } label: {
                         HStack { Text("\(s.id). \(s.name)"); Spacer(); Text("صفحة \(s.firstPage)").foregroundStyle(Sunnah.Colors.textSecondary) }
                     }
+                    .sunnahRowChrome()
                 }
+                .listStyle(.plain).scrollContentBackground(.hidden)
             case .juz:
                 List(Array(index.juzStart.enumerated()), id: \.offset) { i, p in
                     Button { open(p) } label: { HStack { Text("الجزء \(i + 1)"); Spacer(); Text("صفحة \(p)").foregroundStyle(Sunnah.Colors.textSecondary) } }
+                    .sunnahRowChrome()
                 }
+                .listStyle(.plain).scrollContentBackground(.hidden)
             case .marks:
                 if store.bookmarks.isEmpty { StateMessage(text: "لا علامات بعد") }
                 else {
                     List(store.bookmarks) { b in
                         Button { open(b.page) } label: { HStack { Text("آية \(b.ayah)"); Spacer(); Text("صفحة \(b.page)").foregroundStyle(Sunnah.Colors.textSecondary) } }
+                        .sunnahRowChrome()
                     }
+                    .listStyle(.plain).scrollContentBackground(.hidden)
                 }
             case .search:
-                TextField("ابحث في القرآن", text: $query).textFieldStyle(.roundedBorder).padding(.horizontal, Sunnah.Spacing.s4)
+                TextField("ابحث في القرآن", text: $query).font(Sunnah.Typography.body)
+                    .padding(Sunnah.Spacing.s3).background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card))
+                    .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card).stroke(Sunnah.Colors.surface2, lineWidth: 1))
+                    .padding(.horizontal, Sunnah.Spacing.s4)
                 let hits = search?.search(query) ?? []
                 List(hits) { h in
                     Button { open(h.page) } label: {
                         VStack(alignment: .leading) { Text(h.text).lineLimit(2); Text("آية \(h.ayah) · صفحة \(h.page)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
                     }
+                    .sunnahRowChrome()
                 }
+                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .environment(\.layoutDirection, .rightToLeft)
+        .sunnahMotifCorner(size: 220, alignment: .bottomLeading, opacity: 0.06)
         .background(Sunnah.Colors.bg)
     }
 }

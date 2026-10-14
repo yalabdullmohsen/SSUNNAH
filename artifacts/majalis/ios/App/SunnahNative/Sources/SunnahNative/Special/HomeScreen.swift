@@ -64,6 +64,7 @@ public struct HomeScreen: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Sunnah.Spacing.s5)
+        .sunnahMotifCorner(size: 170, alignment: .topLeading, tint: .white, opacity: 0.14).clipped()
         .sunnahPatternedBackground(radius: Sunnah.Radius.hero)
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.header")
