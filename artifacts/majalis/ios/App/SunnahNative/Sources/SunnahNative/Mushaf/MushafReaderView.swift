@@ -1,4 +1,7 @@
 import SwiftUI
+#if os(macOS)
+import AppKit
+#endif
 
 /// صفحة مصحف واحدة: 15 سطرًا بخط QPC الخاص بالصفحة. اللمس على كلمة يحدّد آيتها.
 public struct MushafPageView: View {
@@ -6,12 +9,13 @@ public struct MushafPageView: View {
     let index: MushafIndex
     let number: Int
     @Binding var selectedAyah: String?
+    var onLongPress: ((String) -> Void)? = nil
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
 
-    public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>) {
-        self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah
+    public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil) {
+        self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah; self.onLongPress = onLongPress
         if let family = try? repo.ensureFont(page: number), let page = try? repo.page(number) {
             _page = State(initialValue: page); _family = State(initialValue: family)
         }
@@ -78,6 +82,7 @@ public struct MushafPageView: View {
                         .padding(.vertical, 1)
                         .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
                         .onTapGesture { selectedAyah = selectedAyah == w.v ? nil : w.v }
+                        .onLongPressGesture(minimumDuration: 0.4) { selectedAyah = w.v; onLongPress?(w.v) }
                         .accessibilityLabel(w.isAyahEnd ? "آية \(w.v)" : "")
                 }
             }
@@ -124,7 +129,7 @@ public struct MushafReaderView: View {
                 TabView(selection: $current) {
                     ForEach(1...Mushaf.pageCount, id: \.self) { n in
                         Group {
-                            if abs(n - current) <= 1 { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected) }
+                            if abs(n - current) <= 1 { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }) }
                             else { Color.clear }
                         }.tag(n)
                     }
@@ -223,12 +228,42 @@ public struct MushafReaderView: View {
         return index.surah(onPage: page)?.name ?? ""
     }
 
+    /// «سورة:آية» → «اسم السورة:رقم الآية» (مرجع النسخ والمشاركة).
+    private func reference(_ ayah: String) -> String {
+        let p = ayah.split(separator: ":")
+        let name = Int(p.first ?? "").flatMap { id in index.surahs.first { $0.id == id }?.name } ?? ""
+        return "\(name):\(p.last ?? "")"
+    }
+
+    /// نص النسخ/المشاركة: الآية الحرفية ثم المرجع بين قوسين.
+    private func shareText(_ ayah: String) -> String {
+        "\(search?.ayahText(ayah) ?? "") [\(reference(ayah))]"
+    }
+
+    private func copy(_ text: String) {
+        #if os(iOS)
+        UIPasteboard.general.string = text
+        #else
+        NSPasteboard.general.clearContents(); NSPasteboard.general.setString(text, forType: .string)
+        #endif
+    }
+
     private func selectionSheet(_ ayah: String) -> some View {
-        HStack(spacing: Sunnah.Spacing.s3) {
-            Text("آية \(ayah)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-            Spacer()
-            SunnahButton(isMarked ? "إزالة العلامة" : "علامة", style: .secondary) { store.toggleBookmark(ayah: ayah, page: current) }
-            SunnahButton("إغلاق", style: .outline) { selected = nil }
+        VStack(spacing: Sunnah.Spacing.s3) {
+            HStack(spacing: Sunnah.Spacing.s3) {
+                Text(reference(ayah)).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Spacer()
+                SunnahButton("إغلاق", style: .outline) { selected = nil }
+            }
+            HStack(spacing: Sunnah.Spacing.s4) {
+                Button { copy(shareText(ayah)) } label: { Label("نسخ", systemImage: "doc.on.doc") }
+                ShareLink(item: shareText(ayah)) { Label("مشاركة", systemImage: "square.and.arrow.up") }
+                Button { openRoute("/tafsir") } label: { Label("تفسير", systemImage: "text.book.closed") }
+                Button { store.toggleBookmark(ayah: ayah, page: current) } label: { Label(isMarked ? "إزالة العلامة" : "علامة", systemImage: isMarked ? "bookmark.fill" : "bookmark") }
+                Spacer(minLength: 0)
+            }
+            .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafInk)
+            .labelStyle(.titleAndIcon)
         }
         .padding(Sunnah.Spacing.s4)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
