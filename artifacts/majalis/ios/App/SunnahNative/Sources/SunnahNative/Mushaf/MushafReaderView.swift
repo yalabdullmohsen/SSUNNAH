@@ -61,9 +61,8 @@ public struct MushafPageView: View {
             let name = self.index.surahs.first { $0.id == row.s }?.name ?? ""
             SurahBanner(surah: row.s ?? 0, name: name, repo: repo).padding(.vertical, 1)
         case "b":
-            Text("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ")
-                .font(Sunnah.Typography.cardTitle)
-                .foregroundStyle(Sunnah.Colors.textPrimary)
+            BasmalaView()
+                .padding(.horizontal, 24).padding(.vertical, 2)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         case "l":
             let words = row.w ?? []
