@@ -19,6 +19,7 @@ struct SunnahApp: App {
         WindowGroup {
             IntroHost {
             RootTabView(router: router, screen: Self.screen)
+                .sunnahAppearance()
                 .onAppear {
                     PrayerWidgetPublisher.publish()
                     // لقطات native-loop: -snapshotRoute /path (للتصحيح فقط)

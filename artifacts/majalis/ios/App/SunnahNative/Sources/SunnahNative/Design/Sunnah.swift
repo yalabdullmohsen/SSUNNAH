@@ -75,12 +75,12 @@ public enum Sunnah {
 
     /// 6 مستويات فقط، مرتبطة بـ Dynamic Type.
     public enum Typography {
-        public static let pageTitle = Font.custom("Almarai-ExtraBold", size: 28, relativeTo: .title)
-        public static let sectionTitle = Font.custom("Almarai-Bold", size: 20, relativeTo: .title3)
-        public static let cardTitle = Font.custom("Almarai-Bold", size: 17, relativeTo: .headline)
-        public static let body = Font.custom("Almarai-Regular", size: 16, relativeTo: .body)
-        public static let secondary = Font.custom("Almarai-Regular", size: 14, relativeTo: .subheadline)
-        public static let tag = Font.custom("Almarai-Bold", size: 12, relativeTo: .caption)
+        public static var pageTitle: Font { AppearancePrefs.ui(.extraBold, 28, .title) }
+        public static var sectionTitle: Font { AppearancePrefs.ui(.bold, 20, .title3) }
+        public static var cardTitle: Font { AppearancePrefs.ui(.bold, 17, .headline) }
+        public static var body: Font { AppearancePrefs.ui(.regular, 16, .body) }
+        public static var secondary: Font { AppearancePrefs.ui(.regular, 14, .subheadline) }
+        public static var tag: Font { AppearancePrefs.ui(.bold, 12, .caption) }
         /// نصوص شرعية بخط Amiri: الآية والحديث/الأثر (خط المصحف QPC غير مضمَّن بانتظار قرار الترخيص).
         public static let quran = Font.custom("Amiri-Regular", size: 24, relativeTo: .title3)
         /// القراءة الطويلة (أحاديث، شروح، مقالات): Noto Naskh Arabic.
