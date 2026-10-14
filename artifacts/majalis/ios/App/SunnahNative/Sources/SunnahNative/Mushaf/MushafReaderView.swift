@@ -167,7 +167,7 @@ public struct MushafReaderView: View {
             Text(topSurahName(on: current))
         }
         .font(Sunnah.Typography.secondary)
-        .foregroundStyle(Sunnah.Colors.mushafGoldBrown)
+        .foregroundStyle(Sunnah.Colors.mushafAccent)
         .contentShape(Rectangle())
         .onTapGesture { sunnahAnimate { showChrome.toggle() } }
         .accessibilityElement(children: .combine)
@@ -210,6 +210,10 @@ public struct MushafReaderView: View {
                 .accessibilityLabel("صفحة \(current)")
                 .accessibilityIdentifier("mushaf.pageNumber")
             Spacer()
+            Text("الحزب \(Self.arabicDigits(hizb(on: current)))")
+                .font(Sunnah.Typography.secondary)
+                .foregroundStyle(Sunnah.Colors.mushafAccent)
+                .accessibilityIdentifier("mushaf.hizb")
         }
     }
 
@@ -218,6 +222,11 @@ public struct MushafReaderView: View {
     }
 
     /// السورة الجارية في أعلى الصفحة (آية أول سطر)، لا آخر سورة تبدأ فيها.
+    /// الحزب الجاري = حزب أول آية في الصفحة (أرباع Tanzil)؛ احتياطًا من فهرس الأجزاء إن تعذّرت الآية.
+    private func hizb(on page: Int) -> Int {
+        firstAyah(on: page).flatMap(HizbQuarters.hizb(ayahID:)) ?? 1
+    }
+
     private func topSurahName(on page: Int) -> String {
         if let v = firstAyah(on: page), let id = Int(v.split(separator: ":").first ?? ""),
            let s = index.surahs.first(where: { $0.id == id }) { return s.name }
