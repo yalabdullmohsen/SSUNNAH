@@ -164,8 +164,7 @@ struct AqidahIslamicSectView: View {
     let sect: IslamicSect
 
     var body: some View {
-        AqidahPage(title: sect.name) {
-            Text(sect.fullName).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+        AqidahPage(title: sect.name, hero: sect.fullName) {
             HStack(spacing: Sunnah.Spacing.s2) { SunnahChip(sect.category, selected: true); SunnahChip(sect.status) }
             AqidahTextBlock(title: "النشأة", text: sect.era + "\n\n" + sect.origin)
             AqidahTextBlock(title: "المؤسس", text: sect.founder)

@@ -17,12 +17,13 @@ public struct ArticleTemplate: View {
     public var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s5) {
-                Text(item.title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                DetailHero(title: item.title, subtitle: item.subtitle, tags: item.tags)
                 ForEach(Array((item.body ?? "").components(separatedBy: "\n\n").enumerated()), id: \.offset) { _, p in
                     Text(p).font(Sunnah.Typography.body).lineSpacing(Sunnah.Spacing.s2).foregroundStyle(Sunnah.Colors.textPrimary)
+                        .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading).padding(Sunnah.Spacing.pageX)
+            .frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, Sunnah.Spacing.pageX)
         }
         .dynamicTypeSize(size)
         .background(Sunnah.Colors.bg).bodyTitledNavigation()

@@ -129,12 +129,12 @@ struct LearnDetailPage<Content: View>: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                    .accessibilityAddTraits(.isHeader)
-                content()
+                DetailHero(title: title)
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) { content() }
+                    .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, Sunnah.Spacing.pageX)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(Sunnah.Spacing.pageX)
+            .padding(.bottom, Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
         .navigationTitle(title)
