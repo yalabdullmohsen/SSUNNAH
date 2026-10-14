@@ -79,3 +79,28 @@ public struct SunnahSectionHeader: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
+
+/// حالة فارغة بقالب v5 لبيانات المستخدم (خطط، علامات): زخرفة خفيفة + نص قصير + زر دعوة للبدء.
+/// الفراغ هنا سليم (لا حساب ولا بيانات بعد)، فهي دعوة للفعل لا غياب محتوى، ولا تُعلَن `screen.empty`.
+public struct SunnahInviteState: View {
+    let symbol: String; let title: String; let message: String?; let actionTitle: String; let action: () -> Void
+    public init(symbol: String, title: String, message: String? = nil, actionTitle: String, action: @escaping () -> Void) {
+        self.symbol = symbol; self.title = title; self.message = message; self.actionTitle = actionTitle; self.action = action
+    }
+    public var body: some View {
+        VStack(spacing: Sunnah.Spacing.s4) {
+            ZStack {
+                SunnahStarPattern().opacity(0.10).frame(width: 132, height: 132).clipShape(Circle())
+                Image(systemName: symbol).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.primary).accessibilityHidden(true)
+            }
+            Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                .multilineTextAlignment(.center).accessibilityAddTraits(.isHeader)
+            if let message {
+                Text(message).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+            }
+            SunnahButton(actionTitle, action: action).padding(.horizontal, Sunnah.Spacing.pageX)
+        }
+        .frame(maxWidth: .infinity).padding(Sunnah.Spacing.s6)
+    }
+}

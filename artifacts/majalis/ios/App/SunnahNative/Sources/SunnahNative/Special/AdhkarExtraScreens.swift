@@ -50,6 +50,6 @@ public enum AdhkarExtraScreens {
             registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق").navigationTitle(title) }
         }
         // إعدادات الأذان = شاشة الإشعارات الأصلية نفسها (أذان/تنبيه الصلوات + الإذن)، لا شاشة ثانية.
-        registry.registerView(id: "adhan-settings") { AccountNotificationSettingsScreen().navigationTitle("إعدادات الأذان") }
+        registry.registerView(id: "adhan-settings") { AccountNotificationSettingsScreen(isAdhanVariant: true).navigationTitle("إعدادات الأذان") }
     }
 }
