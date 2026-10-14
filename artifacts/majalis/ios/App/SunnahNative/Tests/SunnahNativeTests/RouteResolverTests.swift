@@ -46,4 +46,27 @@ final class RouteResolverTests: XCTestCase {
         }
         XCTAssertEqual(missing, [], "مسارات بلا شاشة")
     }
+    /// /sirah كان خطأ إملائيًا يعرض «تعذّر فتح هذه الشاشة»؛ الآن يحوَّل إلى /seerah.
+    func testSirahRedirectsToSeerah() {
+        XCTAssertNotNil(RouteResolver.resolve(path: "/sirah"))
+        XCTAssertEqual(RouteResolver.redirects["sirah"], "/seerah")
+    }
+
+    /// كل رابط داخلي مكتوب كحرفية "/مسار" في مصادر التطبيق يجب أن يكون جذره مسارًا حقيقيًا ضمن الجرد (أو تحويلًا/اسمًا خاصًا).
+    func testEveryInternalLinkLiteralIsARealRoute() throws {
+        let routes = try XCTUnwrap(json("ROUTE_TEMPLATE_MAP.json")["routes"] as? [[String: Any]])
+        var known = Set(routes.compactMap { ($0["path"] as? String)?.split(separator: "/").first.map(String.init) })
+        known.formUnion(RouteResolver.redirects.keys); known.formUnion(RouteResolver.specialAliases.keys)
+        let src = Self.root.appendingPathComponent("artifacts/majalis/ios/App/SunnahNative/Sources")
+        let re = try NSRegularExpression(pattern: #"(?:open\(path:|Route\.normalize\(|destination:|deepLink:|link:)\s*"/([a-z][a-z0-9-]*)"#)
+        var bad: [String] = []
+        for case let f as URL in FileManager.default.enumerator(at: src, includingPropertiesForKeys: nil)! where f.pathExtension == "swift" {
+            let t = try String(contentsOf: f, encoding: .utf8)
+            for m in re.matches(in: t, range: NSRange(t.startIndex..., in: t)) {
+                let seg = String(t[Range(m.range(at: 1), in: t)!])
+                if !known.contains(seg) { bad.append("\(f.lastPathComponent): /\(seg)") }
+            }
+        }
+        XCTAssertEqual(bad, [], "روابط داخلية لا تطابق مسارًا حقيقيًا")
+    }
 }

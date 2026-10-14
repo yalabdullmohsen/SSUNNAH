@@ -9,7 +9,8 @@ try? VNImageRequestHandler(cgImage: img).perform([req])
 let lines = (req.results ?? []).compactMap { $0.topCandidates(1).first?.string }
 let all = lines.joined(separator: "\n")
 if a.count > 3 { print(all); exit(0) }
-let bad = ["لا يوجد محتوى", "تعذّر", "تعذر تحميل", "محتوى مؤقت", "missingBundled", "إعادة المحاولة", "قيد التوثيق", "قيد الإعداد"]
+// الخطأ والفراغ لا يُكشفان بالنص: الحالة تأتي من screen.error/screen.empty (انظر native-snapshot.sh)؛ هنا بقايا تسريب داخلي فقط
+let bad = ["محتوى مؤقت", "missingBundled"]
 if let b = bad.first(where: { all.contains($0) }) { print("ERROR:\(b)"); exit(0) }
 // معرّف خام (kebab-case لاتيني مثل adh-morning) ظاهر كنص في أي شاشة = فشل
 if let raw = lines.first(where: { $0.range(of: "^[a-z]+(-[a-z]+)+$", options: .regularExpression) != nil }) { print("ERROR:RAW_ID(\(raw))"); exit(0) }
@@ -24,4 +25,6 @@ if lines.filter({ !chrome.contains($0) && $0.count > 1 }).count < 2 {
     for i in 0..<(w * h) { hist[(UInt32(px[i*4] >> 4) << 8) | (UInt32(px[i*4+1] >> 4) << 4) | UInt32(px[i*4+2] >> 4), default: 0] += 1 }
     print((hist.values.max() ?? 0) * 10 >= w * h * 9 ? "WHITE_SCREEN" : "EMPTY"); exit(0)
 }
+// النص المقطوع (يُفعَّل بـAUDIT_TRUNC=1 في تدقيق أكبر خط): سطر ينتهي بـ«…» = اقتطاع من النظام
+if ProcessInfo.processInfo.environment["AUDIT_TRUNC"] == "1", let t = lines.first(where: { $0.hasSuffix("…") || $0.hasSuffix("...") }) { print("TRUNCATED:\(t.prefix(40))"); exit(0) }
 print("OK")

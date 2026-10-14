@@ -31,7 +31,7 @@ public struct TemplateHost<T: ScreenTemplate>: View {
     public var body: some View {
         Group {
             switch phase {
-            case .loading: ProgressView()
+            case .loading: ProgressView().screenState(.loading)
             case .failed:
                 ErrorStateView { Task { await load() } }
             case .ready(let content): T(content: content)

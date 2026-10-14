@@ -63,6 +63,7 @@ public struct SectionEmptyState: View {
 
     public var body: some View {
         SunnahMessageState(symbol: "books.vertical", title: title, message: message)
+            .screenState(.empty)
             .frame(maxHeight: .infinity)
             .background(Sunnah.Colors.bg)
     }

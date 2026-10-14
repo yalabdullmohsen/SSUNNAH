@@ -22,9 +22,9 @@ public struct MushafPageView: View {
             if let page, let family {
                 content(page, family: family, size: geo.size)
             } else if failed {
-                StateMessage(text: "تعذّر تحميل الصفحة \(number)")
+                StateMessage(text: "تعذّر تحميل الصفحة \(number)").screenState(.error)
             } else {
-                ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
+                ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).screenState(.loading)
             }
         }
         .ignoresSafeArea()
