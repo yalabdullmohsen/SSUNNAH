@@ -4,12 +4,15 @@ import SwiftUI
 public struct SearchTemplate: View {
     @Environment(\.openRoute) private var openRoute
     let items: [ContentItem]; let detailBase: String
+    /// قوائم قابلة للتصفح (مثل الأربعين النووية): عند خلو الحقل تُعرض كل العناصر لا رسالة «ابحث».
+    let browseWhenEmpty: Bool
     @State private var query = ""
 
-    public init(items: [ContentItem], detailBase: String) { self.items = items; self.detailBase = detailBase }
+    public init(items: [ContentItem], detailBase: String, browseWhenEmpty: Bool = false) { self.items = items; self.detailBase = detailBase; self.browseWhenEmpty = browseWhenEmpty }
 
     private var results: [ContentItem] {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        if q.isEmpty, browseWhenEmpty { return items }
         guard q.count >= 2 else { return [] }
         return items.filter { ([$0.title, $0.subtitle ?? ""] + $0.tags).contains { $0.localizedCaseInsensitiveContains(q) } }
     }

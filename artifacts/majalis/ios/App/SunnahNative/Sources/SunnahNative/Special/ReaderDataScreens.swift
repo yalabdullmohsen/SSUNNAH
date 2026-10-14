@@ -123,7 +123,7 @@ enum ReaderDataScreens {
 
     static func arbaeenList() -> some View {
         LibraryLoadedView(source: arbaeen, adapt: { ReaderData.arbaeen($0) }) { (items: [ContentItem]) in
-            SearchTemplate(items: items, detailBase: "/arbaeen-nawawi")
+            SearchTemplate(items: items, detailBase: "/arbaeen-nawawi", browseWhenEmpty: true)
         }.navigationTitle("الأربعون النووية")
     }
 
