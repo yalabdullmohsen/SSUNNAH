@@ -6,6 +6,7 @@ W="${1:?اسم النافذة (n1..n4)}"
 case "$W" in
   n1|n1-b) EXPECT="$HOME/ssunnah-wt/ssunnah-n1" ;;
   n4)     EXPECT="$HOME/ssunnah-wt/ssunnah-n4" ;;
+  n3)     EXPECT="$HOME/.majalis-tools/wt/ssunnah-n3" ;;
   *)  exit 0 ;;   # بقية النوافذ لها حارسها الخاص
 esac
 TOP=$(git rev-parse --show-toplevel 2>/dev/null || true)
