@@ -13,13 +13,14 @@ public struct Resource<Value: Decodable & Sendable>: Sendable {
         cacheKey: String? = nil,
         maxAge: TimeInterval = 60 * 60,
         requireAuth: Bool = false,
-        decoder: JSONDecoder = JSONDecoder()
+        decoder: JSONDecoder = JSONDecoder(),
+        normalize: (@Sendable (Data) -> Data)? = nil
     ) {
         self.path = path
         self.cacheKey = cacheKey ?? path
         self.maxAge = maxAge
         self.requireAuth = requireAuth
-        self.decode = { try decoder.decode(Value.self, from: $0) }
+        self.decode = { try decoder.decode(Value.self, from: normalize?($0) ?? $0) }
     }
 }
 

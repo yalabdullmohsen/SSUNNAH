@@ -1,4 +1,5 @@
 import XCTest
+import SunnahDataKit
 @testable import SunnahNative
 
 /// أمر المالك: أرقام لاتينية فقط في كل نص معروض. يفشل إن ظهر رقم هندي (٠-٩) أو فارسي في أي سلسلة نصية بمصدر التطبيق.
@@ -51,5 +52,16 @@ final class LatinDigitsDataTests: XCTestCase {
         let m = try await loader.load(Row.self, from: .bundled(name: "f", subdirectory: "Data/mushaf"))
         XCTAssertEqual(x.t, "3")
         XCTAssertEqual(m.t, "٣")
+    }
+
+    func testLoaderConvertsRemoteData() async throws {
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("latin-r-\(UUID().uuidString)")
+        defer { try? FileManager.default.removeItem(at: dir) }
+        let up = ClosureTransport { _, _ in Data("{\"t\":\"درس ٣ من ۱۲ في ٢٫٥\"}".utf8) }
+        let loader = ContentLoader(store: DataStore(transport: up, cache: DiskCache(directory: dir)))
+        let r = try await loader.load(Row.self, from: .remote(path: "/api/r", maxAge: 0))
+        XCTAssertEqual(r.t, "درس 3 من 12 في 2.5")
+        let again = try await loader.load(Row.self, from: .remote(path: "/api/r", maxAge: 3600))
+        XCTAssertEqual(again.t, "درس 3 من 12 في 2.5")
     }
 }
