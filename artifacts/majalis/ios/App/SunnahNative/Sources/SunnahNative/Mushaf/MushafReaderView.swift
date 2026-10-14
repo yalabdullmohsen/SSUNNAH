@@ -77,7 +77,7 @@ public struct MushafPageView: View {
                         .lineLimit(1)
                         .fixedSize()
                     .font(.custom(family, fixedSize: layout.fontSize))
-                        .foregroundStyle(Sunnah.Colors.textPrimary)
+                        .foregroundStyle(w.isAyahEnd ? Sunnah.Colors.mushafAccent : Sunnah.Colors.textPrimary)
                         .padding(.vertical, 1)
                         .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
                         .onTapGesture { selectedAyah = selectedAyah == w.v ? nil : w.v }
@@ -147,7 +147,7 @@ public struct MushafReaderView: View {
             Spacer()
             VStack(spacing: 0) {
                 Text(index.surah(onPage: current)?.name ?? "").font(Sunnah.Typography.cardTitle)
-                Text("الجزء \(index.juz(onPage: current)) · صفحة \(current)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                Text("الجزء \(index.juz(onPage: current)) · صفحة \(current)").font(Sunnah.Typography.secondary)
             }
             Spacer()
             Button {
@@ -156,7 +156,7 @@ public struct MushafReaderView: View {
             } label: { Image(systemName: isMarked ? "bookmark.fill" : "bookmark") }.accessibilityLabel("علامة")
         }
         .padding(.horizontal, Sunnah.Spacing.s4).padding(.vertical, Sunnah.Spacing.s2)
-        .foregroundStyle(Sunnah.Colors.primary)
+        .foregroundStyle(Sunnah.Colors.mushafAccent)
     }
 
     private func selectionSheet(_ ayah: String) -> some View {
