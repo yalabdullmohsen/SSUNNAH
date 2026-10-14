@@ -1,11 +1,30 @@
 import Foundation
 
+/// محافظات الكويت الست (مراكزها) ومناطقها البعيدة، لاختيار سريع دون اتصال.
+/// المناطق البعيدة المتحقَّق من إحداثياتها: العبدلي (ويكيبيديا 30.0، 47.6833)، الوفرة، النويصيب.
+/// السالمي والصبية وكبد خارج القائمة حتى تُعتمد إحداثياتها (انظر docs/native/requests/prayer-remote-areas-n1.md).
+public enum KuwaitAreas {
+    public static let governorates: [PrayerLocation] = [
+        area("مدينة الكويت", 29.3759, 47.9774),
+        area("حولي", 29.3328, 48.0286),
+        area("الفروانية", 29.2775, 47.9585),
+        area("الأحمدي", 29.0769, 48.0838),
+        area("الجهراء", 29.3375, 47.6581),
+        area("مبارك الكبير", 29.2120, 48.0600)
+    ]
+    public static let remote: [PrayerLocation] = [
+        area("العبدلي", 30.0, 47.6833),
+        area("الوفرة", 28.5583, 48.0433),
+        area("النويصيب", 28.5740, 48.3750)
+    ]
+    static func area(_ label: String, _ lat: Double, _ lon: Double) -> PrayerLocation {
+        PrayerLocation(label: label, latitude: lat, longitude: lon, timeZoneIdentifier: "Asia/Kuwait")
+    }
+}
+
 /// مدن مضمّنة لاختيار الموقع دون اتصال ودون إذن الموقع.
 public enum ReferenceCities {
-    public static let all: [PrayerLocation] = [
-        city("مدينة الكويت", 29.3759, 47.9774, "Asia/Kuwait"),
-        city("الجهراء", 29.3375, 47.6581, "Asia/Kuwait"),
-        city("الأحمدي", 29.0769, 48.0838, "Asia/Kuwait"),
+    public static let all: [PrayerLocation] = KuwaitAreas.governorates + KuwaitAreas.remote + [
         city("مكة المكرمة", 21.4225, 39.8262, "Asia/Riyadh"),
         city("المدينة المنورة", 24.4672, 39.6111, "Asia/Riyadh"),
         city("الرياض", 24.7136, 46.6753, "Asia/Riyadh"),

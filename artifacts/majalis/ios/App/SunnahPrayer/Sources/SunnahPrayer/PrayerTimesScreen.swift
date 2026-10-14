@@ -144,6 +144,30 @@ struct CityPickerView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
 
+    private func areaChips(_ title: String, _ items: [PrayerLocation]) -> some View {
+        Section(title) {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(items, id: \.label) { a in
+                        let selected = !store.preferences.usesDeviceLocation && store.preferences.location == a
+                        Button {
+                            store.preferences.location = a
+                            store.preferences.usesDeviceLocation = false
+                            dismiss()
+                        } label: {
+                            Text(a.label).font(.subheadline.weight(selected ? .bold : .regular))
+                                .padding(.horizontal, 12).padding(.vertical, 6)
+                                .background(selected ? Color.accentColor.opacity(0.2) : Color.secondary.opacity(0.12), in: Capsule())
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(a.label)
+                        .accessibilityAddTraits(selected ? .isSelected : [])
+                    }
+                }
+            }
+        }
+    }
+
     var body: some View {
         NavigationStack {
             List {
@@ -153,7 +177,11 @@ struct CityPickerView: View {
                 } label: {
                     Label("استخدام موقعي الحالي", systemImage: "location")
                 }
-                ForEach(ReferenceCities.search(query), id: \.label) { city in
+                if query.isEmpty {
+                    areaChips("محافظات الكويت", KuwaitAreas.governorates)
+                    areaChips("المناطق البعيدة", KuwaitAreas.remote)
+                }
+                ForEach(ReferenceCities.search(query).filter { query.isEmpty ? !KuwaitAreas.governorates.contains($0) && !KuwaitAreas.remote.contains($0) : true }, id: \.label) { city in
                     Button {
                         store.preferences.location = city
                         store.preferences.usesDeviceLocation = false
