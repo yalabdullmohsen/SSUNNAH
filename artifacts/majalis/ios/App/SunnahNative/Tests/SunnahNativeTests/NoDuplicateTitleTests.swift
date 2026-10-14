@@ -32,7 +32,7 @@ final class NoDuplicateTemplateTitleTests: XCTestCase {
             .appendingPathComponent("Sources/SunnahNative/Templates")
         for f in ["ArticleTemplate.swift", "DetailTemplate.swift"] {
             let s = try String(contentsOf: dir.appendingPathComponent(f), encoding: .utf8)
-            XCTAssertTrue(s.contains("Text(item.title)"), f)
+            XCTAssertTrue(s.contains("Text(item.title)") || s.contains("DetailHero(title: item.title"), f)
             XCTAssertFalse(s.contains(".navigationTitle(item.title)"), "\(f): عنوان مكرر")
         }
     }
