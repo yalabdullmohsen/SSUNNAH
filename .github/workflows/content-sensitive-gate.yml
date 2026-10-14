@@ -1,13 +1,18 @@
 name: content-sensitive gate
-# قاعدة يوسف: PR يمسّ نصًا شرعيًا (قرآن/حديث/حكم/بيانات شرعية) لا يُدمج إلا بوسم visually-verified بعد فحص لقطة.
-# يفشل إن كان الوسم content-sensitive موجودًا أو مسّ الـPR مسارًا حسّاسًا، ولا وسم visually-verified. أضِف الوسم يدويًا بعد الفحص.
+# قاعدة يوسف: PR يمسّ نصًا شرعيًا لا يُدمج إلا بوسم visually-verified بعد فحص لقطة بصرية.
+# لا فشل أحمر: الوظيفة تنجح دائمًا وتنشر commit status باسم «content-sensitive» (pending ← success عند الوسم).
+# المسارات الحسّاسة في .github/content-sensitive-paths (مختبَرة بـscripts/test-content-sensitive-paths.sh).
 on:
   pull_request:
     branches: [native-app]
     types: [opened, synchronize, reopened, labeled, unlabeled]
 permissions:
   contents: read
-  pull-requests: read
+  pull-requests: write
+  statuses: write
+concurrency:
+  group: content-sensitive-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 jobs:
   gate:
     runs-on: ubuntu-latest
@@ -15,18 +20,26 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with: { fetch-depth: 0 }
-      - name: فحص الحساسية
+      - name: حالة الحساسية
         env:
-          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          ACTION: ${{ github.event.action }}
           BASE_REF: ${{ github.base_ref }}
+          REPO: ${{ github.repository }}
         run: |
-          PATHS='^(ios-native/Data/|artifacts/majalis/public/data/|docs/native/DATA_CONTRACT\.md|artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/(Sections/(quran|aqidah|fiqh|sirah)/|Special/(Hadith|WeakHadith|Adhkar|Dua|Citation)|Mushaf/|Data/))'
-          HIT=$(git diff --name-only "origin/${BASE_REF}...HEAD" | grep -E "$PATHS" | head -5 || true)
-          SENSITIVE=no
-          case ",$LABELS," in *,content-sensitive,*) SENSITIVE=yes;; esac
-          [ -n "$HIT" ] && SENSITIVE=yes
-          [ "$SENSITIVE" = no ] && { echo "غير حسّاس."; exit 0; }
-          case ",$LABELS," in *,visually-verified,*) echo "حسّاس + visually-verified ✓"; exit 0;; esac
-          echo "::error::PR يمسّ نصًا شرعيًا (أو يحمل content-sensitive) ولا يحمل visually-verified. افحص لقطة الشاشة ثم أضف الوسم."
-          [ -n "$HIT" ] && echo "$HIT"
-          exit 1
+          LABELS=$(gh pr view "$PR" --json labels --jq '[.labels[].name]|join(",")')
+          has() { case ",$LABELS," in *,"$1",*) return 0;; esac; return 1; }
+          # التحقق البصري كان للنسخة السابقة: commit جديد يُسقط الوسم
+          if [ "$ACTION" = synchronize ] && has visually-verified; then
+            gh pr edit "$PR" --remove-label visually-verified || true
+            LABELS=$(echo ",$LABELS," | sed 's/,visually-verified,/,/; s/^,//; s/,$//')
+          fi
+          HIT=$(git diff --name-only "origin/${BASE_REF}...${SHA}" | bash scripts/content-sensitive-check.sh | head -5)
+          SENS=no; has content-sensitive && SENS=yes; [ -n "$HIT" ] && SENS=yes
+          if [ $SENS = no ]; then STATE=success; DESC="غير حسّاس"
+          elif has visually-verified; then STATE=success; DESC="حسّاس وتم التحقق البصري ✓"
+          else STATE=pending; DESC="بانتظار التحقق البصري — أضف وسم visually-verified بعد فحص اللقطة"; fi
+          echo "$STATE — $DESC"; [ -n "$HIT" ] && echo "$HIT"
+          gh api "repos/$REPO/statuses/$SHA" -f state=$STATE -f context=content-sensitive -f description="$DESC"
