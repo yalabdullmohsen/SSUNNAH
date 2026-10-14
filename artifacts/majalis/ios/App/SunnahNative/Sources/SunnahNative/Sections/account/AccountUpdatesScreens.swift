@@ -238,11 +238,9 @@ struct AccountAutoContentDetailScreen: View {
 
     private func detail(_ item: AccountAutoContent) -> some View {
         ScrollView {
+            VStack(spacing: 0) {
+            DetailHero(title: item.title, subtitle: item.summary)
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                Text(item.title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                if let s = item.summary, !s.isEmpty {
-                    Text(s).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
-                }
                 Text([AccountAutoContent.updateType(for: item.contentType), item.category, item.sourceName]
                         .compactMap { $0 }.filter { !$0.isEmpty }.joined(separator: " · "))
                     .font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary)
@@ -265,6 +263,7 @@ struct AccountAutoContentDetailScreen: View {
                 AccountLinkRow(title: "العودة للمستجدات", path: "/updates")
             }
             .padding(Sunnah.Spacing.pageX)
+            }
         }
         .bodyTitledNavigation()
     }
