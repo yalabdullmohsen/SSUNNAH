@@ -3,6 +3,9 @@ import SwiftUI
 import UIKit
 #endif
 
+/// وضعية البدء: `.start` هي الحالة الحيّة؛ `.assembled` (الشعار مكتمل بالذهب) لاختبارات اللقطة فقط.
+enum IntroPose { case start, assembled }
+
 /// المقدّمة المتحركة: تركيب الشعار → لمعة → اقتراب وتلاشٍ إلى الرئيسية (≈1.6ث). SwiftUI صرف.
 struct IntroView: View {
     let style: IntroStyle
@@ -12,8 +15,8 @@ struct IntroView: View {
     let onApproach: () -> Void   // بدء ظهور الرئيسية
     let onFinish: () -> Void     // إزالة الطبقة
 
-    @State private var assembled = false
-    @State private var gold = false
+    @State private var assembled: Bool
+    @State private var gold: Bool
     @State private var shimmer: CGFloat = -1
     @State private var approach = false
     @State private var layerOpacity = 1.0
@@ -22,7 +25,9 @@ struct IntroView: View {
     @State private var simplifiedShown = false
 
     private let pieces: [IntroPiece]
-    init(style: IntroStyle, theme: IntroTheme, waitUntilReady: @escaping () async -> Void, onApproach: @escaping () -> Void, onFinish: @escaping () -> Void) {
+    init(style: IntroStyle, theme: IntroTheme, pose: IntroPose = .start, waitUntilReady: @escaping () async -> Void, onApproach: @escaping () -> Void, onFinish: @escaping () -> Void) {
+        _assembled = State(initialValue: pose == .assembled)
+        _gold = State(initialValue: pose == .assembled)
         self.style = style; self.theme = theme; self.waitUntilReady = waitUntilReady
         self.onApproach = onApproach; self.onFinish = onFinish
         pieces = IntroPieces.build(theme)
