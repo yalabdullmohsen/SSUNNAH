@@ -27,6 +27,7 @@ public struct MushafPageView: View {
                 ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .ignoresSafeArea()
         .task(id: number) {
             guard page == nil else { return }
             do { family = try repo.ensureFont(page: number); page = try repo.page(number) } catch { failed = true }
@@ -35,19 +36,23 @@ public struct MushafPageView: View {
 
     @ViewBuilder
     private func content(_ page: MushafPage, family: String, size: CGSize) -> some View {
-        let inset: CGFloat = Sunnah.Spacing.s4
+        // هندسة المرجع (402×874): الأسطر من 10.2% (بعد معايرة قياس المحاكي) إلى 92% من الارتفاع، والهامش الجانبي ≈3% من العرض.
+        let inset = size.width * 0.03
         let width = size.width - inset * 2
         let rows = page.opening ? page.rows.filter { $0.k != "x" } : page.rows
         let slots = page.opening ? CGFloat(15) : CGFloat(max(15, rows.count))
-        let rowH = size.height / slots
+        let areaH = size.height * 0.811
+        let rowH = areaH / slots
         let layout = MushafMetrics.layout(rows: rows, family: family, width: width, maxFont: rowH * 0.8)
         VStack(spacing: 0) {
             ForEach(Array(rows.enumerated()), id: \.offset) { i, row in
                 rowView(row, layout: layout, family: family, index: i, width: width).frame(height: rowH)
             }
         }
-        .frame(maxHeight: .infinity, alignment: page.opening ? .center : .top)
+        .frame(height: areaH, alignment: page.opening ? .center : .top)
         .padding(.horizontal, inset)
+        .padding(.top, size.height * 0.102)
+        .frame(maxHeight: .infinity, alignment: .top)
         .environment(\.layoutDirection, .rightToLeft)
     }
 
@@ -56,13 +61,7 @@ public struct MushafPageView: View {
         switch row.k {
         case "h":
             let name = self.index.surahs.first { $0.id == row.s }?.name ?? ""
-            Text("سورة \(name)")
-                .font(Sunnah.Typography.cardTitle)
-                .foregroundStyle(Sunnah.Colors.primary)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Sunnah.Colors.primarySoft, in: RoundedRectangle(cornerRadius: Sunnah.Radius.small))
-                .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.small).stroke(Sunnah.Colors.goldDeco, lineWidth: 1))
-                .padding(.vertical, 2)
+            SurahBanner(name: name).padding(.vertical, 1)
         case "b":
             Text("بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ")
                 .font(Sunnah.Typography.cardTitle)
@@ -77,7 +76,11 @@ public struct MushafPageView: View {
                         .lineLimit(1)
                         .fixedSize()
                     .font(.custom(family, fixedSize: layout.fontSize))
-                        .foregroundStyle(w.isAyahEnd ? Sunnah.Colors.mushafAccent : Sunnah.Colors.textPrimary)
+                        .foregroundStyle(w.isAyahEnd ? Sunnah.Colors.mushafIvory : Sunnah.Colors.textPrimary)
+                        .background {
+                            // قرص أخضر خلف رمز نهاية الآية (الرمز نفسه من خط QPC بلا تغيير): حلقته ورقمه عاجيان كالمرجع.
+                            if w.isAyahEnd { Circle().fill(Sunnah.Colors.mushafAccent).aspectRatio(1, contentMode: .fit) }
+                        }
                         .padding(.vertical, 1)
                         .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
                         .onTapGesture { selectedAyah = selectedAyah == w.v ? nil : w.v }
@@ -109,6 +112,8 @@ public struct MushafReaderView: View {
     @State private var current: Int
     @State private var selected: String?
     @State private var showIndex = false
+    @State private var showChrome = false
+    @Environment(\.openRoute) private var openRoute
 
     public init(repo: MushafRepository, index: MushafIndex, search: MushafSearch?, store: MushafStore, startPage: Int? = nil) {
         self.repo = repo; self.index = index; self.search = search; self.store = store
@@ -116,22 +121,35 @@ public struct MushafReaderView: View {
     }
 
     public var body: some View {
-        VStack(spacing: 0) {
-            header
-            TabView(selection: $current) {
-                ForEach(1...Mushaf.pageCount, id: \.self) { n in
-                    Group {
-                        if abs(n - current) <= 1 { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected) }
-                        else { Color.clear }
-                    }.tag(n)
+        GeometryReader { geo in
+            let w = geo.size.width, h = geo.size.height
+            ZStack(alignment: .top) {
+                Sunnah.Colors.mushafPaper
+                TabView(selection: $current) {
+                    ForEach(1...Mushaf.pageCount, id: \.self) { n in
+                        Group {
+                            if abs(n - current) <= 1 { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected) }
+                            else { Color.clear }
+                        }.tag(n)
+                    }
                 }
+                #if os(iOS)
+                .tabViewStyle(.page(indexDisplayMode: .never))
+                #endif
+                .environment(\.layoutDirection, .rightToLeft)
+                .ignoresSafeArea()
+                .clipped()
+                pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * 0.088)
+                pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * 0.9435)
+                if showChrome { chrome.transition(.opacity) }
             }
-            #if os(iOS)
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            #endif
-            .environment(\.layoutDirection, .rightToLeft)
+            .frame(width: w, height: h)
         }
-        .background(Sunnah.Colors.bg)
+        .ignoresSafeArea()
+        .background(Sunnah.Colors.mushafPaper.ignoresSafeArea())
+        #if os(iOS)
+        .toolbar(.hidden, for: .navigationBar)
+        #endif
         .overlay(alignment: .bottom) { if let sel = selected { selectionSheet(sel) } }
         .sheet(isPresented: $showIndex) {
             MushafIndexView(index: index, search: search, store: store) { page in current = page; showIndex = false }
@@ -141,22 +159,69 @@ public struct MushafReaderView: View {
         .environment(\.layoutDirection, .rightToLeft)
     }
 
-    private var header: some View {
+    /// سطر الرأس كما في المرجع: «الجزء N» يمينًا واسم السورة (عند أول الصفحة) يسارًا؛ اللمس يُظهر/يُخفي أدوات القارئ.
+    private var pageHeader: some View {
         HStack {
+            Text("الجزء \(Self.arabicDigits(index.juz(onPage: current)))")
+            Spacer()
+            Text(topSurahName(on: current))
+        }
+        .font(Sunnah.Typography.secondary)
+        .foregroundStyle(Sunnah.Colors.mushafGoldBrown)
+        .contentShape(Rectangle())
+        .onTapGesture { sunnahAnimate { showChrome.toggle() } }
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityHint("يُظهر أدوات القارئ")
+        .accessibilityIdentifier("mushaf.header")
+    }
+
+    /// أدوات القارئ (فهرس، علامة، خروج) مخفيّة افتراضيًا ليبقى المصحف غامرًا كما في المرجع.
+    private var chrome: some View {
+        HStack(spacing: Sunnah.Spacing.s4) {
+            Button { openRoute("/") } label: { Image(systemName: "xmark") }.accessibilityLabel("إغلاق المصحف")
+            Spacer()
             Button { showIndex = true } label: { Image(systemName: "list.bullet") }.accessibilityLabel("الفهرس والبحث")
-            Spacer()
-            VStack(spacing: 0) {
-                Text(index.surah(onPage: current)?.name ?? "").font(Sunnah.Typography.cardTitle)
-                Text("الجزء \(index.juz(onPage: current)) · صفحة \(current)").font(Sunnah.Typography.secondary)
-            }
-            Spacer()
             Button {
                 let ayah = selected ?? firstAyah(on: current)
                 if let ayah { store.toggleBookmark(ayah: ayah, page: current) }
             } label: { Image(systemName: isMarked ? "bookmark.fill" : "bookmark") }.accessibilityLabel("علامة")
         }
-        .padding(.horizontal, Sunnah.Spacing.s4).padding(.vertical, Sunnah.Spacing.s2)
-        .foregroundStyle(Sunnah.Colors.mushafAccent)
+        .font(.system(size: 18, weight: .semibold))
+        .foregroundStyle(Sunnah.Colors.mushafInk)
+        .padding(.horizontal, Sunnah.Spacing.s4).padding(.vertical, Sunnah.Spacing.s3)
+        .background(Sunnah.Colors.mushafIvory, in: Capsule())
+        .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 1))
+        .padding(.horizontal, Sunnah.Spacing.s4)
+        .padding(.top, 54)
+        .accessibilityIdentifier("mushaf.chrome")
+    }
+
+    /// خرطوشة رقم الصفحة أسفل يمين الصفحة (خارج شبكة الأسطر فلا يتغيّر مقاس الخط ولا توزيع الكلمات).
+    private var pageCartouche: some View {
+        HStack {
+            Text(Self.arabicDigits(current))
+                .font(Sunnah.Typography.cardTitle).monospacedDigit()
+                .foregroundStyle(Sunnah.Colors.mushafInk)
+                .padding(.horizontal, Sunnah.Spacing.s3).padding(.vertical, 1)
+                .background(Sunnah.Colors.mushafIvory, in: Capsule())
+                .overlay(Capsule().stroke(Sunnah.Colors.mushafSage, lineWidth: 2.5))
+                .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 0.75).padding(-2))
+                .accessibilityLabel("صفحة \(current)")
+                .accessibilityIdentifier("mushaf.pageNumber")
+            Spacer()
+        }
+    }
+
+    static func arabicDigits(_ n: Int) -> String {
+        let d = Array("٠١٢٣٤٥٦٧٨٩"); return String(String(n).compactMap { $0.wholeNumberValue.map { d[$0] } })
+    }
+
+    /// السورة الجارية في أعلى الصفحة (آية أول سطر)، لا آخر سورة تبدأ فيها.
+    private func topSurahName(on page: Int) -> String {
+        if let v = firstAyah(on: page), let id = Int(v.split(separator: ":").first ?? ""),
+           let s = index.surahs.first(where: { $0.id == id }) { return s.name }
+        return index.surah(onPage: page)?.name ?? ""
     }
 
     private func selectionSheet(_ ayah: String) -> some View {
@@ -242,5 +307,42 @@ public struct MushafIndexView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .sunnahMotifCorner(size: 220, alignment: .bottomLeading, opacity: 0.06)
         .background(Sunnah.Colors.bg)
+    }
+}
+
+/// لافتة اسم السورة: إطار ذهبي بُنّي مزدوج، حقل سلوي، وردتان جانبيتان، وحبر أخضر (مرسومة بلا أصول صورية).
+struct SurahBanner: View {
+    let name: String
+    var body: some View {
+        GeometryReader { g in
+            ZStack {
+                RoundedRectangle(cornerRadius: 5).fill(Sunnah.Colors.mushafIvory)
+                RoundedRectangle(cornerRadius: 3).fill(Sunnah.Colors.mushafSage).padding(3)
+                RoundedRectangle(cornerRadius: 5).stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 1.2)
+                RoundedRectangle(cornerRadius: 3).stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.8), lineWidth: 0.6).padding(3)
+                HStack {
+                    rosette(g.size.height)
+                    Spacer()
+                    rosette(g.size.height)
+                }.padding(.horizontal, g.size.width * 0.05)
+                Text("سورة \(name)")
+                    .font(Sunnah.Typography.cardTitle)
+                    .foregroundStyle(Sunnah.Colors.mushafInk)
+                    .padding(.horizontal, g.size.width * 0.08).padding(.vertical, 3)
+                    .background(Sunnah.Colors.mushafIvory, in: RoundedRectangle(cornerRadius: 8))
+                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 0.8))
+            }
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("سورة \(name)")
+    }
+
+    private func rosette(_ h: CGFloat) -> some View {
+        let d = h * 0.62
+        return ZStack {
+            Circle().fill(Sunnah.Colors.mushafIvory)
+            Circle().stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 0.8)
+            Circle().fill(Sunnah.Colors.mushafSage).padding(d * 0.28)
+        }.frame(width: d, height: d)
     }
 }

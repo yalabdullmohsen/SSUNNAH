@@ -44,7 +44,10 @@ public struct RootTabView: View {
                 .navigationDestination(for: Route.self) { screen($0) }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            SunnahTabBar(selected: AppTab.owning(path: router.stack.last?.path ?? "/")) { router.stack = []; router.open(path: $0.rootPath) }
+            // المصحف غامر (كالمرجع): لا شريط تبويب فوق الصفحة؛ الخروج من أداة «إغلاق» في القارئ.
+            if !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") {
+                SunnahTabBar(selected: AppTab.owning(path: router.stack.last?.path ?? "/")) { router.stack = []; router.open(path: $0.rootPath) }
+            }
         }
         .environment(\.openRoute) { [router] in Sunnah.Haptics.select(); router.open(path: $0) }
         .overlay {
