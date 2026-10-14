@@ -14,6 +14,6 @@ public struct DetailTemplate: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading).padding(Sunnah.Spacing.pageX)
         }
-        .background(Sunnah.Colors.bg).navigationTitle(item.title)
+        .background(Sunnah.Colors.bg).bodyTitledNavigation()
     }
 }

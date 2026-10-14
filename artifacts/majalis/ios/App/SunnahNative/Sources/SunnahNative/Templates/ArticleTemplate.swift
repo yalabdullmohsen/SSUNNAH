@@ -25,7 +25,7 @@ public struct ArticleTemplate: View {
             .frame(maxWidth: .infinity, alignment: .leading).padding(Sunnah.Spacing.pageX)
         }
         .dynamicTypeSize(size)
-        .background(Sunnah.Colors.bg).navigationTitle(item.title)
+        .background(Sunnah.Colors.bg).bodyTitledNavigation()
         .preferredColorScheme(night ? .dark : nil)
         .toolbar {
             ToolbarItemGroup(placement: .primaryAction) {
