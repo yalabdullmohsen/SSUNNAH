@@ -28,6 +28,7 @@ struct SunnahApp: App {
                     // لقطات native-loop: -snapshotRoute /path (للتصحيح فقط)
                     #if DEBUG
                     if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p); readiness.begin(route: p) }
+                    if let f = UserDefaults.standard.string(forKey: "snapshotRoutes") { SnapshotRoutesRunner.run(file: f, router: router, readiness: readiness) }
                     #endif
                 }
                 #if DEBUG

@@ -2,6 +2,7 @@
 # تدقيق المسارات السريع: جلسة تطبيق واحدة على محاكي النافذة؛ التنقل بالروابط العميقة (simctl openurl majlisilm://…)
 # لكل مسار: انتظار screen.ready (snapshot-ready.json) ثم لقطة وتسجيل الحالة. التحليل (OCR مُجمَّع) يجري بعد الالتقاط بالتوازي.
 # الاستعمال: NATIVE_WINDOW=n2 APP=<SunnahApp.app> [MODE=light|dark] [FONT=accessibility-extra-extra-extra-large] [LIMIT=n] bash scripts/native-audit-fast.sh
+# OPEN=inapp: الأسرع (التطبيق Debug يمرّ بنفسه على المسارات عبر AppRouter: -snapshotRoutes؛ بلا openurl ولا إعادة إطلاق). التفاصيل في docs/native/WORKFLOW.md.
 # OPEN=launch: إطلاق لكل مسار بدل openurl (يتجاوز نافذة «فتح في سُنّة؟» التي تعترض الروابط العميقة على محاكٍ جديد).
 # المخرجات: $BOARD/<tag>/states.tsv, verdicts.tsv, *.png, summary.md. الهدف: 212 مسارًا < 20 دقيقة.
 set -uo pipefail
@@ -23,6 +24,30 @@ launch() { xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1; xcrun simctl laun
 launch || { echo "native-audit-fast: التطبيق لا يعمل" >&2; exit 2; }
 CT=$(xcrun simctl get_app_container "$SIM" $BID data)/tmp
 START=$(date +%s)
+inapp_run() {  # OPEN=inapp: التطبيق يمرّ بنفسه على المسارات (-snapshotRoutes)؛ السكربت يلتقط ويكتب audit-next فقط
+  local base=0 n; n=$(wc -l < "$BOARD/routes.tsv" | tr -d ' ')
+  while [ "$base" -lt "$n" ]; do
+    tail -n +$((base+1)) "$BOARD/routes.tsv" | cut -f2 > "$CT/audit-routes.txt"; rm -f "$CT/audit-ready.json" "$CT/audit-next" "$CT/audit-done"
+    xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1; xcrun simctl launch "$SIM" $BID -snapshotRoutes audit-routes.txt >/dev/null 2>&1
+    local i=0 died=0
+    while [ $((base+i)) -lt "$n" ]; do
+      local end=$(( $(date +%s) + TO + 10 )) st=NOT_READY
+      while [ "$(date +%s)" -lt "$end" ]; do
+        if [ -s "$CT/audit-ready.json" ] && [ "$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['i'])" "$CT/audit-ready.json" 2>/dev/null)" = "$i" ]; then
+          st=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['state'])" "$CT/audit-ready.json" 2>/dev/null || echo NOT_READY); break; fi
+        sleep 0.1
+      done
+      IFS=$'\t' read -r route eff comp < <(sed -n "$((base+i+1))p" "$BOARD/routes.tsv")
+      slug=$(echo "${route#/}" | tr '/:' '__'); [ -z "$slug" ] && slug=root
+      xcrun simctl io "$SIM" screenshot "$BOARD/shots/$slug.png" >/dev/null 2>&1
+      printf '%s\t%s\t%s\t%s\n' "$route" "$eff" "$comp" "$st" >> "$BOARD/states.tsv"
+      i=$((i+1)); : > "$CT/audit-next"
+      if [ "$st" = NOT_READY ] && ! xcrun simctl spawn "$SIM" launchctl list 2>/dev/null | grep -Eq "UIKitApplication:$BID"; then died=1; break; fi
+    done
+    [ "$died" = 1 ] && base=$((base+i)) || break   # التطبيق سقط: أكمل من المسار التالي بإطلاق جديد
+  done
+}
+if [ "${OPEN:-url}" = inapp ]; then inapp_run; else
 while IFS=$'\t' read -r route eff comp; do
   slug=$(echo "${route#/}" | tr '/:' '__'); [ -z "$slug" ] && slug=root
   rm -f "$CT/snapshot-ready.json"
@@ -36,6 +61,7 @@ while IFS=$'\t' read -r route eff comp; do
   printf '%s\t%s\t%s\t%s\n' "$route" "$eff" "$comp" "$st" >> "$BOARD/states.tsv"
   [ "$st" = NOT_READY ] && launch >/dev/null   # جلسة عالقة: أعد التشغيل ولا تُسمِّم ما بعدها
 done < "$BOARD/routes.tsv"
+fi
 echo "captured $(wc -l < "$BOARD/states.tsv") in $(( $(date +%s) - START ))s" > "$BOARD/capture-time.txt"; cat "$BOARD/capture-time.txt"
 xcrun simctl status_bar "$SIM" clear >/dev/null 2>&1
 bash scripts/native-audit-analyze.sh "$BOARD"
