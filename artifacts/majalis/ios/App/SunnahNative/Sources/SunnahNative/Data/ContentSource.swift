@@ -39,7 +39,7 @@ public struct ContentLoader: Sendable {
         case let .remote(path, maxAge, requireAuth):
             do {
                 guard let store else { throw ContentError.noStore }
-                let resource = Resource<Value>(path: path, maxAge: maxAge, requireAuth: requireAuth, decoder: decoder())
+                let resource = Resource<Value>(path: path, maxAge: maxAge, requireAuth: requireAuth, decoder: decoder(), normalize: { $0.asLatinDigitsJSON })
                 return try await store.load(resource).value
             } catch {
                 // لا شبكة ولا كاش: البذرة المحزومة (إن وُجدت) بدل الخطأ.
