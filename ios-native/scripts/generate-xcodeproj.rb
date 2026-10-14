@@ -57,6 +57,8 @@ t.build_configurations.each do |c|
   s['INFOPLIST_FILE'] = 'SunnahApp/Info.plist'
   s['CODE_SIGN_ENTITLEMENTS'] = 'SunnahApp/SunnahApp.entitlements'
   s['ASSETCATALOG_COMPILER_APPICON_NAME'] = 'AppIcon'
+  s['ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES'] = 'AppIcon-StarDish AppIcon-ZellijDark'
+  s['ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS'] = 'YES'
   s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
   s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '100'
   s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '1,2'

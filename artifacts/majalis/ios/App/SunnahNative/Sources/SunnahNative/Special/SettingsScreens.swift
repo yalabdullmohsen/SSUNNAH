@@ -16,6 +16,10 @@ struct SettingsView: View {
                     Text("لم تسجّل الدخول").foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }
+            Section("المظهر") {
+                SunnahNavigationLink { AppIconPickerView() } label: { SunnahListRow(title: "أيقونة التطبيق", icon: "app.badge") }
+                    .accessibilityIdentifier("settings.appIcon")
+            }
             Section("الخصوصية") {
                 Text("لحذف حسابك وبياناتك افتح «حذف الحساب» من القائمة.")
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
