@@ -76,12 +76,12 @@ public struct HomeDailyContent: Equatable, Sendable {
 
     /// nil إن غاب أي ملف من التصدير أو فسد أو خلا من review_status/source_origin أو تعذّر نص الآية من المصحف.
     public static func load(on date: Date, bundle: Bundle = .main) -> HomeDailyContent? {
-        func read<T: Decodable>(_ name: String) -> [T]? {
+        func read<T: Decodable>(_ name: String, latin: Bool = false) -> [T]? {
             guard let url = bundle.url(forResource: name, withExtension: "json", subdirectory: "Data/home"),
                   let data = try? Data(contentsOf: url) else { return nil }
-            return try? JSONDecoder().decode([T].self, from: data)
+            return try? JSONDecoder().decode([T].self, from: latin ? data.asLatinDigitsJSON : data)
         }
-        guard let ayahs: [HomeDailyAyah] = read("daily-ayah"), let hadiths: [HomeDailyHadith] = read("daily-hadith"),
+        guard let ayahs: [HomeDailyAyah] = read("daily-ayah"), let hadiths: [HomeDailyHadith] = read("daily-hadith", latin: true),
               let a = HomeDailyPick.pick(ayahs, on: date), let h = HomeDailyPick.pick(hadiths, on: date),
               let text = ayahText(surah: a.surahNumber ?? 0, ayah: a.ayahNumber, bundle: bundle) else { return nil }
         return HomeDailyContent(ayah: a, ayahText: text, hadith: h)
