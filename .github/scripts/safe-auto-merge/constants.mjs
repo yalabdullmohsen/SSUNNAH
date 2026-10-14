@@ -94,6 +94,8 @@ export const CONTENT_SAFE_PATH_PATTERNS = Object.freeze([
 /** Generated SEO shells — لا تُحسب ضمن سقف الملفات (تتجدّد مع المحتوى). */
 export const AUTO_MERGE_FILE_COUNT_EXEMPT_PATTERNS = Object.freeze([
   /^artifacts\/majalis\/seo-prerender\//i,
+  // ملفات Xcode المولَّدة (تغيّر معرّفات فقط) — بأمر المالك 2026-10-14.
+  /^ios-native\/SunnahApp\.xcodeproj\//i,
 ]);
 
 export const DANGER_PATH_PATTERNS = Object.freeze([
