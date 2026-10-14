@@ -22,6 +22,7 @@ struct SettingsView: View {
             Section("المظهر") {
                 SunnahNavigationLink { AppIconPickerView() } label: { SunnahListRow(title: "أيقونة التطبيق", icon: "app.badge") }
                     .accessibilityIdentifier("settings.appIcon")
+                AppearanceOptionsView()
             }
             Section("الخصوصية") {
                 Text("لحذف حسابك وبياناتك افتح «حذف الحساب» من القائمة.")
