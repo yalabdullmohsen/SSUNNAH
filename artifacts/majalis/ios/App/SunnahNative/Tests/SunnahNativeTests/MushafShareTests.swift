@@ -33,6 +33,19 @@ final class MushafShareTests: XCTestCase {
         XCTAssertFalse(try XCTUnwrap(s.ayahText("2:1")).hasPrefix("بِسْمِ"))
     }
 
+    func testFatihaShareKeepsFullBasmalaAndOthersDoNot() throws {
+        let (idx, s) = try load()
+        let f = try XCTUnwrap(MushafShare.text(ayah: "1:1", index: idx, search: s))
+        XCTAssertEqual(f, "﴿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ﴾ [الفاتحة: 1]") // سكون U+0652 كسائر النص العثماني في البيانات
+        for a in ["2:1", "18:1"] {
+            let t = try XCTUnwrap(MushafShare.text(ayah: a, index: idx, search: s))
+            XCTAssertFalse(t.contains("بِسْمِ") || t.contains("ٱلرَّحِيمِ"), a)
+        }
+        let t = try XCTUnwrap(MushafShare.text(ayah: "9:1", index: idx, search: s))
+        XCTAssertTrue(t.hasPrefix("﴿بَرَآءَةٌۭ مِّنَ") && t.hasSuffix("[التوبة: 1]"))
+        XCTAssertFalse(t.contains("بِسْمِ"))
+    }
+
     func testTafsirAyahRoute() {
         XCTAssertTrue(TafsirAyahRoute.parse("/tafsir/18:1")! == (18, 1))
         XCTAssertNil(TafsirAyahRoute.parse("/tafsir")); XCTAssertNil(TafsirAyahRoute.parse("/tafsir/115:1")); XCTAssertNil(TafsirAyahRoute.parse("/tafsir/2:0"))
