@@ -198,13 +198,7 @@ public struct MushafReaderView: View {
     /// خرطوشة رقم الصفحة أسفل يمين الصفحة (خارج شبكة الأسطر فلا يتغيّر مقاس الخط ولا توزيع الكلمات).
     private var pageCartouche: some View {
         HStack {
-            Text(Self.arabicDigits(current))
-                .font(Sunnah.Typography.cardTitle).monospacedDigit()
-                .foregroundStyle(Sunnah.Colors.mushafInk)
-                .padding(.horizontal, Sunnah.Spacing.s3).padding(.vertical, 1)
-                .background(Sunnah.Colors.mushafIvory, in: Capsule())
-                .overlay(Capsule().stroke(Sunnah.Colors.mushafSage, lineWidth: 2.5))
-                .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 0.75).padding(-2))
+            PageCartouche(text: Self.arabicDigits(current))
                 .accessibilityLabel("صفحة \(current)")
                 .accessibilityIdentifier("mushaf.pageNumber")
             Spacer()
