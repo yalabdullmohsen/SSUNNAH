@@ -39,5 +39,30 @@ final class MushafPerfTests: XCTestCase {
         }()
         print("MUSHAF_PERF cold_open_ms=\(cold) warm_open_ms=\(warm) flip50_mean_ms=\(per.reduce(0, +) / 50) flip50_p95_ms=\(per[47]) flip50_max_ms=\(per[49]) rss_before_mb=\(m0) rss_after50_mb=\(m1) font_register_ms=\(fontOnly) layout_ms=\(layoutOnly)")
     }
+
+    /// بعد #3201: ما يبقى على الخيط الرئيسي عند التقليب = بحث في الكاش (الخط/الصفحة/التخطيط جُهّزت بالتحميل المسبق ±2 في الخلفية).
+    /// يحاكي قارئًا يقلّب كل ~120ms؛ «إطار ضائع» = كلفة رئيسية > 16.7ms (ميزانية 60Hz).
+    func testAfterCache() throws {
+        guard let p = ProcessInfo.processInfo.environment["MUSHAF_DATA"] else { throw XCTSkip("MUSHAF_DATA غير محدد") }
+        let repo = MushafRepository(root: URL(fileURLWithPath: p)), size = CGSize(width: 402, height: 874)
+        func openCached(_ n: Int) throws {
+            let family = try repo.ensureFont(page: n), page = try repo.page(n)
+            _ = repo.pageLayout(page, family: family, size: size)
+        }
+        let cold = try ms { _ = try repo.index(); try openCached(301) }
+        let warm = try ms { try openCached(301) }
+        let m0 = rss()
+        var per: [Double] = []
+        repo.prefetch(around: 100, size: size)
+        for n in 101..<151 {
+            Thread.sleep(forTimeInterval: 0.12)
+            per.append(try ms { try openCached(n) })
+            repo.prefetch(around: n, size: size)
+        }
+        let dropped = per.filter { $0 > 16.7 }.count
+        per.sort()
+        let m1 = rss()
+        print("MUSHAF_PERF_AFTER cold_open_ms=\(cold) warm_open_ms=\(warm) flip50_mean_ms=\(per.reduce(0, +) / 50) flip50_p95_ms=\(per[47]) flip50_max_ms=\(per[49]) over_16_7ms=\(dropped) rss_before_mb=\(m0) rss_after50_mb=\(m1) cached_pages=\(repo.cachedPageCount)")
+    }
 }
 #endif
