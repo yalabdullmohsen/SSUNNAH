@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3D92027DD31655FCBBDE56E0"
+               BlueprintIdentifier = "85B1E723FC5C601607F33989"
                BuildableName = "SunnahApp.app"
                BlueprintName = "SunnahApp"
                ReferencedContainer = "container:SunnahApp.xcodeproj">
@@ -30,7 +30,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3D92027DD31655FCBBDE56E0"
+            BlueprintIdentifier = "85B1E723FC5C601607F33989"
             BuildableName = "SunnahApp.app"
             BlueprintName = "SunnahApp"
             ReferencedContainer = "container:SunnahApp.xcodeproj">
@@ -41,7 +41,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DB0EEE0E117A6D58AD4AD2B7"
+               BlueprintIdentifier = "14CE7FDED75FA92A3DC7B4F1"
                BuildableName = "SunnahAppUITests.xctest"
                BlueprintName = "SunnahAppUITests"
                ReferencedContainer = "container:SunnahApp.xcodeproj">
@@ -63,7 +63,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3D92027DD31655FCBBDE56E0"
+            BlueprintIdentifier = "85B1E723FC5C601607F33989"
             BuildableName = "SunnahApp.app"
             BlueprintName = "SunnahApp"
             ReferencedContainer = "container:SunnahApp.xcodeproj">
@@ -80,7 +80,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3D92027DD31655FCBBDE56E0"
+            BlueprintIdentifier = "85B1E723FC5C601607F33989"
             BuildableName = "SunnahApp.app"
             BlueprintName = "SunnahApp"
             ReferencedContainer = "container:SunnahApp.xcodeproj">
