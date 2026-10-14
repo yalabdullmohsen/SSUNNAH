@@ -1,7 +1,7 @@
 import XCTest
 @testable import SunnahNative
 
-/// حارس شرعي: الرسم المتجهي للبسملة لا يظهر إلا في أسطر "b" من تخطيط QPC (بدايات السور الـ112 عدا الفاتحة والتوبة).
+/// حارس شرعي: بسملة بدايات السور (أسطر "b" من تخطيط QPC، الـ112 عدا الفاتحة والتوبة) تُعرض نصًّا بخط QPC نفسه كما في الفاتحة.
 final class MushafBasmalaGuardTests: XCTestCase {
     private func repo() throws -> MushafRepository {
         guard let p = ProcessInfo.processInfo.environment["MUSHAF_DATA"] else { throw XCTSkip("MUSHAF_DATA غير محدد") }
@@ -39,5 +39,15 @@ final class MushafBasmalaGuardTests: XCTestCase {
             }
         }
         XCTAssertEqual(count, 112)
+    }
+
+    /// جلايفات البسملة هي الكلمات الأربع الأولى من آية الفاتحة 1 بخط الصفحة 1 دون علامة النهاية.
+    func testBasmalaGlyphsAreFatihaAyah1Words() throws {
+        let r = try repo()
+        let b = try XCTUnwrap(BasmalaText.load(r))
+        let words = try XCTUnwrap(r.page(1).rows.first { $0.k == "l" }?.w)
+        XCTAssertEqual(b.glyphs, words.filter { !$0.isAyahEnd }.map(\.c))
+        XCTAssertEqual(b.glyphs.count, 4)
+        XCTAssertTrue(words.allSatisfy { $0.v == "1:1" })
     }
 }
