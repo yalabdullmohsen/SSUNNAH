@@ -7,6 +7,7 @@ public typealias ScreenBuilder = (Route) -> AnyView
 public struct RootTabView: View {
     @ObservedObject private var router: AppRouter
     private let screen: ScreenBuilder
+    @State private var showDrawer = false
 
     public init(router: AppRouter, screen: @escaping ScreenBuilder = RootTabView.placeholder) {
         self.router = router
@@ -21,6 +22,12 @@ public struct RootTabView: View {
                 .navigationBarTitleDisplayMode(.large)
                 #endif
                 .toolbar {
+                    #if os(iOS)
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button { Sunnah.Haptics.select(); sunnahAnimate { showDrawer = true } } label: { Image(systemName: "line.3.horizontal") }
+                            .accessibilityLabel("القائمة")
+                    }
+                    #endif
                     ToolbarItem(placement: .primaryAction) {
                         Button { router.open(path: "/search") } label: { Image(systemName: "magnifyingglass") }
                             .accessibilityLabel("البحث")
@@ -40,7 +47,17 @@ public struct RootTabView: View {
             SunnahTabBar(selected: AppTab.owning(path: router.stack.last?.path ?? "/")) { router.stack = []; router.open(path: $0.rootPath) }
         }
         .environment(\.openRoute) { [router] in Sunnah.Haptics.select(); router.open(path: $0) }
+        .overlay {
+            if showDrawer {
+                ZStack(alignment: .leading) {
+                    Color.black.opacity(0.35).ignoresSafeArea().onTapGesture { sunnahAnimate { showDrawer = false } }
+                    SunnahDrawer(open: { router.stack = []; router.open(path: $0) }, close: { sunnahAnimate { showDrawer = false } })
+                        .ignoresSafeArea(edges: .vertical).transition(.move(edge: .leading))
+                }
+            }
+        }
         .tint(Sunnah.Colors.primary)
+        .toggleStyle(SunnahToggleStyle())
         .environment(\.layoutDirection, .rightToLeft)
         .environment(\.locale, Locale(identifier: "ar-u-nu-latn"))
         .onOpenURL { router.open(url: $0) }

@@ -67,7 +67,7 @@ struct HadithListView: View {
             List(filtered) { item in
                 SunnahNavigationLink { HadithDetailView(item: item) } label: {
                     SunnahListRow(title: item.title, subtitle: item.sourceName ?? item.chapter)
-                }.listRowBackground(Sunnah.Colors.surface)
+                }.sunnahRowChrome()
             }
             .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
             .searchable(text: $query, prompt: "ابحث في الأحاديث")
@@ -129,10 +129,10 @@ struct HadithBooksView: View {
         List {
             SunnahNavigationLink { HadithCollectionView(file: "bukhari", title: "صحيح البخاري", showNumber: true) } label: {
                 SunnahListRow(title: "صحيح البخاري", subtitle: "الجامع الصحيح")
-            }.listRowBackground(Sunnah.Colors.surface)
+            }.sunnahRowChrome()
             SunnahNavigationLink { HadithCollectionView(file: "muslim", title: "صحيح مسلم", showNumber: false) } label: {
                 SunnahListRow(title: "صحيح مسلم", subtitle: "المسند الصحيح")
-            }.listRowBackground(Sunnah.Colors.surface)
+            }.sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
@@ -158,7 +158,7 @@ struct HadithCollectionView: View {
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
                         Text(row.t).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                         if showNumber { Text("رقم \(row.n)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
-                    }.listRowBackground(Sunnah.Colors.surface)
+                    }.sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
                 .searchable(text: $query, prompt: "ابحث في \(title)")

@@ -43,7 +43,7 @@ struct QuranPeopleListView: View {
                         SunnahNavigationLink { QuranPersonView(person: p, surahNames: surahNames) } label: { SunnahListRow(title: p.nameAr, subtitle: nil) }
                     }
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
             }
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)

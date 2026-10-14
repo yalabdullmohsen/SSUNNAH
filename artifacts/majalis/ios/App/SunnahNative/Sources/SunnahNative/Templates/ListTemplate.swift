@@ -20,7 +20,7 @@ public struct ListTemplate: View {
                             .frame(maxWidth: .infinity, alignment: .leading).transition(.opacity)
                     }
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
             }
             .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         }

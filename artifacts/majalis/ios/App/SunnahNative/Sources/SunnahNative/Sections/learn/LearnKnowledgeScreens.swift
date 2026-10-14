@@ -16,7 +16,7 @@ struct LearnKnowledgeGraphScreen: View {
                                 }
                             }
                         }
-                        .listRowBackground(Sunnah.Colors.surface)
+                        .sunnahRowChrome()
                     }
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)

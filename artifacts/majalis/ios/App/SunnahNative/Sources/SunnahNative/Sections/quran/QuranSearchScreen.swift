@@ -34,7 +34,7 @@ struct QuranSearchView: View {
                     }
                 }
             }
-            .listRowBackground(Sunnah.Colors.surface)
+            .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .searchable(text: $query, prompt: "ابحث في القرآن")

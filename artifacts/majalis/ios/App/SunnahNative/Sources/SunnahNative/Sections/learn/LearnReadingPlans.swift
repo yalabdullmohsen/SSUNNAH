@@ -96,7 +96,7 @@ struct LearnReadingPlansScreen: View {
                 List {
                     ForEach($plans) { $plan in
                         LearnReadingPlanCard(plan: $plan) { save() }
-                            .listRowBackground(Sunnah.Colors.surface)
+                            .sunnahRowChrome()
                     }
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)

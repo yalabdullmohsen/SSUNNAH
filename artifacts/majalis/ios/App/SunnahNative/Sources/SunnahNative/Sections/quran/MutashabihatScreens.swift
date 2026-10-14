@@ -41,7 +41,7 @@ struct MutashabihatListView: View {
                         SunnahNavigationLink { MutashabihatDetailView(pair: p) } label: {
                             SunnahListRow(title: p.title, subtitle: p.refs.map { "\($0.surahName) \($0.ayah)" }.joined(separator: " · "))
                         }
-                        .listRowBackground(Sunnah.Colors.surface)
+                        .sunnahRowChrome()
                     }
                 }
             }

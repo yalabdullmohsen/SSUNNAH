@@ -68,11 +68,11 @@ struct TajweedListView: View {
         List {
             if let i = file.intro {
                 SunnahNavigationLink { QuranDocView(title: i.title, paragraphs: i.paragraphs, sources: [i.source]) } label: { SunnahListRow(title: i.title, subtitle: nil) }
-                    .listRowBackground(Sunnah.Colors.surface)
+                    .sunnahRowChrome()
             }
             ForEach(file.chapters) { c in
                 SunnahNavigationLink { TajweedChapterView(chapter: c) } label: { SunnahListRow(title: c.title, subtitle: c.summary) }
-                    .listRowBackground(Sunnah.Colors.surface)
+                    .sunnahRowChrome()
             }
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
@@ -98,7 +98,7 @@ struct SurahStoriesListView: View {
     var body: some View {
         List(stories) { s in
             SunnahNavigationLink { SurahStoryView(story: s) } label: { SunnahListRow(title: "\(s.number). \(s.name)", subtitle: s.revelationPlace) }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
@@ -126,7 +126,7 @@ struct HifzPathsListView: View {
                     ForEach(g.paths) { p in
                         SunnahNavigationLink { HifzPathView(path: p) } label: { SunnahListRow(title: p.title, subtitle: p.shortDescription) }
                     }
-                }.listRowBackground(Sunnah.Colors.surface)
+                }.sunnahRowChrome()
             }
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
@@ -149,12 +149,12 @@ struct HifzPathView: View {
                 Text("المستوى: \(PublishedAdapters.hifzLevels[path.level] ?? path.level)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 ForEach(path.learningObjectives, id: \.self) { Text("• \($0)").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 if let s = path.source { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-            }.listRowBackground(Sunnah.Colors.surface)
+            }.sunnahRowChrome()
             Section("الوحدات") {
                 ForEach(path.units) { u in
                     SunnahNavigationLink { HifzUnitView(unit: u, surahNames: surahNames) } label: { SunnahListRow(title: u.title, subtitle: unitSubtitle(u)) }
                 }
-            }.listRowBackground(Sunnah.Colors.surface)
+            }.sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .quranTitle(path.title)
@@ -182,7 +182,7 @@ struct QuranStatsView: View {
                     ForEach(g.stats) { s in
                         SunnahNavigationLink { QuranStatView(stat: s) } label: { SunnahListRow(title: s.label, subtitle: s.value) }
                     }
-                }.listRowBackground(Sunnah.Colors.surface)
+                }.sunnahRowChrome()
             }
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
@@ -210,7 +210,7 @@ struct QiraatView: View {
         List {
             ForEach(file.sections) { s in
                 SunnahNavigationLink { QuranDocView(title: s.title, paragraphs: s.body, sources: [s.source]) } label: { SunnahListRow(title: s.title, subtitle: nil) }
-            }.listRowBackground(Sunnah.Colors.surface)
+            }.sunnahRowChrome()
             Section("القراء العشرة") {
                 ForEach(file.ashara) { q in
                     SunnahNavigationLink {
@@ -218,7 +218,7 @@ struct QiraatView: View {
                                      sections: [("الراويان", q.rawis)], sources: [q.source])
                     } label: { SunnahListRow(title: q.name, subtitle: q.rawis.joined(separator: "، ")) }
                 }
-            }.listRowBackground(Sunnah.Colors.surface)
+            }.sunnahRowChrome()
             if !file.diffs.isEmpty {
                 Section("أمثلة الخلاف") {
                     ForEach(file.diffs) { d in
@@ -227,7 +227,7 @@ struct QiraatView: View {
                                          paragraphs: [d.description, PublishedAdapters.ayahText(surah: d.surah, ayah: d.ayah) { surahNames[$0] ?? "سورة \($0)" }], sources: [d.source])
                         } label: { SunnahListRow(title: d.description, subtitle: nil) }
                     }
-                }.listRowBackground(Sunnah.Colors.surface)
+                }.sunnahRowChrome()
             }
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
@@ -242,7 +242,7 @@ struct MiraclesListView: View {
             SunnahNavigationLink {
                 QuranDocView(title: m.title, paragraphs: m.body.components(separatedBy: "\n\n").filter { !$0.isEmpty }, sources: [m.scholarlySource])
             } label: { SunnahListRow(title: m.title, subtitle: "\(m.category) · \(m.reference)") }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
@@ -253,7 +253,7 @@ struct AhrufListView: View {
     var body: some View {
         List(sections) { s in
             SunnahNavigationLink { QuranDocView(title: s.title, paragraphs: s.body, sources: s.sources) } label: { SunnahListRow(title: s.title, subtitle: nil) }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }

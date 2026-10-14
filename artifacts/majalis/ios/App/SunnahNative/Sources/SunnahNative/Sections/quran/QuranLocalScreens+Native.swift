@@ -53,7 +53,7 @@ struct MemorizationPlansScreen: View {
                 List {
                     ForEach($plans) { $plan in
                         MemorizationPlanCard(plan: $plan, title: rangeLabel(surahs, plan.surah, plan.ayahFrom, plan.ayahTo)) { save() }
-                            .listRowBackground(Sunnah.Colors.surface)
+                            .sunnahRowChrome()
                     }
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
@@ -177,7 +177,7 @@ struct MyHifzPathsView: View {
                                 Text(unit.title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                             }
                         }
-                        .listRowBackground(Sunnah.Colors.surface)
+                        .sunnahRowChrome()
                     }
                 } header: {
                     Text("\(path.title) · \(progress.doneCount(path: path.id, validUnits: Set(path.units.map(\.id)))) من \(path.units.count)")
@@ -225,7 +225,7 @@ struct MushafBookmarksScreen: View {
                     } label: {
                         SunnahListRow(title: "آية \(b.ayah)", subtitle: "صفحة \(b.page)")
                     }
-                    .listRowBackground(Sunnah.Colors.surface)
+                    .sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             }
@@ -273,14 +273,14 @@ struct QuranMemorizationView: View {
                         }
                     }
                     .buttonStyle(.plain)
-                    .listRowBackground(Sunnah.Colors.surface)
+                    .sunnahRowChrome()
                 }
             }
             Section("اختر السورة") {
                 Picker("السورة", selection: $surah) {
                     ForEach(names.keys.sorted(), id: \.self) { n in Text("\(n). \(names[n] ?? "")").tag(n) }
                 }
-                .listRowBackground(Sunnah.Colors.surface)
+                .sunnahRowChrome()
             }
         }
         .listStyle(.plain).scrollContentBackground(.hidden)

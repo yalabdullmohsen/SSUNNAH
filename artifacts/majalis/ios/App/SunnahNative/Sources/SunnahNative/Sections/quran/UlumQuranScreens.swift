@@ -19,7 +19,7 @@ struct UlumQuranListView: View {
                 Section(tab) {
                     ForEach(items.filter { $0.tags.first == tab }) { i in
                         SunnahNavigationLink { UlumQuranDetailView(item: i) } label: { SunnahListRow(title: i.title, subtitle: i.subtitle) }
-                            .listRowBackground(Sunnah.Colors.surface)
+                            .sunnahRowChrome()
                     }
                 }
             }

@@ -112,7 +112,7 @@ private struct HadithBooksAndRulingsView: View {
                 .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).listRowBackground(Color.clear)
             SunnahNavigationLink { ReaderDataScreens.arbaeenList() } label: {
                 SunnahListRow(title: "الأربعون النووية", subtitle: "٤٢ حديثاً")
-            }.listRowBackground(Sunnah.Colors.surface)
+            }.sunnahRowChrome()
             ForEach([("عمدة الأحكام", "جمع الإمام عبد الغني المقدسي للأحاديث المتفق عليها بين البخاري ومسلم في الأحكام الفقهية."),
                      ("بلوغ المرام", "جمع الحافظ ابن حجر العسقلاني لأحاديث الأحكام مع بيان درجتها، من أشهر مراجع فقه الحديث."),
                      ("المنتقى من أخبار المصطفى ﷺ", "جمع مجد الدين ابن تيمية (جدّ شيخ الإسلام) لأحاديث الأحكام مرتّبة على أبواب الفقه.")], id: \.0) { t, d in
@@ -120,7 +120,7 @@ private struct HadithBooksAndRulingsView: View {
                     Text(t).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textSecondary)
                     Text(d).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     Text("غير منشور بعد — بانتظار مصدر موثوق").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
-                }.listRowBackground(Sunnah.Colors.surface).opacity(0.7).accessibilityElement(children: .combine)
+                }.sunnahRowChrome().opacity(0.7).accessibilityElement(children: .combine)
             }
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)

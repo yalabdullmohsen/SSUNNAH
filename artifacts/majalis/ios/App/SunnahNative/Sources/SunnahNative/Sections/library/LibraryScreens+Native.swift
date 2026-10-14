@@ -49,7 +49,7 @@ struct LibraryInlineItemsView: View {
                 case .list:
                     List(items) { item in
                         Button { open = item } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                            .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
+                            .buttonStyle(.plain).sunnahRowChrome()
                     }
                     .listStyle(.plain).scrollContentBackground(.hidden)
                 case .grid:
@@ -93,7 +93,7 @@ struct LibraryGroupedLinksView: View {
                     Section {
                         ForEach(group.links) { link in
                             Button { openRoute(link.route) } label: { SunnahListRow(title: link.title, subtitle: link.subtitle) }
-                                .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
+                                .buttonStyle(.plain).sunnahRowChrome()
                                 .accessibilityIdentifier("sections.item.\(link.route)")
                         }
                     } header: {
@@ -115,7 +115,7 @@ struct LibraryResearchAssistantView: View {
             Section {
                 ForEach(insights.coverage, id: \.label) { row in
                     SunnahListRow(title: row.label, subtitle: row.count == 0 ? "لا أبحاث منشورة بعد" : "\(row.count) بحثًا منشورًا")
-                        .listRowBackground(Sunnah.Colors.surface)
+                        .sunnahRowChrome()
                 }
             } header: {
                 Text("تغطية التصنيفات (الأقل أولًا)").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
@@ -123,7 +123,7 @@ struct LibraryResearchAssistantView: View {
             if !insights.topKeywords.isEmpty {
                 Section {
                     ForEach(insights.topKeywords, id: \.label) { row in
-                        SunnahListRow(title: row.label, subtitle: "\(row.count) بحثًا").listRowBackground(Sunnah.Colors.surface)
+                        SunnahListRow(title: row.label, subtitle: "\(row.count) بحثًا").sunnahRowChrome()
                     }
                 } header: {
                     Text("الموضوعات الأكثر بحثًا").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
@@ -148,7 +148,7 @@ struct LibrarySearchView: View {
             } else {
                 List(results) { item in
                     Button { openRoute(item.route ?? "/") } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                        .buttonStyle(.plain).listRowBackground(Sunnah.Colors.surface)
+                        .buttonStyle(.plain).sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             }
