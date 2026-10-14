@@ -105,6 +105,7 @@ enum SectionsCatalog {
         Entry(route: "/discover-islam/questions", title: "أسئلة وأجوبة", group: "العقيدة والتزكية"),
         Entry(route: "/hikam-salaf", title: "حكم السلف الصالح", group: "العقيدة والتزكية"),
         Entry(route: "/iman-topics", title: "موضوعات الإيمان", group: "العقيدة والتزكية"),
+        Entry(route: "/islamic-sects", title: "الفرق الإسلامية", group: "العقيدة والتزكية"),
         Entry(route: "/janna-naar", title: "الجنة والنار", group: "العقيدة والتزكية"),
         Entry(route: "/malaika", title: "الملائكة", group: "العقيدة والتزكية"),
         Entry(route: "/raqaiq", title: "الرقائق والزهد", group: "العقيدة والتزكية"),

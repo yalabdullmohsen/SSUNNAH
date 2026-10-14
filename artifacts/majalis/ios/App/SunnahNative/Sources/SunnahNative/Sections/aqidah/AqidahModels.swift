@@ -104,6 +104,8 @@ public struct IslamicSect: Decodable, Identifiable, Hashable, Sendable {
     public var quote: String?
     /// `publicationStatus` في `islamic-sects` meta؛ يُعرض `PUBLISHED` فقط.
     public var publicationStatus: String?
+    /// مراجع موثقة (الكتاب، الجزء، الصفحة، الرابط) لسجلات «قيد المراجعة».
+    public var references: [String]?
 }
 
 public struct DawahEvidence: Decodable, Hashable, Sendable {

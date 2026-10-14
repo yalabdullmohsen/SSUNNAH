@@ -10,7 +10,6 @@ enum SectionsExceptions {
         "/search": "يُفتح من أيقونة البحث في شريط الأدوات (يغطيه testToolbarButtonsOpen)",
         "/auth/callback": "عودة تقنية من مزوّد الدخول، لا شاشة يختارها المستخدم",
         "/auth/update-password": "يُفتح من رابط البريد فقط",
-        "/islamic-sects": "مؤجَّل بقرار المالك (35 سجلًا غير منشور)؛ انظر docs/native/DEFERRED.md",
     ]
     static var routes: Set<String> { Set(reasons.keys) }
 }

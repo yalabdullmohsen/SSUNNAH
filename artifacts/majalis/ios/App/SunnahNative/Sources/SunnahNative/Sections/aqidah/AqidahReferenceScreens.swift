@@ -149,7 +149,7 @@ public struct AqidahIslamicSectsNativeScreen: ScreenTemplate {
             else if shown.isEmpty { EmptyStateView(title: "لا نتائج مطابقة") }
             else {
                 ScrollView {
-                    AqidahLinkList(items: shown, title: { $0.name }, subtitle: { "\($0.category) · \($0.era)" }, path: { "/islamic-sects/" + $0.id })
+                    AqidahLinkList(items: shown, title: { $0.name }, subtitle: { ([$0.publicationStatus == AqidahContent.underReview ? "قيد المراجعة" : "", $0.category, $0.era].filter { !$0.isEmpty }).joined(separator: " · ") }, path: { "/islamic-sects/" + $0.id })
                         .padding(Sunnah.Spacing.pageX)
                 }
             }
@@ -165,16 +165,24 @@ struct AqidahIslamicSectView: View {
 
     var body: some View {
         AqidahPage(title: sect.name, hero: sect.fullName) {
-            HStack(spacing: Sunnah.Spacing.s2) { SunnahChip(sect.category, selected: true); SunnahChip(sect.status) }
-            AqidahTextBlock(title: "النشأة", text: sect.era + "\n\n" + sect.origin)
-            AqidahTextBlock(title: "المؤسس", text: sect.founder)
-            AqidahTextBlock(title: "سبب النشأة", text: sect.foundingCause)
+            HStack(spacing: Sunnah.Spacing.s2) {
+                SunnahChip(sect.category, selected: true); if !sect.status.aqidahIsBlank { SunnahChip(sect.status) }
+                if sect.publicationStatus == AqidahContent.underReview { SunnahChip("قيد المراجعة") }
+            }
+            block("النشأة", [sect.era, sect.origin].filter { !$0.isEmpty }.joined(separator: "\n\n"))
+            block("المؤسس", sect.founder)
+            block("سبب النشأة", sect.foundingCause)
             bullets("أبرز المعتقدات", sect.keyBeliefs)
             bullets("أبرز الكتب", sect.keyBooks)
             bullets("أبرز الأعلام", sect.keyScholars)
-            AqidahTextBlock(title: "الانتشار", text: sect.spread)
+            block("الانتشار", sect.spread)
+            bullets("المراجع", sect.references ?? [])
             if let q = sect.quote { AqidahQuote(text: q, reference: sect.name) }
         }
+    }
+
+    @ViewBuilder private func block(_ title: String, _ text: String) -> some View {
+        if !text.isEmpty { AqidahTextBlock(title: title, text: text) }
     }
 
     @ViewBuilder private func bullets(_ title: String, _ items: [String]) -> some View {
