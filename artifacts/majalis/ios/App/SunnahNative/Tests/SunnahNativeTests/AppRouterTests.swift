@@ -4,15 +4,15 @@ import XCTest
 @MainActor
 final class AppRouterTests: XCTestCase {
     func testTabsMatchWebBottomNav() {
-        XCTAssertEqual(AppTab.allCases.map(\.rootPath), ["/quran-hub", "/lessons", "/", "/prayer-times", "/sections"])
-        XCTAssertEqual(AppTab.allCases.map(\.title), ["القرآن", "الدروس", "الرئيسية", "الصلاة", "الأقسام"])
+        XCTAssertEqual(AppTab.allCases.map(\.rootPath), ["/", "/quran-hub", "/prayer-times", "/sections", "/more"])
+        XCTAssertEqual(AppTab.allCases.map(\.title), ["الرئيسية", "المصحف", "الصلاة", "الأقسام", "المزيد"])
     }
 
     func testOwningTab() {
         XCTAssertEqual(AppTab.owning(path: "/prayer-times/riyadh"), .prayer)
         XCTAssertEqual(AppTab.owning(path: "/qibla"), .prayer)
         XCTAssertEqual(AppTab.owning(path: "/quran/2"), .quran)
-        XCTAssertEqual(AppTab.owning(path: "/lessons/123?x=1"), .lessons)
+        XCTAssertEqual(AppTab.owning(path: "/lessons/123?x=1"), .home)
         XCTAssertEqual(AppTab.owning(path: "/hadith/5"), .home)
         XCTAssertEqual(AppTab.owning(path: "/lessonsx"), .home)
     }

@@ -8,7 +8,7 @@ public struct SunnahCard<Content: View>: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(Sunnah.Spacing.s4)
             .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card))
-            .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card).stroke(Sunnah.Colors.surface2, lineWidth: Sunnah.Spacing.hairline))
+            .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card).stroke(Sunnah.Colors.border, lineWidth: Sunnah.Spacing.hairline))
             .sunnahElevation()
     }
 }

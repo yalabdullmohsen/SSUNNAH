@@ -24,13 +24,23 @@ public struct SunnahNavigationLink<Destination: View, Label: View>: View {
 
 public struct SunnahListRow: View {
     @Environment(\.sunnahRowChevron) private var envChevron
-    let title: String; let subtitle: String?; let showsChevron: Bool?
+    let title: String; let subtitle: String?; let showsChevron: Bool?; let icon: String?
     /// `showsChevron` اختياري للاستثناء اليدوي فقط؛ الأصل أن يقرر السياق (`SunnahNavigationLink` يخفيه، `Button` يُظهره).
-    public init(title: String, subtitle: String? = nil, showsChevron: Bool? = nil) {
-        self.title = title; self.subtitle = subtitle; self.showsChevron = showsChevron
+    /// `icon` (SF Symbol) أو نص قصير (رقم) يُرسم في مربع أخضر فاتح 40×40.
+    public init(title: String, subtitle: String? = nil, showsChevron: Bool? = nil, icon: String? = nil) {
+        self.title = title; self.subtitle = subtitle; self.showsChevron = showsChevron; self.icon = icon
     }
     public var body: some View {
         HStack(spacing: Sunnah.Spacing.s3) {
+            if let icon {
+                Group {
+                    if icon.count <= 3 && icon.first?.isLetter != true || icon.count <= 2 { Text(icon).font(Sunnah.Typography.cardTitle) }
+                    else { Image(systemName: icon).font(.system(size: 17, weight: .semibold)) }
+                }
+                .frame(width: 40, height: 40)
+                .foregroundStyle(Sunnah.Colors.primary)
+                .background(Sunnah.Colors.primarySoft, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+            }
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
                 Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 if let subtitle { Text(subtitle).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).lineLimit(2) }

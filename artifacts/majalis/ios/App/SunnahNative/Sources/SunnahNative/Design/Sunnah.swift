@@ -7,7 +7,7 @@ public enum Sunnah {
         public static let s5: CGFloat = 20, s6: CGFloat = 24, s7: CGFloat = 32
         public static let pageX: CGFloat = 16
         public static let touch: CGFloat = 44
-        public static let buttonHeight: CGFloat = 48
+        public static let buttonHeight: CGFloat = 52
         public static let progress: CGFloat = 8
         public static let icon: CGFloat = 24
         public static let cardMinWidth: CGFloat = 150
@@ -15,23 +15,32 @@ public enum Sunnah {
     }
 
     public enum Radius {
-        public static let small: CGFloat = 12
-        public static let card: CGFloat = 16
-        public static let hero: CGFloat = 20
+        public static let small: CGFloat = 16
+        public static let card: CGFloat = 20
+        public static let hero: CGFloat = 26
         public static let pill: CGFloat = 999
     }
 
     public enum Colors {
-        public static let bg = dynamic(light: 0xF8F6F1, dark: 0x141612)
-        public static let surface = dynamic(light: 0xFFFFFF, dark: 0x1C1F19)
-        public static let surface2 = dynamic(light: 0xF1EEE6, dark: 0x252922)
-        public static let primary = dynamic(light: 0x0F5C3F, dark: 0x66C29B)
-        public static let primaryStrong = dynamic(light: 0x0A3F2C, dark: 0x1C5C43)
-        public static let primarySoft = dynamic(light: 0xE3EFE9, dark: 0x1F3A2E)
-        public static let textPrimary = dynamic(light: 0x15271F, dark: 0xEFECE2)
-        public static let textSecondary = dynamic(light: 0x4B5A52, dark: 0xBDB9AA)
-        public static let textOnPrimary = dynamic(light: 0xFFFFFF, dark: 0xF4F1E8)
+        // السمة «أخضر عاجي» (مرجع design/Themes) — الليلي بحسب أمر 14 أكتوبر 2026.
+        public static let bg = dynamic(light: 0xF7F4EC, dark: 0x0F1A15)
+        public static let surface = dynamic(light: 0xFFFFFF, dark: 0x17251E)
+        public static let surface2 = dynamic(light: 0xF2ECDD, dark: 0x1E2E26)
+        public static let border = dynamic(light: 0xE6DFCF, dark: 0x23332B)
+        public static let beige = dynamic(light: 0xEFE6D4, dark: 0x1E2E26)
+        public static let primary = dynamic(light: 0x1F5C46, dark: 0x6FBE9C)
+        public static let primaryStrong = dynamic(light: 0x123B2C, dark: 0x1F5C46)
+        public static let primarySoft = dynamic(light: 0xE9F0EA, dark: 0x1B2F26)
+        /// ذهبي للنصوص، وذهبي للزخرفة، وذهبي فاتح (أزرار ثانوية).
+        public static let gold = dynamic(light: 0x8A6D32, dark: 0xD9C089)
+        public static let goldDeco = dynamic(light: 0xB08D4A, dark: 0xD9C089)
+        public static let goldSoft = dynamic(light: 0xD9C089, dark: 0x3A3320)
+        public static let textPrimary = dynamic(light: 0x17241E, dark: 0xEFECE2)
+        public static let textSecondary = dynamic(light: 0x5B6660, dark: 0xBDB9AA)
+        public static let textOnPrimary = dynamic(light: 0xF7F4EC, dark: 0xF4F1E8)
         public static let danger = dynamic(light: 0xB0352B, dark: 0xEF8B80)
+        /// مفتاح مطفأ (Toggle).
+        public static let switchOff = dynamic(light: 0xD8D2C4, dark: 0x2B3B33)
 
         private static func dynamic(light: UInt32, dark: UInt32) -> Color {
             #if canImport(UIKit)
@@ -72,7 +81,10 @@ public enum Sunnah {
         public static let tag = Font.custom("Almarai-Bold", size: 12, relativeTo: .caption)
         /// نصوص شرعية بخط Amiri: الآية والحديث/الأثر (خط المصحف QPC غير مضمَّن بانتظار قرار الترخيص).
         public static let quran = Font.custom("Amiri-Regular", size: 24, relativeTo: .title3)
-        public static let hadith = Font.custom("Amiri-Regular", size: 19, relativeTo: .body)
+        /// القراءة الطويلة (أحاديث، شروح، مقالات): Noto Naskh Arabic.
+        public static let hadith = Font.custom("NotoNaskhArabic-Regular", size: 19, relativeTo: .body)
+        public static let reading = Font.custom("NotoNaskhArabic-Regular", size: 18, relativeTo: .body)
+        public static let readingBold = Font.custom("NotoNaskhArabic-Bold", size: 18, relativeTo: .body)
     }
 }
 

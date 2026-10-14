@@ -27,7 +27,7 @@ app.new_reference('Info.plist'); app.new_reference('SunnahApp.entitlements')
 t.resources_build_phase.add_file_reference(app.new_reference('Resources/Assets.xcassets'))
 t.resources_build_phase.add_file_reference(app.new_reference('PrivacyInfo.xcprivacy'))
 # خطوط OFL (Almarai للواجهة، Amiri للنصوص) — تُنسخ إلى جذر الحزمة ليطابقها UIAppFonts
-%w[Almarai-Regular Almarai-Bold Almarai-ExtraBold Amiri-Regular Amiri-Bold].each do |f|
+%w[Almarai-Regular Almarai-Bold Almarai-ExtraBold Amiri-Regular Amiri-Bold NotoNaskhArabic-Regular NotoNaskhArabic-Bold].each do |f|
   t.resources_build_phase.add_file_reference(app.new_reference("Resources/Fonts/#{f}.ttf"))
 end
 data = proj.main_group.new_reference('Data'); data.source_tree = 'SOURCE_ROOT'; data.path = 'Data'

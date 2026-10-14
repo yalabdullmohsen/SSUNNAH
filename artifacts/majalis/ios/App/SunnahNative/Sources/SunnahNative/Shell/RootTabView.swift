@@ -36,9 +36,13 @@ public struct RootTabView: View {
                 }
                 .navigationDestination(for: Route.self) { screen($0) }
         }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            SunnahTabBar(selected: AppTab.owning(path: router.stack.last?.path ?? "/")) { router.stack = []; router.open(path: $0.rootPath) }
+        }
         .environment(\.openRoute) { [router] in Sunnah.Haptics.select(); router.open(path: $0) }
+        .tint(Sunnah.Colors.primary)
         .environment(\.layoutDirection, .rightToLeft)
-        .environment(\.locale, Locale(identifier: "ar"))
+        .environment(\.locale, Locale(identifier: "ar-u-nu-latn"))
         .onOpenURL { router.open(url: $0) }
     }
 
