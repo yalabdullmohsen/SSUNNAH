@@ -41,7 +41,7 @@ public struct RootTabView: View {
                             .accessibilityLabel("الحساب")
                     }
                 }
-                .navigationDestination(for: Route.self) { screen($0) }
+                .navigationDestination(for: Route.self) { screen($0).sunnahDestination($0) }
         }
         .safeAreaInset(edge: .bottom, spacing: 0) {
             // المصحف غامر (كالمرجع): لا شريط تبويب فوق الصفحة؛ الخروج من أداة «إغلاق» في القارئ.
@@ -59,6 +59,7 @@ public struct RootTabView: View {
                 }
             }
         }
+        .sunnahNavigationMotion(depth: router.stack.count)
         .tint(Sunnah.Colors.primary)
         .toggleStyle(SunnahToggleStyle())
         .environment(\.layoutDirection, .rightToLeft)
