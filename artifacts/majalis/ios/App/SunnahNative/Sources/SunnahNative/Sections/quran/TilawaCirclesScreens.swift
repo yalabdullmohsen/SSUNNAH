@@ -106,8 +106,9 @@ struct QuranCircleDetailView: View {
     let circle: QuranCircle
     var body: some View {
         ScrollView {
+            VStack(spacing: 0) {
+            DetailHero(title: circle.name)
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                Text(circle.name).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 if let d = circle.description, !d.isEmpty { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 ForEach(circle.facts, id: \.0) { k, v in
                     HStack(alignment: .top) {
@@ -119,6 +120,7 @@ struct QuranCircleDetailView: View {
                 ForEach(circle.links, id: \.0) { k, u in Link(k, destination: u).font(Sunnah.Typography.body) }
             }
             .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
         .background(Sunnah.Colors.bg).quranTitle(circle.name)
     }

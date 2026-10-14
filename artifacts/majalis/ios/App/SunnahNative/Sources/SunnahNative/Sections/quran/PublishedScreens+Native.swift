@@ -43,8 +43,9 @@ struct QuranDocView: View {
 
     var body: some View {
         ScrollView {
+            VStack(spacing: 0) {
+            DetailHero(title: title)
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 ForEach(paragraphs, id: \.self) { Text($0).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 ForEach(sections, id: \.title) { s in
                     Text(s.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
@@ -56,6 +57,7 @@ struct QuranDocView: View {
                 }
             }
             .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)

@@ -60,8 +60,9 @@ struct MutashabihatDetailView: View {
 
     var body: some View {
         ScrollView {
+            VStack(spacing: 0) {
+            DetailHero(title: pair.title)
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                Text(pair.title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 Text(pair.description).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                 if let h = pair.hint {
                     Text(h).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
@@ -76,6 +77,7 @@ struct MutashabihatDetailView: View {
                 }
             }
             .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)

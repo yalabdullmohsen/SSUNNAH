@@ -21,14 +21,9 @@ struct FiqhReadingView: View {
 
     private func content(_ reading: FiqhReading) -> some View {
         ScrollView {
+            VStack(spacing: 0) {
+            DetailHero(title: reading.title, subtitle: reading.subtitle)
             LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                    Text(reading.title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                        .accessibilityAddTraits(.isHeader)
-                    if let s = reading.subtitle {
-                        Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                    }
-                }
                 if reading.tabs.count > 1 { tabBar(reading.tabs) }
                 if let tab = currentTab(reading) {
                     ForEach(tab.blocks) { FiqhBlockCard(block: $0) }
@@ -48,6 +43,7 @@ struct FiqhReadingView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(Sunnah.Spacing.pageX)
+            }
         }
     }
 

@@ -56,11 +56,9 @@ struct QuranPersonView: View {
 
     var body: some View {
         ScrollView {
+            VStack(spacing: 0) {
+            DetailHero(title: person.nameAr, subtitle: person.aliases.isEmpty ? nil : person.aliases.joined(separator: "، "))
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                Text(person.nameAr).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                if !person.aliases.isEmpty {
-                    Text(person.aliases.joined(separator: "، ")).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                }
                 block("التعريف", person.definition)
                 block("سبب الذكر", person.whyMentioned)
                 if !person.lessons.isEmpty {
@@ -74,6 +72,7 @@ struct QuranPersonView: View {
                 }
             }
             .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
+            }
         }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)

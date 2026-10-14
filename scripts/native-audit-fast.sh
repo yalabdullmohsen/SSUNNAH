@@ -2,6 +2,7 @@
 # تدقيق المسارات السريع: جلسة تطبيق واحدة على محاكي النافذة؛ التنقل بالروابط العميقة (simctl openurl majlisilm://…)
 # لكل مسار: انتظار screen.ready (snapshot-ready.json) ثم لقطة وتسجيل الحالة. التحليل (OCR مُجمَّع) يجري بعد الالتقاط بالتوازي.
 # الاستعمال: NATIVE_WINDOW=n2 APP=<SunnahApp.app> [MODE=light|dark] [FONT=accessibility-extra-extra-extra-large] [LIMIT=n] bash scripts/native-audit-fast.sh
+# OPEN=launch: إطلاق لكل مسار بدل openurl (يتجاوز نافذة «فتح في سُنّة؟» التي تعترض الروابط العميقة على محاكٍ جديد).
 # المخرجات: $BOARD/<tag>/states.tsv, verdicts.tsv, *.png, summary.md. الهدف: 212 مسارًا < 20 دقيقة.
 set -uo pipefail
 cd "$(cd "$(dirname "$0")/.." && pwd)"
@@ -25,7 +26,7 @@ START=$(date +%s)
 while IFS=$'\t' read -r route eff comp; do
   slug=$(echo "${route#/}" | tr '/:' '__'); [ -z "$slug" ] && slug=root
   rm -f "$CT/snapshot-ready.json"
-  if [ "$eff" = "/" ]; then launch -snapshotRoute / >/dev/null; else xcrun simctl openurl "$SIM" "majlisilm://${eff#/}" >/dev/null 2>&1; fi
+  if [ "$eff" = "/" ] || [ "${OPEN:-url}" = launch ]; then launch -snapshotRoute "$eff" >/dev/null; else xcrun simctl openurl "$SIM" "majlisilm://${eff#/}" >/dev/null 2>&1; fi
   st=NOT_READY; end=$(( $(date +%s) + TO ))
   while [ "$(date +%s)" -lt "$end" ]; do
     [ -s "$CT/snapshot-ready.json" ] && { st=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['state'])" "$CT/snapshot-ready.json" 2>/dev/null || echo NOT_READY); break; }
