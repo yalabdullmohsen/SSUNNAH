@@ -28,8 +28,13 @@ public struct SunnahMessageState: View {
 
 public struct EmptyStateView: View {
     let title: String; let message: String?; let symbol: String
-    public init(title: String = "المحتوى قيد التوثيق", message: String? = nil, symbol: String = "tray") { self.title = title; self.message = message; self.symbol = symbol }
-    public var body: some View { SunnahMessageState(symbol: symbol, title: title, message: message).screenState(.empty) }
+    /// false لحالة «انتظار إدخال» (بحث قبل الكتابة): دعوة للفعل لا غياب محتوى، فلا تُعلَن فارغة للتدقيق.
+    let declaresEmpty: Bool
+    public init(title: String = "المحتوى قيد التوثيق", message: String? = nil, symbol: String = "tray", declaresEmpty: Bool = true) { self.title = title; self.message = message; self.symbol = symbol; self.declaresEmpty = declaresEmpty }
+    public var body: some View {
+        if declaresEmpty { SunnahMessageState(symbol: symbol, title: title, message: message).screenState(.empty) }
+        else { SunnahMessageState(symbol: symbol, title: title, message: message) }
+    }
 }
 
 public struct LoadingStateView: View {

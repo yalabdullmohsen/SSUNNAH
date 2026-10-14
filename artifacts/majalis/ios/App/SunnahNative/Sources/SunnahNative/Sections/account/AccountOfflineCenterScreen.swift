@@ -74,7 +74,7 @@ struct AccountOfflineCenterScreen: View {
                             .accessibilityElement(children: .combine)
                         }
                     } else {
-                        EmptyStateView(title: "لا حزم محلية")
+                        EmptyStateView(title: "لا حزم محلية", declaresEmpty: false)
                         Text("لم تُعثر على مخازن محلية بعد. يمكنك تنزيل المحتوى من المصحف أو المخزن.")
                             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     }
