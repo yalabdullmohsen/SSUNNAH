@@ -50,6 +50,21 @@ enum FiqhAdapters {
         return FiqhReading(title: "الفقه", links: links)
     }
 
+    /// «العبادات»: مدخل إلى شاشات موجودة فقط (لا نص شرعي جديد)؛ يُعلَن «قيد المراجعة» حتى يُعتمد.
+    static func worship() -> FiqhReading {
+        let groups: [(String, [(String, String, String)])] = [
+            ("الصلاة", [("مواقيت الصلاة", "تنبيهات الصلاة والصلاة القادمة", "/prayer-times"),
+                        ("مراتب المصلين", "", "/prayer-ranks"),
+                        ("دليل الصلاة", "", "/salah-guide")]),
+            ("الذكر والدعاء", [("الأذكار", "", "/adhkar"), ("الأدعية", "", "/duas"), ("التسبيح", "", "/tasbih")]),
+            ("أدوات", [("القبلة", "", "/qibla")]),
+        ]
+        let links = groups.flatMap { g in
+            g.1.map { FiqhReading.Link(title: $0.0, subtitle: FiqhReading.trimmed($0.1), route: $0.2, group: g.0) }
+        }
+        return FiqhReading(title: "العبادات", subtitle: "قيد المراجعة", links: links)
+    }
+
     static func book(_ book: FiqhBook) -> FiqhReading {
         let links = FiqhVisibility.publishedChapters(book).map {
             FiqhReading.Link(title: $0.title, subtitle: $0.summary, route: FiqhRoutes.chapter(book.id, $0.id), group: "الأبواب")

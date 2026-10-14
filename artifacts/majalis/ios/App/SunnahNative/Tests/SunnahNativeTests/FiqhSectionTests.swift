@@ -180,9 +180,16 @@ final class FiqhSectionTests: XCTestCase {
         }
     }
 
+    func testWorshipHubLinksExistingScreensAndIsUnderReview() {
+        let r = FiqhAdapters.worship()
+        XCTAssertEqual(r.subtitle, "قيد المراجعة")
+        XCTAssertEqual(Set(r.links.map(\.route)), ["/prayer-times", "/prayer-ranks", "/salah-guide", "/adhkar", "/duas", "/tasbih", "/qibla"])
+        XCTAssertFalse(r.links.contains { ($0.title + ($0.subtitle ?? "")).contains("أذان") })
+    }
+
     func testRegistryIdsMatchGenerator() {
         XCTAssertEqual(FiqhSection.registryId("/fiqh/usul"), "fiqh.usul")
-        XCTAssertEqual(FiqhSection.staticPaths.count, 17)
+        XCTAssertEqual(FiqhSection.staticPaths.count, 18)
         XCTAssertEqual(FiqhRoutes.topicRedirect("islamic-finance"), "/riba")
         XCTAssertEqual(FiqhRoutes.topicRedirect("unknown"), "/fiqh")
     }
