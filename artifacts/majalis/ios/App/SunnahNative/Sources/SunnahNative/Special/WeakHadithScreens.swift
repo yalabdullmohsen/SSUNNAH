@@ -124,7 +124,7 @@ struct WeakHadithDetailView: View {
                 WeakHadithBadge(item: item)
                 SunnahCard {
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        Text(item.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        SunnahArabicText(item.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                         if let n = item.narrator { Text(n).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
                     }
                 }
