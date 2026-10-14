@@ -18,8 +18,11 @@ public enum AqidahContent {
     }
 
     /// الفرق: المنشور (`PUBLISHED`) فقط، كما في `getPublishedIslamicSectById` على الويب.
+    /// حالة الفرق المصوغة من مراجع موثقة وما زالت بانتظار مراجعة المالك؛ تُعرض بشارة «قيد المراجعة».
+    public static let underReview = "UNDER_REVIEW"
+
     public static func accepted(_ items: [IslamicSect]) -> [IslamicSect] {
-        items.filter { $0.publicationStatus == "PUBLISHED" }
+        items.filter { $0.publicationStatus == "PUBLISHED" || $0.publicationStatus == underReview }
     }
 
     /// المجموعات: تُحذف العناصر بلا عنوان والمجموعات الفارغة.

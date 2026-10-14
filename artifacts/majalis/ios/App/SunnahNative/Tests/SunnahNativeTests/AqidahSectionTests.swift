@@ -31,6 +31,28 @@ final class AqidahSectionTests: XCTestCase {
         XCTAssertEqual(AqidahContent.accepted(names).map(\.num), [1, 2])
     }
 
+    /// سجلات «قيد المراجعة»: تظهر بشارتها، وكل سجل مُسنَد بمراجع، ولا ألفاظ ممنوعة ولا أرقام هندية.
+    func testSectsUnderReviewAreSourcedAndLabelled() throws {
+        let url = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+            .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+            .appendingPathComponent("content/native/islamic-sects-under-review.json")
+        let raw = try Data(contentsOf: url)
+        let sects = try JSONDecoder().decode([IslamicSect].self, from: raw)
+        XCTAssertFalse(sects.isEmpty)
+        XCTAssertEqual(AqidahContent.accepted(sects).count, sects.count)
+        for s in sects {
+            XCTAssertEqual(s.publicationStatus, AqidahContent.underReview, s.id)
+            XCTAssertTrue((s.references ?? []).contains { $0.contains("shamela.ws") && $0.contains("ص") }, s.id)
+            XCTAssertFalse(s.keyBeliefs.isEmpty, s.id)
+        }
+        let text = String(decoding: raw, as: UTF8.self)
+        XCTAssertNil(text.range(of: "[٠-٩]", options: .regularExpression))
+        XCTAssertFalse(text.contains("أذان"))
+        let drafts = try decode([IslamicSect].self, "[{\"id\":\"d\",\"name\":\"n\",\"fullName\":\"n\",\"category\":\"c\",\"era\":\"\",\"origin\":\"\",\"founder\":\"\",\"foundingCause\":\"\",\"keyBeliefs\":[],\"keyBooks\":[],\"keyScholars\":[],\"status\":\"\",\"spread\":\"\",\"publicationStatus\":\"NEEDS_SHARIA_REVIEW\"}]")
+        XCTAssertTrue(AqidahContent.accepted(drafts).isEmpty)
+    }
+
     func testSectsShowPublishedOnly() throws {
         let base = #""name":"ن","fullName":"ن","category":"ك","era":"ع","origin":"أ","founder":"م","foundingCause":"س","keyBeliefs":[],"keyBooks":[],"keyScholars":[],"status":"قائمة","spread":"ا""#
         let sects = try decode([IslamicSect].self, "[{\"id\":\"a\",\(base),\"publicationStatus\":\"PUBLISHED\"},{\"id\":\"b\",\(base),\"publicationStatus\":\"DRAFT\"},{\"id\":\"c\",\(base)}]")

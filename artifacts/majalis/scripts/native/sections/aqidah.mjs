@@ -187,6 +187,12 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
       .filter((s) => pub.has(s.id) && ok(s.id, "islamic-sects"))
       .map((s) => ({ ...s, publicationStatus: "PUBLISHED" }));
     for (const m of meta) if (m.publicationStatus !== "PUBLISHED") reject(`${A}-islamic-sects`, `حالة ${m.publicationStatus}`);
+    /* «قيد المراجعة»: صياغة التطبيق من مراجع مُسندة بالكتاب والجزء والصفحة (محتوى/native)؛ لا PUBLISHED ولا يُعرض بغير شارتها */
+    const ur = rd(`${src}/../content/native/islamic-sects-under-review.json`);
+    for (const r of ur) {
+      if (r.publicationStatus !== "UNDER_REVIEW" || !(r.references || []).length || sects.some((x) => x.id === r.id)) { reject(`${A}-islamic-sects`, `قيد المراجعة مرفوض ${r.id}`); continue; }
+      sects.push(r);
+    }
     out("islamic-sects", sects);
     cnt("islamic-sects", sects.length);
   }
