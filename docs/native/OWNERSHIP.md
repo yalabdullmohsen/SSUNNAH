@@ -1,0 +1,69 @@
+# ملكية الملفات بين نوافذ التطبيق الأصلي
+
+مستنتَجة من سجل git وتقارير `docs/native` (2026-10-14). تُقرأ آليًا بواسطة `scripts/native-ownership-check.mjs`: كل سطر `- \`نمط\`` تحت عنوان نافذة هو ملكية لها (glob: `*` داخل مجلد، `**` عبر المجلدات). الفحص تحذيري فقط ولا يفشل PR.
+`SN` = `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative`.
+
+## n1 — التصميم والهوية
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Design/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Components/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Templates/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Intro/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Special/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Sections/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Generated/**`
+- `ios-native/Sources/Design/**`
+- `ios-native/SunnahApp/Resources/**`
+- `docs/native/intro/**`
+- `docs/native/store-shots/**`
+- `scripts/native-design-guard.mjs`
+- `scripts/generate-swift-tokens.mjs`
+
+## n2 — الجودة والمحتوى والبيانات
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Data/**`
+- `artifacts/majalis/ios/App/SunnahDataKit/**`
+- `docs/native/DATA_CONTRACT.md`
+- `docs/native/data-gaps.md`
+- `docs/native/data-exemptions.json`
+- `docs/native/qa/**`
+- `docs/native/requests/**`
+- `scripts/native-data-check.mjs`
+- `scripts/native-export-data.sh`
+- `ios-native/scripts/prepare-data.sh`
+
+## n3 — المصحف وأداؤه
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Mushaf/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Tasmee/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Audio/**`
+- `artifacts/majalis/ios/App/SunnahNative/Tests/SunnahNativeTests/Mushaf*`
+- `docs/native/QURAN_QUOTE_FIXES.md`
+- `tools/tasmee-bench/**`
+
+## n4 — البنية التحتية والأداء والتنقل
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Shell/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Platform/**`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Support/**`
+- `artifacts/majalis/ios/App/SunnahNative/Package.swift`
+- `ios-native/SunnahApp/**`
+- `ios-native/SunnahApp.xcodeproj/**`
+- `ios-native/SunnahAppUITests/**`
+- `ios-native/scripts/generate-xcodeproj.rb`
+- `scripts/native-*.sh`
+- `scripts/native-*.mjs`
+- `scripts/native-*.swift`
+- `scripts/ensure-sim.sh`
+- `scripts/verify-merged.sh`
+- `docs/native/perf/**`
+- `docs/native/OWNERSHIP.md`
+- `docs/native/PROGRESS.md`
+- `docs/native/BACKLOG.md`
+- `.github/workflows/ios-*.yml`
+- `.github/workflows/native-*.yml`
+
+## مشترك (لا تحذير)
+- `docs/native/**` عدا ما ذُكر لنافذة، و`artifacts/majalis/ios/App/SunnahNative/Tests/**` للاختبارات التي تكتبها النافذة لشاشتها.
+
+## طلبات
+نافذة تحتاج تعديلًا في ملف غيرها تضيف هنا سطرًا (`من → إلى: الملف — المطلوب`) ثم تتابع عملها:
+
+- ن4 → ن1: `Components/SunnahCard.swift`, `Components/SunnahListRow.swift` — استعمال `.sunnahPressable()` من `Shell/Motion.swift` بدل `.buttonStyle(.plain)` (انظر `docs/native/perf/motion.md`).
+- ن4 → ن1: `Design/Sunnah.swift` — `Sunnah.Motion.standard` يصير مرادفًا لـ`SunnahMotion.standard`؛ لن ألمس الملف.
