@@ -320,6 +320,7 @@ enum AccountTexts {
 
     static let updateTypes: [String] = ["قرار", "فتوى", "درس", "دورة", "كتاب", "إعلان", "خبر علمي"]
 
+    static let rightsHeadline = "الحقوق غير محفوظة (لوجه الله)"
     static let rightsSentence = "ما أنشأناه في سُنّة حقوقه غير محفوظة لوجه الله، وما نقلناه عن المصادر المذكورة تعود حقوقه لأصحابه وفق تراخيصهم"
     static let sourceStatusLabel: [String: String] = [
         "open": "ترخيص مفتوح موثّق",
