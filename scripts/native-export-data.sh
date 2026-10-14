@@ -2,7 +2,7 @@
 # يولّد حزمة البيانات المحقَّقة للتطبيق الأصلي من أي worktree بأمر واحد:
 #   bash scripts/native-export-data.sh [مجلد_الإخراج]   (الافتراضي: ios-native/Data في جذر هذا الـworktree)
 # النتيجة: <out>/MANIFEST.json (مسارات + حجوم + sha256) ثم إعادة تحقق مستقلة من المجموع.
-# يرفض التصدير: المحجوز في content-hold، demo، الموثّقة بلا شرح/مرجع (والعامة unsourced مقبولة)، الضعيف/الموضوع. أقسام التطبيق (scripts/native/sections) بالقواعد نفسها؛ الشبهات لا تدخل إلا بدليل متحقَّق من Tanzil ومصدر.
+# يرفض التصدير: المحجوز في content-hold، demo، الموثّقة بلا شرح/مرجع (والعامة unsourced مقبولة)، الضعيف/الموضوع من حزمة verified-sahih (يُصدَّران منفصلين). أقسام التطبيق (scripts/native/sections) بالقواعد نفسها؛ الشبهات لا تدخل إلا بدليل متحقَّق من Tanzil ومصدر.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT/artifacts/majalis"
@@ -33,6 +33,8 @@ done
 # حارس: يُصدَّر إلى مجلد مؤقت أولًا؛ فشل التصدير أو نقص عدد الملفات لا يمسّ $OUT
 FINAL="$OUT"; OUT="$(mktemp -d "${TMPDIR:-/tmp}/native-data.XXXXXX")"; trap 'rm -rf "$OUT" "$LOCK"' EXIT
 node --import tsx scripts/native/export-ios-data.mjs --out "$OUT" ${ADH:+$( [ -f "$ADH" ] && echo "--adhkar-json $ADH" )}
+# الضعيف/الموضوع: ملفان منفصلان عن verified-sahih (قرار يوسف 2026-10-14، DATA_CONTRACT §5.2)
+(cd "$ROOT" && node scripts/native-export-weak-hadith.mjs "$OUT/hadith")
 NEW=$(find "$OUT" -type f | wc -l | tr -d ' '); OLD=0; [ -d "$FINAL" ] && OLD=$(find "$FINAL" -type f | wc -l | tr -d ' ')
 if [ "$NEW" -lt "$OLD" ]; then echo "رُفض: الملفات الجديدة $NEW أقل من الحالية $OLD — لم يُمسّ $FINAL" >&2; exit 1; fi
 node --input-type=module -e '

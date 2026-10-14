@@ -178,7 +178,7 @@ struct HadithCollectionView: View {
     }
 }
 
-/// شاشة بلا محتوى محزوم بعد (الضعيف والموضوع لا يُحزمان؛ وأقسام لم تُصدَّر بياناتها).
+/// شاشة بلا محتوى محزوم بعد (أقسام لم تُصدَّر بياناتها).
 struct ContentPendingView: View {
     let message: String
     var body: some View {
@@ -192,12 +192,8 @@ public enum HadithScreens {
         registry.register(HadithScreen.self)
         registry.register(HadithSahihScreen.self)
         registry.registerView(id: "hadith.books") { HadithBooksView().navigationTitle("كتب الحديث") }
-        registry.registerView(id: "hadith.daif") {
-            ContentPendingView(message: "لا يحزم التطبيق نصوص الأحاديث الضعيفة؛ المتاح الصحيح الموثَّق فقط").navigationTitle("الأحاديث الضعيفة")
-        }
-        registry.registerView(id: "hadith.mawdu") {
-            ContentPendingView(message: "لا يحزم التطبيق نصوص الأحاديث الموضوعة؛ المتاح الصحيح الموثَّق فقط").navigationTitle("الأحاديث الموضوعة")
-        }
+        registry.registerView(id: "hadith.daif") { WeakHadithListView(file: "weak-daif", title: "الأحاديث الضعيفة") }
+        registry.registerView(id: "hadith.mawdu") { WeakHadithListView(file: "weak-mawdu", title: "الأحاديث الموضوعة") }
         // بياناتها ليست في عقد البيانات بعد (صفحات ويب مضمّنة): تنتظر تصديرًا من ن1.
         registry.registerView(id: "arbaeen-nawawi") { ReaderDataScreens.arbaeenList() }
         registry.registerView(id: "wasaya-nabawiyya") { ReaderDataScreens.wasayaScreen() }
