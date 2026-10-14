@@ -1,4 +1,5 @@
 import SwiftUI
+import os
 
 /// شاشة المصحف: تحمّل `Data/mushaf` (مضمّنة في الحزمة) وتعرض `MushafReaderView`؛ حالة خطأ صريحة بدل صفحة فارغة.
 struct MushafScreen: View {
@@ -7,14 +8,25 @@ struct MushafScreen: View {
     @StateObject private var store = MushafStore()
     @State private var state: Loaded?
 
-    private struct Loaded { let repo: MushafRepository; let index: MushafIndex; let search: MushafSearch? }
+    private struct Loaded { let repo: MushafRepository; let index: MushafIndex; var search: MushafSearch? }
 
     var body: some View {
         Group {
             if let s = state {
                 MushafReaderView(repo: s.repo, index: s.index, search: s.search, store: store, startPage: Self.startPage(target, s.index))
             } else {
-                ProgressView().screenState(.loading).task { state = Self.load() }
+                ProgressView().screenState(.loading).task {
+                    // الفهرس والمستودع خفيفان فتُفتح الصفحة فورًا؛ فهرس البحث يُبنى خلفيًا خارج الخيط الرئيسي ويصل لاحقًا.
+                    let log = Logger(subsystem: "com.yousef.majlisilm", category: "mushaf-perf"); log.notice("MUSHAF_PERF screen_task_start")
+                    state = await Task.detached(priority: .userInitiated) { Self.load() }.value
+                    log.notice("MUSHAF_PERF repo_index_ready")
+                    if let s = state, let dir = Self.quranDirectory {
+                        let idx = s.index
+                        let search = await Task.detached(priority: .utility) { try? MushafSearch(surahDirectory: dir, ayahPage: idx.ayahPage) }.value
+                        state?.search = search
+                        log.notice("MUSHAF_PERF search_ready")
+                    }
+                }
             }
         }
         .environment(\.layoutDirection, .rightToLeft)
@@ -28,10 +40,10 @@ struct MushafScreen: View {
         }
     }
 
-    private static func load() -> Loaded? {
+    private nonisolated static var quranDirectory: URL? { Bundle.main.url(forResource: "quran", withExtension: nil, subdirectory: "Data") }
+
+    private nonisolated static func load() -> Loaded? {
         guard let repo = MushafRepository(bundle: .main), let idx = try? repo.index() else { return nil }
-        let dir = Bundle.main.url(forResource: "quran", withExtension: nil, subdirectory: "Data")
-        let search = dir.flatMap { try? MushafSearch(surahDirectory: $0, ayahPage: idx.ayahPage) }
-        return Loaded(repo: repo, index: idx, search: search)
+        return Loaded(repo: repo, index: idx, search: nil)
     }
 }
