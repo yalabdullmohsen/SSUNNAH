@@ -5,7 +5,7 @@ cd "$(cd "$(dirname "$0")/.." && pwd)"; B=$1
 BIN=/tmp/native-ocr-bin; [ "$BIN" -nt scripts/native-snapshot-ocr.swift ] || swiftc -O -o "$BIN" scripts/native-snapshot-ocr.swift 2>&1 | head -3
 export BIN B AUDIT_TRUNC=${AUDIT_TRUNC:-$([[ "${FONT:-}" == accessibility* || "$B" == *accessibility* ]] && echo 1 || echo 0)}
 one() { IFS=$'\t' read -r route eff comp st <<< "$1"; slug=$(echo "${route#/}" | tr '/:' '__'); [ -z "$slug" ] && slug=root; png="$B/shots/$slug.png"
-  v=""; case "$st" in error) v="ERROR:screen.error";; empty) v="EMPTY:screen.empty";; ok) ;; *) v="NOT_READY:$st";; esac
+  v=""; case "$st" in error) v="ERROR:screen.error";; empty) if grep -q "\"${route#/}\":" docs/native/data-exemptions.json; then v="EMPTY_OK:exempt"; else v="EMPTY:screen.empty"; fi;; ok) ;; *) v="NOT_READY:$st";; esac
   [ -z "$v" ] && { [ -s "$png" ] && v=$("$BIN" "$png" "$eff" 2>/dev/null) || v=NOSHOT; }
   txt=$("$BIN" "$png" "$eff" --text 2>/dev/null | python3 -c "import sys,hashlib;c={'الرئيسية','القرآن','الدروس','الصلاة','الأقسام','9:41'};t=sorted({l.strip() for l in sys.stdin if len(l.strip())>1 and l.strip() not in c});print(hashlib.sha256('\n'.join(t).encode()).hexdigest()[:16] if len(t)>=3 else 'few')")
   printf '%s\t%s\t%s\t%s\n' "$route" "$comp" "$v" "$txt"; }
