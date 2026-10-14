@@ -11,6 +11,7 @@
 التطبيق يُطلَق مرة واحدة بـ`-snapshotRoutes <file>` ويمرّ بنفسه على المسارات عبر `AppRouter` (بلا `openurl` ولا إعادة إطلاق لكل مسار). لكل مسار: ينتظر `screen.ready` ثم يكتب `tmp/audit-ready.json` (`{i,route,state}`)؛ السكربت يلتقط `simctl io screenshot` ثم يكتب `tmp/audit-next`. عند الانتهاء `tmp/audit-done`.
 ```bash
 NATIVE_WINDOW=n1 APP=<SunnahApp.app> MODE=light BOARD=<dir> OPEN=inapp bash scripts/native-audit-fast.sh
+- يُعاد تشغيل المحاكي تلقائيًا في بداية كل جولة (`REBOOT=0` لتخطّيه) لإزالة حوارات SpringBoard العالقة من اللقطات.
 ```
 - إن سقط التطبيق يُعاد إطلاقه تلقائيًا من المسار التالي. `OPEN=launch` (إطلاق لكل مسار) بديل أبطأ؛ `openurl` الافتراضي يعلق عند حوار iOS «فتح في سُنّة؟».
 - الشيفرة: `SnapshotRoutesRunner` في `Components/ScreenProbe.swift` (داخل `#if DEBUG`).

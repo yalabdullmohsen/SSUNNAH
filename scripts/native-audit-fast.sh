@@ -8,6 +8,8 @@
 set -uo pipefail
 cd "$(cd "$(dirname "$0")/.." && pwd)"
 . scripts/native-sim.sh || exit 2
+# إعادة تشغيل المحاكي قبل كل جولة: يزيل حوارات SpringBoard العالقة («فتح في سُنّة؟») من اللقطات. REBOOT=0 لتخطّيها.
+if [ "${REBOOT:-1}" = 1 ]; then xcrun simctl shutdown "$SIM" >/dev/null 2>&1; xcrun simctl boot "$SIM" >/dev/null 2>&1; xcrun simctl bootstatus "$SIM" -b >/dev/null 2>&1; sleep 3; fi
 BID=com.yousef.majlisilm; MODE=${MODE:-light}; FONT=${FONT:-large}; LIMIT=${LIMIT:-999}
 APP=${APP:-/tmp/dd-n2/Build/Products/Debug-iphonesimulator/SunnahApp.app}
 TAG=${TAG:-$MODE-$FONT}; BOARD=${BOARD:-/tmp/route-audit-fast}/$TAG; mkdir -p "$BOARD/shots"; : > "$BOARD/states.tsv"
