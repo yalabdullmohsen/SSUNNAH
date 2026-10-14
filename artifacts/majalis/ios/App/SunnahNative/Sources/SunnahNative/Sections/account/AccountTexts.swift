@@ -33,7 +33,8 @@ enum AccountTexts {
                 .paragraph("يُستمد المحتوى من مصادر شرعية معتبرة قدر الإمكان، مع العزو والمراجعة. التفصيل المنهجي في صفحة [منهجية التوثيق](majlisilm://methodology) وصفحة [المصادر والتراخيص](majlisilm://data-licenses).")
             ]),
             .init(title: "شكر ومراجع", blocks: [
-                .paragraph("نشكر أهل العلم والمؤسسات التي أتاحت مراجع عامة يُستفاد منها في التعلّم، ونرحّب بأي تصويب عبر [تواصل معنا](majlisilm://contact).")
+                .paragraph("نشكر أهل العلم والمؤسسات التي أتاحت مراجع عامة يُستفاد منها في التعلّم، ونرحّب بأي تصويب عبر [تواصل معنا](majlisilm://contact)."),
+                .paragraph("خطوط صفحات المصحف وخط أسماء السور من إصدارات «مجمع الملك فهد لطباعة المصحف الشريف»، وتُستعمل كما هي دون تعديل.")
             ])
         ]
     )
@@ -336,6 +337,7 @@ enum AccountTexts {
         ]),
         .init(id: "mushaf-layout-fonts", label: "المصحف: التخطيط وخطوط الصفحات", entries: [
             .init(name: "خطوط QPC V2 — مجمع الملك فهد (عبر Quran Foundation / QUL)", took: "رسم المصحف صفحةً بصفحة بخطوط الصفحات", license: "شروط Quran Foundation: إسناد في موضع ظاهر وبلا تعديل؛ تأكيد حساب التوزيع بانتظار قرار المالك", status: "unknown", url: "https://qul.tarteel.ai"),
+            .init(name: "خط أسماء السور — مجمع الملك فهد لطباعة المصحف الشريف", took: "لافتة اسم السورة في صفحات المصحف", license: "بالشروط نفسها لخطوط QPC: مجاني، بلا بيع، بلا تعديل للخط؛ أقرّه المالك 2026-10-14", status: "unknown", url: "https://qul.tarteel.ai"),
             .init(name: "Quran.com — بيانات تخطيط الصفحات", took: "حدود الصفحات والأسطر وأرقام الآيات", license: "شروط واجهة Quran Foundation؛ التأكيد النهائي بانتظار قرار المالك", status: "unknown", url: "https://api.quran.com")
         ]),
         .init(id: "tafsir", label: "التفسير", entries: [

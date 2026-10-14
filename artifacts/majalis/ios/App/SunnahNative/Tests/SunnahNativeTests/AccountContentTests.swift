@@ -22,7 +22,7 @@ final class AccountContentTests: XCTestCase {
         XCTAssertEqual(AccountTexts.qiblaCities.count, 20)
         XCTAssertEqual(AccountTexts.badges.count, 17)
         XCTAssertEqual(AccountTexts.sourceTypes.count, 21)
-        XCTAssertEqual(AccountTexts.sourceTypes.reduce(0) { $0 + $1.entries.count }, 35)
+        XCTAssertEqual(AccountTexts.sourceTypes.reduce(0) { $0 + $1.entries.count }, 36)
     }
 
     func testTextIdsAreUnique() {
