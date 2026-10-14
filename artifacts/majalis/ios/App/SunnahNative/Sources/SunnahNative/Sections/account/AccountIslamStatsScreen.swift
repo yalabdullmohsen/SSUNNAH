@@ -43,7 +43,7 @@ struct AccountIslamStatsScreen: View {
                             }
                             .accessibilityElement(children: .combine)
                         }
-                        Text("المصدر: مركز بيو للأبحاث، بيانات المشهد الديني العالمي ٢٠٢٠م المنشورة في ٢٠٢٥م")
+                        Text("المصدر: مركز بيو للأبحاث، بيانات المشهد الديني العالمي 2020م المنشورة في 2025م")
                             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     }
                 case .history:

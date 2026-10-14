@@ -111,7 +111,7 @@ private struct HadithBooksAndRulingsView: View {
             Text("الأربعون النووية متاحة بمادتها المعتمدة؛ ولا يُنشر متن أو حكم على حديث في بقية الكتب حتى اعتماد مصدر موثوق ومراجعة علمية.")
                 .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).listRowBackground(Color.clear)
             SunnahNavigationLink { ReaderDataScreens.arbaeenList() } label: {
-                SunnahListRow(title: "الأربعون النووية", subtitle: "٤٢ حديثاً")
+                SunnahListRow(title: "الأربعون النووية", subtitle: "42 حديثاً")
             }.sunnahRowChrome()
             ForEach([("عمدة الأحكام", "جمع الإمام عبد الغني المقدسي للأحاديث المتفق عليها بين البخاري ومسلم في الأحكام الفقهية."),
                      ("بلوغ المرام", "جمع الحافظ ابن حجر العسقلاني لأحاديث الأحكام مع بيان درجتها، من أشهر مراجع فقه الحديث."),
