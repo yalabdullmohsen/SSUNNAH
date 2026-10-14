@@ -1,5 +1,4 @@
-# طلب إلى المالك — مناطق كويتية بعيدة ومرجع الأوقاف
+# مرجع الأوقاف (ن1)
 
-1. **إحداثيات معتمدة** للسالمي والصبية وكبد (لم أجد مصدرًا موثوقًا؛ لا اختلاق). أُدرجت العبدلي (ويكيبيديا 30.0، 47.6833) والوفرة والنويصيب فقط.
-2. **تقويم وزارة الأوقاف الرسمي** (JSON) في `artifacts/majalis/ios/App/SunnahPrayer/Tests/SunnahPrayerTests/Resources/awqaf-calendar.json` بالشكل `[{"area","day":"YYYY-MM-DD","times":{"fajr":"HH:mm",...}}]`؛ حتى يوضع يُتخطّى اختبار ±دقيقة (`KuwaitAreasTests`) صراحةً ولا يُدّعى نجاحه.
-3. إحداثيات مبارك الكبير تقريبية (29.212، 48.06) وتحتاج تأكيدًا.
+إحداثيات السالمي والصبية وكبد ومبارك الكبير جُلبت من OSM (المصدر بجانب كل إحداثية في `ReferenceCities.swift`).
+تقويم الأوقاف: يُحوَّل ملف الوزارة بـ`node scripts/native-awqaf-to-json.mjs <ملف.csv|.xlsx.csv> <out>` إلى `Tests/SunnahPrayerTests/Resources/awqaf-calendar.json` ثم `swift test --filter KuwaitAreasTests` (±1د). السكربت يقبل CSV (صدّر Excel/PDF-table إلى CSV أولًا).

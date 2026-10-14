@@ -2,7 +2,7 @@ import Foundation
 
 /// محافظات الكويت الست (مراكزها) ومناطقها البعيدة، لاختيار سريع دون اتصال.
 /// المناطق البعيدة المتحقَّق من إحداثياتها: العبدلي (ويكيبيديا 30.0، 47.6833)، الوفرة، النويصيب.
-/// السالمي والصبية وكبد خارج القائمة حتى تُعتمد إحداثياتها (انظر docs/native/requests/prayer-remote-areas-n1.md).
+/// السالمي والصبية وكبد ومبارك الكبير من OpenStreetMap (Nominatim) بمركز المنطقة الإدارية؛ المصدر بجانب كل إحداثية.
 public enum KuwaitAreas {
     public static let governorates: [PrayerLocation] = [
         area("مدينة الكويت", 29.3759, 47.9774),
@@ -10,12 +10,17 @@ public enum KuwaitAreas {
         area("الفروانية", 29.2775, 47.9585),
         area("الأحمدي", 29.0769, 48.0838),
         area("الجهراء", 29.3375, 47.6581),
-        area("مبارك الكبير", 29.2120, 48.0600)
+        area("مبارك الكبير", 29.1870956, 48.0827589) // OSM relation/18005322 (كان تقريبيًا 29.212،48.06)
     ]
     public static let remote: [PrayerLocation] = [
         area("العبدلي", 30.0, 47.6833),
         area("الوفرة", 28.5583, 48.0433),
-        area("النويصيب", 28.5740, 48.3750)
+        area("النويصيب", 28.5740, 48.3750),
+        // تعارض: عقدة قرية السالمي node/9876599816 (29.0986،46.6788) مقابل حد إداري → اعتُمد مركز الحد الإداري.
+        area("السالمي", 29.1476217, 46.7035494), // OSM relation/18113787
+        // تعارض: عقدة بلدة node/10707750005 (29.4488،47.7436) مقابل حد إداري → اعتُمد مركز الحد الإداري.
+        area("الصبية", 29.7152161, 48.0658794), // OSM relation/18027485
+        area("كبد", 29.1027076, 47.7442821) // OSM relation/17973036
     ]
     static func area(_ label: String, _ lat: Double, _ lon: Double) -> PrayerLocation {
         PrayerLocation(label: label, latitude: lat, longitude: lon, timeZoneIdentifier: "Asia/Kuwait")
