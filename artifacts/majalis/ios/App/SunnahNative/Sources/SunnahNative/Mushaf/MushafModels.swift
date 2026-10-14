@@ -50,4 +50,11 @@ public enum Mushaf {
     public static func clamp(_ page: Int) -> Int { min(max(page, 1), pageCount) }
     /// اسم عائلة خط الصفحة كما في جدول الأسماء (QCF2001…QCF2604).
     public static func fontFamily(page: Int) -> String { String(format: "QCF2%03d", page) }
+    /// عائلة خط أسماء السور (QPC/KFGQPC، sura_names.ttf).
+    public static let surahNameFontFamily = "sura_names"
+    /// رمز اسم السورة في الخط: U+E0xx حيث xx أرقام رقم السورة العشرية مكتوبةً كأرقام سداسية (1→E001، 114→E114).
+    public static func surahNameGlyph(_ surah: Int) -> String {
+        let n = min(max(surah, 1), 114)
+        return String(UnicodeScalar(0xE000 + Int(String(n), radix: 16)!)!)
+    }
 }

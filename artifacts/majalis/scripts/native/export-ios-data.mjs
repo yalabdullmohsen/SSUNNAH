@@ -223,6 +223,8 @@ counts.quiz = qn;
   execFileSync("python3", [`${appRoot}/scripts/native/woff2-to-ttf.py`, `${appRoot}/public/fonts/qpc-v2`, tmp], { stdio: "inherit" });
   for (let p = 1; p <= 604; p++) put(`mushaf/fonts/p${p}.ttf`, fs.readFileSync(`${tmp}/p${p}.ttf`));
   fs.rmSync(tmp, { recursive: true, force: true });
+  // خط أسماء السور (QPC/KFGQPC، عبر quran.com): يُسجَّل كخطوط الصفحات من الحزمة
+  put("mushaf/fonts/sura_names.ttf", fs.readFileSync(`${appRoot}/public/fonts/qpc-surah-names/sura_names.ttf`));
   counts.mushafPages = 604;
   // أصل كل ملف يُصدَّر: sha256 للمصدر (الصفحات JSON وخطوط woff2) كي يقارنها اختبار البوابة بالمستودع
   mushafSources = {};
