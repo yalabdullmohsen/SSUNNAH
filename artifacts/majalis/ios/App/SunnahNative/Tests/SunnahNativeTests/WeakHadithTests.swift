@@ -52,4 +52,34 @@ final class WeakHadithTests: XCTestCase {
         }
         XCTAssertEqual(offenders, [])
     }
+
+    /// انحدار: التنقل بين /hadith/daif و/hadith/mawdu بالاتجاهين يعرض عناصر حكم الملف المفتوح فقط.
+    func testVisibleRowsMatchOpenedFileInBothDirections() throws {
+        let daif = try load("weak-daif"), mawdu = try load("weak-mawdu")
+        for (file, cls, own, other) in [("weak-daif", "daif", daif, mawdu), ("weak-mawdu", "mawdu", mawdu, daif)] {
+            let rows = WeakHadithListView.visibleRows(own, file: file, normalizedQuery: "")
+            XCTAssertFalse(rows.isEmpty); XCTAssertTrue(rows.allSatisfy { $0.authenticityClass == cls })
+            XCTAssertTrue(WeakHadithListView.visibleRows(other, file: file, normalizedQuery: "").isEmpty, "بيانات ملف آخر ظهرت تحت \(file)")
+        }
+    }
+
+    /// انحدار جذري: أي `.task`/`.onAppear` يحمّل بحسب معامل (file/id/slug/source/name…) في شاشة تحمل معاملًا يجب أن يكون `.task(id:)`،
+    /// وإلا بقيت بيانات المعامل القديم عند إعادة استخدام العرض (حالة «الموضوعة» تعرض الضعيف).
+    func testParameterisedLoadersKeyTheirTaskOnTheParameter() throws {
+        let src = repoRoot.appendingPathComponent("artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative")
+        let files = FileManager.default.enumerator(at: src, includingPropertiesForKeys: nil)!.compactMap { $0 as? URL }.filter { $0.pathExtension == "swift" }
+        let param = try NSRegularExpression(pattern: #"^    (?:public )?let (file|id|slug|name|source|surahId|book|item|key): "#)
+        // المستثنى: Templates/AudioPlayerTemplate (onAppear لإنشاء المحرّك مرة، لا تحميل بيانات) وMushafReaderView (visit للتتبّع).
+        let allowed = ["AudioPlayerTemplate.swift", "MushafReaderView.swift"]
+        var bad: [String] = []
+        for f in files where !allowed.contains(f.lastPathComponent) {
+            var hasParam = false
+            for (n, line) in (try String(contentsOf: f, encoding: .utf8)).components(separatedBy: "\n").enumerated() {
+                if line.hasPrefix("struct ") || line.hasPrefix("public struct ") || line.hasPrefix("final class ") { hasParam = false }
+                if param.firstMatch(in: line, range: NSRange(line.startIndex..., in: line)) != nil { hasParam = true }
+                if hasParam, line.contains(".task {") || line.contains(".task { ") { bad.append("\(f.lastPathComponent):\(n + 1)") }
+            }
+        }
+        XCTAssertTrue(bad.isEmpty, "`.task` بلا id في شاشات ذات معامل: \(bad)")
+    }
 }

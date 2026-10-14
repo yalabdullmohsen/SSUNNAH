@@ -22,7 +22,7 @@ struct SirahLoadedView<Raw: Decodable & Sendable, Output, V: View>: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .task { await load() }
+        .task(id: String(describing: source)) { await load() }
     }
 
     private func load() async {

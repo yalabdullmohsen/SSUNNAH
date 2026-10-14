@@ -233,7 +233,7 @@ struct AccountAutoContentDetailScreen: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .task { await load() }
+        .task(id: slug) { await load() }
     }
 
     private func detail(_ item: AccountAutoContent) -> some View {

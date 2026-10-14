@@ -51,7 +51,7 @@ public struct CitationScreen: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
         .navigationTitle("اقتباس")
-        .task { await load() }
+        .task(id: slug) { await load() }
     }
 
     private func content(_ c: CitationPayload.Citation) -> some View {

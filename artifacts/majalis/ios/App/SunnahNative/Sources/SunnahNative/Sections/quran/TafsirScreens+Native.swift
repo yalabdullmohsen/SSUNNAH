@@ -113,7 +113,7 @@ struct TafsirSurahView: View {
         .background(Sunnah.Colors.bg)
         .quranTitle(surahName)
         .environment(\.layoutDirection, .rightToLeft)
-        .task { await load() }
+        .task(id: "\(book.id)-\(surahId)") { await load() }
     }
 
     private func load() async {
