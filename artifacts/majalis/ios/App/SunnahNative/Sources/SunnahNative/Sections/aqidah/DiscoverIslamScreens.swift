@@ -41,8 +41,7 @@ struct AqidahArticleView: View {
     let article: DawahArticle
 
     var body: some View {
-        AqidahPage(title: article.titleAr) {
-            Text(article.titleAr).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+        AqidahPage(title: article.titleAr, hero: article.titleAr) {
             if let s = article.summaryAr { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
             AqidahParagraphs(text: article.bodyAr)
         }
@@ -83,8 +82,7 @@ struct AqidahQuestionView: View {
     let question: DawahQuestion
 
     var body: some View {
-        AqidahPage(title: question.title) {
-            Text(question.title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+        AqidahPage(title: question.title, hero: question.title) {
             if !question.shortAnswer.aqidahIsBlank { AqidahTextBlock(title: "الجواب المختصر", text: question.shortAnswer) }
             if !question.detailedAnswer.aqidahIsBlank { AqidahTextBlock(title: "الجواب المفصّل", text: question.detailedAnswer) }
             AqidahEvidenceList(evidences: question.evidences)
@@ -119,8 +117,7 @@ struct AqidahShubhaView: View {
     let shubha: DawahShubha
 
     var body: some View {
-        AqidahPage(title: shubha.title) {
-            Text(shubha.title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+        AqidahPage(title: shubha.title, hero: shubha.title) {
             if !shubha.shubhaText.aqidahIsBlank { AqidahTextBlock(title: "نص الشبهة", text: shubha.shubhaText) }
             if !shubha.shortAnswer.aqidahIsBlank { AqidahTextBlock(title: "الجواب المختصر", text: shubha.shortAnswer) }
             if !shubha.detailedRefutation.aqidahIsBlank { AqidahTextBlock(title: "التفنيد المفصّل", text: shubha.detailedRefutation) }

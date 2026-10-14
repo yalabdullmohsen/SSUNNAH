@@ -42,8 +42,7 @@ struct AqidahNewMuslimDayView: View {
 
     var body: some View {
         let done = AqidahContent.decodeProgress(progressRaw).contains(day.dayNumber)
-        AqidahPage(title: "اليوم \(day.dayNumber)") {
-            Text(day.title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+        AqidahPage(title: "اليوم \(day.dayNumber)", hero: day.title) {
             AqidahParagraphs(text: day.contentAr)
             SunnahButton(done ? "مكتمل ✓" : "أكملت هذا اليوم", style: done ? .secondary : .primary) {
                 var set = AqidahContent.decodeProgress(progressRaw)

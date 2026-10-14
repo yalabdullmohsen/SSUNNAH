@@ -38,13 +38,18 @@ struct AqidahItemHost<Value: Decodable & Sendable, Item, Content: View>: View {
 /// صفحة تفاصيل قابلة للتمرير بهامش الصفحة الموحّد.
 struct AqidahPage<Content: View>: View {
     let title: String
+    /// عنوان الترويسة الخضراء v5 (شاشات التفاصيل)؛ nil = بلا ترويسة.
+    var hero: String? = nil
     @ViewBuilder let content: () -> Content
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) { content() }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(Sunnah.Spacing.pageX)
+            VStack(spacing: 0) {
+                if let hero { DetailHero(title: hero) }
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) { content() }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(Sunnah.Spacing.pageX)
+            }
         }
         .background(Sunnah.Colors.bg)
         .navigationTitle(title)
