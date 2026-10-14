@@ -9,7 +9,8 @@ try? VNImageRequestHandler(cgImage: img).perform([req])
 let lines = (req.results ?? []).compactMap { $0.topCandidates(1).first?.string }
 let all = lines.joined(separator: "\n")
 if a.count > 3 { print(all); exit(0) }
-let bad = ["لا يوجد محتوى", "تعذّر", "تعذر تحميل", "محتوى مؤقت", "missingBundled", "إعادة المحاولة", "قيد التوثيق", "قيد الإعداد"]
+// الخطأ والفراغ لا يُكشفان بالنص: الحالة تأتي من screen.error/screen.empty (انظر native-snapshot.sh)؛ هنا بقايا تسريب داخلي فقط
+let bad = ["محتوى مؤقت", "missingBundled"]
 if let b = bad.first(where: { all.contains($0) }) { print("ERROR:\(b)"); exit(0) }
 // معرّف خام (kebab-case لاتيني مثل adh-morning) ظاهر كنص في أي شاشة = فشل
 if let raw = lines.first(where: { $0.range(of: "^[a-z]+(-[a-z]+)+$", options: .regularExpression) != nil }) { print("ERROR:RAW_ID(\(raw))"); exit(0) }

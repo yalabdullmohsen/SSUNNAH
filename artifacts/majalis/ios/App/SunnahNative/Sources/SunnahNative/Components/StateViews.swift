@@ -29,7 +29,7 @@ public struct SunnahMessageState: View {
 public struct EmptyStateView: View {
     let title: String; let message: String?; let symbol: String
     public init(title: String = "المحتوى قيد التوثيق", message: String? = nil, symbol: String = "tray") { self.title = title; self.message = message; self.symbol = symbol }
-    public var body: some View { SunnahMessageState(symbol: symbol, title: title, message: message) }
+    public var body: some View { SunnahMessageState(symbol: symbol, title: title, message: message).screenState(.empty) }
 }
 
 public struct LoadingStateView: View {
@@ -38,6 +38,7 @@ public struct LoadingStateView: View {
         ProgressView().tint(Sunnah.Colors.primary)
             .frame(maxWidth: .infinity).padding(Sunnah.Spacing.s6)
             .accessibilityLabel("جارٍ التحميل")
+            .screenState(.loading)
     }
 }
 
@@ -48,6 +49,7 @@ public struct ErrorStateView: View {
     public var body: some View {
         SunnahMessageState(symbol: "wifi.slash", title: ErrorStateView.offlineMessage,
                            actionTitle: retry == nil ? nil : "إعادة المحاولة", action: retry)
+            .screenState(.error)
     }
 }
 

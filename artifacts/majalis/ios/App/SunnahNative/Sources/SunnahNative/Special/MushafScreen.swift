@@ -14,7 +14,7 @@ struct MushafScreen: View {
             if let s = state {
                 MushafReaderView(repo: s.repo, index: s.index, search: s.search, store: store, startPage: Self.startPage(target, s.index))
             } else {
-                ProgressView().task { state = Self.load() }
+                ProgressView().screenState(.loading).task { state = Self.load() }
             }
         }
         .environment(\.layoutDirection, .rightToLeft)

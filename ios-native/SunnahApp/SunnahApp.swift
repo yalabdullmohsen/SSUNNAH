@@ -8,6 +8,9 @@ import SunnahPrayer
 struct SunnahApp: App {
     @StateObject private var router = AppRouter()
     @Environment(\.scenePhase) private var scenePhase
+    #if DEBUG
+    @StateObject private var readiness = SnapshotReadiness()
+    #endif
 
     init() {
         RouteResolver.registerAll(in: .shared)
@@ -24,9 +27,15 @@ struct SunnahApp: App {
                     PrayerWidgetPublisher.publish()
                     // لقطات native-loop: -snapshotRoute /path (للتصحيح فقط)
                     #if DEBUG
-                    if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p) }
+                    if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p); readiness.begin(route: p) }
                     #endif
                 }
+                #if DEBUG
+                // screen.ready: يعلن اكتمال التحميل (لا حالة خطأ/تحميل عالقة)؛ يقرؤه XCUITest، والسكربتات تقرأ snapshot-ready.json
+                .overlay(alignment: .topLeading) {
+                    if readiness.isReady { Color.clear.frame(width: 1, height: 1).accessibilityIdentifier(ScreenState.ready) }
+                }
+                #endif
                 .environment(\.audioEngineFactory, AudioEngines.live)
                 .environment(\.contentLoader, ContentLoader.live(bundle: .main))
                 .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore())))
