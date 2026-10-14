@@ -18,11 +18,17 @@ public struct MushafSearch: Sendable {
 
     public init(surahDirectory: URL, ayahPage: [String: Int]) throws {
         var out: [Entry] = []
+        var basmala = ""
         for s in 1...114 {
             let d = try Data(contentsOf: surahDirectory.appendingPathComponent(String(format: "surah-%03d.json", s)))
             let f = try JSONDecoder().decode(SurahFile.self, from: d)
             for a in f.ayahs {
-                let t = a.text.replacingOccurrences(of: "\u{FEFF}", with: "")
+                var t = a.text.replacingOccurrences(of: "\u{FEFF}", with: "")
+                if f.number == 1, a.numberInSurah == 1 { basmala = t }
+                // بيانات Tanzil تسبق آية 1 من كل سورة (عدا الفاتحة والتوبة) بالبسملة؛ وهي ليست من الآية.
+                else if a.numberInSurah == 1, f.number != 9, !basmala.isEmpty, t.hasPrefix(basmala) {
+                    t = String(t.dropFirst(basmala.count)).trimmingCharacters(in: .whitespaces)
+                }
                 out.append(.init(ayah: "\(f.number):\(a.numberInSurah)", text: t, norm: Self.normalize(t)))
             }
         }

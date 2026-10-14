@@ -71,3 +71,4 @@
 
 - ن4 → ن1: `Components/SunnahCard.swift`, `Components/SunnahListRow.swift` — استعمال `.sunnahPressable()` من `Shell/Motion.swift` بدل `.buttonStyle(.plain)` (انظر `docs/native/perf/motion.md`).
 - ن4 → ن1: `Design/Sunnah.swift` — `Sunnah.Motion.standard` يصير مرادفًا لـ`SunnahMotion.standard`؛ لن ألمس الملف.
+- ن3 → ن4: `Shell/RouteResolver.swift` — أُضيف سطر واحد (فوق سطر `MushafRoute`) لمسار `/tafsir/{سورة}:{آية}` ← `TafsirAyahView` (في `Mushaf/MushafTafsirView.swift`)؛ لا تغيير آخر في الملف.

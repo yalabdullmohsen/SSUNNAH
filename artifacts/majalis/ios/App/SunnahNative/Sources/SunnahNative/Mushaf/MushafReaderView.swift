@@ -228,17 +228,10 @@ public struct MushafReaderView: View {
         return index.surah(onPage: page)?.name ?? ""
     }
 
-    /// «سورة:آية» → «اسم السورة:رقم الآية» (مرجع النسخ والمشاركة).
-    private func reference(_ ayah: String) -> String {
-        let p = ayah.split(separator: ":")
-        let name = Int(p.first ?? "").flatMap { id in index.surahs.first { $0.id == id }?.name } ?? ""
-        return "\(name):\(p.last ?? "")"
-    }
+    private func reference(_ ayah: String) -> String { MushafShare.reference(ayah, index: index) }
 
-    /// نص النسخ/المشاركة: الآية الحرفية ثم المرجع بين قوسين.
-    private func shareText(_ ayah: String) -> String {
-        "\(search?.ayahText(ayah) ?? "") [\(reference(ayah))]"
-    }
+    /// النص العثماني الحرفي من البيانات؛ nil يعطّل النسخ والمشاركة بدل نسخ نص ناقص.
+    private func shareText(_ ayah: String) -> String? { MushafShare.text(ayah: ayah, index: index, search: search) }
 
     private func copy(_ text: String) {
         #if os(iOS)
@@ -256,9 +249,11 @@ public struct MushafReaderView: View {
                 SunnahButton("إغلاق", style: .outline) { selected = nil }
             }
             HStack(spacing: Sunnah.Spacing.s4) {
-                Button { copy(shareText(ayah)) } label: { Label("نسخ", systemImage: "doc.on.doc") }
-                ShareLink(item: shareText(ayah)) { Label("مشاركة", systemImage: "square.and.arrow.up") }
-                Button { openRoute("/tafsir") } label: { Label("تفسير", systemImage: "text.book.closed") }
+                if let text = shareText(ayah) {
+                    Button { copy(text) } label: { Label("نسخ", systemImage: "doc.on.doc") }
+                    ShareLink(item: text) { Label("مشاركة", systemImage: "square.and.arrow.up") }
+                }
+                Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }
                 Button { store.toggleBookmark(ayah: ayah, page: current) } label: { Label(isMarked ? "إزالة العلامة" : "علامة", systemImage: isMarked ? "bookmark.fill" : "bookmark") }
                 Spacer(minLength: 0)
             }
