@@ -61,6 +61,8 @@
 - `.github/workflows/ios-*.yml`
 - `.github/workflows/native-*.yml`
 
+- **شاشة الدخول (المقدّمة المتحركة)** — `Intro/**` و`docs/native/intro/**` و`IntroPolicyTests`/`IntroSnapshotTests`: ن2 (معتمدة من يوسف 2026-10-14، انظر `docs/native/intro/APPROVAL.md`).
+
 ## مشترك (لا تحذير)
 - `docs/native/**` عدا ما ذُكر لنافذة، و`artifacts/majalis/ios/App/SunnahNative/Tests/**` للاختبارات التي تكتبها النافذة لشاشتها.
 
