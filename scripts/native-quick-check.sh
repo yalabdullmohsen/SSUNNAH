@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # فحص سريع بعد دمج أي PR تصدير: scripts/native-quick-check.sh <قسم> [قسم…]
 # يعيد التصدير الكامل + بوابة البيانات + بناء التطبيق وتثبيته + لقطات الأقسام المذكورة فقط (لا دورة كاملة).
 set -uo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"; cd "$ROOT"
 . "$(cd "$(dirname "$0")" && pwd)/native-sim.sh" || exit 2
-DD="${DD:-/tmp/dd-$(basename "$PWD")}"
+DD="${DD:-$HOME/.majalis-tools/dd/$(basename "$PWD")}"
 if git status --porcelain | grep -E "(^|/)\.build(/|$)|\.xcresult|DerivedData" >/dev/null; then echo "✗ مسار .build/xcresult/DerivedData ظاهر في git status — أضِفه لـ.gitignore ولا تُضِفه"; exit 1; fi
 [ $# -ge 1 ] || { echo "usage: $0 <section>…"; exit 2; }
 bash scripts/native-lint-chevron.sh || exit 1

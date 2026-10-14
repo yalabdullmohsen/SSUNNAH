@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # دورة كاملة بلا PRs: تصدير كامل + بناء + لقطات كل الأقسام + تأشير [x] + دفع PROGRESS إلى native-app. الاستخدام: native-full-cycle.sh
 set -uo pipefail
 TOOLS="$HOME/.ssunnah-tools"; BOARD="$HOME/ssunnah-board"; LOG="$BOARD/native-loop.log"
-WT="$HOME/ssunnah-wt/native-loop"; DD="/tmp/dd-n4"; export NATIVE_WINDOW="${NATIVE_WINDOW:-n4}"; . "$(dirname "$0")/native-sim.sh"
+WT="$HOME/ssunnah-wt/native-loop"; DD="$HOME/.majalis-tools/dd/n4"; export NATIVE_WINDOW="${NATIVE_WINDOW:-n4}"; . "$(dirname "$0")/native-sim.sh"
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 log() { echo "$(date '+%F %T') [full] $*" >> "$LOG"; }
 cd "$WT" || exit 9

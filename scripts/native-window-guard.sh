@@ -3,6 +3,9 @@
 # الاستعمال: bash scripts/native-window-guard.sh n1   (يُستدعى من ensure-sim.sh وسكربتات البدء)
 set -euo pipefail
 W="${1:?اسم النافذة (n1..n4)}"
+TOP0=$(git rev-parse --show-toplevel 2>/dev/null || pwd -P)
+case "$(cd "$TOP0" 2>/dev/null && pwd -P)" in /tmp/*|/private/tmp/*|/var/folders/*|/private/var/folders/*)
+  echo "✗ حارس النافذة ${W}: لا worktree ولا عمل داخل /tmp (يُمسح عند إعادة التشغيل) — استعمل ~/.majalis-tools/wt/" >&2; exit 3;; esac
 case "$W" in
   n1|n1-b) EXPECT="$HOME/ssunnah-wt/ssunnah-n1" ;;
   n4)     EXPECT="$HOME/ssunnah-wt/ssunnah-n4" ;;

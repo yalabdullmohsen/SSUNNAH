@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانات: ببناءين متزامنين كحد أقصى (docs/native/WORKFLOW.md)
 # T-032 — iOS App Shell Stability matrix (Simulator evidence pack)
 # Usage: bash scripts/ios-app-shell-stability-matrix.sh
 set -euo pipefail
