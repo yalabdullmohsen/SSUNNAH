@@ -26,6 +26,7 @@ public struct SunnahDrawer: View {
             }
             .padding(Sunnah.Spacing.s4).padding(.top, Sunnah.Spacing.s6)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .sunnahMotifCorner(size: 130, tint: .white, opacity: 0.14).clipped()
             .sunnahPatternedBackground(radius: 0)
             ScrollView {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
