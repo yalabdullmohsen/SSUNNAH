@@ -36,22 +36,20 @@ public struct MushafPageView: View {
 
     @ViewBuilder
     private func content(_ page: MushafPage, family: String, size: CGSize) -> some View {
-        // هندسة المرجع (402×874): الأسطر من 10.2% (بعد معايرة قياس المحاكي) إلى 92% من الارتفاع، والهامش الجانبي ≈3% من العرض.
+        // التوزيع من بيانات تخطيط QPC (أنواع الأسطر) عبر MushafPageLayout؛ الهامش الجانبي ≈3% من العرض (هندسة المرجع 402×874).
         let inset = size.width * 0.03
         let width = size.width - inset * 2
-        let rows = page.opening ? page.rows.filter { $0.k != "x" } : page.rows
-        let slots = page.opening ? CGFloat(15) : CGFloat(max(15, rows.count))
-        let areaH = size.height * 0.811
-        let rowH = areaH / slots
+        let m = MushafPageLayout.metrics(for: page, height: size.height)
+        let rows = m.rows, rowH = CGFloat(m.rowHeight)
         let layout = MushafMetrics.layout(rows: rows, family: family, width: width, maxFont: rowH * 0.8)
         VStack(spacing: 0) {
             ForEach(Array(rows.enumerated()), id: \.offset) { i, row in
                 rowView(row, layout: layout, family: family, index: i, width: width).frame(height: rowH)
             }
         }
-        .frame(height: areaH, alignment: page.opening ? .center : .top)
+        .frame(height: rowH * CGFloat(rows.count))
         .padding(.horizontal, inset)
-        .padding(.top, size.height * 0.102)
+        .padding(.top, CGFloat(m.top))
         .frame(maxHeight: .infinity, alignment: .top)
         .environment(\.layoutDirection, .rightToLeft)
     }
@@ -139,8 +137,8 @@ public struct MushafReaderView: View {
                 .environment(\.layoutDirection, .rightToLeft)
                 .ignoresSafeArea()
                 .clipped()
-                pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * 0.088)
-                pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * 0.9435)
+                pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
+                pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
                 if showChrome { chrome.transition(.opacity) }
             }
             .frame(width: w, height: h)
