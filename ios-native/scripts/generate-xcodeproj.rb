@@ -49,7 +49,8 @@ t.frameworks_build_phase.files << bf
 # مرحلة تجهيز البيانات قبل نسخ الموارد
 sp = t.new_shell_script_build_phase('تجهيز البيانات (prepare-data.sh)')
 sp.shell_script = "\"${SRCROOT}/scripts/prepare-data.sh\"\n"
-sp.always_out_of_date = '1'
+sp.always_out_of_date = '1'  # التخطي داخل prepare-data.sh بالـhash (مدخلاته آلاف الملفات خارج هدف Xcode)
+sp.output_paths = ['$(SRCROOT)/Data/MANIFEST.json']
 t.build_phases.delete(sp); t.build_phases.insert(t.build_phases.index(t.resources_build_phase), sp)
 t.build_configurations.each do |c|
   s = c.build_settings
