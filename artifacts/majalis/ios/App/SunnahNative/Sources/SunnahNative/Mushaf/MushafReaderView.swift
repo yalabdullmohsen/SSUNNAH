@@ -37,11 +37,9 @@ public struct MushafPageView: View {
     @ViewBuilder
     private func content(_ page: MushafPage, family: String, size: CGSize) -> some View {
         // التوزيع من بيانات تخطيط QPC (أنواع الأسطر) عبر MushafPageLayout؛ الهامش الجانبي ≈3% من العرض (هندسة المرجع 402×874).
-        let inset = size.width * 0.03
-        let width = size.width - inset * 2
-        let m = MushafPageLayout.metrics(for: page, height: size.height)
+        let pl = repo.pageLayout(page, family: family, size: size)
+        let inset = pl.inset, width = pl.width, m = pl.m, layout = pl.layout
         let rows = m.rows, rowH = CGFloat(m.rowHeight)
-        let layout = MushafMetrics.layout(rows: rows, family: family, width: width, maxFont: rowH * 0.8)
         VStack(spacing: 0) {
             ForEach(Array(rows.enumerated()), id: \.offset) { i, row in
                 rowView(row, layout: layout, family: family, index: i, width: width).frame(height: rowH)
@@ -109,6 +107,7 @@ public struct MushafReaderView: View {
     @State private var selected: String?
     @State private var showIndex = false
     @State private var showChrome = false
+    @State private var pageSize = CGSize(width: 402, height: 874)
     @Environment(\.openRoute) private var openRoute
 
     public init(repo: MushafRepository, index: MushafIndex, search: MushafSearch?, store: MushafStore, startPage: Int? = nil) {
@@ -120,6 +119,7 @@ public struct MushafReaderView: View {
         GeometryReader { geo in
             let w = geo.size.width, h = geo.size.height
             ZStack(alignment: .top) {
+                Color.clear.onAppear { pageSize = geo.size }
                 Sunnah.Colors.mushafPaper
                 TabView(selection: $current) {
                     ForEach(1...Mushaf.pageCount, id: \.self) { n in
@@ -150,8 +150,8 @@ public struct MushafReaderView: View {
         .sheet(isPresented: $showIndex) {
             MushafIndexView(index: index, search: search, store: store) { page in current = page; showIndex = false }
         }
-        .onChange(of: current) { p in selected = nil; store.visit(page: p) }
-        .task { store.visit(page: current) }
+        .onChange(of: current) { p in selected = nil; store.visit(page: p); repo.prefetch(around: p, size: pageSize) }
+        .task { store.visit(page: current); repo.prefetch(around: current, size: pageSize) }
         .environment(\.layoutDirection, .rightToLeft)
     }
 
