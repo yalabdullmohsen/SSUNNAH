@@ -3,6 +3,7 @@
 # الاستعمال: bash scripts/ensure-sim.sh n1 [--boot]
 set -euo pipefail
 W="${1:?اسم النافذة (n1..n4)}"; NAME="$W-sim"
+bash "$(dirname "$0")/native-window-guard.sh" "$W" || exit $?
 udid=$(xcrun simctl list devices | sed -n "s/^ *$NAME (\([0-9A-F-]*\)).*/\1/p" | head -1)
 if [[ -z "$udid" ]]; then
   rt=$(xcrun simctl list runtimes | sed -n 's/.*\(com.apple.CoreSimulator.SimRuntime.iOS-[0-9-]*\)$/\1/p' | tail -1)
