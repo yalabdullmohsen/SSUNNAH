@@ -17,6 +17,7 @@ struct SunnahApp: App {
 
     var body: some Scene {
         WindowGroup {
+            IntroHost {
             RootTabView(router: router, screen: Self.screen)
                 .onAppear {
                     PrayerWidgetPublisher.publish()
@@ -27,6 +28,7 @@ struct SunnahApp: App {
                 }
                 .environment(\.contentLoader, ContentLoader.live(bundle: .main))
                 .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore())))
+            }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .active { PrayerWidgetPublisher.publish(); NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: true) }
