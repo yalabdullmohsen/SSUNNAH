@@ -6,9 +6,11 @@ final class MushafFlipHitchUITests: XCTestCase {
     func testFlip50Pages() throws {
         let app = XCUIApplication()
         app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", "/mushaf/page/100"]
+        let t0 = Date()
         app.launch()
         let page = app.descendants(matching: .any)["mushaf.pageNumber"]
-        XCTAssertTrue(page.waitForExistence(timeout: 120), "المصحف لم يُفتح")
+        XCTAssertTrue(page.waitForExistence(timeout: 20), "المصحف لم يُفتح")
+        print("MUSHAF_COLD_OPEN_MS=\(Int(Date().timeIntervalSince(t0) * 1000))")
         let opts = XCTMeasureOptions(); opts.iterationCount = 3
         var stepMs: [Double] = []
         var metrics: [XCTMetric] = [XCTOSSignpostMetric.scrollingAndDecelerationMetric]
