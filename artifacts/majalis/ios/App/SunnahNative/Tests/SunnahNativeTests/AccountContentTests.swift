@@ -21,8 +21,8 @@ final class AccountContentTests: XCTestCase {
         XCTAssertEqual(AccountTexts.historyAchievements.count, 12)
         XCTAssertEqual(AccountTexts.qiblaCities.count, 20)
         XCTAssertEqual(AccountTexts.badges.count, 17)
-        XCTAssertEqual(AccountTexts.sourceTypes.count, 17)
-        XCTAssertEqual(AccountTexts.sourceTypes.reduce(0) { $0 + $1.entries.count }, 29)
+        XCTAssertEqual(AccountTexts.sourceTypes.count, 21)
+        XCTAssertEqual(AccountTexts.sourceTypes.reduce(0) { $0 + $1.entries.count }, 35)
     }
 
     func testTextIdsAreUnique() {
@@ -129,7 +129,7 @@ final class AccountContentTests: XCTestCase {
 final class SourcesCoverageTests: XCTestCase {
     func testSourcesCoverEverySectionFamily() {
         let ids = Set(AccountTexts.sourceTypes.map(\.id))
-        for id in ["quran-text", "tafsir", "hadith", "adhkar", "prayer-times", "lessons-scholars", "fiqh-books", "editorial", "sirah-aqidah", "library-catalog"] {
+        for id in ["quran-text", "tafsir", "hadith", "adhkar", "prayer-times", "lessons-scholars", "fiqh-books", "editorial", "sirah-aqidah", "library-catalog", "fiqh-topics", "hadith-collections", "learn-content", "islam-stats"] {
             XCTAssertTrue(ids.contains(id), id)
         }
     }
