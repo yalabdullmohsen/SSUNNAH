@@ -123,7 +123,7 @@ struct AccountUserStatsScreen: View {
         let name = session?.displayName ?? "المستخدم"
         return ScrollView {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                AccountHeader(eyebrow: "ملفك الشخصي", title: "أهلاً، \(name)", subtitle: "إنجازاتك ومستواك وتقدمك في سُنّة.")
+                AccountHeader(eyebrow: "ملفك الشخصي", title: "أهلاً، \(name)", subtitle: "إنجازاتك ومستواك وتقدمك في سُنّة.", showsTitle: true)
 
                 SunnahCard {
                     HStack(spacing: Sunnah.Spacing.s3) {

@@ -266,7 +266,7 @@ struct AccountAutoContentDetailScreen: View {
             }
             .padding(Sunnah.Spacing.pageX)
         }
-        .navigationTitle(item.title)
+        .bodyTitledNavigation()
     }
 
     private func copy(_ item: AccountAutoContent) {

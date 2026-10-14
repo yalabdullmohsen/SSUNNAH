@@ -78,3 +78,14 @@ public final class TemplateRegistry {
 
     public func view(for id: String) -> AnyView? { builders[id]?() }
 }
+
+extension View {
+    /// عنوان الشاشة معروض في المتن: شريط تنقل مضغوط بلا عنوان كي لا يتكرر.
+    func bodyTitledNavigation() -> some View {
+        #if os(iOS)
+        return navigationTitle("").navigationBarTitleDisplayMode(.inline)
+        #else
+        return navigationTitle("")
+        #endif
+    }
+}

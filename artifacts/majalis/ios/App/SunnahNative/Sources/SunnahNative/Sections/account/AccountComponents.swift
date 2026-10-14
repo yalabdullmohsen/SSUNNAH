@@ -35,14 +35,18 @@ struct AccountHeader: View {
     let eyebrow: String?
     let title: String
     var subtitle: String?
+    /// العنوان الكبير يعرضه شريط التنقل أصلًا؛ لا يُكرَّر هنا إلا إن اختلف عنه (مثل «أهلاً، الاسم»).
+    var showsTitle = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
             if let eyebrow, !eyebrow.isEmpty {
                 Text(eyebrow).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary)
             }
-            Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                .accessibilityAddTraits(.isHeader)
+            if showsTitle {
+                Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                    .accessibilityAddTraits(.isHeader)
+            }
             if let subtitle, !subtitle.isEmpty {
                 Text(subtitle).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
