@@ -106,8 +106,9 @@ enum AccountCalendarMath {
 
     static var gregorian: Calendar {
         var c = Calendar(identifier: .gregorian)
-        c.firstWeekday = 1
+        // الترتيب مهم: ضبط locale يعيد firstWeekday إلى السبت (7) فيُزاح التقويم يومًا كاملًا.
         c.locale = Locale(identifier: "ar-u-nu-latn")
+        c.firstWeekday = 1
         return c
     }
 
