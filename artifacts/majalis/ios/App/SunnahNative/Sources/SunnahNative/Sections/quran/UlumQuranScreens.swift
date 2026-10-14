@@ -40,10 +40,10 @@ struct UlumQuranDetailView: View {
 }
 
 enum WorshipHubLinks {
-    /// مركز العبادة القرآنية: تركيب لشاشات قائمة (المواقيت والأذان من المحرك كما هي، بلا حساب جديد).
+    /// مركز العبادة القرآنية: تركيب لشاشات قائمة (المواقيت وتنبيهات الصلاة من المحرك كما هي، بلا حساب جديد).
     static let all = [
         SectionLink(id: "prayer", title: "مواقيت الصلاة", route: "/prayer-times"),
-        SectionLink(id: "adhan", title: "إعدادات الأذان والتنبيهات", route: "/adhan-settings"),
+        SectionLink(id: "adhan", title: "إعدادات تنبيهات الصلاة", route: "/notification-settings"),
         SectionLink(id: "hifz-loop", title: "مشغّل التحفيظ (تكرار A-B)", route: "/quran/hifz-loop"),
         SectionLink(id: "offline", title: "التلاوة دون اتصال", route: "/quran/offline-player"),
         SectionLink(id: "adhkar", title: "الأذكار", route: "/adhkar"),

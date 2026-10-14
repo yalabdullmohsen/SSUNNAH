@@ -129,7 +129,9 @@ struct AccountSubmission: Decodable, Sendable, Identifiable, Hashable {
     }
 
     static let statusLabel = ["pending": "قيد التدقيق", "approved": "مقبول", "rejected": "مرفوض"]
-    static let typeLabel = ["adhan": "أذان", "lesson": "درس"]
+    static let typeLabel = ["lesson": "درس"]
+    /// سجلات نوع قديم أُلغي (رفع صوتيات الأذان): تُفكّ بلا انهيار وتُخفى من العرض.
+    static let retiredTypes: Set<String> = ["adhan"]
 
     var isAudio: Bool { fileMime?.hasPrefix("audio") == true && fileURL.flatMap(URL.init(string:)) != nil }
 
@@ -147,7 +149,7 @@ struct AccountSubmission: Decodable, Sendable, Identifiable, Hashable {
     }
 }
 
-/// /my-submissions — مساهماتي: تتبّع حالة الأذانات والدروس المرسلة بالبريد المستعمل عند الإرسال.
+/// /my-submissions — مساهماتي: تتبّع حالة الدروس المرسلة بالبريد المستعمل عند الإرسال.
 struct AccountMySubmissionsScreen: View {
     @Environment(\.contentLoader) private var loader
     @Environment(\.openRoute) private var openRoute
@@ -162,7 +164,7 @@ struct AccountMySubmissionsScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                AccountHeader(eyebrow: "المساهمات", title: "مساهماتي", subtitle: "تتبّع حالة الأذانات والدروس التي أرسلتها للمراجعة.")
+                AccountHeader(eyebrow: "المساهمات", title: "مساهماتي", subtitle: "تتبّع حالة الدروس التي أرسلتها للمراجعة.")
 
                 if AccountSession.read(from: platform.auth) == nil {
                     SunnahCard {
@@ -246,9 +248,6 @@ struct AccountMySubmissionsScreen: View {
                 if let note = sub.reviewerNote, !note.isEmpty {
                     AccountRichText("**ملاحظة الفريق:** " + note, font: Sunnah.Typography.secondary)
                 }
-                if sub.type == "adhan" {
-                    Text("ميزة رفع الأذان أُلغيت نهائيًا. هذا سجل قديم للعرض فقط.").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                }
                 if sub.status == "approved" && sub.type == "lesson" {
                     Text("تهانينا! قُبل درسك وهو في مسار النشر ضمن قسم الدروس.").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
                 }
@@ -278,6 +277,7 @@ struct AccountMySubmissionsScreen: View {
         defer { loading = false }
         do {
             list = try await loader.load([AccountSubmission].self, from: AccountEndpoints.submissions(email: e))
+                .filter { !AccountSubmission.retiredTypes.contains($0.type) }
         } catch {
             self.error = ErrorStateView.offlineMessage
         }

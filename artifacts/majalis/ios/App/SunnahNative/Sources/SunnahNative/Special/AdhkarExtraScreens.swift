@@ -44,12 +44,10 @@ public enum AdhkarExtraScreens {
         registry.registerView(id: "tasbih") { TasbihView() }
         registry.registerView(id: "daily-wird") { DailyWirdView() }
         registry.registerView(id: "duas") { ReaderDataScreens.duasScreen() }
-        // أدعية القرآن وورد وسنن يومية: لا بيانات موثَّقة في العقد، وإعدادات الأذان تتبع الإشعارات.
+        // أدعية القرآن وورد وسنن يومية: لا بيانات موثَّقة في العقد، وتنبيهات الصلاة تتبع الإشعارات.
         for (id, title) in [("duas-quran", "أدعية القرآن"), ("sunan-yawmiyya", "السنن اليومية"),
-                            ("adhan-help", "مساعدة الأذان")] {
+                            ("adhan-help", "مساعدة تنبيهات الصلاة")] {
             registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق").navigationTitle(title) }
         }
-        // إعدادات الأذان = شاشة الإشعارات الأصلية نفسها (أذان/تنبيه الصلوات + الإذن)، لا شاشة ثانية.
-        registry.registerView(id: "adhan-settings") { AccountNotificationSettingsScreen(isAdhanVariant: true).navigationTitle("إعدادات الأذان") }
     }
 }

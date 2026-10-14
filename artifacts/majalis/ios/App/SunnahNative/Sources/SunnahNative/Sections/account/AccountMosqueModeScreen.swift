@@ -1,7 +1,7 @@
 import SwiftUI
 import SunnahPrayer
 
-/// طور العد في وضع المسجد (مطابق لـ prayer-phase في الويب): خلال 30 دقيقة بعد الأذان يُعرض «مضى على أذان…».
+/// طور العد في وضع المسجد (مطابق لـ prayer-phase في الويب): خلال 30 دقيقة بعد دخول الوقت يُعرض «مضى على دخول وقت…».
 enum AccountPrayerPhase: Equatable {
     case countdown(prayer: Prayer, at: Date, remaining: TimeInterval)
     case elapsed(prayer: Prayer, since: TimeInterval, next: Prayer?, nextIn: TimeInterval?)
@@ -97,7 +97,7 @@ struct AccountMosqueModeScreen: View {
             VStack(spacing: Sunnah.Spacing.s2) {
                 switch AccountPrayerPhase.resolve(now: now, slots: slots) {
                 case let .elapsed(prayer, since, _, nextIn)?:
-                    Text("مضى على أذان \(prayer.nameAr)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    Text("مضى على دخول وقت \(prayer.nameAr)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     Text("\(Int(since / 60)) دقيقة").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.primary)
                         .monospacedDigit()
                     if let nextIn {

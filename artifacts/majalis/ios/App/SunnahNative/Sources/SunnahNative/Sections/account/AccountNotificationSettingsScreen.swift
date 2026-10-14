@@ -76,10 +76,8 @@ final class AccountNotificationSettingsModel: ObservableObject {
     }
 }
 
-/// /notification-settings — الإشعارات: تنبيهات الصلاة (بلا أذان، قرار المالك)، وتذكيرات الأذكار، وساعات الهدوء.
+/// /notification-settings — الإشعارات: تنبيهات الصلاة، وتذكيرات الأذكار، وساعات الهدوء.
 struct AccountNotificationSettingsScreen: View {
-    /// /adhan-settings يفتح الشاشة نفسها بعنوان «إعدادات الأذان» (بلا صوت أذان، قرار المالك) فلا يتطابق مع /notification-settings ولا يحيل إلى نفسه.
-    var isAdhanVariant = false
     @StateObject private var model = AccountNotificationSettingsModel()
     @Environment(\.openRoute) private var openRoute
     @State private var explainFor: ((Bool) -> Void)?
@@ -89,7 +87,7 @@ struct AccountNotificationSettingsScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                AccountHeader(eyebrow: "الإعدادات", title: isAdhanVariant ? "إعدادات الأذان" : "الإشعارات",
+                AccountHeader(eyebrow: "الإعدادات", title: "الإشعارات",
                               subtitle: "مكان واحد لكل التذكيرات: الصلاة والقرآن والأذكار وطلب العلم والمناسبات.")
                 permissionBanner
                 if explainFor != nil { explainCard }
@@ -103,7 +101,6 @@ struct AccountNotificationSettingsScreen: View {
                     if model.optIn.prayer {
                         prayerOptions
                     }
-                    if !isAdhanVariant { AccountLinkRow(title: "إعدادات الأذان", path: "/adhan-settings") }
                 }
 
                 SunnahCard {
