@@ -34,6 +34,7 @@ public enum RouteResolver {
         if comps.isEmpty, let v = reg.view(for: "home") { return ("special:home", v) }
         if comps.count == 1, let id = specialAliases[comps[0]], let v = reg.view(for: id) { return ("special:\(id)", v) }
         if comps.count == 1, let to = redirects[comps[0]] { return trace(path: to) }
+        if let t = MushafRoute.parse(base) { return ("mushaf-deeplink", AnyView(MushafScreen(target: t))) }
         if let v = SirahSection.resolve(path: base) { return ("sirah", v) }
         if let v = AqidahSection.resolve(path: base) { return ("aqidah", v) }
         if let v = FiqhSection.resolve(path: base) { return ("fiqh", v) }
