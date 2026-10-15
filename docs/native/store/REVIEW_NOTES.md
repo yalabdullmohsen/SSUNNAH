@@ -22,7 +22,7 @@ Authentication: e-mail + password only (Supabase Auth). No Sign in with Apple or
 تسجيل الدخول/إنشاء الحساب (Supabase Auth، قد يتطلب تأكيد البريد)، المفضلة والتقدم والإنجازات والتسجيل في الدروس، مساهمات المستخدمين (`/api/submissions`)، تصدير بيانات الحساب، المحتوى الجديد المنشور بعد الإصدار. صفحات «البحث الأكاديمي» ونماذج التواصل **تحتاج اتصالًا/حسابًا** وتعرض حالة فارغة منظّمة دونه (انظر `docs/native/data-exemptions.json`).
 
 ## الحساب التجريبي (إجراء المالك)
-الدخول اختياري، فالمراجعة ممكنة دونه. إن أردتم تقديم حساب: أنشئ حسابًا في Supabase مؤكَّد البريد، وضع بياناته في حقلي **Sign-in required → User name / Password** في App Review Information. **لا تُكتب كلمة المرور في المستودع (عام).** تأكّد من صلاحيته قبل كل إرسال (`docs/store-release/REVIEWER_NOTES.md`).
+الدخول اختياري، فالمراجعة ممكنة دونه. حساب المراجع: **`apple.review@ssunnah.com`** (كلمة المرور في App Review Information فقط، وتُنشأ في Supabase بخيار Auto Confirm User قبل الرفع فلا حاجة لصندوق بريد). للإنشاء: أنشئ حسابًا في Supabase مؤكَّد البريد، وضع بياناته في حقلي **Sign-in required → User name / Password** في App Review Information. **لا تُكتب كلمة المرور في المستودع (عام).** تأكّد من صلاحيته قبل كل إرسال (`docs/store-release/REVIEWER_NOTES.md`).
 
 ## ملاحظات
 - أُزيل من الصيغة القديمة (`docs/store-release/REVIEWER_NOTES.md`، 1.0.0) ذكر `remote-notification`: التطبيق الأصلي لا يسجّل إشعارات بعيدة (`UIBackgroundModes` = `audio`, `fetch`).
