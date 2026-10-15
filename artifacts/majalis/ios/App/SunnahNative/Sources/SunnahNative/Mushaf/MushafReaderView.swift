@@ -128,9 +128,9 @@ public struct MushafReaderView: View {
 
     public var body: some View {
         GeometryReader { geo in
-            let w = geo.size.width, h = geo.size.height
+            let h = geo.size.height, w = MushafPageLayout.canvasWidth(container: geo.size)
             ZStack(alignment: .top) {
-                Color.clear.onAppear { pageSize = geo.size }
+                Color.clear.onAppear { pageSize = CGSize(width: w, height: h) }
                 Sunnah.Colors.mushafPaper
                 TabView(selection: $current) {
                     ForEach(Mushaf.pagerWindow(around: current), id: \.self) { n in

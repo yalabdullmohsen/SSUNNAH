@@ -13,6 +13,10 @@ public enum MushafPageLayout {
     public static let areaTop: Double = 0.102
     public static let areaHeight: Double = 0.811
     public static let slotCount = 15
+    /// أعرض نسبة عرض/ارتفاع للصفحة (iPad عمودي 0.75): ما فوقها (الأفقي) تُمركَز الصفحة بهذا العرض بدل التمدّد فيُفصل النص عن اللافتة.
+    /// الهواتف (≤0.56) وiPad العمودي لا يتأثران؛ التغيير قياس وتمركز فقط.
+    public static let maxAspect: Double = 0.75
+    public static func canvasWidth(container: CGSize) -> CGFloat { min(container.width, container.height * CGFloat(maxAspect)) }
 
     /// الأسطر التي ستُعرض بالترتيب (بعد اختزال الفراغات في صفحتي الافتتاح).
     public static func displayRows(_ page: MushafPage) -> [MushafRow] {
