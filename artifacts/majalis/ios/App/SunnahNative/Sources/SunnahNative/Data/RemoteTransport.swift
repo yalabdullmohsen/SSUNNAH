@@ -59,13 +59,16 @@ public struct RemoteTransport: DataTransport {
 
     public init(config: RemoteConfig, session: URLSession? = nil) {
         self.config = config
-        self.session = session ?? {
-            let c = URLSessionConfiguration.default
-            c.timeoutIntervalForRequest = RemoteTransport.timeout
-            c.timeoutIntervalForResource = RemoteTransport.timeout
-            c.waitsForConnectivity = false
-            return URLSession(configuration: c)
-        }()
+        self.session = session ?? Self.shortSession()
+    }
+
+    /// جلسة بمهلة قصيرة وبلا انتظار اتصال: أي مضيف ميت يفشل خلال ثوانٍ لا يعلّق.
+    public static func shortSession(timeout: TimeInterval = RemoteTransport.timeout) -> URLSession {
+        let c = URLSessionConfiguration.default
+        c.timeoutIntervalForRequest = timeout
+        c.timeoutIntervalForResource = timeout
+        c.waitsForConnectivity = false
+        return URLSession(configuration: c)
     }
 
     /// يبني الطلب دون إرساله (للاختبار).

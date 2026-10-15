@@ -52,7 +52,7 @@ struct AccountPrivacyCenterScreen: View {
                 }
 
                 AccountSectionCard(title: "حذف الحساب") {
-                    AccountLinkRow(title: "طلب حذف الحساب نهائيًا", path: "/account-deletion")
+                    AccountLinkRow(title: "حذف الحساب نهائيًا", path: "/account-deletion")
                 }
 
                 AccountSectionCard(title: "سياسات ومستندات") {

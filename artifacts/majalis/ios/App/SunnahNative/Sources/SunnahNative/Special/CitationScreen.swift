@@ -96,7 +96,7 @@ public struct CitationScreen: View {
             var req = URLRequest(url: AccountAPI().baseURL.appendingPathComponent(String(CitationPath.path(slug: slug).dropFirst())))
             req.timeoutInterval = RemoteTransport.timeout
             req.setValue("Bearer \(session.accessToken)", forHTTPHeaderField: "Authorization")
-            let (data, response) = try await URLSession.shared.data(for: req)
+            let (data, response) = try await RemoteTransport.shortSession().data(for: req)
             if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
                 phase = (http.statusCode == 404 || http.statusCode == 401) ? .notFound : .offline
                 return
