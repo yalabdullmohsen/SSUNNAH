@@ -15,7 +15,7 @@ Sunnah (com.yousef.majlisilm) is an Arabic Islamic-learning app (Qur'an mushaf, 
 - No tracking, no ads, no third-party analytics SDK.
 How to test sign-in (optional): there is no Sign-in button in Settings (Settings only shows the signed-in e-mail and Sign out). Steps: 1) open the personal screen "My Contributions" (مساهماتي, route /my-submissions), which shows a "تسجيل الدخول" button when signed out; 2) tap "تسجيل الدخول" (Sign in); 3) enter e-mail and password (credentials, if provided, are in the App Review Information fields) and tap "دخول". New accounts: "إنشاء حساب" (Register) sends a confirmation e-mail first. Account deletion (Guideline 5.1.1(v)), requires a signed-in account: Account → Privacy Center (مركز الخصوصية) → "حذف الحساب نهائيًا" (Delete account permanently) → type «حذف» to confirm → the app calls the server function delete_my_account, signs out and clears local data. The same screen is reachable from the sections list as "حذف الحساب" (route /account-deletion). Because deletion deletes the account, please use a disposable account (or create one via "إنشاء حساب"). All other features can be reviewed without signing in.
 Religious content note: all Qur'an, hadith, adhkar and fiqh texts are published from our approved website https://www.ssunnah.com and are shown unchanged; the app does not author or edit religious texts.
-Demo account: not required (sign-in is optional); if provided, see App Review Information fields.
+Authentication: e-mail + password only (Supabase Auth). No Sign in with Apple or any third-party/social login. Registration sends a confirmation e-mail that must be opened before the first sign-in, so a reviewer cannot create a usable account without a real inbox: please use the demo account in the App Review Information fields (needed to test sign-in and account deletion). Everything else works without an account.
 ```
 
 ## الميزات التي تحتاج اتصالًا (للمراجع)
@@ -29,3 +29,8 @@ Demo account: not required (sign-in is optional); if provided, see App Review In
 - لا مفتاح ميكروفون ولا حركة في Info.plist الحالي (حُذفا؛ لا تسجيل صوتي ولا CoreMotion في التطبيق).
 - **شرط قبل الإرسال (إجراء المالك):** اختبار حذف الحساب عند المراجع يتطلب أن تكون الدالة `delete_my_account` مطبَّقة على الإنتاج (`docs/native/backend/delete-account.sql`)؛ وإلا تظهر «خدمة الحساب غير مهيّأة…» وقد يُرفض التطبيق (5.1.1(v)). وفِّر حسابًا تجريبيًا مؤكَّد البريد في App Review Information لأن الحذف لا يُختبر دون حساب.
 - المساهمات (`/api/submissions`) وتصدير بيانات الحساب يعتمدان على خادم الموقع؛ إن تعذّر الاتصال تعرض رسالة لا انهيارًا. لا تَعِد بهما في نص المتجر.
+
+## التسجيل لدى المراجع (فُحص من الكود والإعدادات الحية 2026-10-15)
+- الطريقة: بريد + كلمة مرور فقط (`SupabaseAuthAdapter.signUp` ← `/auth/v1/signup`)؛ لا Sign in with Apple ولا دخول اجتماعي (فلا يلزم 4.8).
+- التأكيد: **مطلوب**؛ `GET /auth/v1/settings` يُرجع `mailer_autoconfirm=false`. الكود يدعم الحالتين (إن عاد `access_token` يدخل مباشرة، وإلا يعرض «أرسلنا رابط التأكيد…»). فالمراجع لا يستطيع إنشاء حساب صالح بنفسه ⇒ **حساب تجريبي لازم**.
+- ما يطلبه المالك (3 خطوات): ١) Supabase ← Authentication ← Users ← Add user ← Create new user: بريد مخصص للمراجعة + كلمة مرور قوية، وفعّل **Auto Confirm User**. ٢) سجّل الدخول به من التطبيق مرة للتأكد (الحساب ← تسجيل الدخول). ٣) ضع البريد وكلمة المرور في App Review Information ← Sign-in required (لا في المستودع). يُحذف الحساب أثناء المراجعة؛ أنشئ بديلًا قبل كل إرسال جديد، أو اكتب في الملاحظات أن المراجع يجرّب «حذف الحساب» على حساب ينشئه هو بتأكيد البريد فقط إن توفّر له.
