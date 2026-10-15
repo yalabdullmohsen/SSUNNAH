@@ -6,6 +6,11 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"; cd "$ROOT"
 SRC="artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative"
 fail=0; bad() { echo "✗ $1"; fail=1; }
 
+# 0) رقم البناء يجب أن يكون أكبر من آخر مرفوع (docs/native/release-state.json) وإلا يرفضه App Store Connect
+LASTB=$(node -e 'console.log(JSON.parse(require("fs").readFileSync("docs/native/release-state.json")).lastUploadedBuild)')
+CURB=$(grep -oE "s\['CURRENT_PROJECT_VERSION'\] = '[0-9]+'" ios-native/scripts/generate-xcodeproj.rb | grep -oE "[0-9]+'" | tr -d "'" | sort -u | head -1)
+[ -n "$CURB" ] && [ "$CURB" -gt "$LASTB" ] || bad "رقم البناء ${CURB:-؟} ليس أكبر من آخر مرفوع $LASTB (docs/native/release-state.json)"
+
 # 1) لا شاشات معلّقة: pendingIDs فارغة
 pend=$(awk '/static let pendingIDs/{f=1} f{print} f&&/\]/{exit}' "$SRC/Sections/quran/QuranScreens+Native.swift" | grep -o '"[^"]*"' | tr -d '"')
 [ -z "$pend" ] || bad "شاشات معلّقة (قيد الإعداد): $(echo $pend | tr '\n' ' ')"
