@@ -1,4 +1,5 @@
 import SwiftUI
+import SunnahDataKit
 
 /// حالة الشاشة المعلنة للتدقيق الآلي: معرّفات `accessibilityIdentifier` ثابتة (لا مطابقة نصوص).
 /// `screen.error` / `screen.empty` على حالات الشاشة الكاملة المشتركة، و`screen.ready` يعلنه التطبيق بعد اكتمال التحميل.
@@ -7,20 +8,19 @@ public enum ScreenState: String, Sendable {
     public static let ready = "screen.ready"
 }
 
-/// حالات الشاشة الظاهرة حاليًا، مفتاحها معرّف نسخة الواجهة (يُحدَّث من onAppear/onDisappear للمكونات المشتركة).
-/// المعرّف يجعل enter/leave متساويَي القوة (idempotent): onAppear مكرَّر لا يرفع العدّ مرتين، وonDisappear متأخر
-/// من شاشة سابقة لا يُنقص حالة شاشة جديدة، ولا يبقى عدّاد معلَّق إن لم يصل onDisappear (إغلاق الشاشة قبل النقصان).
+/// غلاف رقيق على `ScreenStateTracker` (SunnahDataKit، يُختبر بـ`swift test`): المنطق هناك، وهنا النشر لـSwiftUI فقط.
 @MainActor
 public final class ScreenProbe: ObservableObject {
     public static let shared = ScreenProbe()
-    private var live: [ScreenState: Set<UUID>] = [:]
+    private var tracker = ScreenStateTracker<ScreenState>()
     /// يزيد عند أي تغيّر؛ يستعمله المنتظر لاكتشاف الاستقرار.
     @Published public private(set) var revision = 0
-    public func enter(_ s: ScreenState, id: UUID) { if live[s, default: []].insert(id).inserted { revision += 1 } }
-    public func leave(_ s: ScreenState, id: UUID) { if live[s]?.remove(id) != nil { revision += 1 } }
+    public init() {}
+    public func enter(_ s: ScreenState, id: UUID) { tracker.enter(s, id: id); revision = tracker.revision }
+    public func leave(_ s: ScreenState, id: UUID) { tracker.leave(s, id: id); revision = tracker.revision }
     /// يصفّر كل الحالات (تبديل المسار في وضع التدقيق فقط).
-    public func reset() { live = [:]; revision += 1 }
-    public func count(_ s: ScreenState) -> Int { live[s]?.count ?? 0 }
+    public func reset() { tracker.reset(); revision = tracker.revision }
+    public func count(_ s: ScreenState) -> Int { tracker.count(s) }
     public var isLoading: Bool { count(.loading) > 0 }
     /// الحالة النهائية: خطأ > فارغ > سليم.
     public var outcome: String { count(.error) > 0 ? "error" : count(.empty) > 0 ? "empty" : "ok" }
