@@ -299,7 +299,7 @@ public enum LibrarySection {
 
     // MARK: بُناة
 
-    static func titled<V: View>(_ view: V) -> some View { view.navigationTitle(LibrarySection.title) }
+    static func titled<V: View>(_ view: V) -> some View { view.frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg).navigationTitle(LibrarySection.title) }
 
     private static func inline<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem],
                                                           layout: LibraryInlineItemsView.Layout = .list,

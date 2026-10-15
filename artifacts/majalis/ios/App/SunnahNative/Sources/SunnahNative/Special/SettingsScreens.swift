@@ -43,7 +43,7 @@ struct UpdatePasswordView: View {
     @State private var busy = false
     var body: some View {
         VStack(spacing: Sunnah.Spacing.s4) {
-            SecureField("كلمة المرور الجديدة (6 أحرف فأكثر)", text: $password).textFieldStyle(.roundedBorder)
+            SecureField("كلمة المرور الجديدة (6 أحرف فأكثر)", text: $password).sunnahFieldChrome()
             if let message { Text(message).font(Sunnah.Typography.secondary) }
             Button(busy ? "جارٍ الحفظ…" : "حفظ") {
                 Task {
