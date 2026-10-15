@@ -36,7 +36,7 @@ export REVIEW_DEMO_PASSWORD='••••••••'     # يبقى في بي�
 
 ## 4) App Privacy (يدوي)
 App Store Connect ← سُنّة ← App Privacy ← Edit ← اتبع §5 في `PRIVACY_CHECK.md` ← Publish.
-Privacy Policy URL: `https://www.ssunnah.com/privacy`.
+Privacy Policy URL: `https://yalabdullmohsen.github.io/sunnah-legal/privacy.html`.
 
 ## 5) لصق WHATS_NEW وREVIEW_NOTES
 `native_release` يقرؤهما تلقائيًا (`WHATS_NEW.md` → ar-SA/en-US، `REVIEW_NOTES.md` → ملاحظات المراجِع). للمعاينة:

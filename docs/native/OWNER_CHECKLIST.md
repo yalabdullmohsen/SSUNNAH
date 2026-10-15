@@ -18,7 +18,7 @@ App Store Connect ← سُنّة ← **App Information** ← **Age Rating** ← 
 ## 2) بقية الخطوات اليدوية
 1. **Primary Category** = Reference (الثانوية اختيارية: Lifestyle).
 2. **App Privacy**: وفق §5 في `store/PRIVACY_CHECK.md` ← Publish.
-3. **Privacy Policy URL** = `https://www.ssunnah.com/privacy`، **Support URL** = `https://www.ssunnah.com/support`.
+3. **Privacy Policy URL** = `https://yalabdullmohsen.github.io/sunnah-legal/privacy.html`، **Support URL** = `https://yalabdullmohsen.github.io/sunnah-legal/support.html`.
 4. **App Review Information**: الصق `store/REVIEW_NOTES.md` (مسار الدخول: «مساهماتي» ← «تسجيل الدخول»)، وحساب تجريبي إن أردت.
 5. الاسم والوصف والكلمات المفتاحية (ar-SA وen-US) من `store/APPSTORE_METADATA.md`، و«ما الجديد» من `store/WHATS_NEW.md`.
 6. اللقطات: `store/SCREENSHOTS.md`.

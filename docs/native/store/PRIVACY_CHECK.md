@@ -39,7 +39,7 @@ App Store Connect ← التطبيق ← **App Privacy** ← **Edit** (Data Type
 1. «Do you or your third-party partners collect data from this app?» = **Yes**.
 2. اختر: **Contact Info** ▸ Email Address، Name؛ **Identifiers** ▸ User ID؛ **User Content** ▸ Other User Content؛ **Usage Data** ▸ Product Interaction.
 3. لكل نوع: Purpose = **App Functionality** فقط؛ Linked to user = **Yes**؛ Used for tracking = **No**.
-4. **Publish**. رابط سياسة الخصوصية (Privacy Policy URL) إلزامي: استخدم `https://www.ssunnah.com/privacy` (تحقق منها ن1: HTTP 200 وصفحة «سياسة الخصوصية | سُنّة» حقيقية؛ لا تستعمل `/privacy-policy` فهو 404).
+4. **Publish**. رابط سياسة الخصوصية (Privacy Policy URL) إلزامي: استخدم `https://yalabdullmohsen.github.io/sunnah-legal/privacy.html` (مستودع `yalabdullmohsen/sunnah-legal` على GitHub Pages؛ الموقع ssunnah.com ميت HTTP 402).
 القائمة الأوسع في `docs/store-release/APP_STORE_PRIVACY_ANSWERS_DRAFT.md` مبنية على تطبيق Capacitor (تشمل Phone/Device ID/Analytics)؛ **للأصلي استخدم هذا الملف**، وإن أبقيتم الأوسع فهو آمن (إفصاح زائد) لكنه غير دقيق.
 
 ## رابط الخصوصية داخل التطبيق (فحص ن1)

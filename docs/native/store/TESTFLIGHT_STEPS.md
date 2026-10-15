@@ -45,7 +45,7 @@ bundle exec fastlane ios native_release submit:true build:101  # فعلي: بن�
 **شروط:** الإصدار 1.2.0 يجب أن يكون بحالة قابلة للتحرير (أنشئه يدويًا مرة: **Apps** ← سُنّة ← **+** بجانب **iOS App** ← `1.2.0` ← **Create**)، وأن يكون البناء قد أنهى **Processing**. اللغتان `ar-SA` و`en-US` يجب أن تكونا مضافتين للتطبيق في App Store Connect؛ إن اختلفت أسماء اللغات فعدّلها في الـlane. أول تشغيل فعلي لم يُجرَّب هنا (لا fastlane على هذه الآلة) فابدأ بـdry-run.
 **لا يُؤتمت — خطوات يدوية قليلة (مرة واحدة):**
 1. **App Privacy**: App Store Connect ← سُنّة ← **App Privacy** ← **Edit** ← اتبع §5 في `PRIVACY_CHECK.md` ← **Publish**.
-2. **Privacy Policy URL**: الصق `https://www.ssunnah.com/privacy` في **App Information** ← **Privacy Policy URL** (الصفحة تعمل: تحقق منها 200 بعنوان «سياسة الخصوصية | سُنّة»؛ `majlisilm.com/privacy` يعيد 308).
+2. **Privacy Policy URL**: الصق `https://yalabdullmohsen.github.io/sunnah-legal/privacy.html` في **App Information** ← **Privacy Policy URL** (GitHub Pages؛ HTTP 200 بتاريخ 2026-10-15).
 3. لقطات الشاشة وبقية بيانات الصفحة إن لم تكن مكتملة من الإصدار السابق.
 
 ### الطريقة اليدوية (بديل)
