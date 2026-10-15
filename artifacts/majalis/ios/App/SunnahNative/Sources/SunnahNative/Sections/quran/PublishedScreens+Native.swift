@@ -46,7 +46,7 @@ struct QuranDocView: View {
             VStack(spacing: 0) {
             DetailHero(title: title)
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                ForEach(paragraphs, id: \.self) { Text($0).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                ForEach(paragraphs, id: \.self) { SunnahMarkdownText($0, style: .body) }
                 ForEach(sections, id: \.title) { s in
                     Text(s.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     ForEach(s.lines, id: \.self) { Text($0).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
