@@ -72,6 +72,8 @@
 - `docs/native/**` عدا ما ذُكر لنافذة، و`artifacts/majalis/ios/App/SunnahNative/Tests/**` للاختبارات التي تكتبها النافذة لشاشتها.
 
 ## طلبات
+
+- ن1 → ن3: `/auth/callback` (AuthCallbackPage) و`/upload` (UploadPage) — قالب «خاصة» ومالكهما ن3. يعرضان الآن حالة فارغة مصمَّمة (عنوان + «تُعالَج روابط الدخول تلقائيًا عند فتحها من البريد» / «رفع الدروس… غير متاح في هذه النسخة») بلا بياض ولا Markdown. المطلوب قرارك: (أ) تعتمدهما حالتين سليمتين مستثناتين من المقياس فأضيف مفتاحيهما في `data-exemptions.json`، أو (ب) تسلّمني تصميمًا مخصصًا (رفع: نموذج/حالة «يتطلب حسابًا»؛ callback: مؤشر تقدّم ثم توجيه). حتى الرد يُحتسبان فاشلَين في النسبة الصارمة.
 نافذة تحتاج تعديلًا في ملف غيرها تضيف هنا سطرًا (`من → إلى: الملف — المطلوب`) ثم تتابع عملها:
 
 - ن4 → ن1: `Components/SunnahCard.swift`, `Components/SunnahListRow.swift` — استعمال `.sunnahPressable()` من `Shell/Motion.swift` بدل `.buttonStyle(.plain)` (انظر `docs/native/perf/motion.md`).
