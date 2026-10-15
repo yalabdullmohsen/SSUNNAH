@@ -109,7 +109,7 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
       group("asma", "أسماؤهم ومهامهم", numbered("asma", g("MALAIKA"), (r, id) => entry(id, r.name, { summary: r.arabicTitle, body: [r.role, r.detail].filter(nz).join("\n"), reference: r.ref }))),
       group("awsaf", "صفاتهم", numbered("awsaf", g("AWSAF"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ayah }))),
       group("fadail", "فضائلهم", numbered("fadail", g("FADAIL"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ref }))),
-      group("amal", "تعاملهم مع البشر", numbered("amal", g("AMAL_ITEMS"), (r, id) => entry(id, r.title, { body: r.text }))),
+      group("amal", "تعاملهم مع البشر", numbered("amal", g("AMAL_ITEMS"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ref }))),
     ]);
   }
 
