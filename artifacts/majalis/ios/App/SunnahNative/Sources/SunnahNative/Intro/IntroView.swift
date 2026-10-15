@@ -169,6 +169,7 @@ private struct PieceMotion: ViewModifier {
 public struct IntroHost<Content: View>: View {
     private let content: Content
     private let isReady: @MainActor () -> Bool
+    private let onMilestone: @MainActor (String) -> Void
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.colorScheme) private var scheme
     @State private var style: IntroStyle?
@@ -177,8 +178,10 @@ public struct IntroHost<Content: View>: View {
     @State private var removed = false
 
     /// `isReady`: جاهزية البيانات (افتراضيًا: ظهر المحتوى).
-    public init(isReady: @escaping @MainActor () -> Bool = { true }, @ViewBuilder content: () -> Content) {
+    /// `onMilestone`: «introFirstFrame» أول إطار للحركة، «homeReady» جاهزية الرئيسية خلفها، «introApproach» بدء كشف الرئيسية (للقياس فقط).
+    public init(isReady: @escaping @MainActor () -> Bool = { true }, onMilestone: @escaping @MainActor (String) -> Void = { _ in }, @ViewBuilder content: () -> Content) {
         self.isReady = isReady
+        self.onMilestone = onMilestone
         self.content = content()
     }
 
@@ -193,8 +196,9 @@ public struct IntroHost<Content: View>: View {
                     style: style,
                     theme: theme,
                     waitUntilReady: { await waitReady() },
-                    onApproach: { withAnimation(.easeOut(duration: 0.6)) { homeVisible = true } },
+                    onApproach: { onMilestone("introApproach"); withAnimation(.easeOut(duration: 0.6)) { homeVisible = true } },
                     onFinish: { removed = true; homeVisible = true })
+                .onAppear { onMilestone("introFirstFrame") }
                 .zIndex(1)
             }
         }
@@ -228,5 +232,6 @@ public struct IntroHost<Content: View>: View {
         while !(contentAppeared && isReady()) && Date() < deadline {
             try? await Task.sleep(nanoseconds: 50_000_000)
         }
+        onMilestone("homeReady")
     }
 }

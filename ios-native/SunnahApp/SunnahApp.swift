@@ -26,7 +26,7 @@ struct SunnahApp: App {
     var body: some Scene {
         let _ = PerformanceMetrics.shared.mark("bodyEval")
         WindowGroup {
-            IntroHost {
+            IntroHost(onMilestone: { PerformanceMetrics.shared.mark($0) }) {
             RootTabView(router: router, screen: Self.screen)
                 .sunnahAppearance()
                 .onAppear {
