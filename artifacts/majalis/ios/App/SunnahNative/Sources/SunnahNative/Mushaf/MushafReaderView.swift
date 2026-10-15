@@ -84,8 +84,10 @@ public struct MushafPageView: View {
                         }
                         .padding(.vertical, 1)
                         .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
-                        .gesture(TapGesture().onEnded { selectedAyah = selectedAyah == w.v ? nil : w.v }, including: interactive ? .all : .none)
-                        .gesture(LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) }, including: interactive ? .all : .none)
+                        .gesture(
+                            LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) }
+                                .exclusively(before: TapGesture().onEnded { selectedAyah = selectedAyah == w.v ? nil : w.v }),
+                            including: interactive ? .all : .none)
                         .accessibilityLabel(w.isAyahEnd ? "آية \(w.v)" : "")
                 }
             }
