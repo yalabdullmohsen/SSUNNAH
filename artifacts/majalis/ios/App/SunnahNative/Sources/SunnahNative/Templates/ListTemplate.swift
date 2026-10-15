@@ -16,7 +16,7 @@ public struct ListTemplate: View {
                         .buttonStyle(.plain)
                         .accessibilityValue(inline && item.body != nil ? (expanded.contains(item.id) ? "موسَّع" : "مطوي") : "")
                     if inline, expanded.contains(item.id), let body = item.body {
-                        Text(body).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        SunnahMarkdownText(body, style: .body)
                             .frame(maxWidth: .infinity, alignment: .leading).transition(.opacity)
                     }
                 }

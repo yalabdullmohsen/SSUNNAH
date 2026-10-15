@@ -26,11 +26,21 @@ public struct SunnahArabicText: View {
     }
 
     private let text: String
+    private let attributed: AttributedString?
     private let style: Style
     @ScaledMetric private var size: CGFloat
 
     public init(_ text: String, style: Style = .reading) {
         self.text = text
+        self.attributed = nil
+        self.style = style
+        _size = ScaledMetric(wrappedValue: style.base.size, relativeTo: style.base.relativeTo)
+    }
+
+    /// فقرة Markdown داخل السطر (غليظ/مائل/روابط) بالتنسيق العربي نفسه.
+    public init(markdown: String, style: Style = .reading) {
+        self.text = markdown
+        self.attributed = SunnahMarkdown.inline(markdown)
         self.style = style
         _size = ScaledMetric(wrappedValue: style.base.size, relativeTo: style.base.relativeTo)
     }
@@ -51,7 +61,7 @@ public struct SunnahArabicText: View {
     static func lineSpacing(size: CGFloat, dense: Bool) -> CGFloat { size * (dense ? 0.6 : 0.5) }
 
     public var body: some View {
-        Text(text)
+        Text(attributed ?? AttributedString(text))
             .font(style.font)
             .lineSpacing(Self.lineSpacing(size: size, dense: Self.isDense(text)))
             .fixedSize(horizontal: false, vertical: true)

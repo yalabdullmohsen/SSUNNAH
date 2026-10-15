@@ -9,7 +9,7 @@ public struct DetailTemplate: View {
             VStack(spacing: 0) {
                 DetailHero(title: item.title, subtitle: item.subtitle, tags: item.tags)
                 if let b = item.body, !b.isEmpty {
-                    Text(b).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    SunnahMarkdownText(b, style: .body)
                         .frame(maxWidth: .infinity, alignment: .leading).padding(Sunnah.Spacing.s4)
                         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
