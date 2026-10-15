@@ -10,6 +10,7 @@ let fams: [Fam] = [
   Fam(name: "large", f: .systemLarge, w: 364, h: 382),
   Fam(name: "rect", f: .accessoryRectangular, w: 172, h: 76),
   Fam(name: "circ", f: .accessoryCircular, w: 76, h: 76),
+  Fam(name: "inline", f: .accessoryInline, w: 232, h: 26),
 ]
 
 func variant(_ e: CatalogWidgetEntry, _ v: String) -> CatalogWidgetEntry {
@@ -24,6 +25,11 @@ func variant(_ e: CatalogWidgetEntry, _ v: String) -> CatalogWidgetEntry {
     var m = e.mushaf
     m?.lastSurahNameAr = "آل عمران"
     return CatalogWidgetEntry(date: e.date, presentation: e.presentation, prayer: e.prayer, calendar: c, adhkar: e.adhkar, quran: e.quran, mushaf: m, custom: e.custom, progress: e.progress, content: e.content, selectedCustomId: e.selectedCustomId, isSampleData: e.isSampleData)
+  case "empty":
+    // مصحف بلا تقدّم بعد (مستخدم جديد): الحمولة موجودة لكن hasProgress=false ولا صفحة
+    var m = e.mushaf
+    m?.hasProgress = false; m?.lastPage = nil; m?.lastSurahNameAr = nil; m?.lastSurahNumber = nil
+    return CatalogWidgetEntry(date: e.date, presentation: e.presentation, prayer: e.prayer, calendar: e.calendar, adhkar: e.adhkar, quran: e.quran, mushaf: m, custom: e.custom, progress: e.progress, content: e.content, selectedCustomId: e.selectedCustomId, isSampleData: e.isSampleData)
   default: return e
   }
 }
@@ -36,7 +42,7 @@ nonisolated(unsafe) var findings: [EdgeFinding] = []
 let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
 
 @MainActor func edgeContacts(_ id: String, _ fam: Fam, _ view: AnyView) {
-  if fam.name == "circ" { return }
+  if fam.name == "circ" || fam.name == "inline" { return }
   let content = view.frame(width: fam.w, height: fam.h)
     .background(Color(red: Double(flat.r) / 255, green: Double(flat.g) / 255, blue: Double(flat.b) / 255))
   let r = ImageRenderer(content: content); r.scale = 3
@@ -72,7 +78,7 @@ let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
   let content = styled
     .frame(width: fam.w, height: fam.h)
     .background(LinearGradient(colors: [Color(red: 0.07, green: 0.22, blue: 0.19), Color(red: 0.04, green: 0.13, blue: 0.11)], startPoint: .top, endPoint: .bottom))
-    .clipShape(RoundedRectangle(cornerRadius: fam.f == .accessoryRectangular || fam.f == .accessoryCircular ? 14 : 22))
+    .clipShape(RoundedRectangle(cornerRadius: fam.f == .accessoryRectangular || fam.f == .accessoryCircular || fam.f == .accessoryInline ? 14 : 22))
   let r = ImageRenderer(content: content)
   r.scale = 3
   if let ui = r.uiImage, let d = ui.pngData() {
@@ -84,15 +90,15 @@ let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
   let out = CommandLine.arguments[1]
   try? FileManager.default.createDirectory(atPath: out, withIntermediateDirectories: true)
   let base = CatalogWidgetEntry.gallery()
-  for v in ["data", "long", "nodata"] {
+  for v in ["data", "long", "empty", "nodata"] {
     let e = variant(base, v)
     let widgets: [(String, [String], (CatalogWidgetEntry) -> AnyView)] = [
-      ("1-prayer-next", ["small","medium","large","rect","circ"], { AnyView(PrayerWidgetRootView(entry: $0.prayer)) }),
+      ("1-prayer-next", ["small","medium","large","rect","circ","inline"], { AnyView(PrayerWidgetRootView(entry: $0.prayer)) }),
       ("2-prayer-all", ["large"], { AnyView(AllPrayerCatalogView(entry: $0.prayer)) }),
       ("3-date", ["small","medium","rect","circ"], { AnyView(HijriCalendarView(entry: $0)) }),
       ("4-ramadan", ["small","medium","rect"], { AnyView(RamadanCountdownView(entry: $0)) }),
-      ("5-adhkar-time", ["small","medium","rect"], { AnyView(TimeAwareAdhkarView(entry: $0)) }),
-      ("6-adhkar-hour", ["small","medium","rect"], { AnyView(RotatingAdhkarView(entry: $0)) }),
+      ("5-adhkar-time", ["small","medium","rect","inline"], { AnyView(TimeAwareAdhkarView(entry: $0)) }),
+      ("6-adhkar-hour", ["small","medium","rect","inline"], { AnyView(RotatingAdhkarView(entry: $0)) }),
       ("7-achievement", ["small","medium","rect","circ"], { AnyView(AdhkarStreakView(entry: $0)) }),
       ("8-ayah-dua", ["small","medium","large","rect"], { AnyView(AyahOrDuaView(entry: $0)) }),
       ("9-mushaf", ["small","medium"], { AnyView(MushafContinueView(entry: $0)) }),
