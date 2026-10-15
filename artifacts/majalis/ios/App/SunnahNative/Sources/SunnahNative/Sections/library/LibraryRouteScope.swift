@@ -54,6 +54,7 @@ enum LibraryRouteScope {
     static func contains(_ path: String) -> Bool {
         let cut = path.firstIndex { $0 == "?" || $0 == "#" } ?? path.endIndex
         let s = segments(String(path[..<cut]))
+        guard WeakHadithAvailability.isListed("/" + s.joined(separator: "/")) else { return false }
         return patterns.contains { p in
             p.count == s.count && zip(p, s).allSatisfy { $0.hasPrefix(":") || $0 == $1 }
         }

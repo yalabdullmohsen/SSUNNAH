@@ -154,3 +154,32 @@ struct WeakHadithDetailView: View {
         .navigationTitle(item.label)
     }
 }
+
+/// عدد المعتمد في كل ملف ضعيف/موضوع: صفر ⇒ يُخفى مدخل القسم من كل القوائم والبحث، ويظهر تلقائيًا بعد الاعتماد.
+enum WeakHadithAvailability {
+    /// مسار القسم ← ملف بياناته.
+    static let gatedRoutes: [String: String] = ["/hadith/daif": "weak-daif", "/hadith/mawdu": "weak-mawdu"]
+
+    nonisolated(unsafe) static var approvedCount: (String) -> Int = { file in
+        cache.withLock { c in
+            if let n = c[file] { return n }
+            let url = Bundle.main.url(forResource: file, withExtension: "json", subdirectory: "Data/hadith")
+            let n = url.flatMap { try? Data(contentsOf: $0) }
+                .flatMap { try? JSONDecoder().decode([WeakHadithItem].self, from: $0) }?.filter(\.isApproved).count ?? 0
+            c[file] = n
+            return n
+        }
+    }
+    private static let cache = WeakCountCache<[String: Int]>([:])
+
+    static func isListed(_ route: String) -> Bool {
+        guard let file = gatedRoutes[route] else { return true }
+        return approvedCount(file) > 0
+    }
+}
+
+final class WeakCountCache<T>: @unchecked Sendable {
+    private var v: T; private let l = NSLock()
+    init(_ v: T) { self.v = v }
+    func withLock<R>(_ f: (inout T) -> R) -> R { l.lock(); defer { l.unlock() }; return f(&v) }
+}
