@@ -20,6 +20,8 @@ public final class MushafRepository: @unchecked Sendable {
     private var fonts: Set<Int> = []
     private var surahNameFontReady = false
     private var cachedIndex: MushafIndex?
+    /// حجم الصفحة الفعلي كما رسمته الواجهة (يشمل الحواف الآمنة): التحميل المسبق يحسب التخطيط بهذا الحجم لا بحجم الحاوية فيصيب الكاش.
+    private var renderSize: CGSize?
 
     public init(root: URL) { self.root = root }
 
@@ -62,8 +64,11 @@ public final class MushafRepository: @unchecked Sendable {
         return (m, l, width, inset)
     }
 
+    func noteRenderSize(_ size: CGSize) { lock.lock(); renderSize = size; lock.unlock() }
+
     /// تحميل مسبق في الخلفية للصفحات المجاورة (خط + JSON + تخطيط) فلا يعمل الخيط الرئيسي عند التقليب.
-    public func prefetch(around n: Int, radius: Int = 2, size: CGSize) {
+    public func prefetch(around n: Int, radius: Int = 2, size containerSize: CGSize) {
+        lock.lock(); let size = renderSize ?? containerSize; lock.unlock()
         let targets = (-radius...radius).map { Mushaf.clamp(n + $0) }.reduce(into: [Int]()) { if !$0.contains($1) { $0.append($1) } }
         for t in targets {
             lock.lock(); let busy = !inflight.insert(t).inserted; lock.unlock()
