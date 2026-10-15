@@ -90,6 +90,26 @@ extension View {
     }
 }
 
+extension View {
+    /// شريط تنقل فوق ترويسة خضراء: خلفية بلون الترويسة نفسه ونمط داكن، فيبقى عنوان الشريط وساعة الحالة وأيقوناتها فاتحة في الوضعين وبعد تمرير الترويسة.
+    func heroNavigationBar() -> some View { modifier(HeroNavigationBar()) }
+}
+
+private struct HeroNavigationBar: ViewModifier {
+    /// يُقرأ هنا (مستوى التطبيق) لا داخل الشريط: نمط الشريط الداكن يقلب ألوان dynamic فيختلف لون الشريط عن الترويسة.
+    @Environment(\.colorScheme) private var scheme
+    func body(content: Content) -> some View {
+        #if os(iOS)
+        content
+            .toolbarBackground(Sunnah.Colors.primaryStrongResolved(dark: scheme == .dark), for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+        #else
+        content
+        #endif
+    }
+}
+
 extension String {
     /// أرقام لاتينية في كل نص معروض (أمر المالك): يحوّل ٠-٩ و۰-۹ ويُبقي غيرها.
     var asLatinDigits: String {

@@ -32,6 +32,13 @@ public enum Sunnah {
         public static let primaryStrong = dynamic(light: 0x123B2C, dark: 0x1F5C46)
         /// خلفية البطاقات الغامقة ذات النص الأبيض (الترويسة والدرج): ثابتة في الوضعين ليبقى التباين ≥ 4.5.
         public static let heroTop = dynamic(light: 0x1F5C46, dark: 0x1F5C46)
+        /// حبر فوق الترويسة الخضراء (عنوان الشريط وشريط الحالة والعناوين): أبيض ثابت في الوضعين، تباينه ≥ 4.5 على `primaryStrong`.
+        public static let onHero = Color.white
+        /// لون `primaryStrong` محلولًا لنمط معيّن (لشريط التنقل الذي يُجبَر على النمط الداكن فتنقلب قيم dynamic).
+        public static func primaryStrongResolved(dark: Bool) -> Color {
+            let v: UInt32 = dark ? 0x1F5C46 : 0x123B2C
+            return Color(red: Double((v >> 16) & 0xFF) / 255, green: Double((v >> 8) & 0xFF) / 255, blue: Double(v & 0xFF) / 255)
+        }
         public static let heroBottom = dynamic(light: 0x123B2C, dark: 0x123B2C)
         public static let heroGold = dynamic(light: 0xD9C089, dark: 0xD9C089)
         public static let primarySoft = dynamic(light: 0xE9F0EA, dark: 0x1B2F26)
