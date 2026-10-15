@@ -67,7 +67,7 @@ struct LearnKnowledgeItemView: View {
                     HStack(spacing: Sunnah.Spacing.s2) { ForEach(item.tags, id: \.self) { SunnahChip($0) } }
                 }
             }
-            if !item.body.isEmpty { Text(item.body).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+            if !item.body.isEmpty { SunnahMarkdownText(item.body, style: .body) }
             if !item.evidences.isEmpty {
                 Text("الأدلة").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary).accessibilityAddTraits(.isHeader)
                 ForEach(Array(item.evidences.enumerated()), id: \.offset) { _, e in
