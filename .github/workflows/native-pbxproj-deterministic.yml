@@ -1,0 +1,17 @@
+name: native pbxproj deterministic
+# يتحقق أن pbxproj/xcscheme المُلتزَمين = مخرج المولِّد حرفيًا (UUID حتمية). ubuntu رخيص، لا macOS.
+on:
+  pull_request:
+    branches: [native-app]
+    paths: ['ios-native/scripts/generate-xcodeproj.rb', 'ios-native/SunnahApp.xcodeproj/**', 'ios-native/**/*.swift']
+permissions:
+  contents: read
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - run: gem install xcodeproj -v 1.28.1 --no-document
+      - run: cd ios-native && ruby scripts/generate-xcodeproj.rb
+      - run: git diff --exit-code -- ios-native/SunnahApp.xcodeproj || { echo "::error::pbxproj لا يطابق المولِّد — شغّل ruby ios-native/scripts/generate-xcodeproj.rb وأضِفه"; exit 1; }

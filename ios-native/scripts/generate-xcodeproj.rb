@@ -61,7 +61,7 @@ t.build_configurations.each do |c|
   s['ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES'] = 'AppIcon-StarDish AppIcon-ZellijDark'
   s['ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS'] = 'YES'
   s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
-  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '100'
+  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '102'
   s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '1,2'
   s['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'; s['GENERATE_INFOPLIST_FILE'] = 'NO'
   s['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
@@ -96,7 +96,7 @@ wt.build_configurations.each do |c|
   s['INFOPLIST_FILE'] = "#{wroot}/PrayerWidget/Info.plist"
   s['CODE_SIGN_ENTITLEMENTS'] = "#{wroot}/PrayerWidget/PrayerWidget.entitlements"
   s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
-  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '100'
+  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '102'
   s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '1,2'
   s['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'; s['GENERATE_INFOPLIST_FILE'] = 'NO'
   s['SKIP_INSTALL'] = 'YES'; s['PRODUCT_NAME'] = '$(TARGET_NAME)'
@@ -117,6 +117,17 @@ ut.build_configurations.each do |c|
   b['SWIFT_VERSION'] = '5.0'; b['GENERATE_INFOPLIST_FILE'] = 'YES'; b['TARGETED_DEVICE_FAMILY'] = '1'
   b['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
 end
+# حتمية: المعرّفات من ترتيب إنشاء الكائنات (السكربت نفسه حتمي: Dir[].sort) لا من تجزئة شجرة تعتمد ترتيب التمرير؛ توليدان = ملف متطابق بايتًا
+class Xcodeproj::Project::UUIDGenerator
+  def switch_uuids(project)
+    project.mark_dirty!
+    project.objects.each_with_index.each_with_object({}) do |(o, i), h|
+      u = Digest::MD5.hexdigest("#{i}:#{o.isa}").upcase
+      o.instance_variable_set(:@uuid, u); h[u] = o
+    end
+  end
+end
+proj.predictabilize_uuids
 proj.save
 scheme = Xcodeproj::XCScheme.new
 scheme.add_build_target(t); scheme.set_launch_target(t)

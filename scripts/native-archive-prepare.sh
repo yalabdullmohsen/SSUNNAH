@@ -25,6 +25,8 @@ VERS=$(grep -oE "s\['MARKETING_VERSION'\] = '[0-9.]+'" "$GEN" | grep -oE "[0-9.]
 BLDS=$(grep -oE "s\['CURRENT_PROJECT_VERSION'\] = '[0-9]+'" "$GEN" | grep -oE "[0-9]+'" | tr -d "'" | sort -u)
 [ "$(echo "$VERS" | wc -l | tr -d ' ')" = 1 ] && [ "$(echo "$BLDS" | wc -l | tr -d ' ')" = 1 ] && ok "الإصدار $VERS (بناء $BLDS) موحّد بين التطبيق والويدجت" || bad "إصدار/بناء غير موحّد: $VERS / $BLDS"
 grep -qE "MARKETING_VERSION = $VERS;" "$PBX" && grep -qE "CURRENT_PROJECT_VERSION = $BLDS;" "$PBX" || bad "pbxproj لا يطابق المولِّد (شغّل ruby ios-native/scripts/generate-xcodeproj.rb)"
+LASTB=$(node -e 'console.log(JSON.parse(require("fs").readFileSync("docs/native/release-state.json")).lastUploadedBuild)')
+[ "$BLDS" -gt "$LASTB" ] && ok "البناء $BLDS أكبر من آخر مرفوع $LASTB" || bad "البناء $BLDS ليس أكبر من آخر مرفوع $LASTB (docs/native/release-state.json)"
 LAST=$(git tag -l 'native-v*' --sort=-v:refname | head -1)
 [ -n "$LAST" ] && echo "آخر وسم إصدار: $LAST (يجب أن يكون البناء أكبر من آخر مرفوع في App Store Connect)" || warn "لا وسم native-v* سابق: تأكد يدويًا أن رقم البناء $BLDS أكبر من آخر مرفوع"
 
