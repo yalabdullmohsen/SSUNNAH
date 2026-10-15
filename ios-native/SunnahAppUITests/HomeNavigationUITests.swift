@@ -193,4 +193,43 @@ final class HomeNavigationUITests: XCTestCase {
             try? XCUIScreen.main.screenshot().pngRepresentation.write(to: URL(fileURLWithPath: dir + "/appicon-picker.png"))
         }
     }
+
+    /// آخر عنصر في أسفل الصفحة يجب ألا يختبئ خلف شريط التبويب (الرئيسية والأحاديث والأذكار)؛ يلتقط لقطة نهاية التمرير لكل منها.
+    func testLastContentNotHiddenByTabBar() throws {
+        for route in ["/", "/native/adhkar", "/fatwa-policy"] {
+            app.terminate()
+            app = XCUIApplication()
+            app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", route]
+            app.launch()
+            let tabTop = app.buttons["المزيد"]
+            XCTAssertTrue(tabTop.waitForExistence(timeout: 30), "\(route): شريط التبويب لم يظهر")
+            sleep(3)
+            let win = app.windows.firstMatch
+            // تمرير حتى الاستقرار: صورة الشاشة لا تتغيّر بين تمريرتين متتاليتين = نهاية المحتوى فعلًا.
+            var prev = Data(); var still = 0
+            for _ in 0..<80 {
+                win.swipeUp(velocity: .fast); usleep(700_000)
+                let cur = app.screenshot().pngRepresentation
+                still = (cur == prev) ? still + 1 : 0
+                prev = cur
+                if still >= 2 { break }
+            }
+            XCTAssertGreaterThanOrEqual(still, 2, "\(route): لم يصل التمرير إلى النهاية")
+            sleep(1)
+            let tabLabels = ["المزيد", "الأقسام", "الصلاة", "المصحف", "الرئيسية"]
+            let barTop = app.buttons.matching(NSPredicate(format: "label IN %@", tabLabels)).allElementsBoundByIndex.map { $0.frame.minY }.filter { $0 > win.frame.height * 0.8 }.min() ?? tabTop.frame.minY   // أعلى زر في الشريط؛ حافة الشريط المرئية أعلى منه بنحو 5 نقاط فقط (تحقّقت بصريًا من اللقطة)
+            var lowest: CGFloat = 0
+            for kind in [XCUIElement.ElementType.staticText, .button] {
+                for el in app.descendants(matching: kind).allElementsBoundByIndex where el.exists {
+                    let f = el.frame
+                    if f.isEmpty || f.minY >= barTop || f.maxY > win.frame.height || f.height < 8 { continue }
+                    if el.label.isEmpty { continue }
+                    if tabLabels.contains(el.label) { continue }
+                    lowest = max(lowest, f.maxY)
+                }
+            }
+            let shot = XCTAttachment(screenshot: app.screenshot()); shot.name = "bottom\(route.replacingOccurrences(of: "/", with: "_"))"; shot.lifetime = .keepAlways; add(shot)
+            XCTAssertLessThanOrEqual(lowest, barTop + 1, "\(route): آخر عنصر (maxY=\(lowest)) خلف الشريط (top=\(barTop))")
+        }
+    }
 }

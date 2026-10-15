@@ -14,6 +14,8 @@ public struct RootTabView: View {
         self.screen = screen
     }
 
+    private var tabBarShown: Bool { !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") }
+
     public var body: some View {
         NavigationStack(path: $router.stack) {
             screen(AppTab.home.rootRoute)
@@ -43,6 +45,8 @@ public struct RootTabView: View {
                 }
                 .navigationDestination(for: Route.self) { screen($0).sunnahDestination($0) }
         }
+        // الشريط عائم فوق المحتوى (الـNavigationStack لا يمرّر الـinset إلى ScrollView الداخلية)، فيُضاف هامش سفلي مرة واحدة لكل المحتوى القابل للتمرير حتى لا يختبئ آخر عنصر خلفه.
+        .modifier(TabBarScrollMargin(height: tabBarShown ? SunnahTabBar.reservedHeight : 0))
         .safeAreaInset(edge: .bottom, spacing: 0) {
             // المصحف غامر (كالمرجع): لا شريط تبويب فوق الصفحة؛ الخروج من أداة «إغلاق» في القارئ.
             if !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") {
@@ -69,5 +73,12 @@ public struct RootTabView: View {
 
     public static func placeholder(_ route: Route) -> AnyView {
         AnyView(EmptyStateView(title: "تعذّر فتح هذه الشاشة").screenState(.error).navigationTitle(AppTab.owning(path: route.path).title))
+    }
+}
+
+private struct TabBarScrollMargin: ViewModifier {
+    let height: CGFloat
+    func body(content: Content) -> some View {
+        if #available(iOS 17.0, macOS 14.0, *) { content.contentMargins(.bottom, height, for: .scrollContent) } else { content }
     }
 }

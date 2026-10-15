@@ -4,13 +4,13 @@ set -u
 BASE=native-app
 fail=0
 # فحوص مستثناة صراحة: Vercel تخص الموقع المجمّد ssunnah.com (الحساب محجوب) ولا علاقة لها بتطبيق iOS.
-# المعتمد: فحوص iOS والاختبارات وبقية فحوص المستودع. لا تُغيَّر إعدادات Vercel ولا vercel.json.
+# المعتمد: gate وownership وcontent-sensitive والاختبارات وفحوص iOS والاختبارات وبقية فحوص المستودع. لا تُغيَّر إعدادات Vercel ولا vercel.json.
 EXCLUDED_CHECKS='^Vercel( |$)|^Vercel Preview Comments'
 # gh pr checks يطبع: الاسم<TAB>الحالة<TAB>...؛ نُسقط المستثنى ثم نبحث عن فشل حقيقي.
 real_failures() { gh pr checks "$1" 2>/dev/null | grep -vE "$EXCLUDED_CHECKS" | grep -iE '	(fail|error)'; }
-git fetch -q origin "$BASE" 2>/dev/null
 for n in "$@"; do
   gh pr checks "$n" --watch --interval 20 >/dev/null 2>&1
+  git fetch -q origin "$BASE" 2>/dev/null   # بعد انتهاء الفحوص: الدمج قد يحدث أثناء الانتظار
   read -r state sha < <(gh pr view "$n" --json state,mergeCommit --jq '"\(.state) \(.mergeCommit.oid // "-")"')
   if [ -n "$(real_failures "$n")" ]; then
     echo "#$n فحص غير Vercel فاشل ✗"; real_failures "$n" | head -3; fail=1

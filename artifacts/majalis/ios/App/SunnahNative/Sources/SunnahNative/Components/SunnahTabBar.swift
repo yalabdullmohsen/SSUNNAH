@@ -2,6 +2,9 @@ import SwiftUI
 
 /// الشريط السفلي العائم: ارتفاع 68، زوايا 26، أبيض شفاف، والتبويب النشط بخلفية أخضر فاتح.
 public struct SunnahTabBar: View {
+    /// ارتفاع الشريط العائم + الهامش السفلي (68 + s2) الذي يحجزه المحتوى القابل للتمرير.
+    public static let reservedHeight: CGFloat = 68 + Sunnah.Spacing.s2
+
     let selected: AppTab
     let onSelect: (AppTab) -> Void
     public init(selected: AppTab, onSelect: @escaping (AppTab) -> Void) {
@@ -28,6 +31,7 @@ public struct SunnahTabBar: View {
         }
         .padding(6)
         .frame(height: 68)
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // الشريط بارتفاع ثابت: أحجام إمكانية الوصول كانت تقتطع التسميات (الرئيـ…)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
         .background(Sunnah.Colors.surface.opacity(0.85), in: RoundedRectangle(cornerRadius: 26, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))

@@ -33,7 +33,8 @@ public enum AppearancePrefs {
         case small, standard, large, xLarge
         public var id: Int { rawValue }
         var title: String { switch self { case .small: "صغير"; case .standard: "عادي"; case .large: "كبير"; case .xLarge: "كبير جدًا" } }
-        var type: DynamicTypeSize { switch self { case .small: .small; case .standard: .large; case .large: .xxxLarge; case .xLarge: .accessibility1 } }
+        /// إزاحة بخطوات Dynamic Type فوق حجم النظام (لا بديلًا عنه).
+        var step: Int { switch self { case .small: -2; case .standard: 0; case .large: 2; case .xLarge: 4 } }
     }
 
     static var font: AppFont { AppFont(rawValue: UserDefaults.standard.string(forKey: fontKey) ?? "") ?? .almarai }
@@ -45,7 +46,18 @@ public enum AppearancePrefs {
     }
 }
 
+public extension AppearancePrefs {
+    /// حجم النظام + إزاحة التفضيل الداخلي، بحدّ أعلى accessibility3 لتفادي كسر التخطيط.
+    static func effectiveSize(system: DynamicTypeSize, pref: TextSize) -> DynamicTypeSize {
+        let all = DynamicTypeSize.allCases
+        let i = all.firstIndex(of: system) ?? all.firstIndex(of: .large) ?? 0
+        let cap = all.firstIndex(of: .accessibility3) ?? (all.count - 1)
+        return all[max(0, min(cap, i + pref.step))]
+    }
+}
+
 public struct SunnahAppearanceModifier: ViewModifier {
+    @Environment(\.dynamicTypeSize) private var systemSize
     @AppStorage(AppearancePrefs.themeKey) private var theme = AppearancePrefs.Theme.system.rawValue
     @AppStorage(AppearancePrefs.fontKey) private var font = AppearancePrefs.AppFont.almarai.rawValue
     @AppStorage(AppearancePrefs.sizeKey) private var size = AppearancePrefs.TextSize.standard.rawValue
@@ -54,7 +66,7 @@ public struct SunnahAppearanceModifier: ViewModifier {
         content
             .id(font)
             .preferredColorScheme((AppearancePrefs.Theme(rawValue: theme) ?? .system).scheme)
-            .dynamicTypeSize((AppearancePrefs.TextSize(rawValue: size) ?? .standard).type)
+            .dynamicTypeSize(AppearancePrefs.effectiveSize(system: systemSize, pref: AppearancePrefs.TextSize(rawValue: size) ?? .standard))
     }
 }
 
