@@ -29,12 +29,35 @@ public enum PrayerTimeFormat {
     }
 }
 
+/// ألوان اختيارية تحقنها الواجهة المضيفة (رموز Sunnah.Colors)؛ الحزمة لا تعتمد على SunnahNative.
+/// nil = ألوان النظام كما كانت.
+public struct PrayerTimesTheme {
+    public var background: Color?
+    public var rowBackground: Color?
+    public init(background: Color? = nil, rowBackground: Color? = nil) {
+        self.background = background
+        self.rowBackground = rowBackground
+    }
+}
+
+private struct PrayerTimesThemeKey: EnvironmentKey {
+    static let defaultValue = PrayerTimesTheme()
+}
+
+public extension EnvironmentValues {
+    var prayerTimesTheme: PrayerTimesTheme {
+        get { self[PrayerTimesThemeKey.self] }
+        set { self[PrayerTimesThemeKey.self] = newValue }
+    }
+}
+
 /// شاشة المواقيت الأصلية: تحسب محليًا فتعمل دون اتصال.
 public struct PrayerTimesScreen: View {
     @StateObject private var store: PrayerPreferencesStore
     @State private var showCityPicker = false
     @State private var locating = false
     @State private var locateError: String?
+    @Environment(\.prayerTimesTheme) private var theme
 
     @MainActor
     public init(store: @autoclosure @escaping () -> PrayerPreferencesStore) {
@@ -75,6 +98,7 @@ public struct PrayerTimesScreen: View {
                     }
                     .padding(.vertical, 4)
                 }
+                .listRowBackground(theme.rowBackground)
             }
             Section {
                 if let today {
@@ -94,6 +118,7 @@ public struct PrayerTimesScreen: View {
             } header: {
                 Text(today?.dayKey ?? "")
             }
+            .listRowBackground(theme.rowBackground)
             Section("الموقع") {
                 Button {
                     showCityPicker = true
@@ -106,6 +131,7 @@ public struct PrayerTimesScreen: View {
                 }
                 if let locateError { Text(locateError).font(.footnote).foregroundStyle(.secondary) }
             }
+            .listRowBackground(theme.rowBackground)
             Section("طريقة الحساب") {
                 Picker("الطريقة", selection: $store.preferences.settings.method) {
                     ForEach(PrayerMethod.allCases, id: \.self) { Text($0.nameAr).tag($0) }
@@ -115,7 +141,9 @@ public struct PrayerTimesScreen: View {
                     Text("الحنفي (المثلان)").tag(PrayerMadhab.hanafi)
                 }
             }
+            .listRowBackground(theme.rowBackground)
         }
+        .modifier(PrayerListBackground(color: theme.background))
     }
 
     private func refreshDeviceLocation() {
@@ -224,6 +252,21 @@ extension PrayerMethod {
         case .tehran: return "طهران"
         case .franceUOIF: return "فرنسا (UOIF)"
         case .moonsightingCommittee: return "لجنة رؤية الهلال"
+        }
+    }
+}
+
+private struct PrayerListBackground: ViewModifier {
+    let color: Color?
+    func body(content: Content) -> some View {
+        if let color {
+            if #available(iOS 16.0, macOS 13.0, *) {
+                content.scrollContentBackground(.hidden).background(color)
+            } else {
+                content.background(color)
+            }
+        } else {
+            content
         }
     }
 }
