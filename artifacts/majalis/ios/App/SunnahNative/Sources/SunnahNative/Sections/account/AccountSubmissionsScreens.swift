@@ -1,7 +1,7 @@
 import SwiftUI
 import AVFoundation
 
-/// مسودة «أضف محتوى» بقيود الويب نفسها (العنوان 3–500، التفاصيل 3–8000، الاسم ≤ 200).
+/// مسودة «أضف محتوى» بحدود جدول user_submissions نفسها (العنوان 3–300، التفاصيل 3–3000، الاسم ≤ 100).
 struct AccountSubmissionDraft: Equatable, Sendable {
     static let types = ["درس", "فائدة", "معلومة", "سؤال لعبة", "فكرة"]
 
@@ -10,10 +10,15 @@ struct AccountSubmissionDraft: Equatable, Sendable {
     var details = ""
     var author = ""
 
+    static let titleMax = AccountAPI.titleMax, detailsMax = AccountAPI.detailsMax, authorMax = AccountAPI.authorMax
+
+    /// «عدد / الحد» الظاهر تحت كل حقل.
+    static func counter(_ text: String, max: Int) -> String { "\(text.count) / \(max)" }
+
     var isValid: Bool {
         let t = title.trimmingCharacters(in: .whitespacesAndNewlines).count
         let d = details.trimmingCharacters(in: .whitespacesAndNewlines).count
-        return Self.types.contains(type) && (3...500).contains(t) && (3...8000).contains(d) && author.count <= 200
+        return Self.types.contains(type) && (3...Self.titleMax).contains(t) && (3...Self.detailsMax).contains(d) && author.count <= Self.authorMax
     }
 }
 
@@ -56,15 +61,21 @@ struct AccountSubmitContentScreen: View {
                     ForEach(AccountSubmissionDraft.types, id: \.self) { Text($0).tag($0) }
                 }
             }
-            Section("عنوان الموضوع") {
-                TextField("اكتب عنواناً مختصراً للموضوع", text: Binding(get: { draft.title }, set: { draft.title = String($0.prefix(500)) }))
+            Section {
+                TextField("اكتب عنواناً مختصراً للموضوع", text: Binding(get: { draft.title }, set: { draft.title = String($0.prefix(AccountSubmissionDraft.titleMax)) }))
+            } header: { Text("عنوان الموضوع") } footer: {
+                Text(AccountSubmissionDraft.counter(draft.title, max: AccountSubmissionDraft.titleMax))
             }
-            Section("التفاصيل") {
-                TextField("اكتب التفاصيل هنا...", text: Binding(get: { draft.details }, set: { draft.details = String($0.prefix(8000)) }), axis: .vertical)
+            Section {
+                TextField("اكتب التفاصيل هنا...", text: Binding(get: { draft.details }, set: { draft.details = String($0.prefix(AccountSubmissionDraft.detailsMax)) }), axis: .vertical)
                     .lineLimit(6...12)
+            } header: { Text("التفاصيل") } footer: {
+                Text(AccountSubmissionDraft.counter(draft.details, max: AccountSubmissionDraft.detailsMax))
             }
-            Section("اسمك (اختياري)") {
-                TextField("للنسب الصحيح", text: Binding(get: { draft.author }, set: { draft.author = String($0.prefix(200)) }))
+            Section {
+                TextField("للنسب الصحيح", text: Binding(get: { draft.author }, set: { draft.author = String($0.prefix(AccountSubmissionDraft.authorMax)) }))
+            } header: { Text("اسمك (اختياري)") } footer: {
+                Text(AccountSubmissionDraft.counter(draft.author, max: AccountSubmissionDraft.authorMax))
             }
 
             Section {
