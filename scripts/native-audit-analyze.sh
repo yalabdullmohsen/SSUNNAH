@@ -14,6 +14,15 @@ tr '\n' '\0' < "$B/states.tsv" | xargs -0 -P 4 -S 4096 -I{} bash -c 'one "$1"' _
 python3 - "$B" <<'PY'
 import sys,collections
 B=sys.argv[1]; rows=[l.rstrip('\n').split('\t') for l in open(B+'/verdicts.raw')]
+# تباين شريط الحالة وعنوان الشريط ≥ 4.5 (scripts/native-bar-contrast.py)؛ يُتخطّى بصمت إن غابت PIL
+try:
+    import importlib.util,os
+    sp=importlib.util.spec_from_file_location('nbc','scripts/native-bar-contrast.py'); nbc=importlib.util.module_from_spec(sp); sp.loader.exec_module(nbc)
+    from PIL import Image
+    def bar_check(png):
+        if not os.path.exists(png): return None
+        w=nbc.check(png); return (w[0],w[1]) if w else None
+except ImportError: bar_check=None
 seen={}; out=[]
 # مسارات تحويل صريحة (تكافؤ الويب): تعرض شاشة وجهتها عمدًا فلا تُعدّ تكرارًا
 ALIASES={'/adhan-settings','/fiqh/topics/:topicId'}
@@ -22,6 +31,9 @@ for r,c,v,h in sorted(rows):
     elif v=='OK' and h!='few':
         if h in seen and seen[h][1]!=c and seen[h][0].rsplit('/',1)[-1]!=r.rsplit('/',1)[-1]: v='DUP_SCREEN'
         else: seen.setdefault(h,(r,c))
+    if v=='OK' and bar_check:
+        w=bar_check('%s/shots/%s.png'%(B,(r[1:].replace('/','_').replace(':','_') or 'root')))
+        if w: v='BAR_CONTRAST:%.1f:%s'%w
     out.append((r,c,v))
 open(B+'/verdicts.tsv','w').write(''.join('\t'.join(x)+'\n' for x in out))
 cnt=collections.Counter(v.split(':')[0] if v!='OK' else 'OK' for _,_,v in out)

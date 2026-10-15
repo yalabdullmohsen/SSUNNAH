@@ -21,8 +21,10 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
   const entry = (id, title, o = {}) => ({ id, title, ...Object.fromEntries(Object.entries(o).filter(([, v]) => nz(v) !== undefined)) });
   const group = (id, title, items) => ({ id, title, items });
   const numbered = (gid, rows, f) => rows.map((r, i) => f(r, `${gid}-${i + 1}`));
+  // pending_review: عناصر تخالف مصدرها المتحقق منه؛ تُخفى من التصدير (فلا تصل البحث ولا الويدجت ولا الإشعارات) حتى يعتمد يوسف التصحيح
+  const pending = JSON.parse(fs.readFileSync(new URL("../../../../../docs/native/aqidah-pending-review.json", import.meta.url), "utf8")).items;
   const writeGroups = (name, groups) => {
-    const gs = groups.map((g) => ({ ...g, items: g.items.filter((it) => ok(it.id, name)) })).filter((g) => g.items.length);
+    const gs = groups.map((g) => ({ ...g, items: g.items.filter((it) => ok(it.id, name) && !pending[`${name}/${it.id}`]) })).filter((g) => g.items.length);
     out(name, gs);
     cnt(name, gs.reduce((n, g) => n + g.items.length, 0));
   };
@@ -107,7 +109,7 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
       group("asma", "أسماؤهم ومهامهم", numbered("asma", g("MALAIKA"), (r, id) => entry(id, r.name, { summary: r.arabicTitle, body: [r.role, r.detail].filter(nz).join("\n"), reference: r.ref }))),
       group("awsaf", "صفاتهم", numbered("awsaf", g("AWSAF"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ayah }))),
       group("fadail", "فضائلهم", numbered("fadail", g("FADAIL"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ref }))),
-      group("amal", "تعاملهم مع البشر", numbered("amal", g("AMAL_ITEMS"), (r, id) => entry(id, r.title, { body: r.text }))),
+      group("amal", "تعاملهم مع البشر", numbered("amal", g("AMAL_ITEMS"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ref }))),
     ]);
   }
 
@@ -127,7 +129,7 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
   for (const [name, mod, key] of [["iman-topics", "iman-topics-data", "IMAN_TOPICS"], ["tazkiya-topics", "tazkiya-topics-data", "TAZKIYA_TOPICS"], ["usra-mujtama", "usra-mujtama-data", "USRA_MUJTAMA"]]) {
     const secs = (await import(`${src}/lib/${mod}.ts`))[key]
       .filter((s) => ok(s.id, name))
-      .map((s) => ({ ...s, lessons: s.lessons.filter((l) => ok(l.id, name)) }))
+      .map((s) => ({ ...s, lessons: s.lessons.filter((l) => ok(l.id, name) && !pending[`${name}/${l.id}`]) }))
       .filter((s) => s.lessons.length);
     out(name, secs);
     cnt(name, secs.reduce((n, s) => n + s.lessons.length, 0));
