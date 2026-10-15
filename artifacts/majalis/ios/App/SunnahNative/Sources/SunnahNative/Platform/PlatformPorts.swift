@@ -17,6 +17,13 @@ public protocol SharedDataPublishing: Sendable {
     var isAvailable: Bool { get }
     @discardableResult
     func publishProgress(dailyWirdCompleted: Int, dailyWirdTarget: Int, mushafPagesReadToday: Int) -> Bool
+    /// آخر موضع قراءة في المصحف لويدجت «أين توقفت» (الرابط `/mushaf/page/{n}`).
+    @discardableResult
+    func publishMushafPosition(page: Int, surahNumber: Int?, surahName: String?, ayahNumber: Int?) -> Bool
+}
+
+public extension SharedDataPublishing {
+    func publishMushafPosition(page: Int, surahNumber: Int?, surahName: String?, ayahNumber: Int?) -> Bool { false }
 }
 
 /// تلاوات محمّلة دون اتصال (Application Support، خارج نسخ iCloud).

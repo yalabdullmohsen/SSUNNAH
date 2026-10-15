@@ -7,6 +7,8 @@ struct MushafScreen: View {
     var target: MushafRoute?
     @StateObject private var store = MushafStore()
     @State private var state: Loaded?
+    @Environment(\.platform) private var platform
+    @Environment(\.scenePhase) private var scenePhase
 
     private struct Loaded { let repo: MushafRepository; let index: MushafIndex; var search: MushafSearch? }
 
@@ -30,6 +32,14 @@ struct MushafScreen: View {
             }
         }
         .environment(\.layoutDirection, .rightToLeft)
+        // «أين توقفت»: نشر آخر موضع للويدجت عند مغادرة المصحف وعند الذهاب للخلفية.
+        .onDisappear { publishPosition() }
+        .onChange(of: scenePhase) { if $0 == .background { publishPosition() } }
+    }
+
+    private func publishPosition() {
+        guard let idx = state?.index else { return }
+        MushafPositionPublisher.publish(page: store.lastPage, index: idx, to: platform.sharedData)
     }
 
     private static func startPage(_ t: MushafRoute?, _ idx: MushafIndex) -> Int? {

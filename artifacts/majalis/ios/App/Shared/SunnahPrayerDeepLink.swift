@@ -38,9 +38,10 @@ enum SunnahWidgetDeepLinkFactory {
 
     static func mushaf(page: Int?, ayah: String? = nil) -> URL {
         guard let page, page >= 1, page <= 604 else { return SunnahPrayerDeepLink.mushaf }
-        var path = "/mushaf?page=\(page)"
+        // `/mushaf/page/{n}` يحلّه RouteResolver/MushafRoute مباشرةً؛ ?ayah= يبقى اختياريًا للتوافق.
+        var path = "/mushaf/page/\(page)"
         if let ayah, !ayah.isEmpty {
-            path += "&ayah=\(ayah)"
+            path += "?ayah=\(ayah)"
         }
         return url(path: path)
     }
