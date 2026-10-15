@@ -21,8 +21,10 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
   const entry = (id, title, o = {}) => ({ id, title, ...Object.fromEntries(Object.entries(o).filter(([, v]) => nz(v) !== undefined)) });
   const group = (id, title, items) => ({ id, title, items });
   const numbered = (gid, rows, f) => rows.map((r, i) => f(r, `${gid}-${i + 1}`));
+  // pending_review: عناصر تخالف مصدرها المتحقق منه؛ تُخفى من التصدير (فلا تصل البحث ولا الويدجت ولا الإشعارات) حتى يعتمد يوسف التصحيح
+  const pending = JSON.parse(fs.readFileSync(new URL("../../../../../docs/native/aqidah-pending-review.json", import.meta.url), "utf8")).items;
   const writeGroups = (name, groups) => {
-    const gs = groups.map((g) => ({ ...g, items: g.items.filter((it) => ok(it.id, name)) })).filter((g) => g.items.length);
+    const gs = groups.map((g) => ({ ...g, items: g.items.filter((it) => ok(it.id, name) && !pending[`${name}/${it.id}`]) })).filter((g) => g.items.length);
     out(name, gs);
     cnt(name, gs.reduce((n, g) => n + g.items.length, 0));
   };
