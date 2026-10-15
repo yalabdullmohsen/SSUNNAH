@@ -23,6 +23,9 @@ public struct WeakHadithItem: Decodable, Identifiable, Hashable, Sendable {
         case reviewStatus = "review_status"
     }
 
+    /// قاعدة المالك: لا يظهر ضعيف ولا موضوع قبل اعتماده (`review_status == "approved"`)؛ أي حالة أخرى (pending_review…) لا تُعرض ولا تُبحث.
+    public var isApproved: Bool { reviewStatus == "approved" && !hidden }
+
     public var isMawdu: Bool { authenticityClass == "mawdu" }
     public var label: String { isMawdu ? "موضوع" : "ضعيف" }
 
@@ -77,6 +80,9 @@ struct WeakHadithListView: View {
                 case .ready(let all):
                     let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
                     let rows = Self.visibleRows(all, file: file, normalizedQuery: q)
+                    if rows.isEmpty && q.isEmpty {
+                        EmptyStateView(title: "لا مواد معتمدة بعد").frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else {
                     List(rows) { item in
                         SunnahNavigationLink { WeakHadithDetailView(item: item) } label: {
                             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
@@ -88,6 +94,7 @@ struct WeakHadithListView: View {
                     }
                     .listStyle(.plain).scrollContentBackground(.hidden)
                     .searchable(text: $query, prompt: "ابحث في \(title)")
+                    }
                 }
             }
         }
@@ -100,12 +107,12 @@ struct WeakHadithListView: View {
     static func expectedClass(for file: String) -> String { file.replacingOccurrences(of: "weak-", with: "") }
     static func visibleRows(_ all: [WeakHadithItem], file: String, normalizedQuery q: String) -> [WeakHadithItem] {
         let cls = expectedClass(for: file)
-        return all.filter { $0.authenticityClass == cls && !$0.hidden && (q.isEmpty || ArabicSearch.normalize($0.title + " " + $0.text).contains(q)) }
+        return all.filter { $0.authenticityClass == cls && $0.isApproved && (q.isEmpty || ArabicSearch.normalize($0.title + " " + $0.text).contains(q)) }
     }
 
     private func load() async {
         phase = .loading
-        do { phase = .ready(try await loader.load([WeakHadithItem].self, from: .bundled(name: file, subdirectory: "Data/hadith"))) }
+        do { phase = .ready(try await loader.load([WeakHadithItem].self, from: .bundled(name: file, subdirectory: "Data/hadith")).filter(\.isApproved)) }
         catch { phase = .failed }
     }
 }

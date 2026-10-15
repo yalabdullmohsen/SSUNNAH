@@ -17,9 +17,14 @@ struct AccountAutoContent: Decodable, Sendable, Hashable, Identifiable {
     let tags: [String]?
     let publishedAt: String?
     let createdAt: String?
+    let reviewStatus: String?
+
+    /// مادة معلّقة المراجعة (أو مرفوضة) لا تُعرض ولا تدخل أي قائمة؛ غياب الحالة = استجابة الخادم المنشورة.
+    var isApproved: Bool { reviewStatus == nil || reviewStatus == "approved" }
 
     enum CodingKeys: String, CodingKey {
         case id, title, slug, category, summary, content, tags
+        case reviewStatus = "review_status"
         case contentType = "content_type", sourceName = "source_name", originalURL = "original_url"
         case publishedAt = "published_at", createdAt = "created_at"
     }
@@ -38,6 +43,7 @@ struct AccountAutoContent: Decodable, Sendable, Hashable, Identifiable {
         tags = try c.decodeIfPresent([String].self, forKey: .tags)
         publishedAt = try c.decodeIfPresent(String.self, forKey: .publishedAt)
         createdAt = try c.decodeIfPresent(String.self, forKey: .createdAt)
+        reviewStatus = try c.decodeIfPresent(String.self, forKey: .reviewStatus)
     }
 
     /// mapContentTypeToUpdateType في الويب.
@@ -58,7 +64,7 @@ struct AccountAutoContentResponse: Decodable, Sendable {
         item = try? c.decodeIfPresent(AccountAutoContent.self, forKey: .item)
     }
 
-    var first: AccountAutoContent? { item ?? items.first }
+    var first: AccountAutoContent? { (item.map { [$0] } ?? items).first(where: \.isApproved) }
 }
 
 /// تحديث منصة: صف platform_updates المعتمد، أو عنصر /api/updates ({id,title,content}).
@@ -109,7 +115,7 @@ enum AccountUpdates {
             AccountUpdateItem(id: $0.id, title: $0.title, summary: $0.summary, updateType: $0.updateType, link: $0.sourceURL,
                               publishedAt: $0.publishedAt, isAuto: false, sourceName: nil)
         }
-        let a = auto.map {
+        let a = auto.filter(\.isApproved).map {
             AccountUpdateItem(id: $0.id, title: $0.title, summary: $0.summary, updateType: AccountAutoContent.updateType(for: $0.contentType),
                               link: "/updates/auto/" + $0.slug, publishedAt: $0.publishedAt ?? $0.createdAt, isAuto: true, sourceName: $0.sourceName)
         }
