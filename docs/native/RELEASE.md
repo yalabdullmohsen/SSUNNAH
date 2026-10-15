@@ -43,3 +43,9 @@ SIM_UDID=<محاكي النافذة> bash scripts/native-archive-prepare.sh --cl
 sudo bash scripts/mac-raise-process-limits.sh --install
 ```
 أعد فتح الطرفية/التطبيقات بعده (الحد القديم يبقى في الصدفات المفتوحة).
+
+## إجراء مرشّح الإصدار
+1. بعد تجميد الليلة: لا PR إلا لإصلاح عاجل (عيب ويدجت، حماية المعلّق، تقليب المصحف)؛ ما سواه ينتظر الإصدار التالي.
+2. على الرأس النهائي لـ`native-app`: `bash scripts/native-release-check.sh` أخضر.
+3. صباح الرفع: أرشفة جديدة من الرأس النهائي (`OWNER_APPROVED_ARCHIVE=1 bash scripts/native-archive-prepare.sh --archive`) بعد دمج ما يلزم من ن1 وعيب الويدجت، ن2 وحماية المعلّق، ن3 وتقليب المصحف؛ لا تُرفع أرشفة سابقة.
+4. الرفع من Organizer بيد المالك، ثم `bash scripts/release-record.sh <البناء>`.
