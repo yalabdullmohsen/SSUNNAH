@@ -28,12 +28,13 @@ struct DetailHero: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
             if let t = tags.first { Text(t).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.goldDeco) }
-            Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Color.white).accessibilityAddTraits(.isHeader)
+            Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.onHero).accessibilityAddTraits(.isHeader)
             if let s = subtitle, !s.isEmpty { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Color.white.opacity(0.82)) }
             if tags.count > 1 { HStack(spacing: Sunnah.Spacing.s2) { ForEach(tags.dropFirst(), id: \.self) { SunnahChip($0) } } }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s5).padding(.bottom, 44)
+        .heroNavigationBar()
         .background { ZStack { Sunnah.Colors.primaryStrong; SunnahStarPattern().opacity(0.9) }.ignoresSafeArea(edges: .top) }
     }
 }
