@@ -11,12 +11,14 @@ public struct MushafPageView: View {
     let number: Int
     @Binding var selectedAyah: String?
     var onLongPress: ((String) -> Void)? = nil
+    /// الإيماءات وتسميات إمكانية الوصول على الصفحة الحالية فقط: على الجارتين تكلّف عقد إيماءات لكل كلمة (≈450 عقدة) تُبطئ التقليب.
+    var interactive = true
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
 
-    public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil) {
-        self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah; self.onLongPress = onLongPress
+    public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil, interactive: Bool = true) {
+        self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah; self.onLongPress = onLongPress; self.interactive = interactive
         if let family = try? repo.ensureFont(page: number), let page = try? repo.page(number) {
             _page = State(initialValue: page); _family = State(initialValue: family)
         }
@@ -82,8 +84,10 @@ public struct MushafPageView: View {
                         }
                         .padding(.vertical, 1)
                         .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
-                        .onTapGesture { selectedAyah = selectedAyah == w.v ? nil : w.v }
-                        .onLongPressGesture(minimumDuration: 0.4) { selectedAyah = w.v; onLongPress?(w.v) }
+                        .gesture(
+                            LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) }
+                                .exclusively(before: TapGesture().onEnded { selectedAyah = selectedAyah == w.v ? nil : w.v }),
+                            including: interactive ? .all : .none)
                         .accessibilityLabel(w.isAyahEnd ? "آية \(w.v)" : "")
                 }
             }
@@ -130,7 +134,7 @@ public struct MushafReaderView: View {
                 TabView(selection: $current) {
                     ForEach(1...Mushaf.pageCount, id: \.self) { n in
                         Group {
-                            if abs(n - current) <= 1 { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }) }
+                            if abs(n - current) <= 1 { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current) }
                             else { Color.clear }
                         }.tag(n)
                     }
@@ -157,7 +161,12 @@ public struct MushafReaderView: View {
             MushafIndexView(index: index, search: search, store: store) { page in current = page; showIndex = false }
         }
         .onChange(of: current) { p in selected = nil; store.visit(page: p); repo.prefetch(around: p, size: pageSize) }
-        .task { store.visit(page: current); repo.prefetch(around: current, size: pageSize) }
+        .task {
+            store.visit(page: current); repo.prefetch(around: current, size: pageSize)
+            #if DEBUG && canImport(UIKit)
+            MushafFlipProbe.runIfRequested(start: current) { current = $0 }
+            #endif
+        }
         .environment(\.layoutDirection, .rightToLeft)
     }
 
