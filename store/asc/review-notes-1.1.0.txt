@@ -4,4 +4,4 @@ Notifications (optional, off until the user enables them): local reminders for p
 
 Guideline 2.5.4 - Background audio: open the Mushaf (/mushaf), play recitation on any ayah, press Home - audio continues; Control Center and the lock screen show Now Playing controls. UIBackgroundModes=audio is used only for real Quran/lesson playback.
 
-Privacy: no ads, no tracking. Privacy policy: https://www.ssunnah.com/privacy. Support: Majlisilm.app@gmail.com
+Privacy: no ads, no tracking. Privacy policy: https://www.ssunnah.com/privacy. Support: info@ssunnah.com
