@@ -53,7 +53,8 @@ sudo bash scripts/mac-raise-process-limits.sh --install
 ## خطر إطلاق: حجم قاعدة الإنتاج
 - الحجم 570MB فوق حد الخطة المجانية 500MB: قد تتحول القاعدة للقراءة فقط فيفشل التسجيل وحذف الحساب (مطلب App Review 5.1.1(v)) والمزامنة.
 - المسبب: سجلات/طوابير النظام القديم (`akp_structured_logs`، `automation_step_logs`، `akp_source_health`، `akp_metrics_snapshots`، `client_error_logs` ≈170MB)؛ قرار المالك: TRUNCATE للأربعة الأولى؛ التطبيق لا يقرأها.
-- الإجراء (المالك): راجع ونفّذ `docs/native/backend/cleanup-legacy-logs.sql` ثم تحقق أن الحجم دون 500MB (يفضّل بهامش) قبل الإرسال للمراجعة.
+- الإجراء (المالك): راجع ونفّذ `docs/native/backend/cleanup-legacy-logs.sql` ثم تحقق أن الحجم دون 500MB (يفضّل بهامش) قبل الإرسال للمراجعة. الشرح الكامل والخطوات: `docs/native/TRUNCATE_EXPLAINED.md` (لازم قبل المراجعة لا قبل TestFlight الداخلي).
+- **مساران يعتمدان على الموقع المجمّد (فُحصا 2026-10-16):** التطبيق **يستدعي** `POST /api/submissions` (إرسال محتوى، `AccountSubmissionsScreens`) و`POST /api/account/export` (تصدير بيانات الحساب، `AccountPrivacyCenterScreen`) عبر `AccountNetwork.swift`. الموقع يردّ حاليًا 402؛ التطبيق يتدهور برسالة («تعذّر تحميل المحتوى. أعد المحاولة.» / «تعذر الاتصال…») دون تعليق (مهلة قصيرة). ليسا من متطلبات App Review (الحذف يعمل عبر RPC مباشرة على Supabase)، فلا حاجب للإصدار؛ **إجراء ما بعد الإصدار:** نقلهما إلى RPC/Edge على Supabase أو إخفاء الزرين حتى يعود الموقع. تنبيه: مراجع قد يضغط «تصدير» فيرى رسالة الخطأ.
 
 ## قائمة فحص RC (تُنفَّذ بعد إشارة «ابنِ RC»؛ بناء واحد إلى `~/.majalis-tools/rc/`)
 حالة البنود الساكنة فُحصت 2026-10-15 على `native-app`؛ والباقي يُنفَّذ على الحزمة.
