@@ -45,6 +45,30 @@ public enum SunnahMarkdown {
         return nil
     }
 
+    /// أقسام للطيّ: كل قسم عنوان (مستوى ≤ 3) وما يتبعه؛ ما قبل أول عنوان «مقدمة» لا تُطوى.
+    /// القسم الذي فيه نص شرعي (اقتباس، أو علامة آية/حديث/أثر/مصدر في عنوانه أو متنه) محمي: لا يُطوى ولا يُخفى أبدًا.
+    public static func sections(_ source: String) -> [SunnahMarkdownSection] {
+        var out: [SunnahMarkdownSection] = []
+        var cur: [SunnahMarkdownBlock] = []
+        var head: (Int, String)? = nil
+        func close() {
+            if head == nil && cur.isEmpty { return }
+            out.append(SunnahMarkdownSection(id: out.count, headingLevel: head?.0, headingText: head?.1, blocks: cur))
+            cur = []
+        }
+        for b in blocks(source) {
+            if case .heading(let l, let t) = b, l <= 3 { close(); head = (l, t) } else { cur.append(b) }
+        }
+        close()
+        // لا تُترك الصفحة كلها مطوية: إن لم يبقَ ما هو ظاهر يُفتح أول قسم قابل للطيّ.
+        if !out.contains(where: { !$0.startsCollapsed }), let i = out.firstIndex(where: { $0.isCollapsible }) { out[i].forceOpen = true }
+        return out
+    }
+
+    /// علامات النص الشرعي ومصدره (فحص متحفّظ: أي مطابقة تحمي القسم).
+    static let protectedMarkers = ["﴿", "﴾", "﷽", "ﷺ", "رواه", "أخرجه", "متفق عليه", "قال الله", "قال تعالى", "قال رسول", "قال النبي",
+                                   "رضي الله", "صلى الله عليه", "حديث", "آية", "الآية", "أثر", "سورة", "الدليل", "دليل", "المصدر", "مصادر", "المراجع", "مرجع"]
+
     /// تحليل داخل السطر؛ عند الفشل يُعاد النص كما هو.
     public static func inline(_ s: String) -> AttributedString {
         let o = AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)
@@ -71,6 +95,34 @@ public enum SunnahMarkdown {
     }
 }
 
+public struct SunnahMarkdownSection: Identifiable, Equatable {
+    public let id: Int
+    public let headingLevel: Int?
+    public let headingText: String?
+    public let blocks: [SunnahMarkdownBlock]
+    public var forceOpen = false
+
+    init(id: Int, headingLevel: Int?, headingText: String?, blocks: [SunnahMarkdownBlock]) {
+        self.id = id; self.headingLevel = headingLevel; self.headingText = headingText; self.blocks = blocks
+    }
+
+    var text: String { SunnahMarkdown.renderedPlainText(blocksAsSource) }
+    private var blocksAsSource: String { blocks.map { b -> String in
+        switch b { case .heading(_, let t), .quote(let t), .paragraph(let t): return t; case .bullet(_, let t): return t } }.joined(separator: "\n") }
+
+    /// محمي: فيه اقتباس أو علامة نص شرعي/مصدر.
+    public var isProtected: Bool {
+        if blocks.contains(where: { if case .quote = $0 { return true }; return false }) { return true }
+        let hay = (headingText ?? "") + "\n" + blocksAsSource
+        return SunnahMarkdown.protectedMarkers.contains { hay.contains($0) }
+    }
+    public var isCollapsible: Bool { headingText != nil && !isProtected }
+    public var isLong: Bool { text.count > 320 || blocks.count > 4 }
+    /// القسم الطويل القابل للطيّ يبدأ مطويًّا؛ القصير والمحمي والمقدمة مفتوحة.
+    public var startsCollapsed: Bool { isCollapsible && isLong && !forceOpen }
+    var allBlocks: [SunnahMarkdownBlock] { headingText.map { [.heading(level: headingLevel ?? 2, text: $0)] + blocks } ?? blocks }
+}
+
 /// عرض نص Markdown بتشكيل عربي سليم: كل فقرة/بند عبر SunnahArabicText (تباعد أسطر نسبي وDynamic Type)، والعناوين بخط القسم.
 public struct SunnahMarkdownText: View {
     private let blocks: [SunnahMarkdownBlock]
@@ -81,7 +133,47 @@ public struct SunnahMarkdownText: View {
         self.style = style
     }
 
+    public var body: some View { SunnahMarkdownBlocksView(blocks: blocks, style: style) }
+}
+
+/// نص Markdown بأقسام قابلة للطيّ (القوالب فقط). `key` يميّز حالة الطيّ داخل الجلسة (معرّف العنصر).
+public struct SunnahSectionedMarkdown: View {
+    let sections: [SunnahMarkdownSection]; let style: SunnahArabicText.Style; let key: String
+    public init(_ source: String, key: String, style: SunnahArabicText.Style = .body) {
+        self.sections = SunnahMarkdown.sections(source); self.style = style; self.key = key
+    }
+    public init(sections: [SunnahMarkdownSection], key: String, style: SunnahArabicText.Style = .body) {
+        self.sections = sections; self.style = style; self.key = key
+    }
     public var body: some View {
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+            ForEach(sections) { SunnahSectionView(section: $0, key: key, style: style) }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+public struct SunnahSectionView: View {
+    let section: SunnahMarkdownSection; let key: String; let style: SunnahArabicText.Style
+    public init(section: SunnahMarkdownSection, key: String, style: SunnahArabicText.Style = .body) {
+        self.section = section; self.key = key; self.style = style
+    }
+    public var body: some View {
+        if let h = section.headingText, section.isCollapsible {
+            SunnahCollapsibleSection(id: "\(key)#\(section.id)", title: h, startsCollapsed: section.startsCollapsed) {
+                SunnahMarkdownBlocksView(blocks: section.blocks, style: style)
+            }
+        } else {
+            SunnahMarkdownBlocksView(blocks: section.allBlocks, style: style)
+        }
+    }
+}
+
+struct SunnahMarkdownBlocksView: View {
+    let blocks: [SunnahMarkdownBlock]
+    let style: SunnahArabicText.Style
+
+    var body: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
             ForEach(Array(blocks.enumerated()), id: \.offset) { _, b in
                 switch b {

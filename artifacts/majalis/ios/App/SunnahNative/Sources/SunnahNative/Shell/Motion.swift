@@ -65,9 +65,20 @@ public struct SunnahPressStyle: ButtonStyle {
     public init() {}
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed && !SunnahMotion.reduced ? 0.98 : 1)
+            .scaleEffect(configuration.isPressed && !SunnahMotion.reduced ? 0.97 : 1)
             .opacity(configuration.isPressed ? 0.88 : 1)
             .animation(SunnahMotion.press, value: configuration.isPressed)
+            .hoverEffect(.highlight)   // iPad مع المؤشر فقط؛ لا أثر على اللمس
+            .onChange(of: configuration.isPressed) { pressed in if pressed { SunnahHaptic.light() } }
+    }
+}
+
+/// اهتزاز خفيف عند ضغط البطاقة أو طيّ القسم؛ يحترم إعداد النظام (لا شيء إن أُطفئ الاهتزاز).
+public enum SunnahHaptic {
+    @MainActor public static func light() {
+        #if canImport(UIKit)
+        UIImpactFeedbackGenerator(style: .light).impactOccurred(intensity: 0.6)
+        #endif
     }
 }
 

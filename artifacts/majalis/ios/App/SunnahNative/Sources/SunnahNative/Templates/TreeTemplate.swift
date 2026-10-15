@@ -24,7 +24,7 @@ public struct TreeTemplate: View {
                 Button { if let r = node.route { openRoute(r) } } label: {
                     SunnahListRow(title: node.title, subtitle: node.subtitle)
                 }
-                .buttonStyle(.plain).sunnahRowChrome()
+                .sunnahPressable().sunnahRowChrome()
             }
             .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         }

@@ -10,7 +10,7 @@ public struct CardGridTemplate: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: Sunnah.Spacing.cardMinWidth), spacing: Sunnah.Spacing.s3)], spacing: Sunnah.Spacing.s3) {
                     ForEach(items) { item in
-                        Button { openRoute(item.path(base: detailBase)) } label: { ContentCard(item) }.buttonStyle(.plain)
+                        Button { openRoute(item.path(base: detailBase)) } label: { ContentCard(item) }.sunnahPressable()
                     }
                 }
                 .padding(Sunnah.Spacing.pageX)

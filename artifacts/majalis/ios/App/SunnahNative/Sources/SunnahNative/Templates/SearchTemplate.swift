@@ -41,7 +41,7 @@ public struct SearchTemplate: View {
             if results.isEmpty { query.isEmpty ? AnyView(startPage) : AnyView(EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass")) } else {
                 List(results) { item in
                     Button { openRoute(item.path(base: detailBase)) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                        .buttonStyle(.plain).sunnahRowChrome()
+                        .sunnahPressable().sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             }
@@ -61,7 +61,7 @@ public struct SearchTemplate: View {
                 Section {
                     ForEach(recent, id: \.self) { term in
                         Button { query = term } label: { Label(term, systemImage: "clock.arrow.circlepath") }
-                            .buttonStyle(.plain).sunnahRowChrome()
+                            .sunnahPressable().sunnahRowChrome()
                     }
                 } header: {
                     HStack {
@@ -76,7 +76,7 @@ public struct SearchTemplate: View {
                 Section {
                     ForEach(suggested) { it in
                         Button { query = it.title } label: { Label(it.title, systemImage: "magnifyingglass") }
-                            .buttonStyle(.plain).sunnahRowChrome()
+                            .sunnahPressable().sunnahRowChrome()
                     }
                 } header: { Text("عمليات بحث مقترحة").font(Sunnah.Typography.sectionTitle).accessibilityAddTraits(.isHeader) }
             }
@@ -84,7 +84,7 @@ public struct SearchTemplate: View {
                 Section {
                     ForEach(quick) { it in
                         Button { openRoute(it.path(base: detailBase)) } label: { SunnahListRow(title: it.title, subtitle: it.subtitle) }
-                            .buttonStyle(.plain).sunnahRowChrome()
+                            .sunnahPressable().sunnahRowChrome()
                     }
                 } header: { Text("أقسام سريعة").font(Sunnah.Typography.sectionTitle).accessibilityAddTraits(.isHeader) }
             }
