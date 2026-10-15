@@ -13,7 +13,7 @@ cd "$(cd "$(dirname "$0")/.." && pwd)"
 if [ "${REBOOT:-1}" = 1 ]; then xcrun simctl shutdown "$SIM" >/dev/null 2>&1; xcrun simctl boot "$SIM" >/dev/null 2>&1; xcrun simctl bootstatus "$SIM" -b >/dev/null 2>&1; sleep 3; fi
 BID=com.yousef.majlisilm; MODE=${MODE:-light}; FONT=${FONT:-large}; LIMIT=${LIMIT:-999}
 APP=${APP:-$HOME/.majalis-tools/dd/n2/Build/Products/Debug-iphonesimulator/SunnahApp.app}
-TAG=${TAG:-$MODE-$FONT}; BOARD=${BOARD:-/tmp/route-audit-fast}/$TAG; mkdir -p "$BOARD/shots"; : > "$BOARD/states.tsv"
+TAG=${TAG:-$MODE-$FONT}; BOARD=${BOARD:-${N1_WORK:-$HOME/majalis-correct/.n1-work}/route-audit-fast}/$TAG; mkdir -p "$BOARD/shots"; : > "$BOARD/states.tsv"
 TO=${SNAP_TIMEOUT:-15}
 xcrun simctl status_bar "$SIM" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 >/dev/null 2>&1
 xcrun simctl ui "$SIM" appearance "$MODE"; xcrun simctl ui "$SIM" content_size "$FONT"
