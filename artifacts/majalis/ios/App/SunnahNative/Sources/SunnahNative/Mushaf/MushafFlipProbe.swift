@@ -15,6 +15,7 @@ enum MushafFlipProbe {
         let n = UserDefaults.standard.integer(forKey: "mushafAutoFlip")
         guard n > 0 else { return }
         let dir = UserDefaults.standard.bool(forKey: "mushafAutoFlipBack") ? -1 : 1   // -1: تقليب للخلف (للوصول إلى الصفحة 1)
+        let gap = UserDefaults.standard.integer(forKey: "mushafFlipGapMs")
         Task { @MainActor in
             try? await Task.sleep(nanoseconds: 2_500_000_000)   // استقرار أول عرض
             let sampler = FrameSampler()
@@ -27,6 +28,7 @@ enum MushafFlipProbe {
                 withAnimation(.easeInOut(duration: 0.3)) { set(start + dir * i) }
                 try? await Task.sleep(nanoseconds: 450_000_000)
                 let w = sampler.endWindow()
+                if gap > 0 { try? await Task.sleep(nanoseconds: UInt64(gap) * 1_000_000) }   // خمول بين التقليبات (قراءة فعلية) كي تكتمل الصور المسبقة
                 signposter.endInterval("flip", st)
                 windows.append(contentsOf: w); ready.append((CACurrentMediaTime() - t0) * 1000)
             }
