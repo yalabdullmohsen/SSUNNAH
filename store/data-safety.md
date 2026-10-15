@@ -21,7 +21,7 @@
 ## الاحتفاظ والحذف
 - تُحذف صفوف المستخدم المرتبطة عند حذف حساب Auth (ON DELETE CASCADE في المخطط المعتمد).
 - مسار ذاتي: `/delete-account` داخل التطبيق.
-- طلب يدوي: Majlisilm.app@gmail.com
+- طلب يدوي: info@ssunnah.com
 
 ## التشفير والنقل
 - HTTPS/TLS في النقل

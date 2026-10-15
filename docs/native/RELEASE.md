@@ -52,5 +52,5 @@ sudo bash scripts/mac-raise-process-limits.sh --install
 
 ## خطر إطلاق: حجم قاعدة الإنتاج
 - الحجم 570MB فوق حد الخطة المجانية 500MB: قد تتحول القاعدة للقراءة فقط فيفشل التسجيل وحذف الحساب (مطلب App Review 5.1.1(v)) والمزامنة.
-- المسبب: سجلات/طوابير النظام القديم (`akp_structured_logs`، `automation_step_logs`، `akp_source_health`، `akp_metrics_snapshots`، `client_error_logs` ≈170MB)؛ التطبيق لا يقرأها.
+- المسبب: سجلات/طوابير النظام القديم (`akp_structured_logs`، `automation_step_logs`، `akp_source_health`، `akp_metrics_snapshots`، `client_error_logs` ≈170MB)؛ قرار المالك: TRUNCATE للأربعة الأولى؛ التطبيق لا يقرأها.
 - الإجراء (المالك): راجع ونفّذ `docs/native/backend/cleanup-legacy-logs.sql` ثم تحقق أن الحجم دون 500MB (يفضّل بهامش) قبل الإرسال للمراجعة.
