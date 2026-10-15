@@ -1,17 +1,14 @@
 import SwiftUI
 
-/// /privacy-center — الحقوق، موافقة التحليلات، تصدير بيانات الحساب، وروابط الحذف والسياسات (نصوص PrivacyCenterPage).
+/// /privacy-center — الحقوق، تصدير بيانات الحساب، وروابط الحذف والسياسات (نصوص PrivacyCenterPage).
 struct AccountPrivacyCenterScreen: View {
     @Environment(\.platform) private var platform
-    /// موافقة التحليلات الاختيارية (مقابل ملف موافقة الكوكيز في الويب) — مطفأة افتراضيًا.
-    @AppStorage("sunnah.privacy.analytics.v1") private var analytics = false
     @State private var exporting = false
     @State private var exportMessage = ""
     @State private var exportFile: URL?
 
     private static let rights = [
         "الاطلاع على سياسة الخصوصية وشروط الاستخدام.",
-        "التحكم في الموافقة على التحليلات الاختيارية.",
         "تصدير بيانات حسابك (قابلية النقل).",
         "طلب حذف الحساب نهائيًا (حق النسيان)."
     ]
@@ -26,9 +23,7 @@ struct AccountPrivacyCenterScreen: View {
                 }
 
                 AccountSectionCard(title: "الموافقة والتخزين") {
-                    AccountRichText("التخزين الضروري مطلوب لتشغيل الجلسة والتفضيلات. التحليلات اختيارية وحاليًا **\(analytics ? "مفعّلة" : "غير مفعّلة")**.")
-                    SunnahButton("تفعيل التحليلات الاختيارية", style: .secondary) { analytics = true }
-                    SunnahButton("إيقاف التحليلات", style: .secondary) { analytics = false }
+                    AccountRichText("التخزين الضروري مطلوب لتشغيل الجلسة والتفضيلات. لا يُرسل التطبيق أي بيانات تحليلات.")
                 }
 
                 AccountSectionCard(title: "تصدير البيانات") {
@@ -52,7 +47,7 @@ struct AccountPrivacyCenterScreen: View {
                 }
 
                 AccountSectionCard(title: "حذف الحساب") {
-                    AccountLinkRow(title: "طلب حذف الحساب نهائيًا", path: "/account-deletion")
+                    AccountLinkRow(title: "حذف الحساب نهائيًا", path: "/account-deletion")
                 }
 
                 AccountSectionCard(title: "سياسات ومستندات") {

@@ -97,9 +97,13 @@ struct AccountDeletionView: View {
                 if let error { Text(error).foregroundStyle(Color.red).font(Sunnah.Typography.secondary) }
                 Button(busy ? "جارٍ الحذف…" : "حذف حسابي نهائيًا", role: .destructive) {
                     Task {
-                        busy = true; defer { busy = false }
-                        do { try await platform.authService.deleteAccount(); await platform.authService.signOut(); done = true }
-                        catch { self.error = error.localizedDescription }
+                        busy = true; error = nil; defer { busy = false }
+                        do {
+                            try await platform.authService.deleteAccount()
+                            await platform.authService.signOut()
+                            await LocalDataEraser.eraseAll()
+                            done = true
+                        } catch { self.error = error.localizedDescription }
                     }
                 }
                 .buttonStyle(.borderedProminent).tint(.red)

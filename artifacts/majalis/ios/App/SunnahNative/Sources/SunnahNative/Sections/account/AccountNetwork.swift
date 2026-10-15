@@ -111,7 +111,8 @@ enum AccountAPIError: Error, Equatable {
 /// طلبات الكتابة القليلة في القسم (POST إلى واجهات الموقع) — DataStore للقراءة فقط.
 struct AccountAPI: Sendable {
     var baseURL = URL(string: AccountTexts.siteURL)!
-    var session: URLSession = .shared
+    /// مهلة قصيرة دائمًا: الموقع قد يكون غير متاح (402/انقطاع) ولا يجوز أن يعلّق أي طلب.
+    var session: URLSession = RemoteTransport.shortSession()
 
     /// POST /api/submissions — نفس جسم الويب. يعيد رسالة الخادم عند النجاح.
     func submitContent(_ draft: AccountSubmissionDraft) async throws -> String {
@@ -128,6 +129,7 @@ struct AccountAPI: Sendable {
         var request = URLRequest(url: baseURL.appendingPathComponent("api/account/export"))
         request.httpMethod = "POST"
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.timeoutInterval = RemoteTransport.timeout
         let (data, response) = try await session.data(for: request)
         let object = try? JSONSerialization.jsonObject(with: data)
         guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode), let object else {
@@ -142,6 +144,7 @@ struct AccountAPI: Sendable {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if let bearer { request.setValue("Bearer \(bearer)", forHTTPHeaderField: "Authorization") }
         request.httpBody = body
+        request.timeoutInterval = RemoteTransport.timeout
         let (data, _) = try await session.data(for: request)
         guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw AccountAPIError.invalidResponse }
         return json

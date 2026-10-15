@@ -2,17 +2,16 @@ import Foundation
 import SunnahNative
 
 /// عميل Supabase Auth (REST) بلا Capacitor؛ يخزّن الجلسة في Keychain عبر `AuthSessionStoring`.
-/// المفاتيح: SUPABASE_URL وSUPABASE_ANON_KEY وVERCEL_API_BASE_URL من Info.plist.
+/// المفاتيح: SUPABASE_URL وSUPABASE_ANON_KEY من Info.plist.
 struct SupabaseAuthAdapter: AuthServicing {
     private let store: AuthSessionStoring
     private let urlString: String
     private let anon: String
-    private let apiBase: String
 
     init(store: AuthSessionStoring, bundle: Bundle = .main) {
         self.store = store
         func plist(_ k: String) -> String { (bundle.object(forInfoDictionaryKey: k) as? String) ?? "" }
-        urlString = plist("SUPABASE_URL"); anon = plist("SUPABASE_ANON_KEY"); apiBase = plist("VERCEL_API_BASE_URL")
+        urlString = plist("SUPABASE_URL"); anon = plist("SUPABASE_ANON_KEY")
     }
 
     var isConfigured: Bool { URL(string: urlString)?.host != nil && !anon.isEmpty }
@@ -39,15 +38,11 @@ struct SupabaseAuthAdapter: AuthServicing {
         try? store.clearLegacySession()
     }
 
+    /// RPC `delete_my_account` في Supabase (بلا الموقع)؛ عند النجاح تُمسح الجلسة المحلية فورًا.
     func deleteAccount() async throws {
-        guard let t = try store.value(forKey: "access_token"), let url = URL(string: apiBase)?.appendingPathComponent("api/account/delete")
-        else { throw AuthServiceError.unauthorized }
-        var req = URLRequest(url: url)
-        req.httpMethod = "POST"
-        req.setValue("Bearer \(t)", forHTTPHeaderField: "Authorization")
-        req.timeoutInterval = 30
-        let (_, resp) = try await run(req)
-        guard (resp as? HTTPURLResponse)?.statusCode == 200 else { throw AuthServiceError.server("تعذّر حذف الحساب، حاول لاحقًا.") }
+        try await SupabaseAccountDeleter(supabaseURL: URL(string: urlString), anonKey: anon, store: store).deleteMyAccount()
+        for k in ["access_token", "refresh_token", "user_email"] { try? store.removeValue(forKey: k) }
+        try? store.clearLegacySession()
     }
 
     func updatePassword(_ newPassword: String) async throws {
@@ -88,7 +83,7 @@ struct SupabaseAuthAdapter: AuthServicing {
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.setValue(anon, forHTTPHeaderField: "apikey")
         req.setValue("Bearer \(bearer ?? anon)", forHTTPHeaderField: "Authorization")
-        req.timeoutInterval = 30
+        req.timeoutInterval = 15
         req.httpBody = try JSONSerialization.data(withJSONObject: body)
         let (data, resp) = try await run(req)
         let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
@@ -99,8 +94,10 @@ struct SupabaseAuthAdapter: AuthServicing {
         return json
     }
 
+    private static let session = RemoteTransport.shortSession(timeout: 15)
+
     private func run(_ req: URLRequest) async throws -> (Data, URLResponse) {
-        do { return try await URLSession.shared.data(for: req) }
-        catch let e as URLError where e.code == .notConnectedToInternet { throw AuthServiceError.offline }
+        do { return try await Self.session.data(for: req) }
+        catch is URLError { throw AuthServiceError.offline }
     }
 }
