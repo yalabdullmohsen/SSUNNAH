@@ -14,6 +14,7 @@ enum MushafFlipProbe {
     static func runIfRequested(start: Int, set: @escaping (Int) -> Void) {
         let n = UserDefaults.standard.integer(forKey: "mushafAutoFlip")
         guard n > 0 else { return }
+        let dir = UserDefaults.standard.bool(forKey: "mushafAutoFlipBack") ? -1 : 1   // -1: تقليب للخلف (للوصول إلى الصفحة 1)
         Task { @MainActor in
             try? await Task.sleep(nanoseconds: 2_500_000_000)   // استقرار أول عرض
             let sampler = FrameSampler()
@@ -23,7 +24,7 @@ enum MushafFlipProbe {
                 let st = signposter.beginInterval("flip", id: id)
                 let t0 = CACurrentMediaTime()
                 sampler.beginWindow()
-                withAnimation(.easeInOut(duration: 0.3)) { set(start + i) }
+                withAnimation(.easeInOut(duration: 0.3)) { set(start + dir * i) }
                 try? await Task.sleep(nanoseconds: 450_000_000)
                 let w = sampler.endWindow()
                 signposter.endInterval("flip", st)

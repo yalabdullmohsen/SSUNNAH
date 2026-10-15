@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreText
 import os
 #if os(macOS)
 import AppKit
@@ -81,7 +82,7 @@ public struct MushafPageView: View {
                         .foregroundStyle(w.isAyahEnd ? Sunnah.Colors.mushafIvory : Sunnah.Colors.textPrimary)
                         .background {
                             // قرص أخضر خلف رمز نهاية الآية (الرمز نفسه من خط QPC بلا تغيير): حلقته ورقمه عاجيان كالمرجع.
-                            if w.isAyahEnd { Circle().fill(Sunnah.Colors.mushafAccent).aspectRatio(1, contentMode: .fit) }
+                            if w.isAyahEnd { AyahEndDisc(glyphs: w.c, family: family, size: layout.fontSize) }
                         }
                         .padding(.vertical, 1)
                         .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
@@ -347,5 +348,46 @@ public struct MushafIndexView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .sunnahMotifCorner(size: 220, alignment: .bottomLeading, opacity: 0.06)
         .background(Sunnah.Colors.bg)
+    }
+}
+
+/// قرص نهاية الآية: قطر ثابت 1.12em كالويب (`--mm-ayah-end`) لكل الأرقام، مركزه مركز حبر الرمز، والرمز مقصوص بالدائرة نفسها (overflow:hidden) فلا يخرج لون ولا حبر.
+private struct AyahEndDisc: View {
+    let glyphs: String, family: String, size: CGFloat
+    var color: Color = Sunnah.Colors.mushafAccent
+    private static let diameterEm: CGFloat = 0.8   // قطر موحّد لكل الأرقام = حلقة رمز الآية في الخط
+    private static let lock = NSLock()
+    nonisolated(unsafe) private static var cache: [String: CGRect] = [:]
+
+    private func ink() -> CGRect {
+        let key = "\(family)|\(glyphs)|\(size)"
+        Self.lock.lock(); defer { Self.lock.unlock() }
+        if let hit = Self.cache[key] { return hit }
+        let font = CTFontCreateWithName(family as CFString, size, nil)
+        let chars = Array(glyphs.utf16)
+        var gl = [CGGlyph](repeating: 0, count: chars.count)
+        CTFontGetGlyphsForCharacters(font, chars, &gl, chars.count)
+        var r = CGRect.null
+        var x: CGFloat = 0
+        for g in gl {
+            var gg = g, b = CGRect.zero, adv = CGSize.zero
+            CTFontGetBoundingRectsForGlyphs(font, .horizontal, &gg, &b, 1)
+            CTFontGetAdvancesForGlyphs(font, .horizontal, &gg, &adv, 1)
+            r = r.union(b.offsetBy(dx: x, dy: 0)); x += adv.width
+        }
+        if Self.cache.count > 600 { Self.cache.removeAll() }
+        Self.cache[key] = r
+        return r
+    }
+
+    var body: some View {
+        let r = ink()
+        let font = CTFontCreateWithName(family as CFString, size, nil)
+        let ascent = CTFontGetAscent(font)
+        let d = r.isNull ? 0 : size * Self.diameterEm
+        Color.clear.environment(\.layoutDirection, .leftToRight).overlay(alignment: .topLeading) {
+            Circle().fill(color).frame(width: d, height: d)
+                .offset(x: r.midX - d / 2, y: ascent - r.midY - d / 2)
+        }
     }
 }
