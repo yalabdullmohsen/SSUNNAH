@@ -10,8 +10,8 @@
 | الفئة الأساسية | Reference — **قرار المالك (مؤكَّد)** |
 | الفئة الثانوية | Lifestyle (اختياري) |
 | التصنيف العمري | 4+ — **مؤكَّد من المالك**؛ إجابات الاستبيان أدناه |
-| رابط الدعم | https://www.ssunnah.com/support (**ميت: HTTP 402 بتاريخ 2026-10-15**؛ البديل المقترح بعد تفعيل Pages: https://yalabdullmohsen.github.io/SSUNNAH/support.html — مصدره `docs/site/`) |
-| رابط الخصوصية | https://www.ssunnah.com/privacy (**ميت: HTTP 402 بتاريخ 2026-10-15**؛ البديل المقترح: https://yalabdullmohsen.github.io/SSUNNAH/privacy.html) |
+| رابط الدعم | [https://yalabdullmohsen.github.io/sunnah-legal/support.html](https://yalabdullmohsen.github.io/sunnah-legal/support.html) — مستودع `yalabdullmohsen/sunnah-legal`، HTTP 200 |
+| رابط الخصوصية | [https://yalabdullmohsen.github.io/sunnah-legal/privacy.html](https://yalabdullmohsen.github.io/sunnah-legal/privacy.html) — HTTP 200 |
 | التتبع (ATT) | لا تتبع، لا إعلانات، لا SDK تحليلات (انظر `PRIVACY_CHECK.md`) |
 | تسجيل الدخول | اختياري (انظر `REVIEW_NOTES.md`) |
 
