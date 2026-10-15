@@ -19,7 +19,7 @@ public struct DetailTemplate: View {
         GeometryReader { geo in
             ScrollView {
                 VStack(spacing: 0) {
-                    DetailHero(title: item.title, subtitle: subtitle, tags: item.tags, centered: true, fillHeight: isShort ? geo.size.height * 0.30 : nil)
+                    DetailHero(title: item.title, subtitle: subtitle, tags: item.tags, centered: true, fillHeight: isShort ? geo.size.height * 0.34 : nil)
                     if !body_.isEmpty {
                         if isShort { shortCard } else { longCard }
                     }
@@ -40,7 +40,7 @@ public struct DetailTemplate: View {
 
     private var shortCard: some View {
         VStack(spacing: Sunnah.Spacing.s5) {
-            SunnahMotif(size: 44, opacity: 0.9)
+            SunnahMotif(size: 64, opacity: 0.9)
             SunnahMarkdownText(body_, style: .hadith)
                 .multilineTextAlignment(.center)
             HStack(spacing: Sunnah.Spacing.s3) {
@@ -50,12 +50,13 @@ public struct DetailTemplate: View {
             }
             .frame(maxWidth: 160).accessibilityHidden(true)
         }
-        .padding(.horizontal, Sunnah.Spacing.s5).padding(.vertical, Sunnah.Spacing.s7)
+        .padding(.horizontal, Sunnah.Spacing.s5).padding(.vertical, Sunnah.Spacing.s7 + 20)
         .frame(maxWidth: .infinity)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
         .sunnahElevation()
-        .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, -28).padding(.bottom, Sunnah.Spacing.s5)
+        .padding(.horizontal, Sunnah.Spacing.pageX).padding(.vertical, Sunnah.Spacing.s5)
+        .frame(maxHeight: .infinity, alignment: .center)
     }
 }
 
@@ -71,8 +72,8 @@ struct DetailHero: View {
         }
         .multilineTextAlignment(centered ? .center : .leading)
         .frame(maxWidth: .infinity, alignment: centered ? .center : .leading)
-        .frame(minHeight: fillHeight, maxHeight: fillHeight == nil ? nil : .infinity, alignment: .center)
+        .frame(height: fillHeight, alignment: .center)
         .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s5).padding(.bottom, 44)
-        .background { ZStack { Sunnah.Colors.primaryStrong; SunnahStarPattern().opacity(0.9) }.ignoresSafeArea(edges: .top) }
+        .background { ZStack { Sunnah.Colors.primaryStrong; SunnahStarPattern().opacity(0.9) }.clipShape(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous)).padding(.top, -80).ignoresSafeArea(edges: .top) }
     }
 }
