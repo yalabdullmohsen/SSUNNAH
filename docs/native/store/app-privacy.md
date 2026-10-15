@@ -17,6 +17,6 @@
 | الخلفية | audio + fetch؛ BGTask: `com.yousef.majlisilm.prayer-refresh` | `Info.plist` |
 | التشفير (Export Compliance) | `ITSAppUsesNonExemptEncryption=false`: صحيح لأن التشفير الوحيد HTTPS القياسي | `Info.plist` سطر 17؛ لا CryptoKit/CommonCrypto/SecKey/CCCrypt في `ios-native` ولا `SunnahNative/Sources` |
 
-الحذف: الحساب قابل للحذف من داخل التطبيق (مركز الخصوصية — `AccountPrivacyCenterScreen`). الاحتفاظ بالبيانات المجمَّعة مرتبط بالحساب فقط.
+الحذف: «طلب حذف الحساب نهائيًا» في مركز الخصوصية (`AccountPrivacyCenterScreen` ← المسار `/account-deletion`). **تنبيه:** يُفتح هذا المسار من موقع ssunnah.com المعطّل حاليًا (HTTP 402)؛ Apple تشترط إمكان حذف الحساب من داخل التطبيق، فيجب التحقق منه قبل الإرسال. البريد info@ssunnah.com مأخوذ من `AccountTexts.contactEmail` وصلاحيته غير مؤكدة.
 
 **شرط:** أي SDK أو إرسال بيانات جديد يعيد هذا الجدول قبل الرفع.
