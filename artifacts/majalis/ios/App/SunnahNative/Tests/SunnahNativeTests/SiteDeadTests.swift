@@ -137,6 +137,20 @@ final class SiteDeadTests: XCTestCase {
         XCTAssertTrue(DeadSiteProtocol.seen.isEmpty)
     }
 
+    func testScreenLimitsNeverExceedTableLimitsAndCounterShows() {
+        XCTAssertEqual(AccountSubmissionDraft.titleMax, 300)
+        XCTAssertEqual(AccountSubmissionDraft.detailsMax, 3000)
+        XCTAssertEqual(AccountSubmissionDraft.authorMax, 100)
+        XCTAssertEqual(AccountSubmissionDraft.titleMax, AccountAPI.titleMax)
+        XCTAssertEqual(AccountSubmissionDraft.detailsMax, AccountAPI.detailsMax)
+        let ok = AccountSubmissionDraft(type: "درس", title: String(repeating: "ع", count: 300), details: String(repeating: "ت", count: 3000), author: String(repeating: "م", count: 100))
+        XCTAssertTrue(ok.isValid)
+        XCTAssertFalse(AccountSubmissionDraft(type: "درس", title: String(repeating: "ع", count: 301), details: "تفاصيل", author: "").isValid)
+        XCTAssertFalse(AccountSubmissionDraft(type: "درس", title: "عنوان", details: String(repeating: "ت", count: 3001), author: "").isValid)
+        XCTAssertFalse(AccountSubmissionDraft(type: "درس", title: "عنوان", details: "تفاصيل", author: String(repeating: "م", count: 101)).isValid)
+        XCTAssertEqual(AccountSubmissionDraft.counter("أهلا", max: 300), "4 / 300")
+    }
+
     func testShortSessionHasShortTimeoutsAndNoConnectivityWait() {
         let c = RemoteTransport.shortSession().configuration
         XCTAssertEqual(c.timeoutIntervalForRequest, 8)
