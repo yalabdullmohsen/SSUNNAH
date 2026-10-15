@@ -1,0 +1,154 @@
+{
+ "عام الميلاد": [
+  {
+   "ref": "سيرة ابن هشام (صفحة 181)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/181",
+   "quote": "لَيْلَةً خَلَتْ مِنْ شَهْرِ رَبِيعٍ الْأَوَّلِ، عَامَ الْفِيلِ [٤] [١] لَا يعرف فِي الْعَرَب من تسمى بِهَذَا الِاسْم قبله صَلَّى",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 182)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/182",
+   "quote": "وَلَدْتُ أَنَا وَرَسُولُ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ عَامَ الْفِيلِ، فَنَحْنُ لِدَانِ [١] .",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "سنوات الرسالة": [
+  {
+   "ref": "صحيح البخاري 3902 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3902.json",
+   "quote": "صلى الله عليه وسلم لأَرْبَعِينَ سَنَةً، فَمَكُثَ بِمَكَّةَ ثَلاَثَ عَشْرَةَ سَنَةً يُوحَى إِلَيْهِ، ثُمَّ أُمِرَ بِالْهِجْرَةِ فَهَاجَرَ عَشْرَ سِنِينَ، وَمَاتَ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 3902 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3902.json",
+   "quote": "ثُمَّ أُمِرَ بِالْهِجْرَةِ فَهَاجَرَ عَشْرَ سِنِينَ، وَمَاتَ وَهُوَ ابْنُ ثَلاَثٍ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "عمره الشريف": [
+  {
+   "ref": "صحيح البخاري 3536 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3536.json",
+   "quote": "تُوُفِّيَ وَهْوَ ابْنُ ثَلاَثٍ وَسِتِّينَ‏.‏ وَقَالَ ابْنُ شِهَابٍ وَأَخْبَرَنِي سَعِيدُ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم 6091 (ترقيم hadith-api)، رقم الكتاب المطبوع 2348",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6091.json",
+   "quote": "قُبِضَ رَسُولُ اللَّهِ صلى الله عليه وسلم وَهُوَ ابْنُ ثَلاَثٍ وَسِتِّينَ وَأَبُو",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "تاريخ الهجرة": [
+  {
+   "ref": "صحيح البخاري 3902 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3902.json",
+   "quote": "صلى الله عليه وسلم لأَرْبَعِينَ سَنَةً، فَمَكُثَ بِمَكَّةَ ثَلاَثَ عَشْرَةَ سَنَةً يُوحَى إِلَيْهِ، ثُمَّ أُمِرَ بِالْهِجْرَةِ فَهَاجَرَ عَشْرَ سِنِينَ، وَمَاتَ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 515)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/515",
+   "quote": "لِاثْنَتَيْ عَشْرَةَ لَيْلَةٍ خَلَتْ مِنْ شَهْرِ رَبِيعٍ الْأَوَّلِ يَوْمَ الِاثْنَيْنِ، حِينَ اشْتَدَّ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "تاريخ الوفاة": [
+  {
+   "ref": "صحيح البخاري 3536 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3536.json",
+   "quote": "تُوُفِّيَ وَهْوَ ابْنُ ثَلاَثٍ وَسِتِّينَ‏.‏ وَقَالَ ابْنُ شِهَابٍ وَأَخْبَرَنِي سَعِيدُ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 1391)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/1391",
+   "quote": "فَتُوُفِّيَ رَسُولُ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ حِينَ اشْتَدَّ الضُّحَاءُ مِنْ ذَلِكَ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "عدد الغزوات": [
+  {
+   "ref": "صحيح البخاري 3949 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3949.json",
+   "quote": "كَمْ غَزَا النَّبِيُّ صلى الله عليه وسلم مِنْ غَزْوَةٍ قَالَ تِسْعَ عَشْرَةَ‏.‏",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 4404 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/4404.json",
+   "quote": "غَزَا تِسْعَ عَشْرَةَ غَزْوَةً، وَأَنَّهُ حَجَّ بَعْدَ مَا هَاجَرَ حَجَّةً",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم 4693 (ترقيم hadith-api)، رقم الكتاب المطبوع 1254.03",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/4693.json",
+   "quote": "غَزَا تِسْعَ عَشْرَةَ غَزْوَةً وَحَجَّ بَعْدَ مَا هَاجَرَ حَجَّةً لَمْ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "أمهات المؤمنين": [
+  {
+   "ref": "صحيح البخاري 268 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/268.json",
+   "quote": "عَلَى نِسَائِهِ فِي السَّاعَةِ الْوَاحِدَةِ مِنَ اللَّيْلِ وَالنَّهَارِ، وَهُنَّ إِحْدَى عَشْرَةَ‏.‏ قَالَ قُلْتُ لأَنَسٍ أَوَكَانَ يُطِيقُهُ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 268 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/268.json",
+   "quote": "إِنَّ أَنَسًا حَدَّثَهُمْ تِسْعُ نِسْوَةٍ‏.‏",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "مُرضِعاته الشريفات": [
+  {
+   "ref": "صحيح البخاري 5101 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5101.json",
+   "quote": "لاَبْنَةُ أَخِي مِنَ الرَّضَاعَةِ، أَرْضَعَتْنِي وَأَبَا سَلَمَةَ ثُوَيْبَةُ فَلاَ تَعْرِضْنَ عَلَىَّ بَنَاتِكُنَّ وَلاَ أَخَوَاتِكُنَّ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 183)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/183",
+   "quote": "يُقَالُ لَهَا: حَلِيمَةُ ابْنَةُ أَبِي ذُؤَيْبٍ. وَأَبُو ذُؤَيْبٍ: عَبْدُ اللَّهِ بْنُ الْحَارِثِ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ]
+}
