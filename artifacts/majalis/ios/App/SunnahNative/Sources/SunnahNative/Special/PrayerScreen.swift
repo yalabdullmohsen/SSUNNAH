@@ -7,5 +7,7 @@ public struct PrayerScreen: View {
     public var body: some View {
         PrayerTimesScreen()
             .environment(\.prayerTimesTheme, PrayerTimesTheme(background: Sunnah.Colors.bg, rowBackground: Sunnah.Colors.surface))
+            .sunnahReadableWidth()
+            .background(Sunnah.Colors.bg)
     }
 }

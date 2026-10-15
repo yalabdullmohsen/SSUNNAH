@@ -69,8 +69,10 @@ let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
 }
 
 @MainActor func render(_ name: String, _ fam: Fam, _ scheme: ColorScheme, _ v: String, _ view: AnyView, out: String) {
-  let tag = "\(name)_\(fam.name)_\(scheme == .dark ? "dark" : "light")_\(v)"
+  let sizeTag = ProcessInfo.processInfo.environment["SNAP_SIZE"] == "xxl" ? "_xxl" : ""
+  let tag = "\(name)_\(fam.name)_\(scheme == .dark ? "dark" : "light")_\(v)\(sizeTag)"
   let styled = view
+    .environment(\.dynamicTypeSize, sizeTag.isEmpty ? .large : .xxLarge)
     .environment(\.snapFamily, fam.f)
     .environment(\.colorScheme, scheme)
     .environment(\.layoutDirection, .rightToLeft)

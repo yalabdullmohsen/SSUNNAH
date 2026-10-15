@@ -69,7 +69,7 @@ struct HadithListView: View {
                     SunnahListRow(title: item.title, subtitle: item.sourceName ?? item.chapter)
                 }.sunnahRowChrome()
             }
-            .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+            .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth().background(Sunnah.Colors.bg)
             .searchable(text: $query, prompt: "ابحث في الأحاديث")
         }
     }
@@ -100,7 +100,7 @@ struct HadithDetailView: View {
                 }
             }.padding(Sunnah.Spacing.pageX)
         }
-        .background(Sunnah.Colors.bg)
+        .sunnahReadableWidth().background(Sunnah.Colors.bg)
         .navigationTitle(item.title)
     }
 }
@@ -134,7 +134,7 @@ struct HadithBooksView: View {
                 SunnahListRow(title: "صحيح مسلم", subtitle: "المسند الصحيح")
             }.sunnahRowChrome()
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth().background(Sunnah.Colors.bg)
     }
 }
 
