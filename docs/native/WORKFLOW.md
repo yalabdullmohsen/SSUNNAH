@@ -46,6 +46,7 @@ NATIVE_WINDOW=n1 APP=<SunnahApp.app> MODE=light BOARD=<dir> OPEN=inapp bash scri
 ## المحاكيات (قاعدة ملزمة)
 - لا أي سكربت يحذف أو يمسح (`simctl delete` / `erase` / `shutdown all` / `delete unavailable`) محاكيًا لم تنشئه النافذة نفسها في الجلسة نفسها. لا `erase all` أبدًا.
 - المسموح الوحيد: سكربت ينشئ محاكيه بنفسه (`simctl create`) ثم يحذف ذلك المعرّف حصرًا (مثل `capture-store-screenshots.sh`).
+- **ممنوع أي أمر يمسّ كل المحاكيات أو محاكيات لم تنشئها نافذتك**: `simctl shutdown all` و`erase all` و`delete all` و`delete unavailable` وأي حلقة على `simctl list` تُغلق/تمسح/تحذف. أغلق محاكيك فقط بمعرّفه: `xcrun simctl shutdown <UDID>`. (وقعت الحادثة: `shutdown all` أغلق محاكيات ن1/ن3/ن4 العاملة؛ لا تتكرر.)
 - سبب القاعدة: اختفى `n2-sim` لأن `disk-clean.sh` كان يحذف كل المحاكيات عدا واحد؛ أُزيل ذلك. `scripts/check-no-sim-delete.sh` يفرض القاعدة (يُشغَّل في native-release-check).
 
 ## أولوية طابور البناء
