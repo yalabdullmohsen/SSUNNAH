@@ -80,11 +80,14 @@ struct RegisterView: View {
 
 struct AccountDeletionView: View {
     @Environment(\.platform) private var platform
-    @State private var confirm = ""
+    @State private var confirm: String
     @State private var busy = false
     @State private var done = false
     @State private var error: String?
-    private let phrase = "حذف"
+    private let phrase = AccountDeletionFlow.phrase
+
+    /// القيم الابتدائية للمعاينة واللقطات فقط؛ الافتراضي هو الحالة الأولى.
+    init(confirm: String = "", error: String? = nil) { _confirm = State(initialValue: confirm); _error = State(initialValue: error) }
 
     var body: some View {
         VStack(spacing: Sunnah.Spacing.s4) {
@@ -98,16 +101,11 @@ struct AccountDeletionView: View {
                 Button(busy ? "جارٍ الحذف…" : "حذف حسابي نهائيًا", role: .destructive) {
                     Task {
                         busy = true; error = nil; defer { busy = false }
-                        do {
-                            try await platform.authService.deleteAccount()
-                            await platform.authService.signOut()
-                            await LocalDataEraser.eraseAll()
-                            done = true
-                        } catch { self.error = error.localizedDescription }
+                        if let failure = await AccountDeletionFlow.run(auth: platform.authService) { error = failure } else { done = true }
                     }
                 }
                 .buttonStyle(.borderedProminent).tint(.red)
-                .disabled(busy || confirm != phrase)
+                .disabled(!AccountDeletionFlow.canDelete(confirm: confirm, busy: busy))
             }
         }
         .padding(Sunnah.Spacing.pageX)
