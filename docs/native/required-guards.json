@@ -1,0 +1,10 @@
+{
+  "_": "حراس لازمة قبل أي RC نهائي (طلب المالك 2026-10-16). match = تعبير على اسم ملف تحت scripts/ يبدأ بـnative-؛ كل حارس يجب أن يُستدعى في scripts/native-release-check.sh بسطر فيه «bad» أو «|| fail=1» (ليفشل الفحص عند المخالفة). عدّلوا match إن اختلف اسم حارسكم.",
+  "guards": [
+    { "id": "titles-unique", "owner": "ن1", "match": "native-.*(title|heading).*\\.(mjs|sh)$" },
+    { "id": "date-readable", "owner": "ن1", "match": "native-.*date.*\\.(mjs|sh)$" },
+    { "id": "tabbar-cover", "owner": "ن1", "match": "native-.*(tabbar|tab-bar|inset|cover).*\\.(mjs|sh)$" },
+    { "id": "verse-selection", "owner": "ن3", "match": "native-.*(select|mushaf).*\\.(mjs|sh)$" },
+    { "id": "templated-content", "owner": "ن2", "match": "native-content-guards\\.mjs$" }
+  ]
+}
