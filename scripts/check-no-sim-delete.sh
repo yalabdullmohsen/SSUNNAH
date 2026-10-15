@@ -3,9 +3,9 @@
 set -u
 cd "$(git rev-parse --show-toplevel)"
 BAD=$(git ls-files '*.sh' '*.rb' '*.py' '*.mjs' ':!:scripts/check-no-sim-delete.sh' | while read -r f; do
-  rg -n 'simctl (erase|shutdown all|delete (unavailable|all))|simctl delete' "$f" 2>/dev/null | while read -r l; do
+  grep -nE 'simctl (erase|shutdown all|delete (unavailable|all))|simctl delete' "$f" 2>/dev/null | while read -r l; do
     # الحذف المسموح: ملف أنشأ محاكيه بنفسه (simctl create) وحذف متغيره فقط
-    if rg -q 'simctl create' "$f" && ! echo "$l" | rg -q 'erase|shutdown all|unavailable|delete all'; then continue; fi
+    if grep -q 'simctl create' "$f" && ! echo "$l" | grep -qE 'erase|shutdown all|unavailable|delete all'; then continue; fi
     echo "$f:$l"
   done
 done)

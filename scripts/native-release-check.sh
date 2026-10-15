@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # فحص جاهزية Release للتطبيق الأصلي. الافتراضي: فحص ساكن فقط (آمن لكل النوافذ).
 # --release: بناء Release على المحاكي وتشغيله — لدورة ن4 فقط (xcodebuild/simulator).
-set -uo pipefail
+set -uo pipefail; mkdir -p "$HOME/.majalis-tools/logs"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"; cd "$ROOT"
 SRC="artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative"
 fail=0; bad() { echo "✗ $1"; fail=1; }
@@ -59,9 +59,9 @@ if [ "${1:-}" = "--release" ]; then
   export NATIVE_WINDOW="${NATIVE_WINDOW:-n4}"; . "$(dirname "$0")/native-sim.sh"; DD="${DD:-$HOME/ssunnah-build/DerivedData/release}"
   # الحَكَم رمز خروج xcodebuild؛ سطر Xcode 27 «failed with exit code 0 but produced no further output» ضجيج -quiet لا خطأ
   ( cd ios-native && ruby scripts/generate-xcodeproj.rb >/dev/null 2>&1
-    bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD" CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES build -quiet >/tmp/native-release-build.log 2>&1 ) || bad "فشل بناء Release (انظر /tmp/native-release-build.log)"
+    bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD" CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES build -quiet >$HOME/.majalis-tools/logs/native-release-build.log 2>&1 ) || bad "فشل بناء Release (انظر $HOME/.majalis-tools/logs/native-release-build.log)"
   # اختبار النقر الفعلي (XCUITest): كل بلاطة/بطاقة في الرئيسية وكل عنصر في «كل الأقسام» وروابط داخلية؛ بلا idb
-  ( cd ios-native && bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD" CODE_SIGNING_ALLOWED=NO -resultBundlePath /tmp/native-ui-tests.xcresult test -only-testing:SunnahAppUITests -quiet >/tmp/native-ui-tests.log 2>&1 ) || bad "فشل اختبار النقر XCUITest (انظر /tmp/native-ui-tests.log)"
+  ( cd ios-native && bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination "platform=iOS Simulator,id=$SIM" -derivedDataPath "$DD" CODE_SIGNING_ALLOWED=NO -resultBundlePath $HOME/.majalis-tools/logs/native-ui-tests.xcresult test -only-testing:SunnahAppUITests -quiet >$HOME/.majalis-tools/logs/native-ui-tests.log 2>&1 ) || bad "فشل اختبار النقر XCUITest (انظر $HOME/.majalis-tools/logs/native-ui-tests.log)"
   xcrun simctl install "$SIM" "$DD/Build/Products/Release-iphonesimulator/SunnahApp.app" && xcrun simctl launch "$SIM" com.yousef.majlisilm >/dev/null || bad "فشل التثبيت/التشغيل"
 fi
 [ $fail = 0 ] && echo "✓ فحص Release ساكن نظيف" || exit 1
