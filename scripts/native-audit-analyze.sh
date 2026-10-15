@@ -15,8 +15,11 @@ python3 - "$B" <<'PY'
 import sys,collections
 B=sys.argv[1]; rows=[l.rstrip('\n').split('\t') for l in open(B+'/verdicts.raw')]
 seen={}; out=[]
+# مسارات تحويل صريحة (تكافؤ الويب): تعرض شاشة وجهتها عمدًا فلا تُعدّ تكرارًا
+ALIASES={'/adhan-settings','/fiqh/topics/:topicId'}
 for r,c,v,h in sorted(rows):
-    if v=='OK' and h!='few':
+    if v=='OK' and h!='few' and r in ALIASES: pass
+    elif v=='OK' and h!='few':
         if h in seen and seen[h][1]!=c and seen[h][0].rsplit('/',1)[-1]!=r.rsplit('/',1)[-1]: v='DUP_SCREEN'
         else: seen.setdefault(h,(r,c))
     out.append((r,c,v))
