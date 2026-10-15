@@ -20,7 +20,8 @@ const data = `${appRoot}/public/data`;
 const out = path.resolve(opt("--out") || `${appRoot}/../../ios-native/Data`);
 const check = args.includes("--check");
 
-const holds = new Set(JSON.parse(fs.readFileSync(`${appRoot}/content/content-hold.json`, "utf8")).holds.map((h) => String(h.id)));
+const holds = new Set(JSON.parse(fs.readFileSync(`${appRoot}/content/content-hold.json`, "utf8")).holds.map((h) => String(h.id))
+  .concat(Object.keys(JSON.parse(fs.readFileSync(new URL("../../../../docs/native/aqidah-pending-review.json", import.meta.url), "utf8")).items).filter((k) => k.startsWith("hold/")).map((k) => k.slice(5))));
 const rej = {};
 const reject = (area, why) => { rej[area] ??= {}; rej[area][why] = (rej[area][why] || 0) + 1; };
 const files = [];
