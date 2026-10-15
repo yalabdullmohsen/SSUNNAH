@@ -19,6 +19,7 @@
 **الاسم:** سُنّة
 **العنوان الفرعي:** مصحف وأذكار وأحاديث ومواقيت
 **الكلمات المفتاحية:** قرآن,مصحف,أذكار,حديث,فقه,سيرة,صلاة,مواقيت,قبلة,إسلام,سنة,تفسير,دعاء
+**النص الترويجي (≤170):** مصحف كامل وأذكار وأحاديث ومواقيت الصلاة في تطبيق عربي أصلي يعمل بلا اتصال، بلا إعلانات ولا تتبع.
 **الوصف:**
 ```
 سُنّة تطبيق عربي أصلي بالكامل لتعلّم الدين ومرافقتك اليومية، لـ iPhone وiPad.
@@ -39,6 +40,7 @@
 **Name:** Sunnah
 **Subtitle:** Quran, Adhkar, Hadith, Prayer
 **Keywords:** quran,mushaf,adhkar,hadith,fiqh,seerah,prayer times,qibla,islam,sunnah,dua,muslim
+**Promotional text (≤170):** Complete Mushaf, adhkar, hadith and prayer times in a native Arabic app that works offline. No ads, no tracking.
 **Description:**
 ```
 Sunnah is a fully native Arabic app for learning and daily companionship, for iPhone and iPad.
