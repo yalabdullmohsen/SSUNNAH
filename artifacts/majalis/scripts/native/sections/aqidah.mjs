@@ -20,7 +20,9 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
   const nz = (s) => (s == null || String(s).trim() === "" ? undefined : String(s));
   const entry = (id, title, o = {}) => ({ id, title, ...Object.fromEntries(Object.entries(o).filter(([, v]) => nz(v) !== undefined)) });
   const group = (id, title, items) => ({ id, title, items });
-  const numbered = (gid, rows, f) => rows.map((r, i) => f(r, `${gid}-${i + 1}`));
+  // معرّفات ثابتة: العناصر المحذوفة نهائيًا تترك فراغًا في الترقيم (لا إعادة ترقيم) حتى لا يشير مفضّلة/رابط عميق لعنصر آخر
+  const GAPS = { amal: [10] };
+  const numbered = (gid, rows, f) => rows.map((r, i) => { let n = i + 1; for (const g of (GAPS[gid] ?? []).slice().sort((a, b) => a - b)) if (n >= g) n++; return f(r, `${gid}-${n}`); });
   // pending_review: عناصر تخالف مصدرها المتحقق منه؛ تُخفى من التصدير (فلا تصل البحث ولا الويدجت ولا الإشعارات) حتى يعتمد يوسف التصحيح
   const pending = JSON.parse(fs.readFileSync(new URL("../../../../../docs/native/aqidah-pending-review.json", import.meta.url), "utf8")).items;
   const writeGroups = (name, groups) => {
