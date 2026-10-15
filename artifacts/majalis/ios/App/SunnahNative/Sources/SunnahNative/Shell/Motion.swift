@@ -45,16 +45,16 @@ public enum SunnahNavHaptics {
         get { UserDefaults.standard.object(forKey: defaultsKey) as? Bool ?? true }
         set { UserDefaults.standard.set(newValue, forKey: defaultsKey) }
     }
+    #if canImport(UIKit) && !os(watchOS)
     @MainActor public static func enter() { fire(.light) }
     @MainActor public static func exit() { fire(.soft) }
-
-    #if canImport(UIKit) && !os(watchOS)
     @MainActor private static func fire(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
         guard enabled else { return }
         UIImpactFeedbackGenerator(style: style).impactOccurred(intensity: 0.6)
     }
     #else
-    @MainActor private static func fire(_ style: Int) {}
+    @MainActor public static func enter() {}
+    @MainActor public static func exit() {}
     #endif
 }
 
@@ -128,8 +128,12 @@ struct SunnahDestination<Content: View>: View {
     @Environment(\.sunnahTransitionNamespace) private var ns
     @Environment(\.sunnahTransitionSources) private var sources
     var body: some View {
-        if #available(iOS 18.0, macOS 15.0, *), let ns, sources?.has(route.path) == true, !SunnahMotion.reduced {
+        if #available(iOS 18.0, *), let ns, sources?.has(route.path) == true, !SunnahMotion.reduced {
+            #if os(iOS)
             content.navigationTransition(.zoom(sourceID: route.path, in: ns))
+            #else
+            content
+            #endif
         } else {
             content
         }
