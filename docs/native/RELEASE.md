@@ -31,3 +31,7 @@ SIM_UDID=<محاكي النافذة> bash scripts/native-archive-prepare.sh --cl
 - [ ] `scripts/check-no-sim-delete.sh` أخضر.
 - [ ] CI أخضر على `native-app` (عدا فحوص Vercel المتوقعة).
 - [ ] لا ادعاء اجتياز جهاز من نتائج المحاكي؛ جرّب على جهاز حقيقي قبل الإرسال للمراجعة.
+
+## الحجم (App Thinning)
+- المقاس محليًا: 259MB للتطبيق غير المقسَّم (Data 209.7MB: مصحف/خطوط QPC 156MB، حديث 17MB، تفسير 8.6MB؛ الثنائي 41MB). لا ملفات مكررة المحتوى (>300KB) في `ios-native/Data` (فُحص بـmd5). الخطوط تبقى محزومة (مصدر الحقيقة).
+- الرقم الحاكم (App Thinning Size Report للأجهزة) يحتاج Archive موقّعًا + export، ولا شهادة توزيع على هذا الجهاز ولا export مسموح؛ يُستخرج بعد رفع المالك: Organizer > Distribute > Custom > Development/Ad Hoc + App Thinning "All compatible device variants" (يولّد `App Thinning Size Report.txt`)، أو من App Store Connect > TestFlight > Build > حجم التنزيل.
