@@ -1,0 +1,64 @@
+{
+ "tabs": {
+  "conditions": [
+   {
+    "ref": "موسوعة الفقه الإسلامي للتويجري، صفحة 2210 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/37532/2210",
+    "quote": "أن يكون الواقف أهلاً للتبرع، مالكاً ل",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "موسوعة الفقه الإسلامي للتويجري، صفحة 2210 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/37532/2210",
+    "quote": "أن يكون الوقف على بر كالمساجد، والق",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الجامع لأحكام الوقف للمشيقح، صفحة 1121 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/30165/1121",
+    "quote": "تصدق بأصله لا يباع، ولا يوهب، ولا يورث",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "مجلة مجمع الفقه الإسلامي، صفحة 21149 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/8356/21149",
+    "quote": "ليس هناك مذهب فقهي أجمع علماؤه على عدم جواز وقف النقود",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "مدونة أحكام الوقف، صفحة 835 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/308/835",
+    "quote": "جواز وقف الأسهم والصكوك واستعمال ع",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "adab": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 4223",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/4223.json",
+    "quote": "ذَا مَاتَ الإِنْسَانُ انْقَطَعَ عَنْهُ عَمَلُهُ إِلاَّ مِنْ ثَلاَثَةٍ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "المعاملات المالية للدبيان، صفحة 7600 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/14474/7600",
+    "quote": "كل شرط لا يخالف الشرع، ولا يخالف مق",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ]
+ }
+}

@@ -35,7 +35,22 @@ const put = (rel, buf) => {
   fs.mkdirSync(path.dirname(`${out}/${rel}`), { recursive: true });
   fs.writeFileSync(`${out}/${rel}`, buf);
 };
-const json = (rel, v) => put(rel, JSON.stringify(v));
+/* مصادر موثّقة سجلًا بسجل (docs/native/record-sources/<مسار__بدل/>.json: مصفوفة ← معرّف السجل أو #الفهرس ← sources) تُلحق بالسجل الخالي من مصدر */
+const recSrcDir = `${appRoot}/../../docs/native/record-sources`;
+const withRecordSources = (rel, v) => {
+  const f = `${recSrcDir}/${rel.replaceAll("/", "__")}`;
+  const sf = rel.startsWith("sirah/") ? `${appRoot}/../../docs/native/sirah-sources/${rel.slice(6)}` : null; // توثيق السيرة: id ← sources لمصفوفة الجذر
+  const side = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : sf && fs.existsSync(sf) ? { "": JSON.parse(fs.readFileSync(sf, "utf8")) } : null;
+  if (!side) return v;
+  const attach = (arr, m) => arr.map((r, i) => {
+    const s = r && typeof r === "object" ? m[r.id ?? r.slug ?? r.label] ?? m[`#${i}`] : null;
+    return s && !r.sources ? { ...r, sources: s } : r;
+  });
+  if (Array.isArray(v)) return side[""] ? attach(v, side[""]) : v;
+  if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, a]) => [k, Array.isArray(a) && side[k] ? attach(a, side[k]) : a]));
+  return v;
+};
+const json = (rel, v) => put(rel, JSON.stringify(withRecordSources(rel, v)));
 const EMBEDDED = { source_origin: "site-embedded", review_status: "pending-owner-review" };
 const rd = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
 const held = (...ids) => ids.some((i) => i != null && holds.has(String(i)));

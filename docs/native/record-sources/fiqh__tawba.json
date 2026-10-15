@@ -1,0 +1,872 @@
+{
+ "": {
+  "tawba-shart-1": [
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "التَّوْبَةُ وَاجبَةٌ مِنْ كُلِّ ذَنْب, فإنْ كَانتِ ال",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 135",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/3:135/quran-uthmani",
+    "quote": "للَّهُ وَلَمْ يُصِرُّوا۟ عَلَىٰ مَا فَعَلُوا۟ وَهُمْ يَعْلَمُون",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ الزُّمَرِ آية 53",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/39:53/quran-uthmani",
+    "quote": "لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ يَغْفِرُ ٱلذُّن",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-shart-2": [
+   {
+    "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 4252، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/4252.json",
+    "quote": "لنَّدَمُ تَوْبَةٌ ‏\"‏ ‏.‏ فَقَالَ لَهُ أَبِي ‏:‏ أَنْتَ سَمِعْتَ النَّبِيَّ ـ ص",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "أَنْ يَنْدَمَ عَلَى فِعْلِهَا. والثَّالثُ: أنْ يَعْزِمَ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-shart-3": [
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "أنْ يَعْزِمَ أَنْ لا يعُودَ إِلَيْهَا أَبَداً. فَإِنْ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 135",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/3:135/quran-uthmani",
+    "quote": "للَّهُ وَلَمْ يُصِرُّوا۟ عَلَىٰ مَا فَعَلُوا۟ وَهُمْ يَعْلَمُون",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-shart-4": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6534",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6534.json",
+    "quote": "مَنْ كَانَتْ عِنْدَهُ مَظْلَمَةٌ لأَخِيهِ فَلْيَتَحَلَّلْهُ مِنْه",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 9 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/9",
+    "quote": "وإنْ كَانَتِ المَعْصِيةُ تَتَعَلقُ بآدَمِيٍّ فَشُرُوطُهَا أرْبَعَة",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 9 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/9",
+    "quote": "وإنْ كَانْت غِيبَةً استَحَلَّهُ مِنْهَا. ويجِبُ أنْ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-shart-5": [
+   {
+    "ref": "جامع الترمذي (ترقيم hadith-api) رقم 3537، حكم الألباني: Hasan",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/3537.json",
+    "quote": "نَّ اللَّهَ يَقْبَلُ تَوْبَةَ الْعَبْدِ مَا لَمْ يُغَرْغِرْ ‏\"‏ ‏.‏ قَال",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 4253، حكم الألباني: Hasan",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/4253.json",
+    "quote": "نَّ اللَّهَ عَزَّ وَجَلَّ لَيَقْبَلُ تَوْبَةَ الْعَبْدِ مَا لَمْ يُغَرْغِر",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 18",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/4:18/quran-uthmani",
+    "quote": "ذَا حَضَرَ أَحَدَهُمُ ٱلْمَوْتُ قَالَ إِنِّى تُبْتُ ٱلْـَٰٔنَ وَلَا ٱلَّذ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-nawaa-1": [
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "التَّوْبَةُ وَاجبَةٌ مِنْ كُلِّ ذَنْب, فإنْ كَانتِ ال",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6871",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6871.json",
+    "quote": "كْبَرُ الْكَبَائِرِ الإِشْرَاكُ بِاللَّهِ وَقَتْلُ النَّفْسِ، وَعُقُوقُ الْوَالِدَيْن",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ الفُرۡقَانِ آية 68",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/25:68/quran-uthmani",
+    "quote": "وَلَا يَقْتُلُونَ ٱلنَّفْسَ ٱلَّتِى حَرَّمَ ٱللَّهُ إِلَّا بِٱلْحَقِّ وَلَا يَزْنُون",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-nawaa-2": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 552",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/552.json",
+    "quote": "لصَّلَوَاتُ الْخَمْسُ وَالْجُمُعَةُ إِلَى الْجُمُعَةِ وَرَمَضَانُ إِلَى رَمَضَانَ مُكَفِّرَاتٌ مَا بَيْنَهُنَّ إِذَا اجْتَنَبَ الْكَبَائِر",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 31",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/4:31/quran-uthmani",
+    "quote": "ن تَجْتَنِبُوا۟ كَبَآئِرَ مَا تُنْهَوْنَ عَنْهُ نُكَفِّرْ عَنكُمْ سَيِّـَٔاتِكُم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "التَّوْبَةُ وَاجبَةٌ مِنْ كُلِّ ذَنْب, فإنْ كَانتِ ال",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-nawaa-3": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ التَّحۡرِيمِ آية 8",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/66:8/quran-uthmani",
+    "quote": "تُوبُوٓا۟ إِلَى ٱللَّهِ تَوْبَةًۭ نَّصُوحًا عَسَىٰ رَبُّكُمْ أَن ي",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 9 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/9",
+    "quote": "ويجِبُ أنْ يَتُوبَ مِنْ جميعِ الذُّنُوبِ, فَإِنْ تَا",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-nawaa-4": [
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "التَّوْبَةُ وَاجبَةٌ مِنْ كُلِّ ذَنْب, فإنْ كَانتِ ال",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "جامع الترمذي (ترقيم hadith-api) رقم 413، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/413.json",
+    "quote": "نْظُرُوا هَلْ لِعَبْدِي مِنْ تَطَوُّعٍ فَيُكَمَّلَ بِهَا مَا ان",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-nawaa-5": [
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 9 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/9",
+    "quote": "وإنْ كَانَتِ المَعْصِيةُ تَتَعَلقُ بآدَمِيٍّ فَشُرُوطُهَا أرْبَعَة",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 9 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/9",
+    "quote": "وإنْ كَانْت غِيبَةً استَحَلَّهُ مِنْهَا. ويجِبُ أنْ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6534",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6534.json",
+    "quote": "مَنْ كَانَتْ عِنْدَهُ مَظْلَمَةٌ لأَخِيهِ فَلْيَتَحَلَّلْهُ مِنْه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-nawaa-6": [
+   {
+    "ref": "جامع الترمذي (ترقيم hadith-api) رقم 3537، حكم الألباني: Hasan",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/3537.json",
+    "quote": "نَّ اللَّهَ يَقْبَلُ تَوْبَةَ الْعَبْدِ مَا لَمْ يُغَرْغِرْ ‏\"‏ ‏.‏ قَال",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 4253، حكم الألباني: Hasan",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/4253.json",
+    "quote": "نَّ اللَّهَ عَزَّ وَجَلَّ لَيَقْبَلُ تَوْبَةَ الْعَبْدِ مَا لَمْ يُغَرْغِر",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-nawaa-7": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6069",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6069.json",
+    "quote": "كُلُّ أُمَّتِي مُعَافًى إِلاَّ الْمُجَاهِرِينَ، وَإِنَّ مِنَ الْمَجَانَةِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-1": [
+   {
+    "ref": "جامع الترمذي (ترقيم hadith-api) رقم 3577، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/3577.json",
+    "quote": "مَنْ قَالَ أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لاَ إِلَهَ إِلاَّ هُوَ الْحَىَّ الْقَيُّوم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن أبي داود (ترقيم hadith-api) رقم 1517، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/1517.json",
+    "quote": " وَأَتُوبُ إِلَيْهِ غُفِرَ لَهُ وَإِنْ كَانَ فَرَّ مِنَ الزَّحْفِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-2": [
+   {
+    "ref": "سنن أبي داود (ترقيم hadith-api) رقم 1516، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/1516.json",
+    "quote": "فِي الْمَجْلِسِ الْوَاحِدِ مِائَةَ مَرَّةٍ ‏ \"‏ رَبِّ اغْفِرْ لِي وَتُب",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن أبي داود (ترقيم hadith-api) رقم 1516، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/1516.json",
+    "quote": "رَبِّ اغْفِرْ لِي وَتُبْ عَلَىَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيم",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-3": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6306",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6306.json",
+    "quote": "وَمَنْ قَالَهَا مِنَ النَّهَارِ مُوقِنًا بِهَا، فَمَاتَ مِنْ يَوْمِهِ قَبْلَ أَنْ يُمْسِيَ، فَهُوَ مِنْ أَهْلِ الْجَنَّة",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6306",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6306.json",
+    "quote": "بُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ وَأَبُوءُ لَكَ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْت",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-4": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1084",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1084.json",
+    "quote": "للَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ دِقَّهُ وَجِلَّهُ وَأَوَّلَهُ وَآخِرَهُ وَعَلاَنِيَتَهُ وَسِرَّه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-5": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ نُوحٍ آية 10",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/71:10/quran-uthmani",
+    "quote": "فَقُلْتُ ٱسْتَغْفِرُوا۟ رَبَّكُمْ إِنَّهُۥ كَانَ غَفَّار",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ نُوحٍ آية 12",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/71:12/quran-uthmani",
+    "quote": "وَيُمْدِدْكُم بِأَمْوَٰلٍۢ وَبَنِينَ وَيَجْعَل لَّكُمْ جَنَّٰتٍۢ و",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن أبي داود (ترقيم hadith-api) رقم 1518، حكم الألباني: Daif",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/1518.json",
+    "quote": "مَنْ لَزِمَ الاِسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ ضِيق",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-6": [
+   {
+    "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 3850، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/3850.json",
+    "quote": "ولِينَ اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "جامع الترمذي (ترقيم hadith-api) رقم 3513، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/3513.json",
+    "quote": "للَّهُمَّ إِنَّكَ عَفُوٌّ كَرِيمٌ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-7": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6405",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6405.json",
+    "quote": "مَنْ قَالَ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ‏.‏ فِي يَوْمٍ مِائَةَ مَرَّةٍ حُطَّتْ خَطَايَاه",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6842",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6842.json",
+    "quote": "مَنْ قَالَ سُبْحَانَ اللَّهِ وَبِحَمْدِهِ فِي يَوْمٍ مِائَةَ مَرَّةٍ حُطَّتْ خَطَايَاه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-8": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الأَعۡرَافِ آية 23",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/7:23/quran-uthmani",
+    "quote": "قَالَا رَبَّنَا ظَلَمْنَآ أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ ٱلْخَٰسِرِين",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 37",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/2:37/quran-uthmani",
+    "quote": "فَتَلَقَّىٰٓ ءَادَمُ مِن رَّبِّهِۦ كَلِمَٰتٍۢ فَتَابَ عَلَيْهِ ۚ إِنَّهُۥ ه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-9": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6901",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6901.json",
+    "quote": "للَّهُمَّ اغْفِرْ لِي خَطِيئَتِي وَجَهْلِي وَإِسْرَافِي فِي أَمْرِي وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّي",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6398",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6398.json",
+    "quote": "للَّهُمَّ اغْفِرْ لِي خَطَايَاىَ وَعَمْدِي وَجَهْلِي وَهَزْلِي",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-10": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 744",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/744.json",
+    "quote": "دَّنَسِ، اللَّهُمَّ اغْسِلْ خَطَايَاىَ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1354",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1354.json",
+    "quote": "للَّهُمَّ اغْسِلْنِي مِنْ خَطَايَاىَ بِالثَّلْجِ وَالْمَاءِ وَالْبَرَد",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-11": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 834",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/834.json",
+    "quote": "عَلِّمْنِي دُعَاءً أَدْعُو بِهِ فِي صَلاَتِي‏.‏ قَالَ ‏ \"‏ قُلِ اللَّهُم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 834",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/834.json",
+    "quote": "للَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا ��َلاَ يَغْفِرُ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-12": [
+   {
+    "ref": "جامع الترمذي (ترقيم hadith-api) رقم 3505، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/3505.json",
+    "quote": "دَعْوَةُ ذِي النُّونِ إِذْ دَعَا وَهُوَ فِي بَطْنِ الْحُوتِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ الأَنبِيَاءِ آية 87",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/21:87/quran-uthmani",
+    "quote": "ن لَّآ إِلَٰهَ إِلَّآ أَنتَ سُبْحَٰنَكَ إِنِّى كُنتُ مِنَ ٱلظَّٰلِمِين",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-dhikr-13": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ القَصَصِ آية 16",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/28:16/quran-uthmani",
+    "quote": "قَالَ رَبِّ إِنِّى ظَلَمْتُ نَفْسِى فَٱغْفِرْ لِى فَغَفَرَ لَهُۥٓ ۚ إِنَّهُۥ هُوَ ٱلْغَفُورُ ٱلرَّحِيم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ القَصَصِ آية 15",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/28:15/quran-uthmani",
+    "quote": "فَوَكَزَهُۥ مُوسَىٰ فَقَضَىٰ عَلَيْهِ ۖ قَالَ هَٰذَا مِنْ عَمَلِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-1": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 135",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/3:135/quran-uthmani",
+    "quote": "للَّهُ وَلَمْ يُصِرُّوا۟ عَلَىٰ مَا فَعَلُوا۟ وَهُمْ يَعْلَمُون",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الموسوعة الفقهية الكويتية، صفحة 2730 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/11430/2730",
+    "quote": "لاَ كَبِيرَةَ مَعَ الاِسْتِغْفَارِ، وَلاَ صَغِيرَةَ مَعَ الإِْصْرَار",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "فَإِنْ فُقِدَ أَحَدُ الثَّلاثَةِ لَمْ تَصِحَّ تَوبَتُهُ. ت",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-2": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الزُّمَرِ آية 53",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/39:53/quran-uthmani",
+    "quote": "لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ يَغْفِرُ ٱلذُّن",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ الحِجۡرِ آية 56",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/15:56/quran-uthmani",
+    "quote": "قَالَ وَمَن يَقْنَطُ مِن رَّحْمَةِ رَبِّهِۦٓ إِلَّا ٱلضَّآلُّون",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القول المفيد على كتاب التوحيد لابن عثيمين، صفحة 679 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7339/679",
+    "quote": "القنوط من رحمة الله، واليأس من روح ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-3": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الأَعۡرَافِ آية 99",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/7:99/quran-uthmani",
+    "quote": "فَأَمِنُوا۟ مَكْرَ ٱللَّهِ ۚ فَلَا يَأْمَنُ مَكْرَ ٱللَّهِ إِلَّا ٱلْقَوْم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القول المفيد على كتاب التوحيد لابن عثيمين، صفحة 679 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7339/679",
+    "quote": "الأمن من مكر الله، والقنوط من رحمة ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-4": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 18",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/4:18/quran-uthmani",
+    "quote": "ذَا حَضَرَ أَحَدَهُمُ ٱلْمَوْتُ قَالَ إِنِّى تُبْتُ ٱلْـَٰٔنَ وَلَا ٱلَّذ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "جامع الترمذي (ترقيم hadith-api) رقم 3537، حكم الألباني: Hasan",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/3537.json",
+    "quote": "نَّ اللَّهَ يَقْبَلُ تَوْبَةَ الْعَبْدِ مَا لَمْ يُغَرْغِرْ ‏\"‏ ‏.‏ قَال",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-5": [
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 9 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/9",
+    "quote": "وإنْ كَانَتِ المَعْصِيةُ تَتَعَلقُ بآدَمِيٍّ فَشُرُوطُهَا أرْبَعَة",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6534",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6534.json",
+    "quote": "مَنْ كَانَتْ عِنْدَهُ مَظْلَمَةٌ لأَخِيهِ فَلْيَتَحَلَّلْهُ مِنْه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-6": [
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "أنْ يَعْزِمَ أَنْ لا يعُودَ إِلَيْهَا أَبَداً. فَإِنْ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "رياض الصالحين للنووي، صفحة 8 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/12014/8",
+    "quote": "فَإِنْ فُقِدَ أَحَدُ الثَّلاثَةِ لَمْ تَصِحَّ تَوبَتُهُ. ت",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-7": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6308",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6308.json",
+    "quote": "يَرَى ذُنُوبَهُ كَأَنَّهُ قَاعِدٌ تَحْتَ جَبَلٍ يَخَافُ أَنْ يَق",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الموسوعة الفقهية الكويتية، صفحة 2730 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/11430/2730",
+    "quote": "لاَ كَبِيرَةَ مَعَ الاِسْتِغْفَارِ، وَلاَ صَغِيرَةَ مَعَ الإِْصْرَار",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-8": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5534",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5534.json",
+    "quote": "كَحَامِلِ الْمِسْكِ وَنَافِخِ الْكِيرِ، فَحَامِلُ الْمِسْكِ إِمَّا أَنْ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-9": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ المُنَافِقُونَ آية 10",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/63:10/quran-uthmani",
+    "quote": "قَبْلِ أَن يَأْتِىَ أَحَدَكُمُ ٱلْمَوْتُ فَيَقُولَ رَبِّ لَوْلَآ أَخَّرْتَنِىٓ إِلَىٰٓ أَجَلٍۢ قَرِيب",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 18",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/4:18/quran-uthmani",
+    "quote": "ذَا حَضَرَ أَحَدَهُمُ ٱلْمَوْتُ قَالَ إِنِّى تُبْتُ ٱلْـَٰٔنَ وَلَا ٱلَّذ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-10": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6308",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6308.json",
+    "quote": "يَرَى ذُنُوبَهُ كَأَنَّهُ قَاعِدٌ تَحْتَ جَبَلٍ يَخَافُ أَنْ يَق",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-11": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ يُوسُفَ آية 53",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/12:53/quran-uthmani",
+    "quote": "نَّ ٱلنَّفْسَ لَأَمَّارَةٌۢ بِٱلسُّوٓءِ إِلَّا مَا رَحِمَ رَبِّىٓ ۚ إِنَّ رَبِّى",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-12": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ المُنَافِقُونَ آية 9",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/63:9/quran-uthmani",
+    "quote": "لَا تُلْهِكُمْ أَمْوَٰلُكُمْ وَلَآ أَوْلَٰدُكُمْ عَن ذِكْرِ ٱللَّهِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-mani-13": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الزُّمَرِ آية 22",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/39:22/quran-uthmani",
+    "quote": "فَوَيْلٌۭ لِّلْقَٰسِيَةِ قُلُوبُهُم مِّن ذِكْرِ ٱللَّهِ ۚ أُو۟لَٰٓئِكَ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ الرَّعۡدِ آية 28",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/13:28/quran-uthmani",
+    "quote": "بُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوب",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ الزُّمَرِ آية 23",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/39:23/quran-uthmani",
+    "quote": "تَلِينُ جُلُودُهُمْ وَقُلُوبُهُمْ إِلَىٰ ذِكْرِ ٱللَّهِ ۚ ذَٰلِك",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-1": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 222",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/2:222/quran-uthmani",
+    "quote": "للَّهُ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلتَّوَّٰبِينَ وَيُحِبُّ ٱلْمُتَطَهِّرِين",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-2": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ نُوحٍ آية 10",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/71:10/quran-uthmani",
+    "quote": "فَقُلْتُ ٱسْتَغْفِرُوا۟ رَبَّكُمْ إِنَّهُۥ كَانَ غَفَّار",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ نُوحٍ آية 11",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/71:11/quran-uthmani",
+    "quote": "يُرْسِلِ ٱلسَّمَآءَ عَلَيْكُم مِّدْرَار",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-3": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الفُرۡقَانِ آية 70",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/25:70/quran-uthmani",
+    "quote": "يُبَدِّلُ ٱللَّهُ سَيِّـَٔاتِهِمْ حَسَنَٰتٍۢ ۗ وَكَانَ ٱللَّهُ غَفُورًۭا ر",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-4": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ نُوحٍ آية 11",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/71:11/quran-uthmani",
+    "quote": "يُرْسِلِ ٱلسَّمَآءَ عَلَيْكُم مِّدْرَار",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ نُوحٍ آية 12",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/71:12/quran-uthmani",
+    "quote": "وَيُمْدِدْكُم بِأَمْوَٰلٍۢ وَبَنِينَ وَيَجْعَل لَّكُمْ جَنَّٰتٍۢ و",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-5": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الرَّعۡدِ آية 28",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/13:28/quran-uthmani",
+    "quote": "بُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوب",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-6": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6953",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6953.json",
+    "quote": "لَلَّهُ أَشَدُّ فَرَحًا بِتَوْبَةِ أَحَدِكُمْ مِنْ أَحَدِكُمْ بِضَالَّتِهِ إِذَا وَجَدَه",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6309",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6309.json",
+    "quote": "للَّهُ أَفْرَحُ بِتَوْبَةِ عَبْدِهِ مِنْ أَحَدِكُمْ سَقَطَ عَلَى بَعِيرِه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-7": [
+   {
+    "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 4250، حكم الألباني: Daif",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/4250.json",
+    "quote": "ليه وسلم ـ ‏:‏ ‏ \"‏ التَّائِبُ مِنَ الذَّنْبِ كَمَنْ لاَ ذَنْبَ لَهُ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-8": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 110",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/4:110/quran-uthmani",
+    "quote": "سَهُۥ ثُمَّ يَسْتَغْفِرِ ٱللَّهَ يَجِدِ ٱللَّهَ غَفُورًۭا رَّحِيم",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-10": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الزُّمَرِ آية 53",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/39:53/quran-uthmani",
+    "quote": "نَّ ٱللَّهَ يَغْفِرُ ٱلذُّنُوبَ جَمِيعًا ۚ إِنَّهُۥ هُوَ ٱلْغَفُورُ ٱلرَّحِيم",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-11": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6307",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6307.json",
+    "quote": "نِّي لأَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ فِي الْيَوْمِ أَكْثَرَ مِنْ سَبْعِينَ مَرَّة",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-12": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5534",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5534.json",
+    "quote": "كَحَامِلِ الْمِسْكِ وَنَافِخِ الْكِيرِ، فَحَامِلُ الْمِسْكِ إِمَّا أَنْ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "tawba-athar-13": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ التَّوۡبَةِ آية 112",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/9:112/quran-uthmani",
+    "quote": "لتَّٰٓئِبُونَ ٱلْعَٰبِدُونَ ٱلْحَٰمِدُونَ ٱلسَّٰٓئِحُونَ ٱلرَّٰكِعُونَ ٱل",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 222",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/2:222/quran-uthmani",
+    "quote": "للَّهُ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلتَّوَّٰبِينَ وَيُحِبُّ ٱلْمُتَطَهِّرِين",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ]
+ }
+}
