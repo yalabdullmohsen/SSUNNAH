@@ -1,6 +1,7 @@
 import Foundation
 import MetricKit
 import os
+import SunnahNative
 
 /// قياس الأداء الحي على الأجهزة: MetricKit يسلّم حمولة يومية (إقلاع/تعليق/ذاكرة/معالج) نحفظها محليًا
 /// في Application Support/metrics ونسجّل ملخصها في os_log. لا إرسال لأي خادم ولا بيانات شخصية.
@@ -9,9 +10,14 @@ final class PerformanceMetrics: NSObject, MXMetricManagerSubscriber {
     static let log = OSLog(subsystem: "com.yousef.majlisilm", category: .pointsOfInterest)
     private let logger = Logger(subsystem: "com.yousef.majlisilm", category: "metrics")
 
+    private let once = OnceGuard()
+
+    /// آمن عند التكرار: التسجيل والإشارة مرة واحدة فقط.
     func start() {
-        MXMetricManager.shared.add(self)
-        os_signpost(.event, log: Self.log, name: "app.init")
+        once.run {
+            MXMetricManager.shared.add(self)
+            os_signpost(.event, log: Self.log, name: "app.init")
+        }
     }
 
     func didReceive(_ payloads: [MXMetricPayload]) {
