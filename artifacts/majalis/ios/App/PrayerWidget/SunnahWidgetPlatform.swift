@@ -41,9 +41,25 @@ struct SunnahWidgetChrome: ViewModifier {
 }
 
 private struct SunnahWidgetSurface: ViewModifier {
+    @Environment(\.widgetFamily) private var family
+    private var isAccessory: Bool {
+        switch family {
+        case .accessoryCircular, .accessoryRectangular, .accessoryInline: return true
+        default: return false
+        }
+    }
+
+    @ViewBuilder
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }
+            // القفل: النظام يرسم vibrant فلا لون صريحًا؛ خلفية النظام + حبر .primary.
+            if isAccessory {
+                content.containerBackground(for: .widget) { AccessoryWidgetBackground() }
+            } else {
+                content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradient }
+            }
+        } else if isAccessory {
+            content.background(AccessoryWidgetBackground())
         } else {
             content.background(SunnahWidgetTheme.homeGradient)
         }
@@ -571,11 +587,14 @@ struct SunnahTwoZone<Primary: View, Secondary: View>: View {
     @ViewBuilder let primary: Primary
     @ViewBuilder let secondary: Secondary
 
+    @Environment(\.widgetFamily) private var family
+    private var lockScreen: Bool { family == .accessoryRectangular || family == .accessoryCircular }
+
     var body: some View {
         HStack(spacing: 8) {
             primary.frame(maxWidth: .infinity, alignment: .leading)
             Rectangle()
-                .fill(SunnahWidgetTheme.primaryText.opacity(0.3))
+                .fill((lockScreen ? Color.primary : SunnahWidgetTheme.primaryText).opacity(0.3))
                 .frame(width: 1)
                 .padding(.vertical, 4)
                 .accessibilityHidden(true)
@@ -590,10 +609,10 @@ struct SunnahCalmCard: View {
     var phrase = "افتح سُنّة"
     var compact = false
     @Environment(\.widgetFamily) private var family
-    /// الرئيسية والقفل: خلفية داكنة دائمًا ⇒ نص أبيض صريح (القفل يحوّله النظام vibrancy).
+    /// الرئيسية: خلفية داكنة ثابتة ⇒ أبيض صريح. القفل: .primary دلالي (vibrant يحدده النظام).
     private var ink: Color {
         switch family {
-        case .accessoryCircular, .accessoryRectangular, .accessoryInline: return .white
+        case .accessoryCircular, .accessoryRectangular, .accessoryInline: return .primary
         default: return SunnahWidgetTheme.primaryText
         }
     }
@@ -625,7 +644,7 @@ struct SunnahRingStat: View {
 
     private var clamped: Double { min(1, max(0, fraction)) }
     /// الرئيسية: خلفية داكنة ثابتة في الفاتح والداكن فلا يصحّ .primary (أسود في الفاتح). القفل: دلالي للنظام.
-    private var ink: Color { lockScreen ? .white : SunnahWidgetTheme.primaryText }
+    private var ink: Color { lockScreen ? .primary : SunnahWidgetTheme.primaryText }
 
     var body: some View {
         VStack(spacing: lockScreen ? 0 : 6) {
