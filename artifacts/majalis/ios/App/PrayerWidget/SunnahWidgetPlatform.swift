@@ -661,41 +661,21 @@ struct SunnahMushafPositionCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Image(systemName: symbol)
-                .font(WidgetType.icon(22))
-                .foregroundStyle(SunnahBrandColors.gold)
-                .widgetAccentable()
-                .accessibilityHidden(true)
+            SunnahWidgetLogoMark(size: 34)
             Spacer(minLength: 0)
-            ViewThatFits(in: .horizontal) {
-                Text(oneLine)
-                    .font(WidgetType.primary(22))
-                    .lineLimit(1)
-                    .fixedSize(horizontal: true, vertical: false)
-                VStack(alignment: .leading, spacing: 2) {
-                    if let surah {
-                        Text(surah)
-                            .font(WidgetType.primary(20))
-                            .lineLimit(2)
-                            .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
-                    }
-                    Text(numberText)
-                        .font(WidgetType.primary(20))
-                }
-            }
-            Text(cue)
-                .font(WidgetType.secondary(13))
+            Text(surah ?? "المصحف")
+                .font(.system(size: 34, weight: .bold))
+                .lineLimit(1)
+                .minimumScaleFactor(0.6)
+            Text("صفحة \(numberText) · \(cue)")
+                .font(.system(size: 17, weight: .medium))
                 .lineLimit(1)
                 .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                .opacity(0.9)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(surah ?? "المصحف") \(numberText) \(cue)")
-    }
-
-    private var oneLine: String {
-        if let surah { return "\(surah) · \(numberText)" }
-        return numberText
     }
 }
 
