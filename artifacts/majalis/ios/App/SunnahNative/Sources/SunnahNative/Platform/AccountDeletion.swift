@@ -57,3 +57,20 @@ public enum LocalDataEraser {
         await cache.removeAll()
     }
 }
+
+/// تدفق «حذف الحساب نهائيًا» خارج الواجهة ليُختبَر بعميل وهمي: لا معرّف مستخدم يُمرَّر أبدًا (الخادم يعتمد auth.uid() فقط).
+enum AccountDeletionFlow {
+    static let phrase = "حذف"
+
+    static func canDelete(confirm: String, busy: Bool) -> Bool { !busy && confirm == phrase }
+
+    /// يعيد nil عند النجاح، وإلا رسالة الخطأ؛ عند الفشل لا signOut ولا مسح محلي.
+    static func run(auth: AuthServicing, erase: () async -> Void = { await LocalDataEraser.eraseAll() }) async -> String? {
+        do {
+            try await auth.deleteAccount()
+            await auth.signOut()
+            await erase()
+            return nil
+        } catch { return error.localizedDescription }
+    }
+}
