@@ -36,7 +36,12 @@ public enum Sunnah {
         /// لون محيط صفحة المصحف (ترويسة، علامة نهاية الآية، الصفحة): أخضر هادئ؛ الداكن درجة أفتح بتباين ≥ 4.5:1.
         public static let mushafAccent = dynamic(light: 0x5C8A72, dark: 0x8FBFA6)
         /// ورق صفحة المصحف (مرجع التصميم الجديد): عاجي دافئ فاتحًا، ونفس الخلفية الليلية داكنًا.
-        public static let mushafPaper = dynamic(light: 0xFFFBF7, dark: 0x0F1A15)
+        /// قرار المالك: ورق داكن بنص فاتح وضعًا ليليًا مقبولًا؛ الفاتح يبقى #FFFBF7. اللونان رمزان صريحان.
+        public static let mushafPaperLightHex: UInt32 = 0xFFFBF7
+        public static let mushafPaperDarkHex: UInt32 = 0x0F1A15
+        public static let mushafPaperLight = dynamic(light: mushafPaperLightHex, dark: mushafPaperLightHex)
+        public static let mushafPaperDark = dynamic(light: mushafPaperDarkHex, dark: mushafPaperDarkHex)
+        public static let mushafPaper = dynamic(light: mushafPaperLightHex, dark: mushafPaperDarkHex)
         /// لافتة السورة وخرطوشة الصفحة (مرجع التصميم): سلوي عاجي، سلطع أخضر، ذهبي بُنّي هادئ، حبر أخضر.
         public static let mushafIvory = dynamic(light: 0xFBF6EA, dark: 0x1A2A22)
         public static let mushafSage = dynamic(light: 0x9EB7A4, dark: 0x2F4A3B)
