@@ -49,3 +49,8 @@ sudo bash scripts/mac-raise-process-limits.sh --install
 2. على الرأس النهائي لـ`native-app`: `bash scripts/native-release-check.sh` أخضر.
 3. صباح الرفع: أرشفة جديدة من الرأس النهائي (`OWNER_APPROVED_ARCHIVE=1 bash scripts/native-archive-prepare.sh --archive`) بعد دمج ما يلزم من ن1 وعيب الويدجت، ن2 وحماية المعلّق، ن3 وتقليب المصحف؛ لا تُرفع أرشفة سابقة.
 4. الرفع من Organizer بيد المالك، ثم `bash scripts/release-record.sh <البناء>`.
+
+## خطر إطلاق: حجم قاعدة الإنتاج
+- الحجم 570MB فوق حد الخطة المجانية 500MB: قد تتحول القاعدة للقراءة فقط فيفشل التسجيل وحذف الحساب (مطلب App Review 5.1.1(v)) والمزامنة.
+- المسبب: سجلات/طوابير النظام القديم (`akp_structured_logs`، `automation_step_logs`، `akp_source_health`، `akp_metrics_snapshots`، `client_error_logs` ≈170MB)؛ التطبيق لا يقرأها.
+- الإجراء (المالك): راجع ونفّذ `docs/native/backend/cleanup-legacy-logs.sql` ثم تحقق أن الحجم دون 500MB (يفضّل بهامش) قبل الإرسال للمراجعة.
