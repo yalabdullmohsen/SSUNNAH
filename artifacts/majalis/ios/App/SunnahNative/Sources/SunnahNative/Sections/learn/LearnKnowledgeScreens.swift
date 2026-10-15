@@ -45,12 +45,20 @@ struct LearnGraphNodeView: View {
 struct LearnKnowledgeSectionScreen: View {
     let section: String
 
+    /// مطلع المتن نصًّا صرفًا (بلا رموز Markdown) كسطر وصف حين لا يوجد ملخص؛ من المتن نفسه بلا إضافة.
+    static func lead(_ body: String) -> String? {
+        let para = body.split(whereSeparator: \.isNewline).map { $0.trimmingCharacters(in: .whitespaces) }.first { !$0.isEmpty && !$0.hasPrefix("#") } ?? ""
+        let t = SunnahMarkdown.renderedPlainText(para).trimmingCharacters(in: .whitespacesAndNewlines)
+        if t.isEmpty { return nil }
+        return t.count > 110 ? String(t.prefix(110)) + "…" : t
+    }
+
     var body: some View {
         let section = self.section
         LearnLoadHost(load: { try await LearnSources.loadKnowledge(section: section, with: $0) }) { (items: [LearnKnowledgeItem]) in
             LearnList(items: items, emptyTitle: "لا محتوى معتمد في هذا القسم بعد") { item in
                 SunnahNavigationLink { LearnKnowledgeItemView(item: item) } label: {
-                    SunnahListRow(title: item.title, subtitle: item.summary)
+                    SunnahListRow(title: item.title, subtitle: item.summary ?? Self.lead(item.body))
                 }
             }
         }

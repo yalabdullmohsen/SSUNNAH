@@ -37,7 +37,7 @@ extension QuranSection {
             return AnyView(hifzLoader { paths in
                 if let p = paths.first(where: { $0.slug == slug }) {
                     if let uid = unitId {
-                        if let u = p.units.first(where: { $0.id == uid }) { HifzUnitView(unit: u, surahNames: surahNames()).quranTitle(u.title) }
+                        if let u = p.units.first(where: { $0.id == uid }) { HifzUnitView(unit: u, surahNames: surahNames(), siblings: p.units).quranTitle(u.title) }
                         else { EmptyStateView(title: pendingTitle) }
                     } else { HifzPathView(path: p) }
                 } else { EmptyStateView(title: pendingTitle) }
