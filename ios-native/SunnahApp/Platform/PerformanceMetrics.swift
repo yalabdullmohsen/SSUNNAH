@@ -10,6 +10,9 @@ final class PerformanceMetrics: NSObject, MXMetricManagerSubscriber {
     static let log = OSLog(subsystem: "com.yousef.majlisilm", category: .pointsOfInterest)
     private let logger = Logger(subsystem: "com.yousef.majlisilm", category: "metrics")
 
+    /// OSSignposter لمعالم الإقلاع (Instruments ‹Points of Interest›): ظهور أول إطار للحركة وجاهزية الرئيسية.
+    static let signposter = OSSignposter(logHandle: log)
+
     private let once = OnceGuard()
 
     /// آمن عند التكرار: التسجيل والإشارة مرة واحدة فقط.
@@ -33,6 +36,9 @@ final class PerformanceMetrics: NSObject, MXMetricManagerSubscriber {
     }
 
     func mark(_ name: String) {
+        if name == "firstAppear" || name == "introFirstFrame" || name == "homeReady" || name == "introApproach" {
+            Self.signposter.emitEvent("launch.milestone", "\(name, privacy: .public)")
+        }
         guard Self.probeOn else { return }
         if marks[name] == nil { marks[name] = Self.msSinceProcessStart() }
         guard let dir = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true),
