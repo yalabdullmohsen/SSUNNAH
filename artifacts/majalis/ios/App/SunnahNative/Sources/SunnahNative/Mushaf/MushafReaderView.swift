@@ -16,6 +16,10 @@ public struct MushafPageView: View {
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
+    /// قطر قرص نهاية الآية بوحدة em من حجم الخط، موحَّد لكل الأقراص.
+    static let ayahDiscEm: CGFloat = 1.12
+    /// إزاحة القرص للأسفل (em) ليتمركز مع حبر الحلقة داخل الخط لا مع صندوق النص.
+    static let ayahDiscDropEm: CGFloat = 0.07
 
     public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil, interactive: Bool = true) {
         self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah; self.onLongPress = onLongPress; self.interactive = interactive
@@ -81,7 +85,8 @@ public struct MushafPageView: View {
                         .foregroundStyle(w.isAyahEnd ? Sunnah.Colors.mushafIvory : Sunnah.Colors.textPrimary)
                         .background {
                             // قرص أخضر خلف رمز نهاية الآية (الرمز نفسه من خط QPC بلا تغيير): حلقته ورقمه عاجيان كالمرجع.
-                            if w.isAyahEnd { Circle().fill(Sunnah.Colors.mushafAccent).aspectRatio(1, contentMode: .fit) }
+                            // قطر ثابت = نسبة من حجم الخط (لا يتبع عرض صندوق الرمز)، ممركز خلف الرقم.
+                            if w.isAyahEnd { Circle().fill(Sunnah.Colors.mushafAccent).frame(width: layout.fontSize * Self.ayahDiscEm, height: layout.fontSize * Self.ayahDiscEm).offset(y: layout.fontSize * Self.ayahDiscDropEm) }
                         }
                         .padding(.vertical, 1)
                         .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
