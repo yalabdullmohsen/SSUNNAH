@@ -3,7 +3,7 @@ name: native pbxproj deterministic
 on:
   pull_request:
     branches: [native-app]
-    paths: ['ios-native/scripts/generate-xcodeproj.rb', 'ios-native/SunnahApp.xcodeproj/**', 'ios-native/**/*.swift']
+    paths: ['.github/workflows/native-pbxproj-deterministic.yml', 'ios-native/scripts/generate-xcodeproj.rb', 'ios-native/SunnahApp.xcodeproj/**', 'ios-native/**/*.swift']
 permissions:
   contents: read
 jobs:
