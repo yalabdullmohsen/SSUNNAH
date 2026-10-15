@@ -1,0 +1,252 @@
+{
+ "": {
+  "sujood-sahw-r1": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 829",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/829.json",
+    "quote": "كَبَّرَ وَهْوَ جَالِسٌ، فَسَجَدَ سَجْدَتَيْنِ قَبْلَ أَنْ يُسَلِّمَ ثُمَّ سَلَّم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1270",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1270.json",
+    "quote": "قَامَ فِي صَلاَةِ الظُّهْرِ وَعَلَيْهِ جُلُوسٌ فَلَمَّا أَتَمَّ ص",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 204 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/204",
+    "quote": "وإن استتم قائما ولم يقرأ فعدم رجوعه أولى",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 204 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/204",
+    "quote": "ما لم يستتم قائما ويلزم المأموم متابعته",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "sujood-sahw-r2": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 1226",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/1226.json",
+    "quote": "صَلَّى الظُّهْرَ خَمْسًا فَقِيلَ لَهُ أَزِيدَ فِي الصَّلاَةِ ف",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 1226",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/1226.json",
+    "quote": "قَالَ صَلَّيْتَ خَمْسًا‏.‏ فَسَجَدَ سَجْدَتَيْنِ بَعْدَ مَا سَلَّمَ‏",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1283",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1283.json",
+    "quote": "صَلَّى بِنَا رَسُولُ اللَّهِ صلى الله عليه وسلم خَمْس",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "sujood-sahw-r3": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 401",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/401.json",
+    "quote": "فَلْيَتَحَرَّى الصَّوَابَ، فَلْيُتِمَّ عَلَيْهِ ثُمَّ يُسَلِّمْ، ثُمَّ يَسْجُدْ سَجْدَتَيْن",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1272",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1272.json",
+    "quote": "فَلْيَطْرَحِ الشَّكَّ وَلْيَبْنِ عَلَى مَا اسْتَيْقَنَ ثُمَّ يَس",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 205 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/205",
+    "quote": "بنى على اليقين ولو إماما وعنه يبنى",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 207 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/207",
+    "quote": "ومحله ندبا قبل السلام إلا في السلام قبل إتمام صلاته",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "sujood-sahw-r4": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 482",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/482.json",
+    "quote": "فَتَقَدَّمَ فَصَلَّى مَا تَرَكَ، ثُمَّ سَلَّمَ، ثُمَّ كَبَّرَ وَسَجَد",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1288",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1288.json",
+    "quote": "قُصِرَتِ الصَّلاَةُ أَمْ نَسِيتَ فَنَظَرَ النَّبِيُّ صلى الله",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 201 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/201",
+    "quote": "وإن تكلم يسيرا لمصلحتها لم تبطل: وا",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 201 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/201",
+    "quote": "أو تكلم لغير مصلحتها كقوله يا غلام اسقني ونحوه بطلت",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "sujood-sahw-r5": [
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 199 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/199",
+    "quote": "قطع متى ذكر وبنى على فعله قبلها ول",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 1226",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/1226.json",
+    "quote": "صَلَّى الظُّهْرَ خَمْسًا فَقِيلَ لَهُ أَزِيدَ فِي الصَّلاَةِ ف",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1283",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1283.json",
+    "quote": "فَلَمَّا انْفَتَلَ تَوَشْوَشَ الْقَوْمُ بَيْنَهُمْ فَقَالَ ‏\"‏ مَا شَأْن",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "sujood-sahw-r6": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1287",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1287.json",
+    "quote": "ذَا زَادَ الرَّجُلُ أَوْ نَقَصَ فَلْيَسْجُدْ سَجْدَتَيْنِ ‏\"‏ ‏.‏ قَالَ ث",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1283",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1283.json",
+    "quote": "ي حَدِيثِهِ ‏\"‏ فَإِذَا نَسِيَ أَحَدُكُمْ فَلْيَسْجُدْ سَجْدَتَيْنِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 199 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/199",
+    "quote": "متى ذكر عاد إلى ترتيب الصلاة بغير ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 207 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/207",
+    "quote": "ومحله ندبا قبل السلام إلا في السلام قبل إتمام صلاته",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "sujood-sahw-r7": [
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 203 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/203",
+    "quote": "فإن كان المتروك تشهدا أخيرا أو سلاما أتى به وسجد وسلم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 204 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/204",
+    "quote": "وإن نسي التشهد الأول وحده أو مع الجلوس له ونهض",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 204 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/204",
+    "quote": "وعليه السجود لذلك كله وكذا حكم تسبيح الركوع والسجود",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 829",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/829.json",
+    "quote": "كَبَّرَ وَهْوَ جَالِسٌ، فَسَجَدَ سَجْدَتَيْنِ قَبْلَ أَنْ يُسَلِّمَ ثُمَّ سَلَّم",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "sujood-sahw-r8": [
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 207 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/207",
+    "quote": "كبر ثم سجد سجدتي بلا تشهد بعدهما و",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الإقناع في فقه الإمام أحمد للحجاوي، صفحة 207 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/7360/207",
+    "quote": "وسجود سهو وما يقول فيه وبعد الرفع منه كسجود صلب الصلاة",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 1270",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/1270.json",
+    "quote": "يُكَبِّرُ فِي كُلِّ سَجْدَةٍ وَهُوَ جَالِسٌ قَبْلَ أَنْ يُسَلِّم",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ]
+ }
+}
