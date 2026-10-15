@@ -1,0 +1,884 @@
+{
+ "discover-islam-articles": {
+  "static-article-hajj-in-islam": [
+   {
+    "ref": "3:97",
+    "type": "quran",
+    "url": "https://quran.com/3/97"
+   },
+   {
+    "ref": "2:196",
+    "type": "quran",
+    "url": "https://quran.com/2/196"
+   },
+   {
+    "ref": "2:197",
+    "type": "quran",
+    "url": "https://quran.com/2/197"
+   },
+   {
+    "ref": "صحيح مسلم 1337",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:1337"
+   },
+   {
+    "ref": "إسلام سؤال وجواب 39524",
+    "type": "book",
+    "url": "https://islamqa.info/en/answers/39524"
+   }
+  ],
+  "static-article-halal-food": [
+   {
+    "ref": "5:3",
+    "type": "quran",
+    "url": "https://quran.com/5/3"
+   },
+   {
+    "ref": "2:173",
+    "type": "quran",
+    "url": "https://quran.com/2/173"
+   },
+   {
+    "ref": "6:121",
+    "type": "quran",
+    "url": "https://quran.com/6/121"
+   },
+   {
+    "ref": "5:90",
+    "type": "quran",
+    "url": "https://quran.com/5/90"
+   }
+  ],
+  "static-article-pillars-of-faith": [
+   {
+    "ref": "صحيح البخاري 50",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:50"
+   },
+   {
+    "ref": "صحيح مسلم 8",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:8"
+   },
+   {
+    "ref": "صحيح البخاري 9",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:9"
+   }
+  ],
+  "static-article-prayer-in-islam": [
+   {
+    "ref": "4:103",
+    "type": "quran",
+    "url": "https://quran.com/4/103"
+   },
+   {
+    "ref": "2:43",
+    "type": "quran",
+    "url": "https://quran.com/2/43"
+   },
+   {
+    "ref": "صحيح البخاري 8",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:8"
+   },
+   {
+    "ref": "صحيح البخاري 756",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:756"
+   },
+   {
+    "grade": "صحيح",
+    "ref": "سنن الترمذي 413",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:413"
+   },
+   {
+    "grade": "صحيح",
+    "ref": "سنن النسائي 465",
+    "type": "hadith",
+    "url": "https://sunnah.com/nasai:465"
+   }
+  ],
+  "static-article-what-is-islam": [
+   {
+    "ref": "صحيح البخاري 8",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:8"
+   },
+   {
+    "ref": "صحيح البخاري 50",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:50"
+   },
+   {
+    "ref": "صحيح مسلم 8",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:8"
+   },
+   {
+    "ref": "112:1",
+    "type": "quran",
+    "url": "https://quran.com/112/1"
+   }
+  ]
+ },
+ "discover-islam-new-muslim": {
+  "static-nm-1": [
+   {
+    "ref": "صحيح البخاري 8",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:8"
+   },
+   {
+    "ref": "فتوى إسلام ويب 57749",
+    "type": "book",
+    "url": "https://www.islamweb.net/ar/fatwa/57749/"
+   },
+   {
+    "ref": "112:1",
+    "type": "quran",
+    "url": "https://quran.com/112/1"
+   }
+  ],
+  "static-nm-10": [
+   {
+    "ref": "2:183",
+    "type": "quran",
+    "url": "https://quran.com/2/183"
+   },
+   {
+    "ref": "2:185",
+    "type": "quran",
+    "url": "https://quran.com/2/185"
+   },
+   {
+    "ref": "صحيح البخاري 8",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:8"
+   }
+  ],
+  "static-nm-11": [
+   {
+    "ref": "صحيح البخاري 6094",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:6094"
+   },
+   {
+    "ref": "صحيح البخاري 6014",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:6014"
+   },
+   {
+    "ref": "صحيح البخاري 5971",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:5971"
+   },
+   {
+    "ref": "31:14",
+    "type": "quran",
+    "url": "https://quran.com/31/14"
+   }
+  ],
+  "static-nm-12": [
+   {
+    "ref": "5:3",
+    "type": "quran",
+    "url": "https://quran.com/5/3"
+   },
+   {
+    "ref": "2:173",
+    "type": "quran",
+    "url": "https://quran.com/2/173"
+   },
+   {
+    "ref": "5:90",
+    "type": "quran",
+    "url": "https://quran.com/5/90"
+   }
+  ],
+  "static-nm-13": [
+   {
+    "ref": "96:1",
+    "type": "quran",
+    "url": "https://quran.com/96/1"
+   },
+   {
+    "ref": "112:1",
+    "type": "quran",
+    "url": "https://quran.com/112/1"
+   },
+   {
+    "ref": "صحيح البخاري 5013",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:5013"
+   }
+  ],
+  "static-nm-16": [
+   {
+    "ref": "2:222",
+    "type": "quran",
+    "url": "https://quran.com/2/222"
+   }
+  ],
+  "static-nm-17": [
+   {
+    "ref": "31:15",
+    "type": "quran",
+    "url": "https://quran.com/31/15"
+   },
+   {
+    "ref": "صحيح البخاري 2620",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:2620"
+   },
+   {
+    "ref": "صحيح البخاري 5985",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:5985"
+   }
+  ],
+  "static-nm-18": [
+   {
+    "ref": "صحيح البخاري 10",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:10"
+   }
+  ],
+  "static-nm-19": [
+   {
+    "ref": "4:43",
+    "type": "quran",
+    "url": "https://quran.com/4/43"
+   },
+   {
+    "ref": "4:101",
+    "type": "quran",
+    "url": "https://quran.com/4/101"
+   },
+   {
+    "ref": "5:6",
+    "type": "quran",
+    "url": "https://quran.com/5/6"
+   }
+  ],
+  "static-nm-2": [
+   {
+    "ref": "5:6",
+    "type": "quran",
+    "url": "https://quran.com/5/6"
+   },
+   {
+    "ref": "صحيح مسلم 360",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:360"
+   }
+  ],
+  "static-nm-20": [
+   {
+    "ref": "صحيح البخاري 6314",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:6314"
+   },
+   {
+    "ref": "صحيح البخاري 3275",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:3275"
+   },
+   {
+    "ref": "صحيح البخاري 5013",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:5013"
+   }
+  ],
+  "static-nm-22": [
+   {
+    "ref": "9:60",
+    "type": "quran",
+    "url": "https://quran.com/9/60"
+   },
+   {
+    "ref": "صحيح مسلم 1005",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:1005"
+   }
+  ],
+  "static-nm-23": [
+   {
+    "ref": "3:97",
+    "type": "quran",
+    "url": "https://quran.com/3/97"
+   },
+   {
+    "ref": "صحيح مسلم 1337",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:1337"
+   }
+  ],
+  "static-nm-25": [
+   {
+    "grade": "حسن",
+    "ref": "سنن أبي داود 4833",
+    "type": "hadith",
+    "url": "https://sunnah.com/abudawud:4833"
+   },
+   {
+    "grade": "حسن",
+    "ref": "سنن الترمذي 2378",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:2378"
+   }
+  ],
+  "static-nm-26": [
+   {
+    "ref": "17:36",
+    "type": "quran",
+    "url": "https://quran.com/17/36"
+   },
+   {
+    "ref": "49:12",
+    "type": "quran",
+    "url": "https://quran.com/49/12"
+   }
+  ],
+  "static-nm-27": [
+   {
+    "ref": "4:36",
+    "type": "quran",
+    "url": "https://quran.com/4/36"
+   },
+   {
+    "ref": "صحيح البخاري 6014",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:6014"
+   },
+   {
+    "ref": "صحيح مسلم 2624",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2624"
+   }
+  ],
+  "static-nm-28": [
+   {
+    "ref": "109:1",
+    "type": "quran",
+    "url": "https://quran.com/109/1"
+   },
+   {
+    "ref": "110:1",
+    "type": "quran",
+    "url": "https://quran.com/110/1"
+   }
+  ],
+  "static-nm-3": [
+   {
+    "ref": "صحيح البخاري 8",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:8"
+   },
+   {
+    "grade": "صحيح",
+    "ref": "سنن الترمذي 413",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:413"
+   }
+  ],
+  "static-nm-4": [
+   {
+    "ref": "صحيح البخاري 756",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:756"
+   },
+   {
+    "ref": "1:5",
+    "type": "quran",
+    "url": "https://quran.com/1/5"
+   }
+  ],
+  "static-nm-5": [
+   {
+    "ref": "صحيح مسلم 2723",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2723"
+   },
+   {
+    "ref": "صحيح مسلم 2708",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2708"
+   }
+  ],
+  "static-nm-8": [
+   {
+    "ref": "4:103",
+    "type": "quran",
+    "url": "https://quran.com/4/103"
+   }
+  ],
+  "static-nm-9": [
+   {
+    "ref": "9:60",
+    "type": "quran",
+    "url": "https://quran.com/9/60"
+   },
+   {
+    "grade": "صحيح",
+    "ref": "سنن أبي داود 1573",
+    "type": "hadith",
+    "url": "https://sunnah.com/abudawud:1573"
+   },
+   {
+    "ref": "صحيح البخاري 1395",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:1395"
+   }
+  ]
+ },
+ "iman-topics": {
+  "arkan-iman": [
+   {
+    "grade": "في الصحيح",
+    "ref": "صحيح مسلم 8 (حديث جبريل)",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:8"
+   },
+   {
+    "ref": "2:3",
+    "type": "quran",
+    "url": "https://quran.com/2/3"
+   },
+   {
+    "ref": "21:26",
+    "type": "quran",
+    "url": "https://quran.com/21/26"
+   }
+  ],
+  "kawn-khalq": [
+   {
+    "ref": "51:56",
+    "type": "quran",
+    "url": "https://quran.com/51/56"
+   },
+   {
+    "ref": "67:2",
+    "type": "quran",
+    "url": "https://quran.com/67/2"
+   },
+   {
+    "ref": "7:54",
+    "type": "quran",
+    "url": "https://quran.com/7/54"
+   },
+   {
+    "ref": "55:15",
+    "type": "quran",
+    "url": "https://quran.com/55/15"
+   },
+   {
+    "ref": "17:85",
+    "type": "quran",
+    "url": "https://quran.com/17/85"
+   },
+   {
+    "ref": "21:30",
+    "type": "quran",
+    "url": "https://quran.com/21/30"
+   },
+   {
+    "ref": "3:191",
+    "type": "quran",
+    "url": "https://quran.com/3/191"
+   },
+   {
+    "ref": "2:30",
+    "type": "quran",
+    "url": "https://quran.com/2/30"
+   },
+   {
+    "ref": "23:12",
+    "type": "quran",
+    "url": "https://quran.com/23/12"
+   },
+   {
+    "grade": "في صحيح مسلم",
+    "ref": "صحيح مسلم 2996 (خلقت الملائكة من نور)",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2996"
+   }
+  ]
+ },
+ "tazkiya-topics": {
+  "akhlaq-khafiyya": [
+   {
+    "ref": "2:264",
+    "type": "quran",
+    "url": "https://quran.com/2/264"
+   },
+   {
+    "ref": "5:8",
+    "type": "quran",
+    "url": "https://quran.com/5/8"
+   },
+   {
+    "grade": "صحيح (البخاري)",
+    "ref": "صحيح البخاري 3560",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:3560"
+   },
+   {
+    "grade": "حسن صحيح (الألباني)",
+    "ref": "جامع الترمذي 2032",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:2032"
+   },
+   {
+    "grade": "صحيح (مسلم)",
+    "ref": "صحيح مسلم 2699",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2699"
+   },
+   {
+    "grade": "صحيح (الألباني)",
+    "ref": "جامع الترمذي 1954",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:1954"
+   },
+   {
+    "grade": "صحيح (البخاري)",
+    "ref": "صحيح البخاري 13",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:13"
+   }
+  ],
+  "amrad-lisan": [
+   {
+    "ref": "49:11",
+    "type": "quran",
+    "url": "https://quran.com/49/11"
+   },
+   {
+    "ref": "49:12",
+    "type": "quran",
+    "url": "https://quran.com/49/12"
+   },
+   {
+    "ref": "4:83",
+    "type": "quran",
+    "url": "https://quran.com/4/83"
+   },
+   {
+    "ref": "53:32",
+    "type": "quran",
+    "url": "https://quran.com/53/32"
+   },
+   {
+    "ref": "7:33",
+    "type": "quran",
+    "url": "https://quran.com/7/33"
+   },
+   {
+    "grade": "صحيح (مسلم)",
+    "ref": "صحيح مسلم 2589",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2589"
+   },
+   {
+    "grade": "صحيح (البخاري)",
+    "ref": "صحيح البخاري 6094",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:6094"
+   },
+   {
+    "grade": "صحيح (مسلم)",
+    "ref": "صحيح مسلم 2607",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2607"
+   },
+   {
+    "grade": "صحيح (مسلم) — لا يدخل الجنة نمام",
+    "ref": "صحيح مسلم 105",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:105"
+   },
+   {
+    "grade": "صحيح (البخاري)",
+    "ref": "صحيح البخاري 6056",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:6056"
+   },
+   {
+    "grade": "صحيح (الألباني)",
+    "ref": "جامع الترمذي 1977",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:1977"
+   },
+   {
+    "grade": "صحيح (الألباني)",
+    "ref": "جامع الترمذي 2317",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:2317"
+   },
+   {
+    "grade": "صحيح (البخاري) — الكبائر وشهادة الزور",
+    "ref": "صحيح البخاري 2653",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:2653"
+   },
+   {
+    "grade": "صحيح (البخاري)",
+    "ref": "صحيح البخاري 5976",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:5976"
+   },
+   {
+    "grade": "صحيح (مسلم) — من أشر الناس منزلة الرجل يفضي إلى امرأته",
+    "ref": "صحيح مسلم 1437",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:1437"
+   },
+   {
+    "grade": "صحيح (البخاري) — فإن من العلم أن يقول لما لا يعلم الله أعلم",
+    "ref": "صحيح البخاري 4809",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:4809"
+   },
+   {
+    "grade": "حسن (الألباني)",
+    "ref": "جامع الترمذي 3253",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:3253"
+   }
+  ],
+  "asila-kubra": [
+   {
+    "ref": "51:56",
+    "type": "quran",
+    "url": "https://quran.com/51/56"
+   },
+   {
+    "ref": "2:30",
+    "type": "quran",
+    "url": "https://quran.com/2/30"
+   },
+   {
+    "ref": "96:8",
+    "type": "quran",
+    "url": "https://quran.com/96/8"
+   },
+   {
+    "ref": "13:28",
+    "type": "quran",
+    "url": "https://quran.com/13/28"
+   },
+   {
+    "ref": "67:2",
+    "type": "quran",
+    "url": "https://quran.com/67/2"
+   },
+   {
+    "grade": "صحيح (مسلم)",
+    "ref": "صحيح مسلم 1631",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:1631"
+   },
+   {
+    "grade": "صحيح (البخاري) — ما يصيب المسلم من نصب ولا وصب",
+    "ref": "صحيح البخاري 5642",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:5642"
+   },
+   {
+    "grade": "صحيح (مسلم) — والشر ليس إليك",
+    "ref": "صحيح مسلم 771",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:771"
+   }
+  ],
+  "tashih-mafahim": [
+   {
+    "ref": "28:77",
+    "type": "quran",
+    "url": "https://quran.com/28/77"
+   },
+   {
+    "ref": "25:67",
+    "type": "quran",
+    "url": "https://quran.com/25/67"
+   },
+   {
+    "ref": "5:2",
+    "type": "quran",
+    "url": "https://quran.com/5/2"
+   },
+   {
+    "grade": "حسن (الألباني) — اعقلها وتوكل",
+    "ref": "جامع الترمذي 2517",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:2517"
+   },
+   {
+    "grade": "صحيح (مسلم) — احرص على ما ينفعك واستعن بالله",
+    "ref": "صحيح مسلم 2664",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2664"
+   },
+   {
+    "grade": "صحيح (مسلم) — الرفق",
+    "ref": "صحيح مسلم 2594",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2594"
+   }
+  ]
+ },
+ "usra-mujtama": {
+  "bina-usra": [
+   {
+    "ref": "4:35",
+    "type": "quran",
+    "url": "https://quran.com/4/35"
+   },
+   {
+    "ref": "49:12",
+    "type": "quran",
+    "url": "https://quran.com/49/12"
+   },
+   {
+    "ref": "2:233",
+    "type": "quran",
+    "url": "https://quran.com/2/233"
+   },
+   {
+    "grade": "صحيح (الألباني) — لا نكاح إلا بولي",
+    "ref": "سنن أبي داود 2085",
+    "type": "hadith",
+    "url": "https://sunnah.com/abudawud:2085"
+   },
+   {
+    "grade": "صحيح (الألباني)",
+    "ref": "جامع الترمذي 1101",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:1101"
+   },
+   {
+    "grade": "صحيح (البخاري) — لا تنكح الأيم حتى تستأمر",
+    "ref": "صحيح البخاري 5136",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:5136"
+   },
+   {
+    "grade": "صحيح (الألباني) — انظر إليها",
+    "ref": "جامع الترمذي 1087",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:1087"
+   },
+   {
+    "grade": "حسن (الألباني)",
+    "ref": "سنن أبي داود 2082",
+    "type": "hadith",
+    "url": "https://sunnah.com/abudawud:2082"
+   },
+   {
+    "grade": "صحيح (مسلم) — إفشاء سر الفراش",
+    "ref": "صحيح مسلم 1437",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:1437"
+   },
+   {
+    "grade": "حسن (الألباني) — من الغيرة ما يحب الله ومنها ما يبغض",
+    "ref": "سنن أبي داود 2659",
+    "type": "hadith",
+    "url": "https://sunnah.com/abudawud:2659"
+   },
+   {
+    "grade": "صحيح (البخاري) — تنكح المرأة لأربع..فاظفر بذات الدين",
+    "ref": "صحيح البخاري 5090",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:5090"
+   },
+   {
+    "grade": "صحيح (مسلم) — ولهن عليكم رزقهن وكسوتهن بالمعروف",
+    "ref": "صحيح مسلم 1218",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:1218"
+   }
+  ],
+  "ilaqat": [
+   {
+    "ref": "41:34",
+    "type": "quran",
+    "url": "https://quran.com/41/34"
+   },
+   {
+    "grade": "صحيح (مسلم) — المسلم أخو المسلم لا يظلمه ولا يخذله",
+    "ref": "صحيح مسلم 2564",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2564"
+   },
+   {
+    "grade": "صحيح (البخاري)",
+    "ref": "صحيح البخاري 2101",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:2101"
+   },
+   {
+    "grade": "صحيح (مسلم)",
+    "ref": "صحيح مسلم 2628",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:2628"
+   },
+   {
+    "grade": "حسن (الألباني) — الرجل على دين خليله",
+    "ref": "سنن أبي داود 4833",
+    "type": "hadith",
+    "url": "https://sunnah.com/abudawud:4833"
+   },
+   {
+    "grade": "حسن (الألباني)",
+    "ref": "جامع الترمذي 2378",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:2378"
+   },
+   {
+    "grade": "صحيح (البخاري)",
+    "ref": "صحيح البخاري 6018",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:6018"
+   },
+   {
+    "grade": "صحيح (مسلم) — الدين النصيحة",
+    "ref": "صحيح مسلم 55",
+    "type": "hadith",
+    "url": "https://sunnah.com/muslim:55"
+   },
+   {
+    "grade": "صحيح (الألباني)",
+    "ref": "سنن أبي داود 4811",
+    "type": "hadith",
+    "url": "https://sunnah.com/abudawud:4811"
+   },
+   {
+    "grade": "صحيح (الألباني)",
+    "ref": "جامع الترمذي 1954",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:1954"
+   },
+   {
+    "grade": "صحيح (البخاري) — لا يحل لرجل أن يهجر أخاه فوق ثلاث",
+    "ref": "صحيح البخاري 6077",
+    "type": "hadith",
+    "url": "https://sunnah.com/bukhari:6077"
+   },
+   {
+    "grade": "صحيح (الألباني)",
+    "ref": "سنن أبي داود 4919",
+    "type": "hadith",
+    "url": "https://sunnah.com/abudawud:4919"
+   },
+   {
+    "grade": "صحيح (الألباني)",
+    "ref": "جامع الترمذي 2509",
+    "type": "hadith",
+    "url": "https://sunnah.com/tirmidhi:2509"
+   }
+  ]
+ }
+}
