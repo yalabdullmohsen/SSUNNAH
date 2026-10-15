@@ -23,9 +23,9 @@ private func mushafContinueURL(_ entry: CatalogWidgetEntry) -> URL {
 private struct QuranSurface: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOSApplicationExtension 17.0, *) {
-            content.containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }.sunnahDynamicTypeCap()
+            content.foregroundStyle(.white).containerBackground(for: .widget) { SunnahWidgetTheme.homeGradientDeep }.sunnahDynamicTypeCap()
         } else {
-            content.background(SunnahWidgetTheme.homeGradientDeep).sunnahDynamicTypeCap()
+            content.foregroundStyle(.white).background(SunnahWidgetTheme.homeGradientDeep).sunnahDynamicTypeCap()
         }
     }
 }
