@@ -1,0 +1,228 @@
+{
+ "shbb-2": [
+  {
+   "ref": "سنن أبي داود 4833 (الألباني: حسن)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/4833.json",
+   "fetched": "2026-10-15"
+  },
+  {
+   "ref": "سنن الترمذي 2378 (الألباني: حسن)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2378.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "shbb-5": [
+  {
+   "ref": "الزخرف 43:23",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/43:23/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "shbb-7": [
+  {
+   "ref": "صحيح البخاري 6499",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6499.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "shbb-8": [
+  {
+   "ref": "الإسراء 17:32",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/17:32/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "shbb-9": [
+  {
+   "ref": "صحيح البخاري 6412",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6412.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "amal-2": [
+  {
+   "ref": "حديث «يحب إذا عمل أحدكم عملا أن يتقنه»: صحيح الجامع 1880 (حسن) - موضوع",
+   "type": "article",
+   "url": "https://mawdoo3.com/شرح_حديث_(إن_الله_يحب_إذا_عمل_أحدكم_عملًا_أن_يتقنه)",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "amal-3": [
+  {
+   "ref": "صحيح البخاري 33",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/33.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "amal-7": [
+  {
+   "ref": "سنن أبي داود 3580 (الألباني: صحيح)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/3580.json",
+   "fetched": "2026-10-15"
+  },
+  {
+   "ref": "سنن ابن ماجه 2313 (الألباني: صحيح)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/2313.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "amal-8": [
+  {
+   "ref": "صحيح البخاري 2597 (قصة ابن اللتبية وهدية العامل)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2597.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "amal-13": [
+  {
+   "ref": "صحيح البخاري 660",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/660.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ilm-1": [
+  {
+   "ref": "العلق 96:1",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/96:1/quran-uthmani",
+   "fetched": "2026-10-15"
+  },
+  {
+   "ref": "المجادلة 58:11",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/58:11/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ilm-10": [
+  {
+   "ref": "سنن ابن ماجه 3843 (الألباني: حسن)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/3843.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "naqd-1": [
+  {
+   "ref": "الحجرات 49:6",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:6/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ilam-1": [
+  {
+   "ref": "ق 50:18",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/50:18/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ilam-3": [
+  {
+   "ref": "الأحزاب 33:60",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/33:60/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ilam-7": [
+  {
+   "ref": "الحجرات 49:12",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:12/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ilam-9": [
+  {
+   "ref": "الحجرات 49:11",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:11/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ai-4": [
+  {
+   "ref": "صحيح البخاري 110",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/110.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ai-7": [
+  {
+   "ref": "سنن ابن ماجه 2224 (ليس منا من غش؛ الألباني: صحيح)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/2224.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "najah-1": [
+  {
+   "ref": "آل عمران 3:185",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/3:185/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "najah-11": [
+  {
+   "ref": "صحيح البخاري 6464",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6464.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "qarar-2": [
+  {
+   "ref": "صحيح البخاري 6382",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6382.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "qarar-7": [
+  {
+   "ref": "سنن الترمذي 1084 (الألباني: حسن؛ الزبير علي زئي: ضعيف)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/1084.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "waqiam-3": [
+  {
+   "ref": "صحيح البخاري 6014",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6014.json",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "waqiam-6": [
+  {
+   "ref": "يوسف 12:87",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/12:87/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "waqiam-7": [
+  {
+   "ref": "الحجرات 49:12",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:12/quran-uthmani",
+   "fetched": "2026-10-15"
+  }
+ ]
+}

@@ -1,0 +1,128 @@
+{
+ "lineage-birth": [
+  {
+   "ref": "ويكيبيديا العربية: محمد: الميلاد عام الفيل 570/571 م بمكة",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/محمد",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "childhood": [
+  {
+   "ref": "ويكيبيديا العربية: محمد: الرضاعة (ثويبة وحليمة)، وفاة الأم وهو ابن ست، كفالة عبد المطلب ثم أبي طالب",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/محمد",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "youth": [
+  {
+   "ref": "ويكيبيديا العربية: محمد: زواج خديجة، حراء",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/محمد",
+   "fetched": "2026-10-15"
+  },
+  {
+   "ref": "ويكيبيديا العربية: حلف الفضول (590 م)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/حلف_الفضول",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "secret-dawah": [
+  {
+   "ref": "ويكيبيديا العربية: دار الأرقم: مقر الدعوة السرية",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/دار_الأرقم",
+   "fetched": "2026-10-15"
+  },
+  {
+   "ref": "ويكيبيديا العربية: محمد: ثلاث سنوات سرًّا",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/محمد",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "hijra": [
+  {
+   "ref": "ويكيبيديا العربية: الهجرة النبوية: 622 م، غار ثور، أبو بكر، بناء المسجد النبوي",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/الهجرة_النبوية",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "ghazawat": [
+  {
+   "ref": "ويكيبيديا العربية: غزوة بدر (17 رمضان 2 هـ/624 م)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/غزوة_بدر",
+   "fetched": "2026-10-15"
+  },
+  {
+   "ref": "ويكيبيديا العربية: غزوة الخندق (5 هـ/مارس 627 م)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/غزوة_الخندق",
+   "fetched": "2026-10-15"
+  },
+  {
+   "ref": "ويكيبيديا العربية: غزوات محمد (أحد 3 هـ)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/غزوات_محمد",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "hudaybiyya-mecca": [
+  {
+   "ref": "ويكيبيديا العربية: صلح الحديبية (6 هـ/628 م؛ الفتح 1)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/صلح_الحديبية",
+   "fetched": "2026-10-15"
+  },
+  {
+   "ref": "ويكيبيديا العربية: فتح مكة (8 هـ/630 م)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/فتح_مكة",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "prophethood": [
+  {
+   "ref": "ويكيبيديا العربية: محمد: بدء الوحي نحو 610 م في حراء (جبريل)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/محمد",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "open-dawah": [
+  {
+   "ref": "ويكيبيديا العربية: الهجرة إلى الحبشة (رجب السنة 5 للبعثة/615 م)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/الهجرة_إلى_الحبشة",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "year-of-sorrow": [
+  {
+   "ref": "ويكيبيديا العربية: عام الحزن (619 م، وفاة خديجة وأبي طالب)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/عام_الحزن",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "farewell": [
+  {
+   "ref": "ويكيبيديا العربية: حجة الوداع (السنة العاشرة للهجرة؛ خطبة عرفة)",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/حجة_الوداع",
+   "fetched": "2026-10-15"
+  }
+ ],
+ "death": [
+  {
+   "ref": "ويكيبيديا العربية: محمد: وفاته ربيع الأول 11 هـ/يونيو 632 م",
+   "type": "article",
+   "url": "https://ar.wikipedia.org/wiki/محمد",
+   "fetched": "2026-10-15"
+  }
+ ]
+}
