@@ -20,6 +20,26 @@ final class PerformanceMetrics: NSObject, MXMetricManagerSubscriber {
         }
     }
 
+    // MARK: مسبار الإقلاع (-perfProbe YES): ms منذ بدء العملية عند كل علامة → Library/Caches/launch-probe.json
+    private static let probeOn = UserDefaults.standard.bool(forKey: "perfProbe")
+    private var marks: [String: Double] = [:]
+
+    static func msSinceProcessStart() -> Double {
+        var info = kinfo_proc(); var size = MemoryLayout<kinfo_proc>.stride
+        var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, getpid()]
+        guard sysctl(&mib, 4, &info, &size, nil, 0) == 0 else { return 0 }
+        let t = info.kp_proc.p_un.__p_starttime
+        return Date().timeIntervalSince1970 * 1000 - (Double(t.tv_sec) * 1000 + Double(t.tv_usec) / 1000)
+    }
+
+    func mark(_ name: String) {
+        guard Self.probeOn else { return }
+        if marks[name] == nil { marks[name] = Self.msSinceProcessStart() }
+        guard let dir = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true),
+              let data = try? JSONSerialization.data(withJSONObject: marks) else { return }
+        try? data.write(to: dir.appendingPathComponent("launch-probe.json"), options: .atomic)
+    }
+
     func didReceive(_ payloads: [MXMetricPayload]) {
         for p in payloads {
             let launch = p.applicationLaunchMetrics?.histogrammedTimeToFirstDraw.bucketEnumerator.allObjects.count ?? 0
