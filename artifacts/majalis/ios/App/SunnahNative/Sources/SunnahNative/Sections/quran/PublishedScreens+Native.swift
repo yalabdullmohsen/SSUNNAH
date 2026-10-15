@@ -147,14 +147,23 @@ struct HifzPathView: View {
     var body: some View {
         List {
             Section {
-                if let d = path.shortDescription { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                Text("المستوى: \(PublishedAdapters.hifzLevels[path.level] ?? path.level)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                ForEach(path.learningObjectives, id: \.self) { Text("• \($0)").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                if let s = path.source { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                    if let d = path.shortDescription { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    Text("المستوى: \(PublishedAdapters.hifzLevels[path.level] ?? path.level) · \(path.units.count) وحدة")
+                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                }
             }.sunnahRowChrome()
+            if !path.learningObjectives.isEmpty {
+                Section("أهداف التعلّم") {
+                    ForEach(path.learningObjectives, id: \.self) { Text("• \($0)").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                }.sunnahRowChrome()
+            }
+            if let src = path.source {
+                Section("المصدر") { Text(src).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }.sunnahRowChrome()
+            }
             Section("الوحدات") {
                 ForEach(path.units) { u in
-                    SunnahNavigationLink { HifzUnitView(unit: u, surahNames: surahNames) } label: { SunnahListRow(title: u.title, subtitle: unitSubtitle(u)) }
+                    SunnahNavigationLink { HifzUnitView(unit: u, surahNames: surahNames, siblings: path.units) } label: { SunnahListRow(title: u.title, subtitle: unitSubtitle(u)) }
                 }
             }.sunnahRowChrome()
         }
@@ -166,12 +175,50 @@ struct HifzPathView: View {
 struct HifzUnitView: View {
     let unit: HifzUnit
     var surahNames: [Int: String] = [:]
+    /// وحدات المسار نفسه بترتيبها؛ تُستعمل للتنقّل (السابقة/التالية) وموضع الوحدة.
+    var siblings: [HifzUnit] = []
+    @Environment(\.openRoute) private var openRoute
+    private func name(_ n: Int) -> String { surahNames[n] ?? "سورة \(n)" }
+    private var index: Int? { siblings.firstIndex(where: { $0.id == unit.id }) }
     var body: some View {
-        var lines: [String] = []
-        if let r = unit.ref { lines.append(PublishedAdapters.refText(r) { surahNames[$0] ?? "سورة \($0)" }) }
-        if let n = unit.repetitionTarget { lines.append("التكرار المقترح: \(n)") }
-        if let c = unit.completionCriteria { lines.append(c) }
-        return QuranDocView(title: unit.title, paragraphs: lines)
+        ScrollView {
+            VStack(spacing: 0) {
+                DetailHero(title: unit.title, subtitle: index.map { "الوحدة \($0 + 1) من \(siblings.count)" })
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+                    SunnahCard {
+                        VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                            if let r = unit.ref { row("الموضع", PublishedAdapters.refText(r, surahName: name)) }
+                            if let n = unit.repetitionTarget { row("التكرار المقترح", "\(n) مرة") }
+                            if let c = unit.completionCriteria { row("معيار الإتمام", c) }
+                        }
+                    }
+                    if let r = unit.ref {
+                        SunnahButton("افتح الآية الأولى في المصحف") { openRoute("/mushaf/ayah/\(r.surah):\(r.ayahFrom)") }
+                    }
+                    if let i = index {
+                        VStack(spacing: 0) {
+                            if i + 1 < siblings.count {
+                                let n = siblings[i + 1]
+                                SunnahNavigationLink { HifzUnitView(unit: n, surahNames: surahNames, siblings: siblings) } label: { SunnahListRow(title: n.title, subtitle: "الوحدة التالية") }
+                            }
+                            if i > 0 {
+                                let n = siblings[i - 1]
+                                SunnahNavigationLink { HifzUnitView(unit: n, surahNames: surahNames, siblings: siblings) } label: { SunnahListRow(title: n.title, subtitle: "الوحدة السابقة") }
+                            }
+                        }
+                    }
+                }
+                .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .background(Sunnah.Colors.bg)
+        .environment(\.layoutDirection, .rightToLeft)
+    }
+    private func row(_ k: String, _ v: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(k).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+            Text(v).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+        }
     }
 }
 

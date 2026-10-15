@@ -17,8 +17,9 @@ final class EffectiveTextSizeTests: XCTestCase {
     func testFollowsSystemAndAddsPref() {
         XCTAssertEqual(AppearancePrefs.effectiveSize(system: .large, pref: .standard), .large)
         XCTAssertEqual(AppearancePrefs.effectiveSize(system: .xxLarge, pref: .standard), .xxLarge)
-        XCTAssertEqual(AppearancePrefs.effectiveSize(system: .large, pref: .large), .xxxLarge)
-        XCTAssertEqual(AppearancePrefs.effectiveSize(system: .accessibility1, pref: .small), .xxxLarge)
+        XCTAssertEqual(AppearancePrefs.effectiveSize(system: .large, pref: .large), .xxLarge)
+        XCTAssertEqual(AppearancePrefs.effectiveSize(system: .accessibility1, pref: .small), .xxLarge)
+        XCTAssertEqual(AppearancePrefs.effectiveSize(system: .large, pref: .xLarge), .accessibility1)
     }
     func testCappedAtAccessibility3() {
         XCTAssertEqual(AppearancePrefs.effectiveSize(system: .accessibility5, pref: .standard), .accessibility3)
