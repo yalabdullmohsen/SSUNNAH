@@ -9,6 +9,14 @@ WHERE n.nspname='public' AND relname IN ('akp_structured_logs','automation_step_
 ORDER BY pg_total_relation_size(c.oid) DESC;
 SELECT pg_size_pretty(pg_database_size(current_database())) AS db_size;
 
+-- 1ب) أمان قبل التفريغ (قراءة فقط): أعداد الصفوف، وهل يشير إليها مفتاح أجنبي من جدول آخر (يجب أن تكون النتيجة الثانية فارغة؛ إن لم تكن فلا تنفّذ الخطوة 2 وأبلغ)
+SELECT 'akp_structured_logs' t, count(*) FROM public.akp_structured_logs UNION ALL
+SELECT 'automation_step_logs', count(*) FROM public.automation_step_logs UNION ALL
+SELECT 'akp_source_health', count(*) FROM public.akp_source_health UNION ALL
+SELECT 'akp_metrics_snapshots', count(*) FROM public.akp_metrics_snapshots;
+SELECT conrelid::regclass AS referencing_table, confrelid::regclass AS referenced_table
+FROM pg_constraint WHERE contype='f' AND confrelid IN ('public.akp_structured_logs'::regclass,'public.automation_step_logs'::regclass,'public.akp_source_health'::regclass,'public.akp_metrics_snapshots'::regclass);
+
 -- 2) التفريغ: قرار المالك TRUNCATE للجداول الأربعة (كلها أقدم من 30 يومًا فلا شيء يُحفظ)، وهو يُرجع المساحة فورًا فلا حاجة لـVACUUM FULL.
 TRUNCATE TABLE public.akp_structured_logs, public.automation_step_logs, public.akp_source_health, public.akp_metrics_snapshots;
 
