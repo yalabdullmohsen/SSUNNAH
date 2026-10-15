@@ -1,0 +1,4680 @@
+{
+"chapters": [
+[
+1,
+7,
+1,
+1
+],
+[
+2,
+286,
+2,
+49
+],
+[
+3,
+200,
+50,
+76
+],
+[
+4,
+176,
+77,
+106
+],
+[
+5,
+120,
+106,
+127
+],
+[
+6,
+165,
+128,
+150
+],
+[
+7,
+206,
+151,
+176
+],
+[
+8,
+75,
+177,
+186
+],
+[
+9,
+129,
+187,
+207
+],
+[
+10,
+109,
+208,
+221
+],
+[
+11,
+123,
+221,
+235
+],
+[
+12,
+111,
+235,
+248
+],
+[
+13,
+43,
+249,
+255
+],
+[
+14,
+52,
+255,
+261
+],
+[
+15,
+99,
+262,
+267
+],
+[
+16,
+128,
+267,
+281
+],
+[
+17,
+111,
+282,
+293
+],
+[
+18,
+110,
+293,
+304
+],
+[
+19,
+98,
+305,
+312
+],
+[
+20,
+135,
+312,
+321
+],
+[
+21,
+112,
+322,
+331
+],
+[
+22,
+78,
+332,
+341
+],
+[
+23,
+118,
+342,
+349
+],
+[
+24,
+64,
+350,
+359
+],
+[
+25,
+77,
+359,
+366
+],
+[
+26,
+227,
+367,
+376
+],
+[
+27,
+93,
+377,
+385
+],
+[
+28,
+88,
+385,
+396
+],
+[
+29,
+69,
+396,
+404
+],
+[
+30,
+60,
+404,
+410
+],
+[
+31,
+34,
+411,
+414
+],
+[
+32,
+30,
+415,
+417
+],
+[
+33,
+73,
+418,
+427
+],
+[
+34,
+54,
+428,
+434
+],
+[
+35,
+45,
+434,
+440
+],
+[
+36,
+83,
+440,
+445
+],
+[
+37,
+182,
+446,
+452
+],
+[
+38,
+88,
+453,
+458
+],
+[
+39,
+75,
+458,
+467
+],
+[
+40,
+85,
+467,
+476
+],
+[
+41,
+54,
+477,
+482
+],
+[
+42,
+53,
+483,
+489
+],
+[
+43,
+89,
+489,
+495
+],
+[
+44,
+59,
+496,
+498
+],
+[
+45,
+37,
+499,
+502
+],
+[
+46,
+35,
+502,
+506
+],
+[
+47,
+38,
+507,
+510
+],
+[
+48,
+29,
+511,
+515
+],
+[
+49,
+18,
+515,
+517
+],
+[
+50,
+45,
+518,
+520
+],
+[
+51,
+60,
+520,
+523
+],
+[
+52,
+49,
+523,
+525
+],
+[
+53,
+62,
+526,
+528
+],
+[
+54,
+55,
+528,
+531
+],
+[
+55,
+78,
+531,
+534
+],
+[
+56,
+96,
+534,
+537
+],
+[
+57,
+29,
+537,
+541
+],
+[
+58,
+22,
+542,
+545
+],
+[
+59,
+24,
+545,
+548
+],
+[
+60,
+13,
+549,
+551
+],
+[
+61,
+14,
+551,
+552
+],
+[
+62,
+11,
+553,
+554
+],
+[
+63,
+11,
+554,
+555
+],
+[
+64,
+18,
+556,
+557
+],
+[
+65,
+12,
+558,
+559
+],
+[
+66,
+12,
+560,
+561
+],
+[
+67,
+30,
+562,
+564
+],
+[
+68,
+52,
+564,
+566
+],
+[
+69,
+52,
+566,
+568
+],
+[
+70,
+44,
+568,
+570
+],
+[
+71,
+28,
+570,
+571
+],
+[
+72,
+28,
+572,
+573
+],
+[
+73,
+20,
+574,
+575
+],
+[
+74,
+56,
+575,
+577
+],
+[
+75,
+40,
+577,
+578
+],
+[
+76,
+31,
+578,
+580
+],
+[
+77,
+50,
+580,
+581
+],
+[
+78,
+40,
+582,
+583
+],
+[
+79,
+46,
+583,
+584
+],
+[
+80,
+42,
+585,
+586
+],
+[
+81,
+29,
+586,
+586
+],
+[
+82,
+19,
+587,
+587
+],
+[
+83,
+36,
+587,
+589
+],
+[
+84,
+25,
+589,
+590
+],
+[
+85,
+22,
+590,
+590
+],
+[
+86,
+17,
+591,
+591
+],
+[
+87,
+19,
+591,
+592
+],
+[
+88,
+26,
+592,
+593
+],
+[
+89,
+30,
+593,
+594
+],
+[
+90,
+20,
+594,
+595
+],
+[
+91,
+15,
+595,
+595
+],
+[
+92,
+21,
+595,
+596
+],
+[
+93,
+11,
+596,
+596
+],
+[
+94,
+8,
+596,
+597
+],
+[
+95,
+8,
+597,
+597
+],
+[
+96,
+19,
+597,
+598
+],
+[
+97,
+5,
+598,
+598
+],
+[
+98,
+8,
+598,
+599
+],
+[
+99,
+8,
+599,
+599
+],
+[
+100,
+11,
+599,
+600
+],
+[
+101,
+11,
+600,
+600
+],
+[
+102,
+8,
+600,
+600
+],
+[
+103,
+3,
+601,
+601
+],
+[
+104,
+9,
+601,
+601
+],
+[
+105,
+5,
+601,
+601
+],
+[
+106,
+4,
+602,
+602
+],
+[
+107,
+7,
+602,
+602
+],
+[
+108,
+3,
+602,
+602
+],
+[
+109,
+6,
+603,
+603
+],
+[
+110,
+3,
+603,
+603
+],
+[
+111,
+5,
+603,
+603
+],
+[
+112,
+4,
+604,
+604
+],
+[
+113,
+5,
+604,
+604
+],
+[
+114,
+6,
+604,
+604
+]
+],
+"juzStarts": {
+"1": [
+1,
+"1:1"
+],
+"10": [
+182,
+"8:41"
+],
+"11": [
+201,
+"9:93"
+],
+"12": [
+222,
+"11:6"
+],
+"13": [
+242,
+"12:53"
+],
+"14": [
+262,
+"15:1"
+],
+"15": [
+282,
+"17:1"
+],
+"16": [
+302,
+"18:75"
+],
+"17": [
+322,
+"21:1"
+],
+"18": [
+342,
+"23:1"
+],
+"19": [
+362,
+"25:21"
+],
+"2": [
+22,
+"2:142"
+],
+"20": [
+382,
+"27:56"
+],
+"21": [
+402,
+"29:46"
+],
+"22": [
+422,
+"33:31"
+],
+"23": [
+442,
+"36:28"
+],
+"24": [
+462,
+"39:32"
+],
+"25": [
+482,
+"41:47"
+],
+"26": [
+502,
+"46:1"
+],
+"27": [
+522,
+"51:31"
+],
+"28": [
+542,
+"58:1"
+],
+"29": [
+562,
+"67:1"
+],
+"3": [
+42,
+"2:253"
+],
+"30": [
+582,
+"78:1"
+],
+"4": [
+62,
+"3:93"
+],
+"5": [
+82,
+"4:24"
+],
+"6": [
+102,
+"4:148"
+],
+"7": [
+121,
+"5:82"
+],
+"8": [
+142,
+"6:111"
+],
+"9": [
+162,
+"7:88"
+]
+},
+"pages": {
+"1": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "990b237610780fd36d8400ab3d4882eebd6eeac56fee625f7eb53e362bea406a",
+"words": 36
+},
+"10": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "f731f5c906a8f43d3a5d8ddc3d60eefe4a3d61c5ee87d7afab2be908f2fa0051",
+"words": 142
+},
+"100": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "387e82a488437ba1d478ec2d8167d117d4f43a9302fc20fdd9c0e3e42afbc6b1",
+"words": 144
+},
+"101": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "99ec07665e7893cfd1fc3a231ddf6c63685101fbee14d83d313da76be1940dc3",
+"words": 135
+},
+"102": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "5836d05efa293b7e9d54a8a8968882aaaeaa2078fab39f36950ba0276e0492e9",
+"words": 138
+},
+"103": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "d63893604cf5b14afeacb58177ac35387bda1b83057a3cc076b9d57144c285a3",
+"words": 146
+},
+"104": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "42fb9c15f0059d4ed3b4e0558f45c526d34f596f9b973844782c76c547dd83ad",
+"words": 132
+},
+"105": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "b9fd6025f0d960583f318de89d2481cfd49dc5a627258d41912a03864437fc9a",
+"words": 128
+},
+"106": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "552962c1fcb983afe5f6651fe0cf38f9fed5155b031c15c48257d8a4dc7a55a8",
+"words": 128
+},
+"107": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "9f9133be635dcdb5dcc3d8774759861642b493f15852178abc452125bbf65954",
+"words": 138
+},
+"108": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "6adffd2c9833f6331e75926fa7b4b6b17e903b2e0938f29ea880b0715e69e547",
+"words": 120
+},
+"109": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "a71898fdb05f247ca0927224908170aad8319b55331d44cdb62f5d10a56e951e",
+"words": 111
+},
+"11": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "7e3dc9372edcc66a52c9beaaf6e3081432e7b84c1d02ced4a99a20ed2f3a5a02",
+"words": 148
+},
+"110": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "8f9c2315149f7a68ce6daaa9eb1161827425164e2392975586a83c4872db0f74",
+"words": 112
+},
+"111": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "5db16226236199d118826c42af37babd3e5fa4a231d4665be5b33c9bc0a2e0aa",
+"words": 138
+},
+"112": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "f54f8030909aac4a5c1db4323737f3fa8383acba35bb41e703b16d3a44e6110d",
+"words": 138
+},
+"113": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "046de1f625395511c87761ac8ab0640ab49d56c3a12095a725d5d9d3986271c3",
+"words": 129
+},
+"114": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "732bb864e0be3ccc25e2a31075c8a71a3e87149317362beeb502bd3df027f478",
+"words": 130
+},
+"115": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "22b8337479c504a586339d72e9d764e5880d0f9bbabfa8b171bb81fdfad584f4",
+"words": 117
+},
+"116": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "d35efe5f4d14f7a2bbc7ae697ec997ab5a1e6a6d5b597010938be231a4a25db0",
+"words": 141
+},
+"117": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "1dcd154f85a3c15e1e5ab5a26060807657c8ced54d9ff9962624ec0aa2b137b2",
+"words": 156
+},
+"118": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "6dc38792a2d5a71201368cc54065e8eda2cf75ec88c866a7cf8ba7d0d4274a5e",
+"words": 155
+},
+"119": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "13a010ff6cef2087ebb890aa2b44aaac40d8774e181ec597f356fe32476695cd",
+"words": 135
+},
+"12": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "bf13863f0cd0eb884b25973d8ace061fd2e7fa842ee554b23ffb1f2c746fcc0c",
+"words": 126
+},
+"120": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "21860e8c19035a28fd7aef500189acfbae452393f170519637618aa3997b4bbb",
+"words": 156
+},
+"121": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "994727a3d3576fa9978968b4773a84987b731f058fd00dac62afe6d21d20b2d1",
+"words": 114
+},
+"122": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "9870807c640bb6fd1391a08cfc39b425514e3ec29700bcaafde6f2f35af1900e",
+"words": 133
+},
+"123": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "fc905b6ce2c847e92bf61185ab1d282ba65ce008e870cb058379f32a70f67523",
+"words": 135
+},
+"124": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "091a8c6600231a0072b6d6514ad6b702ae8b02126551d494a5659031a496f7b8",
+"words": 145
+},
+"125": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "16d913518640c2d30f060bae085d339d65aa34e6e76a09e45a061bf5755b8642",
+"words": 147
+},
+"126": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "4d59cc1efb8752b27d4d8a723f3848516e1e869ee92771027c89cddc2af68427",
+"words": 132
+},
+"127": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "59d3987cf97c26bdb15badf79266efa92e41f8ba601d7c649978b72ebd65cd31",
+"words": 165
+},
+"128": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "a1e02b665eb5ba3fec9c9e4568ff4eef8efab2a7083ef733857427d2105bd0f8",
+"words": 131
+},
+"129": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "1739a4fd0b46107275c2f7fe165e802ccfe04401ad290f66c81a3d5d2fa80858",
+"words": 142
+},
+"13": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "f3c50b951f00dc20c58f0fe026dad3d67e692fd4b4fcfc58711a51d0da89c380",
+"words": 120
+},
+"130": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "d34dcba33bbdfec3067fddc8f8ac3b21272c302a3d269b35aacc7314385168fa",
+"words": 166
+},
+"131": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "99929d0513688a66dce0cab545eddf2abacc1f18cdcab0e1ec403e0b07f64f65",
+"words": 155
+},
+"132": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "b138a4bed684460708960f635c2fe9d56c3c74ebf541b8db9173f3bab9a47279",
+"words": 149
+},
+"133": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "54d77b15169a2687690117d4018373e4da659109c280ed64b62a06c1d4f2e0d4",
+"words": 147
+},
+"134": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "5105634ecbfc1e6e80b76c87fdc89694915962da3f2f5e5632273c05c9e385e4",
+"words": 143
+},
+"135": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "251bd63670e43273b5a6146744a2ca8dc65ded6c06770acdec1f4be13982e91d",
+"words": 151
+},
+"136": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "5333150ea7e1112a31fb4b4275072a18840f89d2c0c93827b6b2942b0acdb886",
+"words": 133
+},
+"137": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "2650cf38b0f48d7f276d6eccd687bf43ff5cbc7e148144ddd3edd3ed8da37816",
+"words": 140
+},
+"138": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "37d20e74e4545adcbfb52114cd8d5c9ea1e4531d897f0be1c0fab2fc7963683e",
+"words": 128
+},
+"139": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "60c71d0531a200824eedee4135bc06231ac2a9d75524b66e7feb3ebb4efe0f7d",
+"words": 148
+},
+"14": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "0f87db610bf4e1dd1be123b4ba76a5319e417a527cd4396e0bc22690f6fc4dc9",
+"words": 126
+},
+"140": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "32c4ee0d8b44036a1be00af27727d7c14474d0bcd0ab33bd0f3d18d713491f38",
+"words": 142
+},
+"141": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "d905a6b7af89a14c940e1dbf482668901ccc24779661869acb5823752cf05548",
+"words": 142
+},
+"142": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "02327eb2e8454f89c61256b7f2e06134c70843ea34e37405790200f93898d286",
+"words": 138
+},
+"143": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "23872b2715b112e822ad72c0a3a4cc01c144b3c83aa9ce013a3b651b8cb466d1",
+"words": 136
+},
+"144": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "c89d396c96a6cf7c349597d4a8e11729a36691fd81c59add72e5d57382c5c066",
+"words": 123
+},
+"145": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "763ea18af25d6a49e87abd0f10651e5729e71e74197c5cd2dfc261b3967f77f1",
+"words": 120
+},
+"146": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "33ca30d0b822284d5ede94958a283b41cf9bec5995891bc96971a121f8a248c4",
+"words": 120
+},
+"147": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "fb490b9659b973528dc02c9871a049f3e4914897786a9c108944a3133934107d",
+"words": 134
+},
+"148": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "87329c298bb052d08bae845363a46e43cfec568acbbe46248c04a2ef59489426",
+"words": 132
+},
+"149": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "b9e3677ba1495950b35945cb581d4f0d5bfffd52175d64bcfe986ced36492e45",
+"words": 132
+},
+"15": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "dbe680555b0366908c8e65b62dc7355607499d042671cf4a3c231b7e085ddbad",
+"words": 131
+},
+"150": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "9ef4717e51b26542ae8d251bdd0686112e19e4523d46e19c5a05717ab967169b",
+"words": 163
+},
+"151": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "2fe1e1212fd2d27ea3c927812d728ee52f046a177d3a86ea5f4403dc05c21dcc",
+"words": 120
+},
+"152": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "32a0d99fd59b92e0a8b1eecd11a4a3b4f4cb6c9c22ef9f390dea2c01fdfed4e4",
+"words": 158
+},
+"153": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "8b3d0ad0e606df0611daffb2bbcfbba424f85399b9c11a5b151d6f2d813be0c0",
+"words": 142
+},
+"154": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "d52c1b2e2068653fcb8651c82a8face78775c6cd71008c98954d98495a4fb500",
+"words": 154
+},
+"155": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "33080b90ca37a8dccacaad5ce1f4c41139638ba1353bc47c89dc5810bd2cde60",
+"words": 144
+},
+"156": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "19aae74fbf7010ec7ef9e575386ecc3ef51dafdb4760fefeffdceab0abccc688",
+"words": 145
+},
+"157": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "dc7ffeda7177bf9210505c8b3fc833f1919d1c71ea7ea811bd280303e0c1bb0c",
+"words": 138
+},
+"158": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "1edb065e2762f332b61d0648b110886b64824a0831a9d41dda1427b816daa7fe",
+"words": 143
+},
+"159": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "e9292cb7129b9aba55b26f9f91e030e29f848151ea585ae7204b853536d9da1a",
+"words": 129
+},
+"16": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "f55d2a1a7de3f8823994d5e91544a2ee41b8bd456f22aa039730ad199a57d740",
+"words": 127
+},
+"160": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "35833c1cb41d0dd08bc882367493518f7e6f0126529efc1e835b2995ba989488",
+"words": 123
+},
+"161": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "f33efc9a2292869fe3b9ba767b86e82dd8eff3ad3bff3bbdda9ec7c0c971a94a",
+"words": 114
+},
+"162": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "8a8e2b82d249d44590d6617663b8c899950dbfa40ff9b88c19dd28132f0d106c",
+"words": 148
+},
+"163": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "1f51738e0efa82921959f4e10b0cd64decc9b993dd2a97eba97f36303a02ba26",
+"words": 130
+},
+"164": {
+"ayahs": 16,
+"lines": 15,
+"sha256": "4402d8536ca53c58c20eeb77c461df0998d64fbe0a00dff215afc80b7cc9a269",
+"words": 145
+},
+"165": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "82b1d0c31baa668efe13e4c10e378fe183104bba9c7021972ec5b1e3f2d3a60b",
+"words": 134
+},
+"166": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "5747b6067fc7d06351f3fe0d7309954073bec7f7b6d318d07f4c68042c0de1a9",
+"words": 127
+},
+"167": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "fda0585b1413a56d518fbb1a24108c8b7cb71250011c3c6e04138dceeca923cc",
+"words": 130
+},
+"168": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "301a9740e8ca5426d53f423948ccf333939856210661e1bac6d7c247fe72d41a",
+"words": 129
+},
+"169": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "fedd0eec52f832ada33c180b51c9bf82c265b23e5d9e7ade9c056d85c4b5e76a",
+"words": 141
+},
+"17": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "d02a2a08afbe8dfcb4cb99f140645d7b93e7324807922712cd78c7e870ed988c",
+"words": 146
+},
+"170": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "46a07e1776d5883e277737538ec0831b8a3a71900f9351b28f6d11057b477a3f",
+"words": 116
+},
+"171": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "1834d5708e42cbfa83ce84c0f6561649732db278e4078f8108d7f3372b2e7da9",
+"words": 111
+},
+"172": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "224883d6542fa1e26b74bc6ca72884080aaab226e892986880294d1d15af5c4f",
+"words": 138
+},
+"173": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "8256de543c8e0961f0c255660d1f187a5dc5be566f950efdaebfc120f4629ae9",
+"words": 135
+},
+"174": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "750a225ad4c2b6b4e0127f1acaace9a6811caf5a3eba524274a8d349436bdfec",
+"words": 153
+},
+"175": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "7ae7d7f75d3189c41cf26d72cc598ff3aec9de74e3f2150ad3ecf43eae30a235",
+"words": 143
+},
+"176": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "f3fefd633dd9ba95079f22d9ee8866243a75a3e0b7a048c5a1b371c5ef591150",
+"words": 136
+},
+"177": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "bae1e69134de7c7233b59163b4161c41926961274dde510c0df0b7d385c4ebe3",
+"words": 112
+},
+"178": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "c77d7c01d825ef93857c74322e5de537acd400120f8fc23d0c5b3ed4d7800670",
+"words": 132
+},
+"179": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "6b27f53aa7e0828a2959846896ce1492f15dbc800f008a0c3be1f9cf760d7d32",
+"words": 133
+},
+"18": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "8eaf37cfdfb1a46c0892598136b53c54611001f8aa4da8587a1cc944e77bbbcb",
+"words": 139
+},
+"180": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "7280ce3f96f81724fa2ed9e046adc417812dc6c0128ffae4c679d826c9f66e5a",
+"words": 130
+},
+"181": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "7c44ea2a777ae031396c5c4792e616c2de570662020e3e990b0498f49ea7fee6",
+"words": 122
+},
+"182": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "36da8f808333b3c44302ba27be3d8a209b6e414ee72bb78608310a826f89027d",
+"words": 124
+},
+"183": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "074b90b56a070065192886c295a9888a34da8c31539227957b2190093955326b",
+"words": 130
+},
+"184": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "bc3646b80849abd2bc962de7e192ce39f96dfcd27690b6afc6f7f1ba63f3c7ec",
+"words": 143
+},
+"185": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "371b09d8d638bdb0661bf906c3a56184c71dc3e0dbd6d92ccde95c9050d2a7ff",
+"words": 141
+},
+"186": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "de07dfc2b82644868c87966c1c776dc4837e894ab37a56f09b0b981fd7e871e6",
+"words": 141
+},
+"187": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "e84998894563cf91852351ca74562026a669720087e0b16e357719a1698e98e3",
+"words": 127
+},
+"188": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "7c38e45a34144386302bcc6cb8c82dc3142e94bfeb5348654c7b4b722ca6e893",
+"words": 120
+},
+"189": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "10c0b5b73239d398998dbf0d0a719ae31dc985c432ba178a947e620f122cb31f",
+"words": 134
+},
+"19": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "ad60869f567d24e9c85896b089580801d82ebcc2c2699b69f8d5c382c5ab614e",
+"words": 153
+},
+"190": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "4314db54d53b52dec35f45bc2bd7d24bb22ce51dee2c3eab50c8760b520e7229",
+"words": 117
+},
+"191": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "b2863afb1f89959f3c6142aa8a68c86384ae5c7478f135280a63c0b468a043ea",
+"words": 119
+},
+"192": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "24f96bca21ebfe59630b4e552ec22f79703a76e970aa64438de7739c94693fdf",
+"words": 117
+},
+"193": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "6e2d875bfd78fd50ffb3c1522633a8e9732c0564dbbf4211d9a8fabbc232a075",
+"words": 122
+},
+"194": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "ccc08528b6a2ff0b648dadd2d414276768b4a04ab1a2f701f753ca497412bddc",
+"words": 118
+},
+"195": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "4f56512b45cdae9b03c6adcfc1c1cd6331d82bd1c8d2a4f8cee18bd4503a89e0",
+"words": 124
+},
+"196": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "d8b516777973a6bd214b057c2759d71302d198c37bb2b67a00e48e52879e7eab",
+"words": 128
+},
+"197": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "db8a987183aae59dacb101b4ca8f5fd52a8bfc33a5d445c570ea27545bd964a5",
+"words": 116
+},
+"198": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "70098e6357d82d611d4d0e2e2168d94533d81c8258a69a8f4a180e3af4562282",
+"words": 110
+},
+"199": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "c053006cde54a217e10cd2fe103ce0b7c082bc8a95f5789036c3616aca4d7bba",
+"words": 131
+},
+"2": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "50e452c91e3fceb036821c2dfb26bb95e27265f1ca5c98138fbfa7cbe51a7ff4",
+"words": 41
+},
+"20": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "8fdb0fc234ac61322869014ac2e8b5267478810f72d714fd11f24bb39dfde5a6",
+"words": 140
+},
+"200": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "f732028130b214410ded870dcbabd29be8dd9cfca237e74161115019f63aff83",
+"words": 144
+},
+"201": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "20307d0cb65901bc86e4b53a75ee0502574e94c28cd680d4d9a3e6fe842b10c6",
+"words": 130
+},
+"202": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "9fe3a1d46d14ae585501c811cbfc40ed3ae58886f53d526d32d277ae2b1bc714",
+"words": 127
+},
+"203": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "51d23c0b296a98d8f2c0584bb499b510af0dec02702ca69959ce97ecf12e2b39",
+"words": 131
+},
+"204": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "ad2741acf0f92ead1865dc09ea909a6d281711d227156f14c5286a1501eed845",
+"words": 131
+},
+"205": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "ce2f591ecba9bcd23a368f5db80f09531a9d401b7923ca8dca12338cc695add8",
+"words": 126
+},
+"206": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "4e5d767d8d1e270d8a10487c16b5596f4b54fe749aaca637ad6052bc262d27e5",
+"words": 136
+},
+"207": {
+"ayahs": 7,
+"lines": 14,
+"sha256": "47e38332954068ce857a66d71eba1befb4bd7550ca5a13d9bb87447b922bbf9c",
+"words": 119
+},
+"208": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "43f8de7c57ae7965e98150e372302b9cc56345b7128f96426d4bed08b88c40ee",
+"words": 131
+},
+"209": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "577cf748a2b232936b736f9f884339bb5c98479fc143d63d76152e4bbc499dbe",
+"words": 130
+},
+"21": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "81620f12a689042b8c514054fc0379a47fc035a9d6f4d55e051a5cca48420685",
+"words": 141
+},
+"210": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "34f59deb263fc73ca2d546a1387337e3e290ad9835f0836784e87f72d4f43951",
+"words": 139
+},
+"211": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "f0eeaa4f06e988d6b371f8585652a3e532e99820316889e282d10067ed40bc06",
+"words": 147
+},
+"212": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "25b663e74f4b3d3743424f7c20c5f61494cc86da36268aaea29657d3460caefb",
+"words": 143
+},
+"213": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "dbbb7b5669366ab278011c7aeaac176b50c2538835a791610bd386e3676f9c98",
+"words": 167
+},
+"214": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "38f727098fe07a1c670716d6b597fdcb8f20b4b6ad543a592425c48c9b9eda66",
+"words": 155
+},
+"215": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "85d7c548890d73011cc34eebe0436279b51f6fca5f63a7211a3b40808a15bd79",
+"words": 155
+},
+"216": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "32cf02c405be287f31d4582d3e07af6e0392a81166c7fdb5f305a700e07a6621",
+"words": 135
+},
+"217": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "fd31c3810a58f0609eb3a1407f385702c9c638592b1e800dea3f6ce2cea41b59",
+"words": 147
+},
+"218": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "e11642d690d65fb4279b8f0bbafc2fb5398f27b82e85af9fed91f3d48a7875b0",
+"words": 144
+},
+"219": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "7b40fc7f1d3cdfbf9a12be2ee869356839e86626e364481e4e06b3993a10158f",
+"words": 140
+},
+"22": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "07cde6d28db76bb8386756d3048401af7824215a25b24d165b0a37a925798ac0",
+"words": 136
+},
+"220": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "236fb2341287787c98b341bd9096b37a96f531b099b698c99090fdf6eca1d5dc",
+"words": 149
+},
+"221": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "d03f9385c163a6dc1b72dc99b9f4faa44a394ccb5c1bd51acbd56de53f3b3544",
+"words": 136
+},
+"222": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "e25783cb03ce76150e2eb84b7b45ae31a65cee52251ac9e1d50f4b908cd34b1d",
+"words": 137
+},
+"223": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "1985245a2a04d58d3b403e7155efdf02455128e78de80a8b82860afcfafdddfe",
+"words": 144
+},
+"224": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "c677251acd6503bd92fefa00946d85918f791b9a456a007458eaa961d6b50375",
+"words": 142
+},
+"225": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "3264877095855daf770f8918d3db0bd3aad9e013d9755347e96c318b6afd74d0",
+"words": 152
+},
+"226": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "041691a559efacc5db49bfeb14c171da40e2099275c5038e6f39aa576175e2e1",
+"words": 148
+},
+"227": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "7c741dbf7661bc16353ed111fa4fa488eefc283258c665b5cc12d5a4fc3f8fa5",
+"words": 149
+},
+"228": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "ae71340ff4eff2d5c93b7f1be8eafb4af9995d8ad7095b147ca60739a127aad1",
+"words": 162
+},
+"229": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "6af69f40302151ff7f65b9ed7065c985525149156e0629c6eda0ce244ae494bb",
+"words": 139
+},
+"23": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "2c3b40913d98ec5049c19ae5f3f6842032949784709f2291e77eae68ac88719e",
+"words": 129
+},
+"230": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "6566f50394faf64f32fa0bb118195860e0718c025c13080225b1dcc27b737a5b",
+"words": 158
+},
+"231": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "3fea7f133534c51b6af8e7c8007ef738178a4a74245e3b2abb75a4e452706095",
+"words": 133
+},
+"232": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "6f76aaba9b3809f218136e4d31e59dfbfa1a63a25d704139b1f92b199da1af57",
+"words": 136
+},
+"233": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "9b0727f5a5ff2c85b3ea80bb74d10e832323ea77a210b3080b724cc28ec95f69",
+"words": 147
+},
+"234": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "255797e85b15f5626762fe5429935793135ded3d4d2d5d2aed302be56bfc4112",
+"words": 141
+},
+"235": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "a9834ff05ff929551cf15b6fb2a69eba4a4756f9d7c79102be82d55b13001486",
+"words": 122
+},
+"236": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "0f09909b882c9b596d06d5da11ae832cdfec57bef45f9dd9fe4318d4740bd876",
+"words": 143
+},
+"237": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "13c8578895831cd6253ba29dece011bf1f1956ae915dbf4c595ae7d3cfffbcb7",
+"words": 131
+},
+"238": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "2224b7e24ba9dbd5c02eb447aab9171ee0fca08aae808a272b00c48806895303",
+"words": 143
+},
+"239": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "d39727656b72d2aa872e564d6834f169a085ca72f13dfd81330060dd32b17948",
+"words": 149
+},
+"24": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "aa9ab42bcc0a258ded96be361ff0e857113aeb36f438cd450e645d10eaf9c6c7",
+"words": 140
+},
+"240": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "ceee06ec6ad97bc09ece26f7b59c2030a2496c433b0749570c444711da69d8c9",
+"words": 134
+},
+"241": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "aefaa8744b1bcccf66142e8545ff83adff2833805656054ab4076ee3c53b0578",
+"words": 153
+},
+"242": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "581c7f0b444b27578ee53977b7983b60ab9b5d1d3ba9c55c8a46e11e6251d4af",
+"words": 144
+},
+"243": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "8dade1222809eb15d7b7ff5e933159686680205dc8ca2a7f835df6ec9acca6ba",
+"words": 145
+},
+"244": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "1cd86ae6b2b870d81a110d19e26a31f07cb4f71f33cdc81870baa805378a5b72",
+"words": 142
+},
+"245": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "7a9cc4b7290971733cf74447b6488e620f5f795e02d8f17c73f55ed2ce2d488e",
+"words": 141
+},
+"246": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "28e0959e05a21e8940a4e84386bd789214954b26a5d6791b2be148113b16e609",
+"words": 133
+},
+"247": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "3729e85bf63b41fe434b4e51ae79317d67a43a2b6e375d2d9b23b8c099406c66",
+"words": 146
+},
+"248": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "8378b07c21a2710efc08f6dd67d19c3f4a93b0294bdff10f4f94914b0715fdef",
+"words": 138
+},
+"249": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "89bfc2e324b8d236035dd2cc4a928ca89786648d289a5d54677c1757cde83331",
+"words": 122
+},
+"25": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "a280750c9aa2dcdde1b782483b624e7ada62fc09bac9f5772dfb103fbe4f470a",
+"words": 142
+},
+"250": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "db0a19bf45ae3e7f3ba6ddd89acbf8325bb5f27a60e4b4d59708d52569d19870",
+"words": 140
+},
+"251": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "7136d180e0eab554a1446e89f9b9fdd7e94836681024aa65e3af3ceb5ed2139d",
+"words": 157
+},
+"252": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "5beadf127ec4fe894918fed7b08d5c9b628c0f1fc51fd38162223e5a6ddf2c9d",
+"words": 155
+},
+"253": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "d779386a6694a8ad42651521e4710dbb79784a779f275a710ab1f77f8806f4be",
+"words": 159
+},
+"254": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "4092923a3685e4c547d6c06e46131cbdae3471fc9091d77e081702c4c2d060c9",
+"words": 147
+},
+"255": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "3a1479d3dd0da234b214f9f72a622fff5cfd50297fbb917222f3bbe9669dbd76",
+"words": 107
+},
+"256": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "babc1400a0f72ecb6e74fc03783c18cc7475a3c1f4b92f6df4cffafefd25aaea",
+"words": 125
+},
+"257": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "d610def29553ea2379d9dc958459d34173f784b011818553b137c5e21eca9eb7",
+"words": 130
+},
+"258": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "91952c71ec10e060264d9b2f05d93518fe4153b62fba64b55760c2afc95b97e9",
+"words": 135
+},
+"259": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "b769dcdb3ef9e1ffc3f12e45246ac4873c8b1061efe35799ed3b8418d6efbef1",
+"words": 135
+},
+"26": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "922e88f28dceac38bdc89da9dc7e650801dc6c7146d36f56371b05cd7bb906fc",
+"words": 140
+},
+"260": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "853a1a63bacae659ffbb7f6080eb99d365a38f656d6cdbdbe67ab437fced3f12",
+"words": 139
+},
+"261": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "e7279e985778aa99db65cd65a6c97e7f93dde682ebcfc46df33c0519ad2a1138",
+"words": 127
+},
+"262": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "83127aa4cacfcd80875fa6cd48e77faed3b6cc39edeee8f2d68cd5d7da3f334e",
+"words": 126
+},
+"263": {
+"ayahs": 16,
+"lines": 15,
+"sha256": "d7835159bbca42e08fd4bea25f832f833a35c9264177ad480ac006132344383f",
+"words": 144
+},
+"264": {
+"ayahs": 20,
+"lines": 15,
+"sha256": "5ed17262c36e28e0c841a7ddbdec52e0a2df0dcd5a60a5301e29f37ec47fc112",
+"words": 147
+},
+"265": {
+"ayahs": 19,
+"lines": 15,
+"sha256": "2bd57d02178b1968aea12e2a7f0159fb49a240a36409a4e5f6969077693308f7",
+"words": 143
+},
+"266": {
+"ayahs": 20,
+"lines": 15,
+"sha256": "e3642f01ae7b4ea8232407d25d67e7fd91f58329626df1c51ba7e87dce525634",
+"words": 140
+},
+"267": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "219ddc0538c0138908f96052be2b1fbcba3a3fe25fa407177ca85342edfb452f",
+"words": 117
+},
+"268": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "0fe5561cc169627d98c25303e1833dd128f374b2dd795e144973c03ab71fd967",
+"words": 119
+},
+"269": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "1aed3300bbd4922f0fc87bd522337c2305c2ee57befb21f77c43780fad1fd0ae",
+"words": 136
+},
+"27": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "326ea7db55dc622b487197cd227f190202c54c890f9e8879ed6ee82c3615d0ee",
+"words": 130
+},
+"270": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "f2c2df7b3fe224db66e9499747e02f9c821f2dd85ec17351bb118ac1dafb4d6d",
+"words": 135
+},
+"271": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "2b0844c1a6bc2f724d2fb5ae268bcbaf19dee4e2276b71aa9dae59dcfa8206c0",
+"words": 144
+},
+"272": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "5c494e9b5a21707dd937f75053a01350eccc326d85b371d2658cb6cd5546a36c",
+"words": 153
+},
+"273": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "f7c9027f6541ad1918d60e3f32f11cb69e2c87ba1496b1fae35acb5a446900e6",
+"words": 146
+},
+"274": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "732c0598b0bb7d881f342263432af3064c02618723bd4cd5c4260706e73c1011",
+"words": 156
+},
+"275": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "16462bdcc440156fd15149a2f1d573ad086d985a0df08008b8e9ec59f558e8d7",
+"words": 140
+},
+"276": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "bb133dbc518b3c6a5b4f9ec4f9ac9ea12a8ad3c7773a1d996a9a8cef18a5b3d7",
+"words": 125
+},
+"277": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "f294f51058a0eaab3a80984e0665f7b7cb1a5b523a77d159a5329941bee11851",
+"words": 128
+},
+"278": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "84bff3ed24653a78e99ff28dd61fd900d4ed74e05ed3588e5388180c4adf84a2",
+"words": 133
+},
+"279": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "868796ad824df81ca35cae5d4c829cedecfa8de0d15b2df80ff46e50be1f6a81",
+"words": 120
+},
+"28": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "6486689d45f88c7278208cb667accbacae8a01fcebee25908b9f3c36c99441b0",
+"words": 128
+},
+"280": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "ee58def5fe9de4e1a496d6d2b18a72268ab49c88231d65d6716e2172a400416c",
+"words": 133
+},
+"281": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "81969b3fef59ece641d09e33506c0c997863e3490bc53f4d417f2ba9676f3b9c",
+"words": 141
+},
+"282": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "ac4ae8614e5a9904d0b872eb4567a6f98dc1af2873c2d96586f17386970b2830",
+"words": 113
+},
+"283": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "9ebde8b5ca93b3a584bcc9602402537aecaf97c710fd71e9988a5e721df036de",
+"words": 145
+},
+"284": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "e498c2c7b7ec7c48c95703229dc9fb53cc40a6e3c5e5554a07c8a93a9b8db4db",
+"words": 140
+},
+"285": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "046dadf78daccd910ebd323deecde7b3a9b13c1339c2fdbc303c55087fccf222",
+"words": 155
+},
+"286": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "786d7d8292dee894d122026ff85b9f0eb12123e602341ce047d6f7e014c5abc8",
+"words": 158
+},
+"287": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "50396cfcc2a077188d75d1a78c91511b8b9128ef58a4a888cfba05d088bca467",
+"words": 142
+},
+"288": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "f81e9c4b62ef135d1220260411e47bbb96c535e866241fb1354093c426776223",
+"words": 134
+},
+"289": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "8727b387a30de8ea027b45d498e80009d4df436deff09ad76a90fe5b8af5aa22",
+"words": 141
+},
+"29": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "c14a196179b531b6aed6e07c2be025f4b6fc2954b97ee8792137b3cf85115e34",
+"words": 126
+},
+"290": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "a288cebe39c387cf8ad112dcaec50adde9673d532921037762bc412980f8701a",
+"words": 147
+},
+"291": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "2e44d497dffd804cdacd934ae91354bff9598a1ea7bcdd0e204dbba6f2548e55",
+"words": 151
+},
+"292": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "4192b6e8bd4c6740a1c62ede197c65562ab3c9f47a6f052c321cdd883c139fab",
+"words": 142
+},
+"293": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "b18fd4b4306385144f2192438357b2aa8966890f06d069e559b1c346370612f0",
+"words": 138
+},
+"294": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "c5264307e566686b4ac868cbfa2ce63f6017f39829383d9794b9944f9f1dc26e",
+"words": 145
+},
+"295": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "a7734c501ac3e062153779ad23ead49792b4fce5e30d03f364d0bdad17e5a211",
+"words": 131
+},
+"296": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "86172f75f9c69803dcefa62dd4ef3b4a8580fc71e8e0e407329b0e5f93f3aa3b",
+"words": 142
+},
+"297": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "07b9d9f1be2c33032764d018cf3ec92d2cf199ed1361ab45e511ad9b8cebc675",
+"words": 143
+},
+"298": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "b111dc6de37748282ea5dca109286e61d376d6af00acf5e180b7b2602eb84a91",
+"words": 163
+},
+"299": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "03e0518a43649b7d1a2f1f8bc203ad027753eefaa69f0ce20f1ab57e5f659173",
+"words": 137
+},
+"3": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "bfc1ae9d78a4a6d03cdddbd104abef150c570113dc63a0fb64a1f3c8188afc75",
+"words": 138
+},
+"30": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "917e0b8fa1bf04c85ea87b82cd8a202b941b15ba741696eb7911d1dd476ce7a8",
+"words": 161
+},
+"300": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "b8e83db78108421c64d0534d9fe910f26985fba44f1838b34d690ca88a5d8628",
+"words": 140
+},
+"301": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "3ddd317c2fa5d912b2e934402aec5c9f88d5f6dd83f1ff191a119e2634ea75b5",
+"words": 162
+},
+"302": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "a53880831ed94c5fe923e313f2e50d1ff394589c9736777675d37f36548196b6",
+"words": 147
+},
+"303": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "81c7324633e9208944f2cee1f87774731c8f43ef0a9a29d57478405d37cbee90",
+"words": 174
+},
+"304": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "35abca25e7935cbd150da6de14a9fb989af6a67adbcb657f8195a5c11aecc8bb",
+"words": 166
+},
+"305": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "dcc91323636e9f0beb51337dbf44da47c2f29f39476815bc7473bce2e9b63e82",
+"words": 121
+},
+"306": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "a1ad57f33a4c55aa1ea441ed7f2d2c1030c0368395cf980082827612e2497598",
+"words": 142
+},
+"307": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "21ab82905c07ce22e23140c590595678cc600211d132ceb306417a5dbec0a87e",
+"words": 151
+},
+"308": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "ffe8a56061772be0a9f638cca40da9eb8200e1fa32c5f629340a6dad2dbc57d5",
+"words": 158
+},
+"309": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "39090d6a96a680328798fbb0683a487d7751815500b6da3d74bb701600a231a8",
+"words": 159
+},
+"31": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "6be5a68e374657fcffcfdb5f2afb6ea0fcc7ac3bbf4b6b510d65b7e711ec1aa0",
+"words": 119
+},
+"310": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "e08e6f1b863f2e82773b723c74780786a17c39641037426351d198581fb9f5a2",
+"words": 148
+},
+"311": {
+"ayahs": 19,
+"lines": 15,
+"sha256": "bde3a2281a8b1e012809b19850b7e4f6cc2c96f5dd55202008c2bce80c95e31e",
+"words": 144
+},
+"312": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "f91601c4c501184968917f4af8f9d7628eed8979b2c0dc5fe2534ba3a950d793",
+"words": 130
+},
+"313": {
+"ayahs": 25,
+"lines": 15,
+"sha256": "a7ee47e45bf972c6408d8a79f75b4f9fc738343c5e4fedac049dbbe2d38dc0b9",
+"words": 159
+},
+"314": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "d6c3b0db566815ceacd7384b35fc82d7bf60dabfc2f468ec0c2de87dfc10cded",
+"words": 165
+},
+"315": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "d0f7c3cb7ec58bba2f153c07630419b4d7e7239cf613e36ba85af164e3a180ef",
+"words": 144
+},
+"316": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "e115c9043679fd09964582f56554b9206bee0c1104aa0a42df17a0dfdf7df338",
+"words": 164
+},
+"317": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "b992e115a91c0e8f7aa17a0a9cc15674c746a53bcbdd0a4702ec6f3bb800e02f",
+"words": 146
+},
+"318": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "51295405bd2b7baec520dacf526687f13f9b7298d29f2cdac82ac69e1d9f9eea",
+"words": 149
+},
+"319": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "fa7bfeb89443fb13a4dbad7750e5f1e30a130eaedd21d7c4b2523cff7d93f8cc",
+"words": 154
+},
+"32": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "0ab46766a7eae0a9ec13fb14e4d94ba3c3a5693687c77238b806337035ace328",
+"words": 131
+},
+"320": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "bf45eb345bfe7f26d228d4906e9a6cfdfa6348773a8802c706da1c5fd414e0d4",
+"words": 146
+},
+"321": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "1dc33fe6e5ab9e2fd4fa49b6c4eff6bc40c5f9134d5792a24934f075c8688ee7",
+"words": 149
+},
+"322": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "2e9b2e3b026e6e0c66c94c6d20e3cd50fef99c27c92cf72981a80b839acb215b",
+"words": 114
+},
+"323": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "484b3ef3b94ee9682e94892728870ac2cfe918672d3c256fa21b9ce0304113c9",
+"words": 151
+},
+"324": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "61f9a92b2fff8db685132ea5d72452376442a54a1cfac6a94af64380b195b8ef",
+"words": 138
+},
+"325": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "0711d6cfc15d218269de2b7e68d8ddd8abd9bd1120f14497a339df880ae6bc9d",
+"words": 125
+},
+"326": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "ac7a219ebd55d75a01352c862efe4a9238b156cdd6deaaf112c00b8066b78ef6",
+"words": 138
+},
+"327": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "d22ccb5318b4cc31dd12d83eae63962e78bb6d48624b59b6938330841210f57d",
+"words": 132
+},
+"328": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "72a36f9f8a23e919a8e4ceaca1f31e9f1d38b01cc755a3ac4353b5e435852b25",
+"words": 122
+},
+"329": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "40c0c1a8296f32013a565d96a7f49a73314f6c6a5145aac9f7feefe8134826f7",
+"words": 121
+},
+"33": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "7207336b7cb0200bfada449e965532b6ed268e4f1f3301cade2fed033222308d",
+"words": 146
+},
+"330": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "b09962ccac6f78bd7b37c4b78ec90fa75777b9dcf60008f35e926c467db31d65",
+"words": 120
+},
+"331": {
+"ayahs": 11,
+"lines": 14,
+"sha256": "2096eb54239bc0640f3d953284cb8ecd1ed7e70cf8d7adc3224733345506d736",
+"words": 120
+},
+"332": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "16a5b01e1ad75a2493fe56b021973cc2aa3e400e124991a43b2d55a494afcd7e",
+"words": 128
+},
+"333": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "b8167ee3ba4cb5472b75942f3b241095065efe24bad826a846e8d73240e6777d",
+"words": 160
+},
+"334": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "d2d2638fbe4c0434ebd8a358361a366ec8cc70426fe65544ba793279308364b0",
+"words": 137
+},
+"335": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "98f7ccbc0fef5f8ef89515375cbb1db22458ca22c5fc3c612bc056cb7a588b87",
+"words": 123
+},
+"336": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "2b2b4b510fb8a22330b983f103c89debe5649476dfdceb3ba192cf4b4cbdf788",
+"words": 144
+},
+"337": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "623a8deae1e93e9be566a1d3325f9f1f5876b602e06b173f6ace1277705d8f17",
+"words": 131
+},
+"338": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "bac730d3402ace2cf1bd1d5d46878f679f470f214485e36498129904da175d0b",
+"words": 138
+},
+"339": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "08b76db0b215e22990779982403f6173aa07accc125adf9f870b4ff1e70f6044",
+"words": 129
+},
+"34": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "8f31ed31d34e17c702534a7df2b0062d7d373289cfb4ad6ad68ef3c4dd6d1e4c",
+"words": 128
+},
+"340": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "0ff32e3510947a57d74cd82900699f2925206f2527d80fccfa0a1d6a74059cd9",
+"words": 143
+},
+"341": {
+"ayahs": 6,
+"lines": 14,
+"sha256": "f0531eb90171ab10bbb1bf8a8db7a0b429ec4cb8aedb2dd2f0cb354ca4276f8b",
+"words": 119
+},
+"342": {
+"ayahs": 17,
+"lines": 15,
+"sha256": "7ef60939350ad14a3eb7e121153b5a841adccb9932bbad4c5591933d697fb79b",
+"words": 128
+},
+"343": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "262579c2aa1e87a0521f5bb641dfa33c233dc679481674d4c18316450bd76ec9",
+"words": 153
+},
+"344": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "1585df0baf25ccb54434f15b30ac9aa55fe07d0c0e0f2d1dcf60f5fd6b8ba76c",
+"words": 156
+},
+"345": {
+"ayahs": 17,
+"lines": 15,
+"sha256": "1c736273738768c6957269fb2915e12e846a5e51d56ff5eb7a4aa0f6cd88e2c6",
+"words": 150
+},
+"346": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "92aab245d27a52e551bcaca03be243dedbcdd86207d58a4b927d25cc13e5f86d",
+"words": 151
+},
+"347": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "ba30ecb9c21442b03ffe628c76b4dc1c8cb73e8e983d11128bfa2878b76a7968",
+"words": 144
+},
+"348": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "06645bdd7165f3fb0609b9e43493dbd41f90f95dd664267a328bc001628258ef",
+"words": 146
+},
+"349": {
+"ayahs": 14,
+"lines": 14,
+"sha256": "086a4a76d6ce560f8770e70577f7dc8a1299f4816fce88a05e7a96c0cfa5b898",
+"words": 140
+},
+"35": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "4a544d673cb27efd400849e7292238528153399052b274648a22d5f61b9806f3",
+"words": 127
+},
+"350": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "afb74e80941c26dcb0f60f2e61a36bca6eab9b327382f49b37030ec6e34dbe00",
+"words": 148
+},
+"351": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "8c901a201cbd30fd78f27e26e92d7d32b4125c0e808b5d9357692d6f375596db",
+"words": 154
+},
+"352": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "c0dbe038aa331f175a34387599504927b7dd30fc952e1f921f6f71f3a96c3b86",
+"words": 134
+},
+"353": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "3580e52ebb68fafe8c21d5d5e3656835bac7f151b52c6a1ff861a2334ef8afb9",
+"words": 136
+},
+"354": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "ad732066ace3154fab2672f2ec22107ebdbc9819ef5df821a461a8cc4f531d60",
+"words": 145
+},
+"355": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "792238d50e724aca677b8482ccfb1ce8dc0e94741944451407dd41fe93d5a41f",
+"words": 161
+},
+"356": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "0bcda0d77fee5066ed711efb7b4696c82945ad0e4e20c4eb463376a95b3e7a55",
+"words": 156
+},
+"357": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "9a5b77fde98291ce6be026cc80a146dd0d12e25ba03fe425c7d183e279d365a0",
+"words": 134
+},
+"358": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "1dbd2fe804724d4cbcc112839c7a535bf7d34ce4f915568490fc258d77c313f4",
+"words": 121
+},
+"359": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "6fd0894dd53d19afe2f528bc356797108b8e4205befc285c60f64d449d60fd21",
+"words": 121
+},
+"36": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "05d874fd6a520e31c45a89b811a248f810dea7eddb02b19cbde2adb666599dec",
+"words": 156
+},
+"360": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "ada7b2fc0c98d59e26a5251c28077ac3cd1de48eaeef96f9b0e480d243d3b565",
+"words": 135
+},
+"361": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "7cb393a2b954f3ebfb3b3ff49d01b3e4cb25fcde97fb2fa625e68e676618ed6a",
+"words": 130
+},
+"362": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "c02638a5b1e98533ccc6950314e8dcf1f1fbd92713e0e738f2f45250ad5a49b0",
+"words": 136
+},
+"363": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "e66c57267346bda08afeb5de13e78afe645e91e4d7f29b122ea1bc674ee414ad",
+"words": 129
+},
+"364": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "759d3c022a57623195a7a775de0da33518ae4dc2dab40979652c924b1bf24dbd",
+"words": 146
+},
+"365": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "f45267f25af5cd513d1e9634d1eed77d6d981413dda264c16d0ce6ecd41f5505",
+"words": 141
+},
+"366": {
+"ayahs": 10,
+"lines": 14,
+"sha256": "c3cacece4cbf5eceafe593a4a5c692f7cc86cec149993adc73baecc9549dbf23",
+"words": 123
+},
+"367": {
+"ayahs": 19,
+"lines": 15,
+"sha256": "437e45c5751d9843d7089c29fd94ffa50e7ace6af265ae9df65a40dd2b3c1ac8",
+"words": 152
+},
+"368": {
+"ayahs": 20,
+"lines": 15,
+"sha256": "1d8e8481801c05189f3643bbd93f6ccc8cd1b57f3f699cf0b0987f05b75d906a",
+"words": 153
+},
+"369": {
+"ayahs": 21,
+"lines": 15,
+"sha256": "55ed6fe2ffdf40a021eae408cbcfa9fd78accf3c3f2ec8b4d52b0a491cc40926",
+"words": 155
+},
+"37": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "c59a2eab2ab4d03ceb46b6d7033ec7ffaa842dbdc95ffde2950a07aae203e04b",
+"words": 145
+},
+"370": {
+"ayahs": 23,
+"lines": 15,
+"sha256": "0fd0013685f1f85bd535d54d7bc0d08a5bfe3658241d0de6859d9e0ec2a2ebdc",
+"words": 149
+},
+"371": {
+"ayahs": 28,
+"lines": 15,
+"sha256": "3671630a3a9531831c285b6fb1c2a1561a7ac88bd61be51f0ada2ae79ccafbed",
+"words": 169
+},
+"372": {
+"ayahs": 25,
+"lines": 15,
+"sha256": "4091040c44d2b16c107fdcf8a775654404c7565da10b6a052150e57d75c44954",
+"words": 161
+},
+"373": {
+"ayahs": 23,
+"lines": 15,
+"sha256": "32eed4b185df572e94cc5b2a69ee1ce1a26515fdb91a6cf1ab2c1d7e1eedc746",
+"words": 154
+},
+"374": {
+"ayahs": 24,
+"lines": 15,
+"sha256": "adf8a1f42af8c811b485ba4a63bdbdc2b6bcc58dc724073340b75790dce18934",
+"words": 161
+},
+"375": {
+"ayahs": 23,
+"lines": 15,
+"sha256": "498c0f2ce60156ca2756f1cc0230de3567a552fd950c7f528ad3711147a74216",
+"words": 151
+},
+"376": {
+"ayahs": 21,
+"lines": 14,
+"sha256": "0e22c043fa931950c5feafba35abb2bf826688768abefe798cc48c4dcea11ee3",
+"words": 140
+},
+"377": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "857afc41f84385c5ce38771b1a89a57218735952f6c1fa9aabf234243147fdf0",
+"words": 151
+},
+"378": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "1d9a52bb44b4bc9463d33f93a375582faf1cb5aa8fe830cda3651124483a8ae1",
+"words": 140
+},
+"379": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "37412993a87aabcffc7a3f8c6a4c3f3dc323131a7d311e9f855242522fd64631",
+"words": 147
+},
+"38": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "c623dcbc7a8dbc8389768fcd9c8d814ab8811c0f36e0f792f7486624eba90a5d",
+"words": 136
+},
+"380": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "cf7e38283715dd95460d848d62747830ea5bf7112c50e0946967319a093480d6",
+"words": 168
+},
+"381": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "38ac1be6c2c0fd43e195581e8de210bb4bcccc88fe4144514325d07f634504b6",
+"words": 124
+},
+"382": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "32f63617a698d9aef4482ad51d705acc77b5a5f2a8ab25583785d784f1357746",
+"words": 132
+},
+"383": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "db1d5e756693bd31ddc22b00fa2420d4bf039db45fdba788e4fcfed9043e4549",
+"words": 155
+},
+"384": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "bf6ebab0a409af9bd914b62cf413bb79951158ba0b4f81cfd117448ecd3332a4",
+"words": 155
+},
+"385": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "1006fbe7df5e67133cd4ca5a6f3a750be08c9180129f94134f25ae049d4b509d",
+"words": 122
+},
+"386": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "ed1a230585b45f57c550c9abd33fe922e82bebe025e31bc7893a6b77dce98629",
+"words": 133
+},
+"387": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "1c2e682a683a2e05a1f702f302c71592866ac738421b6d728bb4def7412ce8b8",
+"words": 154
+},
+"388": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "c24ff924c4db086708020c3dbd4cdadb4bf96d27f061e39be5a430dcd068cff3",
+"words": 140
+},
+"389": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "03e1ca958156982a604b43435900110667f396d3dac5ca2307adcc381b082d60",
+"words": 135
+},
+"39": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "6d573cf871ba974824229ccbfd08469cc5f4ba309ee163f17ebd1473e4d008b3",
+"words": 124
+},
+"390": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "6aaf61e89c6c6d61b4d36c811f92b7b54b120fce54823f33d186c76146f948cc",
+"words": 127
+},
+"391": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "b9fec3d22901bb909977c1ee256315c132e82c3d794e22fbc189fd6dcd3fbd9b",
+"words": 138
+},
+"392": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "1b7bba560ebff060690848bb6a161c97a9abae06178f766c28f2cddddf52a0e3",
+"words": 140
+},
+"393": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "8417e36ea5dc2b0d9f3981e102ea4e2f595f0c34a848e876025cf1f3c4f7af1b",
+"words": 142
+},
+"394": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "bcc89fc154b266b2be629071efaa9fdb926cce9363a005acc9b5a650b745c8d3",
+"words": 140
+},
+"395": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "298328a2bbc4240161666f748d017d2e133bef28f08ab07b7eb89d2518489855",
+"words": 146
+},
+"396": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "8edd23f6aa34d34bcbc651875894e44859f1bd48964ba260aecaeeff73fc90e4",
+"words": 133
+},
+"397": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "9daa0fb245e6469c047590f6e1293a3ace76598dcc0161d6f21ee5b2b5774aa9",
+"words": 130
+},
+"398": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "731837ba78cd2ec94a82985e6731a6a88cf828f343e7623858d7dff4e778cbba",
+"words": 138
+},
+"399": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "ecee65490334d361e95618fdc4572500a06e52ee5ac83743e08e42a154565f65",
+"words": 127
+},
+"4": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "1f26969d56a4aff354fe2945ae795ff6eaa5bbb40aad1ec0c347c8f59b7c4ff5",
+"words": 142
+},
+"40": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "267d3fc6feb8829120355e73ed9597f7723fe7bd4d93051bbd1895e169acb3cc",
+"words": 130
+},
+"400": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "94325f34e193dc12a2734d9682e7ba72ddf976e18c2b374fdc2201a44d553aaf",
+"words": 120
+},
+"401": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "d8f70ac78777b63aa0ffd016c05a1f3707b2cc8fc07884c6d5c034ab8c4215e6",
+"words": 118
+},
+"402": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "4dd566fc6183b56a3d3c48f3ef4256788fdbb19afb2d28b809b7c5cfd8215f73",
+"words": 128
+},
+"403": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "c107c3457686b9dcd60176cc76c42072f88d251cda7ea880adac60c1a432a373",
+"words": 140
+},
+"404": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "2f12de79ee9afca4cd5923da0346f736f36c8bdfe1fe6b4b7dc9597973c1a5c9",
+"words": 120
+},
+"405": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "a29180e369130084b7a4ab8f6241be399939e14d82e7389fdfa53ff498b693c7",
+"words": 134
+},
+"406": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "2676ed599724d2529f621a78473555d44bf3e3efdb2856723442dc1f16fbd926",
+"words": 127
+},
+"407": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "8612b93975f1d74d6d7d335f8a4051cde59e15f36e2b2bc9eb6107a9e9535b0c",
+"words": 135
+},
+"408": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "65c9ff57d5830e4f435d42bc85fc46a68708211dc89f7ab286de06ad59b234ce",
+"words": 148
+},
+"409": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "933740d5f9b1c9ad4541668879337d4bc81e3a93724cee4742df98e682559844",
+"words": 151
+},
+"41": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "da8576052b78c201137f767f9a07c950eb284a6915ed47392c29abdf9a643317",
+"words": 115
+},
+"410": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "71f1974e7ced7a795080715cd0984ea7829c75b05847f61410fd937a14acb60c",
+"words": 146
+},
+"411": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "cdba098afa70eabe9ec5dbe9be467bce3b23c8cc823313abd19c0a37d22514eb",
+"words": 127
+},
+"412": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "bf1e84df0a5202c88b222f19bb39cbdd48967bf63e8fbf62974bdb8094da2088",
+"words": 154
+},
+"413": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "9a045e65b9075367f3d9f06f5603404e3826f5e1c2351c899a1666e13fc2fdec",
+"words": 154
+},
+"414": {
+"ayahs": 6,
+"lines": 14,
+"sha256": "9b30bba8140ba02a61a1b84834de1afa1a6247c46523d48f748e07fbcdd33d18",
+"words": 145
+},
+"415": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "19ea2e71e65d482c1a4f50c1a176bfa5fbabf285f560cfeb6eb53a52f9c6bf4b",
+"words": 142
+},
+"416": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "18d97c8514713f856979e1827234face1a6fc0ce3995b85894c40f69cbdbf650",
+"words": 135
+},
+"417": {
+"ayahs": 10,
+"lines": 14,
+"sha256": "dde502663c349fd1bd4dab49192d4a2f31e64d408fd373c2319a2c478a0f5f01",
+"words": 125
+},
+"418": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "f650c87db35d2377c0594e20af00cabf456c4fc0635df8bc907d3f21ba178f0a",
+"words": 122
+},
+"419": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "0e24ef207b992224ee42cb5f172dc29ec7d8268629d0c69f93b1dbbdd782cd91",
+"words": 142
+},
+"42": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "7a38f06e00d6f09c4ecb517494b381aaead61e6e41313025176b888af1f5e3fc",
+"words": 151
+},
+"420": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "78583e2697a6b9a538d929687b16f496e355d0e3dd7d93f16a0005ef9faba474",
+"words": 153
+},
+"421": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "5b17b10ec157fef4932bde2fe840b4644b4ca32ec7e436a58b27de484b540316",
+"words": 132
+},
+"422": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "8362e22ac2f55b48b4783ada1461330f3076b76389d2a50a90c7da67f84993ad",
+"words": 107
+},
+"423": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "3c88643d0c127084ea9a437ce098dc216751ebb9d4dd69dede90803a77d0172c",
+"words": 155
+},
+"424": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "ba50543981d61a22ba0e138d53e36a2bfba66644de5c38a6ac3f4cbef0e2f0f8",
+"words": 131
+},
+"425": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "58921678ad43ac0e2716ee4e5302ff8a7440c0eb2e7dfaed92d078300c940603",
+"words": 144
+},
+"426": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "5a01b67137603a8315223bc46c619cf3e96c73d92192390f4b088363a52ff752",
+"words": 135
+},
+"427": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "4dd22c0f421c274591222e92178255a61cb780f51a9895f7fbd5886157e61fb1",
+"words": 139
+},
+"428": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "2887a5dd9b35651732406c99d3cb5e18bd4b44f288c2d639e42a67a4614156ec",
+"words": 127
+},
+"429": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "6373a88343eed881177b699b909d56bdd649667cf4fe34a41b302a35523c9da1",
+"words": 149
+},
+"43": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "247490c6b0471ec562ce30795c221f119c8fb24398d45d638ae943917fb50e74",
+"words": 137
+},
+"430": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "07966c0d451abe445f1fdccc97b095d82bb826b611e566757e499ec0fcb1f20c",
+"words": 145
+},
+"431": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "bcd7fb9d5dbf89435f03b8921163c087f74bf5541aeffe679922be88ef29a203",
+"words": 141
+},
+"432": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "635ff46f088d0a6c76feabdd07d2df789db759e3c006bf5fcdecf14fcb1d58b0",
+"words": 144
+},
+"433": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "c6b6f469cde3491600ecfcbe839ef781612e20c2edb6028da9bc61cbe8e7f27f",
+"words": 157
+},
+"434": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "b51fe91b63627eced92f540ab7a6718234b51ba18379ae8e34071a4f68d20571",
+"words": 141
+},
+"435": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "254602c48e8787d599f36eb4dc0f19a5477b8ec4b71efbebc595b4b1911d24f8",
+"words": 159
+},
+"436": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "9185018709ceb7029af8c1206cd10d583222aa0cac4b1f52809dbe399362fd24",
+"words": 136
+},
+"437": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "cf79f4e002cf1319408e27dc4358d6d6f7758b3f66c68e0e4a608de3671c453b",
+"words": 139
+},
+"438": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "0d0a2e988fc0f33c83df45ac0cf8d83a8a284670909786c8b4519e5c1659ab83",
+"words": 136
+},
+"439": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "ec7c33ec64d6b127886a6faa9c33b5d48ba85eefce2b4b4b78008c41a346e7d4",
+"words": 157
+},
+"44": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "71986d60db71d899e6724c98aaf2fb0a0cf8ec877b8c61e451b4dcbffcc9313b",
+"words": 141
+},
+"440": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "dbed8b48fb442e28648c61960878027f8219bfcb24cc83edf33670f7617d476d",
+"words": 121
+},
+"441": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "82ce9a94a63f97361d66a35c547bca15c1b4f3b097bb32c36aeb0aef5e8b8c44",
+"words": 144
+},
+"442": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "30aa1b0d51b2ff6942c039b6a467235e87d89e0b9507bdffd04182eec19e6cd3",
+"words": 142
+},
+"443": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "476626f578907b6102d5ea608564535e871e91bcd4f68f0d7292d4dd573f9cff",
+"words": 154
+},
+"444": {
+"ayahs": 16,
+"lines": 15,
+"sha256": "5bc994cd9467d8f595d91d1fb32dc6c3e1bd60bba307fb32d917a695f13305fe",
+"words": 138
+},
+"445": {
+"ayahs": 13,
+"lines": 14,
+"sha256": "15bde56338ab7542af59c43384baabeda318448a8feebc5fab1b31d5ddf67ac3",
+"words": 135
+},
+"446": {
+"ayahs": 24,
+"lines": 15,
+"sha256": "fc4fa6ecebae9b3c948a35d5bcc1503a6bf327a464f6894ed17a1e9aa0f737fd",
+"words": 149
+},
+"447": {
+"ayahs": 27,
+"lines": 15,
+"sha256": "2f35356fcbe52857b9ee6670dd2442bcc470ffeb0ab51de004df75f333147518",
+"words": 162
+},
+"448": {
+"ayahs": 25,
+"lines": 15,
+"sha256": "578dd9201f0b7b5dcc332b9ccd9a65d5c42b4eda88362bc44f55952ee241fb67",
+"words": 148
+},
+"449": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "fd878d1a00ab1f6ee10d541af5f0e11099ba2b075d2655fd8f9a83409bab7218",
+"words": 161
+},
+"45": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "0d3d1d8bcf93c32050fce995a5d43db0e36bbcd4019b43899b149ecfc9fd3f6b",
+"words": 125
+},
+"450": {
+"ayahs": 24,
+"lines": 15,
+"sha256": "1ddf9b3fa903cdc7d494ff4f7e282e6b833ca0952eeea1255a9b81f5f0f909ce",
+"words": 130
+},
+"451": {
+"ayahs": 27,
+"lines": 15,
+"sha256": "8668ff2c15264595cfbe43a0aefbca29b9d10b55acf87d958b8c7eabebfc635e",
+"words": 142
+},
+"452": {
+"ayahs": 29,
+"lines": 14,
+"sha256": "7d87ada16d62f2a25e67a0977b8c993bfe4fd5085de8a29fc89d58e65279cd8d",
+"words": 150
+},
+"453": {
+"ayahs": 16,
+"lines": 15,
+"sha256": "e4171b56e40200a3d78202ae66912fb2be688a0c820e321ed1d278b0e5711e47",
+"words": 154
+},
+"454": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "944ede4c1c2cbd1bf39a81d7e10b8651256ea4eef45001adf62428376e604df9",
+"words": 155
+},
+"455": {
+"ayahs": 16,
+"lines": 15,
+"sha256": "05ad02cdf2630ae093d4a8a655bbd75a5b359c6b3d581415d19db24213071d9a",
+"words": 154
+},
+"456": {
+"ayahs": 19,
+"lines": 15,
+"sha256": "3a3f2cb520cf5fb22785004bb238b4e0113525211b88ced55fbe11bd72fe4889",
+"words": 152
+},
+"457": {
+"ayahs": 22,
+"lines": 15,
+"sha256": "11df3238aff7ebdfa91afd6ef7e16a79610989d57d354e41d523324b90417d08",
+"words": 171
+},
+"458": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "c79cf913db0be751320acb160fa181fc746df16ae31d30204df2e1004169a5b0",
+"words": 128
+},
+"459": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "92a31858ad3e8341210acd5ea1e6d394befb70b3f4d271ae2c196137abb9a26e",
+"words": 151
+},
+"46": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "1ef87467e41e7657b1ba007b392ad0f8870d58c03d494ca107faafec57213660",
+"words": 115
+},
+"460": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "77e6dda81b0de6ea4b15f2e4799909d23b21b6bbeff4354ae8f5c8dc263abe37",
+"words": 161
+},
+"461": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "2b731d8b2a6d5020e0141e00bd04139ab5f64fa0be1ab499441e0a631f58ba7d",
+"words": 147
+},
+"462": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "af5190769e42674c30a4465bf1816b87737e82ad9184134e1107cb516c231c4d",
+"words": 132
+},
+"463": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "a7d4692d85b341e3f4d6cb7037e06116f52c83b05f7295ae2d5d21f652677046",
+"words": 136
+},
+"464": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "600c179e094512d4fed846e7c55fc163501c72e0505d6805ac17e740b612c46a",
+"words": 146
+},
+"465": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "b8d4257bdf23e8be699cb486aa19e40ea86500396b4e53976a359c409bda1f9e",
+"words": 131
+},
+"466": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "d1be3b4b03e4b6859ca3e32444e4b8941581414dff57063dfab3acfb5b2700d2",
+"words": 132
+},
+"467": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "47e33de6ceef88f38869098736dda376ecf627c11dd7b8c2904740823579b3a5",
+"words": 117
+},
+"468": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "eef80ad1bcb581ae8695bcdc785045120bff443f9587252a697893acd19a483b",
+"words": 133
+},
+"469": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "8d1e0a0b7262c3772cce52755584637a1f05d8702764b320fa209378e2b15c23",
+"words": 133
+},
+"47": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "f92381f85254883710acadf3ad374f2dd1d495e7f1ac8c58fda0255105ca58f0",
+"words": 141
+},
+"470": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "a415cd8ccf39037a9e9e18d221fb8ef3cb054795544f155d94230fa2662f96de",
+"words": 150
+},
+"471": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "7735667c0597ae773944fc5f760d210d001e34916d09cdab5cd26ad432393e38",
+"words": 134
+},
+"472": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "01d4d202cec87e1f8696c520292ea47ed4b6c0a49a29312d2f71fa2ea2e00df6",
+"words": 134
+},
+"473": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "6a906a44467a174db8bd8e75d83a4095119438f1938a610a5816ecd8cd2b6e76",
+"words": 118
+},
+"474": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "5de0d27c7b7bcc696e6cda01f5e6ea881ab81538bb157f4dabfb17fd3f445f4c",
+"words": 126
+},
+"475": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "e67c3d7cae797db346b74a5e0873706ac59918e9910513e0c09ad9003daa56fd",
+"words": 141
+},
+"476": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "71d51843caa8de88390dc2ed0dedd835b901c7af09dd745dab2b8e8b395ad258",
+"words": 136
+},
+"477": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "41fdc69c438fd47dfed90881f16237105a4faf3475be6e05d51f7602a7988634",
+"words": 125
+},
+"478": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "cc62043a5345a2be521d36a418ac50f0463a3ff851058684e1076446bc01e413",
+"words": 143
+},
+"479": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "5a87122d1bf240848e65e61df81d01cf49bf096ca122c40741d4ee8a7971ae48",
+"words": 143
+},
+"48": {
+"ayahs": 1,
+"lines": 15,
+"sha256": "cf2ccf7c4b56e64bd9ef6b49125347a28fe839217b01781a9fe6f462adee8161",
+"words": 129
+},
+"480": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "90feac6d47ae2340f37ec92724d6a3200ab4b49f5662162d001f7d6606949598",
+"words": 131
+},
+"481": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "31a89d446a393a529e0069ec3a0735353efba3625721f6a9606be8392606261d",
+"words": 154
+},
+"482": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "c1b0933f22678f657fa73cfbf84a5f8af1937d9c03071cbf1193eb9a99ec18cf",
+"words": 152
+},
+"483": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "c9b090fbad73c3a1538c777d6996cc29e0bfe95b69825339a42e94bb2cebdcc3",
+"words": 135
+},
+"484": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "9aa8d47222696dacfaa64ca7d9e942a6cdea2f2267d5802fe15c3cce7e444e37",
+"words": 139
+},
+"485": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "b92787853a96ce0feefbd33d0a761f11ec465ceb5ed607367dd4763016c73988",
+"words": 135
+},
+"486": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "667068c424ecbc11fc2766c636cd0ee8a803c49849cbe2a7a1f2d5e636b44b59",
+"words": 154
+},
+"487": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "ed4a1fa64d5a2c70746614ec8fc820793137cbe7d2408a5d544ee29dd5dec688",
+"words": 160
+},
+"488": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "ef83e0b5c027862afcac06d3d615a474f53f09cd015c63eca4a00a87f4292c77",
+"words": 146
+},
+"489": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "2e95c77d52d05b6735a91eba72a5451d6f76f6b66b29dff013912f5b6bbb141f",
+"words": 120
+},
+"49": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "86404efee38061ed90a2a41aa84f054f7e64d0d5c6f681780a6db5adeda5ea3d",
+"words": 140
+},
+"490": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "fd575676cf097532096ffd2120b126ee04fa8d781e0291c0eda3256f08a4675a",
+"words": 142
+},
+"491": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "cb6adafd4216f282a24ba9dcd4da06d26d390138e5a5c110e913e028a5027572",
+"words": 144
+},
+"492": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "4d95fc593f7e1693e04bd51e0555bb7dd69e22949abaa4f2f1f5e2078f4dc5d5",
+"words": 139
+},
+"493": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "7f303bdf8a65454ed7c31b00a2724b00a20ad2005675f0f4e3c8665738fc1101",
+"words": 141
+},
+"494": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "7b16003a68c94239fc1c076cd879acd6ef74a80eda9adca935121cf62fd62a77",
+"words": 130
+},
+"495": {
+"ayahs": 16,
+"lines": 15,
+"sha256": "f383105d35bbf1670cf58d3907dbea3ea63a78445358a6f84aab3949200d6d0d",
+"words": 147
+},
+"496": {
+"ayahs": 18,
+"lines": 15,
+"sha256": "30908dab27f4bac0569f113469ec03fbb2bc75df112c27e8faf5ab8e636c9ac1",
+"words": 129
+},
+"497": {
+"ayahs": 21,
+"lines": 15,
+"sha256": "98d96ec4a405722d26180010e92b057da7f759e6a5831d57899a75d7e7aa6d9f",
+"words": 152
+},
+"498": {
+"ayahs": 20,
+"lines": 14,
+"sha256": "ffac24c7a4df45af042faeb37c6d17023cda5bce19349a715df35be464cb453d",
+"words": 124
+},
+"499": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "1eef3c3ed89863d678fe5d47f48e6498810da3dd34490fb6d4abbd15ce258b2a",
+"words": 156
+},
+"5": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "bfd6ecec6819622ee7f089310a4fa169d6fe15970dc0ade1cb8799dacf90de16",
+"words": 130
+},
+"50": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "2f9a33cea2acbfa7e7b083344678d5fc0b23dfcd516ebe16fbfaf5137878ea37",
+"words": 144
+},
+"500": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "567cac5e96fcc2061ac059ccb08a439c1c55c671d0446d647aaf888f9fc00fc2",
+"words": 136
+},
+"501": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "701c02df719f51304e3ca8ac75209ffda973172a893a03c469ce34b2b903b234",
+"words": 171
+},
+"502": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "d11b5f7dca40d4f5ddff1ed8037abcebaaf8b57f7d5a4943a5b4cb6898a6fa92",
+"words": 136
+},
+"503": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "027f6f8565412e42ddc43cb9942b35e193180472ef6645e4607a05ca83816cba",
+"words": 162
+},
+"504": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "bc5fb9d4d5353570ae9a628a009c0bb7cba47e81173ebfa7abfaa25c8282c731",
+"words": 150
+},
+"505": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "93134f706f2ee097ca59d1ddf445416030c3fe52234e1935a9d0c0bbd236cb23",
+"words": 149
+},
+"506": {
+"ayahs": 7,
+"lines": 14,
+"sha256": "c5bf0d8955cbb72d404bb4cfa944823183ea7808b71ce0aa11cb409876272a8b",
+"words": 143
+},
+"507": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "e5829ccb7558e75ac3e431e5f1eca25179c0daa25c1939a6be39c8c4d3114d8d",
+"words": 150
+},
+"508": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "d5cfbf69367910c7fcf609b6324447a00dcaf706d24250689fdc633ca3e04f16",
+"words": 160
+},
+"509": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "92a70389200bc1be73c110c40fb23f5055bed90cf16483f4d15674b11f2e5761",
+"words": 132
+},
+"51": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "c1e95622050fecb4b895067ab7d0df5b26c409dbb28e00aa3543d8b4cecd4800",
+"words": 122
+},
+"510": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "f7d7bdd77beeb727c7b64596bedb47cbf92b6714983c55b243874e7c535d3914",
+"words": 135
+},
+"511": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "0133a9095f55e4675be779ca542b611b58da81c15d9a1fc4e3f51b3256fc7f60",
+"words": 113
+},
+"512": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "9e3d8de2a45ba4cbde2ad161ec692a45458fa53a5ad4b56a1718605614c8b004",
+"words": 142
+},
+"513": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "85dcebcbeb6d11780ff961320bdae58ffc7b29504ad2a89d640cb0e877619471",
+"words": 145
+},
+"514": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "84f45f645e245a16397cf53d674802089ca23a26a9ab2d42ac109a1bfb0484a9",
+"words": 134
+},
+"515": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "b5a83324dd5b82615a9ef17d3304236fc8a377ed3d5bcddc65e949323db591c2",
+"words": 122
+},
+"516": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "0397b0d8ab187f1f89de9a29bd1f5c87159e6d1f9ef013b97b333b744da4a756",
+"words": 150
+},
+"517": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "5237e317bd3c4e02fde2844c585e084d656886d2eb0b5e3c1b5723e2f3099d8f",
+"words": 148
+},
+"518": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "8d44808bb8b7591b781756215568aabe9e78f41145767ab2d411245d6a2be570",
+"words": 135
+},
+"519": {
+"ayahs": 20,
+"lines": 15,
+"sha256": "887d0201576e25888c0879fb39b490742d534f355c46f0dcc0a9327a76d253dd",
+"words": 173
+},
+"52": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "b8929fb5f2f6ad3f0d1f6a43669047564938a7bf3cbed4006757acf3360ebd25",
+"words": 123
+},
+"520": {
+"ayahs": 16,
+"lines": 15,
+"sha256": "e7b886699986a8ddd56274d63c25d709de9aed571935ad190ce22f3726b739d7",
+"words": 130
+},
+"521": {
+"ayahs": 24,
+"lines": 15,
+"sha256": "38996b04f9ac9ad456536074404ca31f4e49208236a53beb6d47f0e3e9d0e033",
+"words": 160
+},
+"522": {
+"ayahs": 21,
+"lines": 15,
+"sha256": "dcca3d7c998d221edf95a7ff037bdf745919103fcb4fb6377348b93000b17ec3",
+"words": 164
+},
+"523": {
+"ayahs": 23,
+"lines": 15,
+"sha256": "6a6a1d63978a0bf71931844260d2c738b235b3af079dd8612739794d55883364",
+"words": 137
+},
+"524": {
+"ayahs": 17,
+"lines": 15,
+"sha256": "5cd830e644bac12e1245bf713f55a1bfdde7b32b14845bfeb2bd9b9ef5d358b7",
+"words": 148
+},
+"525": {
+"ayahs": 18,
+"lines": 14,
+"sha256": "319d55cd01583e0e107e9bd67fb312f41cae3f9d30f072c052d6f1ef7947f756",
+"words": 152
+},
+"526": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "39ee32e47486f9503c676bdc132467ebc844d54d23050852ba01885afbe7815d",
+"words": 164
+},
+"527": {
+"ayahs": 18,
+"lines": 15,
+"sha256": "8bdc23261570e776d74a8cdda6bdb615fe858f867172923303bfcc9081903db3",
+"words": 169
+},
+"528": {
+"ayahs": 24,
+"lines": 15,
+"sha256": "2511a505f75b2eb57fb07f0074fda53e53bd8b52f1cb75b8799387b6be162d3d",
+"words": 132
+},
+"529": {
+"ayahs": 21,
+"lines": 15,
+"sha256": "060a16073c502ea2932df75abd4307014ea617efcca256190c9ddb04a681072d",
+"words": 159
+},
+"53": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "50197e3ce48b0ed03c11baf085839cc81009d6838864663db77bfbbddd759360",
+"words": 152
+},
+"530": {
+"ayahs": 22,
+"lines": 15,
+"sha256": "9c249794dc1c352ddbf423199d64048e21d43d7455b884511cb0f94d4d764bd3",
+"words": 157
+},
+"531": {
+"ayahs": 24,
+"lines": 15,
+"sha256": "d6b617a46dfdc6635bca262b1d146ea4c0460ad4b3235ef37acb87cc417572c8",
+"words": 122
+},
+"532": {
+"ayahs": 23,
+"lines": 15,
+"sha256": "432b6dca7c6b91f17548bd80e5d021624608d086fe15bf9f4ffa14c203467e7b",
+"words": 148
+},
+"533": {
+"ayahs": 28,
+"lines": 15,
+"sha256": "6c8cef44fdaa08139d3534144b664b03ac68ced554e278d442c847da5e8d63b7",
+"words": 147
+},
+"534": {
+"ayahs": 25,
+"lines": 15,
+"sha256": "9ce39c894cce4119dc8bfa784d85360a71bec1c66497ab614564564ae69cf26f",
+"words": 116
+},
+"535": {
+"ayahs": 34,
+"lines": 15,
+"sha256": "a8d811cf56740a2cab78cd28c57eedc7242071f3d4974f9bf0ecf81adb33c1b2",
+"words": 156
+},
+"536": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "6e41632518975e039d54fdf9024bc44103548a0802d85a423117033b1d7203b7",
+"words": 148
+},
+"537": {
+"ayahs": 23,
+"lines": 15,
+"sha256": "8fdbcf91aba0f9bc22aa067fd302b7ac21d6efaa59778a7563e76cd50ba35630",
+"words": 137
+},
+"538": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "a0f40db077a94f83552c0cf6017114d06206087e973d9e9043e7909cc2e751d4",
+"words": 160
+},
+"539": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "25846d46ac418294d01ec323b2fb6d9b8954ae7a1b0be88ef421c315f5723e32",
+"words": 144
+},
+"54": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "756903a87015319d1ee88c08c7dc4beda15d991bec595a6ed3f43cb02005ca79",
+"words": 153
+},
+"540": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "05f4bb39f3b0cef2f70f55de76270d6c95e70058057711c2d03b1fbd011605e2",
+"words": 138
+},
+"541": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "40ca7569846fa423a1af9cf90f6e85fb21e5f50907b8ce1a31b3b64ea2668185",
+"words": 129
+},
+"542": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "5f89363e31ede67394359a08696d0f57a2f070ab310f313182933104b54c1065",
+"words": 127
+},
+"543": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "b7505957d378704c88e17940432c1c5666eb114c8038e15ac98d5ef9c64c8d11",
+"words": 156
+},
+"544": {
+"ayahs": 10,
+"lines": 15,
+"sha256": "2dc3f3509617b4046712fadef68a1d773e602448305d1fd675d05dbc1b0fb8ce",
+"words": 159
+},
+"545": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "7f30b05bace6d32cb2117c57336c6daf7abf25a024546e6e3d0dc406b4e72442",
+"words": 120
+},
+"546": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "85c8282e191d5435f0bf9d54c2b8bbcb7c7e67706985ece5c5ba886b827222a5",
+"words": 142
+},
+"547": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "c431982b7239ece9386d70d3eee9e95a3bba024484846e4d7c97c753d838da70",
+"words": 137
+},
+"548": {
+"ayahs": 8,
+"lines": 14,
+"sha256": "625908c28fe01058dba51db7ae2e897ba7db46d384ef3e9a6d6b801eedb9774f",
+"words": 122
+},
+"549": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "04cdee13f5a976e49a747396101766fa5f62d8b9b2dbb38389c8fc5b3db2703e",
+"words": 144
+},
+"55": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "5e02e099a4cc675a8921fed80d7f0717fda646aab778dd33cdfce3246c2f35cc",
+"words": 139
+},
+"550": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "2adaef68304f6f5a953567de0944aa00f9ea3ecd36affc92ed305ae1bdb1b0aa",
+"words": 158
+},
+"551": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "128a821feb072b46907deb1a1dd52eca739ba1c03ebfbe77e00872c9235494a0",
+"words": 126
+},
+"552": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "627cfb5efdb4c023ae459131882976e2386ac5299ad7e2892a86e627bae6eeb0",
+"words": 168
+},
+"553": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "b18bdad22a79568c024a3c8264384858c29d9629ec898cafac5f0e7983a72449",
+"words": 126
+},
+"554": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "728e774e236cd87358c273e1903531f68ad355f33eef2aebad6f9d6ecdb2d16b",
+"words": 126
+},
+"555": {
+"ayahs": 7,
+"lines": 14,
+"sha256": "55ab56efc821e245f9d1995a1347c0a74a0a09c3738ea066ce2703108c1aba04",
+"words": 125
+},
+"556": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "66d11265501da11cadad82b77ed93f4f1f88f6941102db602f42d82fb569288d",
+"words": 144
+},
+"557": {
+"ayahs": 9,
+"lines": 14,
+"sha256": "93c2331183e4f3b5f0a90400b9353d9ac8a513dd613ad425678b16f1bc444cdf",
+"words": 115
+},
+"558": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "dabeb4bdd663b0c5d5f1e4d2f9e925a5cfde5477d44fb06205f4fb2ddac4467f",
+"words": 139
+},
+"559": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "15612b7b4287c5a7915d1c9ccf7d4f9dd678c48fbd3c2ba6f2e26734f1eceb40",
+"words": 160
+},
+"56": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "acea4b804243cf19f377e4388a93abc1bf8d38a422c496e14f03832d4656b582",
+"words": 134
+},
+"560": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "13579060fba355706bdeaafe98b3589fc23b7d8ebbc9727e5808144d921643a5",
+"words": 132
+},
+"561": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "601d0900c7f676bbfe5caf7a6b55afe8269dc241a0398b04925cf14d68929595",
+"words": 129
+},
+"562": {
+"ayahs": 12,
+"lines": 15,
+"sha256": "b8df7635118bd3854ed33b08c126596ff34db4e8aa3b73f22e20bb356ffa42b7",
+"words": 143
+},
+"563": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "42d9a335e47daea49b257200c8ee83aeefa8dbdef35dc904947cb0ac599e4d38",
+"words": 165
+},
+"564": {
+"ayahs": 20,
+"lines": 15,
+"sha256": "0e7655e9dd5466268c6ccec9def3ba59a8c6114f972622477e06c8cde71bc921",
+"words": 142
+},
+"565": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "09660b09377a7cb28858c7915cb0e48fa9c832f4ce13c40fe84e40ce16a0a944",
+"words": 174
+},
+"566": {
+"ayahs": 18,
+"lines": 15,
+"sha256": "125dbca92e4fb5807c1402614b7b97a5bc8ea7681e2f4d7345d831da5b8ed187",
+"words": 140
+},
+"567": {
+"ayahs": 27,
+"lines": 15,
+"sha256": "1bfe0109e3de6be46400e74ced7e9f21f0332315f6afdf42700952d033ceb612",
+"words": 170
+},
+"568": {
+"ayahs": 27,
+"lines": 15,
+"sha256": "31241fcf9003773925e1d7161b5374b40fd102687917cfc126c1ade5ec04d8ea",
+"words": 143
+},
+"569": {
+"ayahs": 30,
+"lines": 15,
+"sha256": "3aa194e13c7bdb7cbea140e876b2d694370032e92690f0b8f98fc5e955cd03bb",
+"words": 171
+},
+"57": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "f444b305558d38840607fbba8a762b378b5f71dc3b974c85e1185d2f0d51f30c",
+"words": 132
+},
+"570": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "0444fab163a94c838049e180c3014d1194081870a65c909e432d46943e3998ba",
+"words": 134
+},
+"571": {
+"ayahs": 18,
+"lines": 15,
+"sha256": "e5eee2e299486362337611f96111324e1e3ba8e9cf03131a0ab7c5e124945ac5",
+"words": 158
+},
+"572": {
+"ayahs": 13,
+"lines": 15,
+"sha256": "11733ba71b04b186a5b1195482f6e228dc9a00a3625bf1988533d4f2aaca58ac",
+"words": 149
+},
+"573": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "b68f79125d3006358c72ef83b683c8476730f09db8080dc90dccf94b1bd72df3",
+"words": 164
+},
+"574": {
+"ayahs": 19,
+"lines": 15,
+"sha256": "9bba6e73e31a3d2df50c4156ed6f6a66a710684493d5883f591db1d1c1cec9c4",
+"words": 140
+},
+"575": {
+"ayahs": 19,
+"lines": 15,
+"sha256": "c02283cb91d8e14bea722cea699681dfb76c122fe2f121f8534a0768b288effb",
+"words": 151
+},
+"576": {
+"ayahs": 29,
+"lines": 15,
+"sha256": "59f04f62ad2ac18900a929c9b40f6468b4020e3a38f506a48affba632d3e58c1",
+"words": 184
+},
+"577": {
+"ayahs": 28,
+"lines": 15,
+"sha256": "bb411f51fa1104d21db839f54bb4f7de3ea8e2f66f6d969a8b097df3a50f7893",
+"words": 154
+},
+"578": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "811856647b14a3e38a5fd815946d4cfbde397c5afec39a7658e84f8499ff3e27",
+"words": 152
+},
+"579": {
+"ayahs": 20,
+"lines": 15,
+"sha256": "f3658562dccdf1b12ab394dd9cea003715ac15d73e8fb518201c056b9ea717b5",
+"words": 167
+},
+"58": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "b7ac5828bf2a33b54721812a33e883ba708f9c82ebc945c166f2ddd94e998ef3",
+"words": 143
+},
+"580": {
+"ayahs": 25,
+"lines": 15,
+"sha256": "3b645c110aa1962e1d20e0339f12b6b17a0973ebfe8ad1fbcf23ff911350fc4c",
+"words": 132
+},
+"581": {
+"ayahs": 31,
+"lines": 15,
+"sha256": "235cf13b4c0a75fe53d2903526bc661196a9282334adfa907903596d8cef082f",
+"words": 159
+},
+"582": {
+"ayahs": 30,
+"lines": 15,
+"sha256": "0d87fa61ff138a9bfc31c64aaeb2d12c6571040a759154594ddea4ccbab91cc9",
+"words": 135
+},
+"583": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "e553f8cc3dfb6afc524853e017e21dbb5f44a1481616ea9b97e765d4e165fce9",
+"words": 145
+},
+"584": {
+"ayahs": 30,
+"lines": 14,
+"sha256": "ed6edda105edadc89ac17cbc5a1beac1e45431b161fc777234640d1f3c4003e7",
+"words": 158
+},
+"585": {
+"ayahs": 40,
+"lines": 15,
+"sha256": "e9d41632e46d17237ae6348c0d6f61002e1af8cfb5e4932c3febc4f1441524ea",
+"words": 167
+},
+"586": {
+"ayahs": 31,
+"lines": 15,
+"sha256": "7049e81fa202d663639933536de8a531ad568c04570d2ffae08017ba741e3b4d",
+"words": 141
+},
+"587": {
+"ayahs": 23,
+"lines": 15,
+"sha256": "0ecc773f7feb5e9c9f522412f2033489de459e8fbfba832436dbe1b96b83190d",
+"words": 121
+},
+"588": {
+"ayahs": 29,
+"lines": 15,
+"sha256": "7ad7e9bbdcf7b8cc52f66285c5e2b956084eabac2b8dcbfdd3e8a377475ae3ba",
+"words": 165
+},
+"589": {
+"ayahs": 27,
+"lines": 15,
+"sha256": "cc0fd7a048b20eb30c6b9e5460e7759f3a125552c637be5e0c2660da5d9e415e",
+"words": 140
+},
+"59": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "54b76dd81e835e4d847b95577e8830526c1f8b024b9c06ccd81df1a90f5beb65",
+"words": 146
+},
+"590": {
+"ayahs": 23,
+"lines": 15,
+"sha256": "7e3d20509122df4a04e6ebd9cac4f23d88dd6ab838840ee4270582d27a68f122",
+"words": 141
+},
+"591": {
+"ayahs": 27,
+"lines": 15,
+"sha256": "63effb48bba4693339cca8793a7df8389079e067b84899b554c799bb3859b2aa",
+"words": 125
+},
+"592": {
+"ayahs": 31,
+"lines": 15,
+"sha256": "9a5a7cd1871de9433cc0f5205833f14817c73bca8cc0b1d8c6aaf6ee11ec962a",
+"words": 143
+},
+"593": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "afdef63359bc49063c10bee6cc5594413dc6af4ae4e60525a1415461489d3773",
+"words": 143
+},
+"594": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "dc3910d9428c23f182ffaa3c9b907fb29eb3ab2e9fe7bc06a30be7125473649c",
+"words": 134
+},
+"595": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "1cc7c3b38695959e9677f8c5fa855c8b65cc0f85572c185746be3b1578851ca8",
+"words": 116
+},
+"596": {
+"ayahs": 25,
+"lines": 15,
+"sha256": "141dc7b271a02aa86db73af60db9cb44422aa32f55c0a964daff6dff8c5f5482",
+"words": 116
+},
+"597": {
+"ayahs": 26,
+"lines": 15,
+"sha256": "42b441f5a7bdad9289439783dec0585e9445e3172a7e09c6c68d2c84a5f560ca",
+"words": 125
+},
+"598": {
+"ayahs": 17,
+"lines": 15,
+"sha256": "e6f9d9087348a2ea0b1e11d36a4d66653255c372730e3ce624bfec1189fe1d97",
+"words": 122
+},
+"599": {
+"ayahs": 16,
+"lines": 15,
+"sha256": "f72a05d6e9ee1bba5345da78cb9c5a0a7bd7b80a007b4ceea6e26891dbffd025",
+"words": 110
+},
+"6": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "bb570aa0ead85e5c84fbf09d289c8f6a83d498a1adf7905238128cf8792729ea",
+"words": 146
+},
+"60": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "c81a6a2c31d5b87416f7986f3fbb2cc1688ee20a04b037567f63b3a5daa77b98",
+"words": 130
+},
+"600": {
+"ayahs": 25,
+"lines": 15,
+"sha256": "26677bcd833049fe9a77c5bbd17fb8936a79c4bedcaf430361453acad541729e",
+"words": 117
+},
+"601": {
+"ayahs": 17,
+"lines": 15,
+"sha256": "904f3c6f5807ccd2ef702c6f34e2b68d43b13b381f28cb5a9b3fd2e9c37d3854",
+"words": 87
+},
+"602": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "c507350e884d6d60417000e680ab053c074b018eaefb399a9b78a48c7cc65aca",
+"words": 66
+},
+"603": {
+"ayahs": 14,
+"lines": 15,
+"sha256": "b417996bb4da12649cb306751afdb927e5db4b25347fff7c44759fdbfec4cc40",
+"words": 82
+},
+"604": {
+"ayahs": 15,
+"lines": 15,
+"sha256": "46765e9602b005a7b5cb440379621c58aa33d8a05aa0a682ef609008f5b94b34",
+"words": 73
+},
+"61": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "d1ab79cdc72773bdcf029c531bc26ac19cad187cc4cec85cdb65ec6b630d9c99",
+"words": 135
+},
+"62": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "36f5a475f3f8ed33a06cb309a62b8d9e47ee5343f8cefc7c4ea12356684d5adc",
+"words": 150
+},
+"63": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "539c7aa6fa7b3a41792e89a57373789a1b358747c958ef53f5b8906acb9cf1f5",
+"words": 137
+},
+"64": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "7eca4ec3fa228a4bdcd476be8f340388a2c94fcae83ed9fc405e3724fc4174ab",
+"words": 125
+},
+"65": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "300d5df5a3278ed4b5211b4e693f9554be742021678d22e6ffaa6981ed6be99c",
+"words": 136
+},
+"66": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "cd3566129edba76ef15b84e0ac469808d57b61e331dc92a2e0ab34c1259ba5c4",
+"words": 137
+},
+"67": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "a73b8c817e6f4eb9d8e97d11f8f06a4e39c9aa67648b40eeae4d41f070b4fc84",
+"words": 122
+},
+"68": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "86ee27871dd95cb1f9f2f8c648d398d36b9a9839ece53e38c3020d38e2ef7320",
+"words": 140
+},
+"69": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "dc053eaf56b2071489724de162c448601350bea2b1397bb681cbc2442525656b",
+"words": 107
+},
+"7": {
+"ayahs": 11,
+"lines": 15,
+"sha256": "91b484a551c542c96a8bbe150a64e7abfc09707b9961dba4c359f886bd67ec5c",
+"words": 140
+},
+"70": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "18cf4f3e479030a6b755326edbd94c9c2b1a34c260612d66564d33dba08d6bf2",
+"words": 150
+},
+"71": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "57d70dee0b38a5d01dac4efaa329828a1f7debcac09b09f3892507a3c5fb62da",
+"words": 150
+},
+"72": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "34dd71bbec8c7a7690d325d90bd321a25ad2156c42906804456322b474ee7baf",
+"words": 141
+},
+"73": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "541fb36737cde40dfb41f270799e922a6995900d7b05470b731fd72fa984e26a",
+"words": 150
+},
+"74": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "c35addf7ee57a3b7bfa4daf931f0ba7ce401c956dd3e5213055e66c4561296a6",
+"words": 124
+},
+"75": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "18cd3a12d002375827548a5b4d2848ad6a72b2ff1370eb54c63dbf10ccb2bc13",
+"words": 135
+},
+"76": {
+"ayahs": 6,
+"lines": 14,
+"sha256": "8efe490c24529645c332ca8000b013440fb68de20a4fdff760017d179c798b70",
+"words": 124
+},
+"77": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "ee85e0211e50287be8e2923947cababd644b13e8fc526c56a2e9814f59d173b4",
+"words": 145
+},
+"78": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "787ebfc7597d13d8c137ef8e5a3f1f34299d9c11b21e7ba5cd50d72bff467689",
+"words": 136
+},
+"79": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "bbf498a9ad2c66d8720834f9a72a9fcdb15edb1a9afb57563f5a468696fc7108",
+"words": 122
+},
+"8": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "3b76487de0f65d69146c45519dc855a0d05083296294730a04f6b599be18c108",
+"words": 129
+},
+"80": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "5e87cbd2c0915ca3d76cdc71e9ef4c621a2a74af8da3629785c0ddaf16308e14",
+"words": 119
+},
+"81": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "059254e70603ae2c2dc2df424244173ae7c8be07961404e2aef880f94efc443a",
+"words": 103
+},
+"82": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "37873ffd3b9d1bfafd13fad65240db89fa0cffa2f77133beb083a63abcf106b2",
+"words": 117
+},
+"83": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "a14c73a1ed1a45b93609f1538b93f2b1f151658fefaa884439ce02315a9fa4ce",
+"words": 122
+},
+"84": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "9117d9f4138baf38d035059f477a1984f962f314862f0f980a6f3490d1853632",
+"words": 113
+},
+"85": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "4b99f07ec4e4766c28a0380232c928e7f6ce95f07a546268a364bdfd360dbab8",
+"words": 143
+},
+"86": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "e0818116ce08cdbcfe5181e7e73d11aece25e1516879e275f45f50d7a945a47f",
+"words": 146
+},
+"87": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "2ef4aeedd29580a64b65930d06cba6e0e485cfe5378ff73dfc600f03059431a7",
+"words": 151
+},
+"88": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "d6ae6fc95fe33d73ec9abca05b8717fea88d2847471e76f529e1303e031a9bc6",
+"words": 125
+},
+"89": {
+"ayahs": 9,
+"lines": 15,
+"sha256": "c8ccd095113354e2a7e783bb7326adeac9030c1fa7911cf3f26f2286c47cb099",
+"words": 136
+},
+"9": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "9558b9b4cd2f087489118fc73f2bfec52327159e7664aa4500a3850325c31530",
+"words": 129
+},
+"90": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "0bf0dba17fd784a8424a69f554e2be457a202504f7d19742579bf25950478b6c",
+"words": 158
+},
+"91": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "edd6dcd18760ebf3930f64b2445a911b37fac63041086305b936429ee5e4fa45",
+"words": 145
+},
+"92": {
+"ayahs": 5,
+"lines": 15,
+"sha256": "0fa841199e91e8fee18d49527a81d0b7e1dc024cdc2b98aa965944bfa988564f",
+"words": 140
+},
+"93": {
+"ayahs": 3,
+"lines": 15,
+"sha256": "c5568a8c993b792a18266bf983538b3571cc7e652f6f615873fb95775eceab9f",
+"words": 118
+},
+"94": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "bd7e0c90c8a867028f2ca88b9207b3087873058664380e8e34bdd7f91437519b",
+"words": 151
+},
+"95": {
+"ayahs": 4,
+"lines": 15,
+"sha256": "5e0e5d4e3e9cf37440c8f01273242879d9e4d6a2012eabf36d0c0038fc4d131a",
+"words": 123
+},
+"96": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "f520e6400e8ee22e2787f106c70f8d436befba42e321202589cd60d1d50e3794",
+"words": 139
+},
+"97": {
+"ayahs": 8,
+"lines": 15,
+"sha256": "7fc9de48594fb9da3072eb52f14ea829ec5f6bde0e4ea570f39d172c05dd50fe",
+"words": 128
+},
+"98": {
+"ayahs": 6,
+"lines": 15,
+"sha256": "d2c25148d35a75a9a12a5f8112225acfe56a72c1ab169c252117b22e25390876",
+"words": 132
+},
+"99": {
+"ayahs": 7,
+"lines": 15,
+"sha256": "3b396bbfe523b8f7e02c6b08f0be61f8b4a4f5444eb526e813b81dec7a61ea6a",
+"words": 137
+}
+},
+"rubStarts": [
+"1:1",
+"2:26",
+"2:44",
+"2:60",
+"2:75",
+"2:92",
+"2:106",
+"2:124",
+"2:142",
+"2:158",
+"2:177",
+"2:189",
+"2:203",
+"2:219",
+"2:233",
+"2:243",
+"2:253",
+"2:263",
+"2:272",
+"2:283",
+"3:15",
+"3:33",
+"3:52",
+"3:75",
+"3:93",
+"3:113",
+"3:133",
+"3:153",
+"3:171",
+"3:186",
+"4:1",
+"4:12",
+"4:24",
+"4:36",
+"4:58",
+"4:74",
+"4:88",
+"4:100",
+"4:114",
+"4:135",
+"4:148",
+"4:163",
+"5:1",
+"5:12",
+"5:27",
+"5:41",
+"5:51",
+"5:67",
+"5:82",
+"5:97",
+"5:109",
+"6:13",
+"6:36",
+"6:59",
+"6:74",
+"6:95",
+"6:111",
+"6:127",
+"6:141",
+"6:151",
+"7:1",
+"7:31",
+"7:47",
+"7:65",
+"7:88",
+"7:117",
+"7:142",
+"7:156",
+"7:171",
+"7:189",
+"8:1",
+"8:22",
+"8:41",
+"8:61",
+"9:1",
+"9:19",
+"9:34",
+"9:46",
+"9:60",
+"9:75",
+"9:93",
+"9:111",
+"9:122",
+"10:11",
+"10:26",
+"10:53",
+"10:71",
+"10:90",
+"11:6",
+"11:24",
+"11:41",
+"11:61",
+"11:84",
+"11:108",
+"12:7",
+"12:30",
+"12:53",
+"12:77",
+"12:101",
+"13:5",
+"13:19",
+"13:35",
+"14:10",
+"14:28",
+"15:1",
+"15:49",
+"16:1",
+"16:30",
+"16:51",
+"16:75",
+"16:90",
+"16:111",
+"17:1",
+"17:23",
+"17:50",
+"17:70",
+"17:99",
+"18:17",
+"18:32",
+"18:51",
+"18:75",
+"18:99",
+"19:22",
+"19:59",
+"20:1",
+"20:55",
+"20:83",
+"20:111",
+"21:1",
+"21:29",
+"21:51",
+"21:83",
+"22:1",
+"22:19",
+"22:38",
+"22:60",
+"23:1",
+"23:36",
+"23:75",
+"24:1",
+"24:21",
+"24:35",
+"24:53",
+"25:1",
+"25:21",
+"25:53",
+"26:1",
+"26:52",
+"26:111",
+"26:181",
+"27:1",
+"27:27",
+"27:56",
+"27:82",
+"28:12",
+"28:29",
+"28:51",
+"28:76",
+"29:1",
+"29:26",
+"29:46",
+"30:1",
+"30:31",
+"30:54",
+"31:22",
+"32:11",
+"33:1",
+"33:18",
+"33:31",
+"33:51",
+"33:60",
+"34:10",
+"34:24",
+"34:46",
+"35:15",
+"35:41",
+"36:28",
+"36:60",
+"37:22",
+"37:83",
+"37:145",
+"38:21",
+"38:52",
+"39:8",
+"39:32",
+"39:53",
+"40:1",
+"40:21",
+"40:41",
+"40:66",
+"41:9",
+"41:25",
+"41:47",
+"42:13",
+"42:27",
+"42:51",
+"43:24",
+"43:57",
+"44:17",
+"45:12",
+"46:1",
+"46:21",
+"47:10",
+"47:33",
+"48:18",
+"49:1",
+"49:14",
+"50:27",
+"51:31",
+"52:24",
+"53:26",
+"54:9",
+"55:1",
+"56:1",
+"56:75",
+"57:16",
+"58:1",
+"58:14",
+"59:11",
+"60:7",
+"62:1",
+"63:4",
+"65:1",
+"66:1",
+"67:1",
+"68:1",
+"69:1",
+"70:19",
+"72:1",
+"73:20",
+"75:1",
+"76:19",
+"78:1",
+"80:1",
+"82:1",
+"84:1",
+"87:1",
+"90:1",
+"94:1",
+"100:9"
+],
+"totalAyahs": 6236,
+"version": 1
+}
