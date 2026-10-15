@@ -8,6 +8,9 @@ import SunnahPrayer
 struct SunnahApp: App {
     @StateObject private var router = AppRouter()
     @Environment(\.scenePhase) private var scenePhase
+    /// خدمات المنصة تُبنى بعد أول إطار (مرة واحدة)؛ قبله الافتراضات الفارغة، ولا شاشة تقرؤها في أول إطار.
+    @State private var platform = PlatformServices()
+    @State private var startup = PostFirstFrame()
     #if DEBUG
     @StateObject private var readiness = SnapshotReadiness()
     #endif
@@ -18,7 +21,7 @@ struct SunnahApp: App {
         PerformanceMetrics.shared.mark("routesDone")
         PerformanceMetrics.shared.start()
         PerformanceMetrics.shared.mark("metricsDone")
-        // نظام إشعارات واحد (الصلاة + الأذكار + الورد...) بموافقة المستخدم فقط؛ لا بوابة ويب في التطبيق الأصلي.
+        // تسجيل BGTask يجب أن يسبق نهاية الإطلاق (شرط Apple) فيبقى هنا؛ الجدولة وإعادة الجدولة بعد أول إطار.
         NativeNotificationsLifecycle.didFinishLaunching(notificationsEnabled: true)
         PerformanceMetrics.shared.mark("initDone")
     }
@@ -26,12 +29,15 @@ struct SunnahApp: App {
     var body: some Scene {
         let _ = PerformanceMetrics.shared.mark("bodyEval")
         WindowGroup {
-            IntroHost(onMilestone: { PerformanceMetrics.shared.mark($0) }) {
+            IntroHost(onMilestone: { name in
+                PerformanceMetrics.shared.mark(name)
+                if name == "introFirstFrame" { startup.fire() }
+            }) {
             RootTabView(router: router, screen: Self.screen)
                 .sunnahAppearance()
                 .onAppear {
                     PerformanceMetrics.shared.mark("firstAppear")
-                    PrayerWidgetPublisher.publish()
+                    startup.whenReady { platform = Self.makePlatform(); PrayerWidgetPublisher.publish() }
                     PerformanceMetrics.shared.mark("appearDone")
                     // لقطات native-loop: -snapshotRoute /path (للتصحيح فقط)
                     #if DEBUG
@@ -56,19 +62,21 @@ struct SunnahApp: App {
                 #endif
                 .environment(\.audioEngineFactory, AudioEngines.live)
                 .environment(\.contentLoader, ContentLoader.live(bundle: .main))
-                .environment(\.platform, Self.platform)
+                .environment(\.platform, platform)
+                // احتياط: إن لم تُعرض المقدّمة (أو تأخّرت) يُطلَق بعد مهلة قصيرة؛ fire() آمن للتكرار.
+                .task { try? await Task.sleep(nanoseconds: 600_000_000); startup.fire() }
             }
         }
         .onChange(of: scenePhase) { phase in
-            if phase == .active { PrayerWidgetPublisher.publish(); NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: true) }
+            if phase == .active { startup.whenReady { PrayerWidgetPublisher.publish(); NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: true) } }
         }
     }
 
-    /// خدمات المنصة تُنشأ مرة واحدة (كانت تُبنى من جديد عند كل تقييم لـbody).
-    private static let platform: PlatformServices = {
+    /// تُستدعى مرة واحدة بعد أول إطار.
+    private static func makePlatform() -> PlatformServices {
         defer { PerformanceMetrics.shared.mark("platformBuilt") }
         return PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore()))
-    }()
+    }
 
     /// شاشة مسجّلة في السجل، وإلا العنصر النائب لحين ظهور قالبها.
     @MainActor
