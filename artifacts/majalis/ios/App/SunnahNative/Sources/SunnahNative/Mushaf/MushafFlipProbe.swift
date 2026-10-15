@@ -1,4 +1,4 @@
-#if DEBUG && canImport(UIKit)
+#if (DEBUG || MUSHAF_PROBE) && canImport(UIKit)
 import SwiftUI
 import UIKit
 import os

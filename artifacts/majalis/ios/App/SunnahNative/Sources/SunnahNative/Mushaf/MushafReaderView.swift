@@ -44,6 +44,7 @@ public struct MushafPageView: View {
     @ViewBuilder
     private func content(_ page: MushafPage, family: String, size: CGSize) -> some View {
         // التوزيع من بيانات تخطيط QPC (أنواع الأسطر) عبر MushafPageLayout؛ الهامش الجانبي ≈3% من العرض (هندسة المرجع 402×874).
+        let _ = repo.noteRenderSize(size)
         let pl = repo.pageLayout(page, family: family, size: size)
         let inset = pl.inset, width = pl.width, m = pl.m, layout = pl.layout
         let rows = m.rows, rowH = CGFloat(m.rowHeight)
@@ -132,7 +133,7 @@ public struct MushafReaderView: View {
                 Color.clear.onAppear { pageSize = geo.size }
                 Sunnah.Colors.mushafPaper
                 TabView(selection: $current) {
-                    ForEach(1...Mushaf.pageCount, id: \.self) { n in
+                    ForEach(max(1, current - 2)...min(Mushaf.pageCount, current + 2), id: \.self) { n in
                         Group {
                             if abs(n - current) <= 1 { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current) }
                             else { Color.clear }
@@ -163,7 +164,7 @@ public struct MushafReaderView: View {
         .onChange(of: current) { p in selected = nil; store.visit(page: p); repo.prefetch(around: p, size: pageSize) }
         .task {
             store.visit(page: current); repo.prefetch(around: current, size: pageSize)
-            #if DEBUG && canImport(UIKit)
+            #if (DEBUG || MUSHAF_PROBE) && canImport(UIKit)
             MushafFlipProbe.runIfRequested(start: current) { current = $0 }
             #endif
         }
