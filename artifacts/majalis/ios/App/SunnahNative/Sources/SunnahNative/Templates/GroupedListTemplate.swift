@@ -41,7 +41,7 @@ public struct GroupedListTemplate: View {
                         }
                     }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
+                .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

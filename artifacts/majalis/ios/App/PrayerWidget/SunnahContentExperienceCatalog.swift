@@ -248,7 +248,7 @@ struct AyahOrDuaView: View {
                 ForEach(sizes, id: \.self) { size in
                     Text(item.text)
                         .font(.system(size: size, weight: .semibold, design: .serif))
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(family == .accessoryRectangular ? Color.white : SunnahWidgetTheme.primaryText)
                         .multilineTextAlignment(.center)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity)

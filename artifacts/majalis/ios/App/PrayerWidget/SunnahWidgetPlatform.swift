@@ -575,7 +575,7 @@ struct SunnahTwoZone<Primary: View, Secondary: View>: View {
         HStack(spacing: 8) {
             primary.frame(maxWidth: .infinity, alignment: .leading)
             Rectangle()
-                .fill(.primary.opacity(0.3))
+                .fill(SunnahWidgetTheme.primaryText.opacity(0.3))
                 .frame(width: 1)
                 .padding(.vertical, 4)
                 .accessibilityHidden(true)
@@ -589,6 +589,14 @@ struct SunnahCalmCard: View {
     var symbol = "moon.stars"
     var phrase = "افتح سُنّة"
     var compact = false
+    @Environment(\.widgetFamily) private var family
+    /// الرئيسية والقفل: خلفية داكنة دائمًا ⇒ نص أبيض صريح (القفل يحوّله النظام vibrancy).
+    private var ink: Color {
+        switch family {
+        case .accessoryCircular, .accessoryRectangular, .accessoryInline: return .white
+        default: return SunnahWidgetTheme.primaryText
+        }
+    }
 
     var body: some View {
         VStack(spacing: 6) {
@@ -601,6 +609,7 @@ struct SunnahCalmCard: View {
                 .lineLimit(1)
                 .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
         }
+        .foregroundStyle(ink)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(phrase)
@@ -616,7 +625,7 @@ struct SunnahRingStat: View {
 
     private var clamped: Double { min(1, max(0, fraction)) }
     /// الرئيسية: خلفية داكنة ثابتة في الفاتح والداكن فلا يصحّ .primary (أسود في الفاتح). القفل: دلالي للنظام.
-    private var ink: Color { lockScreen ? .primary : SunnahWidgetTheme.primaryText }
+    private var ink: Color { lockScreen ? .white : SunnahWidgetTheme.primaryText }
 
     var body: some View {
         VStack(spacing: lockScreen ? 0 : 6) {
