@@ -13,7 +13,9 @@ struct SunnahApp: App {
     #endif
 
     init() {
+        PerformanceMetrics.shared.start()
         RouteResolver.registerAll(in: .shared)
+        PerformanceMetrics.shared.start()
         // نظام إشعارات واحد (الصلاة + الأذكار + الورد...) بموافقة المستخدم فقط؛ لا بوابة ويب في التطبيق الأصلي.
         NativeNotificationsLifecycle.didFinishLaunching(notificationsEnabled: true)
     }
@@ -29,6 +31,9 @@ struct SunnahApp: App {
                     #if DEBUG
                     if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p); readiness.begin(route: p) }
                     if let f = UserDefaults.standard.string(forKey: "snapshotRoutes") { SnapshotRoutesRunner.run(file: f, router: router, readiness: readiness) }
+                    #elseif MUSHAF_PROBE
+                    // قياس Release للمصحف (ن3): بناء بـSWIFT_ACTIVE_COMPILATION_CONDITIONS=MUSHAF_PROBE فقط؛ لا يدخل أي بناء متجر.
+                    if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p) }
                     #endif
                 }
                 #if DEBUG
