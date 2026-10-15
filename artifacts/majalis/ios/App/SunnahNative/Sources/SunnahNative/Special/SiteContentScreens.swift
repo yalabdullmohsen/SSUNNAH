@@ -158,7 +158,7 @@ enum SiteContentScreens {
         registry.registerView(id: "sunnah-studies") { lessonScreen(file: "sunnah-studies", dir: "Data/hadith", title: "جوامع الكلم والسنن اليومية") }
         registry.registerView(id: "dalail-nubuwwah") { lessonScreen(file: "dalail-nubuwwah", dir: "Data/sirah", title: "دلائل النبوة") }
         registry.registerView(id: "hadith.arbaeen-love-of-allah") {
-            ArbaeenLoveView().navigationTitle("الأربعون في محبة رب العالمين")
+            ArbaeenLoveView().bodyTitledNavigation()
         }
         registry.registerView(id: "hadith.books-and-rulings") { HadithBooksAndRulingsView().navigationTitle("المتون الحديثية وأحاديث الأحكام") }
     }
@@ -184,12 +184,15 @@ private struct LessonSectionsView: View {
 }
 
 private struct ArbaeenLoveView: View {
+    static let title = "الأربعون في محبة رب العالمين"
     private static let intro = "مجموعة قيد الاستكمال من الأحاديث النبوية الموثقة في محبة الله لعباده ومحبة العبد لربه — لا يُنشر أي حديث إلا بعد مراجعة عالِم شرعي فعلي."
     private var hasExport: Bool { Bundle.main.url(forResource: "arbaeen-love-of-allah", withExtension: "json", subdirectory: "Data/hadith") != nil }
 
     var body: some View {
         VStack(alignment: .trailing, spacing: 16) {
-            Text(Self.intro).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+            SunnahArabicText(Self.title, style: .body).fontWeight(.bold).foregroundStyle(Sunnah.Colors.textPrimary)
+                .multilineTextAlignment(.trailing).frame(maxWidth: .infinity, alignment: .trailing).padding(.horizontal, 16)
+            SunnahArabicText(Self.intro, style: .body).foregroundStyle(Sunnah.Colors.textSecondary)
                 .multilineTextAlignment(.trailing).frame(maxWidth: .infinity, alignment: .trailing).padding(.horizontal, 16)
             if hasExport {
                 LibraryLoadedView(source: .bundled(name: "arbaeen-love-of-allah", subdirectory: "Data/hadith"),
