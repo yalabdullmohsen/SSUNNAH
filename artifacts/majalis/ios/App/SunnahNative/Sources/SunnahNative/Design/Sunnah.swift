@@ -30,6 +30,10 @@ public enum Sunnah {
         public static let beige = dynamic(light: 0xEFE6D4, dark: 0x1E2E26)
         public static let primary = dynamic(light: 0x1F5C46, dark: 0x6FBE9C)
         public static let primaryStrong = dynamic(light: 0x123B2C, dark: 0x1F5C46)
+        /// خلفية البطاقات الغامقة ذات النص الأبيض (الترويسة والدرج): ثابتة في الوضعين ليبقى التباين ≥ 4.5.
+        public static let heroTop = dynamic(light: 0x1F5C46, dark: 0x1F5C46)
+        public static let heroBottom = dynamic(light: 0x123B2C, dark: 0x123B2C)
+        public static let heroGold = dynamic(light: 0xD9C089, dark: 0xD9C089)
         public static let primarySoft = dynamic(light: 0xE9F0EA, dark: 0x1B2F26)
         /// ذهبي للنصوص، وذهبي للزخرفة، وذهبي فاتح (أزرار ثانوية).
         public static let gold = dynamic(light: 0x8A6D32, dark: 0xD9C089)

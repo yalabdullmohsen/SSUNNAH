@@ -60,7 +60,7 @@ public struct HomeScreen: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
             Text(Self.greeting(Date())).font(Sunnah.Typography.pageTitle).foregroundStyle(.white)
-            Text(Self.hijriDate(Date())).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.goldSoft)
+            Text(Self.hijriDate(Date())).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.heroGold)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Sunnah.Spacing.s5)

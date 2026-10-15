@@ -50,7 +50,7 @@ extension View {
     func sunnahPatternedBackground(radius: CGFloat = Sunnah.Radius.hero) -> some View {
         self.background {
             ZStack {
-                LinearGradient(colors: [Sunnah.Colors.primary, Sunnah.Colors.primaryStrong], startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(colors: [Sunnah.Colors.heroTop, Sunnah.Colors.heroBottom], startPoint: .topLeading, endPoint: .bottomTrailing)
                 SunnahStarPattern()
                     .mask(LinearGradient(colors: [.white, .white.opacity(0.35)], startPoint: .trailing, endPoint: .leading))
                 RadialGradient(colors: [Color.white.opacity(0.16), .clear], center: .topTrailing, startRadius: 0, endRadius: 220)
