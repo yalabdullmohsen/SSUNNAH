@@ -7,6 +7,7 @@ enum SectionsExceptions {
         "/sections": "الصفحة نفسها",
         "/more": "اسم بديل للصفحة نفسها",
         "/sitemap": "اسم بديل للصفحة نفسها",
+        "/adhan-settings": "اسم قديم يُحوَّل في RouteResolver إلى /notification-settings المعروضة في الأقسام",
         "/search": "يُفتح من أيقونة البحث في شريط الأدوات (يغطيه testToolbarButtonsOpen)",
         "/auth/callback": "عودة تقنية من مزوّد الدخول، لا شاشة يختارها المستخدم",
         "/auth/update-password": "يُفتح من رابط البريد فقط",
