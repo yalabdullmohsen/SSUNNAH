@@ -14,6 +14,7 @@ public struct DetailTemplate: View {
                         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
                         .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
                         .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, -28).padding(.bottom, Sunnah.Spacing.s5)
+                        .sunnahReadableWidth()
                 }
             }
         }

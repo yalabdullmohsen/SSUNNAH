@@ -22,7 +22,7 @@ public struct ListTemplate: View {
                 }
                 .sunnahRowChrome()
             }
-            .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+            .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth().background(Sunnah.Colors.bg)
         }
     }
     private func tap(_ item: ContentItem) {
