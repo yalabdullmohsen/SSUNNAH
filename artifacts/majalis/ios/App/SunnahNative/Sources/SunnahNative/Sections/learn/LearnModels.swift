@@ -107,10 +107,12 @@ public struct LearnQuizManifest: Decodable, Sendable {
         /// «السيرة_النبوية-012.json» → «السيرة النبوية».
         public var title: String {
             var name = file.hasSuffix(".json") ? String(file.dropLast(5)) : file
-            if let dash = name.lastIndex(of: "-"), name[name.index(after: dash)...].allSatisfy(\.isNumber) {
+            if let dash = name.lastIndex(of: "-"), name[name.index(after: dash)...].allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber) }) {
                 name = String(name[..<dash])
             }
-            return name.replacingOccurrences(of: "_", with: " ")
+            let title = name.replacingOccurrences(of: "_", with: " ")
+            // «منقول من الأسئلة-edu» اسم ملف استيراد لا عنوان للمستخدم.
+            return title == "منقول من الأسئلة" ? "أسئلة متنوعة" : title
         }
         /// اسم الملف بلا امتداد كما يطلبه `ContentSource.bundled`.
         public var resourceName: String { file.hasSuffix(".json") ? String(file.dropLast(5)) : file }
