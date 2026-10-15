@@ -727,6 +727,61 @@
     "type": "hadith",
     "url": "https://sunnah.com/muslim:2594"
    }
+  ],
+  "tazkiya-amal": [
+   {
+    "type": "quran",
+    "ref": "3:191",
+    "url": "https://quran.com/3/191"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح البخاري 5985",
+    "url": "https://sunnah.com/bukhari:5985",
+    "grade": "صحيح (البخاري)"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح مسلم 1163",
+    "url": "https://sunnah.com/muslim:1163",
+    "grade": "صحيح (مسلم) — أفضل الصلاة بعد الفريضة صلاة الليل"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح البخاري 1417",
+    "url": "https://sunnah.com/bukhari:1417",
+    "grade": "صحيح (البخاري)"
+   },
+   {
+    "type": "hadith",
+    "ref": "جامع الترمذي 614",
+    "url": "https://sunnah.com/tirmidhi:614",
+    "grade": "صحيح (الألباني، أحمد شاكر)"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح البخاري 6018",
+    "url": "https://sunnah.com/bukhari:6018",
+    "grade": "صحيح (البخاري) — فليقل خيرا أو ليصمت"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح البخاري 2101",
+    "url": "https://sunnah.com/bukhari:2101",
+    "grade": "صحيح (البخاري)"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح مسلم 2628",
+    "url": "https://sunnah.com/muslim:2628",
+    "grade": "صحيح (مسلم)"
+   },
+   {
+    "type": "hadith",
+    "ref": "جامع الترمذي 747",
+    "url": "https://sunnah.com/tirmidhi:747",
+    "grade": "صحيح (الألباني) — تعرض الأعمال الاثنين والخميس"
+   }
   ]
  },
  "usra-mujtama": {
@@ -878,6 +933,58 @@
     "ref": "جامع الترمذي 2509",
     "type": "hadith",
     "url": "https://sunnah.com/tirmidhi:2509"
+   }
+  ],
+  "biya": [
+   {
+    "type": "quran",
+    "ref": "2:30",
+    "url": "https://quran.com/2/30"
+   },
+   {
+    "type": "quran",
+    "ref": "7:31",
+    "url": "https://quran.com/7/31"
+   },
+   {
+    "type": "quran",
+    "ref": "7:56",
+    "url": "https://quran.com/7/56"
+   },
+   {
+    "type": "quran",
+    "ref": "2:205",
+    "url": "https://quran.com/2/205"
+   },
+   {
+    "type": "hadith",
+    "ref": "سنن النسائي 2559",
+    "url": "https://sunnah.com/nasai:2559",
+    "grade": "حسن (الألباني) — كلوا وتصدقوا والبسوا في غير إسراف ولا مخيلة"
+   },
+   {
+    "type": "hadith",
+    "ref": "سنن ابن ماجه 425",
+    "url": "https://sunnah.com/ibnmajah:425",
+    "grade": "ضعيف (الألباني، الأرنؤوط) — ما هذا السرف"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح البخاري 2363",
+    "url": "https://sunnah.com/bukhari:2363",
+    "grade": "صحيح (البخاري) — في كل كبد رطبة أجر"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح مسلم 1552",
+    "url": "https://sunnah.com/muslim:1552",
+    "grade": "صحيح (مسلم) — ما من مسلم يغرس غرسا"
+   },
+   {
+    "type": "hadith",
+    "ref": "صحيح مسلم 223",
+    "url": "https://sunnah.com/muslim:223",
+    "grade": "صحيح (مسلم) — الطهور شطر الإيمان"
    }
   ]
  }
