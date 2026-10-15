@@ -48,6 +48,13 @@ public struct MushafIndex: Codable, Equatable, Sendable {
 public enum Mushaf {
     public static let pageCount = 604
     public static func clamp(_ page: Int) -> Int { min(max(page, 1), pageCount) }
+    /// صفحات TabView الحيّة حول الصفحة الحالية (±2)، تصاعديًا؛ ما بعد ±1 عناصر فارغة تُبقي التقليب متصلًا بلا بناء نصوص.
+    public static func pagerWindow(around current: Int) -> ClosedRange<Int> {
+        let c = clamp(current)
+        return max(1, c - 2)...min(pageCount, c + 2)
+    }
+    /// هل تُرسم الصفحة `n` فعليًا (الحالية وجارتاها) أم عنصر فارغ.
+    public static func rendersPage(_ n: Int, current: Int) -> Bool { abs(n - current) <= 1 }
     /// اسم عائلة خط الصفحة كما في جدول الأسماء (QCF2001…QCF2604).
     public static func fontFamily(page: Int) -> String { String(format: "QCF2%03d", page) }
     /// عائلة خط أسماء السور (QPC/KFGQPC، sura_names.ttf).

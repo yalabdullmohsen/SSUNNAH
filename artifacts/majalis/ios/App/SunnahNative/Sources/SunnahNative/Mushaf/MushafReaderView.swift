@@ -133,9 +133,9 @@ public struct MushafReaderView: View {
                 Color.clear.onAppear { pageSize = geo.size }
                 Sunnah.Colors.mushafPaper
                 TabView(selection: $current) {
-                    ForEach(max(1, current - 2)...min(Mushaf.pageCount, current + 2), id: \.self) { n in
+                    ForEach(Mushaf.pagerWindow(around: current), id: \.self) { n in
                         Group {
-                            if abs(n - current) <= 1 { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current) }
+                            if Mushaf.rendersPage(n, current: current) { MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current) }
                             else { Color.clear }
                         }.tag(n)
                     }
