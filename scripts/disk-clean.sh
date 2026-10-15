@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # تنظيف القرص اليومي (macOS). كله قابل لإعادة التوليد. لا يلمس: ssunnah-board، worktrees غير النظيفة/غير المدموجة، ملفات المستخدم.
-# DISK_CLEAN_KEEP_SIM: معرّف المحاكي المُبقى (iPhone 17 Pro). DISK_CLEAN_DRY=1 يعرض worktrees دون حذف.
+# DISK_CLEAN_DRY=1 يعرض worktrees دون حذف.
 set -u
-KEEP_SIM="${DISK_CLEAN_KEEP_SIM:-D6FD9993-ED1B-4659-9C3B-B74999C0F87E}"
 REPO="${DISK_CLEAN_REPO:-$HOME/majalis-correct}"
 free() { df -h / | awk 'NR==2{print $4}'; }
 step() { echo "[$1] الفارغ الآن: $(free)"; }
@@ -10,10 +9,8 @@ step "قبل"
 # 1) Xcode
 rm -rf ~/Library/Developer/Xcode/DerivedData/* ~/Library/Developer/Xcode/Archives/* ~/Library/Caches/com.apple.dt.Xcode /private/tmp/claude-501/dd-* "$HOME/ssunnah-build/DerivedData"/* 2>/dev/null
 rm -rf ~/Library/Developer/Xcode/iOS\ DeviceSupport/* 2>/dev/null; step "1 Xcode"
-# 2) المحاكيات: أبقِ KEEP_SIM فقط
-xcrun simctl shutdown all >/dev/null 2>&1; xcrun simctl delete unavailable >/dev/null 2>&1
-xcrun simctl list devices -j 2>/dev/null | python3 -c 'import json,sys;[print(d["udid"]) for v in json.load(sys.stdin)["devices"].values() for d in v]' |
-  grep -vx "$KEEP_SIM" | while read -r id; do xcrun simctl delete "$id" >/dev/null 2>&1; done; step "2 simulators"
+# 2) المحاكيات: لا تُحذف ولا تُطفأ ولا تُمسح هنا أبدًا (محاكي كل نافذة n1/n2/n3/n4 ملك نافذته؛ اختفى n2-sim سابقًا بسبب حذف ما عدا KEEP_SIM). انظر docs/native/WORKFLOW.md «المحاكيات».
+step "2 simulators (لا تغيير)"
 # 3) كاشات الحزم والمولَّد
 pnpm store prune >/dev/null 2>&1; npm cache clean --force >/dev/null 2>&1; yarn cache clean >/dev/null 2>&1
 command -v brew >/dev/null && brew cleanup -s >/dev/null 2>&1; pip3 cache purge >/dev/null 2>&1

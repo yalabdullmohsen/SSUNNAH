@@ -4,6 +4,7 @@
 #   bash scripts/build-slot.sh -- <أمر…>     تشغيل الأمر داخل خانة (xcodebuild / simctl القياس / xctrace…)
 #   bash scripts/build-slot.sh status          الخانات والطابور وحمل العمليات
 #   bash scripts/build-slot.sh reap            تنظيف يتامى هذا الـworktree فقط
+# الأولوية: ن3 (0) ثم ن1 (1) ثم ن2 (2) ثم ن4 (3) ضمن الطابور؛ BUILD_SLOT_PRIO يتجاوزها.
 # متغيرات: BUILD_SLOTS (افتراضي 2)، BUILD_SLOT_PATTERNS (مسارات إضافية مفصولة بـ: تُنظَّف يتاماها، مثل DerivedData)،
 #          BUILD_SLOT_HELD=1 (يُضبط تلقائيًا داخل الخانة فلا يحدث قفل ذاتي عند التداخل).
 # لا يقتل إلا عمليات المستخدم الحالي التي تحمل مسار هذا الـworktree/الأنماط وأبوها launchd (pid 1) أو أبوها ميت — لا pkill بالاسم.
@@ -50,8 +51,13 @@ reap_orphans() { # يتامى هذا الـworktree: أبوها 1 (أو ميت) 
   return 0
 }
 
+# أولوية الطابور (الأصغر أولًا): ن3 قياس الأداء=0، ن1=1، ن2=2، ن4/غيرها=3 (بناءاتها قصيرة). تُستنتج من اسم الـworktree أو BUILD_SLOT_PRIO.
+prio() {
+  [ -n "${BUILD_SLOT_PRIO:-}" ] && { echo "$BUILD_SLOT_PRIO"; return; }
+  case "$(basename "$ROOT")" in n3-*|*quran*) echo 0;; n1-*) echo 1;; n2-*) echo 2;; *) echo 3;; esac
+}
 live_tickets() { local t; for t in "$DIR"/queue/*; do [ -e "$t" ] || continue
-  if kill -0 "$(basename "$t" | sed 's/^[0-9]*-0*//')" 2>/dev/null; then basename "$t"; else rm -f "$t"; fi; done | sort; }
+  if kill -0 "$(basename "$t" | sed 's/.*-0*//')" 2>/dev/null; then basename "$t"; else rm -f "$t"; fi; done | sort; }
 slot_pid() { sed -n 's/^pid=\([0-9]*\).*/\1/p' "$1/owner" 2>/dev/null; }
 
 status() {
@@ -75,7 +81,7 @@ esac
 [ -n "${BUILD_SLOT_HELD:-}" ] && exec "$@"
 
 mkdir -p "$DIR/queue"
-TICKET="$(date +%s)-$(printf %07d $$)"; : > "$DIR/queue/$TICKET"
+TICKET="$(prio)-$(date +%s)-$(printf %07d $$)"; : > "$DIR/queue/$TICKET"
 SLOT=""
 release() { [ -n "$SLOT" ] && rm -rf "$DIR/slot-$SLOT"; rm -f "$DIR/queue/$TICKET"; }
 CHILD=""
