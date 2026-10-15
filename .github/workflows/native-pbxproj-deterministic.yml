@@ -1,9 +1,8 @@
 name: native pbxproj deterministic
-# يتحقق أن pbxproj/xcscheme المُلتزَمين = مخرج المولِّد حرفيًا (UUID حتمية). ubuntu رخيص، لا macOS.
+# يتحقق أن pbxproj/xcscheme المُلتزَمين = مخرج المولِّد حرفيًا (UUID حتمية). ubuntu رخيص، لا macOS. بلا فلتر paths عمدًا: الفحص مطلوب في ruleset native-app فيجب أن يُبلَّغ على كل PR.
 on:
   pull_request:
     branches: [native-app]
-    paths: ['.github/workflows/native-pbxproj-deterministic.yml', 'ios-native/scripts/generate-xcodeproj.rb', 'ios-native/SunnahApp.xcodeproj/**', 'ios-native/**/*.swift']
 permissions:
   contents: read
 jobs:
