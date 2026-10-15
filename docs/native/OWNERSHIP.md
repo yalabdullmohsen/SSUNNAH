@@ -19,6 +19,10 @@
 - `docs/native/store-shots/**`
 - `scripts/native-design-guard.mjs`
 - `scripts/generate-swift-tokens.mjs`
+- `artifacts/majalis/ios/App/PrayerWidget/PrayerWidgetViews.swift` (قرار المالك 2026-10-15: ألوان وأنماط عرض الويدجت لـن1؛ البيانات والـentry والـintents والـharness اللقطات تبقى لـن4)
+- `artifacts/majalis/ios/App/PrayerWidget/Sunnah*WidgetCatalog.swift`
+- `artifacts/majalis/ios/App/PrayerWidget/SunnahContentExperienceCatalog.swift`
+- `artifacts/majalis/ios/App/PrayerWidget/SunnahWidgetLogoMark.swift`
 
 ## n2 — الجودة والمحتوى والبيانات
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Data/**`
