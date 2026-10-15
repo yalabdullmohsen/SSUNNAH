@@ -2,7 +2,6 @@ import XCTest
 import Foundation
 @testable import SunnahNative
 
-#if os(macOS)
 /// قياس أداء مسار بيانات المصحف (ن3). يطبع أرقامًا بالميلي ثانية ولا يفشل إلا عند تجاوز الميزانيات المعلنة.
 /// البيئة: `MUSHAF_DATA`. النتائج تُدوَّن في docs/native/perf/mushaf.md.
 final class MushafPerfTests: XCTestCase {
@@ -80,4 +79,3 @@ final class MushafPerfTests: XCTestCase {
         print("MUSHAF_SEARCH build_ms=\(build) query_ms=\(per.map { String(format: "%.2f", $0) }) miss_ms=\(miss)")
     }
 }
-#endif
