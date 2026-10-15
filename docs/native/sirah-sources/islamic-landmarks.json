@@ -1,202 +1,476 @@
 {
- "zaytouna": [
+ "masjid-haram": [
   {
-   "ref": "ويكيبيديا العربية: جامع الزيتونة (79 هـ/698 م، حسان بن النعمان)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/جامع_الزيتونة",
-   "fetched": "2026-10-15"
+   "ref": "القرآن الكريم، سورة سُورَةُ آلِ عِمۡرَانَ، الآية 96",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/3:96/quran-uthmani",
+   "quote": "إِنَّ أَوَّلَ بَيْتٍۢ وُضِعَ لِلنَّاسِ لَلَّذِى بِبَكَّةَ مُبَارَكًۭا",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سورة سُورَةُ البَقَرَةِ، الآية 144",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/2:144/quran-uthmani",
+   "quote": "فَوَلِّ وَجْهَكَ شَطْرَ ٱلْمَسْجِدِ ٱلْحَرَام",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري، حديث 3366",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3366.json",
+   "quote": "أَىُّ مَسْجِدٍ وُضِعَ فِي الأَرْضِ أَوَّل",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري، حديث 399",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/399.json",
+   "quote": "صَلَّى نَحْوَ بَيْتِ الْمَقْدِسِ سِتَّةَ عَشَرَ أَوْ سَبْعَةَ عَشَرَ شَهْرًا",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
- "cordoba": [
+ "masjid-nabawi": [
   {
-   "ref": "ويكيبيديا العربية: مسجد قرطبة (أمر عبد الرحمن الداخل بإنشائه سنة 785 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_قرطبة",
-   "fetched": "2026-10-15"
+   "ref": "سيرة ابن هشام (ت. السقا)، ج1، ص519",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/519",
+   "quote": "فَأَمَرَ بِهِ رَسُولُ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ أَنْ يُبْنَى مَسْجِدًا",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري، حديث 1190",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/1190.json",
+   "quote": "صَلاَةٌ فِي مَسْجِدِي هَذَا خَيْرٌ مِنْ أَلْفِ صَلاَةٍ فِيمَا سِوَاهُ إِلاَّ الْمَسْجِدَ الْحَرَام",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم، حديث 3374",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/3374.json",
+   "quote": "صَلاَةٌ فِي مَسْجِدِي هَذَا أَفْضَلُ مِنْ أَلْفِ صَلاَةٍ فِيمَا سِوَاهُ إِلاَّ الْمَسْجِدَ الْحَرَام",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
- "hagia-sophia": [
+ "masjid-aqsa": [
   {
-   "ref": "ويكيبيديا العربية: آيا صوفيا (تحويلها إلى مسجد 1453 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/آيا_صوفيا",
-   "fetched": "2026-10-15"
-  }
- ],
- "hassan2": [
+   "ref": "القرآن الكريم، سورة سُورَةُ الإِسۡرَاءِ، الآية 1",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/17:1/quran-uthmani",
+   "quote": "سُبْحَٰنَ ٱلَّذِىٓ أَسْرَىٰ بِعَبْدِهِۦ لَيْلًۭا مِّنَ ٱلْمَسْجِدِ ٱلْحَرَامِ إِلَى ٱلْمَسْجِدِ ٱلْأَقْصَا",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
   {
-   "ref": "ويكيبيديا العربية: مسجد الحسن الثاني (1986–1993 م؛ 25000 داخل + 80000 خارج)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_الحسن_الثاني",
-   "fetched": "2026-10-15"
-  }
- ],
- "ibn-tulun": [
+   "ref": "البداية والنهاية لابن كثير (ط. دار ابن كثير)، ج7 ص157، ص3303",
+   "type": "book",
+   "url": "https://shamela.ws/book/30097/3303",
+   "quote": "ثم جعل المسجد في قِبْلِي بيت المقدس، وهو العُمَريّ اليوم",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
   {
-   "ref": "ويكيبيديا العربية: جامع أحمد بن طولون (263–265 هـ/877–879 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/جامع_أحمد_بن_طولون",
-   "fetched": "2026-10-15"
-  }
- ],
- "kairouan": [
+   "ref": "البداية والنهاية لابن كثير (ط. دار ابن كثير)، ج5 ص31، ص4154",
+   "type": "book",
+   "url": "https://shamela.ws/book/30097/4154",
+   "quote": "فبنى القبة على الصخرة والجامع الأقصى ليشغلهم",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
   {
-   "ref": "ويكيبيديا العربية: جامع عقبة بن نافع (50 هـ/670 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/جامع_عقبة_بن_نافع",
-   "fetched": "2026-10-15"
-  }
- ],
- "al-azhar-mosque": [
-  {
-   "ref": "ويكيبيديا العربية: الجامع الأزهر (جوهر الصقلي؛ 359 هـ/970 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/الجامع_الأزهر",
-   "fetched": "2026-10-15"
-  }
- ],
- "sultan-hassan": [
-  {
-   "ref": "ويكيبيديا العربية: مسجد ومدرسة السلطان حسن (757–764 هـ/1356–1363 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_ومدرسة_السلطان_حسن",
-   "fetched": "2026-10-15"
-  }
- ],
- "al-aqmar": [
-  {
-   "ref": "ويكيبيديا العربية: جامع الأقمر (519 هـ/1125 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/جامع_الأقمر",
-   "fetched": "2026-10-15"
-  }
- ],
- "aleppo-umayyad": [
-  {
-   "ref": "ويكيبيديا العربية: الجامع الأموي (حلب) (715–717 م، الوليد وسليمان)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/الجامع_الأموي_(حلب)",
-   "fetched": "2026-10-15"
-  }
- ],
- "sanaa-great": [
-  {
-   "ref": "ويكيبيديا العربية: الجامع الكبير (صنعاء) (أمر النبي ببنائه سنة 6 هـ وتنسب المباشرة لصحابي)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/الجامع_الكبير_(صنعاء)",
-   "fetched": "2026-10-15"
-  }
- ],
- "qarawiyyin-mosque": [
-  {
-   "ref": "ويكيبيديا العربية: جامع القرويين (245 هـ/859 م، فاطمة الفهرية)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/جامع_القرويين",
-   "fetched": "2026-10-15"
-  }
- ],
- "badshahi": [
-  {
-   "ref": "ويكيبيديا العربية: مسجد بادشاهي (1671–1673 م، أورنكزيب)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_بادشاهي",
-   "fetched": "2026-10-15"
-  }
- ],
- "putra-mosque": [
-  {
-   "ref": "ويكيبيديا العربية: مسجد بوترا (1997–1999 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_بوترا",
-   "fetched": "2026-10-15"
-  }
- ],
- "malwiya-samarra": [
-  {
-   "ref": "Great Mosque of Samarra (234–236 هـ/848–851 م، المتوكل؛ الملوية 848–852 م)",
-   "type": "article",
-   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Samarra",
-   "fetched": "2026-10-15"
-  }
- ],
- "djenne-great-mosque": [
-  {
-   "ref": "Great Mosque of Djenné (البناء الحالي 1907 م)",
-   "type": "article",
-   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Djenn%C3%A9",
-   "fetched": "2026-10-15"
-  }
- ],
- "xian-great-mosque": [
-  {
-   "ref": "Great Mosque of Xi'an (تأسيس تقليدي 742 م عهد تانغ)",
-   "type": "article",
-   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Xi%27an",
-   "fetched": "2026-10-15"
-  }
- ],
- "kutubiyya-marrakech": [
-  {
-   "ref": "ويكيبيديا العربية: جامع الكتبية (1147–1158 م، الموحدون)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/جامع_الكتبية",
-   "fetched": "2026-10-15"
-  }
- ],
- "imam-mosque-isfahan": [
-  {
-   "ref": "ويكيبيديا العربية: مسجد الإمام (أصفهان) (1611–1629 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_الإمام_(أصفهان)",
-   "fetched": "2026-10-15"
-  }
- ],
- "djinguereber-timbuktu": [
-  {
-   "ref": "Djinguereber Mosque (اكتمل 1327 م؛ 1325 م في المتن)",
-   "type": "article",
-   "url": "https://en.wikipedia.org/wiki/Djinguereber_Mosque",
-   "fetched": "2026-10-15"
+   "ref": "الأنس الجليل بتاريخ القدس والخليل للعليمي، ص396",
+   "type": "book",
+   "url": "https://shamela.ws/book/1657/396",
+   "quote": "ثم بعد انتقال الخلافة إلى المنتقم لله الوليد بن عبد الملك انهدم شرقي المسجد",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "qubbat-sakhra": [
   {
-   "ref": "ويكيبيديا العربية: قبة الصخرة (66–72 هـ/685–691 م، عبد الملك بن مروان) — المساحة غير موثقة",
+   "ref": "البداية والنهاية لابن كثير (ط. دار ابن كثير)، ج9 ص31، ص4154",
+   "type": "book",
+   "url": "https://shamela.ws/book/30097/4154",
+   "quote": "ابتدأ عبد الملك بن مروان ببناء القبة على صخرة بيت المقدس وعمارة الجامع الأقصى، وكملت عمارته في سنة ثلاث وسبعين",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "موسوعة تاريخ العالم (World History Encyclopedia): Dome of the Rock",
    "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/قبة_الصخرة",
-   "fetched": "2026-10-15"
+   "url": "https://www.worldhistory.org/Dome_of_the_Rock/",
+   "quote": "Dome of the Rock in Jerusalem, originally constructed in 691-692 CE in the reign of Caliph Abd al-Malik",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
- "amr": [
+ "masjid-amawi": [
   {
-   "ref": "ويكيبيديا العربية: مسجد عمرو بن العاص (القاهرة): بدء البناء 641 م، الفسطاط",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_عمرو_بن_العاص_(القاهرة)",
-   "fetched": "2026-10-15"
-  }
- ],
- "demak-great": [
+   "ref": "البداية والنهاية لابن كثير (ط. دار ابن كثير)، ج9 ص351، ص4474",
+   "type": "book",
+   "url": "https://shamela.ws/book/30097/4474",
+   "quote": "وهدم الكنيسة في أول خلافة الوليد سنة ست وثمانين، ومكثوا في بنائها سبع سنين حتى مات الوليد ولم يتم بناءه",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
   {
-   "ref": "ويكيبيديا العربية: مسجد ديماك الكبير (القرن 15 م/1479 م، الراجح سونن كاليجاغا)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_ديماك_الكبير",
-   "fetched": "2026-10-15"
+   "ref": "البداية والنهاية لابن كثير (ط. دار ابن كثير)، ج9 ص345 (رواية رأس يحيى)، ص4468",
+   "type": "book",
+   "url": "https://shamela.ws/book/30097/4468",
+   "quote": "فوجدنا مغارة فعرَّفنا الوليد ذلك",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "uqba-mosque": [
   {
-   "ref": "ويكيبيديا العربية: مسجد قباء",
+   "ref": "سيرة ابن هشام (ت. السقا)، ص517",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/517",
+   "quote": "فَأَقَامَ رَسُولُ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ بقُباءٍ، فِي بَنِي عَمْرِو بْنِ عَوْفٍ، يَوْمَ الِاثْنَيْنِ وَيَوْمَ الثُّلَاثَاءِ وَيَوْمَ الْأَرْبِعَاءِ وَيَوْمَ الْخَمِيسِ، وَأَسَّسَ مَسْجِدَه",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "المواعظ والاعتبار (الخطط) للمقريزي، ص2476",
+   "type": "book",
+   "url": "https://shamela.ws/book/11500/2476",
+   "quote": "وأوّل مسجد بني في الإسلام مسجد قباء",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سورة سُورَةُ التَّوۡبَةِ، الآية 108",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/9:108/quran-uthmani",
+   "quote": "لَّمَسْجِدٌ أُسِّسَ عَلَى ٱلتَّقْوَىٰ مِنْ أَوَّلِ يَوْمٍ أَحَقُّ أَن تَقُومَ فِيه",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سنن ابن ماجه، حديث 1412 — الأحكام في النسخة: Al-Albani: Sahih; Muhammad Fouad Abd al-Baqi: Sahih; Shuaib Al Arnaut: Hasan; Zubair Ali Zai: Hasan",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/1412.json",
+   "quote": "مَنْ تَطَهَّرَ فِي بَيْتِهِ، ثُمَّ أَتَى مَسْجِدَ قُبَاءٍ، فَصَلَّى فِيهِ صَلاَةً، كَانَ لَهُ كَأَجْرِ عُمْرَة",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "kufa": [
+  {
+   "ref": "المسالك والممالك للبكري، ص413",
+   "type": "book",
+   "url": "https://shamela.ws/book/23849/413",
+   "quote": "وكوّفت الكوفة سنة سبع عشرة",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "المسالك والممالك للبكري، ص414",
+   "type": "book",
+   "url": "https://shamela.ws/book/23849/414",
+   "quote": "فأوّل شيء خطّ بالكوفة المسجد",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "المسالك والممالك للبكري، ص413",
+   "type": "book",
+   "url": "https://shamela.ws/book/23849/413",
+   "quote": "وارتحل سعد من المدائن بالناس حتّى عسكر بالكوفة في المحرّم سنة سبع عشرة",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amr": [
+  {
+   "ref": "حسن المحاضرة للسيوطي، ص852",
+   "type": "book",
+   "url": "https://shamela.ws/book/3283/852",
+   "quote": "فبني في سنة إحدى وعشرين، وكان طوله خمسين ذراعا في عرض ثلاثين",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "المواعظ والاعتبار (الخطط) للمقريزي، ص2476",
+   "type": "book",
+   "url": "https://shamela.ws/book/11500/2476",
+   "quote": "وهو أوّل مسجد أسّس بديار مصر في الملّة الإسلامية بعد الفتح",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "kairouan": [
+  {
+   "ref": "الاستقصا للناصري، ص80",
+   "type": "book",
+   "url": "https://shamela.ws/book/6627/80",
+   "quote": "اختط عقبَة رَضِي الله عَنهُ القيروان وَبنى بهَا الْمَسْجِد الْجَامِع",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "الاستقصا للناصري، ص80",
+   "type": "book",
+   "url": "https://shamela.ws/book/6627/80",
+   "quote": "اختط عقبَة بن نَافِع القيروان سنة خمسين",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ibn-tulun": [
+  {
+   "ref": "حسن المحاضرة للسيوطي، ص859",
+   "type": "book",
+   "url": "https://shamela.ws/book/3283/859",
+   "quote": "وكان ابتداء بنائه في سنة ثلاث وستين ومائتين، وفرغ منه سنة ست وستين",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "al-azhar-mosque": [
+  {
+   "ref": "حسن المحاضرة للسيوطي، ص864",
+   "type": "book",
+   "url": "https://shamela.ws/book/3283/864",
+   "quote": "أنشأه القائد جوهر الكاتب الصقلي مولى المعز لدين الله لما اختط القاهرة، وابتدأ بناءه في يوم السبت لست بقين من جمادى الأولى سنة تسع وخمسين وثلاثمائة",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "al-aqmar": [
+  {
+   "ref": "المواعظ والاعتبار (الخطط) للمقريزي، ص2602",
+   "type": "book",
+   "url": "https://shamela.ws/book/11500/2602",
+   "quote": "وكمل الجامع المذكور في أيّامه، وذلك في سنة تسع عشرة وخمس مائة",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarawiyyin-mosque": [
+  {
+   "ref": "الاستقصا للناصري، ص176",
+   "type": "book",
+   "url": "https://shamela.ws/book/6627/176",
+   "quote": "فَاطِمَة بنت مُحَمَّد الفِهري وتكنى أم الْبَنِين",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "الاستقصا للناصري، ص176",
+   "type": "book",
+   "url": "https://shamela.ws/book/6627/176",
+   "quote": "وَذَلِكَ يَوْم السبت فاتح رَمَضَان الْمُعظم سنة خمس وَأَرْبَعين وَمِائَتَيْن",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "cordoba": [
+  {
+   "ref": "نظم حكم الأمويين ورسومهم في الأندلس، ص139",
+   "type": "book",
+   "url": "https://shamela.ws/book/7331/139",
+   "quote": "أنشأه الأمير عبد الرحمن الداخل سنة (١٦٨) هـ (٧٨٥ م)",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "sultan-ahmed": [
+  {
+   "ref": "Sultan Ahmed Mosque (ويكيبيديا الإنجليزية — مصدر ثانوي)",
    "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/مسجد_قباء",
-   "fetched": "2026-10-15"
+   "url": "https://en.wikipedia.org/wiki/Sultan_Ahmed_Mosque",
+   "quote": "constructed between 1609 and 1617 during the rule of Ahmed I",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "hassan2": [
+  {
+   "ref": "Hassan II Mosque (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Hassan_II_Mosque",
+   "quote": "A maximum of 105,000 worshippers can gather together for prayer: 25,000 inside the mosque hall and another 80,000 on the mosque's outside ground",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "sheikh-zayed": [
+  {
+   "ref": "Sheikh Zayed Grand Mosque (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Sheikh_Zayed_Grand_Mosque",
+   "quote": "large enough to accommodate over 40,100 worshippers",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "muhammad-ali": [
+  {
+   "ref": "Muhammad Ali Mosque (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Muhammad_Ali_Mosque",
+   "quote": "commissioned by Muhammad Ali Pasha and built between 1832 and 1857",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "quwwat-ul-islam": [
   {
-   "ref": "Quwwat-ul-Islam Mosque (بدأ 1193 م)",
+   "ref": "Quwwat-ul-Islam (ويكيبيديا الإنجليزية — مصدر ثانوي)",
    "type": "article",
    "url": "https://en.wikipedia.org/wiki/Quwwat-ul-Islam_Mosque",
-   "fetched": "2026-10-15"
+   "quote": "It was the first mosque built in Delhi after the Islamic conquest of India",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "aleppo-umayyad": [
+  {
+   "ref": "Great Mosque of Aleppo (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Aleppo",
+   "quote": "built in the beginning of the 8th century CE during the reign of the Umayyad caliph Sulayman",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "sanaa-great": [
+  {
+   "ref": "Great Mosque of Sana'a (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Sana%27a",
+   "quote": "instructed for its construction within the garden of the Persian governors",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "zaytouna": [
+  {
+   "ref": "Al-Zaytuna Mosque (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Al-Zaytuna_Mosque",
+   "quote": "Ubayd Allah ibn al-Habhab , the Umayyad governor of Ifriqiya , built a Friday mosque",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "badshahi": [
+  {
+   "ref": "Badshahi Mosque — World History Encyclopedia (مصدر ثانوي)",
+   "type": "article",
+   "url": "https://www.worldhistory.org/Badshahi_Mosque/",
+   "quote": "built by the Mughal emperor Aurangzeb (r. 1658-1707 CE) in 1673-74 CE",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "demak-great": [
+  {
+   "ref": "Great Mosque of Demak (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Demak",
+   "quote": "built by the Wali Songo (\"Nine Muslim Saints\") with the most prominent figure, Sunan Kalijaga , during the first Demak Sultanate ruler, Raden Patah , during the 15th century",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "malwiya-samarra": [
+  {
+   "ref": "Great Mosque of Samarra (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Samarra",
+   "quote": "cture|Abbasid]]\"},\"founded_by\":{\"wt\":\"[[Al-Mutawakkil]]\"},\"creator\":{\"wt\":\"\"},\"funded_by\":{\"wt\":\"\"},\"general_cont",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "djenne-great-mosque": [
+  {
+   "ref": "Great Mosque of Djenne (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Djenn%C3%A9",
+   "quote": "The rebuilding was completed in 1907 using forced labour",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "xian-great-mosque": [
+  {
+   "ref": "Great Mosque of Xi'an (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Xi%27an",
+   "quote": "Traditional accounts date the mosque's founding to 742 CE",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "imam-mosque-isfahan": [
+  {
+   "ref": "Shah Mosque Isfahan (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Shah_Mosque_(Isfahan)",
+   "quote": "},\"completed\":{\"wt\":\"{{Circa|1630}}\"},\"founded_by\":{\"wt\":\"[[Abbas the Great]]\"},\"construction_cost\":{\"wt\":\"20,000 [[Iranian toman|toman]]\"},\"capacity\":{\"wt\":\"\"},\"length\":{\"wt\":\"{{cvt|10",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "djinguereber-timbuktu": [
+  {
+   "ref": "Timbuktu — World History Encyclopedia (مصدر ثانوي)",
+   "type": "article",
+   "url": "https://www.worldhistory.org/timbuktu/",
+   "quote": "A large mosque was built at Timbuktu, the 'great mosque', also known as Djinguereber",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "hagia-sophia": [
+  {
+   "ref": "Hagia Sophia — World History Encyclopedia (مصدر ثانوي)",
+   "type": "article",
+   "url": "https://www.worldhistory.org/Hagia_Sophia/",
+   "quote": "Thomas Cohen Hagia Sophia in Istanbul, constructed 532-537, continues to be re",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "kutubiyya-marrakech": [
+  {
+   "ref": "Kutubiyya Mosque (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Kutubiyya_Mosque",
+   "quote": "},\"i\":0}}]}'> [ a ] is the largest mosque in Marrakesh , Morocco",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "putra-mosque": [
+  {
+   "ref": "Putra Mosque (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Putra_Mosque",
+   "quote": "Construction of the mosque began in 1997 and was completed two years later",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "sultan-hassan": [
+  {
+   "ref": "Mosque-Madrasa of Sultan Hassan (ويكيبيديا الإنجليزية — مصدر ثانوي)",
+   "type": "article",
+   "url": "https://en.wikipedia.org/wiki/Mosque-Madrasa_of_Sultan_Hassan",
+   "quote": "It was built between 1356 and 1363 CE during the Bahri Mamluk period",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ]
 }

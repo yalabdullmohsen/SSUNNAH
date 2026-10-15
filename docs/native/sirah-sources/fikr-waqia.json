@@ -1,228 +1,1276 @@
 {
+ "shbb-1": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الأَنۡعَامِ آية 162",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/6:162/quran-uthmani",
+   "quote": "نَّ صَلَاتِى وَنُسُكِى وَمَحْيَاىَ وَمَمَاتِى لِلَّهِ رَبِّ ٱلْعَٰلَمِين",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
  "shbb-2": [
   {
-   "ref": "سنن أبي داود 4833 (الألباني: حسن)",
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 4833، حكم الألباني: Hasan",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/4833.json",
-   "fetched": "2026-10-15"
+   "quote": "لرَّجُلُ عَلَى دِينِ خَلِيلِهِ فَلْيَنْظُرْ أَحَدُكُمْ مَنْ ",
+   "fetched": "2026-10-15",
+   "verified": true
   },
   {
-   "ref": "سنن الترمذي 2378 (الألباني: حسن)",
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2378، حكم الألباني: Hasan",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2378.json",
-   "fetched": "2026-10-15"
+   "quote": "لرَّجُلُ عَلَى دِينِ خَلِيلِهِ فَلْيَنْظُرْ أَحَدُكُمْ مَنْ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "shbb-3": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الطَّلَاقِ آية 3",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/65:3/quran-uthmani",
+   "quote": "وَمَن يَتَوَكَّلْ عَلَى ٱللَّهِ فَهُوَ حَسْبُهُۥٓ ۚ إِنَّ ٱللَّهَ ب",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2344، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2344.json",
+   "quote": "لَوْ أَنَّكُمْ كُنْتُمْ تَوَكَّلُونَ عَلَى اللَّهِ حَقَّ تَوَكُّلِه",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "shbb-4": [
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2414، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2414.json",
+   "quote": "مَنِ الْتَمَسَ رِضَاءَ اللَّهِ بِسَخَطِ النَّاسِ كَفَاهُ اللَّهُ مُؤْن",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "shbb-5": [
   {
-   "ref": "الزخرف 43:23",
+   "ref": "القرآن الكريم، سُورَةُ الزُّخۡرُفِ آية 23",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/43:23/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "نَّا وَجَدْنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٍۢ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّقْتَدُو",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "shbb-6": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6543",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6543.json",
+   "quote": "نَّ اللَّهَ لاَ يَنْظُرُ إِلَى صُوَرِكُمْ وَأَمْوَالِكُمْ وَلَكِنْ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2417، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2417.json",
+   "quote": "وَعَنْ مَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَا أَنْفَقَهُ وَعَنْ ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "shbb-7": [
   {
-   "ref": "صحيح البخاري 6499",
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6499",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6499.json",
-   "fetched": "2026-10-15"
+   "quote": "مَنْ سَمَّعَ سَمَّعَ اللَّهُ بِهِ، وَمَنْ يُرَائِي يُرَائِي اللَّهُ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 7476",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/7476.json",
+   "quote": "مَنْ سَمَّعَ سَمَّعَ اللَّهُ بِهِ وَمَنْ رَاءَى رَاءَى اللَّهُ بِه",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "shbb-8": [
   {
-   "ref": "الإسراء 17:32",
+   "ref": "القرآن الكريم، سُورَةُ الإِسۡرَاءِ آية 32",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/17:32/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "وَلَا تَقْرَبُوا۟ ٱلزِّنَىٰٓ ۖ إِنَّهُۥ كَانَ فَٰحِشَةًۭ وَسَآءَ سَبِيل",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 3006",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3006.json",
+   "quote": "لاَ يَخْلُوَنَّ رَجُلٌ بِامْرَأَةٍ، وَلاَ تُسَافِرَنَّ امْرَأَةٌ إِلاَّ وَم",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "shbb-9": [
   {
-   "ref": "صحيح البخاري 6412",
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6412",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6412.json",
-   "fetched": "2026-10-15"
+   "quote": "نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ، الصِّحَّةُ ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
- "amal-2": [
+ "shbb-10": [
   {
-   "ref": "حديث «يحب إذا عمل أحدكم عملا أن يتقنه»: صحيح الجامع 1880 (حسن) - موضوع",
-   "type": "article",
-   "url": "https://mawdoo3.com/شرح_حديث_(إن_الله_يحب_إذا_عمل_أحدكم_عملًا_أن_يتقنه)",
-   "fetched": "2026-10-15"
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6774",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6774.json",
+   "quote": "لْمُؤْمِنُ الْقَوِيُّ خَيْرٌ وَأَحَبُّ إِلَى اللَّهِ مِنَ الْمُؤْمِنِ ال",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6774",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6774.json",
+   "quote": "حْرِصْ عَلَى مَا يَنْفَعُكَ وَاسْتَعِنْ بِاللَّهِ وَلاَ تَعْجِز",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "shbb-11": [
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2317، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2317.json",
+   "quote": "مِنْ حُسْنِ إِسْلاَمِ الْمَرْءِ تَرْكُهُ مَا لاَ يَعْنِيهِ ‏\"‏ ‏.‏ قَالَ ه",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "shbb-12": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الأَنۡعَامِ آية 162",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/6:162/quran-uthmani",
+   "quote": "نَّ صَلَاتِى وَنُسُكِى وَمَحْيَاىَ وَمَمَاتِى لِلَّهِ رَبِّ ٱلْعَٰلَمِين",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 1",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/1.json",
+   "quote": "نَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَن",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "shbb-13": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 893",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/893.json",
+   "quote": "كُلُّكُمْ رَاعٍ ‏\"‏‏.‏ وَزَادَ اللَّيْثُ قَالَ يُونُسُ كَتَبَ رُزَيْقُ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "shbb-14": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6382",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6382.json",
+   "quote": "ذَا هَمَّ بِالأَمْرِ فَلْيَرْكَعْ رَكْعَتَيْنِ، ثُمَّ يَقُولُ الل",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 159",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/3:159/quran-uthmani",
+   "quote": "وَشَاوِرْهُمْ فِى ٱلْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱلل",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-1": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ القَصَصِ آية 26",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/28:26/quran-uthmani",
+   "quote": "يَٰٓأَبَتِ ٱسْتَـْٔجِرْهُ ۖ إِنَّ خَيْرَ مَنِ ٱسْتَـْٔجَرْتَ ٱلْقَوِىُّ ٱلْأَمِين",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ الأَنفَالِ آية 27",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/8:27/quran-uthmani",
+   "quote": "لَا تَخُونُوا۟ ٱللَّهَ وَٱلرَّسُولَ وَتَخُونُوٓا۟ أَمَٰنَٰتِكُمْ وَأَن",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "amal-3": [
   {
-   "ref": "صحيح البخاري 33",
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 33",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/33.json",
-   "fetched": "2026-10-15"
+   "quote": "يَةُ الْمُنَافِقِ ثَلاَثٌ إِذَا حَدَّثَ كَذَبَ، وَإِذَا وَعَدَ أَخْلَفَ،",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-4": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 29",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/4:29/quran-uthmani",
+   "quote": "لَا تَأْكُلُوٓا۟ أَمْوَٰلَكُم بَيْنَكُم بِٱلْبَٰطِلِ إِلَّآ أَن تَكُونَ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 3594، حكم الألباني: Hasan Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/3594.json",
+   "quote": " الله عليه وسلم ‏\"‏ الْمُسْلِمُونَ عَلَى شُرُوطِهِمْ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-5": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2955",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2955.json",
+   "quote": "لسَّمْعُ وَالطَّاعَةُ حَقٌّ، مَا لَمْ يُؤْمَرْ بِالْمَعْصِيَةِ، فَإِذَا ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 7145",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/7145.json",
+   "quote": "هَا مَا خَرَجُوا مِنْهَا أَبَدًا، إِنَّمَا الطَّاعَةُ فِي الْمَعْرُوفِ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-6": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 10",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/10.json",
+   "quote": "لْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ،",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2026، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2026.json",
+   "quote": "لاَ يَدْخُلُ الْجَنَّةَ قَتَّاتٌ ‏\"‏ ‏.‏ قَالَ سُفْيَانُ وَالْقَتَّاتُ النَّمَّام",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "amal-7": [
   {
-   "ref": "سنن أبي داود 3580 (الألباني: صحيح)",
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 3580، حكم الألباني: Sahih",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/3580.json",
-   "fetched": "2026-10-15"
+   "quote": "لَعَنَ رَسُولُ اللَّهِ صلى الله عليه وسلم الرَّاشِيَ وَالْمُرْتَشِي",
+   "fetched": "2026-10-15",
+   "verified": true
   },
   {
-   "ref": "سنن ابن ماجه 2313 (الألباني: صحيح)",
+   "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 2313، حكم الألباني: Sahih",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/2313.json",
-   "fetched": "2026-10-15"
+   "quote": "يه وسلم ‏ \"‏ لَعْنَةُ اللَّهِ عَلَى الرَّاشِي وَالْمُرْتَشِي ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "amal-8": [
   {
-   "ref": "صحيح البخاري 2597 (قصة ابن اللتبية وهدية العامل)",
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 2943، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/2943.json",
+   "quote": "مَنِ اسْتَعْمَلْنَاهُ عَلَى عَمَلٍ فَرَزَقْنَاهُ رِزْقًا فَمَا أَخ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2597",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2597.json",
-   "fetched": "2026-10-15"
+   "quote": "فَهَلاَّ جَلَسَ فِي بَيْتِ أَبِيهِ أَوْ بَيْتِ أُمِّهِ، فَيَنْظُرَ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-9": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 3118",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3118.json",
+   "quote": "نَّ رِجَالاً يَتَخَوَّضُونَ فِي مَالِ اللَّهِ بِغَيْرِ حَقٍّ، فَل",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-10": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2597",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2597.json",
+   "quote": "فَهَلاَّ جَلَسَ فِي بَيْتِ أَبِيهِ أَوْ بَيْتِ أُمِّهِ، فَيَنْظُرَ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-11": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 893",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/893.json",
+   "quote": "كُلُّكُمْ رَاعٍ ‏\"‏‏.‏ وَزَادَ اللَّيْثُ قَالَ يُونُسُ كَتَبَ رُزَيْقُ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-12": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2442",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2442.json",
+   "quote": "وَمَنْ كَانَ فِي حَاجَةِ أَخِيهِ كَانَ اللَّهُ فِي حَاجَتِهِ، و",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "amal-13": [
   {
-   "ref": "صحيح البخاري 660",
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 660",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/660.json",
-   "fetched": "2026-10-15"
+   "quote": "سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِي ظِلِّهِ يَوْمَ لاَ ظِلَّ إِلاَّ ظ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "amal-14": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2079",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2079.json",
+   "quote": "لْبَيِّعَانِ بِالْخِيَارِ مَا لَمْ يَتَفَرَّقَا ـ أَوْ قَالَ حَتَّى يَت",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "ilm-1": [
   {
-   "ref": "العلق 96:1",
+   "ref": "القرآن الكريم، سُورَةُ العَلَقِ آية 1",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/96:1/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "للَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَق",
+   "fetched": "2026-10-15",
+   "verified": true
   },
   {
-   "ref": "المجادلة 58:11",
+   "ref": "القرآن الكريم، سُورَةُ المُجَادلَةِ آية 11",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/58:11/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "يَرْفَعِ ٱللَّهُ ٱلَّذِينَ ءَامَنُوا۟ مِنكُمْ وَٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ دَرَجَٰت",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilm-2": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6128",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6128.json",
+   "quote": "وا قُلْتَ كَذَا وَكَذَا قَالَ ‏\"‏ أَنْتُمْ أَعْلَمُ بِأَمْرِ دُنْيَاكُمْ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilm-3": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 82",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/4:82/quran-uthmani",
+   "quote": "وَلَوْ كَانَ مِنْ عِندِ غَيْرِ ٱللَّهِ لَوَجَدُوا۟ فِيهِ ٱخْتِلَٰفًۭا كَثِير",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilm-4": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النَّجۡمِ آية 28",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/53:28/quran-uthmani",
+   "quote": "بِعُونَ إِلَّا ٱلظَّنَّ ۖ وَإِنَّ ٱلظَّنَّ لَا يُغْنِى مِنَ ٱلْحَقِّ شَي",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 111",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/2:111/quran-uthmani",
+   "quote": "كَ أَمَانِيُّهُمْ ۗ قُلْ هَاتُوا۟ بُرْهَٰنَكُمْ إِن كُنتُمْ صَٰدِقِين",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ الإِسۡرَاءِ آية 36",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/17:36/quran-uthmani",
+   "quote": "وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِۦ عِلْمٌ ۚ إِنَّ ٱلسَّمْعَ وَٱلْبَص",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilm-5": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 190",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/3:190/quran-uthmani",
+   "quote": "نَّ فِى خَلْقِ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَٱخْتِلَٰفِ ٱلَّيْلِ وَٱلنَّه",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 191",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/3:191/quran-uthmani",
+   "quote": "وَيَتَفَكَّرُونَ فِى خَلْقِ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ رَبَّنَا مَا خ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilm-7": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الإِسۡرَاءِ آية 36",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/17:36/quran-uthmani",
+   "quote": "وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِۦ عِلْمٌ ۚ إِنَّ ٱلسَّمْعَ وَٱلْبَص",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilm-9": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5219",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5219.json",
+   "quote": "لم ‏ \"‏ الْمُتَشَبِّعُ بِمَا لَمْ يُعْطَ كَلاَبِسِ ثَوْبَىْ زُورٍ ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "ilm-10": [
   {
-   "ref": "سنن ابن ماجه 3843 (الألباني: حسن)",
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6906",
    "type": "hadith",
-   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/3843.json",
-   "fetched": "2026-10-15"
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6906.json",
+   "quote": "للَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عِلْمٍ لاَ يَنْفَعُ وَمِنْ ق",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ فَاطِرٍ آية 28",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/35:28/quran-uthmani",
+   "quote": "نَّمَا يَخْشَى ٱللَّهَ مِنْ عِبَادِهِ ٱلْعُلَمَٰٓؤُا۟ ۗ إِنَّ ٱللَّهَ عَزِي",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "naqd-1": [
   {
-   "ref": "الحجرات 49:6",
+   "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 6",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/49:6/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "ن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍۢ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا ب",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-2": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 6",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:6/quran-uthmani",
+   "quote": "ن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍۢ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا ب",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ النَّجۡمِ آية 23",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/53:23/quran-uthmani",
+   "quote": "ن يَتَّبِعُونَ إِلَّا ٱلظَّنَّ وَمَا تَهْوَى ٱلْأَنفُسُ ۖ وَلَقَدْ ج",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-3": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 111",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/2:111/quran-uthmani",
+   "quote": "كَ أَمَانِيُّهُمْ ۗ قُلْ هَاتُوا۟ بُرْهَٰنَكُمْ إِن كُنتُمْ صَٰدِقِين",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-5": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الزُّخۡرُفِ آية 23",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/43:23/quran-uthmani",
+   "quote": "نَّا وَجَدْنَآ ءَابَآءَنَا عَلَىٰٓ أُمَّةٍۢ وَإِنَّا عَلَىٰٓ ءَاثَٰرِهِم مُّقْتَدُو",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ النَّحۡلِ آية 43",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/16:43/quran-uthmani",
+   "quote": " إِلَيْهِمْ ۚ فَسْـَٔلُوٓا۟ أَهْلَ ٱلذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُون",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-6": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النَّجۡمِ آية 23",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/53:23/quran-uthmani",
+   "quote": "ن يَتَّبِعُونَ إِلَّا ٱلظَّنَّ وَمَا تَهْوَى ٱلْأَنفُسُ ۖ وَلَقَدْ ج",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-7": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 46",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/4:46/quran-uthmani",
+   "quote": "يُحَرِّفُونَ ٱلْكَلِمَ عَن مَّوَاضِعِهِۦ وَيَقُولُونَ سَمِعْنَا ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-8": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 6",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:6/quran-uthmani",
+   "quote": "ن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍۢ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا ب",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-9": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النَّحۡلِ آية 125",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/16:125/quran-uthmani",
+   "quote": "وَجَٰدِلْهُم بِٱلَّتِى هِىَ أَحْسَنُ ۚ إِنَّ رَبَّكَ هُوَ أَعْلَمُ بِم",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-10": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 32",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/2:32/quran-uthmani",
+   "quote": "لَا عِلْمَ لَنَآ إِلَّا مَا عَلَّمْتَنَآ ۖ إِنَّكَ أَنتَ ٱلْعَلِيمُ ٱلْحَك",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-11": [
+  {
+   "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 4251، حكم الألباني: Hasan",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/4251.json",
+   "quote": "لم ـ ‏:‏ ‏ \"‏ كُلُّ بَنِي آدَمَ خَطَّاءٌ وَخَيْرُ الْخَطَّائِينَ التَّوَّابُونَ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "naqd-12": [
+  {
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 4398، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/4398.json",
+   "quote": "رُفِعَ الْقَلَمُ عَنْ ثَلاَثَةٍ عَنِ النَّائِمِ حَتَّى يَسْتَيْقِظ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "ilam-1": [
   {
-   "ref": "ق 50:18",
+   "ref": "القرآن الكريم، سُورَةُ قٓ آية 18",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/50:18/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "مَّا يَلْفِظُ مِن قَوْلٍ إِلَّا لَدَيْهِ رَقِيبٌ عَتِيد",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilam-2": [
+  {
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 4992، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/4992.json",
+   "quote": "كَفَى بِالْمَرْءِ إِثْمًا أَنْ يُحَدِّثَ بِكُلِّ مَا سَمِعَ ‏\"‏ ‏.‏ قَالَ أَبُو",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "ilam-3": [
   {
-   "ref": "الأحزاب 33:60",
+   "ref": "القرآن الكريم، سُورَةُ الأَحۡزَابِ آية 60",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/33:60/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "وَٱلْمُرْجِفُونَ فِى ٱلْمَدِينَةِ لَنُغْرِيَنَّكَ بِهِمْ ثُمَّ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilam-4": [
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2416، حكم الألباني: Hasan",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2416.json",
+   "quote": "عَنْ عُمْرِهِ فِيمَا أَفْنَاهُ وَعَنْ شَبَابِهِ فِيمَا أَبْلاَهُ و",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilam-5": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6639",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6639.json",
+   "quote": "عَلَيْكُمْ بِالصِّدْقِ فَإِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ وَإِن",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilam-6": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 2351",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/2351.json",
+   "quote": "مَنْ سَنَّ فِي الإِسْلاَمِ سُنَّةً سَيِّئَةً كَانَ عَلَيْهِ وِزْرُه",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "ilam-7": [
   {
-   "ref": "الحجرات 49:12",
+   "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 12",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/49:12/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "وَلَا تَجَسَّسُوا۟ وَلَا يَغْتَب بَّعْضُكُم بَعْضًا ۚ أَيُحِبُّ أَحَدُك",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ النُّورِ آية 27",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/24:27/quran-uthmani",
+   "quote": "لَا تَدْخُلُوا۟ بُيُوتًا غَيْرَ بُيُوتِكُمْ حَتَّىٰ تَسْتَأْنِسُو",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilam-8": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النُّورِ آية 27",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/24:27/quran-uthmani",
+   "quote": "لَا تَدْخُلُوا۟ بُيُوتًا غَيْرَ بُيُوتِكُمْ حَتَّىٰ تَسْتَأْنِسُو",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "ilam-9": [
   {
-   "ref": "الحجرات 49:11",
+   "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 11",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/49:11/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "لَا يَسْخَرْ قَوْمٌۭ مِّن قَوْمٍ عَسَىٰٓ أَن يَكُونُوا۟ خَيْرًۭا ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilam-10": [
+  {
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 3657، حكم الألباني: Hasan",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/3657.json",
+   "quote": "مَنْ أُفْتِيَ بِغَيْرِ عِلْمٍ كَانَ إِثْمُهُ عَلَى مَنْ أَفْتَاهُ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 2351",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/2351.json",
+   "quote": "مَنْ سَنَّ فِي الإِسْلاَمِ سُنَّةً سَيِّئَةً كَانَ عَلَيْهِ وِزْرُه",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ilam-11": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6906",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6906.json",
+   "quote": "للَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عِلْمٍ لاَ يَنْفَعُ وَمِنْ ق",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ai-2": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 6",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:6/quran-uthmani",
+   "quote": "ن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍۢ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا ب",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ai-3": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 6",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:6/quran-uthmani",
+   "quote": "ن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍۢ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا ب",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ الإِسۡرَاءِ آية 36",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/17:36/quran-uthmani",
+   "quote": "وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِۦ عِلْمٌ ۚ إِنَّ ٱلسَّمْعَ وَٱلْبَص",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "ai-4": [
   {
-   "ref": "صحيح البخاري 110",
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 107",
    "type": "hadith",
-   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/110.json",
-   "fetched": "2026-10-15"
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/107.json",
+   "quote": "ولُ ‏ \"‏ مَنْ كَذَبَ عَلَىَّ فَلْيَتَبَوَّأْ مَقْعَدَهُ مِنَ النَّارِ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ai-5": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النَّحۡلِ آية 43",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/16:43/quran-uthmani",
+   "quote": " إِلَيْهِمْ ۚ فَسْـَٔلُوٓا۟ أَهْلَ ٱلذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُون",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ai-6": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5219",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5219.json",
+   "quote": "لم ‏ \"‏ الْمُتَشَبِّعُ بِمَا لَمْ يُعْطَ كَلاَبِسِ ثَوْبَىْ زُورٍ ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "ai-7": [
   {
-   "ref": "سنن ابن ماجه 2224 (ليس منا من غش؛ الألباني: صحيح)",
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 283",
    "type": "hadith",
-   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/2224.json",
-   "fetched": "2026-10-15"
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/283.json",
+   "quote": "عَلَيْنَا السِّلاَحَ فَلَيْسَ مِنَّا وَمَنْ غَشَّنَا فَلَيْسَ مِنَّا ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ai-8": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الأَنفَالِ آية 27",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/8:27/quran-uthmani",
+   "quote": "لَا تَخُونُوا۟ ٱللَّهَ وَٱلرَّسُولَ وَتَخُونُوٓا۟ أَمَٰنَٰتِكُمْ وَأَن",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ai-9": [
+  {
+   "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 2340، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/2340.json",
+   "quote": " الله عليه وسلم قَضَى أَنْ ‏ \"‏ لاَ ضَرَرَ وَلاَ ضِرَارَ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ai-10": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 59",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/4:59/quran-uthmani",
+   "quote": "فَإِن تَنَٰزَعْتُمْ فِى شَىْءٍۢ فَرُدُّوهُ إِلَى ٱللَّهِ وَٱلرَّسُول",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ النَّحۡلِ آية 43",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/16:43/quran-uthmani",
+   "quote": " إِلَيْهِمْ ۚ فَسْـَٔلُوٓا۟ أَهْلَ ٱلذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُون",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "najah-1": [
   {
-   "ref": "آل عمران 3:185",
+   "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 185",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/3:185/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "فَمَن زُحْزِحَ عَنِ ٱلنَّارِ وَأُدْخِلَ ٱلْجَنَّةَ فَقَدْ فَازَ ۗ و",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-2": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 216",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/2:216/quran-uthmani",
+   "quote": "وَعَسَىٰٓ أَن تَكْرَهُوا۟ شَيْـًۭٔا وَهُوَ خَيْرٌۭ لَّكُمْ ۖ وَعَسَىٰٓ أَن",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-3": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6774",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6774.json",
+   "quote": "لاَ تَقُلْ لَوْ أَنِّي فَعَلْتُ كَانَ كَذَا وَكَذَا ‏.‏ وَلَكِنْ قُل",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-4": [
+  {
+   "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 4251، حكم الألباني: Hasan",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/4251.json",
+   "quote": "لم ـ ‏:‏ ‏ \"‏ كُلُّ بَنِي آدَمَ خَطَّاءٌ وَخَيْرُ الْخَطَّائِينَ التَّوَّابُونَ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-5": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6465",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6465.json",
+   "quote": "دْوَمُهَا وَإِنْ قَلَّ ‏\"‏‏.‏ وَقَالَ ‏\"‏ اكْلَفُوا مِنَ الأَعْمَالِ مَا تُطِيق",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-6": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2079",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2079.json",
+   "quote": "لْبَيِّعَانِ بِالْخِيَارِ مَا لَمْ يَتَفَرَّقَا ـ أَوْ قَالَ حَتَّى يَت",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-7": [
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2513، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2513.json",
+   "quote": "نْظُرُوا إِلَى مَنْ هُوَ أَسْفَلَ مِنْكُمْ وَلاَ تَنْظُرُوا إِلَى",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-8": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 2426",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/2426.json",
+   "quote": "قَدْ أَفْلَحَ مَنْ أَسْلَمَ وَرُزِقَ كَفَافًا وَقَنَّعَهُ اللَّهُ ب",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-9": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 1",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/1.json",
+   "quote": "نَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَن",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "najah-10": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الزُّمَرِ آية 10",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/39:10/quran-uthmani",
+   "quote": " وَٰسِعَةٌ ۗ إِنَّمَا يُوَفَّى ٱلصَّٰبِرُونَ أَجْرَهُم بِغَيْرِ حِسَاب",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "najah-11": [
   {
-   "ref": "صحيح البخاري 6464",
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6465",
    "type": "hadith",
-   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6464.json",
-   "fetched": "2026-10-15"
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6465.json",
+   "quote": "دْوَمُهَا وَإِنْ قَلَّ ‏\"‏‏.‏ وَقَالَ ‏\"‏ اكْلَفُوا مِنَ الأَعْمَالِ مَا تُطِيق",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 7122",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/7122.json",
+   "quote": "وَاعْلَمُوا أَنَّ أَحَبَّ الْعَمَلِ إِلَى اللَّهِ أَدْوَمُهُ وَإِنْ قَلَّ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-1": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6382",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6382.json",
+   "quote": "ذَا هَمَّ بِالأَمْرِ فَلْيَرْكَعْ رَكْعَتَيْنِ، ثُمَّ يَقُولُ الل",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 159",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/3:159/quran-uthmani",
+   "quote": "فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْم",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "qarar-2": [
   {
-   "ref": "صحيح البخاري 6382",
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6382",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6382.json",
-   "fetched": "2026-10-15"
+   "quote": "ذَا هَمَّ بِالأَمْرِ فَلْيَرْكَعْ رَكْعَتَيْنِ، ثُمَّ يَقُولُ الل",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-3": [
+  {
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 5128، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/5128.json",
+   "quote": "للَّهِ صلى الله عليه وسلم ‏ \"‏ الْمُسْتَشَارُ مُؤْتَمَنٌ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-4": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 6",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/49:6/quran-uthmani",
+   "quote": "ن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍۢ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا ب",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-5": [
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2517، حكم الألباني: Hasan",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2517.json",
+   "quote": "عْقِلُهَا وَأَتَوَكَّلُ أَوْ أُطْلِقُهَا وَأَتَوَكَّلُ قَالَ ‏ \"‏ اعْقِلْهَا وَت",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ آلِ عِمۡرَانَ آية 159",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/3:159/quran-uthmani",
+   "quote": "فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْم",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "qarar-7": [
   {
-   "ref": "سنن الترمذي 1084 (الألباني: حسن؛ الزبير علي زئي: ضعيف)",
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 1084، حكم الألباني: Hasan",
    "type": "hadith",
    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/1084.json",
-   "fetched": "2026-10-15"
+   "quote": "ذَا خَطَبَ إِلَيْكُمْ مَنْ تَرْضَوْنَ دِينَهُ وَخُلُقَهُ فَزَو",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-8": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2079",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2079.json",
+   "quote": "لْبَيِّعَانِ بِالْخِيَارِ مَا لَمْ يَتَفَرَّقَا ـ أَوْ قَالَ حَتَّى يَت",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2417، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2417.json",
+   "quote": "وَعَنْ مَالِهِ مِنْ أَيْنَ اكْتَسَبَهُ وَفِيمَا أَنْفَقَهُ وَعَنْ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-9": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 4945",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/4945.json",
+   "quote": "عْمَلُوا فَكُلٌّ مُيَسَّرٌ ‏\"‏‏.‏ ثُمَّ قَرَأَ ‏{‏فَأَمَّا مَنْ أَعْطَى وَاتَّقَى",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-10": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 97",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/4:97/quran-uthmani",
+   "quote": "لَمْ تَكُنْ أَرْضُ ٱللَّهِ وَٰسِعَةًۭ فَتُهَاجِرُوا۟ فِيهَا ۚ فَأُو۟لَٰٓئِك",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ المُلۡكِ آية 15",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/67:15/quran-uthmani",
+   "quote": "فَٱمْشُوا۟ فِى مَنَاكِبِهَا وَكُلُوا۟ مِن رِّزْقِهِۦ ۖ وَإِلَيْهِ ٱلن",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-11": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 3808",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/3808.json",
+   "quote": "ليه وسلم عَنْ بَيْعِ الْحَصَاةِ وَعَنْ بَيْعِ الْغَرَرِ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-12": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6774",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6774.json",
+   "quote": "حْرِصْ عَلَى مَا يَنْفَعُكَ وَاسْتَعِنْ بِاللَّهِ وَلاَ تَعْجِز",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-13": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6774",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6774.json",
+   "quote": "لاَ تَقُلْ لَوْ أَنِّي فَعَلْتُ كَانَ كَذَا وَكَذَا ‏.‏ وَلَكِنْ قُل",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ المُدَّثِّرِ آية 38",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/74:38/quran-uthmani",
+   "quote": "كُلُّ نَفْسٍۭ بِمَا كَسَبَتْ رَهِينَة",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "qarar-15": [
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6774",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6774.json",
+   "quote": "لاَ تَقُلْ لَوْ أَنِّي فَعَلْتُ كَانَ كَذَا وَكَذَا ‏.‏ وَلَكِنْ قُل",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "waqiam-2": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الأَعۡرَافِ آية 199",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/7:199/quran-uthmani",
+   "quote": "خُذِ ٱلْعَفْوَ وَأْمُرْ بِٱلْعُرْفِ وَأَعْرِضْ عَنِ ٱلْجَٰهِلِين",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "waqiam-3": [
   {
-   "ref": "صحيح البخاري 6014",
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 6015",
    "type": "hadith",
-   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6014.json",
-   "fetched": "2026-10-15"
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/6015.json",
+   "quote": "مَا زَالَ جِبْرِيلُ يُوصِينِي بِالْجَارِ حَتَّى ظَنَنْتُ أَنَّه",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "waqiam-4": [
+  {
+   "ref": "القرآن الكريم، سُورَةُ الأَنفَالِ آية 27",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/8:27/quran-uthmani",
+   "quote": "لَا تَخُونُوا۟ ٱللَّهَ وَٱلرَّسُولَ وَتَخُونُوٓا۟ أَمَٰنَٰتِكُمْ وَأَن",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 283",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/283.json",
+   "quote": "عَلَيْنَا السِّلاَحَ فَلَيْسَ مِنَّا وَمَنْ غَشَّنَا فَلَيْسَ مِنَّا ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "waqiam-5": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 7145",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/7145.json",
+   "quote": "هَا مَا خَرَجُوا مِنْهَا أَبَدًا، إِنَّمَا الطَّاعَةُ فِي الْمَعْرُوفِ ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 2340، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/2340.json",
+   "quote": " الله عليه وسلم قَضَى أَنْ ‏ \"‏ لاَ ضَرَرَ وَلاَ ضِرَارَ ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "waqiam-6": [
   {
-   "ref": "يوسف 12:87",
+   "ref": "جامع الترمذي (ترقيم hadith-api) رقم 2517، حكم الألباني: Hasan",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-tirmidhi/2517.json",
+   "quote": "عْقِلُهَا وَأَتَوَكَّلُ أَوْ أُطْلِقُهَا وَأَتَوَكَّلُ قَالَ ‏ \"‏ اعْقِلْهَا وَت",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ يُوسُفَ آية 87",
    "type": "quran",
    "url": "https://api.alquran.cloud/v1/ayah/12:87/quran-uthmani",
-   "fetched": "2026-10-15"
+   "quote": "وَلَا تَا۟يْـَٔسُوا۟ مِن رَّوْحِ ٱللَّهِ ۖ إِنَّهُۥ لَا يَا۟يْـَٔسُ مِن رَّوْح",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ المُلۡكِ آية 15",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/67:15/quran-uthmani",
+   "quote": "فَٱمْشُوا۟ فِى مَنَاكِبِهَا وَكُلُوا۟ مِن رِّزْقِهِۦ ۖ وَإِلَيْهِ ٱلن",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "waqiam-7": [
   {
-   "ref": "الحجرات 49:12",
+   "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6593",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6593.json",
+   "quote": "ذِكْرُكَ أَخَاكَ بِمَا يَكْرَهُ ‏\"‏ ‏.‏ قِيلَ أَفَرَأَيْتَ إِنْ كَانَ فِي أَخ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سنن أبي داود (ترقيم hadith-api) رقم 4875، حكم الألباني: Sahih",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/4875.json",
+   "quote": "لَقَدْ قُلْتِ كَلِمَةً لَوْ مُزِجَتْ بِمَاءِ الْبَحْرِ لَمَزَجَت",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "waqiam-8": [
+  {
+   "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2442",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2442.json",
+   "quote": "وَمَنْ كَانَ فِي حَاجَةِ أَخِيهِ كَانَ اللَّهُ فِي حَاجَتِهِ، و",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ المَائـِدَةِ آية 2",
    "type": "quran",
-   "url": "https://api.alquran.cloud/v1/ayah/49:12/quran-uthmani",
-   "fetched": "2026-10-15"
+   "url": "https://api.alquran.cloud/v1/ayah/5:2/quran-uthmani",
+   "quote": "وَتَعَاوَنُوا۟ عَلَى ٱلْبِرِّ وَٱلتَّقْوَىٰ ۖ وَلَا تَعَاوَنُوا۟ عَلَى",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 264",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/2:264/quran-uthmani",
+   "quote": "لَا تُبْطِلُوا۟ صَدَقَٰتِكُم بِٱلْمَنِّ وَٱلْأَذَىٰ كَٱلَّذِى يُنفِق",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ]
 }

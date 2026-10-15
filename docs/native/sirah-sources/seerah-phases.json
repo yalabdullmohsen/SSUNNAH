@@ -1,128 +1,402 @@
 {
  "lineage-birth": [
   {
-   "ref": "ويكيبيديا العربية: محمد: الميلاد عام الفيل 570/571 م بمكة",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/محمد",
-   "fetched": "2026-10-15"
+   "ref": "سيرة ابن هشام (صفحة 24)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/24",
+   "quote": "مُحَمَّدُ بْنُ عَبْدِ اللَّهِ ابْن عَبْدِ الْمُطَّلِبِ، وَاسْمُ عَبْدِ الْمُطَّلِبِ: شَيْبَةُ [٢] بْنُ هَاشِمٍ،",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 181)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/181",
+   "quote": "لَيْلَةً خَلَتْ مِنْ شَهْرِ رَبِيعٍ الْأَوَّلِ، عَامَ الْفِيلِ [٤] [١] لَا يعرف فِي الْعَرَب من تسمى بِهَذَا الِاسْم قبله صَلَّى",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 182)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/182",
+   "quote": "وَلَدْتُ أَنَا وَرَسُولُ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ عَامَ الْفِيلِ، فَنَحْنُ لِدَانِ [١] .",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم 2747 (ترقيم hadith-api)، رقم الكتاب المطبوع 1162.02",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/2747.json",
+   "quote": "وَسُئِلَ عَنْ صَوْمِ يَوْمِ الاِثْنَيْنِ قَالَ ‏\"‏ ذَاكَ يَوْمٌ وُلِدْتُ فِيهِ وَيَوْمٌ بُعِثْتُ أَوْ أُنْزِلَ عَلَىَّ فِيهِ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "childhood": [
   {
-   "ref": "ويكيبيديا العربية: محمد: الرضاعة (ثويبة وحليمة)، وفاة الأم وهو ابن ست، كفالة عبد المطلب ثم أبي طالب",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/محمد",
-   "fetched": "2026-10-15"
+   "ref": "صحيح البخاري 5101 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5101.json",
+   "quote": "لاَبْنَةُ أَخِي مِنَ الرَّضَاعَةِ، أَرْضَعَتْنِي وَأَبَا سَلَمَةَ ثُوَيْبَةُ فَلاَ تَعْرِضْنَ عَلَىَّ بَنَاتِكُنَّ وَلاَ أَخَوَاتِكُنَّ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم 413 (ترقيم hadith-api)، رقم الكتاب المطبوع 162.03",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/413.json",
+   "quote": "وَهُوَ يَلْعَبُ مَعَ الْغِلْمَانِ فَأَخَذَهُ فَصَرَعَهُ فَشَقَّ عَنْ قَلْبِهِ فَاسْتَخْرَجَ الْقَلْبَ فَاسْتَخْرَجَ مِنْهُ عَلَقَةً فَقَالَ هَذَا حَظُّ الشَّيْطَانِ مِنْكَ ‏.‏",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 183)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/183",
+   "quote": "يُقَالُ لَهَا: حَلِيمَةُ ابْنَةُ أَبِي ذُؤَيْبٍ. وَأَبُو ذُؤَيْبٍ: عَبْدُ اللَّهِ بْنُ الْحَارِثِ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 191)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/191",
+   "quote": "وَفَاةُ آمِنَةَ وَحَالُ رَسُولِ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ مَعَ جَدِّهِ عَبْدِ الْمُطَّلِبِ بَعْدَهَا",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "youth": [
   {
-   "ref": "ويكيبيديا العربية: محمد: زواج خديجة، حراء",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/محمد",
-   "fetched": "2026-10-15"
+   "ref": "سيرة ابن هشام (صفحة 156)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/156",
+   "quote": "حِلْفُ الْفُضُولِ (سَبَب تَسْمِيَته كَذَلِك) : قَالَ ابْنُ هِشَامٍ: وَأَمَّا حِلْفُ الْفُضُولِ",
+   "fetched": "2026-10-15",
+   "verified": true
   },
   {
-   "ref": "ويكيبيديا العربية: حلف الفضول (590 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/حلف_الفضول",
-   "fetched": "2026-10-15"
-  }
- ],
- "secret-dawah": [
-  {
-   "ref": "ويكيبيديا العربية: دار الأرقم: مقر الدعوة السرية",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/دار_الأرقم",
-   "fetched": "2026-10-15"
+   "ref": "سيرة ابن هشام (صفحة 210)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/210",
+   "quote": "فَلَمَّا بَلَغَ رَسُولُ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ خَمْسًا وَعِشْرِينَ سَنَةً [١]",
+   "fetched": "2026-10-15",
+   "verified": true
   },
   {
-   "ref": "ويكيبيديا العربية: محمد: ثلاث سنوات سرًّا",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/محمد",
-   "fetched": "2026-10-15"
-  }
- ],
- "hijra": [
-  {
-   "ref": "ويكيبيديا العربية: الهجرة النبوية: 622 م، غار ثور، أبو بكر، بناء المسجد النبوي",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/الهجرة_النبوية",
-   "fetched": "2026-10-15"
-  }
- ],
- "ghazawat": [
-  {
-   "ref": "ويكيبيديا العربية: غزوة بدر (17 رمضان 2 هـ/624 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/غزوة_بدر",
-   "fetched": "2026-10-15"
+   "ref": "سيرة ابن هشام (صفحة 213)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/213",
+   "quote": "أَكْبَرُ بَنِيهِ الْقَاسِمُ، ثُمَّ الطَّيِّبُ، ثُمَّ الطَّاهِرُ، وَأَكْبَرُ بَنَاتِهِ رُقَيَّةُ، ثُمَّ زَيْنَبُ، ثُمَّ أُمُّ كُلْثُومٍ، ثُمَّ",
+   "fetched": "2026-10-15",
+   "verified": true
   },
   {
-   "ref": "ويكيبيديا العربية: غزوة الخندق (5 هـ/مارس 627 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/غزوة_الخندق",
-   "fetched": "2026-10-15"
-  },
-  {
-   "ref": "ويكيبيديا العربية: غزوات محمد (أحد 3 هـ)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/غزوات_محمد",
-   "fetched": "2026-10-15"
-  }
- ],
- "hudaybiyya-mecca": [
-  {
-   "ref": "ويكيبيديا العربية: صلح الحديبية (6 هـ/628 م؛ الفتح 1)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/صلح_الحديبية",
-   "fetched": "2026-10-15"
-  },
-  {
-   "ref": "ويكيبيديا العربية: فتح مكة (8 هـ/630 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/فتح_مكة",
-   "fetched": "2026-10-15"
+   "ref": "صحيح البخاري 3 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3.json",
+   "quote": "بِغَارِ حِرَاءٍ فَيَتَحَنَّثُ فِيهِ ـ وَهُوَ التَّعَبُّدُ ـ اللَّيَالِيَ ذَوَاتِ الْعَدَدِ قَبْلَ أَنْ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "prophethood": [
   {
-   "ref": "ويكيبيديا العربية: محمد: بدء الوحي نحو 610 م في حراء (جبريل)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/محمد",
-   "fetched": "2026-10-15"
+   "ref": "صحيح البخاري 3 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3.json",
+   "quote": "كَلاَّ وَاللَّهِ مَا يُخْزِيكَ اللَّهُ أَبَدًا، إِنَّكَ لَتَصِلُ الرَّحِمَ، وَتَحْمِلُ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 3 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3.json",
+   "quote": "فَجَاءَهُ الْمَلَكُ فَقَالَ اقْرَأْ‏.‏ قَالَ ‏\"‏ مَا أَنَا",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن 96:1",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/96:1/quran-uthmani",
+   "quote": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ ٱقْرَأْ بِٱسْمِ رَبِّكَ ٱلَّذِى خَلَقَ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "secret-dawah": [
+  {
+   "ref": "سيرة ابن هشام (صفحة 276)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/276",
+   "quote": "كَانَ النَّبِي صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ مستخفيا من قُرَيْش بِمَكَّة، يَدْعُو النَّاس فِيهَا إِلَى",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 285)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/285",
+   "quote": "اللَّهُ تَعَالَى بِإِظْهَارِ دِينِهِ ثَلَاثَ سِنِينَ- فِيمَا بَلَغَنِي- مِنْ مَبْعَثِهِ، ثُمَّ قَالَ اللَّهُ تَعَالَى لَهُ: فَاصْدَعْ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 356)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/356",
+   "quote": "إرْسَالُ قُرَيْشٍ إلَى الْحَبَشَةِ فِي طَلَبِ الْمُهَاجِرِينَ إلَيْهَا (رَسُولَا قُرَيْشٍ إِلَى النَّجَاشِيِّ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 454)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/454",
+   "quote": "الْعَامُ الْمُقْبِلُ وَافَى الْمَوْسِمَ مِنْ الْأَنْصَارِ اثْنَا عَشَرَ رَجُلًا، فَلَقَوْهُ بِالْعَقَبَةِ. (قَالَ) [١] : وَهِيَ الْعَقَبَةُ الْأُولَى، فَبَايَعُوا",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "open-dawah": [
   {
-   "ref": "ويكيبيديا العربية: الهجرة إلى الحبشة (رجب السنة 5 للبعثة/615 م)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/الهجرة_إلى_الحبشة",
-   "fetched": "2026-10-15"
+   "ref": "سيرة ابن هشام (صفحة 285)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/285",
+   "quote": "«فَاصْدَعْ بِما تُؤْمَرُ ١٥: ٩٤» : إِمَّا أَن",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 2752 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2752.json",
+   "quote": "لَمَّا نَزَلَتْ ‏{‏وَأَنْذِرْ عَشِيرَتَكَ الأَقْرَبِينَ‏}‏ جَعَلَ النَّبِيُّ صلى الله عليه وسلم يُنَادِي ‏\"‏ يَا",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 315)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/315",
+   "quote": "فَلَمْ يَلْبَثْ حَمْزَةُ بْنُ عَبْدِ الْمُطَّلِبِ رَضِيَ اللَّهُ عَنْهُ أَنْ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "year-of-sorrow": [
   {
-   "ref": "ويكيبيديا العربية: عام الحزن (619 م، وفاة خديجة وأبي طالب)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/عام_الحزن",
-   "fetched": "2026-10-15"
+   "ref": "صحيح البخاري 1360 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/1360.json",
+   "quote": "‏\"‏ يَا عَمِّ، قُلْ لاَ إِلَهَ إِلاَّ اللَّهُ، كَلِمَةً أَشْهَدُ لَكَ بِهَا عِنْدَ اللَّهِ ‏\"‏‏.‏ فَقَالَ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 3231 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3231.json",
+   "quote": "فَانْطَلَقْتُ وَأَنَا مَهْمُومٌ عَلَى وَجْهِي، فَلَمْ أَسْتَفِقْ إِلاَّ وَأَنَا بِقَرْنِ الثَّعَالِبِ، فَرَفَعْتُ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن 17:1",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/17:1/quran-uthmani",
+   "quote": "سُبْحَٰنَ ٱلَّذِىٓ أَسْرَىٰ بِعَبْدِهِۦ لَيْلًۭا مِّنَ ٱلْمَسْجِدِ ٱلْحَرَامِ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 349 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/349.json",
+   "quote": "‏\"‏ فَفَرَضَ اللَّهُ عَلَى أُمَّتِي خَمْسِينَ صَلاَةً، فَرَجَعْتُ بِذَلِكَ حَتَّى مَرَرْتُ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "hijra": [
+  {
+   "ref": "صحيح البخاري 3902 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3902.json",
+   "quote": "فَمَكُثَ بِمَكَّةَ ثَلاَثَ عَشْرَةَ سَنَةً يُوحَى إِلَيْهِ، ثُمَّ أُمِرَ بِالْهِجْرَةِ فَهَاجَرَ عَشْرَ سِنِينَ، وَمَاتَ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 515)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/515",
+   "quote": "لِاثْنَتَيْ عَشْرَةَ لَيْلَةٍ خَلَتْ مِنْ شَهْرِ رَبِيعٍ الْأَوَّلِ يَوْمَ الِاثْنَيْنِ، حِينَ اشْتَدَّ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 524)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/524",
+   "quote": "هَذَا كِتَابٌ مِنْ مُحَمَّدٍ النَّبِيِّ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، بَيْنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ مِنْ قُرَيْشٍ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 527)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/527",
+   "quote": "وَآخَى رَسُولُ اللَّهِ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ بَيْنَ أَصْحَابِهِ مِنْ الْمُهَاجِرِينَ [١]",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 454)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/454",
+   "quote": "الْعَامُ الْمُقْبِلُ وَافَى الْمَوْسِمَ مِنْ الْأَنْصَارِ اثْنَا عَشَرَ رَجُلًا، فَلَقَوْهُ بِالْعَقَبَةِ. (قَالَ) [١] : وَهِيَ الْعَقَبَةُ الْأُولَى، فَبَايَعُوا",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "ghazawat": [
+  {
+   "ref": "صحيح البخاري 3949 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3949.json",
+   "quote": "كَمْ غَزَا النَّبِيُّ صلى الله عليه وسلم مِنْ غَزْوَةٍ قَالَ تِسْعَ عَشْرَةَ‏.‏",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 629)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/629",
+   "quote": ". غَزْوَةُ بَدْرٍ الْكُبْرَى (عِيرُ أَبِي سُفْيَانَ) : قَالَ ابْنُ إسْحَاقَ:",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 1345)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/1345",
+   "quote": "سَبْعًا وَعِشْرِينَ غَزْوَةً، مِنْهَا غَزْوَةُ وَدَّانَ، وَهِيَ غَزْوَةُ الْأَبْوَاءِ، ثُمَّ",
+   "fetched": "2026-10-15",
+   "verified": true
+  }
+ ],
+ "hudaybiyya-mecca": [
+  {
+   "ref": "سيرة ابن هشام (صفحة 1045)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/1045",
+   "quote": "أَمْرُ الْحُدَيْبِيَةِ فِي آخِرِ سَنَةِ سِتٍّ، وَذِكْرُ بَيْعَةِ الرِّضْوَانِ وَالصُّلْحِ بَيْنَ رَسُولِ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 3182 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3182.json",
+   "quote": "فَنَزَلَتْ سُورَةُ الْفَتْحِ، فَقَرَأَهَا رَسُولُ اللَّهِ صلى الله عليه وسلم",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن 48:1",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/48:1/quran-uthmani",
+   "quote": "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ إِنَّا فَتَحْنَا لَكَ فَتْحًۭا مُّبِينًۭا",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 4287 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/4287.json",
+   "quote": "‏ \"‏ جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ، جَاءَ الْحَقُّ، وَمَا يُبْدِئُ الْبَاطِلُ وَمَا",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "سيرة ابن هشام (صفحة 1149)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/1149",
+   "quote": "اذْهَبُوا فَأَنْتُمْ الطُّلَقَاءُ» (إقْرَارُ الرَّسُولِ بن طَلْحَةَ عَلَى",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "farewell": [
   {
-   "ref": "ويكيبيديا العربية: حجة الوداع (السنة العاشرة للهجرة؛ خطبة عرفة)",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/حجة_الوداع",
-   "fetched": "2026-10-15"
+   "ref": "سيرة ابن هشام (صفحة 1338)",
+   "type": "book",
+   "url": "https://shamela.ws/book/23833/1338",
+   "quote": "حَجَّةُ الْوَدَاعِ (تَجَهُّزُ الرَّسُولُ وَاسْتِعْمَالِهِ عَلَى الْمَدِينَةِ أَبَا دُجَانَةَ) :",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح مسلم 2951 (ترقيم hadith-api)، رقم الكتاب المطبوع 1218.01",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/2951.json",
+   "quote": "تَرَكْتُ فِيكُمْ مَا لَنْ تَضِلُّوا بَعْدَهُ إِنِ اعْتَصَمْتُمْ بِهِ كِتَابَ اللَّهِ ‏.‏ وَأَنْتُمْ تُسْأَلُونَ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 67 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/67.json",
+   "quote": "‏\"‏ فَإِنَّ دِمَاءَكُمْ وَأَمْوَالَكُمْ وَأَعْرَاضَكُمْ بَيْنَكُمْ حَرَامٌ كَحُرْمَةِ يَوْمِكُمْ هَذَا، فِي شَهْرِكُمْ هَذَا، فِي بَلَدِكُمْ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 45 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/45.json",
+   "quote": "‏{‏الْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِي وَرَضِيتُ لَكُمُ الإِسْلاَمَ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ],
  "death": [
   {
-   "ref": "ويكيبيديا العربية: محمد: وفاته ربيع الأول 11 هـ/يونيو 632 م",
-   "type": "article",
-   "url": "https://ar.wikipedia.org/wiki/محمد",
-   "fetched": "2026-10-15"
+   "ref": "صحيح البخاري 664 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/664.json",
+   "quote": "‏\"‏ مُرُوا أَبَا بَكْرٍ فَلْيُصَلِّ بِالنَّاسِ ‏\"‏‏.‏ فَقِيلَ لَهُ إِنَّ أَبَا",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 3667 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3667.json",
+   "quote": "أَلاَ مَنْ كَانَ يَعْبُدُ مُحَمَّدًا صلى الله عليه وسلم فَإِنَّ مُحَمَّدًا قَدْ مَاتَ، وَمَنْ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "صحيح البخاري 3536 (ترقيم hadith-api)",
+   "type": "hadith",
+   "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/3536.json",
+   "quote": "تُوُفِّيَ وَهْوَ ابْنُ ثَلاَثٍ وَسِتِّينَ‏.‏ وَقَالَ ابْنُ شِهَابٍ وَأَخْبَرَنِي سَعِيدُ",
+   "fetched": "2026-10-15",
+   "verified": true
+  },
+  {
+   "ref": "القرآن 3:144",
+   "type": "quran",
+   "url": "https://api.alquran.cloud/v1/ayah/3:144/quran-uthmani",
+   "quote": "وَمَا مُحَمَّدٌ إِلَّا رَسُولٌۭ قَدْ خَلَتْ مِن قَبْلِهِ",
+   "fetched": "2026-10-15",
+   "verified": true
   }
  ]
 }
