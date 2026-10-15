@@ -129,7 +129,7 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
   for (const [name, mod, key] of [["iman-topics", "iman-topics-data", "IMAN_TOPICS"], ["tazkiya-topics", "tazkiya-topics-data", "TAZKIYA_TOPICS"], ["usra-mujtama", "usra-mujtama-data", "USRA_MUJTAMA"]]) {
     const secs = (await import(`${src}/lib/${mod}.ts`))[key]
       .filter((s) => ok(s.id, name))
-      .map((s) => ({ ...s, lessons: s.lessons.filter((l) => ok(l.id, name)) }))
+      .map((s) => ({ ...s, lessons: s.lessons.filter((l) => ok(l.id, name) && !pending[`${name}/${l.id}`]) }))
       .filter((s) => s.lessons.length);
     out(name, secs);
     cnt(name, secs.reduce((n, s) => n + s.lessons.length, 0));

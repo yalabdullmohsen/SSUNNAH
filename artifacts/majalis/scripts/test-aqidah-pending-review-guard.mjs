@@ -15,3 +15,4 @@ for (const k of keys) {
 // التصفية مطبَّقة في مسار الكتابة الوحيد للمجموعات
 assert.match(src, /!pending\[`\$\{name\}\/\$\{it\.id\}`\]/, "writeGroups لا يصفّي pending_review");
 console.log(`ok: ${keys.length} عنصرًا مخفيًا`);
+assert.match(src, /ok\(l\.id, name\) && !pending\[`\$\{name\}\/\$\{l\.id\}`\]/, "حلقة الدروس لا تصفّي pending_review");
