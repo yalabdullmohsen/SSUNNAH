@@ -13,7 +13,8 @@ SIM="${SIM_UDID:-$(xcrun simctl list devices booted | grep -Eo '[0-9A-F-]{36}' |
 rm -rf "$WORK/src"; mkdir -p "$WORK/src" "$OUT"
 # المصادر تُنسخ وتُعاد كتابة widgetFamily (قيمة بيئة للقراءة فقط) إلى مفتاح snapFamily
 for f in "$APP"/PrayerWidget/*.swift "$APP"/Shared/*.swift; do
-  case "$(basename "$f")" in PrayerWidgetBundle.swift) continue;; esac
+  # ملفات التطبيق فقط (UIApplication/جلسة الصوت) ليست في هدف الويدجت الحقيقي (انظر generate-xcodeproj.rb) فلا تُجمَّع هنا
+  case "$(basename "$f")" in PrayerWidgetBundle.swift|PlaybackSessionController.swift|OfflineAudioStore.swift) continue;; esac
   sed 's/@Environment(\\\.widgetFamily)/@Environment(\\.snapFamily)/g' "$f" > "$WORK/src/$(basename "$f")"
 done
 cp "$APP/WidgetSnapshotHarness/SnapFamilyKey.swift" "$WORK/src/"
