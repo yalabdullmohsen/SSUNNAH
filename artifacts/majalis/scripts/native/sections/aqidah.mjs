@@ -11,7 +11,9 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
   const src = `${appRoot}/src`;
   const view = (n) => loadConsts(`${src}/views/${n}.tsx`);
   const verify = makeQuranVerifier(data);
-  const out = (name, v) => json(`aqidah/${name}.json`, v);
+  // مصادر موثّقة سجلًا بسجل (docs/native/aqidah-sources.json: ملف → معرّف السجل → sources) تُلحق بالسجل كما هي
+  const sidecar = JSON.parse(fs.readFileSync(new URL("../../../../../docs/native/aqidah-sources.json", import.meta.url), "utf8"));
+  const out = (name, v) => json(`aqidah/${name}.json`, Array.isArray(v) && sidecar[name] ? v.map((r) => (sidecar[name][r.id] ? { ...r, sources: sidecar[name][r.id] } : r)) : v);
   const cnt = (name, n) => { (counts.aqidah ??= {})[name] = n; };
   const A = "aqidah";
   const ok = (id, area) => (held(id) ? (reject(`${A}-${area}`, "محجوز"), false) : true);

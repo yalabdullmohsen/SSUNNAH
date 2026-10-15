@@ -35,7 +35,7 @@ FINAL="$OUT"; OUT="$(mktemp -d "${TMPDIR:-/tmp}/native-data.XXXXXX")"; trap 'rm 
 node --import tsx scripts/native/export-ios-data.mjs --out "$OUT" ${ADH:+$( [ -f "$ADH" ] && echo "--adhkar-json $ADH" )}
 # الضعيف/الموضوع: ملفان منفصلان عن verified-sahih (قرار يوسف 2026-10-14، DATA_CONTRACT §5.2)
 (cd "$ROOT" && node scripts/native-export-weak-hadith.mjs "$OUT/hadith")
-NEW=$(find "$OUT" -type f | wc -l | tr -d ' '); OLD=0; [ -d "$FINAL" ] && OLD=$(find "$FINAL" -type f | wc -l | tr -d ' ')
+NEW=$(find "$OUT" -type f | wc -l | tr -d ' '); OLD=0; [ -d "$FINAL" ] && OLD=$(find "$FINAL" -type f ! -name .input-hash | wc -l | tr -d ' ')
 if [ "$NEW" -lt "$OLD" ]; then echo "رُفض: الملفات الجديدة $NEW أقل من الحالية $OLD — لم يُمسّ $FINAL" >&2; exit 1; fi
 node --input-type=module -e '
 import fs from "node:fs"; import crypto from "node:crypto"; import path from "node:path";
