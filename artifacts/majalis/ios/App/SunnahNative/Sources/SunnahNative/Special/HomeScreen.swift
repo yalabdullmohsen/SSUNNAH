@@ -54,7 +54,11 @@ public struct HomeScreen: View {
         }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
-        .onAppear { daily = HomeDailyContent.load(on: Date()) }
+        .task {
+            // فك JSON (آية/حديث اليوم + سورة) خارج الخيط الرئيسي كي لا يؤخّر أول إطار
+            let date = Date()
+            daily = await Task.detached(priority: .userInitiated) { HomeDailyContent.load(on: date) }.value
+        }
     }
 
     private var header: some View {

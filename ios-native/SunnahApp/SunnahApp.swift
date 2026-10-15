@@ -13,19 +13,26 @@ struct SunnahApp: App {
     #endif
 
     init() {
+        PerformanceMetrics.shared.mark("initStart")
         RouteResolver.registerAll(in: .shared)
+        PerformanceMetrics.shared.mark("routesDone")
         PerformanceMetrics.shared.start()
+        PerformanceMetrics.shared.mark("metricsDone")
         // نظام إشعارات واحد (الصلاة + الأذكار + الورد...) بموافقة المستخدم فقط؛ لا بوابة ويب في التطبيق الأصلي.
         NativeNotificationsLifecycle.didFinishLaunching(notificationsEnabled: true)
+        PerformanceMetrics.shared.mark("initDone")
     }
 
     var body: some Scene {
+        let _ = PerformanceMetrics.shared.mark("bodyEval")
         WindowGroup {
             IntroHost {
             RootTabView(router: router, screen: Self.screen)
                 .sunnahAppearance()
                 .onAppear {
+                    PerformanceMetrics.shared.mark("firstAppear")
                     PrayerWidgetPublisher.publish()
+                    PerformanceMetrics.shared.mark("appearDone")
                     // لقطات native-loop: -snapshotRoute /path (للتصحيح فقط)
                     #if DEBUG
                     if let p = UserDefaults.standard.string(forKey: "snapshotRoute") { router.open(path: p); readiness.begin(route: p) }
@@ -49,13 +56,19 @@ struct SunnahApp: App {
                 #endif
                 .environment(\.audioEngineFactory, AudioEngines.live)
                 .environment(\.contentLoader, ContentLoader.live(bundle: .main))
-                .environment(\.platform, PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore())))
+                .environment(\.platform, Self.platform)
             }
         }
         .onChange(of: scenePhase) { phase in
             if phase == .active { PrayerWidgetPublisher.publish(); NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: true) }
         }
     }
+
+    /// خدمات المنصة تُنشأ مرة واحدة (كانت تُبنى من جديد عند كل تقييم لـbody).
+    private static let platform: PlatformServices = {
+        defer { PerformanceMetrics.shared.mark("platformBuilt") }
+        return PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore()))
+    }()
 
     /// شاشة مسجّلة في السجل، وإلا العنصر النائب لحين ظهور قالبها.
     @MainActor
