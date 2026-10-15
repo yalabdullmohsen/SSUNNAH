@@ -7,27 +7,38 @@ public enum ScreenState: String, Sendable {
     public static let ready = "screen.ready"
 }
 
-/// عدّاد حالات الشاشة الظاهرة حاليًا (يُحدَّث من onAppear/onDisappear للمكونات المشتركة).
+/// حالات الشاشة الظاهرة حاليًا، مفتاحها معرّف نسخة الواجهة (يُحدَّث من onAppear/onDisappear للمكونات المشتركة).
+/// المعرّف يجعل enter/leave متساويَي القوة (idempotent): onAppear مكرَّر لا يرفع العدّ مرتين، وonDisappear متأخر
+/// من شاشة سابقة لا يُنقص حالة شاشة جديدة، ولا يبقى عدّاد معلَّق إن لم يصل onDisappear (إغلاق الشاشة قبل النقصان).
 @MainActor
 public final class ScreenProbe: ObservableObject {
     public static let shared = ScreenProbe()
-    @Published public private(set) var counts: [ScreenState: Int] = [:]
+    private var live: [ScreenState: Set<UUID>] = [:]
     /// يزيد عند أي تغيّر؛ يستعمله المنتظر لاكتشاف الاستقرار.
     @Published public private(set) var revision = 0
-    func enter(_ s: ScreenState) { counts[s, default: 0] += 1; revision += 1 }
-    func leave(_ s: ScreenState) { counts[s] = max(0, (counts[s] ?? 0) - 1); revision += 1 }
-    public var isLoading: Bool { (counts[.loading] ?? 0) > 0 }
+    public func enter(_ s: ScreenState, id: UUID) { if live[s, default: []].insert(id).inserted { revision += 1 } }
+    public func leave(_ s: ScreenState, id: UUID) { if live[s]?.remove(id) != nil { revision += 1 } }
+    /// يصفّر كل الحالات (تبديل المسار في وضع التدقيق فقط).
+    public func reset() { live = [:]; revision += 1 }
+    public func count(_ s: ScreenState) -> Int { live[s]?.count ?? 0 }
+    public var isLoading: Bool { count(.loading) > 0 }
     /// الحالة النهائية: خطأ > فارغ > سليم.
-    public var outcome: String { (counts[.error] ?? 0) > 0 ? "error" : (counts[.empty] ?? 0) > 0 ? "empty" : "ok" }
+    public var outcome: String { count(.error) > 0 ? "error" : count(.empty) > 0 ? "empty" : "ok" }
+}
+
+private struct ScreenStateModifier: ViewModifier {
+    let state: ScreenState
+    @State private var id = UUID()
+    func body(content: Content) -> some View {
+        content.accessibilityIdentifier(state.rawValue)
+            .onAppear { ScreenProbe.shared.enter(state, id: id) }
+            .onDisappear { ScreenProbe.shared.leave(state, id: id) }
+    }
 }
 
 extension View {
     /// يعلن هذه الواجهة حالةً للشاشة (معرّف ثابت + تسجيل في ScreenProbe).
-    func screenState(_ s: ScreenState) -> some View {
-        accessibilityIdentifier(s.rawValue)
-            .onAppear { ScreenProbe.shared.enter(s) }
-            .onDisappear { ScreenProbe.shared.leave(s) }
-    }
+    func screenState(_ s: ScreenState) -> some View { modifier(ScreenStateModifier(state: s)) }
 }
 
 #if DEBUG
@@ -81,6 +92,7 @@ public enum SnapshotRoutesRunner {
             for (i, r) in routes.enumerated() {
                 try? fm.removeItem(at: next); try? fm.removeItem(at: ready)
                 router.stack = []
+                ScreenProbe.shared.reset()   // لا يرث المسار الجديد حالات المسار السابق
                 try? await Task.sleep(for: .milliseconds(150))
                 if r != "/" { router.open(path: r) }
                 let state = await readiness.settle(route: r)
