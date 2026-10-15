@@ -42,3 +42,11 @@ NATIVE_WINDOW=n1 APP=<SunnahApp.app> MODE=light BOARD=<dir> OPEN=inapp bash scri
 
 ## لا worktree ولا عمل داخل `/tmp`
 `/tmp` يُمسح عند إعادة التشغيل. الـworktrees في `~/.majalis-tools/wt/` أو `~/ssunnah-wt/`، والـDerivedData في `~/.majalis-tools/dd/<نافذة>`. `native-window-guard.sh` يرفض العمل من مسار تحت `/tmp` أو `/var/folders`. (السجلات المؤقتة فقط تجوز هناك.)
+
+## المحاكيات (قاعدة ملزمة)
+- لا أي سكربت يحذف أو يمسح (`simctl delete` / `erase` / `shutdown all` / `delete unavailable`) محاكيًا لم تنشئه النافذة نفسها في الجلسة نفسها. لا `erase all` أبدًا.
+- المسموح الوحيد: سكربت ينشئ محاكيه بنفسه (`simctl create`) ثم يحذف ذلك المعرّف حصرًا (مثل `capture-store-screenshots.sh`).
+- سبب القاعدة: اختفى `n2-sim` لأن `disk-clean.sh` كان يحذف كل المحاكيات عدا واحد؛ أُزيل ذلك. `scripts/check-no-sim-delete.sh` يفرض القاعدة (يُشغَّل في native-release-check).
+
+## أولوية طابور البناء
+`build-slot.sh` يرتّب الطابور: ن3 (قياس الأداء) ثم ن1 ثم ن2 ثم ن4؛ ن4 بناءاتها قصيرة (عيّنة/اختبار محدد). `BUILD_SLOT_PRIO=<رقم>` يتجاوز الأولوية.
