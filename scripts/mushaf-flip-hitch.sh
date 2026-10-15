@@ -12,7 +12,7 @@ xcrun simctl bootstatus "$SIM" -b >/dev/null 2>&1 || true
 xcrun simctl terminate "$SIM" "$BID" 2>/dev/null || true
 xcrun simctl install "$SIM" "$DD/Build/Products/${CONFIG}-iphonesimulator/SunnahApp.app"
 T0="$(date '+%Y-%m-%d %H:%M:%S')"
-xcrun simctl launch "$SIM" "$BID" -snapshotRoute "/mushaf/page/$START" -mushafAutoFlip "$N" -mushafAutoFlipBack "$([ "${DIR:-1}" = -1 ] && echo YES || echo NO)" >/dev/null
+xcrun simctl launch "$SIM" "$BID" -snapshotRoute "/mushaf/page/$START" -mushafAutoFlip "$N" -mushafAutoFlipBack "$([ "${DIR:-1}" = -1 ] && echo YES || echo NO)" ${EXTRA:-} >/dev/null
 for _ in $(seq 1 90); do
   sleep 2
   L="$(xcrun simctl spawn "$SIM" log show --start "$T0" --info --debug --predicate 'subsystem == "com.yousef.majlisilm" AND category == "mushaf-perf"' --style compact 2>/dev/null | grep MUSHAF_HITCH | tail -1 || true)"
