@@ -189,7 +189,7 @@ private struct ArbaeenLoveView: View {
 
     var body: some View {
         VStack(alignment: .trailing, spacing: 16) {
-            Text(Self.intro).font(.callout).foregroundStyle(.secondary)
+            Text(Self.intro).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 .multilineTextAlignment(.trailing).frame(maxWidth: .infinity, alignment: .trailing).padding(.horizontal, 16)
             if hasExport {
                 LibraryLoadedView(source: .bundled(name: "arbaeen-love-of-allah", subdirectory: "Data/hadith"),
@@ -202,5 +202,6 @@ private struct ArbaeenLoveView: View {
             }
         }
         .padding(.top, 16)
+        .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
     }
 }

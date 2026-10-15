@@ -143,7 +143,7 @@ struct LearnReadingPlanCard: View {
                     EmptyView()
                 }
                 HStack(spacing: Sunnah.Spacing.s2) {
-                    TextField("الصفحة التي بلغتها", text: $pageText).textFieldStyle(.roundedBorder)
+                    TextField("الصفحة التي بلغتها", text: $pageText).sunnahFieldChrome()
                         #if os(iOS)
                         .keyboardType(.numberPad)
                         #endif

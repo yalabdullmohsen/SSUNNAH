@@ -9,7 +9,7 @@ public struct ListTemplate: View {
         self.items = items; self.detailBase = detailBase; self.inline = inline
     }
     public var body: some View {
-        if items.isEmpty { EmptyStateView() } else {
+        if items.isEmpty { EmptyStateView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg) } else {
             List(items) { item in
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                     Button { tap(item) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }

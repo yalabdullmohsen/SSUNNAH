@@ -9,6 +9,7 @@ DD="${DD:-$HOME/.majalis-tools/dd/$(basename "$PWD")}"
 if git status --porcelain | grep -E "(^|/)\.build(/|$)|\.xcresult|DerivedData" >/dev/null; then echo "✗ مسار .build/xcresult/DerivedData ظاهر في git status — أضِفه لـ.gitignore ولا تُضِفه"; exit 1; fi
 [ $# -ge 1 ] || { echo "usage: $0 <section>…"; exit 2; }
 bash scripts/native-lint-chevron.sh || exit 1
+bash scripts/native-lint-dark.sh || exit 1
 bash scripts/native-plist-guard.sh || exit 1
 bash scripts/native-webview-guard.sh || exit 1
 bash scripts/native-gnu-guard.sh || exit 1

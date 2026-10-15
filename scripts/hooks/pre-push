@@ -26,7 +26,7 @@ cd "$ROOT"
 # فروع التطبيق الأصلي (native-* و n1..n4/*): حرّاس خفيفة فقط، بلا ci:local ولا قفل مشترك (ci:local الكامل لفروع main/الويب).
 BR="$(git symbolic-ref --short -q HEAD || true)"
 if [[ "$BR" =~ ^(native-|n[1-4]/) ]]; then
-  for g in native-lint-chevron native-plist-guard native-webview-guard; do
+  for g in native-lint-chevron native-lint-dark native-plist-guard native-webview-guard; do
     [[ -f "scripts/$g.sh" ]] && { bash "scripts/$g.sh" >/dev/null || fail "$g"; }
   done
   echo -e "${GREEN}══ Pre-Push OK (فرع أصلي: حرّاس خفيفة بلا قفل) ══${NC}"

@@ -20,9 +20,9 @@ private struct AuthForm<Extra: View>: View {
                     #if os(iOS)
                     .textContentType(.emailAddress).keyboardType(.emailAddress).textInputAutocapitalization(.never)
                     #endif
-                    .textFieldStyle(.roundedBorder)
+                    .sunnahFieldChrome()
                 if showsPassword {
-                    SecureField("كلمة المرور", text: $password).textFieldStyle(.roundedBorder)
+                    SecureField("كلمة المرور", text: $password).sunnahFieldChrome()
                 }
                 if let message {
                     Text(message).font(Sunnah.Typography.secondary)
@@ -93,7 +93,7 @@ struct AccountDeletionView: View {
             } else {
                 Text("حذف الحساب نهائي ولا يمكن التراجع عنه. اكتب «\(phrase)» للتأكيد.")
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                TextField(phrase, text: $confirm).textFieldStyle(.roundedBorder)
+                TextField(phrase, text: $confirm).sunnahFieldChrome()
                 if let error { Text(error).foregroundStyle(Color.red).font(Sunnah.Typography.secondary) }
                 Button(busy ? "جارٍ الحذف…" : "حذف حسابي نهائيًا", role: .destructive) {
                     Task {
