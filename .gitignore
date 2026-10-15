@@ -125,3 +125,4 @@ design-audit/*/full/
 *.xcresult
 DerivedData/
 **/DerivedData/
+.playwright-mcp/

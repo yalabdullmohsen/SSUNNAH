@@ -59,7 +59,7 @@ public struct AdhkarScreen: ScreenTemplate {
                 }
                 .sunnahRowChrome()
             }
-            .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+            .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth().background(Sunnah.Colors.bg)
             .task {
                 let rows: [AdhkarCategoryTitle]? = try? await loader.load(from: .bundled(name: "categories", subdirectory: "Data/adhkar"))
                 titles = Dictionary((rows ?? []).map { ($0.id, $0.name) }, uniquingKeysWith: { a, _ in a })
@@ -95,6 +95,6 @@ struct AdhkarListView: View {
                 }
             }.padding(Sunnah.Spacing.pageX)
         }
-        .background(Sunnah.Colors.bg)
+        .sunnahReadableWidth().background(Sunnah.Colors.bg)
     }
 }

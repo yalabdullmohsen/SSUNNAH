@@ -32,7 +32,7 @@ public struct HomeScreen: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: Sunnah.Spacing.s5) {
+            VStack(spacing: Sunnah.Spacing.s6) {
                 header
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
                     nextPrayerCard(now: ctx.date)
@@ -68,7 +68,7 @@ public struct HomeScreen: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(Sunnah.Spacing.s5)
-        .sunnahMotifCorner(size: 170, alignment: .topLeading, tint: .white, opacity: 0.14).clipped()
+        .sunnahMotifCorner(size: 170, alignment: .topLeading, tint: .white, opacity: 0.14).clipShape(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
         .sunnahPatternedBackground(radius: Sunnah.Radius.hero)
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.header")
@@ -90,11 +90,13 @@ public struct HomeScreen: View {
     private func ayahCard(_ d: HomeDailyContent) -> some View {
         Button { openRoute("/mushaf") } label: {
             SunnahCard {
-                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                     Label("آية اليوم", systemImage: "book.closed").font(Sunnah.Typography.cardTitle)
-                        .foregroundStyle(Sunnah.Colors.textPrimary)
+                        .foregroundStyle(Sunnah.Colors.primary)
+                    Divider().overlay(Sunnah.Colors.border)
                     SunnahArabicText(d.ayahText, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(PrayerTimeFormat.arabicDigits(d.ayah.reference)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                        .padding(.top, Sunnah.Spacing.s1)
                 }
             }
         }
@@ -106,12 +108,14 @@ public struct HomeScreen: View {
     private func hadithCard(_ h: HomeDailyHadith) -> some View {
         Button { openRoute("/hadith") } label: {
             SunnahCard {
-                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                     Label("حديث اليوم", systemImage: "text.book.closed").font(Sunnah.Typography.cardTitle)
-                        .foregroundStyle(Sunnah.Colors.textPrimary)
+                        .foregroundStyle(Sunnah.Colors.primary)
+                    Divider().overlay(Sunnah.Colors.border)
                     SunnahArabicText(h.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(PrayerTimeFormat.arabicDigits([h.narrator, h.source, h.number].compactMap { $0 }.joined(separator: " — ")))
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                        .padding(.top, Sunnah.Spacing.s1)
                 }
             }
         }
@@ -148,15 +152,16 @@ public struct HomeScreen: View {
         let prefs = store.preferences
         if let next = PrayerCalculator.next(after: now, location: prefs.location, settings: prefs.settings) {
             Button { openRoute("/native/prayer") } label: {
-                SunnahCard {
-                    VStack(spacing: Sunnah.Spacing.s1) {
-                        Text("الصلاة القادمة").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
-                        Text(next.prayer.nameAr).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                        Text(PrayerTimeFormat.countdown(next.time.timeIntervalSince(now)))
-                            .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.primary).monospacedDigit()
-                    }
-                    .frame(maxWidth: .infinity)
+                VStack(spacing: Sunnah.Spacing.s2) {
+                    Text("الصلاة القادمة").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.heroGold)
+                    Text(next.prayer.nameAr).font(Sunnah.Typography.pageTitle).foregroundStyle(.white)
+                    Text(PrayerTimeFormat.countdown(next.time.timeIntervalSince(now)))
+                        .font(Sunnah.Typography.body).foregroundStyle(.white.opacity(0.92)).monospacedDigit()
                 }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, Sunnah.Spacing.s5).padding(.horizontal, Sunnah.Spacing.s4)
+                .sunnahMotifCorner(size: 150, alignment: .topTrailing, tint: .white, opacity: 0.12).clipShape(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
+                .sunnahPatternedBackground(radius: Sunnah.Radius.hero)
             }
             .buttonStyle(.plain)
             .accessibilityElement(children: .combine)

@@ -36,6 +36,7 @@ public struct DetailTemplate: View {
             .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
             .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, -28).padding(.bottom, Sunnah.Spacing.s5)
+            .sunnahReadableWidth()
     }
 
     private var shortCard: some View {
@@ -56,6 +57,7 @@ public struct DetailTemplate: View {
         .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
         .sunnahElevation()
         .padding(.horizontal, Sunnah.Spacing.pageX).padding(.vertical, Sunnah.Spacing.s5)
+        .sunnahReadableWidth()
         .frame(maxHeight: .infinity, alignment: .center)
     }
 }
@@ -66,7 +68,7 @@ struct DetailHero: View {
     var body: some View {
         VStack(alignment: centered ? .center : .leading, spacing: Sunnah.Spacing.s2) {
             if let t = tags.first { Text(t).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.goldDeco) }
-            Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Color.white).accessibilityAddTraits(.isHeader)
+            Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.onHero).accessibilityAddTraits(.isHeader)
             if let s = subtitle, !s.isEmpty { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Color.white.opacity(0.82)) }
             if tags.count > 1 { HStack(spacing: Sunnah.Spacing.s2) { ForEach(tags.dropFirst(), id: \.self) { SunnahChip($0) } } }
         }
@@ -74,6 +76,7 @@ struct DetailHero: View {
         .frame(maxWidth: .infinity, alignment: centered ? .center : .leading)
         .frame(height: fillHeight, alignment: .center)
         .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s5).padding(.bottom, 44)
+        .heroNavigationBar()
         .background { ZStack { Sunnah.Colors.primaryStrong; SunnahStarPattern().opacity(0.9) }.clipShape(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous)).padding(.top, -80).ignoresSafeArea(edges: .top) }
     }
 }
