@@ -663,6 +663,7 @@ struct SunnahRingStat: View {
                     .padding(lockScreen ? 4 : 12)
                     .foregroundStyle(ink)
             }
+            .padding((lockScreen ? 3 : 8) / 2) // الخط يُرسم منتصفه على المسار فيتجاوز الإطار بنصف عرضه
             .aspectRatio(1, contentMode: .fit)
             if !lockScreen {
                 Text(caption)
