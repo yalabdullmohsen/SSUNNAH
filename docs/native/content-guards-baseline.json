@@ -1,0 +1,20 @@
+{
+  "templates": {
+    "adhkar": 1,
+    "hadith": 12,
+    "knowledge": 107,
+    "learn": 11,
+    "library": 3,
+    "quiz": 61,
+    "quran": 5,
+    "sirah": 8
+  },
+  "summaries": {
+    "fiqh": 3,
+    "library": 383,
+    "sirah": 21
+  },
+  "descriptions": {
+    "learn": 15
+  }
+}
