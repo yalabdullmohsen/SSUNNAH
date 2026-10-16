@@ -98,4 +98,14 @@ final class GeneralNotificationPlannerTests: XCTestCase {
             for w in ["رواه", "أخرجه", "البخاري", "مسلم", "حدثنا", "صحيح", "عن أبي"] { XCTAssertFalse(p.body.contains(w), "\(p.id) \(w)") }
         }
     }
+
+    func testTriggerComponentsCarryLocationTimeZone() {
+        let riyadh = TimeZone(identifier: "Asia/Riyadh")!
+        let date = Date(timeIntervalSince1970: 1_800_000_000)
+        let parts = GeneralNotificationPlanner.triggerComponents(for: date, timeZone: riyadh)
+        XCTAssertEqual(parts.timeZone, riyadh)
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = riyadh
+        XCTAssertEqual(cal.date(from: parts), date)
+    }
 }

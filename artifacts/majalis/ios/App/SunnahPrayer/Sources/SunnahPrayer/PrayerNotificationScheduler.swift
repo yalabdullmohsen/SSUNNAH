@@ -28,8 +28,6 @@ public enum PrayerNotificationScheduler {
         let share = max(0, min(PrayerNotificationBudget.prayerShare, PrayerNotificationBudget.iosPendingLimit - others))
         let planned = PrayerNotificationPlanner.plan(location: prefs.location, settings: prefs.settings,
                                                      options: options, now: now, share: share)
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = prefs.location.timeZone
         var added = 0
         for item in planned {
             let content = UNMutableNotificationContent()
@@ -38,7 +36,8 @@ public enum PrayerNotificationScheduler {
             content.sound = NotificationSoundPack.sound(named: item.sound)
             content.threadIdentifier = "prayer"
             content.interruptionLevel = .timeSensitive
-            let parts = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: item.fireDate)
+            content.userInfo = [NotificationRouting.routeKey: "/prayer-times"]
+            let parts = GeneralNotificationPlanner.triggerComponents(for: item.fireDate, timeZone: prefs.location.timeZone)
             let trigger = UNCalendarNotificationTrigger(dateMatching: parts, repeats: false)
             do {
                 try await center.add(UNNotificationRequest(identifier: item.id, content: content, trigger: trigger))
