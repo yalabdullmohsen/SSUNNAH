@@ -90,10 +90,16 @@ export default async function exportQuranTs({ json, reject, counts, appRoot }) {
 
   // إشارات كونية للتأمل: المحرَّر (verified) وله مصدر علمي فقط؛ needs_review يُحجَب
   const miracles = [];
+  // نظافة القوالب (قاعدة يوسف): فقرة «الإشارة المختصرة» قالب مولَّد تُخفى؛ «ملاحظة للتفكر» القصيرة (<100 حرف) تُخفى؛ «خلاصة التفسير» تُوسَم ملخّصًا من إعدادنا لا نقلًا من التفسير. الأصل في seed لا يُحذف
+  const cleanBody = (b) => b.split("\n\n").flatMap((para) => {
+    if (/^الإشارة المختصرة\s*:/.test(para)) return [];
+    if (/^ملاحظة للتفكر\s*:/.test(para)) return para.replace(/^ملاحظة للتفكر\s*:\s*/, "").length < 100 ? [] : [para.replace(/^ملاحظة للتفكر\s*:/, "ملاحظة من إعداد سُنّة للتأمل:")];
+    return [para.replace(/^خلاصة التفسير\s*:/, "ملخّص من إعداد سُنّة (ليس نصًّا منقولًا من التفسير):").replace(/^المرجع\s*:\s*(تفسير)/, "للاستزادة: $1")];
+  }).join("\n\n");
   for (const m of d.miracles) {
     if (m.verification_status !== "verified" || !has(m.scholarly_source) || !has(m.reference) || !has(m.body)) { reject(`${Q}-miracles`, "غير محرَّر/بلا مصدر علمي"); continue; }
     miracles.push({ id: m.id, slug: m.slug, title: m.title, category: m.category, sourceType: m.source_type, reference: m.reference, verse: m.verse ?? null,
-      body: m.body, tafsirSummary: m.tafsir_summary ?? null, scholarlySource: m.scholarly_source });
+      body: cleanBody(m.body), tafsirSummary: m.tafsir_summary ?? null, summaryOrigin: "editorial", scholarlySource: m.scholarly_source });
   }
   json("quran/miracles.json", miracles);
   c.miracles = miracles.length;

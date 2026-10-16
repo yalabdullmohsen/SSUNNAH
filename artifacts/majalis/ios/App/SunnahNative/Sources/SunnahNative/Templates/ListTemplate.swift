@@ -13,7 +13,7 @@ public struct ListTemplate: View {
             List(items) { item in
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                     Button { tap(item) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                        .buttonStyle(.plain)
+                        .sunnahPressable()
                         .accessibilityValue(inline && item.body != nil ? (expanded.contains(item.id) ? "موسَّع" : "مطوي") : "")
                     if inline, expanded.contains(item.id), let body = item.body {
                         SunnahMarkdownText(body, style: .body)

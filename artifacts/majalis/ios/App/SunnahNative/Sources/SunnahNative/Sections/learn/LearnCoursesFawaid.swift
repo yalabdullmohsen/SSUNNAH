@@ -165,7 +165,7 @@ struct LearnAnnualCourseScreen: View {
                 LearnDetailPage(title: course.title) {
                     if let m = course.metaLine { SunnahChip(m) }
                     if let s = course.summary { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-                    if let b = course.body { SunnahMarkdownText(b, style: .body) }
+                    if let b = course.body { SunnahSectionedMarkdown(b, key: "course-\(course.id)", style: .body) }
                     LearnInfoRow(label: "المشايخ", value: course.sheikhNames?.joined(separator: "، "))
                     LearnInfoRow(label: "المتون", value: course.mutoon?.joined(separator: "، "))
                     if let slots = course.schedule, !slots.isEmpty {

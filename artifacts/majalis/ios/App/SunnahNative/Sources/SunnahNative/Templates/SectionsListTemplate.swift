@@ -11,7 +11,7 @@ public struct SectionsListTemplate: View {
                 LazyVStack(spacing: Sunnah.Spacing.s3) {
                     ForEach(links) { link in
                         Button { openRoute(link.route) } label: { SunnahCard { SunnahListRow(title: link.title, subtitle: link.subtitle) } }
-                            .buttonStyle(.plain)
+                            .sunnahPressable()
                     }
                 }
                 .padding(Sunnah.Spacing.pageX)

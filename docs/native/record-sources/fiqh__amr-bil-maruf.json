@@ -1,0 +1,444 @@
+{
+ "conditions": {
+  "cond-1": [
+   {
+    "ref": "قواعد مهمة في الأمر بالمعروف والنهي عن المنكر لحمود الرحيلي، صفحة 28 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/1980/28",
+    "quote": "أما المختلف فيه فلا إنكار فيه، لأن ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "قواعد مهمة في الأمر بالمعروف والنهي عن المنكر لحمود الرحيلي، صفحة 28 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/1980/28",
+    "quote": "ما خالف نصا أو إجماعا أو قياسا جليا",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "cond-2": [
+   {
+    "ref": "الأمر بالمعروف والنهي عن المنكر في ضوء الكتاب والسنة لسليمان الحقيل، صفحة 69 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/30911/69",
+    "quote": "المعصية لها ثلاثة أحوال: أحدها: أن تكون منصرمة",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الأمر بالمعروف والنهي عن المنكر في ضوء الكتاب والسنة لسليمان الحقيل، صفحة 70 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/30911/70",
+    "quote": "النهي عما مضى لا يتصور فيتمحص تعزي",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "cond-3": [
+   {
+    "ref": "الأمر بالمعروف والنهي عن المنكر في ضوء الكتاب والسنة لسليمان الحقيل، صفحة 69 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/30911/69",
+    "quote": "ما لم تؤد إلى معصية أفحش منها أو مثلها",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الموسوعة العقدية، صفحة 3732 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/38058/3732",
+    "quote": "العاجز ليس عليه حسبة إلا بقلبه، إذ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "cond-4": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 12",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/49:12/quran-uthmani",
+    "quote": "وَلَا تَجَسَّسُوا۟ وَلَا يَغْتَب بَّعْضُكُم بَعْضًا ۚ أَيُحِبُّ أَحَدُك",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن أبي داود (ترقيم hadith-api) رقم 4890، حكم الألباني: Sahih Isnaad",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/4890.json",
+    "quote": "نُهِينَا عَنِ التَّجَسُّسِ وَلَكِنْ إِنْ يَظْهَرْ لَنَا شَىْءٌ نَأْخُذْ بِه",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "الأمر بالمعروف والنهي عن المنكر في ضوء الكتاب والسنة لسليمان الحقيل، صفحة 70 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/30911/70",
+    "quote": "فلا يجوز التجسس عليه؛ لأن الله حرم ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "cond-5": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ البَيِّنَةِ آية 5",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/98:5/quran-uthmani",
+    "quote": "مُخْلِصِينَ لَهُ ٱلدِّينَ حُنَفَآءَ وَيُقِيمُوا۟ ٱلصَّلَوٰةَ وَي",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 1",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/1.json",
+    "quote": "نَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَن",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "cond-6": [
+   {
+    "ref": "جامع العلوم والحكم لابن رجب، صفحة 199 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/949/199",
+    "quote": "المؤمن يَسْتُرُ ويَنْصَحُ، والفاجرُ يهتك ويُعيِّر",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6602",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6602.json",
+    "quote": "نَّ الرِّفْقَ لاَ يَكُونُ فِي شَىْءٍ إِلاَّ زَانَهُ وَلاَ يُنْزَعُ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ]
+ },
+ "maaruf": {
+  "ma-1": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ طه آية 132",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/20:132/quran-uthmani",
+    "quote": "وَأْمُرْ أَهْلَكَ بِٱلصَّلَوٰةِ وَٱصْطَبِرْ عَلَيْهَا ۖ لَا نَسْـَٔلُكَ ر",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-2": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الإِسۡرَاءِ آية 23",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/17:23/quran-uthmani",
+    "quote": "وَبِٱلْوَٰلِدَيْنِ إِحْسَٰنًا ۚ إِمَّا يَبْلُغَنَّ عِندَكَ ٱلْكِبَرَ أَحَدُه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-3": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 58",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/4:58/quran-uthmani",
+    "quote": "ن تُؤَدُّوا۟ ٱلْأَمَٰنَٰتِ إِلَىٰٓ أَهْلِهَا وَإِذَا حَكَمْتُم بَيْنَ ٱلنَّاس",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-4": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 71",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/71.json",
+    "quote": "مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ، وَإِن",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 2389",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/2389.json",
+    "quote": "مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ ‏\"‏ ‏.‏ وَس",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 224، حكم الألباني: Very Daif",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/224.json",
+    "quote": "طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ وَوَاضِعُ الْع",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-5": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ المَائـِدَةِ آية 2",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/5:2/quran-uthmani",
+    "quote": "وَتَعَاوَنُوا۟ عَلَى ٱلْبِرِّ وَٱلتَّقْوَىٰ ۖ وَلَا تَعَاوَنُوا۟ عَلَى",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-6": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الأَنۡعَامِ آية 152",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/6:152/quran-uthmani",
+    "quote": "وَإِذَا قُلْتُمْ فَٱعْدِلُوا۟ وَلَوْ كَانَ ذَا قُرْبَىٰ ۖ وَبِعَهْدِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 135",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/4:135/quran-uthmani",
+    "quote": "كُونُوا۟ قَوَّٰمِينَ بِٱلْقِسْطِ شُهَدَآءَ لِلَّهِ وَلَوْ عَلَىٰٓ أَن",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-7": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 6592",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/6592.json",
+    "quote": "مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ وَمَا زَادَ اللَّهُ عَبْدًا بِع",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ التَّوۡبَةِ آية 103",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/9:103/quran-uthmani",
+    "quote": "خُذْ مِنْ أَمْوَٰلِهِمْ صَدَقَةًۭ تُطَهِّرُهُمْ وَتُزَكِّيهِم بِه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-8": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ التَّحۡرِيمِ آية 8",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/66:8/quran-uthmani",
+    "quote": "تُوبُوٓا۟ إِلَى ٱللَّهِ تَوْبَةًۭ نَّصُوحًا عَسَىٰ رَبُّكُمْ أَن ي",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ النُّورِ آية 31",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/24:31/quran-uthmani",
+    "quote": "وَتُوبُوٓا۟ إِلَى ٱللَّهِ جَمِيعًا أَيُّهَ ٱلْمُؤْمِنُونَ لَعَلَّكُمْ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-9": [
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5985",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5985.json",
+    "quote": "مَنْ سَرَّهُ أَنْ يُبْسَطَ لَهُ فِي رِزْقِهِ، وَأَنْ يُنْسَأَ لَه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "ma-10": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 267",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/267.json",
+    "quote": "لاَ يَدْخُلُ الْجَنَّةَ مَنْ كَانَ فِي قَلْبِهِ مِثْقَالُ ذَرَّةٍ مِنْ كِبْر",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ]
+ },
+ "munkaraat": {
+  "m-1": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ لُقۡمَانَ آية 13",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/31:13/quran-uthmani",
+    "quote": " يَٰبُنَىَّ لَا تُشْرِكْ بِٱللَّهِ ۖ إِنَّ ٱلشِّرْكَ لَظُلْمٌ عَظِيم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ النِّسَاءِ آية 48",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/4:48/quran-uthmani",
+    "quote": "نَّ ٱللَّهَ لَا يَغْفِرُ أَن يُشْرَكَ بِهِۦ وَيَغْفِرُ مَا دُون",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-2": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 246",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/246.json",
+    "quote": "بَيْنَ الرَّجُلِ وَبَيْنَ الشِّرْكِ وَالْكُفْرِ تَرْكَ الصَّلاَةِ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ مَرۡيَمَ آية 59",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/19:59/quran-uthmani",
+    "quote": "ضَاعُوا۟ ٱلصَّلَوٰةَ وَٱتَّبَعُوا۟ ٱلشَّهَوَٰتِ ۖ فَسَوْفَ يَلْقَوْنَ غ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-3": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ البَقَرَةِ آية 275",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/2:275/quran-uthmani",
+    "quote": "وَأَحَلَّ ٱللَّهُ ٱلْبَيْعَ وَحَرَّمَ ٱلرِّبَوٰا۟ ۚ فَمَن جَآءَهُۥ مَوْعِظ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-4": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الحُجُرَاتِ آية 12",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/49:12/quran-uthmani",
+    "quote": "وَلَا يَغْتَب بَّعْضُكُم بَعْضًا ۚ أَيُحِبُّ أَحَدُكُمْ أَن يَأْكُلَ ل",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 290",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/290.json",
+    "quote": "له عليه وسلم يَقُولُ ‏ \"‏ لاَ يَدْخُلُ الْجَنَّةَ نَمَّامٌ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-5": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ الإِسۡرَاءِ آية 23",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/17:23/quran-uthmani",
+    "quote": "وَبِٱلْوَٰلِدَيْنِ إِحْسَٰنًا ۚ إِمَّا يَبْلُغَنَّ عِندَكَ ٱلْكِبَرَ أَحَدُه",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5975",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5975.json",
+    "quote": "نَّ اللَّهَ حَرَّمَ عَلَيْكُمْ عُقُوقَ الأُمَّهَاتِ، وَمَنْعَ وَهَات",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-6": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 283",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/283.json",
+    "quote": "عَلَيْنَا السِّلاَحَ فَلَيْسَ مِنَّا وَمَنْ غَشَّنَا فَلَيْسَ مِنَّا ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "موسوعة الإجماع في الفقه الإسلامي (نقلًا عن التاج والإكليل)، صفحة 2661 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/32535/2661",
+    "quote": "وهو محرم إجماعًا كبيرةٌ\"، وشرح مختصر خ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-7": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ مَرۡيَمَ آية 59",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/19:59/quran-uthmani",
+    "quote": "ضَاعُوا۟ ٱلصَّلَوٰةَ وَٱتَّبَعُوا۟ ٱلشَّهَوَٰتِ ۖ فَسَوْفَ يَلْقَوْنَ غ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم، سُورَةُ المَاعُونِ آية 5",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/107:5/quran-uthmani",
+    "quote": "لَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُون",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-8": [
+   {
+    "ref": "فتاوى يسألونك لحسام الدين عفانة، صفحة 1043 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/10517/1043",
+    "quote": "رأى كثير من العلماء المعاصرين أن التدخين حرام",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "فتاوى يسألونك لحسام الدين عفانة، صفحة 1043 (ترقيم الشاملة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/10517/1043",
+    "quote": "حرمته ليست كحرمة الخمر أو الزنا فا",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 2341، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/2341.json",
+    "quote": "لَّهِ صلى الله عليه وسلم ‏ \"‏ لاَ ضَرَرَ وَلاَ ضِرَارَ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-9": [
+   {
+    "ref": "القرآن الكريم، سُورَةُ مُحَمَّدٍ آية 22",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/47:22/quran-uthmani",
+    "quote": "تَوَلَّيْتُمْ أَن تُفْسِدُوا۟ فِى ٱلْأَرْضِ وَتُقَطِّعُوٓا۟ أَرْحَامَكُم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5984",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5984.json",
+    "quote": "له عليه وسلم يَقُولُ ‏ \"‏ لاَ يَدْخُلُ الْجَنَّةَ قَاطِعٌ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ],
+  "m-10": [
+   {
+    "ref": "سنن ابن ماجه (ترقيم hadith-api) رقم 2443، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-ibnmajah/2443.json",
+    "quote": " وسلم ‏ \"‏ أَعْطُوا الأَجِيرَ أَجْرَهُ قَبْلَ أَنْ يَجِفَّ عَرَقُهُ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 2270",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/2270.json",
+    "quote": "رَجُلٌ اسْتَأْجَرَ أَجِيرًا فَاسْتَوْفَى مِنْهُ وَلَمْ يُعْطِهِ أَجْرَه",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ]
+ }
+}

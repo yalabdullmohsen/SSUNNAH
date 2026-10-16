@@ -20,11 +20,13 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
   const nz = (s) => (s == null || String(s).trim() === "" ? undefined : String(s));
   const entry = (id, title, o = {}) => ({ id, title, ...Object.fromEntries(Object.entries(o).filter(([, v]) => nz(v) !== undefined)) });
   const group = (id, title, items) => ({ id, title, items });
-  const numbered = (gid, rows, f) => rows.map((r, i) => f(r, `${gid}-${i + 1}`));
+  // معرّفات ثابتة: العناصر المحذوفة نهائيًا تترك فراغًا في الترقيم (لا إعادة ترقيم) حتى لا يشير مفضّلة/رابط عميق لعنصر آخر
+  const GAPS = { amal: [10] };
+  const numbered = (gid, rows, f) => rows.map((r, i) => { let n = i + 1; for (const g of (GAPS[gid] ?? []).slice().sort((a, b) => a - b)) if (n >= g) n++; return f(r, `${gid}-${n}`); });
   // pending_review: عناصر تخالف مصدرها المتحقق منه؛ تُخفى من التصدير (فلا تصل البحث ولا الويدجت ولا الإشعارات) حتى يعتمد يوسف التصحيح
   const pending = JSON.parse(fs.readFileSync(new URL("../../../../../docs/native/aqidah-pending-review.json", import.meta.url), "utf8")).items;
   const writeGroups = (name, groups) => {
-    const gs = groups.map((g) => ({ ...g, items: g.items.filter((it) => ok(it.id, name) && !pending[`${name}/${it.id}`]) })).filter((g) => g.items.length);
+    const gs = groups.filter((g) => !pending[`${name}/${g.id}`]).map((g) => ({ ...g, items: g.items.filter((it) => ok(it.id, name) && !pending[`${name}/${it.id}`]) })).filter((g) => g.items.length);
     out(name, gs);
     cnt(name, gs.reduce((n, g) => n + g.items.length, 0));
   };
@@ -109,7 +111,7 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
       group("asma", "أسماؤهم ومهامهم", numbered("asma", g("MALAIKA"), (r, id) => entry(id, r.name, { summary: r.arabicTitle, body: [r.role, r.detail].filter(nz).join("\n"), reference: r.ref }))),
       group("awsaf", "صفاتهم", numbered("awsaf", g("AWSAF"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ayah }))),
       group("fadail", "فضائلهم", numbered("fadail", g("FADAIL"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ref }))),
-      group("amal", "تعاملهم مع البشر", numbered("amal", g("AMAL_ITEMS"), (r, id) => entry(id, r.title, { body: r.text }))),
+      group("amal", "تعاملهم مع البشر", numbered("amal", g("AMAL_ITEMS"), (r, id) => entry(id, r.title, { body: r.text, reference: r.ref }))),
     ]);
   }
 
@@ -231,7 +233,7 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
     const arts = Object.values(dw.STATIC_DAWAH_ARTICLES).filter((a) => ok(a.id, "articles") && ok(`dawah-article:${a.slug}`, "articles"));
     out("discover-islam-articles", arts);
     cnt("discover-islam-articles", arts.length);
-    const nm = dw.STATIC_NEW_MUSLIM_PATH.filter((d) => ok(d.id, "new-muslim")).map(({ id, day_number, audience, title, content_ar }) => ({ id, day_number, audience, title, content_ar }));
+    const nm = dw.STATIC_NEW_MUSLIM_PATH.filter((d) => ok(d.id, "new-muslim") && !pending[`discover-islam-new-muslim/${d.id}`]).map(({ id, day_number, audience, title, content_ar }) => ({ id, day_number, audience, title, content_ar }));
     out("discover-islam-new-muslim", nm);
     cnt("discover-islam-new-muslim", nm.length);
   }

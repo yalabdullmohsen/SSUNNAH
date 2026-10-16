@@ -100,7 +100,7 @@ public struct HomeScreen: View {
                 }
             }
         }
-        .buttonStyle(.plain)
+        .sunnahPressable()
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.card.ayah")
     }
@@ -119,7 +119,7 @@ public struct HomeScreen: View {
                 }
             }
         }
-        .buttonStyle(.plain)
+        .sunnahPressable()
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.card.hadith")
     }
@@ -142,7 +142,7 @@ public struct HomeScreen: View {
             .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card))
             .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card).stroke(Sunnah.Colors.surface2, lineWidth: Sunnah.Spacing.hairline))
         }
-        .buttonStyle(.plain)
+        .sunnahPressable()
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.tile.\(item.route)")
     }
@@ -163,7 +163,7 @@ public struct HomeScreen: View {
                 .sunnahMotifCorner(size: 150, alignment: .topTrailing, tint: .white, opacity: 0.12).clipShape(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
                 .sunnahPatternedBackground(radius: Sunnah.Radius.hero)
             }
-            .buttonStyle(.plain)
+            .sunnahPressable()
             .accessibilityElement(children: .combine)
             .accessibilityIdentifier("home.card.prayer")
         } else {
@@ -173,7 +173,7 @@ public struct HomeScreen: View {
                                        message: "افتح المواقيت لتحديد موقعك وعرض الصلاة القادمة")
                 }
             }
-            .buttonStyle(.plain)
+            .sunnahPressable()
             .accessibilityIdentifier("home.card.prayer")
         }
     }
@@ -205,7 +205,7 @@ public struct HomeScreen: View {
                 }
             }
         }
-        .buttonStyle(.plain)
+        .sunnahPressable()
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.card.wird")
     }
@@ -224,7 +224,7 @@ public struct HomeScreen: View {
                 }
             }
         }
-        .buttonStyle(.plain)
+        .sunnahPressable()
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.card.continue")
     }

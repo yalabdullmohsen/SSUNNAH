@@ -55,6 +55,12 @@ du -sk ios-native/Data/* | sort -rn | head -10 | awk '{printf "  %7.1f MB  %s\n"
 [ "$DMB" -le 500 ] || bad "حجم ios-native/Data ${DMB} MB يتجاوز السقف 500 MB"
 [ "$DMB" -le 250 ] || echo "⚠ تحذير: حجم ios-native/Data ${DMB} MB يتجاوز 250 MB"
 
+# 2و) حراس جودة المحتوى (قوالب متكررة / خلاصة بلا مصدر أو وسم / وصف فارغ أو مكرر): سقف تنازلي docs/native/content-guards-baseline.json
+node scripts/native-content-guards.mjs >/tmp/native-content-guards.$$ 2>&1 || { head -20 /tmp/native-content-guards.$$; bad "حراس المحتوى: مخالفات جديدة فوق السقف (node scripts/native-content-guards.mjs --list)"; }
+rm -f /tmp/native-content-guards.$$
+node scripts/native-detail-guard.mjs >/tmp/native-detail-guard.$$ 2>&1 || { head -20 /tmp/native-detail-guard.$$; bad "حارس شاشات التفصيل: شاشة خارج المكوّن المشترك"; }
+rm -f /tmp/native-detail-guard.$$
+
 # 3) عدد المسارات المبنية مقابل 212
 built=$(grep -c . docs/native/MERGED_BUILT.txt)
 echo "المسارات في MERGED_BUILT: $built"

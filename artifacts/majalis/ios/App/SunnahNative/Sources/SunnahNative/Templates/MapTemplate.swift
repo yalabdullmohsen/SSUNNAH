@@ -53,11 +53,11 @@ public struct MapTemplate: View {
                 .frame(minHeight: 240)
                 if let s = selected {
                     Button { if let r = s.route { openRoute(r) } } label: { SunnahListRow(title: s.title, subtitle: s.subtitle) }
-                        .buttonStyle(.plain).padding(Sunnah.Spacing.pageX).background(Sunnah.Colors.surface)
+                        .sunnahPressable().padding(Sunnah.Spacing.pageX).background(Sunnah.Colors.surface)
                 }
                 List(places) { p in
                     Button { selected = p; sunnahAnimate { region.center = p.coordinate } } label: { SunnahListRow(title: p.title, subtitle: p.subtitle) }
-                        .buttonStyle(.plain).sunnahRowChrome()
+                        .sunnahPressable().sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             }

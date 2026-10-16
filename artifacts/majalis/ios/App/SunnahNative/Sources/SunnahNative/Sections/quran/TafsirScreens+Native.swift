@@ -99,7 +99,7 @@ struct TafsirSurahView: View {
                             Text("\(r.ayah) ﴿\(r.number)﴾").font(Sunnah.Typography.quran)
                                 .foregroundStyle(Sunnah.Colors.textPrimary)
                             if let t = r.tafsir {
-                                SunnahArabicText(t, style: .body).foregroundStyle(Sunnah.Colors.textSecondary)
+                                SunnahSectionedMarkdown(t, key: "tafsir-\(book.id)-\(surahId)-\(r.number)", style: .body).foregroundStyle(Sunnah.Colors.textSecondary)
                             }
                         }
                         .padding(.vertical, Sunnah.Spacing.s2)

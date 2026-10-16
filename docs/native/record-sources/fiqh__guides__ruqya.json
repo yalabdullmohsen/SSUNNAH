@@ -1,0 +1,38 @@
+{
+ "tabs": {
+  "rules": [
+   {
+    "ref": "صحيح مسلم (ترقيم hadith-api) رقم 5732",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-muslim/5732.json",
+    "quote": " رُقَاكُمْ لاَ بَأْسَ بِالرُّقَى مَا لَمْ يَكُنْ فِيهِ شِرْكٌ ",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "سنن أبي داود (ترقيم hadith-api) رقم 3883، حكم الألباني: Sahih",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-abudawud/3883.json",
+    "quote": "نَّ الرُّقَى وَالتَّمَائِمَ وَالتِّوَلَةَ شِرْكٌ ‏\"‏ ‏.‏ قَالَتْ قُلْتُ لِم",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5736",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5736.json",
+    "quote": "يَقْرَأُ بِأُمِّ الْقُرْآنِ، وَيَجْمَعُ بُزَاقَهُ، وَيَتْفِلُ، فَبَرَأَ، ف",
+    "fetched": "2026-10-15",
+    "verified": true
+   },
+   {
+    "ref": "صحيح البخاري (ترقيم hadith-api) رقم 5735",
+    "type": "hadith",
+    "url": "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1/editions/ara-bukhari/5735.json",
+    "quote": "يَنْفُثُ عَلَى نَفْسِهِ فِي الْمَرَضِ الَّذِي مَاتَ فِيهِ ب",
+    "fetched": "2026-10-15",
+    "verified": true
+   }
+  ]
+ }
+}

@@ -25,7 +25,7 @@ cd "$ROOT"
 
 # فروع التطبيق الأصلي (native-* و n1..n4/*): حرّاس خفيفة فقط، بلا ci:local ولا قفل مشترك (ci:local الكامل لفروع main/الويب).
 BR="$(git symbolic-ref --short -q HEAD || true)"
-if [[ "$BR" =~ ^(native-|n[1-4]/) ]]; then
+if [[ "$BR" =~ ^(native-|claude/cloud-n[0-9]|n[1-5]/) ]]; then
   for g in native-lint-chevron native-lint-dark native-plist-guard native-webview-guard; do
     [[ -f "scripts/$g.sh" ]] && { bash "scripts/$g.sh" >/dev/null || fail "$g"; }
   done
@@ -58,8 +58,18 @@ PYEOF
 ) || fail "CSS integrity"
 pass "CSS integrity"
 
-# eslint على الملفات المتغيّرة فقط (مقارنةً بـ origin/main)
-BASE="$(git merge-base origin/main HEAD 2>/dev/null || true)"
+# الفرع الهدف: PUSH_BASE يدويًا، وإلا قاعدة الـPR المفتوح للفرع (gh)، وإلا فروع native-app (claude/cloud-n*، native-*، n1..n5/*)، وإلا main.
+if [[ -n "${PUSH_BASE:-}" ]]; then TARGET="$PUSH_BASE"
+else
+  TARGET="$(gh pr view --json baseRefName -q .baseRefName 2>/dev/null || true)"
+  if [[ -z "$TARGET" ]]; then
+    if [[ "$BR" =~ ^(claude/cloud-n[0-9]|native-|n[1-5]/) ]]; then TARGET="native-app"; else TARGET="main"; fi
+  fi
+fi
+BASE="$(git merge-base "origin/$TARGET" HEAD 2>/dev/null || git merge-base origin/main HEAD 2>/dev/null || true)"
+echo "↪ قاعدة المقارنة: origin/$TARGET"
+
+# eslint على الملفات المتغيّرة فقط (مقارنةً بالفرع الهدف). worktree بلا node_modules: نستعمل eslint المستودع الرئيسي.
 if [[ -n "$BASE" ]]; then
   ESLINT_FILES=()
   while IFS= read -r f; do
@@ -72,7 +82,15 @@ if [[ -n "$BASE" ]]; then
   done < <(git diff --name-only "$BASE" HEAD)
   if [[ ${#ESLINT_FILES[@]} -gt 0 ]]; then
     echo "⏳ ESLint (${#ESLINT_FILES[@]} ملف متغيّر)…"
-    (cd "$APP_DIR" && bash "$LOCK" "$PNPM_BIN" exec eslint "${ESLINT_FILES[@]}" --max-warnings=0 --no-warn-ignored) || fail "ESLint"
+    MAIN_ROOT="$(cd "$(git rev-parse --git-common-dir)/.." && pwd)"
+    if [[ -x "$APP_DIR/node_modules/.bin/eslint" ]]; then
+      (cd "$APP_DIR" && bash "$LOCK" "$PNPM_BIN" exec eslint "${ESLINT_FILES[@]}" --max-warnings=0 --no-warn-ignored) || fail "ESLint"
+    elif [[ -x "$MAIN_ROOT/artifacts/majalis/node_modules/.bin/eslint" ]]; then
+      echo "ℹ︎ node_modules غائب في هذا الـworktree؛ eslint من المستودع الرئيسي"
+      (cd "$APP_DIR" && "$MAIN_ROOT/artifacts/majalis/node_modules/.bin/eslint" "${ESLINT_FILES[@]}" --max-warnings=0 --no-warn-ignored) || fail "ESLint"
+    else
+      fail "ESLint: لا node_modules هنا ولا في المستودع الرئيسي (pnpm install)"
+    fi
     pass "ESLint"
   fi
 fi

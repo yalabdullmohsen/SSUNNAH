@@ -46,12 +46,12 @@ struct QuranDocView: View {
             VStack(spacing: 0) {
             DetailHero(title: title)
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                ForEach(paragraphs, id: \.self) { SunnahMarkdownText($0, style: .body) }
+                if !paragraphs.isEmpty { SunnahSectionedMarkdown((paragraphs + (sources.isEmpty ? [] : ["المصدر: " + sources.joined(separator: "؛ ")])).joined(separator: "\n\n"), key: "doc-\(title)", style: .body) }
                 ForEach(sections, id: \.title) { s in
                     Text(s.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     ForEach(s.lines, id: \.self) { Text($0).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 }
-                if !sources.isEmpty {
+                if !sources.isEmpty && paragraphs.isEmpty {
                     Text("المصدر").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     ForEach(sources, id: \.self) { Text($0).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
                 }
