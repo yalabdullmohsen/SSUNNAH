@@ -33,14 +33,15 @@ ACCOUNT DELETION (Guideline 5.1.1(v)): signed in > Account > Privacy Center (م�
 
 DATA EXPORT: signed in > Account > Privacy Center > "تصدير بيانات الحساب" (Export account data) produces a JSON file (RPC export_my_account) that can be saved or shared. Device-only preferences can be downloaded from Settings.
 
-NOTIFICATIONS: prayer-time and adhkar reminders are scheduled locally on the device (the primary mechanism); the app is also configured for remote push (APNs) for announcements. No marketing or advertising notifications. Permission is requested in context and can be changed in Settings > Notifications. Time Sensitive is used for prayer-time reminders.
+NOTIFICATIONS: prayer-time and adhkar reminders are scheduled locally on the device (the primary mechanism); there is no remote push (no APNs). No marketing or advertising notifications. Permission is requested in context and can be changed in Settings > Notifications. Time Sensitive is used for prayer-time reminders.
 
 PERMISSIONS (purpose strings are in Info.plist):
-- Location When In Use: compute prayer times and Qibla; approximate location is kept on the device and not sent to our servers.
-- Microphone: Recitation (tasmee') mode inside the mushaf; speech is processed on the device only, not sent or stored.
-- Motion/orientation: orient the Qibla compass.
+- Location When In Use (the only permission string in Info.plist): compute prayer times and Qibla; location is computed and kept on the device and never sent to our servers. If you decline, the app still works: choose a city manually.
+- No microphone and no motion permission (not requested, not in Info.plist). The Qibla compass uses the heading from the Location permission.
 - Notifications: reminders described above.
 No tracking, no ads, no third-party analytics SDK. App Tracking Transparency is not used. Background modes: audio (recitation playback), fetch/background refresh (prayer reminder refresh).
+
+NO ACCOUNT REQUIRED: the app is fully usable without signing in (prayer times, Qur'an, adhkar, library, learning sections). Sign-in is optional and only needed for contributions, sync, and account export/delete. NO SERVER NEEDED TO RUN: the app does not depend on our server to work; it relies on data bundled inside the app. The only network use is optional (Supabase for the account features; recitation audio from EveryAyah and MP3Quran when you choose to play or download).
 
 Most content works offline. Online-only: sign-in, bookmark/progress sync, user submissions, account export/delete, newly published content; offline these show an explanatory state.
 ```
