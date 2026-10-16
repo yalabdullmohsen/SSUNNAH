@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A05AUD02OFFLINESTOREAPP0 /* OfflineAudioStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AUD02OFFLINESTOREFILE /* OfflineAudioStore.swift */; };
+		A05AUD01PLAYSESSIONAPP00 /* PlaybackSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AUD01PLAYSESSIONFILE0 /* PlaybackSessionController.swift */; };
 		5A1D0A01C0DE0000000000A3 /* SunnahWidgetKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1D0A01C0DE0000000000A2 /* SunnahWidgetKit */; };
 		E870FAF588E866FFCF557E17 /* SunnahNative in Frameworks */ = {isa = PBXBuildFile; productRef = 3965A57FBC4A55FD1221521E /* SunnahNative */; };
 		458433715EA7B0A057A3A784 /* SunnahDataKit in Frameworks */ = {isa = PBXBuildFile; productRef = E0FEE46D9EEEECF07032F877 /* SunnahDataKit */; };
@@ -138,6 +140,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A05AUD02OFFLINESTOREFILE /* OfflineAudioStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineAudioStore.swift; sourceTree = "<group>"; };
+		A05AUD01PLAYSESSIONFILE0 /* PlaybackSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSessionController.swift; sourceTree = "<group>"; };
 		A0290002NATIVENOTIFGATEFR /* NativeNotificationsGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeNotificationsGate.swift; sourceTree = "<group>"; };
 		17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeShellGate.swift; sourceTree = "<group>"; };
 		A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahSharedData.swift; sourceTree = "<group>"; };
@@ -372,6 +376,8 @@
 			isa = PBXGroup;
 			children = (
 				A0280001SHAREDDATAFILE01 /* SunnahSharedData.swift */,
+				A05AUD02OFFLINESTOREFILE /* OfflineAudioStore.swift */,
+				A05AUD01PLAYSESSIONFILE0 /* PlaybackSessionController.swift */,
 				A029FR06BRANDCOLOR /* SunnahBrandColors.swift */,
 				A031FR01DEEPLINK /* SunnahPrayerDeepLink.swift */,
 				A040FR01ENVELOPEFILE0000 /* SunnahWidgetEnvelope.swift */,
@@ -623,6 +629,8 @@
 				B40A70BD645B44F885C91A9B /* PrayerActivityAttributes.swift in Sources */,
 				EFBF4693BAFB4F5B82254F8C /* PrayerLiveActivityPlugin.swift in Sources */,
 				A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */,
+				A05AUD02OFFLINESTOREAPP0 /* OfflineAudioStore.swift in Sources */,
+				A05AUD01PLAYSESSIONAPP00 /* PlaybackSessionController.swift in Sources */,
 				A031BF01DEEPAPP /* SunnahPrayerDeepLink.swift in Sources */,
 				A040BF01ENVELOPEAPP00000 /* SunnahWidgetEnvelope.swift in Sources */,
 				A041BF01REFRESHAPP000000 /* SunnahWidgetRefreshCoordinator.swift in Sources */,
