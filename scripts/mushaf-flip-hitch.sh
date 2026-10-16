@@ -11,6 +11,7 @@ scripts/native-build-locked.sh n3 /tmp/n3-flip-build.log build -project ios-nati
 xcrun simctl bootstatus "$SIM" -b >/dev/null 2>&1 || true
 xcrun simctl terminate "$SIM" "$BID" 2>/dev/null || true
 xcrun simctl install "$SIM" "$DD/Build/Products/${CONFIG}-iphonesimulator/SunnahApp.app"
+if [ -n "${SHOT:-}" ]; then SIM=$SIM bash scripts/native-shot-guard.sh "$DD/Build/Products/${CONFIG}-iphonesimulator/SunnahApp.app" "$(dirname "$SHOT")" >&2 || exit 2; fi  # لقطة الإطار من بناء HEAD
 T0="$(date '+%Y-%m-%d %H:%M:%S')"
 xcrun simctl launch "$SIM" "$BID" -snapshotRoute "/mushaf/page/$START" -mushafAutoFlip "$N" -mushafAutoFlipBack "$([ "${DIR:-1}" = -1 ] && echo YES || echo NO)" ${EXTRA:-} >/dev/null
 for _ in $(seq 1 90); do
