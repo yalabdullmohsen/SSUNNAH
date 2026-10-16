@@ -52,3 +52,14 @@ bundle exec fastlane ios native_release submit:true             # آخر بنا�
 # أو بناء محدد: bundle exec fastlane ios native_release submit:true build:100
 ```
 ثم تابع: Waiting for Review ← In Review ← Ready. شرط: الإصدار 1.2.0 مُنشأ يدويًا بحالة قابلة للتحرير، والبناء أنهى Processing.
+
+## قبل زر الإرسال (خطوات يوسف فقط)
+- [ ] بيانات المراجع: أنشئ في Supabase مستخدمًا `apple.review@ssunnah.com` بخيار Auto Confirm User وجرّب الدخول به من التطبيق.
+- [ ] ضع البريد وكلمة المرور في App Review Information ← Sign-in required (لا في المستودع).
+- [ ] طبّق `delete_my_account` و`export_my_account` (`docs/native/backend/*.sql`) على staging ثم الإنتاج بأمرك، وجرّب الحذف والتصدير.
+- [ ] قرّر النطاق: `www.ssunnah.com` معلّق (402) في PRIVACY_CHECK؛ أعِده أو أزل رابطه من REVIEW_NOTES.
+- [ ] قرّر الإفصاح عن مضيفي الصوت (EveryAyah/MP3Quran) في ملصق الخصوصية.
+- [ ] التقط لقطات الشاشة من بناء TestFlight الفعلي (iPhone وiPad، فاتح وداكن) وارفعها.
+- [ ] أرسل نص WHATS_NEW وAPPSTORE_METADATA وREVIEW_NOTES للشيخ للمراجعة الشرعية وانتظر موافقته.
+- [ ] تحقق من Privacy Report في الأرشيف (لم يُتحقق منه بعد) وأجب ملصق الخصوصية من `app-privacy.md`.
+- [ ] أنشئ الإصدار 1.2.0 يدويًا ثم نفّذ الخطوة 6 (Submit) بنفسك.

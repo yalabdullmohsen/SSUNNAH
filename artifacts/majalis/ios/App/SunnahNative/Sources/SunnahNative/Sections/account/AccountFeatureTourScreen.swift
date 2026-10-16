@@ -48,7 +48,7 @@ struct AccountFeatureTourScreen: View {
                 }
             }
 
-            HStack(spacing: Sunnah.Spacing.s3) {
+            SunnahActionRow {
                 SunnahButton(isLast ? "إغلاق" : "تخطّي", style: .secondary) { dismiss() }
                 if index > 0 {
                     SunnahButton("السابق", style: .secondary) { sunnahAnimate { index -= 1 } }

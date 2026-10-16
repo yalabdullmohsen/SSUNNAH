@@ -5,6 +5,7 @@
 //  G2 خلاصة/ملخّص: كل حقل summary/abstract/خلاصة/ملخص يجب أن يكون منسوبًا (source/sources/reference غير فارغ) أو موسومًا summaryOrigin:"editorial"،
 //     ولا يُقبل مصدر في ملف يعدّه docs/native/source-registry.json «pending» إلا ضمن السقف.
 //  G4 أصل المحتوى: origin:"editorial" (فائدة من إعداد سُنّة) لا يُنسب لمصدر/قائل ولا يحمل وسم توثيق؛ وفي learn/fawaid.json كل فائدة بلا مصدر يجب أن تكون editorial؛ origin:"local" يحمل originLabel «بيانات محلية».
+//     ويفشل أيضًا إن أُخفيت (ios-hidden.json) فائدة موسومة تحريرية (content-origin.json).
 //  G3 وصف فارغ/مكرر: subtitle/description/summary/abstract فارغ؛ أو يساوي العنوان؛ أو مكرر حرفيًا (>12 حرفًا) في ≥3 بنود؛ أو source==reference في البند نفسه؛ أو عناصر sources مكررة.
 import { readdirSync, readFileSync, statSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -29,6 +30,11 @@ const reg = existsSync("docs/native/source-registry.json") ? JSON.parse(readFile
 const pending = new Set(Object.keys(reg.pending ?? {}).map(k => k.replace(/:.*$/, "")));
 const G = { templates: {}, summaries: {}, descriptions: {}, origin: {} }, LIST = [];
 const add = (g, sec, file, msg) => { G[g][sec] = (G[g][sec] ?? 0) + 1; LIST.push(`${g} ${file}: ${msg}`); };
+// G4ب: فائدة موسومة تحريرية لا تُخفى (قرار يوسف 2026-10-16: التحريرية تبقى ظاهرة بالوسم، يُخفى غيرها فقط)
+if (existsSync("docs/native/ios-hidden.json") && existsSync("docs/native/content-origin.json")) {
+  const ed = new Set(JSON.parse(readFileSync("docs/native/content-origin.json", "utf8")).editorialFawaid ?? []);
+  for (const k of Object.keys(JSON.parse(readFileSync("docs/native/ios-hidden.json", "utf8")).items ?? {})) if (ed.has(k.slice(k.lastIndexOf("/") + 1))) add("origin", "hidden-editorial", "docs/native/ios-hidden.json", `فائدة تحريرية مخفاة (${k})`);
+}
 
 for (const p of walk(DATA)) {
   const rel = p.slice(DATA.length + 1), sec = rel.split("/")[0];

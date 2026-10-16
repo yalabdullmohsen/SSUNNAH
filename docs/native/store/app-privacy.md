@@ -20,3 +20,22 @@
 الحذف داخل التطبيق: الحساب ← مركز الخصوصية ← «حذف الحساب نهائيًا» (`AccountDeletionView`) يستدعي RPC `delete_my_account` في Supabase بلا الموقع، ثم signOut ومسح محلي. **شرط:** الدالة في القاعدة يجهّزها المالك قبل الإرسال. بريد الدعم متغيّر واحد `SUPPORT_EMAIL` في `config.js` بمستودع `sunnah-legal` (القيمة الحالية info@ssunnah.com وصلاحيتها غير مؤكدة؛ المالك يحدّدها). الصفحتان في `yalabdullmohsen/sunnah-legal` (المصدر الوحيد؛ أُزيل `docs/site`).
 
 **شرط:** أي SDK أو إرسال بيانات جديد يعيد هذا الجدول قبل الرفع.
+
+## الجدول النهائي: «مصرَّح به» مقابل «مستخدم فعلًا» (فحص ساكن للكود 2026-10-16)
+
+| البند | مصرَّح به | مستخدم فعلًا (الدليل) | الحالة | صاحب الفرق |
+|---|---|---|---|---|
+| Email / Name / User ID | مجمَّع، مرتبط، بلا تتبع | Supabase Auth (`SupabaseAuthAdapter.swift`)؛ `submitter_email` يُرسل مع المساهمة (`AccountNetwork.swift:155`) | مطابق | — |
+| Other User Content | مجمَّع | `POST rest/v1/user_submissions` (`AccountNetwork.swift:156`) + المفضلة | مطابق؛ الوثائق كانت تذكر `/api/submissions` | وثائق: ن5 (مُصحَّح في REVIEW_NOTES/APPSTORE_METADATA) |
+| Product Interaction | مجمَّع | `reading_resume`، `achievements`، `lesson_registrations` | مطابق | — |
+| الموقع | غير مجمَّع | يُحسب على الجهاز ولا يُرسل | مطابق | — |
+| التحليلات / SDK | لا | لا SDK (بحث `grep` صفر) | مطابق | — |
+| التتبع | لا | `NSPrivacyTracking=false` | مطابق | — |
+| الإشعارات | محلية فقط | لا `aps-environment`؛ `UNUserNotificationCenter` | مطابق | — |
+| تصدير الحساب | — | RPC `export_my_account` (`AccountNetwork.swift:170`) | مطابق للكود | — |
+| حذف الحساب | مسار ظاهر | RPC `delete_my_account` (`SupabaseAuthAdapter.swift:42`) | الدالتان في `docs/native/backend/*.sql` فقط، بلا migration في المستودع | يوسف: تطبيق staging ثم إنتاج بأمره |
+| نطاق الموقع | — | `www.ssunnah.com` في `/api/*` والاستشهادات | PRIVACY_CHECK يقول إن النطاق معلّق (402) | يوسف: قرار النطاق |
+| مضيفا الصوت (EveryAyah/MP3Quran) | غير مذكورين | تنزيل وتشغيل التلاوة (`OfflineRecitation.swift:147`) | غير مُصرَّح به صراحةً؛ لا بيانات شخصية تُرسل (غير مفحوص بالتشغيل) | يوسف: قرار الإفصاح |
+| تقرير Archive Privacy | — | لم يُولَّد | غير متحقق | ن4 بإذن يوسف |
+
+التفاصيل والأسطر في `PRIVACY_AUDIT_CLOUD.md`.
