@@ -14,7 +14,7 @@
 | 5 | البنود 1–9 وA–F في `WHATS_NEW_VERIFICATION.md` ما زالت غير مُتحقَّقة بجهاز | لم أدّعِ نجاحها؛ انظر القسم 5 |
 
 ## 2) ما لا نقوله (من `WHATS_NEW.md`، ملتزم به)
-لا «كل الميزات بلا إنترنت»، لا تسميع بالذكاء الاصطناعي، لا «أذان» (لا ملفات أذان مضمّنة؛ التنبيهات بعبارة صوتية فقط)، لا أعداد محتوى غير مُتحقَّقة، لا Live Activity (الهدف موجود في المصدر لكن لم أجد `NSSupportsLiveActivities` فلا أدّعيه).
+لا «كل الميزات بلا إنترنت»، لا تسميع بالذكاء الاصطناعي، لا «أذان» (لا ملفات صوت مضمّنة في الهدف؛ التنبيهات بصوت النظام الافتراضي)، لا أعداد محتوى غير مُتحقَّقة، لا Live Activity (الهدف موجود في المصدر لكن لم أجد `NSSupportsLiveActivities` فلا أدّعيه).
 
 ## 3) النصوص
 
@@ -45,7 +45,7 @@
 الصلاة والقبلة
 • مواقيت الصلاة بحسب موقعك.
 • اتجاه القبلة.
-• تذكيرات الصلاة بعبارة صوتية؛ لا يتضمن التطبيق صوت أذان.
+• تذكيرات الصلاة (إشعارات محلية بصوت النظام)؛ لا يتضمن التطبيق صوت أذان.
 
 الأذكار والتسبيح
 • أذكار وأدعية مع مسبحة للعدّ.
@@ -149,7 +149,7 @@ Notes
 | تنزيل التلاوة | `Platform/PlatformPorts.swift:33` (downloadedSurahs) — واجهة المنفذ فقط؛ التنفيذ الفعلي غير مُتحقَّق (القسم 5) |
 | مواقيت الصلاة | `Special/PrayerScreen.swift:5` |
 | القبلة | `Sections/account/AccountQiblaScreen.swift:124` |
-| تذكيرات الصلاة | `Sections/account/AccountNotificationSettingsScreen.swift:55` (طلب إذن UNUserNotificationCenter)؛ غياب صوت الأذان: ملف الأدلة السابق (مجموعة الأصوات عبارات فقط) |
+| تذكيرات الصلاة | `Sections/account/AccountNotificationSettingsScreen.swift:55` (طلب إذن UNUserNotificationCenter)؛ لا صوت مخصص: `SunnahPrayer/.../NotificationSoundPack.swift:22-27` يرجع إلى `.default` عند غياب .caf، و`ios-native/Sounds/README.txt` (لا ملفات صوت قبل موافقة المالك)، و0 مرجع `.caf` في `ios-native/SunnahApp.xcodeproj/project.pbxproj` |
 | الويدجت | `PrayerWidget/PrayerTimesWidget.swift:5`، `PrayerWidget/SunnahContentExperienceCatalog.swift:162` (آية)، `PrayerWidget/SunnahAdhkarWidgetCatalog.swift:5` (ذكر حسب الوقت) |
 | المسبحة | `Special/AdhkarExtraScreens.swift:4` |
 | حاسبة المواريث | `Sections/fiqh/Mawarith/MawarithCalculatorScreen.swift:40` |
@@ -164,7 +164,7 @@ Notes
 ## 5) غير مُتحقَّق / للمراجعة قبل الرفع
 - «تصفح بلا حساب» و«الجلسة في Keychain»: لم أثبتهما بسطر؛ احذفهما من الوصف إن لم يؤكدهما المراجع (بند 8 في `WHATS_NEW_VERIFICATION.md`).
 - «تنزيل السور للاستماع دون اتصال»: وجدت واجهة المنفذ فقط؛ تأكد من التنفيذ على جهاز قبل الإبقاء عليه.
-- «تذكيرات بعبارة صوتية»: مبني على قراءتي لمخطِّط الإشعارات والأصوات سابقًا (دون سطر مثبت في هذا الملف)؛ يحتاج إعادة تحقق.
+- «تذكيرات بعبارة صوتية»: **حُذف** من الوصف — لا دليل للهدف المرفوع (انظر الصف أعلاه).
 - الوضع الداكن وRTL، وأيقونات التطبيق، والويدجت: وجودها في الكود فقط، لا اختبار على جهاز.
 - لم أختبر شيئًا على جهاز أو محاكٍ؛ لا STORE_GO ولا UNIFIED_100.
 - طول الحقول محسوب بأمر؛ حدود المتجر قد تُحتسب مختلفًا للأحرف المركّبة (أتحقق في ASC عند اللصق).
