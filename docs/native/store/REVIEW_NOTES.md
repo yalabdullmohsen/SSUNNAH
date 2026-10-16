@@ -19,7 +19,7 @@ Authentication: e-mail + password only (Supabase Auth). No Sign in with Apple or
 ```
 
 ## الميزات التي تحتاج اتصالًا (للمراجع)
-تسجيل الدخول/إنشاء الحساب (Supabase Auth، قد يتطلب تأكيد البريد)، المفضلة والتقدم والإنجازات والتسجيل في الدروس، مساهمات المستخدمين (`/api/submissions`)، تصدير بيانات الحساب، المحتوى الجديد المنشور بعد الإصدار. صفحات «البحث الأكاديمي» ونماذج التواصل **تحتاج اتصالًا/حسابًا** وتعرض حالة فارغة منظّمة دونه (انظر `docs/native/data-exemptions.json`).
+تسجيل الدخول/إنشاء الحساب (Supabase Auth، قد يتطلب تأكيد البريد)، المفضلة والتقدم والإنجازات والتسجيل في الدروس، مساهمات المستخدمين (Supabase REST `rest/v1/user_submissions`، `AccountNetwork.swift:156`)، تصدير بيانات الحساب (RPC `export_my_account`، `AccountNetwork.swift:170`)، المحتوى الجديد المنشور بعد الإصدار. صفحات «البحث الأكاديمي» ونماذج التواصل **تحتاج اتصالًا/حسابًا** وتعرض حالة فارغة منظّمة دونه (انظر `docs/native/data-exemptions.json`).
 
 ## الحساب التجريبي (إجراء المالك)
 الدخول اختياري، فالمراجعة ممكنة دونه. حساب المراجع: **`apple.review@ssunnah.com`** (كلمة المرور في App Review Information فقط، وتُنشأ في Supabase بخيار Auto Confirm User قبل الرفع فلا حاجة لصندوق بريد). للإنشاء: أنشئ حسابًا في Supabase مؤكَّد البريد، وضع بياناته في حقلي **Sign-in required → User name / Password** في App Review Information. **لا تُكتب كلمة المرور في المستودع (عام).** تأكّد من صلاحيته قبل كل إرسال (`docs/store-release/REVIEWER_NOTES.md`).
@@ -28,7 +28,8 @@ Authentication: e-mail + password only (Supabase Auth). No Sign in with Apple or
 - أُزيل من الصيغة القديمة (`docs/store-release/REVIEWER_NOTES.md`، 1.0.0) ذكر `remote-notification`: التطبيق الأصلي لا يسجّل إشعارات بعيدة (`UIBackgroundModes` = `audio`, `fetch`).
 - لا مفتاح ميكروفون ولا حركة في Info.plist الحالي (حُذفا؛ لا تسجيل صوتي ولا CoreMotion في التطبيق).
 - **شرط قبل الإرسال (إجراء المالك):** اختبار حذف الحساب عند المراجع يتطلب أن تكون الدالة `delete_my_account` مطبَّقة على الإنتاج (`docs/native/backend/delete-account.sql`)؛ وإلا تظهر «خدمة الحساب غير مهيّأة…» وقد يُرفض التطبيق (5.1.1(v)). وفِّر حسابًا تجريبيًا مؤكَّد البريد في App Review Information لأن الحذف لا يُختبر دون حساب.
-- المساهمات (`/api/submissions`) وتصدير بيانات الحساب يعتمدان على خادم الموقع؛ إن تعذّر الاتصال تعرض رسالة لا انهيارًا. لا تَعِد بهما في نص المتجر.
+- المساهمات وتصدير بيانات الحساب يمرّان على Supabase مباشرة (جدول `user_submissions` والدالة `export_my_account`)، لا على خادم الموقع؛ الدالة غير موجودة إلا في `docs/native/backend/*.sql` ولا migration لها في المستودع، فيلزم تطبيقها (staging ثم إنتاج، بأمر المالك) وإلا يفشل التصدير. إن تعذّر الاتصال تعرض رسالة لا انهيارًا. لا تَعِد بهما في نص المتجر.
+- **قرار المالك (النطاق):** مسارات `/api/auto-content` و`/api/updates` و`/api/citations` ورابط `www.ssunnah.com` في نص الملاحظات أعلاه تعتمد على نطاق الموقع، وPRIVACY_CHECK يذكر أنه معلّق (HTTP 402)؛ تأكد من عمله قبل الإرسال أو أزل الرابط من الملاحظات.
 
 ## التسجيل لدى المراجع (فُحص من الكود والإعدادات الحية 2026-10-15)
 - الطريقة: بريد + كلمة مرور فقط (`SupabaseAuthAdapter.signUp` ← `/auth/v1/signup`)؛ لا Sign in with Apple ولا دخول اجتماعي (فلا يلزم 4.8).
