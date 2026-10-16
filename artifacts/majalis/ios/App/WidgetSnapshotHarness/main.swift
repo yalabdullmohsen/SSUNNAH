@@ -86,9 +86,11 @@ let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
     .environment(\.colorScheme, scheme)
     .environment(\.layoutDirection, .rightToLeft)
   edgeContacts(tag, fam, AnyView(styled))
+  // نص الفاتح داكن: خلفية فاتحة لعائلات القفل فلا يظهر الأسود على الداكن.
+  let lockLight = scheme == .light && (fam.f == .accessoryRectangular || fam.f == .accessoryCircular || fam.f == .accessoryInline)
   let content = styled
     .frame(width: fam.w, height: fam.h)
-    .background(LinearGradient(colors: [Color(red: 0.07, green: 0.22, blue: 0.19), Color(red: 0.04, green: 0.13, blue: 0.11)], startPoint: .top, endPoint: .bottom))
+    .background(LinearGradient(colors: lockLight ? [Color(red: 0.93, green: 0.95, blue: 0.93), Color(red: 0.86, green: 0.90, blue: 0.87)] : [Color(red: 0.07, green: 0.22, blue: 0.19), Color(red: 0.04, green: 0.13, blue: 0.11)], startPoint: .top, endPoint: .bottom))
     .clipShape(RoundedRectangle(cornerRadius: fam.f == .accessoryRectangular || fam.f == .accessoryCircular || fam.f == .accessoryInline ? 14 : 22))
   let r = ImageRenderer(content: content)
   r.scale = 3
