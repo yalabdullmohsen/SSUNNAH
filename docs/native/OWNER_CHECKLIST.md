@@ -23,3 +23,6 @@ App Store Connect ← سُنّة ← **App Information** ← **Age Rating** ← 
 5. الاسم والوصف والكلمات المفتاحية (ar-SA وen-US) من `store/APPSTORE_METADATA.md`، و«ما الجديد» من `store/WHATS_NEW.md`.
 6. اللقطات: `store/SCREENSHOTS.md`.
 7. **حاسبة المواريث (`/mawarith/calculator`) بالواجهة على iPhone**: 5 حالات من `Fixtures/mawarith/golden.json` بلوحة المفاتيح، مع الأرقام الهندية (٠–٩) والفاصلة «٫»/«,». تُنفَّذ على الجهاز لأن المحاكي بلا أداة نقر؛ التكافؤ الحسابي مغطّى باختبار `MawarithParityTests` فقط.
+
+## 3) الإرسال والمراجعة (ما بقي على يوسف وحده)
+القائمة التنفيذية: `store/OWNER_CHECKLIST.md` (قسم «قبل زر الإرسال»). الملفات الجاهزة للصق والتعبئة في `docs/native/submission/`: `ASC_APP_PRIVACY_ANSWERS.md` و`ASC_REVIEW_INFORMATION.md` و`STORE_LISTING_1_2_0.md`، والتدقيق في `GUIDELINES_AUDIT.md`، واختبار الجهاز في `DEVICE_TEST_SHEET.md`، ورد الشيخ في `SHEIKH_REPLY_TEMPLATE.md`. رقم البناء الأخير المرفوع: انظر `docs/native/release-state.json`.
