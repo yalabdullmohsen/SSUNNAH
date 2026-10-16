@@ -77,7 +77,7 @@ public struct MushafPageView: View {
             let words = row.w ?? []
             let gap = layout.gaps[i] ?? layout.fontSize * MushafMetrics.naturalGapEm
             HStack(spacing: gap) {
-                ForEach(Array(words.enumerated()), id: \.offset) { _, w in
+                ForEach(Array(words.enumerated()), id: \.offset) { k, w in
                     Text(w.c)
                         .lineLimit(1)
                         .fixedSize()
@@ -88,6 +88,8 @@ public struct MushafPageView: View {
                             // قطر ثابت = نسبة من حجم الخط (لا يتبع عرض صندوق الرمز)، ممركز خلف الرقم.
                             if w.isAyahEnd { Circle().fill(Sunnah.Colors.mushafAccent).frame(width: layout.fontSize * Self.ayahDiscEm, height: layout.fontSize * Self.ayahDiscEm).offset(y: layout.fontSize * Self.ayahDiscDropEm) }
                         }
+                        .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
+                        .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
                         .padding(.vertical, 1)
                         .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
                         .gesture(
