@@ -422,3 +422,247 @@ struct RectangularPrayerWidgetView: View {
         }
     }
 }
+
+// MARK: - تصاميم الصغير والمتوسط (يختارها المستخدم من إعداد الودجت)
+
+/// تصاميم ودجت الصلاة. الخطوط المضمَّنة فقط (الثلث والرقعة)؛ الافتراضي = الكلاسيكي.
+enum PrayerWidgetDesign: String, CaseIterable {
+    case classic, calligraphy, previous, bigNumber, previousNext   // الصغير
+    case fiveDaily, split                                          // المتوسط (والكلاسيكي والخطاطي مشتركان)
+
+    func resolved(for family: WidgetFamily) -> PrayerWidgetDesign {
+        switch family {
+        case .systemSmall: return [.classic, .calligraphy, .previous, .bigNumber, .previousNext].contains(self) ? self : .classic
+        case .systemMedium: return [.classic, .calligraphy, .fiveDaily, .split].contains(self) ? self : .classic
+        default: return .classic
+        }
+    }
+}
+
+struct PrayerStyledEntry: TimelineEntry {
+    let base: PrayerWidgetEntry
+    let design: PrayerWidgetDesign
+    var date: Date { base.date }
+    var relevance: TimelineEntryRelevance? { base.relevance }
+}
+
+struct PrayerStyledRootView: View {
+    @SunnahFamily private var family
+    let entry: PrayerWidgetEntry
+    let design: PrayerWidgetDesign
+
+    var body: some View {
+        let d = design.resolved(for: family)
+        Group {
+            if d == .classic || entry.needsAppOpenAction {
+                PrayerWidgetRootView(entry: entry)
+            } else {
+                Group {
+                    switch family {
+                    case .systemMedium: MediumDesignedPrayerView(entry: entry, design: d)
+                    default: SmallDesignedPrayerView(entry: entry, design: d)
+                    }
+                }
+                .environment(\.layoutDirection, .rightToLeft)
+                .environment(\.locale, WidgetFormat.locale)
+                .widgetURL(prayerURL)
+                .redacted(reason: entry.presentation == .placeholder ? .placeholder : [])
+            }
+        }
+    }
+}
+
+/// صف «السابقة»: «مضى على <الاسم>» + عدّاد تصاعدي حي، أو nil قبل أول أذان.
+private struct PrayerPreviousBlock: View {
+    let entry: PrayerWidgetEntry
+    var counterSize: CGFloat = 26
+    var body: some View {
+        if let name = entry.currentNameAr, let start = entry.currentDate, start <= entry.date {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("مضى على \(name)")
+                    .font(WidgetType.ruqaa(14))
+                    .foregroundStyle(PrayerHomeStyle.sub)
+                    .lineLimit(1).minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                entry.elapsedText(since: start)
+                    .font(WidgetType.primary(counterSize))
+                    .foregroundStyle(SunnahBrandColors.gold)
+                    .lineLimit(1).minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    .environment(\.locale, WidgetFormat.locale)
+            }
+        } else {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(entry.stateTitle).font(WidgetType.ruqaa(14)).foregroundStyle(PrayerHomeStyle.sub)
+                SunnahCounterFace(entry: entry, size: counterSize, showsIcon: false)
+                    .foregroundStyle(entry.homeCounterColor)
+            }
+        }
+    }
+}
+
+private struct PrayerNextBlock: View {
+    let entry: PrayerWidgetEntry
+    var counterSize: CGFloat = 22
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text("القادمة").font(WidgetType.ruqaa(13)).foregroundStyle(PrayerHomeStyle.sub)
+            if let key = entry.nextKey {
+                Text("\(key.nameAr)")
+                    .font(WidgetType.ruqaa(20, bold: true))
+                    .foregroundStyle(PrayerHomeStyle.ink)
+                    .lineLimit(1).minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                if let d = entry.nextDate { PrayerTimeText(date: d, timeZone: entry.displayTimeZone, size: 15).foregroundStyle(PrayerHomeStyle.sub) }
+            }
+            if entry.clockMode != .none, !entry.focus.isCurrent {
+                PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
+                    .font(WidgetType.primary(counterSize)).foregroundStyle(PrayerHomeStyle.ink)
+            }
+        }
+    }
+}
+
+/// «حان وقت العشاء» بنصّين في HStack (RTL: الأول يمينًا) لا بنص واحد مدمج.
+private extension PrayerWidgetEntry {
+    func stateAndName(_ key: PrayerSlotKey, size: CGFloat) -> some View {
+        HStack(spacing: 4) {
+            Text(stateTitle)
+            Text(key.nameAr)
+        }
+        .font(WidgetType.ruqaa(size)).foregroundStyle(PrayerHomeStyle.sub)
+        .lineLimit(1).minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+    }
+}
+
+struct SmallDesignedPrayerView: View {
+    let entry: PrayerWidgetEntry
+    let design: PrayerWidgetDesign
+
+    var body: some View {
+        content
+            .sunnahCardLayout(12)
+            .modifier(SunnahWidgetBackground())
+            .accessibilityLabel(Text(PrayerCounterA11y.label(entry)))
+    }
+
+    @ViewBuilder private var content: some View {
+        let focus = entry.focus
+        switch design {
+        case .calligraphy:
+            VStack(alignment: .leading, spacing: 4) {
+                Text(entry.stateTitle).font(WidgetType.ruqaa(15)).foregroundStyle(PrayerHomeStyle.sub)
+                if let key = focus.key {
+                    Text(key.nameAr)
+                        .font(WidgetType.ruqaa(34, bold: true))
+                        .foregroundStyle(PrayerHomeStyle.ink)
+                        .lineLimit(1).minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                }
+                Spacer(minLength: 0)
+                SunnahCounterFace(entry: entry, size: 24, showsIcon: false).foregroundStyle(entry.homeCounterColor)
+                if let d = focus.date { PrayerTimeText(date: d, timeZone: entry.displayTimeZone, size: 15).foregroundStyle(PrayerHomeStyle.sub) }
+            }
+        case .previous:
+            VStack(alignment: .leading, spacing: 8) {
+                PrayerPreviousBlock(entry: entry, counterSize: 28)
+                Spacer(minLength: 0)
+                if let key = entry.nextKey {
+                    Text("القادمة").font(WidgetType.ruqaa(13)).foregroundStyle(PrayerHomeStyle.sub)
+                    PrayerNameTime(key: key, date: entry.nextDate, timeZone: entry.displayTimeZone, nameSize: 17, timeSize: 15)
+                        .foregroundStyle(PrayerHomeStyle.ink)
+                }
+            }
+        case .bigNumber:
+            VStack(alignment: .leading, spacing: 4) {
+                if let key = focus.key {
+                    entry.stateAndName(key, size: 16)
+                }
+                Spacer(minLength: 0)
+                SunnahCounterFace(entry: entry, size: 40, showsIcon: false).foregroundStyle(entry.homeCounterColor)
+                Spacer(minLength: 0)
+                if let d = focus.date { PrayerTimeText(date: d, timeZone: entry.displayTimeZone, size: 15).foregroundStyle(PrayerHomeStyle.sub) }
+            }
+        default: // previousNext
+            VStack(alignment: .leading, spacing: 10) {
+                if let k = entry.currentKey ?? entry.previousKey, let d = entry.currentDate ?? entry.previousDate {
+                    row(title: "السابقة", key: k, date: d, dim: true)
+                }
+                if let k = entry.nextKey, let d = entry.nextDate { row(title: "القادمة", key: k, date: d, dim: false) }
+                Spacer(minLength: 0)
+            }
+        }
+    }
+
+    private func row(title: String, key: PrayerSlotKey, date: Date, dim: Bool) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(title).font(WidgetType.ruqaa(13)).foregroundStyle(PrayerHomeStyle.sub)
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Text(key.nameAr).font(WidgetType.thuluth(20)).lineLimit(1)
+                    .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                PrayerTimeText(date: date, timeZone: entry.displayTimeZone, size: 15)
+            }
+            .foregroundStyle(PrayerHomeStyle.ink)
+            .opacity(dim ? 0.7 : 1)
+        }
+    }
+}
+
+struct MediumDesignedPrayerView: View {
+    let entry: PrayerWidgetEntry
+    let design: PrayerWidgetDesign
+
+    var body: some View {
+        content
+            .padding(14)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .modifier(SunnahWidgetBackground())
+            .accessibilityLabel(Text(PrayerCounterA11y.label(entry)))
+    }
+
+    @ViewBuilder private var content: some View {
+        let focus = entry.focus
+        switch design {
+        case .fiveDaily:
+            VStack(alignment: .leading, spacing: 12) {
+                Spacer(minLength: 0)
+                HStack(alignment: .firstTextBaseline) {
+                    if let key = focus.key {
+                        entry.stateAndName(key, size: 17)
+                    }
+                    Spacer(minLength: 4)
+                    SunnahCounterFace(entry: entry, size: 26, showsIcon: false).foregroundStyle(entry.homeCounterColor)
+                }
+                HStack(spacing: 4) {
+                    let upcoming = focus.isCurrent ? entry.currentKey : entry.nextKey
+                    ForEach([PrayerSlotKey.fajr, .dhuhr, .asr, .maghrib, .isha], id: \.self) { key in
+                        let d = entry.slot(for: key)?.date
+                        PrayerGridCell(key: key, date: d, timeZone: entry.displayTimeZone,
+                                       isUpcoming: key == upcoming,
+                                       isPast: (d.map { $0 <= entry.date } ?? false) && key != upcoming)
+                    }
+                }
+                .foregroundStyle(PrayerHomeStyle.ink)
+                Spacer(minLength: 0)
+            }
+        case .split:
+            SunnahTwoZone {
+                PrayerPreviousBlock(entry: entry, counterSize: 34)
+            } secondary: {
+                PrayerNextBlock(entry: entry)
+            }
+        default: // calligraphy
+            SunnahTwoZone {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(entry.stateTitle).font(WidgetType.ruqaa(16)).foregroundStyle(PrayerHomeStyle.sub)
+                    SunnahCounterFace(entry: entry, size: 34, showsIcon: false).foregroundStyle(entry.homeCounterColor)
+                    PrayerElapsedCaption(entry: entry, size: 13)
+                }
+            } secondary: {
+                if let key = focus.key {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(key.nameAr).font(WidgetType.ruqaa(30, bold: true)).foregroundStyle(PrayerHomeStyle.ink)
+                            .lineLimit(1).minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                        if let d = focus.date { PrayerTimeText(date: d, timeZone: entry.displayTimeZone, size: 15).foregroundStyle(PrayerHomeStyle.sub) }
+                    }
+                }
+            }
+        }
+    }
+}
