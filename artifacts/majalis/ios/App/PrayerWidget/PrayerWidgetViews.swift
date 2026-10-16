@@ -96,6 +96,37 @@ struct PrayerLiveClock: View {
     }
 }
 
+/// «مضى على الأذان» داخل النافذة (تسمية العدّاد التصاعدي فوقه) أو «مضى على <الحالية> mm:ss» بعدّاد تصاعدي حيّ بعدها.
+struct PrayerElapsedCaption: View {
+    let entry: PrayerWidgetEntry
+    var size: CGFloat = 12
+
+    var body: some View {
+        if let src = entry.elapsedCaptionSource {
+            Group {
+                if let name = src.name {
+                    Text("مضى على \(name) ") + elapsed(since: src.start)
+                } else {
+                    Text("مضى على الأذان")
+                }
+            }
+            .font(WidgetType.secondary(size)).monospacedDigit()
+            .foregroundStyle(PrayerHomeStyle.sub).lineLimit(1)
+            .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+            .environment(\.locale, WidgetFormat.locale)
+        }
+    }
+
+    private func elapsed(since start: Date) -> Text {
+        let end = max(entry.nextDate ?? start.addingTimeInterval(86_400), entry.date.addingTimeInterval(1))
+        if entry.allowsLiveCountdown {
+            return Text(timerInterval: start...end, pauseTime: nil, countsDown: false,
+                        showsHours: LiveClock.showsHours(seconds: end.timeIntervalSince(start)))
+        }
+        return Text(LiveClock.format(seconds: entry.date.timeIntervalSince(start)))
+    }
+}
+
 /// شريط تقدّم اليوم بين صلاتين؛ حيّ عبر النظام داخل النافذة وثابت خارجها. (مكوّن العدّ الحي الوحيد خارج PrayerLiveClock.)
 struct PrayerDayProgressBar: View {
     let entry: PrayerWidgetEntry
@@ -149,9 +180,7 @@ struct SmallPrayerWidgetView: View {
                         .foregroundStyle(PrayerHomeStyle.sub)
                     SunnahCounterFace(entry: entry, size: 26, showsIcon: false)
                         .foregroundStyle(entry.homeCounterColor)
-                    if let c = entry.stateCaption {
-                        Text(c).font(WidgetType.secondary(12)).foregroundStyle(PrayerHomeStyle.sub).lineLimit(1)
-                    }
+                    PrayerElapsedCaption(entry: entry, size: 12)
                     Spacer(minLength: 0)
                     if let key = entry.focus.key {
                         PrayerNameTime(key: key, date: entry.focus.date, timeZone: entry.displayTimeZone,
@@ -183,9 +212,7 @@ struct MediumPrayerWidgetView: View {
                             .foregroundStyle(PrayerHomeStyle.sub)
                         SunnahCounterFace(entry: entry, size: 34, showsIcon: false)
                             .foregroundStyle(entry.homeCounterColor)
-                        if let c = entry.stateCaption {
-                            Text(c).font(WidgetType.secondary(13)).foregroundStyle(PrayerHomeStyle.sub).lineLimit(1)
-                        }
+                        PrayerElapsedCaption(entry: entry, size: 13)
                     }
                 } secondary: {
                     if let key = entry.focus.key {
@@ -213,8 +240,11 @@ struct LargePrayerWidgetView: View {
                 SunnahCalmCard().foregroundStyle(PrayerHomeStyle.ink)
             } else {
                 VStack(alignment: .leading, spacing: 16) {
-                    SunnahCounterFace(entry: entry, size: 42)
-                        .foregroundStyle(entry.homeCounterColor)
+                    VStack(alignment: .leading, spacing: 4) {
+                        SunnahCounterFace(entry: entry, size: 42)
+                            .foregroundStyle(entry.homeCounterColor)
+                        PrayerElapsedCaption(entry: entry, size: 14)
+                    }
                     PrayerSixGrid(entry: entry)
                         .foregroundStyle(PrayerHomeStyle.ink)
                     Spacer(minLength: 0)
@@ -255,7 +285,7 @@ extension PrayerWidgetEntry {
         if let s = elapsedStart, let e = elapsedEnd, e > s {
             return min(1, max(0, date.timeIntervalSince(s) / e.timeIntervalSince(s)))
         }
-        guard let p = previousDate, let n = nextDate, n > p else { return 0 }
+        guard let p = currentDate ?? previousDate, let n = nextDate, n > p else { return 0 }
         return min(1, max(0, date.timeIntervalSince(p) / n.timeIntervalSince(p)))
     }
 
@@ -274,11 +304,11 @@ extension PrayerWidgetEntry {
     /// عنوان الحالة (يلحقه اسم الصلاة): «بقي على» قبل الأذان وبعد نافذته، «حان وقت» من الأذان إلى نهاية النافذة.
     var stateTitle: String { focus.isCurrent ? "حان وقت" : "بقي على" }
 
-    /// سطر ثانوي: «مضى على الأذان» داخل النافذة، وبعدها «مضى على <الحالية>» (nil قبل أول أذان في اليوم).
-    var stateCaption: String? {
-        if focus.isCurrent { return "مضى على الأذان" }
-        guard let name = previousNameAr, let start = previousDate, start <= date else { return nil }
-        return "مضى على \(name)"
+    /// الصلاة التي يُعدّ مضيّ الوقت على أذانها في السطر الثانوي: الجارية داخل النافذة أو آخر أذان مضى بعدها (nil قبل أول أذان).
+    var elapsedCaptionSource: (name: String?, start: Date)? {
+        if focus.isCurrent, let start = focus.date { return (nil, start) }
+        guard let name = currentNameAr, let start = currentDate, start <= date else { return nil }
+        return (name, start)
     }
 }
 

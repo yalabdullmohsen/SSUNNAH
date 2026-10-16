@@ -30,6 +30,14 @@ func variant(_ e: CatalogWidgetEntry, _ v: String) -> CatalogWidgetEntry {
     var m = e.mushaf
     m?.hasProgress = false; m?.lastPage = nil; m?.lastSurahNameAr = nil; m?.lastSurahNumber = nil
     return CatalogWidgetEntry(date: e.date, presentation: e.presentation, prayer: e.prayer, calendar: e.calendar, adhkar: e.adhkar, quran: e.quran, mushaf: m, custom: e.custom, progress: e.progress, content: e.content, selectedCustomId: e.selectedCustomId, isSampleData: e.isSampleData)
+  case "w5", "w2959", "w3000", "w3001":
+    // داخل نافذة الأذان (30 د): بعد الأذان بـ5 د، 29:59، 30:00 بالضبط (الانتقال للتالية)، وبعد ذلك
+    let off: [String: TimeInterval] = ["w5": 300, "w2959": 1799, "w3000": 1800, "w3001": 1801]
+    guard let snap = e.prayer.snapshot,
+          let slot = e.prayer.slots.filter({ $0.key.isObligatory }).dropFirst().first else { return e }
+    let at = slot.date.addingTimeInterval(off[v] ?? 0)
+    let p = PrayerWidgetEntry.make(date: at, snapshot: snap, isPreview: true, presentation: .galleryPreview, allowsLiveCountdown: false)
+    return CatalogWidgetEntry(date: at, presentation: e.presentation, prayer: p, calendar: e.calendar, adhkar: e.adhkar, quran: e.quran, mushaf: e.mushaf, custom: e.custom, progress: e.progress, content: e.content, selectedCustomId: e.selectedCustomId, isSampleData: e.isSampleData)
   default: return e
   }
 }
@@ -92,7 +100,7 @@ let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
   let out = CommandLine.arguments[1]
   try? FileManager.default.createDirectory(atPath: out, withIntermediateDirectories: true)
   let base = CatalogWidgetEntry.gallery()
-  for v in ["data", "long", "empty", "nodata"] {
+  for v in ["data", "long", "empty", "nodata", "w5", "w2959", "w3000", "w3001"] {
     let e = variant(base, v)
     let widgets: [(String, [String], (CatalogWidgetEntry) -> AnyView)] = [
       ("1-prayer-next", ["small","medium","large","rect","circ","inline"], { AnyView(PrayerWidgetRootView(entry: $0.prayer)) }),
@@ -105,7 +113,8 @@ let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
       ("8-ayah-dua", ["small","medium","large","rect"], { AnyView(AyahOrDuaView(entry: $0)) }),
       ("9-mushaf", ["small","medium"], { AnyView(MushafContinueView(entry: $0)) }),
     ]
-    for (n, fs, mk) in widgets {
+    let windowOnly = v.hasPrefix("w")
+    for (n, fs, mk) in widgets where !windowOnly || n.hasPrefix("1-") {
       for f in fams where fs.contains(f.name) {
         for s in [ColorScheme.light, .dark] { render(n, f, s, v, mk(e), out: out) }
       }
