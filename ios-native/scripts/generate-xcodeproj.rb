@@ -106,6 +106,51 @@ emb = t.new_copy_files_build_phase('Embed Foundation Extensions')
 emb.symbol_dst_subfolder_spec = :plug_ins
 ebf = emb.add_file_reference(wt.product_reference, true)
 ebf.settings = { 'ATTRIBUTES' => ['RemoveHeadersOnCopy'] }
+# Apple Watch: تطبيق watchOS (واجهة ن1 في SunnahWatch/App) + امتداد Complications، يُضمَّن في أرشيف الآيفون (Embed Watch Content)
+wver = '10.0'
+wk = proj.new_target(:application, 'SunnahWatch', :watchos, wver)
+wkx = proj.new_target(:app_extension, 'SunnahWatchComplications', :watchos, wver)
+wgrp = proj.main_group.new_group('SunnahWatch')
+wapp = wgrp.new_group('App', 'SunnahWatch/App'); wcx = wgrp.new_group('Complications', 'SunnahWatch/Complications')
+Dir[File.join(root, 'SunnahWatch/App/*.swift')].sort.each { |f| wk.add_file_references([wapp.new_reference(File.basename(f))]) }
+Dir[File.join(root, 'SunnahWatch/Complications/*.swift')].sort.each { |f| wkx.add_file_references([wcx.new_reference(File.basename(f))]) }
+# النماذج والسمة مشتركة بين الهدفين (README الواجهة)
+%w[WatchModels WatchTheme].each { |n| wkx.add_file_references([wapp.files.find { |x| x.path == "#{n}.swift" }]) }
+wres = proj.main_group.new_group('SunnahWatchResources', 'SunnahWatchResources')
+[wk, wkx].each do |tg|
+  tg.resources_build_phase.add_file_reference(wres.new_reference('PrivacyInfo.xcprivacy'))
+  dp = proj.new(Xcodeproj::Project::Object::XCSwiftPackageProductDependency); dp.product_name = 'SunnahWidgetKit'
+  tg.package_product_dependencies << dp
+  bfx = proj.new(Xcodeproj::Project::Object::PBXBuildFile); bfx.product_ref = dp
+  tg.frameworks_build_phase.files << bfx
+end
+{ wk => ['com.yousef.majlisilm.watchkitapp', 'Info.plist', 'SunnahWatch.entitlements'],
+  wkx => ['com.yousef.majlisilm.watchkitapp.complications', 'Complications-Info.plist', 'SunnahWatchComplications.entitlements'] }.each do |tg, (bid, plist, ent)|
+  wres.new_reference(plist); wres.new_reference(ent)
+  tg.build_configurations.each do |c|
+    s = c.build_settings
+    s['PRODUCT_BUNDLE_IDENTIFIER'] = bid
+    s['INFOPLIST_FILE'] = "SunnahWatchResources/#{plist}"
+    s['CODE_SIGN_ENTITLEMENTS'] = "SunnahWatchResources/#{ent}"
+    s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
+    s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '106'
+    s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '4'
+    s['WATCHOS_DEPLOYMENT_TARGET'] = wver; s['GENERATE_INFOPLIST_FILE'] = 'NO'
+    s['SDKROOT'] = 'watchos'; s['SKIP_INSTALL'] = 'YES'; s['PRODUCT_NAME'] = '$(TARGET_NAME)'
+    s['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
+  end
+end
+wk.build_configurations.each { |c| c.build_settings['SKIP_INSTALL'] = 'YES' }
+wk.add_dependency(wkx)
+wemb = wk.new_copy_files_build_phase('Embed Foundation Extensions')
+wemb.symbol_dst_subfolder_spec = :plug_ins
+wk_ebf = wemb.add_file_reference(wkx.product_reference, true)
+wk_ebf.settings = { 'ATTRIBUTES' => ['RemoveHeadersOnCopy'] }
+t.add_dependency(wk)
+wcp = t.new_copy_files_build_phase('Embed Watch Content')
+wcp.dst_subfolder_spec = '16'; wcp.dst_path = '$(CONTENTS_FOLDER_PATH)/Watch'
+wcbf = wcp.add_file_reference(wk.product_reference, true)
+wcbf.settings = { 'ATTRIBUTES' => ['RemoveHeadersOnCopy'] }
 # هدف XCUITest: نقر فعلي على بلاطات الرئيسية (xcodebuild test) — يلتقط ما لا تلتقطه لقطات -snapshotRoute
 ut = proj.new_target(:ui_test_bundle, 'SunnahAppUITests', :ios, '16.2')
 ug = proj.main_group.new_group('SunnahAppUITests', 'SunnahAppUITests')
