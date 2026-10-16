@@ -332,8 +332,14 @@ struct InlinePrayerWidgetView: View {
             let name = entry.focus.key?.nameAr ?? "الصلاة"
             Label {
                 HStack(spacing: 4) {
-                    Text(entry.focus.isCurrent ? "\(name) منذ" : "\(name) بعد")
-                    PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
+                    if entry.focus.isCurrent, let src = entry.elapsedCaptionSource {
+                        // «مضى على <الصلاة>» بعدّاد تصاعدي حيّ يحسبه النظام (Text(timerInterval:)) بلا إعادة تحميل.
+                        Text("مضى على \(name)")
+                        entry.elapsedText(since: src.start).monospacedDigit().environment(\.locale, WidgetFormat.locale)
+                    } else {
+                        Text("\(name) بعد")
+                        PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
+                    }
                 }
             } icon: {
                 Image(systemName: entry.focus.key?.symbol(filled: entry.focus.isCurrent) ?? "moon.stars")
