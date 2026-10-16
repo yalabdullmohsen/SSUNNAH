@@ -72,6 +72,11 @@ for (const p of walk(DATA)) {
       if ((r.tags ?? []).some(t => /^(verified|scholarly_source|primary_text|موثَّق|مصدر علمي|نص أصلي)$/.test(t))) add("origin", sec, rel, `فائدة تحريرية بوسم توثيق (id=${r.id ?? "?"})`);
     } else if (r.origin === "local") { if (str(r.originLabel) !== "بيانات محلية") add("origin", sec, rel, `بيانات محلية بلا originLabel (id=${r.id ?? "?"})`); }
     else if (rel === "learn/fawaid.json" && !SRC_KEYS.some(s => filled(r[s]))) add("origin", sec, rel, `فائدة بلا مصدر ولا وسم origin:"editorial" (id=${r.id ?? "?"})`);
+    // G3ج: سطر المصدر المدمج في body لا يكرر نص الفائدة نفسه (اقتباس «…» يغطي ≥90% من الفقرة الأولى) — يمنع عودة التكرار بعد إصلاح التصدير
+    if (rel === "learn/fawaid.json" && typeof r.body === "string") {
+      const nq = x => x.replace(/[ً-ٰٟـ]/g, "").replace(/[^\p{L}\p{N}]/gu, "").replace(/[أإآ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه"), ps = r.body.split(/\n\s*\n/), t = nq(ps[0]);
+      for (const q of ps.slice(1).join("\n").matchAll(/«([^»]+)»/g)) { const n = nq(q[1]); if (t.length >= 12 && n.includes(t) && t.length / n.length >= 0.9) add("descriptions", "fawaid-duplicate-quote", rel, `سطر المصدر يكرر نص الفائدة (id=${r.id ?? "?"})`); }
+    }
     const s1 = str(r.source), s2 = str(r.reference ?? r.ref);
     if (s1 && s1 === s2) add("descriptions", sec, rel, `source==reference (id=${r.id ?? "?"})`);
     if (Array.isArray(r.sources)) { const ks = r.sources.map(key); if (new Set(ks).size < ks.length) add("descriptions", sec, rel, `sources مكررة (id=${r.id ?? "?"})`); }
