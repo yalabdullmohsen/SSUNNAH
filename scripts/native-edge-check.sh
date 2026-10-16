@@ -19,6 +19,7 @@ xcrun swiftc -sdk "$SDK" -target arm64-apple-ios17.0-simulator -swift-version 5 
 [ -x "$OUT/harness" ] || { echo "✗ فشل بناء الأداة"; exit 2; }
 xcrun simctl boot "$UDID" >/dev/null 2>&1 || true
 xcrun simctl bootstatus "$UDID" -b >/dev/null 2>&1 || true
+export SIMCTL_CHILD_SNAP_FONTS="$PWD/$APP/PrayerWidget/Fonts"   # خطوط الثلث والرقعة للحزام
 RES=$(xcrun simctl spawn "$UDID" "$OUT/harness" "$OUT/png" </dev/null 2>&1 | tail -20)
 echo "$RES"
 echo "$RES" | grep -qx "EDGE-OK"
