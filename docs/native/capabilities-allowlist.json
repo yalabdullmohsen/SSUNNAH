@@ -1,0 +1,16 @@
+{
+  "_": "القائمة المعتمدة لما يُرفع فعلًا (هدف SunnahApp في ios-native؛ دليل: أرشيف 104). أي إذن/قدرة خارجها يفشل scripts/native-capabilities-check.py. إضافة بند = قرار المالك + إفصاح في App Privacy وREVIEW_NOTES. هدف Capacitor (artifacts/majalis/ios/App/App) لا يُرفع ولا يُفحص.",
+  "usageDescriptions": ["NSLocationWhenInUseUsageDescription"],
+  "backgroundModes": ["audio", "fetch"],
+  "bgTaskIdentifiers": ["com.yousef.majlisilm.prayer-refresh"],
+  "entitlements": [
+    "application-identifier",
+    "com.apple.developer.team-identifier",
+    "com.apple.developer.associated-domains",
+    "com.apple.security.application-groups",
+    "com.apple.developer.usernotifications.time-sensitive",
+    "get-task-allow",
+    "beta-reports-active"
+  ],
+  "forbidden": ["aps-environment", "remote-notification", "NSMicrophoneUsageDescription", "NSMotionUsageDescription"]
+}
