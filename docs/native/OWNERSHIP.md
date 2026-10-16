@@ -17,7 +17,9 @@
 - `ios-native/SunnahApp/Resources/**`
 - `docs/native/intro/**`
 - `docs/native/store-shots/**`
-- `docs/native/store/**` — ملكية الإصدار (قرار يوسف؛ يشمل PRIVACY_AUDIT_CLOUD.md الذي يكتبه ن5 بتفويض). ملاحظة: `docs/native/backend/**` و`Shared/` لا تزالان غير مسجّلتين.
+- `docs/native/backend/**`
+- `Shared/**`
+- `docs/native/store/**` — ملكية الإصدار (قرار يوسف؛ يشمل PRIVACY_AUDIT_CLOUD.md الذي يكتبه ن5 بتفويض).
 - `scripts/native-design-guard.mjs`
 - `scripts/generate-swift-tokens.mjs`
 - `artifacts/majalis/ios/App/PrayerWidget/PrayerWidgetViews.swift` (قرار المالك 2026-10-15: ألوان وأنماط عرض الويدجت لـن1؛ البيانات والـentry والـintents والـharness اللقطات تبقى لـن4)
