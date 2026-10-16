@@ -18,6 +18,8 @@ Companion: `ATTRIBUTIONS.md` · `CREDITS.md` · in-app `/sources` · `STORE_RELE
 | Family | Path | License |
 |--------|------|---------|
 | Almarai | `public/fonts/almarai/**` | SIL Open Font License 1.1 — see `public/fonts/almarai/OFL-Almarai.txt` |
+| Aref Ruqaa (ودجت iOS) | `artifacts/majalis/ios/App/PrayerWidget/Fonts/ArefRuqaa-*.ttf` | SIL Open Font License 1.1 (الاسم المحجوز EURM10) — see `OFL-ArefRuqaa.txt`؛ المصدر google/fonts |
+| Layla Thuluth (ودجت iOS) | `artifacts/majalis/ios/App/PrayerWidget/Fonts/LaylaThuluth.ttf` | SIL Open Font License 1.1 (محمد عصام؛ الاسم المحجوز Layla*) — نص الرخصة من جدول الاسم nameID 13 داخل الخط في `OFL-LaylaThuluth-name13.txt` + `FONTLOG-Layla.txt`؛ المصدر fontlibrary.org/en/font/layla-thuluth (الحزمة بلا OFL.txt مستقل) |
 
 ### CC0 adhan audio (`CC0_APPROVED`)
 
@@ -51,7 +53,7 @@ Evidence HTML: `docs/audio-rights/evidence/wikimedia-adhan-ogg-2026-09-13.html` 
 | Class | Asset | Notice |
 |-------|-------|--------|
 | `STREAM_ONLY` | everyayah / mp3quran / Quran.com / AlQuran Cloud recitations | Streamed at runtime; **not** in binary · no offline/watch/widget package |
-| `STRIP_FROM_RELEASE` | QPC V2 fonts | No written redistribute grant — Strip Path active (`native-strip-qpc-fonts`) |
+| `STRIP_FROM_RELEASE` | QPC V2 fonts (`artifacts/majalis/public/fonts/qpc-v2/`; وأسماء السور `public/fonts/qpc-surah-names/`) | No written redistribute grant — Strip Path active (`native-strip-qpc-fonts`) |
 | `STRIP_FROM_RELEASE` | INTERNAL / UNKNOWN adhan packs | Removed from Archive by `native-strip-store-release-audio` + dist strip |
 | `STRIP_FROM_RELEASE` | Sheikh raster photos | UNKNOWN until clearance |
 | `METADATA_ONLY` | Lessons / books / fatwa bodies | Metadata + external links only — no full body / offline / widget / watch |
@@ -67,3 +69,11 @@ ATTRIBUTIONS_COMPLETE        = true   # ATTRIBUTIONS.md for RC binary classes
 CONTENT_CERTIFIED            = false  # web corpus / OWNER grants remain open
 AUDIO_CERTIFIED              = false  # store uses allowlist; not full audio corpus cert
 ```
+
+### Layla Thuluth — اقتباس حرفي من جدول الاسم داخل الخط
+المسار: `artifacts/majalis/ios/App/PrayerWidget/Fonts/LaylaThuluth.ttf` — جدول `name`، الحقل 13 (License Description)، والنص الكامل في `OFL-LaylaThuluth-name13.txt`:
+
+> Copyright (c) <2014,2015,2016,2017>, <Mohammed Isam> (<http://sites.google.com/site/mohammedisam2000 | email: mohammed_isam1984@yahoo.com>), with Reserved Font Name <LaylaArcyArc, LaylaBasicArabic, LaylaBoxer, LaylaDigital, LaylaDiwani, LaylaThuluth, LaylaKoufi, LaylaRuqaa>.
+> This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL
+
+الحقل 14 (License Info URL): `http://scripts.sil.org/OFL`. الصفحة التي تدرج الخط تحت OFL: https://fontlibrary.org/en/font/layla-thuluth (الحزمة: `FONTLOG-Layla.txt` بلا ملف OFL.txt مستقل).
