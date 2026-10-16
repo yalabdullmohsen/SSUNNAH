@@ -3,13 +3,14 @@ import SunnahDataKit
 
 /// إعداد الناقل البعيد. المفاتيح تُقرأ من Info.plist (SUPABASE_URL وSUPABASE_ANON_KEY) ولا تُخزَّن في المستودع.
 public struct RemoteConfig: Sendable {
-    public var siteURL: URL
+    /// nil افتراضيًا: لا اتصال بنطاق الموقع (المحتوى من الحزمة المدمجة والكاش)؛ مسارات غير Supabase تُرفض فورًا.
+    public var siteURL: URL?
     public var supabaseURL: URL?
     public var anonKey: String?
     public var accessToken: @Sendable () async -> String?
 
     public init(
-        siteURL: URL = URL(string: "https://www.ssunnah.com")!,
+        siteURL: URL? = nil,
         supabaseURL: URL? = nil,
         anonKey: String? = nil,
         accessToken: @escaping @Sendable () async -> String? = { nil }
@@ -33,11 +34,10 @@ public struct RemoteConfig: Sendable {
         // محاكاة انقطاع الاتصال في التجارب: -SUNNAH_OFFLINE (DEBUG فقط، ولا يمسّ Info.plist)
         if CommandLine.arguments.contains("-SUNNAH_OFFLINE") {
             let dead = URL(string: "https://offline.invalid")!
-            return RemoteConfig(siteURL: dead, supabaseURL: dead, anonKey: value("SUPABASE_ANON_KEY") ?? Self.defaultAnonKey, accessToken: accessToken)
+            return RemoteConfig(supabaseURL: dead, anonKey: value("SUPABASE_ANON_KEY") ?? Self.defaultAnonKey, accessToken: accessToken)
         }
         #endif
         return RemoteConfig(
-            siteURL: value("VERCEL_API_BASE_URL").flatMap(URL.init(string:)) ?? URL(string: "https://www.ssunnah.com")!,
             supabaseURL: value("SUPABASE_URL").flatMap(URL.init(string:)) ?? Self.defaultSupabaseURL,
             anonKey: value("SUPABASE_ANON_KEY") ?? Self.defaultAnonKey,
             accessToken: accessToken
@@ -50,7 +50,7 @@ public enum RemoteTransportError: Error, Equatable {
 }
 
 /// ناقل `URLSession` بمهلة قصيرة (8 ثوانٍ). غير متزامن بالكامل فلا يُجمّد الواجهة.
-/// `/api` و`/data` ← موقع ssunnah.com، و`/rest/v1` ← Supabase.
+/// `/rest/v1` ← Supabase فقط؛ أي مسار آخر (`/api` و`/data`) يُرفض بـ`badPath` ما لم تُمرَّر siteURL صراحةً (الاختبارات).
 public struct RemoteTransport: DataTransport {
     public static let timeout: TimeInterval = 8
 
@@ -84,7 +84,7 @@ public struct RemoteTransport: DataTransport {
             if requireAuth && token == nil { throw RemoteTransportError.noCredentials }
             req.setValue("Bearer " + (token ?? key), forHTTPHeaderField: "Authorization")
         } else {
-            guard let url = URL(string: config.siteURL.absoluteString.trimmingSuffix("/") + path) else { throw RemoteTransportError.badPath }
+            guard let site = config.siteURL, let url = URL(string: site.absoluteString.trimmingSuffix("/") + path) else { throw RemoteTransportError.badPath }
             req = URLRequest(url: url)
             if requireAuth {
                 guard let token = await config.accessToken() else { throw RemoteTransportError.noCredentials }
