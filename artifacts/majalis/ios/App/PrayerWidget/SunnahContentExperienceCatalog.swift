@@ -219,6 +219,7 @@ struct AyahOrDuaView: View {
         case .systemLarge, .systemExtraLarge: return [28, 25, 22, 19, 17, 15, 13]
         case .systemMedium: return [24, 21, 19, 17, 15, 13]
         case .accessoryRectangular: return [15, 14, 13, 12, 11]
+        case .systemSmall: return [26, 24, 22, 20, 18, 16, 14, 13]   // يملأ المربع الصغير بدل فراغ علوي وسفلي
         default: return [20, 18, 16, 14, 13]
         }
     }
