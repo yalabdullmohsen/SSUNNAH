@@ -14,6 +14,7 @@
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Sections/**`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Generated/**`
 - `ios-native/Sources/Design/**`
+- `ios-native/SunnahWatch/**` (واجهة Apple Watch؛ الهدف مسجَّل في pbxproj عبر generate-xcodeproj.rb، وإعداداته في `ios-native/SunnahWatchResources/**` لـن4)
 - `ios-native/SunnahApp/Resources/**`
 - `docs/native/intro/**`
 - `docs/native/store-shots/**`

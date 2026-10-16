@@ -33,10 +33,25 @@ enum MushafAyahWords {
         return out
     }
 
+    /// كلمات النص مرتّبة كما في المصحف: يُسقط «۞» (علامة الحزب) و«۩» (السجدة) لأن المصحف يرسمهما زخرفةً لا كلمة،
+    /// وبسملة مطلع السورة المدمجة في نص الآية 1 (4 كلمات) إن كان الفرق بالعدد هو هي بالضبط. النص نفسه لا يُعدَّل.
+    static func mushafAlignedWords(ayahText: String, wordCount: Int) -> [String] {
+        var raw = ayahText.split(whereSeparator: \.isWhitespace).map(String.init).filter { $0 != "\u{06DE}" && $0 != "\u{06E9}" }
+        if raw.count == wordCount + 4, raw.prefix(4).map(QuranWordMatch.normalizeQuranWord) == basmalaNormalized { raw.removeFirst(4) }
+        var words = raw.map { QuranWordMatch.normalizeQuranWord($0) }
+        // «إِلْ يَاسِينَ» (37:130): Tanzil يفصلها كلمتين والمصحف (QPC) كلمة واحدة بجلايفين؛ نضمّهما عند الفرق بالعدد بواحد فقط.
+        if words.count == wordCount + 1, let i = words.indices.dropLast().first(where: { (words[$0], words[$0 + 1]) == elYasin }) {
+            words.replaceSubrange(i...(i + 1), with: [words[i] + words[i + 1]])
+        }
+        return words
+    }
+    private static let elYasin = (QuranWordMatch.normalizeQuranWord("إِلْ"), QuranWordMatch.normalizeQuranWord("يَاسِينَ"))
+    private static let basmalaNormalized = "بسم الله الرحمن الرحيم".split(separator: " ").map { QuranWordMatch.normalizeQuranWord(String($0)) }
+
     /// فهارس (من 0، دون رمز نهاية الآية) كلمات المصحف المطابقة لاستعلام البحث، بتطبيع بحث التطبيق نفسه
     /// (يتجاهل التشكيل وأشكال الهمزة والألف). nil إن اختلف عدد كلمات النص عن عدد كلمات المصحف: لا إبراز ولا قطع للنص.
     static func matchingWords(query: String, ayahText: String, wordCount: Int) -> Set<Int>? {
-        let words = ayahText.split(whereSeparator: \.isWhitespace).map { QuranWordMatch.normalizeQuranWord(String($0)) }
+        let words = mushafAlignedWords(ayahText: ayahText, wordCount: wordCount)
         guard words.count == wordCount else { return nil }
         let tokens = query.split(whereSeparator: \.isWhitespace).map { QuranWordMatch.normalizeQuranWord(String($0)) }.filter { !$0.isEmpty }
         guard !tokens.isEmpty else { return [] }
@@ -157,11 +172,12 @@ struct MushafWordFlow: Layout {
         var y = bounds.minY
         for r in rows(subviews, maxWidth: bounds.width) {
             let rh = r.map(\.size.height).max() ?? 0
-            var x = bounds.maxX   // RTL: يبدأ السطر من اليمين
+            // SwiftUI يعكس إحداثيات التخطيط أفقيًا في بيئة RTL: نضع من minX تصاعديًا فيبدأ السطر من اليمين بترتيب القراءة.
+            // (الوضع من maxX كان يعكس الترتيب: أول كلمة تظهر في أقصى اليسار.)
+            var x = bounds.minX
             for (i, sz) in r {
-                x -= sz.width
                 subviews[i].place(at: CGPoint(x: x, y: y + (rh - sz.height) / 2), anchor: .topLeading, proposal: ProposedViewSize(sz))
-                x -= spacing
+                x += sz.width + spacing
             }
             y += rh + lineSpacing
         }

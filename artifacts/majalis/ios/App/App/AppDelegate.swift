@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NativeShellGate.installIfEnabled(in: window)
         NativeShellGate.refreshRemoteSwitch()
         NativeNotificationsGate.refreshRemoteSwitch()
+        NativeNotificationCenterDelegate.install()
         NativeNotificationsLifecycle.didFinishLaunching(notificationsEnabled: NativeNotificationsGate.isEnabled)
         NotificationCenter.default.addObserver(
             self,
@@ -85,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         NotificationCenter.default.post(name: Notification.Name("MajlisAppDidBecomeActive"), object: nil)
+        NativeNotificationCenterDelegate.install()
         NativeNotificationsLifecycle.didBecomeActive(notificationsEnabled: NativeNotificationsGate.isEnabled)
     }
 

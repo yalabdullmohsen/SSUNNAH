@@ -32,12 +32,12 @@ LAST=$(git tag -l 'native-v*' --sort=-v:refname | head -1)
 
 # 2) التوقيع: الفريق والـentitlements (الشهادات/ملفات التوفير لا تدخل المستودع)
 grep -qE "DEVELOPMENT_TEAM = 5D8TX37HTS" "$PBX" && ok "DEVELOPMENT_TEAM مضبوط" || bad "DEVELOPMENT_TEAM مفقود"
-for e in ios-native/SunnahApp/SunnahApp.entitlements artifacts/majalis/ios/App/PrayerWidget/PrayerWidget.entitlements; do
+for e in ios-native/SunnahApp/SunnahApp.entitlements artifacts/majalis/ios/App/PrayerWidget/PrayerWidget.entitlements ios-native/SunnahWatchResources/SunnahWatch.entitlements ios-native/SunnahWatchResources/SunnahWatchComplications.entitlements; do
   plutil -lint "$e" >/dev/null 2>&1 && ok "entitlements صالح: $(basename "$e")" || bad "entitlements مفقود/تالف: $e"; done
 if security find-identity -v -p codesigning 2>/dev/null | grep -qE "Apple Distribution|iPhone Distribution"; then ok "شهادة توزيع موجودة في keychain هذا الجهاز"; else warn "لا شهادة توزيع في keychain هنا — الأرشفة/الرفع يحتاجان حساب المالك (Automatic signing)"; fi
 
 # 3) privacy manifest للتطبيق والويدجت: صالح ويعلن عدم التتبع ولا يحوي مجالات تتبع
-for m in ios-native/SunnahApp/PrivacyInfo.xcprivacy ios-native/PrayerWidgetResources/PrivacyInfo.xcprivacy; do
+for m in ios-native/SunnahApp/PrivacyInfo.xcprivacy ios-native/PrayerWidgetResources/PrivacyInfo.xcprivacy ios-native/SunnahWatchResources/PrivacyInfo.xcprivacy; do
   if plutil -lint "$m" >/dev/null 2>&1; then
     [ "$(plutil -extract NSPrivacyTracking raw "$m" 2>/dev/null)" = false ] && ok "$(basename "$(dirname "$m")")/PrivacyInfo: tracking=false" || bad "$m: NSPrivacyTracking ليس false"
     plutil -extract NSPrivacyAccessedAPITypes raw "$m" >/dev/null 2>&1 && ok "$(basename "$(dirname "$m")"): الأسباب المطلوبة للـAPIs معلنة" || bad "$m: NSPrivacyAccessedAPITypes مفقود"
@@ -71,6 +71,6 @@ if [ "$ARCH" = 1 ]; then
   # الحزمة النهائية: RC_FINAL=1 يشترط بوابة الحراس (docs/native/required-guards.json)؛ RC التجريبي يتجاوزها
   [ "${RC_FINAL:-0}" != 1 ] || bash scripts/native-rc-gate.sh || { echo "رفض: بوابة RC مغلقة" >&2; exit 1; }
   OUT="$HOME/.majalis-tools/archives/SunnahApp-$VERS-$BLDS.xcarchive"; mkdir -p "$(dirname "$OUT")"
-  ( cd ios-native && bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination 'generic/platform=iOS' -archivePath "$OUT" -allowProvisioningUpdates archive -quiet ) && echo "أُرشف: $OUT — الرفع من Xcode Organizer بيد المالك" || { echo "فشلت الأرشفة" >&2; exit 1; }
+  ( cd ios-native && bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination 'generic/platform=iOS' -archivePath "$OUT" -allowProvisioningUpdates archive -quiet ) && python3 scripts/native-capabilities-check.py "$OUT/Products/Applications/SunnahApp.app" && echo "أُرشف: $OUT — الرفع من Xcode Organizer بيد المالك" || { echo "فشلت الأرشفة" >&2; exit 1; }
 fi
 [ $fail = 0 ] && echo "✓ جاهز للرفع (بعد إذن المالك وقائمة docs/native/RELEASE.md)" || { echo "✗ غير جاهز" >&2; exit 1; }

@@ -15,4 +15,12 @@ final class WidgetCenterTests: XCTestCase {
         let date = ISO8601DateFormatter().date(from: "2026-01-01T09:00:00Z")!
         XCTAssertEqual(DailyAyahEntry.pick(from: pool(30), on: date)?.id, "da-24")
     }
+
+    func testCatalogIdsUniqueAndEveryCategoryPopulated() {
+        let ids = WidgetCatalogItem.all.map(\.id)
+        XCTAssertEqual(Set(ids).count, ids.count)
+        for c in WidgetCatalogCategory.allCases where c != .all {
+            XCTAssertFalse(WidgetCatalogItem.all.filter { $0.category == c }.isEmpty, c.title)
+        }
+    }
 }

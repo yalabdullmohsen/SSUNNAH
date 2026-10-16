@@ -29,6 +29,7 @@ struct AccountWidgetCenterScreen: View {
     @StateObject private var store = PrayerPreferencesStore()
     @Environment(\.openRoute) private var openRoute
     @State private var phase: Phase = .loading
+    @State private var category: WidgetCatalogCategory = .all
 
     private enum Phase { case loading, ready(DailyAyahEntry), unavailable }
 
@@ -48,6 +49,8 @@ struct AccountWidgetCenterScreen: View {
                     }
                 }
                 .buttonStyle(.plain)
+                catalogSection
+                howToAddCard
             }
             .padding(Sunnah.Spacing.s4)
         }
@@ -95,6 +98,43 @@ struct AccountWidgetCenterScreen: View {
         }
     }
 
+    private var catalogSection: some View {
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+            Text("ودجاتي").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: Sunnah.Spacing.s2) {
+                    ForEach(WidgetCatalogCategory.allCases) { c in
+                        Button { category = c } label: { SunnahChip(c.title, selected: c == category) }
+                            .buttonStyle(.plain)
+                            .accessibilityAddTraits(c == category ? .isSelected : [])
+                    }
+                }
+            }
+            ForEach(WidgetCatalogItem.all.filter { category == .all || $0.category == category }) { item in
+                SunnahCard {
+                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                        Text(item.name).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                        Text(item.detail).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
+                        Text(item.sizes).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .accessibilityElement(children: .combine)
+            }
+        }
+    }
+
+    private var howToAddCard: some View {
+        SunnahCard {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                Text("خصّص وأضف").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text("اضغط مطولًا على الشاشة الرئيسية، ثم «+»، وابحث عن «سُنّة» واختر الودجت. لتغيير تصميم ودجت الصلاة اضغط عليه مطولًا ثم «تعديل الودجت».")
+                    .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+
     private func load() async {
         let source = ContentSource.bundled(name: "daily-ayah", subdirectory: "Data/home")
         do {
@@ -102,4 +142,40 @@ struct AccountWidgetCenterScreen: View {
             if let entry = DailyAyahEntry.pick(from: pool, on: Date()) { phase = .ready(entry) } else { phase = .unavailable }
         } catch { phase = .unavailable }
     }
+}
+
+enum WidgetCatalogCategory: String, CaseIterable, Identifiable {
+    case all, prayer, mushaf, adhkar, calendar
+    var id: String { rawValue }
+    var title: String {
+        switch self {
+        case .all: "الكل"
+        case .prayer: "الصلاة"
+        case .mushaf: "المصحف"
+        case .adhkar: "الذكر"
+        case .calendar: "التاريخ"
+        }
+    }
+}
+
+/// الودجات الفعلية المسجَّلة في الامتداد (الأسماء والأوصاف كما في كتالوج PrayerWidget).
+struct WidgetCatalogItem: Identifiable, Equatable {
+    let id: String
+    let name: String
+    let detail: String
+    let sizes: String
+    let category: WidgetCatalogCategory
+
+    static let all: [WidgetCatalogItem] = [
+        .init(id: "prayer", name: "الصلاة القادمة", detail: "عدّ حيّ إلى الصلاة القادمة، ومنذ دخول الوقت.", sizes: "صغير · متوسط · كبير · شاشة القفل", category: .prayer),
+        .init(id: "prayer-styled", name: "الصلاة — تصاميم", detail: "ستة تصاميم إضافة إلى الكلاسيكي: خطاطي، السابقة، رقم كبير، السابقة والقادمة، الخمس، مقسوم.", sizes: "صغير · متوسط", category: .prayer),
+        .init(id: "prayer-all", name: "مواقيت اليوم", detail: "مواقيت الصلوات كلها في قائمة واحدة.", sizes: "كبير", category: .prayer),
+        .init(id: "mushaf", name: "المصحف", detail: "تابع القراءة من آخر موضع وصلتَ إليه.", sizes: "صغير · متوسط", category: .mushaf),
+        .init(id: "quran-ayah", name: "آية أو دعاء", detail: "آية أو دعاء قصير يتجدد كل ساعة.", sizes: "صغير · متوسط · كبير · شاشة القفل", category: .mushaf),
+        .init(id: "adhkar-time", name: "أذكار الصباح والمساء", detail: "أذكار الصباح أو المساء حسب وقتك.", sizes: "صغير · متوسط · شاشة القفل", category: .adhkar),
+        .init(id: "adhkar-hour", name: "ذكر الساعة", detail: "ذكر قصير يتجدد كل ساعة.", sizes: "صغير · متوسط · شاشة القفل", category: .adhkar),
+        .init(id: "adhkar-streak", name: "إنجاز اليوم", detail: "سلسلة أذكارك وهدف قرآن اليوم.", sizes: "صغير · متوسط · شاشة القفل", category: .adhkar),
+        .init(id: "calendar", name: "التاريخ", detail: "التاريخ الهجري والميلادي واسم اليوم.", sizes: "صغير · متوسط · شاشة القفل", category: .calendar),
+        .init(id: "ramadan", name: "رمضان والمناسبات", detail: "الأيام المتبقية لرمضان وأقرب مناسبة.", sizes: "صغير · متوسط · شاشة القفل", category: .calendar),
+    ]
 }

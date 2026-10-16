@@ -7,14 +7,20 @@ public typealias ScreenBuilder = (Route) -> AnyView
 public struct RootTabView: View {
     @ObservedObject private var router: AppRouter
     private let screen: ScreenBuilder
+    #if DEBUG
+    @State private var showDrawer = ProcessInfo.processInfo.environment["SNAP_DRAWER"] == "1"   // لقطات التدقيق فقط
+    #else
     @State private var showDrawer = false
+    #endif
+    @StateObject private var immersive = ImmersiveReaderState()
 
     public init(router: AppRouter, screen: @escaping ScreenBuilder = RootTabView.placeholder) {
         self.router = router
         self.screen = screen
     }
 
-    private var tabBarShown: Bool { !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") }
+    /// المصحف غامر (كالمرجع) حتى يعلن قارئه `.immersiveReader()` في PR المصحف المستقل (ن3)؛ بعدها يُحذف شرط المسار.
+    private var tabBarShown: Bool { !immersive.hidesTabBar && !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") }
 
     public var body: some View {
         NavigationStack(path: $router.stack) {
@@ -48,18 +54,20 @@ public struct RootTabView: View {
         // الشريط عائم فوق المحتوى (الـNavigationStack لا يمرّر الـinset إلى ScrollView الداخلية)، فيُضاف هامش سفلي مرة واحدة لكل المحتوى القابل للتمرير حتى لا يختبئ آخر عنصر خلفه.
         .modifier(TabBarScrollMargin(height: tabBarShown ? SunnahTabBar.reservedHeight : 0))
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            // المصحف غامر (كالمرجع): لا شريط تبويب فوق الصفحة؛ الخروج من أداة «إغلاق» في القارئ.
-            if !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") {
+            // شاشات القراءة الكاملة (المصحف…) تعلن `.immersiveReader()` فيختفي الشريط عنها أيًّا كان مسار فتحها؛ لمسة الصفحة تُظهره.
+            if tabBarShown {
                 SunnahTabBar(selected: AppTab.owning(path: router.stack.last?.path ?? "/")) { router.stack = []; router.open(path: $0.rootPath) }
             }
         }
+        .environment(\.immersiveReader, immersive)
         .environment(\.openRoute) { [router] in Sunnah.Haptics.select(); router.open(path: $0) }
         .overlay {
             if showDrawer {
                 ZStack(alignment: .leading) {
-                    Color.black.opacity(0.35).ignoresSafeArea().onTapGesture { sunnahAnimate { showDrawer = false } }
-                    SunnahDrawer(open: { router.stack = []; router.open(path: $0) }, close: { sunnahAnimate { showDrawer = false } })
-                        .ignoresSafeArea(edges: .vertical).transition(.move(edge: .leading))
+                    Color.black.opacity(0.4).ignoresSafeArea().onTapGesture { sunnahAnimate { showDrawer = false } }
+                        .accessibilityLabel("إغلاق القائمة").accessibilityAddTraits(.isButton)
+                    SunnahDrawer(selectedPath: router.stack.last?.path ?? "/", open: { router.stack = []; router.open(path: $0) }, close: { sunnahAnimate { showDrawer = false } })
+                        .transition(.move(edge: .leading))
                 }
             }
         }
@@ -69,6 +77,11 @@ public struct RootTabView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .environment(\.locale, Locale(identifier: "ar-u-nu-latn"))
         .onOpenURL { router.open(url: $0) }
+        #if DEBUG
+        .task {   // لقطات التدقيق فقط: فتح مسار عند الإقلاع بلا حوار الرابط العميق
+            if let p = ProcessInfo.processInfo.environment["SNAP_ROUTE"], p.hasPrefix("/") { router.open(path: p) }
+        }
+        #endif
     }
 
     public static func placeholder(_ route: Route) -> AnyView {

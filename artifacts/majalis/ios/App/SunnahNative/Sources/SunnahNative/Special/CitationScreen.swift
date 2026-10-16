@@ -87,24 +87,8 @@ public struct CitationScreen: View {
         return parts.joined(separator: "\n")
     }
 
-    /// البوابة تشترط دخولًا لـ/api/citations؛ لا جلسة ⇒ «غير متاح» (مطابق للموقع)، وبجلسة يُرسَل الرمز.
-    /// ContentLoader.live لا يربط الرمز بمخزن الجلسة، فيُجلب هنا مباشرة (مهلة 8ث، بلا كاش لمحتوى مشروط بالحساب).
+    /// الاستشهاد العام كان يُجلب من نطاق الموقع (`/api/citations`)، ولا نطاق موقع في التطبيق الأصلي: «غير متاح» دائمًا بلا شبكة.
     private func load() async {
-        phase = .loading
-        guard let session = AccountSession.read(from: platform.auth) else { phase = .notFound; return }
-        do {
-            var req = URLRequest(url: AccountAPI().baseURL.appendingPathComponent(String(CitationPath.path(slug: slug).dropFirst())))
-            req.timeoutInterval = RemoteTransport.timeout
-            req.setValue("Bearer \(session.accessToken)", forHTTPHeaderField: "Authorization")
-            let (data, response) = try await RemoteTransport.shortSession().data(for: req)
-            if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode) {
-                phase = (http.statusCode == 404 || http.statusCode == 401) ? .notFound : .offline
-                return
-            }
-            let r = try JSONDecoder().decode(CitationPayload.self, from: data)
-            if r.ok, let c = r.citation { phase = .ready(c) } else { phase = .notFound }
-        } catch {
-            phase = .offline
-        }
+        phase = .notFound
     }
 }

@@ -25,14 +25,9 @@ public struct MushafSearch: Sendable {
         }
         // البسملة من آية 1:1 أولًا، ثم تُحمَّل السور الباقية بالتوازي (القراءة + التطبيع هما الكلفة)؛ الترتيب محفوظ.
         let fatiha = try load(1)
-        let basmala = fatiha.ayahs.first { $0.numberInSurah == 1 }?.text.replacingOccurrences(of: "\u{FEFF}", with: "") ?? ""
         func make(_ f: SurahFile) -> [Entry] {
             f.ayahs.map { a in
-                var t = a.text.replacingOccurrences(of: "\u{FEFF}", with: "")
-                // بيانات Tanzil تسبق آية 1 من كل سورة (عدا الفاتحة والتوبة) بالبسملة؛ وهي ليست من الآية.
-                if a.numberInSurah == 1, f.number != 1, f.number != 9, !basmala.isEmpty, t.hasPrefix(basmala) {
-                    t = String(t.dropFirst(basmala.count)).trimmingCharacters(in: .whitespaces)
-                }
+                let t = QuranDisplayText.clean(a.text, surah: f.number, ayah: a.numberInSurah)   // بلا «۞» ولا بسملة مدمجة
                 return Entry(ayah: "\(f.number):\(a.numberInSurah)", text: t, norm: Self.normalize(t))
             }
         }

@@ -23,5 +23,7 @@ bash scripts/native-archive-privacy-check.sh ~/.majalis-tools/archives/SunnahApp
 source ~/.appstoreconnect/env.sh
 ARCH=~/.majalis-tools/archives/SunnahApp-1.2.0-$BUILD.xcarchive; [ -d "$ARCH" ] || die "لا أرشيف"
 EXP=$(mktemp -d); xcodebuild -exportArchive -archivePath "$ARCH" -exportPath "$EXP" -exportOptionsPlist ~/.majalis-tools/rc1-export.plist -allowProvisioningUpdates >/dev/null 2>&1 || die "فشل التصدير"
-xcrun altool --upload-app -f "$EXP"/*.ipa -t ios --apiKey "$APP_STORE_CONNECT_API_KEY_ID" --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID" 2>&1 | tail -3
+UP=$(xcrun altool --upload-app -f "$EXP"/*.ipa -t ios --apiKey "$APP_STORE_CONNECT_API_KEY_ID" --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID" 2>&1); UPRC=$?
+echo "$UP" | grep -E "ERROR|UPLOAD|Missing|code :" | head -12
+[ $UPRC -eq 0 ] || die "فشل الرفع (altool رمز $UPRC)"
 echo "↑ رُفع $BUILD. التالي: scripts/release-record.sh $BUILD $(date +%F) في PR ثم رفع المولّد إلى $((BUILD+1)) ومراقبة VALID."

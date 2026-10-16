@@ -12,6 +12,8 @@ xcrun simctl boot "$SIM" >/dev/null 2>&1
 xcrun simctl status_bar "$SIM" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 >/dev/null 2>&1
 # تحقق إلزامي قبل أول لقطة: التطبيق يعمل فعلًا في الواجهة (لا SpringBoard)؛ إعادة تثبيت وتشغيل مرة، ثم فشل صريح بدل لقطات باطلة.
 APP=${APP:-$HOME/.majalis-tools/dd/n4/Build/Products/Debug-iphonesimulator/SunnahApp.app}
+[ -d "$APP" ] && xcrun simctl install "$SIM" "$APP" >/dev/null 2>&1   # دائمًا من $APP المبني (لا نسخة قديمة عالقة)
+[ -n "${SNAPSHOT_SKIP_GUARD:-}" ] || SIM=$SIM bash "$(cd "$(dirname "$0")" && pwd)/native-shot-guard.sh" "$APP" "$BOARD/snapshots" || exit 2  # مصدر اللقطات: مبني من HEAD ومطابق للمثبّت
 fg_ok() { xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1; xcrun simctl launch "$SIM" $BID >/dev/null 2>&1
   for _ in 1 2 3 4 5 6 7 8; do sleep 2
     xcrun simctl spawn "$SIM" launchctl list 2>/dev/null | grep -Eq "^[0-9]+[[:space:]]+[0-9-]+[[:space:]]+UIKitApplication:$BID" && return 0

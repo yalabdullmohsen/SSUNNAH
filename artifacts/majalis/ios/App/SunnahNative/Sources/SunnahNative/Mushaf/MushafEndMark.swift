@@ -6,9 +6,11 @@ struct MushafEndMark: View {
     let glyph: String
     let family: String
     let fontSize: CGFloat
+    /// قطر القرص من التخطيط (nil خارج صفحة المصحف: يُحسب من حجم الخط بالصيغة نفسها).
+    var diameter: CGFloat? = nil
 
     var body: some View {
-        let fs = fontSize * MushafPageView.endMarkScale, d = fs * MushafPageView.ayahDiscEm
+        let fs = fontSize * MushafPageView.endMarkScale, d = diameter ?? MushafMetrics.discDiameter(fontSize: fontSize)
         Text(glyph)
             .lineLimit(1).fixedSize()
             .font(.custom(family, fixedSize: fs))

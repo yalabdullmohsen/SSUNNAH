@@ -23,6 +23,7 @@ public struct DetailTemplate: View {
                     if !body_.isEmpty {
                         if isShort { shortCard } else { longCard }
                     }
+                    SunnahReportIssueButton(title: item.title, id: item.id, section: item.reportSection).sunnahReadableWidth()
                 }
                 .frame(minHeight: geo.size.height, alignment: .top)
             }
@@ -77,6 +78,6 @@ struct DetailHero: View {
         .frame(height: fillHeight, alignment: .center)
         .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s5).padding(.bottom, 44)
         .heroNavigationBar()
-        .background { ZStack { Sunnah.Colors.primaryStrong; SunnahStarPattern().opacity(0.9) }.clipShape(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous)).padding(.top, -80).ignoresSafeArea(edges: .top) }
+        .background { ZStack { Sunnah.Colors.primaryStrong; SunnahStarPattern().opacity(0.9) }.clipShape(UnevenRoundedRectangle(bottomLeadingRadius: Sunnah.Radius.hero, bottomTrailingRadius: Sunnah.Radius.hero, style: .continuous)).padding(.top, -600).ignoresSafeArea(edges: .top) }
     }
 }

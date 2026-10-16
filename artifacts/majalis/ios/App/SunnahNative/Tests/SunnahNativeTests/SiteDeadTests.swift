@@ -41,13 +41,14 @@ final class SiteDeadTests: XCTestCase {
         RemoteConfig(supabaseURL: URL(string: "https://db.example.test/"), anonKey: "anon", accessToken: { nil })
     }
 
-    func testRemoteTransportFailsFastOnDeadSite() async {
+    func testRemoteTransportRejectsSitePathsWithoutAnyRequest() async {
         let t = RemoteTransport(config: config(), session: DeadSiteProtocol.session())
         for path in ["/api/updates", "/data/lessons/feed.json", "/api/auto-content?limit=100"] {
             do { _ = try await t.fetch(path: path, requireAuth: false); XCTFail("يجب أن يفشل \(path)") }
-            catch RemoteTransportError.status(let code) { XCTAssertEqual(code, 402) }
+            catch RemoteTransportError.badPath {}
             catch { XCTFail("خطأ غير متوقع \(error)") }
         }
+        XCTAssertTrue(DeadSiteProtocol.seen.isEmpty, "بلا شبكة: لا طلب إلى نطاق الموقع أصلًا")
     }
 
     func testContentLoaderServesCacheOrSeedInsteadOfHanging() async throws {

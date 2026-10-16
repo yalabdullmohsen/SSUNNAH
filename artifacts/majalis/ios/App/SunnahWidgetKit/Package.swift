@@ -4,7 +4,7 @@ import PackageDescription
 // منطق الودجات النقي (تنسيق/حساب) بلا SwiftUI، قابل للاختبار بـ swift test دون محاكٍ.
 let package = Package(
     name: "SunnahWidgetKit",
-    platforms: [.iOS(.v16), .macOS(.v13)],
+    platforms: [.iOS(.v16), .macOS(.v13), .watchOS(.v10)],
     products: [
         .library(name: "SunnahWidgetKit", targets: ["SunnahWidgetKit"])
     ],

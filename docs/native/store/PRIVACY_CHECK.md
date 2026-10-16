@@ -38,6 +38,7 @@
 - (محلول) لا `NSMicrophoneUsageDescription` ولا `NSMotionUsageDescription` ولا `NSUserNotificationsUsageDescription` في `Info.plist` الحالي، ولا `aps-environment` في الـentitlements؛ البوصلة تستخدم heading وطلب الإشعار بـ`UNUserNotificationCenter`.
 - ملحق الويدجت `PrayerWidget` (مُضمَّن في هدف SunnahApp) له `PrayerWidgetResources/PrivacyInfo.xcprivacy` ضمن موارده: بلا تتبع ولا بيانات مجمّعة، وفئة UserDefaults بسبب `1C8F.1` (App Group)؛ لا شيفرة الويدجت تقرأ ختم ملفات أو واجهات سبب أخرى (فُحص 2026-10-15). المنصة: Live Activity غير مضافة.
 - (محلول) نصوص الخصوصية والإعدادات والمساعدة في التطبيق طُوبقت مع الكود: حُذف ذكر «التسميع» والميكروفون وتسجيل الصوت ونموذج التعرّف الصوتي (لا ميزة ولا إذن)، وقسم «المساعد العلمي» (لا مساعد محادثة)، وصُحّح ذكر ملفات تعريف الارتباط إلى «التخزين على جهازك»، والإشعارات إلى تذكيرات محلية، وأرصدة المكتبات إلى التطبيق الأصلي (حزم محلية).
+- **تحقق من الأرشيف الفعلي (بناء 104، 2026-10-16):** المرفوع هو هدف `SunnahApp` (ios-native)؛ `Info.plist` الفعلي فيه `NSLocationWhenInUseUsageDescription` فقط، والصلاحيات الموقَّعة: associated-domains وapplication-groups وtime-sensitive (+get-task-allow للتطوير)، بلا `aps-environment`. هدف Capacitor (`artifacts/majalis/ios/App/App`) يحمل المعرّف نفسه وفيه ميكروفون/حركة/remote-notification/aps لكنه **لا يُرفع**. يحرس ذلك `scripts/native-capabilities-check.py` مقابل `docs/native/capabilities-allowlist.json` (في native-release-check وبعد الأرشفة).
 - `UIBackgroundModes`: `audio` (تشغيل القرآن) و`fetch` (BGTask `…prayer-refresh`) — كلاهما له استخدام؛ لا `remote-notification`.
 
 ## 5) ملء «App Privacy» في App Store Connect
@@ -50,3 +51,6 @@ App Store Connect ← التطبيق ← **App Privacy** ← **Edit** (Data Type
 
 ## رابط الخصوصية داخل التطبيق (فحص ن1)
 `AccountLegalScreens`/`AccountPrivacyCenterScreen` يستعملان المسار `/privacy` مع `siteURL = https://www.ssunnah.com` (`RemoteTransport`)؛ Info.plist بلا رابط خصوصية؛ لا `/privacy-policy` في كود التطبيق (يظهر فقط كتحويل إلى `/privacy` في `FEATURE_PARITY.md`). لا إصلاح لازم.
+
+## قرار G1: لا إخفاء لمسارات /universities و/institutions و/islamic-landmarks (يوسف، 2026-10-16)
+هذه شاشات أصلية ببيانات مدمجة (`ios-native/Data/learn/universities.json` وinstitutions.json وlandmarks) تعمل دون اتصال ولا تطلب نطاق الموقع، فلا تُخفى. الشبكة الوحيدة المسموحة هي Supabase (`RemoteTransport` يرفض كل مسار غير `/rest/v1/` و`/auth/v1/` بـbadPath). الروابط الثابتة (الخصوصية/الدعم) على github.io يتحقق منها `scripts/native-static-links-check.sh` (200)؛ `terms.html` يعيد 404 فلا يُربط في التطبيق وتبقى اتفاقية Apple القياسية، ويرفض الحارس ورود رابطه.

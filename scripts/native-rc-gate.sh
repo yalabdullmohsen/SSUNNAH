@@ -9,4 +9,6 @@ while IFS=$'\t' read -r id owner match; do
   [ "$fail" = 1 ] || echo "✓ $id → ${f}"
 done < <(node -e 'for(const g of JSON.parse(require("fs").readFileSync("docs/native/required-guards.json")).guards)if(!g.finalOnly||process.env.RC_FINAL==="1")console.log([g.id,g.owner,g.match].join("\t"))')
 bash "$RC" >/dev/null 2>&1 && echo "✓ native-release-check نظيف" || bad "native-release-check يفشل"
+bash scripts/native-stale-prs.sh --strict || bad "PR متعارض متروك على native-app (انظر الجدول)"
+bash scripts/native-static-links-check.sh || bad "رابط ثابت في التطبيق لا يعيد 200 (scripts/native-static-links-check.sh)"
 [ $fail = 0 ] && echo "✓ بوابة RC مفتوحة" || { echo "✗ بوابة RC مغلقة" >&2; exit 1; }

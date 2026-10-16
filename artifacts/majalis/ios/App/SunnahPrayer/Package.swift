@@ -7,7 +7,7 @@ import PackageDescription
 let package = Package(
     name: "SunnahPrayer",
     defaultLocalization: "ar",
-    platforms: [.iOS(.v16), .macOS(.v13)],
+    platforms: [.iOS(.v16), .macOS(.v13), .watchOS(.v10)],
     products: [
         .library(name: "SunnahPrayer", targets: ["SunnahPrayer"])
     ],

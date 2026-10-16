@@ -106,6 +106,13 @@ struct NativeShellRoot: View {
 
     var body: some View {
         RootTabView(router: router, screen: screen)
+            .onAppear { if let path = NativeNotificationCenterDelegate.takePendingRoute() { router.open(path: path) } }
+            .onReceive(NotificationCenter.default.publisher(for: NotificationRouting.openRouteName)) { note in
+                if let path = note.userInfo?[NotificationRouting.routeKey] as? String {
+                    _ = NativeNotificationCenterDelegate.takePendingRoute()
+                    router.open(path: path)
+                }
+            }
     }
 
     private func screen(_ route: Route) -> AnyView {

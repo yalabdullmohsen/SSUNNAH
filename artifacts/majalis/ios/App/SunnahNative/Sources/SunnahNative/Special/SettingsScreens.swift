@@ -5,34 +5,67 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.platform) private var platform
+    @Environment(\.openRoute) private var openRoute
     @State private var email: String?
 
+    private func link(_ title: String, _ icon: String, _ path: String) -> some View {
+        Button { openRoute(path) } label: { SunnahListRow(title: title, icon: icon) }
+            .accessibilityIdentifier("settings.link\(path)")
+    }
+
     var body: some View {
+        ScrollViewReader { proxy in
         List {
             Section("الحساب") {
                 if let email {
-                    Text(email)
+                    SunnahListRow(title: email, showsChevron: false, icon: "person.crop.circle")
                     Button("تسجيل الخروج", role: .destructive) {
                         Task { await platform.authService.signOut(); self.email = nil }
                     }
                 } else {
-                    Text("لم تسجّل الدخول").foregroundStyle(Sunnah.Colors.textSecondary)
+                    link("تسجيل الدخول", "person.crop.circle.badge.plus", "/login")
                 }
+                link("مساهماتي", "tray.full", "/my-submissions")
             }
             Section("المظهر") {
                 SunnahNavigationLink { AppIconPickerView() } label: { SunnahListRow(title: "أيقونة التطبيق", icon: "app.badge") }
                     .accessibilityIdentifier("settings.appIcon")
                 AppearanceOptionsView()
             }
+            Section("الصلاة والتنبيهات") {
+                link("إعدادات التنبيهات", "bell", "/notification-settings").id("prayer")
+                link("وضع المسجد", "building.columns", "/mosque-mode")
+                link("وضع السيارة", "car", "/car-mode")
+            }
+            Section("البيانات والودجت") {
+                link("مركز دون اتصال", "arrow.down.circle", "/offline").id("data")
+                link("مركز الودجت", "square.grid.2x2", "/widget-center")
+            }
             Section("الخصوصية") {
-                Text("لحذف حسابك وبياناتك افتح «حذف الحساب» من القائمة.")
-                    .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                link("مركز الخصوصية", "hand.raised", "/privacy-center").id("privacy")
+                link("حذف الحساب", "trash", "/account-deletion")
+            }
+            Section("عن التطبيق") {
+                link("عن التطبيق", "info.circle", "/about").id("about")
+                link("المصادر والتراخيص", "doc.text", "/data-licenses")
+                link("سياسة الفتوى والمراجعة", "checkmark.shield", "/fatwa-policy")
+                link("جولة في التطبيق", "map", "/feature-tour")
+                link("تواصل معنا", "envelope", "/contact")
             }
         }
         .scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)
         .navigationTitle("الإعدادات")
         .onAppear { email = platform.authService.currentEmail }
+        #if DEBUG
+        .task {   // لقطات التدقيق فقط: تمرير إلى مجموعة
+            if let id = ProcessInfo.processInfo.environment["SNAP_SCROLL"] {
+                try? await Task.sleep(nanoseconds: 1_500_000_000)
+                proxy.scrollTo(id, anchor: .top)
+            }
+        }
+        #endif
+        }
     }
 }
 

@@ -64,6 +64,8 @@ launch_home() {
 }
 
 RESULTS="$EV/matrix.tsv"
+: "${APP:?APP=<App.app> مطلوب: لقطات المصفوفة تُلتقط من بناء HEAD المثبّت فقط}"
+BID=$BUNDLE SIM=$UDID bash scripts/native-shot-guard.sh "$APP" "$EV" >/dev/null || exit 2  # حارس المصدر + PROVENANCE.txt
 printf 'mode\troute\turl\tclass\tnote\n' >"$RESULTS"
 
 routes=(

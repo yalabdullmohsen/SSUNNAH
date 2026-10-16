@@ -94,6 +94,7 @@ run_device() {
 
   local ddir="$EVIDENCE/$label"
   mkdir -p "$ddir"
+  BID=$BUNDLE_ID SIM=$udid SRC_DIRS="artifacts/majalis/ios/App/App artifacts/majalis/ios/App/Shared" bash scripts/native-shot-guard.sh "$APP_BUILD" "$ddir" >/dev/null || return 2  # لقطات من بناء حديث + PROVENANCE.txt
   local -a results=()
 
   # 1 Cold Start
