@@ -51,3 +51,6 @@ NATIVE_WINDOW=n1 APP=<SunnahApp.app> MODE=light BOARD=<dir> OPEN=inapp bash scri
 
 ## أولوية طابور البناء
 `build-slot.sh` يرتّب الطابور: ن3 (قياس الأداء) ثم ن1 ثم ن2 ثم ن4؛ ن4 بناءاتها قصيرة (عيّنة/اختبار محدد). `BUILD_SLOT_PRIO=<رقم>` يتجاوز الأولوية.
+
+## لقطة مسار واحد: `-snapshotRoute <route>` (Debug فقط)
+`xcrun simctl launch <UDID> com.yousef.majlisilm -snapshotRoute /fawaid` يفتح أي مسار يعرفه `AppRouter` (مثل `/hadith/daif` و`/about` و`/mushaf/page/150`) عند الإقلاع بلا حوار الرابط العميق؛ الخطافات الداخلية الأخرى (`SNAP_DETAIL`…) تبقى متغيّرات بيئة `SIMCTL_CHILD_*`. كله داخل `#if DEBUG`، ويفحص `scripts/native-debug-hooks-guard.sh` أن لا أثر له في Release.
