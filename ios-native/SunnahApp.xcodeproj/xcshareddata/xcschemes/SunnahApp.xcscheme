@@ -41,7 +41,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "799384A08F7C33F0973F26D9482A8B61"
+               BlueprintIdentifier = "87CA571F4755B4EA0D753EF2C1D47B30"
                BuildableName = "SunnahAppUITests.xctest"
                BlueprintName = "SunnahAppUITests"
                ReferencedContainer = "container:SunnahApp.xcodeproj">

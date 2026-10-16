@@ -20,6 +20,9 @@ def check(label, info, ent):
 def load(p): return plistlib.load(open(p, "rb"))
 d = os.path.join(root, "ios-native/SunnahApp")
 check("المصدر", load(d + "/Info.plist"), load(d + "/SunnahApp.entitlements"))
+w = os.path.join(root, "ios-native/SunnahWatchResources")
+check("الساعة", load(w + "/Info.plist"), load(w + "/SunnahWatch.entitlements"))
+check("امتداد الساعة", load(w + "/Complications-Info.plist"), load(w + "/SunnahWatchComplications.entitlements"))
 if len(sys.argv) > 1:
     app = sys.argv[1].rstrip("/")
     if os.path.basename(app) != "SunnahApp.app": bad.append(f"الأرشيف ليس SunnahApp من ios-native ({os.path.basename(app)}) — هدف Capacitor القديم لا يُرفع")

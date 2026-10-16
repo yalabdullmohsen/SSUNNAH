@@ -52,6 +52,7 @@ pc = open(P("docs/native/store/PRIVACY_CHECK.md"), encoding="utf-8").read()
 for k in ("Email Address", "Name", "User ID", "Other User Content", "Product Interaction"):
     if k not in pc: bad.append(f"PRIVACY_CHECK.md لا يذكر «{k}»")
 if not os.path.exists(P("ios-native/PrayerWidgetResources/PrivacyInfo.xcprivacy")): bad.append("مانيفست الودجت مفقود")
+if not os.path.exists(P("ios-native/SunnahWatchResources/PrivacyInfo.xcprivacy")): bad.append("مانيفست الساعة مفقود")
 if bad:
     print("\n".join("✗ " + b for b in bad), file=sys.stderr); sys.exit(1)
 print("OK")
