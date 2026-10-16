@@ -78,8 +78,8 @@ public struct RootTabView: View {
         .environment(\.locale, Locale(identifier: "ar-u-nu-latn"))
         .onOpenURL { router.open(url: $0) }
         #if DEBUG
-        .task {   // لقطات التدقيق فقط: فتح مسار عند الإقلاع بلا حوار الرابط العميق
-            if let p = ProcessInfo.processInfo.environment["SNAP_ROUTE"], p.hasPrefix("/") { router.open(path: p) }
+        .task {   // لقطات التدقيق فقط: `-snapshotRoute <route>` (أي مسار مسجّل، مثل /fawaid أو /hadith/daif) يُفتح عند الإقلاع بلا حوار الرابط العميق
+            if let p = UserDefaults.standard.string(forKey: "snapshotRoute"), p.hasPrefix("/") { router.open(path: p) }
         }
         #endif
     }
