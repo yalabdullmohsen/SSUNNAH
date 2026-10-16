@@ -30,9 +30,9 @@ public struct ArticleTemplate: View {
         .sunnahReadableWidth().background(Sunnah.Colors.bg).bodyTitledNavigation()
         .preferredColorScheme(night ? .dark : nil)
         .toolbar {
-            ToolbarItemGroup(placement: .primaryAction) {
-                SunnahToolbarButton(systemImage: "textformat.size.smaller", label: "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
-                SunnahToolbarButton(systemImage: "textformat.size.larger", label: "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
+            SunnahCapsuleToolbar {
+                SunnahToolbarButton(systemImage: "textformat.size.smaller", glyphSize: 12, label: "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
+                SunnahToolbarButton(systemImage: "textformat.size.larger", glyphSize: 20, label: "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
                 SunnahToolbarButton(systemImage: night ? "sun.max" : "moon", label: night ? "الوضع النهاري" : "وضع الليل") { night.toggle() }
             }
         }
