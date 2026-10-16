@@ -51,6 +51,7 @@
 		C1A2B3C4D5E6F708192A3B4D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A2B3C4D5E6F708192A3B4C /* AppConfig.swift */; };
 		D2B3C4D5E6F708192A3B4C5E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B3C4D5E6F708192A3B4C5D /* NetworkService.swift */; };
 		E5F6071890AB12CD01A2B3C4 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F6071890AB12CD01A2B3C5 /* KeychainStore.swift */; };
+		A0300001PRAYERLACTCTRLBF /* PrayerLiveActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0300002PRAYERLACTCTRLFR /* PrayerLiveActivityController.swift */; };
 		EFBF4693BAFB4F5B82254F8C /* PrayerLiveActivityPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */; };
 		AD10BF01A1B2C3D4E5F6071890 /* prayer_quiet.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD10FR01A1B2C3D4E5F6071890 /* prayer_quiet.caf */; };
 		AD10BF02A1B2C3D4E5F6071890 /* prayer_clear.caf in Resources */ = {isa = PBXBuildFile; fileRef = AD10FR02A1B2C3D4E5F6071890 /* prayer_clear.caf */; };
@@ -177,6 +178,7 @@
 		E12854653020F96E000D949D /* UpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesView.swift; sourceTree = "<group>"; };
 		E5F6071890AB12CD01A2B3C5 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
 		F40AA07210D9414E9C98BAD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0300002PRAYERLACTCTRLFR /* PrayerLiveActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLiveActivityController.swift; sourceTree = "<group>"; };
 		F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerLiveActivityPlugin.swift; sourceTree = "<group>"; };
 		AD10FR01A1B2C3D4E5F6071890 /* prayer_quiet.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prayer_quiet.caf; path = Sounds/prayer_quiet.caf; sourceTree = "<group>"; };
 		AD10FR02A1B2C3D4E5F6071890 /* prayer_clear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = prayer_clear.caf; path = Sounds/prayer_clear.caf; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				A0290002NATIVENOTIFGATEFR /* NativeNotificationsGate.swift */,
 				17F378976C2BF2DF0DEA224D /* NativeShellGate.swift */,
 				20C1C0E442F343FCA02B3616 /* PrayerActivityAttributes.swift */,
+				A0300002PRAYERLACTCTRLFR /* PrayerLiveActivityController.swift */,
 				F4816472931E4AB1A0DE1F42 /* PrayerLiveActivityPlugin.swift */,
 				A0280004SHAREDPLUGINFILE /* SunnahSharedDataPlugin.swift */,
 				A055FR01AUTHKEYCHAIN /* SunnahAuthKeychainPlugin.swift */,
@@ -639,6 +642,7 @@
 				E5F6071890AB12CD01A2B3C4 /* KeychainStore.swift in Sources */,
 				D2B3C4D5E6F708192A3B4C5E /* NetworkService.swift in Sources */,
 				B40A70BD645B44F885C91A9B /* PrayerActivityAttributes.swift in Sources */,
+				A0300001PRAYERLACTCTRLBF /* PrayerLiveActivityController.swift in Sources */,
 				EFBF4693BAFB4F5B82254F8C /* PrayerLiveActivityPlugin.swift in Sources */,
 				A0280002SHAREDDATAAPP01 /* SunnahSharedData.swift in Sources */,
 				A05AUD02OFFLINESTOREAPP0 /* OfflineAudioStore.swift in Sources */,
