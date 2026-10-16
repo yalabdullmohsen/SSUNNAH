@@ -19,7 +19,8 @@
     {
       "id": "verse-selection",
       "owner": "ن3",
-      "match": "native-.*(verse|selection|ayah).*\\.(mjs|sh)$"
+      "match": "native-.*(verse|selection|ayah).*\\.(mjs|sh)$",
+      "finalOnly": true
     },
     {
       "id": "mushaf-disc",
