@@ -76,6 +76,11 @@ public struct RootTabView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .environment(\.locale, Locale(identifier: "ar-u-nu-latn"))
         .onOpenURL { router.open(url: $0) }
+        #if DEBUG
+        .task {   // لقطات التدقيق فقط: فتح مسار عند الإقلاع بلا حوار الرابط العميق
+            if let p = ProcessInfo.processInfo.environment["SNAP_ROUTE"], p.hasPrefix("/") { router.open(path: p) }
+        }
+        #endif
     }
 
     public static func placeholder(_ route: Route) -> AnyView {

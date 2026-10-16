@@ -26,6 +26,15 @@ public struct SunnahDrawer: View {
     }
 
     public var body: some View {
+        // اللوحة تمتدّ حتى الحافة السفلية (تحت مؤشر الصفحة الرئيسية) والمحتوى يحترم safe area أعلى وأسفل.
+        GeometryReader { geo in
+            panel(bottomInset: geo.safeAreaInsets.bottom)
+                .frame(height: geo.size.height + geo.safeAreaInsets.bottom, alignment: .top)
+        }
+        .frame(width: 310)
+    }
+
+    private func panel(bottomInset: CGFloat) -> some View {
         // المحتوى يحترم safe area العلوية: الرأس يبدأ تحت شريط الحالة فلا يُخفي الساعة.
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
@@ -51,7 +60,7 @@ public struct SunnahDrawer: View {
                             }.buttonStyle(.plain)
                         }
                     }
-                }.padding(.horizontal, Sunnah.Spacing.s3).padding(.bottom, Sunnah.Spacing.s4)
+                }.padding(.horizontal, Sunnah.Spacing.s3).padding(.bottom, Sunnah.Spacing.s4 + bottomInset)
             }
         }
         .frame(width: 310).frame(maxHeight: .infinity)

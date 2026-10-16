@@ -7,7 +7,7 @@ public enum RouteTitles {
     /// مسار الويب (`:param` للمقطع المتغيّر) → العنوان.
     public static let table: [String: String] = [
         // الأذكار والأدعية
-        "/adhan-help": "مساعدة تنبيهات الصلاة", "/adhan-settings": "إعدادات الأذان", "/adhkar": "الأذكار", "/daily-wird": "الورد اليومي",
+        "/adhan-help": "مساعدة تنبيهات الصلاة", "/adhan-settings": "إعدادات تنبيهات الصلاة", "/adhkar": "الأذكار", "/daily-wird": "الورد اليومي",
         "/duas": "الأدعية", "/duas-quran": "أدعية القرآن", "/sunan-yawmiyya": "السنن اليومية", "/tasbih": "المسبحة",
         // الحديث
         "/arbaeen-nawawi": "الأربعون النووية", "/arbaeen-nawawi/:id": "حديث الأربعين", "/dalail-nubuwwah": "دلائل النبوة", "/hadith": "الحديث",
