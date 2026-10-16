@@ -1,4 +1,7 @@
 {
+  "editorial" : {
+    "learn/fawaid.json:" : 449
+  },
   "exempt" : {
     "adhkar/categories.json" : "تنقل: أسماء فئات لا نص شرعي",
     "aqidah/discover-islam-contact.json" : "بيانات اتصال",
@@ -38,7 +41,6 @@
     "fiqh/guides/udhiya.json:related" : 4,
     "fiqh/guides/waqf.json:related" : 4,
     "fiqh/prayer-ranks.json:" : 5,
-    "learn/fawaid.json:" : 342,
     "lessons/chunk-000.json:" : 41,
     "quran/circles.json:" : 27,
     "quran/tilawa-reciters.json:" : 13,

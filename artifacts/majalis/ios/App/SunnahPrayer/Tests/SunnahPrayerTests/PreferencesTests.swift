@@ -52,7 +52,7 @@ final class PreferencesTests: XCTestCase {
     }
 
     func testCountdownFormat() {
-        XCTAssertEqual(PrayerTimeFormat.countdown(3_725), "٠١:٠٢:٠٥")
-        XCTAssertEqual(PrayerTimeFormat.countdown(-5), "٠٠:٠٠:٠٠")
+        XCTAssertEqual(PrayerTimeFormat.countdown(3_725), "01:02:05")
+        XCTAssertEqual(PrayerTimeFormat.countdown(-5), "00:00:00")
     }
 }

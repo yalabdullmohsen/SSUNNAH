@@ -34,7 +34,8 @@ struct UlumQuranDetailView: View {
         QuranDocView(
             title: item.title,
             paragraphs: [item.subtitle, item.body].compactMap { $0 }.flatMap { $0.components(separatedBy: "\n\n") }.filter { !$0.isEmpty },
-            sources: ["علوم القرآن — \(item.tags.first ?? "")"]
+            sources: ["علوم القرآن — \(item.tags.first ?? "")"],
+            reportID: item.id, reportSection: item.tags.first ?? "علوم القرآن"
         )
     }
 }

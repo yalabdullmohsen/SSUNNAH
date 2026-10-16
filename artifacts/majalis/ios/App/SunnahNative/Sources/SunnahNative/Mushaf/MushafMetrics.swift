@@ -61,7 +61,12 @@ enum MushafMetrics {
         var gaps: [Int: CGFloat]
         /// حشوة أفقية مستقلة لكل جانب من رمز نهاية الآية، سطر ← موضع الكلمة: يحسبها التخطيط من حبر الجارين الفعلي ليتماثل الفراغ حول القرص ويبلغ نسبة من فراغ الكلمات.
         var endPads: [Int: [Int: EndPad]] = [:]
+        /// قطر كل قرص نهاية آية يضعه التخطيط (سطر ← موضع الكلمة) — المصدر الوحيد لقطر الرسم والحارس.
+        var discs: [Int: [Int: CGFloat]] = [:]
     }
+
+    /// قطر قرص نهاية الآية لحجم خط نص معيّن: غليف مُصغَّر × نسبة القرص منه.
+    static func discDiameter(fontSize: CGFloat) -> CGFloat { fontSize * MushafPageView.endMarkScale * MushafPageView.ayahDiscEm }
 
     /// هامش أمان (em) بين حدّ القرص وحبر الحرف المجاور (حدّ أدنى مطلق).
     static let discSafetyEm: CGFloat = 0.06
@@ -149,11 +154,14 @@ enum MushafMetrics {
         }
         var gaps: [Int: CGFloat] = [:]
         var endPads: [Int: [Int: EndPad]] = [:]
+        var discs: [Int: [Int: CGFloat]] = [:]
         for l in lines {
+            let ks = l.ends.indices.filter { l.ends[$0] }
+            if !ks.isEmpty { discs[l.i] = Dictionary(uniqueKeysWithValues: ks.map { ($0, discDiameter(fontSize: size)) }) }
             let r = solve(l, s: size, width: width, probe: probe)
             if r.justified { gaps[l.i] = r.gap }
             if !r.pads.isEmpty { endPads[l.i] = r.pads }
         }
-        return Layout(fontSize: size, gaps: gaps, endPads: endPads)
+        return Layout(fontSize: size, gaps: gaps, endPads: endPads, discs: discs)
     }
 }

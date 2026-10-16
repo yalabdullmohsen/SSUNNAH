@@ -40,6 +40,9 @@ struct QuranDocView: View {
     var paragraphs: [String] = []
     var sections: [(title: String, lines: [String])] = []
     var sources: [String] = []
+    /// معرّف المحتوى للإبلاغ عن خطأ (يُظهر الزر أسفل الصفحة)؛ nil لشاشات الأدوات.
+    var reportID: String? = nil
+    var reportSection = ""
 
     var body: some View {
         ScrollView {
@@ -57,6 +60,7 @@ struct QuranDocView: View {
                 }
             }
             .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
+            if let reportID { SunnahReportIssueButton(title: title, id: reportID, section: reportSection) }
             }
         }
         .background(Sunnah.Colors.bg)

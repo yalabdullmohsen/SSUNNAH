@@ -71,6 +71,6 @@ if [ "$ARCH" = 1 ]; then
   # الحزمة النهائية: RC_FINAL=1 يشترط بوابة الحراس (docs/native/required-guards.json)؛ RC التجريبي يتجاوزها
   [ "${RC_FINAL:-0}" != 1 ] || bash scripts/native-rc-gate.sh || { echo "رفض: بوابة RC مغلقة" >&2; exit 1; }
   OUT="$HOME/.majalis-tools/archives/SunnahApp-$VERS-$BLDS.xcarchive"; mkdir -p "$(dirname "$OUT")"
-  ( cd ios-native && bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination 'generic/platform=iOS' -archivePath "$OUT" -allowProvisioningUpdates archive -quiet ) && echo "أُرشف: $OUT — الرفع من Xcode Organizer بيد المالك" || { echo "فشلت الأرشفة" >&2; exit 1; }
+  ( cd ios-native && bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination 'generic/platform=iOS' -archivePath "$OUT" -allowProvisioningUpdates archive -quiet ) && python3 scripts/native-capabilities-check.py "$OUT/Products/Applications/SunnahApp.app" && echo "أُرشف: $OUT — الرفع من Xcode Organizer بيد المالك" || { echo "فشلت الأرشفة" >&2; exit 1; }
 fi
 [ $fail = 0 ] && echo "✓ جاهز للرفع (بعد إذن المالك وقائمة docs/native/RELEASE.md)" || { echo "✗ غير جاهز" >&2; exit 1; }

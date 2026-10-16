@@ -1,5 +1,6 @@
 import Foundation
 import SunnahDataKit
+import SunnahPrayer
 
 /// حذف الحساب داخل التطبيق (شرط App Store 5.1.1(v)) بلا اعتماد على الموقع.
 /// ينفَّذ عبر RPC في Supabase اسمها `delete_my_account` (بلا معاملات، للمستخدم الحالي).
@@ -52,9 +53,15 @@ public struct SupabaseAccountDeleter: AccountDeleting {
 /// يمسح البيانات المحلية بعد حذف الحساب (الجلسة تُمسح عبر signOut): تفضيلات التطبيق والكاش.
 public enum LocalDataEraser {
     public static func eraseAll(defaults: UserDefaults = .standard, bundleID: String? = Bundle.main.bundleIdentifier,
-                                cache: DiskCache = .standard()) async {
+                                cache: DiskCache = .standard(),
+                                clearNotifications: Bool = false) async {
         if let bundleID { defaults.removePersistentDomain(forName: bundleID) }
         await cache.removeAll()
+        // الإشعارات المجدولة وتفضيلات App Group (الموقع والموافقات) تبقى خارج النطاق الافتراضي فتُمسح صراحةً.
+        if clearNotifications {
+            await NativeNotifications.removeAll()
+            UserDefaults(suiteName: PrayerPreferencesStore.appGroup)?.removePersistentDomain(forName: PrayerPreferencesStore.appGroup)
+        }
     }
 }
 
@@ -65,7 +72,7 @@ enum AccountDeletionFlow {
     static func canDelete(confirm: String, busy: Bool) -> Bool { !busy && confirm == phrase }
 
     /// يعيد nil عند النجاح، وإلا رسالة الخطأ؛ عند الفشل لا signOut ولا مسح محلي.
-    static func run(auth: AuthServicing, erase: () async -> Void = { await LocalDataEraser.eraseAll() }) async -> String? {
+    static func run(auth: AuthServicing, erase: () async -> Void = { await LocalDataEraser.eraseAll(clearNotifications: true) }) async -> String? {
         do {
             try await auth.deleteAccount()
             await auth.signOut()

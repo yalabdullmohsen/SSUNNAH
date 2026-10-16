@@ -14,8 +14,24 @@ const EXCEPT = {
   QuranCircleDetailView: "بطاقة معلومات حلقة بلا نص طويل",
   LibrarySourceDetailView: "بطاقة مصدر ببيانات منظَّمة (تُمرَّر عبر ترويسة التفصيل)",
 };
+// زر «إبلاغ عن خطأ» (AccountTexts يعد به أسفل كل صفحة محتوى): القالبان يحملانه، وغيرهما يستدعيه أو يُعفى بسبب.
+const REPORT_VIA = /DetailTemplate\(|ArticleTemplate\(|SunnahReportIssueButton\(|reportID:/;
+const REPORT_EXCEPT = {
+  MutashabihatDetailView: "آيات متقابلة بلا نص محتوى يُبلَّغ عنه",
+  QuranCircleDetailView: "بيانات حلقة لا محتوى علمي",
+  LibrarySourceDetailView: "بطاقة مصدر ببيانات منظَّمة",
+};
 const walk = (d) => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : p.endsWith(".swift") ? [p] : []; });
 const bad = [];
+for (const t of ["DetailTemplate", "ArticleTemplate"]) {
+  if (!/SunnahReportIssueButton\(/.test(readFileSync(join(SRC, "Templates", `${t}.swift`), "utf8"))) bad.push(`Templates/${t}.swift: بلا زر الإبلاغ عن خطأ`);
+}
+// إفصاح الذكاء الاصطناعي: النص الحرفي في SunnahDisclosure.short، والزر (المستدعى في كل تفصيل) يعرضه عبر SunnahDisclosureNotice.
+const SHORT = "أُعدّ محتوى هذا التطبيق بمساعدة الذكاء الاصطناعي اعتمادًا على مصادر مذكورة في كل صفحة، وقد يقع فيه خطأ. للفتوى والأحكام الشرعية ارجعوا إلى أهل العلم. إن وجدتم خطأً فاضغطوا «إبلاغ عن خطأ».";
+if (!readFileSync(join(SRC, "Support", "SunnahDisclosure.swift"), "utf8").includes(SHORT)) bad.push("Support/SunnahDisclosure.swift: نص short ليس الحرفي المعتمد");
+const btn = readFileSync(join(SRC, "Components", "SunnahReportIssueButton.swift"), "utf8");
+if (!/SunnahDisclosureNotice\(/.test(btn)) bad.push("Components/SunnahReportIssueButton.swift: بلا إشعار الذكاء الاصطناعي (SunnahDisclosureNotice) فوق الزر");
+if (!/SunnahDisclosure\.short/.test(readFileSync(join(SRC, "Support", "SunnahDisclosure.swift"), "utf8").split("struct SunnahDisclosureNotice")[1] ?? "")) bad.push("SunnahDisclosureNotice لا يعرض SunnahDisclosure.short");
 for (const f of walk(SRC)) {
   if (f.includes("/Mushaf/")) continue; // ملك ن3
   const s = readFileSync(f, "utf8");
@@ -30,6 +46,7 @@ for (const f of walk(SRC)) {
     // *Screen يحمّل ثم يُسلّم لشاشة *Detail ← تُحتسب الأخيرة؛ المُسلِّم يُعفى إن استدعى struct *Detail*
     const delegates = new RegExp(`\\b\\w*Detail\\w*\\(`).test(body.slice(body.indexOf("var body")).replace(new RegExp(`\\b${name}\\b`, "g"), ""));
     if (!SHARED.test(body) && !delegates) bad.push(`${relative(".", f)}: ${name}`);
+    else if (!delegates && !REPORT_VIA.test(body) && !REPORT_EXCEPT[name]) bad.push(`${relative(".", f)}: ${name} (بلا زر الإبلاغ عن خطأ)`);
   }
 }
 if (bad.length) { console.error("✗ شاشات تفصيل خارج المكوّن المشترك (أدخلوها أو أضيفوا استثناءً بسبب في native-detail-guard.mjs):\n  " + bad.join("\n  ")); process.exit(1); }

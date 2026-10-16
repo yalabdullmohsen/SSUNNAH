@@ -43,6 +43,12 @@ struct TafsirQuranAyah: Decodable, Sendable {
 
 struct TafsirQuranFile: Decodable, Sendable {
     let ayahs: [TafsirQuranAyah]
+    private enum CodingKeys: String, CodingKey { case number, ayahs }
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        let surah = try c.decodeIfPresent(Int.self, forKey: .number) ?? 0
+        ayahs = try c.decode([TafsirQuranAyah].self, forKey: .ayahs).map { TafsirQuranAyah(numberInSurah: $0.numberInSurah, text: QuranDisplayText.clean($0.text, surah: surah, ayah: $0.numberInSurah)) }
+    }
 }
 
 struct TafsirAyahRow: Identifiable, Hashable, Sendable {

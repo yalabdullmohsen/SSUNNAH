@@ -1,4 +1,4 @@
-# OWNER_CHECKLIST — إطلاق سُنّة 1.2.0 (بناء 100) للمالك
+# OWNER_CHECKLIST — إطلاق سُنّة 1.2.0 للمالك (رقم البناء: انظر `docs/native/release-state.json`)
 
 الخطوات بالترتيب. الأوامر تُنسخ كما هي من جذر المستودع على `native-app` المحدَّث.
 التفاصيل: `TESTFLIGHT_STEPS.md`، الخصوصية: `PRIVACY_CHECK.md`.
@@ -49,17 +49,19 @@ bundle exec fastlane ios native_release        # dry-run: لا اتصال ولا
 ```bash
 source ~/.appstoreconnect/env.sh
 bundle exec fastlane ios native_release submit:true             # آخر بناء لـ1.2.0
-# أو بناء محدد: bundle exec fastlane ios native_release submit:true build:100
+# أو بناء محدد (الرقم من release-state.json): bundle exec fastlane ios native_release submit:true build:N
 ```
 ثم تابع: Waiting for Review ← In Review ← Ready. شرط: الإصدار 1.2.0 مُنشأ يدويًا بحالة قابلة للتحرير، والبناء أنهى Processing.
 
-## قبل زر الإرسال (خطوات يوسف فقط)
-- [ ] بيانات المراجع: أنشئ في Supabase مستخدمًا `apple.review@ssunnah.com` بخيار Auto Confirm User وجرّب الدخول به من التطبيق.
-- [ ] ضع البريد وكلمة المرور في App Review Information ← Sign-in required (لا في المستودع).
-- [ ] `export_my_account` مطبَّقة (تحقق المالك 2026-10-16). `delete_my_account` مطبَّقة بالنص الجديد (تحقق المالك؛ 5.1.1(v) مغلق). جرّب الحذف والتصدير بحساب تجريبي قبل الإرسال.
-- [ ] قرّر النطاق: `www.ssunnah.com` معلّق (402) في PRIVACY_CHECK؛ أعِده أو أزل رابطه من REVIEW_NOTES.
-- [ ] إفصاح مضيفي الصوت (EveryAyah/MP3Quran): القرار محسوم بشرط؛ طبّق الحالة أ أو ب من `APPSTORE_METADATA.md` حسب نتيجة `AUDIO_HEADERS_CHECK.md` (لم تُملأ بعد).
-- [ ] التقط لقطات الشاشة من بناء TestFlight الفعلي (iPhone وiPad، فاتح وداكن) وارفعها.
-- [ ] أرسل نص WHATS_NEW وAPPSTORE_METADATA وREVIEW_NOTES للشيخ للمراجعة الشرعية وانتظر موافقته.
-- [ ] تحقق من Privacy Report في الأرشيف (لم يُتحقق منه بعد) وأجب ملصق الخصوصية من `app-privacy.md`.
-- [ ] أنشئ الإصدار 1.2.0 يدويًا ثم نفّذ الخطوة 6 (Submit) بنفسك.
+## قبل زر الإرسال (ما بقي على يوسف وحده)
+التفاصيل في `docs/native/submission/`؛ هنا المختصر فقط.
+- [ ] **ASC — الخصوصية:** أجب App Privacy من `ASC_APP_PRIVACY_ANSWERS.md` ثم Publish. أضف مضيفي الصوت بالحالة أ أو ب حسب `AUDIO_HEADERS_CHECK.md` (لم تُملأ بعد) ثم طابِق `app-privacy.md`.
+- [ ] **ASC — App Review Information:** أنشئ `apple.review@ssunnah.com` في Supabase (Auto Confirm User)، جرّب الدخول، وضع البريد وكلمة المرور في Sign-in required فقط؛ الصياغة في `ASC_REVIEW_INFORMATION.md`.
+- [ ] **ASC — الصفحة:** الصق النصوص من `STORE_LISTING_1_2_0.md`، والتقط اللقطات من بناء TestFlight الفعلي (iPhone وiPad، فاتح وداكن).
+- [ ] **الجهاز:** نفّذ `DEVICE_TEST_SHEET.md` على البناء الفعلي، بما فيه الحذف والتصدير بحساب تجريبي.
+- [ ] **الشيخ:** أرسل `WHATS_NEW` وAPPSTORE_METADATA وREVIEW_NOTES للمراجعة الشرعية وانتظر ردّه، ثم حوّله بقالب `SHEIKH_REPLY_TEMPLATE.md`.
+- [ ] **التدقيق:** راجع `GUIDELINES_AUDIT.md` وما فيه من بنود مفتوحة، وتحقق من Privacy Report في الأرشيف (لم يُتحقق منه بعد).
+- [ ] **النطاق:** `www.ssunnah.com` معلّق (402) في PRIVACY_CHECK؛ أعِده أو أزل رابطه من REVIEW_NOTES.
+- [ ] **الإرسال:** أنشئ الإصدار 1.2.0 يدويًا ثم نفّذ الخطوة 6 بنفسك.
+
+منتهٍ (إفادة المالك، لا دليل مستودع): `delete_my_account` و`export_my_account` مطبَّقتان على الإنتاج، وتعريفاهما مقروءان، واختبار الحذف والتصدير ناجح من جهازه. يبقى تكرار الاختبار على RC النهائي ضمن `DEVICE_TEST_SHEET.md`.

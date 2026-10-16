@@ -78,21 +78,36 @@ public struct MushafPageView: View {
         case "l":
             let words = row.w ?? []
             let gap = layout.gaps[i] ?? layout.fontSize * MushafMetrics.naturalGapEm
+            // تظليل متصل: شريط واحد لكل مقطع متتالٍ من كلمات الآية المحددة (حواف ناعمة عند الطرفين فقط، يمتد نصف الفجوة فلا فراغ بين الكلمات).
+            let runs: [[(k: Int, w: MushafWord)]] = words.enumerated().reduce(into: []) { acc, e in
+                if let last = acc.last?.last, last.w.v == e.element.v { acc[acc.count - 1].append((e.offset, e.element)) } else { acc.append([(e.offset, e.element)]) }
+            }
             HStack(spacing: gap) {
-                ForEach(Array(words.enumerated()), id: \.offset) { k, w in
-                    Group {
-                        if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize) }
-                        else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary) }
+                ForEach(Array(runs.enumerated()), id: \.offset) { _, run in
+                    HStack(spacing: gap) {
+                        ForEach(run, id: \.k) { item in
+                            let k = item.k, w = item.w
+                            Group {
+                                if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]) }
+                                else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary) }
+                            }
+                                .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
+                                .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
+                                .padding(.vertical, 1)
+                                .contentShape(Rectangle())
+                                .gesture(
+                                    LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) }
+                                        .exclusively(before: TapGesture().onEnded { selectedAyah = selectedAyah == w.v ? nil : w.v }),
+                                    including: interactive ? .all : .none)
+                                .accessibilityLabel(w.isAyahEnd ? "آية \(w.v)" : "")
+                        }
                     }
-                        .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
-                        .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
-                        .padding(.vertical, 1)
-                        .background(selectedAyah == w.v ? Sunnah.Colors.primarySoft : .clear)
-                        .gesture(
-                            LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) }
-                                .exclusively(before: TapGesture().onEnded { selectedAyah = selectedAyah == w.v ? nil : w.v }),
-                            including: interactive ? .all : .none)
-                        .accessibilityLabel(w.isAyahEnd ? "آية \(w.v)" : "")
+                    .background {
+                        if let v = run.first?.w.v, selectedAyah == v {
+                            MushafSoftBand(roundRight: true, roundLeft: true, radius: layout.fontSize * 0.28).fill(Sunnah.Colors.primarySoft)
+                                .padding(.horizontal, -gap / 2)
+                        }
+                    }
                 }
             }
             .frame(maxWidth: layout.gaps[i] == nil ? nil : width)
@@ -121,12 +136,14 @@ public struct MushafReaderView: View {
     @State private var selected: String?
     @State private var showIndex = false
     @State private var showChrome = false
+    @State private var sheetHeight: CGFloat = 0
     @State private var pageSize = CGSize(width: 402, height: 874)
     @Environment(\.openRoute) private var openRoute
 
-    public init(repo: MushafRepository, index: MushafIndex, search: MushafSearch?, store: MushafStore, startPage: Int? = nil) {
+    public init(repo: MushafRepository, index: MushafIndex, search: MushafSearch?, store: MushafStore, startPage: Int? = nil, initialSelection: String? = nil) {
         self.repo = repo; self.index = index; self.search = search; self.store = store
         _current = State(initialValue: Mushaf.clamp(startPage ?? store.lastPage))
+        _selected = State(initialValue: initialSelection)
     }
 
     public var body: some View {
@@ -162,6 +179,10 @@ public struct MushafReaderView: View {
                 if showChrome { chrome.transition(.opacity) }
             }
             .frame(width: w, height: h)
+            // القائمة السفلية لا تقطع نص الصفحة: تُصغَّر الصفحة كاملة (تحويل بصري بلا تغيير التخطيط) لتبقى فوق القائمة.
+            .scaleEffect(selected == nil || sheetHeight <= 0 ? 1 : min(1, max(0.62, (h - sheetHeight - 8) / h)), anchor: .top)
+            .animation(.easeInOut(duration: 0.28), value: selected)
+            .animation(.easeInOut(duration: 0.28), value: sheetHeight)
         }
         .ignoresSafeArea()
         .background(Sunnah.Colors.mushafPaper.ignoresSafeArea())
@@ -170,6 +191,7 @@ public struct MushafReaderView: View {
         .toolbar(.hidden, for: .navigationBar)
         #endif
         .overlay(alignment: .bottom) { if let sel = selected { selectionSheet(sel) } }
+        .onChange(of: selected) { if $0 == nil { sheetHeight = 0 } }
         .sheet(isPresented: $showIndex) {
             MushafIndexView(index: index, search: search, store: store) { page in current = page; showIndex = false }
         }
@@ -271,12 +293,19 @@ public struct MushafReaderView: View {
                 Spacer()
                 SunnahButton("إغلاق", style: .outline) { selected = nil }
             }
+            // الآية كاملة بخط المصحف (تمتد على سطور/صفحتين) داخل تمرير محدود الارتفاع فلا تطول القائمة بلا حد.
+            ScrollView {
+                MushafAyahText(ayah: ayah, repo: repo, size: 22, collapseAbove: .max, paper: false, plainText: shareText(ayah))
+            }
+            .frame(maxHeight: min(pageSize.height * 0.28, 230))
+            .fixedSize(horizontal: false, vertical: true)
             HStack(spacing: Sunnah.Spacing.s4) {
                 if let text = shareText(ayah) {
                     Button { copy(text) } label: { Label("نسخ", systemImage: "doc.on.doc") }
                     ShareLink(item: text) { Label("مشاركة", systemImage: "square.and.arrow.up") }
                 }
                 Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }
+                Button { openRoute("/quran/offline-player") } label: { Label("القراء", systemImage: "headphones") }
                 Button { store.toggleBookmark(ayah: ayah, page: current) } label: { Label(isMarked ? "إزالة العلامة" : "علامة", systemImage: isMarked ? "bookmark.fill" : "bookmark") }
                 Spacer(minLength: 0)
             }
@@ -288,6 +317,8 @@ public struct MushafReaderView: View {
         .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.goldDeco.opacity(0.6), lineWidth: 1))
         .shadow(color: .black.opacity(0.12), radius: 16, y: 6)
         .padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, Sunnah.Spacing.s3)
+        .background(GeometryReader { g in Color.clear.preference(key: MushafSheetHeightKey.self, value: g.size.height) })
+        .onPreferenceChange(MushafSheetHeightKey.self) { sheetHeight = $0 + Sunnah.Spacing.s3 }
         .transition(.move(edge: .bottom).combined(with: .opacity))
         .accessibilityIdentifier("mushaf.selection")
     }
@@ -359,5 +390,31 @@ public struct MushafIndexView: View {
         .environment(\.layoutDirection, .rightToLeft)
         .sunnahMotifCorner(size: 220, alignment: .bottomLeading, opacity: 0.06)
         .background(Sunnah.Colors.bg)
+    }
+}
+
+private struct MushafSheetHeightKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = max(value, nextValue()) }
+}
+
+/// شريط تظليل بحواف ناعمة عند طرفي المقطع فقط (الأطراف الملتصقة بكلمة محددة مجاورة تبقى مستقيمة فيتصل التظليل).
+private struct MushafSoftBand: Shape {
+    var roundRight: Bool, roundLeft: Bool, radius: CGFloat
+    func path(in r: CGRect) -> Path {
+        let k = min(radius, r.height / 2, r.width / 2)
+        let tr = roundRight ? k : 0, br = roundRight ? k : 0, tl = roundLeft ? k : 0, bl = roundLeft ? k : 0
+        var p = Path()
+        p.move(to: CGPoint(x: r.minX + tl, y: r.minY))
+        p.addLine(to: CGPoint(x: r.maxX - tr, y: r.minY))
+        if tr > 0 { p.addArc(center: CGPoint(x: r.maxX - tr, y: r.minY + tr), radius: tr, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false) }
+        p.addLine(to: CGPoint(x: r.maxX, y: r.maxY - br))
+        if br > 0 { p.addArc(center: CGPoint(x: r.maxX - br, y: r.maxY - br), radius: br, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false) }
+        p.addLine(to: CGPoint(x: r.minX + bl, y: r.maxY))
+        if bl > 0 { p.addArc(center: CGPoint(x: r.minX + bl, y: r.maxY - bl), radius: bl, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false) }
+        p.addLine(to: CGPoint(x: r.minX, y: r.minY + tl))
+        if tl > 0 { p.addArc(center: CGPoint(x: r.minX + tl, y: r.minY + tl), radius: tl, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false) }
+        p.closeSubpath()
+        return p
     }
 }
