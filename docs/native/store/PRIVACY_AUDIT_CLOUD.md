@@ -12,7 +12,7 @@
 أهم حالات عدم التطابق:
 1. الوثائق تقول إن المساهمات تُرسل إلى `POST /api/submissions` (الموقع)، والكود يرسلها مباشرة إلى Supabase `rest/v1/user_submissions` ومعها البريد.
 2. `REVIEW_NOTES` تقول إن التصدير يعتمد على خادم الموقع، والكود يستدعي Supabase RPC `export_my_account`.
-3. الدالتان `delete_my_account` و`export_my_account` معرَّفتان فقط في `docs/native/backend/*.sql` لا في أي migration، فوجودهما في الإنتاج غير مثبت.
+3. الدالتان `delete_my_account` و`export_my_account` معرَّفتان فقط في `docs/native/backend/*.sql` لا في أي migration، **تحديث 2026-10-16 (تحقق المالك من الإنتاج):** `export_my_account` مطبَّقة وتشمل `user_submissions`؛ `delete_my_account` مطبَّقة على الإنتاج بالنص الجديد (تحذف `user_submissions` و`content_views`؛ `anon` بلا تنفيذ و`authenticated` فقط)، **تحقق المالك** منها عبر `pg_get_functiondef`؛ **بند 5.1.1(v) مغلق** بناءً على هذا التحقق (لم أجرِ أنا استعلامًا على الإنتاج).
 4. روابط الخصوصية والمحتوى داخل التطبيق تشير إلى `https://www.ssunnah.com`، بينما `PRIVACY_CHECK` نفسه يصف هذا النطاق بأنه متوقف (HTTP 402).
 5. `APPSTORE_METADATA` يتناقض مع نفسه بشأن حاسبة المواريث (السطر 3 مقابل 28/49)، مع أن الشاشة موجودة في الكود.
 
@@ -37,7 +37,7 @@
 | 15 | إرسال المساهمات | الوثائق: `PRIVACY_CHECK.md:6`، `REVIEW_NOTES.md:10,22`، `APPSTORE_METADATA.md:69` تقول `POST /api/submissions`؛ الكود: `AccountNetwork.swift:142-164` يرسل إلى `rest/v1/user_submissions` (:156)؛ بحث `api/submissions` في الكود = صفر | غير مطابق | تصحيح الوثائق الثلاث إلى Supabase REST مباشرة |
 | 16 | الحقول المرسلة مع المساهمة (type, user_id, title, description, submitter_name, submitter_email, meta.source="ios-native") | `AccountNetwork.swift:142-164` (البريد :155)؛ `PRIVACY_CHECK.md:10-14` لا يذكر إرسال البريد ضمن المحتوى | غير مطابق (جزئي) | ذكر `submitter_email` صراحة في PRIVACY_CHECK |
 | 17 | تصدير البيانات | الكود: `AccountPrivacyCenterScreen.swift:29-31,75` ← `AccountNetwork.swift:168-178` `rest/v1/rpc/export_my_account` (:170)؛ الوثيقة: `REVIEW_NOTES.md:31` «يعتمد على خادم الموقع» | غير مطابق | تصحيح REVIEW_NOTES:31 |
-| 18 | تعريف `delete_my_account`/`export_my_account` في قاعدة البيانات | موجود فقط في `docs/native/backend/delete-account.sql` و`export-account.sql`؛ بحث في `supabase/` (53 ملف SQL) و`artifacts/supabase/` = صفر | غير مطابق (لا migration) | إضافة migration قابلة للتراجع وتطبيقها على staging ثم الإنتاج بأمر المالك؛ `app-privacy.md:20` و`REVIEW_NOTES.md:30` يشترطانه أصلًا |
+| 18 | تعريف `delete_my_account`/`export_my_account` في قاعدة البيانات | موجود فقط في `docs/native/backend/delete-account.sql` و`export-account.sql`؛ بحث في `supabase/` (53 ملف SQL) و`artifacts/supabase/` = صفر | `export_my_account` مطبَّقة وتشمل `user_submissions` (تحقق المالك 2026-10-16 عبر `pg_get_functiondef`)؛ `delete_my_account` مطبَّقة على الإنتاج بالنص الجديد (تحذف `user_submissions` و`content_views`؛ `anon` بلا تنفيذ و`authenticated` فقط)، **تحقق المالك** منها عبر `pg_get_functiondef`؛ البند 5.1.1(v) مغلق | إضافة migration قابلة للتراجع وتطبيقها على staging ثم الإنتاج بأمر المالك؛ `app-privacy.md:20` و`REVIEW_NOTES.md:30` يشترطانه أصلًا |
 | 19 | نطاق الموقع المستخدم داخل التطبيق | `RemoteTransport.swift:12,40` و`AccountTexts.swift:178` و`SunnahPrayerDeepLink.swift:9` = `https://www.ssunnah.com`؛ `PRIVACY_CHECK.md:42,46` يذكر أن النطاق متوقف (402) وأن رابط الخصوصية داخل التطبيق يمر به | غير مطابق | توحيد `siteURL` على نطاق حي (majlisilm.com) أو رابط الخصوصية المعتمد في `PRIVACY_CHECK.md:42` |
 | 20 | اتصالات المحتوى بالموقع: `/api/auto-content`, `/api/updates`, `/api/citations/<slug>` | `AccountNetwork.swift:10,13,16`؛ `Special/CitationScreen.swift:25,96` | غير مطابق (تعتمد على النطاق نفسه في #19) | كما في #19، وذكرها في `REVIEW_NOTES.md:10` |
 | 21 | حاسبة المواريث | `APPSTORE_METADATA.md:3` ينفي الوعد بها، و`:28,:49,:63` تَعِد بها؛ الشاشة موجودة: `Sections/fiqh/Mawarith/MawarithCalculatorScreen.swift` | غير مطابق (تناقض داخلي في الوثيقة) | حذف النفي من السطر 3 |
@@ -48,7 +48,7 @@
 ## ما لم يُتحقَّق منه
 
 - السلوك وقت التشغيل (طلبات الشبكة الفعلية، حالة الأذونات) — التدقيق ساكن فقط.
-- وجود الدالتين `delete_my_account` و`export_my_account` وصلاحياتهما (RLS/SECURITY DEFINER) في قاعدة الإنتاج.
+- وجود الدالتين وتعريفهما: **تحقق المالك** (`pg_get_functiondef` على الإنتاج، 2026-10-16). النص الجديد لـ`delete_my_account` وصلاحياتها (`anon` بلا تنفيذ، `authenticated` فقط) **إفادة المالك**؛ لم أتحقق منهما بنفسي (لا استعلام إنتاج مني). بقي غير متحقَّق منه: RLS على الجداول المحذوفة منها.
 - حالة HTTP الحية للنطاقات (`ssunnah.com`، `majlisilm.com`، رابط الخصوصية في `PRIVACY_CHECK.md:42`) وملفات AASA.
 - مضيفو الصوت الفعليون (يُحمَّلون من بيانات القرّاء لا من الكود).
 - محتوى `ios-native/PrayerWidgetResources/PrivacyInfo.xcprivacy`، وملفات تطبيق Capacitor في `artifacts/majalis/ios/App/App/` (خارج نطاق التطبيق الأصلي).
@@ -115,7 +115,7 @@
 | 16 | **أُصلح**: ذُكر إرسال البريد/الاسم مع المساهمة في PRIVACY_CHECK | — |
 | 17 | **أُصلح**: التصدير = RPC `export_my_account` بجلسة المستخدم (مطبَّقة على الإنتاج بيد المالك) | — |
 | 21 | **أُصلح**: حُذف نفي حاسبة المواريث من APPSTORE_METADATA | — |
-| 18 | `export_my_account` مطبَّقة؛ `delete_my_account` تطبيقها/تأكيدها على الإنتاج | يوسف (لا SQL على الإنتاج مني) |
-| 19–20 | قرار النطاق الحي الواحد ثم توحيد الثوابت | قرار يوسف؛ `RemoteTransport` ن2، `AccountTexts`/`AccountNetwork`/`CitationScreen` ن1 |
-| 22 | يحتاج التقاط شبكة على جهاز | يوسف/جهاز |
-| 24 | Privacy Report من Organizer على أرشيف 103 | يوسف (واجهة Organizer) |
+| 18 | `export_my_account` مطبَّقة؛ `delete_my_account` مطبَّقة بالنص الجديد (تحذف `user_submissions` و`content_views`؛ `anon` بلا تنفيذ؛ تحقق المالك)؛ **5.1.1(v) مغلق** | ن4 + يوسف (لا SQL على الإنتاج مني) |
+| 19–20 | الكود: `RemoteTransport.swift` **ن2**؛ `AccountTexts`/`AccountNetwork`/`CitationScreen` **ن1** (توحيد `siteURL` بعد قرار النطاق). الوثائق (PRIVACY_CHECK:42,46 وREVIEW_NOTES) **ن5**. قرار النطاق نفسه خارج النوافذ | ن1 + ن2 + ن5 |
+| 22 | فحص ساكن أُنجز (ن4): التنزيل `URLSession` GET على خوادم `*.mp3quran.net` من بيانات القرّاء، بلا معرّف مستخدم ولا حساب؛ EveryAyah إسناد نصي فقط. صياغة الإفصاح (انكشاف IP لطرف ثالث) في app-privacy **ن5**. التقاط الشبكة الحي: غير مُجرى (لا ادعاء اجتياز) | ن5 للصياغة |
+| 24 | **أُنجز آليًا (ن4):** `scripts/native-archive-privacy-check.sh` يدمج كل PrivacyInfo داخل الأرشيف ويطابقه مع app-privacy.md والكود؛ على أرشيف 103: ✓ (5 أنواع بيانات، UserDefaults+FileTimestamp، بلا تتبع). يُشغَّل تلقائيًا في `native-rc3-launch.sh` على كل أرشيف جديد. تقرير Organizer الرسمي يبقى اختياريًا | ن4 (مُنجز) |
