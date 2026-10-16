@@ -153,6 +153,7 @@ struct WeakHadithDetailView: View {
         }
         .background(Sunnah.Colors.bg)
         .navigationTitle(item.label)
+        .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.sourceName)
     }
 }
 

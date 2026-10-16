@@ -52,6 +52,8 @@ struct SettingsView: View {
                 link("جولة في التطبيق", "map", "/feature-tour")
                 link("تواصل معنا", "envelope", "/contact")
             }
+            Section { SunnahDisclosureNotice(inset: false).padding(.top, 0) }
+                .listRowBackground(Color.clear)
         }
         .scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)

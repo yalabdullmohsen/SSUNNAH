@@ -2,7 +2,11 @@ import SwiftUI
 
 /// /about — حول التطبيق. النص حرفي من AboutPage، ورقم الإصدار من الحزمة.
 struct AccountAboutScreen: View {
-    var body: some View { AccountLegalDocumentView(AccountTexts.about, sharePath: "/about") }
+    var body: some View {
+        AccountLegalDocumentView(AccountTexts.about, sharePath: "/about") {
+            SunnahDisclosureNotice(inset: false)   // مصدر النص الواحد (يتبع الصيغة المختصرة)
+        }
+    }
 }
 
 /// /privacy — سياسة الخصوصية حرفيًا.

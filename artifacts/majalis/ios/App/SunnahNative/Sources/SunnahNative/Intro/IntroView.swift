@@ -42,6 +42,16 @@ struct IntroView: View {
                 .opacity(style == .simplified ? (simplifiedShown ? 1 : 0) : (approach ? 0 : 1))
                 .scaleEffect(pulse ? 1.015 : 1)
         }
+        .overlay(alignment: .bottom) {
+            Text(SunnahDisclosure.short)   // مصدر النص الواحد
+                .font(Sunnah.Typography.tag)
+                .foregroundStyle(theme == .primary ? Color.black.opacity(0.6) : Color.white.opacity(0.75))
+                .multilineTextAlignment(.center)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // الافتتاحية عابرة بتخطيط ثابت؛ الحجم الأكبر يتداخل مع الشعار، والإفصاح الكامل في «حول» والإعدادات
+                .padding(.horizontal, Sunnah.Spacing.pageX).padding(.bottom, Sunnah.Spacing.s4)
+                .opacity(approach ? 0 : 1)
+                .accessibilityIdentifier("intro.disclosure")
+        }
         .opacity(layerOpacity)
         .contentShape(Rectangle())
         .onTapGesture { skip() }

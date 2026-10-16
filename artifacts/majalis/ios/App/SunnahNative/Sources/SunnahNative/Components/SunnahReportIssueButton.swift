@@ -63,3 +63,34 @@ extension ContentItem {
     /// القسم المعروض في البلاغ: أول وسم وإلا مسار العنصر.
     var reportSection: String { tags.first ?? route ?? "—" }
 }
+
+private struct SunnahReportIssueToolbar: ViewModifier {
+    let title: String; let id: String; let section: String
+    @Environment(\.openURL) private var openURL
+    func body(content: Content) -> some View {
+        content.toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    Sunnah.Haptics.select()
+                    guard let url = SunnahReportIssueButton.mailURL(title: title, id: id, section: section) else { return }
+                    openURL(url) { accepted in
+                        if !accepted {
+                            #if canImport(UIKit)
+                            UIPasteboard.general.string = SunnahReportIssueButton.report(title: title, id: id, section: section)
+                            #endif
+                        }
+                    }
+                } label: { Image(systemName: "exclamationmark.bubble") }
+                    .accessibilityLabel("إبلاغ عن خطأ")
+                    .accessibilityIdentifier("detail.reportIssue.toolbar")
+            }
+        }
+    }
+}
+
+public extension View {
+    /// زر «إبلاغ عن خطأ» في شريط التنقل المشترك لشاشات المحتوى (يكمّل الزر أسفل الصفحة ولا يغني عن الإفصاح).
+    func sunnahReportIssueToolbar(title: String, id: String, section: String) -> some View {
+        modifier(SunnahReportIssueToolbar(title: title, id: id, section: section))
+    }
+}
