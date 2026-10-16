@@ -81,7 +81,7 @@ public struct MushafPageView: View {
             HStack(spacing: gap) {
                 ForEach(Array(words.enumerated()), id: \.offset) { k, w in
                     Group {
-                        if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize) }
+                        if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]) }
                         else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary) }
                     }
                         .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
