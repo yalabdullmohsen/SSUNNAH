@@ -6,7 +6,8 @@ public struct ArticleTemplate: View {
     @AppStorage("reader.sizeStep") private var sizeStep = 0
     @AppStorage("reader.night") private var night = false
     @Environment(\.dynamicTypeSize) private var systemSize
-    public init(item: ContentItem) { self.item = item }
+    private let sections: [SunnahMarkdownSection]
+    public init(item: ContentItem) { self.item = item; self.sections = SunnahMarkdown.sections(item.body ?? "") }
 
     private var size: DynamicTypeSize {
         let all = DynamicTypeSize.allCases
@@ -18,8 +19,8 @@ public struct ArticleTemplate: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s5) {
                 DetailHero(title: item.title, subtitle: item.subtitle, tags: item.tags)
-                ForEach(Array((item.body ?? "").components(separatedBy: "\n\n").enumerated()), id: \.offset) { _, p in
-                    SunnahMarkdownText(p, style: .body)
+                ForEach(sections) { sec in
+                    SunnahSectionView(section: sec, key: item.id, style: .body)
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
             }

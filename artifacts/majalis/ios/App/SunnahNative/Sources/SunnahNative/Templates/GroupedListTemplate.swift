@@ -56,7 +56,7 @@ public struct GroupedListTemplate: View {
                 if let r = item.route { openRoute(r) }
                 else if item.body != nil { sunnahAnimate { toggle(item.id) } }
             } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                .buttonStyle(.plain)
+                .sunnahPressable()
                 .accessibilityValue(item.body == nil || item.route != nil ? "" : (open ? "موسَّع" : "مطوي"))
             if open, item.route == nil, let body = item.body {
                 Text(body).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)

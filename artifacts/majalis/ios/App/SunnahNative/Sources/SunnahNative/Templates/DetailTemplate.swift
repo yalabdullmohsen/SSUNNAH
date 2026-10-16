@@ -31,7 +31,7 @@ public struct DetailTemplate: View {
     }
 
     private var longCard: some View {
-        SunnahMarkdownText(body_, style: .body)
+        SunnahSectionedMarkdown(body_, key: item.id, style: .body)
             .frame(maxWidth: .infinity, alignment: .leading).padding(Sunnah.Spacing.s4)
             .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
