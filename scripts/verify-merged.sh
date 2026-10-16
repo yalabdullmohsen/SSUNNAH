@@ -3,6 +3,7 @@
 set -u
 BASE=native-app
 fail=0
+WATCH=0; args=(); for a in "$@"; do [ "$a" = --watch ] && WATCH=1 || args+=("$a"); done; set -- ${args[@]+"${args[@]}"}
 # فحوص مستثناة صراحة: Vercel تخص الموقع المجمّد ssunnah.com (الحساب محجوب) ولا علاقة لها بتطبيق iOS.
 # المعتمد: gate وownership وcontent-sensitive والاختبارات وفحوص iOS والاختبارات وبقية فحوص المستودع. لا تُغيَّر إعدادات Vercel ولا vercel.json.
 EXCLUDED_CHECKS='^Vercel( |$)|^Vercel Preview Comments'
@@ -30,4 +31,6 @@ for n in "$@"; do
     real_failures "$n" | head -3
   fi
 done
+# --watch: تحذير بالـPRات المتروكة (يفشل فقط عند PR متعارض >4 ساعات)
+[ "$WATCH" = 1 ] && { bash "$(dirname "$0")/native-stale-prs.sh" || fail=1; }
 exit $fail
