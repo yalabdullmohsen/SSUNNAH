@@ -20,6 +20,12 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ArefRuqaa-Regular.ttf</string>
+		<string>ArefRuqaa-Bold.ttf</string>
+		<string>LaylaThuluth.ttf</string>
+	</array>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>

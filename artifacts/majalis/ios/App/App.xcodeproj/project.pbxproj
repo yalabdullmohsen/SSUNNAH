@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A06F01B0A0000000000000B1 /* ArefRuqaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A06F01F0A0000000000000F1 /* ArefRuqaa-Regular.ttf */; };
+		A06F02B0A0000000000000B2 /* ArefRuqaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A06F02F0A0000000000000F2 /* ArefRuqaa-Bold.ttf */; };
+		A06F03B0A0000000000000B3 /* LaylaThuluth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A06F03F0A0000000000000F3 /* LaylaThuluth.ttf */; };
 		A05AUD02OFFLINESTOREAPP0 /* OfflineAudioStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AUD02OFFLINESTOREFILE /* OfflineAudioStore.swift */; };
 		A05AUD01PLAYSESSIONAPP00 /* PlaybackSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AUD01PLAYSESSIONFILE0 /* PlaybackSessionController.swift */; };
 		5A1D0A01C0DE0000000000A3 /* SunnahWidgetKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A1D0A01C0DE0000000000A2 /* SunnahWidgetKit */; };
@@ -140,6 +143,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A06F01F0A0000000000000F1 /* ArefRuqaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fonts/ArefRuqaa-Regular.ttf; sourceTree = "<group>"; };
+		A06F02F0A0000000000000F2 /* ArefRuqaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fonts/ArefRuqaa-Bold.ttf; sourceTree = "<group>"; };
+		A06F03F0A0000000000000F3 /* LaylaThuluth.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fonts/LaylaThuluth.ttf; sourceTree = "<group>"; };
 		A05AUD02OFFLINESTOREFILE /* OfflineAudioStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineAudioStore.swift; sourceTree = "<group>"; };
 		A05AUD01PLAYSESSIONFILE0 /* PlaybackSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSessionController.swift; sourceTree = "<group>"; };
 		A0290002NATIVENOTIFGATEFR /* NativeNotificationsGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeNotificationsGate.swift; sourceTree = "<group>"; };
@@ -407,6 +413,9 @@
 				A04CFR01LOGOMARKFILE00000 /* SunnahWidgetLogoMark.swift */,
 				A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */,
 				A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */,
+				A06F01F0A0000000000000F1 /* ArefRuqaa-Regular.ttf */,
+				A06F02F0A0000000000000F2 /* ArefRuqaa-Bold.ttf */,
+				A06F03F0A0000000000000F3 /* LaylaThuluth.ttf */,
 				A029FR05WIDGETINFO /* Info.plist */,
 				A029FR08WIDGETENT /* PrayerWidget.entitlements */,
 			);
@@ -610,6 +619,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A06F01B0A0000000000000B1 /* ArefRuqaa-Regular.ttf in Resources */,
+				A06F02B0A0000000000000B2 /* ArefRuqaa-Bold.ttf in Resources */,
+				A06F03B0A0000000000000B3 /* LaylaThuluth.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4520,6 +4520,146 @@
     "verified": true
    }
   ],
+  "fawaid-curated-400": [
+   {
+    "ref": "سنن الترمذي، ت شاكر، ج5 ص374 (أبواب الدعوات)",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/1435/5378",
+    "quote": "الدُّعَاءُ هُوَ العِبَادَة",
+    "fetched": "2026-10-16",
+    "verified": true
+   },
+   {
+    "ref": "سنن الترمذي، ت شاكر، ج5 ص211",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/1435/5061",
+    "quote": "الدُّعَاءُ هُوَ العِبَادَة",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-052": [
+   {
+    "ref": "صحيح البخاري 6446 ت البغا ج5 ص2368",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/735/9756",
+    "quote": "لَيْسَ الْغِنَى عَنْ كَثْرَةِ الْعَرَض",
+    "fetched": "2026-10-16",
+    "verified": true
+   },
+   {
+    "ref": "صحيح مسلم 1051 ت عبد الباقي ج2 ص726",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/1727/2353",
+    "quote": "ليس الغني عن كثرة العرض",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-266": [
+   {
+    "ref": "صحيح البخاري ت البغا ج3 ص1105 (أحد)",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/735/4877",
+    "quote": "فَلَا تَبْرَحُوا مَكَانَكُم",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-438": [
+   {
+    "ref": "البداية والنهاية لابن كثير (فتح مكة)",
+    "type": "book",
+    "url": "https://shamela.ws/book/8376/1584",
+    "quote": "اذهبوا فأنتم الطلقاء",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-467": [
+   {
+    "ref": "سنن الترمذي ت شاكر ج4 ص553",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/1435/3992",
+    "quote": "أَكْثِرُوا ذِكْرَ هَاذِمِ اللَّذَّات",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-530": [
+   {
+    "ref": "القرآن الكريم 82:10",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/82:10/quran-uthmani",
+    "quote": "وَإِنَّ عَلَيْكُمْ لَحَٰفِظِينَ",
+    "fetched": "2026-10-16",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم 82:11",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/82:11/quran-uthmani",
+    "quote": "كِرَامًۭا كَٰتِبِينَ",
+    "fetched": "2026-10-16",
+    "verified": true
+   },
+   {
+    "ref": "القرآن الكريم 82:12",
+    "type": "quran",
+    "url": "https://api.alquran.cloud/v1/ayah/82:12/quran-uthmani",
+    "quote": "يَعْلَمُونَ مَا تَفْعَلُونَ",
+    "fetched": "2026-10-16",
+    "verified": true
+   },
+   {
+    "ref": "تفسير ابن كثير ج7 ص502",
+    "type": "book",
+    "url": "https://shamela.ws/book/1503/4499",
+    "quote": "وَإِنَّ عَلَيْكُمْ لَحَافِظِين",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-581": [
+   {
+    "ref": "صحيح البخاري ت البغا ج1 ص151",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/735/666",
+    "quote": "مَسَحَ عَلَى خُفَّيْه",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-589": [
+   {
+    "ref": "صحيح مسلم 2607 ت عبد الباقي ج4 ص2013",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/1727/6574",
+    "quote": "فإن الصدق يهدي إلى البر",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-612": [
+   {
+    "ref": "صحيح البخاري ت البغا ج3 ص1378",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/735/5785",
+    "quote": "لَمَّا قَدِمُوا الْمَدِينَة",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
+  "fawaid-curated-507": [
+   {
+    "ref": "صحيح مسلم (1605) باب تحريم الاحتكار في الأقوات",
+    "type": "hadith",
+    "url": "https://shamela.ws/book/1727/4057",
+    "quote": "مَنِ احْتَكَرَ فَهُوَ خَاطِئٌ",
+    "fetched": "2026-10-16",
+    "verified": true
+   }
+  ],
   "fawaid-curated-002": [
    {
     "ref": "صحيح البخاري، ط السلطانية، ج1 ص6 (كتاب بدء الوحي، ح1)",

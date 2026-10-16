@@ -11,6 +11,9 @@ LASTB=$(node -e 'console.log(JSON.parse(require("fs").readFileSync("docs/native/
 CURB=$(grep -oE "s\['CURRENT_PROJECT_VERSION'\] = '[0-9]+'" ios-native/scripts/generate-xcodeproj.rb | grep -oE "[0-9]+'" | tr -d "'" | sort -u | head -1)
 [ -n "$CURB" ] && [ "$CURB" -gt "$LASTB" ] || bad "رقم البناء ${CURB:-؟} ليس أكبر من آخر مرفوع $LASTB (docs/native/release-state.json)"
 
+# 0ب) كل خط مضمَّن موثّق في LICENSES.md وTHIRD_PARTY_NOTICES.md ومسجّل في UIAppFonts للودجت
+fo=$(node scripts/native-font-license-guard.mjs 2>&1) || bad "خطوط بلا توثيق ترخيص: $(echo "$fo" | tr '\n' ' ')"
+
 # 1) لا شاشات معلّقة: pendingIDs فارغة
 pend=$(awk '/static let pendingIDs/{f=1} f{print} f&&/\]/{exit}' "$SRC/Sections/quran/QuranScreens+Native.swift" | grep -o '"[^"]*"' | tr -d '"')
 [ -z "$pend" ] || bad "شاشات معلّقة (قيد الإعداد): $(echo $pend | tr '\n' ' ')"

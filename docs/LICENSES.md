@@ -20,6 +20,7 @@
 | الأصل | المصدر | الترخيص / الشروط | حالة الإذن | تاريخ التحقق | ملاحظات / إجراء |
 |---|---|---|---|---|---|
 | خطوط QPC V2 (604 × WOFF2) | مجمع الملك فهد / QUL عبر quran.com CDN؛ محليًا `public/fonts/qpc-v2/` | شروط KFGQPC / QUL لإعادة التوزيع في تطبيقات المتاجر **غير موقَّعة كتابيًا** | **مطلوب** | 2026-08-11 | الإبقاء على العرض؛ native strip + تنزيل؛ **لا توسعة**؛ طلب تأكيد QUL/KFG قبل المتجر |
+| خط أسماء السور `sura_names.ttf` | `public/fonts/qpc-surah-names/` | مصدره منظومة QUL/KFGQPC؛ إذن إعادة التوزيع غير مؤكَّد كتابيًا | **مطلوب** | 2026-10-16 | يُعامل معاملة QPC حتى التأكيد؛ لا توسعة |
 | خط `QCF_BSML` (أسماء السور + محرف بسملة) | qurancdn / QUL / مجمع الملك فهد | نفس شروط KFGQPC — غير موقَّع لإعادة التوزيع | **مطلوب / غير مضمَّن** | 2026-08-17 | جولة ٢٤: لم يُشحن الخط؛ شارة أرابيسك SVG منصّية موحّدة + بسملة عثماني بمقاس ثابت (`--mm-basmala-size: 22px`) |
 | نص عثماني (حفص) + حدود الصفحات | Tanzil عبر AlQuran Cloud؛ ملفات `public/data/quran/` | شروط Tanzil تتطلب موافقة صريحة لإعادة التوزيع الكامل | **جزئي / مطلوب للمتجر** | 2026-08-11 | راجع `artifacts/majalis/docs/quran-data-source.md`؛ جلب/عرض مع إسناد؛ لا ادّعاء ملكية |
 | تخطيط المصحف QPC V2 | `api.qurancdn.com` / QUL → `public/data/quran-v2/` | نفس منظومة QUL | **مطلوب** | 2026-08-11 | لا صور مصحف المدينة في المستودع (محظور م2) |
@@ -35,6 +36,8 @@
 | أذان (بث mohsalvi) | github.com/mohsalvi/adhan-audio | غير موقَّع؛ أسماء ملفات قد توحي بنسبة | **جزئي / مطلوب للتوسعة** | 2026-08-11 | عرض باسم النمط فقط؛ لا نسبة شخصية |
 | مقاطع أذان مضمّنة `public/sounds/adhan` | توريد داخلي قيد المراجعة | حقوق التسجيل | **غير محسوم** | 2026-08-11 | لا يُوسَّع؛ بوابة جودة فقط؛ استبدال بمرخّص أو إزالة قبل المتجر إن بقي بلا إذن |
 | خط Almarai | `public/fonts/almarai/` | OFL (مشروع Almarai) | **ممنوح** | 2026-10-06 | ملف الرخصة `OFL-Almarai.txt` بجانب الخطوط |
+| خط Aref Ruqaa (الرقعة، ودجت iOS) | `artifacts/majalis/ios/App/PrayerWidget/Fonts/` | OFL 1.1 (مشروع Aref Ruqaa، الاسم المحجوز EURM10) | **ممنوح** | 2026-10-16 | `OFL-ArefRuqaa.txt` بجانب الخطوط |
+| خط Layla Thuluth (الثلث، ودجت iOS) | `artifacts/majalis/ios/App/PrayerWidget/Fonts/` | OFL 1.1 (محمد عصام) من nameID 13 داخل الخط + FONTLOG؛ الحزمة بلا OFL.txt مستقل؛ الاسم المحجوز يمنع إعادة تسمية المشتقات | **ممنوح** | 2026-10-16 | `OFL-LaylaThuluth-name13.txt` و`FONTLOG-Layla.txt` |
 | خطوط الواجهة (Alexandria وغيرها) | Google Fonts / `index.html` | OFL حيث ينطبق | **ممنوح** | 2026-08-11 | لا إعادة تسمية مخالفة لـ OFL |
 | زخارف المصحف (شارة/خرطوش/آية SVG) | رسم أصلي للمجلس | ملك المنصة | **ممنوح** | 2026-08-11 | `MushafOrnaments.tsx` |
 | مكتبات npm (React, Vite, Capacitor, …) | lockfile | MIT / Apache-2.0 / ISC / BSD / … | **ممنوح** (مع بوابة CI) | 2026-08-11 | انظر §٢؛ رفض GPL/AGPL الصِّرف |
@@ -109,3 +112,11 @@
 | 2026-10-07 | وضع «تسميع» | إضافة نموذج Tarteel وWhisperKit؛ تحقق الترخيص من صفحة النموذج (Apache-2.0)، وتسجيل غياب توثيق بيانات التدريب |
 
 **الخطوة التالية للمتجر:** تأكيد كتابي QUL/KFG لخطوط QPC · موافقة Tanzil إن لزم · إذن حصن المسلم أو استبدال · جرد ناشر لكل كتاب · توقيع/قبول ToS everyayah/mp3quran أو تقليل القرّاء · استبدال مقاطع الأذان المضمّنة.
+
+### Layla Thuluth — اقتباس حرفي من جدول الاسم داخل الخط
+المسار: `artifacts/majalis/ios/App/PrayerWidget/Fonts/LaylaThuluth.ttf` — جدول `name`، الحقل 13 (License Description)، والنص الكامل في `OFL-LaylaThuluth-name13.txt`:
+
+> Copyright (c) <2014,2015,2016,2017>, <Mohammed Isam> (<http://sites.google.com/site/mohammedisam2000 | email: mohammed_isam1984@yahoo.com>), with Reserved Font Name <LaylaArcyArc, LaylaBasicArabic, LaylaBoxer, LaylaDigital, LaylaDiwani, LaylaThuluth, LaylaKoufi, LaylaRuqaa>.
+> This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is copied below, and is also available with a FAQ at: http://scripts.sil.org/OFL
+
+الحقل 14 (License Info URL): `http://scripts.sil.org/OFL`. الصفحة التي تدرج الخط تحت OFL: https://fontlibrary.org/en/font/layla-thuluth (الحزمة: `FONTLOG-Layla.txt` بلا ملف OFL.txt مستقل).
