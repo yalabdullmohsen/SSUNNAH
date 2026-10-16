@@ -167,7 +167,7 @@ struct WidgetCatalogItem: Identifiable, Equatable {
     let category: WidgetCatalogCategory
 
     static let all: [WidgetCatalogItem] = [
-        .init(id: "prayer", name: "الصلاة القادمة", detail: "عدّ حيّ إلى الصلاة القادمة، ومنذ الأذان بعد دخول الوقت.", sizes: "صغير · متوسط · كبير · شاشة القفل", category: .prayer),
+        .init(id: "prayer", name: "الصلاة القادمة", detail: "عدّ حيّ إلى الصلاة القادمة، ومنذ دخول الوقت.", sizes: "صغير · متوسط · كبير · شاشة القفل", category: .prayer),
         .init(id: "prayer-styled", name: "الصلاة — تصاميم", detail: "ستة تصاميم إضافة إلى الكلاسيكي: خطاطي، السابقة، رقم كبير، السابقة والقادمة، الخمس، مقسوم.", sizes: "صغير · متوسط", category: .prayer),
         .init(id: "prayer-all", name: "مواقيت اليوم", detail: "مواقيت الصلوات كلها في قائمة واحدة.", sizes: "كبير", category: .prayer),
         .init(id: "mushaf", name: "المصحف", detail: "تابع القراءة من آخر موضع وصلتَ إليه.", sizes: "صغير · متوسط", category: .mushaf),
