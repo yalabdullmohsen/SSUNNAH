@@ -120,18 +120,11 @@ public struct MushafAyahText: View {
     @ViewBuilder
     private func wordView(_ w: MushafAyahWord, index i: Int, words: [MushafAyahWord]) -> some View {
         let lit = !w.isEnd && highlightWords.contains(i)
-        Text(w.c)
-            .lineLimit(1).fixedSize()
-            .font(.custom(Mushaf.fontFamily(page: w.page), fixedSize: fontSize))
-            .foregroundStyle(w.isEnd ? Sunnah.Colors.mushafIvory : Sunnah.Colors.mushafInk)
-            .background {
-                if w.isEnd {
-                    Circle().fill(Sunnah.Colors.mushafAccent)
-                        .frame(width: fontSize * MushafPageView.ayahDiscEm, height: fontSize * MushafPageView.ayahDiscEm)
-                        .offset(y: fontSize * MushafPageView.ayahDiscDropEm)
-                }
-            }
-            .padding(.horizontal, w.isEnd ? fontSize * 0.2 : 0)
+        Group {
+            if w.isEnd { MushafEndMark(glyph: w.c, family: Mushaf.fontFamily(page: w.page), fontSize: fontSize) }
+            else { Text(w.c).lineLimit(1).fixedSize().font(.custom(Mushaf.fontFamily(page: w.page), fixedSize: fontSize)).foregroundStyle(Sunnah.Colors.mushafInk) }
+        }
+            .padding(.horizontal, w.isEnd ? fontSize * 0.1 : 0)
             .padding(.vertical, 1)
             .background(lit ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: fontSize * 0.2, style: .continuous))
     }
