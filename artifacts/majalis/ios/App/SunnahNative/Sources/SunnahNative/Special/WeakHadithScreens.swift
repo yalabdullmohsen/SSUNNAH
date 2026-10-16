@@ -143,7 +143,7 @@ struct WeakHadithDetailView: View {
                         if let c = item.chapter { Text(c).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
                     }
                 }
-                if let e = item.explanation { SunnahCard { Text(e).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) } }
+                if let e = item.explanation { SunnahCard { SunnahSectionedMarkdown(e, key: "weak-\(item.id)", style: .body).foregroundStyle(Sunnah.Colors.textPrimary) } }
                 HStack(spacing: Sunnah.Spacing.s3) {
                     ShareLink(item: item.shareText) { Label("مشاركة", systemImage: "square.and.arrow.up") }
                     Button { copy(item.shareText) } label: { Label("نسخ", systemImage: "doc.on.doc") }
