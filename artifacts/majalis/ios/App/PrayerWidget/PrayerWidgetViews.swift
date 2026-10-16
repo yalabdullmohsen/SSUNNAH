@@ -15,7 +15,7 @@ private struct SunnahWidgetBackground: ViewModifier {
 }
 
 struct PrayerWidgetRootView: View {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     let entry: PrayerWidgetEntry
 
     var body: some View {

@@ -18,6 +18,23 @@ enum SunnahWidgetFamilySupport {
     static let mushaf: [WidgetFamily] = [.systemSmall, .systemMedium]
 }
 
+/// عائلة الودجة الفعلية. كل الودجات تقرأها من هنا لا من `\.widgetFamily` مباشرة،
+/// لأن الأخيرة للقراءة فقط ولا يستطيع حزام اللقطات (WidgetSnapshotHarness) فرض عائلة غير الافتراضية.
+private struct SunnahFamilyOverrideKey: EnvironmentKey { static let defaultValue: WidgetFamily? = nil }
+extension EnvironmentValues {
+    var sunnahFamilyOverride: WidgetFamily? {
+        get { self[SunnahFamilyOverrideKey.self] }
+        set { self[SunnahFamilyOverrideKey.self] = newValue }
+    }
+}
+
+@propertyWrapper
+struct SunnahFamily: DynamicProperty {
+    @Environment(\.widgetFamily) private var real
+    @Environment(\.sunnahFamilyOverride) private var override
+    var wrappedValue: WidgetFamily { override ?? real }
+}
+
 enum SunnahWidgetRegistry {
     static let platformName = "SunnahWidgetPlatform"
     static var kindCount: Int { Set(SunnahWidgetKind.allUnique).count }
@@ -25,7 +42,7 @@ enum SunnahWidgetRegistry {
 
 /// هامش أفقي صغير لبطاقات شاشة القفل المستطيلة: بدونه يلامس النص حافة الإطار (تكشفه بوابة ios-widget-snapshot).
 struct SunnahAccessoryInset: ViewModifier {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     func body(content: Content) -> some View {
         content.padding(.horizontal, family == .accessoryRectangular ? 4 : 0)
     }
@@ -41,7 +58,7 @@ struct SunnahWidgetChrome: ViewModifier {
 }
 
 private struct SunnahWidgetSurface: ViewModifier {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     private var isAccessory: Bool {
         switch family {
         case .accessoryCircular, .accessoryRectangular, .accessoryInline: return true
@@ -587,7 +604,7 @@ struct SunnahTwoZone<Primary: View, Secondary: View>: View {
     @ViewBuilder let primary: Primary
     @ViewBuilder let secondary: Secondary
 
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     private var lockScreen: Bool { family == .accessoryRectangular || family == .accessoryCircular }
 
     var body: some View {
@@ -608,7 +625,7 @@ struct SunnahCalmCard: View {
     var symbol = "moon.stars"
     var phrase = "افتح سُنّة"
     var compact = false
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     /// الرئيسية: خلفية داكنة ثابتة ⇒ أبيض صريح. القفل: .primary دلالي (vibrant يحدده النظام).
     private var ink: Color {
         switch family {

@@ -77,7 +77,7 @@ private struct AdhkarSurface: ViewModifier {
 
 /// مدخل سريع لورد الوقت: أيقونة + عنوان قصير + حالة (✓ أو «ابدأ»)، يفتح الورد مباشرة بلا إعداد.
 struct AdhkarCollectionView: View {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     let entry: CatalogWidgetEntry
     /// يُحدَّد تلقائيًا بالوقت عند nil (صباح/مساء/نوم/بعد الصلاة).
     var fixedCollection: String?
@@ -188,7 +188,7 @@ struct TimeAwareAdhkarView: View {
 
 /// ذكر الساعة: ≤6 كلمات من أذكار معتمدة حرفيًا، وعنوان صغير فقط.
 struct RotatingAdhkarView: View {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     let entry: CatalogWidgetEntry
 
     /// من بيانات التطبيق إن وُجدت، وإلا من مخزون الأذكار المحلي المضمَّن (لا «افتح سُنّة»).
@@ -249,7 +249,7 @@ struct RotatingAdhkarView: View {
 }
 
 struct AdhkarStreakView: View {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     let entry: CatalogWidgetEntry
 
     private struct Ring {

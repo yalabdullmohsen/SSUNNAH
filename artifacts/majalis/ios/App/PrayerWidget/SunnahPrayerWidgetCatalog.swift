@@ -27,7 +27,7 @@ private struct CatalogSurface: ViewModifier {
 }
 
 private struct PrayerCardShell<Content: View>: View {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     let entry: PrayerWidgetEntry
     let label: String
     @ViewBuilder let content: Content

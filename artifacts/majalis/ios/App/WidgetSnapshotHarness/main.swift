@@ -73,7 +73,7 @@ let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
   let tag = "\(name)_\(fam.name)_\(scheme == .dark ? "dark" : "light")_\(v)\(sizeTag)"
   let styled = view
     .environment(\.dynamicTypeSize, sizeTag.isEmpty ? .large : .xxLarge)
-    .environment(\.snapFamily, fam.f)
+    .environment(\.sunnahFamilyOverride, fam.f)
     .environment(\.colorScheme, scheme)
     .environment(\.layoutDirection, .rightToLeft)
   edgeContacts(tag, fam, AnyView(styled))
