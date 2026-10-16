@@ -14,6 +14,7 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
   const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
   const origin = read(`${appRoot}/../../docs/native/content-origin.json`); // أصل المحتوى: فوائد تحريرية وبيانات محلية (قرار يوسف 2026-10-16)
   const editorial = new Set(origin.editorialFawaid), isLocal = (file) => { const ids = new Set(origin.local[file] ?? []); return (x) => (ids.has(String(idOf(x))) ? { ...x, origin: "local", originLabel: "بيانات محلية" } : x); };
+  const srcOverride = read(`${appRoot}/../../docs/native/fawaid-source-override.json`); // سطر مصدر بلا درجة غير مقروءة (فوائد حديثها مطابق)
   const empty = (file, why) => { out(file, []); reject(`${S}-${file}`, `فارغ عمدًا: ${why}`); };
 
   /* الدروس: جدول الدروس بالشكل نفسه (يُحدَّث مع كل إصدار) */
@@ -52,7 +53,7 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
       // فائدة تحريرية من إعداد سُنّة: لا تُنسب لمصدر ولا لقائل (لا عزو عام ولا وسم توثيق)
       ? { id: f.id, title: clip(f.text, 90), subtitle: "فائدة من إعداد سُنّة", body: f.text, tags: [f.category].filter(Boolean), origin: "editorial", originLabel: "فائدة من إعداد سُنّة" }
       : {
-        id: f.id, title: clip(f.text, 90), subtitle: f.author_name || undefined, body: [f.text, f.source].filter(Boolean).join("\n\n"),
+        id: f.id, title: clip(f.text, 90), subtitle: f.author_name || undefined, body: [f.text, srcOverride[f.id] ?? f.source].filter(Boolean).join("\n\n"),
         tags: [f.category, f.verification_status, f.trust_level].filter(Boolean),
       })));
   }
