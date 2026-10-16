@@ -27,7 +27,7 @@ final class SunnahSectionsTests: XCTestCase {
             let s = SunnahMarkdown.sections("## قسم\n\(long)\n\(body)")
             XCTAssertFalse(s[0].isCollapsible, body)
         }
-        for h in ["الدليل", "المصادر", "أثر", "حديث"] {
+        for h in ["الدليل", "أثر", "حديث"] {
             let s = SunnahMarkdown.sections("## \(h)\n\(long)")
             XCTAssertFalse(s[0].startsCollapsed, h)
         }
@@ -42,5 +42,34 @@ final class SunnahSectionsTests: XCTestCase {
         let src = "مقدمة\n\n## أ\nنص أ\n\n### ب\n- بند\n> اقتباس"
         let joined = SunnahMarkdown.sections(src).flatMap { $0.allBlocks }
         XCTAssertEqual(joined, SunnahMarkdown.blocks(src))
+    }
+
+    private let miracle = "قال تعالى: ﴿وَآيَةٌ لَّهُمُ﴾\n\nالإشارة المختصرة: إشارة قصيرة.\n\nخلاصة التفسير: خلاصة قصيرة.\n\nشرح إضافي.\n\nملاحظة للتفكر: ملاحظة.\n\nالمرجع: تفسير السعدي — يس.\n\nتنبيه: تنبيه قصير.\n\nالمصدر: مصدر آخر."
+
+    func testLabeledParagraphsBecomeSections() {
+        let s = SunnahMarkdown.sections(miracle)
+        XCTAssertEqual(s.compactMap { $0.headingText }, ["الإشارة المختصرة", "خلاصة التفسير", "ملاحظة للتفكر", "تنبيه", "المصدر والمرجع"])
+        XCTAssertNil(s[0].headingText); XCTAssertTrue(s[0].isProtected)
+        XCTAssertEqual(s[2].blocks.count, 2, "الفقرة غير المسمّاة تتبع القسم السابق")
+    }
+
+    func testReferencesMergeAndSecondarySectionsStartCollapsed() {
+        let s = SunnahMarkdown.sections(miracle)
+        let ref = s.last!
+        XCTAssertEqual(ref.blocks.count, 2); XCTAssertTrue(ref.startsCollapsed)
+        XCTAssertTrue(s.first { $0.headingText == "تنبيه" }!.startsCollapsed)
+        XCTAssertFalse(s.first { $0.headingText == "خلاصة التفسير" }!.startsCollapsed, "القصير غير الثانوي مفتوح")
+        XCTAssertFalse(s[0].startsCollapsed, "الآية لا تُطوى")
+    }
+
+    func testBoldLabelBecomesSectionAndPlainSentenceDoesNot() {
+        let s = SunnahMarkdown.sections("**عن الدورة:** وصف\n\nجملة عادية: لا تقسّم")
+        XCTAssertEqual(s.first?.headingText, "عن الدورة")
+        XCTAssertEqual(SunnahMarkdown.sections("جملة عادية: لا تقسّم").count, 1)
+    }
+
+    func testGenericWordsNoLongerProtectBodies() {
+        let s = SunnahMarkdown.sections("## شرح\n\(long) هذه سورة وآية ومرجع")
+        XCTAssertTrue(s[0].isCollapsible)
     }
 }

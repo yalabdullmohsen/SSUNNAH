@@ -61,7 +61,7 @@ enum SirahAdapters {
     static func nation(_ n: SirahNation) -> ContentItem {
         var parts: [String?] = [n.summary]
         for ch in n.chapters {
-            parts.append(lines([ch.title] + ch.body))
+            parts.append(lines(["## " + ch.title] + ch.body))
             parts += (ch.evidences ?? []).filter(acceptedEvidence).map { evidenceText($0) as String? }
             parts.append(ch.notKnown.map { "لم يرد فيه نص: \($0)" })
         }
