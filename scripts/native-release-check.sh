@@ -50,6 +50,9 @@ PBX=ios-native/SunnahApp.xcodeproj/project.pbxproj
 miss=$(find ios-native/SunnahApp artifacts/majalis/ios/App/PrayerWidget -name '*.swift' 2>/dev/null | while read -r f; do grep -qF "/* $(basename "$f") in Sources */" "$PBX" || echo "$f"; done)
 [ -z "$miss" ] || bad "ملفات .swift غير مدرجة في project.pbxproj (أعد التوليد: ruby ios-native/scripts/generate-xcodeproj.rb): $(echo $miss | tr '\n' ' ')"
 
+# 2د-1) الأذونات والقدرات المرفوعة (Info.plist + entitlements لهدف SunnahApp) ضمن docs/native/capabilities-allowlist.json؛ إذن/قدرة جديدة (ميكروفون، حركة، remote-notification، aps-environment…) يفشل الفحص ويتطلب إفصاحًا وقرار المالك.
+cap=$(python3 scripts/native-capabilities-check.py 2>&1) || bad "أذونات/قدرات غير معتمدة: $cap"
+
 # 2د-2) كل ملف .swift تحت artifacts/majalis/ios/App/App (هدف Capacitor App) يجب أن يكون ضمن Sources في App.xcodeproj؛ ملف غير مسجَّل يكسر بناء App («cannot find … in scope»). حزم SwiftPM والاختبارات خارج هذا الفحص لأنها ليست أهداف pbxproj.
 CAPPBX=artifacts/majalis/ios/App/App.xcodeproj/project.pbxproj
 # استثناء موثّق: Design/SunnahTokens.swift نسخة رموز يتيمة غير مستعملة في أي هدف (يحرس تطابقها scripts/check-swift-tokens.mjs)
