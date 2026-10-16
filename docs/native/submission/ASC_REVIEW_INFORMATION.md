@@ -1,6 +1,6 @@
 # ASC_REVIEW_INFORMATION — حقول App Review Information (سُنّة)
 
-> ⏳ **بانتظار تأكيد الهدف:** أي الهدفين يُرفع (`ios-native/SunnahApp` أم `artifacts/majalis/ios/App`) لم يُحسم؛ ن4 يُخرج Info.plist والـentitlements الفعلية من البناء الأخير (انظر `release-state.json`). كل ما يخص الميكروفون/الحركة/`remote-notification`/`aps-environment` في هذا الملف مؤقت ولا يُعتمد قبل أسطر ن4.
+> ✅ **الهدف المرفوع (تأكيد يوسف):** `SunnahApp` من `ios-native` (أرشيف 104؛ إذن الموقع فقط، بلا ميكروفون ولا حركة ولا إشعارات بعيدة). هدف Capacitor القديم مُعطَّل ولا يُرفع. النطاقان `www.ssunnah.com` و`majlisilm.com` موقوفان (تُركت المواقع): لا يُذكران حيّين. الشروط = EULA القياسي من Apple مع شاشة داخل التطبيق لبنودنا. روابط الخصوصية والدعم تُعتمد بعد جدول ن4.
 
 
 > تُنقل القيم إلى App Store Connect ← الإصدار ← App Review Information. **لا كلمات مرور في المستودع (عام).** رقم البناء/الإصدار: انظر `docs/native/release-state.json`.
@@ -15,7 +15,7 @@
 | Password | `<في ASC فقط>` |
 | First / Last name | `<يحدده المالك>` |
 | Phone | `<يحدده المالك>` |
-| Email | `<بريد المالك — يحدده المالك>` (بريد الدعم الحالي في `app-privacy.md:20` غير مؤكد الصلاحية) |
+| Email | `<بريد دعم مستقل — يقرّره يوسف، انظر الخيارين أدناه>` (بريد الدعم الحالي في `app-privacy.md:20` غير مؤكد الصلاحية) |
 | Attachment | لا حاجة |
 
 شروط الحساب: مؤكَّد البريد (Auto Confirm) لأن `mailer_autoconfirm=false` (`REVIEW_NOTES.md`، قسم «التسجيل لدى المراجع») فلا يستطيع المراجع إنشاء حساب صالح بنفسه. حساب المراجع لا يُحذف (`RELEASE.md:67`)؛ **ينبّه المراجع في Notes ألا يجرّب «حذف الحساب» عليه** وأن ينشئ حسابًا مؤقتًا إن توفّر له بريد، وإلا فالبديل: حساب ثانٍ مخصص للحذف يجهّزه المالك قبل الإرسال (يوجد `test.delete@ssunnah.com` للمالك، للحذف مرة واحدة، `RELEASE.md:67`؛ لا يُكتب في ASC إلا إن قرر المالك). تحقق قبل كل إرسال أن الحساب يدخل فعلًا.
@@ -25,7 +25,7 @@
 ```
 Sunnah (com.yousef.majlisilm) is an Arabic Islamic-learning app: Qur'an mushaf, adhkar, hadith, fiqh, seerah, prayer times and Qibla. The bundle ID and store listing are unchanged from the published app. Interface language is Arabic (RTL).
 
-RELIGIOUS CONTENT: all Qur'an, hadith, adhkar and fiqh texts are curated and bundled/published unchanged from our own sources; the app does not author or edit them, and there is no public user-generated content or social feed. Privacy policy: https://yalabdullmohsen.github.io/sunnah-legal/privacy.html - Support: https://yalabdullmohsen.github.io/sunnah-legal/support.html
+RELIGIOUS CONTENT: Qur'an text is bundled unchanged; other religious content is bundled from cited sources, and there is no public user-generated content or social feed. AI-ASSISTED CONTENT: the app's content is prepared with the assistance of artificial intelligence from sources cited on each page. It may contain errors and is not a substitute for consulting scholars. It has not been presented as endorsed or reviewed by any named scholar. In-app reporting: today the only reporting path is Settings > Contact us (a mail form); a dedicated report-error button on content pages is NOT yet in the app (see GUIDELINES_AUDIT G2) and this paragraph must be updated once it ships, with its exact path. Source/verification labels appear on content pages. Privacy policy: https://yalabdullmohsen.github.io/sunnah-legal/privacy.html - Support: https://yalabdullmohsen.github.io/sunnah-legal/support.html
 
 SIGN-IN (optional): e-mail + password only (Supabase Auth); no Sign in with Apple or social login. Use the demo account in the fields above. Path: sections list > "My Contributions" (مساهماتي) > "تسجيل الدخول" (Sign in). Registration sends a confirmation e-mail first, so please use the demo account.
 
@@ -58,11 +58,11 @@ Most content works offline. Online-only: sign-in, bookmark/progress sync, user s
 
 ## 4) ما يضيفه هذا الملف أو يغيّره عن `REVIEW_NOTES.md`
 
-1. **تعارض يلزم حسمه (مهم):** `REVIEW_NOTES.md` («ملاحظات») يقول إن Info.plist بلا ميكروفون ولا حركة وإن `UIBackgroundModes` = `audio, fetch` ولا إشعارات بعيدة. الملف الفعلي للهدف المنشور (`com.yousef.majlisilm`، `artifacts/majalis/ios/App/App.xcodeproj/project.pbxproj:917,925`) هو `artifacts/majalis/ios/App/App/Info.plist` وفيه: `NSMicrophoneUsageDescription` (:57) و`NSMotionUsageDescription` (:59) و`UIBackgroundModes` تشمل `remote-notification` (:69-73) و`NSUserNotificationsUsageDescription` (:63)، وفي `App.release.entitlements` المفتاح `aps-environment=production` وTime Sensitive. أما `ios-native/SunnahApp/Info.plist` (الموقع فقط، :19؛ الأوضاع :22) فمسار SwiftUI منفصل لا يُبنى منه الهدف أعلاه. النص في القسم 2 مكتوب على الملف الفعلي؛ **حدّث `REVIEW_NOTES.md` و`app-privacy.md` ليتطابقا** (لم أعدّلهما بحكم النطاق).
-2. دليلا `delete_my_account`: (أ) **الكود**: العميل `SupabaseAccountDeleter` يطلب `POST rest/v1/rpc/delete_my_account` بجلسة المستخدم بلا معرّف (`artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Platform/AccountDeletion.swift:12,30`)، والتدفق: حذف ثم `signOut` ثم مسح محلي ولا مسح عند الفشل (:67-75، العبارة «حذف» :62)، والواجهة `AccountDeletionView` (`.../Special/AccountScreens.swift:81`، تسجيل المسار :123)، ومدخلها من مركز الخصوصية (`.../Sections/account/AccountPrivacyCenterScreen.swift:49-50`)، وتعريف الدالة في `docs/native/backend/delete-account.sql` (revoke من anon، grant لـauthenticated) ونسخة `docs/native/backend/migrations/delete_my_account.sql:28-29`. (ب) **إفادة المالك (غير متحقَّقة مني)**: الدالة مطبَّقة على الإنتاج بالنص الجديد (تحقق عبر `pg_get_functiondef` في 2026-10-16) واختبار الحذف والتصدير ناجح من جهاز المالك (`PRIVACY_AUDIT_CLOUD.md:15,118`). لم أُجرِ استعلامًا على الإنتاج.
+1. **حُسم التعارض:** الهدف المرفوع `SunnahApp` من `ios-native` (أرشيف 104)؛ `ios-native/SunnahApp/Info.plist:19` الموقع فقط، و:22 `UIBackgroundModes` = `audio, fetch`، ولا ميكروفون ولا حركة ولا `remote-notification` ولا `aps-environment` في `SunnahApp.entitlements`. يطابق `REVIEW_NOTES.md`. هدف Capacitor (`artifacts/majalis/ios/App/App/Info.plist` وفيه الميكروفون والحركة) مُعطَّل ولا يُرفع.
+2. دليلا `delete_my_account`: (أ) **الكود**: العميل `SupabaseAccountDeleter` يطلب `POST rest/v1/rpc/delete_my_account` بجلسة المستخدم بلا معرّف (`artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Platform/AccountDeletion.swift:12,30`)، والتدفق: حذف ثم `signOut` ثم مسح محلي ولا مسح عند الفشل (:67-75، العبارة «حذف» :62)، والواجهة `AccountDeletionView` (`.../Special/AccountScreens.swift:81`، تسجيل المسار :123)، ومدخلها من مركز الخصوصية (`.../Sections/account/AccountPrivacyCenterScreen.swift:49-50`)، وتعريف الدالة في `docs/native/backend/delete-account.sql` (revoke من anon، grant لـauthenticated) ونسخة `docs/native/backend/migrations/delete_my_account.sql:28-29`. (ب) **تحقّق Claude (منسّق المشروع) من تعريف الدالة على الإنتاج بقراءتها بعد أن طبّقها المالك، وجرّب المالك الحذف والتصدير على جهازه ونجحا**: الدالة مطبَّقة على الإنتاج بالنص الجديد (تحقق عبر `pg_get_functiondef` في 2026-10-16) واختبار الحذف والتصدير ناجح من جهاز المالك (`PRIVACY_AUDIT_CLOUD.md:15,118`). (استعلام قراءة فقط، بلا SQL كتابة).
 3. التصدير: الزر وملف `ssunnah-data-export.json` و`ShareLink` في `AccountPrivacyCenterScreen.swift:29-45,70-82`؛ RPC `export_my_account` في `.../account/AccountNetwork.swift:167-170`. المسار ليس في الإعدادات بل في مركز الخصوصية (الإعدادات تتيح تنزيل تفضيلات الجهاز فقط، `AccountPrivacyCenterScreen.swift:45`).
 4. تنبيه المراجع ألا يحذف الحساب التجريبي (جديد؛ `REVIEW_NOTES.md` يقترح حسابًا مؤقتًا فقط).
-5. ذُكر الدفع البعيد والتفعيل الزمني Time Sensitive لأنهما في entitlements/Info.plist الفعلية.
+5. لا دفع بعيد في الهدف المرفوع؛ يوجد Time Sensitive في `SunnahApp.entitlements` (إشعارات محلية).
 
 ## 5) مجهول / غير متحقَّق منه
 
@@ -70,3 +70,12 @@ Most content works offline. Online-only: sign-in, bookmark/progress sync, user s
 - هل الدفع البعيد مفعّل فعلًا من JS (`@capacitor/push-notifications`) في البناء الأصلي أم تهيئة فقط: غير مثبت (`AppDelegate.swift:109-122` يوثّق التسجيل فقط).
 - اسم/هاتف/بريد جهة الاتصال، وصلاحية الحساب التجريبي لحظة الإرسال: إجراء المالك.
 - رقم البناء: `docs/native/release-state.json` فقط.
+
+## بريد الدعم المستقل (قرار يوسف)
+
+البريد الشخصي لا يوضع في نص المتجر (المستودع عام). خياران:
+
+1. **صندوق مخصص على نطاق التطبيق** (مثل `support@` على نطاق مملوك). يلزم أن يكون النطاق فعّالًا؛ النطاقان الحاليان معلّقان، فلا يصلح قبل استعادتهما.
+2. **حساب بريد مخصص مجاني** (مثل Gmail جديد باسم التطبيق) يعمل فورًا ولا يرتبط بالنطاق، ويصلح بريدًا لـReview Information وSupport URL.
+
+حتى يُقرَّر: يبقى الحقل فارغًا في هذه الوثيقة ولا يُكتب بريد في أي نص متجر.
