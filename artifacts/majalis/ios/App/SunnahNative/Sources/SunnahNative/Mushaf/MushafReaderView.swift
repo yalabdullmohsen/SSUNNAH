@@ -186,7 +186,6 @@ public struct MushafReaderView: View {
         }
         .ignoresSafeArea()
         .background(Sunnah.Colors.mushafPaper.ignoresSafeArea())
-        .immersiveReader(revealed: showChrome)
         #if os(iOS)
         .toolbar(.hidden, for: .navigationBar)
         #endif

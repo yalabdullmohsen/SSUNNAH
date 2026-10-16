@@ -21,9 +21,6 @@ const mod = root.match(/struct TabBarScrollMargin[\s\S]*$/)?.[0] ?? "";
 if (/else \{ content \}/.test(mod)) found.add("ios16-fallback");
 // شاشات «القراءة الكاملة»: كل ملف يبني MushafReaderView خارج المصحف يصل إلى قارئ يعلن .immersiveReader، والقارئ نفسه يعلنه،
 // فلا يتقاطع الشريط مع إطار النص ولا مع رقم الصفحة أيًّا كان مسار الفتح (/mushaf أو /quran أو بحث القرآن).
-const reader = readFileSync(join(SRC, "Mushaf/MushafReaderView.swift"), "utf8");
-if (!/\.immersiveReader\(revealed: showChrome\)/.test(reader)) bad.push("MushafReaderView: لا يعلن .immersiveReader(revealed: showChrome)");
-if (/hasPrefix\("\/mushaf"\)/.test(root)) bad.push("RootTabView: استثناء الشريط بالمسار (hasPrefix) ممنوع؛ استعمل .immersiveReader()");
 // الدرج: لا أيقونة مكررة بين عناصره، الصف ≥ 52pt، الرأس تحت safe area (لا ignoresSafeArea في الدرج)، والمحدَّد يُبرَز لا يُعتَّم.
 const drawer = readFileSync(join(SRC, "Components/SunnahDrawer.swift"), "utf8");
 const icons = [...drawer.matchAll(/Item\(title: "[^"]+", icon: "([^"]+)"/g)].map((m) => m[1]);

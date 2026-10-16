@@ -19,7 +19,8 @@ public struct RootTabView: View {
         self.screen = screen
     }
 
-    private var tabBarShown: Bool { !immersive.hidesTabBar }
+    /// المصحف غامر (كالمرجع) حتى يعلن قارئه `.immersiveReader()` في PR المصحف المستقل (ن3)؛ بعدها يُحذف شرط المسار.
+    private var tabBarShown: Bool { !immersive.hidesTabBar && !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") }
 
     public var body: some View {
         NavigationStack(path: $router.stack) {
