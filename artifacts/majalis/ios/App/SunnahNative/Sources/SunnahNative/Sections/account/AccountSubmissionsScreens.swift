@@ -160,11 +160,10 @@ struct AccountSubmission: Decodable, Sendable, Identifiable, Hashable {
     }
 }
 
-/// /my-submissions — مساهماتي: تتبّع حالة الدروس المرسلة بالبريد المستعمل عند الإرسال.
+/// /my-submissions — مساهماتي: تتبّع حالة الدروس المرسلة من حسابك.
 struct AccountMySubmissionsScreen: View {
     @Environment(\.contentLoader) private var loader
     @Environment(\.openRoute) private var openRoute
-    @State private var email = ""
     @State private var list: [AccountSubmission]?
     @State private var loading = false
     @State private var error = ""
@@ -184,25 +183,6 @@ struct AccountMySubmissionsScreen: View {
                                 .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                             SunnahButton("تسجيل الدخول", style: .secondary) { openRoute("/login?next=/my-submissions") }
                         }
-                    }
-                }
-
-                SunnahCard {
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                        Text("ابحث بالبريد الإلكتروني الذي أدخلته عند الإرسال:")
-                            .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        TextField("بريدك@مثال.com", text: $email)
-                            .font(Sunnah.Typography.body)
-                            #if os(iOS)
-                            .textContentType(.emailAddress)
-                            .keyboardType(.emailAddress)
-                            .textInputAutocapitalization(.never)
-                            #endif
-                            .autocorrectionDisabled()
-                            .frame(minHeight: Sunnah.Spacing.touch)
-                            .onSubmit { Task { await search() } }
-                        SunnahButton(loading ? "..." : "بحث") { Task { await search() } }
-                            .disabled(loading || email.trimmingCharacters(in: .whitespaces).isEmpty)
                     }
                 }
 
@@ -229,6 +209,7 @@ struct AccountMySubmissionsScreen: View {
         }
         .background(Sunnah.Colors.bg)
         .navigationTitle("مساهماتي")
+        .task { await search() }
         .onDisappear { player?.pause(); playingId = nil }
     }
 
@@ -280,14 +261,13 @@ struct AccountMySubmissionsScreen: View {
     }
 
     @MainActor private func search() async {
-        let e = email.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !e.isEmpty else { return }
+        guard let session = AccountSession.read(from: platform.auth) else { return }
         loading = true
         error = ""
         list = nil
         defer { loading = false }
         do {
-            list = try await loader.load([AccountSubmission].self, from: AccountEndpoints.submissions(email: e))
+            list = try await loader.load([AccountSubmission].self, from: AccountEndpoints.submissions(userId: session.userId))
                 .filter { !AccountSubmission.retiredTypes.contains($0.type) }
         } catch {
             self.error = ErrorStateView.offlineMessage

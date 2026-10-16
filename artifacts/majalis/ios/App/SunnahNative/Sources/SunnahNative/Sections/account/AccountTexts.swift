@@ -175,7 +175,6 @@ enum AccountTexts {
     )
 
     static let contactEmail = "info@ssunnah.com"
-    static let siteURL = "https://www.ssunnah.com"
 
     static let contactFAQ: [AccountFAQ] = [
         .init(question: "كيف أبلغ عن خطأ في حديث أو فتوى؟", answer: "أرسل بريداً بعنوان «تصحيح محتوى» مع رابط الصفحة ووصف الخطأ، وإن أمكن المصدر. نراجعه عادة خلال 3–5 أيام عمل."),

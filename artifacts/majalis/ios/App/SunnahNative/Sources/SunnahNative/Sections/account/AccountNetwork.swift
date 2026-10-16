@@ -1,8 +1,8 @@
 import Foundation
 
 /// مسارات الشبكة لشاشات القسم — كما يطلبها الويب حرفيًا. القراءة تمر عبر ContentLoader (.remote) فتستفيد
-/// من كاش DataStore؛ اصطلاح المسار (docs/native/requests/account.md): `/api/…` و`/data/…` من نطاق الموقع،
-/// و`/rest/v1/…` من Supabase (المفتاح العام والتوكن يضيفهما ناقل الهدف).
+/// من كاش DataStore؛ اصطلاح المسار (docs/native/requests/account.md): `/rest/v1/…` من Supabase (المفتاح العام والتوكن
+/// يضيفهما ناقل الهدف)، أما `/api/…` و`/data/…` فتُخدم من الكاش/البذرة المدمجة لأن RemoteTransport يرفض نطاق الموقع.
 enum AccountEndpoints {
     /// دروس الكويت المجمّعة (public/data/lessons/chunk-000.json) — للتقويم ووضع السيارة.
     static let lessons = ContentSource.remote(path: "/data/lessons/chunk-000.json", maxAge: 3600)
@@ -16,11 +16,11 @@ enum AccountEndpoints {
         .remote(path: "/api/auto-content?slug=" + query(slug), maxAge: 900)
     }
 
-    static func submissions(email: String) -> ContentSource {
-        let e = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        return .remote(
-            path: "/rest/v1/user_submissions?select=id,type,title,status,reviewer_note,file_name,file_size_kb,file_url,file_mime,created_at&submitter_email=eq." + query(e) + "&order=created_at.desc&limit=30",
-            maxAge: 0)
+    /// مساهمات المستخدم الحالي: `user_id` (RLS تحصر المستخدم في صفوفه) بدل البريد.
+    static func submissions(userId: String) -> ContentSource {
+        .remote(
+            path: "/rest/v1/user_submissions?select=id,type,title,status,reviewer_note,file_name,file_size_kb,file_url,file_mime,created_at&user_id=eq." + query(userId) + "&order=created_at.desc&limit=30",
+            maxAge: 0, requireAuth: true)
     }
 
     static func bookmarks(userId: String) -> ContentSource {
@@ -127,7 +127,6 @@ public enum AccountBackend {
 
 /// طلبات الكتابة القليلة في القسم — مباشرة على Supabase (RLS/RPC بجلسة المستخدم)، بلا الموقع المجمّد.
 struct AccountAPI: Sendable {
-    var baseURL = URL(string: AccountTexts.siteURL)!
     /// مهلة قصيرة دائمًا: لا يجوز أن يعلّق أي طلب.
     var session: URLSession = RemoteTransport.shortSession()
     var backend: AccountBackend.Config? = AccountBackend.current
