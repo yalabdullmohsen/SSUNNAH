@@ -17,7 +17,7 @@ NEWEST=$(git log -1 --format=%ct -- $SRC_DIRS 2>/dev/null); NEWEST=${NEWEST:-0}
 # shellcheck disable=SC2086
 while IFS= read -r f; do [ -f "$f" ] && { m=$(mt "$f"); [ "$m" -gt "$NEWEST" ] && NEWEST=$m; }; done < <(git status --porcelain -- $SRC_DIRS 2>/dev/null | sed 's/^...//')
 [ "$BUILT" -ge "$NEWEST" ] || die "التطبيق قديم: بُني $(date -r "$BUILT" '+%F %T') وآخر تعديل للكود $(date -r "$NEWEST" '+%F %T') — أعد البناء من HEAD"
-HASH=$( [ -f "$BIN" ] && shasum -a 256 "$BIN" | cut -d' ' -f1 || echo dir )
+HASH=$( if [ -f "$BIN" ]; then shasum -a 256 "$BIN" | cut -d' ' -f1; else (cd "$BIN" && find . -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | cut -d' ' -f1); fi )
 if [ -n "${SIM:-}" ]; then
   C=$(xcrun simctl get_app_container "$SIM" "$BID" app 2>/dev/null) || die "التطبيق غير مثبّت في المحاكي $SIM"
   IB="$C/${EXE:-__none__}"; [ -f "$IB" ] || die "binary المثبّت غير موجود"

@@ -1,0 +1,8 @@
+git_sha=922d836b9d33d1d4fca40c7cd04fad5907eebe66
+branch=origin/native-app
+app=SunnahNativeTests.xctest (لقطات من اختبارات XCTest: MushafVerseSelectionTests + MushafSelectionSheetTests)
+binary_sha256=c8eddd95f8d407a991a8adf00d591e1f215ad8fddce36a60d90e21062daff5e6
+built_at=2026-10-16 22:13:01
+source_newest=2026-10-16 19:14:15 +0000
+captured_at=2026-10-16 22:17:30
+note=بُني من HEAD الفرع n3/shot-guard-wire (51d088198)؛ كود SunnahNative مطابق لـ922d836b9d33d1d4fca40c7cd04fad5907eebe66 (git diff فارغ)
