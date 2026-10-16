@@ -5,6 +5,8 @@
  */
 import fs from "node:fs";
 import { toLatinDigits } from "../lib/latin-digits.mjs";
+import { titleOf } from "../lib/fawaid-title.mjs";
+import { dedupSourceQuote } from "../lib/source-dedup.mjs";
 
 export default async function exportLearn({ json, held, reject, counts, appRoot }) {
   const src = `${appRoot}/src`;
@@ -52,9 +54,9 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
     const { FAWAID_CURATED_SEED, filterCuratedFawaid } = await import(`${src}/lib/fawaid-curated-seed.ts`);
     out("learn/fawaid.json", filterCuratedFawaid(FAWAID_CURATED_SEED).filter(keep("fawaid")).map((f) => (editorial.has(f.id)
       // فائدة تحريرية من إعداد سُنّة: لا تُنسب لمصدر ولا لقائل (لا عزو عام ولا وسم توثيق)
-      ? { id: f.id, title: clip(f.text, 90), subtitle: "فائدة من إعداد سُنّة", body: f.text, tags: [f.category].filter(Boolean), origin: "editorial", originLabel: "فائدة من إعداد سُنّة" }
+      ? { id: f.id, title: titleOf(f.text), subtitle: "فائدة من إعداد سُنّة", body: f.text, tags: [f.category].filter(Boolean), origin: "editorial", originLabel: "فائدة من إعداد سُنّة" }
       : {
-        id: f.id, title: clip(f.text, 90), subtitle: f.author_name || undefined, body: [f.text, toLatinDigits(String(srcOverride[f.id] ?? f.source ?? ""))].filter(Boolean).join("\n\n"),
+        id: f.id, title: titleOf(f.text), subtitle: f.author_name || undefined, body: [f.text, dedupSourceQuote(f.text, toLatinDigits(String(srcOverride[f.id] ?? f.source ?? "")))].filter(Boolean).join("\n\n"),
         tags: [f.category, f.verification_status, f.trust_level].filter(Boolean),
       })));
   }

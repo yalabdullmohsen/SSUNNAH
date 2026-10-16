@@ -8,6 +8,7 @@
  * الاستعمال: node scripts/native/export-ios-data.mjs [--out <dir>] [--adhkar-json <file>] [--check]
  */
 import { latinizeSources } from "./lib/latin-digits.mjs";
+import { arabicTags } from "./lib/tag-labels.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -36,7 +37,7 @@ const put = (rel, buf) => {
   buf = Buffer.isBuffer(buf) ? buf : Buffer.from(buf);
   if (rel.endsWith(".json") && !/^(mushaf|tafsir|quran)\//.test(rel)) { // أرقام لاتينية في حقول المصدر فقط
     const raw = buf.toString("utf8");
-    if (/[٠-٩۰-۹]/.test(raw)) { try { buf = Buffer.from(JSON.stringify(latinizeSources(JSON.parse(raw)), null, /^[\[{]\n/.test(raw) ? 2 : 0)); } catch { /* ليس JSON صالحًا: يُترك */ } }
+    if (/[٠-٩۰-۹]/.test(raw) || /"tags"/.test(raw)) { try { buf = Buffer.from(JSON.stringify(arabicTags(latinizeSources(JSON.parse(raw))), null, /^[\[{]\n/.test(raw) ? 2 : 0)); } catch { /* ليس JSON صالحًا: يُترك */ } }
   }
   files.push({ path: rel, bytes: buf.length, sha256: sha(buf) });
   if (check) return;

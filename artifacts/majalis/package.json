@@ -25,7 +25,7 @@
     "generate:content": "node scripts/generate-content-seed.mjs",
     "generate:counts": "node --import tsx scripts/generate-content-counts.ts",
     "check:data-freshness": "node --import tsx scripts/check-data-freshness.ts",
-    "test:native-latin-digits": "node scripts/test-native-latin-digits.mjs",
+    "test:native-latin-digits": "node scripts/test-native-latin-digits.mjs && node scripts/test-native-fawaid-display.mjs",
     "test:nations": "node --import tsx scripts/test-nations-integrity.mjs",
     "test:aqidah-pending-review": "node scripts/test-aqidah-pending-review-guard.mjs",
     "test:quran-quotes": "node scripts/test-quran-quotes-guard.mjs",

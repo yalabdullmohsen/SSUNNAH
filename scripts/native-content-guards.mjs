@@ -69,7 +69,7 @@ for (const p of walk(DATA)) {
     if (r.origin === "editorial") {
       if (SRC_KEYS.some(s => filled(r[s])) || str(r.author_name)) add("origin", sec, rel, `فائدة تحريرية منسوبة لمصدر/قائل (id=${r.id ?? "?"})`);
       if (str(r.subtitle) !== "فائدة من إعداد سُنّة") add("origin", sec, rel, `فائدة تحريرية بلا وسم «فائدة من إعداد سُنّة» في subtitle (id=${r.id ?? "?"})`);
-      if ((r.tags ?? []).some(t => /^(verified|scholarly_source|primary_text)$/.test(t))) add("origin", sec, rel, `فائدة تحريرية بوسم توثيق (id=${r.id ?? "?"})`);
+      if ((r.tags ?? []).some(t => /^(verified|scholarly_source|primary_text|موثَّق|مصدر علمي|نص أصلي)$/.test(t))) add("origin", sec, rel, `فائدة تحريرية بوسم توثيق (id=${r.id ?? "?"})`);
     } else if (r.origin === "local") { if (str(r.originLabel) !== "بيانات محلية") add("origin", sec, rel, `بيانات محلية بلا originLabel (id=${r.id ?? "?"})`); }
     else if (rel === "learn/fawaid.json" && !SRC_KEYS.some(s => filled(r[s]))) add("origin", sec, rel, `فائدة بلا مصدر ولا وسم origin:"editorial" (id=${r.id ?? "?"})`);
     const s1 = str(r.source), s2 = str(r.reference ?? r.ref);
