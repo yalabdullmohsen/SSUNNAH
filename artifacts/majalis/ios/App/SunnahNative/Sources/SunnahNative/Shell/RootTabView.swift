@@ -8,13 +8,14 @@ public struct RootTabView: View {
     @ObservedObject private var router: AppRouter
     private let screen: ScreenBuilder
     @State private var showDrawer = false
+    @StateObject private var immersive = ImmersiveReaderState()
 
     public init(router: AppRouter, screen: @escaping ScreenBuilder = RootTabView.placeholder) {
         self.router = router
         self.screen = screen
     }
 
-    private var tabBarShown: Bool { !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") }
+    private var tabBarShown: Bool { !immersive.hidesTabBar }
 
     public var body: some View {
         NavigationStack(path: $router.stack) {
@@ -48,11 +49,12 @@ public struct RootTabView: View {
         // الشريط عائم فوق المحتوى (الـNavigationStack لا يمرّر الـinset إلى ScrollView الداخلية)، فيُضاف هامش سفلي مرة واحدة لكل المحتوى القابل للتمرير حتى لا يختبئ آخر عنصر خلفه.
         .modifier(TabBarScrollMargin(height: tabBarShown ? SunnahTabBar.reservedHeight : 0))
         .safeAreaInset(edge: .bottom, spacing: 0) {
-            // المصحف غامر (كالمرجع): لا شريط تبويب فوق الصفحة؛ الخروج من أداة «إغلاق» في القارئ.
-            if !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") {
+            // شاشات القراءة الكاملة (المصحف…) تعلن `.immersiveReader()` فيختفي الشريط عنها أيًّا كان مسار فتحها؛ لمسة الصفحة تُظهره.
+            if tabBarShown {
                 SunnahTabBar(selected: AppTab.owning(path: router.stack.last?.path ?? "/")) { router.stack = []; router.open(path: $0.rootPath) }
             }
         }
+        .environment(\.immersiveReader, immersive)
         .environment(\.openRoute) { [router] in Sunnah.Haptics.select(); router.open(path: $0) }
         .overlay {
             if showDrawer {
