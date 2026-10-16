@@ -34,3 +34,10 @@
 - البناء: RC3 (الرقم: ______)  الجهاز/iOS: ______  الأداة: ______  التاريخ: ______
 - أي ✘ يوقف الإرسال ويُرفع لـن1 (مالك الكود) قبل تعديل فقرة الخصوصية؛ وإن ثبت ✔ كاملًا فتبقى الفقرة كما في `PRIVACY_CHECK.md` دون تغيير.
 - ما لا يغطيه هذا الفحص: ما يراه الخادم نفسه (عنوان IP) وهو مُعلَن في الفقرة؛ وسياسات المضيفَين نفسيهما؛ وقرار إدراجهما في ملصق ASC (قرار المالك، `OWNER_CHECKLIST.md`).
+
+## دليل من الكود على 104/105 (ن4، 2026-10-16) — ليس بديلًا عن فحص الجهاز بالـProxy
+- البث: `AVPlayerAudioEngine.swift:15` و`AccountCarModeScreen.swift:57` يستعملان `AVPlayerItem(url:)` بلا `AVURLAssetHTTPHeaderFieldsKey` ⇒ ترويسات AVFoundation القياسية فقط (لا Authorization ولا apikey).
+- التنزيل: `OfflineRecitation.urlSessionFetch` يستعمل `URLSession.shared.data(from:)` بلا ترويسات مخصصة ولا جسم (GET).
+- `setValue(…forHTTPHeaderField:)` (apikey/Authorization/Prefer) موجود في مسارات Supabase فقط (`RemoteTransport` و`AccountNetwork` و`AccountDeletion`)، ولا يلتقي بمسار الصوت.
+- مضيفا الصوت مذكوران نصًا في `AccountTexts.swift:352-353` فقط؛ لا يوجد تجميع روابط يحمل مُعرِّفات المستخدم.
+- يبقى لمالك الجهاز: السيناريوهات 1–6 بالـProxy (تثبيت شهادة الفحص على جهازه). حتى يُنفَّذ تبقى الخانات أعلاه «لم يُتحقق».
