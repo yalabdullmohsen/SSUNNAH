@@ -10,4 +10,9 @@ members = members.map { |f| File.realpath(f) }
 miss = disk - members; extra = members - disk
 puts "قرص: #{disk.size} · أعضاء: #{members.size}"
 miss.each { |f| puts "ليس عضوًا: #{f}" }; extra.each { |f| puts "عضو بلا ملف: #{f}" }
-exit(miss.empty? && extra.empty? ? 0 : 1)
+# حارس الجذر: كل Swift في PrayerWidget/ وShared/ (وSunnahApp) يجب أن يكون في Sources لهدف ما؛ ملف جديد خارج المشروع = فشل (scheme لا يبني)
+app = File.expand_path('../artifacts/majalis/ios/App', root)
+all = proj.targets.flat_map { |x| x.source_build_phase.files.map { |b| File.realpath(b.file_ref.real_path.to_s) rescue nil } }.compact
+orphan = (Dir[File.join(app, 'PrayerWidget/*.swift')] + Dir[File.join(app, 'Shared/*.swift')]).map { |f| File.realpath(f) } - all
+orphan.each { |f| puts "ملف Swift خارج المشروع: #{f}" }
+exit(miss.empty? && extra.empty? && orphan.empty? ? 0 : 1)
