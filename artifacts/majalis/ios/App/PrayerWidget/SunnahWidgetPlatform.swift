@@ -486,6 +486,16 @@ enum WidgetType {
         .system(size: max(size, minSize), weight: .regular).monospacedDigit()
     }
 
+    /// الثلث (Layla Thuluth): عناوين وأسماء الصلوات فقط؛ لا يُمزج مع الرقعة في سطر. الأرقام تبقى لاتينية بخط النظام.
+    static func thuluth(_ size: CGFloat) -> Font {
+        .custom("LaylaThuluth", size: max(size, minSize), relativeTo: .body)
+    }
+
+    /// الرقعة (Aref Ruqaa): نصوص قصيرة وتسميات العدّاد؛ لا الأرقام.
+    static func ruqaa(_ size: CGFloat, bold: Bool = false) -> Font {
+        .custom(bold ? "ArefRuqaa-Bold" : "ArefRuqaa-Regular", size: max(size, minSize), relativeTo: .body)
+    }
+
     /// أيقونة SF Symbols بنمط موحّد.
     static func icon(_ size: CGFloat) -> Font {
         .system(size: max(size, minSize), weight: .semibold)
@@ -736,20 +746,23 @@ struct PrayerGridCell: View {
     let timeZone: TimeZone
     let isUpcoming: Bool
     let isPast: Bool
+    /// يتمدد على الارتفاع المتاح (الودجت الكبير) بدل ترك فراغ سفلي.
+    var stretch = false
 
     var body: some View {
         VStack(spacing: 2) {
             Text(key.nameAr)
-                .font(WidgetType.secondary(13))
+                .font(WidgetType.secondary(stretch ? 15 : 13))
                 .lineLimit(1)
                 .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
             if let date {
-                PrayerTimeText(date: date, timeZone: timeZone, size: 15)
+                PrayerTimeText(date: date, timeZone: timeZone, size: stretch ? 19 : 15)
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 6)
+        .padding(.vertical, stretch ? 12 : 6)
         .background(Capsule().fill(isUpcoming ? SunnahWidgetTheme.selectedFill : Color.clear))
+        .frame(maxHeight: stretch ? .infinity : nil)   // الكبسولة على قدر المحتوى؛ الخلية تتوسط الارتفاع المتاح
         .opacity(isPast ? 0.55 : 1)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(key.nameAr) \(date.map { WidgetFormat.time($0, timeZone: timeZone) } ?? "")\(isUpcoming ? "، التالية" : "")")
@@ -760,6 +773,8 @@ struct PrayerGridCell: View {
 struct PrayerSixGrid: View {
     let entry: PrayerWidgetEntry
     var keys: [PrayerSlotKey] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
+    /// يملأ الارتفاع المتاح: الصفوف والخلايا تتمدد بالتساوي.
+    var fillsHeight = false
 
     var body: some View {
         let tz = entry.displayTimeZone
@@ -775,11 +790,14 @@ struct PrayerSixGrid: View {
                             date: date,
                             timeZone: tz,
                             isUpcoming: key == upcoming,
-                            isPast: (date.map { $0 <= entry.date } ?? false) && key != upcoming
+                            isPast: (date.map { $0 <= entry.date } ?? false) && key != upcoming,
+                            stretch: fillsHeight
                         )
                     }
                 }
+                .frame(maxHeight: fillsHeight ? .infinity : nil)
             }
         }
+        .frame(maxHeight: fillsHeight ? .infinity : nil)
     }
 }

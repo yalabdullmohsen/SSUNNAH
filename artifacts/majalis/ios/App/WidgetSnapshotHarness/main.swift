@@ -1,6 +1,7 @@
 import SwiftUI
 import WidgetKit
 import UIKit
+import CoreText
 import SunnahWidgetKit
 
 struct Fam { let name: String; let f: WidgetFamily; let w: CGFloat; let h: CGFloat }
@@ -96,8 +97,29 @@ let flat = (r: UInt8(18), g: UInt8(56), b: UInt8(49))
   }
 }
 
+// خطوط الودجت المضمَّنة (الثلث للعناوين والأسماء، الرقعة للعدّاد والنصوص القصيرة): الحزام ليس امتدادًا فلا UIAppFonts،
+// فنسجّلها يدويًا ونفشل إن لم يُحلّ الاسم إلى الخط المطلوب، كي لا تُرسم «بعد» بالخط البديل فتخدعنا.
+let widgetFonts: [(file: String, ps: String)] = [
+  ("LaylaThuluth.ttf", "LaylaThuluth"), ("ArefRuqaa-Regular.ttf", "ArefRuqaa-Regular"), ("ArefRuqaa-Bold.ttf", "ArefRuqaa-Bold"),
+]
+func registerWidgetFonts() -> [String] {
+  // swiftc يُمرَّر له مسار نسبي فلا يصلح #filePath وحده؛ native-edge-check.sh يمرّر المجلد المطلق في SNAP_FONTS.
+  let dir = URL(fileURLWithPath: ProcessInfo.processInfo.environment["SNAP_FONTS"]
+    ?? URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("PrayerWidget/Fonts").path)
+  var bad: [String] = []
+  for f in widgetFonts {
+    var err: Unmanaged<CFError>?
+    _ = CTFontManagerRegisterFontsForURL(dir.appendingPathComponent(f.file) as CFURL, .process, &err)
+    let resolved = UIFont(name: f.ps, size: 20).map { CTFontCopyPostScriptName($0 as CTFont) as String }
+    if resolved != f.ps { bad.append("\(f.ps)→\(resolved ?? "nil")") }
+  }
+  return bad
+}
+
 @MainActor func run() {
   let out = CommandLine.arguments[1]
+  let badFonts = registerWidgetFonts()
+  if !badFonts.isEmpty { for b in badFonts { print("FONT-FAIL \(b)") }; exit(1) }
   try? FileManager.default.createDirectory(atPath: out, withIntermediateDirectories: true)
   let base = CatalogWidgetEntry.gallery()
   for v in ["data", "long", "empty", "nodata", "w5", "w2959", "w3000", "w3001"] {

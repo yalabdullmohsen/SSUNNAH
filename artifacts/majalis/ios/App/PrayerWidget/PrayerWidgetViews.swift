@@ -117,13 +117,18 @@ struct PrayerElapsedCaption: View {
         }
     }
 
-    private func elapsed(since start: Date) -> Text {
-        let end = max(entry.nextDate ?? start.addingTimeInterval(86_400), entry.date.addingTimeInterval(1))
-        if entry.allowsLiveCountdown {
+    private func elapsed(since start: Date) -> Text { entry.elapsedText(since: start) }
+}
+
+extension PrayerWidgetEntry {
+    /// «منذ الأذان»: عدّاد تصاعدي حيّ عبر النظام (Text(timerInterval:)) أو نص ثابت للمعاينة.
+    func elapsedText(since start: Date) -> Text {
+        let end = max(nextDate ?? start.addingTimeInterval(86_400), date.addingTimeInterval(1))
+        if allowsLiveCountdown {
             return Text(timerInterval: start...end, pauseTime: nil, countsDown: false,
                         showsHours: LiveClock.showsHours(seconds: end.timeIntervalSince(start)))
         }
-        return Text(LiveClock.format(seconds: entry.date.timeIntervalSince(start)))
+        return Text(LiveClock.format(seconds: date.timeIntervalSince(start)))
     }
 }
 
@@ -176,7 +181,7 @@ struct SmallPrayerWidgetView: View {
             } else {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(entry.stateTitle)
-                        .font(WidgetType.secondary(13))
+                        .font(WidgetType.thuluth(13))
                         .foregroundStyle(PrayerHomeStyle.sub)
                     SunnahCounterFace(entry: entry, size: 26, showsIcon: false)
                         .foregroundStyle(entry.homeCounterColor)
@@ -208,7 +213,7 @@ struct MediumPrayerWidgetView: View {
                 SunnahTwoZone {
                     VStack(alignment: .leading, spacing: 4) {
                         Text(entry.stateTitle)
-                            .font(WidgetType.secondary(14))
+                            .font(WidgetType.thuluth(14))
                             .foregroundStyle(PrayerHomeStyle.sub)
                         SunnahCounterFace(entry: entry, size: 34, showsIcon: false)
                             .foregroundStyle(entry.homeCounterColor)
@@ -239,15 +244,18 @@ struct LargePrayerWidgetView: View {
             if entry.needsAppOpenAction {
                 SunnahCalmCard().foregroundStyle(PrayerHomeStyle.ink)
             } else {
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
+                        Text(entry.stateTitle)
+                            .font(WidgetType.thuluth(17))
+                            .foregroundStyle(PrayerHomeStyle.sub)
+                            .lineLimit(1)
                         SunnahCounterFace(entry: entry, size: 42)
                             .foregroundStyle(entry.homeCounterColor)
                         PrayerElapsedCaption(entry: entry, size: 14)
                     }
-                    PrayerSixGrid(entry: entry)
+                    PrayerSixGrid(entry: entry, fillsHeight: true)
                         .foregroundStyle(PrayerHomeStyle.ink)
-                    Spacer(minLength: 0)
                 }
                 .sunnahCardLayout(16)
             }
@@ -349,10 +357,19 @@ struct CircularPrayerWidgetView: View {
                 Gauge(value: entry.intervalProgress) {
                     Text(entry.focus.key?.nameAr ?? "الصلاة")
                 } currentValueLabel: {
-                    Text(entry.focus.key?.nameAr ?? "الصلاة")
-                        .font(WidgetType.primary(WidgetType.minSize))
-                        .lineLimit(1)
-                        .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                    VStack(spacing: 0) {
+                        Text(entry.focus.key?.nameAr ?? "الصلاة")
+                            .font(WidgetType.thuluth(WidgetType.minSize))
+                            .lineLimit(1)
+                            .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                        if let src = entry.elapsedCaptionSource {
+                            entry.elapsedText(since: src.start)
+                                .font(WidgetType.secondary(WidgetType.minSize)).monospacedDigit()
+                                .lineLimit(1)
+                                .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
+                                .environment(\.locale, WidgetFormat.locale)
+                        }
+                    }
                 }
                 .gaugeStyle(.accessoryCircularCapacity)
                                 .padding(2)
@@ -375,7 +392,7 @@ struct RectangularPrayerWidgetView: View {
                         .font(WidgetType.icon(WidgetType.minSize))
                         .accessibilityHidden(true)
                     Text("\(entry.stateTitle) \(entry.focus.key?.nameAr ?? "")")
-                        .font(WidgetType.primary(14))
+                        .font(WidgetType.thuluth(14))
                         .lineLimit(1)
                         .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
                 }
@@ -383,7 +400,9 @@ struct RectangularPrayerWidgetView: View {
                     .font(WidgetType.primary(26))
                     .lineLimit(1)
                     .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
-                if let t = entry.focusTimeText {
+                if entry.elapsedCaptionSource != nil {
+                    PrayerElapsedCaption(entry: entry, size: WidgetType.minSize)
+                } else if let t = entry.focusTimeText {
                     Text(t)
                         .font(WidgetType.secondary(WidgetType.minSize))
                         .lineLimit(1)
