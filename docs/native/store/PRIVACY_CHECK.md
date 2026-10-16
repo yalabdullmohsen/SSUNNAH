@@ -3,7 +3,7 @@
 > مراجعة ملفات فقط (لا بناء). **ن4 يتحقق بالبناء**: Archive ينجح، وتقرير الخصوصية (Product ▸ Archive ▸ Generate Privacy Report) يطابق هذا الملف. المصدر: `ios-native/SunnahApp/{Info.plist,PrivacyInfo.xcprivacy,SunnahApp.entitlements}` والحزم `artifacts/majalis/ios/App/{SunnahNative,SunnahDataKit,SunnahPrayer}` (فحص `grep` للـ APIs).
 
 ## 1) البيانات المجمَّعة (تُرسل خارج الجهاز)
-المصدر: `AccountNetwork.swift`/`SupabaseAuthAdapter.swift` (Supabase Auth + `/rest/v1/*` + `POST /api/submissions`).
+المصدر: `AccountNetwork.swift`/`SupabaseAuthAdapter.swift` (Supabase Auth + `/rest/v1/*` + إدراج مباشر في `rest/v1/user_submissions` عبر RLS؛ التصدير `rpc/export_my_account` بجلسة المستخدم). يُرسل مع المساهمة البريد (`submitter_email`) والاسم الاختياري وهما مُعلنان أعلاه كـEmail Address وName.
 
 | فئة ASC | النوع | مرتبط بالمستخدم | تتبع | الغرض | الدليل |
 |---|---|---|---|---|---|

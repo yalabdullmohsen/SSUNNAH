@@ -64,12 +64,18 @@ public enum SunnahNavHaptics {
 public struct SunnahPressStyle: ButtonStyle {
     public init() {}
     public func makeBody(configuration: Configuration) -> some View {
-        configuration.label
+        let pressed = configuration.label
             .scaleEffect(configuration.isPressed && !SunnahMotion.reduced ? 0.97 : 1)
             .opacity(configuration.isPressed ? 0.88 : 1)
             .animation(SunnahMotion.press, value: configuration.isPressed)
-            .hoverEffect(.highlight)   // iPad مع المؤشر فقط؛ لا أثر على اللمس
+        #if os(iOS)
+        // iPad مع المؤشر فقط؛ لا أثر على اللمس. hoverEffect غير متاح على macOS (swift test للحزمة)
+        return pressed.hoverEffect(.highlight)
             .onChange(of: configuration.isPressed) { pressed in if pressed { SunnahHaptic.light() } }
+        #else
+        return pressed
+            .onChange(of: configuration.isPressed) { pressed in if pressed { SunnahHaptic.light() } }
+        #endif
     }
 }
 

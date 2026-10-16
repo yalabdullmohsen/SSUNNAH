@@ -43,10 +43,10 @@ jobs:
           cd artifacts/majalis
           pnpm exec cap sync ios
 
-      - name: swift test (local widget packages)
+      - name: swift test (local packages, SunnahNative macOS = حارس)
         working-directory: artifacts/majalis/ios/App
         run: |
-          for pkg in SunnahPrayer SunnahDataKit SunnahWidgetKit; do
+          for pkg in SunnahPrayer SunnahDataKit SunnahWidgetKit SunnahNative; do
             [ -f "$pkg/Package.swift" ] || continue
             (cd "$pkg" && swift test)
           done
