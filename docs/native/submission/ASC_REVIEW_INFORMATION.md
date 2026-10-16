@@ -79,4 +79,10 @@ Most content works offline. Online-only: sign-in, bookmark/progress sync, user s
 1. **صندوق مخصص على نطاق التطبيق** (مثل `support@` على نطاق مملوك). يلزم أن يكون النطاق فعّالًا؛ النطاقان الحاليان معلّقان، فلا يصلح قبل استعادتهما.
 2. **حساب بريد مخصص مجاني** (مثل Gmail جديد باسم التطبيق) يعمل فورًا ولا يرتبط بالنطاق، ويصلح بريدًا لـReview Information وSupport URL.
 
+## روابط النهائية المتوقعة (يتحقق منها يوسف بعد النشر)
+
+- Support URL: `https://yalabdullmohsen.github.io/sunnah-legal/support.html` — لا تُلصَق قبل أن يرسل يوسف عنوان الدعم ويُضبط في `docs/site/config.js` وتُنشر الصفحة (ن4) ويعيد الرابط 200.
+- Privacy Policy URL: `https://yalabdullmohsen.github.io/sunnah-legal/privacy.html`.
+- عنوان الدعم متغيّر في مكان واحد (`SUPPORT_EMAIL`)؛ لا يُكتب في أي ملف منشور.
+
 حتى يُقرَّر: يبقى الحقل فارغًا في هذه الوثيقة ولا يُكتب بريد في أي نص متجر.
