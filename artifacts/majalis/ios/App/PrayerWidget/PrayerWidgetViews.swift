@@ -149,6 +149,9 @@ struct SmallPrayerWidgetView: View {
                         .foregroundStyle(PrayerHomeStyle.sub)
                     SunnahCounterFace(entry: entry, size: 26, showsIcon: false)
                         .foregroundStyle(entry.homeCounterColor)
+                    if let c = entry.stateCaption {
+                        Text(c).font(WidgetType.secondary(12)).foregroundStyle(PrayerHomeStyle.sub).lineLimit(1)
+                    }
                     Spacer(minLength: 0)
                     if let key = entry.focus.key {
                         PrayerNameTime(key: key, date: entry.focus.date, timeZone: entry.displayTimeZone,
@@ -180,6 +183,9 @@ struct MediumPrayerWidgetView: View {
                             .foregroundStyle(PrayerHomeStyle.sub)
                         SunnahCounterFace(entry: entry, size: 34, showsIcon: false)
                             .foregroundStyle(entry.homeCounterColor)
+                        if let c = entry.stateCaption {
+                            Text(c).font(WidgetType.secondary(13)).foregroundStyle(PrayerHomeStyle.sub).lineLimit(1)
+                        }
                     }
                 } secondary: {
                     if let key = entry.focus.key {
@@ -265,8 +271,15 @@ extension PrayerWidgetEntry {
         isAlertWindow ? SunnahWidgetTheme.alertText : (focus.isCurrent ? SunnahBrandColors.gold : SunnahWidgetTheme.primaryText)
     }
 
-    /// عنوان الحالة: «القادمة» / «مضى على أذان» (يتغير مع العدّ التصاعدي).
-    var stateTitle: String { focus.isCurrent ? "مضى على أذان" : "القادمة" }
+    /// عنوان الحالة (يلحقه اسم الصلاة): «بقي على» قبل الأذان وبعد نافذته، «حان وقت» من الأذان إلى نهاية النافذة.
+    var stateTitle: String { focus.isCurrent ? "حان وقت" : "بقي على" }
+
+    /// سطر ثانوي: «مضى على الأذان» داخل النافذة، وبعدها «مضى على <الحالية>» (nil قبل أول أذان في اليوم).
+    var stateCaption: String? {
+        if focus.isCurrent { return "مضى على الأذان" }
+        guard let name = previousNameAr, let start = previousDate, start <= date else { return nil }
+        return "مضى على \(name)"
+    }
 }
 
 // MARK: - Lock Screen
