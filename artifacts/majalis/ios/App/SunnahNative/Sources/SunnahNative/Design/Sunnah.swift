@@ -46,6 +46,8 @@ public enum Sunnah {
         public static let gold = dynamic(light: 0x8A6D32, dark: 0xD9C089)
         /// لون محيط صفحة المصحف (ترويسة، علامة نهاية الآية، الصفحة): أخضر هادئ؛ الداكن درجة أفتح بتباين ≥ 4.5:1.
         public static let mushafAccent = dynamic(light: 0x5C8A72, dark: 0x8FBFA6)
+        /// قرص نهاية الآية: فاتحًا أغمق قليلًا من mushafAccent ليبلغ تباين رقم الآية العاجي ≥ 4.5:1 (كان 3.7:1)؛ الداكن كما هو (7.3:1).
+        public static let mushafEndDisc = dynamic(light: 0x4A7560, dark: 0x8FBFA6)
         /// ورق صفحة المصحف (مرجع التصميم الجديد): عاجي دافئ فاتحًا، ونفس الخلفية الليلية داكنًا.
         /// قرار المالك: ورق داكن بنص فاتح وضعًا ليليًا مقبولًا؛ الفاتح يبقى #FFFBF7. اللونان رمزان صريحان.
         public static let mushafPaperLightHex: UInt32 = 0xFFFBF7

@@ -16,8 +16,10 @@ public struct MushafPageView: View {
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
-    /// قطر قرص نهاية الآية بوحدة em من حجم الخط، موحَّد لكل الأقراص.
-    static let ayahDiscEm: CGFloat = 1.12
+    /// حجم غليف نهاية الآية نسبةً إلى خط النص (يُصغَّر الغليف كله: الزخرفة والقرص معًا)، موحَّد لكل الشاشات.
+    static let endMarkScale: CGFloat = 0.9
+    /// قطر قرص نهاية الآية بوحدة em من حجم غليف النهاية (لا خط النص)؛ حبر الحلقة ≈0.80em عرضًا فالقرص داخلها كليًا.
+    static let ayahDiscEm: CGFloat = 0.78
     /// إزاحة القرص للأسفل (em) ليتمركز مع حبر الحلقة داخل الخط لا مع صندوق النص.
     static let ayahDiscDropEm: CGFloat = 0.07
 
@@ -78,16 +80,10 @@ public struct MushafPageView: View {
             let gap = layout.gaps[i] ?? layout.fontSize * MushafMetrics.naturalGapEm
             HStack(spacing: gap) {
                 ForEach(Array(words.enumerated()), id: \.offset) { k, w in
-                    Text(w.c)
-                        .lineLimit(1)
-                        .fixedSize()
-                    .font(.custom(family, fixedSize: layout.fontSize))
-                        .foregroundStyle(w.isAyahEnd ? Sunnah.Colors.mushafIvory : Sunnah.Colors.textPrimary)
-                        .background {
-                            // قرص أخضر خلف رمز نهاية الآية (الرمز نفسه من خط QPC بلا تغيير): حلقته ورقمه عاجيان كالمرجع.
-                            // قطر ثابت = نسبة من حجم الخط (لا يتبع عرض صندوق الرمز)، ممركز خلف الرقم.
-                            if w.isAyahEnd { Circle().fill(Sunnah.Colors.mushafAccent).frame(width: layout.fontSize * Self.ayahDiscEm, height: layout.fontSize * Self.ayahDiscEm).offset(y: layout.fontSize * Self.ayahDiscDropEm) }
-                        }
+                    Group {
+                        if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize) }
+                        else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    }
                         .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
                         .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
                         .padding(.vertical, 1)

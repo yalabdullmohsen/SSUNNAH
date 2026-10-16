@@ -36,7 +36,7 @@ enum MushafMetrics {
         }
         if first < 0 { return (w, w / 2, w / 2, w / 2, w / 2) }
         // نسخة واعية بانحناء القرص: كل صف يزيد فراغه بقدر ما ينحسر حدّ الدائرة عنده عن أقصى عرضها (R - √(R²-dy²))، فيطابق قياس الحارس على اللقطة.
-        let rad = 0.56 * size * sc
+        let rad = 0.5 * MushafPageView.ayahDiscEm * MushafPageView.endMarkScale * size * sc
         var cl = CGFloat.greatestFiniteMagnitude, cr = CGFloat.greatestFiniteMagnitude
         for y in 0..<ph {
             let dy = CGFloat(y) + 0.5 - CGFloat(ph) / 2
@@ -94,7 +94,7 @@ enum MushafMetrics {
         var ins: [CGFloat] = []
         for k in 0..<max(n - 1, 0) where !l.ends[k] && !l.ends[k + 1] { ins.append(iL[k] + iR[k + 1]) }
         let refIns = ins.isEmpty ? 0 : ins.reduce(0, +) / CGFloat(ins.count)
-        let dd = MushafPageView.ayahDiscEm * s, safety = discSafetyEm * s
+        let dd = MushafPageView.ayahDiscEm * MushafPageView.endMarkScale * s, safety = discSafetyEm * s
         func pads(_ g: CGFloat) -> [Int: EndPad] {
             var out: [Int: EndPad] = [:]
             let target = max(safety, discClearRatio * (g + refIns))
@@ -126,7 +126,7 @@ enum MushafMetrics {
         let probe: CGFloat = 100
         let lines = rows.enumerated().compactMap { i, r -> Line? in
             guard r.k == "l", let w = r.w, !w.isEmpty else { return nil }
-            let m = w.map { wordMetrics($0.c, family: family, size: probe) }
+            let m = w.map { wordMetrics($0.c, family: family, size: $0.isAyahEnd ? probe * MushafPageView.endMarkScale : probe) }
             return Line(i: i, w: m.map(\.width), inkL: m.map(\.inkL), inkR: m.map(\.inkR), cL: m.map(\.cInkL), cR: m.map(\.cInkR), ends: w.map(\.isAyahEnd))
         }
         var widest: CGFloat = probe
