@@ -22,7 +22,7 @@ enum QuranAyahText {
         guard let dir = directory,
               let d = try? Data(contentsOf: dir.appendingPathComponent(String(format: "surah-%03d.json", surah))),
               let f = try? JSONDecoder().decode(SurahFile.self, from: d) else { return nil }
-        let m = Dictionary(f.ayahs.map { ($0.numberInSurah, $0.text.replacingOccurrences(of: "\u{FEFF}", with: "")) }, uniquingKeysWith: { a, _ in a })
+        let m = Dictionary(f.ayahs.map { ($0.numberInSurah, QuranDisplayText.clean($0.text, surah: surah, ayah: $0.numberInSurah)) }, uniquingKeysWith: { a, _ in a })
         cache[surah] = m
         return m[ayah]
     }

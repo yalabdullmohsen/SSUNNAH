@@ -24,6 +24,13 @@ final class MushafAyahTextTests: XCTestCase {
         return (repo, try repo.index(), root.deletingLastPathComponent().appendingPathComponent("quran"))
     }
 
+    /// ۞ والبسملة المدمجة لا تُفقدان الإبراز: كانتا سبب 327 آية (5.24%) بلا إبراز.
+    func testHizbMarkAndBasmalaDoNotDisableHighlight() {
+        XCTAssertEqual(MushafAyahWords.matchingWords(query: "الله", ayahText: "۞ إِنَّ ٱللَّهَ لَا يَسْتَحْىِۦٓ", wordCount: 4), [1])
+        XCTAssertEqual(MushafAyahWords.matchingWords(query: "الم", ayahText: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ الٓمٓ", wordCount: 1), [0])
+        XCTAssertNil(MushafAyahWords.matchingWords(query: "الله", ayahText: "إِنَّ ٱللَّهَ لَا", wordCount: 5), "اختلاف حقيقي يبقى nil")
+    }
+
     /// نسبة الآيات التي يطابق فيها عدد كلمات نص Tanzil عدد كلمات المصحف (دون رمز النهاية). الإبراز يعمل فقط عند التطابق.
     func testWordCountAgreementAcrossAllAyahs() throws {
         let (repo, idx, qdir) = try env()
@@ -34,13 +41,14 @@ final class MushafAyahTextTests: XCTestCase {
             guard parts.count == 2, let text = QuranAyahText.text(surah: parts[0], ayah: parts[1], directory: qdir) else { missing += 1; continue }
             guard let w = MushafAyahWords.load(ayah: key, repo: repo) else { missing += 1; continue }
             total += 1
-            if text.split(whereSeparator: \.isWhitespace).count == w.filter({ !$0.isEnd }).count { same += 1 } else { bad.append(key) }
+            let wc = w.filter({ !$0.isEnd }).count
+            if MushafAyahWords.mushafAlignedWords(ayahText: text, wordCount: wc).count == wc { same += 1 } else { bad.append(key) }
         }
         let pct = total == 0 ? 0 : Double(same) * 100 / Double(total)
         print("AYAH-WORDCOUNT total=\(total) same=\(same) missing=\(missing) pct=\(pct) bad=\(bad.prefix(15))")
         XCTAssertEqual(total + missing, 6236)
         XCTAssertEqual(missing, 0)
-        XCTAssertGreaterThanOrEqual(pct, 94.5, "نسبة تطابق العدد انخفضت")
+        XCTAssertGreaterThanOrEqual(pct, 99.0, "نسبة تطابق العدد انخفضت (كانت 94.76% قبل إسقاط ۞ والبسملة)")
     }
 
     @MainActor func testYusufResultsSnapshots() throws {
