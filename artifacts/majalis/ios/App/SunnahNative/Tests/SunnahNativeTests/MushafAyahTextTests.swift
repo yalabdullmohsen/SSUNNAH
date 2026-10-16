@@ -24,6 +24,14 @@ final class MushafAyahTextTests: XCTestCase {
         return (repo, try repo.index(), root.deletingLastPathComponent().appendingPathComponent("quran"))
     }
 
+    /// 37:130: Tanzil «إِلْ يَاسِينَ» كلمتان والمصحف كلمة واحدة بجلايفين (قيس من صفحة 451)؛ الإبراز يبقى على الكلمة الصحيحة.
+    func testElYasinSplitDoesNotDisableHighlight() {
+        let t = "سَلَٰمٌ عَلَىٰٓ إِلْ يَاسِينَ"
+        XCTAssertEqual(MushafAyahWords.matchingWords(query: "ياسين", ayahText: t, wordCount: 3), [2])
+        XCTAssertEqual(MushafAyahWords.matchingWords(query: "سلم", ayahText: t, wordCount: 3), [0])
+        XCTAssertNil(MushafAyahWords.matchingWords(query: "ياسين", ayahText: t, wordCount: 5), "اختلاف حقيقي يبقى nil")
+    }
+
     /// ۞ والبسملة المدمجة لا تُفقدان الإبراز: كانتا سبب 327 آية (5.24%) بلا إبراز.
     func testHizbMarkAndBasmalaDoNotDisableHighlight() {
         XCTAssertEqual(MushafAyahWords.matchingWords(query: "الله", ayahText: "۞ إِنَّ ٱللَّهَ لَا يَسْتَحْىِۦٓ", wordCount: 4), [1])
