@@ -246,7 +246,7 @@ struct AccountMySubmissionsScreen: View {
                     SunnahChip(AccountSubmission.statusLabel[sub.status] ?? sub.status, selected: sub.status == "approved")
                     Spacer()
                     if let date = sub.date {
-                        Text(date.formatted(date: .abbreviated, time: .omitted)).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                        Text(date.formatted(Date.FormatStyle(date: .abbreviated, time: .omitted).locale(Locale(identifier: "ar-u-nu-latn")))).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                     }
                 }
                 Text(sub.title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
