@@ -19,7 +19,7 @@ public struct SunnahTabBar: View {
                 } label: {
                     VStack(spacing: 3) {
                         Image(systemName: tab.systemImage).font(.system(size: 19, weight: on ? .bold : .regular))
-                        Text(tab.title).font(Sunnah.Typography.tag)
+                        Text(tab.title).font(Sunnah.Typography.tag).lineLimit(1).minimumScaleFactor(0.85)   // XXXL على SE: التسميات المتجاورة كانت تتلامس
                     }
                     .frame(maxWidth: .infinity, minHeight: 56)
                     .foregroundStyle(on ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
