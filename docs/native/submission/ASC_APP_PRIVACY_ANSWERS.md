@@ -1,6 +1,6 @@
 # ورقة إجابات «App Privacy» في App Store Connect — تطبيق «سُنّة» (iOS الأصلي)
 
-> ⏳ **بانتظار تأكيد الهدف:** أي الهدفين يُرفع (`ios-native/SunnahApp` أم `artifacts/majalis/ios/App`) لم يُحسم؛ ن4 يُخرج Info.plist والـentitlements الفعلية من البناء الأخير (انظر `release-state.json`). كل ما يخص الميكروفون/الحركة/`remote-notification`/`aps-environment` في هذا الملف مؤقت ولا يُعتمد قبل أسطر ن4.
+> ✅ **الهدف المرفوع (تأكيد يوسف):** `SunnahApp` من `ios-native` (أرشيف 104؛ إذن الموقع فقط، بلا ميكروفون ولا حركة ولا إشعارات بعيدة). هدف Capacitor القديم مُعطَّل ولا يُرفع. النطاقان `www.ssunnah.com` و`majlisilm.com` موقوفان (تُركت المواقع): لا يُذكران حيّين. الشروط = EULA القياسي من Apple مع شاشة داخل التطبيق لبنودنا. روابط الخصوصية والدعم تُعتمد بعد جدول ن4.
 
 
 الترتيب هو ترتيب واجهة ASC (App Store Connect ← App Privacy). انسخ عمود «الإجابة» كما هو. الرقم/البناء: انظر `docs/native/release-state.json`.
@@ -13,10 +13,10 @@
 | # | التعارض | التفصيل والمصدر | الأثر على الإجابات |
 |---|---|---|---|
 | 1 | manifest الأصلي ≠ manifest الـCapacitor | الأصلي (MF) يعلن 5 أنواع فقط. `artifacts/majalis/ios/App/App/PrivacyInfo.xcprivacy` أوسع (يضيف PhoneNumber وDeviceID وSearchHistory وCrashData وPerformanceData، وAnalytics غرضًا ثانيًا للتفاعل) وينقصه FileTimestamp وUserDefaults 1C8F.1. CHECK يصف `docs/store-release/APP_STORE_PRIVACY_ANSWERS_DRAFT.md` بأنه للـCapacitor ومبالغ في الإفصاح. | الإجابات أدناه للأصلي. **لم أتحقق أي manifest يُحزَّم في الثنائي المرفوع**؛ على يوسف التأكد أن الهدف المرفوع هو `ios-native/SunnahApp.xcodeproj`. |
-| 2 | الميكروفون/التسميع | Info.plist الأصلي (`ios-native/SunnahApp/Info.plist:19`) فيه وصف الموقع فقط، بلا `NSMicrophoneUsageDescription`؛ CHECK:40 يقول إن التسميع والميكروفون أُزيلا. لكن `artifacts/majalis/ios/App/App/Info.plist:57` (Capacitor) فيه وصف ميكروفون، وكود التسميع (WhisperKit) موجود في حزمة `SunnahNative/Tasmee/*` وفي هدف Capacitor. | إجابة «الصوت: لا يُجمع» صحيحة **بشرط** ألا يصل التسميع إلى الثنائي الأصلي. لم أتحقق من إمكانية الوصول إليه من الواجهة الأصلية. إن وصل فالتسجيل يُعالَج على الجهاز بحسب نص الوصف، فلا يُعدّ «جمعًا» لكنه يحتاج وصف ميكروفون في Info.plist. |
+| 2 | الميكروفون/التسميع | **محسوم:** `ios-native/SunnahApp/Info.plist:19` الموقع فقط، بلا ميكروفون/حركة؛ لا AVAudioSession تسجيل ولا SFSpeech ولا CMMotion في الهدف (بحث). ميكروفون Capacitor خارج الهدف المرفوع. | لا تصريح ميكروفون؛ الإجابات بلا Audio Data. |
 | 3 | MetricKit غير مذكور في الوثائق | `ios-native/SunnahApp/Platform/PerformanceMetrics.swift` يشترك في `MXMetricManager` ويكتب JSON محليًا (آخر 14 ملفًا) ولا نداء شبكة فيه (grep). AP/CHECK يقولان «لا تشخيصات». | لا تغيير: البيانات لا تغادر الجهاز فليست «مجموعة». إن أُضيف رفع لاحقًا وجب تحديث Diagnostics (Crash/Performance). |
-| 4 | Live Activity | CHECK:39 يقول «Live Activity غير مضافة»، بينما وُجد `PrayerLiveActivityController` في الكود. | لا أثر على أنواع البيانات (محلي)، لكن الوثيقة قديمة. لم أتحقق من حالتها في الثنائي. |
-| 5 | نطاق `www.ssunnah.com` | يُعاد بحالة HTTP 402 بحسب AUDIT (بنود 19–20 مفتوحة) بينما الروابط الداخلية و`RemoteTransport.swift:40` تشير إليه. | لا أثر على سؤال الخصوصية؛ رابط السياسة أدناه على GitHub Pages لا على هذا النطاق. |
+| 4 | Live Activity | **محسوم:** `ios-native/SunnahApp/Platform/LiveActivityAdapter.swift:1-23` يفوّض إلى `PrayerLiveActivityController` (محلي، بلا pushType)، ولا `NSSupportsLiveActivities` في `Info.plist` → لا تُدّعى في الوصف. | لا أثر على أنواع البيانات. |
+| 5 | نطاق `www.ssunnah.com` | **محسوم بقرار المالك:** النطاقان `www.ssunnah.com` و`majlisilm.com` موقوفان وتُركت المواقع؛ لا يُكتب أنهما حيّان. | رابط الخصوصية والدعم يُحدَّد بعد جدول ن4. |
 | 6 | Privacy Report | AUDIT بند 24 «مُنجَز بسكربت»، بينما `docs/native/store/OWNER_CHECKLIST.md:64` يقول إن Privacy Report لم يُتحقق منه. | يُعامل بوصفه **غير مُتحقَّق** حتى يُولَّد التقرير من أرشيف حقيقي. |
 | 7 | نطاقات الصوت | إفصاح EveryAyah/MP3Quran مشروط بنتيجة `AUDIO_HEADERS_CHECK.md` (APPSTORE_METADATA 77–88)؛ لم يُشغَّل أي بند منه. | الإجابات أدناه (لا Device ID ولا Diagnostics) تفترض أن النتيجة لا تغيّر شيئًا. إن ظهرت متتبِّعات/رؤوس تعريف فزامِن CHECK §1 وMF وAP. |
 
