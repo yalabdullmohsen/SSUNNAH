@@ -72,7 +72,7 @@ struct LearnOpenQuizRunner: View {
                                     if let r = q.reference { Text("المرجع: " + r).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
                                 }
                             }
-                            HStack(spacing: Sunnah.Spacing.s3) {
+                            SunnahActionRow {
                                 SunnahButton("عرفتها") { state.grade(knewIt: true) }
                                 SunnahButton("لم أعرفها", style: .secondary) { state.grade(knewIt: false) }
                             }

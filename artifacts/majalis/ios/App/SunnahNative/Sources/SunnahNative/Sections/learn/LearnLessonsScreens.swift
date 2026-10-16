@@ -48,17 +48,21 @@ struct LearnLessonDetail: View {
     var body: some View {
         LearnDetailPage(title: lesson.title) {
             if let category = lesson.category, !category.isEmpty { SunnahChip(category) }
-            LearnInfoRow(label: "الشيخ", value: lesson.speakerName)
-            LearnInfoRow(label: "الموعد", value: lesson.scheduleLine)
-            LearnInfoRow(label: "المكان", value: lesson.placeLine)
-            LearnInfoRow(label: "الحضور", value: lesson.audience)
-            LearnInfoRow(label: "طريقة الحضور", value: lesson.delivery)
+            SunnahInfoGrid([
+                SunnahInfoItem(icon: "person", label: "الشيخ", value: lesson.speakerName),
+                SunnahInfoItem(icon: "calendar", label: "الموعد", value: lesson.scheduleLine),
+                SunnahInfoItem(icon: "mappin.and.ellipse", label: "المكان", value: lesson.placeLine),
+                SunnahInfoItem(icon: "person.2", label: "الحضور", value: lesson.audience),
+                SunnahInfoItem(icon: "video", label: "طريقة الحضور", value: lesson.delivery),
+            ])
             if let d = lesson.description, !d.isEmpty {
                 SunnahSectionedMarkdown(d, key: "lesson-\(lesson.id)", style: .body)
             }
-            LearnExternalLink(title: "البث المباشر", urlString: lesson.liveURL)
-            LearnExternalLink(title: "الكتاب المشروح", urlString: lesson.bookURL)
-            LearnExternalLink(title: "الموقع على الخريطة", urlString: lesson.mapsURL)
+            SunnahActionRow {
+                LearnExternalLink(title: "البث المباشر", urlString: lesson.liveURL)
+                LearnExternalLink(title: "الكتاب المشروح", urlString: lesson.bookURL)
+                LearnExternalLink(title: "الموقع على الخريطة", urlString: lesson.mapsURL)
+            }
         }
     }
 }

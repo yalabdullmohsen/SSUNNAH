@@ -29,7 +29,7 @@ struct AccountContactScreen: View {
                                 .environment(\.layoutDirection, .leftToRight).textSelection(.enabled)
                         }
                     }
-                    HStack(spacing: Sunnah.Spacing.s3) {
+                    SunnahActionRow {
                         mailButton("إرسال بريد", subject: AccountContact.subject(for: activeTopic, topicParam: topicParam))
                         SunnahButton(copied ? "تم النسخ" : "نسخ", style: .secondary) { copyEmail() }
                     }

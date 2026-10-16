@@ -158,7 +158,7 @@ struct AccountNotificationSettingsScreen: View {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                 Text("نرسل التذكيرات التي تختارها فقط وفي أوقاتها، ويمكنك إيقافها في أي وقت. سيطلب النظام إذنك الآن.")
                     .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                HStack(spacing: Sunnah.Spacing.s3) {
+                SunnahActionRow {
                     SunnahButton("متابعة") { let f = explainFor; explainFor = nil; f?(true) }
                     SunnahButton("ليس الآن", style: .secondary) { let f = explainFor; explainFor = nil; f?(false) }
                 }
