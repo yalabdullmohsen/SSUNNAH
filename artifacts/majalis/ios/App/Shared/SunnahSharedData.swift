@@ -16,6 +16,7 @@ enum SunnahAppGroup {
 enum SunnahWidgetKind {
     static let prayerTimes = "PrayerTimesWidget"
     static let prayerAll = "sunnah.widget.prayer.all"
+    static let prayerStyled = "sunnah.widget.prayer.styled"
     static let calendarHijri = "sunnah.widget.calendar.hijri"
     static let calendarRamadan = "sunnah.widget.calendar.ramadan"
     static let adhkarTimeAware = "sunnah.widget.adhkar.time-aware"
@@ -24,7 +25,7 @@ enum SunnahWidgetKind {
     static let quranAyah = "sunnah.widget.quran.ayah"
     static let mushafContinue = "sunnah.widget.mushaf.continue"
 
-    static let prayerFamily: [String] = [prayerTimes, prayerAll]
+    static let prayerFamily: [String] = [prayerTimes, prayerAll, prayerStyled]
     static let calendarFamily: [String] = [calendarHijri, calendarRamadan]
     static let adhkarFamily: [String] = [adhkarTimeAware, adhkarRotating, adhkarStreak]
     static let quranFamily: [String] = [quranAyah]

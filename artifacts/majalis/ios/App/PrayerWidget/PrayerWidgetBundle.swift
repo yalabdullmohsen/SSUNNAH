@@ -5,6 +5,7 @@ import SwiftUI
 struct PrayerWidgetBundle: WidgetBundle {
     var body: some Widget {
         PrayerTimesWidget()
+        if #available(iOS 17.0, *) { PrayerStyledWidget() }
         AllPrayerTimesWidget()
         HijriDateWidget()
         RamadanCountdownWidget()

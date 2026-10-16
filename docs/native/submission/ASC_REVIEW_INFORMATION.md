@@ -15,7 +15,7 @@
 | Password | `<في ASC فقط>` |
 | First / Last name | `<يحدده المالك>` |
 | Phone | `<يحدده المالك>` |
-| Email | `<بريد المالك — يحدده المالك>` (بريد الدعم الحالي في `app-privacy.md:20` غير مؤكد الصلاحية) |
+| Email | `<بريد دعم مستقل — يقرّره يوسف، انظر الخيارين أدناه>` (بريد الدعم الحالي في `app-privacy.md:20` غير مؤكد الصلاحية) |
 | Attachment | لا حاجة |
 
 شروط الحساب: مؤكَّد البريد (Auto Confirm) لأن `mailer_autoconfirm=false` (`REVIEW_NOTES.md`، قسم «التسجيل لدى المراجع») فلا يستطيع المراجع إنشاء حساب صالح بنفسه. حساب المراجع لا يُحذف (`RELEASE.md:67`)؛ **ينبّه المراجع في Notes ألا يجرّب «حذف الحساب» عليه** وأن ينشئ حسابًا مؤقتًا إن توفّر له بريد، وإلا فالبديل: حساب ثانٍ مخصص للحذف يجهّزه المالك قبل الإرسال (يوجد `test.delete@ssunnah.com` للمالك، للحذف مرة واحدة، `RELEASE.md:67`؛ لا يُكتب في ASC إلا إن قرر المالك). تحقق قبل كل إرسال أن الحساب يدخل فعلًا.
@@ -25,7 +25,7 @@
 ```
 Sunnah (com.yousef.majlisilm) is an Arabic Islamic-learning app: Qur'an mushaf, adhkar, hadith, fiqh, seerah, prayer times and Qibla. The bundle ID and store listing are unchanged from the published app. Interface language is Arabic (RTL).
 
-RELIGIOUS CONTENT: all Qur'an, hadith, adhkar and fiqh texts are curated and bundled/published unchanged from our own sources; the app does not author or edit them, and there is no public user-generated content or social feed. Privacy policy: https://yalabdullmohsen.github.io/sunnah-legal/privacy.html - Support: https://yalabdullmohsen.github.io/sunnah-legal/support.html
+RELIGIOUS CONTENT: Qur'an text is bundled unchanged; other religious content is bundled from cited sources, and there is no public user-generated content or social feed. AI-ASSISTED CONTENT: the app's content is prepared with the assistance of artificial intelligence from sources cited on each page. It may contain errors and is not a substitute for consulting scholars. It has not been presented as endorsed or reviewed by any named scholar. In-app reporting: today the only reporting path is Settings > Contact us (a mail form); a dedicated report-error button on content pages is NOT yet in the app (see GUIDELINES_AUDIT G2) and this paragraph must be updated once it ships, with its exact path. Source/verification labels appear on content pages. Privacy policy: https://yalabdullmohsen.github.io/sunnah-legal/privacy.html - Support: https://yalabdullmohsen.github.io/sunnah-legal/support.html
 
 SIGN-IN (optional): e-mail + password only (Supabase Auth); no Sign in with Apple or social login. Use the demo account in the fields above. Path: sections list > "My Contributions" (مساهماتي) > "تسجيل الدخول" (Sign in). Registration sends a confirmation e-mail first, so please use the demo account.
 
@@ -70,3 +70,12 @@ Most content works offline. Online-only: sign-in, bookmark/progress sync, user s
 - هل الدفع البعيد مفعّل فعلًا من JS (`@capacitor/push-notifications`) في البناء الأصلي أم تهيئة فقط: غير مثبت (`AppDelegate.swift:109-122` يوثّق التسجيل فقط).
 - اسم/هاتف/بريد جهة الاتصال، وصلاحية الحساب التجريبي لحظة الإرسال: إجراء المالك.
 - رقم البناء: `docs/native/release-state.json` فقط.
+
+## بريد الدعم المستقل (قرار يوسف)
+
+البريد الشخصي لا يوضع في نص المتجر (المستودع عام). خياران:
+
+1. **صندوق مخصص على نطاق التطبيق** (مثل `support@` على نطاق مملوك). يلزم أن يكون النطاق فعّالًا؛ النطاقان الحاليان معلّقان، فلا يصلح قبل استعادتهما.
+2. **حساب بريد مخصص مجاني** (مثل Gmail جديد باسم التطبيق) يعمل فورًا ولا يرتبط بالنطاق، ويصلح بريدًا لـReview Information وSupport URL.
+
+حتى يُقرَّر: يبقى الحقل فارغًا في هذه الوثيقة ولا يُكتب بريد في أي نص متجر.

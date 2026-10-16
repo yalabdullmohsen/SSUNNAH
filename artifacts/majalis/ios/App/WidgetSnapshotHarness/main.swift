@@ -128,6 +128,12 @@ func registerWidgetFonts() -> [String] {
     let e = variant(base, v)
     let widgets: [(String, [String], (CatalogWidgetEntry) -> AnyView)] = [
       ("1-prayer-next", ["small","medium","large","rect","circ","inline"], { AnyView(PrayerWidgetRootView(entry: $0.prayer)) }),
+      ("1a-calligraphy", ["small","medium"], { AnyView(PrayerStyledRootView(entry: $0.prayer, design: .calligraphy)) }),
+      ("1b-previous", ["small"], { AnyView(PrayerStyledRootView(entry: $0.prayer, design: .previous)) }),
+      ("1c-bignumber", ["small"], { AnyView(PrayerStyledRootView(entry: $0.prayer, design: .bigNumber)) }),
+      ("1d-prevnext", ["small"], { AnyView(PrayerStyledRootView(entry: $0.prayer, design: .previousNext)) }),
+      ("1e-five", ["medium"], { AnyView(PrayerStyledRootView(entry: $0.prayer, design: .fiveDaily)) }),
+      ("1f-split", ["medium"], { AnyView(PrayerStyledRootView(entry: $0.prayer, design: .split)) }),
       ("2-prayer-all", ["large"], { AnyView(AllPrayerCatalogView(entry: $0.prayer)) }),
       ("3-date", ["small","medium","rect","circ"], { AnyView(HijriCalendarView(entry: $0)) }),
       ("4-ramadan", ["small","medium","rect"], { AnyView(RamadanCountdownView(entry: $0)) }),
@@ -138,7 +144,7 @@ func registerWidgetFonts() -> [String] {
       ("9-mushaf", ["small","medium"], { AnyView(MushafContinueView(entry: $0)) }),
     ]
     let windowOnly = v.hasPrefix("w")
-    for (n, fs, mk) in widgets where !windowOnly || n.hasPrefix("1-") {
+    for (n, fs, mk) in widgets where !windowOnly || n.hasPrefix("1") {
       for f in fams where fs.contains(f.name) {
         for s in [ColorScheme.light, .dark] { render(n, f, s, v, mk(e), out: out) }
       }
