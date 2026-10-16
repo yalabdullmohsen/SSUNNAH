@@ -1,0 +1,32 @@
+# مركز الودجات — مواصفة التسليم إلى ن3 (الدفعة الثالثة)
+
+كُتبت من الكود الفعلي في `native-app` بعد #3402. ما لم يُبنَ مذكور صراحةً تحت «المتبقي»؛ لا شيء هنا مُدّعى دون أثر في الكود.
+
+## ما بُني (#3065، #3402)
+- الشاشة `/widget-center`: `Sections/account/AccountWidgetCenterScreen.swift` — بطاقة الصلاة القادمة (تستهلك مخرجات المحرك فقط، لا حساب مواقيت)، آية اليوم (`DailyAyahEntry.pick`، يوم Asia/Kuwait منذ epoch ثم `%` الطول كما في الموقع)، الوِرد.
+- الكتالوج: `WidgetCatalogCategory` و`WidgetCatalogItem` في الملف نفسه؛ الأسماء والأوصاف كما في كتالوجات الامتداد `PrayerWidget/Sunnah*WidgetCatalog.swift`. إرشاد التخصيص (كيف تُضاف الودجة من الشاشة الرئيسية/القفل).
+- الاختبارات: `Tests/SunnahNativeTests/WidgetCenterTests.swift` — الفراغ، مطابقة فهرس اليوم مع الموقع، تفرّد معرّفات الكتالوج وامتلاء كل تصنيف.
+- مكوّنات الواجهة: مشتركة من `Components/**` (`SunnahListRow`، `SunnahSectionHeader`…)؛ لا نظام بطاقات جديد.
+
+## الامتداد والبيانات (ملكية ن4/ن1 كما في OWNERSHIP.md)
+- App Group: `group.com.yousef.majlisilm` (App وPrayerWidget وPrayerLiveActivity entitlements).
+- App Intents: `PrayerWidget/SunnahWidgetIntents.swift` و`SelectPrayerDesignIntent` (`AppIntentConfiguration` في `PrayerTimesWidget.swift`).
+- النشر من التطبيق: `ios-native/SunnahApp/Platform/PrayerWidgetPublisher.swift` و`SharedDataPublisher.swift` وجسر `SunnahSharedDataPlugin.swift`؛ التحديث: `Shared/SunnahWidgetRefreshCoordinator.swift`.
+- أي ملف Swift جديد داخل `PrayerWidget/` أو App Intent جديد يحتاج تسجيلًا في `pbxproj` عبر `generate-xcodeproj.rb` (طلب لـن4)؛ لا تعديل يدوي في pbxproj.
+
+## المتبقي للدفعة الثالثة
+1. أن تتحكم الشاشة في تفضيلات الودجة (نمط الصلاة، الحجم) عبر App Group بدل الإرشاد النصي فقط — يحتاج Intent مشتركًا وتسجيلًا في pbxproj.
+2. معاينة حية لكل ودجة في الكتالوج (تستخدم `SunnahWidgetPreviewFixtures.swift`) بدل الوصف.
+3. حالات فارغ/تحميل/خطأ موحّدة (الأنماط جاهزة في `Templates/**`).
+4. لقطات فاتح/داكن وXXXL وiPad من بناء HEAD عبر `native-shot-guard.sh` قبل أي وسم.
+
+## قيود
+- لا مساس بحساب المواقيت أو جدولة الأذان؛ ولا نص شرعي من خارج مصادر المشروع.
+- لا ذكر «الأذان» في النص الظاهر (NoAdhanNamingTests).
+- أرقام لاتينية؛ التصميم من رموز Swift في `Design/**` (ملكية ن1) — لا ألوان حرفية.
+- لوحة التصميم المرجعية: لوحة PrayerWidgets/LockWidgets التي اعتمدها يوسف (#3399)؛ لا ملف لوحة داخل المستودع، فلتُراجع صور #3399 وبُنى `PrayerWidgetViews.swift`.
+
+## مسارات يملكها ن3 (مقترحة لـOWNERSHIP.md)
+- `Sections/account/AccountWidgetCenterScreen.swift`
+- `Tests/SunnahNativeTests/WidgetCenterTests.swift`
+- `docs/native/WIDGET_CENTER_SPEC.md`
