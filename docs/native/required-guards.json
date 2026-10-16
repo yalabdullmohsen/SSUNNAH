@@ -32,6 +32,11 @@
       "match": "native-mushaf-disc-guard\\.sh$"
     },
     {
+      "id": "mushaf-endmark",
+      "owner": "ن3",
+      "match": "native-mushaf-endmark-guard\\.sh$"
+    },
+    {
       "id": "pager-two-pages",
       "owner": "ن3",
       "match": "native-mushaf-pager-guard\\.sh$"
