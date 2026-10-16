@@ -4,6 +4,7 @@
  * ما مصدره الشبكة (Supabase) أو يشترط مراجعة شرعية/قرار المالك يُصدَّر قائمة فارغة بالشكل الصحيح («فارغ عمدًا»)، لا نصًّا بلا مصدر.
  */
 import fs from "node:fs";
+import { toLatinDigits } from "../lib/latin-digits.mjs";
 
 export default async function exportLearn({ json, held, reject, counts, appRoot }) {
   const src = `${appRoot}/src`;
@@ -53,7 +54,7 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
       // فائدة تحريرية من إعداد سُنّة: لا تُنسب لمصدر ولا لقائل (لا عزو عام ولا وسم توثيق)
       ? { id: f.id, title: clip(f.text, 90), subtitle: "فائدة من إعداد سُنّة", body: f.text, tags: [f.category].filter(Boolean), origin: "editorial", originLabel: "فائدة من إعداد سُنّة" }
       : {
-        id: f.id, title: clip(f.text, 90), subtitle: f.author_name || undefined, body: [f.text, srcOverride[f.id] ?? f.source].filter(Boolean).join("\n\n"),
+        id: f.id, title: clip(f.text, 90), subtitle: f.author_name || undefined, body: [f.text, toLatinDigits(String(srcOverride[f.id] ?? f.source ?? ""))].filter(Boolean).join("\n\n"),
         tags: [f.category, f.verification_status, f.trust_level].filter(Boolean),
       })));
   }
