@@ -110,7 +110,7 @@ struct HadithDetailView: View {
             }.padding(Sunnah.Spacing.pageX)
         }
         .sunnahReadableWidth().background(Sunnah.Colors.bg)
-        .navigationTitle(item.title)
+        .sunnahNavTitle(item.title)
         .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.collection ?? "الحديث")
     }
 }
@@ -175,7 +175,7 @@ struct HadithCollectionView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
-        .navigationTitle(title)
+        .sunnahNavTitle(title)
         .task(id: file) { await load() }
     }
 
