@@ -50,4 +50,27 @@ final class MushafBasmalaGuardTests: XCTestCase {
         XCTAssertEqual(b.glyphs.count, 4)
         XCTAssertTrue(words.allSatisfy { $0.v == "1:1" })
     }
+
+    /// حجم البسملة واحد في كل سور الـ112 (على عدة عروض): لا يتبع حجم خط الصفحة. الطفرة «حجم الصفحة» (الكود القديم) يجب أن تُنتج أحجامًا متفاوتة فيفشل الحارس عليها.
+    func testBasmalaSizeIsIdenticalAcrossAllSurahs() throws {
+        let r = try repo()
+        for w in [CGFloat(378), 784] {
+            var current = Set<Int>(), legacy = Set<Int>()
+            var seen = 0
+            for n in 1...604 {
+                let page = try r.page(n)
+                guard page.rows.contains(where: { $0.k == "b" }) else { continue }
+                seen += 1
+                // الحجم الموحّد ثابت بالتعريف؛ تخطيط الصفحة (الثقيل) يُقاس على كل ثالثة لإثبات أن الطفرة تتفاوت.
+                if seen % 3 != 0 { current.insert(Int((MushafMetrics.basmalaFontSize(width: w) * 100).rounded())); continue }
+                let family = try r.ensureFont(page: n)
+                let m = MushafPageLayout.metrics(for: page, height: 874)
+                let fs = MushafMetrics.layout(rows: m.rows, family: family, width: w, maxFont: CGFloat(m.rowHeight) * 0.8).fontSize
+                current.insert(Int((MushafMetrics.basmalaFontSize(width: w) * 100).rounded()))
+                legacy.insert(Int((fs * 10).rounded()))
+            }
+            XCTAssertEqual(current.count, 1, "حجم البسملة يتفاوت بين السور w=\(w)")
+            XCTAssertGreaterThan(legacy.count, 1, "الطفرة (حجم الصفحة) لم تتفاوت: الاختبار لا يكشف الكود القديم w=\(w)")
+        }
+    }
 }

@@ -38,8 +38,14 @@ enum MushafAyahWords {
     static func mushafAlignedWords(ayahText: String, wordCount: Int) -> [String] {
         var raw = ayahText.split(whereSeparator: \.isWhitespace).map(String.init).filter { $0 != "\u{06DE}" && $0 != "\u{06E9}" }
         if raw.count == wordCount + 4, raw.prefix(4).map(QuranWordMatch.normalizeQuranWord) == basmalaNormalized { raw.removeFirst(4) }
-        return raw.map { QuranWordMatch.normalizeQuranWord($0) }
+        var words = raw.map { QuranWordMatch.normalizeQuranWord($0) }
+        // «إِلْ يَاسِينَ» (37:130): Tanzil يفصلها كلمتين والمصحف (QPC) كلمة واحدة بجلايفين؛ نضمّهما عند الفرق بالعدد بواحد فقط.
+        if words.count == wordCount + 1, let i = words.indices.dropLast().first(where: { (words[$0], words[$0 + 1]) == elYasin }) {
+            words.replaceSubrange(i...(i + 1), with: [words[i] + words[i + 1]])
+        }
+        return words
     }
+    private static let elYasin = (QuranWordMatch.normalizeQuranWord("إِلْ"), QuranWordMatch.normalizeQuranWord("يَاسِينَ"))
     private static let basmalaNormalized = "بسم الله الرحمن الرحيم".split(separator: " ").map { QuranWordMatch.normalizeQuranWord(String($0)) }
 
     /// فهارس (من 0، دون رمز نهاية الآية) كلمات المصحف المطابقة لاستعلام البحث، بتطبيع بحث التطبيق نفسه
