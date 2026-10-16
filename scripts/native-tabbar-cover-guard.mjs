@@ -15,6 +15,9 @@ const ins = root.match(/\.safeAreaInset\(edge: \.bottom[\s\S]*?\n        \}/)?.[
 if (!/SunnahTabBar\(/.test(ins)) bad.push("RootTabView: SunnahTabBar ليس داخل safeAreaInset(.bottom)");
 if (!/tabBarShown/.test(ins) || !/hidesTabBar/.test(root)) bad.push("RootTabView: إخفاء الشريط لشاشات القراءة الكاملة (immersiveReader) غير مربوط بالشريط");
 if (!/\.environment\(\\\.immersiveReader, immersive\)/.test(root)) bad.push("RootTabView: حالة immersiveReader غير محقونة في البيئة");
+const reader = readFileSync(join(SRC, "Mushaf/MushafReaderView.swift"), "utf8");
+if (!/\.immersiveReader\(revealed: showChrome\)/.test(reader)) bad.push("MushafReaderView: لا يعلن .immersiveReader(revealed: showChrome)");
+if (/hasPrefix\("\/mushaf"\)/.test(root)) bad.push("RootTabView: استثناء الشريط بالمسار (hasPrefix) ممنوع؛ استعمل .immersiveReader()");
 if (!/TabBarScrollMargin\(height: tabBarShown \? SunnahTabBar\.reservedHeight : 0\)/.test(root)) bad.push("RootTabView: هامش التمرير السفلي بارتفاع الشريط غير مطبَّق");
 if (!/contentMargins\(\.bottom, height, for: \.scrollContent\)/.test(root)) bad.push("TabBarScrollMargin: contentMargins(.bottom) مفقود");
 const mod = root.match(/struct TabBarScrollMargin[\s\S]*$/)?.[0] ?? "";
