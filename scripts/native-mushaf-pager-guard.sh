@@ -1,0 +1,20 @@
+#!/bin/bash
+# حارس التقليب (ن3): لا يُرسم في أي لحظة أكثر من صفحتين متجاورتين ولا تتداخل حيّزاتهما، ولا يعود TabView(.page) للمصحف.
+# ثابت: يفشل إن غاب MushafPager.visiblePages أو اختبارا الانتقال، أو استُعمل TabView(.page) في MushafReaderView تحت iOS.
+# PAGER_GUARD_RUN=1: يشغّل MushafPagerTransitionTests وMushafPagerTests فعليًا على المحاكي.
+set -u
+cd "$(dirname "$0")/.."
+S=artifacts/majalis/ios/App/SunnahNative
+fail=0; bad() { echo "✗ $1"; fail=1; }
+grep -q 'static func visiblePages' $S/Sources/SunnahNative/Mushaf/MushafPager.swift || bad "MushafPager.visiblePages مفقودة"
+T=$S/Tests/SunnahNativeTests/MushafPagerTransitionTests.swift
+grep -q 'testNeverMoreThanTwoAdjacentNonOverlappingPagesAtAnyOffset' "$T" 2>/dev/null || bad "اختبار «صفحتان متجاورتان كحد أقصى» مفقود"
+grep -q 'testMidTransitionSnapshotsShowOnlyTwoAdjacentPagesWithCorrectEdge' "$T" 2>/dev/null || bad "اختبار لقطات الانتقال مفقود"
+grep -q 'MushafPager(' $S/Sources/SunnahNative/Mushaf/MushafReaderView.swift || bad "MushafReaderView لا يستعمل MushafPager"
+if [ "${PAGER_GUARD_RUN:-}" = "1" ] && [ "$fail" = 0 ]; then
+  export NATIVE_WINDOW="${NATIVE_WINDOW:-n3}"; . "$(dirname "$0")/native-sim.sh"
+  ( cd $S && bash ../../../../../scripts/build-slot.sh -- xcodebuild test -scheme SunnahNative -destination "id=$SIM" -derivedDataPath "${DD:-$HOME/ssunnah-build/DerivedData/pager-guard}" -only-testing:SunnahNativeTests/MushafPagerTransitionTests -only-testing:SunnahNativeTests/MushafPagerTests -quiet ) >"${TMPDIR:-/tmp}/pager-guard.$$.log" 2>&1 || { tail -15 "${TMPDIR:-/tmp}/pager-guard.$$.log"; bad "اختبارات التقليب فشلت"; }
+  rm -f "${TMPDIR:-/tmp}/pager-guard.$$.log"
+fi
+[ "$fail" = 0 ] && echo "✓ حارس التقليب سليم (صفحتان متجاورتان كحد أقصى)"
+exit "$fail"

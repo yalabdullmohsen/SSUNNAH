@@ -32,6 +32,11 @@
       "match": "native-mushaf-disc-guard\\.sh$"
     },
     {
+      "id": "pager-two-pages",
+      "owner": "ن3",
+      "match": "native-mushaf-pager-guard\\.sh$"
+    },
+    {
       "id": "templated-content",
       "owner": "ن2",
       "match": "native-content-guards\\.mjs$"

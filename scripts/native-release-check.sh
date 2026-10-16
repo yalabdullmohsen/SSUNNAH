@@ -62,6 +62,9 @@ node scripts/native-date-guard.mjs >/tmp/native-date-guard.$$ 2>&1 || { head -20
 rm -f /tmp/native-date-guard.$$
 node scripts/native-detail-guard.mjs >/tmp/native-detail-guard.$$ 2>&1 || { head -20 /tmp/native-detail-guard.$$; bad "حارس شاشات التفصيل: شاشة خارج المكوّن المشترك"; }
 rm -f /tmp/native-detail-guard.$$
+# 2ح) التقليب (ن3): لا أكثر من صفحتين متجاورتين متداخلتين؛ مع --release يشغّل الاختبارات فعليًا
+if [ "${1:-}" = "--release" ]; then PAGER_GUARD_RUN=1 bash scripts/native-mushaf-pager-guard.sh || bad "حارس التقليب: خلل أو فشل اختبارات الانتقال"
+else bash scripts/native-mushaf-pager-guard.sh || bad "حارس التقليب: خلل أو فُقدت اختبارات الانتقال"; fi
 # 2ز) حد تماثل أقراص نهاية الآية 8٪ (ن3): ثابت دائمًا؛ مع --release يشغّل اختبار التثبيت فعليًا (9٪ مرفوض، 6٪ مقبول)
 if [ "${1:-}" = "--release" ]; then DISC_GUARD_RUN=1 bash scripts/native-mushaf-disc-guard.sh || bad "حارس حد الأقراص 8٪: ضعف الحد أو فشل اختبار التثبيت"
 else bash scripts/native-mushaf-disc-guard.sh || bad "حارس حد الأقراص 8٪: ضعف الحد أو فُقد اختبار التثبيت"; fi
