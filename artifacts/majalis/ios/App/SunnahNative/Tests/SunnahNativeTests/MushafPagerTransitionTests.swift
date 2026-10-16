@@ -66,7 +66,7 @@ final class MushafPagerTransitionTests: XCTestCase {
             host.view.frame = win.bounds; host.view.layoutIfNeeded()
             RunLoop.current.run(until: Date().addingTimeInterval(0.5)); host.view.setNeedsLayout(); host.view.layoutIfNeeded()
             let cv = try XCTUnwrap(Self.collectionView(in: host.view))
-            cv.frame = host.view.bounds; (cv.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = size; cv.collectionViewLayout.invalidateLayout(); cv.reloadData(); cv.layoutIfNeeded()
+            cv.frame = host.view.bounds; (cv.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = size; cv.collectionViewLayout.invalidateLayout(); cv.reloadData(); cv.layoutIfNeeded(); RunLoop.current.run(until: Date().addingTimeInterval(0.3)); cv.layoutIfNeeded()   // يستقر sizeChanged (أول حدود صالحة) قبل ضبط الإزاحة
             XCTAssertGreaterThan(cv.bounds.width, 0, "المُقلِّب بلا عرض w=\(w)")
             for p in [150, 151] {              // زوجية وفردية
                 for dir in [-1, 1] {           // dir=-1: الصفحة المجاورة p-1 (يمين)، dir=1: p+1 (يسار)

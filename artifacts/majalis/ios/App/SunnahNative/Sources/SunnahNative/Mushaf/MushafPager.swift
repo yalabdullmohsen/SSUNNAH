@@ -15,10 +15,11 @@ struct MushafPager<Content: View>: UIViewRepresentable {
     func makeCoordinator() -> Coordinator { Coordinator(self) }
 
     func makeUIView(context: Context) -> UICollectionView {
-        let layout = UICollectionViewFlowLayout()
+        let layout = MushafPagerLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0; layout.minimumInteritemSpacing = 0
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let cv = MushafPagerCollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.onValidSizeChange = { [weak c = context.coordinator] cv in c?.sizeChanged(cv) }
         cv.semanticContentAttribute = .forceRightToLeft
         cv.backgroundColor = .clear
         cv.isPagingEnabled = true
@@ -37,21 +38,21 @@ struct MushafPager<Content: View>: UIViewRepresentable {
         c.parent = self
         cv.semanticContentAttribute = .forceRightToLeft   // SwiftUI يعيد ضبطه من البيئة؛ حساب الإزاحة أعلاه يفترض RTL دائمًا
         let size = cv.bounds.size
-        if let layout = cv.collectionViewLayout as? UICollectionViewFlowLayout, size.width > 0, layout.itemSize != size {
-            layout.itemSize = size; layout.invalidateLayout()
-            c.pendingScroll = true
-        }
-        if size.width > 0, c.pendingScroll || (!c.userScrolling && c.shown != current) {
-            let animated = !c.pendingScroll && abs(c.shown - current) == 1
-            c.pendingScroll = false
+        if MushafPager.isValidSize(size), !c.userScrolling, c.shown != current {
+            let animated = abs(c.shown - current) == 1 && c.shown != 0
             cv.scrollToItem(at: IndexPath(item: current - 1, section: 0), at: .centeredHorizontally, animated: animated)
             c.shown = current
         }
-        if c.lastKey != renderKey {
+        if c.lastKey != renderKey, MushafPager.isValidSize(size) {
             c.lastKey = renderKey
             cv.reconfigureItems(at: cv.indexPathsForVisibleItems)
         }
     }
+
+    /// حجم صالح للحساب: موجب ومنتهٍ. لا يُحسب تخطيط ولا يُرسم عنصر بغير ذلك (عند الفتح من التبويب تكون الحدود صفرًا قبل أول layout).
+    static func isValidSize(_ s: CGSize) -> Bool { s.width.isFinite && s.height.isFinite && s.width > 0 && s.height > 0 }
+    /// أقصى عدد صفحات تُرسم معًا: صفحتان أثناء الانتقال + هامش تقريب واحد. أكثر من ذلك = عطل حجم (شبكة مصغّرة).
+    static var maxVisiblePages: Int { 3 }
 
     /// هندسة التقليب (نقية، تُختبر على 604 صفحة × كل الأحجام): RTL — الصفحة n عند x = (count − n)·w.
     static func offsetX(page n: Int, width w: CGFloat, count: Int) -> CGFloat { CGFloat(count - min(max(n, 1), count)) * w }
@@ -77,7 +78,18 @@ struct MushafPager<Content: View>: UIViewRepresentable {
 
         init(_ p: MushafPager) { parent = p }
 
-        func collectionView(_ cv: UICollectionView, numberOfItemsInSection s: Int) -> Int { parent.count }
+        /// لا عناصر قبل أن تكون الحدود صالحة: لا خلية تُهيّأ ولا إطار يُرسم بحجم خاطئ.
+        func collectionView(_ cv: UICollectionView, numberOfItemsInSection s: Int) -> Int { MushafPager.isValidSize(cv.bounds.size) ? parent.count : 0 }
+
+        /// يُستدعى من layoutSubviews عند أول حدود صالحة أو تغيّرها (دوران/safe area/الشريط العائم): يعيد البناء ويبقي الصفحة الحالية.
+        func sizeChanged(_ cv: UICollectionView) {
+            cv.collectionViewLayout.invalidateLayout()
+            cv.reloadData()
+            cv.layoutIfNeeded()
+            let target = shown > 0 ? shown : parent.current
+            cv.scrollToItem(at: IndexPath(item: target - 1, section: 0), at: .centeredHorizontally, animated: false)
+            shown = target; pendingScroll = false
+        }
 
         func collectionView(_ cv: UICollectionView, cellForItemAt ip: IndexPath) -> UICollectionViewCell {
             let cell = cv.dequeueReusableCell(withReuseIdentifier: "p", for: ip)
@@ -109,6 +121,48 @@ struct MushafPager<Content: View>: UIViewRepresentable {
 
         func scrollViewDidEndDecelerating(_ sv: UIScrollView) { userScrolling = false }
         func scrollViewDidEndDragging(_ sv: UIScrollView, willDecelerate d: Bool) { if !d { userScrolling = false } }
+    }
+}
+
+/// تخطيط المُقلِّب: حجم العنصر يُشتق دائمًا من حدود الـcollectionView الفعلية (لا القيمة الافتراضية 50×50 لـFlowLayout التي كانت تُظهر 604 صفحة مصغّرة في شبكة)،
+/// ولا يُنتج أي عنصر عند حجم صفري/سالب، ويقصّ النتيجة عند `maxVisiblePages`.
+final class MushafPagerLayout: UICollectionViewFlowLayout {
+    private var valid = false
+
+    override func prepare() {
+        let size = collectionView?.bounds.size ?? .zero
+        valid = MushafPager<EmptyView>.isValidSize(size)
+        if valid, itemSize != size { itemSize = size }
+        if valid { super.prepare() }
+    }
+
+    override var collectionViewContentSize: CGSize { valid ? super.collectionViewContentSize : .zero }
+
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool { newBounds.size != collectionView?.bounds.size }
+
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        guard valid else { return [] }
+        let all = super.layoutAttributesForElements(in: rect) ?? []
+        guard all.count > MushafPager<EmptyView>.maxVisiblePages else { return all }
+        let mid = rect.midX
+        return Array(all.sorted { abs($0.frame.midX - mid) < abs($1.frame.midX - mid) }.prefix(MushafPager<EmptyView>.maxVisiblePages))
+    }
+
+    override func layoutAttributesForItem(at ip: IndexPath) -> UICollectionViewLayoutAttributes? { valid ? super.layoutAttributesForItem(at: ip) : nil }
+}
+
+/// يبلّغ المنسّق عند أول حدود صالحة وعند أي تغيّر لاحق في الحجم (دوران، safe area، شريط عائم).
+final class MushafPagerCollectionView: UICollectionView {
+    var onValidSizeChange: ((UICollectionView) -> Void)?
+    private var lastSize: CGSize = .zero
+
+    override func layoutSubviews() {
+        let size = bounds.size
+        if size != lastSize {
+            lastSize = size
+            if MushafPager<EmptyView>.isValidSize(size) { onValidSizeChange?(self) }
+        }
+        super.layoutSubviews()
     }
 }
 #endif
