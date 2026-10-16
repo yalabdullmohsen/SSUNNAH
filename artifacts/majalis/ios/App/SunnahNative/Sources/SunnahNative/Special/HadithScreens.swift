@@ -63,6 +63,14 @@ struct HadithListView: View {
     }
 
     var body: some View {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["SNAP_DETAIL"] == "1", let first = items.first { HadithDetailView(item: first) } else { listBody }   // لقطات التدقيق فقط
+        #else
+        listBody
+        #endif
+    }
+
+    @ViewBuilder private var listBody: some View {
         if items.isEmpty { EmptyStateView() } else {
             List(filtered) { item in
                 SunnahNavigationLink { HadithDetailView(item: item) } label: {

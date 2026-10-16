@@ -70,6 +70,15 @@ struct WeakHadithListView: View {
     @State private var query = ""
     private enum Phase { case loading, failed, ready([WeakHadithItem]) }
 
+    /// لقطات التدقيق فقط (DEBUG): أول مادة مفتوحة مباشرة؛ في الإصدار دائمًا nil.
+    private static func snapFirst(_ rows: [WeakHadithItem]) -> WeakHadithItem? {
+        #if DEBUG
+        return ProcessInfo.processInfo.environment["SNAP_DETAIL"] == "1" ? rows.first : nil
+        #else
+        return nil
+        #endif
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             WeakHadithWarningBanner()
@@ -80,7 +89,9 @@ struct WeakHadithListView: View {
                 case .ready(let all):
                     let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
                     let rows = Self.visibleRows(all, file: file, normalizedQuery: q)
-                    if rows.isEmpty && q.isEmpty {
+                    if let first = Self.snapFirst(rows) {
+                        WeakHadithDetailView(item: first)
+                    } else if rows.isEmpty && q.isEmpty {
                         EmptyStateView(title: "لا مواد معتمدة بعد").frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {
                     List(rows) { item in

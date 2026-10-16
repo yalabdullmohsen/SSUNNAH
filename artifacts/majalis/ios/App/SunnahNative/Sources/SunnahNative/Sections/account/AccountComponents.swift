@@ -117,10 +117,24 @@ struct AccountLegalDocumentView<Footer: View>: View {
             }
             .padding(Sunnah.Spacing.pageX)
         }
+        #if DEBUG
+        .modifier(SnapBottomAnchor())
+        #endif
         .background(Sunnah.Colors.bg)
         .navigationTitle(document.title)
     }
 }
+
+#if DEBUG
+/// لقطات التدقيق فقط: يبدأ التمرير من الأسفل لإظهار الفوتر.
+private struct SnapBottomAnchor: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 17.0, macOS 14.0, *), ProcessInfo.processInfo.environment["SNAP_BOTTOM"] == "1" {
+            content.defaultScrollAnchor(.bottom)
+        } else { content }
+    }
+}
+#endif
 
 extension AccountLegalDocumentView where Footer == EmptyView {
     init(_ document: AccountLegalDocument, sharePath: String?) { self.init(document, sharePath: sharePath) { EmptyView() } }
