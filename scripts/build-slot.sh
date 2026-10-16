@@ -54,6 +54,7 @@ reap_orphans() { # يتامى هذا الـworktree: أبوها 1 (أو ميت) 
 # أولوية الطابور (الأصغر أولًا): ن3 قياس الأداء=0، ن1=1، ن2=2، ن4/غيرها=3 (بناءاتها قصيرة). تُستنتج من اسم الـworktree أو BUILD_SLOT_PRIO.
 prio() {
   [ -n "${BUILD_SLOT_PRIO:-}" ] && { echo "$BUILD_SLOT_PRIO"; return; }
+  case " $* " in *" archive "*) echo '!'; return;; esac   # الأرشفة (بناء RC) قبل بناءات اختبار النوافذ
   case "$(basename "$ROOT")" in n3-*|*quran*) echo 0;; n1-*) echo 1;; n2-*) echo 2;; *) echo 3;; esac
 }
 live_tickets() { local t; for t in "$DIR"/queue/*; do [ -e "$t" ] || continue
@@ -81,7 +82,7 @@ esac
 [ -n "${BUILD_SLOT_HELD:-}" ] && exec "$@"
 
 mkdir -p "$DIR/queue"
-TICKET="$(prio)-$(date +%s)-$(printf %07d $$)"; : > "$DIR/queue/$TICKET"
+TICKET="$(prio "$@")-$(date +%s)-$(printf %07d $$)"; : > "$DIR/queue/$TICKET"
 SLOT=""
 release() { [ -n "$SLOT" ] && rm -rf "$DIR/slot-$SLOT"; rm -f "$DIR/queue/$TICKET"; }
 CHILD=""

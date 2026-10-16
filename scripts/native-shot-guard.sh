@@ -16,7 +16,9 @@ BUILT=$(mt "$BIN")
 NEWEST=$(git log -1 --format=%ct -- $SRC_DIRS 2>/dev/null); NEWEST=${NEWEST:-0}
 # shellcheck disable=SC2086
 while IFS= read -r f; do [ -f "$f" ] && { m=$(mt "$f"); [ "$m" -gt "$NEWEST" ] && NEWEST=$m; }; done < <(git status --porcelain -- $SRC_DIRS 2>/dev/null | sed 's/^...//')
-[ "$BUILT" -ge "$NEWEST" ] || die "التطبيق قديم: بُني $(date -r "$BUILT" '+%F %T') وآخر تعديل للكود $(date -r "$NEWEST" '+%F %T') — أعد البناء من HEAD"
+# بناء مخزَّن من native-head-build.sh لنفس مفتاح الشجرة النظيفة الحالية: صالح حتى لو أقدم من آخر commit (الشجرة لم تتغيّر)
+HBK=""; case "$APP" in */headbuild/*/SunnahApp.app) [ "$(cat "$(dirname "$APP")/KEY" 2>/dev/null)" = "$(bash "$(dirname "$0")/native-head-key.sh" 2>/dev/null)" ] && HBK=1;; esac
+[ -n "$HBK" ] || [ "$BUILT" -ge "$NEWEST" ] || die "التطبيق قديم: بُني $(date -r "$BUILT" '+%F %T') وآخر تعديل للكود $(date -r "$NEWEST" '+%F %T') — أعد البناء من HEAD"
 HASH=$( if [ -f "$BIN" ]; then shasum -a 256 "$BIN" | cut -d' ' -f1; else (cd "$BIN" && find . -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | cut -d' ' -f1); fi )
 if [ -n "${SIM:-}" ]; then
   C=$(xcrun simctl get_app_container "$SIM" "$BID" app 2>/dev/null) || die "التطبيق غير مثبّت في المحاكي $SIM"

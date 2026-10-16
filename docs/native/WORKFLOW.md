@@ -51,3 +51,7 @@ NATIVE_WINDOW=n1 APP=<SunnahApp.app> MODE=light BOARD=<dir> OPEN=inapp bash scri
 
 ## أولوية طابور البناء
 `build-slot.sh` يرتّب الطابور: ن3 (قياس الأداء) ثم ن1 ثم ن2 ثم ن4؛ ن4 بناءاتها قصيرة (عيّنة/اختبار محدد). `BUILD_SLOT_PRIO=<رقم>` يتجاوز الأولوية.
+
+## بناء HEAD المشترك للمحاكي
+`bash scripts/native-head-build.sh` يبني SunnahApp للمحاكي مرة واحدة لكل شجرة مصدر نظيفة (المفتاح من `native-head-key.sh`) ويخزّنه في `~/.majalis-tools/headbuild/<key>/` (+ PROVENANCE.txt وهاش الـbinary)؛ يمرّ عبر build-slot فيخدم كل النوافذ ببناء واحد، و`--lookup` يطبع المسار دون بناء.
+`native-snapshot.sh` يستعمله تلقائيًا و`native-shot-guard.sh` يقبله؛ نافذة بتعديلات غير مدفوعة في ios-native/SunnahNative تبني لنفسها (الأمر يرفض بخروج 3). أوامر `archive` تأخذ أولوية قبل بناءات الاختبار في build-slot.

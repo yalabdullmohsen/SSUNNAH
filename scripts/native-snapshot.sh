@@ -11,6 +11,7 @@ touch "$TICK" "$INVALID"
 xcrun simctl boot "$SIM" >/dev/null 2>&1
 xcrun simctl status_bar "$SIM" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 >/dev/null 2>&1
 # تحقق إلزامي قبل أول لقطة: التطبيق يعمل فعلًا في الواجهة (لا SpringBoard)؛ إعادة تثبيت وتشغيل مرة، ثم فشل صريح بدل لقطات باطلة.
+APP=${APP:-$(bash "$(cd "$(dirname "$0")" && pwd)/native-head-build.sh" --lookup 2>/dev/null)}   # بناء HEAD المخزَّن إن طابق المفتاح (native-head-build.sh) وإلا الافتراضي القديم
 APP=${APP:-$HOME/.majalis-tools/dd/n4/Build/Products/Debug-iphonesimulator/SunnahApp.app}
 [ -d "$APP" ] && xcrun simctl install "$SIM" "$APP" >/dev/null 2>&1   # دائمًا من $APP المبني (لا نسخة قديمة عالقة)
 [ -n "${SNAPSHOT_SKIP_GUARD:-}" ] || SIM=$SIM bash "$(cd "$(dirname "$0")" && pwd)/native-shot-guard.sh" "$APP" "$BOARD/snapshots" || exit 2  # مصدر اللقطات: مبني من HEAD ومطابق للمثبّت
