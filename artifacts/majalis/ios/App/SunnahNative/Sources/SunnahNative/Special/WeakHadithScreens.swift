@@ -70,6 +70,15 @@ struct WeakHadithListView: View {
     @State private var query = ""
     private enum Phase { case loading, failed, ready([WeakHadithItem]) }
 
+    /// لقطات التدقيق فقط (DEBUG): أول مادة مفتوحة مباشرة؛ في الإصدار دائمًا nil.
+    private static func pinned(_ rows: [WeakHadithItem]) -> WeakHadithItem? {
+        #if DEBUG
+        return ProcessInfo.processInfo.environment["SNAP_DETAIL"] == "1" ? rows.first : nil
+        #else
+        return nil
+        #endif
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             WeakHadithWarningBanner()
@@ -80,7 +89,9 @@ struct WeakHadithListView: View {
                 case .ready(let all):
                     let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
                     let rows = Self.visibleRows(all, file: file, normalizedQuery: q)
-                    if rows.isEmpty && q.isEmpty {
+                    if let first = Self.pinned(rows) {
+                        WeakHadithDetailView(item: first)
+                    } else if rows.isEmpty && q.isEmpty {
                         EmptyStateView(title: "لا مواد معتمدة بعد").frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {
                     List(rows) { item in
@@ -99,7 +110,7 @@ struct WeakHadithListView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
-        .navigationTitle(title)
+        .sunnahNavTitle(title)
         .task(id: file) { phase = .loading; await load() }
     }
 
@@ -107,12 +118,20 @@ struct WeakHadithListView: View {
     static func expectedClass(for file: String) -> String { file.replacingOccurrences(of: "weak-", with: "") }
     static func visibleRows(_ all: [WeakHadithItem], file: String, normalizedQuery q: String) -> [WeakHadithItem] {
         let cls = expectedClass(for: file)
-        return all.filter { $0.authenticityClass == cls && $0.isApproved && (q.isEmpty || ArabicSearch.normalize($0.title + " " + $0.text).contains(q)) }
+        return all.filter { $0.authenticityClass == cls && ($0.isApproved || Self.pendingShown) && (q.isEmpty || ArabicSearch.normalize($0.title + " " + $0.text).contains(q)) }
     }
+
+    /// لقطات التدقيق فقط (DEBUG): تعرض العناصر المعلّقة لالتقاط تخطيط التفاصيل؛ قاعدة المالك (DATA_CONTRACT §5.2) سارية في Release.
+    #if DEBUG
+    static let pendingShown = ProcessInfo.processInfo.environment["SNAP_DETAIL"] == "1"
+    #else
+    static let pendingShown = false
+    #endif
+    private static func passes(_ i: WeakHadithItem) -> Bool { i.isApproved || pendingShown }
 
     private func load() async {
         phase = .loading
-        do { phase = .ready(try await loader.load([WeakHadithItem].self, from: .bundled(name: file, subdirectory: "Data/hadith")).filter(\.isApproved)) }
+        do { phase = .ready(try await loader.load([WeakHadithItem].self, from: .bundled(name: file, subdirectory: "Data/hadith")).filter(Self.passes)) }
         catch { phase = .failed }
     }
 }
@@ -152,7 +171,8 @@ struct WeakHadithDetailView: View {
             }.padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle(item.label)
+        .sunnahNavTitle(item.label)
+        .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.sourceName)
     }
 }
 
