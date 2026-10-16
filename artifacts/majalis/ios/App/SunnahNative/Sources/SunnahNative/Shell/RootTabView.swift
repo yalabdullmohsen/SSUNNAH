@@ -7,7 +7,11 @@ public typealias ScreenBuilder = (Route) -> AnyView
 public struct RootTabView: View {
     @ObservedObject private var router: AppRouter
     private let screen: ScreenBuilder
+    #if DEBUG
+    @State private var showDrawer = ProcessInfo.processInfo.environment["SNAP_DRAWER"] == "1"   // لقطات التدقيق فقط
+    #else
     @State private var showDrawer = false
+    #endif
     @StateObject private var immersive = ImmersiveReaderState()
 
     public init(router: AppRouter, screen: @escaping ScreenBuilder = RootTabView.placeholder) {
@@ -59,9 +63,10 @@ public struct RootTabView: View {
         .overlay {
             if showDrawer {
                 ZStack(alignment: .leading) {
-                    Color.black.opacity(0.35).ignoresSafeArea().onTapGesture { sunnahAnimate { showDrawer = false } }
-                    SunnahDrawer(open: { router.stack = []; router.open(path: $0) }, close: { sunnahAnimate { showDrawer = false } })
-                        .ignoresSafeArea(edges: .vertical).transition(.move(edge: .leading))
+                    Color.black.opacity(0.4).ignoresSafeArea().onTapGesture { sunnahAnimate { showDrawer = false } }
+                        .accessibilityLabel("إغلاق القائمة").accessibilityAddTraits(.isButton)
+                    SunnahDrawer(selectedPath: router.stack.last?.path ?? "/", open: { router.stack = []; router.open(path: $0) }, close: { sunnahAnimate { showDrawer = false } })
+                        .transition(.move(edge: .leading))
                 }
             }
         }
