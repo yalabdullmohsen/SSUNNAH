@@ -15,4 +15,18 @@ final class WidgetFamilyGuardTests: XCTestCase {
         }
         XCTAssertTrue(bad.isEmpty, "استعملوا @SunnahFamily بدل @Environment(\\.widgetFamily): \(bad)")
     }
+
+    /// تباين شاشة القفل قاعدة في المكوّن المشترك: نص فاتح ثابت لكل عائلات accessory داخل `SunnahAccessoryInset`،
+    /// والحزام لا يستثنيها (فلا تُخفي اللقطات خللًا).
+    func testAccessoryFixedLightRuleLivesInSharedInset() throws {
+        let app = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
+            .deletingLastPathComponent().deletingLastPathComponent()
+        let platform = try String(contentsOf: app.appendingPathComponent("PrayerWidget/SunnahWidgetPlatform.swift"), encoding: .utf8)
+        for f in [".accessoryRectangular", ".accessoryInline", ".accessoryCircular"] {
+            XCTAssertTrue(platform.contains("static func fixedLight") && platform.contains(f), "fixedLight يجب أن يشمل \\(f)")
+        }
+        XCTAssertTrue(platform.contains("SunnahAccessoryInset.fixedLight(family) ? .dark : colorScheme"))
+        let harness = try String(contentsOf: app.appendingPathComponent("WidgetSnapshotHarness/main.swift"), encoding: .utf8)
+        XCTAssertFalse(harness.contains("accessoryRectangular") && harness.contains("colorScheme, ."), "الحزام لا يفرض نمط accessory بنفسه")
+    }
 }

@@ -94,6 +94,7 @@
 		A049BF01QURCATWGT0000000 /* SunnahQuranMushafWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */; };
 		A04ABF01INTENTSWGT000000 /* SunnahWidgetIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */; };
 		A04BBF01STANDBYWGT000000 /* SunnahStandBySupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */; };
+		A04CBF01LOGOMARKWGT00000 /* SunnahWidgetLogoMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CFR01LOGOMARKFILE00000 /* SunnahWidgetLogoMark.swift */; };
 		A04CBF01HOMECATWGT000000 /* SunnahHomeWidgetCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */; };
 		A04DBF01CONTCATWGT000000 /* SunnahContentExperienceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */; };
 		E8FAF235C7ADB6B58001180E /* TasmeeModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C9A6F770F228A9A592AA6B /* TasmeeModelStore.swift */; };
@@ -218,6 +219,7 @@
 		A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahQuranMushafWidgetCatalog.swift; sourceTree = "<group>"; };
 		A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetIntents.swift; sourceTree = "<group>"; };
 		A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahStandBySupport.swift; sourceTree = "<group>"; };
+		A04CFR01LOGOMARKFILE00000 /* SunnahWidgetLogoMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahWidgetLogoMark.swift; sourceTree = "<group>"; };
 		A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahHomeWidgetCatalog.swift; sourceTree = "<group>"; };
 		A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahContentExperienceCatalog.swift; sourceTree = "<group>"; };
 		85C9A6F770F228A9A592AA6B /* TasmeeModelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasmeeModelStore.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				A049FR01QURCATFILE000000 /* SunnahQuranMushafWidgetCatalog.swift */,
 				A04AFR01INTENTSFILE00000 /* SunnahWidgetIntents.swift */,
 				A04BFR01STANDBYFILE00000 /* SunnahStandBySupport.swift */,
+				A04CFR01LOGOMARKFILE00000 /* SunnahWidgetLogoMark.swift */,
 				A04CFR01HOMECATFILE00000 /* SunnahHomeWidgetCatalog.swift */,
 				A04DFR01CONTCATFILE00000 /* SunnahContentExperienceCatalog.swift */,
 				A029FR05WIDGETINFO /* Info.plist */,
@@ -668,6 +671,7 @@
 				A049BF01QURCATWGT0000000 /* SunnahQuranMushafWidgetCatalog.swift in Sources */,
 				A04ABF01INTENTSWGT000000 /* SunnahWidgetIntents.swift in Sources */,
 				A04BBF01STANDBYWGT000000 /* SunnahStandBySupport.swift in Sources */,
+				A04CBF01LOGOMARKWGT00000 /* SunnahWidgetLogoMark.swift in Sources */,
 				A04CBF01HOMECATWGT000000 /* SunnahHomeWidgetCatalog.swift in Sources */,
 				A04DBF01CONTCATWGT000000 /* SunnahContentExperienceCatalog.swift in Sources */,
 				A029BF01WIDGETBUNDLE /* PrayerWidgetBundle.swift in Sources */,
