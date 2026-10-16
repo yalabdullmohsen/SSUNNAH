@@ -7,6 +7,7 @@
  * المواقيت: الحساب داخل التطبيق (محمي)؛ يُحزم world-cities.json فقط.
  * الاستعمال: node scripts/native/export-ios-data.mjs [--out <dir>] [--adhkar-json <file>] [--check]
  */
+import { latinizeSources } from "./lib/latin-digits.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -33,6 +34,10 @@ const put = (rel, buf) => {
   if (written.has(rel)) throw new Error(`مسار مكرَّر في التصدير: ${rel} (وحدتان تكتبانه)`);
   written.add(rel);
   buf = Buffer.isBuffer(buf) ? buf : Buffer.from(buf);
+  if (rel.endsWith(".json") && !/^(mushaf|tafsir|quran)\//.test(rel)) { // أرقام لاتينية في حقول المصدر فقط
+    const raw = buf.toString("utf8");
+    if (/[٠-٩۰-۹]/.test(raw)) { try { buf = Buffer.from(JSON.stringify(latinizeSources(JSON.parse(raw)), null, /^[\[{]\n/.test(raw) ? 2 : 0)); } catch { /* ليس JSON صالحًا: يُترك */ } }
+  }
   files.push({ path: rel, bytes: buf.length, sha256: sha(buf) });
   if (check) return;
   fs.mkdirSync(path.dirname(`${out}/${rel}`), { recursive: true });
