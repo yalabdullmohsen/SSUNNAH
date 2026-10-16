@@ -68,6 +68,29 @@ enum PrayerWidgetStyleAppEnum: String, AppEnum {
 }
 
 @available(iOS 17.0, *)
+struct SelectPrayerDesignIntent: WidgetConfigurationIntent {
+    static var title: LocalizedStringResource = "تصميم ودجت الصلاة"
+    @Parameter(title: "التصميم", default: .classic)
+    var design: PrayerDesignAppEnum
+}
+
+@available(iOS 17.0, *)
+enum PrayerDesignAppEnum: String, AppEnum {
+    case classic, calligraphy, previous, bigNumber, previousNext, fiveDaily, split
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "تصميم الصلاة"
+    static var caseDisplayRepresentations: [PrayerDesignAppEnum: DisplayRepresentation] = [
+        .classic: "كلاسيكي",
+        .calligraphy: "خطاطي",
+        .previous: "السابقة",
+        .bigNumber: "رقم كبير",
+        .previousNext: "السابقة والقادمة",
+        .fiveDaily: "الصلوات الخمس (متوسط)",
+        .split: "السابقة | القادمة (متوسط)",
+    ]
+    var design: PrayerWidgetDesign { PrayerWidgetDesign(rawValue: rawValue) ?? .classic }
+}
+
+@available(iOS 17.0, *)
 struct SelectPrayerGroupIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "مجموعة الصلوات"
     @Parameter(title: "المجموعة", default: .morning)
