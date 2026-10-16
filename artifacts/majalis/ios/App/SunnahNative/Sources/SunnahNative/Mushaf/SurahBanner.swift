@@ -45,19 +45,21 @@ struct SurahBanner: View {
 
     var body: some View {
         GeometryReader { g in
-            let s = g.size.width / SurahBannerArt.size.width
+            // المقياس بالعرض، لكن لا يتجاوز ارتفاع خانة السطر: على iPad العريض كان الارتفاع المشتق من العرض يطغى على السطر السابق فيُقصّ (ص604).
+            let s = min(g.size.width / SurahBannerArt.size.width, g.size.height / SurahBannerArt.size.height)
             let h = SurahBannerArt.size.height * s
+            let w = SurahBannerArt.size.width * s
             ZStack {
                 Canvas { ctx, _ in
                     let t = CGAffineTransform(scaleX: s, y: s)
-                    ctx.fill(Path(CGRect(origin: .zero, size: CGSize(width: g.size.width, height: h))), with: .color(Sunnah.Colors.mushafSage))
+                    ctx.fill(Path(CGRect(origin: .zero, size: CGSize(width: w, height: h))), with: .color(Sunnah.Colors.mushafSage))
                     ctx.fill(Self.ivory.applying(t), with: .color(Sunnah.Colors.mushafIvory), style: FillStyle(eoFill: true))
                     ctx.fill(Self.green.applying(t), with: .color(Sunnah.Colors.mushafAccent), style: FillStyle(eoFill: true))
                     ctx.fill(Self.gold.applying(t), with: .color(Sunnah.Colors.mushafGold), style: FillStyle(eoFill: true))
                 }
                 nameView(height: h)
             }
-            .frame(width: g.size.width, height: h)
+            .frame(width: w, height: h)
             .position(x: g.size.width / 2, y: g.size.height / 2)
         }
         .accessibilityElement(children: .ignore)

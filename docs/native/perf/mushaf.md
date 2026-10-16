@@ -72,7 +72,7 @@
 | القفز بين السور والأجزاء/البحث | ✓ | `MushafPagerWindowTests.testJumpTargetsAreAlwaysRenderedWithNeighbours`، `testIndexSurahJumpTargetsLandInsideWindow`، `testSearchHitJumpLandsInsideWindow` |
 | استعادة آخر صفحة | ✓ (وحدات) | `testRestoreLastPageAfterRelaunchOpensItsWindow`؛ لم تُختبر على الجهاز |
 | وضع الطيران بلا نقص | ✓ (اختبار) | `MushafOfflineTests`: `URLProtocol` يفشل كل طلب، ويُحمَّل مسار الصفحات/الخطوط/التخطيط (1، 2، 150، 301، 604) بصفر طلبات؛ وفحص مصدري: لا `URLSession/URLRequest/URLProtocol` في وحدة `Mushaf/`. لم يُجرَّب على جهاز بوضع الطيران |
-| ضغط الذاكرة | جزئي | كاش الصفحات/التخطيط محدود (24)، `MushafCacheTests.testPrefetchWarmsNeighboursAndCacheIsBounded`؛ لا قياس ذروة ذاكرة |
+| ضغط الذاكرة | جزئي | كاش الصفحات/التخطيط محدود (24)، `MushafCacheTests.testPrefetchWarmsNeighboursAndCacheIsBounded`؛ قياس Debug/محاكٍ (500 تقليبة من ص100): RSS بداية ≈231MB، ذروة ≈260MB، نهاية ≈241MB؛ Physical footprint 271.5MB (ذروة 296.8MB)؛ `MUSHAF_HITCH` p95 ≈24.75ms. الحد >250MB على أجهزة 3–4GB يستلزم جهازًا/Organizer قبل الاعتماد |
 | الفاتح والداكن | ✓ (الحارس) | `MushafVisualGuardTests` 12 لقطة؛ مراجعة ن1 معلّقة |
 | حجوم الخط الكبيرة | جزئي | الخط تابع لهندسة الصفحة لا لـDynamic Type (صفحات المصحف لا تتغير)؛ `route-audit.md` يذكر فحص ن1 للمصحف (1 و2 و604) بجولات XXL/XXXL فاتح/داكن بفشل 0، **لكن صور تلك الجولات غير محفوظة في المستودع ولا في worktrees ن1 فلم أستطع فحصها بصريًا**، ولم أبنِ لها شيئًا جديدًا بأمر يوسف |
 | زمن ظهور أول صفحة | ✓ (محاكي) | ≈2.5 s من الإطلاق (الهدف <3 s)؛ لا قياس جهاز |
