@@ -62,6 +62,8 @@ node scripts/native-detail-guard.mjs >/tmp/native-detail-guard.$$ 2>&1 || { head
 rm -f /tmp/native-detail-guard.$$
 node scripts/native-titles-guard.mjs >/tmp/native-titles-guard.$$ 2>&1 || { head -20 /tmp/native-titles-guard.$$; bad "حارس titles-unique: عنوان مفقود/مكرر/خارج الجرد"; }
 rm -f /tmp/native-titles-guard.$$
+node scripts/native-tabbar-cover-guard.mjs >/tmp/native-tabbar-guard.$$ 2>&1 || { head -20 /tmp/native-tabbar-guard.$$; bad "حارس tabbar-cover: محتوى قد يختفي خلف شريط التبويب"; }
+rm -f /tmp/native-tabbar-guard.$$
 
 # 3) عدد المسارات المبنية مقابل 212
 built=$(grep -c . docs/native/MERGED_BUILT.txt)
