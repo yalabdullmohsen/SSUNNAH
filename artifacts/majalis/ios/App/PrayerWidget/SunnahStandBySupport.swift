@@ -56,6 +56,7 @@ struct StandByPrayerCountdownView: View {
                 SunnahCounterFace(entry: entry, size: 44)
                     .foregroundStyle(SunnahBrandColors.gold)
                     .widgetAccentable()
+                PrayerElapsedCaption(entry: entry, size: 16)
             } else {
                 SunnahCalmCard()
                     .foregroundStyle(SunnahWidgetTheme.primaryText)

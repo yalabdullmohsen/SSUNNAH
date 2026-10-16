@@ -62,6 +62,8 @@ struct PrayerWidgetEntry: TimelineEntry {
     let slots: [PrayerTimelineSlot]
     let currentKey: PrayerSlotKey?
     let currentNameAr: String?
+    /// وقت أذان الصلاة الجارية (آخر أذان مضى)
+    let currentDate: Date?
     let previousKey: PrayerSlotKey?
     let previousNameAr: String?
     let previousDate: Date?
@@ -258,6 +260,7 @@ struct PrayerWidgetEntry: TimelineEntry {
             slots: slots,
             currentKey: current?.key,
             currentNameAr: current?.key.nameAr,
+            currentDate: current?.date,
             previousKey: previous?.key,
             previousNameAr: previous?.key.nameAr,
             previousDate: previous?.date,
