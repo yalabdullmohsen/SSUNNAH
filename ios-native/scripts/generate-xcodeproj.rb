@@ -124,6 +124,8 @@ wres = proj.main_group.new_group('SunnahWatchResources', 'SunnahWatchResources')
   bfx = proj.new(Xcodeproj::Project::Object::PBXBuildFile); bfx.product_ref = dp
   tg.frameworks_build_phase.files << bfx
 end
+wk.resources_build_phase.add_file_reference(wres.new_reference('Assets.xcassets'))
+wk.build_configurations.each { |c| c.build_settings['ASSETCATALOG_COMPILER_APPICON_NAME'] = 'AppIcon' }
 { wk => ['com.yousef.majlisilm.watchkitapp', 'Info.plist', 'SunnahWatch.entitlements'],
   wkx => ['com.yousef.majlisilm.watchkitapp.complications', 'Complications-Info.plist', 'SunnahWatchComplications.entitlements'] }.each do |tg, (bid, plist, ent)|
   wres.new_reference(plist); wres.new_reference(ent)
