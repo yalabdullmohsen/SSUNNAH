@@ -3,7 +3,7 @@
     "adhkar": 1,
     "hadith": 12,
     "knowledge": 107,
-    "learn": 11,
+    "learn": 10,
     "library": 3,
     "quiz": 61,
     "quran": 5,
@@ -15,6 +15,7 @@
     "sirah": 21
   },
   "descriptions": {
-    "learn": 15
-  }
+    "learn": 11
+  },
+  "origin": {}
 }

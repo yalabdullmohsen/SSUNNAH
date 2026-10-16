@@ -21,6 +21,9 @@ const out = path.resolve(opt("--out") || `${appRoot}/../../ios-native/Data`);
 const check = args.includes("--check");
 
 const holds = new Set(JSON.parse(fs.readFileSync(`${appRoot}/content/content-hold.json`, "utf8")).holds.map((h) => String(h.id)));
+// إخفاء iOS فقط (لا يمسّ content-hold.json للويب): مفاتيح <ملف>/<معرّف> في docs/native/ios-hidden.json
+const hiddenIds = new Set(Object.keys(JSON.parse(fs.readFileSync(`${appRoot}/../../docs/native/ios-hidden.json`, "utf8")).items).map((k) => k.slice(k.indexOf(".json/") + 6)));
+for (const id of hiddenIds) holds.add(id);
 const rej = {};
 const reject = (area, why) => { rej[area] ??= {}; rej[area][why] = (rej[area][why] || 0) + 1; };
 const files = [];

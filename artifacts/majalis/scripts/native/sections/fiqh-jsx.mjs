@@ -6,6 +6,8 @@
 import { loadConsts } from "../lib/ts-literal.mjs";
 
 const GRADE = { sahih: "صحيح", hasan: "حسن" };
+/* أحاديث درجتها مختلف فيها بين المصادر المقروءة: لا شارة «صحيح» ولا جزم، والنص يبقى منسوبًا لقائله (docs/native/review/hadith8-conflicts.md) */
+const GRADE_DISPUTED = { f63: { source: "سنن الترمذي 747 — الحكم مختلف فيه: حسن (دار السلام)، صحيح (الألباني)", tag: "الحكم مختلف فيه" } };
 const join = (...p) => p.filter(Boolean).join("\n\n");
 
 export default async function exportFiqhJsx({ json, held, reject, counts, appRoot }) {
@@ -40,8 +42,8 @@ export default async function exportFiqhJsx({ json, held, reject, counts, appRoo
   /* فضائل الأعمال: الدرجة في tags والمصدر في body */
   const fd = loadConsts(`${appRoot}/src/views/FadailAamalPage.tsx`)("FADAIL");
   rows("fadail-aamal", fd.map((f) => clean({
-    id: `fadail-${f.id}`, title: f.title, body: join(f.text, f.source && `المصدر: ${f.source}`),
-    tags: [f.category, GRADE[f.grade] ?? f.grade].filter(Boolean),
+    id: `fadail-${f.id}`, title: f.title, body: join(f.text, (GRADE_DISPUTED[f.id]?.source ?? f.source) && `المصدر: ${GRADE_DISPUTED[f.id]?.source ?? f.source}`),
+    tags: [f.category, GRADE_DISPUTED[f.id]?.tag ?? GRADE[f.grade] ?? f.grade].filter(Boolean),
   })));
 
   /* التوبة */

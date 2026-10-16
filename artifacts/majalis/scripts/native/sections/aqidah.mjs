@@ -26,7 +26,7 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
   // pending_review: عناصر تخالف مصدرها المتحقق منه؛ تُخفى من التصدير (فلا تصل البحث ولا الويدجت ولا الإشعارات) حتى يعتمد يوسف التصحيح
   const pending = JSON.parse(fs.readFileSync(new URL("../../../../../docs/native/aqidah-pending-review.json", import.meta.url), "utf8")).items;
   const writeGroups = (name, groups) => {
-    const gs = groups.map((g) => ({ ...g, items: g.items.filter((it) => ok(it.id, name) && !pending[`${name}/${it.id}`]) })).filter((g) => g.items.length);
+    const gs = groups.filter((g) => !pending[`${name}/${g.id}`]).map((g) => ({ ...g, items: g.items.filter((it) => ok(it.id, name) && !pending[`${name}/${it.id}`]) })).filter((g) => g.items.length);
     out(name, gs);
     cnt(name, gs.reduce((n, g) => n + g.items.length, 0));
   };
@@ -233,7 +233,7 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
     const arts = Object.values(dw.STATIC_DAWAH_ARTICLES).filter((a) => ok(a.id, "articles") && ok(`dawah-article:${a.slug}`, "articles"));
     out("discover-islam-articles", arts);
     cnt("discover-islam-articles", arts.length);
-    const nm = dw.STATIC_NEW_MUSLIM_PATH.filter((d) => ok(d.id, "new-muslim")).map(({ id, day_number, audience, title, content_ar }) => ({ id, day_number, audience, title, content_ar }));
+    const nm = dw.STATIC_NEW_MUSLIM_PATH.filter((d) => ok(d.id, "new-muslim") && !pending[`discover-islam-new-muslim/${d.id}`]).map(({ id, day_number, audience, title, content_ar }) => ({ id, day_number, audience, title, content_ar }));
     out("discover-islam-new-muslim", nm);
     cnt("discover-islam-new-muslim", nm.length);
   }
