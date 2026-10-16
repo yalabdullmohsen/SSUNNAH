@@ -115,7 +115,7 @@
 | 16 | **أُصلح**: ذُكر إرسال البريد/الاسم مع المساهمة في PRIVACY_CHECK | — |
 | 17 | **أُصلح**: التصدير = RPC `export_my_account` بجلسة المستخدم (مطبَّقة على الإنتاج بيد المالك) | — |
 | 21 | **أُصلح**: حُذف نفي حاسبة المواريث من APPSTORE_METADATA | — |
-| 18 | `export_my_account` مطبَّقة؛ `delete_my_account` مطبَّقة بالنص الجديد (تحذف `user_submissions` و`content_views`؛ `anon` بلا تنفيذ؛ تحقق المالك)؛ **5.1.1(v) مغلق** | ن4 + يوسف (لا SQL على الإنتاج مني) |
+| 18 | `export_my_account` مطبَّقة؛ `delete_my_account` مطبَّقة بالنص الجديد (تحذف `user_submissions` و`content_views`؛ `anon` بلا تنفيذ؛ تحقق المالك)؛ اختبار الحذف على الجهاز ناجح (المالك، 2026-10-16)؛ **5.1.1(v) مغلق — البند منتهٍ** | ن4 + يوسف (لا SQL على الإنتاج مني) |
 | 19–20 | الكود: `RemoteTransport.swift` **ن2**؛ `AccountTexts`/`AccountNetwork`/`CitationScreen` **ن1** (توحيد `siteURL` بعد قرار النطاق). الوثائق (PRIVACY_CHECK:42,46 وREVIEW_NOTES) **ن5**. قرار النطاق نفسه خارج النوافذ | ن1 + ن2 + ن5 |
 | 22 | فحص ساكن أُنجز (ن4): التنزيل `URLSession` GET على خوادم `*.mp3quran.net` من بيانات القرّاء، بلا معرّف مستخدم ولا حساب؛ EveryAyah إسناد نصي فقط. صياغة الإفصاح (انكشاف IP لطرف ثالث) في app-privacy **ن5**. التقاط الشبكة الحي: غير مُجرى (لا ادعاء اجتياز) | ن5 للصياغة |
 | 24 | **أُنجز آليًا (ن4):** `scripts/native-archive-privacy-check.sh` يدمج كل PrivacyInfo داخل الأرشيف ويطابقه مع app-privacy.md والكود؛ على أرشيف 103: ✓ (5 أنواع بيانات، UserDefaults+FileTimestamp، بلا تتبع). يُشغَّل تلقائيًا في `native-rc3-launch.sh` على كل أرشيف جديد. تقرير Organizer الرسمي يبقى اختياريًا | ن4 (مُنجز) |
