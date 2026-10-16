@@ -60,6 +60,9 @@ node scripts/native-content-guards.mjs >/tmp/native-content-guards.$$ 2>&1 || { 
 rm -f /tmp/native-content-guards.$$
 node scripts/native-detail-guard.mjs >/tmp/native-detail-guard.$$ 2>&1 || { head -20 /tmp/native-detail-guard.$$; bad "حارس شاشات التفصيل: شاشة خارج المكوّن المشترك"; }
 rm -f /tmp/native-detail-guard.$$
+# 2ز) حد تماثل أقراص نهاية الآية 8٪ (ن3): ثابت دائمًا؛ مع --release يشغّل اختبار التثبيت فعليًا (9٪ مرفوض، 6٪ مقبول)
+if [ "${1:-}" = "--release" ]; then DISC_GUARD_RUN=1 bash scripts/native-mushaf-disc-guard.sh || bad "حارس حد الأقراص 8٪: ضعف الحد أو فشل اختبار التثبيت"
+else bash scripts/native-mushaf-disc-guard.sh || bad "حارس حد الأقراص 8٪: ضعف الحد أو فُقد اختبار التثبيت"; fi
 
 # 3) عدد المسارات المبنية مقابل 212
 built=$(grep -c . docs/native/MERGED_BUILT.txt)
