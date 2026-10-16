@@ -12,6 +12,9 @@ EXE=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Info.plist" 2
 BIN="$APP/${EXE:-__none__}"; [ -f "$BIN" ] || BIN="$APP"
 mt() { stat -f %m "$1" 2>/dev/null || echo 0; }
 BUILT=$(mt "$BIN")
+# مجلد (مثل .xctest بلا executable): mtime المجلد لا يتغيّر بتغيّر محتواه → نستعمل أحدث ملف داخله
+[ -d "$BIN" ] && BUILT=$(find "$BIN" -type f -exec stat -f %m {} + 2>/dev/null | sort -n | tail -1)
+BUILT=${BUILT:-$(mt "$BIN")}
 # shellcheck disable=SC2086
 NEWEST=$(git log -1 --format=%ct -- $SRC_DIRS 2>/dev/null); NEWEST=${NEWEST:-0}
 # shellcheck disable=SC2086
