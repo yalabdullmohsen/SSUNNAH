@@ -76,7 +76,7 @@
 
 **18 — الدالتان في قاعدة البيانات**
 - الملف: `docs/native/backend/delete-account.sql` و`docs/native/backend/export-account.sql` (لا مقابل في `supabase/` ولا `artifacts/supabase/`).
-- المطلوب: migration إضافية قابلة للتراجع تنقل الدالتين مع صلاحياتهما (SECURITY DEFINER وRLS)، تُطبَّق على staging (`sunnah-staging`) أولًا؛ ولا SQL على الإنتاج دون أمر المالك صراحةً (قاعدة `git-ci-release.md`).
+- الحالة: **مغلق** — تحقّق Claude (منسّق المشروع) من تعريف الدالة على الإنتاج بقراءتها بعد أن طبّقها المالك، وجرّب المالك الحذف والتصدير على جهازه ونجحا. يبقى (اختياريًا) نقل الدالتين إلى migration في `supabase/` ليُعاد بناؤهما.
 - المالك: يوسف (قاعدة البيانات)؛ لا نافذة مسجَّلة.
 
 **19 — نطاق `www.ssunnah.com`**
