@@ -34,7 +34,7 @@ Sunnah: a native iPhone/iPad app with the full Mushaf (604 pages), adhkar, hadit
 Content is prepared with the assistance of AI from sources cited on each page and may contain errors; it is not a substitute for scholars.
 This is a test build: please report issues via Settings > Contact us or TestFlight feedback (screenshot + description).
 ```
-- Feedback Email: بريد الدعم المعتمد (قرار يوسف المعلّق: بريد دعم منفصل؛ لا بريد شخصي).
+- Feedback Email: `info@ssunnah.com` (العنوان الرسمي بقرار يوسف).
 - Marketing/Privacy URL: `https://yalabdullmohsen.github.io/sunnah-legal/privacy.html`
 - **إصلاح معلّق (يوسف):** الوصف الحالي في ASC يقول «تطبيق المجلس العلمي» ← استبدله بالنص أعلاه.
 

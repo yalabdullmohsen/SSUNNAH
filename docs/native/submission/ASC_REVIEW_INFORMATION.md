@@ -15,7 +15,7 @@
 | Password | `<في ASC فقط>` |
 | First / Last name | `<يحدده المالك>` |
 | Phone | `<يحدده المالك>` |
-| Email | `<بريد دعم مستقل — يقرّره يوسف، انظر الخيارين أدناه>` (بريد الدعم الحالي في `app-privacy.md:20` غير مؤكد الصلاحية) |
+| Email | `info@ssunnah.com` (العنوان الرسمي بقرار يوسف؛ يطابق `AccountTexts.contactEmail`) |
 | Attachment | لا حاجة |
 
 شروط الحساب: مؤكَّد البريد (Auto Confirm) لأن `mailer_autoconfirm=false` (`REVIEW_NOTES.md`، قسم «التسجيل لدى المراجع») فلا يستطيع المراجع إنشاء حساب صالح بنفسه. حساب المراجع لا يُحذف (`RELEASE.md:67`)؛ **ينبّه المراجع في Notes ألا يجرّب «حذف الحساب» عليه** وأن ينشئ حسابًا مؤقتًا إن توفّر له بريد، وإلا فالبديل: حساب ثانٍ مخصص للحذف يجهّزه المالك قبل الإرسال (يوجد `test.delete@ssunnah.com` للمالك، للحذف مرة واحدة، `RELEASE.md:67`؛ لا يُكتب في ASC إلا إن قرر المالك). تحقق قبل كل إرسال أن الحساب يدخل فعلًا.
@@ -72,17 +72,12 @@ Most content works offline. Online-only: sign-in, bookmark/progress sync, user s
 - اسم/هاتف/بريد جهة الاتصال، وصلاحية الحساب التجريبي لحظة الإرسال: إجراء المالك.
 - رقم البناء: `docs/native/release-state.json` فقط.
 
-## بريد الدعم المستقل (قرار يوسف)
+## بريد الدعم (قرار يوسف)
 
-البريد الشخصي لا يوضع في نص المتجر (المستودع عام). خياران:
-
-1. **صندوق مخصص على نطاق التطبيق** (مثل `support@` على نطاق مملوك). يلزم أن يكون النطاق فعّالًا؛ النطاقان الحاليان معلّقان، فلا يصلح قبل استعادتهما.
-2. **حساب بريد مخصص مجاني** (مثل Gmail جديد باسم التطبيق) يعمل فورًا ولا يرتبط بالنطاق، ويصلح بريدًا لـReview Information وSupport URL.
+العنوان الرسمي الواحد: `info@ssunnah.com` — للدعم والتواصل والاقتراحات والبلاغات، ويقرؤه التطبيق من `AccountTexts.contactEmail` (`AccountTexts.swift:177`). مصدره في الموقع `SUPPORT_EMAIL` في `docs/site/config.js`. تحقّق يوسف من وصول رسالة تجريبية: `YOUSEF_ONLY.md`.
 
 ## روابط النهائية المتوقعة (يتحقق منها يوسف بعد النشر)
 
-- Support URL: `https://yalabdullmohsen.github.io/sunnah-legal/support.html` — لا تُلصَق قبل أن يرسل يوسف عنوان الدعم ويُضبط في `docs/site/config.js` وتُنشر الصفحة (ن4) ويعيد الرابط 200.
+- Support URL: `https://yalabdullmohsen.github.io/sunnah-legal/support.html` — يُنشر من `docs/site` (ن4)؛ يتحقق يوسف أنه يعيد 200 قبل اللصق.
 - Privacy Policy URL: `https://yalabdullmohsen.github.io/sunnah-legal/privacy.html`.
-- عنوان الدعم متغيّر في مكان واحد (`SUPPORT_EMAIL`)؛ لا يُكتب في أي ملف منشور.
 
-حتى يُقرَّر: يبقى الحقل فارغًا في هذه الوثيقة ولا يُكتب بريد في أي نص متجر.
