@@ -63,6 +63,8 @@ rm -f /tmp/native-detail-guard.$$
 # 2ز) حد تماثل أقراص نهاية الآية 8٪ (ن3): ثابت دائمًا؛ مع --release يشغّل اختبار التثبيت فعليًا (9٪ مرفوض، 6٪ مقبول)
 if [ "${1:-}" = "--release" ]; then DISC_GUARD_RUN=1 bash scripts/native-mushaf-disc-guard.sh || bad "حارس حد الأقراص 8٪: ضعف الحد أو فشل اختبار التثبيت"
 else bash scripts/native-mushaf-disc-guard.sh || bad "حارس حد الأقراص 8٪: ضعف الحد أو فُقد اختبار التثبيت"; fi
+node scripts/native-titles-guard.mjs >/tmp/native-titles-guard.$$ 2>&1 || { head -20 /tmp/native-titles-guard.$$; bad "حارس titles-unique: عنوان مفقود/مكرر/خارج الجرد"; }
+rm -f /tmp/native-titles-guard.$$
 
 # 3) عدد المسارات المبنية مقابل 212
 built=$(grep -c . docs/native/MERGED_BUILT.txt)
