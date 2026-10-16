@@ -8,4 +8,5 @@
 - سطر Watch: `WATCH_LINE_STAGED.md` — بعد تأكيد ن4.
 - أرقام البناء 106/النهائي في TESTFLIGHT_COPY بعد ن4.
 - بعد دمج #3414: أضف ما يجلبه إلى صفحة الدعم والنصوص.
+- أُنجز في الدفعة: SOURCES_CLAIM_AUDIT.md، PRIVACY_REQUIRED_REASON_AUDIT.md، docs/native/check-asc-lengths.py (كلها OK). «ما الجديد» مطابق للكود (ويدجت مواقيت/آية/ذكر في PrayerWidgetBundle؛ لا Watch).
 - ديون: Privacy Report من أرشيف حقيقي؛ قرار PrivacyInfo (يوسف)؛ تصحيح وصف TestFlight في ASC (يوسف)؛ التحقق من «مصادر في كل صفحة» (ن1/ن4)؛ AUDIO_HEADERS_CHECK على 104 (ن4)؛ تأكيد ن4 أن docs/site تُنشر وأن حارس الروابط يغطيها (لم أجد الحارس بالاسم).
