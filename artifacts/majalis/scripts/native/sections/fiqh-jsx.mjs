@@ -4,6 +4,7 @@
  * worship (شاشة مواقيت) وmawarith-calculator وprayer-times تبقى فارغة في fiqh-rest.mjs.
  */
 import { loadConsts } from "../lib/ts-literal.mjs";
+import { toLatinDigits } from "../lib/latin-digits.mjs";
 
 const GRADE = { sahih: "صحيح", hasan: "حسن" };
 /* أحاديث درجتها مختلف فيها بين المصادر المقروءة: لا شارة «صحيح» ولا جزم، والنص يبقى منسوبًا لقائله (docs/native/review/hadith8-conflicts.md) */
@@ -30,8 +31,8 @@ export default async function exportFiqhJsx({ json, held, reject, counts, appRoo
     id: `${prefix}-${r.num ?? i + 1}`, title: r.title, subtitle: r.subtitle, tags: [],
     body: join(
       r.summary,
-      r.dalilQuran?.length && `من القرآن:\n${r.dalilQuran.map((d) => `${d.text} — ${d.ref}`).join("\n")}`,
-      r.dalilHadith?.length && `من السنة:\n${r.dalilHadith.map((d) => `${d.text} — ${d.source}`).join("\n")}`,
+      r.dalilQuran?.length && `من القرآن:\n${r.dalilQuran.map((d) => `${d.text} — ${toLatinDigits(String(d.ref ?? ""))}`).join("\n")}`,
+      r.dalilHadith?.length && `من السنة:\n${r.dalilHadith.map((d) => `${d.text} — ${toLatinDigits(String(d.source ?? ""))}`).join("\n")}`,
       ...(r.details || []).map((d) => `${d.label}: ${d.body}`),
       r.scholarQuote && `${r.scholarQuote.text} — ${r.scholarQuote.scholar}`,
     ),
@@ -42,7 +43,7 @@ export default async function exportFiqhJsx({ json, held, reject, counts, appRoo
   /* فضائل الأعمال: الدرجة في tags والمصدر في body */
   const fd = loadConsts(`${appRoot}/src/views/FadailAamalPage.tsx`)("FADAIL");
   rows("fadail-aamal", fd.map((f) => clean({
-    id: `fadail-${f.id}`, title: f.title, body: join(f.text, (GRADE_DISPUTED[f.id]?.source ?? f.source) && `المصدر: ${GRADE_DISPUTED[f.id]?.source ?? f.source}`),
+    id: `fadail-${f.id}`, title: f.title, body: join(f.text, (GRADE_DISPUTED[f.id]?.source ?? f.source) && `المصدر: ${toLatinDigits(String(GRADE_DISPUTED[f.id]?.source ?? f.source))}`),
     tags: [f.category, GRADE_DISPUTED[f.id]?.tag ?? GRADE[f.grade] ?? f.grade].filter(Boolean),
   })));
 
@@ -53,7 +54,7 @@ export default async function exportFiqhJsx({ json, held, reject, counts, appRoo
   tg("ANWAA").forEach((x, i) => tw.push(clean({ id: `tawba-nawaa-${i + 1}`, title: x.title, subtitle: x.hukm, body: x.desc, tags: ["أنواع التوبة"] })));
   tg("ADHKAR").forEach((x, i) => tw.push(clean({
     id: `tawba-dhikr-${i + 1}`, title: x.arabic, subtitle: x.times, tags: ["أذكار التوبة"],
-    body: join(x.reward, x.source && `المصدر: ${x.source}`),
+    body: join(x.reward, x.source && `المصدر: ${toLatinDigits(String(x.source))}`),
   })));
   tg("MAWANI").forEach((x, i) => tw.push(clean({ id: `tawba-mani-${i + 1}`, title: x.title, body: x.desc, tags: ["موانع التوبة"] })));
   tg("ATHAAR").forEach((x, i) => tw.push(clean({ id: `tawba-athar-${i + 1}`, title: x.title, body: join(x.desc, x.dalil && `الدليل: ${x.dalil}`), tags: ["آثار التوبة"] })));
@@ -73,6 +74,6 @@ export default async function exportFiqhJsx({ json, held, reject, counts, appRoo
   })));
   qg("QAWAID_FARAA").forEach((x, i) => q.push(clean({ id: `qawaid-faraa-${i + 1}`, title: x.text, body: join(x.explanation, x.example && `مثال: ${x.example}`), tags: ["القواعد الفرعية"] })));
   qg("DHAWAABIT").forEach((x) => (x.rules || []).forEach((r, i) => q.push(clean({ id: `dhabit-${x.id}-${i + 1}`, title: r.text, subtitle: x.science, body: r.example && `مثال: ${r.example}`, tags: ["الضوابط الفقهية"] }))));
-  qg("TATBIQAT").forEach((x, i) => q.push(clean({ id: `tatbiq-${i + 1}`, title: x.title, subtitle: x.qaaida, body: join(x.question, x.answer, x.source && `المصدر: ${x.source}`), tags: ["التطبيقات المعاصرة"] })));
+  qg("TATBIQAT").forEach((x, i) => q.push(clean({ id: `tatbiq-${i + 1}`, title: x.title, subtitle: x.qaaida, body: join(x.question, x.answer, x.source && `المصدر: ${toLatinDigits(String(x.source))}`), tags: ["التطبيقات المعاصرة"] })));
   rows("fiqh-qawaid", q);
 }
