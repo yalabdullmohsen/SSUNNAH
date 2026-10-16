@@ -94,6 +94,6 @@ public struct HomeDailyContent: Equatable, Sendable {
               let data = try? Data(contentsOf: dir.appendingPathComponent(String(format: "surah-%03d.json", surah))),
               let f = try? JSONDecoder().decode(File.self, from: data),
               let a = f.ayahs.first(where: { $0.numberInSurah == ayah }) else { return nil }
-        return a.text.replacingOccurrences(of: "\u{FEFF}", with: "")
+        return QuranDisplayText.clean(a.text, surah: surah, ayah: ayah)
     }
 }

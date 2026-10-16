@@ -38,6 +38,11 @@
       "match": "native-mushaf-endmark-guard\\.sh$"
     },
     {
+      "id": "verse-selection",
+      "owner": "ن3",
+      "match": "native-mushaf-verse-selection-guard\\.sh$"
+    },
+    {
       "id": "pager-two-pages",
       "owner": "ن3",
       "match": "native-mushaf-pager-guard\\.sh$"

@@ -86,6 +86,9 @@ else bash scripts/native-mushaf-disc-guard.sh || bad "حارس حد الأقرا
 # 2ح) حجم/لون قرص نهاية الآية (ن3): حدّان أعلى وأدنى + تباين؛ مع --release يشغّل الاختبار فعليًا
 if [ "${1:-}" = "--release" ]; then ENDMARK_GUARD_RUN=1 bash scripts/native-mushaf-endmark-guard.sh || bad "حارس قرص نهاية الآية: ضعف الحدود أو فشل الاختبار"
 else bash scripts/native-mushaf-endmark-guard.sh || bad "حارس قرص نهاية الآية: ضعف الحدود أو فُقد الاختبار"; fi
+# 2خ) تحديد الآية (ن3): آية كاملة بنقرة، تظليل متصل، قائمة سفلية لا تحجب؛ مع --release يشغّل الاختبارات فعليًا
+if [ "${1:-}" = "--release" ]; then VERSE_GUARD_RUN=1 bash scripts/native-mushaf-verse-selection-guard.sh || bad "حارس تحديد الآية: خلل أو فشل الاختبارات"
+else bash scripts/native-mushaf-verse-selection-guard.sh || bad "حارس تحديد الآية: خلل أو فُقد اختبار"; fi
 node scripts/native-titles-guard.mjs >/tmp/native-titles-guard.$$ 2>&1 || { head -20 /tmp/native-titles-guard.$$; bad "حارس titles-unique: عنوان مفقود/مكرر/خارج الجرد"; }
 rm -f /tmp/native-titles-guard.$$
 node scripts/native-tabbar-cover-guard.mjs >/tmp/native-tabbar-guard.$$ 2>&1 || { head -20 /tmp/native-tabbar-guard.$$; bad "حارس tabbar-cover: محتوى قد يختفي خلف شريط التبويب"; }
