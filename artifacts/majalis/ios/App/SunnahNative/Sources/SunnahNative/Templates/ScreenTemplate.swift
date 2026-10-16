@@ -101,8 +101,9 @@ private struct HeroNavigationBar: ViewModifier {
     func body(content: Content) -> some View {
         #if os(iOS)
         content
+            // شفاف عند القمة فيمتد نقش الرأس تحت شريط الحالة (بلا شريط مسطّح فوقه)، ومادة داكنة عند التمرير.
             .toolbarBackground(Sunnah.Colors.primaryStrongResolved(dark: scheme == .dark), for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarBackground(.automatic, for: .navigationBar)
             .toolbarColorScheme(.dark, for: .navigationBar)
         #else
         content
