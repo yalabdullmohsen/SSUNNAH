@@ -3,7 +3,7 @@
 مدموج (verify-merged ✓): #3422، #3424. هذه الدفعة: عنوان الدعم الرسمي `info@ssunnah.com` (يطابق `AccountTexts.contactEmail`)؛ لا طلب كود لـن1.
 
 ما بقي:
-- عنوان الدعم محسوم: `SUPPORT_EMAIL` في `docs/site/config.js`؛ support.html تُنشر من ن4 (الرابط في ASC_REVIEW_INFORMATION)؛ يوسف يرسل رسالة تجريبية (YOUSEF_ONLY).
+- عنوان الدعم محسوم: `SUPPORT_EMAIL` في `docs/site/config.js`؛ support.html تُنشر من ن4 (الرابط في ASC_REVIEW_INFORMATION)؛ البريد اختبره يوسف ويصل.
 - حارس الروابط (`scripts/native-static-links-check.sh`، #3410) يغطي روابط sunnah-legal في مصادر التطبيق فقط ولا يغطي `docs/site`: طلب لـن4 بتغطيتها.
 - سطر Watch: `WATCH_LINE_STAGED.md` — بعد تأكيد ن4.
 - أرقام البناء 106/النهائي في TESTFLIGHT_COPY بعد ن4.

@@ -5,7 +5,7 @@
 3. **App Privacy:** أجب من `submission/ASC_APP_PRIVACY_ANSWERS.md` (5 أنواع، Linked = Yes، Tracking = No، Purpose = App Functionality) ثم Publish.
 4. **App Review Information:** الصق Notes من `submission/ASC_REVIEW_INFORMATION.md`، وأدخل بيانات الحساب التجريبي في الحقول (كلمة المرور في ASC فقط، لا في المستودع).
 5. **TestFlight:** الصق الوصف وWhat to Test من `submission/TESTFLIGHT_COPY.md`؛ استبدل وصف «تطبيق المجلس العلمي».
-6. **قرارات معلّقة عليك:** (أ) أرسل رسالة تجريبية إلى info@ssunnah.com وتأكد أنها تصل، (ب) قرار PrivacyInfo (m2-1).
+6. **قرارات معلّقة عليك:**  قرار PrivacyInfo (m2-1).
 7. **بعد RC3:** شغّل `store/AUDIO_HEADERS_CHECK.md`؛ النتيجة تحدّد إفصاح مضيفي الصوت في ASC.
 8. **قبل الإرسال:** الصق لقطات المتجر (من ن4)، وتأكد أن زر «الإبلاغ» غير مذكور في أي نص إلا إن صدر فعلًا (G2).
 9. **الساعة:** لا تُضف سطر Apple Watch ولا لقطاتها قبل تأكيد ن4 نجاح رفعها.

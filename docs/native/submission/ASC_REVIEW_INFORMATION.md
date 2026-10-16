@@ -74,7 +74,7 @@ Most content works offline. Online-only: sign-in, bookmark/progress sync, user s
 
 ## بريد الدعم (قرار يوسف)
 
-العنوان الرسمي الواحد: `info@ssunnah.com` — للدعم والتواصل والاقتراحات والبلاغات، ويقرؤه التطبيق من `AccountTexts.contactEmail` (`AccountTexts.swift:177`). مصدره في الموقع `SUPPORT_EMAIL` في `docs/site/config.js`. تحقّق يوسف من وصول رسالة تجريبية: `YOUSEF_ONLY.md`.
+العنوان الرسمي الواحد: `info@ssunnah.com` — للدعم والتواصل والاقتراحات والبلاغات، ويقرؤه التطبيق من `AccountTexts.contactEmail` (`AccountTexts.swift:177`). مصدره في الموقع `SUPPORT_EMAIL` في `docs/site/config.js`. اختبره يوسف ويصل.
 
 ## روابط النهائية المتوقعة (يتحقق منها يوسف بعد النشر)
 
