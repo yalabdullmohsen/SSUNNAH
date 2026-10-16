@@ -58,6 +58,10 @@ struct MushafPager<Content: View>: UIViewRepresentable {
     static func page(atOffsetX x: CGFloat, width w: CGFloat, count: Int) -> Int {
         min(max(count - Int((x / max(w, 1)).rounded()), 1), count)
     }
+    /// الصفحات التي يتقاطع حيّزها مع نافذة العرض عند إزاحة معيّنة (أكثر من صفحتين = خلل). حيّز الصفحة n = [X(n), X(n)+w).
+    static func visiblePages(atOffsetX x: CGFloat, width w: CGFloat, count: Int) -> [Int] {
+        (1...count).filter { n in let lo = offsetX(page: n, width: w, count: count); return lo < x + w - 0.001 && lo + w > x + 0.001 }
+    }
     /// حركة واحدة = صفحة واحدة: الهدف نفسها أو المجاورة بحسب الاتجاه/المسافة (v.x > 0 = سحب نحو الصفحة السابقة) لا بسرعة الإفلات.
     static func targetPage(start: Int, offsetX x: CGFloat, velocityX v: CGFloat, width w: CGFloat, count: Int) -> Int {
         let moved = x - offsetX(page: start, width: w, count: count)

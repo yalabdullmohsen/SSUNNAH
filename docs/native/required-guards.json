@@ -5,6 +5,7 @@
     { "id": "date-readable", "owner": "ن1", "match": "native-.*date.*\\.(mjs|sh)$" },
     { "id": "tabbar-cover", "owner": "ن1", "match": "native-.*(tabbar|tab-bar|inset|cover).*\\.(mjs|sh)$" },
     { "id": "verse-selection", "owner": "ن3", "match": "native-.*(select|mushaf).*\\.(mjs|sh)$" },
+    { "id": "pager-two-pages", "owner": "ن3", "match": "native-mushaf-pager-guard\\.sh$" },
     { "id": "templated-content", "owner": "ن2", "match": "native-content-guards\\.mjs$" }
   ]
 }

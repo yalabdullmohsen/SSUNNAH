@@ -62,6 +62,9 @@ node scripts/native-date-guard.mjs >/tmp/native-date-guard.$$ 2>&1 || { head -20
 rm -f /tmp/native-date-guard.$$
 node scripts/native-detail-guard.mjs >/tmp/native-detail-guard.$$ 2>&1 || { head -20 /tmp/native-detail-guard.$$; bad "حارس شاشات التفصيل: شاشة خارج المكوّن المشترك"; }
 rm -f /tmp/native-detail-guard.$$
+# 2ح) التقليب (ن3): لا أكثر من صفحتين متجاورتين متداخلتين؛ مع --release يشغّل الاختبارات فعليًا
+if [ "${1:-}" = "--release" ]; then PAGER_GUARD_RUN=1 bash scripts/native-mushaf-pager-guard.sh || bad "حارس التقليب: خلل أو فشل اختبارات الانتقال"
+else bash scripts/native-mushaf-pager-guard.sh || bad "حارس التقليب: خلل أو فُقدت اختبارات الانتقال"; fi
 node scripts/native-titles-guard.mjs >/tmp/native-titles-guard.$$ 2>&1 || { head -20 /tmp/native-titles-guard.$$; bad "حارس titles-unique: عنوان مفقود/مكرر/خارج الجرد"; }
 rm -f /tmp/native-titles-guard.$$
 
