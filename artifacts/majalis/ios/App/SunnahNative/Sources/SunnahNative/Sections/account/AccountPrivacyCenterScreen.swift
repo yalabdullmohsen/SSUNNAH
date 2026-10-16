@@ -2,6 +2,11 @@ import SwiftUI
 
 /// /privacy-center — الحقوق، تصدير بيانات الحساب، وروابط الحذف والسياسات (نصوص PrivacyCenterPage).
 struct AccountPrivacyCenterScreen: View {
+    static let staticPages: [(title: String, url: String)] = [
+        ("سياسة الخصوصية على الإنترنت", "https://yalabdullmohsen.github.io/sunnah-legal/privacy.html"),
+        ("الدعم والتواصل", "https://yalabdullmohsen.github.io/sunnah-legal/support.html"),
+    ]
+
     @Environment(\.platform) private var platform
     @State private var exporting = false
     @State private var exportMessage = ""
@@ -56,6 +61,12 @@ struct AccountPrivacyCenterScreen: View {
                     if let eula = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
                         Link(destination: eula) { SunnahListRow(title: "شروط الاستخدام (اتفاقية Apple القياسية)", subtitle: nil) }
                             .buttonStyle(.plain)
+                    }
+                    // روابط ثابتة على GitHub Pages (يتحقق حارس الروابط من 200)؛ لا نطاق موقع في التطبيق.
+                    ForEach(Self.staticPages, id: \.title) { page in
+                        if let url = URL(string: page.url) {
+                            Link(destination: url) { SunnahListRow(title: page.title, subtitle: nil) }.buttonStyle(.plain)
+                        }
                     }
                     AccountLinkRow(title: "إعدادات الكثافة وتوفير البيانات", path: "/settings")
                 }
