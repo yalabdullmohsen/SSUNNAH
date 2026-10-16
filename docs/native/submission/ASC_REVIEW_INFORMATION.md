@@ -1,6 +1,6 @@
 # ASC_REVIEW_INFORMATION — حقول App Review Information (سُنّة)
 
-> ⏳ **بانتظار تأكيد الهدف:** أي الهدفين يُرفع (`ios-native/SunnahApp` أم `artifacts/majalis/ios/App`) لم يُحسم؛ ن4 يُخرج Info.plist والـentitlements الفعلية من البناء الأخير (انظر `release-state.json`). كل ما يخص الميكروفون/الحركة/`remote-notification`/`aps-environment` في هذا الملف مؤقت ولا يُعتمد قبل أسطر ن4.
+> ✅ **الهدف المرفوع (حسمه المالك):** `ios-native/SunnahApp` (أرشيف بناء 104). مصدر الدليل: أرشيف 104 وفحص `codesign` (إفادة المالك/ن4؛ لم أفحصه بنفسي). فيه إذن الموقع فقط، بلا ميكروفون ولا حركة ولا `remote-notification` ولا `aps-environment`. هدف Capacitor (`artifacts/majalis/ios/App`) لا يُرفع وسيُعطَّل؛ ما يخصه في هذه الوثيقة للتاريخ فقط.
 
 
 > تُنقل القيم إلى App Store Connect ← الإصدار ← App Review Information. **لا كلمات مرور في المستودع (عام).** رقم البناء/الإصدار: انظر `docs/native/release-state.json`.

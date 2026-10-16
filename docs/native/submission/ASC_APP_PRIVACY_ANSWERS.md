@@ -1,6 +1,6 @@
 # ورقة إجابات «App Privacy» في App Store Connect — تطبيق «سُنّة» (iOS الأصلي)
 
-> ⏳ **بانتظار تأكيد الهدف:** أي الهدفين يُرفع (`ios-native/SunnahApp` أم `artifacts/majalis/ios/App`) لم يُحسم؛ ن4 يُخرج Info.plist والـentitlements الفعلية من البناء الأخير (انظر `release-state.json`). كل ما يخص الميكروفون/الحركة/`remote-notification`/`aps-environment` في هذا الملف مؤقت ولا يُعتمد قبل أسطر ن4.
+> ✅ **الهدف المرفوع (حسمه المالك):** `ios-native/SunnahApp` (أرشيف بناء 104). مصدر الدليل: أرشيف 104 وفحص `codesign` (إفادة المالك/ن4؛ لم أفحصه بنفسي). فيه إذن الموقع فقط، بلا ميكروفون ولا حركة ولا `remote-notification` ولا `aps-environment`. هدف Capacitor (`artifacts/majalis/ios/App`) لا يُرفع وسيُعطَّل؛ ما يخصه في هذه الوثيقة للتاريخ فقط.
 
 
 الترتيب هو ترتيب واجهة ASC (App Store Connect ← App Privacy). انسخ عمود «الإجابة» كما هو. الرقم/البناء: انظر `docs/native/release-state.json`.
