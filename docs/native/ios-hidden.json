@@ -929,10 +929,6 @@
    "reason": "مخفي بقرار يوسف 2026-10-16 (إخفاء لا حذف): المصلحة المرسلة: لم يُقرأ نص أصولي",
    "since": "2026-10-16"
   },
-  "sirah/islamic-landmarks.json/kairouan-maqam-sahaba": {
-   "reason": "مخفي بقرار يوسف 2026-10-16 (إخفاء لا حذف): مقام الصحابة بالقيروان: لا مصدر",
-   "since": "2026-10-16"
-  },
   "sirah/shamail-facts.json/مكان الميلاد": {
    "reason": "مخفي بقرار يوسف 2026-10-16 (إخفاء لا حذف): لم يُعثر على نص صريح يعيّنه",
    "since": "2026-10-16"
@@ -975,82 +971,6 @@
   },
   "library/mawsuaat.json/mawsuat-manahij": {
    "reason": "مخفي بقرار يوسف 2026-10-16 (إخفاء لا حذف): مناهج الموسوعات الشرعية: لا مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/zaytouna": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/sultan-ahmed": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/hagia-sophia": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/hassan2": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/sheikh-zayed": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/muhammad-ali": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/quwwat-ul-islam": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/sultan-hassan": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/aleppo-umayyad": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/sanaa-great": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/badshahi": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/demak-great": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/putra-mosque": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/malwiya-samarra": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/djenne-great-mosque": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/xian-great-mosque": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/kutubiyya-marrakech": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/imam-mosque-isfahan": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
-   "since": "2026-10-16"
-  },
-  "sirah/islamic-landmarks.json/djinguereber-timbuktu": {
-   "reason": "مستند لويكيبيديا وحدها (مصدر غير مقبول) — إخفاء لا حذف، بانتظار مصدر مقروء",
    "since": "2026-10-16"
   },
   "fiqh/books.json/salah-tarawih-adad": {
