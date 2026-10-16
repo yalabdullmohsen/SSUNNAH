@@ -12,7 +12,7 @@
 | `https://www.ssunnah.com` (+ `ssunnah.com`, `majlisilm.com`, `www.majlisilm.com`) | `REVIEW_NOTES.md:14,17,32`؛ التطبيق: `RemoteTransport.swift:12,40`، `AccountTexts.swift:178` (`siteURL`)، `Route.swift:48-49`، `WebLinkPolicy.swift:25-26`، `SunnahPrayerDeepLink.swift:9`، `UpdatesView.swift:17`، `NativeShellGate.swift:20`، `NativeNotificationsGate.swift:10`؛ entitlements applinks (`SunnahApp.entitlements:7-10`) | نعم | **402 للنطاقات الأربعة** | انظر العوائق |
 | `www.ssunnah.com/privacy` (يفتحه التطبيق من شاشات القانوني ومركز الخصوصية على `siteURL`) | `AccountLegalScreens`، `AccountPrivacyCenterScreen`، `PRIVACY_CHECK.md:46` | نعم | 402 | **عائق**: سياسة الخصوصية يجب أن تكون قابلة للفتح من داخل التطبيق (5.1.1(i)) |
 | `www.ssunnah.com/api/*` و`/data/*` (محتوى جديد، تحديثات، اقتباسات) | `RemoteTransport.swift:53`، `REVIEW_NOTES.md:32` | نعم | 402 | المحتوى المضمّن يعمل دون اتصال؛ الجديد يعرض حالة فارغة. ليس عائقًا للمراجعة، لكنه يعطّل «المحتوى الجديد» |
-| `info@ssunnah.com`، `apple.review@ssunnah.com` | `AccountTexts.swift:177`، `REVIEW_NOTES.md:25` | بريد لا رابط | لم يُتحقق (بريد؛ يعتمد على MX للنطاق) | حساب المراجع في Supabase لا يحتاج بريدًا يعمل؛ بريد الدعم قد لا يصل إن عُلّق النطاق |
+| `info@ssunnah.com` (غير واصل: النطاق معلّق — لا يُنشر)، `apple.review@ssunnah.com` | `AccountTexts.swift:177`، `REVIEW_NOTES.md:25` | بريد لا رابط | لم يُتحقق (بريد؛ يعتمد على MX للنطاق) | حساب المراجع في Supabase لا يحتاج بريدًا يعمل؛ بريد الدعم قد لا يصل إن عُلّق النطاق |
 | `everyayah.com`, `mp3quran.net` (`server8.mp3quran.net`) | `AccountTexts.swift:352-353` (جدول الخوادم)؛ تشغيل التلاوة | لا | 200 | سليم، ويُذكر في فقرة الخصوصية (`PRIVACY_CHECK.md`) |
 
 ## 2) العوائق (ما يتوقف على النطاق المعلّق)
