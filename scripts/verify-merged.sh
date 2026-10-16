@@ -9,7 +9,16 @@ EXCLUDED_CHECKS='^Vercel( |$)|^Vercel Preview Comments'
 # gh pr checks يطبع: الاسم<TAB>الحالة<TAB>...؛ نُسقط المستثنى ثم نبحث عن فشل حقيقي.
 real_failures() { gh pr checks "$1" 2>/dev/null | grep -vE "$EXCLUDED_CHECKS" | grep -iE '	(fail|error)'; }
 for n in "$@"; do
-  gh pr checks "$n" --watch --interval 20 >/dev/null 2>&1
+  # كان هنا `gh pr checks --watch`: يعلّق لأنه ينتظر كل الفحوص بما فيها Vercel (غير مطلوبة وقد تبقى pending/تُعاد بلا نهاية)
+  # فلا يعود حتى بعد دمج الـPR. الآن نستطلع الحالة: ننتهي عند MERGED/CLOSED أو فشل حقيقي أو انتهاء المهلة (VERIFY_TIMEOUT ثانية، الافتراضي 1800).
+  waited=0
+  while [ "$waited" -lt "${VERIFY_TIMEOUT:-1800}" ]; do
+    st=$(gh pr view "$n" --json state --jq .state 2>/dev/null)
+    [ "$st" = MERGED ] || [ "$st" = CLOSED ] && break
+    [ -n "$(real_failures "$n")" ] && break
+    [ -n "${VERIFY_NOWAIT:-}" ] && break
+    sleep 20; waited=$((waited+20))
+  done
   git fetch -q origin "$BASE" 2>/dev/null   # بعد انتهاء الفحوص: الدمج قد يحدث أثناء الانتظار
   read -r state sha < <(gh pr view "$n" --json state,mergeCommit --jq '"\(.state) \(.mergeCommit.oid // "-")"')
   if [ -n "$(real_failures "$n")" ]; then
