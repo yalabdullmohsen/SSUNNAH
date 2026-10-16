@@ -175,11 +175,13 @@ final class MushafMultiSizeGuardTests: XCTestCase {
         return out
     }
 
-    /// DISC-CLEAR (بكسل 2x على لقطة فعلية): (أ) كل جانب فيه جار ≥ 70% من متوسط فراغ كلمات سطره وليس أقل من `minClearPx`؛ (ب) القيمة المطلقة |يمين − يسار| ≤ max(2px، 4% من قطر القرص) لكل قرص (لا متوسط موقّع: الموجب والسالب يلغيان بعضهما).
+    /// DISC-CLEAR (بكسل 2x على لقطة فعلية): (أ) كل جانب فيه جار ≥ 70% من متوسط فراغ كلمات سطره وليس أقل من `minClearPx`؛ (ب) القيمة المطلقة |يمين − يسار| ≤ max(2px، 8% من قطر القرص) — الحكم في `isAsymBad` المثبَّت بـ`DiscAsymThresholdTests` لكل قرص (لا متوسط موقّع: الموجب والسالب يلغيان بعضهما).
     /// الافتراضي عيّنة 12 صفحة؛ `MUSHAF_ALL_PAGES=1` يفحص الـ604 كلها على SE وPro وPro Max وiPad 11 وiPad 13.
     /// فراغ كل جانبيه ≥ 1.5× متوسط فراغ الكلمات = تباعد السطر الطبيعي (لا حشوة فيه)؛ لا يُقاس عليه التماثل.
     static let naturalGapFactor = 1.5
     static let minClearPx = 2.0, minRatio = 0.7, maxAsymFrac = 0.08, minAsymTol = 2.0
+    /// حكم التفاوت بين جانبي القرص: سيئ إن زاد |يمين − يسار| عن max(minAsymTol، maxAsymFrac × القطر). دالة نقية يثبّتها `DiscAsymThresholdTests` كي لا يضعف الحد دون أن يفشل اختبار.
+    static func isAsymBad(diff: Double, d: Double) -> Bool { diff > max(minAsymTol, maxAsymFrac * d) }
     static let discSizes: [(String, CGSize)] = [sizes[0], sizes[3], sizes[4], ("ipad11-834x1194", CGSize(width: 834, height: 1194)), ("ipad13-1032x1376", CGSize(width: 1032, height: 1376))]
     @MainActor func testEndOfAyahDiscsKeepClearanceFromNeighbourInk() throws {
         guard let p = ProcessInfo.processInfo.environment["MUSHAF_DATA"] else { throw XCTSkip("MUSHAF_DATA غير محدد") }
@@ -207,7 +209,7 @@ final class MushafMultiSizeGuardTests: XCTestCase {
                     if let r = m.right, let l = m.left, max(r, l) > 0, min(r, l) < Self.naturalGapFactor * m.ref || m.ref == 0 {
                         sumDiff += r - l; nDiff += 1; let diff = abs(r - l), pct = m.d > 0 ? diff / m.d : 0
                         absPx.append(diff); absPct.append(pct); worstAsym = max(worstAsym, pct)
-                        if diff > max(Self.minAsymTol, Self.maxAsymFrac * m.d) { badAsym += 1; fail = true }
+                        if Self.isAsymBad(diff: diff, d: m.d) { badAsym += 1; fail = true }
                         if rowsOn { print("DISCROW \(name) p\(n) y=\(m.cy) right=\(r) left=\(l) d=\(m.d) absDiff=\(diff) pct=\(pct)") }
                     }
                     if fail { bad += 1; sb += 1; if let dir = ProcessInfo.processInfo.environment["MUSHAF_SNAP_DIR"], let crop = img.cropping(to: CGRect(x: 0, y: max(0, Int(m.cy) - 50), width: img.width, height: 100)), let d = CGImageDestinationCreateWithURL(URL(fileURLWithPath: dir).appendingPathComponent("bad-\(name)-p\(n)-y\(Int(m.cy)).png") as CFURL, UTType.png.identifier as CFString, 1, nil) { CGImageDestinationAddImage(d, crop, nil); CGImageDestinationFinalize(d) }
@@ -226,4 +228,31 @@ final class MushafMultiSizeGuardTests: XCTestCase {
 
     // القارئ المستضاف (TabView) لا يُرسَم داخل حزمة اختبار بلا تطبيق مضيف: أثبتنا على محاكي iOS أن اللقطة بيضاء كليًا (ink=0 في 30/30)،
     // فكان فحص الحافة السابق يمرّ على صورة فارغة. التغطية الحقيقية للمسار الكامل بلقطات التطبيق (-snapshotRoute /mushaf/page/N).
+}
+
+/// تثبيت حد تماثل الأقراص: يفشل إن ضعف الحد (تفاوت 9٪ يجب أن يُرفض) أو شُدّد بلا مبرر (6٪ و8٪ الحدّي يُقبلان).
+final class DiscAsymThresholdTests: XCTestCase {
+    func testThresholdConstantsAreNotLoosened() {
+        XCTAssertEqual(MushafMultiSizeGuardTests.maxAsymFrac, 0.08, accuracy: 1e-9)
+        XCTAssertEqual(MushafMultiSizeGuardTests.minAsymTol, 2.0, accuracy: 1e-9)
+    }
+
+    func testNineAndTenPercentAreRejected() {
+        for d in [40.0, 60.0, 90.0, 120.0] {
+            XCTAssertTrue(MushafMultiSizeGuardTests.isAsymBad(diff: 0.09 * d, d: d), "9٪ من \(d) يجب أن يُرفض")
+            XCTAssertTrue(MushafMultiSizeGuardTests.isAsymBad(diff: 0.10 * d, d: d), "10٪ من \(d) يجب أن يُرفض")
+        }
+    }
+
+    func testSixPercentAndExactBoundaryPass() {
+        for d in [40.0, 60.0, 90.0, 120.0] {
+            XCTAssertFalse(MushafMultiSizeGuardTests.isAsymBad(diff: 0.06 * d, d: d), "6٪ من \(d) يجب أن يُقبل")
+            XCTAssertFalse(MushafMultiSizeGuardTests.isAsymBad(diff: 0.08 * d, d: d), "8٪ الحدّي من \(d) يجب أن يُقبل")
+        }
+    }
+
+    func testAbsoluteToleranceFloorForSmallDiscs() {
+        XCTAssertFalse(MushafMultiSizeGuardTests.isAsymBad(diff: 2.0, d: 20))
+        XCTAssertTrue(MushafMultiSizeGuardTests.isAsymBad(diff: 2.1, d: 20))
+    }
 }
