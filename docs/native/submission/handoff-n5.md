@@ -1,10 +1,10 @@
 # handoff ن5 (محدَّث 2026-10-16)
 
-مدموج (verify-merged ✓): #3422. هذه الدفعة: PR دعم/متغيّر العنوان (انظر الحالة بـverify-merged).
+مدموج (verify-merged ✓): #3422، #3424. هذه الدفعة: عنوان الدعم الرسمي `info@ssunnah.com` (يطابق `AccountTexts.contactEmail`)؛ لا طلب كود لـن1.
 
 ما بقي:
-- عنوان الدعم: ينتظر يوسف → سطر `SUPPORT_EMAIL` في `docs/site/config.js` ثم نشر support.html (ن4) والتحقق 200.
-- طلب كود: `CODE_REQUEST_support_email.md` (AccountTexts.contactEmail).
+- عنوان الدعم محسوم: `SUPPORT_EMAIL` في `docs/site/config.js`؛ support.html تُنشر من ن4 (الرابط في ASC_REVIEW_INFORMATION)؛ البريد اختبره يوسف ويصل.
+- حارس الروابط (`scripts/native-static-links-check.sh`، #3410) يغطي روابط sunnah-legal في مصادر التطبيق فقط ولا يغطي `docs/site`: طلب لـن4 بتغطيتها.
 - سطر Watch: `WATCH_LINE_STAGED.md` — بعد تأكيد ن4.
 - أرقام البناء 106/النهائي في TESTFLIGHT_COPY بعد ن4.
 - بعد دمج #3414: أضف ما يجلبه إلى صفحة الدعم والنصوص.

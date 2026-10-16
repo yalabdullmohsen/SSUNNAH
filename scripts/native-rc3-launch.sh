@@ -6,6 +6,9 @@ set -uo pipefail; cd "$(dirname "$0")/.."
 BUILD="${1:?رقم البناء}"; FINAL=0; [ "${2:-}" = "--final" ] && FINAL=1
 REQ_PRS="${REQ_PRS:-3335 3336}"
 die() { echo "✗ $1" >&2; exit 1; }
+# حارس حدّ العمليات: يرفض البدء إن تجاوزت عمليات المستخدم 90% من ulimit -u (يتسبب بفشل fork وانقطاع الأرشفة/الرفع)
+NP=$(ps -u "$(id -u)" -o pid= | wc -l | tr -d ' '); UL=$(ulimit -u)
+if [[ "$UL" =~ ^[0-9]+$ ]] && [ $((NP*100)) -gt $((UL*90)) ]; then die "عمليات المستخدم $NP من $UL (>90%) — أغلق محاكيات/أدوات خاملة (xcrun simctl shutdown <udid> لمحاكيك فقط) ثم أعد المحاولة"; fi
 git fetch -q origin native-app
 for p in $REQ_PRS; do [ "$(gh pr view "$p" --json state -q .state)" = MERGED ] || die "PR #$p لم يُدمج بعد"; done
 LAST=$(node -p 'require("./docs/native/release-state.json").lastUploadedBuild')
