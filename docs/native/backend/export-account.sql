@@ -1,6 +1,6 @@
 -- تصدير بيانات الحساب (مطلب الخصوصية) بلا اعتماد على الموقع: يستدعيه التطبيق عبر POST /rest/v1/rpc/export_my_account.
 -- نفس نمط delete_my_account: SECURITY DEFINER، search_path فارغ، auth.uid() فقط (لا معاملات)، التنفيذ لـ authenticated فقط.
--- لا يُنفَّذ من ن4: يطبّقه المالك. يستثني حقول الصلاحيات الداخلية (is_admin…) ومعرّف المراجع ولا يلمس أي حساب آخر.
+-- طُبّقت على الإنتاج بيد المالك (هجرة export_my_account، 2026-10-16). لا يُنفَّذ من ن4 أبدًا. يستثني حقول الصلاحيات الداخلية (is_admin…) ومعرّف المراجع ولا يلمس أي حساب آخر.
 create or replace function public.export_my_account() returns jsonb language plpgsql security definer set search_path = '' stable as $$
 declare uid uuid := auth.uid();
 begin

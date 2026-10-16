@@ -52,7 +52,7 @@ sudo bash scripts/mac-raise-process-limits.sh --install
 
 ## خطر إطلاق: حجم قاعدة الإنتاج
 - **قاعدة الإنتاج 420MB (قياس المالك المباشر) < حد 500MB: لا دين ولا TRUNCATE.** رقم 570MB القديم كان من تحذير اللوحة ولم يُقَس؛ صُحّح. الأكبر `mke_decisions` 83MB، `mke_quality_reports` 82MB، `akp_review_queue` 76MB، ولن تُمس. التفاصيل: `docs/native/TRUNCATE_EXPLAINED.md`.
-- **مساران كانا يعتمدان على الموقع المجمّد — أُصلحا (2026-10-16):** الإرسال (`AccountSubmissionsScreens`) صار إدراجًا مباشرًا في `user_submissions` بجلسة المستخدم عبر RLS الموجودة (pending فقط؛ `type="lesson"` والنوع العربي في `meta.kind`) فيعمل **بلا SQL جديد**. التصدير (`AccountPrivacyCenterScreen`) صار `rpc/export_my_account` — **خطوة مالك:** نفّذ `docs/native/backend/export-account.sql` في Supabase (جُرّب بمعاملة تُلغى، لم يبقَ أثر)؛ قبل تنفيذه يتدهور الزر برسالة «تعذّر تحميل المحتوى. أعد المحاولة.» دون تعليق. لا حاجب للإصدار.
+- **مساران كانا يعتمدان على الموقع المجمّد — أُصلحا (2026-10-16):** الإرسال (`AccountSubmissionsScreens`) إدراج مباشر في `user_submissions` عبر RLS (pending فقط؛ حدود الشاشة تطابق الجدول 300/3000/100 مع عدّاد). التصدير (`AccountPrivacyCenterScreen`) عبر `rpc/export_my_account`: **طُبّقت على الإنتاج بهجرة باسمها بيد المالك (2026-10-16)** بعد اختبار بمعاملة تتراجع؛ anon/public لا ينفّذانها وauthenticated ينفّذ. **المتبقي: تجربة التصدير على جهاز مع RC2 بحساب `test.delete@ssunnah.com` فقط (لا المراجع).**
 
 ## قائمة فحص RC (تُنفَّذ بعد إشارة «ابنِ RC»؛ بناء واحد إلى `~/.majalis-tools/rc/`)
 حالة البنود الساكنة فُحصت 2026-10-15 على `native-app`؛ والباقي يُنفَّذ على الحزمة.
