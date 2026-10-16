@@ -144,7 +144,8 @@ final class MushafMultiSizeGuardTests: XCTestCase {
             if overlap { out.append(DiscMeasure(cy: cy, right: nil, left: nil, ref: 0)); continue } // حبر ملاصق للقرص من علامة الكلمة نفسها (وقف/سجدة): غير قابل للقياس الموثوق، يُفحص بالعين
             // فراغ كل جانب = أصغر مسافة (على صفوف شريط القرص) من حدّ الدائرة عند الصف إلى أقرب حبر؛ nil إن لم يوجد حبر قبل حافة الصورة.
             var rb: Int? = nil, lb: Int? = nil
-            for y in (cy - r / 2)...(cy + r / 2) {
+            // صفّان (≈0.03 من القطر) تسامحًا عند حدّ الشريط: علامات السطرين المجاورين تلامس الحدّ بصفّ أو اثنين بتصميم المصحف وليست من الكلمة المجاورة (تحقق: لا تظهر في مسبار الكلمة نفسها)
+            for y in (cy - r / 2 + 2)...(cy + r / 2 - 2) {
                 let half = Int((Double(r * r - (y - cy) * (y - cy))).squareRoot())
                 var x = cx + half + 1, k = 0
                 while x < w { if ink(y * w + x) { rb = min(rb ?? k, k); break }; x += 1; k += 1 }
@@ -196,6 +197,7 @@ final class MushafMultiSizeGuardTests: XCTestCase {
                 for m in measureDiscs(img) {
                     total += 1; st += 1
                     let sides = [m.right, m.left].compactMap { $0 }
+                    if ProcessInfo.processInfo.environment["MUSHAF_DUMP"] != nil { print("DISCDUMP \(name) p\(n) y=\(m.cy) right=\(m.right.map { String($0) } ?? "-") left=\(m.left.map { String($0) } ?? "-") d=\(m.d) ref=\(m.ref)") }
                     var fail = false
                     for v in sides {
                         worst = min(worst, v)
