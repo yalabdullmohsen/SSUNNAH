@@ -4,6 +4,7 @@
 //  G1 عبارات قالبية: نفس بداية الجملة (أول 5 كلمات بعد التطبيع) في ≥ TEMPLATE_N بندًا داخل الملف الواحد.
 //  G2 خلاصة/ملخّص: كل حقل summary/abstract/خلاصة/ملخص يجب أن يكون منسوبًا (source/sources/reference غير فارغ) أو موسومًا summaryOrigin:"editorial"،
 //     ولا يُقبل مصدر في ملف يعدّه docs/native/source-registry.json «pending» إلا ضمن السقف.
+//  G4 أصل المحتوى: origin:"editorial" (فائدة من إعداد سُنّة) لا يُنسب لمصدر/قائل ولا يحمل وسم توثيق؛ وفي learn/fawaid.json كل فائدة بلا مصدر يجب أن تكون editorial؛ origin:"local" يحمل originLabel «بيانات محلية».
 //  G3 وصف فارغ/مكرر: subtitle/description/summary/abstract فارغ؛ أو يساوي العنوان؛ أو مكرر حرفيًا (>12 حرفًا) في ≥3 بنود؛ أو source==reference في البند نفسه؛ أو عناصر sources مكررة.
 import { readdirSync, readFileSync, statSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -26,7 +27,7 @@ const key = x => JSON.stringify(x);
 
 const reg = existsSync("docs/native/source-registry.json") ? JSON.parse(readFileSync("docs/native/source-registry.json", "utf8")) : {};
 const pending = new Set(Object.keys(reg.pending ?? {}).map(k => k.replace(/:.*$/, "")));
-const G = { templates: {}, summaries: {}, descriptions: {} }, LIST = [];
+const G = { templates: {}, summaries: {}, descriptions: {}, origin: {} }, LIST = [];
 const add = (g, sec, file, msg) => { G[g][sec] = (G[g][sec] ?? 0) + 1; LIST.push(`${g} ${file}: ${msg}`); };
 
 for (const p of walk(DATA)) {
@@ -58,6 +59,13 @@ for (const p of walk(DATA)) {
       if (title && norm(t) === title) add("descriptions", sec, rel, `${k} يساوي العنوان (id=${r.id ?? "?"})`);
       if (t.length > 12) (seen.get(`${k}|${t}`) ?? seen.set(`${k}|${t}`, []).get(`${k}|${t}`)).push(r);
     }
+    // G4
+    if (r.origin === "editorial") {
+      if (SRC_KEYS.some(s => filled(r[s])) || str(r.author_name)) add("origin", sec, rel, `فائدة تحريرية منسوبة لمصدر/قائل (id=${r.id ?? "?"})`);
+      if (str(r.subtitle) !== "فائدة من إعداد سُنّة") add("origin", sec, rel, `فائدة تحريرية بلا وسم «فائدة من إعداد سُنّة» في subtitle (id=${r.id ?? "?"})`);
+      if ((r.tags ?? []).some(t => /^(verified|scholarly_source|primary_text)$/.test(t))) add("origin", sec, rel, `فائدة تحريرية بوسم توثيق (id=${r.id ?? "?"})`);
+    } else if (r.origin === "local") { if (str(r.originLabel) !== "بيانات محلية") add("origin", sec, rel, `بيانات محلية بلا originLabel (id=${r.id ?? "?"})`); }
+    else if (rel === "learn/fawaid.json" && !SRC_KEYS.some(s => filled(r[s]))) add("origin", sec, rel, `فائدة بلا مصدر ولا وسم origin:"editorial" (id=${r.id ?? "?"})`);
     const s1 = str(r.source), s2 = str(r.reference ?? r.ref);
     if (s1 && s1 === s2) add("descriptions", sec, rel, `source==reference (id=${r.id ?? "?"})`);
     if (Array.isArray(r.sources)) { const ks = r.sources.map(key); if (new Set(ks).size < ks.length) add("descriptions", sec, rel, `sources مكررة (id=${r.id ?? "?"})`); }

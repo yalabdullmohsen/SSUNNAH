@@ -50,6 +50,8 @@ export default async function exportLibrary({ json, held, reject, counts, appRoo
   /* الإعلانات العلمية (لا محتوى شرعي) */
   {
     const rows = (await mod("lib/scientific-announcements-seed")).SCIENTIFIC_ANNOUNCEMENTS.filter(keep("announcements"));
+    const localIds = new Set(JSON.parse(fs.readFileSync(new URL("../../../../../docs/native/content-origin.json", import.meta.url), "utf8")).local["library/scientific-announcements.json"] ?? []);
+    rows.forEach((r, i) => { if (localIds.has(String(r.id))) rows[i] = { ...r, origin: "local", originLabel: "بيانات محلية" }; });
     out("scientific-announcements", rows, rows.length);
   }
 

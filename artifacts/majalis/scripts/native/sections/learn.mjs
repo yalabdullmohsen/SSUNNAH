@@ -12,10 +12,12 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
   const keep = (area) => (x) => (held(String(idOf(x))) ? (reject(`${S}-${area}`, "محجوز"), false) : true);
   const out = (file, rows) => { json(file, rows); (counts.learn ??= {})[file] = Array.isArray(rows) ? rows.length : Object.keys(rows).length; };
   const read = (p) => JSON.parse(fs.readFileSync(p, "utf8"));
+  const origin = read(`${appRoot}/../../docs/native/content-origin.json`); // أصل المحتوى: فوائد تحريرية وبيانات محلية (قرار يوسف 2026-10-16)
+  const editorial = new Set(origin.editorialFawaid), isLocal = (file) => { const ids = new Set(origin.local[file] ?? []); return (x) => (ids.has(String(idOf(x))) ? { ...x, origin: "local", originLabel: "بيانات محلية" } : x); };
   const empty = (file, why) => { out(file, []); reject(`${S}-${file}`, `فارغ عمدًا: ${why}`); };
 
   /* الدروس: جدول الدروس بالشكل نفسه (يُحدَّث مع كل إصدار) */
-  out("lessons/chunk-000.json", read(`${appRoot}/public/data/lessons/chunk-000.json`).filter(keep("lessons")));
+  out("lessons/chunk-000.json", read(`${appRoot}/public/data/lessons/chunk-000.json`).filter(keep("lessons")).map(isLocal("lessons/chunk-000.json")));
 
   /* الجامعات: المتحقَّق منها فقط */
   out("learn/universities.json", read(`${src}/data/universities-catalog.json`).filter((u) => (u.is_verified === true ? true : (reject(`${S}-universities`, "غير متحقَّق"), false))).filter(keep("universities")));
@@ -46,10 +48,13 @@ export default async function exportLearn({ json, held, reject, counts, appRoot 
   await dars("sirah/fikr-waqia.json", "fikr-waqia-data", "FIKR_WAQIA");
   {
     const { FAWAID_CURATED_SEED, filterCuratedFawaid } = await import(`${src}/lib/fawaid-curated-seed.ts`);
-    out("learn/fawaid.json", filterCuratedFawaid(FAWAID_CURATED_SEED).filter(keep("fawaid")).map((f) => ({
-      id: f.id, title: clip(f.text, 90), subtitle: f.author_name || undefined, body: [f.text, f.source].filter(Boolean).join("\n\n"),
-      tags: [f.category, f.verification_status, f.trust_level].filter(Boolean),
-    })));
+    out("learn/fawaid.json", filterCuratedFawaid(FAWAID_CURATED_SEED).filter(keep("fawaid")).map((f) => (editorial.has(f.id)
+      // فائدة تحريرية من إعداد سُنّة: لا تُنسب لمصدر ولا لقائل (لا عزو عام ولا وسم توثيق)
+      ? { id: f.id, title: clip(f.text, 90), subtitle: "فائدة من إعداد سُنّة", body: f.text, tags: [f.category].filter(Boolean), origin: "editorial", originLabel: "فائدة من إعداد سُنّة" }
+      : {
+        id: f.id, title: clip(f.text, 90), subtitle: f.author_name || undefined, body: [f.text, f.source].filter(Boolean).join("\n\n"),
+        tags: [f.category, f.verification_status, f.trust_level].filter(Boolean),
+      })));
   }
   {
     const { ANNUAL_COURSES_SEED } = await import(`${src}/lib/annual-courses-seed.ts`);
