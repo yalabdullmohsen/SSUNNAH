@@ -8,7 +8,7 @@ struct AccountPrivacyCenterScreen: View {
     @State private var exportFile: URL?
 
     private static let rights = [
-        "الاطلاع على سياسة الخصوصية وشروط الاستخدام.",
+        "الاطلاع على سياسة الخصوصية واتفاقية Apple القياسية للاستخدام.",
         "تصدير بيانات حسابك (قابلية النقل).",
         "طلب حذف الحساب نهائيًا (حق النسيان)."
     ]
@@ -52,7 +52,11 @@ struct AccountPrivacyCenterScreen: View {
 
                 AccountSectionCard(title: "سياسات ومستندات") {
                     AccountLinkRow(title: "سياسة الخصوصية", path: "/privacy")
-                    AccountLinkRow(title: "شروط الاستخدام", path: "/terms")
+                    // قرار المالك: اتفاقية Apple القياسية (EULA) بدل صفحة شروط مخصصة.
+                    if let eula = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
+                        Link(destination: eula) { SunnahListRow(title: "شروط الاستخدام (اتفاقية Apple القياسية)", subtitle: nil) }
+                            .buttonStyle(.plain)
+                    }
                     AccountLinkRow(title: "إعدادات الكثافة وتوفير البيانات", path: "/settings")
                 }
             }
