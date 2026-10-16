@@ -73,42 +73,68 @@ final class MushafMultiSizeGuardTests: XCTestCase {
         } } }
     }
 
-    /// أقطار أقراص نهاية الآية بالبكسل (مكوّنات متصلة بلون القرص الأخضر؛ القطر = متوسط عرض/ارتفاع الصندوق المحيط).
-    private func discDiameters(_ cg: CGImage) -> [Double] {
-        let w = cg.width, h = cg.height
-        var px = [UInt8](repeating: 0, count: w * h * 4)
-        px.withUnsafeMutableBytes { buf in
-            let ctx = CGContext(data: buf.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
-            ctx.draw(cg, in: CGRect(x: 0, y: 0, width: w, height: h))
-        }
-        func on(_ i: Int) -> Bool { let r = Int(px[i * 4]), g = Int(px[i * 4 + 1]), b = Int(px[i * 4 + 2]); return g > r + 22 && g > b + 6 && g < 190 && g > 45 }
-        var seen = [Bool](repeating: false, count: w * h), boxes: [(x0: Int, x1: Int, y0: Int, y1: Int)] = []
-        for start in 0..<(w * h) where !seen[start] && on(start) {
-            var stack = [start], x0 = w, x1 = 0, y0 = h, y1 = 0; seen[start] = true
-            while let c = stack.popLast() {
-                let x = c % w, y = c / w
-                x0 = min(x0, x); x1 = max(x1, x); y0 = min(y0, y); y1 = max(y1, y)
-                for n in [c - 1, c + 1, c - w, c + w] where n >= 0 && n < w * h && !seen[n] && on(n) && abs(n % w - x) <= 1 { seen[n] = true; stack.append(n) }
-            }
-            let bw = Double(x1 - x0 + 1), bh = Double(y1 - y0 + 1), ratio = bw / bh
-            if bw >= 40, bw <= 150, bh >= 40, bh <= 150, ratio >= 0.85, ratio <= 1.18 { boxes.append((x0, x1, y0, y1)) }
-        }
-        // شظايا داخل القرص (حلقة/رقم) تُحسب مكوّنًا مستقلًا: تُهمَل كل صندوق يقع داخل صندوق أكبر.
-        return boxes.filter { a in !boxes.contains { b in b.x0 <= a.x0 && b.x1 >= a.x1 && b.y0 <= a.y0 && b.y1 >= a.y1 && (b.x1 - b.x0) > (a.x1 - a.x0) } }
-            .map { Double(($0.x1 - $0.x0 + 1) + ($0.y1 - $0.y0 + 1)) / 2 }
+    /// حدّ تماثل أقطار الأقراص في الصفحة الواحدة (أكبر/أصغر) — لا يُرفع.
+    static let maxDiscRatio: Double = 1.05
+
+    /// DISC-EQ: مواضع الأقراص وأقطارها من نموذج التخطيط نفسه الذي يرسم منه العرض (`MushafMetrics.Layout.discs`)، لا من كشف بكسلات
+    /// (فلا تدخل زخارف إطار السورة). كل علامة نهاية آية في الصفحة لها قرص واحد بالضبط، وتماثل الأقطار ≤ `maxDiscRatio`.
+    static func discFailure(_ l: MushafMetrics.Layout, endMarks: Int) -> String? {
+        let d = l.discs.values.flatMap { $0.values }.map(Double.init)
+        guard d.count == endMarks else { return "أقراص \(d.count) ≠ علامات نهاية \(endMarks)" }
+        guard let lo = d.min(), let hi = d.max(), lo > 0 else { return endMarks == 0 ? nil : "قطر غير موجب" }
+        return hi / lo <= maxDiscRatio ? nil : "نسبة \(hi / lo) (\(lo)…\(hi))"
     }
 
-    /// DISC-EQ: أقراص نهاية الآية في الصفحة الواحدة متساوية القطر (أكبر/أصغر ≤ 1.05 أو فرق ≤3px) على ثلاثة أحجام (SE وPro وPro Max).
     @MainActor func testEndOfAyahDiscsAreEqualPerPage() throws {
         guard let p = ProcessInfo.processInfo.environment["MUSHAF_DATA"] else { throw XCTSkip("MUSHAF_DATA غير محدد") }
-        let repo = MushafRepository(root: URL(fileURLWithPath: p)), idx = try repo.index()
-        for (name, size) in [Self.sizes[0], Self.sizes[3], Self.sizes[4]] { for n in [1, 2, 150, 604] {
-            let d = discDiameters(try render(n, size: size, xxxl: false, repo: repo, idx: idx))
-            guard let lo = d.min(), let hi = d.max(), d.count >= 2 else { XCTFail("DISC: صفحة \(n) على \(name): أقراص مكتشفة \(d.count)"); continue }
-            print("DISC \(name) p\(n) n=\(d.count) min=\(lo) max=\(hi) ratio=\(hi / lo)")
-            // القرص Circle بقطر ثابت (fontSize×1.12)؛ فرق ≤3px (1.5pt) ضجيج حواف التنعيم في الصندوق المحيط لا عيب رسم.
-            XCTAssertTrue(hi / lo <= 1.05 || hi - lo <= 3, "DISC: صفحة \(n) على \(name): \(lo)…\(hi) نسبة \(hi / lo) \(d)")
+        let repo = MushafRepository(root: URL(fileURLWithPath: p))
+        var checked = 0
+        for (name, size) in Self.sizes { for n in 1...Mushaf.pageCount where size.width == Self.sizes[0].1.width || n % 6 == 1 {
+            let page = try repo.page(n), family = try repo.ensureFont(page: n)
+            let pl = repo.pageLayout(page, family: family, size: size)
+            let marks = pl.m.rows.reduce(0) { $0 + ($1.w ?? []).filter(\.isAyahEnd).count }
+            if let bad = Self.discFailure(pl.layout, endMarks: marks) { XCTFail("DISC: صفحة \(n) على \(name): \(bad)") }
+            checked += marks
         } }
+        XCTAssertGreaterThan(checked, 6000, "عدد الأقراص المفحوصة قليل جدًا")
+    }
+
+    /// اختبار تحريف: تغيير أقطار أقراص عمدًا في نموذج صفحة حقيقية يجب أن يُفشل الحارس (وإلا ضعف الكاشف).
+    @MainActor func testDiscGuardFailsWhenDiscSizesAreMutated() throws {
+        guard let p = ProcessInfo.processInfo.environment["MUSHAF_DATA"] else { throw XCTSkip("MUSHAF_DATA غير محدد") }
+        let repo = MushafRepository(root: URL(fileURLWithPath: p))
+        let (name, size) = Self.sizes[0]
+        for n in [1, 150, 293, 446, 604] {
+            let page = try repo.page(n), family = try repo.ensureFont(page: n)
+            let pl = repo.pageLayout(page, family: family, size: size)
+            let marks = pl.m.rows.reduce(0) { $0 + ($1.w ?? []).filter(\.isAyahEnd).count }
+            XCTAssertNil(Self.discFailure(pl.layout, endMarks: marks), "أساس سليم p\(n) \(name)")
+            guard let (line, k) = pl.layout.discs.flatMap({ l, ws in ws.keys.map { (l, $0) } }).first else { XCTFail("لا أقراص p\(n)"); continue }
+            for (label, f) in [("قرص واحد ×1.2", 1.2), ("قرص واحد ×0.8", 0.8), ("قرص واحد ×1.07", 1.07)] as [(String, CGFloat)] {
+                var m = pl.layout; let base = m.discs[line]?[k] ?? 0; m.discs[line]?[k] = base * f
+                if marks >= 2 { XCTAssertNotNil(Self.discFailure(m, endMarks: marks), "الحارس لم يفشل عند \(label) p\(n)") }
+            }
+            if pl.layout.discs.count >= 2 {   // تضخيم أقراص أسطر بالتناوب (لا كلها فيبقى التماثل)
+                var alt = pl.layout
+                for (idx, l) in alt.discs.keys.sorted().enumerated() where idx % 2 == 1 { for w in alt.discs[l]!.keys { alt.discs[l]![w]! *= 1.5 } }
+                XCTAssertNotNil(Self.discFailure(alt, endMarks: marks), "الحارس لم يفشل عند تضخيم أقراص أسطر بالتناوب p\(n)")
+            }
+            var lost = pl.layout; lost.discs[line]?[k] = nil
+            XCTAssertNotNil(Self.discFailure(lost, endMarks: marks), "الحارس لم يفشل عند فقد قرص p\(n)")
+        }
+        // ضمّ الرسم بالنموذج: القطر الممرَّر لـMushafEndMark هو ما يُرسم فعلًا (أخضر القرص يكبر بكبر القطر الممرَّر).
+        let page1 = try repo.page(1), fam = try repo.ensureFont(page: 1)
+        let glyph = try XCTUnwrap(page1.rows.flatMap { $0.w ?? [] }.first { $0.isAyahEnd }).c
+        func green(_ d: CGFloat) throws -> Int {
+            let ir = ImageRenderer(content: ZStack { Color.white; MushafEndMark(glyph: glyph, family: fam, fontSize: 40, diameter: d) }.frame(width: 100, height: 100)); ir.scale = 2
+            let cg = try XCTUnwrap(ir.cgImage), w = cg.width, h = cg.height
+            let ctx = CGContext(data: nil, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
+            ctx.draw(cg, in: CGRect(x: 0, y: 0, width: w, height: h))
+            let px = ctx.data!.assumingMemoryBound(to: UInt8.self)
+            return (0..<(w * h)).filter { Int(px[$0 * 4 + 1]) > Int(px[$0 * 4]) + 22 }.count
+        }
+        let small = try green(16), big = try green(26)
+        XCTAssertGreaterThan(big, Int(Double(small) * 1.3), "القطر الممرَّر لا يتحكم برسم القرص (\(small) → \(big))")
     }
 
     /// قياس بكسلي على لقطة الشاشة لكل قرص نهاية آية: الفراغ الأفقي الصافي بين حدّ الدائرة وأقرب حبر في الجانبين (nil = لا جار)، وفراغ الكلمات المتوسط في السطر نفسه. سالب = حبر داخل القرص.
