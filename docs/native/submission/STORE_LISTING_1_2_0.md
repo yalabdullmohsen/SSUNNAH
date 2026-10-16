@@ -66,7 +66,7 @@
 ملاحظات
 • بعض الميزات تحتاج اتصالًا بالإنترنت، ومنها البثّ وتزامن الحساب.
 • الأوقات والاتجاه تعتمد على دقة الموقع وإعدادات جهازك؛ تحقق من الجهات المحلية عند الحاجة.
-• المحتوى الشرعي معروض بمصادره، والمحتوى التحريري منه موسوم بذلك داخل التطبيق.
+• محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي من مصادر مذكورة في كل صفحة، وقد يقع فيه خطأ، ولا يغني عن الرجوع لأهل العلم، وفيه زر للإبلاغ عن أي خطأ.
 ```
 
 **ما الجديد في 1.2.0:** 240 حرفًا
@@ -127,7 +127,7 @@ Personalization
 Notes
 - Some features need an internet connection, including streaming and account sync.
 - Times and direction depend on location accuracy and your device settings; consult local authorities when needed.
-- Religious content is shown with its sources, and editorial content is labelled as such in the app.
+- The app's content is prepared with the assistance of artificial intelligence from sources cited on each page. It may contain errors and is not a substitute for consulting scholars. The app includes a button to report any error.
 ```
 
 **What's New in 1.2.0:** 301 chars
@@ -177,3 +177,9 @@ Notes
 - **الإطلاق في الوصف:** لا «الموثوق» ولا «الموثّق» (Guideline 2.3). الصياغة المعتمدة: «محتوى شرعي بمصادره، والتحريري منه موسوم».
 - **وسم «هذه نسخة تجريبية»:** TestFlight فقط (Beta App Description/What to Test)، ولا يدخل وصف المتجر ولا ما الجديد.
 - **سطر الساعة:** غير مضاف؛ ينتظر تأكيد ن4 جاهزيتها. عند التأكيد يُضاف تحت «الأذكار والتسبيح»، ويُراجَع ما يقابله في الإنجليزية.
+
+### إفصاح الذكاء الاصطناعي (قرار يوسف)
+
+- الجملة أعلاه (عربي/إنجليزي) بنص قراره، بلا نسبة مراجعة لأحد.
+- **شرط قبل الرفع:** «وفيه زر للإبلاغ» غير صحيحة اليوم؛ لا زر إبلاغ في صفحات المحتوى (GUIDELINES_AUDIT G2، والموجود نموذج «تواصل معنا» فقط). لا تُلصق الجملة في ASC قبل شحن الزر أو حذف المقطع الأخير منها.
+- «من مصادر مذكورة في كل صفحة» تحتاج تحققًا من أن كل صفحة تعرض مصدرها؛ ن1/ن4 يؤكدان.
