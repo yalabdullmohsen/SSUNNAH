@@ -139,6 +139,12 @@ public struct MushafReaderView: View {
             ZStack(alignment: .top) {
                 Color.clear.onAppear { pageSize = CGSize(width: w, height: h) }
                 Sunnah.Colors.mushafPaper
+                Group {
+                #if os(iOS)
+                MushafPager(current: $current, count: Mushaf.pageCount, renderKey: AnyHashable("\(selected ?? "")|\(current)")) { n in
+                    MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current)
+                }
+                #else
                 TabView(selection: $current) {
                     ForEach(Mushaf.pagerWindow(around: current), id: \.self) { n in
                         Group {
@@ -150,6 +156,8 @@ public struct MushafReaderView: View {
                 #if os(iOS)
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 #endif
+                #endif
+                }
                 .environment(\.layoutDirection, .rightToLeft)
                 .ignoresSafeArea()
                 .clipped()
