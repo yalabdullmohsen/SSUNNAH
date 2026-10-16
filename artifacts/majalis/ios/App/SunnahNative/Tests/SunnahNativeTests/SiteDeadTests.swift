@@ -73,6 +73,84 @@ final class SiteDeadTests: XCTestCase {
         XCTAssertTrue(DeadSiteProtocol.seen.allSatisfy { $0.timeoutInterval == RemoteTransport.timeout })
     }
 
+    // MARK: تصدير البيانات والمقترحات — Supabase مباشرة لا الموقع
+
+    private func jwt(sub: String = "11111111-2222-3333-4444-555555555555") -> String {
+        func b64(_ s: String) -> String { Data(s.utf8).base64EncodedString().replacingOccurrences(of: "=", with: "").replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_") }
+        return "\(b64(#"{"alg":"none"}"#)).\(b64(#"{"sub":"\#(sub)","email":"a@b.test"}"#)).sig"
+    }
+
+    private func api(signedIn: Bool = true) -> AccountAPI {
+        let store = InMemoryAuthStore()
+        if signedIn { try? store.setValue(jwt(), forKey: "access_token") }
+        DeadSiteProtocol.reset()
+        let cfg = AccountBackend.Config(url: URL(string: "https://db.example.test")!, anonKey: "anon", store: store)
+        return AccountAPI(session: DeadSiteProtocol.session(), backend: cfg)
+    }
+
+    func testExportCallsRpcOnSupabaseWithBearerOnly() async throws {
+        DeadSiteProtocol.supabase = { _ in (200, Data(#"{"bookmarks":[],"exported_at":"x"}"#.utf8)) }
+        let data = try await api().exportAccount(token: "tok")
+        let r = try XCTUnwrap(DeadSiteProtocol.seen.first)
+        XCTAssertEqual(r.url?.path, "/rest/v1/rpc/export_my_account")
+        XCTAssertEqual(r.value(forHTTPHeaderField: "Authorization"), "Bearer tok")
+        XCTAssertEqual(String(data: r.httpBody ?? (r.httpBodyStream.map { Data(reading: $0) } ?? Data()), encoding: .utf8), "{}")
+        XCTAssertEqual(DeadSiteProtocol.hosts, ["db.example.test"])
+        XCTAssertNotNil(try JSONSerialization.jsonObject(with: data) as? [String: Any])
+    }
+
+    func testExportErrorsAreArabicNotHang() async {
+        for (code, _) in [(401, 0), (500, 0)] {
+            DeadSiteProtocol.supabase = { _ in (code, Data("{}".utf8)) }
+            do { _ = try await api().exportAccount(token: "t"); XCTFail() }
+            catch AccountAPIError.server(let m) { XCTAssertFalse(m.isEmpty) } catch { XCTFail("\(error)") }
+        }
+        do { _ = try await AccountAPI(session: DeadSiteProtocol.session(), backend: nil).exportAccount(token: "t"); XCTFail() }
+        catch AccountAPIError.server(let m) { XCTAssertEqual(m, AccountAPI.unavailable) } catch { XCTFail("\(error)") }
+    }
+
+    func testSubmitInsertsOwnPendingRowViaRLS() async throws {
+        DeadSiteProtocol.supabase = { _ in (201, Data()) }
+        let draft = AccountSubmissionDraft(type: "فائدة", title: " عنوان ", details: "تفاصيل", author: "")
+        let msg = try await api().submitContent(draft)
+        XCTAssertFalse(msg.isEmpty)
+        let r = try XCTUnwrap(DeadSiteProtocol.seen.first)
+        XCTAssertEqual(r.url?.path, "/rest/v1/user_submissions")
+        XCTAssertEqual(r.value(forHTTPHeaderField: "Prefer"), "return=minimal")
+        XCTAssertEqual(DeadSiteProtocol.hosts, ["db.example.test"])
+        let body = try XCTUnwrap(r.httpBody ?? r.httpBodyStream.map { Data(reading: $0) })
+        let row = try XCTUnwrap(try JSONSerialization.jsonObject(with: body) as? [String: Any])
+        XCTAssertEqual(row["user_id"] as? String, "11111111-2222-3333-4444-555555555555")
+        XCTAssertEqual(row["type"] as? String, "lesson")
+        XCTAssertEqual(row["title"] as? String, "عنوان")
+        XCTAssertNil(row["status"], "الحالة تُترك للافتراضي pending (RLS ترفض غيره)")
+        XCTAssertEqual((row["meta"] as? [String: Any])?["kind"] as? String, "فائدة")
+    }
+
+    func testSubmitRequiresSignInAndRespectsDbLimits() async {
+        let draft = AccountSubmissionDraft(type: "درس", title: "عنوان", details: "تفاصيل", author: "م")
+        do { _ = try await api(signedIn: false).submitContent(draft); XCTFail() }
+        catch AccountAPIError.server(let m) { XCTAssertEqual(m, AccountAPI.signInNeeded) } catch { XCTFail("\(error)") }
+        XCTAssertTrue(DeadSiteProtocol.seen.isEmpty, "بلا جلسة لا طلب أصلًا")
+        let long = AccountSubmissionDraft(type: "درس", title: "عنوان", details: String(repeating: "ا", count: 3001), author: "")
+        do { _ = try await api().submitContent(long); XCTFail() } catch AccountAPIError.server { } catch { XCTFail("\(error)") }
+        XCTAssertTrue(DeadSiteProtocol.seen.isEmpty)
+    }
+
+    func testScreenLimitsNeverExceedTableLimitsAndCounterShows() {
+        XCTAssertEqual(AccountSubmissionDraft.titleMax, 300)
+        XCTAssertEqual(AccountSubmissionDraft.detailsMax, 3000)
+        XCTAssertEqual(AccountSubmissionDraft.authorMax, 100)
+        XCTAssertEqual(AccountSubmissionDraft.titleMax, AccountAPI.titleMax)
+        XCTAssertEqual(AccountSubmissionDraft.detailsMax, AccountAPI.detailsMax)
+        let ok = AccountSubmissionDraft(type: "درس", title: String(repeating: "ع", count: 300), details: String(repeating: "ت", count: 3000), author: String(repeating: "م", count: 100))
+        XCTAssertTrue(ok.isValid)
+        XCTAssertFalse(AccountSubmissionDraft(type: "درس", title: String(repeating: "ع", count: 301), details: "تفاصيل", author: "").isValid)
+        XCTAssertFalse(AccountSubmissionDraft(type: "درس", title: "عنوان", details: String(repeating: "ت", count: 3001), author: "").isValid)
+        XCTAssertFalse(AccountSubmissionDraft(type: "درس", title: "عنوان", details: "تفاصيل", author: String(repeating: "م", count: 101)).isValid)
+        XCTAssertEqual(AccountSubmissionDraft.counter("أهلا", max: 300), "4 / 300")
+    }
+
     func testShortSessionHasShortTimeoutsAndNoConnectivityWait() {
         let c = RemoteTransport.shortSession().configuration
         XCTAssertEqual(c.timeoutIntervalForRequest, 8)
@@ -155,5 +233,13 @@ final class SiteDeadTests: XCTestCase {
         XCTAssertNil(defaults.string(forKey: "k"))
         let gone = await cache.read("a")
         XCTAssertNil(gone)
+    }
+}
+
+private extension Data {
+    init(reading stream: InputStream) {
+        self.init(); stream.open(); defer { stream.close() }
+        var buf = [UInt8](repeating: 0, count: 4096)
+        while stream.hasBytesAvailable { let n = stream.read(&buf, maxLength: buf.count); if n <= 0 { break }; append(buf, count: n) }
     }
 }

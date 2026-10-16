@@ -12,6 +12,7 @@ struct SupabaseAuthAdapter: AuthServicing {
         self.store = store
         func plist(_ k: String) -> String { (bundle.object(forInfoDictionaryKey: k) as? String) ?? "" }
         urlString = plist("SUPABASE_URL"); anon = plist("SUPABASE_ANON_KEY")
+        AccountBackend.configure(url: URL(string: urlString), anonKey: anon, store: store)
     }
 
     var isConfigured: Bool { URL(string: urlString)?.host != nil && !anon.isEmpty }

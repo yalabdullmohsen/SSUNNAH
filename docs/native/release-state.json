@@ -1,5 +1,6 @@
 {
   "version": "1.2.0",
-  "lastUploadedBuild": 101,
-  "note": "آخر بناء رُفع فعلًا إلى TestFlight (commit 9cae47617). حدّثه بعد كل رفع ناجح؛ يفشل native-release-check إن لم يكن CURRENT_PROJECT_VERSION أكبر منه."
+  "lastUploadedBuild": 102,
+  "note": "آخر بناء رُفع فعلًا إلى TestFlight (commit 9cae47617). حدّثه بعد كل رفع ناجح؛ يفشل native-release-check إن لم يكن CURRENT_PROJECT_VERSION أكبر منه.",
+  "uploadedAt": "2026-10-16"
 }

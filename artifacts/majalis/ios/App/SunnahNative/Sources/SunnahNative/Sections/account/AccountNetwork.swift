@@ -108,45 +108,90 @@ enum AccountAPIError: Error, Equatable {
     case invalidResponse
 }
 
-/// طلبات الكتابة القليلة في القسم (POST إلى واجهات الموقع) — DataStore للقراءة فقط.
+/// اتصال Supabase للكتابة (يضبطه محوّل الدخول عند الإقلاع): عنوان المشروع والمفتاح العام ومخزن الجلسة.
+public enum AccountBackend {
+    struct Config: Sendable {
+        let url: URL
+        let anonKey: String
+        let store: AuthSessionStoring
+    }
+    private static let lock = NSLock()
+    nonisolated(unsafe) private static var stored: Config?
+
+    static var current: Config? { lock.withLock { stored } }
+    public static func configure(url: URL?, anonKey: String, store: AuthSessionStoring) {
+        guard let url, url.host != nil, !anonKey.isEmpty else { return }
+        lock.withLock { stored = Config(url: url, anonKey: anonKey, store: store) }
+    }
+}
+
+/// طلبات الكتابة القليلة في القسم — مباشرة على Supabase (RLS/RPC بجلسة المستخدم)، بلا الموقع المجمّد.
 struct AccountAPI: Sendable {
     var baseURL = URL(string: AccountTexts.siteURL)!
-    /// مهلة قصيرة دائمًا: الموقع قد يكون غير متاح (402/انقطاع) ولا يجوز أن يعلّق أي طلب.
+    /// مهلة قصيرة دائمًا: لا يجوز أن يعلّق أي طلب.
     var session: URLSession = RemoteTransport.shortSession()
+    var backend: AccountBackend.Config? = AccountBackend.current
 
-    /// POST /api/submissions — نفس جسم الويب. يعيد رسالة الخادم عند النجاح.
+    static let signInNeeded = "سجّل الدخول لإرسال مقترحك."
+    static let unavailable = "تعذّر تحميل المحتوى. أعد المحاولة."
+    /// حدود جدول user_submissions في الإنتاج (CHECK): العنوان 3–300، التفاصيل ≤ 3000، الاسم 2–100.
+    static let titleMax = 300, detailsMax = 3000, authorMax = 100
+
+    /// إدراج صف في user_submissions (سياسة RLS تسمح للمستخدم المسجَّل بصفه فقط وبحالة pending).
+    /// النوع في الجدول lesson|adhan فقط، فيُحفظ النوع العربي الذي اختاره المستخدم في meta.kind.
     func submitContent(_ draft: AccountSubmissionDraft) async throws -> String {
-        let body = try JSONSerialization.data(withJSONObject: [
-            "type": draft.type, "title": draft.title, "content": draft.details, "author": draft.author
-        ])
-        let json = try await post("/api/submissions", body: body, bearer: nil)
-        if json["ok"] as? Bool == true { return json["message"] as? String ?? "شكراً! ينتظر موافقة المشرف." }
-        throw AccountAPIError.server(json["message"] as? String ?? "حدث خطأ، حاول مرة أخرى.")
+        guard let backend else { throw AccountAPIError.server(Self.unavailable) }
+        guard let user = AccountSession.read(from: backend.store) else { throw AccountAPIError.server(Self.signInNeeded) }
+        let title = draft.title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let details = draft.details.trimmingCharacters(in: .whitespacesAndNewlines)
+        let author = draft.author.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard title.count <= Self.titleMax else { throw AccountAPIError.server("العنوان لا يتجاوز \(Self.titleMax) حرفًا.") }
+        guard details.count <= Self.detailsMax else { throw AccountAPIError.server("التفاصيل لا تتجاوز \(Self.detailsMax) حرف.") }
+        let name = author.count >= 2 ? String(author.prefix(Self.authorMax)) : user.displayName
+        var row: [String: Any] = [
+            "type": "lesson", "user_id": user.userId, "title": title, "description": details,
+            "submitter_name": name.count >= 2 ? name : "مستخدم التطبيق", "meta": ["kind": draft.type, "source": "ios-native"]
+        ]
+        if let email = user.email { row["submitter_email"] = String(email.prefix(320)) }
+        var request = authorized(backend, path: "rest/v1/user_submissions", token: user.accessToken)
+        request.setValue("return=minimal", forHTTPHeaderField: "Prefer")
+        request.httpBody = try JSONSerialization.data(withJSONObject: row)
+        let (_, response) = try await send(request)
+        switch response.statusCode {
+        case 200..<300: return "شكراً! ينتظر موافقة المشرف."
+        case 401, 403: throw AccountAPIError.server(Self.signInNeeded)
+        default: throw AccountAPIError.server("حدث خطأ، حاول مرة أخرى.")
+        }
     }
 
-    /// POST /api/account/export — يعيد ملف JSON مطبوعًا للحفظ أو المشاركة.
+    /// RPC export_my_account (SECURITY DEFINER على auth.uid()) — يعيد ملف JSON مطبوعًا للحفظ أو المشاركة.
     func exportAccount(token: String) async throws -> Data {
-        var request = URLRequest(url: baseURL.appendingPathComponent("api/account/export"))
-        request.httpMethod = "POST"
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        request.timeoutInterval = RemoteTransport.timeout
-        let (data, response) = try await session.data(for: request)
+        guard let backend else { throw AccountAPIError.server(Self.unavailable) }
+        var request = authorized(backend, path: "rest/v1/rpc/export_my_account", token: token)
+        request.httpBody = Data("{}".utf8)
+        let (data, response) = try await send(request)
         let object = try? JSONSerialization.jsonObject(with: data)
-        guard let http = response as? HTTPURLResponse, (200..<300).contains(http.statusCode), let object else {
-            throw AccountAPIError.server(((object as? [String: Any])?["error"] as? String) ?? "تعذّر تحميل المحتوى. أعد المحاولة.")
+        guard (200..<300).contains(response.statusCode), let object else {
+            throw AccountAPIError.server(response.statusCode == 401 || response.statusCode == 403 ? "انتهت الجلسة، سجّل الدخول من جديد." : Self.unavailable)
         }
         return try JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted, .sortedKeys])
     }
 
-    private func post(_ path: String, body: Data, bearer: String?) async throws -> [String: Any] {
-        var request = URLRequest(url: baseURL.appendingPathComponent(String(path.dropFirst())))
+    private func authorized(_ backend: AccountBackend.Config, path: String, token: String) -> URLRequest {
+        var request = URLRequest(url: backend.url.appendingPathComponent(path))
         request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let bearer { request.setValue("Bearer \(bearer)", forHTTPHeaderField: "Authorization") }
-        request.httpBody = body
         request.timeoutInterval = RemoteTransport.timeout
-        let (data, _) = try await session.data(for: request)
-        guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw AccountAPIError.invalidResponse }
-        return json
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(backend.anonKey, forHTTPHeaderField: "apikey")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        return request
+    }
+
+    private func send(_ request: URLRequest) async throws -> (Data, HTTPURLResponse) {
+        do {
+            let (data, response) = try await session.data(for: request)
+            guard let http = response as? HTTPURLResponse else { throw AccountAPIError.invalidResponse }
+            return (data, http)
+        } catch is URLError { throw AccountAPIError.server("تعذر الاتصال، حاول مرة أخرى.") }
     }
 }

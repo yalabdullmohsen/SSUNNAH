@@ -68,6 +68,8 @@ fi
 if [ "$ARCH" = 1 ]; then
   [ "${OWNER_APPROVED_ARCHIVE:-0}" = 1 ] || { echo "رفض: الأرشفة تتطلب OWNER_APPROVED_ARCHIVE=1 بعد إذن المالك الصريح (لا TestFlight دون إذن)" >&2; exit 3; }
   [ $fail = 0 ] || { echo "رفض: افحص الإخفاقات أعلاه أولًا" >&2; exit 1; }
+  # الحزمة النهائية: RC_FINAL=1 يشترط بوابة الحراس (docs/native/required-guards.json)؛ RC التجريبي يتجاوزها
+  [ "${RC_FINAL:-0}" != 1 ] || bash scripts/native-rc-gate.sh || { echo "رفض: بوابة RC مغلقة" >&2; exit 1; }
   OUT="$HOME/.majalis-tools/archives/SunnahApp-$VERS-$BLDS.xcarchive"; mkdir -p "$(dirname "$OUT")"
   ( cd ios-native && bash ../scripts/build-slot.sh -- xcodebuild -project SunnahApp.xcodeproj -scheme SunnahApp -configuration Release -destination 'generic/platform=iOS' -archivePath "$OUT" -allowProvisioningUpdates archive -quiet ) && echo "أُرشف: $OUT — الرفع من Xcode Organizer بيد المالك" || { echo "فشلت الأرشفة" >&2; exit 1; }
 fi
