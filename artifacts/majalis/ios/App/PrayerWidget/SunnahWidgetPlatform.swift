@@ -43,9 +43,13 @@ enum SunnahWidgetRegistry {
 /// هامش أفقي صغير لبطاقات شاشة القفل المستطيلة: بدونه يلامس النص حافة الإطار (تكشفه بوابة ios-widget-snapshot).
 struct SunnahAccessoryInset: ViewModifier {
     @SunnahFamily private var family
+    @Environment(\.colorScheme) private var colorScheme
     func body(content: Content) -> some View {
         content.padding(.horizontal, family == .accessoryRectangular ? 4 : 0)
+            .environment(\.colorScheme, SunnahAccessoryInset.fixedLight(family) ? .dark : colorScheme)
     }
+    /// نص فاتح ثابت على خلفية الشاشة الخضراء الداكنة لمستطيل القفل والسطر (فاتحًا وداكنًا): قاعدة عامة لكل الودجات.
+    static func fixedLight(_ f: WidgetFamily) -> Bool { f == .accessoryRectangular || f == .accessoryInline || f == .accessoryCircular }
 }
 
 struct SunnahWidgetChrome: ViewModifier {
