@@ -53,6 +53,9 @@ miss=$(find ios-native/SunnahApp artifacts/majalis/ios/App/PrayerWidget -name '*
 # 2د-1) الأذونات والقدرات المرفوعة (Info.plist + entitlements لهدف SunnahApp) ضمن docs/native/capabilities-allowlist.json؛ إذن/قدرة جديدة (ميكروفون، حركة، remote-notification، aps-environment…) يفشل الفحص ويتطلب إفصاحًا وقرار المالك.
 cap=$(python3 scripts/native-capabilities-check.py 2>&1) || bad "أذونات/قدرات غير معتمدة: $cap"
 
+# 2د-1ب) مانيفست الخصوصية (PrivacyInfo.xcprivacy): موجود ومرتبط، وكل Required Reason API في الكود مصرَّح به، والبيانات المجمّعة تطابق ملصق App Privacy، وبلا تتبع.
+pm=$(python3 scripts/native-privacy-manifest-check.py 2>&1) || bad "مانيفست الخصوصية: $pm"
+
 # 2د-2) كل ملف .swift تحت artifacts/majalis/ios/App/App (هدف Capacitor App) يجب أن يكون ضمن Sources في App.xcodeproj؛ ملف غير مسجَّل يكسر بناء App («cannot find … in scope»). حزم SwiftPM والاختبارات خارج هذا الفحص لأنها ليست أهداف pbxproj.
 CAPPBX=artifacts/majalis/ios/App/App.xcodeproj/project.pbxproj
 # استثناء موثّق: Design/SunnahTokens.swift نسخة رموز يتيمة غير مستعملة في أي هدف (يحرس تطابقها scripts/check-swift-tokens.mjs)

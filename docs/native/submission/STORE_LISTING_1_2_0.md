@@ -14,7 +14,7 @@
 | 5 | البنود 1–9 وA–F في `WHATS_NEW_VERIFICATION.md` ما زالت غير مُتحقَّقة بجهاز | لم أدّعِ نجاحها؛ انظر القسم 5 |
 
 ## 2) ما لا نقوله (من `WHATS_NEW.md`، ملتزم به)
-لا «كل الميزات بلا إنترنت»، لا تسميع بالذكاء الاصطناعي، لا «أذان» (لا ملفات أذان مضمّنة؛ التنبيهات بعبارة صوتية فقط)، لا أعداد محتوى غير مُتحقَّقة، لا Live Activity (الهدف موجود في المصدر لكن لم أجد `NSSupportsLiveActivities` فلا أدّعيه).
+لا «كل الميزات بلا إنترنت»، لا تسميع بالذكاء الاصطناعي، لا «أذان» (لا ملفات صوت مضمّنة في الهدف؛ التنبيهات بصوت النظام الافتراضي)، لا أعداد محتوى غير مُتحقَّقة، لا Live Activity (الهدف موجود في المصدر لكن لم أجد `NSSupportsLiveActivities` فلا أدّعيه).
 
 ## 3) النصوص
 
@@ -45,7 +45,7 @@
 الصلاة والقبلة
 • مواقيت الصلاة بحسب موقعك.
 • اتجاه القبلة.
-• تذكيرات الصلاة بعبارة صوتية؛ لا يتضمن التطبيق صوت أذان.
+• تذكيرات الصلاة (إشعارات محلية بصوت النظام)؛ لا يتضمن التطبيق صوت أذان.
 
 الأذكار والتسبيح
 • أذكار وأدعية مع مسبحة للعدّ.
@@ -66,6 +66,7 @@
 ملاحظات
 • بعض الميزات تحتاج اتصالًا بالإنترنت، ومنها البثّ وتزامن الحساب.
 • الأوقات والاتجاه تعتمد على دقة الموقع وإعدادات جهازك؛ تحقق من الجهات المحلية عند الحاجة.
+• محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي من مصادر مذكورة في كل صفحة، وقد يقع فيه خطأ، ولا يغني عن الرجوع لأهل العلم، وفيه زر للإبلاغ عن أي خطأ.
 ```
 
 **ما الجديد في 1.2.0:** 240 حرفًا
@@ -126,6 +127,7 @@ Personalization
 Notes
 - Some features need an internet connection, including streaming and account sync.
 - Times and direction depend on location accuracy and your device settings; consult local authorities when needed.
+- The app's content is prepared with the assistance of artificial intelligence from sources cited on each page. It may contain errors and is not a substitute for consulting scholars. The app includes a button to report any error.
 ```
 
 **What's New in 1.2.0:** 301 chars
@@ -149,7 +151,7 @@ Notes
 | تنزيل التلاوة | `Platform/PlatformPorts.swift:33` (downloadedSurahs) — واجهة المنفذ فقط؛ التنفيذ الفعلي غير مُتحقَّق (القسم 5) |
 | مواقيت الصلاة | `Special/PrayerScreen.swift:5` |
 | القبلة | `Sections/account/AccountQiblaScreen.swift:124` |
-| تذكيرات الصلاة | `Sections/account/AccountNotificationSettingsScreen.swift:55` (طلب إذن UNUserNotificationCenter)؛ غياب صوت الأذان: ملف الأدلة السابق (مجموعة الأصوات عبارات فقط) |
+| تذكيرات الصلاة | `Sections/account/AccountNotificationSettingsScreen.swift:55` (طلب إذن UNUserNotificationCenter)؛ لا صوت مخصص: `SunnahPrayer/.../NotificationSoundPack.swift:22-27` يرجع إلى `.default` عند غياب .caf، و`ios-native/Sounds/README.txt` (لا ملفات صوت قبل موافقة المالك)، و0 مرجع `.caf` في `ios-native/SunnahApp.xcodeproj/project.pbxproj` |
 | الويدجت | `PrayerWidget/PrayerTimesWidget.swift:5`، `PrayerWidget/SunnahContentExperienceCatalog.swift:162` (آية)، `PrayerWidget/SunnahAdhkarWidgetCatalog.swift:5` (ذكر حسب الوقت) |
 | المسبحة | `Special/AdhkarExtraScreens.swift:4` |
 | حاسبة المواريث | `Sections/fiqh/Mawarith/MawarithCalculatorScreen.swift:40` |
@@ -164,7 +166,20 @@ Notes
 ## 5) غير مُتحقَّق / للمراجعة قبل الرفع
 - «تصفح بلا حساب» و«الجلسة في Keychain»: لم أثبتهما بسطر؛ احذفهما من الوصف إن لم يؤكدهما المراجع (بند 8 في `WHATS_NEW_VERIFICATION.md`).
 - «تنزيل السور للاستماع دون اتصال»: وجدت واجهة المنفذ فقط؛ تأكد من التنفيذ على جهاز قبل الإبقاء عليه.
-- «تذكيرات بعبارة صوتية»: مبني على قراءتي لمخطِّط الإشعارات والأصوات سابقًا (دون سطر مثبت في هذا الملف)؛ يحتاج إعادة تحقق.
+- «تذكيرات بعبارة صوتية»: **حُذف** من الوصف — لا دليل للهدف المرفوع (انظر الصف أعلاه).
 - الوضع الداكن وRTL، وأيقونات التطبيق، والويدجت: وجودها في الكود فقط، لا اختبار على جهاز.
 - لم أختبر شيئًا على جهاز أو محاكٍ؛ لا STORE_GO ولا UNIFIED_100.
 - طول الحقول محسوب بأمر؛ حدود المتجر قد تُحتسب مختلفًا للأحرف المركّبة (أتحقق في ASC عند اللصق).
+
+## 6) تصحيحات النصوص (طلب يوسف، ن5)
+
+- **الاسم:** «سُنّة» (Sunnah) في الاسم الفرعي والوصف وما الجديد، مطابق لـ`CFBundleDisplayName`. لا يوجد في المستودع نص TestFlight؛ وصفه يُكتب في App Store Connect فقط، وفيه: «سُنّة — نسخة تجريبية». ممنوع «تطبيق المجلس العلمي».
+- **الإطلاق في الوصف:** لا «الموثوق» ولا «الموثّق» (Guideline 2.3). الصياغة المعتمدة: «محتوى شرعي بمصادره، والتحريري منه موسوم».
+- **وسم «هذه نسخة تجريبية»:** TestFlight فقط (Beta App Description/What to Test)، ولا يدخل وصف المتجر ولا ما الجديد.
+- **سطر الساعة:** غير مضاف؛ ينتظر تأكيد ن4 جاهزيتها. عند التأكيد يُضاف تحت «الأذكار والتسبيح»، ويُراجَع ما يقابله في الإنجليزية.
+
+### إفصاح الذكاء الاصطناعي (قرار يوسف)
+
+- الجملة أعلاه (عربي/إنجليزي) بنص قراره، بلا نسبة مراجعة لأحد.
+- **شرط قبل الرفع:** «وفيه زر للإبلاغ» غير صحيحة اليوم؛ لا زر إبلاغ في صفحات المحتوى (GUIDELINES_AUDIT G2، والموجود نموذج «تواصل معنا» فقط). لا تُلصق الجملة في ASC قبل شحن الزر أو حذف المقطع الأخير منها.
+- «من مصادر مذكورة في كل صفحة» تحتاج تحققًا من أن كل صفحة تعرض مصدرها؛ ن1/ن4 يؤكدان.
