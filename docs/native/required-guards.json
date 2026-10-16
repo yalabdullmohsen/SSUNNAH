@@ -48,6 +48,11 @@
       "match": "native-mushaf-basmala-guard\\.sh$"
     },
     {
+      "id": "shot-provenance",
+      "owner": "ن3",
+      "match": "native-shot-provenance-guard\\.sh$"
+    },
+    {
       "id": "pager-two-pages",
       "owner": "ن3",
       "match": "native-mushaf-pager-guard\\.sh$"
