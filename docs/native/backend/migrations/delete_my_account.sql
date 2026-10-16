@@ -1,4 +1,5 @@
 -- migration: delete_my_account (حذف الحساب — مطلب 5.1.1(v))
+-- 2026-10-16: أضاف المالك حذف user_submissions وcontent_views (كانا يبقيان مفصولين بـSET NULL) وطبّقه على الإنتاج من لوحة Supabase وتحقق منه (anon بلا تنفيذ؛ authenticated فقط). الأسطر أدناه توثّق ذلك. (سطر التاريخ الأصلي التالي قديم:)
 -- تاريخ التطبيق على الإنتاج: غير مُثبَت. قائمة هجرات مشروع الإنتاج (ngmvmlulzacrlicuagyp، قراءة فقط 2026-10-16) لا تحوي إدخالًا لهذه الدالة؛ على المالك كتابة التاريخ الفعلي هنا: ____-__-__.
 -- المطابقة: النص أدناه هو محتوى delete-account.sql حرفيًا (مُنسَّق الأسطر فقط). أنه نفسه المنفَّذ على الإنتاج لم يُتحقق منه (يلزم pg_get_functiondef بأمر المالك).
 -- مراجعة الأمان (من النص): SECURITY DEFINER ✔، search_path = '' ✔ (كل المراجع مؤهَّلة بالمخطط)، auth.uid() فقط بلا معاملات ✔، revoke من public وanon ✔، grant لـ authenticated ✔.
@@ -20,6 +21,8 @@ begin
   delete from public.open_api_keys where owner_id = uid::text;
   delete from public.open_webhooks where owner_id = uid::text;
   update public.sheikhs set profile_id = null where profile_id = uid;
+  delete from public.user_submissions where user_id = uid;
+  delete from public.content_views where user_id = uid;
   delete from auth.users where id = uid;
 end $$;
 revoke all on function public.delete_my_account() from public, anon;
