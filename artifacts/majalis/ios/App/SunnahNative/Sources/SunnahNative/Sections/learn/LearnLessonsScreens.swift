@@ -54,7 +54,7 @@ struct LearnLessonDetail: View {
             LearnInfoRow(label: "الحضور", value: lesson.audience)
             LearnInfoRow(label: "طريقة الحضور", value: lesson.delivery)
             if let d = lesson.description, !d.isEmpty {
-                Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                SunnahSectionedMarkdown(d, key: "lesson-\(lesson.id)", style: .body)
             }
             LearnExternalLink(title: "البث المباشر", urlString: lesson.liveURL)
             LearnExternalLink(title: "الكتاب المشروح", urlString: lesson.bookURL)

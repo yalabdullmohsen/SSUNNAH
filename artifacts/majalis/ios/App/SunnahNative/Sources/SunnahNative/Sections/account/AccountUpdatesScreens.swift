@@ -255,10 +255,8 @@ struct AccountAutoContentDetailScreen: View {
                         HStack(spacing: Sunnah.Spacing.s2) { ForEach(tags, id: \.self) { SunnahChip($0) } }
                     }
                 }
-                ForEach(Array((item.content ?? item.summary ?? "").components(separatedBy: "\n\n").enumerated()), id: \.offset) { _, p in
-                    Text(p).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary).lineSpacing(Sunnah.Spacing.s2)
-                        .textSelection(.enabled)
-                }
+                SunnahSectionedMarkdown(item.content ?? item.summary ?? "", key: "auto-\(item.slug)", style: .body)
+                    .textSelection(.enabled)
                 if let link = item.originalURL, let url = URL(string: link) {
                     Link(destination: url) {
                         Label("المصدر", systemImage: "link").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.primary)

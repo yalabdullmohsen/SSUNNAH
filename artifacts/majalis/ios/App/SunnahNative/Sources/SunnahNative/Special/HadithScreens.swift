@@ -96,7 +96,7 @@ struct HadithDetailView: View {
                     }
                 }
                 if let explanation = item.explanation {
-                    SunnahCard { SunnahArabicText(explanation, style: .body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    SunnahCard { SunnahSectionedMarkdown(explanation, key: "hadith-\(item.id)", style: .body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 }
             }.padding(Sunnah.Spacing.pageX)
         }
