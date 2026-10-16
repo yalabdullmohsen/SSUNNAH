@@ -40,8 +40,6 @@ public enum NativeNotifications {
             events: NotificationEvent.read(from: defaults), now: now,
             capacity: max(0, PrayerNotificationBudget.iosPendingLimit - used))
 
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = prefs.location.timeZone
         var added = 0
         for item in planned {
             let content = UNMutableNotificationContent()
@@ -49,7 +47,8 @@ public enum NativeNotifications {
             content.body = item.body
             content.sound = .default
             content.threadIdentifier = item.group.rawValue
-            let parts = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: item.fireDate)
+            if let route = NotificationRouting.path(forIdentifier: item.id) { content.userInfo = [NotificationRouting.routeKey: route] }
+            let parts = GeneralNotificationPlanner.triggerComponents(for: item.fireDate, timeZone: prefs.location.timeZone)
             let trigger = UNCalendarNotificationTrigger(dateMatching: parts, repeats: false)
             do {
                 try await center.add(UNNotificationRequest(identifier: item.id, content: content, trigger: trigger))

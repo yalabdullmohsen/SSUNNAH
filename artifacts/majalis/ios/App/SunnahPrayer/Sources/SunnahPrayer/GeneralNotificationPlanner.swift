@@ -106,6 +106,16 @@ public enum GeneralNotificationPlanner {
     /// بادئة معرّفات المجموعات غير الصلاة — يُلغى بها ما جدولناه فقط.
     public static let idPrefix = "sunnah.general."
 
+    /// مكوّنات الزناد بمنطقة موقع المستخدم صراحةً: بدونها يفسّرها iOS بمنطقة الجهاز فتنزاح الساعة إن اختلفتا.
+    public static func triggerComponents(for fireDate: Date, timeZone: TimeZone) -> DateComponents {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = timeZone
+        var parts = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: fireDate)
+        parts.calendar = calendar
+        parts.timeZone = timeZone
+        return parts
+    }
+
     /// أولوية الاحتفاظ عند بلوغ السقف اليومي.
     static let priority: [NotificationGroup] = [.events, .adhkar, .wird, .periodic]
 
