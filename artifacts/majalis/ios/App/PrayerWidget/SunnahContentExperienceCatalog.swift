@@ -196,7 +196,7 @@ enum AyahOrDuaPick {
 }
 
 struct AyahOrDuaView: View {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     let entry: CatalogWidgetEntry
 
     private var isSmall: Bool {

@@ -105,7 +105,7 @@ private struct CalBigDays: View {
 // MARK: - الهجري
 
 struct HijriCalendarView: View {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     let entry: CatalogWidgetEntry
 
     var body: some View {
@@ -188,7 +188,7 @@ struct HijriCalendarView: View {
 
 /// الأقرب زمنيًا: رمضان أو أقرب مناسبة. داخل رمضان يُعرض يوم الشهر.
 struct RamadanCountdownView: View {
-    @Environment(\.widgetFamily) private var family
+    @SunnahFamily private var family
     let entry: CatalogWidgetEntry
 
     private struct Pick {
