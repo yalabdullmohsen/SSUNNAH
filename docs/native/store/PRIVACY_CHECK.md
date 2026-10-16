@@ -51,3 +51,6 @@ App Store Connect ← التطبيق ← **App Privacy** ← **Edit** (Data Type
 
 ## رابط الخصوصية داخل التطبيق (فحص ن1)
 `AccountLegalScreens`/`AccountPrivacyCenterScreen` يستعملان المسار `/privacy` مع `siteURL = https://www.ssunnah.com` (`RemoteTransport`)؛ Info.plist بلا رابط خصوصية؛ لا `/privacy-policy` في كود التطبيق (يظهر فقط كتحويل إلى `/privacy` في `FEATURE_PARITY.md`). لا إصلاح لازم.
+
+## قرار G1: لا إخفاء لمسارات /universities و/institutions و/islamic-landmarks (يوسف، 2026-10-16)
+هذه شاشات أصلية ببيانات مدمجة (`ios-native/Data/learn/universities.json` وinstitutions.json وlandmarks) تعمل دون اتصال ولا تطلب نطاق الموقع، فلا تُخفى. الشبكة الوحيدة المسموحة هي Supabase (`RemoteTransport` يرفض كل مسار غير `/rest/v1/` و`/auth/v1/` بـbadPath). الروابط الثابتة (الخصوصية/الدعم) على github.io يتحقق منها `scripts/native-static-links-check.sh` (200)؛ `terms.html` يعيد 404 فلا يُربط في التطبيق وتبقى اتفاقية Apple القياسية، ويرفض الحارس ورود رابطه.

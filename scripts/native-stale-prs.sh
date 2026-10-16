@@ -4,8 +4,8 @@
 # الفحوص الإلزامية: gate وdeterministic وownership (Vercel غير مطلوب). الحدود قابلة للتعديل: STALE_HOURS=4 BEHIND_MAX=20
 set -uo pipefail
 BASE=native-app; HOURS=${STALE_HOURS:-4}; BEHIND=${BEHIND_MAX:-20}; STRICT=0; [ "${1:-}" = --strict ] && STRICT=1
-repo=$(gh repo view --json nameWithOwner --jq .nameWithOwner 2>/dev/null) || { echo "⚠ gh غير متاح — تخطّي فحص PRات المتروكة" >&2; exit 0; }
-git fetch -q origin "$BASE" 2>/dev/null
+[ -n "${STALE_PRS_JSON:-}" ] || repo=$(gh repo view --json nameWithOwner --jq .nameWithOwner 2>/dev/null) || { echo "⚠ gh غير متاح — تخطّي فحص PRات المتروكة" >&2; exit 0; }
+[ -n "${STALE_PRS_JSON:-}" ] || git fetch -q origin "$BASE" 2>/dev/null
 now=$(date +%s); bad=0; rows=0
 printf '%-6s %-5s %-34s %s\n' PR صاحب الحالة الرابط
 while IFS=$'\t' read -r n head merge upd req url; do
@@ -19,10 +19,8 @@ while IFS=$'\t' read -r n head merge upd req url; do
   [ "$age" -ge "$HOURS" ] && [ "$merge" != CONFLICTING ] && tags+=("خامل ${age}س")
   [ ${#tags[@]} -eq 0 ] && continue
   rows=$((rows+1)); printf '#%-5s %-5s %-34s %s\n' "$n" "$owner" "$(IFS='،'; echo "${tags[*]}")" "$url"
-done < <(gh pr list -B "$BASE" --state open --limit 100 --json number,headRefName,mergeable,updatedAt,statusCheckRollup,url --jq '.[] | . as $p
-  | ([ $p.statusCheckRollup[]? | select((.name // .context) as $c | ["gate","deterministic","ownership"] | index($c)) ] ) as $r
-  | ([ $r[] | select(.conclusion != "SUCCESS" and .state != "SUCCESS") | (.name // .context) ]) as $f
-  | [$p.number,$p.headRefName,$p.mergeable,$p.updatedAt,(if ($r|length)<3 then "ناقص" elif ($f|length)>0 then ($f|unique|join("+")) else "OK" end),$p.url] | @tsv')
+done < <(if [ -n "${STALE_PRS_JSON:-}" ]; then jq -r -f "$(dirname "$0")/native-stale-prs.jq" "$STALE_PRS_JSON"
+  else gh pr list -B "$BASE" --state open --limit 100 --json number,headRefName,mergeable,updatedAt,statusCheckRollup,url | jq -r -f "$(dirname "$0")/native-stale-prs.jq"; fi)
 [ "$rows" = 0 ] && echo "✓ لا PRات متروكة على $BASE"
 if [ "$bad" = 1 ]; then echo "✗ PR متعارض من أكثر من ${HOURS} ساعات" >&2; [ "$STRICT" = 1 ] && exit 1; fi
 exit 0
