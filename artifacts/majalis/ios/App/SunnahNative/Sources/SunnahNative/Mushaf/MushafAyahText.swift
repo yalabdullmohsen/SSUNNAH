@@ -1,0 +1,176 @@
+import SwiftUI
+import Foundation
+
+/// كلمات آية واحدة كما في صفحات المصحف (رموز QPC V2 بحرفها)، مع صفحة كل كلمة لتحديد خطها. قراءة فقط.
+struct MushafAyahWord: Equatable, Sendable {
+    let page: Int
+    let c: String
+    let isEnd: Bool
+}
+
+enum MushafAyahWords {
+    private final class Box { let words: [MushafAyahWord]; init(_ w: [MushafAyahWord]) { words = w } }
+    /// حدّ ذاكرة صريح: 256 آية (نحو مئات الكيلوبايت)، تُخلى تلقائيًا عند ضغط الذاكرة.
+    private static let cache: NSCache<NSString, Box> = { let c = NSCache<NSString, Box>(); c.countLimit = 256; return c }()
+
+    /// من الكاش فقط (بلا قراءة قرص): يُرسم النص فورًا دون وميض عند إعادة ظهور الخلية.
+    static func cached(_ ayah: String) -> [MushafAyahWord]? { cache.object(forKey: ayah as NSString)?.words }
+
+    /// كل كلمات الآية بترتيب القراءة؛ الآية قد تمتد إلى الصفحة التالية فتُجمع منها. nil إن غابت البيانات.
+    static func load(ayah: String, repo: MushafRepository) -> [MushafAyahWord]? {
+        if let hit = cache.object(forKey: ayah as NSString) { return hit.words }
+        guard let start = try? repo.index().ayahPage[ayah] else { return nil }
+        var out: [MushafAyahWord] = []
+        var p = start
+        while p <= Mushaf.pageCount, let page = try? repo.page(p) {
+            let found = page.rows.flatMap { $0.w ?? [] }.filter { $0.v == ayah }
+            out += found.map { MushafAyahWord(page: p, c: $0.c, isEnd: $0.isAyahEnd) }
+            if out.last?.isEnd == true || found.isEmpty { break }
+            p += 1
+        }
+        guard !out.isEmpty else { return nil }
+        cache.setObject(Box(out), forKey: ayah as NSString)
+        return out
+    }
+
+    /// فهارس (من 0، دون رمز نهاية الآية) كلمات المصحف المطابقة لاستعلام البحث، بتطبيع بحث التطبيق نفسه
+    /// (يتجاهل التشكيل وأشكال الهمزة والألف). nil إن اختلف عدد كلمات النص عن عدد كلمات المصحف: لا إبراز ولا قطع للنص.
+    static func matchingWords(query: String, ayahText: String, wordCount: Int) -> Set<Int>? {
+        let words = ayahText.split(whereSeparator: \.isWhitespace).map { QuranWordMatch.normalizeQuranWord(String($0)) }
+        guard words.count == wordCount else { return nil }
+        let tokens = query.split(whereSeparator: \.isWhitespace).map { QuranWordMatch.normalizeQuranWord(String($0)) }.filter { !$0.isEmpty }
+        guard !tokens.isEmpty else { return [] }
+        return Set(words.indices.filter { i in tokens.contains { !words[i].isEmpty && words[i].contains($0) } })
+    }
+}
+
+/// آية بخط المصحف ورسمه (QPC) لكل شاشة غير صفحة المصحف: نتائج البحث، العلامات، آية اليوم، التفسير.
+/// نفس خط الصفحة ونفس قرص نهاية الآية ولون الحبر وورق المصحف، فاتحًا وداكنًا، RTL، وتكبير الخط. للقراءة فقط؛ النص حرفيًا بلا أي تعديل.
+/// `highlightWords`: فهارس كلمات المصحف (دون رمز النهاية) تُظلَّل بخلفية المصحف الخضراء الخفيفة.
+/// الآية الطويلة (> `collapseAbove` كلمة) تُقصّ عند حدّ كلمة حول أول كلمة مُبرَزة مع زر «المزيد».
+public struct MushafAyahText: View {
+    let ayah: String
+    let repo: MushafRepository
+    let size: CGFloat
+    let highlightWords: Set<Int>
+    let collapseAbove: Int
+    let paper: Bool
+    let plainText: String?
+
+    @State private var words: [MushafAyahWord]?
+    @State private var expanded = false
+    @ScaledMetric private var scale: CGFloat = 1
+
+    public init(ayah: String, repo: MushafRepository, size: CGFloat = 24, highlightWords: Set<Int> = [], collapseAbove: Int = 24, paper: Bool = true, plainText: String? = nil) {
+        self.ayah = ayah; self.repo = repo; self.size = size; self.highlightWords = highlightWords
+        self.collapseAbove = collapseAbove; self.paper = paper; self.plainText = plainText
+        _words = State(initialValue: MushafAyahWords.cached(ayah))
+    }
+
+    private var fontSize: CGFloat { size * scale }
+
+    public var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            if let words {
+                let range = visibleRange(words)
+                MushafWordFlow(spacing: fontSize * MushafMetrics.naturalGapEm, lineSpacing: fontSize * 0.55) {
+                    if range.lowerBound > 0 { Text("…").font(.system(size: fontSize * 0.6)).foregroundStyle(Sunnah.Colors.mushafAccent) }
+                    ForEach(Array(range), id: \.self) { i in wordView(words[i], index: i, words: words) }
+                    if range.upperBound < words.count { Text("…").font(.system(size: fontSize * 0.6)).foregroundStyle(Sunnah.Colors.mushafAccent) }
+                }
+                if words.filter({ !$0.isEnd }).count > collapseAbove {
+                    Button(expanded ? "أقل" : "المزيد") { withAnimation(.easeInOut(duration: 0.2)) { expanded.toggle() } }
+                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafAccent)
+                        .accessibilityIdentifier("mushaf.ayahText.more")
+                }
+            } else {
+                Color.clear.frame(height: fontSize * 1.6)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(paper ? 12 : 0)
+        .background { if paper { RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Sunnah.Colors.mushafPaper) } }
+        .environment(\.layoutDirection, .rightToLeft)
+        .task(id: ayah) { await load() }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(plainText ?? "آية \(ayah)"))
+        .accessibilityIdentifier("mushaf.ayahText")
+    }
+
+    private func load() async {
+        let repo = repo, ayah = ayah
+        let loaded = await Task.detached(priority: .userInitiated) { () -> [MushafAyahWord]? in
+            guard let w = MushafAyahWords.load(ayah: ayah, repo: repo) else { return nil }
+            for p in Set(w.map(\.page)) { _ = try? repo.ensureFont(page: p) }   // تسجيل كسول لخط كل صفحة تظهر آيتها
+            return w
+        }.value
+        words = loaded
+    }
+
+    /// النطاق الظاهر: كل الكلمات، أو نافذة حول أول كلمة مُبرَزة عند الطي (تنتهي بحدّ كلمة).
+    private func visibleRange(_ all: [MushafAyahWord]) -> Range<Int> {
+        let textCount = all.filter { !$0.isEnd }.count
+        guard !expanded, textCount > collapseAbove else { return 0..<all.count }
+        let anchor = highlightWords.min() ?? 0
+        let lo = max(0, min(anchor - collapseAbove / 3, textCount - collapseAbove))
+        let hi = min(textCount, lo + collapseAbove)
+        return lo..<(hi == textCount ? all.count : hi)
+    }
+
+    @ViewBuilder
+    private func wordView(_ w: MushafAyahWord, index i: Int, words: [MushafAyahWord]) -> some View {
+        let lit = !w.isEnd && highlightWords.contains(i)
+        Text(w.c)
+            .lineLimit(1).fixedSize()
+            .font(.custom(Mushaf.fontFamily(page: w.page), fixedSize: fontSize))
+            .foregroundStyle(w.isEnd ? Sunnah.Colors.mushafIvory : Sunnah.Colors.mushafInk)
+            .background {
+                if w.isEnd {
+                    Circle().fill(Sunnah.Colors.mushafAccent)
+                        .frame(width: fontSize * MushafPageView.ayahDiscEm, height: fontSize * MushafPageView.ayahDiscEm)
+                        .offset(y: fontSize * MushafPageView.ayahDiscDropEm)
+                }
+            }
+            .padding(.horizontal, w.isEnd ? fontSize * 0.2 : 0)
+            .padding(.vertical, 1)
+            .background(lit ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: fontSize * 0.2, style: .continuous))
+    }
+}
+
+/// تدفّق كلمات يلتفّ على أسطر من اليمين لليسار (RTL) ويطبّق التباعد الطبيعي للمصحف.
+struct MushafWordFlow: Layout {
+    var spacing: CGFloat
+    var lineSpacing: CGFloat
+
+    private func rows(_ subviews: Subviews, maxWidth: CGFloat) -> [[(i: Int, size: CGSize)]] {
+        var rows: [[(Int, CGSize)]] = [[]], x: CGFloat = 0
+        for (i, s) in subviews.enumerated() {
+            let sz = s.sizeThatFits(.unspecified)
+            if x > 0, x + sz.width > maxWidth { rows.append([]); x = 0 }
+            rows[rows.count - 1].append((i, sz)); x += sz.width + spacing
+        }
+        return rows.map { $0.map { (i: $0.0, size: $0.1) } }
+    }
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let w = proposal.width ?? .infinity
+        let rs = rows(subviews, maxWidth: w)
+        let h = rs.map { $0.map(\.size.height).max() ?? 0 }.reduce(0, +) + lineSpacing * CGFloat(max(0, rs.count - 1))
+        let used = rs.map { r in r.map(\.size.width).reduce(0, +) + spacing * CGFloat(max(0, r.count - 1)) }.max() ?? 0
+        return CGSize(width: proposal.width ?? used, height: h)
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        var y = bounds.minY
+        for r in rows(subviews, maxWidth: bounds.width) {
+            let rh = r.map(\.size.height).max() ?? 0
+            var x = bounds.maxX   // RTL: يبدأ السطر من اليمين
+            for (i, sz) in r {
+                x -= sz.width
+                subviews[i].place(at: CGPoint(x: x, y: y + (rh - sz.height) / 2), anchor: .topLeading, proposal: ProposedViewSize(sz))
+                x -= spacing
+            }
+            y += rh + lineSpacing
+        }
+    }
+}
