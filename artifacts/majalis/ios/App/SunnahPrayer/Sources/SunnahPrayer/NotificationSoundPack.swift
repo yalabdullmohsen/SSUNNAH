@@ -20,11 +20,15 @@ public enum NotificationSoundPack {
 
     #if canImport(UserNotifications)
     public static func sound(named name: String, bundle: Bundle = .main) -> UNNotificationSound {
+        #if os(watchOS)
+        return .default  // UNNotificationSound(named:) غير متاح على watchOS
+        #else
         let base = (name as NSString).deletingPathExtension
         if phraseSounds.contains(name), bundle.url(forResource: base, withExtension: "caf") != nil {
             return UNNotificationSound(named: UNNotificationSoundName(name))
         }
         return approvedName(name).map { UNNotificationSound(named: UNNotificationSoundName($0)) } ?? .default
+        #endif
     }
     #endif
 }

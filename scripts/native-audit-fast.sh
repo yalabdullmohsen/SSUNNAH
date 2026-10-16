@@ -18,6 +18,7 @@ TO=${SNAP_TIMEOUT:-15}
 xcrun simctl status_bar "$SIM" override --time 9:41 --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 >/dev/null 2>&1
 xcrun simctl ui "$SIM" appearance "$MODE"; xcrun simctl ui "$SIM" content_size "$FONT"
 [ -d "$APP" ] && xcrun simctl install "$SIM" "$APP" >/dev/null 2>&1
+SIM=$SIM bash scripts/native-shot-guard.sh "$APP" "$BOARD/shots" || exit 2  # لقطات من بناء HEAD فقط + PROVENANCE.txt
 node -e '
 const fs=require("fs");const m=JSON.parse(fs.readFileSync("docs/native/ROUTE_TEMPLATE_MAP.json","utf8"));
 let s={};try{s=JSON.parse(fs.readFileSync("docs/native/ROUTE_SAMPLES.json","utf8"))}catch{}

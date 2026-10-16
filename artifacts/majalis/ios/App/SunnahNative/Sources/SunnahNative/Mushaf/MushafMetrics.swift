@@ -78,6 +78,9 @@ enum MushafMetrics {
     static let minGapFactor: CGFloat = 0.9
 
     static let naturalGapEm: CGFloat = 0.12
+    /// حجم البسملة في كل السور = نسبة ثابتة من عرض السطر (لا من حجم الصفحة الذي يتفاوت بين الصفحات): قياس 402×874 و834×1194 على الصفحات الـ112.
+    static let basmalaWidthRatio: CGFloat = 0.0575
+    static func basmalaFontSize(width: CGFloat) -> CGFloat { width * basmalaWidthRatio }
 
     private struct Line {
         var i: Int

@@ -170,14 +170,14 @@ struct AccountAppVersion: Equatable {
     }
 }
 
-/// زر مشاركة رابط الصفحة على ssunnah.com (مقابل ShareButtons في الويب).
+/// زر مشاركة نصية (العنوان فقط): لا رابط لنطاق الموقع في التطبيق الأصلي.
 struct AccountShareRow: View {
     let title: String
     let path: String?
 
     var body: some View {
-        if let path, let url = URL(string: AccountTexts.siteURL + path) {
-            ShareLink(item: url, subject: Text(title)) {
+        if path != nil {
+            ShareLink(item: title, subject: Text(title)) {
                 Label("مشاركة", systemImage: "square.and.arrow.up")
                     .font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.primary)
                     .frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.buttonHeight)

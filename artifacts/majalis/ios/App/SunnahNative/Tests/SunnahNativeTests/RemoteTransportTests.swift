@@ -8,11 +8,11 @@ final class RemoteTransportTests: XCTestCase {
             supabaseURL: URL(string: "https://db.example.test/"), anonKey: "anon", accessToken: { nil }))
     }
 
-    func testSitePathsGoToSiteWithEightSecondTimeout() async throws {
-        let r = try await transport().request(path: "/data/lessons/feed.json", requireAuth: false)
-        XCTAssertEqual(r.url?.absoluteString, "https://www.ssunnah.com/data/lessons/feed.json")
-        XCTAssertEqual(r.timeoutInterval, 8)
-        XCTAssertNil(r.value(forHTTPHeaderField: "apikey"))
+    func testSitePathsAreRejectedWithoutNetwork() async {
+        for path in ["/data/lessons/feed.json", "/api/updates", "/api/citations/x"] {
+            do { _ = try await transport().request(path: path, requireAuth: false); XCTFail("يجب رفض \(path)") }
+            catch { XCTAssertEqual(error as? RemoteTransportError, .badPath) }
+        }
     }
 
     func testRestPathsGoToSupabaseWithAnonFallback() async throws {
