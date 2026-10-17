@@ -16,7 +16,7 @@
 | مضيفات المراجع داخل بيانات المحتوى (مثل `shamela.ws`، `sunnah.com`، `quran.com`، `t.me`، `instagram.com`، `*.awqaf.gov.kw`، `iifa-aifi.org`، `en.wikipedia.org`…) | حقول مصدر/رابط تُعرض نصًا أو تُفتح بنقرة؛ لا يجلبها التطبيق تلقائيًا (لا `URLSession` إلا في RemoteTransport وAccountNetwork وAccountDeletion وOfflineRecitation) |
 
 ## مذكورة في نص «المصادر» أو الاختبارات فقط — لا كود جلب في هذه الشجرة
-`everyayah.com`، `api.quran.com`، `api.alquran.cloud`، `tanzil.net`، `qul.tarteel.ai`، `fonts.google.com`، `pewresearch.org`. **تحذير:** نص `AccountTexts.swift:343/351` يقول إن تفاسير ابن كثير/البغوي/الطبري «تُجلب» من Quran.com API وإن EveryAyah يبث الآيات، ولا يوجد كود مطابق؛ على ن2/ن5 إما تصحيح النص أو تأكيد المسار قبل إجابة App Privacy. (`offline.invalid` = DEBUG فقط.)
+`everyayah.com`، `api.quran.com`، `api.alquran.cloud`، `tanzil.net`، `qul.tarteel.ai`، `fonts.google.com`، `pewresearch.org`. **صُحّح (2026-10-17):** نص `AccountTexts.swift` (التفسير/التلاوات) طابق الواقع: لا يجلب التطبيق تفاسير ولا يبثّ من EveryAyah/api.quran.com، والمضمَّن الميسّر والسعدي فقط.
 
 ## الساعة والودجت
 لا URLs ولا `URLSession` في SunnahWatch وPrayerWidgetResources؛ PrivacyInfo للثلاثة موجود.
