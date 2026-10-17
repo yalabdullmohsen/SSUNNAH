@@ -20,6 +20,8 @@ errs << "bundle id للـComplications يجب #{pid}.watchkitapp.complications" 
   errs << "#{tg.name}: SDKROOT يجب watchos" unless one.(tg, "SDKROOT") == "watchos"
   ent = one.(tg, "CODE_SIGN_ENTITLEMENTS"); errs << "#{tg.name}: entitlements مفقود (#{ent})" if ent.empty? || !File.file?(File.join(ios, ent))
   pl = one.(tg, "INFOPLIST_FILE"); errs << "#{tg.name}: Info.plist مفقود (#{pl})" if pl.empty? || !File.file?(File.join(ios, pl))
+  encchk = ->(t) { f = File.join(ios, one.(t, "INFOPLIST_FILE")); File.file?(f) && `/usr/libexec/PlistBuddy -c "Print :ITSAppUsesNonExemptEncryption" "#{f}" 2>/dev/null`.strip == "false" }
+  errs << "#{tg.name}: ITSAppUsesNonExemptEncryption يجب false في Info.plist (وإلا Missing Compliance)" unless encchk.(tg)
   errs << "#{tg.name}: PrivacyInfo.xcprivacy غير مضمَّن في Resources" unless tg.resources_build_phase.files.any? { |f| f.file_ref && f.file_ref.path.to_s.end_with?("PrivacyInfo.xcprivacy") }
 end
 pr = File.join(ios, "SunnahWatchResources/PrivacyInfo.xcprivacy")
@@ -34,6 +36,7 @@ if File.file?(cj)
     `sips -g pixelWidth -g pixelHeight "#{File.join(File.dirname(cj), i["filename"])}" 2>/dev/null`.scan(/: (\d+)/).flatten == %w[1024 1024] }
   errs << "أيقونة الساعة: لا صورة 1024x1024 watchos صالحة في AppIcon.appiconset" unless ok
 else errs << "أيقونة الساعة: AppIcon.appiconset/Contents.json مفقود" end
+errs << "التطبيق: ITSAppUsesNonExemptEncryption يجب false في Info.plist" unless (f = File.join(ios, one.(app, "INFOPLIST_FILE"))) && File.file?(f) && `/usr/libexec/PlistBuddy -c "Print :ITSAppUsesNonExemptEncryption" "#{f}" 2>/dev/null`.strip == "false"
 # Info.plist
 ip = File.join(ios, "SunnahWatchResources/Info.plist")
 if File.file?(ip)
