@@ -14,7 +14,7 @@
     {
       "id": "tabbar-cover",
       "owner": "ن1",
-      "match": "native-.*(tabbar|tab-bar|inset|cover).*\\.(mjs|sh)$"
+      "match": "native-tabbar-cover-guard\\.mjs$"
     },
     {
       "id": "verse-selection",
