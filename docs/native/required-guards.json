@@ -73,6 +73,11 @@
       "match": "native-mushaf-verse-selection-guard\\.sh$"
     },
     {
+      "id": "watch-auth",
+      "owner": "ن1",
+      "match": "native-watch-auth-guard\\.sh$"
+    },
+    {
       "id": "sensitive-coverage",
       "owner": "ن4",
       "match": "native-sensitive-coverage\\.sh$"

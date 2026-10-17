@@ -100,6 +100,7 @@ if [ "${1:-}" = "--release" ]; then BASMALA_GUARD_RUN=1 bash scripts/native-mush
 else bash scripts/native-mushaf-basmala-guard.sh || bad "حارس البسملة: خلل أو فُقد اختبار"; fi
 # مصدر اللقطات (ن3): كل لقطات مضافة تحت docs/native/ بجانبها PROVENANCE.txt من native-shot-guard.sh
 bash scripts/native-shot-provenance-guard.sh || bad "لقطات بلا PROVENANCE.txt (التقطها عبر native-shot-guard.sh من بناء HEAD)"
+bash scripts/native-watch-auth-guard.sh || bad "إذن إشعارات الساعة ليس سياقيًا (ن1 #3464)"
 bash scripts/native-sensitive-coverage.sh || bad "ملف حسّاس بلا لقطة مسمّاة باسمه/شاشته (درس #3452)"
 bash scripts/native-shipping-workflow-guard.sh || bad "App.xcodeproj (Capacitor القديم) في workflow شحن"
 bash scripts/native-assets-license-guard.sh || bad "أصل غير مسجَّل/بترخيص غير مقبول في docs/native/ASSETS_LICENSES.md"
