@@ -46,6 +46,9 @@ struct SunnahDisclosureInfoButton: View {
         .buttonStyle(.plain)
         .accessibilityLabel(SunnahDisclosure.title).accessibilityHint("يعرض تنبيه الذكاء الاصطناعي")
         .accessibilityIdentifier("detail.disclosureInfo")
+        #if DEBUG
+        .onAppear { if UserDefaults.standard.bool(forKey: "snapshotDisclosure") { showing = true } }
+        #endif
         .sheet(isPresented: $showing) {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 Label(SunnahDisclosure.title, systemImage: "info.circle").font(Sunnah.Typography.cardTitle)
