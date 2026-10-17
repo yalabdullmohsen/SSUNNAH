@@ -47,6 +47,20 @@ export default async function exportSirah({ json, held, reject, counts, appRoot 
     out("prophets-knowledge", rows);
   }
 
+  /* الشروح التفاعلية (ExplainerTemplate): مراحل مرتبة، كل مرحلة بمراجعها ومصادرها؛ تُستبعد غير الموثّقة */
+  {
+    const dir = `${appRoot}/public/data/explainers`;
+    const rows = [];
+    if (fs.existsSync(dir)) {
+      for (const f of readDir(dir)) {
+        const e = JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8"));
+        if (e.review_status !== "verified") { reject(`${S}-explainers`, "غير موثّق"); continue; }
+        if (keep("explainers")(e)) rows.push(e);
+      }
+    }
+    out("explainers", rows);
+  }
+
   /* القصص: كما يعرضها الموقع (is_approved) ولها مصادر — بلا شرط editorial_review_status لأن الموقع لا يشترطه (مطابقة للويب) */
   {
     const dir = `${appRoot}/public/data/stories`;
