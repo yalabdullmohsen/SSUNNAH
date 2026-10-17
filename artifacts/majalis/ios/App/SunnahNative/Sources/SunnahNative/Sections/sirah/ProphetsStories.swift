@@ -2,11 +2,14 @@ import SwiftUI
 
 /// أقسام صفحة النبي: كل خيار يظهر فقط إن كان له محتوى موثّق، والفارغ يُخفى كليًّا.
 enum ProphetSection: String, CaseIterable, Hashable {
-    case story, verses, lineage, timePlace, miracles, lessons
+    case story, identity, saadi, sunnah, verses, lineage, timePlace, miracles, lessons
 
     var title: String {
         switch self {
         case .story: return "القصة كاملة"
+        case .identity: return "التعريف"
+        case .saadi: return "من تفسير السعدي"
+        case .sunnah: return "من السنة"
         case .verses: return "الآيات"
         case .lineage: return "النسب"
         case .timePlace: return "الزمان والمكان"
@@ -14,11 +17,12 @@ enum ProphetSection: String, CaseIterable, Hashable {
         case .lessons: return "الدروس والابتلاءات"
         }
     }
+    var partKey: String? { self == .identity ? "identity" : self == .saadi ? "saadi" : self == .sunnah ? "sunnah" : nil }
     /// عناوين `##` في البيانات المقابلة لكل خيار؛ القصة تجمع الدعوة والمواقف والمآل.
     var headings: [String] {
         switch self {
         case .story: return ["أصل الدعوة", "أبرز المواقف والابتلاءات", "مآل قومه والعبرة العامة", "دعوته", "سياق النبوة"]
-        case .verses: return []
+        case .identity, .saadi, .sunnah, .verses: return []
         case .lineage: return ["التعريف والنسب"]
         case .timePlace: return ["الزمان والمكان"]
         case .miracles: return ["المعجزات والآيات البينات"]
@@ -57,8 +61,13 @@ struct ProphetStory: Identifiable, Hashable {
             let paras = s.headings.flatMap { parsed[$0] ?? [] }
             if !paras.isEmpty { out[s] = paras }
         }
+        for part in k.sections ?? [] {
+            guard let sec = [ProphetSection.identity, .saadi, .sunnah].first(where: { $0.partKey == part.key }), !(part.sources ?? []).isEmpty else { continue }
+            let paras = part.body.components(separatedBy: "\n").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
+            if !paras.isEmpty { out[sec] = paras }
+        }
         let ayat = (k.evidences ?? []).compactMap { e -> Ayah? in
-            guard let r = e.ref, SunnahAyahRange.parse(r) != nil, !e.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return nil }
+            guard let r = e.ref, SunnahAyahRange.parse(r) != nil else { return nil }
             return Ayah(ref: r, text: e.text)
         }
         if !ayat.isEmpty { out[.verses] = [] }
@@ -126,7 +135,7 @@ struct ProphetsGridView: View {
         .accessibilityIdentifier("prophets.grid")
         #if DEBUG
         .navigationDestination(isPresented: $debugOpen) { ProphetPageView(prophets: prophets, start: UserDefaults.standard.integer(forKey: "snapshotProphet")) }
-        .onAppear { if UserDefaults.standard.object(forKey: "snapshotProphet") != nil { debugOpen = true } }
+        .onAppear { if UserDefaults.standard.object(forKey: "snapshotProphet") != nil, !prophets.isEmpty { debugOpen = true } }
         #endif
     }
 }
