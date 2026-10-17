@@ -159,7 +159,12 @@ struct ProphetPageView: View {
         .background(Sunnah.Colors.bg)
         .bodyTitledNavigation()
         .onChange(of: index) { _ in if !p.visibleSections.contains(selection) { selection = p.visibleSections.first ?? .story } }
-        .onAppear { if !p.visibleSections.contains(selection) { selection = p.visibleSections.first ?? .story } }
+        .onAppear {
+            #if DEBUG
+            if let s = UserDefaults.standard.string(forKey: "snapshotProphetSection"), let sec = ProphetSection(rawValue: s) { selection = sec }
+            #endif
+            if !p.visibleSections.contains(selection) { selection = p.visibleSections.first ?? .story }
+        }
         .accessibilityIdentifier("prophet.page")
     }
 
