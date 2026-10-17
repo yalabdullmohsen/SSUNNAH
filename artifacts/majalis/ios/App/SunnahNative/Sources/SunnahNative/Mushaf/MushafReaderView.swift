@@ -301,8 +301,8 @@ public struct MushafReaderView: View {
         return SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheetHeight + Self.bottomSafeInset, barBottom: chromeHide.visible ? Self.chromeBottom : 0)
     }
 
-    /// أسفل شريط الأدوات المثبّت من أعلى الشاشة (padding.top 54 + ارتفاع الكبسولة ≈ 48).
-    static let chromeBottom: CGFloat = 102
+    /// أسفل شريط الأدوات المثبّت: الحافة الآمنة العليا + padding.top 54 + ارتفاع الكبسولة ≈ 48 (مقيس من لقطة iPhone).
+    static var chromeBottom: CGFloat { topSafeInset + 102 }
 
     static var topSafeInset: CGFloat {
         #if os(iOS)
