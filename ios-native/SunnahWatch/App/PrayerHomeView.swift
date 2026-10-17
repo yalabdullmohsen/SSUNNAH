@@ -36,6 +36,7 @@ struct PrayerHomeView: View {
                     }
                 }
                 .background(WatchTheme.raised, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                RemindersToggle(payload: p)
             }
             .padding(.horizontal, 4)
         }
@@ -107,4 +108,27 @@ struct PrayerHomeView: View {
 
 private extension Date.FormatStyle {
     func timeZone(_ tz: TimeZone) -> Date.FormatStyle { var s = self; s.timeZone = tz; return s }
+}
+
+/// تنبيهات الصلاة والأذكار: طلب الإذن يحدث هنا فقط، بعد أن يلمس المستخدم المفتاح.
+private struct RemindersToggle: View {
+    let payload: WatchPayload
+    @State private var on = WatchNotifications.isEnabled
+
+    var body: some View {
+        Toggle("تنبيهات الصلاة والأذكار", isOn: Binding(get: { on }, set: { new in
+            on = new
+            Task {
+                if new {
+                    let ok = await WatchNotifications.enable()
+                    on = ok
+                    if ok { await WatchNotifications.reschedule(from: payload) }
+                } else {
+                    await WatchNotifications.disable()
+                }
+            }
+        }))
+        .font(.footnote)
+        .accessibilityIdentifier("watch.reminders.toggle")
+    }
 }
