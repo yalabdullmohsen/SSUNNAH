@@ -80,6 +80,7 @@ public struct RootTabView: View {
         #if DEBUG
         .task {   // لقطات التدقيق فقط: `-snapshotRoute <route>` (أي مسار مسجّل، مثل /fawaid أو /hadith/daif) يُفتح عند الإقلاع بلا حوار الرابط العميق
             if let p = UserDefaults.standard.string(forKey: "snapshotRoute"), p.hasPrefix("/") { router.open(path: p) }
+            SnapshotScroll.startIfRequested()   // `-snapshotScroll end`: يمرّر الشاشة المفتوحة إلى نهايتها (انظر docs/native/SNAPSHOT_ARGS.md)
         }
         #endif
     }
