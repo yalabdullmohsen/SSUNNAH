@@ -49,6 +49,7 @@ public struct HomeScreen: View {
                         ForEach(Self.shortcuts) { item in tile(item) }
                     }
                 }
+                SunnahContentFooter(title: "الرئيسية", id: "home", section: "الرئيسية", inset: false)
             }
             .padding(Sunnah.Spacing.pageX)
         }

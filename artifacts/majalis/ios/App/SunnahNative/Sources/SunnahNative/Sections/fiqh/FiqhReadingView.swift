@@ -47,6 +47,7 @@ struct FiqhReadingView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(Sunnah.Spacing.pageX)
+            SunnahContentFooter(title: reading.title, id: reading.title, section: "الفقه", sensitive: true)
             }
         }
     }

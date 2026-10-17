@@ -106,7 +106,7 @@ struct HadithDetailView: View {
                 if let explanation = item.explanation {
                     SunnahCard { SunnahSectionedMarkdown(explanation, key: "hadith-\(item.id)", style: .body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 }
-                SunnahReportIssueButton(title: item.title, id: item.id, section: item.collection ?? "الحديث", inset: false)
+                SunnahContentFooter(title: item.title, id: item.id, section: item.collection ?? "الحديث", source: item.collection, inset: false, sensitive: true)
             }.padding(Sunnah.Spacing.pageX)
         }
         .sunnahReadableWidth().background(Sunnah.Colors.bg)

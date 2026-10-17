@@ -65,6 +65,7 @@ public struct ShamailView: View {
                                     }
                                 }
                             }
+                            SunnahContentFooter(title: current.label, id: "shamail", section: "الشمائل", inset: false)
                         }.padding(.horizontal, Sunnah.Spacing.pageX).padding(.bottom, Sunnah.Spacing.pageX)
                     }
                 }

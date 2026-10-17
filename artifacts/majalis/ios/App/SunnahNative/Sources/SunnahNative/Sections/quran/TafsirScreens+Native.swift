@@ -105,6 +105,8 @@ struct TafsirSurahView: View {
                         .padding(.vertical, Sunnah.Spacing.s2)
                         .sunnahRowChrome()
                     }
+                    SunnahContentFooter(title: surahName, id: "tafsir-\(book.id)-\(surahId)", section: "التفسير", source: book.source.map { "المصدر: \($0.name)" } ?? book.name, inset: false)
+                        .listRowSeparator(.hidden).listRowBackground(Color.clear)
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             }

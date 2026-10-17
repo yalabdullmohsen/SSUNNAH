@@ -51,13 +51,17 @@ public struct AdhkarScreen: ScreenTemplate {
             EmptyStateView(title: "الأذكار قيد التوثيق")
                 .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
         } else {
-            List(categories) { category in
-                SunnahNavigationLink {
-                    AdhkarListView(items: category.items).navigationTitle(titles[category.id] ?? Self.fallbackTitle)
-                } label: {
-                    SunnahListRow(title: titles[category.id] ?? Self.fallbackTitle, subtitle: "\(category.items.count)")
+            List {
+                ForEach(categories) { category in
+                    SunnahNavigationLink {
+                        AdhkarListView(items: category.items).navigationTitle(titles[category.id] ?? Self.fallbackTitle)
+                    } label: {
+                        SunnahListRow(title: titles[category.id] ?? Self.fallbackTitle, subtitle: "\(category.items.count)")
+                    }
+                    .sunnahRowChrome()
                 }
-                .sunnahRowChrome()
+                SunnahContentFooter(title: "أذكار", id: "adhkar", section: "الأذكار", inset: false)
+                    .listRowSeparator(.hidden).listRowBackground(Color.clear)
             }
             .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth().background(Sunnah.Colors.bg)
             .task {
@@ -93,6 +97,7 @@ struct AdhkarListView: View {
                         }
                     }.buttonStyle(.plain)
                 }
+                SunnahContentFooter(title: "أذكار", id: "adhkar", section: "الأذكار", inset: false)
             }.padding(Sunnah.Spacing.pageX)
         }
         .sunnahReadableWidth().background(Sunnah.Colors.bg)
