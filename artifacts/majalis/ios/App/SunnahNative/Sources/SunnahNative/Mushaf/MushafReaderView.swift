@@ -211,6 +211,10 @@ public struct MushafReaderView: View {
         .onChange(of: current) { p in selected = nil; store.visit(page: p); repo.prefetch(around: p, size: pageSize) }
         .task {
             store.visit(page: current); repo.prefetch(around: current, size: pageSize)
+            #if DEBUG
+            // لقطات التدقيق فقط: `-snapshotSelectAyah 37:130` يحدّد الآية كأن المستخدم لمسها (يُظهر التظليل وبطاقة الآية).
+            if let a = UserDefaults.standard.string(forKey: "snapshotSelectAyah"), !a.isEmpty { selected = a }
+            #endif
             #if (DEBUG || MUSHAF_PROBE) && canImport(UIKit)
             MushafFlipProbe.runIfRequested(start: current) { current = $0 }
             #endif
