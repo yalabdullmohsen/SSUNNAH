@@ -17,10 +17,19 @@ public enum SheetAvoidance {
     public static let topInsetRatio: CGFloat = 0.07
     public static let minScale: CGFloat = 0.5
 
-    /// ‏`ayahMinY/MaxY`: مستطيل الآية كله (كل أسطرها). `sheetHeight`: الارتفاع الفعلي للبطاقة بما فيه الحافة الآمنة.
-    public static func plan(pageHeight h: CGFloat, ayahMinY: CGFloat, ayahMaxY: CGFloat, sheetHeight: CGFloat) -> Plan {
+    /// ‏`barBottom`: أسفل الشريط العلوي المثبّت (0 = لا شريط). `ayahMinY/MaxY`: مستطيل الآية كله (كل أسطرها). `sheetHeight`: الارتفاع الفعلي للبطاقة بما فيه الحافة الآمنة.
+    public static func plan(pageHeight h: CGFloat, ayahMinY: CGFloat, ayahMaxY: CGFloat, sheetHeight: CGFloat, barBottom: CGFloat = 0) -> Plan {
         guard h > 0, sheetHeight > 0, ayahMaxY > ayahMinY else { return .none }
         let limit = h - sheetHeight - margin
+        // الشريط العلوي المثبّت (ثابت على الشاشة لا يتحرك مع الصفحة): الآية تبقى بينه وبين البطاقة.
+        if barBottom > 0 {
+            let top = barBottom + margin
+            if ayahMaxY <= limit, ayahMinY >= top { return .none }
+            let lo = top - ayahMinY, hi = limit - ayahMaxY
+            if lo <= hi { return Plan(dy: max(lo, min(0, hi))) }
+            let s = max(minScale, min(1, (limit - top) / (ayahMaxY - ayahMinY)))
+            return Plan(dy: max(top - ayahMinY * s, min(0, limit - ayahMaxY * s)), scale: s)
+        }
         if ayahMaxY <= limit { return .none }
         let topInset = h * topInsetRatio
         let need = ayahMaxY - limit

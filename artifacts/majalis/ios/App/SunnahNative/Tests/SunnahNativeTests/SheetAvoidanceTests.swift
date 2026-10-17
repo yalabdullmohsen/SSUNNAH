@@ -57,4 +57,35 @@ final class SheetAvoidanceTests: XCTestCase {
         XCTAssertEqual(SheetAvoidance.plan(pageHeight: 0, ayahMinY: 0, ayahMaxY: 10, sheetHeight: 10), .none)
         XCTAssertEqual(SheetAvoidance.plan(pageHeight: 800, ayahMinY: 10, ayahMaxY: 20, sheetHeight: 0), .none)
     }
+
+    /// الآية في أول سطر والشريط العلوي مثبّت: تنزل الصفحة لتبقى الآية تحت الشريط وفوق البطاقة.
+    func testFirstLineAyahClearsPinnedTopBar() {
+        let h: CGFloat = 874, row = 0.811 * h / 15, top = 0.102 * h, bar: CGFloat = 102, sheet: CGFloat = 300
+        let span = (minY: top, maxY: top + row)
+        let p = SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheet, barBottom: bar)
+        let v = SheetAvoidance.visibleSpan(span, plan: p)
+        XCTAssertGreaterThanOrEqual(v.minY, bar); XCTAssertLessThanOrEqual(v.maxY, h - sheet)
+    }
+
+    func testAyahBetweenBarAndSheetNeedsNoChange() {
+        XCTAssertEqual(SheetAvoidance.plan(pageHeight: 874, ayahMinY: 200, ayahMaxY: 260, sheetHeight: 300, barBottom: 102), .none)
+    }
+
+    func testLastLineAyahClearsBarAndSheet() {
+        let h: CGFloat = 874, row = 0.811 * h / 15, top = 0.102 * h, bar: CGFloat = 102, sheet: CGFloat = 300
+        let span = (minY: top + 14 * row, maxY: top + 15 * row)
+        let p = SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheet, barBottom: bar)
+        let v = SheetAvoidance.visibleSpan(span, plan: p)
+        XCTAssertGreaterThanOrEqual(v.minY, bar); XCTAssertLessThanOrEqual(v.maxY, h - sheet)
+    }
+
+    /// آية طويلة لا تتسع بين الشريط والبطاقة بلا تصغير: تُصغَّر وتبقى بينهما.
+    func testTallAyahScalesBetweenBarAndSheet() {
+        let h: CGFloat = 874, bar: CGFloat = 102, sheet: CGFloat = 380
+        let span = (minY: CGFloat(150), maxY: CGFloat(560))
+        let p = SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheet, barBottom: bar)
+        let v = SheetAvoidance.visibleSpan(span, plan: p)
+        XCTAssertLessThan(p.scale, 1)
+        XCTAssertGreaterThanOrEqual(v.minY, bar); XCTAssertLessThanOrEqual(v.maxY, h - sheet)
+    }
 }

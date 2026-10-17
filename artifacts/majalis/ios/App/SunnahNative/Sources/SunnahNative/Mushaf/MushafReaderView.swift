@@ -178,7 +178,6 @@ public struct MushafReaderView: View {
                 .clipped()
                 pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
                 pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
-                if chromeHide.visible { chrome.transition(.opacity) }
             }
             .frame(width: w, height: h)
             // القائمة السفلية لا تقطع نص الصفحة: تُصغَّر الصفحة كاملة (تحويل بصري بلا تغيير التخطيط) لتبقى فوق القائمة.
@@ -195,6 +194,7 @@ public struct MushafReaderView: View {
         .background(Sunnah.Colors.mushafPaper.ignoresSafeArea())
         // الصفحة المُزاحة للأعلى تنزلق تحت شريط الحالة بدل أن تتقاطع حروفها مع الساعة والبطارية.
         .overlay(alignment: .top) { if avoidancePlan(height: pageSize.height).dy < 0 { Sunnah.Colors.mushafPaper.frame(height: Self.topSafeInset).ignoresSafeArea(edges: .top) } }
+        .overlay(alignment: .top) { if chromeHide.visible { chrome.transition(.opacity) } }
         .immersiveReader(revealed: false)
         #if os(iOS)
         .toolbar(.hidden, for: .navigationBar)
@@ -298,8 +298,11 @@ public struct MushafReaderView: View {
         let m = MushafPageLayout.metrics(for: page, height: Double(h))
         let idx = m.rows.enumerated().compactMap { i, r in r.w?.contains { $0.v == sel } == true ? i : nil }
         guard let span = SheetAvoidance.ayahSpan(rowIndices: idx, top: CGFloat(m.top), rowHeight: CGFloat(m.rowHeight)) else { return .none }
-        return SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheetHeight + Self.bottomSafeInset)
+        return SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheetHeight + Self.bottomSafeInset, barBottom: chromeHide.visible ? Self.chromeBottom : 0)
     }
+
+    /// أسفل شريط الأدوات المثبّت من أعلى الشاشة (padding.top 54 + ارتفاع الكبسولة ≈ 48).
+    static let chromeBottom: CGFloat = 102
 
     static var topSafeInset: CGFloat {
         #if os(iOS)
