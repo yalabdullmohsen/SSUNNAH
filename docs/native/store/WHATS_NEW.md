@@ -12,6 +12,8 @@
 • المصحف الكامل: 604 صفحات بالرسم العثماني.
 • حاسبة الفرائض (المواريث): تعمل على جهازك بلا اتصال.
 • مواقيت الصلاة واتجاه القبلة: تُحسَب على جهازك بحسب موقعك، مع تذكيرات الصلاة.
+• المصحف: يختفي الشريط السفلي أثناء القراءة لتبقى الصفحة كاملة.
+• زر «إبلاغ عن خطأ» وتنبيه الذكاء الاصطناعي في صفحات المحتوى.
 • تحسينات في التصميم والخطوط ودعم الوضع الداكن والعربية من اليمين لليسار.
 • حفظ جلسة الدخول بأمان في سلسلة مفاتيح الجهاز (Keychain).
 
@@ -28,6 +30,8 @@ Sunnah 1.2.0 — rebuilt from the ground up as a fully native app for iPhone and
 • Complete Mushaf: all 604 pages in Uthmani script.
 • Inheritance (Fara'id) calculator: runs on your device, offline.
 • Prayer times and Qibla: calculated on your device from your location, with prayer reminders.
+• Mushaf: the bottom tab bar hides while reading so the page stays full.
+• A "Report an error" button and an AI notice on content pages.
 • Refined design and fonts, with Dark Mode and full right-to-left Arabic support.
 • Your sign-in session is stored securely in the device Keychain.
 
@@ -35,4 +39,5 @@ The app's content is prepared with AI assistance and may contain errors.
 ```
 
 ## ما لا نقوله عمدًا (لا ادعاءات)
+لا «تصميم موحد جديد» ولا «شروح تفاعلية» ولا «صفحة قصص أنبياء جديدة» ولا «بطاقة الآية لا تغطي الآية» ولا «زر خروج بمؤقت» ولا «أيقونة !»: لم تُدمج بعد (#3450 و#3461 و#3462 مفتوحة؛ #3453 أُغلق)، وتُضاف الجملة بعد دمجها والتحقق. زر الإبلاغ أيقونته `exclamationmark.bubble` وتنبيه الذكاء الاصطناعي `info.circle` (لا «!» حرفيًا). ولا ادعاء بمراجعة مشايخ.
 لا «جميع الميزات تعمل بلا إنترنت»، ولا «تسميع بالذكاء الاصطناعي»، ولا «أذان» (الأذان غير مضمَّن: تنبيه بعبارة صوتية)، ولا أعداد محتوى لم تُتحقق.

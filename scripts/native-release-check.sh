@@ -76,6 +76,12 @@ rm -f /tmp/native-watch-guard.$$
 # 2و) حراس جودة المحتوى (قوالب متكررة / خلاصة بلا مصدر أو وسم / وصف فارغ أو مكرر): سقف تنازلي docs/native/content-guards-baseline.json
 node scripts/native-content-guards.mjs >/tmp/native-content-guards.$$ 2>&1 || { head -20 /tmp/native-content-guards.$$; bad "حراس المحتوى: مخالفات جديدة فوق السقف (node scripts/native-content-guards.mjs --list)"; }
 rm -f /tmp/native-content-guards.$$
+# 2و-2) بنية حقل sources موحّدة (docs/native/SOURCES_FIELD.md): سقف تنازلي لغير المعياري
+node scripts/native-sources-shape-guard.mjs >/tmp/native-sources-shape.$$ 2>&1 || { head -20 /tmp/native-sources-shape.$$; bad "بنية sources: عناصر غير معيارية فوق السقف"; }
+node scripts/native-literal-verse-guard.mjs --check >/tmp/native-literal-verse.$$ 2>&1 || { head -5 /tmp/native-literal-verse.$$; bad "﴿ حرفية: زادت فوق السقف (الآيات مراجع لا نص)"; }
+rm -f /tmp/native-literal-verse.$$
+bash scripts/native-verify-sync.test.sh >/dev/null 2>&1 || bad "اختبار تحقق مزامنة التصدير فشل"
+rm -f /tmp/native-sources-shape.$$
 node scripts/native-date-guard.mjs >/tmp/native-date-guard.$$ 2>&1 || { head -20 /tmp/native-date-guard.$$; bad "حارس date-readable: تاريخ خام أو لاتيني خطأ"; }
 rm -f /tmp/native-date-guard.$$
 node scripts/native-detail-guard.mjs >/tmp/native-detail-guard.$$ 2>&1 || { head -20 /tmp/native-detail-guard.$$; bad "حارس شاشات التفصيل: شاشة خارج المكوّن المشترك"; }
@@ -97,6 +103,11 @@ if [ "${1:-}" = "--release" ]; then BASMALA_GUARD_RUN=1 bash scripts/native-mush
 else bash scripts/native-mushaf-basmala-guard.sh || bad "حارس البسملة: خلل أو فُقد اختبار"; fi
 # مصدر اللقطات (ن3): كل لقطات مضافة تحت docs/native/ بجانبها PROVENANCE.txt من native-shot-guard.sh
 bash scripts/native-shot-provenance-guard.sh || bad "لقطات بلا PROVENANCE.txt (التقطها عبر native-shot-guard.sh من بناء HEAD)"
+bash scripts/native-watch-auth-guard.sh || bad "إذن إشعارات الساعة ليس سياقيًا (ن1 #3464)"
+bash scripts/native-sensitive-coverage.sh || bad "ملف حسّاس بلا لقطة مسمّاة باسمه/شاشته (درس #3452)"
+bash scripts/native-shipping-workflow-guard.sh || bad "App.xcodeproj (Capacitor القديم) في workflow شحن"
+bash scripts/native-assets-license-guard.sh || bad "أصل غير مسجَّل/بترخيص غير مقبول في docs/native/ASSETS_LICENSES.md"
+bash scripts/native-assets-size-guard.sh || bad "أصل أو مجموع أصول فوق سقف docs/native/assets-budget.json"
 node scripts/native-titles-guard.mjs >/tmp/native-titles-guard.$$ 2>&1 || { head -20 /tmp/native-titles-guard.$$; bad "حارس titles-unique: عنوان مفقود/مكرر/خارج الجرد"; }
 rm -f /tmp/native-titles-guard.$$
 node scripts/native-tabbar-cover-guard.mjs >/tmp/native-tabbar-guard.$$ 2>&1 || { head -20 /tmp/native-tabbar-guard.$$; bad "حارس tabbar-cover: محتوى قد يختفي خلف شريط التبويب"; }
