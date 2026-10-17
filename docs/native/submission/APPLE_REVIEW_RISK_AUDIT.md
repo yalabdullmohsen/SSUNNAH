@@ -37,7 +37,7 @@
 4. **(15/17) شاشة المصادر ناقصة السيرة والعقيدة والشمائل والمكتبة + الإفصاح** — ن1 (عرض) + ن2 (إدخال) من `SOURCES_SCREEN_ENTRIES.md`.
 5. **(4/2) جملة المراجعة المسبقة للمساهمات وجملة التصدير في شاشة الحذف** — ن1 (الجملتان جاهزتان في `SOURCES_SCREEN_ENTRIES.md`).
 
-6. **(19) تكرار القوالب وعبارات داخليّة** — ن2 (CONTENT_TEMPLATE_DUPLICATION_REPORT.md)
+6. **(19) تكرار القوالب وعبارات داخليّة** — ن2 (CONTENT_TEMPLATE_DUPLICATION_REPORT.md؛ يشمل quiz/qa/stories: 4752 موضع شرح مكرّر في quiz — N2_DUPLICATION_HANDOFF.md)
 7. **(20) `ios-testflight-deploy.yml:160` يبني App.xcodeproj** — ن4 (هدف Capacitor القديم غير مشحون)
 8. **(21–23) قبل إضافة ن1:** شروح مصوَّرة/صفحات أنبياء/ادّعاءات علميّة — المواصفات: PROPHETS_STORIES_SPEC، DESIGN_SYSTEM_SPEC، ASSETS_LICENSES
 
