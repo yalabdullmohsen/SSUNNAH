@@ -15,3 +15,7 @@ xcrun simctl launch <UDID> com.yousef.majlisilm -snapshotRoute /hadith/daif -sna
 - يُدمج مع حجم الخط: `xcrun simctl ui <UDID> content_size accessibility-extra-extra-extra-large` قبل الإطلاق، ثم انتظر اكتمال التحميل (~10 ثوانٍ) قبل `simctl io screenshot`.
 - لقطة رسمية: `native-shot-guard.sh <App.app> <مجلد>` يكتب PROVENANCE.txt ويرفض binary قديمًا.
 - مسارات «ورقة» (sheet) أو الأدراج غير مشمولة؛ لها `SNAP_DRAWER`/`SNAP_DETAIL` (متغيرات بيئة عبر `SIMCTL_CHILD_`).
+
+## البناء المشترك
+`bash scripts/native-head-build.sh` يبني SunnahApp للمحاكي مرة واحدة لكل شجرة نظيفة ويخدم كل النوافذ (`--lookup` يطبع المسار دون بناء)؛ `native-snapshot.sh` يستعمله تلقائيًا، و`native-shot-guard.sh <App.app> <outdir>` يقبله ويكتب PROVENANCE.
+نافذة بتعديلات غير مدفوعة تبني لنفسها (الأمر يخرج بـ3)، ثم تمرّر `APP=<مسار .app>` للقطات.

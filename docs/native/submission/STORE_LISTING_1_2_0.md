@@ -32,7 +32,7 @@
 قرآن,مصحف,أذكار,حديث,فقه,سيرة,صلاة,مواقيت,قبلة,تفسير,دعاء,مواريث,فرائض,مسبحة,تلاوة,ويدجت
 ```
 
-**الوصف (≤4000):** 1085 حرفًا
+**الوصف (≤4000):** 1291 حرفًا
 ```
 سُنّة تطبيق عربي للمسلم يجمع القرآن والأذكار والحديث والفقه والسيرة ومواقيت الصلاة في مكان واحد، بتصميم هادئ يدعم الوضع الفاتح والداكن والكتابة من اليمين إلى اليسار.
 
@@ -66,7 +66,7 @@
 ملاحظات
 • بعض الميزات تحتاج اتصالًا بالإنترنت، ومنها البثّ وتزامن الحساب.
 • الأوقات والاتجاه تعتمد على دقة الموقع وإعدادات جهازك؛ تحقق من الجهات المحلية عند الحاجة.
-• محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي من مصادر مذكورة في كل صفحة، وقد يقع فيه خطأ، ولا يغني عن الرجوع لأهل العلم، وفيه زر للإبلاغ عن أي خطأ.
+• محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي، وقد يقع فيه خطأ، ولا يغني عن الرجوع لأهل العلم. يعرض المحتوى الشرعي مصدره في صفحات التفاصيل والأحاديث، ويمكن الإبلاغ عن أي خطأ من داخل الصفحة.
 ```
 
 **ما الجديد في 1.2.0:** 240 حرفًا
@@ -93,7 +93,7 @@ The 604-page Mushaf with search, bookmarks and tafsir, prayer times and qibla, a
 quran,mushaf,adhkar,hadith,fiqh,seerah,prayer times,qibla,islam,dua,tasbih,inheritance,tafsir,widget
 ```
 
-**Description (≤4000):** 1334 chars
+**Description (≤4000):** 1600 chars
 ```
 Sunnah is an Arabic app for Muslims that brings the Quran, adhkar, hadith, fiqh, seerah and prayer times together in one calm, right-to-left design with light and dark appearance.
 
@@ -127,7 +127,7 @@ Personalization
 Notes
 - Some features need an internet connection, including streaming and account sync.
 - Times and direction depend on location accuracy and your device settings; consult local authorities when needed.
-- The app's content is prepared with the assistance of artificial intelligence from sources cited on each page. It may contain errors and is not a substitute for consulting scholars. The app includes a button to report any error.
+- The app's content is prepared with the assistance of artificial intelligence. It may contain errors and is not a substitute for consulting scholars. Religious content shows its source on detail and hadith pages, and any error can be reported from within the page.
 ```
 
 **What's New in 1.2.0:** 301 chars
@@ -182,4 +182,4 @@ Notes
 
 - الجملة أعلاه (عربي/إنجليزي) بنص قراره، بلا نسبة مراجعة لأحد.
 - **شرط قبل الرفع:** «وفيه زر للإبلاغ» غير صحيحة اليوم؛ لا زر إبلاغ في صفحات المحتوى (GUIDELINES_AUDIT G2، والموجود نموذج «تواصل معنا» فقط). لا تُلصق الجملة في ASC قبل شحن الزر أو حذف المقطع الأخير منها.
-- «من مصادر مذكورة في كل صفحة» تحتاج تحققًا من أن كل صفحة تعرض مصدرها؛ ن1/ن4 يؤكدان.
+- حُسم (قرار يوسف): استُبدلت «من مصادر مذكورة في كل صفحة» بصياغة صادقة حرفيًا (تفاصيل الشاشات في `SOURCES_CLAIM_AUDIT.md`)؛ لا تعود العبارة قبل اكتمال ذيل المحتوى الموحّد (طلب ن1).

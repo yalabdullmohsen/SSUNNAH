@@ -15,7 +15,7 @@
 • تحسينات في التصميم والخطوط ودعم الوضع الداكن والعربية من اليمين لليسار.
 • حفظ جلسة الدخول بأمان في سلسلة مفاتيح الجهاز (Keychain).
 
-محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي من مصادر مذكورة، وقد يقع فيه خطأ.
+محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي، وقد يقع فيه خطأ.
 ```
 
 ## English (en-US)
@@ -31,7 +31,7 @@ Sunnah 1.2.0 — rebuilt from the ground up as a fully native app for iPhone and
 • Refined design and fonts, with Dark Mode and full right-to-left Arabic support.
 • Your sign-in session is stored securely in the device Keychain.
 
-The app's content is prepared with AI assistance from cited sources and may contain errors.
+The app's content is prepared with AI assistance and may contain errors.
 ```
 
 ## ما لا نقوله عمدًا (لا ادعاءات)
