@@ -50,5 +50,5 @@ for (const f of m.files.filter((x) => /^quiz\/(?!manifest)/.test(x.path))) for (
 console.log(JSON.stringify({ ok: true, files: m.files.length, quizAccepted: q, manifest: path.join(out, "MANIFEST.json"), manifestSha256: crypto.createHash("sha256").update(fs.readFileSync(path.join(out, "MANIFEST.json"))).digest("hex") }));
 ' "$OUT"
 # مزامنة صارمة: نسخ ثم حذف كل يتيم من فرع/تصدير سابق، وحارس يفشل لو بقي يتيم (scripts/native-sync-dir.sh، اختباره native-sync-dir.test.sh)
-. "$(cd "$(dirname "$0")" && pwd)/native-sync-dir.sh"
+. "$ROOT/scripts/native-sync-dir.sh"
 native_sync_dir "$OUT" "$FINAL"
