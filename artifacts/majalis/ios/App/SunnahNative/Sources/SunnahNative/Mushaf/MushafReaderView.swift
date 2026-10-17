@@ -151,6 +151,7 @@ public struct MushafReaderView: View {
         GeometryReader { geo in
             let h = geo.size.height, w = MushafPageLayout.canvasWidth(container: geo.size)
             let plan = avoidancePlan(height: h)
+            let _ = NSLog("BODY h=%f dy=%f sc=%f vis=%d sh=%f sel=%@", h, plan.dy, plan.scale, chromeHide.visible ? 1 : 0, sheetHeight, selected ?? "-")
             ZStack(alignment: .top) {
                 Color.clear.onAppear { pageSize = CGSize(width: w, height: h) }.onChange(of: h) { _ in pageSize = CGSize(width: w, height: h) }
                 Sunnah.Colors.mushafPaper
