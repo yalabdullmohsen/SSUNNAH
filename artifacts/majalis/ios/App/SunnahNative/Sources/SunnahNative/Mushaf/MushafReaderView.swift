@@ -153,6 +153,7 @@ public struct MushafReaderView: View {
             let plan = avoidancePlan(height: h)
             let _ = NSLog("BODY h=%f dy=%f sc=%f vis=%d sh=%f sel=%@", h, plan.dy, plan.scale, chromeHide.visible ? 1 : 0, sheetHeight, selected ?? "-")
             ZStack(alignment: .top) {
+                GeometryReader { g in Color.clear.onChange(of: g.frame(in: .global).minY) { y in NSLog("FRAME minY=%f", y) } }
                 Color.clear.onAppear { pageSize = CGSize(width: w, height: h) }.onChange(of: h) { _ in pageSize = CGSize(width: w, height: h) }
                 Sunnah.Colors.mushafPaper
                 Group {
@@ -185,7 +186,6 @@ public struct MushafReaderView: View {
             // القاعدة: لا يتقاطع مستطيل الآية المحددة (كل أسطرها) مع البطاقة؛ تُزاح الصفحة أو تُنقل البطاقة للأعلى أو تُصغَّر عند الضرورة (SheetAvoidance).
             .scaleEffect(plan.scale, anchor: .top)
             .offset(y: plan.dy)
-            .background(GeometryReader { g in Color.clear.onChange(of: g.frame(in: .global).minY) { y in NSLog("FRAME minY=%f", y) } })
             .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: selected)
             .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: sheetHeight)
             .contentShape(Rectangle())
