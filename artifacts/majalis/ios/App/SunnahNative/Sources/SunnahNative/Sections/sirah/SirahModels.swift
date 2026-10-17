@@ -46,7 +46,7 @@ struct SirahLandmark: Decodable, Sendable, Hashable {
     var country: String
     var city: String
     var type: String
-    var era: String
+    var era: String?
     var builtYear: String?
     var description: String
     var significance: String

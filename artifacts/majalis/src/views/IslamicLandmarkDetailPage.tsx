@@ -104,7 +104,7 @@ export default function IslamicLandmarkDetailPage() {
           <PageHeaderV2
             eyebrow={landmark.type}
             title={landmark.name}
-            description={`${landmark.city}، ${landmark.country} · ${landmark.era}`}
+            description={[`${landmark.city}، ${landmark.country}`, landmark.era].filter(Boolean).join(" · ")}
             actions={
               <div className="ilm-detail__actions">
                 <Link href="/islamic-landmarks/map" className="ilm-cta ilm-cta--secondary">
@@ -136,7 +136,7 @@ export default function IslamicLandmarkDetailPage() {
 
           <div className="ilm-detail__badges">
             <span className="ilm-badge ilm-badge--type">{landmark.type}</span>
-            <span className="ilm-badge ilm-badge--era">{landmark.era}</span>
+            {landmark.era ? <span className="ilm-badge ilm-badge--era">{landmark.era}</span> : null}
           </div>
 
           {landmark.builtYear ? (

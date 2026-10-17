@@ -1,7 +1,7 @@
 import XCTest
 
 /// حارس: نص الآية في أي شاشة منتج يُعرض عبر `MushafAyahText` (خط المصحف QPC نفسه) لا بخط عام.
-/// يفشل عند ظهور `Sunnah.Typography.quran` أو `QuranAyahText.text(` أو `SunnahArabicText(... .quran)` خارج `Mushaf/` و`Design/`.
+/// يفشل عند ظهور `Sunnah.Typography.quran` أو `QuranAyahPlainText.text(` أو `SunnahArabicText(... .quran)` خارج `Mushaf/` و`Design/`.
 /// قائمة السماح ratchet: المخالفون الحاليون فقط، وتُقلَّص عند تحويل الشاشة إلى المكوّن ولا تُوسَّع.
 final class MushafAyahTextGuardTests: XCTestCase {
     /// ملف ← أقصى عدد مخالفات مسموح (سقف لا يُرفع).
@@ -20,7 +20,7 @@ final class MushafAyahTextGuardTests: XCTestCase {
 
     private func violations(in text: String) -> Int {
         text.split(separator: "\n").filter { line in
-            if line.contains("Typography.quran") || line.contains("QuranAyahText.text(") { return true }
+            if line.contains("Typography.quran") || line.contains("QuranAyahPlainText.text(") { return true }
             return line.contains("SunnahArabicText(") && line.contains(".quran")
         }.count
     }
