@@ -19,4 +19,20 @@ final class ExplainerModelsTests: XCTestCase {
         // الرسم متجه برمجي: لا ملف صورة يحتاج ترخيصًا خارج السجلّ.
         XCTAssertNoThrow(ExplainerArt(stageID: "creation-of-man-6-ruh").body)
     }
+
+    /// البيانات الفعلية: كل مرحلة بعنوان ونص ومصدر، وكل مرجع آية يصلح لـQuranAyahText، ولا مرحلة تُعرض بلا مصدر.
+    func testRealCreationOfManStagesAreRenderable() throws {
+        var url = URL(fileURLWithPath: #filePath)
+        for _ in 0..<8 { url.deleteLastPathComponent() }
+        url.appendPathComponent("artifacts/majalis/public/data/explainers/creation-of-man.json")
+        let d = try JSONDecoder().decode(ExplainerData.self, from: Data(contentsOf: url))
+        let shown = try XCTUnwrap(d.displayable)
+        XCTAssertEqual(shown.stages.count, d.stages.count, "كل المراحل موثّقة")
+        for s in shown.stages {
+            XCTAssertFalse(s.title.isEmpty); XCTAssertFalse(s.body.isEmpty)
+            XCTAssertFalse((s.sources ?? []).isEmpty, s.id)
+            XCTAssertFalse((s.ayahRef ?? []).isEmpty, s.id)
+            for a in s.ayahRef ?? [] { XCTAssertNotNil(QuranAyahRange(surah: a.surah, from: a.from, to: a.to), s.id) }
+        }
+    }
 }
