@@ -48,3 +48,17 @@ test("ينجح مع تطبيق أحدث ويكتب PROVENANCE بالـSHA", () =
   assert.match(p, new RegExp(`git_sha=${sha}`));
   assert.match(p, /binary_sha256=/);
 });
+
+test("يفشل مع تطبيق قديم داخل مجلد xctest رغم أن mtime المجلد حديث", () => {
+  const f = fixture(+60);
+  const bundle = join(mkdtempSync(join(tmpdir(), "guard-xct-")), "SunnahNativeTests.xctest");
+  mkdirSync(bundle);
+  const old = Date.now() / 1000 - 86400;
+  writeFileSync(join(bundle, "SunnahNativeTests"), "old");
+  utimesSync(join(bundle, "SunnahNativeTests"), old, old);
+  const now = Date.now() / 1000 + 60;
+  utimesSync(bundle, now, now);
+  const r = guard({ ...f, app: bundle });
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /التطبيق قديم/);
+});
