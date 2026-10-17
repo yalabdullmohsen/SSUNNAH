@@ -340,7 +340,7 @@ enum AccountTexts {
             .init(name: "Quran.com — بيانات تخطيط الصفحات", took: "حدود الصفحات والأسطر وأرقام الآيات", license: "شروط واجهة Quran Foundation؛ التأكيد النهائي بانتظار قرار المالك", status: "unknown", url: "https://api.quran.com")
         ]),
         .init(id: "tafsir", label: "التفسير", entries: [
-            .init(name: "Quran.com API — توصيل التفاسير", took: "الميسّر والسعدي مضمّنان؛ ابن كثير والبغوي والطبري تُجلب عند الطلب بلا حفظ في الحزمة", license: "شروط Quran Foundation: إسناد، بلا تعديل، وحد لمدة التخزين المؤقت", status: "conditional", url: "https://quran.com"),
+            .init(name: "Quran.com — مرجع التفاسير", took: "الميسّر والسعدي مضمّنان في التطبيق؛ لا يجلب التطبيق تفاسير أخرى من الإنترنت", license: "شروط Quran Foundation: إسناد وبلا تعديل", status: "conditional", url: "https://quran.com"),
             .init(name: "التفسير الميسّر — مجمع الملك فهد لطباعة المصحف الشريف", took: "نص التفسير حرفيًا", license: "حقوق الطبعة لجهتها؛ إذن إعادة التضمين في الحزمة لم يُوثَّق", status: "unknown", url: "https://quran.com/tafsirs/ar-tafsir-muyassar"),
             .init(name: "تفسير السعدي — الشيخ عبد الرحمن بن ناصر السعدي", took: "نص التفسير حرفيًا", license: "المؤلف متوفى؛ حقوق الطبعة المنقولة عنها لم تُوثَّق", status: "unknown", url: "https://quran.com/tafsirs/ar-tafseer-al-saddi")
         ]),
@@ -348,7 +348,7 @@ enum AccountTexts {
             .init(name: "ترجمة Saheeh International عبر AlQuran Cloud", took: "ترجمة اختيارية للآية (الإنجليزية افتراضيًا)", license: "حقوق الترجمة لناشرها؛ شروط إعادة العرض لم تُوثَّق", status: "unknown", url: "https://alquran.cloud")
         ]),
         .init(id: "recitations", label: "التلاوات", entries: [
-            .init(name: "EveryAyah — الحصري والمنشاوي والعفاسي وغيرهم", took: "بث التلاوة آية بآية (لا ملفات صوتية في الحزمة ولا إعادة استضافة)", license: "حقوق التسجيلات لأصحابها؛ شروط البث لم تُوثَّق كتابيًا", status: "unknown", url: "https://everyayah.com"),
+            .init(name: "EveryAyah — الحصري والمنشاوي والعفاسي وغيرهم", took: "مرجع لتسجيلات التلاوة آية بآية؛ لا يتصل التطبيق به ولا يضمّن ملفاته", license: "حقوق التسجيلات لأصحابها؛ شروط البث لم تُوثَّق كتابيًا", status: "unknown", url: "https://everyayah.com"),
             .init(name: "MP3Quran — سور كاملة", took: "بث وتنزيل اختياري محلي لسور كاملة", license: "حقوق التسجيلات لأصحابها؛ شروط الاستخدام لم تُوثَّق كتابيًا", status: "unknown", url: "https://mp3quran.net")
         ]),
         .init(id: "hadith", label: "الأحاديث", entries: [

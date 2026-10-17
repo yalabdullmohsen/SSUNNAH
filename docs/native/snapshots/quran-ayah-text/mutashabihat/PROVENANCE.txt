@@ -1,0 +1,9 @@
+git_sha=8f0179fb72cbf385f87ba609646fd47d1a4fd931
+branch=n3/quran-ayah-guard
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/877ab3bf3fcc33d6/SunnahApp.app
+binary_sha256=3f728b575692271d1f62f911fde2b86d07884afc8c2dea9cad7773700b062586
+built_at=2026-10-17 12:52:39
+source_newest=2026-10-17 11:32:36
+captured_at=2026-10-17 13:03:24
+before_app=/Users/alabdullmohsen/.majalis-tools/headbuild/5e39f7e3123614ac/SunnahApp.app
+covers=Sources/SunnahNative/Sections/quran/MutashabihatScreens.swift (MutashabihatScreens-mutashabihat-{before,after}-{light,dark}.png) — الفرق في الملف إعادة تسمية فقط، فاللقطتان متطابقتان بصريًا (شاشة القائمة بلا نص آية)

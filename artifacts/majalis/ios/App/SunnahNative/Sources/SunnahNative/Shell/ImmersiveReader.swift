@@ -48,3 +48,11 @@ public extension View {
     /// يعلن أن هذه الشاشة قراءة كاملة: الشريط السفلي مخفي افتراضيًا، ويظهر حين `revealed`.
     func immersiveReader(revealed: Bool = false) -> some View { modifier(ImmersiveReaderModifier(revealed: revealed)) }
 }
+
+/// قاعدة واحدة: شريط التبويب مخفي في كل شاشات المصحف (الصفحة، البحث، القراءة) والتفسير، أيًّا كان مسار فتحها.
+public enum ReaderRoutes {
+    public static func hidesTabBar(path: String) -> Bool {
+        let p = path.split(separator: "?", maxSplits: 1).first.map(String.init) ?? path
+        return p == "/mushaf" || p.hasPrefix("/mushaf/") || p.hasPrefix("/tafsir/")
+    }
+}

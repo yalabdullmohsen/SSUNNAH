@@ -7,13 +7,21 @@ import UIKit
 /// يُستدعى بعد `-snapshotRoute` من RootTabView؛ لا وجود له في Release (يفحصه native-debug-hooks-guard.sh).
 enum SnapshotScroll {
     @MainActor static func startIfRequested() {
-        guard UserDefaults.standard.string(forKey: "snapshotScroll") == "end" else { return }
+        guard fraction() != nil else { return }
         Task { @MainActor in
             for _ in 0..<25 {
                 try? await Task.sleep(nanoseconds: 1_200_000_000)
                 scrollLargestToEnd()
             }
         }
+    }
+
+    /// `end` ⇒ 1، أو كسر 0…1 (مثل `0.5` للمنتصف) لإظهار صفوف القوائم الطويلة الوسطى.
+    private static func fraction() -> CGFloat? {
+        guard let v = UserDefaults.standard.string(forKey: "snapshotScroll") else { return nil }
+        if v == "end" { return 1 }
+        guard let d = Double(v), d >= 0, d <= 1 else { return nil }
+        return CGFloat(d)
     }
 
     @MainActor private static func scrollLargestToEnd() {
@@ -29,8 +37,10 @@ enum SnapshotScroll {
         }
         visit(window)
         guard let s = best?.0 else { return }
-        let y = s.contentSize.height - s.bounds.height + s.adjustedContentInset.bottom
-        if y > s.contentOffset.y { s.setContentOffset(CGPoint(x: s.contentOffset.x, y: y), animated: false) }
+        let f = fraction() ?? 1
+        let maxY = s.contentSize.height - s.bounds.height + s.adjustedContentInset.bottom
+        let y = maxY * f
+        if f == 1 ? y > s.contentOffset.y : abs(y - s.contentOffset.y) > 1 { s.setContentOffset(CGPoint(x: s.contentOffset.x, y: y), animated: false) }
     }
 }
 #endif

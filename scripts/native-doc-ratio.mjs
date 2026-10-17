@@ -12,10 +12,12 @@ const hiddenSet = new Set(Object.keys(hidden.items ?? {}))
 const str = (v) => typeof v === 'string' && v.trim().length > 1
 const link = (o) => ['source_url', 'sourceUrl', 'url'].some((k) => str(o[k]))
 const strong = (s) => s && typeof s === 'object' && (str(s.url) || str(s.ref) || str(s.reference))
+const cited = (s) => s && typeof s === 'object' && str(s.author) && str(s.book) && str(s.locator) // «مصدر مذكور»: مؤلف+كتاب+موضع بلا رابط/مرجع قابل للتحقق (قرار المنسّق 2026-10-17)
 const SKIP = new Set(['mushaf', 'quran', 'audio', 'tafsir', 'MANIFEST.json']) // نص محمي/هيكلي لا يُقاس هنا
 function classify(r) {
   if (r.origin === 'editorial') return 'exempt' // قرار المالك 2026-10-16
   if (Array.isArray(r.sources) && r.sources.some(strong)) return 'doc'
+  if (Array.isArray(r.sources) && r.sources.some(cited)) return 'cited'
   if (link(r) && ['source', 'source_name', 'sourceName', 'reference', 'ref'].some((k) => str(r[k]))) return 'doc'
   if (str(r.hadithSource) || str(r.reference) || str(r.ref) || str(r.source) || str(r.source_name) ||
       str(r.sourceName) || link(r) || (Array.isArray(r.sources) && r.sources.length)) return 'part'
@@ -25,6 +27,7 @@ const out = {}
 const secOut = {} // أقسام داخل العناصر (item.sections[]): مصدر كل قسم لا العنصر الأعلى فقط
 function classifySection(s) {
   if (Array.isArray(s.sources) && s.sources.some(strong)) return 'doc'
+  if (Array.isArray(s.sources) && s.sources.some(cited)) return 'cited'
   if (Array.isArray(s.sources) && s.sources.length) return 'part'
   return 'none'
 }
@@ -34,11 +37,11 @@ function walk(x, sec, file) {
       if (i && typeof i === 'object' && !Array.isArray(i) && i.id != null && !i.hidden) {
         const key = `${path.relative(data, file)}/${i.id}`
         if (hiddenSet.has(key)) continue
-        const c = (out[sec] ??= { doc: 0, part: 0, none: 0, exempt: 0 })
+        const c = (out[sec] ??= { doc: 0, cited: 0, part: 0, none: 0, exempt: 0 })
         c[classify(i)]++
         if (Array.isArray(i.sections)) for (const s of i.sections) {
           if (!s || typeof s !== 'object' || !str(s.body)) continue
-          ;(secOut[sec] ??= { doc: 0, part: 0, none: 0, exempt: 0 })[classifySection(s)]++
+          ;(secOut[sec] ??= { doc: 0, cited: 0, part: 0, none: 0, exempt: 0 })[classifySection(s)]++
         }
       } else walk(i, sec, file)
     }
@@ -56,12 +59,12 @@ for (const f of files(data)) {
     walk(j && typeof j === 'object' && !Array.isArray(j) && j.id != null && Array.isArray(j.sections) ? [j] : j, sec, f) // ملف سجل واحد (نبي) يُعدّ عنصرًا
   } catch {}
 }
-const tot = { doc: 0, part: 0, none: 0, exempt: 0 }
+const tot = { doc: 0, cited: 0, part: 0, none: 0, exempt: 0 }
 for (const c of Object.values(out)) for (const k of Object.keys(tot)) tot[k] += c[k]
-const pct = (c) => { const n = c.doc + c.part + c.none || 1; return `${(100 * c.doc / n).toFixed(1)} / ${(100 * c.part / n).toFixed(1)} / ${(100 * c.none / n).toFixed(1)}` }
-for (const [s, c] of Object.entries(out).sort()) console.log(`${s.padEnd(10)} n=${c.doc + c.part + c.none} معفى=${c.exempt}  موثّق/جزئي/بلا: ${pct(c)}  (بلا=${c.none})`)
-console.log(`TOTAL      n=${tot.doc + tot.part + tot.none}  موثّق/جزئي/بلا: ${pct(tot)}  (بلا=${tot.none})`)
-for (const [s, c] of Object.entries(secOut).sort()) console.log(`أقسام ${s.padEnd(10)} n=${c.doc + c.part + c.none}  موثّق/جزئي/بلا: ${pct(c)}  (بلا=${c.none})`)
+const pct = (c) => { const n = c.doc + c.cited + c.part + c.none || 1; return `${(100 * c.doc / n).toFixed(1)} / ${(100 * c.cited / n).toFixed(1)} / ${(100 * c.part / n).toFixed(1)} / ${(100 * c.none / n).toFixed(1)}` }
+for (const [s, c] of Object.entries(out).sort()) console.log(`${s.padEnd(10)} n=${c.doc + c.cited + c.part + c.none} معفى=${c.exempt}  موثّق/مصدر مذكور/جزئي/بلا: ${pct(c)}  (بلا=${c.none})`)
+console.log(`TOTAL      n=${tot.doc + tot.cited + tot.part + tot.none}  موثّق/مصدر مذكور/جزئي/بلا: ${pct(tot)}  (بلا=${tot.none})`)
+for (const [s, c] of Object.entries(secOut).sort()) console.log(`أقسام ${s.padEnd(10)} n=${c.doc + c.cited + c.part + c.none}  موثّق/مصدر مذكور/جزئي/بلا: ${pct(c)}  (بلا=${c.none})`)
 if (process.argv.includes('--write-baseline')) {
   const b = Object.fromEntries(Object.entries(out).map(([s, c]) => [s, c.none]))
   for (const [s, c] of Object.entries(secOut)) b[`sections/${s}`] = c.none

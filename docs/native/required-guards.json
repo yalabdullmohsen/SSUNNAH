@@ -14,7 +14,7 @@
     {
       "id": "tabbar-cover",
       "owner": "ن1",
-      "match": "native-.*(tabbar|tab-bar|inset|cover).*\\.(mjs|sh)$"
+      "match": "native-tabbar-cover-guard\\.mjs$"
     },
     {
       "id": "verse-selection",
@@ -78,6 +78,11 @@
       "match": "native-watch-auth-guard\\.sh$"
     },
     {
+      "id": "site-content",
+      "owner": "ن4",
+      "match": "native-site-content-guard\\.sh$"
+    },
+    {
       "id": "sensitive-coverage",
       "owner": "ن4",
       "match": "native-sensitive-coverage\\.sh$"
@@ -96,6 +101,11 @@
       "id": "assets-size",
       "owner": "ن4",
       "match": "native-assets-size-guard\\.sh$"
+    },
+    {
+      "id": "data-orphans",
+      "owner": "ن4",
+      "match": "native-data-orphan-guard\\.sh$"
     }
   ]
 }

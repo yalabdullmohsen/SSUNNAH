@@ -19,7 +19,7 @@ public struct RootTabView: View {
         self.screen = screen
     }
 
-    private var tabBarShown: Bool { !immersive.hidesTabBar }
+    private var tabBarShown: Bool { !immersive.hidesTabBar && !ReaderRoutes.hidesTabBar(path: router.stack.last?.path ?? "/") }
 
     public var body: some View {
         NavigationStack(path: $router.stack) {
