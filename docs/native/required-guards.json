@@ -101,6 +101,11 @@
       "id": "assets-size",
       "owner": "ن4",
       "match": "native-assets-size-guard\\.sh$"
+    },
+    {
+      "id": "data-orphans",
+      "owner": "ن4",
+      "match": "native-data-orphan-guard\\.sh$"
     }
   ]
 }

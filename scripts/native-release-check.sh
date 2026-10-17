@@ -62,6 +62,8 @@ CAPPBX=artifacts/majalis/ios/App/App.xcodeproj/project.pbxproj
 miss=$(find artifacts/majalis/ios/App/App -name '*.swift' -not -name SunnahTokens.swift 2>/dev/null | while read -r f; do grep -qF "/* $(basename "$f") in Sources */" "$CAPPBX" || echo "$f"; done)
 [ -z "$miss" ] || bad "ملفات .swift غير مسجَّلة في App.xcodeproj (أضفها كمرجع PBXBuildFile/PBXFileReference/group/Sources): $(echo $miss | tr '\n' ' ')"
 
+# 2هـ-1) لا ملفات يتيمة في ios-native/Data خارج MANIFEST.json
+do_=$(bash scripts/native-data-orphan-guard.sh 2>&1) || bad "$(echo "$do_" | tr '\n' ' ')"
 # 2هـ) حجم حزمة البيانات ios-native/Data: إجمالي + أكبر 10 مجلدات؛ تحذير > 250 MB وفشل > 500 MB
 DSK=$(du -sk ios-native/Data | cut -f1); DMB=$((DSK/1024))
 echo "حجم ios-native/Data: ${DMB} MB — أكبر 10 مجلدات:"
