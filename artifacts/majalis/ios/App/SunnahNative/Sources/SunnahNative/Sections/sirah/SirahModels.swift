@@ -116,6 +116,15 @@ struct SirahKnowledgeItem: Decodable, Sendable, Hashable {
     var sources: [Source]?
     var tags: [String]?
     let reviewStatus: String
+    /// أقسام موثّقة مفصولة (identity / saadi / sunnah) لكلٍّ مصدره؛ اختيارية للتوافق مع البيانات القديمة.
+    var sections: [Part]?
+
+    struct Part: Decodable, Sendable, Hashable {
+        let key: String
+        let title: String
+        let body: String
+        var sources: [Source]?
+    }
 
     struct Evidence: Decodable, Sendable, Hashable {
         var type: String?
@@ -132,7 +141,7 @@ struct SirahKnowledgeItem: Decodable, Sendable, Hashable {
         var locator: String?
     }
 
-    enum CodingKeys: String, CodingKey { case id, title, body, evidences, sources, tags, reviewStatus = "review_status" }
+    enum CodingKeys: String, CodingKey { case id, title, body, evidences, sources, tags, sections, reviewStatus = "review_status" }
 }
 
 /// عقدة شجرة الأنبياء (src/lib/prophets-lineage.ts LineageNode).
