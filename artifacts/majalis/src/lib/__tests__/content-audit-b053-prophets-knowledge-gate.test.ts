@@ -23,11 +23,19 @@ for (const f of files) {
   const it = JSON.parse(readFileSync(resolve(dir, f), "utf8")) as {
     id: string;
     body: string;
+    sections?: { key: string; body: string; sources: unknown[] }[];
     review_status?: string;
   };
   assert.ok(it.id?.startsWith("prophet-"), `${f}: معرّف نبي`);
   for (const ph of FORBIDDEN) {
     assert.equal(it.body.includes(ph), false, `${it.id}: بقايا حشو`);
+  }
+  if (it.sections) {
+    // الملف بعد التنظيف: لا قسم بلا مصدر (الاختبار الكامل scripts/native-prophets.test.mjs)
+    assert.ok(it.sections.length > 0, `${it.id}: بلا أقسام موثّقة`);
+    for (const s of it.sections) assert.ok(s.sources?.length > 0, `${it.id}/${s.key}: قسم بلا مصدر`);
+    lessonBlocks.add(it.sections.map((s) => s.body).join("\n"));
+    continue;
   }
   assert.match(it.body, /## الدروس والعبر\n/, `${it.id}: قسم دروس`);
   const lessons = (it.body.match(/## الدروس والعبر\n([\s\S]*?)(?=\n## |$)/) || [])[1]?.trim() || "";
