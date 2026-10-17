@@ -185,6 +185,7 @@ public struct MushafReaderView: View {
             // القاعدة: لا يتقاطع مستطيل الآية المحددة (كل أسطرها) مع البطاقة؛ تُزاح الصفحة أو تُنقل البطاقة للأعلى أو تُصغَّر عند الضرورة (SheetAvoidance).
             .scaleEffect(plan.scale, anchor: .top)
             .offset(y: plan.dy)
+            .background(GeometryReader { g in Color.clear.onChange(of: g.frame(in: .global).minY) { y in NSLog("FRAME minY=%f", y) } })
             .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: selected)
             .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: sheetHeight)
             .contentShape(Rectangle())
