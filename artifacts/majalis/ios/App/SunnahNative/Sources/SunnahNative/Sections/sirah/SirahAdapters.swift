@@ -31,7 +31,7 @@ enum SirahAdapters {
                 sirahID: m.id, title: m.name,
                 subtitle: [m.city, m.country].filter { !$0.isBlank }.joined(separator: "، "),
                 body: paragraphs([m.description, m.significance, facts]),
-                tags: [m.type, m.era].filter { !$0.isBlank }
+                tags: [m.type, m.era ?? ""].filter { !$0.isBlank }
             )
         }
     }
