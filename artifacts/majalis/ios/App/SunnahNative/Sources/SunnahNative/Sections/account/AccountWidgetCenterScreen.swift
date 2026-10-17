@@ -73,8 +73,8 @@ struct AccountWidgetCenterScreen: View {
                 }
                 .frame(maxWidth: .infinity)
             } else {
-                Text("حدّد موقعك من مواقيت الصلاة لعرض الصلاة القادمة")
-                    .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
+                SunnahMessageState(symbol: "location.slash", title: "الصلاة القادمة غير متاحة",
+                                   message: "حدّد موقعك من مواقيت الصلاة لعرضها.")
             }
         }
     }
@@ -85,7 +85,10 @@ struct AccountWidgetCenterScreen: View {
         case .loading:
             LoadingStateView()
         case .unavailable:
-            SunnahCard { SunnahMessageState(symbol: "exclamationmark.triangle", title: "تعذّر تحميل آية اليوم") }
+            SunnahCard {
+                SunnahMessageState(symbol: "exclamationmark.triangle", title: "تعذّر تحميل آية اليوم",
+                                   actionTitle: "إعادة المحاولة") { phase = .loading; Task { await load() } }
+            }
         case let .ready(entry):
             SunnahCard {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {

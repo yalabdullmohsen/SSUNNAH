@@ -9,6 +9,7 @@
  */
 import { latinizeSources } from "./lib/latin-digits.mjs";
 import { arabicTags } from "./lib/tag-labels.mjs";
+import { loadQuran, makeMatcher, convertVerses } from "./lib/verse-match.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -31,10 +32,14 @@ const reject = (area, why) => { rej[area] ??= {}; rej[area][why] = (rej[area][wh
 const files = [];
 const sha = (b) => crypto.createHash("sha256").update(b).digest("hex");
 const written = new Set();
+/* ﴿…﴾ حرفية → مرجع «(السورة: ن)» بمطابقة نص المصحف المحمي (قراءة فقط)؛ الملتبس يُترك */
+let _vq, _vm; const verseStats = { done: 0, ambiguous: 0, unmatched: 0 };
+const toVerseRefs = (raw) => { if (!raw.includes("﴿")) return raw; _vq ??= loadQuran(`${appRoot}/public/data/quran`); _vm ??= makeMatcher(_vq); return convertVerses(raw, _vq, _vm, verseStats); };
 const put = (rel, buf) => {
   if (written.has(rel)) throw new Error(`مسار مكرَّر في التصدير: ${rel} (وحدتان تكتبانه)`);
   written.add(rel);
   buf = Buffer.isBuffer(buf) ? buf : Buffer.from(buf);
+  if (rel.endsWith(".json") && !/^(mushaf|tafsir|quran)\//.test(rel)) buf = Buffer.from(toVerseRefs(buf.toString("utf8")));
   if (rel.endsWith(".json") && !/^(mushaf|tafsir|quran)\//.test(rel)) { // أرقام لاتينية في حقول المصدر فقط
     const raw = buf.toString("utf8");
     if (/[٠-٩۰-۹]/.test(raw) || /"tags"/.test(raw)) { try { buf = Buffer.from(JSON.stringify(arabicTags(latinizeSources(JSON.parse(raw))), null, /^[\[{]\n/.test(raw) ? 2 : 0)); } catch { /* ليس JSON صالحًا: يُترك */ } }
@@ -184,14 +189,21 @@ put("prayer/world-cities.json", fs.readFileSync(`${data}/prayer/world-cities.jso
 const qdir = `${data}/quiz`;
 let qn = 0;
 const qchunks = [];
+/* شرح قالبي مكرر (> 3 مرات في المصدر كله) يُحذف من المنشور: لا شرح بلا مصدر خاص بالسؤال (قرار المنسّق 2026-10-17)؛ يبقى السؤال والجواب والمرجع */
+const expCount = new Map();
+for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== "manifest.json"))
+  for (const q of rd(`${qdir}/${f}`)) { const e = String(q.explanation || "").trim(); if (e) expCount.set(e, (expCount.get(e) || 0) + 1); }
+const TEMPLATE_MAX = 3;
+let qStripped = 0;
 for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== "manifest.json")) {
   const live = [];
-  for (const q of rd(`${qdir}/${f}`)) {
+  for (let q of rd(`${qdir}/${f}`)) {
     if (/^demo[-_]/i.test(String(q.id))) { reject("quiz", "demo"); continue; }
     if (held(q.id)) { reject("quiz", "محجوز"); continue; }
     if (!String(q.question || "").trim() || !String(q.answer || "").trim()) { reject("quiz", "سؤال/جواب فارغ"); continue; }
+    if ((expCount.get(String(q.explanation || "").trim()) || 0) > TEMPLATE_MAX) { q = { ...q }; delete q.explanation; qStripped++; }
+    else if (q.documentation_status !== "unsourced" && !String(q.explanation || "").trim()) { reject("quiz", "بلا شرح"); continue; }
     if (q.documentation_status !== "unsourced") {
-      if (!String(q.explanation || "").trim()) { reject("quiz", "بلا شرح"); continue; }
       if (!String(q.reference || "").trim()) { reject("quiz", "بلا مرجع"); continue; }
     }
     live.push(q);
@@ -200,6 +212,7 @@ for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== 
 }
 json("quiz/manifest.json", { total: qn, chunks: qchunks });
 counts.quiz = qn;
+console.log("quiz-template-explanations-stripped:", qStripped);
 
 /* المصحف الأصلي (SwiftUI): بيانات صفحات QPC V2 الحالية + خطوطها مُعاد تغليفها TTF — لا بيانات ولا خطوط جديدة */
 {
@@ -268,5 +281,6 @@ counts.quiz = qn;
       await (await import(path.join(dir, f))).default(ctx);
 }
 
+console.log("verse-refs:", JSON.stringify(verseStats));
 json("MANIFEST.json", { version: 1, counts, rejected: rej, mushafSources, files: files.slice().sort((a, b) => a.path.localeCompare(b.path)) });
 console.log(JSON.stringify({ out: check ? "(check)" : out, files: files.length, counts, rejected: rej }));

@@ -1,0 +1,7 @@
+git_sha=b5d120238f7cc7072937e7f4dc2b227526b0a113
+branch=n3/widget-center-previews
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/72b7c3314f2309f1/SunnahApp.app
+binary_sha256=2b38ad3202546086a1dc7a39784be226af737bbdaa11233d7b3bc77cdc771f50
+built_at=2026-10-17 21:21:34
+source_newest=2026-10-17 21:17:48
+captured_at=2026-10-17 21:25:35

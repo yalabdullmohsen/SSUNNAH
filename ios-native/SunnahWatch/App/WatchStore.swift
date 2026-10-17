@@ -88,6 +88,10 @@ final class WatchStore: NSObject, ObservableObject {
         WidgetCenter.shared.reloadAllTimelines()
     }
 
+    #if DEBUG
+    func debugSet(payload p: WatchPayload?) { payload = p }
+    #endif
+
     fileprivate func apply(data: Data) {
         guard let p = try? JSONDecoder().decode(WatchPayload.self, from: data) else { return }
         payload = p
