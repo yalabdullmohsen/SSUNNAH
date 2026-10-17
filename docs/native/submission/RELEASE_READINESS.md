@@ -47,9 +47,12 @@
 - #3461، #3454–#3458 → جملة قصص الأنبياء + لقطة 8 في SCREENSHOT_PLAN.
 - كل جملة جديدة تُفحَص بـcheck-asc-lengths.py قبل الدمج.
 
-## أوامر يوسف الوحيدة
+## عمل يوسف اليدوي قبل الإرسال
 1. قبول Apple Agreement في حساب المطوّر.
-2. اختبار بناء 106 على جهاز حقيقي (تجربة وليس إصدارًا).
-3. إدخال بيانات App Review (الحساب في ASC فقط؛ كلمة السر لا تُكتب في المستودع).
-4. تصحيح وصف TestFlight القديم في ASC، وقرار PrivacyInfo.
-5. التقديم النهائي بعد «ابنِ النهائي» وبناء ن4.
+2. تثبيت بناء 106 على جهاز حقيقي وتجربته (تجربة لا إصدار) بحسب DEVICE_TEST_SHEET.md.
+3. ASC ← App Review Information: الحقول من ASC_REVIEW_INFORMATION.md؛ كلمة مرور apple.review@ssunnah.com تُكتب في ASC فقط.
+4. ASC ← App Privacy: الإجابات من ASC_APP_PRIVACY_ANSWERS.md، ومطابقتها مع Privacy Report من ن4.
+5. تصحيح وصف TestFlight القديم (TESTFLIGHT_COPY.md) وقرار PrivacyInfo.
+6. لصق النصوص من STORE_LISTING_1_2_0.md (الأساس المضمون فقط، لا إضافات PR المفتوحة إلا بعد verify-merged).
+7. رفع اللقطات بحسب SCREENSHOT_PLAN.
+8. التقديم النهائي بعد «ابنِ النهائي» وبناء ن4.
