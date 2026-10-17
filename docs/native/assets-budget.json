@@ -1,0 +1,8 @@
+{
+  "_": "سقوف حجم الأصول (حارس native-assets-size-guard.sh). تُخفَّض ولا تُرفع إلا بقرار المالك. الأحجام بالبايت.",
+  "maxBytes": { "image": 200000, "vector": 200000, "font": 500000, "sound": 500000, "video": 2000000 },
+  "maxPixels": { "image": 2048, "appIcon": 1024 },
+  "maxTrackedAssetsTotal": 8000000,
+  "maxBundledDataTotal": 262144000,
+  "_dataNote": "ios-native/Data مولَّدة وغير مُتتبَّعة؛ تُفحص إن وُجدت. 250MB سقف داخلي أقل بكثير من حد App Store (4GB للتطبيق) ويراعي حد التنزيل عبر الشبكة الخلوية (200MB للثنائي المضغوط)."
+}

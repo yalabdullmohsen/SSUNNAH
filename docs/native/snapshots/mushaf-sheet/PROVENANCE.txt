@@ -1,0 +1,8 @@
+git_sha=b804bf72d9d0c92ed71004b9ccf29a3ba607bc88
+branch=n3/mushaf-sheet-chrome
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/4d0f11c67c728f5f/SunnahApp.app
+binary_sha256=332ac3af6bcde601d8319e73a7cec8180a9343e7ba9cc987eb5c70b31bfbaee4
+built_at=2026-10-17 14:31:22
+source_newest=2026-10-17 14:26:31
+captured_at=2026-10-17 14:37:21
+covers=Sources/SunnahNative/Mushaf/MushafReaderView.swift (MushafReaderView-*.png: أول/آخر سطر + 37:130، فاتح/داكن، iPad)
