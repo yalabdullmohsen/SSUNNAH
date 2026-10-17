@@ -178,6 +178,7 @@ public struct MushafReaderView: View {
                 .environment(\.layoutDirection, .rightToLeft)
                 .ignoresSafeArea()
                 .clipped()
+                .id(Int(h))
                 pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
                 pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
             }
