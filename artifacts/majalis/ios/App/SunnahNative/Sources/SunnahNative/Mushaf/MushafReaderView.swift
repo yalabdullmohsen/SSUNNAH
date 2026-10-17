@@ -135,7 +135,8 @@ public struct MushafReaderView: View {
     @State private var current: Int
     @State private var selected: String?
     @State private var showIndex = false
-    @State private var showChrome = false
+    @StateObject private var chromeHide = ChromeAutoHide()
+    @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @State private var sheetHeight: CGFloat = 0
     @State private var pageSize = CGSize(width: 402, height: 874)
     @Environment(\.openRoute) private var openRoute
@@ -149,6 +150,7 @@ public struct MushafReaderView: View {
     public var body: some View {
         GeometryReader { geo in
             let h = geo.size.height, w = MushafPageLayout.canvasWidth(container: geo.size)
+            let plan = avoidancePlan(height: h)
             ZStack(alignment: .top) {
                 Color.clear.onAppear { pageSize = CGSize(width: w, height: h) }
                 Sunnah.Colors.mushafPaper
@@ -176,22 +178,33 @@ public struct MushafReaderView: View {
                 .clipped()
                 pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
                 pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
-                if showChrome { chrome.transition(.opacity) }
+                if chromeHide.visible { chrome.transition(.opacity) }
             }
             .frame(width: w, height: h)
             // القائمة السفلية لا تقطع نص الصفحة: تُصغَّر الصفحة كاملة (تحويل بصري بلا تغيير التخطيط) لتبقى فوق القائمة.
-            .scaleEffect(selected == nil || sheetHeight <= 0 ? 1 : min(1, max(0.62, (h - sheetHeight - 8) / h)), anchor: .top)
-            .animation(.easeInOut(duration: 0.28), value: selected)
-            .animation(.easeInOut(duration: 0.28), value: sheetHeight)
+            // القاعدة: لا يتقاطع مستطيل الآية المحددة (كل أسطرها) مع البطاقة؛ تُزاح الصفحة أو تُنقل البطاقة للأعلى أو تُصغَّر عند الضرورة (SheetAvoidance).
+            .scaleEffect(plan.scale, anchor: .top)
+            .offset(y: plan.dy)
+            .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: selected)
+            .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: sheetHeight)
+            .contentShape(Rectangle())
+            .onTapGesture { chromeHide.tapEmpty() }
+            .simultaneousGesture(DragGesture(minimumDistance: 0).onChanged { _ in chromeHide.touch() })
         }
         .ignoresSafeArea()
         .background(Sunnah.Colors.mushafPaper.ignoresSafeArea())
-        .immersiveReader(revealed: showChrome)
+        .immersiveReader(revealed: false)
         #if os(iOS)
         .toolbar(.hidden, for: .navigationBar)
         #endif
-        .overlay(alignment: .bottom) { if let sel = selected { selectionSheet(sel) } }
-        .onChange(of: selected) { if $0 == nil { sheetHeight = 0 } }
+        .overlay(alignment: avoidancePlan(height: pageSize.height).sheetOnTop ? .top : .bottom) { if let sel = selected { selectionSheet(sel) } }
+        .onChange(of: selected) { sel in
+            if sel == nil { sheetHeight = 0 }
+            chromeHide.pin(sel != nil)
+        }
+        .onChange(of: voiceOver) { chromeHide.alwaysVisible = $0 }
+        .onAppear { chromeHide.alwaysVisible = voiceOver; chromeHide.pin(selected != nil) }
+        .onDisappear { chromeHide.cancel() }
         .sheet(isPresented: $showIndex) {
             MushafIndexView(index: index, search: search, store: store) { page in current = page; showIndex = false }
         }
@@ -215,7 +228,7 @@ public struct MushafReaderView: View {
         .font(Sunnah.Typography.secondary)
         .foregroundStyle(Sunnah.Colors.mushafAccent)
         .contentShape(Rectangle())
-        .onTapGesture { sunnahAnimate { showChrome.toggle() } }
+        .onTapGesture { sunnahAnimate { chromeHide.tapEmpty() } }
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(.isButton)
         .accessibilityHint("يُظهر أدوات القارئ")
@@ -273,6 +286,24 @@ public struct MushafReaderView: View {
         return index.surah(onPage: page)?.name ?? ""
     }
 
+    /// الخطة الحالية لتجنّب البطاقة: مستطيل الآية من أسطر الصفحة الجارية وارتفاع البطاقة الفعلي مع الحافة الآمنة.
+    private func avoidancePlan(height h: CGFloat) -> SheetAvoidance.Plan {
+        guard let sel = selected, sheetHeight > 0, let page = try? repo.page(current) else { return .none }
+        let m = MushafPageLayout.metrics(for: page, height: Double(h))
+        let idx = m.rows.enumerated().compactMap { i, r in r.w?.contains { $0.v == sel } == true ? i : nil }
+        guard let span = SheetAvoidance.ayahSpan(rowIndices: idx, top: CGFloat(m.top), rowHeight: CGFloat(m.rowHeight)) else { return .none }
+        return SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheetHeight + Self.bottomSafeInset)
+    }
+
+    static var bottomSafeInset: CGFloat {
+        #if os(iOS)
+        let w = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.flatMap(\.windows).first { $0.isKeyWindow }
+        return w?.safeAreaInsets.bottom ?? 0
+        #else
+        return 0
+        #endif
+    }
+
     private func reference(_ ayah: String) -> String { MushafShare.reference(ayah, index: index) }
 
     /// النص العثماني الحرفي من البيانات؛ nil يعطّل النسخ والمشاركة بدل نسخ نص ناقص.
@@ -319,7 +350,7 @@ public struct MushafReaderView: View {
         .padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, Sunnah.Spacing.s3)
         .background(GeometryReader { g in Color.clear.preference(key: MushafSheetHeightKey.self, value: g.size.height) })
         .onPreferenceChange(MushafSheetHeightKey.self) { sheetHeight = $0 + Sunnah.Spacing.s3 }
-        .transition(.move(edge: .bottom).combined(with: .opacity))
+        .transition(.move(edge: avoidancePlan(height: pageSize.height).sheetOnTop ? .top : .bottom).combined(with: .opacity))
         .accessibilityIdentifier("mushaf.selection")
     }
 
