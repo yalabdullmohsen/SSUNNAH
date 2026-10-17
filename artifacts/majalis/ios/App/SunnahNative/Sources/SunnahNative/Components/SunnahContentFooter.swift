@@ -45,7 +45,7 @@ struct SunnahSourceLine: View {
                 Label(source, systemImage: "text.book.closed")
                     .accessibilityIdentifier("detail.source")
             } else {
-                NavigationLink(value: Route.web(path: "/sources")) {
+                SunnahValueLink(value: Route.web(path: "/sources")) {
                     Label("مصادر التطبيق", systemImage: "text.book.closed")
                         .foregroundStyle(Sunnah.Colors.primary)
                 }
