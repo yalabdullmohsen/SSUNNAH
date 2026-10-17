@@ -51,7 +51,6 @@ public struct MushafPageView: View {
     private func content(_ page: MushafPage, family: String, size: CGSize) -> some View {
         // التوزيع من بيانات تخطيط QPC (أنواع الأسطر) عبر MushafPageLayout؛ الهامش الجانبي ≈3% من العرض (هندسة المرجع 402×874).
         let _ = repo.noteRenderSize(size)
-        let _ = NSLog("PAGE n=%d size=%fx%f", number, size.width, size.height)
         let pl = repo.pageLayout(page, family: family, size: size)
         let inset = pl.inset, width = pl.width, m = pl.m, layout = pl.layout
         let rows = m.rows, rowH = CGFloat(m.rowHeight)
@@ -150,11 +149,9 @@ public struct MushafReaderView: View {
 
     public var body: some View {
         GeometryReader { geo in
-            let h = geo.size.height + geo.safeAreaInsets.top + geo.safeAreaInsets.bottom, w = MushafPageLayout.canvasWidth(container: geo.size)
+            let h = geo.size.height, w = MushafPageLayout.canvasWidth(container: geo.size)
             let plan = avoidancePlan(height: h)
-            let _ = NSLog("BODY h=%f dy=%f sc=%f vis=%d sh=%f sel=%@", h, plan.dy, plan.scale, chromeHide.visible ? 1 : 0, sheetHeight, selected ?? "-")
             ZStack(alignment: .top) {
-                GeometryReader { g in Color.clear.onChange(of: g.frame(in: .global).minY) { y in NSLog("FRAME minY=%f h=%f w=%f", y, g.size.height, g.frame(in: .global).width) } }
                 Color.clear.onAppear { pageSize = CGSize(width: w, height: h) }.onChange(of: h) { _ in pageSize = CGSize(width: w, height: h) }
                 Sunnah.Colors.mushafPaper
                 Group {
@@ -177,9 +174,9 @@ public struct MushafReaderView: View {
                 #endif
                 }
                 .environment(\.layoutDirection, .rightToLeft)
-                .ignoresSafeArea()
+                // الارتفاع ثابت = h: ignoresSafeArea هنا كان يمدّ المقلِّب بمقدار الإزاحة (909.67 بدل 874) فتُحسب الأسطر على ارتفاع غير الذي بُنيت عليه SheetAvoidance.
+                .frame(width: w, height: h)
                 .clipped()
-                .id(Int(h))
                 pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
                 pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
             }
