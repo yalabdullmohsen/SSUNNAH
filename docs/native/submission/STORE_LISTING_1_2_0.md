@@ -77,6 +77,8 @@
 • المسبحة وحاسبة المواريث.
 • تصدير بيانات الحساب وحذفه من داخل التطبيق.
 • أيقونات بديلة للتطبيق وتحسينات في المظهر.
+• المصحف: يختفي الشريط السفلي أثناء القراءة لتبقى الصفحة كاملة.
+• زر «إبلاغ عن خطأ» وتنبيه الذكاء الاصطناعي في صفحات المحتوى.
 ```
 
 ### English
@@ -138,6 +140,8 @@ Notes
 - Tasbih counter and inheritance calculator.
 - Export your account data and delete your account in the app.
 - Alternate app icons and appearance improvements.
+- Mushaf: the bottom tab bar hides while reading so the page stays full.
+- A "Report an error" button and an AI notice on content pages.
 ```
 
 ## 4) جدول الأدلة (مسار نسبي إلى `artifacts/majalis/ios/App`)
@@ -158,6 +162,9 @@ Notes
 | أيقونات بديلة | `Special/AppIconPickerView.swift:42` |
 | تصدير الحساب | `Sections/account/AccountNetwork.swift:167` (RPC export_my_account) |
 | حذف الحساب | `Platform/AccountDeletion.swift:12` (RPC delete_my_account) |
+| زر «إبلاغ عن خطأ» (محتوى + شريط) | `Components/SunnahReportIssueButton.swift:40,83` (#3407، #3414 مدموجان) |
+| تنبيه الذكاء الاصطناعي في صفحات المحتوى | `Support/SunnahDisclosure.swift` (أيقونة `info.circle`؛ #3398 مدموج) |
+| إخفاء الشريط السفلي أثناء قراءة المصحف | `.immersiveReader` (#3377، #3429 مدموجان) |
 | وضع فاتح/داكن وRTL | `Design/Sunnah.swift:132`؛ بقية المظهر والـRTL في `docs/native/FEATURE_PARITY.md` (قسم الحساب والإعدادات، سطر 33) |
 | تصفح بلا حساب، Keychain | غير مؤكَّدين بسطر محدد في هذه الجولة (grep لـKeychain بنمط SecItemAdd لم يُرجع نتيجة) — انظر القسم 5 |
 
@@ -181,5 +188,5 @@ Notes
 ### إفصاح الذكاء الاصطناعي (قرار يوسف)
 
 - الجملة أعلاه (عربي/إنجليزي) بنص قراره، بلا نسبة مراجعة لأحد.
-- **شرط قبل الرفع:** «وفيه زر للإبلاغ» غير صحيحة اليوم؛ لا زر إبلاغ في صفحات المحتوى (GUIDELINES_AUDIT G2، والموجود نموذج «تواصل معنا» فقط). لا تُلصق الجملة في ASC قبل شحن الزر أو حذف المقطع الأخير منها.
+- **زر الإبلاغ (G2) أُغلق:** #3407 و#3414 مدموجان؛ «إبلاغ عن خطأ في هذا المحتوى» في أسفل صفحات المحتوى وأيقونة «إبلاغ عن خطأ» في الشريط، وكلاهما يفتح بريدًا إلى info@ssunnah.com أو ينسخ نص البلاغ؛ فالجملة الأخيرة من الوصف صحيحة.
 - حُسم (قرار يوسف): استُبدلت «من مصادر مذكورة في كل صفحة» بصياغة صادقة حرفيًا (تفاصيل الشاشات في `SOURCES_CLAIM_AUDIT.md`)؛ لا تعود العبارة قبل اكتمال ذيل المحتوى الموحّد (طلب ن1).

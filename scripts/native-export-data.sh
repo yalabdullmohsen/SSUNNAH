@@ -5,6 +5,7 @@
 # يرفض التصدير: المحجوز في content-hold، demo، الموثّقة بلا شرح/مرجع (والعامة unsourced مقبولة)، الضعيف/الموضوع من حزمة verified-sahih (يُصدَّران منفصلين). أقسام التطبيق (scripts/native/sections) بالقواعد نفسها؛ الشبهات لا تدخل إلا بدليل متحقَّق من Tanzil ومصدر.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+bash "$ROOT/scripts/native-link-deps.sh" "$ROOT"
 cd "$ROOT/artifacts/majalis"
 export NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=1536}"
 ADH=content/native/adhkar-verified.json  # لقطة الأذكار الموثّقة (تُمرَّر تلقائيًا إن وُجدت؛ لا تُنشأ أذكار)
@@ -35,8 +36,10 @@ FINAL="$OUT"; OUT="$(mktemp -d "${TMPDIR:-/tmp}/native-data.XXXXXX")"; trap 'rm 
 node --import tsx scripts/native/export-ios-data.mjs --out "$OUT" ${ADH:+$( [ -f "$ADH" ] && echo "--adhkar-json $ADH" )}
 # الضعيف/الموضوع: ملفان منفصلان عن verified-sahih (قرار يوسف 2026-10-14، DATA_CONTRACT §5.2)
 (cd "$ROOT" && node scripts/native-export-weak-hadith.mjs "$OUT/hadith")
-NEW=$(find "$OUT" -type f | wc -l | tr -d ' '); OLD=0; [ -d "$FINAL" ] && OLD=$(find "$FINAL" -type f ! -name .input-hash | wc -l | tr -d ' ')
-if [ "$NEW" -lt "$OLD" ]; then echo "رُفض: الملفات الجديدة $NEW أقل من الحالية $OLD — لم يُمسّ $FINAL" >&2; exit 1; fi
+NEW=$(find "$OUT" -type f | wc -l | tr -d ' '); OLD=0
+# المقارنة بما صدّره التصدير السابق فعلًا (MANIFEST) لا بكل ما في المجلد، فلا تحجب ملفاتُ يتيمة أو فرقُ فرع التصدير؛ النقص >5٪ يُرفض
+[ -f "$FINAL/MANIFEST.json" ] && OLD=$(node -e 'console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).files.length)' "$FINAL/MANIFEST.json")
+if [ "$NEW" -lt $((OLD * 95 / 100)) ]; then echo "رُفض: الملفات الجديدة $NEW أقل من 95٪ من السابقة $OLD — لم يُمسّ $FINAL" >&2; exit 1; fi
 node --input-type=module -e '
 import fs from "node:fs"; import crypto from "node:crypto"; import path from "node:path";
 const out = process.argv[1]; const m = JSON.parse(fs.readFileSync(path.join(out, "MANIFEST.json"), "utf8"));
@@ -46,4 +49,11 @@ let q = 0;
 for (const f of m.files.filter((x) => /^quiz\/(?!manifest)/.test(x.path))) for (const r of JSON.parse(fs.readFileSync(path.join(out, f.path), "utf8"))) { q++; if (/^demo[-_]/i.test(String(r.id)) || holds.has(r.id) || !String(r.question || "").trim() || !String(r.answer || "").trim() || (r.documentation_status !== "unsourced" && (!String(r.reference || "").trim() || !String(r.explanation || "").trim()))) { console.error("سؤال غير مقبول:", r.id); process.exit(1); } }
 console.log(JSON.stringify({ ok: true, files: m.files.length, quizAccepted: q, manifest: path.join(out, "MANIFEST.json"), manifestSha256: crypto.createHash("sha256").update(fs.readFileSync(path.join(out, "MANIFEST.json"))).digest("hex") }));
 ' "$OUT"
-mkdir -p "$FINAL" && cp -R "$OUT"/. "$FINAL"/
+# مزامنة صارمة: نسخ ثم حذف كل يتيم من فرع/تصدير سابق، وحارس يفشل لو بقي يتيم (scripts/native-sync-dir.sh، اختباره native-sync-dir.test.sh)
+. "$ROOT/scripts/native-sync-dir.sh"
+BEFORE=$(find "$FINAL" -type f ! -name .input-hash 2>/dev/null | wc -l | tr -d ' ')
+native_sync_dir "$OUT" "$FINAL"
+# حارس ما بعد التصدير: خروج 0 لا يكفي — مقارنة عدد الملفات ومحتواها (sha256) بين المصدر المؤقت والوجهة، وفشل عند أي اختلاف (scripts/native-verify-sync.sh)
+. "$ROOT/scripts/native-verify-sync.sh"
+native_verify_sync "$OUT" "$FINAL" || exit 1
+echo "ملفات ios-native/Data: قبل=$BEFORE بعد=$(find "$FINAL" -type f ! -name .input-hash | wc -l | tr -d ' ')"
