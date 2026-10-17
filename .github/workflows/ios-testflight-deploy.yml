@@ -75,7 +75,8 @@ jobs:
   testflight:
     name: fastlane-beta
     needs: gate
-    if: needs.gate.outputs.build == 'true'
+    # معطَّل بقرار المالك 2026-10-17: هذا المسار كان يبني هدف Capacitor القديم (App.xcodeproj) وهو غير مشحون؛ الشحن محليًا بـfastlane native_beta من ios-native/SunnahApp.xcodeproj.
+    if: ${{ false }}
     runs-on: macos-latest
     timeout-minutes: 90
     steps:
@@ -139,7 +140,6 @@ jobs:
         with:
           path: |
             ~/Library/Developer/Xcode/DerivedData
-            artifacts/majalis/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/swiftpm
           key: spm-${{ runner.os }}-${{ hashFiles('artifacts/majalis/ios/App/CapApp-SPM/Package.swift') }}
           restore-keys: |
             spm-${{ runner.os }}-
@@ -152,12 +152,6 @@ jobs:
 
       - name: Install Fastlane gems
         run: bundle install --jobs 4 --retry 3
-
-      - name: Resolve SPM packages
-        working-directory: artifacts/majalis/ios/App
-        run: |
-          set -euo pipefail
-          xcodebuild -resolvePackageDependencies -project App.xcodeproj -scheme App
 
       - name: Decode App Store Connect API key material
         env:
