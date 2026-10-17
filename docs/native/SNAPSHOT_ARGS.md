@@ -21,3 +21,10 @@ xcrun simctl launch <UDID> com.yousef.majlisilm -snapshotRoute /hadith/daif -sna
 ## البناء المشترك
 `bash scripts/native-head-build.sh` يبني SunnahApp للمحاكي مرة واحدة لكل شجرة نظيفة ويخدم كل النوافذ (`--lookup` يطبع المسار دون بناء)؛ `native-snapshot.sh` يستعمله تلقائيًا، و`native-shot-guard.sh <App.app> <outdir>` يقبله ويكتب PROVENANCE.
 نافذة بتعديلات غير مدفوعة تبني لنفسها (الأمر يخرج بـ3)، ثم تمرّر `APP=<مسار .app>` للقطات.
+
+## تغطية الوسم visually-verified (صيغة الأسماء)
+الحارس `scripts/native-sensitive-coverage.sh` يطلب لكل ملف حسّاس معدَّل في الـPR أحد:
+1. صورة png/jpg مضافة/معدَّلة اسمها (بعد إبقاء a-z0-9 صغيرة) يحوي اسم الملف بلا امتداد، أو اسمه بعد حذف اللاحقة Screens|Screen|Views|View|Adapters|Models|Content|Reading (وللملفات تحت `Data/` اسم المجلد الأب).
+2. سطر في `PROVENANCE.txt` معدَّل يحوي الاسم نفسه.
+3. سطر `covers=<اسم>`.
+تحقق قبل الدفع: `bash scripts/native-sensitive-coverage.sh origin/native-app HEAD`. الاسم المختصر (كطول <4) لا يُقبل. وPR بتعارض (CONFLICTING) لا تُشغَّل عليه فحوص CI فيبدو بلا check-runs: ادمج native-app في الفرع أولًا.
