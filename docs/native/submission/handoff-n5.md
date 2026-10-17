@@ -13,3 +13,6 @@
 - تدقيق مراجعة Apple: `APPLE_REVIEW_RISK_AUDIT.md` (18 بندًا). أخطاره: الساعة خارج مشروع الأرشيف (ن4)، دالة delete_my_account على الإنتاج غير مُثبَتة (ن3/ن4)، حساب مراجع (يوسف/ن3)، «قيد التوثيق» وأقسام المتجر (ن1/ن2)، PrivacyInfo هاتف/اسم/remote-notification (ن4)، الإفصاح عن الذكاء الاصطناعي ومصادر السيرة (ن1+يوسف)، نص المراجعة المسبقة للمساهمات (ن1).
 
 - تحديث التدقيق: أُغلق #1/#9/#10 بدليل يوسف؛ المتبقي #16 #8/12 #7 #15/17 #4/2. مدخلات المصادر والجملتان في `SOURCES_SCREEN_ENTRIES.md` (لا روابط في الكتالوج وكل الكتب pending_review). ينتظر: تأكيد ن4 للمشروع المرفوع، الساعة بعد تأكيده، Privacy Report.
+
+- جولة المواصفات: PROPHETS_STORIES_SPEC، DESIGN_SYSTEM_SPEC، ASSETS_LICENSES، CONTENT_TEMPLATE_DUPLICATION_REPORT (+أداة check-content-duplication.py)؛ أُضيفت مخاطر 19–23 للتدقيق. المتبقي: فحص تكرار بقيّة public/data وcontent (ن2)، تصحيح workflow سطر 160 (ن4).
+- جولة 2: توسيع فحص التكرار لكل المحتوى (check-content-duplication-all.py + N2_DUPLICATION_HANDOFF.md → ن2). AUDIO_HEADERS_CHECK على build 106 (لا 104). بنود ن4 (workflow:160، Watch، Privacy Report) وبند يوسف (وصف TestFlight القديم) لا أتابعها؛ تبقى هنا فقط. verify-merged لـ#3445 و#3447 عند انتهاء الفحوص.
