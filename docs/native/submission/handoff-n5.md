@@ -11,3 +11,5 @@
 - أُنجز في الدفعة: SOURCES_CLAIM_AUDIT.md، PRIVACY_REQUIRED_REASON_AUDIT.md، docs/native/check-asc-lengths.py (كلها OK). «ما الجديد» مطابق للكود (ويدجت مواقيت/آية/ذكر في PrayerWidgetBundle؛ لا Watch).
 - ديون: Privacy Report من أرشيف حقيقي؛ قرار PrivacyInfo (يوسف)؛ تصحيح وصف TestFlight في ASC (يوسف)؛ الذيل الموحّد (إفصاح+مصدر+إبلاغ) وتصحيح SunnahDisclosure.short: طلب لـن1 في SOURCES_CLAIM_AUDIT.md (الصياغة صُحّحت في المتجر/الموقع)؛ AUDIO_HEADERS_CHECK على 104 (ن4)؛ تأكيد ن4 أن docs/site تُنشر وأن حارس الروابط يغطيها (لم أجد الحارس بالاسم).
 - تدقيق مراجعة Apple: `APPLE_REVIEW_RISK_AUDIT.md` (18 بندًا). أخطاره: الساعة خارج مشروع الأرشيف (ن4)، دالة delete_my_account على الإنتاج غير مُثبَتة (ن3/ن4)، حساب مراجع (يوسف/ن3)، «قيد التوثيق» وأقسام المتجر (ن1/ن2)، PrivacyInfo هاتف/اسم/remote-notification (ن4)، الإفصاح عن الذكاء الاصطناعي ومصادر السيرة (ن1+يوسف)، نص المراجعة المسبقة للمساهمات (ن1).
+
+- تحديث التدقيق: أُغلق #1/#9/#10 بدليل يوسف؛ المتبقي #16 #8/12 #7 #15/17 #4/2. مدخلات المصادر والجملتان في `SOURCES_SCREEN_ENTRIES.md` (لا روابط في الكتالوج وكل الكتب pending_review). ينتظر: تأكيد ن4 للمشروع المرفوع، الساعة بعد تأكيده، Privacy Report.
