@@ -1,12 +1,12 @@
 {
-  "adhkar": 2,
-  "aqidah": 60,
-  "fiqh": 75,
+  "adhkar": 1,
+  "aqidah": 39,
+  "fiqh": 60,
   "hadith": 4,
   "home": 1,
-  "knowledge": 405,
-  "learn": 24,
-  "library": 47,
-  "quiz": 13,
-  "sirah": 152
+  "knowledge": 216,
+  "learn": 16,
+  "library": 41,
+  "quiz": 8,
+  "sirah": 61
 }
