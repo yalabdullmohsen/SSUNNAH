@@ -9,10 +9,7 @@ struct SunnahWatchApp: App {
             WatchRootView()
                 .environmentObject(store)
                 .watchRTL()
-                .task {
-                    store.activate()
-                    await WatchNotifications.requestAuthorization()
-                }
+                .task { store.activate() }
         }
     }
 }
