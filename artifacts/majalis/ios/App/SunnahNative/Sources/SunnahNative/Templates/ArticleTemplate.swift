@@ -30,6 +30,7 @@ public struct ArticleTemplate: View {
         .dynamicTypeSize(size)
         .sunnahReadableWidth().background(Sunnah.Colors.bg).bodyTitledNavigation()
         .preferredColorScheme(night ? .dark : nil)
+        .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.reportSection)
         .toolbar {
             SunnahCapsuleToolbar {
                 SunnahToolbarButton(systemImage: "textformat.size.smaller", glyphSize: 12, label: "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }

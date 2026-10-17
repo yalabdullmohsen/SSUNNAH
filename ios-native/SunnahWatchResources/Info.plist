@@ -14,5 +14,6 @@
 	<key>WKApplication</key><true/>
 	<key>WKCompanionAppBundleIdentifier</key><string>com.yousef.majlisilm</string>
 	<key>NSLocationWhenInUseUsageDescription</key><string>يُستخدم اتجاه الساعة لعرض القبلة على الجهاز فقط ولا يُرسَل إلى أي خادم.</string>
+	<key>ITSAppUsesNonExemptEncryption</key><false/>
 </dict>
 </plist>

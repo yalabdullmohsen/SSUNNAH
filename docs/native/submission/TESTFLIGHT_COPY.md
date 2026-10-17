@@ -2,13 +2,13 @@
 
 **Beta App Description (قصير، بلا نسبة مراجعة لأي شيخ):**
 ```
-سُنّة: المصحف الكامل، الأذكار، الأحاديث، الفقه، مواقيت الصلاة والقبلة. أُعدّ المحتوى بمساعدة الذكاء الاصطناعي من مصادر مذكورة في كل صفحة وقد يقع فيه خطأ؛ للفتوى ارجعوا إلى أهل العلم. هذا بناء تجريبي: أبلغونا بأي خلل عبر مشاركة TestFlight (لقطة + وصف).
+سُنّة: المصحف الكامل، الأذكار، الأحاديث، الفقه، مواقيت الصلاة والقبلة. أُعدّ المحتوى بمساعدة الذكاء الاصطناعي وقد يقع فيه خطأ؛ للفتوى ارجعوا إلى أهل العلم. يعرض المحتوى الشرعي مصدره في صفحات التفاصيل والأحاديث، ويمكن الإبلاغ عن أي خطأ من داخل الصفحة. هذا بناء تجريبي: أبلغونا بأي خلل عبر مشاركة TestFlight (لقطة + وصف).
 ```
 
 **What to Test — build 106 (خطوات قصيرة):**
 ```
 1) افتح التطبيق وتصفّح المصحف: انتقل بين صفحات وسور وتأكد من سلامة النص.
-2) افتح الأذكار ثم حديثًا ثم صفحة من المكتبة؛ تأكد من ظهور المصدر وتنبيه الذكاء الاصطناعي أسفل الصفحة.
+2) افتح حديثًا ثم صفحة من المكتبة؛ تأكد من ظهور المصدر وتنبيه الذكاء الاصطناعي وزر «إبلاغ عن خطأ في هذا المحتوى» أسفل الصفحة.
 3) جرّب زر «إبلاغ عن خطأ في هذا المحتوى» أسفل صفحة محتوى.
 4) المواقيت والقبلة: اسمح بالموقع وتأكد من صحة الأوقات.
 5) الإشعارات: فعّل تذكير ذكر وتأكد من وصوله.
@@ -25,13 +25,13 @@
 ## Beta App Description (البناء النهائي) — حدّ 4000 حرف
 ```
 سُنّة: تطبيق أصلي لـ iPhone وiPad يضم المصحف الكامل (604 صفحات)، الأذكار، الأحاديث، الفقه، مواقيت الصلاة واتجاه القبلة، وحاسبة الفرائض. يعمل المحتوى الأساسي بلا اتصال، ولا يحتاج حسابًا.
-أُعدّ المحتوى بمساعدة الذكاء الاصطناعي من مصادر مذكورة في كل صفحة، وقد يقع فيه خطأ؛ وهو ليس بديلًا عن أهل العلم.
+أُعدّ المحتوى بمساعدة الذكاء الاصطناعي، وقد يقع فيه خطأ؛ وهو ليس بديلًا عن أهل العلم. يعرض المحتوى الشرعي مصدره في صفحات التفاصيل والأحاديث، ويمكن الإبلاغ عن أي خطأ من داخل الصفحة.
 هذا بناء تجريبي: نرجو إبلاغنا بأي خلل عبر الإعدادات ← تواصل معنا أو عبر مشاركة TestFlight (لقطة + وصف).
 ```
 English:
 ```
 Sunnah: a native iPhone/iPad app with the full Mushaf (604 pages), adhkar, hadith, fiqh, prayer times, Qibla, and an inheritance calculator. Core content works offline; no account needed.
-Content is prepared with the assistance of AI from sources cited on each page and may contain errors; it is not a substitute for scholars.
+Content is prepared with the assistance of AI and may contain errors; it is not a substitute for scholars. Religious content shows its source on detail and hadith pages, and any error can be reported from within the page.
 This is a test build: please report issues via Settings > Contact us or TestFlight feedback (screenshot + description).
 ```
 - Feedback Email: `info@ssunnah.com` (العنوان الرسمي بقرار يوسف).

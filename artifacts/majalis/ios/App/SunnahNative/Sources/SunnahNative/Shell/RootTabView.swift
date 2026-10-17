@@ -19,8 +19,7 @@ public struct RootTabView: View {
         self.screen = screen
     }
 
-    /// المصحف غامر (كالمرجع) حتى يعلن قارئه `.immersiveReader()` في PR المصحف المستقل (ن3)؛ بعدها يُحذف شرط المسار.
-    private var tabBarShown: Bool { !immersive.hidesTabBar && !(router.stack.last?.path ?? "/").hasPrefix("/mushaf") }
+    private var tabBarShown: Bool { !immersive.hidesTabBar }
 
     public var body: some View {
         NavigationStack(path: $router.stack) {
@@ -80,6 +79,7 @@ public struct RootTabView: View {
         #if DEBUG
         .task {   // لقطات التدقيق فقط: `-snapshotRoute <route>` (أي مسار مسجّل، مثل /fawaid أو /hadith/daif) يُفتح عند الإقلاع بلا حوار الرابط العميق
             if let p = UserDefaults.standard.string(forKey: "snapshotRoute"), p.hasPrefix("/") { router.open(path: p) }
+            SnapshotScroll.startIfRequested()   // `-snapshotScroll end`: يمرّر الشاشة المفتوحة إلى نهايتها (انظر docs/native/SNAPSHOT_ARGS.md)
         }
         #endif
     }

@@ -54,3 +54,7 @@ NATIVE_WINDOW=n1 APP=<SunnahApp.app> MODE=light BOARD=<dir> OPEN=inapp bash scri
 
 ## لقطة مسار واحد: `-snapshotRoute <route>` (Debug فقط)
 `xcrun simctl launch <UDID> com.yousef.majlisilm -snapshotRoute /fawaid` يفتح أي مسار يعرفه `AppRouter` (مثل `/hadith/daif` و`/about` و`/mushaf/page/150`) عند الإقلاع بلا حوار الرابط العميق؛ الخطافات الداخلية الأخرى (`SNAP_DETAIL`…) تبقى متغيّرات بيئة `SIMCTL_CHILD_*`. كله داخل `#if DEBUG`، ويفحص `scripts/native-debug-hooks-guard.sh` أن لا أثر له في Release.
+
+## بناء HEAD المشترك للمحاكي
+`bash scripts/native-head-build.sh` يبني SunnahApp للمحاكي مرة واحدة لكل شجرة مصدر نظيفة (المفتاح من `native-head-key.sh`) ويخزّنه في `~/.majalis-tools/headbuild/<key>/` (+ PROVENANCE.txt وهاش الـbinary)؛ يمرّ عبر build-slot فيخدم كل النوافذ ببناء واحد، و`--lookup` يطبع المسار دون بناء.
+`native-snapshot.sh` يستعمله تلقائيًا و`native-shot-guard.sh` يقبله؛ نافذة بتعديلات غير مدفوعة في ios-native/SunnahNative تبني لنفسها (الأمر يرفض بخروج 3). أوامر `archive` تأخذ أولوية قبل بناءات الاختبار في build-slot.

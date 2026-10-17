@@ -29,6 +29,7 @@ public struct DetailTemplate: View {
             }
         }
         .background(Sunnah.Colors.bg).bodyTitledNavigation()
+        .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.reportSection)
     }
 
     private var longCard: some View {

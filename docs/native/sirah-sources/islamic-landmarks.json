@@ -274,5 +274,405 @@
    "fetched": "2026-10-15",
    "verified": true
   }
+ ],
+ "djenne-great-mosque": [
+  {
+   "ref": "اليونسكو: مدن جنيه القديمة",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/116",
+   "quote": "The reconstruction of the Mosque (1906-1907)",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "اليونسكو: مدن جنيه القديمة",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/116",
+   "quote": "particularly representative of Islamic architecture in sub-Saharan Africa",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا (مصدر مساعد): Great Mosque of Djenné",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Djenn%C3%A9",
+   "quote": "The first mosque on the site was built around the 13th century",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "djinguereber-timbuktu": [
+  {
+   "ref": "اليونسكو: تمبكتو",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/119",
+   "quote": "rebuilt and enlarged between 1570 and 1583 by the Imam Al Aqib",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "اليونسكو: تمبكتو",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/119",
+   "quote": "played an essential role in the spread of Islam in Africa",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا (مصدر مساعد): Djinguereber Mosque",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Djinguereber_Mosque",
+   "quote": "Built in 1327, it is one of three mosques",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "imam-mosque-isfahan": [
+  {
+   "ref": "اليونسكو: ميدان الإمام، أصفهان",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/115",
+   "quote": "Built by Shah Abbas I the Great at the beginning of the 17th century",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "اليونسكو: ميدان الإمام، أصفهان",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/115",
+   "quote": "testimony to the level of social and cultural life in Persia during the Safavid era",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "kutubiyya-marrakech": [
+  {
+   "ref": "اليونسكو: مدينة مراكش",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/331",
+   "quote": "Koutoubia Mosque, with the matchless minaret of 77 metres",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا (مصدر مساعد): Kutubiyya Mosque",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Kutubiyya_Mosque",
+   "quote": "The mosque was founded in 1147 by the Almohad caliph Abd al-Mu'min",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "kairouan-maqam-sahaba": [
+  {
+   "ref": "اليونسكو: القيروان",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/499",
+   "quote": "The Zawiya of Sidi Sahib shelters the remains of the companion of Mahomet",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "اليونسكو: القيروان",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/499",
+   "quote": "most ancient Arabo-Muslim base of the Maghreb (670 AD)",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "sanaa-great": [
+  {
+   "ref": "اليونسكو: مدينة صنعاء القديمة",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/385",
+   "quote": "Great Mosque, said to have been constructed while the Prophet was still living",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا (مصدر مساعد): Great Mosque of Sanaa",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Sanaa",
+   "quote": "the precise date of construction is unknown",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "aleppo-umayyad": [
+  {
+   "ref": "اليونسكو: مدينة حلب القديمة",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/21",
+   "quote": "the Great Mosque founded under the Umayyads and rebuilt in the 12th century",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا (مصدر مساعد): Great Mosque of Aleppo",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Aleppo",
+   "quote": "built in the beginning of the 8th century CE during the reign of the Umayyad caliph Sulayman",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "zaytouna": [
+  {
+   "ref": "اليونسكو: مدينة تونس القديمة",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/36",
+   "quote": "the most remarkable are the Zitouna Mosque, the Kasbah Mosque",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا (مصدر مساعد): Al-Zaytuna Mosque",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Al-Zaytuna_Mosque",
+   "quote": "Most scholars support the second explanation and attribute the foundation to Ibn al-Nu'man in 698 CE",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "malwiya-samarra": [
+  {
+   "ref": "ويكيبيديا (مصدر مساعد): Great Mosque of Samarra",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Samarra",
+   "quote": "commissioned in 848 CE and completed in 851 by the Abbasid caliph Al-Mutawakkil",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا (مصدر مساعد): Great Mosque of Samarra",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Samarra",
+   "quote": "capacity for more than 60,000 worshippers",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "sultan-ahmed": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد السلطان أحمد",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Sultan_Ahmed_Mosque",
+   "quote": "constructed between 1609 and 1617 during the rule of Ahmed I",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: المسجد الأزرق، إسطنبول",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Blue_Mosque,_Istanbul",
+   "quote": "the mosque has six minarets, ablutions facilities, and a large courtyard",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "اليونسكو: المناطق التاريخية في إسطنبول",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/356",
+   "quote": "the 17th century Blue Mosque and the slender minarets of the New Mosque",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "hagia-sophia": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: آيا صوفيا",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+   "quote": "it was converted to a mosque by Mehmed the Conqueror",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: آيا صوفيا",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Hagia_Sophia",
+   "quote": "The site became a museum in 1935, and was redesignated as a mosque in 2020",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "اليونسكو: المناطق التاريخية في إسطنبول",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/356",
+   "quote": "Hagia Sophia, which was designed by Anthemios of Tralles and Isidoros of Miletus in 532-537",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "hassan2": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد الحسن الثاني",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Hassan_II_Mosque",
+   "quote": "A maximum of 105,000 worshippers can gather together for prayer",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد الحسن الثاني",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Hassan_II_Mosque",
+   "quote": "Completed in 1993, it was designed by Michel Pinseau",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "sheikh-zayed": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد الشيخ زايد الكبير",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Sheikh_Zayed_Grand_Mosque",
+   "quote": "The Grand Mosque was constructed between 1994 and 2007 and was inaugurated in December 2007",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد الشيخ زايد الكبير",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Sheikh_Zayed_Grand_Mosque",
+   "quote": "large enough to accommodate over 40,100 worshippers",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "muhammad-ali": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد محمد علي",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Mosque_of_Muhammad_Ali",
+   "quote": "It was commissioned by Muhammad Ali Pasha and built between 1832 and 1857",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد محمد علي",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Mosque_of_Muhammad_Ali",
+   "quote": "sometimes called the Alabaster Mosque due to the prominent use of alabaster",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "quwwat-ul-islam": [
+  {
+   "ref": "اليونسكو: قطب منار وآثاره، دلهي",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/233",
+   "quote": "the Quwwatu'l-Islam, the oldest in northern India, built of materials reused",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: مجمع قطب منار",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Qutb_Minar_complex",
+   "quote": "started in the year 1193 AD, when Aibak was the commander",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "sultan-hassan": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد ومدرسة السلطان حسن",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Mosque-Madrasa_of_Sultan_Hasan",
+   "quote": "It was built between 1356 and 1363 CE during the Bahri Mamluk period",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد ومدرسة السلطان حسن",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Mosque-Madrasa_of_Sultan_Hasan",
+   "quote": "four iwans are said to have each been devoted to the teaching of one",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "اليونسكو: القاهرة التاريخية",
+   "type": "web",
+   "url": "https://whc.unesco.org/en/list/89",
+   "quote": "the Madrasa of Sultan Hasan",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "badshahi": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد بادشاهي",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Badshahi_Mosque",
+   "quote": "constructed between 1671 and 1673 by the Mughal emperor Aurangzeb",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد بادشاهي",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Badshahi_Mosque",
+   "quote": "exterior that is decorated with carved red sandstone with marble inlay",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "demak-great": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: المسجد الكبير في ديماك",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Demak_Great_Mosque",
+   "quote": "one of the oldest mosques in Indonesia, located in the center town of Demak",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: المسجد الكبير في ديماك",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Demak_Great_Mosque",
+   "quote": "the roof is tiered and supported by four saka guru teak pillars",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "putra-mosque": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد بوترا",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Putra_Mosque",
+   "quote": "Construction of the mosque began in 1997 and was completed two years later",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: مسجد بوترا",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Putra_Mosque",
+   "quote": "The mosque can accommodate 15,000 worshippers at any one time",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
+ ],
+ "xian-great-mosque": [
+  {
+   "ref": "ويكيبيديا الإنجليزية: المسجد الكبير في شيان",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Xi'an",
+   "quote": "Traditional accounts date the mosque's founding to 742 CE during the Tang dynasty",
+   "fetched": "2026-10-17",
+   "verified": true
+  },
+  {
+   "ref": "ويكيبيديا الإنجليزية: المسجد الكبير في شيان",
+   "type": "web",
+   "url": "https://en.wikipedia.org/wiki/Great_Mosque_of_Xi'an",
+   "quote": "used as a place of worship by Chinese Muslims, primarily the Hui people",
+   "fetched": "2026-10-17",
+   "verified": true
+  }
  ]
 }

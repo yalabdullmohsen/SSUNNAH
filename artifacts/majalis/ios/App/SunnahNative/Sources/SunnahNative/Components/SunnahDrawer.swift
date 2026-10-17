@@ -42,8 +42,7 @@ public struct SunnahDrawer: View {
                 Button { Sunnah.Haptics.select(); close(); open("/search") } label: {
                     HStack { Image(systemName: "magnifyingglass"); Text("ابحث في التطبيق"); Spacer() }
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        .padding(.horizontal, 14).frame(minHeight: Sunnah.Spacing.touch)
-                        .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .sunnahSearchFieldChrome(fill: Sunnah.Colors.surface, radius: 14)
                 }.buttonStyle(.plain)
             }
             .padding(Sunnah.Spacing.s4)
