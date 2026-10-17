@@ -8,7 +8,7 @@ U1=11111111-1111-1111-1111-111111111111; U2=22222222-2222-2222-2222-222222222222
 U4=44444444-4444-4444-4444-444444444444; U5=55555555-5555-5555-5555-555555555555; W4=66666666-6666-6666-6666-666666666666
 mkdir -p "$T/dev"; for u in $U1 $U2 $U3 $U4 $U5 $W4; do mkdir -p "$T/dev/$u/data"; touch -t 202001010000 "$T/dev/$u/data/f"; done # كلها خاملة
 touch "$T/dev/$U1/data/f" # نشط
-run() { HYGIENE_DRY=1 HYGIENE_DEVICES="$T/dev" HYGIENE_WINDOW=n4 HYGIENE_USED=${USED:-100} HYGIENE_LIMIT=1000 HYGIENE_SIM_LIST="$T/sims" HYGIENE_PS_FILE="$T/ps" bash "$H" 2>&1; echo "exit=$?"; }
+run() { HYGIENE_DRY=1 HYGIENE_DEVICES="$T/dev" HYGIENE_WINDOW=n4 HYGIENE_FREE_GB=${FREE:-100} HYGIENE_DD_ROOTS="$T/dd" HYGIENE_USED=${USED:-100} HYGIENE_LIMIT=1000 HYGIENE_SIM_LIST="$T/sims" HYGIENE_PS_FILE="$T/ps" bash "$H" 2>&1; echo "exit=$?"; }
 : > "$T/ps"
 cat > "$T/sims" <<L
 == Devices ==
@@ -53,4 +53,16 @@ echo "$out" | grep -q "ACTION .* 901\|ACTION .* 902\|ACTION .* 903" && no "قت�
 USED=850 out=$(run); echo "$out" | grep -q "exit=75" && echo "$out" | grep -q "رفض بدء البناء" && ok "≥80٪: يرفض بخروج 75 مع رسالة" || { no "رفض عند 85٪"; echo "$out"; }
 USED=799 out=$(run); echo "$out" | grep -q "exit=0" && ok "<80٪: يمرّ" || no "مرور عند 79.9٪"
 grep -q "native-sim-hygiene.sh" "$R/scripts/build-slot.sh" && grep -q "native-sim-hygiene.sh" "$R/scripts/native-head-build.sh" && ok "مربوط بـbuild-slot وnative-head-build" || no "الربط التلقائي"
+# القرص وDerivedData
+mkdir -p "$T/dd/n4-old" "$T/dd/n4-new" "$T/dd/n1-old" "$T/dd/shared-old" "$T/dd/n4-busy"
+for x in n4-old n1-old shared-old n4-busy; do echo x > "$T/dd/$x/f"; touch -t 202001010000 "$T/dd/$x/f"; done; echo x > "$T/dd/n4-new/f"
+echo "950 1 00:01:00 xcodebuild -derivedDataPath $T/dd/n4-busy build" > "$T/ps"
+out=$(run)
+echo "$out" | grep -q "DD-CLEAN $T/dd/n4-old" && echo "$out" | grep -q "DD-CLEAN $T/dd/shared-old" && ! echo "$out" | grep -q "DD-CLEAN $T/dd/n4-new\|n1-old\|n4-busy" \
+  && ok "DerivedData: يحذف القديم (نافذتي + المشترك) ويحفظ الحديث ومجلد نافذة أخرى وما قيد الاستعمال" || { no "تنظيف DerivedData"; echo "$out"; }
+echo "960 1 00:01:00 xcodebuild -scheme SunnahApp archive" > "$T/ps"; out=$(run)
+echo "$out" | grep -q "أرشفة جارية" && ! echo "$out" | grep -q "DD-CLEAN" && ok "أرشفة جارية: لا تنظيف" || no "أرشفة جارية"
+: > "$T/ps"
+FREE=8 out=$(run); echo "$out" | grep -q "تحذير: المساحة الحرة 8GB" && echo "$out" | grep -q "exit=0" && ok "<10GB: تحذير ويمرّ" || no "تحذير 10GB"
+FREE=3 out=$(run); echo "$out" | grep -q "exit=75" && echo "$out" | grep -q "المساحة الحرة 3GB < 4GB" && ok "<4GB: يرفض بخروج 75" || no "رفض 4GB"
 [ $fail = 0 ] && echo "sim-hygiene tests OK" || { echo "sim-hygiene tests FAILED"; exit 1; }
