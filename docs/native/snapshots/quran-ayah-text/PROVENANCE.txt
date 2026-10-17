@@ -1,0 +1,5 @@
+المصدر: QuranAyahTextSnapshotTests.testSnapshots (ImageRenderer، لا لقطة محاكي كاملة)
+الآيات: 3:37 · 21:81 · 38:30 · 12:45 — فاتح وداكن
+الإنشاء: 2026-10-17، محاكي iPhone 17 Pro، البيانات: Data/mushaf من بناء HEAD
+الأمر: TEST_RUNNER_MUSHAF_DATA=<Data/mushaf> TEST_RUNNER_MUSHAF_SNAP_DIR=<dir> xcodebuild test -only-testing:SunnahNativeTests/QuranAyahTextSnapshotTests
+التحقق البصري: visually-verified — فُتحت اللقطتان بالحجم الكامل؛ الآيات الأربع كاملة (3:37 بلا قصّ)، علامات الوقف وقرص نهاية الآية ظاهران.
