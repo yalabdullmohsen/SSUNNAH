@@ -83,6 +83,11 @@
 | File timestamp | C617.1 | MF؛ CHECK §2 |
 | Background modes | audio وfetch + BGTask `com.yousef.majlisilm.prayer-refresh` | `Info.plist:22-23`؛ CHECK §4 |
 
+## 6-ب. مطابقة PrivacyInfo.xcprivacy الفعلي (native-app، فُحصت بـplistlib)
+- `SunnahApp`: Tracking=false، 5 أنواع (Email/UserID/Name/OtherUserContent/ProductInteraction) كلها Linked=true وTracking=false وغرضها AppFunctionality؛ APIs: UserDefaults (CA92.1,1C8F.1) وFileTimestamp (C617.1) → **يطابق الجدول 2 تمامًا**.
+- `SunnahWatchResources` و`PrayerWidgetResources`: Tracking=false، بلا بيانات مجمّعة، UserDefaults 1C8F.1 فقط → لا أثر على إجابات ASC.
+- الخانة الوحيدة المفتوحة: «تُطابَق بعد Privacy Report من ن4/يوسف».
+
 ## 7. ما لم يُتحقق منه
 - أي manifest يُحزَّم فعليًا (تعارض 1) وإمكانية وصول التسميع/الميكروفون في الثنائي الأصلي (تعارض 2).
 - Privacy Report من أرشيف حقيقي، والتقاط شبكة حي (AUDIT بند 22 و24).

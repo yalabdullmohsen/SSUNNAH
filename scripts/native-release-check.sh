@@ -78,6 +78,9 @@ node scripts/native-content-guards.mjs >/tmp/native-content-guards.$$ 2>&1 || { 
 rm -f /tmp/native-content-guards.$$
 # 2و-2) بنية حقل sources موحّدة (docs/native/SOURCES_FIELD.md): سقف تنازلي لغير المعياري
 node scripts/native-sources-shape-guard.mjs >/tmp/native-sources-shape.$$ 2>&1 || { head -20 /tmp/native-sources-shape.$$; bad "بنية sources: عناصر غير معيارية فوق السقف"; }
+node scripts/native-literal-verse-guard.mjs --check >/tmp/native-literal-verse.$$ 2>&1 || { head -5 /tmp/native-literal-verse.$$; bad "﴿ حرفية: زادت فوق السقف (الآيات مراجع لا نص)"; }
+rm -f /tmp/native-literal-verse.$$
+bash scripts/native-verify-sync.test.sh >/dev/null 2>&1 || bad "اختبار تحقق مزامنة التصدير فشل"
 rm -f /tmp/native-sources-shape.$$
 node scripts/native-date-guard.mjs >/tmp/native-date-guard.$$ 2>&1 || { head -20 /tmp/native-date-guard.$$; bad "حارس date-readable: تاريخ خام أو لاتيني خطأ"; }
 rm -f /tmp/native-date-guard.$$
