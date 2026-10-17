@@ -334,7 +334,7 @@ public struct MushafReaderView: View {
             }
             .frame(maxHeight: min(pageSize.height * 0.28, 230))
             .fixedSize(horizontal: false, vertical: true)
-            HStack(spacing: Sunnah.Spacing.s4) {
+            HStack(spacing: Sunnah.Spacing.s3) {
                 if let text = shareText(ayah) {
                     Button { copy(text) } label: { Label("نسخ", systemImage: "doc.on.doc") }
                     ShareLink(item: text) { Label("مشاركة", systemImage: "square.and.arrow.up") }
@@ -346,6 +346,7 @@ public struct MushafReaderView: View {
             }
             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafInk)
             .labelStyle(.titleAndIcon)
+            .lineLimit(1).minimumScaleFactor(0.8)   // أزرار البطاقة لا تلتفّ حرفًا حرفًا على الشاشات الضيقة
         }
         .padding(Sunnah.Spacing.s4)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
