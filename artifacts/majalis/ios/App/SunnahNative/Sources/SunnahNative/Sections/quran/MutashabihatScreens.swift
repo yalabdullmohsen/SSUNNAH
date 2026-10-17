@@ -11,7 +11,7 @@ struct MutashabihatPair: Decodable, Identifiable, Hashable, Sendable {
 }
 
 /// نص الآية من ملفات المصحف المحزومة (Tanzil) بلا تعديل؛ يُحمَّل ملف السورة عند الحاجة فقط.
-enum QuranAyahText {
+enum QuranAyahPlainText {
     private struct SurahFile: Decodable { struct A: Decodable { let numberInSurah: Int; let text: String }; let ayahs: [A] }
     nonisolated(unsafe) private static var cache: [Int: [Int: String]] = [:]
     private static let lock = NSLock()
@@ -70,7 +70,7 @@ struct MutashabihatDetailView: View {
                 ForEach(pair.refs, id: \.self) { r in
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                         Text("\(r.surahName): \(r.ayah)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
-                        Text(QuranAyahText.text(surah: r.surah, ayah: r.ayah) ?? "").font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
+                        Text(QuranAyahPlainText.text(surah: r.surah, ayah: r.ayah) ?? "").font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
                     }
                     .padding(Sunnah.Spacing.s3).frame(maxWidth: .infinity, alignment: .leading)
                     .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 12))

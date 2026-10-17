@@ -6,6 +6,8 @@
 |---|---|---|
 | `-snapshotRoute <route>` | يفتح أي مسار مسجّل عند الإقلاع بلا حوار الرابط العميق | `Shell/RootTabView.swift` |
 | `-snapshotScroll end` | يمرّر أكبر شاشة تمرير ظاهرة إلى نهايتها (يعيد المحاولة نحو 30 ثانية لأن المحتوى يكبر بعد التحميل) | `Components/SnapshotScroll.swift` |
+| `-snapshotRoute /prophets -snapshotProphet <index>` | يفتح صفحة نبي معيّن؛ الفهرس بالترتيب الزمني (0=آدم). من #3461، بحسب ن1 — يُتحقق من الكود بعد الدمج | #3461 |
+| `-snapshotRoute /explainers` | شاشة الشروح («مراحل خلق الإنسان»)؛ تحتاج تصدير explainers.json. من #3470، بحسب ن1 | #3470 |
 
 ## الصيغة
 ```

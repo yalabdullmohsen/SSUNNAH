@@ -12,6 +12,7 @@ bash scripts/native-lint-chevron.sh || exit 1
 bash scripts/native-lint-dark.sh || exit 1
 bash scripts/native-plist-guard.sh || exit 1
 bash scripts/native-webview-guard.sh || exit 1
+bash scripts/native-watch-auth-guard.sh || exit 1
 bash scripts/native-gnu-guard.sh || exit 1
 bash scripts/native-export-data.sh >/dev/null || { echo "فشل التصدير"; exit 1; }
 node scripts/native-data-check.mjs | head -1

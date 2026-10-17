@@ -6,11 +6,26 @@ enum WatchNotifications {
     private static let prefix = "sunnah.watch.prayer."
     private static let adhkarPrefix = "sunnah.watch.adhkar."
 
-    static func requestAuthorization() async {
-        _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
+    private static let enabledKey = "sunnah.watch.reminders.enabled.v1"
+    /// تفعيل المستخدم للتنبيهات؛ لا يُطلب الإذن ولا يُجدول شيء قبله.
+    static var isEnabled: Bool { WatchShared.suite.bool(forKey: enabledKey) }
+
+    /// يُستدعى من مفتاح التنبيه بعد لمسة المستخدم فقط (لا من بدء التشغيل): يطلب الإذن ثم يحفظ القرار.
+    static func enable() async -> Bool {
+        let granted = (try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])) ?? false
+        WatchShared.suite.set(granted, forKey: enabledKey)
+        return granted
+    }
+
+    static func disable() async {
+        WatchShared.suite.set(false, forKey: enabledKey)
+        let center = UNUserNotificationCenter.current()
+        let ids = await center.pendingNotificationRequests().map(\.identifier).filter { $0.hasPrefix(prefix) || $0.hasPrefix(adhkarPrefix) }
+        center.removePendingNotificationRequests(withIdentifiers: ids)
     }
 
     static func reschedule(from p: WatchPayload) async {
+        guard isEnabled else { return }
         let center = UNUserNotificationCenter.current()
         let pending = await center.pendingNotificationRequests().map(\.identifier).filter { $0.hasPrefix(prefix) || $0.hasPrefix(adhkarPrefix) }
         center.removePendingNotificationRequests(withIdentifiers: pending)

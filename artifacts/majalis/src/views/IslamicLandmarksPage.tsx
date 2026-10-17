@@ -11,7 +11,6 @@ import { arabicMatchAny } from "@/lib/arabic-search";
 import {
   ISLAMIC_LANDMARKS,
   LANDMARK_COUNTRIES,
-  LANDMARK_ERAS,
   LANDMARK_TYPES,
   getFeaturedLandmarks,
   type LandmarkType,
@@ -35,7 +34,6 @@ import "@/styles/components/directory-media.css";
 
 export default function IslamicLandmarksPage() {
   const [activeCountry, setActiveCountry] = useState<string>("الكل");
-  const [activeEra, setActiveEra] = useState<string>("الكل");
   const [activeType, setActiveType] = useState<LandmarkType | "الكل">("الكل");
   const [search, setSearch] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -74,7 +72,6 @@ export default function IslamicLandmarksPage() {
   const filtered = useMemo(() => {
     return ISLAMIC_LANDMARKS.filter((lm) => {
       if (activeCountry !== "الكل" && lm.country !== activeCountry) return false;
-      if (activeEra !== "الكل" && lm.era !== activeEra) return false;
       if (activeType !== "الكل" && lm.type !== activeType) return false;
       if (search.trim()) {
         return arabicMatchAny(
@@ -84,11 +81,10 @@ export default function IslamicLandmarksPage() {
       }
       return true;
     });
-  }, [activeCountry, activeEra, activeType, search]);
+  }, [activeCountry, activeType, search]);
 
   const activeFilterCount = [
     activeCountry !== "الكل",
-    activeEra !== "الكل",
     activeType !== "الكل",
   ].filter(Boolean).length;
 
@@ -212,22 +208,6 @@ export default function IslamicLandmarksPage() {
                 </Select>
               </div>
               <div className="ilm-sheet-field">
-                <FieldLabel>الحقبة</FieldLabel>
-                <Select value={activeEra} onValueChange={setActiveEra}>
-                  <SelectTrigger className="ilm-select min-h-11 text-base" aria-label="فلترة حسب الحقبة">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="الكل">كل الحقب</SelectItem>
-                    {LANDMARK_ERAS.map((era) => (
-                      <SelectItem key={era} value={era}>
-                        {era}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="ilm-sheet-field">
                 <FieldLabel>النوع</FieldLabel>
                 <Select
                   value={activeType}
@@ -270,7 +250,6 @@ export default function IslamicLandmarksPage() {
                 onCtaClick={() => {
                   setSearch("");
                   setActiveCountry("الكل");
-                  setActiveEra("الكل");
                   setActiveType("الكل");
                 }}
               />
