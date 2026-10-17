@@ -66,6 +66,11 @@
       "id": "watch-assets",
       "owner": "ن4",
       "match": "native-watch-assets-guard\\.sh$"
+    },
+    {
+      "id": "mushaf-verse-selection",
+      "owner": "ن3",
+      "match": "native-mushaf-verse-selection-guard\\.sh$"
     }
   ]
 }
