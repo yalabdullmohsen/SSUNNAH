@@ -152,7 +152,7 @@ public struct MushafReaderView: View {
             let h = geo.size.height, w = MushafPageLayout.canvasWidth(container: geo.size)
             let plan = avoidancePlan(height: h)
             ZStack(alignment: .top) {
-                Color.clear.onAppear { pageSize = CGSize(width: w, height: h) }
+                Color.clear.onAppear { pageSize = CGSize(width: w, height: h) }.onChange(of: h) { _ in pageSize = CGSize(width: w, height: h) }
                 Sunnah.Colors.mushafPaper
                 Group {
                 #if os(iOS)
@@ -298,9 +298,7 @@ public struct MushafReaderView: View {
         let m = MushafPageLayout.metrics(for: page, height: Double(h))
         let idx = m.rows.enumerated().compactMap { i, r in r.w?.contains { $0.v == sel } == true ? i : nil }
         guard let span = SheetAvoidance.ayahSpan(rowIndices: idx, top: CGFloat(m.top), rowHeight: CGFloat(m.rowHeight)) else { return .none }
-        let pl = SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheetHeight + Self.bottomSafeInset, barBottom: chromeHide.visible ? Self.chromeBottom : 0)
-        NSLog("AVOID h=%f idx=%@ span=%f,%f sheet=%f vis=%d cb=%f dy=%f sc=%f", h, "\(idx)", span.minY, span.maxY, sheetHeight, chromeHide.visible ? 1 : 0, Self.chromeBottom, pl.dy, pl.scale)
-        return pl
+        return SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheetHeight + Self.bottomSafeInset, barBottom: chromeHide.visible ? Self.chromeBottom : 0)
     }
 
     /// أسفل شريط الأدوات المثبّت: الحافة الآمنة العليا + padding.top 54 + ارتفاع الكبسولة ≈ 48 (مقيس من لقطة iPhone).
