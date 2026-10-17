@@ -53,7 +53,7 @@ public struct AdhkarScreen: ScreenTemplate {
         } else {
             List(categories) { category in
                 SunnahNavigationLink {
-                    AdhkarListView(items: category.items).navigationTitle(titles[category.id] ?? Self.fallbackTitle)
+                    AdhkarListView(items: category.items).sunnahNavTitle(titles[category.id] ?? Self.fallbackTitle)
                 } label: {
                     SunnahListRow(title: titles[category.id] ?? Self.fallbackTitle, subtitle: "\(category.items.count)")
                 }

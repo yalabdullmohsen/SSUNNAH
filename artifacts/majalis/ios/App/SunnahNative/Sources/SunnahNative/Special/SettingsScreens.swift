@@ -57,7 +57,7 @@ struct SettingsView: View {
         }
         .scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("الإعدادات")
+        .sunnahNavTitle("الإعدادات")
         .onAppear { email = platform.authService.currentEmail }
         #if DEBUG
         .task {   // لقطات التدقيق فقط: تمرير إلى مجموعة
@@ -92,7 +92,7 @@ struct UpdatePasswordView: View {
         .padding(Sunnah.Spacing.pageX)
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("تحديث كلمة المرور")
+        .sunnahNavTitle("تحديث كلمة المرور")
     }
 }
 
@@ -117,7 +117,7 @@ struct VaultView: View {
         }
         .scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("خزنتي")
+        .sunnahNavTitle("خزنتي")
     }
 }
 
@@ -127,7 +127,7 @@ enum SettingsScreens {
         registry.registerView(id: "settings") { SettingsView() }
         registry.registerView(id: "vault") { VaultView() }
         registry.registerView(id: "auth.update-password") { UpdatePasswordView() }
-        registry.registerView(id: "auth.callback") { ContentPendingView(message: "تُعالَج روابط الدخول تلقائيًا عند فتحها من البريد").navigationTitle("تأكيد الحساب") }
-        registry.registerView(id: "upload") { ContentPendingView(message: "رفع الدروس يتطلب خدمة رفع وإشراف في الخادم؛ غير متاح في هذه النسخة").navigationTitle("رفع درس") }
+        registry.registerView(id: "auth.callback") { ContentPendingView(message: "تُعالَج روابط الدخول تلقائيًا عند فتحها من البريد").sunnahNavTitle("تأكيد الحساب") }
+        registry.registerView(id: "upload") { ContentPendingView(message: "رفع الدروس يتطلب خدمة رفع وإشراف في الخادم؛ غير متاح في هذه النسخة").sunnahNavTitle("رفع درس") }
     }
 }

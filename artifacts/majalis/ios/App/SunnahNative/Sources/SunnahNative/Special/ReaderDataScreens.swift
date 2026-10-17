@@ -124,22 +124,22 @@ enum ReaderDataScreens {
     static func arbaeenList() -> some View {
         LibraryLoadedView(source: arbaeen, adapt: { ReaderData.arbaeen($0) }) { (items: [ContentItem]) in
             SearchTemplate(items: items, detailBase: "/arbaeen-nawawi", browseWhenEmpty: true)
-        }.navigationTitle("الأربعون النووية")
+        }.sunnahNavTitle("الأربعون النووية")
     }
 
     static func arbaeenDetail(id: String) -> some View {
         LibraryLoadedView(source: arbaeen, adapt: { (rows: [ReaderData.Arbaeen]) in ReaderData.arbaeen(rows).first { $0.id == id } }) { (item: ContentItem?) in
             if let item { ArticleTemplate(item: item) } else { EmptyStateView() }
-        }.navigationTitle("الأربعون النووية")
+        }.sunnahNavTitle("الأربعون النووية")
     }
 
     static func wasayaScreen() -> some View {
         LibraryLoadedView(source: wasaya, adapt: { (f: ReaderData.Wasaya) in f }) { WasayaNabawiyyaView(file: $0) }
-            .navigationTitle("الوصايا النبوية")
+            .sunnahNavTitle("الوصايا النبوية")
     }
 
     static func duasScreen() -> some View {
         LibraryLoadedView(source: duas, adapt: { (f: ReaderData.Duas) in f }) { DuasView(file: $0) }
-            .navigationTitle("الأدعية")
+            .sunnahNavTitle("الأدعية")
     }
 }

@@ -94,7 +94,7 @@ struct AccountOfflineCenterScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("مركز دون اتصال")
+        .sunnahNavTitle("مركز دون اتصال")
         .task { await load() }
     }
 
