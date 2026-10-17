@@ -193,6 +193,8 @@ public struct MushafReaderView: View {
         }
         .ignoresSafeArea()
         .background(Sunnah.Colors.mushafPaper.ignoresSafeArea())
+        // الصفحة المُزاحة للأعلى تنزلق تحت شريط الحالة بدل أن تتقاطع حروفها مع الساعة والبطارية.
+        .overlay(alignment: .top) { if avoidancePlan(height: pageSize.height).dy < 0 { Sunnah.Colors.mushafPaper.frame(height: Self.topSafeInset).ignoresSafeArea(edges: .top) } }
         .immersiveReader(revealed: false)
         #if os(iOS)
         .toolbar(.hidden, for: .navigationBar)
@@ -299,6 +301,15 @@ public struct MushafReaderView: View {
         return SheetAvoidance.plan(pageHeight: h, ayahMinY: span.minY, ayahMaxY: span.maxY, sheetHeight: sheetHeight + Self.bottomSafeInset)
     }
 
+    static var topSafeInset: CGFloat {
+        #if os(iOS)
+        let w = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.flatMap(\.windows).first { $0.isKeyWindow }
+        return w?.safeAreaInsets.top ?? 0
+        #else
+        return 0
+        #endif
+    }
+
     static var bottomSafeInset: CGFloat {
         #if os(iOS)
         let w = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.flatMap(\.windows).first { $0.isKeyWindow }
@@ -342,11 +353,9 @@ public struct MushafReaderView: View {
                 Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }
                 Button { openRoute("/quran/offline-player") } label: { Label("القراء", systemImage: "headphones") }
                 Button { store.toggleBookmark(ayah: ayah, page: current) } label: { Label(isMarked ? "إزالة العلامة" : "علامة", systemImage: isMarked ? "bookmark.fill" : "bookmark") }
-                Spacer(minLength: 0)
             }
             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafInk)
-            .labelStyle(.titleAndIcon)
-            .lineLimit(1).minimumScaleFactor(0.8)   // أزرار البطاقة لا تلتفّ حرفًا حرفًا على الشاشات الضيقة
+            .labelStyle(MushafSheetActionLabelStyle())   // أيقونة فوق الاسم: لا التفاف حرفيًّا ولا اقتطاع على الشاشات الضيقة
         }
         .padding(Sunnah.Spacing.s4)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
@@ -452,5 +461,16 @@ private struct MushafSoftBand: Shape {
         if tl > 0 { p.addArc(center: CGPoint(x: r.minX + tl, y: r.minY + tl), radius: tl, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false) }
         p.closeSubpath()
         return p
+    }
+}
+
+/// أزرار بطاقة الآية: أيقونة فوق الاسم بعرض متساوٍ، فتتسع الخمسة على أضيق جوال.
+private struct MushafSheetActionLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(spacing: 4) {
+            configuration.icon
+            configuration.title.lineLimit(1).minimumScaleFactor(0.8)
+        }
+        .frame(maxWidth: .infinity)
     }
 }
