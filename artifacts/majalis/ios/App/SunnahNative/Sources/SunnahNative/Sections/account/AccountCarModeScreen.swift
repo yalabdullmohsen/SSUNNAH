@@ -85,7 +85,7 @@ struct AccountCarModeScreen: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("وضع السيارة")
+        .sunnahNavTitle("وضع السيارة")
         .task { await load() }
         .onDisappear { player.stop() }
     }

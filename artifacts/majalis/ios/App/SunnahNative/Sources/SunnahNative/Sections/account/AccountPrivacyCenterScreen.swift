@@ -74,7 +74,7 @@ struct AccountPrivacyCenterScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("مركز الخصوصية")
+        .sunnahNavTitle("مركز الخصوصية")
     }
 
     @MainActor private func export() async {
