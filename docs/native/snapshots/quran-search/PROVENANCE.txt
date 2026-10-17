@@ -1,0 +1,7 @@
+git_sha=e8e304f5b9c824bade78cd2b1c5acdd47cdd661e
+branch=n3/tanzil-search
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/22965c0325d91ac1/SunnahApp.app
+binary_sha256=addb8b82d2f3256b7a4589565bfec70a1d6dd9696e20291c929d644f0754460b
+built_at=2026-10-17 22:09:36
+source_newest=2026-10-17 22:06:49
+captured_at=2026-10-17 22:11:42
