@@ -14,7 +14,7 @@
     {
       "id": "tabbar-cover",
       "owner": "ن1",
-      "match": "native-.*(tabbar|tab-bar|inset|cover).*\\.(mjs|sh)$"
+      "match": "native-tabbar-cover-guard\\.mjs$"
     },
     {
       "id": "verse-selection",
@@ -71,6 +71,41 @@
       "id": "mushaf-verse-selection",
       "owner": "ن3",
       "match": "native-mushaf-verse-selection-guard\\.sh$"
+    },
+    {
+      "id": "watch-auth",
+      "owner": "ن1",
+      "match": "native-watch-auth-guard\\.sh$"
+    },
+    {
+      "id": "site-content",
+      "owner": "ن4",
+      "match": "native-site-content-guard\\.sh$"
+    },
+    {
+      "id": "sensitive-coverage",
+      "owner": "ن4",
+      "match": "native-sensitive-coverage\\.sh$"
+    },
+    {
+      "id": "shipping-no-capacitor",
+      "owner": "ن4",
+      "match": "native-shipping-workflow-guard\\.sh$"
+    },
+    {
+      "id": "assets-license",
+      "owner": "ن4",
+      "match": "native-assets-license-guard\\.sh$"
+    },
+    {
+      "id": "assets-size",
+      "owner": "ن4",
+      "match": "native-assets-size-guard\\.sh$"
+    },
+    {
+      "id": "data-orphans",
+      "owner": "ن4",
+      "match": "native-data-orphan-guard\\.sh$"
     }
   ]
 }

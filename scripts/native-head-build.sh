@@ -9,6 +9,7 @@ KEY=$(bash "$R/scripts/native-head-key.sh") || { [ "${1:-}" = --lookup ] && exit
 D="$HB/$KEY"; APP="$D/SunnahApp.app"
 if [ -f "$D/KEY" ] && [ -d "$APP" ]; then echo "$APP"; exit 0; fi
 [ "${1:-}" = --lookup ] && exit 1
+bash "$R/scripts/native-sim-hygiene.sh" || exit $? # نظافة المحاكيات/العمليات + رفض عند ≥80٪
 mkdir -p "$HB"; L="$HB/$KEY.lock"
 if ! mkdir "$L" 2>/dev/null; then # بناء جارٍ لنفس المفتاح: انتظره بدل بناء ثانٍ
   echo "native-head-build: بناء $KEY جارٍ — انتظار" >&2
