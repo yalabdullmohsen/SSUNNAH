@@ -1,0 +1,8 @@
+git_sha=6368f5f63f4bc8ed039977acfde9cb08128d763a
+branch=n3/mushaf-sheet-chrome
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/9819523429a5eebb/SunnahApp.app
+binary_sha256=19a47f54a860a6adbe9be36a5f2d865bccc4d20ea2848c2c8bd2d496883ebb71
+built_at=2026-10-17 12:44:05
+source_newest=2026-10-17 12:41:01
+captured_at=2026-10-17 13:02:51
+covers=Sources/SunnahNative/Mushaf/MushafReaderView.swift (MushafReaderView-*.png: تحديد آية + بطاقة، أول/آخر سطر، فاتح/داكن، iPad)
