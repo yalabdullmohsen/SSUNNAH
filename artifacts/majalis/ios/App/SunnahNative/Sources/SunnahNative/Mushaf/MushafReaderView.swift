@@ -149,7 +149,7 @@ public struct MushafReaderView: View {
 
     public var body: some View {
         GeometryReader { geo in
-            let h = geo.size.height, w = MushafPageLayout.canvasWidth(container: geo.size)
+            let h = geo.size.height + geo.safeAreaInsets.top + geo.safeAreaInsets.bottom, w = MushafPageLayout.canvasWidth(container: geo.size)
             let plan = avoidancePlan(height: h)
             let _ = NSLog("BODY h=%f dy=%f sc=%f vis=%d sh=%f sel=%@", h, plan.dy, plan.scale, chromeHide.visible ? 1 : 0, sheetHeight, selected ?? "-")
             ZStack(alignment: .top) {
