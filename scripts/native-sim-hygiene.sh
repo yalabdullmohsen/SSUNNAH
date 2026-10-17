@@ -6,6 +6,9 @@
 #  4) يرفض البدء (خروج 75) إن بقي الاستخدام ≥ 80٪ ويقول للنافذة أن تنتظر أو تنظّف.
 # متغيرات (للاختبار والضبط): HYGIENE_MAX_SIMS(3) HYGIENE_IDLE_MIN(30) HYGIENE_ORPHAN_MIN(30) HYGIENE_PCT_MAX(80) HYGIENE_WINDOW
 #   HYGIENE_DRY=1 (يطبع الإجراءات "ACTION …" بلا تنفيذ) HYGIENE_USED/HYGIENE_LIMIT (يتجاوزان القياس)
+#   القرص: تحذير تحت HYGIENE_DISK_WARN_GB(12) ورفض (خروج 75) تحت HYGIENE_DISK_MIN_GB(8) بعد التنظيف التلقائي؛ HYGIENE_FREE_GB يتجاوز القياس.
+#   DerivedData: يُحذف الأقدم من HYGIENE_DD_HOURS(2) بلا استعمال (أي نافذة)، في HYGIENE_DD_ROOTS (افتراضي ssunnah-build وXcode DerivedData و~/.majalis-tools/dd)؛ headbuild يُبقي أحدث HYGIENE_HB_KEEP(2)؛ ثم simctl delete unavailable.
+#     يخص النافذة الحالية (اسم يبدأ بـnX-) والمشترك (بلا بادئة)؛ ولا يُمسّ مجلد نافذة أخرى ولا شيء ما دامت أرشفة جارية أو العملية تذكر مساره. تقرير "DD-CLEAN" قبل كل حذف.
 #   HYGIENE_SIM_LIST=<ملف> (بديل خرج simctl list devices booted) HYGIENE_DEVICES=<جذر CoreSimulator/Devices> HYGIENE_PS_FILE=<ملف: pid ppid etime command>
 set -uo pipefail
 UIDN=$(id -u)
@@ -89,9 +92,44 @@ kill_orphans() { # أبوها 1، عمرها > ORPHAN_MIN، من أدوات ال
   return 0
 }
 
+dd_clean() {
+  local roots d name o age sz hrs=${HYGIENE_DD_HOURS:-2} ps_txt
+  ps_txt=$(if [ -n "${HYGIENE_PS_FILE:-}" ]; then cat "$HYGIENE_PS_FILE"; else ps -u "$UIDN" -o command=; fi)
+  if echo "$ps_txt" | grep -Eq '(^| )archive( |$)'; then log "DD: أرشفة جارية — لا تنظيف لـDerivedData"; return 0; fi
+  roots=${HYGIENE_DD_ROOTS:-$HOME/ssunnah-build/DerivedData $HOME/Library/Developer/Xcode/DerivedData $HOME/.majalis-tools/dd}
+  for r in $roots; do
+    [ -d "$r" ] || continue
+    for d in "$r"/*/; do
+      d=${d%/}; [ -d "$d" ] || continue; name=$(basename "$d"); o=$(echo "$name" | sed -n 's/^\(n[1-5]\)-.*/\1/p')
+      echo "$ps_txt" | grep -qF "$d" && continue                            # مستعمل الآن
+      [ -z "$(find "$d" -type f -mmin "-$((hrs*60))" -print -quit 2>/dev/null)" ] || continue
+      sz=$(du -sk "$d" 2>/dev/null | cut -f1)
+      if [ "${HYGIENE_DRY:-0}" = 1 ]; then echo "DD-CLEAN $d ($((sz/1024))MB، بلا استعمال > ${hrs}س)"
+      else log "DD-CLEAN سيُحذف $d ($((sz/1024))MB، بلا استعمال > ${hrs}س)"; rm -rf "$d"; fi
+    done
+  done
+}
+hb_prune() { # يُبقي أحدث HYGIENE_HB_KEEP(2) مفتاح headbuild ويحذف الأقدم من ساعتين لا يخص بناءً جاريًا (قفل .lock)
+  local hb=${HYGIENE_HB_DIR:-$HOME/.majalis-tools/headbuild} keep=${HYGIENE_HB_KEEP:-2} d i=0
+  [ -d "$hb" ] || return 0
+  while IFS= read -r d; do i=$((i+1)); [ "$i" -le "$keep" ] && continue
+    [ -d "$d.lock" ] && continue; [ -z "$(find "$d" -type f -mmin -120 -print -quit 2>/dev/null)" ] || continue
+    if [ "${HYGIENE_DRY:-0}" = 1 ]; then echo "HB-CLEAN $d"; else log "HB-CLEAN $d"; rm -rf "$d"; fi
+  done < <(ls -1dt "$hb"/*/ 2>/dev/null | sed 's#/$##')
+}
+free_gb() { if [ -n "${HYGIENE_FREE_GB:-}" ]; then echo "$HYGIENE_FREE_GB"; else df -k "$HOME" | awk 'NR==2{printf "%d", $4/1048576}'; fi; }
+
 usage_pct; log "عمليات المستخدم $USED من $LIM (${PCT}%)"
 limit_sims
 kill_orphans
+dd_clean
+hb_prune
+[ "${HYGIENE_DRY:-0}" = 1 ] || xcrun simctl delete unavailable >/dev/null 2>&1
+FREE=$(free_gb); log "المساحة الحرة ${FREE}GB"
+[ "$FREE" -lt "${HYGIENE_DISK_WARN_GB:-12}" ] && log "تحذير: المساحة الحرة ${FREE}GB < ${HYGIENE_DISK_WARN_GB:-12}GB"
+if [ "$FREE" -lt "${HYGIENE_DISK_MIN_GB:-8}" ]; then
+  log "رفض بدء البناء: المساحة الحرة ${FREE}GB < ${HYGIENE_DISK_MIN_GB:-8}GB. احذف DerivedData القديم/المحاكيات غير المستعملة (xcrun simctl delete unavailable) ثم أعد المحاولة."; exit 75
+fi
 [ -n "${HYGIENE_USED:-}" ] || { sleep 1; usage_pct; }
 if [ "$PCT" -ge "$PCT_MAX" ]; then
   log "رفض بدء البناء: الاستخدام ${PCT}% ≥ ${PCT_MAX}% ($USED/$LIM). انتظر دقيقتين، أو أغلق محاكيك: xcrun simctl shutdown <اسم-محاكيك>، ثم أعد المحاولة."

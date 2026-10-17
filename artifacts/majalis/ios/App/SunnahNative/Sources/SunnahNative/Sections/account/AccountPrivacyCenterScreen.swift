@@ -3,8 +3,8 @@ import SwiftUI
 /// /privacy-center — الحقوق، تصدير بيانات الحساب، وروابط الحذف والسياسات (نصوص PrivacyCenterPage).
 struct AccountPrivacyCenterScreen: View {
     static let staticPages: [(title: String, url: String)] = [
-        ("سياسة الخصوصية على الإنترنت", "https://yalabdullmohsen.github.io/sunnah-legal/privacy.html"),
-        ("الدعم والتواصل", "https://yalabdullmohsen.github.io/sunnah-legal/support.html"),
+        ("سياسة الخصوصية على الإنترنت", "https://yalabdullmohsen.github.io/SSUNNAH/privacy.html"),
+        ("الدعم والتواصل", "https://yalabdullmohsen.github.io/SSUNNAH/support.html"),
     ]
 
     @Environment(\.platform) private var platform
