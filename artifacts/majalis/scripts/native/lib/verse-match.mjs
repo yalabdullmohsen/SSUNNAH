@@ -39,6 +39,7 @@ export function convertVerses(raw, quran, match, stats = { done: 0, ambiguous: 0
     if (h.length > 1) {
       /* آية مكرّرة: تُذكر مواضعها كلها إن قلّت (≤3 سور و≤10 مواضع)؛ لا اختيار لموضع بالتخمين */
       const by = new Map(); for (const x of h) by.set(x.surah, [...(by.get(x.surah) || []), x.from + (x.to > x.from ? '-' + x.to : '')])
+      if (by.size === 1 && h.length > 10) { stats.repeated = (stats.repeated || 0) + 1; return `(${surahName([...by.keys()][0], quran)})` }
       if (by.size > 3 || h.length > 10) { stats.ambiguous++; return all }
       stats.repeated = (stats.repeated || 0) + 1
       return `(${[...by].map(([s, v]) => `${surahName(s, quran)}: ${v.join('، ')}`).join('؛ ')})`
