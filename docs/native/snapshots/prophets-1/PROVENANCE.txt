@@ -1,8 +1,8 @@
-git_sha=c90c5bdc755added248249e52cae57fd2dde0dfd
-branch=n3/shots-prophets-1
-app=/Users/alabdullmohsen/.majalis-tools/headbuild/376855ff09dcea07/SunnahApp.app
-binary_sha256=715d5884374a1f3ac7080d15ec0a2397da6e11c9da7841114a23f6be832e6624
-built_at=2026-10-17 23:11:07
-source_newest=2026-10-17 05:14:25
-captured_at=2026-10-17 23:12:33
-covers=قصص الأنبياء /prophets: adam al-yasa ayyub dawud dhul-kifl harun hud (knowledge/prophets/*.json) — الشاشة تعرض قسم التعريف والمصادر لكل نبي
+git_sha=b7d0ffbe315178b3613409b887bbe46df8de2a9d
+branch=n3/sp1
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/0010d6b20cf31a24/SunnahApp.app
+binary_sha256=f5240e3c352e2436fa5261a8623a63fa0d5f3b8cbb7d3be9b3f4d0168beb4b90
+built_at=2026-10-18 00:42:37
+source_newest=2026-10-18 00:28:45
+captured_at=2026-10-18 00:46:36
+covers=قصص الأنبياء /prophets (شبكة الأنبياء الـ24 بتمرير 0/2/6/نهاية، فاتح وداكن): آدم هود أيوب ذو الكفل هارون اليسع داود — adam hud ayyub dhul-kifl harun al-yasa dawud (كلها ظاهرة بأسمائها)
