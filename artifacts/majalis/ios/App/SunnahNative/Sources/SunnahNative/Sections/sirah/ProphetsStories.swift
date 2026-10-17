@@ -105,7 +105,7 @@ struct ProphetsGridView: View {
             .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s2)
             LazyVGrid(columns: columns, spacing: Sunnah.Spacing.s3) {
                 ForEach(filtered, id: \.1.id) { idx, p in
-                    NavigationLink { ProphetPageView(prophets: prophets, start: idx) } label: {
+                    SunnahNavigationLink { ProphetPageView(prophets: prophets, start: idx) } label: {
                         SunnahCard {
                             VStack(spacing: Sunnah.Spacing.s2) {
                                 Image(systemName: "book.pages").font(.title2).foregroundStyle(Sunnah.Colors.primary).accessibilityHidden(true)
@@ -169,7 +169,7 @@ struct ProphetPageView: View {
                         // مؤقت: SunnahArabicText(.quran) إلى أن تصل QuranAyahText من ن3.
                         SunnahArabicText(a.text, style: .quran).foregroundStyle(Sunnah.Colors.textPrimary)
                         if let path = SunnahAyahRange.mushafPath(a.ref) {
-                            NavigationLink(value: Route.web(path: path)) {
+                            SunnahValueLink(value: Route.web(path: path)) {
                                 Text(SunnahAyahRange.display(a.ref)).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
                             }.accessibilityIdentifier("prophet.ayah.\(a.ref)")
                         }
