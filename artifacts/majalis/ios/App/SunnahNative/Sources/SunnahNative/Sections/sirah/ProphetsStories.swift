@@ -137,6 +137,8 @@ struct ProphetPageView: View {
     let prophets: [ProphetStory]
     @State private var index: Int
     @State private var selection: ProphetSection = .story
+    /// مستودع المصحف الذي تقرأ منه `QuranAyahText`؛ نص الآية لا يُعرض إلا عبره.
+    private let repo = MushafRepository(bundle: .main)
     init(prophets: [ProphetStory], start: Int) { self.prophets = prophets; _index = State(initialValue: start) }
 
     private var p: ProphetStory { prophets[index] }
@@ -163,11 +165,12 @@ struct ProphetPageView: View {
 
     @ViewBuilder private var content: some View {
         if selection == .verses {
-            ForEach(p.ayat, id: \.self) { a in
+            ForEach(p.ayat.filter { repo != nil && QuranAyahRange.parse($0.ref) != nil }, id: \.self) { a in
                 SunnahCard {
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        // مؤقت: SunnahArabicText(.quran) إلى أن تصل QuranAyahText من ن3.
-                        SunnahArabicText(a.text, style: .quran).foregroundStyle(Sunnah.Colors.textPrimary)
+                        if let repo, let r = QuranAyahRange.parse(a.ref) {
+                            QuranAyahText(range: r, repo: repo, paper: false)
+                        }
                         if let path = SunnahAyahRange.mushafPath(a.ref) {
                             SunnahValueLink(value: Route.web(path: path)) {
                                 Text(SunnahAyahRange.display(a.ref)).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
