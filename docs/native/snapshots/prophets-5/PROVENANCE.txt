@@ -1,8 +1,8 @@
-git_sha=a9a5ab6d192c7add6381190530e8f743617472a0
-branch=n3/shots-prophets-5
-app=/Users/alabdullmohsen/.majalis-tools/headbuild/376855ff09dcea07/SunnahApp.app
-binary_sha256=715d5884374a1f3ac7080d15ec0a2397da6e11c9da7841114a23f6be832e6624
-built_at=2026-10-17 23:11:07
-source_newest=2026-10-17 05:14:25
-captured_at=2026-10-17 23:18:32
-covers=قصص الأنبياء /prophets: yusuf zakariyya  (knowledge/prophets/*.json)
+git_sha=b7af3a29cc3a99bc2a8893d177f0452073647c3c
+branch=n3/sp5
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/0010d6b20cf31a24/SunnahApp.app
+binary_sha256=f5240e3c352e2436fa5261a8623a63fa0d5f3b8cbb7d3be9b3f4d0168beb4b90
+built_at=2026-10-18 00:42:37
+source_newest=2026-10-18 00:28:45
+captured_at=2026-10-18 00:57:07
+covers=قصص الأنبياء /prophets (شبكة الأنبياء الـ24 بتمرير 0/2/4/6/8/نهاية، فاتح وداكن): يوسف زكريا — yusuf zakariyya (كلها ظاهرة بأسمائها)
