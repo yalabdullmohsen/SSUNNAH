@@ -28,7 +28,7 @@
 | بند | الحالة | شرط الإغلاق |
 |---|---|---|
 | نظافة القرص (#3477) وdeps (#3472) | ✅ مدموج | — |
-| docs/site (#3478) | ✅ مدموج (المتابعة مؤجَّلة بقرار يوسف) | — |
+| docs/site (#3478) | ✅ مدموج، وGitHub Pages تعمل (متحقَّق 22:05): privacy.html وsupport.html على yalabdullmohsen.github.io/SSUNNAH؛ لا بند تفعيل عند يوسف | — |
 | قائمة أسباب rc-gate (#3479 ✅ مدموج): مغلقة بسببين (tabbar-cover غير مربوط — ن1؛ تطابق الصفحات المنشورة — ن4) | ⏳ | فتح السببين |
 | workflow:160 | ⏳ | دمج الإصلاح |
 | رفع الساعة وسطر Watch ولقطاتها | ⏳ | تأكيد ن4 |
@@ -49,7 +49,7 @@
 - كل جملة جديدة تُفحَص بـcheck-asc-lengths.py قبل الدمج.
 
 ## عمل يوسف اليدوي قبل الإرسال
-1. قبول Apple Agreement في حساب المطوّر.
+1. ~~قبول Apple Agreement~~ ✅ منجز (20:39).
 2. تثبيت بناء 106 على جهاز حقيقي وتجربته (تجربة لا إصدار) بحسب DEVICE_TEST_SHEET.md.
 3. ASC ← App Review Information: الحقول من ASC_REVIEW_INFORMATION.md؛ كلمة مرور apple.review@ssunnah.com تُكتب في ASC فقط.
 4. ASC ← App Privacy: الإجابات من ASC_APP_PRIVACY_ANSWERS.md، ومطابقتها مع Privacy Report من ن4.
