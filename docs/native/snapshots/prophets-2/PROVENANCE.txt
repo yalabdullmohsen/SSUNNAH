@@ -1,8 +1,8 @@
-git_sha=fe7fdad5d0e3c7421602fa6ea929940d27209b28
-branch=n3/shots-prophets-2
-app=/Users/alabdullmohsen/.majalis-tools/headbuild/376855ff09dcea07/SunnahApp.app
-binary_sha256=715d5884374a1f3ac7080d15ec0a2397da6e11c9da7841114a23f6be832e6624
-built_at=2026-10-17 23:11:07
-source_newest=2026-10-17 05:14:25
-captured_at=2026-10-17 23:13:49
-covers=قصص الأنبياء /prophets: ibrahim idris ilyas is-haq isa ismail  (knowledge/prophets/*.json)
+git_sha=c849c7e7f348df49837ddb79bfc2d88e3876df5c
+branch=n3/sp2
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/0010d6b20cf31a24/SunnahApp.app
+binary_sha256=f5240e3c352e2436fa5261a8623a63fa0d5f3b8cbb7d3be9b3f4d0168beb4b90
+built_at=2026-10-18 00:42:37
+source_newest=2026-10-18 00:28:45
+captured_at=2026-10-18 00:50:14
+covers=قصص الأنبياء /prophets (شبكة الأنبياء الـ24 بتمرير 0/2/4/6/8/نهاية، فاتح وداكن): إبراهيم إدريس إلياس إسحاق عيسى إسماعيل — ibrahim idris ilyas is-haq isa ismail (كلها ظاهرة بأسمائها)
