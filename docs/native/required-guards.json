@@ -78,6 +78,11 @@
       "match": "native-watch-auth-guard\\.sh$"
     },
     {
+      "id": "site-content",
+      "owner": "ن4",
+      "match": "native-site-content-guard\\.sh$"
+    },
+    {
       "id": "sensitive-coverage",
       "owner": "ن4",
       "match": "native-sensitive-coverage\\.sh$"
