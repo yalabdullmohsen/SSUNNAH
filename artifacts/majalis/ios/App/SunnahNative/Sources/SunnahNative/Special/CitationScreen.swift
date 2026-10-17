@@ -69,6 +69,7 @@ public struct CitationScreen: View {
                         }
                     }
                 }
+                SunnahContentFooter(title: c.source?.title_ar ?? "استشهاد", id: c.source?.title_ar ?? "citation", section: "استشهاد", source: Self.meta(c.source), inset: false)
             }.padding(Sunnah.Spacing.s4)
         }
     }

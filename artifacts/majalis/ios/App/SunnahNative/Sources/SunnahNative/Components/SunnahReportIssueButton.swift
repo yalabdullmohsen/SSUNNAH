@@ -23,13 +23,7 @@ public struct SunnahReportIssueButton: View {
         return c.url
     }
 
-    /// الإفصاح ثم الزر معًا: كل شاشة تفصيل تستدعي الزر فيظهر التنبيه فيها حتمًا.
-    public var body: some View {
-        VStack(spacing: 0) {
-            SunnahDisclosureNotice(inset: inset)
-            reportButton
-        }
-    }
+    public var body: some View { reportButton }
 
     private var reportButton: some View {
         Button {
@@ -56,6 +50,34 @@ public struct SunnahReportIssueButton: View {
         NSPasteboard.general.clearContents(); NSPasteboard.general.setString(text, forType: .string)
         #endif
         copied = true
+    }
+}
+
+/// أيقونة «إبلاغ عن خطأ» الصغيرة في الذيل الموحّد (بجانب «!»)؛ تفتح البريد وإلا تنسخ نص البلاغ.
+struct SunnahReportIssueIcon: View {
+    let title: String; let id: String; let section: String
+    @Environment(\.openURL) private var openURL
+    var body: some View {
+        Button {
+            Sunnah.Haptics.select()
+            guard let url = SunnahReportIssueButton.mailURL(title: title, id: id, section: section) else { return }
+            openURL(url) { accepted in
+                if !accepted {
+                    let text = SunnahReportIssueButton.report(title: title, id: id, section: section)
+                    #if canImport(UIKit)
+                    UIPasteboard.general.string = text
+                    #elseif canImport(AppKit)
+                    NSPasteboard.general.clearContents(); NSPasteboard.general.setString(text, forType: .string)
+                    #endif
+                }
+            }
+        } label: {
+            Image(systemName: "exclamationmark.bubble").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                .frame(minWidth: 44, minHeight: 44)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("إبلاغ عن خطأ في هذا المحتوى")
+        .accessibilityIdentifier("detail.reportIssue")
     }
 }
 

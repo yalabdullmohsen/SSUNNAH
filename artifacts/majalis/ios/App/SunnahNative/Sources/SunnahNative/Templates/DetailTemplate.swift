@@ -23,7 +23,7 @@ public struct DetailTemplate: View {
                     if !body_.isEmpty {
                         if isShort { shortCard } else { longCard }
                     }
-                    SunnahReportIssueButton(title: item.title, id: item.id, section: item.reportSection).sunnahReadableWidth()
+                    SunnahContentFooter(title: item.title, id: item.id, section: item.reportSection).sunnahReadableWidth()
                 }
                 .frame(minHeight: geo.size.height, alignment: .top)
             }
