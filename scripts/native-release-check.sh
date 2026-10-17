@@ -76,6 +76,9 @@ rm -f /tmp/native-watch-guard.$$
 # 2و) حراس جودة المحتوى (قوالب متكررة / خلاصة بلا مصدر أو وسم / وصف فارغ أو مكرر): سقف تنازلي docs/native/content-guards-baseline.json
 node scripts/native-content-guards.mjs >/tmp/native-content-guards.$$ 2>&1 || { head -20 /tmp/native-content-guards.$$; bad "حراس المحتوى: مخالفات جديدة فوق السقف (node scripts/native-content-guards.mjs --list)"; }
 rm -f /tmp/native-content-guards.$$
+# 2و-2) بنية حقل sources موحّدة (docs/native/SOURCES_FIELD.md): سقف تنازلي لغير المعياري
+node scripts/native-sources-shape-guard.mjs >/tmp/native-sources-shape.$$ 2>&1 || { head -20 /tmp/native-sources-shape.$$; bad "بنية sources: عناصر غير معيارية فوق السقف"; }
+rm -f /tmp/native-sources-shape.$$
 node scripts/native-date-guard.mjs >/tmp/native-date-guard.$$ 2>&1 || { head -20 /tmp/native-date-guard.$$; bad "حارس date-readable: تاريخ خام أو لاتيني خطأ"; }
 rm -f /tmp/native-date-guard.$$
 node scripts/native-detail-guard.mjs >/tmp/native-detail-guard.$$ 2>&1 || { head -20 /tmp/native-detail-guard.$$; bad "حارس شاشات التفصيل: شاشة خارج المكوّن المشترك"; }
