@@ -1,0 +1,13 @@
+{
+ "about": "سقف عناصر sources غير المعيارية لكل قسم؛ يُخفَّض فقط.",
+ "nonCanonical": {
+  "aqidah": 16,
+  "fiqh": 3554,
+  "knowledge": 5031,
+  "learn": 0,
+  "lessons": 50,
+  "library": 0,
+  "quran": 16,
+  "sirah": 2346
+ }
+}
