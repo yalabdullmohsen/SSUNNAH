@@ -1,52 +1,83 @@
 import SwiftUI
 
-/// مرحلة في «الشرح التفاعلي»: عنوان + نص قصير + (اختياري) رسم متجهي أصلي + آية ومصدر.
-public struct ExplainerStage: Identifiable {
-    public let id: Int; public let title: String; public let text: String
-    public var ayahRef: String?; public var ayahText: String?; public var source: String?
-    public var art: AnyView?
-    public init(id: Int, title: String, text: String, ayahRef: String? = nil, ayahText: String? = nil, source: String? = nil, art: AnyView? = nil) {
-        self.id = id; self.title = title; self.text = text; self.ayahRef = ayahRef; self.ayahText = ayahText; self.source = source; self.art = art
-    }
-}
-
 /// قالب مشترك لأي موضوع علمي/معجزة/مراحل: مراحل متسلسلة + السابق/التالي + مؤشر تقدم + انتقال ناعم (يحترم Reduce Motion)،
-/// وتحت كل مرحلة بطاقة الآية والمصدر. الرسوم أصلية متجهية فقط (انظر docs/native/ASSETS_LICENSES.md).
-public struct ExplainerTemplate: View {
-    let title: String; let stages: [ExplainerStage]
+/// وتحت كل مرحلة بطاقة الآيات والمصادر. الآيات عبر `QuranAyahText` فقط، والرسوم أصلية متجهية (docs/native/ASSETS_LICENSES.md).
+struct ExplainerTemplate: View {
+    let data: ExplainerData
     @State private var index = 0
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    public init(title: String, stages: [ExplainerStage]) { self.title = title; self.stages = stages }
+    private let repo = MushafRepository(bundle: .main)
 
-    public var body: some View {
+    private var stage: ExplainerStageData { data.stages[min(index, data.stages.count - 1)] }
+
+    var body: some View {
         ScrollView {
-            if stages.isEmpty { EmptyStateView() } else {
-                let s = stages[min(index, stages.count - 1)]
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+                SunnahGeometricHeader(title: data.title)
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                    SunnahStepper(index: $index, count: stages.count)
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                        if let art = s.art { art.frame(maxWidth: .infinity).frame(height: 180).accessibilityHidden(true) }
-                        Text("المرحلة \(s.id): \(s.title)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                        SunnahArabicText(s.text, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
-                        if let t = s.ayahText {
-                            SunnahCard {
-                                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                                    SunnahArabicText(t, style: .quran).foregroundStyle(Sunnah.Colors.textPrimary)
-                                    if let r = s.ayahRef { Text(SunnahAyahRange.display(r)).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary) }
-                                    if let src = s.source { Text(src).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
-                                }
-                            }
-                        }
-                    }
-                    .id(s.id)
-                    .transition(reduceMotion ? .opacity : .asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity), removal: .opacity))
+                    ProgressView(value: Double(index + 1), total: Double(data.stages.count))
+                        .tint(Sunnah.Colors.primary)
+                        .accessibilityLabel("المرحلة \(index + 1) من \(data.stages.count)")
+                    stageBody
+                        .id(stage.id)
+                        .transition(reduceMotion ? .opacity : .asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity), removal: .opacity))
+                    SunnahStepper(index: $index, count: data.stages.count, previousTitle: "المرحلة السابقة", nextTitle: "المرحلة التالية")
+                    if let note = data.scopeNote { SunnahArabicText(note, style: .reading).foregroundStyle(Sunnah.Colors.textSecondary) }
                 }
-                .padding(Sunnah.Spacing.pageX)
+                .padding(.horizontal, Sunnah.Spacing.pageX)
                 .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: index)
             }
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle(title)
+        .bodyTitledNavigation()
         .accessibilityIdentifier("explainer")
+    }
+
+    private var stageBody: some View {
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+            ExplainerArt(stageID: stage.id).frame(height: 180)
+            Text("المرحلة \(stage.order): \(stage.title)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+            SunnahArabicText(stage.body, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
+            ForEach(Array((stage.views ?? []).enumerated()), id: \.offset) { _, v in
+                SunnahCard {
+                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                        SunnahArabicText(v.text, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
+                        Text(v.source.display).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                    }
+                }
+            }
+            if let repo {
+                ForEach(stage.ayahRef ?? [], id: \.self) { a in
+                    if let r = QuranAyahRange(surah: a.surah, from: a.from, to: a.to) {
+                        SunnahCard {
+                            VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                                QuranAyahText(range: r, repo: repo, paper: false)
+                                if let path = SunnahAyahRange.mushafPath(r.label) {
+                                    SunnahValueLink(value: Route.web(path: path)) {
+                                        Text(SunnahAyahRange.display(r.label)).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            SunnahCard {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                    ForEach(Array((stage.sources ?? []).enumerated()), id: \.offset) { _, s in
+                        Text(s.display).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// شاشة الشرح: تحمّل `explainers.json` وتعرض الأول الموثَّق (واحد الآن: «مراحل خلق الإنسان»).
+struct ExplainerScreen: View {
+    var body: some View {
+        SirahLoadedView(source: SirahSection.File.explainers, adapt: { (rows: [ExplainerData]) in rows.compactMap(\.displayable) }) { rows in
+            if let first = rows.first { ExplainerTemplate(data: first) } else { EmptyStateView(title: SirahSection.pendingTitle) }
+        }
     }
 }

@@ -8,7 +8,6 @@ final class QuranTextGuardTests: XCTestCase {
         "Sections/quran/QuranSearchScreen.swift",
         "Sections/quran/TafsirScreens+Native.swift",
         "Mushaf/MushafTafsirView.swift",
-        "Templates/ExplainerTemplate.swift",
         "Components/SunnahArabicText.swift", // تعريف النمط نفسه
     ]
 

@@ -88,6 +88,7 @@ public enum SirahSection {
         static let shamail = SirahData.file("shamail")
         static let stories = SirahData.file("stories")
         static let history = SirahData.file("islamic-history")
+        static let explainers = SirahData.file("explainers")
         /// صفوف الدروس من الشبكة (DATA_CONTRACT §2): قسم الدروس يملك المصدر، وهنا قراءة فقط.
         static let lessons = ContentSource.remote(path: "/data/lessons/chunk-000.json", maxAge: 3600)
     }
@@ -106,6 +107,7 @@ public enum SirahSection {
         registry.registerView(id: "prophets") {
             SirahLoadedView(source: File.prophets, adapt: { (rows: [SirahKnowledgeItem]) in ProphetStory.chronological(rows.compactMap(ProphetStory.init)) }) { ProphetsGridView(prophets: $0) }
         }
+        registry.registerView(id: "explainers") { ExplainerScreen() }
         registry.registerView(id: "prophets.tree") { SirahSection.inline(File.lineage, SirahAdapters.lineage, reader: .detail) }
         registry.registerView(id: "sahabah") { SirahSection.inline(File.sahabah, SirahAdapters.sahabah, reader: .detail) }
         registry.registerView(id: "seerah") { SirahSection.inline(File.seerah, SirahAdapters.seerah) }
