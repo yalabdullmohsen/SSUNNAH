@@ -1,0 +1,8 @@
+git_sha=fe7fdad5d0e3c7421602fa6ea929940d27209b28
+branch=n3/shots-prophets-2
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/376855ff09dcea07/SunnahApp.app
+binary_sha256=715d5884374a1f3ac7080d15ec0a2397da6e11c9da7841114a23f6be832e6624
+built_at=2026-10-17 23:11:07
+source_newest=2026-10-17 05:14:25
+captured_at=2026-10-17 23:13:49
+covers=قصص الأنبياء /prophets: ibrahim idris ilyas is-haq isa ismail  (knowledge/prophets/*.json)
