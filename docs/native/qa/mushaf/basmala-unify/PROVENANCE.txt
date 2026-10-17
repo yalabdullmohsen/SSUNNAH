@@ -1,0 +1,7 @@
+git_sha=672466e0ef1a2d0298eed3384e542a560fab99fe
+branch=HEAD
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/5e39f7e3123614ac/SunnahApp.app
+binary_sha256=68d4061d9f503bd4aa151b8b46d3c934e2784583071b1a0a1ef4f8882d79f51d
+built_at=2026-10-17 05:05:29
+source_newest=2026-10-17 04:59:24
+captured_at=2026-10-17 05:30–05:39 (إعادة اللقط بانتظار 12ث؛ فُتحت الصور الأربع عشرة بالحجم الكامل)
