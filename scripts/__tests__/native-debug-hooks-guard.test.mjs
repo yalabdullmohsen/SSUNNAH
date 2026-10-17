@@ -53,3 +53,8 @@ test("binary يحوي رمزًا يفشل، ونظيف يمرّ", () => {
   assert.equal(run(repo, mk("hello SNAP_DRAWER world")).status, 1);
   assert.equal(run(repo, mk("hello world")).status, 0);
 });
+
+test("خطاف snapshotScroll خارج #if DEBUG يفشل وداخله يمرّ", () => {
+  assert.equal(run(repoWith('let a = UserDefaults.standard.string(forKey: "snapshotScroll")\n')).status, 1);
+  assert.equal(run(repoWith('#if DEBUG\nSnapshotScroll.startIfRequested()\n#endif\n')).status, 0);
+});
