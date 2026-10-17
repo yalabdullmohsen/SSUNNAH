@@ -189,14 +189,21 @@ put("prayer/world-cities.json", fs.readFileSync(`${data}/prayer/world-cities.jso
 const qdir = `${data}/quiz`;
 let qn = 0;
 const qchunks = [];
+/* شرح قالبي مكرر (> 3 مرات في المصدر كله) يُحذف من المنشور: لا شرح بلا مصدر خاص بالسؤال (قرار المنسّق 2026-10-17)؛ يبقى السؤال والجواب والمرجع */
+const expCount = new Map();
+for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== "manifest.json"))
+  for (const q of rd(`${qdir}/${f}`)) { const e = String(q.explanation || "").trim(); if (e) expCount.set(e, (expCount.get(e) || 0) + 1); }
+const TEMPLATE_MAX = 3;
+let qStripped = 0;
 for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== "manifest.json")) {
   const live = [];
-  for (const q of rd(`${qdir}/${f}`)) {
+  for (let q of rd(`${qdir}/${f}`)) {
     if (/^demo[-_]/i.test(String(q.id))) { reject("quiz", "demo"); continue; }
     if (held(q.id)) { reject("quiz", "محجوز"); continue; }
     if (!String(q.question || "").trim() || !String(q.answer || "").trim()) { reject("quiz", "سؤال/جواب فارغ"); continue; }
+    if ((expCount.get(String(q.explanation || "").trim()) || 0) > TEMPLATE_MAX) { q = { ...q }; delete q.explanation; qStripped++; }
+    else if (q.documentation_status !== "unsourced" && !String(q.explanation || "").trim()) { reject("quiz", "بلا شرح"); continue; }
     if (q.documentation_status !== "unsourced") {
-      if (!String(q.explanation || "").trim()) { reject("quiz", "بلا شرح"); continue; }
       if (!String(q.reference || "").trim()) { reject("quiz", "بلا مرجع"); continue; }
     }
     live.push(q);
@@ -205,6 +212,7 @@ for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== 
 }
 json("quiz/manifest.json", { total: qn, chunks: qchunks });
 counts.quiz = qn;
+console.log("quiz-template-explanations-stripped:", qStripped);
 
 /* المصحف الأصلي (SwiftUI): بيانات صفحات QPC V2 الحالية + خطوطها مُعاد تغليفها TTF — لا بيانات ولا خطوط جديدة */
 {
