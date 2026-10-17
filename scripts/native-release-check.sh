@@ -100,6 +100,10 @@ if [ "${1:-}" = "--release" ]; then BASMALA_GUARD_RUN=1 bash scripts/native-mush
 else bash scripts/native-mushaf-basmala-guard.sh || bad "حارس البسملة: خلل أو فُقد اختبار"; fi
 # مصدر اللقطات (ن3): كل لقطات مضافة تحت docs/native/ بجانبها PROVENANCE.txt من native-shot-guard.sh
 bash scripts/native-shot-provenance-guard.sh || bad "لقطات بلا PROVENANCE.txt (التقطها عبر native-shot-guard.sh من بناء HEAD)"
+bash scripts/native-sensitive-coverage.sh || bad "ملف حسّاس بلا لقطة مسمّاة باسمه/شاشته (درس #3452)"
+bash scripts/native-shipping-workflow-guard.sh || bad "App.xcodeproj (Capacitor القديم) في workflow شحن"
+bash scripts/native-assets-license-guard.sh || bad "أصل غير مسجَّل/بترخيص غير مقبول في docs/native/ASSETS_LICENSES.md"
+bash scripts/native-assets-size-guard.sh || bad "أصل أو مجموع أصول فوق سقف docs/native/assets-budget.json"
 node scripts/native-titles-guard.mjs >/tmp/native-titles-guard.$$ 2>&1 || { head -20 /tmp/native-titles-guard.$$; bad "حارس titles-unique: عنوان مفقود/مكرر/خارج الجرد"; }
 rm -f /tmp/native-titles-guard.$$
 node scripts/native-tabbar-cover-guard.mjs >/tmp/native-tabbar-guard.$$ 2>&1 || { head -20 /tmp/native-tabbar-guard.$$; bad "حارس tabbar-cover: محتوى قد يختفي خلف شريط التبويب"; }
