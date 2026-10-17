@@ -1,0 +1,8 @@
+git_sha=c90c5bdc755added248249e52cae57fd2dde0dfd
+branch=n3/shots-prophets-1
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/376855ff09dcea07/SunnahApp.app
+binary_sha256=715d5884374a1f3ac7080d15ec0a2397da6e11c9da7841114a23f6be832e6624
+built_at=2026-10-17 23:11:07
+source_newest=2026-10-17 05:14:25
+captured_at=2026-10-17 23:12:33
+covers=قصص الأنبياء /prophets: adam al-yasa ayyub dawud dhul-kifl harun hud (knowledge/prophets/*.json) — الشاشة تعرض قسم التعريف والمصادر لكل نبي
