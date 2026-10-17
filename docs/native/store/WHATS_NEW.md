@@ -16,6 +16,7 @@
 • زر «إبلاغ عن خطأ» وتنبيه الذكاء الاصطناعي في صفحات المحتوى.
 • تحسينات في التصميم والخطوط ودعم الوضع الداكن والعربية من اليمين لليسار.
 • حفظ جلسة الدخول بأمان في سلسلة مفاتيح الجهاز (Keychain).
+• شرح تفاعلي يعرّفك بالتطبيق.
 
 محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي، وقد يقع فيه خطأ.
 ```
@@ -34,10 +35,11 @@ Sunnah 1.2.0 — rebuilt from the ground up as a fully native app for iPhone and
 • A "Report an error" button and an AI notice on content pages.
 • Refined design and fonts, with Dark Mode and full right-to-left Arabic support.
 • Your sign-in session is stored securely in the device Keychain.
+• An interactive walkthrough introduces you to the app.
 
 The app's content is prepared with AI assistance and may contain errors.
 ```
 
 ## ما لا نقوله عمدًا (لا ادعاءات)
-لا «تصميم موحد جديد» ولا «شروح تفاعلية» ولا «صفحة قصص أنبياء جديدة» ولا «أيقونة !»: لم تُدمج بعد (#3450 و#3461 مفتوحة؛ #3453 أُغلق؛ #3462 دُمج وتحقق وجملته في STORE_LISTING_1_2_0)، وتُضاف الجملة بعد دمجها والتحقق. زر الإبلاغ أيقونته `exclamationmark.bubble` وتنبيه الذكاء الاصطناعي `info.circle` (لا «!» حرفيًا). ولا ادعاء بمراجعة مشايخ.
+لا «تصميم موحد جديد» ولا «صفحة قصص أنبياء جديدة» ولا «أيقونة !»: لم تُدمج بعد (#3461 مفتوحة؛ #3450 دُمج وتحقق وجملته في النص؛ #3453 أُغلق؛ #3462 دُمج وتحقق وجملته في STORE_LISTING_1_2_0)، وتُضاف الجملة بعد دمجها والتحقق. زر الإبلاغ أيقونته `exclamationmark.bubble` وتنبيه الذكاء الاصطناعي `info.circle` (لا «!» حرفيًا). ولا ادعاء بمراجعة مشايخ.
 لا «جميع الميزات تعمل بلا إنترنت»، ولا «تسميع بالذكاء الاصطناعي»، ولا «أذان» (الأذان غير مضمَّن: تنبيه بعبارة صوتية)، ولا أعداد محتوى لم تُتحقق.
