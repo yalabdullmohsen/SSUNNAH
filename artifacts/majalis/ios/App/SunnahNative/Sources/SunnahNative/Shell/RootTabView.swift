@@ -24,7 +24,7 @@ public struct RootTabView: View {
     public var body: some View {
         NavigationStack(path: $router.stack) {
             screen(AppTab.home.rootRoute)
-                .navigationTitle("الرئيسية")
+                .sunnahNavTitle("الرئيسية")
                 #if os(iOS)
                 .navigationBarTitleDisplayMode(.large)
                 #endif
@@ -84,7 +84,7 @@ public struct RootTabView: View {
     }
 
     public static func placeholder(_ route: Route) -> AnyView {
-        AnyView(EmptyStateView(title: "تعذّر فتح هذه الشاشة").screenState(.error).navigationTitle(AppTab.owning(path: route.path).title))
+        AnyView(EmptyStateView(title: "تعذّر فتح هذه الشاشة").screenState(.error).sunnahNavTitle(AppTab.owning(path: route.path).title))
     }
 }
 

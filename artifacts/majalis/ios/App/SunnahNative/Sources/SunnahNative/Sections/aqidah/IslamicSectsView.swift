@@ -35,7 +35,7 @@ public struct IslamicSectsView: View {
                 }.background(Sunnah.Colors.bg)
             }
         }
-        .navigationTitle("الفرق الإسلامية")
+        .sunnahNavTitle("الفرق الإسلامية")
         .environment(\.layoutDirection, .rightToLeft)
     }
 }

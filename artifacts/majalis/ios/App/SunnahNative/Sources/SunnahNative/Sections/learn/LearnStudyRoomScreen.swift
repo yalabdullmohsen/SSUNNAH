@@ -91,7 +91,7 @@ struct LearnStudyRoomScreen: View {
             if n > 0 { store.save((store.load(Int.self, .studyCycles) ?? 0) + 1, .studyCycles) }
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("غرفة المذاكرة")
+        .sunnahNavTitle("غرفة المذاكرة")
     }
 
     private var phaseTitle: String {

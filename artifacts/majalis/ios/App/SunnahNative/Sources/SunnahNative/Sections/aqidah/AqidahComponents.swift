@@ -52,7 +52,7 @@ struct AqidahPage<Content: View>: View {
             }
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle(title)
+        .sunnahNavTitle(title)
     }
 }
 

@@ -56,9 +56,9 @@ extension View {
     /// عنوان صغير موحّد لكل شاشات القرآن (بدل خلطٍ بين الكبير والمضمَّن).
     func quranTitle(_ title: String) -> some View {
         #if os(iOS)
-        navigationTitle(title).navigationBarTitleDisplayMode(.inline)
+        sunnahNavTitle(title).navigationBarTitleDisplayMode(.inline)
         #else
-        navigationTitle(title)
+        sunnahNavTitle(title)
         #endif
     }
 }
