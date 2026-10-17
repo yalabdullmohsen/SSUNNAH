@@ -9,6 +9,7 @@
  */
 import { latinizeSources } from "./lib/latin-digits.mjs";
 import { arabicTags } from "./lib/tag-labels.mjs";
+import { loadQuran, makeMatcher, convertVerses } from "./lib/verse-match.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -31,10 +32,14 @@ const reject = (area, why) => { rej[area] ??= {}; rej[area][why] = (rej[area][wh
 const files = [];
 const sha = (b) => crypto.createHash("sha256").update(b).digest("hex");
 const written = new Set();
+/* ﴿…﴾ حرفية → مرجع «(السورة: ن)» بمطابقة نص المصحف المحمي (قراءة فقط)؛ الملتبس يُترك */
+let _vq, _vm; const verseStats = { done: 0, ambiguous: 0, unmatched: 0 };
+const toVerseRefs = (raw) => { if (!raw.includes("﴿")) return raw; _vq ??= loadQuran(`${appRoot}/public/data/quran`); _vm ??= makeMatcher(_vq); return convertVerses(raw, _vq, _vm, verseStats); };
 const put = (rel, buf) => {
   if (written.has(rel)) throw new Error(`مسار مكرَّر في التصدير: ${rel} (وحدتان تكتبانه)`);
   written.add(rel);
   buf = Buffer.isBuffer(buf) ? buf : Buffer.from(buf);
+  if (rel.endsWith(".json") && !/^(mushaf|tafsir|quran)\//.test(rel)) buf = Buffer.from(toVerseRefs(buf.toString("utf8")));
   if (rel.endsWith(".json") && !/^(mushaf|tafsir|quran)\//.test(rel)) { // أرقام لاتينية في حقول المصدر فقط
     const raw = buf.toString("utf8");
     if (/[٠-٩۰-۹]/.test(raw) || /"tags"/.test(raw)) { try { buf = Buffer.from(JSON.stringify(arabicTags(latinizeSources(JSON.parse(raw))), null, /^[\[{]\n/.test(raw) ? 2 : 0)); } catch { /* ليس JSON صالحًا: يُترك */ } }
@@ -268,5 +273,6 @@ counts.quiz = qn;
       await (await import(path.join(dir, f))).default(ctx);
 }
 
+console.log("verse-refs:", JSON.stringify(verseStats));
 json("MANIFEST.json", { version: 1, counts, rejected: rej, mushafSources, files: files.slice().sort((a, b) => a.path.localeCompare(b.path)) });
 console.log(JSON.stringify({ out: check ? "(check)" : out, files: files.length, counts, rejected: rej }));
