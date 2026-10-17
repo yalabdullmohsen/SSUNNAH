@@ -22,6 +22,12 @@ function classify(r) {
   return 'none'
 }
 const out = {}
+const secOut = {} // أقسام داخل العناصر (item.sections[]): مصدر كل قسم لا العنصر الأعلى فقط
+function classifySection(s) {
+  if (Array.isArray(s.sources) && s.sources.some(strong)) return 'doc'
+  if (Array.isArray(s.sources) && s.sources.length) return 'part'
+  return 'none'
+}
 function walk(x, sec, file) {
   if (Array.isArray(x)) {
     for (const i of x) {
@@ -30,6 +36,10 @@ function walk(x, sec, file) {
         if (hiddenSet.has(key)) continue
         const c = (out[sec] ??= { doc: 0, part: 0, none: 0, exempt: 0 })
         c[classify(i)]++
+        if (Array.isArray(i.sections)) for (const s of i.sections) {
+          if (!s || typeof s !== 'object' || !str(s.body)) continue
+          ;(secOut[sec] ??= { doc: 0, part: 0, none: 0, exempt: 0 })[classifySection(s)]++
+        }
       } else walk(i, sec, file)
     }
   } else if (x && typeof x === 'object') for (const v of Object.values(x)) walk(v, sec, file)
@@ -41,18 +51,24 @@ function files(d) {
 for (const f of files(data)) {
   const sec = path.relative(data, f).split(path.sep)[0]
   if (SKIP.has(sec)) continue
-  try { walk(JSON.parse(fs.readFileSync(f, 'utf8')), sec, f) } catch {}
+  try {
+    const j = JSON.parse(fs.readFileSync(f, 'utf8'))
+    walk(j && typeof j === 'object' && !Array.isArray(j) && j.id != null && Array.isArray(j.sections) ? [j] : j, sec, f) // ملف سجل واحد (نبي) يُعدّ عنصرًا
+  } catch {}
 }
 const tot = { doc: 0, part: 0, none: 0, exempt: 0 }
 for (const c of Object.values(out)) for (const k of Object.keys(tot)) tot[k] += c[k]
 const pct = (c) => { const n = c.doc + c.part + c.none || 1; return `${(100 * c.doc / n).toFixed(1)} / ${(100 * c.part / n).toFixed(1)} / ${(100 * c.none / n).toFixed(1)}` }
 for (const [s, c] of Object.entries(out).sort()) console.log(`${s.padEnd(10)} n=${c.doc + c.part + c.none} معفى=${c.exempt}  موثّق/جزئي/بلا: ${pct(c)}  (بلا=${c.none})`)
 console.log(`TOTAL      n=${tot.doc + tot.part + tot.none}  موثّق/جزئي/بلا: ${pct(tot)}  (بلا=${tot.none})`)
+for (const [s, c] of Object.entries(secOut).sort()) console.log(`أقسام ${s.padEnd(10)} n=${c.doc + c.part + c.none}  موثّق/جزئي/بلا: ${pct(c)}  (بلا=${c.none})`)
 if (process.argv.includes('--write-baseline')) {
-  fs.writeFileSync(baseFile, JSON.stringify(Object.fromEntries(Object.entries(out).map(([s, c]) => [s, c.none])), null, 2) + '\n')
+  const b = Object.fromEntries(Object.entries(out).map(([s, c]) => [s, c.none]))
+  for (const [s, c] of Object.entries(secOut)) b[`sections/${s}`] = c.none
+  fs.writeFileSync(baseFile, JSON.stringify(b, null, 2) + '\n')
 }
 if (process.argv.includes('--check')) {
   const base = JSON.parse(fs.readFileSync(baseFile, 'utf8'))
-  const bad = Object.entries(out).filter(([s, c]) => c.none > (base[s] ?? 0))
+  const bad = [...Object.entries(out), ...Object.entries(secOut).map(([s, c]) => [`sections/${s}`, c])].filter(([s, c]) => c.none > (base[s] ?? (s.startsWith('sections/') ? Infinity : 0)))
   if (bad.length) { console.error('زاد «بلا مصدر»:', bad.map(([s, c]) => `${s} ${base[s] ?? 0}→${c.none}`).join(', ')); process.exit(1) }
 }

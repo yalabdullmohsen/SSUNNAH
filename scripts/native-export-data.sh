@@ -51,4 +51,9 @@ console.log(JSON.stringify({ ok: true, files: m.files.length, quizAccepted: q, m
 ' "$OUT"
 # مزامنة صارمة: نسخ ثم حذف كل يتيم من فرع/تصدير سابق، وحارس يفشل لو بقي يتيم (scripts/native-sync-dir.sh، اختباره native-sync-dir.test.sh)
 . "$ROOT/scripts/native-sync-dir.sh"
+BEFORE=$(find "$FINAL" -type f ! -name .input-hash 2>/dev/null | wc -l | tr -d ' ')
 native_sync_dir "$OUT" "$FINAL"
+# حارس ما بعد التصدير: خروج 0 لا يكفي — مقارنة عدد الملفات ومحتواها (sha256) بين المصدر المؤقت والوجهة، وفشل عند أي اختلاف (scripts/native-verify-sync.sh)
+. "$ROOT/scripts/native-verify-sync.sh"
+native_verify_sync "$OUT" "$FINAL" || exit 1
+echo "ملفات ios-native/Data: قبل=$BEFORE بعد=$(find "$FINAL" -type f ! -name .input-hash | wc -l | tr -d ' ')"
