@@ -26,14 +26,23 @@ export function makeMatcher(quran, { minWords = 3, maxSpan = 8 } = {}) {
   }
 }
 
+const BISMILLAH = flat('بسم الله الرحمن الرحيم')
 const surahName = (n, quran) => quran[n - 1].name
 /** يحوّل كل ﴿شظية﴾ ذات موضع وحيد في المصحف إلى «(السورة: ن)» أو «(السورة: ن-م)»؛ الملتبس والمجهول يُترك كما هو (يُعدّ في stats). */
 export function convertVerses(raw, quran, match, stats = { done: 0, ambiguous: 0, unmatched: 0 }) {
   return raw.replace(/﴿([^﴾]*)﴾/g, (all, frag) => {
     let f; try { f = JSON.parse('"' + frag.replace(/\\(?!["\\/bfnrtu])/g, '\\\\') + '"') } catch { stats.unmatched++; return all }
+    const ws = f.trim().split(/\s+/)
+    if (ws.length > 4 && flat(ws.slice(0, 4).join(' ')) === BISMILLAH) f = ws.slice(4).join(' ')
     const h = match(f)
     if (h.length === 0) { stats.unmatched++; return all }
-    if (h.length > 1) { stats.ambiguous++; return all }
+    if (h.length > 1) {
+      /* آية مكرّرة: تُذكر مواضعها كلها إن قلّت (≤3 سور و≤10 مواضع)؛ لا اختيار لموضع بالتخمين */
+      const by = new Map(); for (const x of h) by.set(x.surah, [...(by.get(x.surah) || []), x.from + (x.to > x.from ? '-' + x.to : '')])
+      if (by.size > 3 || h.length > 10) { stats.ambiguous++; return all }
+      stats.repeated = (stats.repeated || 0) + 1
+      return `(${[...by].map(([s, v]) => `${surahName(s, quran)}: ${v.join('، ')}`).join('؛ ')})`
+    }
     stats.done++
     const { surah, from, to } = h[0]
     return `(${surahName(surah, quran)}: ${from}${to > from ? '-' + to : ''})`
