@@ -31,6 +31,9 @@ struct ExplainerTemplate: View {
         .background(Sunnah.Colors.bg)
         .bodyTitledNavigation()
         .accessibilityIdentifier("explainer")
+        #if DEBUG
+        .onAppear { let i = UserDefaults.standard.integer(forKey: "snapshotStage"); if i > 0, i < data.stages.count { index = i } }
+        #endif
     }
 
     private var stageBody: some View {
@@ -77,7 +80,29 @@ struct ExplainerTemplate: View {
 struct ExplainerScreen: View {
     var body: some View {
         SirahLoadedView(source: SirahSection.File.explainers, adapt: { (rows: [ExplainerData]) in rows.compactMap(\.displayable) }) { rows in
-            if let first = rows.first { ExplainerTemplate(data: first) } else { EmptyStateView(title: SirahSection.pendingTitle) }
+            ExplainerPicker(rows: rows)
+        }
+    }
+}
+
+/// أكثر من شرح موثَّق ⇒ شريط اختيار أعلى الشاشة؛ شرح واحد ⇒ القالب مباشرة.
+private struct ExplainerPicker: View {
+    let rows: [ExplainerData]
+    @State private var selection = 0
+
+    var body: some View {
+        if rows.isEmpty {
+            EmptyStateView(title: SirahSection.pendingTitle)
+        } else if rows.count == 1 {
+            ExplainerTemplate(data: rows[0])
+        } else {
+            VStack(spacing: 0) {
+                SunnahChipBar(options: rows.indices.map { .init(id: $0, title: rows[$0].title) }, selection: $selection)
+                ExplainerTemplate(data: rows[min(selection, rows.count - 1)]).id(selection)
+            }
+            #if DEBUG
+            .onAppear { if let i = UserDefaults.standard.object(forKey: "snapshotExplainer") as? Int, rows.indices.contains(i) { selection = i } }
+            #endif
         }
     }
 }
