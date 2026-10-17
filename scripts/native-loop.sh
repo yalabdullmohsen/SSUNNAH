@@ -101,7 +101,15 @@ build_set() { # PRs المرشّحة في $CAND → يملأ $RESULT
 PROTECTED='(^|/)(Quran|Mushaf|QPC|PrayerTime|PrayerCalc|Fonts)[^/]*(/|\.(swift|json|ttf|otf))|quran.*\.(json|txt|sqlite)|(^|/)mushaf|qpc|prayer[-_]?(time|calc)'
 CAND=""
 for n in $PRS; do
-  bad=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path' | grep -Eiv '^(docs/|\.github/)' | grep -Ei "$PROTECTED" | head -5)
+  allbad=$(gh pr view "$n" -R "$GHR" --json files -q '.files[].path' | grep -Eiv '^(docs/|\.github/)' | grep -Ei "$PROTECTED")
+  bad=$(echo "$allbad" | head -5)
+  # إعفاء: وسم visually-verified وكل الملفات المحمية ملك نافذة فرع الـPR (OWNERSHIP.md) ⇒ لا needs-owner
+  if [ -n "$allbad" ]; then
+    PRJ=$(gh pr view "$n" -R "$GHR" --json headRefName,labels -q '.headRefName + " " + ([.labels[].name]|join(","))')
+    if echo "$allbad" | (cd "$(dirname "$0")/.." && node scripts/native-owner-verified.mjs "${PRJ%% *}" "${PRJ#* }"); then
+      log "#$n محمي لكن visually-verified ومالك المسار ⇒ بلا needs-owner"; bad=""
+    fi
+  fi
   if [ -n "$bad" ]; then
     comment "$n" owner "محتوى محمي (القرآن/الصفحات/الخطوط/مواقيت الصلاة) ⇒ لا دمج آلي: \`$(echo "$bad" | tr '\n' ' ')\`"
     [ $DRY = 1 ] || gh pr edit "$n" -R "$GHR" --add-label needs-owner >/dev/null 2>&1
