@@ -41,3 +41,17 @@
 - `setValue(…forHTTPHeaderField:)` (apikey/Authorization/Prefer) موجود في مسارات Supabase فقط (`RemoteTransport` و`AccountNetwork` و`AccountDeletion`)، ولا يلتقي بمسار الصوت.
 - مضيفا الصوت مذكوران نصًا في `AccountTexts.swift:352-353` فقط؛ لا يوجد تجميع روابط يحمل مُعرِّفات المستخدم.
 - يبقى لمالك الجهاز: السيناريوهات 1–6 بالـProxy (تثبيت شهادة الفحص على جهازه). حتى يُنفَّذ تبقى الخانات أعلاه «لم يُتحقق».
+
+## نتيجة ن5 على build 106 (2026-10-17) — دليل كود، لا فحص Proxy
+> البناء 106 (VALID على TestFlight). المصدر المفحوص: الإيداع `2536452` («تسجيل رفع 106»). **لا يُغني عن السيناريوهات 1–6 بالـProxy على جهاز حقيقي؛ لم أُجرِها (لا جهاز ولا تثبيت شهادة Proxy من جهتي).**
+
+| البند | النتيجة على 106 | الدليل |
+|---|---|---|
+| البث | ✔ لا ترويسات مخصصة | `Platform/AVPlayerAudioEngine.swift:15` `AVPlayerItem(url:)` بلا `AVURLAssetHTTPHeaderFieldsKey`؛ وكذلك `AccountCarModeScreen.swift:57` |
+| التنزيل | ✔ GET بلا ترويسات ولا جسم | `Audio/OfflineRecitation.swift:146` `URLSession.shared.data(from: url)` |
+| Authorization / apikey | ✔ غائبة عن مسار الصوت | `setValue(…forHTTPHeaderField:)` في `RemoteTransport` و`AccountDeletion` و`AccountNetwork` وSupabaseAuthAdapter فقط؛ لا تلتقي بمضيفي الصوت |
+| ترويسات/كوكيز مخصصة عامة | ✔ لا `httpAdditionalHeaders` ولا `HTTPCookieStorage` ولا `AVURLAsset` | بحث على كامل حزمة SunnahNative |
+| معرّف مستخدم في المسار | ✔ لا | الروابط من جدول القرّاء (`SurahReciter.surahURL`) سورة/قارئ فقط |
+| ما يبقى بلا دليل | ✘ لم يُتحقق | `Referer/Origin` وما تضيفه AVFoundation/CFNetwork فعليًا على السلك، والمضيف الاحتياطي الصامت، وHTTPS في الطلب الفعلي: يحتاج Proxy |
+
+الخلاصة لقرار الإفصاح: الكود يدعم الحالة «لا معرّفات تتجاوز IP وUser-Agent القياسي»، لكن الحالة تبقى **غير مثبتة بالسلك** حتى تُملأ الخانات بلقطات Proxy من ن4/يوسف على 106.
