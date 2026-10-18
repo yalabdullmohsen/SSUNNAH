@@ -1,0 +1,12 @@
+git_sha=fed5fdc6eacc60e0ec5d47da9c2087846292b65f
+branch=n2/prophets-story-4
+app=/private/tmp/claude-501/-Users-alabdullmohsen-ssunnah-n2/2f42d226-9b80-4889-9f92-2ea4bde9677c/scratchpad/app3/SunnahApp.app
+binary_sha256=287807ca0b321d009370b3a7fc02e959f257686d7bd76c9dac40d13bda119d90
+built_at=2026-10-19 01:46:16
+source_newest=2026-10-19 01:12:37
+captured_at=2026-10-19 02:14:29
+covers=dhul-kifl
+covers=harun
+covers=ilyas
+covers=al-yasa
+covers=dawud
