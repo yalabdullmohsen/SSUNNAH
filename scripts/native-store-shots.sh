@@ -2,7 +2,7 @@
 # يلتقط لقطات المتجر كاملة (النموذج ٢): 6.9" و6.5" × فاتح وداكن = 4 مجموعات، بأسماء NN-name-{69|65}-{light|dark}.png
 # يعيد استخدام ios-native/scripts/capture-store-screenshots.sh (محاكٍ مخصص، 9:41، الرياض، عربي) بمسارات هذه القائمة (SCREENSHOT_PLAN.md).
 # الاستعمال: scripts/native-store-shots.sh /path/SunnahApp.app [مجلد الإخراج]   — بناء Debug من HEAD بعد دمج دفعة ن1 والتحقق.
-# STORY_ROUTE=/مسار-قصة-نبي لإضافة لقطة 06 (لا مسار ثابتًا لها في ROUTE_TEMPLATE_MAP؛ تُسقَط إن لم يُعطَ). SETS="69-light 69-dark" لتضييق المجموعات.
+# لقطة 06 (قصة نبي): STORY_ROUTE افتراضيًا /prophets/yusuf (مسار أصلي في SirahScreens+Native)؛ STORY_ROUTE= فارغًا لإسقاطها. SETS="69-light 69-dark" لتضييق المجموعات.
 # لا يرفع شيئًا: يبقى الرفع لـASC بيد يوسف بعد مراجعة PROVENANCE.
 set -euo pipefail
 APP="${1:?مسار SunnahApp.app (Debug)}"
@@ -12,7 +12,7 @@ CAP="$ROOT/ios-native/scripts/capture-store-screenshots.sh"
 SETS="${SETS:-69-light 69-dark 65-light 65-dark}"
 # رقم|اسم|مسار — الترتيب من SCREENSHOT_PLAN.md (تحديث النموذج ٢)
 SHOTS=("01|home|/" "02|mushaf|/mushaf" "03|prayer|/prayer-times" "04|sections|/sections" "05|prophets|/prophets")
-[ -n "${STORY_ROUTE:-}" ] && SHOTS+=("06|story|$STORY_ROUTE")
+STORY_ROUTE="${STORY_ROUTE-/prophets/yusuf}"; [ -n "$STORY_ROUTE" ] && SHOTS+=("06|story|$STORY_ROUTE")
 SHOTS+=("07|adhkar|/adhkar" "08|settings|/settings")
 for set in $SETS; do
   size=${set%-*}; mode=${set#*-}
