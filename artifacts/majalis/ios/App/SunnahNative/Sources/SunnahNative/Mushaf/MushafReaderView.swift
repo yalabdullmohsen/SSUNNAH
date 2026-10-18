@@ -89,11 +89,7 @@ public struct MushafPageView: View {
                             let k = item.k, w = item.w
                             Group {
                                 if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]) }
-                                else {
-                                    let t = layout.fontSize * MushafStyle.weightEm
-                                    Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary)
-                                        .shadow(color: Sunnah.Colors.textPrimary, radius: 0, x: t, y: 0).shadow(color: Sunnah.Colors.textPrimary, radius: 0, x: -t, y: 0)
-                                }
+                                else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary) }
                             }
                                 .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
                                 .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
@@ -182,6 +178,7 @@ public struct MushafReaderView: View {
                 .frame(width: w, height: h)
                 .clipped()
                 pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
+                searchField.padding(.horizontal, w * 0.032).position(x: w / 2, y: max(Self.topSafeInset - 3, 40))
                 pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
             }
             .frame(width: w, height: h)
@@ -233,18 +230,7 @@ public struct MushafReaderView: View {
     private var pageHeader: some View {
         HStack {
             Text("الجزء \(Self.arabicDigits(index.juz(onPage: current)))")
-            Button { openRoute("/quran/search") } label: {
-                HStack(spacing: Sunnah.Spacing.s2) {
-                    Image(systemName: "magnifyingglass")
-                    Text("ابحث في القرآن").lineLimit(1)
-                    Spacer(minLength: 0)
-                }
-                .padding(.horizontal, Sunnah.Spacing.s3).frame(height: 30)
-                .background(Sunnah.Colors.mushafIvory, in: Capsule())
-                .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.5), lineWidth: 1))
-            }
-            .buttonStyle(.plain).padding(.horizontal, Sunnah.Spacing.s3)
-            .accessibilityLabel("ابحث في القرآن").accessibilityIdentifier("mushaf.search")
+            Spacer()
             Text(topSurahName(on: current))
         }
         .font(Sunnah.Typography.secondary)
@@ -255,6 +241,24 @@ public struct MushafReaderView: View {
         .accessibilityAddTraits(.isButton)
         .accessibilityHint("يُظهر أدوات القارئ")
         .accessibilityIdentifier("mushaf.header")
+    }
+
+    /// حقل البحث في سطر مستقل فوق سطر الجزء/السورة مباشرةً تحت منطقة الأمان؛ يفتح شاشة البحث في القرآن.
+    private var searchField: some View {
+        Button { openRoute("/quran/search") } label: {
+            HStack(spacing: Sunnah.Spacing.s2) {
+                Image(systemName: "magnifyingglass")
+                Text("ابحث في القرآن").lineLimit(1)
+                Spacer(minLength: 0)
+            }
+            .font(Sunnah.Typography.secondary)
+            .foregroundStyle(Sunnah.Colors.mushafAccent)
+            .padding(.horizontal, Sunnah.Spacing.s3).frame(height: 22)
+            .background(Sunnah.Colors.mushafIvory, in: Capsule())
+            .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.5), lineWidth: 1))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("ابحث في القرآن").accessibilityIdentifier("mushaf.search")
     }
 
     /// أدوات القارئ (فهرس، علامة، خروج) مخفيّة افتراضيًا ليبقى المصحف غامرًا كما في المرجع.
