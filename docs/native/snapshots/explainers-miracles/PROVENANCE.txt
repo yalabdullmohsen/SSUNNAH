@@ -1,7 +1,7 @@
-git_sha=b16bf2ddd32ca353fef4bdb65080498eabff2082 (+ تعديل DEBUG غير مُودَع وقت اللقطة: ExplainerTemplate snapshotExplainer)
+git_sha=b16bf2ddd32ca353fef4bdb65080498eabff2082
 branch=n2/explainers-miracles
 app=/private/tmp/claude-501/dd-n2/Build/Products/Debug-iphonesimulator/SunnahApp.app
 binary_sha256=cc38f5315332d5d5c3ad2d96059f72200d0c5dd0c8bb4a510f049929926ed568
 built_at=2026-10-18 07:52:15
-route=/explainers -snapshotExplainer 1 -snapshotStage 0 (iPhone 17 Pro، داكن)
+route=/explainers -snapshotExplainer 1 -snapshotStage 0 (iPhone 17 Pro، داكن) (تعديل DEBUG غير مُودَع وقت اللقطة: snapshotExplainer)
 covers=miracles-of-the-prophet.json (المرحلة 1: الإسراء؛ ملخّص السعدي + مرجع الآية ظاهران)
