@@ -41,3 +41,40 @@
 
 ## 6) الاعتماد
 RTL، فاتح/داكن/System، Dynamic Type، VoiceOver، تقليل الحركة، تحديث وتشغيل بارد — يُتحقَّق منها لكلّ تغيير هويّة.
+
+### قائمة الهجرة المتبقية (ن1، 2026-10-18)
+السقف الآلي: `scripts/native-default-containers-guard.sh` + `docs/native/default-containers-budget.txt` (=62؛ يُخفَّض ولا يُرفع). الملفات التي ما زالت تحوي حاويات افتراضية (عدد الاستعمالات):
+- `Sections/quran/PublishedScreens+Native.swift` — 8
+- `Sections/quran/QuranLocalScreens+Native.swift` — 6
+- `Sections/library/LibraryScreens+Native.swift` — 4
+- `Mushaf/MushafReaderView.swift` — 4
+- `Special/HadithScreens.swift` — 3
+- `Sections/quran/TilawaCirclesScreens.swift` — 3
+- `Sections/learn/LearnPersonalScreens.swift` — 3
+- `Templates/SearchTemplate.swift` — 2
+- `Special/SettingsScreens.swift` — 2
+- `Sections/quran/TafsirScreens+Native.swift` — 2
+- `Sections/learn/LearnReadingPlans.swift` — 2
+- `Sections/fiqh/Mawarith/MawarithCalculatorScreen.swift` — 2
+- `Templates/TreeTemplate.swift` — 1
+- `Templates/MapTemplate.swift` — 1
+- `Templates/ListTemplate.swift` — 1
+- `Templates/GroupedListTemplate.swift` — 1
+- `Special/WeakHadithScreens.swift` — 1
+- `Special/SiteContentScreens.swift` — 1
+- `Special/AdhkarScreen.swift` — 1
+- `Sections/sirah/SirahScreens+Native.swift` — 1
+- `Sections/quran/UlumQuranScreens.swift` — 1
+- `Sections/quran/QuranSearchScreen.swift` — 1
+- `Sections/quran/QuranScreens+Native.swift` — 1
+- `Sections/quran/PeopleScreens+Native.swift` — 1
+- `Sections/quran/MutashabihatScreens.swift` — 1
+- `Sections/learn/LearnSupport.swift` — 1
+- `Sections/learn/LearnKnowledgeScreens.swift` — 1
+- `Sections/learn/LearnDirectoryScreens.swift` — 1
+- `Sections/aqidah/NewMuslimAndContactScreens.swift` — 1
+- `Sections/account/AccountSubmissionsScreens.swift` — 1
+- `Sections/account/AccountContactScreen.swift` — 1
+- `Mushaf/MushafTafsirView.swift` — 1
+- `Audio/OfflineAudioScreen.swift` — 1
+المطبَّق: بقية الشاشات تستعمل ScrollView/LazyVStack وبطاقات النظام؛ لا ألوان/خطوط حرفية في Sections/Special/Templates (0).
