@@ -46,7 +46,7 @@
 - `SunnahNative/Sources/SunnahNative/Sections/account/AccountWidgetCenterScreen.swift` (معدَّل)
 - `SunnahNative/Tests/SunnahNativeTests/WidgetCenterTests.swift` (اختبارات الحزمة)
 
-**الدفعة الثالثة (لم تُكتب بعد؛ تُسجَّل فور وصولها). المقترح:**
+**الدفعة الثالثة (كُتبت في PR هذا؛ تحتاج تسجيلًا عبر generate-xcodeproj.rb):**
 
 | الملف الجديد | الهدف (target) | المجموعة (group) | الغرض |
 |---|---|---|---|
