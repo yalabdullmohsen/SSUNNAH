@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "total": 479,
+  "total": 475,
   "generatedAt": "2026-07-30T04:47:35.396Z",
   "chunks": [
     {
@@ -20,12 +20,12 @@
     },
     {
       "file": "صحابة-003.json",
-      "count": 35,
+      "count": 34,
       "key": "صحابة"
     },
     {
       "file": "صحابة-004.json",
-      "count": 39,
+      "count": 36,
       "key": "صحابة"
     },
     {
