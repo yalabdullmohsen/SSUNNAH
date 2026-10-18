@@ -19,6 +19,7 @@
 • شرح تفاعلي يعرّفك بالتطبيق.
 • قصص الأنبياء.
 • شروح مصوّرة: مراحل خلق الإنسان ومعجزات النبي ﷺ.
+• أربعة ودجتات للشاشة الرئيسية من بيانات التطبيق مع مصدرها: الضحى، أذكار بعد الصلاة، الأسماء الحسنى، الجمعة والصيام.
 
 محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي، وقد يقع فيه خطأ.
 ```
@@ -40,6 +41,7 @@ Sunnah 1.2.0 — rebuilt from the ground up as a fully native app for iPhone and
 • An interactive walkthrough introduces you to the app.
 • Stories of the Prophets.
 • Illustrated explainers: stages of human creation and the miracles of the Prophet ﷺ.
+• Four Home Screen widgets from the app's own data, each showing its source: Duha prayer, adhkar after prayer, the Beautiful Names, and Friday & fasting.
 
 The app's content is prepared with AI assistance and may contain errors.
 ```
