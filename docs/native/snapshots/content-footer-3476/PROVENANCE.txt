@@ -1,0 +1,8 @@
+git_sha=afd665de1cad668296db69e5bcd93d93f2c8ebef
+branch=n3/cf
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/c7f826aa15184449/SunnahApp.app
+binary_sha256=093f07f4d71c1f0688cb9336415fa7659441366b40d72fbd0a494a15739915ac
+built_at=2026-10-18 07:14:17
+source_newest=2026-10-18 00:52:47
+captured_at=2026-10-18 07:22:11
+covers=الأذكار /adhkar (AdhkarScreen)، العبادات /fiqh/worship (FiqhReadingView)، الحديث /hadith (HadithScreens)، الأحاديث الضعيفة /hadith/daif (WeakHadithScreens — حالة «لا مواد معتمدة» الفارغة)، التفسير /tafsir (TafsirScreens+Native)، علوم القرآن /ulum-quran (PublishedScreens+Native)، اقتباس /c/test (CitationScreen — حالة «غير موجود» الفارغة بلا شبكة)
