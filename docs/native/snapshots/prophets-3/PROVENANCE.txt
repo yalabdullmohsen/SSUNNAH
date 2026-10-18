@@ -1,0 +1,8 @@
+git_sha=da2c652885314692b2b84e61607fb1763bab7713
+branch=n3/sp3
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/0010d6b20cf31a24/SunnahApp.app
+binary_sha256=f5240e3c352e2436fa5261a8623a63fa0d5f3b8cbb7d3be9b3f4d0168beb4b90
+built_at=2026-10-18 00:42:37
+source_newest=2026-10-18 00:28:45
+captured_at=2026-10-18 00:52:44
+covers=قصص الأنبياء /prophets (شبكة الأنبياء الـ24 بتمرير 0/2/4/6/8/نهاية، فاتح وداكن): لوط محمد موسى نوح صالح — lut muhammad musa nuh salih (كلها ظاهرة بأسمائها)

@@ -8,6 +8,9 @@
 | `-snapshotScroll end` أو كسر `0.5` | يمرّر أكبر شاشة تمرير ظاهرة إلى نهايتها (يعيد المحاولة نحو 30 ثانية لأن المحتوى يكبر بعد التحميل) | `Components/SnapshotScroll.swift` |
 | `-snapshotRoute /prophets -snapshotProphet <index>` | يفتح صفحة النبي ذي الفهرس <index> في مصفوفة `prophets` (UserDefaults `snapshotProphet` → `ProphetPageView(start:)`)، DEBUG فقط. مقروء من كود #3461 (فرع `n1/design-prophets`) | `Sections/sirah/ProphetsStories.swift` (#3461، غير مدموج بعد) |
 | `-snapshotRoute /explainers` | شاشة الشروح («مراحل خلق الإنسان»)؛ تحتاج تصدير explainers.json. من #3470، بحسب ن1 | #3470 |
+| `-snapshotRoute /explainers -snapshotExplainer <i> -snapshotStage <n>` | يختار الشرح ذا الفهرس <i> (عند وجود أكثر من شرح) والمرحلة ذات الفهرس <n> (من 0) | `Templates/ExplainerTemplate.swift` (#3470) |
+| `-snapshotRoute /prophets -snapshotProphet <i> -snapshotProphetSection <rawValue>` | قسم من صفحة النبي (`verses` / `identity` / `saadi` / `sunnah`…) | `Sections/sirah/ProphetsStories.swift` (#3461) |
+| `-snapshotRoute <route> -snapshotDisclosure 1` | يفتح ورقة الإفصاح فور ظهور الشاشة | `Support/SunnahDisclosure.swift` (#3476) |
 
 ## الصيغة
 ```
