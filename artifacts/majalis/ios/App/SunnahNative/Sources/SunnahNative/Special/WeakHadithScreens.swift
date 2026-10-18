@@ -55,7 +55,8 @@ struct WeakHadithBadge: View {
 
 struct WeakHadithWarningBanner: View {
     var body: some View {
-        Label(WeakHadithWarning.text, systemImage: "exclamationmark.triangle.fill")
+        Label { Text(SunnahArabicText.enlargingSalawat(AttributedString(WeakHadithWarning.text), size: 15)) }
+            icon: { Image(systemName: "exclamationmark.triangle.fill") }
             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.danger)
             .frame(maxWidth: .infinity, alignment: .leading).padding(Sunnah.Spacing.s3)
             .background(Sunnah.Colors.danger.opacity(0.10))

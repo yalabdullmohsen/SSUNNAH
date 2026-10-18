@@ -16,6 +16,12 @@ public struct SunnahContentFooter: View {
         self.title = title; self.id = id; self.section = section; self.source = source; self.style = style; self.inset = inset; self.sensitive = sensitive
     }
 
+    /// يستهلك `SourceRef` الموحّد مباشرة: المصادر المفهومة فقط تُعرض مفصولة بـ«؛»، وبلا مصادر يعود رابط «مصادر التطبيق».
+    public init(title: String, id: String, section: String, sources: [SourceRef], style: Style = .full, inset: Bool = true, sensitive: Bool = false) {
+        let joined = sources.map(\.display).filter { !$0.isEmpty }.joined(separator: "؛ ")
+        self.init(title: title, id: id, section: section, source: joined.isEmpty ? nil : joined, style: style, inset: inset, sensitive: sensitive)
+    }
+
     public var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: Sunnah.Spacing.s3) {

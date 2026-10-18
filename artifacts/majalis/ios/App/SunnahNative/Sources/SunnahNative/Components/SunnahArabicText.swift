@@ -60,8 +60,19 @@ public struct SunnahArabicText: View {
 
     static func lineSpacing(size: CGFloat, dense: Bool) -> CGFloat { size * (dense ? 0.6 : 0.5) }
 
+    /// رمز «ﷺ» يُرسم في الخطوط بحجم أصغر من الحروف المحيطة؛ يُكبَّر كقاعدة مشتركة لكل نص عربي شرعي.
+    public static func enlargingSalawat(_ s: AttributedString, size: CGFloat) -> AttributedString {
+        var out = s
+        var from = out.startIndex
+        while let r = out[from...].range(of: "\u{FDFA}") {
+            out[r].font = .system(size: size * 1.8)
+            from = r.upperBound
+        }
+        return out
+    }
+
     public var body: some View {
-        Text(attributed ?? AttributedString(text))
+        Text(Self.enlargingSalawat(attributed ?? AttributedString(text), size: size))
             .font(style.font)
             .lineSpacing(Self.lineSpacing(size: size, dense: Self.isDense(text)))
             .fixedSize(horizontal: false, vertical: true)
