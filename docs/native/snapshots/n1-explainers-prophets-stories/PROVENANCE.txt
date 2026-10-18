@@ -1,0 +1,9 @@
+git_sha=9b0ce0e459e2b296fca7543dc333955b7622caa8
+branch=n1/combo-shots2 (native-app + n1/explainer-template + n2/explainers-miracles + n2/stories-dedupe + n2/stories-lessons-dup-a + n2/prophets-saadi2)
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1-combo/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=e61d6c72c9d8657e920c861be6df2530600e0bcb00510a836b853ee1328570c2
+built_at=2026-10-18 10:08:51
+captured_at=2026-10-18 10:16:45
+device=n1-sim2 (iPhone، عربي RTL، فاتح)
+covers=ExplainerTemplate (معجزات النبي ﷺ: مراحل 1..5 عبر -snapshotStage 1..5 ويُرى منها المراحل 2 و3 و4 و5 ثم الأولى؛ شبكة الأنبياء: هود 4/25 وذو الكفل 13/25 وهارون 16/25 وداود 19/25 بتبويب «التعريف»)، ProphetsStories، قصة ملكة سبأ في /stories (SirahScreens+Native)
+gaps=لقطات -snapshotScroll end للأنبياء مطابقة للأولى (محتوى قصير بلا تمرير)، فلا تُظهر وسط/نهاية القصة الكاملة؛ مشهد القصة الكاملة لم يُلتقط. ظهر في اللقطات: شريط التبويب يتداخل مع البطاقة السفلية، وشارة الرجوع تتداخل مع أول شريحة في المحدد.
