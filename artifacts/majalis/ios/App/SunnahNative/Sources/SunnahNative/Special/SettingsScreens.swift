@@ -8,56 +8,69 @@ struct SettingsView: View {
     @Environment(\.openRoute) private var openRoute
     @State private var email: String?
 
-    private func link(_ title: String, _ icon: String, _ path: String) -> some View {
-        Button { openRoute(path) } label: { SunnahListRow(title: title, icon: icon) }
-            .accessibilityIdentifier("settings.link\(path)")
+    private func link(_ title: String, _ icon: String, _ path: String, last: Bool = false, tone: SunnahIconTile.Tone = .mint) -> some View {
+        Button { openRoute(path) } label: {
+            SunnahSettingsRow(title, symbol: icon, tone: tone, isLast: last) { chevron }
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier("settings.link\(path)")
+    }
+
+    private var chevron: some View {
+        Image(systemName: "chevron.left").font(.system(size: 13, weight: .bold)).foregroundStyle(Sunnah.Colors.textSecondary)
     }
 
     var body: some View {
         ScrollViewReader { proxy in
-        List {
-            Section("الحساب") {
-                if let email {
-                    SunnahListRow(title: email, showsChevron: false, icon: "person.crop.circle")
-                    Button("تسجيل الخروج", role: .destructive) {
-                        Task { await platform.authService.signOut(); self.email = nil }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 18) {
+                SunnahPageTitle("الإعدادات")
+                SunnahSettingsGroup("الحساب") {
+                    if let email {
+                        SunnahSettingsRow(email, symbol: "person.crop.circle")
+                        Button { Task { await platform.authService.signOut(); self.email = nil } } label: {
+                            SunnahSettingsRow("تسجيل الخروج", symbol: "rectangle.portrait.and.arrow.right", tone: .gold)
+                        }.buttonStyle(.plain)
+                    } else {
+                        link("تسجيل الدخول", "person.crop.circle.badge.plus", "/login")
                     }
-                } else {
-                    link("تسجيل الدخول", "person.crop.circle.badge.plus", "/login")
+                    link("مساهماتي", "tray.full", "/my-submissions", last: true)
                 }
-                link("مساهماتي", "tray.full", "/my-submissions")
+                SunnahSettingsGroup("المظهر") {
+                    SunnahNavigationLink { AppIconPickerView() } label: {
+                        SunnahSettingsRow("أيقونة التطبيق", symbol: "app.badge") { chevron }
+                    }
+                    .buttonStyle(.plain).accessibilityIdentifier("settings.appIcon")
+                    AppearanceOptionsView()
+                }
+                SunnahSettingsGroup("الصلاة والتنبيهات") {
+                    link("إعدادات التنبيهات", "bell", "/notification-settings").id("prayer")
+                    link("وضع المسجد", "building.columns", "/mosque-mode")
+                    link("وضع السيارة", "car", "/car-mode", last: true)
+                }
+                SunnahSettingsGroup("البيانات والودجت") {
+                    link("مركز دون اتصال", "arrow.down.circle", "/offline").id("data")
+                    link("مركز الودجت", "square.grid.2x2", "/widget-center", last: true)
+                }
+                SunnahSettingsGroup("الخصوصية") {
+                    link("مركز الخصوصية", "hand.raised", "/privacy-center").id("privacy")
+                    link("حذف الحساب", "trash", "/account-deletion", last: true, tone: .gold)
+                }
+                SunnahSettingsGroup("عن التطبيق") {
+                    link("عن التطبيق", "info.circle", "/about").id("about")
+                    link("المصادر والتراخيص", "doc.text", "/data-licenses")
+                    link("سياسة الفتوى والمراجعة", "checkmark.shield", "/fatwa-policy")
+                    link("جولة في التطبيق", "map", "/feature-tour")
+                    link("تواصل معنا", "envelope", "/contact", last: true)
+                }
+                SunnahDisclosureNotice(inset: true)
             }
-            Section("المظهر") {
-                SunnahNavigationLink { AppIconPickerView() } label: { SunnahListRow(title: "أيقونة التطبيق", icon: "app.badge") }
-                    .accessibilityIdentifier("settings.appIcon")
-                AppearanceOptionsView()
-            }
-            Section("الصلاة والتنبيهات") {
-                link("إعدادات التنبيهات", "bell", "/notification-settings").id("prayer")
-                link("وضع المسجد", "building.columns", "/mosque-mode")
-                link("وضع السيارة", "car", "/car-mode")
-            }
-            Section("البيانات والودجت") {
-                link("مركز دون اتصال", "arrow.down.circle", "/offline").id("data")
-                link("مركز الودجت", "square.grid.2x2", "/widget-center")
-            }
-            Section("الخصوصية") {
-                link("مركز الخصوصية", "hand.raised", "/privacy-center").id("privacy")
-                link("حذف الحساب", "trash", "/account-deletion")
-            }
-            Section("عن التطبيق") {
-                link("عن التطبيق", "info.circle", "/about").id("about")
-                link("المصادر والتراخيص", "doc.text", "/data-licenses")
-                link("سياسة الفتوى والمراجعة", "checkmark.shield", "/fatwa-policy")
-                link("جولة في التطبيق", "map", "/feature-tour")
-                link("تواصل معنا", "envelope", "/contact")
-            }
-            Section { SunnahDisclosureNotice(inset: false).padding(.top, 0) }
-                .listRowBackground(Color.clear)
+            .padding(.bottom, 96)
         }
-        .scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)
-        .sunnahNavTitle("الإعدادات")
+        .sunnahRootChrome()
+        .environment(\.layoutDirection, .rightToLeft)
+        .sunnahReadableWidth()
         .onAppear { email = platform.authService.currentEmail }
         #if DEBUG
         .task {   // لقطات التدقيق فقط: تمرير إلى مجموعة

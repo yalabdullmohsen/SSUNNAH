@@ -91,8 +91,8 @@ struct DailyWirdView: View {
                 }
                 card {
                     Text("تقدم الختمة").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                    ring(value: Double(state.pagesInKhatma) / Double(WirdState.quranPages), title: state.khatmas > 0 ? "\(ar(state.khatmas)) ختمة" : "ص \(ar(state.pagesInKhatma))",
-                         subtitle: "من \(ar(WirdState.quranPages)) صفحة")
+                    ring(value: Double(state.pagesInKhatma) / Double(WirdState.quranPages), title: ar(state.khatmas > 0 ? state.khatmas : state.pagesInKhatma),
+                         subtitle: state.khatmas > 0 ? "ختمة مكتملة" : "صفحة من \(ar(WirdState.quranPages))")
                     stat("ختمات مكتملة", state.khatmas > 0 ? ar(state.khatmas) : "لم تكتمل بعد")
                 }
                 card {
@@ -130,7 +130,7 @@ struct DailyWirdView: View {
             Circle().stroke(Sunnah.Colors.primary.opacity(0.15), lineWidth: 9)
             Circle().trim(from: 0, to: min(max(value, 0), 1)).stroke(Sunnah.Colors.primary, style: StrokeStyle(lineWidth: 9, lineCap: .round)).rotationEffect(.degrees(-90))
             VStack(spacing: 2) {
-                Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text(title).font(.system(size: 40, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.textPrimary).minimumScaleFactor(0.6).lineLimit(1)
                 Text(subtitle).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
             }
         }.frame(width: 148, height: 148)
