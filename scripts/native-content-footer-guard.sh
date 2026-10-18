@@ -33,7 +33,8 @@ if [ -n "$full" ]; then echo "✗ نص التنبيه الكامل داخل صف
 # لا فتح تلقائي للرسالة: حالة العرض false أولًا ولا onAppear/task في زر «!».
 D="$S/Support/SunnahDisclosure.swift"
 if [ -f "$D" ]; then
-  blk=$(awk '/struct SunnahDisclosureInfoButton/{f=1} f' "$D")
+  # حدود البنية فقط (حتى «}» في العمود 0) وبلا كتل #if DEBUG (خطّاف اللقطات).
+  blk=$(awk '/struct SunnahDisclosureInfoButton/{f=1} f&&/^#if DEBUG/{d=1;next} f&&/^ *#if DEBUG/{d=1;next} d&&/#endif/{d=0;next} f&&!d{print} f&&/^}/{exit}' "$D")
   echo "$blk" | grep -q '@State private var showing = false' || { echo "✗ SunnahDisclosureInfoButton: حالة العرض يجب أن تبدأ false"; rc=1; }
   echo "$blk" | grep -qE '\.onAppear|\.task|isPresented: \.constant\(true\)' && { echo "✗ SunnahDisclosureInfoButton: فتح تلقائي ممنوع (بضغطة المستخدم فقط)"; rc=1; }
   [ "$(echo "$blk" | grep -c 'showing = true')" -eq 1 ] || { echo "✗ showing = true يجب أن يرد مرة واحدة داخل Button"; rc=1; }
