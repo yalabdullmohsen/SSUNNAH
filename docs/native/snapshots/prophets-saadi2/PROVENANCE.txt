@@ -5,4 +5,4 @@ binary_sha256=7056e45f7bea113f22b402fd7f8a3aea7a5f3b3c4b7aea068830891ff55bde50
 built_at=2026-10-18 08:38:28
 source_newest=2026-10-18 08:27:03
 captured_at=2026-10-18 08:55:11
-covers=الأنبياء /prophets (ProphetPageView) — قسم «من تفسير السعدي» لكل ملف: adam idris nuh hud salih ibrahim lut ismail is-haq yaqub yusuf ayyub dhul-kifl shuayb musa harun ilyas al-yasa dawud sulayman yunus zakariyya yahya isa muhammad  — وقسم «من السنة» للأنبياء العشرة التي في ملفاتها:  adam ibrahim lut ismail yusuf ayyub musa dawud yunus isa  (بقية الملفات لا تحمل sunnah فلا يظهر لها تبويب)
+covers=الأنبياء /prophets (ProphetPageView) — قسم «من تفسير السعدي» لكل ملف: adam idris nuh hud salih ibrahim lut ismail is-haq yaqub yusuf ayyub dhul-kifl shuayb musa harun ilyas al-yasa dawud sulayman yunus zakariyya yahya isa (24 نبيًا؛ بلا محمد ﷺ إذ لا لقطة له هنا) — وقسم «من السنة» للأنبياء العشرة التي في ملفاتها:  adam ibrahim lut ismail yusuf ayyub musa dawud yunus isa  (بقية الملفات لا تحمل sunnah فلا يظهر لها تبويب)
