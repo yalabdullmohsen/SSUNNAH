@@ -14,6 +14,9 @@ public struct MushafSearch: Sendable {
     /// النصوص المطبَّعة متجاورة بـUTF-8 تفصل بينها «\n»؛ البحث بايتي (UTF-8 ذاتي التزامن فالتطابق البايتي = تطابق سكالارات).
     private let haystack: [UInt8]
     private let starts: [Int]
+    /// فهرس ثانوي بلا ألف: الرسم العثماني يكتب «الصابرين» بألف خنجرية (تُحذف في التطبيع) فلا يطابقها إملاء المستخدم بألف كاملة.
+    private let haystackNoAlif: [UInt8]
+    private let startsNoAlif: [Int]
     private let ayahPage: [String: Int]
     private let byAyah: [String: String]
 
@@ -46,6 +49,9 @@ public struct MushafSearch: Sendable {
         var hay: [UInt8] = [], st: [Int] = []
         for e in out { st.append(hay.count); hay.append(contentsOf: e.norm.utf8); hay.append(0x0A) }
         haystack = hay; starts = st
+        var hay2: [UInt8] = [], st2: [Int] = []
+        for e in out { st2.append(hay2.count); hay2.append(contentsOf: Self.dropAlif(e.norm).utf8); hay2.append(0x0A) }
+        haystackNoAlif = hay2; startsNoAlif = st2
     }
 
     static func normalize(_ text: String) -> String {
@@ -55,22 +61,32 @@ public struct MushafSearch: Sendable {
     /// نص الآية الحرفي (Tanzil) لمفتاح «سورة:آية»؛ للنسخ والمشاركة.
     public func ayahText(_ ayah: String) -> String? { byAyah[ayah] }
 
+    static func dropAlif(_ text: String) -> String { String(text.filter { $0 != "ا" }) }
+
     public func search(_ query: String, limit: Int = 50) -> [MushafSearchHit] {
-        let q = Array(Self.normalize(query).utf8)
-        guard Self.normalize(query).count >= 2, !q.isEmpty else { return [] }
+        let norm = Self.normalize(query)
+        guard norm.count >= 2 else { return [] }
+        let hits = scan(Array(norm.utf8), haystack, starts, limit)
+        if !hits.isEmpty { return hits }
+        // لا نتيجة بالفهرس الأساس: جرّب بلا ألف (إملاء المستخدم ≠ الرسم العثماني).
+        let bare = Self.dropAlif(norm)
+        guard bare.count >= 2 else { return [] }
+        return scan(Array(bare.utf8), haystackNoAlif, startsNoAlif, limit)
+    }
+
+    private func scan(_ q: [UInt8], _ hay: [UInt8], _ st: [Int], _ limit: Int) -> [MushafSearchHit] {
         var hits: [MushafSearchHit] = []
         var from = 0
-        haystack.withUnsafeBufferPointer { h in
+        hay.withUnsafeBufferPointer { h in
             q.withUnsafeBufferPointer { qb in
                 while hits.count < limit, from < h.count, let base = h.baseAddress, let qa = qb.baseAddress {
                     guard let r = memmem(base + from, h.count - from, qa, qb.count) else { break }
                     let pos = base.distance(to: r.assumingMemoryBound(to: UInt8.self))
-                    // أكبر i مع starts[i] <= pos
-                    var lo = 0, hi = starts.count - 1
-                    while lo < hi { let mid = (lo + hi + 1) / 2; if starts[mid] <= pos { lo = mid } else { hi = mid - 1 } }
+                    var lo = 0, hi = st.count - 1
+                    while lo < hi { let mid = (lo + hi + 1) / 2; if st[mid] <= pos { lo = mid } else { hi = mid - 1 } }
                     let e = entries[lo]
                     hits.append(MushafSearchHit(ayah: e.ayah, page: ayahPage[e.ayah] ?? 1, text: e.text))
-                    from = lo + 1 < starts.count ? starts[lo + 1] : h.count
+                    from = lo + 1 < st.count ? st[lo + 1] : h.count
                 }
             }
         }
