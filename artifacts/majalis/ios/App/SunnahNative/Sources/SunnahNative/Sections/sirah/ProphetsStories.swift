@@ -17,7 +17,7 @@ enum ProphetSection: String, CaseIterable, Hashable {
         case .lessons: return "الدروس والابتلاءات"
         }
     }
-    var partKey: String? { self == .identity ? "identity" : self == .saadi ? "saadi" : self == .sunnah ? "sunnah" : nil }
+    var partKey: String? { self == .story ? "story" : self == .identity ? "identity" : self == .saadi ? "saadi" : self == .sunnah ? "sunnah" : nil }
     /// عناوين `##` في البيانات المقابلة لكل خيار؛ القصة تجمع الدعوة والمواقف والمآل.
     var headings: [String] {
         switch self {
@@ -62,7 +62,7 @@ struct ProphetStory: Identifiable, Hashable {
             if !paras.isEmpty { out[s] = paras }
         }
         for part in k.sections ?? [] {
-            guard let sec = [ProphetSection.identity, .saadi, .sunnah].first(where: { $0.partKey == part.key }), !(part.sources ?? []).isEmpty else { continue }
+            guard let sec = [ProphetSection.story, .identity, .saadi, .sunnah].first(where: { $0.partKey == part.key }), !(part.sources ?? []).isEmpty else { continue }
             let paras = part.body.components(separatedBy: "\n").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
             if !paras.isEmpty { out[sec] = paras }
         }
