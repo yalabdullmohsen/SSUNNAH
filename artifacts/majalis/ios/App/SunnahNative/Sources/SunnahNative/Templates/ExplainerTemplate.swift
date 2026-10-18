@@ -101,7 +101,7 @@ private struct ExplainerPicker: View {
                 ExplainerTemplate(data: rows[min(selection, rows.count - 1)]).id(selection)
             }
             #if DEBUG
-            .onAppear { if let i = UserDefaults.standard.object(forKey: "snapshotExplainer") as? Int, rows.indices.contains(i) { selection = i } }
+            .onAppear { if let s = UserDefaults.standard.string(forKey: "snapshotExplainer"), let i = Int(s), rows.indices.contains(i) { selection = i } }
             #endif
         }
     }
