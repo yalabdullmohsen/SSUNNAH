@@ -45,6 +45,12 @@ final class ChromeAutoHideTests: XCTestCase {
         c.touch(); XCTAssertTrue(c.visible)
     }
 
+    func testSecondTapHidesAndPinnedStaysVisible() {
+        let c = make(); c.toggle(); XCTAssertTrue(c.visible)
+        c.toggle(); XCTAssertFalse(c.visible)
+        c.toggle(); c.pin(true); c.toggle(); XCTAssertTrue(c.visible)
+    }
+
     func testCancelOnLeaveStopsTimer() {
         let c = make(); c.tapEmpty(); c.cancel(); XCTAssertTrue(timers.last!.cancelled)
     }
