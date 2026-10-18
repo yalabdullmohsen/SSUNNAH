@@ -19,7 +19,7 @@ add_dir = lambda do |group, dir|
 end
 add_dir.call(app, File.join(root, 'SunnahApp'))
 shared = proj.main_group.new_group('Shared')
-%w[Shared/OfflineAudioStore Shared/PlaybackSessionController Shared/SunnahSharedData Shared/SunnahBrandColors Shared/SunnahWidgetEnvelope Shared/SunnahWidgetRefreshCoordinator Shared/SunnahPrayerDeepLink App/PrayerActivityAttributes App/PrayerLiveActivityController App/Services/KeychainStore].each do |n|
+%w[Shared/OfflineAudioStore Shared/PlaybackSessionController Shared/SunnahSharedData Shared/SunnahBrandColors Shared/SunnahWidgetEnvelope Shared/SunnahWidgetPreferences Shared/SunnahWidgetRefreshCoordinator Shared/SunnahPrayerDeepLink App/PrayerActivityAttributes App/PrayerLiveActivityController App/Services/KeychainStore].each do |n|
   r = shared.new_reference("../artifacts/majalis/ios/App/#{n}.swift"); r.source_tree = 'SOURCE_ROOT'
   t.add_file_references([r])
 end
@@ -75,7 +75,7 @@ Dir[File.join(root, wroot, 'PrayerWidget/*.swift')].sort.each do |f|
   r.set_path("#{wroot}/PrayerWidget/#{File.basename(f)}")
   wt.add_file_references([r])
 end
-%w[SunnahSharedData SunnahBrandColors SunnahPrayerDeepLink SunnahWidgetEnvelope SunnahWidgetRefreshCoordinator].each do |n|
+%w[SunnahSharedData SunnahBrandColors SunnahPrayerDeepLink SunnahWidgetEnvelope SunnahWidgetPreferences SunnahWidgetRefreshCoordinator].each do |n|
   r = shared.new_reference("../artifacts/majalis/ios/App/Shared/#{n}.swift"); r.source_tree = 'SOURCE_ROOT'
   wt.add_file_references([r])
 end
@@ -116,6 +116,7 @@ Dir[File.join(root, 'SunnahWatch/App/*.swift')].sort.each { |f| wk.add_file_refe
 Dir[File.join(root, 'SunnahWatch/Complications/*.swift')].sort.each { |f| wkx.add_file_references([wcx.new_reference(File.basename(f))]) }
 # النماذج والسمة مشتركة بين الهدفين (README الواجهة)
 %w[WatchModels WatchTheme].each { |n| wkx.add_file_references([wapp.files.find { |x| x.path == "#{n}.swift" }]) }
+wk.add_file_references([shared.new_reference("../artifacts/majalis/ios/App/Shared/SunnahWidgetPreferences.swift").tap { |r| r.source_tree = "SOURCE_ROOT" }])
 wres = proj.main_group.new_group('SunnahWatchResources', 'SunnahWatchResources')
 [wk, wkx].each do |tg|
   tg.resources_build_phase.add_file_reference(wres.new_reference('PrivacyInfo.xcprivacy'))
