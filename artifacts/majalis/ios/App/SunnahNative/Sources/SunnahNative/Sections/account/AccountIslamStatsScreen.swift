@@ -72,6 +72,6 @@ struct AccountIslamStatsScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("الإسلام في أرقام")
+        .sunnahNavTitle("الإسلام في أرقام")
     }
 }

@@ -50,7 +50,7 @@ public struct CitationScreen: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
-        .navigationTitle("اقتباس")
+        .sunnahNavTitle("اقتباس")
         .task(id: slug) { await load() }
     }
 

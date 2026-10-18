@@ -46,7 +46,7 @@ struct LearnProgressScreen: View {
             Button("مسح", role: .destructive) { store.clearAll(); summary = LearnLocalSummary.read(from: store) }
         }
         .onAppear { summary = LearnLocalSummary.read(from: store) }
-        .navigationTitle("مركز التقدّم")
+        .sunnahNavTitle("مركز التقدّم")
     }
 }
 
@@ -109,7 +109,7 @@ struct LearnMyLearningScreen: View {
         }
         .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .onAppear { summary = LearnLocalSummary.read(from: store) }
-        .navigationTitle("تعلّمي")
+        .sunnahNavTitle("تعلّمي")
     }
 }
 
@@ -184,6 +184,6 @@ struct LearnResearcherScreen: View {
             loaded = true
             profile = store.load(LearnResearcherProfile.self, .researcher) ?? LearnResearcherProfile()
         }
-        .navigationTitle("الملف البحثي")
+        .sunnahNavTitle("الملف البحثي")
     }
 }

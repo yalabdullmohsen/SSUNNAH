@@ -109,7 +109,7 @@ struct LearnReadingPlansScreen: View {
             }
         }
         .onAppear { plans = store.load([LearnReadingPlan].self, .readingPlans) ?? [] }
-        .navigationTitle("خطط القراءة")
+        .sunnahNavTitle("خطط القراءة")
     }
 
     private func save() { store.save(plans, .readingPlans) }
@@ -202,7 +202,7 @@ struct LearnNewPlanForm: View {
                     .disabled(title.trimmingCharacters(in: .whitespaces).isEmpty || days.isEmpty)
             }
         }
-        .navigationTitle("خطة جديدة")
+        .sunnahNavTitle("خطة جديدة")
     }
 
     private var draft: LearnReadingPlan {

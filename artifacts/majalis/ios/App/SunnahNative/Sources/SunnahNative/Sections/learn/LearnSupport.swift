@@ -137,7 +137,7 @@ struct LearnDetailPage<Content: View>: View {
             .padding(.bottom, Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle(title)
+        .sunnahNavTitle(title)
     }
 }
 

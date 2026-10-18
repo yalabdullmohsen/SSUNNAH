@@ -99,11 +99,11 @@ public enum SirahSection {
         registry.registerView(id: "islamic-landmarks") { SirahSection.list(File.landmarks, SirahAdapters.landmarks, base: "/islamic-landmarks") }
         registry.registerView(id: "islamic-landmarks.map") {
             SirahLoadedView(source: File.landmarks, adapt: SirahAdapters.landmarks) { CardGridTemplate(items: $0, detailBase: "/islamic-landmarks") }
-                .navigationTitle(SirahSection.title)
+                .sunnahNavTitle(SirahSection.title)
         }
         registry.registerView(id: "nations") { SirahSection.list(File.nations, SirahAdapters.nations, base: "/nations") }
         registry.registerView(id: "occasions") { SirahSection.inline(File.occasions, SirahAdapters.occasions, reader: .detail) }
-        registry.registerView(id: "occasions-lessons") { SectionsListTemplate(links: SirahLinks.occasionsLessons).navigationTitle(SirahSection.title) }
+        registry.registerView(id: "occasions-lessons") { SectionsListTemplate(links: SirahLinks.occasionsLessons).sunnahNavTitle(SirahSection.title) }
         registry.registerView(id: "prophets") {
             SirahLoadedView(source: File.prophets, adapt: { (rows: [SirahKnowledgeItem]) in ProphetStory.chronological(rows.compactMap(ProphetStory.init)) }) { ProphetsGridView(prophets: $0) }
         }
@@ -113,13 +113,13 @@ public enum SirahSection {
         registry.registerView(id: "seerah") { SirahSection.inline(File.seerah, SirahAdapters.seerah) }
         registry.registerView(id: "shamael") {
             SirahLoadedView(source: File.shamail, adapt: { (tabs: [ShamailTab]) in tabs }) { ShamailView(tabs: $0) }
-                .navigationTitle(SirahSection.title)
+                .sunnahNavTitle(SirahSection.title)
         }
         registry.registerView(id: "stories") { SirahSection.fullArticle(File.stories, SirahAdapters.stories, id: "stories", title: "القصص الإسلامية") }
         registry.registerView(id: "tarikh-islami") { SirahSection.list(File.history, SirahAdapters.history, base: "/tarikh-islami") }
         registry.registerView(id: "teachers") {
             SirahLoadedView(source: File.lessons, adapt: SirahAdapters.teachers) { SectionsListTemplate(links: $0) }
-                .navigationTitle(SirahSection.title)
+                .sunnahNavTitle(SirahSection.title)
         }
     }
 
@@ -146,13 +146,13 @@ public enum SirahSection {
 
     private static func list<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem], base: String) -> some View {
         SirahLoadedView(source: source, adapt: adapt) { ListTemplate(items: $0, detailBase: base) }
-            .navigationTitle(SirahSection.title)
+            .sunnahNavTitle(SirahSection.title)
     }
 
     private static func inline<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem],
                                                           reader: SirahInlineItemsView.Reader = .article) -> some View {
         SirahLoadedView(source: source, adapt: adapt) { SirahInlineItemsView(items: $0, reader: reader) }
-            .navigationTitle(SirahSection.title)
+            .sunnahNavTitle(SirahSection.title)
     }
 
     /// قالب «مقال» لصفحة كاملة: كل العناصر المصدَّقة في مقال واحد.

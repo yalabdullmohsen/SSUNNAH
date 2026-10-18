@@ -173,7 +173,7 @@ struct AccountUpdatesScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("آخر المستجدات")
+        .sunnahNavTitle("آخر المستجدات")
         .task { await load() }
         .refreshable { await load() }
     }
