@@ -38,3 +38,5 @@
 | `ios-native/SunnahApp/Resources/Assets.xcassets/LaunchLogo.imageset/` | شعار شاشة الإطلاق (يتبع الأيقونة) | رسم أصلي | 2026-10-14 | ن1 (#3154) |
 | `artifacts/majalis/ios/App/SunnahNative/Art/surah-banner.svg` | لافتة اسم السورة مولَّدة بخط أسماء السور من QPC (#3179) | OWNER_DECISION | 2026-10-14 | ن3 |
 | `artifacts/majalis/ios/App/SunnahNative/Art/page-cartouche.svg` | خرطوشة رقم الصفحة «من المرجع» (#3181) | OWNER_DECISION | 2026-10-14 | ن3 |
+
+ملاحظة: رسوم «خلق الإنسان» (`Templates/ExplainerArt.swift`) أشكال SwiftUI مبرمجة أصلية من `illustrationBrief` (رسم أصلي، 2026-10-17، ن1)؛ ليست ملف صورة فلا يتتبعها الحارس، وموثّقة هنا.

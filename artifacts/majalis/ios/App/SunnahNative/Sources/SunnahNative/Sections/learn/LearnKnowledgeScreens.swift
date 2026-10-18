@@ -22,7 +22,7 @@ struct LearnKnowledgeGraphScreen: View {
                 .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
             }
         }
-        .navigationTitle("الرسم المعرفي")
+        .sunnahNavTitle("الرسم المعرفي")
     }
 }
 
@@ -35,7 +35,7 @@ struct LearnGraphNodeView: View {
                 SunnahListRow(title: r.node.titleAr, subtitle: r.label)
             }
         }
-        .navigationTitle(node.titleAr)
+        .sunnahNavTitle(node.titleAr)
     }
 }
 
@@ -62,7 +62,7 @@ struct LearnKnowledgeSectionScreen: View {
                 }
             }
         }
-        .navigationTitle(LearnKnowledgeSections.titles[section] ?? "المعرفة")
+        .sunnahNavTitle(LearnKnowledgeSections.titles[section] ?? "المعرفة")
     }
 }
 
@@ -121,12 +121,12 @@ struct LearnDurusScreen: View {
                             SunnahListRow(title: lesson.title, subtitle: lesson.summary)
                         }
                     }
-                    .navigationTitle(section.title)
+                    .sunnahNavTitle(section.title)
                 } label: {
                     SunnahListRow(title: section.title, subtitle: learnLine(section.num, "\(section.lessons.count) درسًا"))
                 }
             }
         }
-        .navigationTitle(title)
+        .sunnahNavTitle(title)
     }
 }

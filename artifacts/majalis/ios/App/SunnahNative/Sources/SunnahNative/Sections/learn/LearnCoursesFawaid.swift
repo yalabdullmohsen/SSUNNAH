@@ -74,7 +74,7 @@ struct LearnFawaidScreen: View {
             }
         }
         .searchable(text: $query)
-        .navigationTitle("الفوائد")
+        .sunnahNavTitle("الفوائد")
     }
 }
 

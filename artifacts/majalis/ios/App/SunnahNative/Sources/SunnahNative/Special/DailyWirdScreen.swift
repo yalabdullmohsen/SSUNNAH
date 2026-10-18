@@ -104,7 +104,7 @@ struct DailyWirdView: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("الورد اليومي")
+        .sunnahNavTitle("الورد اليومي")
         .onAppear { if let d = raw.data(using: .utf8), let s = try? JSONDecoder().decode(WirdState.self, from: d) { state = s } }
     }
 

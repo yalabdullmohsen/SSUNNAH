@@ -1,0 +1,10 @@
+التاريخ: 2026-10-18 — الجهاز: n1-sim (iPhone، iOS 26) — البناء: ~/ssunnah-wt/ssunnah-n1-combo (8f6df098a) بحجم large فاتح/داكن، لقطات مفتوحة بحجمها الكامل.
+covers=NewMuslimAndContactScreens (/discover-islam/new-muslim)
+covers=FiqhReadingView (/fiqh/topics/arkan)
+covers=SirahScreens+Native (/prophets شبكة الأنبياء، /islamic-landmarks)
+covers=AdhkarExtraScreens (/tasbih)
+covers=AdhkarScreen (/adhkar)
+covers=DailyWirdScreen (/daily-wird)
+covers=CitationScreen (/c/test: حالة «الاقتباس غير موجود» فقط، لا محتوى حيّ)
+covers=HadithScreens (/hadith)
+غير مغطّى: CitationScreen بمحتوى حقيقي، iPad، XXXL.

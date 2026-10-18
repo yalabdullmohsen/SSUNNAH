@@ -132,7 +132,7 @@ struct AccountNotificationSettingsScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("الإشعارات")
+        .sunnahNavTitle("الإشعارات")
         .task { await model.refreshPermission() }
     }
 

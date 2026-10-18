@@ -84,7 +84,7 @@ struct AccountMosqueModeScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("وضع المسجد")
+        .sunnahNavTitle("وضع المسجد")
         .onAppear { Self.silenceShown = true }
     }
 

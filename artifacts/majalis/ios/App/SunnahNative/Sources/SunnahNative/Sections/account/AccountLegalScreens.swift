@@ -51,7 +51,7 @@ struct AccountDataLicensesScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("المصادر والتراخيص")
+        .sunnahNavTitle("المصادر والتراخيص")
     }
 }
 

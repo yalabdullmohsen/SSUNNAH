@@ -119,7 +119,7 @@ public struct AppIconPickerView: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("أيقونة التطبيق")
+        .sunnahNavTitle("أيقونة التطبيق")
     }
 
     private func card(_ choice: AppIconChoice) -> some View {

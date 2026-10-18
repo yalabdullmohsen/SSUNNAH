@@ -136,38 +136,38 @@ enum SiteContentScreens {
         registry.registerView(id: "duas-quran") {
             LibraryLoadedView(source: .bundled(name: "duas-quran", subdirectory: "Data/adhkar"), adapt: { (f: SiteContent.Duas) in f }) { f in
                 ChipItemsView(categories: f.categories.isEmpty ? [SiteContent.all] : f.categories) { SiteContent.duas(f, $0) }
-            }.navigationTitle("أدعية القرآن")
+            }.sunnahNavTitle("أدعية القرآن")
         }
         registry.registerView(id: "sunan-yawmiyya") {
             LibraryLoadedView(source: .bundled(name: "sunan-yawmiyya", subdirectory: "Data/adhkar"), adapt: { (f: SiteContent.Sunan) in f }) { f in
                 ChipItemsView(categories: f.categories.isEmpty ? [SiteContent.all] : f.categories) { SiteContent.sunan(f, $0) }
-            }.navigationTitle("السنن اليومية")
+            }.sunnahNavTitle("السنن اليومية")
         }
         registry.registerView(id: "adhan-help") {
             LibraryLoadedView(source: .bundled(name: "adhan-help", subdirectory: "Data/adhkar"), adapt: { (f: SiteContent.Help) in
                 // لا أذان في التطبيق (قرار المالك): تُحذف أقسام المصدر التي تذكر صوت الأذان أو اختياره.
                 f.sections.filter { !$0.title.contains(Self.retiredWord) && !($0.body ?? "").contains(Self.retiredWord) }
                     .map { ContentItem(id: $0.id, title: $0.title, body: $0.body) }
-            }) { LibraryInlineItemsView(items: $0) }.navigationTitle("مساعدة تنبيهات الصلاة")
+            }) { LibraryInlineItemsView(items: $0) }.sunnahNavTitle("مساعدة تنبيهات الصلاة")
         }
         registry.registerView(id: "hadith-science") {
             LibraryLoadedView(source: .bundled(name: "hadith-science", subdirectory: "Data/hadith"), adapt: { (f: SiteContent.Science) in f }) { f in
                 ChipItemsView(categories: f.categories.isEmpty ? [SiteContent.all] : f.categories) { SiteContent.terms(f, $0) }
-            }.navigationTitle("علم مصطلح الحديث")
+            }.sunnahNavTitle("علم مصطلح الحديث")
         }
         registry.registerView(id: "sunnah-studies") { lessonScreen(file: "sunnah-studies", dir: "Data/hadith", title: "جوامع الكلم والسنن اليومية") }
         registry.registerView(id: "dalail-nubuwwah") { lessonScreen(file: "dalail-nubuwwah", dir: "Data/sirah", title: "دلائل النبوة") }
         registry.registerView(id: "hadith.arbaeen-love-of-allah") {
             ArbaeenLoveView().bodyTitledNavigation()
         }
-        registry.registerView(id: "hadith.books-and-rulings") { HadithBooksAndRulingsView().navigationTitle("المتون الحديثية وأحاديث الأحكام") }
+        registry.registerView(id: "hadith.books-and-rulings") { HadithBooksAndRulingsView().sunnahNavTitle("المتون الحديثية وأحاديث الأحكام") }
     }
 
     @MainActor
     private static func lessonScreen(file: String, dir: String, title: String) -> some View {
         LibraryLoadedView(source: .bundled(name: file, subdirectory: dir), adapt: { (f: SiteContent.Lessons) in f.sections }) { sections in
             LessonSectionsView(sections: sections)
-        }.navigationTitle(title)
+        }.sunnahNavTitle(title)
     }
 }
 

@@ -107,7 +107,7 @@ public struct TasmeeScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("التسميع")
+        .sunnahNavTitle("التسميع")
         .environment(\.layoutDirection, .rightToLeft)
     }
 

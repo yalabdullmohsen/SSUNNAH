@@ -173,7 +173,7 @@ struct AccountQiblaScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("اتجاه القبلة")
+        .sunnahNavTitle("اتجاه القبلة")
         .onAppear { compass.start() }
         .onDisappear { compass.stop() }
         .sheet(isPresented: Binding(
