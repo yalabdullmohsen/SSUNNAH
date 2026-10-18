@@ -253,7 +253,7 @@ public struct MushafReaderView: View {
             // `-snapshotShowChrome 1` يُظهر سطر الأدوات ثابتًا (لقطة وضع الأدوات).
             if UserDefaults.standard.bool(forKey: "snapshotShowChrome") { chromeHide.pin(true) }
             // `-snapshotMarkPicker 1` يفتح اختيار اللون في بطاقة الآية؛ `-snapshotSeedMarks 1` يزرع علامات ملوّنة في الصفحة الحالية؛ `-snapshotShowMarks 1` يفتح «علاماتي».
-            if UserDefaults.standard.bool(forKey: "snapshotMarkPicker") { ayahPicker = true }
+            if UserDefaults.standard.bool(forKey: "snapshotMarkPicker") { Task { try? await Task.sleep(nanoseconds: 500_000_000); ayahPicker = true } }
             if UserDefaults.standard.bool(forKey: "snapshotSeedMarks"), store.bookmarks.isEmpty, let a = firstAyah(on: current) {
                 store.toggleMark(.hifz, ayah: a, page: current); store.toggleMark(.tadabbur, ayah: a, page: current)
                 store.toggleMark(.review, ayah: nil, page: current); store.toggleMark(.wird, ayah: nil, page: current)
