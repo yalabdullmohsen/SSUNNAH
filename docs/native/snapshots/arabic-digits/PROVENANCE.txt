@@ -8,3 +8,6 @@ captured_at=2026-10-19 00:59:44
 files: Mushaf/MushafMarksUI.swift Mushaf/MushafReaderView.swift Mushaf/MushafTafsirView.swift Mushaf/MushafAyahText.swift Components/SunnahStepper.swift Templates/ExplainerTemplate.swift Design/ArabicNumerals.swift
 covers: marks-light.png = MushafMarksUI.swift (علاماتي: «آية ٣٦:١» «صفحة ٤٤٠» «آية ٢:٢٥٥» «صفحة ٤٢») + MushafReaderView.swift (فهرس المصحف، تبويب علاماتي)؛ ayah-sheet-light.png = MushafReaderView.swift (عنوان نافذة الآية «البقرة: ٢٥٥»، أقراص الآيات ٢٥٣–٢٥٥)؛ explainer-stage3-light.png = ExplainerTemplate.swift («المرحلة ٤: المُضغة»)
 gaps: SunnahStepper.swift (العدّاد «٤ / ٥» خارج إطار اللقطة، يُغطّيه اختبار الدالة والحارس فقط)؛ MushafTafsirView.swift وMushafAyahText.swift (تسمية إتاحة/رقم آية التفسير) بلا لقطة؛ بحث الفهرس («آية … · صفحة …») والسور/الأجزاء بلا لقطة؛ داكن وiPad
+files: Mushaf/MushafReaderView.swift Mushaf/MushafMarksUI.swift
+covers: page-picker-light.png = MushafReaderView.swift + MushafMarksUI.swift (منتقي علامة الصفحة «علامة على الصفحة ٤٢» بخمسة ألوان، الورد والمراجعة محدّدان، أقراص ملوّنة على آية ٢٥٣ و٢٥٥)؛ ipad-marks-light.png = MushafMarksUI.swift + MushafReaderView.swift (علاماتي على iPad بأرقام هندية؛ في أعلاه إشعار نظام من المحاكي لا من التطبيق)
+gaps: لقطة السحب للحذف (لا أداة سحب في simctl، مغطّاة باختبار MushafMarksTests فقط)؛ شريحة الفلتر المحدّدة؛ داكن
