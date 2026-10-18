@@ -2,13 +2,13 @@ import XCTest
 import SunnahDataKit
 @testable import SunnahNative
 
-/// أمر المالك: أرقام لاتينية فقط في كل نص معروض. يفشل إن ظهر رقم هندي (٠-٩) أو فارسي في أي سلسلة نصية بمصدر التطبيق.
+/// النموذج ٢ (قرار المالك 2026-10-18): أرقام عربية-هندية موحّدة. يفشل إن ظهر رقم فارسي (۰-۹) في مصدر التطبيق.
 final class LatinDigitsPolicyTests: XCTestCase {
     func testNoEasternArabicDigitsInSourceStringLiterals() throws {
         let root = URL(fileURLWithPath: #filePath)
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
             .appendingPathComponent("Sources")
-        let digits = CharacterSet(charactersIn: "٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹٬٫")
+        let digits = CharacterSet(charactersIn: "۰۱۲۳۴۵۶۷۸۹")
         var offenders: [String] = []
         let en = FileManager.default.enumerator(at: root, includingPropertiesForKeys: nil)!
         for case let url as URL in en where url.pathExtension == "swift" {
@@ -16,19 +16,19 @@ final class LatinDigitsPolicyTests: XCTestCase {
             for (i, line) in s.components(separatedBy: "\n").enumerated() {
                 let t = line.trimmingCharacters(in: .whitespaces)
                 if t.hasPrefix("//") || t.hasPrefix("///") { continue }
-                if t.contains("٠١٢٣٤٥٦٧٨٩") || t.contains("replacingOccurrences") || t.contains("MawarithStep(") { continue }   // محلّلات إدخال/جداول التحويل
+                if t.contains("۰۱۲۳۴۵۶۷۸۹") || t.contains("replacingOccurrences") || t.contains("MawarithStep(") { continue }   // محلّلات إدخال/جداول التحويل
                 if line.unicodeScalars.contains(where: { digits.contains($0) }) {
                     offenders.append("\(url.lastPathComponent):\(i + 1)")
                 }
             }
         }
-        XCTAssertTrue(offenders.isEmpty, "أرقام غير لاتينية: \(offenders.prefix(20))")
+        XCTAssertTrue(offenders.isEmpty, "أرقام فارسية: \(offenders.prefix(20))")
     }
 }
 
 final class LatinDigitsHelperTests: XCTestCase {
-    func testConvertsArabicIndicAndPersian() {
-        XCTAssertEqual("٢ فأكثر ۱۲ و٣".asLatinDigits, "2 فأكثر 12 و3")
+    func testConvertsLatinAndPersianToArabicIndic() {
+        XCTAssertEqual("2 فأكثر ۱۲ و3".asArabicDigits, "٢ فأكثر ١٢ و٣")
     }
 }
 
@@ -36,9 +36,9 @@ final class LatinDigitsDataTests: XCTestCase {
     struct Row: Decodable, Sendable { let t: String }
 
     func testDataConversionKeepsLetters() {
-        let raw = Data("{\"t\":\"رواه البخاري ٢٣٠٠ و۲۵٫٥ ﴿آية﴾\"}".utf8)
+        let raw = Data("{\"t\":\"رواه البخاري ٢٣٠٠ و۲۵٫٥ ﴿آية﴾\",\"n\":12}".utf8)
         let s = String(data: raw.asLatinDigitsJSON, encoding: .utf8)
-        XCTAssertEqual(s, "{\"t\":\"رواه البخاري 2300 و25.5 ﴿آية﴾\"}")
+        XCTAssertEqual(s, "{\"t\":\"رواه البخاري ٢٣٠٠ و٢٥٫٥ ﴿آية﴾\",\"n\":12}")
     }
 
     func testLoaderConvertsBundledButNotMushaf() async throws {
@@ -50,7 +50,7 @@ final class LatinDigitsDataTests: XCTestCase {
         let loader = ContentLoader(bundle: Bundle(path: root.path)!)
         let x = try await loader.load(Row.self, from: .bundled(name: "f", subdirectory: "Data/x"))
         let m = try await loader.load(Row.self, from: .bundled(name: "f", subdirectory: "Data/mushaf"))
-        XCTAssertEqual(x.t, "3")
+        XCTAssertEqual(x.t, "٣")
         XCTAssertEqual(m.t, "٣")
     }
 
@@ -60,8 +60,8 @@ final class LatinDigitsDataTests: XCTestCase {
         let up = ClosureTransport { _, _ in Data("{\"t\":\"درس ٣ من ۱۲ في ٢٫٥\"}".utf8) }
         let loader = ContentLoader(store: DataStore(transport: up, cache: DiskCache(directory: dir)))
         let r = try await loader.load(Row.self, from: .remote(path: "/api/r", maxAge: 0))
-        XCTAssertEqual(r.t, "درس 3 من 12 في 2.5")
+        XCTAssertEqual(r.t, "درس ٣ من ١٢ في ٢٫٥")
         let again = try await loader.load(Row.self, from: .remote(path: "/api/r", maxAge: 3600))
-        XCTAssertEqual(again.t, "درس 3 من 12 في 2.5")
+        XCTAssertEqual(again.t, "درس ٣ من ١٢ في ٢٫٥")
     }
 }

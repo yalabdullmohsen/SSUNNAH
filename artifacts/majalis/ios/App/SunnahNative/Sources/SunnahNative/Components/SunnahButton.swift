@@ -97,7 +97,7 @@ public struct SunnahSegmented<ID: Hashable>: View {
     }
 }
 
-/// مفتاح أخضر 56×32.
+/// مفتاح أخضر 48×28.
 public struct SunnahToggleStyle: ToggleStyle {
     public init() {}
     public func makeBody(configuration: Configuration) -> some View {
@@ -108,8 +108,8 @@ public struct SunnahToggleStyle: ToggleStyle {
                 Sunnah.Haptics.select(); sunnahAnimate { configuration.isOn.toggle() }
             } label: {
                 ZStack(alignment: configuration.isOn ? .trailing : .leading) {
-                    Capsule().fill(configuration.isOn ? Sunnah.Colors.primary : Sunnah.Colors.switchOff).frame(width: 56, height: 32)
-                    Circle().fill(.white).frame(width: 26, height: 26).padding(3)
+                    Capsule().fill(configuration.isOn ? Sunnah.Colors.primary : Sunnah.Colors.switchOff).frame(width: 48, height: 28)
+                    Circle().fill(.white).frame(width: 22, height: 22).padding(3)
                 }
                 .environment(\.layoutDirection, .leftToRight)
             }

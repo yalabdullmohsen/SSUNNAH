@@ -1,0 +1,8 @@
+git_sha=a825bb2263a6a52f82d87a3c85ba2e8c440f9024
+branch=n1/model2-core
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1-combo/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=856646ce6705140761331a9f209a8bd0489838086293907fc90ca4cf54b51033
+built_at=2026-10-19 00:16:07
+source_newest=2026-10-19 00:15:31
+captured_at=2026-10-19 00:18:25
+covers=HomeScreen.swift PrayerScreen.swift SunnahDrawer.swift SunnahModel2.swift DailyWirdScreen.swift (home prayer menu daily-wird; فتحتُ اللقطات كاملة الحجم)
