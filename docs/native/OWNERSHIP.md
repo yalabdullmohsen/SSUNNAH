@@ -48,6 +48,7 @@
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Tasmee/**`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Audio/**`
 - `artifacts/majalis/ios/App/SunnahNative/Tests/SunnahNativeTests/Mushaf*`
+- `artifacts/majalis/ios/App/SunnahNative/Tests/SunnahNativeTests/Quran*`
 - `artifacts/majalis/ios/App/SunnahNative/Tests/SunnahNativeTests/Fixtures/MushafVisual/**`
 - `docs/native/perf/mushaf.md`
 - `docs/native/QURAN_QUOTE_FIXES.md`
