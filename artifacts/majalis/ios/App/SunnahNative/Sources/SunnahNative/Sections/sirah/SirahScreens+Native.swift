@@ -80,6 +80,7 @@ public enum SirahSection {
         static let fikrWaqia = SirahData.file("fikr-waqia")
         static let landmarks = SirahData.file("islamic-landmarks")
         static let nations = SirahData.file("nations")
+        static let explainers = SirahData.file("explainers")
         static let occasions = SirahData.file("occasions-verified")
         static let prophets = SirahData.file("prophets-knowledge")
         static let lineage = SirahData.file("prophets-lineage")
@@ -88,7 +89,6 @@ public enum SirahSection {
         static let shamail = SirahData.file("shamail")
         static let stories = SirahData.file("stories")
         static let history = SirahData.file("islamic-history")
-        static let explainers = SirahData.file("explainers")
         /// صفوف الدروس من الشبكة (DATA_CONTRACT §2): قسم الدروس يملك المصدر، وهنا قراءة فقط.
         static let lessons = ContentSource.remote(path: "/data/lessons/chunk-000.json", maxAge: 3600)
     }
