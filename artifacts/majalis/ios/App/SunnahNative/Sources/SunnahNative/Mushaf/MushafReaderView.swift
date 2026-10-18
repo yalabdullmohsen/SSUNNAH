@@ -13,6 +13,9 @@ public struct MushafPageView: View {
     var onLongPress: ((String) -> Void)? = nil
     /// الإيماءات وتسميات إمكانية الوصول على الصفحة الحالية فقط: على الجارتين تكلّف عقد إيماءات لكل كلمة (≈450 عقدة) تُبطئ التقليب.
     var interactive = true
+    /// آية ← ألوان علاماتها، وألوان علامات الصفحة (أثر بصري خفيف).
+    var markColors: [String: [MushafMarkColor]] = [:]
+    var pageMarks: [MushafMarkColor] = []
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
@@ -23,8 +26,8 @@ public struct MushafPageView: View {
     /// إزاحة القرص للأسفل (em) ليتمركز مع حبر الحلقة داخل الخط لا مع صندوق النص.
     static let ayahDiscDropEm: CGFloat = 0.07
 
-    public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil, interactive: Bool = true) {
-        self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah; self.onLongPress = onLongPress; self.interactive = interactive
+    public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil, interactive: Bool = true, markColors: [String: [MushafMarkColor]] = [:], pageMarks: [MushafMarkColor] = []) {
+        self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah; self.onLongPress = onLongPress; self.interactive = interactive; self.markColors = markColors; self.pageMarks = pageMarks
         if let family = try? repo.ensureFont(page: number), let page = try? repo.page(number) {
             _page = State(initialValue: page); _family = State(initialValue: family)
         }
@@ -63,6 +66,7 @@ public struct MushafPageView: View {
         .padding(.horizontal, inset)
         .padding(.top, CGFloat(m.top))
         .frame(maxHeight: .infinity, alignment: .top)
+        .overlay(alignment: .leading) { if !pageMarks.isEmpty { MushafPageEdge(colors: pageMarks).frame(height: rowH * CGFloat(rows.count) * 0.9).padding(.top, CGFloat(m.top)).padding(.leading, 2) } }
         .environment(\.layoutDirection, .rightToLeft)
     }
 
@@ -88,7 +92,7 @@ public struct MushafPageView: View {
                         ForEach(run, id: \.k) { item in
                             let k = item.k, w = item.w
                             Group {
-                                if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]) }
+                                if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]).overlay(alignment: .bottom) { if let cs = markColors[w.v], !cs.isEmpty { MushafMarkDots(colors: cs).offset(y: layout.fontSize * 0.32) } } }
                                 else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary) }
                             }
                                 .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
@@ -138,6 +142,8 @@ public struct MushafReaderView: View {
     @StateObject private var chromeHide = ChromeAutoHide()
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @State private var sheetHeight: CGFloat = 0
+    @State private var ayahPicker = false
+    @State private var pagePicker = false
     @State private var pageSize = CGSize(width: 402, height: 874)
     @Environment(\.openRoute) private var openRoute
 
@@ -156,8 +162,8 @@ public struct MushafReaderView: View {
                 Sunnah.Colors.mushafPaper
                 Group {
                 #if os(iOS)
-                MushafPager(current: $current, count: Mushaf.pageCount, renderKey: AnyHashable("\(selected ?? "")|\(current)")) { n in
-                    MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current)
+                MushafPager(current: $current, count: Mushaf.pageCount, renderKey: AnyHashable("\(selected ?? "")|\(current)|\(marksKey)")) { n in
+                    MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current, markColors: store.ayahColors(onPage: n), pageMarks: store.colors(ofPage: n))
                 }
                 #else
                 TabView(selection: $current) {
@@ -205,6 +211,22 @@ public struct MushafReaderView: View {
                 .accessibilityHidden(!chromeHide.visible)
                 .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.25), value: chromeHide.visible)
         }
+        .overlay(alignment: .top) {
+            if pagePicker {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                    Text("علامة على الصفحة \(Self.arabicDigits(current))").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    MushafMarkPicker(active: store.colors(ofPage: current)) { store.toggleMark($0, ayah: nil, page: current) }
+                }
+                .padding(Sunnah.Spacing.s3)
+                .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
+                .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous).stroke(Sunnah.Colors.goldDeco.opacity(0.6), lineWidth: 1))
+                .shadow(color: .black.opacity(0.12), radius: 12, y: 4)
+                .padding(.horizontal, Sunnah.Spacing.s4).padding(.top, Self.topSafeInset + 22)
+                .ignoresSafeArea(edges: .top)
+                .transition(.opacity)
+                .accessibilityIdentifier("mushaf.pageMarkPicker")
+            }
+        }
         .immersiveReader(revealed: false)
         #if os(iOS)
         .toolbar(.hidden, for: .navigationBar)
@@ -220,7 +242,9 @@ public struct MushafReaderView: View {
         .sheet(isPresented: $showIndex) {
             MushafIndexView(index: index, search: search, store: store) { page in current = page; showIndex = false }
         }
-        .onChange(of: current) { p in selected = nil; store.visit(page: p); repo.prefetch(around: p, size: pageSize) }
+        .onChange(of: selected) { _ in ayahPicker = false }
+        .onChange(of: pagePicker) { open in chromeHide.pin(open) }
+        .onChange(of: current) { p in selected = nil; pagePicker = false; store.visit(page: p); repo.prefetch(around: p, size: pageSize) }
         .task {
             store.visit(page: current); repo.prefetch(around: current, size: pageSize)
             #if DEBUG
@@ -228,6 +252,14 @@ public struct MushafReaderView: View {
             if let a = UserDefaults.standard.string(forKey: "snapshotSelectAyah"), !a.isEmpty { selected = a }
             // `-snapshotShowChrome 1` يُظهر سطر الأدوات ثابتًا (لقطة وضع الأدوات).
             if UserDefaults.standard.bool(forKey: "snapshotShowChrome") { chromeHide.pin(true) }
+            // `-snapshotMarkPicker 1` يفتح اختيار اللون في بطاقة الآية؛ `-snapshotSeedMarks 1` يزرع علامات ملوّنة في الصفحة الحالية؛ `-snapshotShowMarks 1` يفتح «علاماتي».
+            if UserDefaults.standard.bool(forKey: "snapshotMarkPicker") { ayahPicker = true }
+            if UserDefaults.standard.bool(forKey: "snapshotSeedMarks"), store.bookmarks.isEmpty, let a = firstAyah(on: current) {
+                store.toggleMark(.hifz, ayah: a, page: current); store.toggleMark(.tadabbur, ayah: a, page: current)
+                store.toggleMark(.review, ayah: nil, page: current); store.toggleMark(.wird, ayah: nil, page: current)
+                store.toggleMark(.general, ayah: "2:255", page: 42); store.toggleMark(.wird, ayah: "36:1", page: 440)
+            }
+            if UserDefaults.standard.bool(forKey: "snapshotShowMarks") { showIndex = true }
             #endif
             #if (DEBUG || MUSHAF_PROBE) && canImport(UIKit)
             MushafFlipProbe.runIfRequested(start: current) { current = $0 }
@@ -270,10 +302,7 @@ public struct MushafReaderView: View {
             }
             .accessibilityLabel("ابحث في القرآن").accessibilityIdentifier("mushaf.search")
             Button { showIndex = true } label: { Image(systemName: "list.bullet").frame(width: 28, height: 26) }.accessibilityLabel("الفهرس والبحث")
-            Button {
-                let ayah = selected ?? firstAyah(on: current)
-                if let ayah { store.toggleBookmark(ayah: ayah, page: current) }
-            } label: { Image(systemName: isMarked ? "bookmark.fill" : "bookmark").frame(width: 28, height: 26) }.accessibilityLabel("علامة")
+            Button { sunnahAnimate { pagePicker.toggle() } } label: { Image(systemName: store.colors(ofPage: current).isEmpty ? "bookmark" : "bookmark.fill").frame(width: 28, height: 26) }.accessibilityLabel("علامة على الصفحة").accessibilityIdentifier("mushaf.pageMark")
         }
         .buttonStyle(.plain)
         .font(.system(size: 17, weight: .semibold))
@@ -374,10 +403,14 @@ public struct MushafReaderView: View {
                 }
                 Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }
                 Button { openRoute("/quran/offline-player") } label: { Label("القراء", systemImage: "headphones") }
-                Button { store.toggleBookmark(ayah: ayah, page: current) } label: { Label(isMarked ? "إزالة العلامة" : "علامة", systemImage: isMarked ? "bookmark.fill" : "bookmark") }
+                Button { sunnahAnimate { ayahPicker.toggle() } } label: { Label("علامة", systemImage: store.colors(ofAyah: ayah).isEmpty ? "bookmark" : "bookmark.fill") }.accessibilityIdentifier("mushaf.sheet.mark")
             }
             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafInk)
             .labelStyle(MushafSheetActionLabelStyle())   // أيقونة فوق الاسم: لا التفاف حرفيًّا ولا اقتطاع على الشاشات الضيقة
+            if ayahPicker {
+                MushafMarkPicker(active: store.colors(ofAyah: ayah)) { store.toggleMark($0, ayah: ayah, page: current) }
+                    .accessibilityIdentifier("mushaf.sheet.markPicker")
+            }
         }
         .padding(Sunnah.Spacing.s4)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
@@ -390,7 +423,8 @@ public struct MushafReaderView: View {
         .accessibilityIdentifier("mushaf.selection")
     }
 
-    private var isMarked: Bool { (selected ?? firstAyah(on: current)).map(store.isBookmarked) ?? false }
+    /// يتغيّر مع أي علامة فتُعاد رسم الصفحات المجاورة.
+    private var marksKey: String { store.bookmarks.map(\.id).joined(separator: ",") }
 
     private func firstAyah(on page: Int) -> String? {
         (try? repo.page(page))?.rows.compactMap { $0.w?.first?.v }.first
@@ -399,7 +433,7 @@ public struct MushafReaderView: View {
 
 /// الفهرس: السور، الأجزاء، العلامات، والبحث في نص القرآن.
 public struct MushafIndexView: View {
-    enum Tab: String, CaseIterable { case surahs = "السور", juz = "الأجزاء", marks = "العلامات", search = "بحث" }
+    enum Tab: String, CaseIterable { case surahs = "السور", juz = "الأجزاء", marks = "علاماتي", search = "بحث" }
     let index: MushafIndex
     let search: MushafSearch?
     @ObservedObject var store: MushafStore
@@ -409,6 +443,9 @@ public struct MushafIndexView: View {
 
     public init(index: MushafIndex, search: MushafSearch?, store: MushafStore, open: @escaping (Int) -> Void) {
         self.index = index; self.search = search; self.store = store; self.open = open
+        #if DEBUG
+        if UserDefaults.standard.bool(forKey: "snapshotShowMarks") { _tab = State(initialValue: .marks) }
+        #endif
     }
 
     public var body: some View {
@@ -431,14 +468,7 @@ public struct MushafIndexView: View {
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             case .marks:
-                if store.bookmarks.isEmpty { StateMessage(text: "لا علامات بعد") }
-                else {
-                    List(store.bookmarks) { b in
-                        Button { open(b.page) } label: { HStack { Text("آية \(b.ayah)"); Spacer(); Text("صفحة \(b.page)").foregroundStyle(Sunnah.Colors.textSecondary) } }
-                        .sunnahRowChrome()
-                    }
-                    .listStyle(.plain).scrollContentBackground(.hidden)
-                }
+                MushafMarksScreen(store: store, open: open)
             case .search:
                 TextField("ابحث في القرآن", text: $query).font(Sunnah.Typography.body)
                     .padding(Sunnah.Spacing.s3).background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card))
