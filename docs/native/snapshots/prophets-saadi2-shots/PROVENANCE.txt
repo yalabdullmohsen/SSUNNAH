@@ -1,0 +1,8 @@
+git_sha=084a626a4cfdcd53d536ac442428bff13cf51106
+branch=n3/sa2-shots
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/8a86dcf8a63fbce9/SunnahApp.app
+binary_sha256=1b9670685732c3502dcecb75367e0353bc353edfacd8edbf156f0373dbb23e8d
+built_at=2026-10-18 11:10:50
+source_newest=2026-10-18 08:27:03
+captured_at=2026-10-18 11:18:16
+covers=الأنبياء /prophets (ProphetPageView) — قسم «من تفسير السعدي» لكل ملف (25): adam idris nuh hud salih ibrahim lut ismail is-haq yaqub yusuf ayyub dhul-kifl shuayb musa harun ilyas al-yasa dawud sulayman yunus zakariyya yahya isa muhammad — وقسم «من السنة» للعشرة: adam ibrahim lut ismail yusuf ayyub musa dawud yunus isa. كل لقطة فُتحت وعنوانها النبي المسمّى باسم ملفها؛ بناء بعد إصلاح مولّد السعدي (ن2).
