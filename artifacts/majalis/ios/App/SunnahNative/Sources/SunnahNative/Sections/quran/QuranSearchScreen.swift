@@ -17,6 +17,10 @@ struct QuranSearchView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
         .task { load() }
+        #if DEBUG
+        // لقطات التدقيق فقط: `-snapshotSearchQuery <نص>` يملأ مربع البحث.
+        .onAppear { if let q = UserDefaults.standard.string(forKey: "snapshotSearchQuery"), !q.isEmpty { query = q } }
+        #endif
     }
 
     private func results(_ l: Loaded) -> some View {

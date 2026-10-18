@@ -1,0 +1,8 @@
+git_sha=dca03964736c36e426c26ee006d7259e5b9020a1
+branch=n3/shots-sirah
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/cca7ee66a886e147/SunnahApp.app
+binary_sha256=314559bac3a0352798fd02e7846201a4dcef069184840834fa263efe43a38998
+built_at=2026-10-17 23:30:02
+source_newest=2026-10-17 21:20:18
+captured_at=2026-10-17 23:32:20
+covers=السيرة /seerah /sahabah /sirah /nations /shamael /stories: SirahModels SirahScreens+Native SirahScreens ProphetsStories (Sections/sirah/*)

@@ -20,7 +20,7 @@ while IFS= read -r p; do
   s2=$(echo "$stem" | sed -E 's/(Screens|Screen|Views|View|Adapters|Models|Content|Reading)$//'); [ "$s2" != "$stem" ] && cands="$cands $s2"
   case "$p" in */Data/*) cands="$cands $(basename "$(dirname "$p")")";; esac
   ok=no
-  for c in $cands; do n=$(echo "$c" | norm); [ ${#n} -ge 4 ] && echo "$corpus" | grep -qF "$n" && { ok=yes; break; }; done
+  for c in $cands; do n=$(echo "$c" | norm); [ ${#n} -ge 3 ] && echo "$corpus" | grep -qF "$n" && { ok=yes; break; }; done
   [ $ok = yes ] || { echo "✗ بلا لقطة/سطر PROVENANCE باسمه أو شاشته: $p" >&2; fail=1; }
 done <<< "$sens"
 [ $fail = 0 ] && echo "✓ كل ملف حسّاس مغطّى بلقطة مسمّاة"

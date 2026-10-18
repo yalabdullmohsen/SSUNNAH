@@ -66,20 +66,22 @@ public struct QuranAyahText: View {
     let repo: MushafRepository
     let size: CGFloat
     let paper: Bool
+    let collapseAbove: Int
 
-    public init(range: QuranAyahRange, repo: MushafRepository, size: CGFloat = 24, paper: Bool = true) {
-        self.range = range; self.repo = repo; self.size = size; self.paper = paper
+    /// الآية تُعرض كاملة افتراضيًا (القصص والمشاركة لا تُقصّ)؛ مرّري `collapseAbove` لقصّ القوائم.
+    public init(range: QuranAyahRange, repo: MushafRepository, size: CGFloat = 24, paper: Bool = true, collapseAbove: Int = .max) {
+        self.range = range; self.repo = repo; self.size = size; self.paper = paper; self.collapseAbove = collapseAbove
     }
 
-    public init?(surah: Int, from: Int, to: Int? = nil, repo: MushafRepository, size: CGFloat = 24, paper: Bool = true) {
+    public init?(surah: Int, from: Int, to: Int? = nil, repo: MushafRepository, size: CGFloat = 24, paper: Bool = true, collapseAbove: Int = .max) {
         guard let r = QuranAyahRange(surah: surah, from: from, to: to ?? from) else { return nil }
-        self.init(range: r, repo: repo, size: size, paper: paper)
+        self.init(range: r, repo: repo, size: size, paper: paper, collapseAbove: collapseAbove)
     }
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ForEach(range.keys, id: \.self) { key in
-                MushafAyahText(ayah: key, repo: repo, size: size, paper: paper)
+                MushafAyahText(ayah: key, repo: repo, size: size, collapseAbove: collapseAbove, paper: paper)
             }
         }
         .environment(\.layoutDirection, .rightToLeft)

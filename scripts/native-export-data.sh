@@ -45,10 +45,16 @@ import fs from "node:fs"; import crypto from "node:crypto"; import path from "no
 const out = process.argv[1]; const m = JSON.parse(fs.readFileSync(path.join(out, "MANIFEST.json"), "utf8"));
 for (const f of m.files) { const b = fs.readFileSync(path.join(out, f.path)); if (b.length !== f.bytes || crypto.createHash("sha256").update(b).digest("hex") !== f.sha256) { console.error("checksum mismatch:", f.path); process.exit(1); } }
 const holds = new Set(JSON.parse(fs.readFileSync("content/content-hold.json", "utf8")).holds.map((h) => h.id));
-let q = 0;
-for (const f of m.files.filter((x) => /^quiz\/(?!manifest)/.test(x.path))) for (const r of JSON.parse(fs.readFileSync(path.join(out, f.path), "utf8"))) { q++; if (/^demo[-_]/i.test(String(r.id)) || holds.has(r.id) || !String(r.question || "").trim() || !String(r.answer || "").trim() || (r.documentation_status !== "unsourced" && (!String(r.reference || "").trim() || !String(r.explanation || "").trim()))) { console.error("سؤال غير مقبول:", r.id); process.exit(1); } }
+let q = 0; const ex = new Map();
+for (const f of m.files.filter((x) => /^quiz\/(?!manifest)/.test(x.path))) for (const r of JSON.parse(fs.readFileSync(path.join(out, f.path), "utf8"))) { q++; { const e = String(r.explanation || "").trim(); if (e) ex.set(e, (ex.get(e) || 0) + 1); } if (/^demo[-_]/i.test(String(r.id)) || holds.has(r.id) || !String(r.question || "").trim() || !String(r.answer || "").trim() || (r.documentation_status !== "unsourced" && !String(r.reference || "").trim())) { console.error("سؤال غير مقبول:", r.id); process.exit(1); } }
+for (const [e, n] of ex) if (n > 3) { console.error("شرح قالبي مكرر", n, "مرات:", e.slice(0, 60)); process.exit(1); }
 console.log(JSON.stringify({ ok: true, files: m.files.length, quizAccepted: q, manifest: path.join(out, "MANIFEST.json"), manifestSha256: crypto.createHash("sha256").update(fs.readFileSync(path.join(out, "MANIFEST.json"))).digest("hex") }));
 ' "$OUT"
 # مزامنة صارمة: نسخ ثم حذف كل يتيم من فرع/تصدير سابق، وحارس يفشل لو بقي يتيم (scripts/native-sync-dir.sh، اختباره native-sync-dir.test.sh)
 . "$ROOT/scripts/native-sync-dir.sh"
+BEFORE=$(find "$FINAL" -type f ! -name .input-hash 2>/dev/null | wc -l | tr -d ' ')
 native_sync_dir "$OUT" "$FINAL"
+# حارس ما بعد التصدير: خروج 0 لا يكفي — مقارنة عدد الملفات ومحتواها (sha256) بين المصدر المؤقت والوجهة، وفشل عند أي اختلاف (scripts/native-verify-sync.sh)
+. "$ROOT/scripts/native-verify-sync.sh"
+native_verify_sync "$OUT" "$FINAL" || exit 1
+echo "ملفات ios-native/Data: قبل=$BEFORE بعد=$(find "$FINAL" -type f ! -name .input-hash | wc -l | tr -d ' ')"

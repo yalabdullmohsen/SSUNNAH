@@ -22,6 +22,15 @@ public struct SunnahNavigationLink<Destination: View, Label: View>: View {
     }
 }
 
+/// رابط بقيمة Route (للروابط داخل النص مثل مرجع الآية) — يمرّ من هنا لتبقى NavigationLink الخام محصورة في هذا الملف.
+public struct SunnahValueLink<Value: Hashable, Label: View>: View {
+    let value: Value; let label: Label
+    public init(value: Value, @ViewBuilder label: () -> Label) { self.value = value; self.label = label() }
+    public var body: some View {
+        NavigationLink(value: value) { label.environment(\.sunnahRowChevron, false) }
+    }
+}
+
 public struct SunnahListRow: View {
     @Environment(\.sunnahRowChevron) private var envChevron
     let title: String; let subtitle: String?; let showsChevron: Bool?; let icon: String?

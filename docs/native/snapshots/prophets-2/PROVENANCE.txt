@@ -1,0 +1,8 @@
+git_sha=c849c7e7f348df49837ddb79bfc2d88e3876df5c
+branch=n3/sp2
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/0010d6b20cf31a24/SunnahApp.app
+binary_sha256=f5240e3c352e2436fa5261a8623a63fa0d5f3b8cbb7d3be9b3f4d0168beb4b90
+built_at=2026-10-18 00:42:37
+source_newest=2026-10-18 00:28:45
+captured_at=2026-10-18 00:50:14
+covers=قصص الأنبياء /prophets (شبكة الأنبياء الـ24 بتمرير 0/2/4/6/8/نهاية، فاتح وداكن): إبراهيم إدريس إلياس إسحاق عيسى إسماعيل — ibrahim idris ilyas is-haq isa ismail (كلها ظاهرة بأسمائها)
