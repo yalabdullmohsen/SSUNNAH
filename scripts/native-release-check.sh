@@ -64,6 +64,7 @@ miss=$(find artifacts/majalis/ios/App/App -name '*.swift' -not -name SunnahToken
 
 # 2هـ-1) لا ملفات يتيمة في ios-native/Data خارج MANIFEST.json
 do_=$(bash scripts/native-data-orphan-guard.sh 2>&1) || bad "$(echo "$do_" | tr '\n' ' ')"
+bash scripts/native-nav-title-guard.sh >/dev/null 2>&1 || bad "titles-unique: عنوان تنقّل مكرر أو sunnahNavTitle مفقود (scripts/native-nav-title-guard.sh)"
 # 2هـ) حجم حزمة البيانات ios-native/Data: إجمالي + أكبر 10 مجلدات؛ تحذير > 250 MB وفشل > 500 MB
 DSK=$(du -sk ios-native/Data | cut -f1); DMB=$((DSK/1024))
 echo "حجم ios-native/Data: ${DMB} MB — أكبر 10 مجلدات:"
