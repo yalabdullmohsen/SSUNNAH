@@ -18,7 +18,7 @@
 | 4 | Live Activity | **محسوم:** `ios-native/SunnahApp/Platform/LiveActivityAdapter.swift:1-23` يفوّض إلى `PrayerLiveActivityController` (محلي، بلا pushType)، ولا `NSSupportsLiveActivities` في `Info.plist` → لا تُدّعى في الوصف. | لا أثر على أنواع البيانات. |
 | 5 | نطاق `www.ssunnah.com` | **محسوم بقرار المالك:** النطاقان `www.ssunnah.com` و`majlisilm.com` موقوفان وتُركت المواقع؛ لا يُكتب أنهما حيّان. | رابط الخصوصية والدعم يُحدَّد بعد جدول ن4. |
 | 6 | Privacy Report | AUDIT بند 24 «مُنجَز بسكربت»، بينما `docs/native/store/OWNER_CHECKLIST.md:64` يقول إن Privacy Report لم يُتحقق منه. | يُعامل بوصفه **غير مُتحقَّق** حتى يُولَّد التقرير من أرشيف حقيقي. |
-| 7 | نطاقات الصوت | إفصاح EveryAyah/MP3Quran مشروط بنتيجة `AUDIO_HEADERS_CHECK.md` (APPSTORE_METADATA 77–88)؛ لم يُشغَّل أي بند منه. | الإجابات أدناه (لا Device ID ولا Diagnostics) تفترض أن النتيجة لا تغيّر شيئًا. إن ظهرت متتبِّعات/رؤوس تعريف فزامِن CHECK §1 وMF وAP. |
+| 7 | نطاقات الصوت | استخراج ن4 الساكن (`NETWORK_HOSTS.md`، #3489): الاتصالات الفعلية Supabase و`server*.mp3quran.net` فقط؛ لا كود لـEveryAyah/api.quran.com (نص `AccountTexts` يذكرهما بلا كود — يُصحَّح قبل الإرسال). الإفصاح الأصلي: EveryAyah/MP3Quran مشروط بنتيجة `AUDIO_HEADERS_CHECK.md` (APPSTORE_METADATA 77–88)؛ لم يُشغَّل أي بند منه. | الإجابات أدناه (لا Device ID ولا Diagnostics) تفترض أن النتيجة لا تغيّر شيئًا. إن ظهرت متتبِّعات/رؤوس تعريف فزامِن CHECK §1 وMF وAP. |
 
 ## 1. Data Collection — «هل تجمع أنت أو شركاؤك بيانات من هذا التطبيق؟»
 
@@ -82,6 +82,11 @@
 | UserDefaults | CA92.1 و1C8F.1 (المجموعة المشتركة للودجت) | MF؛ `PrayerWidgetResources/PrivacyInfo.xcprivacy` (1C8F.1 فقط) |
 | File timestamp | C617.1 | MF؛ CHECK §2 |
 | Background modes | audio وfetch + BGTask `com.yousef.majlisilm.prayer-refresh` | `Info.plist:22-23`؛ CHECK §4 |
+
+## 6-ب. مطابقة PrivacyInfo.xcprivacy الفعلي (native-app، فُحصت بـplistlib)
+- `SunnahApp`: Tracking=false، 5 أنواع (Email/UserID/Name/OtherUserContent/ProductInteraction) كلها Linked=true وTracking=false وغرضها AppFunctionality؛ APIs: UserDefaults (CA92.1,1C8F.1) وFileTimestamp (C617.1) → **يطابق الجدول 2 تمامًا**.
+- `SunnahWatchResources` و`PrayerWidgetResources`: Tracking=false، بلا بيانات مجمّعة، UserDefaults 1C8F.1 فقط → لا أثر على إجابات ASC.
+- الخانة الوحيدة المفتوحة: «تُطابَق بعد Privacy Report من ن4/يوسف».
 
 ## 7. ما لم يُتحقق منه
 - أي manifest يُحزَّم فعليًا (تعارض 1) وإمكانية وصول التسميع/الميكروفون في الثنائي الأصلي (تعارض 2).

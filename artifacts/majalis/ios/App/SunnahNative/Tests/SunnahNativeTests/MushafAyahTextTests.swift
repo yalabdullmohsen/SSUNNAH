@@ -46,7 +46,7 @@ final class MushafAyahTextTests: XCTestCase {
         var bad: [String] = []
         for key in idx.ayahPage.keys.sorted(by: { $0.localizedStandardCompare($1) == .orderedAscending }) {
             let parts = key.split(separator: ":").compactMap { Int($0) }
-            guard parts.count == 2, let text = QuranAyahText.text(surah: parts[0], ayah: parts[1], directory: qdir) else { missing += 1; continue }
+            guard parts.count == 2, let text = QuranAyahPlainText.text(surah: parts[0], ayah: parts[1], directory: qdir) else { missing += 1; continue }
             guard let w = MushafAyahWords.load(ayah: key, repo: repo) else { missing += 1; continue }
             total += 1
             let wc = w.filter({ !$0.isEnd }).count
@@ -68,7 +68,7 @@ final class MushafAyahTextTests: XCTestCase {
             let view = VStack(spacing: 12) {
                 ForEach(keys, id: \.self) { k in
                     let p = k.split(separator: ":").compactMap { Int($0) }
-                    let t = QuranAyahText.text(surah: p[0], ayah: p[1], directory: qdir) ?? ""
+                    let t = QuranAyahPlainText.text(surah: p[0], ayah: p[1], directory: qdir) ?? ""
                     let n = MushafAyahWords.load(ayah: k, repo: repo)?.filter { !$0.isEnd }.count ?? 0
                     MushafAyahText(ayah: k, repo: repo, size: 24, highlightWords: MushafAyahWords.matchingWords(query: "يوسف", ayahText: t, wordCount: n) ?? [], plainText: t)
                 }

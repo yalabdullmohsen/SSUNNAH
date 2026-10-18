@@ -111,6 +111,7 @@ acquire() {
   done
 }
 
+[ -n "${BUILD_SLOT_HELD:-}" ] || bash "$(dirname "$0")/native-sim-hygiene.sh" || exit $? # نظافة المحاكيات/العمليات + رفض عند ≥80٪
 check_load
 acquire "$@"
 reap_orphans

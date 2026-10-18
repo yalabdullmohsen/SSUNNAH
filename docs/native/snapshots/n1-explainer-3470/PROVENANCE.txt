@@ -1,0 +1,4 @@
+التاريخ: 2026-10-18 — الجهاز: n1-sim (iPhone، iOS 26) — البناء: ~/ssunnah-wt/ssunnah-n1-combo (8f6df098a)، large فاتح/داكن، لقطات مفتوحة بحجمها الكامل.
+covers=creation-of-man (/explainers: مراحل خلق الإنسان، الشرائح 1 و4 و8)
+covers=SirahScreens+Native (/prophets شبكة الأنبياء؛ /explainers مسجّل في الملف نفسه)
+غير مغطّى: شرائح «معجزات النبي ﷺ» — لقطاتها السابقة تعرض خلق الإنسان بالخطأ (ملاحظة ن2)، تُعاد بعد دمج #3490.

@@ -38,3 +38,20 @@
 - `Sections/account/AccountWidgetCenterScreen.swift`
 - `Tests/SunnahNativeTests/WidgetCenterTests.swift`
 - `docs/native/WIDGET_CENTER_SPEC.md`
+
+## قائمة تسجيل pbxproj (لـن4 — قبل البناء النهائي)
+التسجيل عبر `generate-xcodeproj.rb` فقط؛ لا تعديل يدوي. مسارات نسبة إلى `artifacts/majalis/ios/App/`.
+
+**الدفعة الحالية (هذا الـPR): لا تسجيل مطلوب.** الملفان داخل حزمة SPM `SunnahNative` (تلتقطهما الحزمة تلقائيًا، ولا مدخل لهما في pbxproj):
+- `SunnahNative/Sources/SunnahNative/Sections/account/AccountWidgetCenterScreen.swift` (معدَّل)
+- `SunnahNative/Tests/SunnahNativeTests/WidgetCenterTests.swift` (اختبارات الحزمة)
+
+**الدفعة الثالثة (لم تُكتب بعد؛ تُسجَّل فور وصولها). المقترح:**
+
+| الملف الجديد | الهدف (target) | المجموعة (group) | الغرض |
+|---|---|---|---|
+| `Shared/SunnahWidgetPreferences.swift` | التطبيق + الودجت + الساعة | `Shared` | مفاتيح App Group وقراءة/كتابة تفضيلات الودجة (نمط الصلاة، الحجم) |
+| `PrayerWidget/SunnahWidgetCenterIntents.swift` | الودجت فقط | `PrayerWidget` | App Intent للتحكم في التفضيلات من الشاشة |
+| `PrayerWidget/SunnahWidgetCenterPreviews.swift` | الودجت فقط | `PrayerWidget` | معاينة حية لكل ودجة بـ`SunnahWidgetPreviewFixtures.swift` |
+
+الساعة: لا ودجة ساعة جديدة؛ تستهلك `SunnahWidgetPreferences.swift` وحده إن لزم. الاختبارات الجديدة تبقى داخل حزمة SunnahNative (بلا pbxproj). إن تغيّر المقترح عند الكتابة أحدّث هذا الجدول في الـPR نفسه.

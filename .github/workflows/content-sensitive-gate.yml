@@ -39,7 +39,9 @@ jobs:
           HIT=$(git diff --name-only "origin/${BASE_REF}...${SHA}" | bash scripts/content-sensitive-check.sh | head -5)
           SENS=no; has content-sensitive && SENS=yes; [ -n "$HIT" ] && SENS=yes
           if [ $SENS = no ]; then STATE=success; DESC="غير حسّاس"
-          elif has visually-verified; then STATE=success; DESC="حسّاس وتم التحقق البصري ✓"
+          elif has visually-verified; then
+            if COV=$(bash scripts/native-sensitive-coverage.sh "origin/${BASE_REF}" "$SHA" 2>&1); then STATE=success; DESC="حسّاس وتم التحقق البصري ✓"
+            else STATE=pending; DESC="الوسم بلا لقطة مسمّاة لكل ملف حسّاس: $(echo "$COV" | grep '✗' | head -2 | sed 's/.*: //' | tr '\n' ' ' | cut -c1-90)"; echo "$COV"; fi
           else STATE=pending; DESC="بانتظار التحقق البصري — أضف وسم visually-verified بعد فحص اللقطة"; fi
           echo "$STATE — $DESC"; [ -n "$HIT" ] && echo "$HIT"
           gh api "repos/$REPO/statuses/$SHA" -f state=$STATE -f context=content-sensitive -f description="$DESC"

@@ -36,7 +36,7 @@ export function LandmarkDiscoverCard({ landmark, variant = "grid" }: Props) {
           <MapPin size={12} strokeWidth={2} aria-hidden />
           {landmark.city}، {landmark.country}
         </Caption>
-        <span className="ilm-badge ilm-badge--era">{landmark.era}</span>
+        {landmark.era ? <span className="ilm-badge ilm-badge--era">{landmark.era}</span> : null}
         <SupportingText className="ilm-card__desc">{landmark.description}</SupportingText>
         {landmark.builtYear ? (
           <Caption className="ilm-card__meta">تأسيس / بناء: {landmark.builtYear}</Caption>

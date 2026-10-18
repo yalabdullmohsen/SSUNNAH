@@ -80,6 +80,7 @@ public enum SirahSection {
         static let fikrWaqia = SirahData.file("fikr-waqia")
         static let landmarks = SirahData.file("islamic-landmarks")
         static let nations = SirahData.file("nations")
+        static let explainers = SirahData.file("explainers")
         static let occasions = SirahData.file("occasions-verified")
         static let prophets = SirahData.file("prophets-knowledge")
         static let lineage = SirahData.file("prophets-lineage")
@@ -103,7 +104,10 @@ public enum SirahSection {
         registry.registerView(id: "nations") { SirahSection.list(File.nations, SirahAdapters.nations, base: "/nations") }
         registry.registerView(id: "occasions") { SirahSection.inline(File.occasions, SirahAdapters.occasions, reader: .detail) }
         registry.registerView(id: "occasions-lessons") { SectionsListTemplate(links: SirahLinks.occasionsLessons).navigationTitle(SirahSection.title) }
-        registry.registerView(id: "prophets") { SirahSection.fullArticle(File.prophets, SirahAdapters.prophets, id: "prophets", title: "قصص الأنبياء") }
+        registry.registerView(id: "prophets") {
+            SirahLoadedView(source: File.prophets, adapt: { (rows: [SirahKnowledgeItem]) in ProphetStory.chronological(rows.compactMap(ProphetStory.init)) }) { ProphetsGridView(prophets: $0) }
+        }
+        registry.registerView(id: "explainers") { ExplainerScreen() }
         registry.registerView(id: "prophets.tree") { SirahSection.inline(File.lineage, SirahAdapters.lineage, reader: .detail) }
         registry.registerView(id: "sahabah") { SirahSection.inline(File.sahabah, SirahAdapters.sahabah, reader: .detail) }
         registry.registerView(id: "seerah") { SirahSection.inline(File.seerah, SirahAdapters.seerah) }
