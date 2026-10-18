@@ -1,0 +1,11 @@
+git_sha=e64144e2891378af6ba965edd3092fb5fa14456b
+branch=n3/post3511-shots
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/146b6db6be630693/SunnahApp.app
+binary_sha256=04477520e87fe66432d65cb8ee0e3578a503bbdd1b0114760c629462a5687ed7
+built_at=2026-10-18 20:03:05
+source_newest=2026-10-18 19:45:24
+captured_at=2026-10-18 20:05:25
+covers=shamael-end-light.png,shamael-end-dark.png: شاشة /shamael — ﷺ مكبّرة داخل SunnahArabicText وذيل SunnahContentFooter («مصادر التطبيق» + أيقونتا الإبلاغ والمعلومات) فاتحًا وداكنًا (iPhone 17 Pro، نهاية التمرير)
+covers=daif-light.png,daif-end-light.png: WeakHadithScreens — حالة empty-state «لا مواد معتمدة بعد» لمسار /hadith/daif فقط (البوابة مغلقة لغياب مادة معتمدة)
+covers-files: SunnahArabicText.swift, SunnahContentFooter.swift, WeakHadithScreens.swift (قائمة فارغة فقط)
+gaps: لا لقطة لواجهة تفصيل حديث ضعيف بمحتوى (لا مادة معتمدة)؛ لا لقطة لذيل SourceRef على شاشات الأنبياء (لقطات الأنبياء المحاولة لم تُثبت النبي المسمّى فحُذفت)؛ لا iPad/XXXL في هذه الدفعة؛ الودجتات بلا لقطات (prefs/intent/DEBUG previews فقط)
