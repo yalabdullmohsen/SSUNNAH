@@ -42,7 +42,7 @@ struct TafsirAyahView: View {
             Section {
                 if let row {
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        Text("\(row.ayah) ﴿\(row.number)﴾").font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
+                        Text("\(row.ayah) ﴿\(row.number.arabicDigits)﴾").font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
                         if let t = row.tafsir { Text(t).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary) }
                         else { Text(QuranSection.pendingTitle).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary) }
                     }

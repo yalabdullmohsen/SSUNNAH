@@ -97,11 +97,11 @@ struct MushafMarksScreen: View {
                             HStack(spacing: Sunnah.Spacing.s3) {
                                 Circle().fill(b.color.color).frame(width: 12, height: 12)
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text(b.ayah.map { "آية \($0)" } ?? "الصفحة كاملة").foregroundStyle(Sunnah.Colors.textPrimary)
+                                    Text(b.ayah.map { "آية \($0.arabicDigits)" } ?? "الصفحة كاملة").foregroundStyle(Sunnah.Colors.textPrimary)
                                     Text(b.color.name).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                                 }
                                 Spacer()
-                                Text("صفحة \(b.page)").foregroundStyle(Sunnah.Colors.textSecondary)
+                                Text("صفحة \(b.page.arabicDigits)").foregroundStyle(Sunnah.Colors.textSecondary)
                             }
                         }
                         .sunnahRowChrome()

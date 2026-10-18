@@ -17,7 +17,7 @@ struct ExplainerTemplate: View {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                     ProgressView(value: Double(index + 1), total: Double(data.stages.count))
                         .tint(Sunnah.Colors.primary)
-                        .accessibilityLabel("المرحلة \(index + 1) من \(data.stages.count)")
+                        .accessibilityLabel("المرحلة \((index + 1).arabicDigits) من \(data.stages.count.arabicDigits)")
                     stageBody
                         .id(stage.id)
                         .transition(reduceMotion ? .opacity : .asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity), removal: .opacity))
@@ -39,7 +39,7 @@ struct ExplainerTemplate: View {
     private var stageBody: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
             ExplainerArt(stageID: stage.id).frame(height: 180)
-            Text("المرحلة \(stage.order): \(stage.title)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+            Text("المرحلة \(stage.order.arabicDigits): \(stage.title)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
             SunnahArabicText(stage.body, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
             ForEach(Array((stage.views ?? []).enumerated()), id: \.offset) { _, v in
                 SunnahCard {

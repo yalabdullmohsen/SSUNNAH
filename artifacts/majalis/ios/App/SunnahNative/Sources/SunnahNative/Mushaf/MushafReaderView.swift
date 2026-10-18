@@ -103,7 +103,7 @@ public struct MushafPageView: View {
                                     LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) }
                                         .exclusively(before: TapGesture().onEnded { selectedAyah = selectedAyah == w.v ? nil : w.v }),
                                     including: interactive ? .all : .none)
-                                .accessibilityLabel(w.isAyahEnd ? "آية \(w.v)" : "")
+                                .accessibilityLabel(w.isAyahEnd ? "آية \(w.v.arabicDigits)" : "")
                         }
                     }
                     .background {
@@ -254,6 +254,7 @@ public struct MushafReaderView: View {
             if UserDefaults.standard.bool(forKey: "snapshotShowChrome") { chromeHide.pin(true) }
             // `-snapshotMarkPicker 1` يفتح اختيار اللون في بطاقة الآية؛ `-snapshotSeedMarks 1` يزرع علامات ملوّنة في الصفحة الحالية؛ `-snapshotShowMarks 1` يفتح «علاماتي».
             if UserDefaults.standard.bool(forKey: "snapshotMarkPicker") { Task { try? await Task.sleep(nanoseconds: 500_000_000); ayahPicker = true } }
+            if UserDefaults.standard.bool(forKey: "snapshotPageMarkPicker") { chromeHide.pin(true); Task { try? await Task.sleep(nanoseconds: 500_000_000); pagePicker = true } }
             if UserDefaults.standard.bool(forKey: "snapshotSeedMarks"), store.bookmarks.isEmpty, let a = firstAyah(on: current) {
                 store.toggleMark(.hifz, ayah: a, page: current); store.toggleMark(.tadabbur, ayah: a, page: current)
                 store.toggleMark(.review, ayah: nil, page: current); store.toggleMark(.wird, ayah: nil, page: current)
@@ -314,7 +315,7 @@ public struct MushafReaderView: View {
     private var pageCartouche: some View {
         HStack {
             PageCartouche(text: Self.arabicDigits(current))
-                .accessibilityLabel("صفحة \(current)")
+                .accessibilityLabel("صفحة \(current.arabicDigits)")
                 .accessibilityIdentifier("mushaf.pageNumber")
             Spacer()
             Text("الحزب \(Self.arabicDigits(hizb(on: current)))")
@@ -325,7 +326,7 @@ public struct MushafReaderView: View {
     }
 
     static func arabicDigits(_ n: Int) -> String {
-        let d = Array("٠١٢٣٤٥٦٧٨٩"); return String(String(n).compactMap { $0.wholeNumberValue.map { d[$0] } })
+        ArabicNumerals.string(n)
     }
 
     /// السورة الجارية في أعلى الصفحة (آية أول سطر)، لا آخر سورة تبدأ فيها.
@@ -386,7 +387,7 @@ public struct MushafReaderView: View {
     private func selectionSheet(_ ayah: String) -> some View {
         VStack(spacing: Sunnah.Spacing.s3) {
             HStack(spacing: Sunnah.Spacing.s3) {
-                Text(reference(ayah)).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text(reference(ayah).arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 Spacer()
                 SunnahButton("إغلاق", style: .outline) { selected = nil }
             }
@@ -456,14 +457,14 @@ public struct MushafIndexView: View {
             case .surahs:
                 List(index.surahs) { s in
                     Button { open(s.firstPage) } label: {
-                        HStack { Text("\(s.id). \(s.name)"); Spacer(); Text("صفحة \(s.firstPage)").foregroundStyle(Sunnah.Colors.textSecondary) }
+                        HStack { Text("\(s.id.arabicDigits). \(s.name)"); Spacer(); Text("صفحة \(s.firstPage.arabicDigits)").foregroundStyle(Sunnah.Colors.textSecondary) }
                     }
                     .sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             case .juz:
                 List(Array(index.juzStart.enumerated()), id: \.offset) { i, p in
-                    Button { open(p) } label: { HStack { Text("الجزء \(i + 1)"); Spacer(); Text("صفحة \(p)").foregroundStyle(Sunnah.Colors.textSecondary) } }
+                    Button { open(p) } label: { HStack { Text("الجزء \((i + 1).arabicDigits)"); Spacer(); Text("صفحة \(p.arabicDigits)").foregroundStyle(Sunnah.Colors.textSecondary) } }
                     .sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
@@ -477,7 +478,7 @@ public struct MushafIndexView: View {
                 let hits = search?.search(query) ?? []
                 List(hits) { h in
                     Button { open(h.page) } label: {
-                        VStack(alignment: .leading) { Text(h.text).lineLimit(2); Text("آية \(h.ayah) · صفحة \(h.page)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
+                        VStack(alignment: .leading) { Text(h.text).lineLimit(2); Text("آية \(h.ayah.arabicDigits) · صفحة \(h.page.arabicDigits)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
                     }
                     .sunnahRowChrome()
                 }
