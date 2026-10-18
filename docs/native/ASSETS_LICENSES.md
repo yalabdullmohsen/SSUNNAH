@@ -21,7 +21,7 @@
 7. نصٌّ بديل (`accessibilityLabel`) لكلّ رسمٍ ذي معنى؛ الزخرفيُّ يُخفى عن VoiceOver.
 
 ## 3) السجلّ (يقرؤه `scripts/native-assets-license-guard.sh`)
-الصيغة: `| \`مسار-أو-مجلد/أو-نمط*\` | المصدر | الترخيص | التاريخ | المسؤول |`. الترخيص المقبول: «رسم أصلي»، OFL-1.1، CC0، Apache-2.0، MIT، CC-BY-4.0.
+الصيغة: `| \`مسار-أو-مجلد/أو-نمط*\` | المصدر | الترخيص | التاريخ | المسؤول |`. الترخيص المقبول: «رسم أصلي»، OFL-1.1، CC0، Apache-2.0، MIT، CC-BY-4.0، QPC-QF (خطوط QPC عبر QF API بحساب مسجَّل؛ يخص ما يُولَّد من خط أسماء السور فقط).
 `OWNER_DECISION` = الترخيص بانتظار تأكيد المالك: يمرّ بتحذير في الفحص العادي ويفشل في RC النهائي (`RC_FINAL=1`).
 أي أصل مُتتبَّع تحت `ios-native/` أو `SunnahNative/` (عدا Tests) أو `PrayerWidget/` بلا سطر هنا يفشل CI؛ ومصدر إنترنت بلا ترخيص صريح مرفوض.
 
@@ -36,7 +36,6 @@
 | `ios-native/SunnahWatchResources/Assets.xcassets/AppIcon.appiconset/` | أيقونة الساعة (من أيقونة التطبيق) | رسم أصلي | 2026-10-16 | ن1 |
 | `ios-native/SunnahApp/Resources/Assets.xcassets/IconPreview-*.imageset/` | معاينات اختيار الأيقونة (من الأيقونات أعلاه) | رسم أصلي | 2026-10-14 | ن1 |
 | `ios-native/SunnahApp/Resources/Assets.xcassets/LaunchLogo.imageset/` | شعار شاشة الإطلاق (يتبع الأيقونة) | رسم أصلي | 2026-10-14 | ن1 (#3154) |
-| `artifacts/majalis/ios/App/SunnahNative/Art/surah-banner.svg` | لافتة اسم السورة مولَّدة بخط أسماء السور من QPC (#3179) | OWNER_DECISION | 2026-10-14 | ن3 |
-| `artifacts/majalis/ios/App/SunnahNative/Art/page-cartouche.svg` | خرطوشة رقم الصفحة «من المرجع» (#3181) | OWNER_DECISION | 2026-10-14 | ن3 |
+| `artifacts/majalis/ios/App/SunnahNative/Art/surah-banner.svg` | لافتة اسم السورة مولَّدة بخط أسماء السور من QPC (#3179)؛ قرار المنسّق: ترخيص QPC المسجَّل | QPC-QF | 2026-10-14 | ن3 |
 
 ملاحظة: رسوم «خلق الإنسان» (`Templates/ExplainerArt.swift`) أشكال SwiftUI مبرمجة أصلية من `illustrationBrief` (رسم أصلي، 2026-10-17، ن1)؛ ليست ملف صورة فلا يتتبعها الحارس، وموثّقة هنا.

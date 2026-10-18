@@ -11,7 +11,7 @@ import os, re, subprocess, sys, fnmatch
 reg = sys.argv[1]
 EXT = r'\.(png|jpe?g|svg|pdf|heic|webp|gif|caf|mp3|m4a|wav|aiff|ttf|otf|mp4|mov|lottie)$'
 ROOTS = ('ios-native/', 'artifacts/majalis/ios/App/SunnahNative/', 'artifacts/majalis/ios/App/PrayerWidget/')
-OK = {'رسم أصلي', 'OFL-1.1', 'CC0', 'Apache-2.0', 'MIT', 'CC-BY-4.0'}
+OK = {'رسم أصلي', 'OFL-1.1', 'CC0', 'Apache-2.0', 'MIT', 'CC-BY-4.0', 'QPC-QF'}  # QPC-QF: خطوط QPC عبر QF API، قرار المنسّق (ISLAMIC_SOURCES_EVALUATION §QF)
 files = [f for f in subprocess.check_output(['git', 'ls-files'], text=True).splitlines()
          if f.startswith(ROOTS) and re.search(EXT, f, re.I) and '/Tests/' not in f and not f.startswith('ios-native/Data/')]
 txt = open(reg, encoding='utf-8').read()
