@@ -104,7 +104,7 @@ public struct SunnahHeroCard<Content: View>: View {
         content
             .padding(20)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background { ZStack { Sunnah.Colors.hero; SunnahOctagonOrnament() }.clipShape(shape) }
+            .background { Sunnah.Colors.hero.overlay { SunnahOctagonOrnament() }.clipShape(shape) }
             .sunnahElevation()
             .padding(.horizontal, Sunnah.Spacing.pageX)
     }
