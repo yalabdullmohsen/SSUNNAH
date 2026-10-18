@@ -56,17 +56,18 @@ The app's content is prepared with AI assistance and may contain errors.
 
 > كل سطر يُنقل فقط بعد دمج ميزته و`verify-merged`. الحالة اليوم: ✅ مدموج ومتحقَّق · ⏳ لم يُدمج بعد.
 > - ✅ المصحف: خط أوضح وأثخن، حقل بحث، الأدوات تظهر بالنقر (#3549–#3552).
-> - ⏳ التصميم الجديد («النموذج ٢») — ن1.
-> - ⏳ العلامات الملوّنة الخمس — لا PR مدموج بعد.
-> - ⏳ قصص الأنبياء الكاملة — اليوم أقسام «من السنة» و«القصة» لخمسة أنبياء فقط (#3546 وما بعده)؛ لا تُكتب «كاملة» قبل اكتمال السرد.
+> - ✅ العلامات الملوّنة الخمس (#3555).
+> - ✅ قصص خمسة أنبياء بأقسام «من السنة» و«القصة» (#3552) — لا تُكتب «كاملة» لكل الأنبياء قبل اكتمال السرد.
+> - ⏳ التصميم الجديد («النموذج ٢»): الدفعة ١ مدموجة (الرئيسية/الصلاة/القائمة/الورد، #3554)؛ الأقسام والأنبياء وقصة النبي والأذكار والإعدادات ⏳ حتى دفعة ن1 الثانية — لا يُكتب «تصميم جديد بالكامل» قبلها.
+> - ⏳ قصص الأنبياء لكل الأنبياء.
 
 ## العربية (ar)
 
 ```
-• تصميم جديد بالكامل: بطاقات أوضح، وشريط تنقل عائم، وأرقام عربية، ودعم الوضعين الفاتح والداكن. [⏳]
+• تصميم جديد بالكامل: بطاقات أوضح، وشريط تنقل عائم، وأرقام عربية، ودعم الوضعين الفاتح والداكن. [⏳ الدفعة ١ فقط]
 • المصحف: خط أوضح، وحقل بحث ظاهر، والأدوات تظهر عند النقر على الصفحة. [✅]
-• خمس علامات ملوّنة لتمييز ما تقرأ وحفظه. [⏳]
-• قصص الأنبياء كاملة، لكل قصة مصدرها وقسم «من السنة». [⏳]
+• خمس علامات ملوّنة لتمييز ما تقرأ وحفظه. [✅]
+• قصص خمسة من الأنبياء بمصادرها وقسم «من السنة». [✅ — «كاملة» ⏳]
 
 محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي، وقد يقع فيه خطأ.
 ```
@@ -74,10 +75,10 @@ The app's content is prepared with AI assistance and may contain errors.
 ## English (en-US)
 
 ```
-• A fully new design: clearer cards, a floating tab bar, Arabic-Indic numerals, and Light and Dark appearance. [pending]
+• A fully new design: clearer cards, a floating tab bar, Arabic-Indic numerals, and Light and Dark appearance. [pending: batch 1 only]
 • Mushaf: a clearer font, a visible search field, and tools that appear when you tap the page. [done]
-• Five colored markers to highlight and save what you read. [pending]
-• Complete stories of the Prophets, each with its sources and a "From the Sunnah" section. [pending]
+• Five colored markers to highlight and save what you read. [done]
+• Stories of five Prophets, each with its sources and a "From the Sunnah" section. [done — "complete" pending]
 
 The app's content is prepared with AI assistance and may contain errors.
 ```

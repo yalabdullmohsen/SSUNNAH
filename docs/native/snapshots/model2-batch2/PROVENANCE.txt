@@ -1,0 +1,9 @@
+git_sha=b4ae058335b926c03543c4516ae4cf461eff8bdf
+branch=n1/model2-screens
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1-combo/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=5cf0982393b734328906b5160292ea1add4220f1d2691e17f3777dd5dd4da92e
+built_at=2026-10-19 00:59:47
+source_newest=2026-10-19 00:59:26
+captured_at=2026-10-19 01:02:37
+covers=DailyWirdScreen.swift (wird-khatma.png), AdhkarScreen.swift (adhkar.png), ProphetsStories.swift (prophets.png, story-top.png, story-sunnah.png, story-lessons.png), SunnahSectionsHub.swift (sections.png), SettingsScreens.swift (settings.png)
+covers=SirahScreens+Native.swift (story-route-yusuf.png: /prophets/yusuf، بُني 01:09:50 من HEAD قبل تعديل scripts/native-store-shots.sh فقط)

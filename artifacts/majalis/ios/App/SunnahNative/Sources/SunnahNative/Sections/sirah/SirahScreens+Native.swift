@@ -132,6 +132,12 @@ public enum SirahSection {
         case "islamic-landmarks":
             if id == "map" { return TemplateRegistry.shared.view(for: "islamic-landmarks.map") }  // شاشة الخريطة مسجّلة بمعرّفها لا كتفصيل؛ بدونها يلتقطها المولَّد كتفصيل id=map
             return SirahSection.detail(File.landmarks, SirahAdapters.landmarks, id: id)
+        case "prophets":
+            // قصة نبي بصفحتها الكاملة: /prophets/yusuf (أو prophet-yusuf)؛ «tree» شاشة مستقلة.
+            guard id != "tree" else { return nil }
+            return AnyView(SirahLoadedView(source: File.prophets, adapt: { (rows: [SirahKnowledgeItem]) in ProphetStory.chronological(rows.compactMap(ProphetStory.init)) }) { (list: [ProphetStory]) in
+                ProphetPageView(prophets: list, start: list.firstIndex { $0.id == id || $0.id == "prophet-" + id } ?? 0)
+            })
         case "nations": return SirahSection.article(File.nations, SirahAdapters.nations, id: id)
         case "tarikh-islami": return SirahSection.article(File.history, SirahAdapters.history, id: id)
         case "teachers":

@@ -108,7 +108,7 @@ public struct MushafAyahText: View {
         .environment(\.layoutDirection, .rightToLeft)
         .task(id: ayah) { await load() }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(Text(plainText ?? "آية \(ayah)"))
+        .accessibilityLabel(Text(plainText ?? "آية \(ayah.arabicDigits)"))
         .accessibilityIdentifier("mushaf.ayahText")
     }
 
