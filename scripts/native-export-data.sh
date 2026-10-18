@@ -36,6 +36,13 @@ FINAL="$OUT"; OUT="$(mktemp -d "${TMPDIR:-/tmp}/native-data.XXXXXX")"; trap 'rm 
 node --import tsx scripts/native/export-ios-data.mjs --out "$OUT" ${ADH:+$( [ -f "$ADH" ] && echo "--adhkar-json $ADH" )}
 # الضعيف/الموضوع: ملفان منفصلان عن verified-sahih (قرار يوسف 2026-10-14، DATA_CONTRACT §5.2)
 (cd "$ROOT" && node scripts/native-export-weak-hadith.mjs "$OUT/hadith")
+# تسجيل ملفي الضعيف/الموضوع في MANIFEST (كُتبا بعده) كي لا يصيرا يتيمين عند native-data-orphan-guard
+node --input-type=module -e '
+import fs from "node:fs"; import crypto from "node:crypto"; import path from "node:path";
+const out = process.argv[1]; const mp = path.join(out, "MANIFEST.json"); const m = JSON.parse(fs.readFileSync(mp, "utf8"));
+for (const p of ["hadith/weak-daif.json", "hadith/weak-mawdu.json"]) { if (!fs.existsSync(path.join(out, p))) continue; const b = fs.readFileSync(path.join(out, p)); m.files = m.files.filter((f) => f.path !== p); m.files.push({ path: p, bytes: b.length, sha256: crypto.createHash("sha256").update(b).digest("hex") }); }
+fs.writeFileSync(mp, JSON.stringify(m, null, 2) + "\n");
+' "$OUT"
 NEW=$(find "$OUT" -type f | wc -l | tr -d ' '); OLD=0
 # المقارنة بما صدّره التصدير السابق فعلًا (MANIFEST) لا بكل ما في المجلد، فلا تحجب ملفاتُ يتيمة أو فرقُ فرع التصدير؛ النقص >5٪ يُرفض
 [ -f "$FINAL/MANIFEST.json" ] && OLD=$(node -e 'console.log(JSON.parse(require("fs").readFileSync(process.argv[1],"utf8")).files.length)' "$FINAL/MANIFEST.json")

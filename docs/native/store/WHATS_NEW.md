@@ -18,6 +18,7 @@
 • حفظ جلسة الدخول بأمان في سلسلة مفاتيح الجهاز (Keychain).
 • شرح تفاعلي يعرّفك بالتطبيق.
 • قصص الأنبياء.
+• شروح مصوّرة: مراحل خلق الإنسان ومعجزات النبي ﷺ.
 
 محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي، وقد يقع فيه خطأ.
 ```
@@ -38,6 +39,7 @@ Sunnah 1.2.0 — rebuilt from the ground up as a fully native app for iPhone and
 • Your sign-in session is stored securely in the device Keychain.
 • An interactive walkthrough introduces you to the app.
 • Stories of the Prophets.
+• Illustrated explainers: stages of human creation and the miracles of the Prophet ﷺ.
 
 The app's content is prepared with AI assistance and may contain errors.
 ```
