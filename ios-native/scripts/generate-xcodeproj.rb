@@ -116,7 +116,7 @@ Dir[File.join(root, 'SunnahWatch/App/*.swift')].sort.each { |f| wk.add_file_refe
 Dir[File.join(root, 'SunnahWatch/Complications/*.swift')].sort.each { |f| wkx.add_file_references([wcx.new_reference(File.basename(f))]) }
 # النماذج والسمة مشتركة بين الهدفين (README الواجهة)
 %w[WatchModels WatchTheme].each { |n| wkx.add_file_references([wapp.files.find { |x| x.path == "#{n}.swift" }]) }
-wk.add_file_references([shared.new_reference("../artifacts/majalis/ios/App/Shared/SunnahWidgetPreferences.swift").tap { |r| r.source_tree = "SOURCE_ROOT" }])
+["SunnahSharedData", "SunnahWidgetEnvelope", "SunnahWidgetPreferences"].each { |n| wk.add_file_references([shared.new_reference("../artifacts/majalis/ios/App/Shared/#{n}.swift").tap { |r| r.source_tree = "SOURCE_ROOT" }]) }
 wres = proj.main_group.new_group('SunnahWatchResources', 'SunnahWatchResources')
 [wk, wkx].each do |tg|
   tg.resources_build_phase.add_file_reference(wres.new_reference('PrivacyInfo.xcprivacy'))
