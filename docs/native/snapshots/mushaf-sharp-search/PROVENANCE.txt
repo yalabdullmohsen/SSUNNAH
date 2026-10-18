@@ -1,0 +1,10 @@
+git_sha=633b762c2239a69d9cb077d5aa820c49e2bc90d5
+branch=n3/mushaf-sharp-search
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/8e608aab06459fe5/SunnahApp.app
+binary_sha256=e4e9bdf5fe8db6b9f9ef41a96b3bc25b63668f0c9d7ffd561fc47b90d0c7d71e
+built_at=2026-10-18 23:16:48
+source_newest=2026-10-18 23:14:59
+captured_at=2026-10-18 23:17:49
+files: SunnahNative/Mushaf/MushafReaderView.swift (حقل البحث في سطر مستقل + إزالة الظلال), SunnahNative/Mushaf/MushafMetrics.swift (حدّ أعلى للحجم بالفراغ الأدنى gapFloor 0.7)
+covers: after-p12-light/dark = البقرة ص12 بالبناء 8e608aab06459fe5: بلا ظلال/blur، حجم أكبر قليلًا، حقل «ابحث في القرآن» أعلى الشاشة تحت منطقة الأمان فوق سطر الجزء/السورة. before-original = البناء 7207eb285f9fb494 (الخط الأصلي). before-pr3549-blurry = 0b75b937fafa65ff (المغبّش). zoom3x-* = قصّ بدقة البكسل الكاملة مكبّر 3x.
+gaps: لم يُختبر النقر على الحقل في المحاكي، لا لقطة iPad، نافذة الآية لم تُعد تصويرها؛ الصورة المرجعية لم تصلني فالقيم معايَرة بالعين.
