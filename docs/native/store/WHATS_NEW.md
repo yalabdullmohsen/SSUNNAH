@@ -58,13 +58,13 @@ The app's content is prepared with AI assistance and may contain errors.
 > - ✅ المصحف: خط أوضح وأثخن، حقل بحث، الأدوات تظهر بالنقر (#3549–#3552).
 > - ✅ العلامات الملوّنة الخمس (#3555).
 > - ✅ قصص خمسة أنبياء بأقسام «من السنة» و«القصة» (#3552) — لا تُكتب «كاملة» لكل الأنبياء قبل اكتمال السرد.
-> - ⏳ التصميم الجديد («النموذج ٢»): الدفعة ١ مدموجة (الرئيسية/الصلاة/القائمة/الورد، #3554)؛ الأقسام والأنبياء وقصة النبي والأذكار والإعدادات ⏳ حتى دفعة ن1 الثانية — لا يُكتب «تصميم جديد بالكامل» قبلها.
+> - ✅ التصميم الجديد («النموذج ٢»): الدفعتان ١ و٢ مدموجتان (#3554، #3558)؛ ⏳ فقط إصلاحات ن1 الأخيرة — لا يُكتب «بالكامل» إلا بعد اجتياز ACCEPTANCE بلقطات.
 > - ⏳ قصص الأنبياء لكل الأنبياء.
 
 ## العربية (ar)
 
 ```
-• تصميم جديد بالكامل: بطاقات أوضح، وشريط تنقل عائم، وأرقام عربية، ودعم الوضعين الفاتح والداكن. [⏳ الدفعة ١ فقط]
+• تصميم جديد بالكامل: بطاقات أوضح، وشريط تنقل عائم، وأرقام عربية، ودعم الوضعين الفاتح والداكن. [✅ الدفعتان ١ و٢ — «بالكامل» ⏳ لإصلاحات ن1]
 • المصحف: خط أوضح، وحقل بحث ظاهر، والأدوات تظهر عند النقر على الصفحة. [✅]
 • خمس علامات ملوّنة لتمييز ما تقرأ وحفظه. [✅]
 • قصص خمسة من الأنبياء بمصادرها وقسم «من السنة». [✅ — «كاملة» ⏳]
@@ -75,7 +75,7 @@ The app's content is prepared with AI assistance and may contain errors.
 ## English (en-US)
 
 ```
-• A fully new design: clearer cards, a floating tab bar, Arabic-Indic numerals, and Light and Dark appearance. [pending: batch 1 only]
+• A fully new design: clearer cards, a floating tab bar, Arabic-Indic numerals, and Light and Dark appearance. [done: batches 1 and 2 — "fully" pending n1's last fixes]
 • Mushaf: a clearer font, a visible search field, and tools that appear when you tap the page. [done]
 • Five colored markers to highlight and save what you read. [done]
 • Stories of five Prophets, each with its sources and a "From the Sunnah" section. [done — "complete" pending]
