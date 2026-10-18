@@ -187,7 +187,7 @@ struct AccountUpdatesScreen: View {
                         if item.isAuto { SunnahChip("مصدر موثوق") }
                         Spacer(minLength: 0)
                         if let d = item.date {
-                            Text(d.formatted(Date.FormatStyle(date: .abbreviated, time: .shortened).locale(Locale(identifier: "ar-u-nu-latn")))).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                            Text(d.formatted(Date.FormatStyle(date: .abbreviated, time: .shortened).locale(Locale(identifier: "ar@numbers=arab")))).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                         }
                     }
                     Text(item.title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)

@@ -1,0 +1,10 @@
+git_sha=dda5904851f8d03b3644064f995db4619d2fdf04
+branch=n3/mushaf-colored-marks
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/ae8fd6a8bee24ddd/SunnahApp.app
+binary_sha256=24db2bb682fa93a9540c62413de0a3f69a0abab74e723b1f4d98992c22186741
+built_at=2026-10-19 00:25:00
+source_newest=2026-10-19 00:23:08
+captured_at=2026-10-19 00:25:47
+files: MushafStore.swift MushafMarksUI.swift MushafReaderView.swift MushafMarksTests.swift
+covers: ayah-sheet-color-picker-{light,dark}.png = نافذة الآية 2:255 مع اختيار اللون (MushafReaderView.swift، MushafMarksUI.swift: MushafMarkPicker)؛ page-with-marks-{light,dark}.png = ص42 بنقاط ألوان بجانب أرقام الآيات وشريط حافة الصفحة (MushafReaderView.swift، MushafMarksUI.swift)؛ my-marks-{light,dark}.png = شاشة «علاماتي» بشرائح التصفية والقائمة (MushafMarksUI.swift: MushafMarksScreen، MushafStore.swift)
+gaps: لم يُلتقط السحب للحذف ولا التصفية بشريحة لون (مغطّاة باختبار وحدة marks(filter:)/remove لا بلقطة)؛ منتقي علامة الصفحة من شريط الأدوات لم يُلتقط؛ iPad غير مشمول. بيانات العلامات مزروعة بـ -snapshotSeedMarks (DEBUG فقط).

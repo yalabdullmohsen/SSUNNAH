@@ -16,19 +16,19 @@ public enum Sunnah {
 
     public enum Radius {
         public static let small: CGFloat = 16
-        public static let card: CGFloat = 20
-        public static let hero: CGFloat = 26
+        public static let card: CGFloat = 26
+        public static let hero: CGFloat = 28
         public static let pill: CGFloat = 999
     }
 
     public enum Colors {
         // السمة «أخضر عاجي» (مرجع design/Themes) — الليلي بحسب أمر 14 أكتوبر 2026.
-        public static let bg = dynamic(light: 0xF7F4EC, dark: 0x0F1A15)
+        public static let bg = dynamic(light: 0xF5F2EA, dark: 0x0F1A15)
         public static let surface = dynamic(light: 0xFFFFFF, dark: 0x17251E)
         public static let surface2 = dynamic(light: 0xF2ECDD, dark: 0x1E2E26)
-        public static let border = dynamic(light: 0xE6DFCF, dark: 0x23332B)
+        public static let border = dynamic(light: 0xE7E1D3, dark: 0x23332B)
         public static let beige = dynamic(light: 0xEFE6D4, dark: 0x1E2E26)
-        public static let primary = dynamic(light: 0x1F5C46, dark: 0x6FBE9C)
+        public static let primary = dynamic(light: 0x1F5C45, dark: 0x6FBE9C)
         public static let primaryStrong = dynamic(light: 0x123B2C, dark: 0x1F5C46)
         /// خلفية البطاقات الغامقة ذات النص الأبيض (الترويسة والدرج): ثابتة في الوضعين ليبقى التباين ≥ 4.5.
         public static let heroTop = dynamic(light: 0x1F5C46, dark: 0x1F5C46)
@@ -39,9 +39,14 @@ public enum Sunnah {
             let v: UInt32 = dark ? 0x1F5C46 : 0x123B2C
             return Color(red: Double((v >> 16) & 0xFF) / 255, green: Double((v >> 8) & 0xFF) / 255, blue: Double(v & 0xFF) / 255)
         }
+        /// البطاقة الخضراء الكبيرة في النموذج ٢ (#24523F) — مسطّحة بلا تدرّج.
+        public static let hero = dynamic(light: 0x24523F, dark: 0x1F5C46)
+        /// خلفية أيقونة ذهبية فاتحة ونصها (النموذج ٢): #F3EBD5 / #6E5413.
+        public static let goldTile = dynamic(light: 0xF3EBD5, dark: 0x3A3320)
+        public static let goldInk = dynamic(light: 0x6E5413, dark: 0xD9C089)
         public static let heroBottom = dynamic(light: 0x123B2C, dark: 0x123B2C)
         public static let heroGold = dynamic(light: 0xD9C089, dark: 0xD9C089)
-        public static let primarySoft = dynamic(light: 0xE9F0EA, dark: 0x1B2F26)
+        public static let primarySoft = dynamic(light: 0xE6EFE9, dark: 0x1B2F26)
         /// ذهبي للنصوص، وذهبي للزخرفة، وذهبي فاتح (أزرار ثانوية).
         public static let gold = dynamic(light: 0x8A6D32, dark: 0xD9C089)
         /// لون محيط صفحة المصحف (ترويسة، علامة نهاية الآية، الصفحة): أخضر هادئ؛ الداكن درجة أفتح بتباين ≥ 4.5:1.

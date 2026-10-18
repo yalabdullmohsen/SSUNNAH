@@ -16,10 +16,10 @@ public struct SunnahDrawer: View {
 
     static let groups: [Group] = [
         Group(title: "الأساسي", items: [Item(title: "الرئيسية", icon: "house", path: "/"), Item(title: "الصلاة", icon: "moon.stars", path: "/prayer-times"), Item(title: "المصحف", icon: "character.book.closed", path: "/mushaf"), Item(title: "الأذكار", icon: "hands.sparkles", path: "/adhkar")]),
-        Group(title: "العلم", items: [Item(title: "الحديث", icon: "quote.bubble", path: "/hadith"), Item(title: "القرآن وعلومه", icon: "books.vertical", path: "/quran-hub"), Item(title: "الفقه", icon: "building.columns", path: "/fiqh"), Item(title: "الدروس", icon: "graduationcap", path: "/lessons"), Item(title: "السيرة", icon: "map", path: "/seerah")]),
-        Group(title: "أدوات", items: [Item(title: "القبلة", icon: "location.north.line", path: "/qibla"), Item(title: "السبحة", icon: "circle.dotted", path: "/tasbih"), Item(title: "التقويم", icon: "calendar", path: "/calendar"), Item(title: "الزكاة", icon: "banknote", path: "/zakat")]),
-        Group(title: "التطبيق", items: [Item(title: "الإعدادات", icon: "gearshape", path: "/settings"), Item(title: "المصادر", icon: "text.book.closed", path: "/sources"), Item(title: "عن التطبيق", icon: "info.circle", path: "/about"), Item(title: "اتصل بنا", icon: "envelope", path: "/contact")]),
+        Group(title: "العلم", items: [Item(title: "الحديث", icon: "quote.bubble", path: "/hadith"), Item(title: "القرآن وعلومه", icon: "books.vertical", path: "/quran-hub"), Item(title: "الفقه", icon: "building.columns", path: "/fiqh"), Item(title: "الدروس", icon: "graduationcap", path: "/lessons"), Item(title: "السيرة", icon: "map", path: "/seerah"), Item(title: "قصص الأنبياء", icon: "sparkle", path: "/prophets")]),
     ]
+    static let tools: [Item] = [Item(title: "القبلة", icon: "location.north.line", path: "/qibla"), Item(title: "السبحة", icon: "circle.dotted", path: "/tasbih"), Item(title: "التقويم", icon: "calendar", path: "/calendar"), Item(title: "الزكاة", icon: "banknote", path: "/zakat")]
+    static let footer: [Item] = [Item(title: "الإعدادات", icon: "gearshape", path: "/settings"), Item(title: "عن التطبيق", icon: "info.circle", path: "/about")]
 
     static func isSelected(_ item: Item, current: String) -> Bool {
         item.path == "/" ? current == "/" : (current == item.path || current.hasPrefix(item.path + "/"))
@@ -34,37 +34,90 @@ public struct SunnahDrawer: View {
         .frame(width: 310)
     }
 
+    private func go(_ path: String) { Sunnah.Haptics.select(); close(); open(path) }
+
     private func panel(bottomInset: CGFloat) -> some View {
-        // المحتوى يحترم safe area العلوية: الرأس يبدأ تحت شريط الحالة فلا يُخفي الساعة.
-        VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                Text("سُنّة").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textOnPrimary)
-                Button { Sunnah.Haptics.select(); close(); open("/search") } label: {
-                    HStack { Image(systemName: "magnifyingglass"); Text("ابحث في التطبيق"); Spacer() }
-                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        .sunnahSearchFieldChrome(fill: Sunnah.Colors.surface, radius: 14)
-                }.buttonStyle(.plain)
-            }
-            .padding(Sunnah.Spacing.s4)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .sunnahMotifCorner(size: 130, tint: .white, opacity: 0.14).clipped()
-            .sunnahPatternedBackground(radius: 0)
+        VStack(spacing: 0) {
+            header
             ScrollView {
-                VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                     ForEach(Self.groups, id: \.title) { g in
                         SunnahSectionLabel(g.title)
-                        SunnahGroupedCard(g.items) { item in
-                            Button { Sunnah.Haptics.select(); close(); open(item.path) } label: {
-                                SunnahCompactRow(title: item.title, icon: item.icon, selected: Self.isSelected(item, current: selectedPath))
-                            }.buttonStyle(.plain)
-                        }
+                        VStack(spacing: 0) { ForEach(g.items) { row($0) } }.modifier(MenuCard())
                     }
-                }.padding(.horizontal, Sunnah.Spacing.s3).padding(.bottom, Sunnah.Spacing.s4 + bottomInset)
+                    SunnahSectionLabel("أدوات")
+                    HStack(spacing: Sunnah.Spacing.s2) { ForEach(Self.tools) { toolCell($0) } }
+                        .padding(Sunnah.Spacing.s3).modifier(MenuCard())
+                }.padding(.horizontal, Sunnah.Spacing.s3).padding(.bottom, Sunnah.Spacing.s4)
             }
+            HStack {
+                ForEach(Self.footer) { item in
+                    Button { go(item.path) } label: {
+                        Label(item.title, systemImage: item.icon).font(AppearancePrefs.ui(.bold, 14, .subheadline))
+                            .foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
+                    }.buttonStyle(.plain)
+                    if item.path != Self.footer.last?.path { Spacer() }
+                }
+            }
+            .padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, bottomInset)
+            .background(Sunnah.Colors.surface)
+            .overlay(alignment: .top) { Rectangle().fill(Sunnah.Colors.border).frame(height: 1) }
         }
         .frame(width: 310).frame(maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
         .clipShape(SunnahSidePanelShape(roundsLeft: direction == .rightToLeft))
         .shadow(color: .black.opacity(0.25), radius: 16, x: direction == .rightToLeft ? -4 : 4, y: 0)
+    }
+
+    private var header: some View {
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+            HStack(alignment: .top) {
+                SunnahRoundButton(symbol: "xmark", label: "إغلاق") { close() }
+                Spacer()
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("سُنّة").font(AppearancePrefs.ui(.extraBold, 30, .title)).foregroundStyle(.white)
+                    Text(Sunnah.digits(HomeScreen.hijriDate(Date()))).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
+                }
+            }
+            Button { go("/search") } label: {
+                HStack { Image(systemName: "magnifyingglass"); Text("ابحث في التطبيق"); Spacer() }
+                    .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .padding(.horizontal, Sunnah.Spacing.s4).frame(height: 48)
+                    .background(Sunnah.Colors.surface, in: Capsule())
+            }.buttonStyle(.plain)
+        }
+        .padding(Sunnah.Spacing.s4)
+        .background { ZStack { Sunnah.Colors.hero; SunnahOctagonOrnament() }.ignoresSafeArea(edges: .top) }
+    }
+
+    private func row(_ item: Item) -> some View {
+        let sel = Self.isSelected(item, current: selectedPath)
+        return Button { go(item.path) } label: {
+            HStack(spacing: Sunnah.Spacing.s3) {
+                SunnahIconTile(item.icon, tone: .mint, size: 38)
+                Text(item.title).font(AppearancePrefs.ui(.bold, 16, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
+                Spacer()
+                Image(systemName: "chevron.left").font(.system(size: 12, weight: .semibold)).foregroundStyle(Sunnah.Colors.textSecondary)
+            }
+            .padding(.horizontal, Sunnah.Spacing.s3).frame(height: 52)
+            .background(sel ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+            .padding(4)
+        }.buttonStyle(.plain)
+    }
+
+    private func toolCell(_ item: Item) -> some View {
+        Button { go(item.path) } label: {
+            VStack(spacing: 6) {
+                SunnahIconTile(item.icon, tone: .mint, size: 38)
+                Text(item.title).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textPrimary)
+            }.frame(maxWidth: .infinity, minHeight: 64)
+        }.buttonStyle(.plain)
+    }
+}
+
+private struct MenuCard: ViewModifier {
+    func body(content: Content) -> some View {
+        content.background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
     }
 }

@@ -124,18 +124,25 @@ extension String {
     }
 }
 
-extension Data {
-    /// أرقام لاتينية في بيانات JSON المعروضة (٠-٩ ۰-۹ والفواصل العشرية/الآلاف). حروف الآيات لا تتأثر.
-    var asLatinDigitsJSON: Data {
-        guard contains(where: { $0 == 0xD9 || $0 == 0xDB }), let s = String(data: self, encoding: .utf8) else { return self }
-        let t = String(s.unicodeScalars.map { u -> Character in
+extension String {
+    /// أرقام عربية-هندية موحّدة للعرض (النموذج ٢): يحوّل 0-9 و۰-۹ إلى ٠-٩.
+    var asArabicDigits: String {
+        String(unicodeScalars.map { u -> Character in
             switch u.value {
-            case 0x0660...0x0669: return Character(UnicodeScalar(u.value - 0x0660 + 0x30)!)
-            case 0x06F0...0x06F9: return Character(UnicodeScalar(u.value - 0x06F0 + 0x30)!)
-            case 0x066B: return "."
-            case 0x066C: return ","
+            case 0x30...0x39: return Character(UnicodeScalar(u.value - 0x30 + 0x0660)!)
+            case 0x06F0...0x06F9: return Character(UnicodeScalar(u.value - 0x06F0 + 0x0660)!)
             default: return Character(u)
             }
+        })
+    }
+}
+
+extension Data {
+    /// يوحّد الأرقام الفارسية (۰-۹) إلى العربية-الهندية في JSON المعروض؛ لا يمسّ الأرقام اللاتينية لأنها قد تكون بنية JSON أو معرّفات.
+    var asLatinDigitsJSON: Data {
+        guard contains(where: { $0 == 0xDB }), let s = String(data: self, encoding: .utf8) else { return self }
+        let t = String(s.unicodeScalars.map { u -> Character in
+            (0x06F0...0x06F9).contains(u.value) ? Character(UnicodeScalar(u.value - 0x06F0 + 0x0660)!) : Character(u)
         })
         return Data(t.utf8)
     }

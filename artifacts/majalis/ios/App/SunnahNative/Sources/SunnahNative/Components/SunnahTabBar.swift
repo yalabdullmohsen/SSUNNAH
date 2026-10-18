@@ -1,9 +1,9 @@
 import SwiftUI
 
-/// الشريط السفلي العائم: ارتفاع 68، زوايا 26، أبيض شفاف، والتبويب النشط بخلفية أخضر فاتح.
+/// الشريط السفلي العائم: ارتفاع 72، زوايا 26، أبيض شفاف، والتبويب النشط بخلفية أخضر فاتح.
 public struct SunnahTabBar: View {
     /// ارتفاع الشريط العائم + الهامش السفلي (68 + s2) الذي يحجزه المحتوى القابل للتمرير.
-    public static let reservedHeight: CGFloat = 68 + Sunnah.Spacing.s2
+    public static let reservedHeight: CGFloat = 72 + Sunnah.Spacing.s2
 
     let selected: AppTab
     let onSelect: (AppTab) -> Void
@@ -21,7 +21,7 @@ public struct SunnahTabBar: View {
                         Image(systemName: tab.systemImage).font(.system(size: 19, weight: on ? .bold : .regular))
                         Text(tab.title).font(Sunnah.Typography.tag).lineLimit(1).minimumScaleFactor(0.75)   // XXXL على SE: التسميات المتجاورة كانت تتلامس (0.85 لم يكفِ: بقي فاصل ~2pt)
                     }
-                    .frame(maxWidth: .infinity, minHeight: 56)
+                    .frame(maxWidth: .infinity, minHeight: 60)
                     .foregroundStyle(on ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
                     .background(on ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
                 }
@@ -30,7 +30,7 @@ public struct SunnahTabBar: View {
             }
         }
         .padding(6)
-        .frame(height: 68)
+        .frame(height: 72)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // الشريط بارتفاع ثابت: أحجام إمكانية الوصول كانت تقتطع التسميات (الرئيـ…)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
         .background(Sunnah.Colors.surface.opacity(0.85), in: RoundedRectangle(cornerRadius: 26, style: .continuous))

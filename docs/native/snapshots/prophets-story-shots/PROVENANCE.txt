@@ -1,0 +1,12 @@
+git_sha=a22885f6c0ca47ba91948e5d0e5b4cb8608420f1
+branch=n2/prophets-story
+app=/private/tmp/claude-501/-Users-alabdullmohsen-ssunnah-n2/2f42d226-9b80-4889-9f92-2ea4bde9677c/scratchpad/app/SunnahApp.app
+binary_sha256=d43b512b0a1c8f4f0e2cff50251cd0a306a9d718dc41ba34a03f5b99dfe7300a
+built_at=2026-10-19 00:04:55
+source_newest=2026-10-18 23:41:42
+captured_at=2026-10-19 00:06:40
+covers=yusuf
+covers=musa
+covers=ibrahim
+covers=nuh
+covers=isa
