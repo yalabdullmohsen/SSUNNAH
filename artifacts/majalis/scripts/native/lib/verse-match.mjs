@@ -11,17 +11,25 @@ export function loadQuran(dir) {
 }
 export function makeMatcher(quran, { minWords = 3, maxSpan = 8 } = {}) {
   const cache = new Map()
+  // طيّ ثانٍ لاختلاف الإملاء عن رسم المصحف (يبصط/يبسط، يبدؤا/يبدأ): يُجرَّب فقط عند انعدام التطابق الأول
+  const fold2 = (s) => s.replace(/ص/g, 'س').replace(/[وي]/g, '')
+  const folded = quran.map((s) => s.ay.map(fold2))
+  const scan = (f, ays) => {
+    const hits = []
+    quran.forEach((s, si) => { const A = ays(si); for (let a = 0; a < A.length; a++) {
+      let acc = ''
+      for (let b = a; b < Math.min(A.length, a + maxSpan); b++) {
+        acc += A[b]
+        if (acc.includes(f)) { if (!A.slice(a + 1, b + 1).join('').includes(f) && !A.slice(a, b).join('').includes(f)) hits.push({ surah: s.n, from: a + 1, to: b + 1 }); break }
+      }
+    } })
+    return hits
+  }
   return function match(frag) {
     if (norm(frag).split(' ').length < minWords) return []
     const f = flat(frag); if (cache.has(f)) return cache.get(f)
-    const hits = []
-    for (const s of quran) for (let a = 0; a < s.ay.length; a++) {
-      let acc = ''
-      for (let b = a; b < Math.min(s.ay.length, a + maxSpan); b++) {
-        acc += s.ay[b]
-        if (acc.includes(f)) { if (!s.ay.slice(a + 1, b + 1).join('').includes(f) && !s.ay.slice(a, b).join('').includes(f)) hits.push({ surah: s.n, from: a + 1, to: b + 1 }); break }
-      }
-    }
+    let hits = scan(f, (i) => quran[i].ay)
+    if (!hits.length) hits = scan(fold2(f), (i) => folded[i])
     cache.set(f, hits); return hits
   }
 }
