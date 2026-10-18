@@ -178,7 +178,6 @@ public struct MushafReaderView: View {
                 .frame(width: w, height: h)
                 .clipped()
                 pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
-                searchField.padding(.horizontal, w * 0.032).position(x: w / 2, y: max(Self.topSafeInset - 3, 40))
                 pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
             }
             .frame(width: w, height: h)
@@ -189,14 +188,23 @@ public struct MushafReaderView: View {
             .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: selected)
             .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: sheetHeight)
             .contentShape(Rectangle())
-            .onTapGesture { chromeHide.tapEmpty() }
+            .onTapGesture { chromeHide.toggle() }
             .simultaneousGesture(DragGesture(minimumDistance: 0).onChanged { _ in chromeHide.touch() })
         }
         .ignoresSafeArea()
         .background(Sunnah.Colors.mushafPaper.ignoresSafeArea())
         // الصفحة المُزاحة للأعلى تنزلق تحت شريط الحالة بدل أن تتقاطع حروفها مع الساعة والبطارية.
         .overlay(alignment: .top) { if avoidancePlan(height: pageSize.height).dy < 0 { Sunnah.Colors.mushafPaper.frame(height: Self.topSafeInset).ignoresSafeArea(edges: .top) } }
-        .overlay(alignment: .top) { if chromeHide.visible { chrome.transition(.opacity) } }
+        .overlay(alignment: .top) {
+            // أدوات المصحف (إغلاق، بحث، فهرس، علامة) مخفية افتراضيًا؛ تظهر بنقرة على الصفحة وتختفي بنقرة ثانية أو تلقائيًا.
+            chrome
+                .padding(.horizontal, 12).padding(.top, max(Self.topSafeInset - 3, 40) - 13)
+                .ignoresSafeArea(edges: .top)
+                .opacity(chromeHide.visible ? 1 : 0)
+                .allowsHitTesting(chromeHide.visible)
+                .accessibilityHidden(!chromeHide.visible)
+                .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.25), value: chromeHide.visible)
+        }
         .immersiveReader(revealed: false)
         #if os(iOS)
         .toolbar(.hidden, for: .navigationBar)
@@ -218,6 +226,8 @@ public struct MushafReaderView: View {
             #if DEBUG
             // لقطات التدقيق فقط: `-snapshotSelectAyah 37:130` يحدّد الآية كأن المستخدم لمسها (يُظهر التظليل وبطاقة الآية).
             if let a = UserDefaults.standard.string(forKey: "snapshotSelectAyah"), !a.isEmpty { selected = a }
+            // `-snapshotShowChrome 1` يُظهر سطر الأدوات ثابتًا (لقطة وضع الأدوات).
+            if UserDefaults.standard.bool(forKey: "snapshotShowChrome") { chromeHide.pin(true) }
             #endif
             #if (DEBUG || MUSHAF_PROBE) && canImport(UIKit)
             MushafFlipProbe.runIfRequested(start: current) { current = $0 }
@@ -236,49 +246,38 @@ public struct MushafReaderView: View {
         .font(Sunnah.Typography.secondary)
         .foregroundStyle(Sunnah.Colors.mushafAccent)
         .contentShape(Rectangle())
-        .onTapGesture { sunnahAnimate { chromeHide.tapEmpty() } }
+        .onTapGesture { sunnahAnimate { chromeHide.toggle() } }
         .accessibilityElement(children: .combine)
         .accessibilityAddTraits(.isButton)
         .accessibilityHint("يُظهر أدوات القارئ")
         .accessibilityIdentifier("mushaf.header")
     }
 
-    /// حقل البحث في سطر مستقل فوق سطر الجزء/السورة مباشرةً تحت منطقة الأمان؛ يفتح شاشة البحث في القرآن.
-    private var searchField: some View {
-        Button { openRoute("/quran/search") } label: {
-            HStack(spacing: Sunnah.Spacing.s2) {
-                Image(systemName: "magnifyingglass")
-                Text("ابحث في القرآن").lineLimit(1)
-                Spacer(minLength: 0)
-            }
-            .font(Sunnah.Typography.secondary)
-            .foregroundStyle(Sunnah.Colors.mushafAccent)
-            .padding(.horizontal, Sunnah.Spacing.s3).frame(height: 22)
-            .background(Sunnah.Colors.mushafIvory, in: Capsule())
-            .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.5), lineWidth: 1))
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel("ابحث في القرآن").accessibilityIdentifier("mushaf.search")
-    }
-
-    /// أدوات القارئ (فهرس، علامة، خروج) مخفيّة افتراضيًا ليبقى المصحف غامرًا كما في المرجع.
+    /// سطر الأدوات المستقل تحت منطقة الأمان وفوق سطر الجزء/السورة: إغلاق، حقل «ابحث في القرآن» (يفتح QuranSearchScreen)، فهرس، علامة.
     private var chrome: some View {
-        HStack(spacing: Sunnah.Spacing.s4) {
-            Button { openRoute("/") } label: { Image(systemName: "xmark") }.accessibilityLabel("إغلاق المصحف")
-            Spacer()
-            Button { showIndex = true } label: { Image(systemName: "list.bullet") }.accessibilityLabel("الفهرس والبحث")
+        HStack(spacing: Sunnah.Spacing.s3) {
+            Button { openRoute("/") } label: { Image(systemName: "xmark").frame(width: 28, height: 26) }.accessibilityLabel("إغلاق المصحف")
+            Button { openRoute("/quran/search") } label: {
+                HStack(spacing: Sunnah.Spacing.s2) {
+                    Image(systemName: "magnifyingglass")
+                    Text("ابحث في القرآن").lineLimit(1)
+                    Spacer(minLength: 0)
+                }
+                .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafAccent)
+                .padding(.horizontal, Sunnah.Spacing.s3).frame(maxWidth: .infinity).frame(height: 26)
+                .background(Sunnah.Colors.mushafIvory, in: Capsule())
+                .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.5), lineWidth: 1))
+            }
+            .accessibilityLabel("ابحث في القرآن").accessibilityIdentifier("mushaf.search")
+            Button { showIndex = true } label: { Image(systemName: "list.bullet").frame(width: 28, height: 26) }.accessibilityLabel("الفهرس والبحث")
             Button {
                 let ayah = selected ?? firstAyah(on: current)
                 if let ayah { store.toggleBookmark(ayah: ayah, page: current) }
-            } label: { Image(systemName: isMarked ? "bookmark.fill" : "bookmark") }.accessibilityLabel("علامة")
+            } label: { Image(systemName: isMarked ? "bookmark.fill" : "bookmark").frame(width: 28, height: 26) }.accessibilityLabel("علامة")
         }
-        .font(.system(size: 18, weight: .semibold))
+        .buttonStyle(.plain)
+        .font(.system(size: 17, weight: .semibold))
         .foregroundStyle(Sunnah.Colors.mushafInk)
-        .padding(.horizontal, Sunnah.Spacing.s4).padding(.vertical, Sunnah.Spacing.s3)
-        .background(Sunnah.Colors.mushafIvory, in: Capsule())
-        .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown, lineWidth: 1))
-        .padding(.horizontal, Sunnah.Spacing.s4)
-        .padding(.top, 54)
         .accessibilityIdentifier("mushaf.chrome")
     }
 
@@ -322,7 +321,7 @@ public struct MushafReaderView: View {
     }
 
     /// أسفل شريط الأدوات المثبّت: الحافة الآمنة العليا + padding.top 54 + ارتفاع الكبسولة ≈ 48 (مقيس من لقطة iPhone).
-    static var chromeBottom: CGFloat { topSafeInset + 102 }
+    static var chromeBottom: CGFloat { topSafeInset + 12 }
 
     static var topSafeInset: CGFloat {
         #if os(iOS)

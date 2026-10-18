@@ -20,6 +20,8 @@ public final class ChromeAutoHide: ObservableObject {
 
     /// لمسة على مساحة فارغة: تُظهر الزر وتبدأ العدّ.
     public func tapEmpty() { visible = true; rearm() }
+    /// نقرة على الصفحة: تُظهر الأدوات، وثانية تُخفيها (ما لم تكن مثبّتة).
+    public func toggle() { if visible && !pinned && !alwaysVisible { timer?.cancel(); timer = nil; visible = false } else { tapEmpty() } }
     /// أي لمسة/تمرير: تعيد ضبط العدّ دون تبديل الظهور.
     public func touch() { if visible { rearm() } }
     /// البطاقة مفتوحة: الزر ثابت.
