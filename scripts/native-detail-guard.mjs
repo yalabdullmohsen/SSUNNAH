@@ -15,7 +15,7 @@ const EXCEPT = {
   LibrarySourceDetailView: "بطاقة مصدر ببيانات منظَّمة (تُمرَّر عبر ترويسة التفصيل)",
 };
 // زر «إبلاغ عن خطأ» (AccountTexts يعد به أسفل كل صفحة محتوى): القالبان يحملانه، وغيرهما يستدعيه أو يُعفى بسبب.
-const REPORT_VIA = /DetailTemplate\(|ArticleTemplate\(|SunnahReportIssueButton\(|reportID:/;
+const REPORT_VIA = /DetailTemplate\(|ArticleTemplate\(|SunnahContentFooter\(|reportID:/;
 const REPORT_EXCEPT = {
   MutashabihatDetailView: "آيات متقابلة بلا نص محتوى يُبلَّغ عنه",
   QuranCircleDetailView: "بيانات حلقة لا محتوى علمي",
@@ -23,14 +23,18 @@ const REPORT_EXCEPT = {
 };
 const walk = (d) => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : p.endsWith(".swift") ? [p] : []; });
 const bad = [];
-for (const t of ["DetailTemplate", "ArticleTemplate"]) {
-  if (!/SunnahReportIssueButton\(/.test(readFileSync(join(SRC, "Templates", `${t}.swift`), "utf8"))) bad.push(`Templates/${t}.swift: بلا زر الإبلاغ عن خطأ`);
+// قاعدة الذيل الموحّد: القوالب المشتركة وشاشتا الحديث تحمل SunnahContentFooter (أيقونتا «!» والإبلاغ الصغيرتان)،
+// ولا تضع زر SunnahReportIssueButton الكبير داخل الصفحة.
+for (const f of ["Templates/DetailTemplate.swift", "Templates/ArticleTemplate.swift", "Special/HadithScreens.swift", "Special/WeakHadithScreens.swift"]) {
+  const src = readFileSync(join(SRC, f), "utf8");
+  if (!/SunnahContentFooter\(/.test(src)) bad.push(`${f}: بلا الذيل الموحّد SunnahContentFooter`);
+  if (/SunnahReportIssueButton\(/.test(src)) bad.push(`${f}: زر SunnahReportIssueButton الكبير ممنوع داخل الصفحة (الذيل الموحّد يكفي)`);
 }
-// إفصاح الذكاء الاصطناعي: النص الحرفي في SunnahDisclosure.short، والزر (المستدعى في كل تفصيل) يعرضه عبر SunnahDisclosureNotice.
+// إفصاح الذكاء الاصطناعي: النص الحرفي في SunnahDisclosure.short، والإشعار يُعرض في ورقة «!» لا فوق الزر.
 const SHORT = "أُعدّ محتوى هذا التطبيق بمساعدة الذكاء الاصطناعي اعتمادًا على مصادر مذكورة في كل صفحة، وقد يقع فيه خطأ. للفتوى والأحكام الشرعية ارجعوا إلى أهل العلم. إن وجدتم خطأً فاضغطوا «إبلاغ عن خطأ».";
 if (!readFileSync(join(SRC, "Support", "SunnahDisclosure.swift"), "utf8").includes(SHORT)) bad.push("Support/SunnahDisclosure.swift: نص short ليس الحرفي المعتمد");
 const btn = readFileSync(join(SRC, "Components", "SunnahReportIssueButton.swift"), "utf8");
-if (!/SunnahDisclosureNotice\(/.test(btn)) bad.push("Components/SunnahReportIssueButton.swift: بلا إشعار الذكاء الاصطناعي (SunnahDisclosureNotice) فوق الزر");
+if (/SunnahDisclosureNotice\(/.test(btn)) bad.push("Components/SunnahReportIssueButton.swift: إشعار الإفصاح (SunnahDisclosureNotice) ممنوع فوق الزر؛ الإفصاح في ورقة تُفتح بضغطة المستخدم");
 if (!/SunnahDisclosure\.short/.test(readFileSync(join(SRC, "Support", "SunnahDisclosure.swift"), "utf8").split("struct SunnahDisclosureNotice")[1] ?? "")) bad.push("SunnahDisclosureNotice لا يعرض SunnahDisclosure.short");
 for (const f of walk(SRC)) {
   if (f.includes("/Mushaf/")) continue; // ملك ن3
