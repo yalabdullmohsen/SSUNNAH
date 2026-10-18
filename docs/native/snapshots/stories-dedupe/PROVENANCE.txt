@@ -1,0 +1,7 @@
+git_sha=ce04ad82c017b96351ba4816507d73e276f323b7
+branch=n2/stories-dedupe
+app=/private/tmp/claude-501/dd-n2/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=7bc152c010941f1a91c60d5601a5b2786b6fa3f3366d437b2619a24da8dea72f
+built_at=2026-10-18 08:51:21
+route=/stories (iPhone 17 Pro، داكن)؛ بيانات مُصدَّرة من هذا الفرع بعد حذف القصص الأربع المكررة
+covers=stories (صحابة-003.json، صحابة-004.json، manifest.json: شاشة القصص الإسلامية بعد حذف ٤ قصص مكررة)
