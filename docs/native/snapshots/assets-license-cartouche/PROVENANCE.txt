@@ -1,0 +1,10 @@
+git_sha=bad33a45d52818d4b4b259a612dd1d5c6bb05df5
+branch=n3/assets-license-decision
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/7207eb285f9fb494/SunnahApp.app
+binary_sha256=9360dfda19d6394ba25c9bd3c47b8107d5dc3cff11883c0ccce00397ebeae92c
+built_at=2026-10-18 20:37:53
+source_newest=2026-10-18 20:35:39
+captured_at=2026-10-18 20:40:03
+files: Mushaf/PageCartouche.swift (زخرفة رقم الصفحة مرسومة برمجيًا بـCanvas بدل SVG مُتتبَّع؛ حُذف PageCartoucheArt.swift وArt/page-cartouche.svg)
+covers: mushaf-301-light/dark (الزخرفة فاتحًا وداكنًا، الصفحة 301)، mushaf-2-banner-light (صفحة بها surah-banner ورقم الصفحة 2 بالزخرفة الجديدة)
+gaps: PageCartoucheTests (AppKit) لم يُشغَّل — swift test على macOS يفشل بـUIKit في SnapshotScroll.swift؛ لا لقطة iPad/XXXL للزخرفة.
