@@ -153,7 +153,7 @@ struct AqidahDiscoverIslamContactNativeScreen: View {
         Group {
             if let code = trackingCode { receipt(code) } else { form }
         }
-        .navigationTitle("تواصل سرّي مع داعية")
+        .sunnahNavTitle("تواصل سرّي مع داعية")
     }
 
     private var form: some View {

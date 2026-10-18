@@ -107,7 +107,7 @@ struct LearnFlashcardsScreen: View {
         LearnLoadHost(LearnSources.verifiedHadith) { (hadiths: [LearnHadith]) in
             LearnFlashcardSession(hadiths: hadiths.filter { !$0.text.isEmpty })
         }
-        .navigationTitle("بطاقات المراجعة")
+        .sunnahNavTitle("بطاقات المراجعة")
     }
 }
 

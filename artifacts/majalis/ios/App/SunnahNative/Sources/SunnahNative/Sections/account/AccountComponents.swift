@@ -121,7 +121,7 @@ struct AccountLegalDocumentView<Footer: View>: View {
         .modifier(SnapBottomAnchor())
         #endif
         .background(Sunnah.Colors.bg)
-        .navigationTitle(document.title)
+        .sunnahNavTitle(document.title)
     }
 }
 

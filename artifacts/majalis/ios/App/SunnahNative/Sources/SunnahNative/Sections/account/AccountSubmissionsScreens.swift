@@ -88,7 +88,7 @@ struct AccountSubmitContentScreen: View {
         .font(Sunnah.Typography.body)
         .scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("أضف محتوى")
+        .sunnahNavTitle("أضف محتوى")
     }
 
     @MainActor private func submit() async {
@@ -208,7 +208,7 @@ struct AccountMySubmissionsScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("مساهماتي")
+        .sunnahNavTitle("مساهماتي")
         .task { await search() }
         .onDisappear { player?.pause(); playingId = nil }
     }

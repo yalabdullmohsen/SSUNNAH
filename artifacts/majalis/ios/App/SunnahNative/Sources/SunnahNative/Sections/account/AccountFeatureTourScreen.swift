@@ -64,6 +64,6 @@ struct AccountFeatureTourScreen: View {
         .padding(Sunnah.Spacing.pageX)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("جولة المزايا")
+        .sunnahNavTitle("جولة المزايا")
     }
 }

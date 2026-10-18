@@ -34,7 +34,7 @@ struct TasbihView: View {
         .padding(Sunnah.Spacing.pageX)
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("المسبحة")
+        .sunnahNavTitle("المسبحة")
     }
 }
 
@@ -47,7 +47,7 @@ public enum AdhkarExtraScreens {
         // أدعية القرآن وورد وسنن يومية: لا بيانات موثَّقة في العقد، وتنبيهات الصلاة تتبع الإشعارات.
         for (id, title) in [("duas-quran", "أدعية القرآن"), ("sunan-yawmiyya", "السنن اليومية"),
                             ("adhan-help", "مساعدة تنبيهات الصلاة")] {
-            registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق").navigationTitle(title) }
+            registry.registerView(id: id) { ContentPendingView(message: "المحتوى قيد التوثيق").sunnahNavTitle(title) }
         }
     }
 }

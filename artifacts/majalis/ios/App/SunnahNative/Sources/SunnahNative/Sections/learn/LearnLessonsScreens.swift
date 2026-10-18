@@ -10,7 +10,7 @@ struct LearnLessonsScreen: View {
             LearnLessonList(lessons: archived ? split.archived : split.active,
                             emptyTitle: archived ? "لا دروس مؤرشفة" : "لا دروس قائمة حاليًا")
         }
-        .navigationTitle(archived ? "أرشيف الدروس" : "الدروس")
+        .sunnahNavTitle(archived ? "أرشيف الدروس" : "الدروس")
     }
 }
 
@@ -88,6 +88,6 @@ struct LearnKuwaitLessonsScreen: View {
                 }
             }
         }
-        .navigationTitle("دروس الكويت")
+        .sunnahNavTitle("دروس الكويت")
     }
 }

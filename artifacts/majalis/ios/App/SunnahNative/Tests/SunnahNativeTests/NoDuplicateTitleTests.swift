@@ -9,7 +9,7 @@ final class NoDuplicateTitleTests: XCTestCase {
             .appendingPathComponent("Sources/SunnahNative/Sections/account")
         let files = try FileManager.default.contentsOfDirectory(atPath: dir.path).filter { $0.hasSuffix(".swift") }
         XCTAssertFalse(files.isEmpty)
-        let navRx = try NSRegularExpression(pattern: #"\.navigationTitle\("([^"]+)"\)"#)
+        let navRx = try NSRegularExpression(pattern: #"\.(?:navigationTitle|sunnahNavTitle)\("([^"]+)"\)"#)
         let hdrRx = try NSRegularExpression(pattern: #"AccountHeader\([^\n]*?title: "([^"]+)"[^\n]*"#)
         for f in files {
             let s = try String(contentsOf: dir.appendingPathComponent(f), encoding: .utf8)
@@ -33,7 +33,7 @@ final class NoDuplicateTemplateTitleTests: XCTestCase {
         for f in ["ArticleTemplate.swift", "DetailTemplate.swift"] {
             let s = try String(contentsOf: dir.appendingPathComponent(f), encoding: .utf8)
             XCTAssertTrue(s.contains("Text(item.title)") || s.contains("DetailHero(title: item.title"), f)
-            XCTAssertFalse(s.contains(".navigationTitle(item.title)"), "\(f): عنوان مكرر")
+            XCTAssertFalse(s.contains(".navigationTitle(item.title)") || s.contains(".sunnahNavTitle(item.title)"), "\(f): عنوان مكرر")
         }
     }
 }

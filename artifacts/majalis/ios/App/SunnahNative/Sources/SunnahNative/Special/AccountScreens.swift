@@ -45,7 +45,7 @@ private struct AuthForm<Extra: View>: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle(title)
+        .sunnahNavTitle(title)
     }
 }
 
@@ -54,7 +54,7 @@ struct LoginView: View {
     @State private var signedIn = false
     var body: some View {
         if signedIn {
-            Text("تم تسجيل الدخول").navigationTitle("تسجيل الدخول")
+            Text("تم تسجيل الدخول").sunnahNavTitle("تسجيل الدخول")
         } else {
             AuthForm(title: "تسجيل الدخول", action: "دخول", showsPassword: true, run: { e, p in
                 try await platform.authService.signIn(email: e, password: p)
@@ -111,7 +111,7 @@ struct AccountDeletionView: View {
         .padding(Sunnah.Spacing.pageX)
         .frame(maxHeight: .infinity, alignment: .top)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("حذف الحساب")
+        .sunnahNavTitle("حذف الحساب")
     }
 }
 

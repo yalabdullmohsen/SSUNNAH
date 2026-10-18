@@ -201,7 +201,7 @@ public enum HadithScreens {
     public static func register(in registry: TemplateRegistry) {
         registry.register(HadithScreen.self)
         registry.register(HadithSahihScreen.self)
-        registry.registerView(id: "hadith.books") { HadithBooksView().navigationTitle("كتب الحديث") }
+        registry.registerView(id: "hadith.books") { HadithBooksView().sunnahNavTitle("كتب الحديث") }
         registry.registerView(id: "hadith.daif") { WeakHadithListView(file: "weak-daif", title: "الأحاديث الضعيفة") }
         registry.registerView(id: "hadith.mawdu") { WeakHadithListView(file: "weak-mawdu", title: "الأحاديث الموضوعة") }
         // بياناتها ليست في عقد البيانات بعد (صفحات ويب مضمّنة): تنتظر تصديرًا من ن1.

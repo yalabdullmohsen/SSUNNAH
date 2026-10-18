@@ -22,7 +22,7 @@ struct LearnUniversitiesScreen: View {
                 Button("قارن") { openRoute("/universities/compare") }
             }
         }
-        .navigationTitle("الجامعات")
+        .sunnahNavTitle("الجامعات")
     }
 
     private func filter(_ list: [LearnUniversity]) -> [LearnUniversity] {
@@ -116,7 +116,7 @@ struct LearnUniversitiesCompareScreen: View {
                 .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
             }
         }
-        .navigationTitle("مقارنة الجامعات")
+        .sunnahNavTitle("مقارنة الجامعات")
     }
 }
 
@@ -181,7 +181,7 @@ struct LearnInstitutionsScreen: View {
                 }
             }
         }
-        .navigationTitle("المؤسسات العلمية")
+        .sunnahNavTitle("المؤسسات العلمية")
     }
 }
 
@@ -199,7 +199,7 @@ struct LearnCompetitionsScreen: View {
                 .buttonStyle(.plain)
             }
         }
-        .navigationTitle("المسابقات")
+        .sunnahNavTitle("المسابقات")
     }
 }
 
