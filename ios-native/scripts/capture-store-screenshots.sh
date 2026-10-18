@@ -40,6 +40,7 @@ shot() { # <رقم-اسم> <مسار> — -snapshotRoute يعمل في بناء 
   [ "$size" = "$WANT_SIZE" ] || echo "تحذير: $1 بحجم $size لا $WANT_SIZE (اختر جهازًا بشاشة 6.9\")" >&2
   echo "✓ $1 ($size)"
 }
+if [ -n "${ROUTE_ONLY:-}" ]; then shot shot "$ROUTE_ONLY"; echo "الملفات: $OUT"; exit 0; fi   # لقطة واحدة لمسار (native-store-shots.sh)
 shot 01-home        "/"
 shot 02-mushaf      "/mushaf"
 shot 03-prayer-times "/prayer-times"
