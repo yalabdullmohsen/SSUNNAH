@@ -4,7 +4,7 @@ import CoreText
 /// مظهر خط الصفحة (قابل للضبط): خط QPC نفسه بلا ظلال ولا تمويه؛ الحجم الأكبر (فراغ كلمات أضيق) يعطي الكثافة ويملأ السطر.
 enum MushafStyle {
     /// أدنى فراغ كلمات (نسبة من الطبيعي) يُقبل قبل تصغير الخط: الأقل يكبّر الخط ويكثّف السطر.
-    static let gapFloor: CGFloat = 0.6
+    static let gapFloor: CGFloat = 0.7
 }
 
 /// قياس عرض كلمات السطر بخط الصفحة نفسه (Core Text) لتوزيع السطر على عرض الصفحة كما في المصحف المطبوع.
@@ -146,7 +146,7 @@ enum MushafMetrics {
         var widest: CGFloat = probe
         for l in lines {
             let sum: CGFloat = l.w.reduce(0, +)
-            widest = max(widest, sum + CGFloat(max(l.w.count - 1, 0)) * naturalGapEm * probe)
+            widest = max(widest, sum + CGFloat(max(l.w.count - 1, 0)) * naturalGapEm * probe * minGapFactor)
         }
         let hi = min(width / widest * probe, maxFont)
         func fits(_ s: CGFloat) -> Bool {
