@@ -130,7 +130,7 @@ struct DailyWirdView: View {
             Circle().stroke(Sunnah.Colors.primary.opacity(0.15), lineWidth: 9)
             Circle().trim(from: 0, to: min(max(value, 0), 1)).stroke(Sunnah.Colors.primary, style: StrokeStyle(lineWidth: 9, lineCap: .round)).rotationEffect(.degrees(-90))
             VStack(spacing: 2) {
-                Text(title).font(.system(size: 40, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.textPrimary).minimumScaleFactor(0.6).lineLimit(1)
+                Text(title == ar(0) ? "لم تبدأ" : title).font(title == ar(0) ? AppearancePrefs.ui(.extraBold, 26, .title2) : .system(size: 40, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.textPrimary).minimumScaleFactor(0.6).lineLimit(1)
                 Text(subtitle).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
             }
         }.frame(width: 148, height: 148)

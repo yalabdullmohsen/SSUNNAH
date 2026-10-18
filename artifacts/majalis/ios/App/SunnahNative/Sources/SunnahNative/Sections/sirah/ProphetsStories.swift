@@ -2,7 +2,7 @@ import SwiftUI
 
 /// أقسام صفحة النبي: كل خيار يظهر فقط إن كان له محتوى موثّق، والفارغ يُخفى كليًّا.
 enum ProphetSection: String, CaseIterable, Hashable {
-    case story, identity, saadi, sunnah, verses, lineage, timePlace, miracles, lessons
+    case story, identity, sunnah, saadi, verses, lineage, timePlace, miracles, lessons
 
     var title: String {
         switch self {

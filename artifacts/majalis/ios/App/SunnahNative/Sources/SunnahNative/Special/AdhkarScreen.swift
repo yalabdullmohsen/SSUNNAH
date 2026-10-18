@@ -115,8 +115,12 @@ struct AdhkarListView: View {
                         .stroke(Sunnah.Colors.primary, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                         .rotationEffect(.degrees(90)).scaleEffect(x: -1, y: 1)
                     VStack(spacing: 2) {
-                        Text(digits(taps)).font(AppearancePrefs.ui(.extraBold, 44, .largeTitle)).foregroundStyle(Sunnah.Colors.primary)
-                        Text(complete ? "تمّ" : "اضغط للعدّ").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                        if complete {
+                            Image(systemName: "checkmark").font(.system(size: 40, weight: .heavy)).foregroundStyle(Sunnah.Colors.primary)
+                        } else {
+                            Text(digits(item.repeatCount - taps)).font(.system(size: 52, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.primary)
+                        }
+                        Text(complete ? "تمّ" : "المتبقي · اضغط للعدّ").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
                     }
                 }
                 .frame(width: 176, height: 176)
