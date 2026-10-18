@@ -14,6 +14,10 @@ struct PrayerWidgetBundle: WidgetBundle {
         AdhkarStreakWidget()
         QuranAyahWidget()
         MushafContinueWidget()
+        LocalDuhaWidget()
+        LocalAfterSalahWidget()
+        LocalAsmaWidget()
+        LocalFridayFastingWidget()
         if #available(iOS 18.0, *) {
             SunnahPrayerControl()
             SunnahAdhkarControl()

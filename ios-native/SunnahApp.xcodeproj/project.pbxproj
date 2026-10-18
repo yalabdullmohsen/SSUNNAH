@@ -72,6 +72,7 @@
 		A6CF08EFE8B48968E79F5C1FEBC60CA8 /* Almarai-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB6E3D1E733BAB5029CB1793359E220B /* Almarai-Bold.ttf */; };
 		AE9CDDAB9F27014953D390BC1F519654 /* Almarai-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F08E329DC130FE10D7D2044C890EA8D2 /* Almarai-ExtraBold.ttf */; };
 		AEBDB24F16F45E4D53B535FC3A63AE99 /* SunnahContentExperienceCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59311201FD85DF963DDB990150DDF05C /* SunnahContentExperienceCatalog.swift */; };
+		N1A0CA1DA7A0000000000B001 /* SunnahLocalDataWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = N1A0CA1DA7A0000000000F001 /* SunnahLocalDataWidgets.swift */; };
 		AEFC4404AB1617F38769A231A06FF0FB /* SunnahWidgetCenterPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C90CC5DB494B9B5D39475936EB358D2 /* SunnahWidgetCenterPreviews.swift */; };
 		B1462F06F9825530E168C4F1DF31D107 /* SunnahNative in Frameworks */ = {isa = PBXBuildFile; productRef = 44B2049AD06638E5B8FC0EC57C2B23E9 /* SunnahNative */; };
 		B58855613244DF616B847314AA71A01C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E500D619DBAC5AA062B40C66C8E117E5 /* PrivacyInfo.xcprivacy */; };
@@ -199,6 +200,7 @@
 		53E526FBC739B0C222197D589E8E86D4 /* WatchStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchStore.swift; sourceTree = "<group>"; };
 		544A9810AA9F33E6D37D34A652B465E3 /* PrayerWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PrayerWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		59311201FD85DF963DDB990150DDF05C /* SunnahContentExperienceCatalog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahContentExperienceCatalog.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahContentExperienceCatalog.swift; sourceTree = SOURCE_ROOT; };
+		N1A0CA1DA7A0000000000F001 /* SunnahLocalDataWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SunnahLocalDataWidgets.swift; path = ../artifacts/majalis/ios/App/PrayerWidget/SunnahLocalDataWidgets.swift; sourceTree = SOURCE_ROOT; };
 		59E7D5097528EDAE54349EC654F998DE /* LaunchPerfUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LaunchPerfUITests.swift; sourceTree = "<group>"; };
 		5D02A1F8C395BBC1A46F2B84C0B9F732 /* PerformanceMetrics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PerformanceMetrics.swift; sourceTree = "<group>"; };
 		658186C2918FD41DBC9A2A3B712BA39B /* SunnahApp.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = SunnahApp.entitlements; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				77F5C808AA216BEE6D96306D7B3B4A2E /* SunnahAdhkarWidgetCatalog.swift */,
 				BA5564218DCA3BA0BE9132D473578646 /* SunnahCalendarWidgetCatalog.swift */,
 				59311201FD85DF963DDB990150DDF05C /* SunnahContentExperienceCatalog.swift */,
+				N1A0CA1DA7A0000000000F001 /* SunnahLocalDataWidgets.swift */,
 				83C05F630068EBC6746D380F12F96ACA /* SunnahCustomWidgetCatalog.swift */,
 				D68C0F480E2E96CF7D004959C8DCF3D9 /* SunnahHomeWidgetCatalog.swift */,
 				9D8A23113F87AE2E70CF70E8BDB66707 /* SunnahPrayerWidgetCatalog.swift */,
@@ -792,6 +795,7 @@
 				394205D36A777E4C8F5183558642E2FC /* SunnahAdhkarWidgetCatalog.swift in Sources */,
 				C83873CBD5871BA8A98B7A69A2F7CE28 /* SunnahCalendarWidgetCatalog.swift in Sources */,
 				AEBDB24F16F45E4D53B535FC3A63AE99 /* SunnahContentExperienceCatalog.swift in Sources */,
+				N1A0CA1DA7A0000000000B001 /* SunnahLocalDataWidgets.swift in Sources */,
 				704DFE054AD5ED4DAC1ECD68C3C063DB /* SunnahCustomWidgetCatalog.swift in Sources */,
 				8757FF5D526354C766468F6555035513 /* SunnahHomeWidgetCatalog.swift in Sources */,
 				C2F00DB432E1B961435845E4AB488A4E /* SunnahPrayerWidgetCatalog.swift in Sources */,
