@@ -56,7 +56,7 @@ struct AccountWidgetCenterScreen: View {
         }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
-        .navigationTitle("مركز الودجت")
+        .sunnahNavTitle("مركز الودجت")
         .task { await load() }
     }
 

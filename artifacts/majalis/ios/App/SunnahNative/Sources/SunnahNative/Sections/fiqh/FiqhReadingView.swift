@@ -17,7 +17,7 @@ struct FiqhReadingView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
         .heroNavigationBar()
-        .navigationTitle(reading?.title ?? "")
+        .sunnahNavTitle(reading?.title ?? "")
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)   // العنوان في الـHero؛ لا عنوان كبير مكرَّر
         #endif

@@ -73,7 +73,7 @@ struct MawarithCalculatorScreen: View {
             .padding(Sunnah.Spacing.s4)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("حاسبة المواريث الإسلامية")
+        .sunnahNavTitle("حاسبة المواريث الإسلامية")
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif

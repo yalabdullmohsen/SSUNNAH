@@ -110,6 +110,9 @@ for n in $PRS; do
       log "#$n محمي لكن visually-verified ومالك المسار ⇒ بلا needs-owner"; bad=""
     fi
   fi
+  if [ -z "$bad" ] && [ $DRY != 1 ] && gh pr view "$n" -R "$GHR" --json labels -q '.labels[].name' | grep -qx needs-owner; then
+    gh pr edit "$n" -R "$GHR" --remove-label needs-owner >/dev/null 2>&1 && log "#$n زال سبب needs-owner ⇒ أُزيل الوسم"   # الحلقة تزيل ما أضافته عند زوال سببه
+  fi
   if [ -n "$bad" ]; then
     comment "$n" owner "محتوى محمي (القرآن/الصفحات/الخطوط/مواقيت الصلاة) ⇒ لا دمج آلي: \`$(echo "$bad" | tr '\n' ' ')\`"
     [ $DRY = 1 ] || gh pr edit "$n" -R "$GHR" --add-label needs-owner >/dev/null 2>&1

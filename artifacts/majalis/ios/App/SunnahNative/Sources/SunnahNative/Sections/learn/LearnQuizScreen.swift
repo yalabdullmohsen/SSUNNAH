@@ -10,13 +10,13 @@ struct LearnQuizScreen: View {
                     LearnLoadHost(LearnSources.quizChunk(chunk)) { (questions: [LearnOpenQuestion]) in
                         LearnOpenQuizRunner(questions: questions)
                     }
-                    .navigationTitle(chunk.title)
+                    .sunnahNavTitle(chunk.title)
                 } label: {
                     SunnahListRow(title: chunk.title, subtitle: "\(chunk.count) سؤالًا")
                 }
             }
         }
-        .navigationTitle("تحدي الأسئلة")
+        .sunnahNavTitle("تحدي الأسئلة")
     }
 }
 

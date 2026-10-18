@@ -111,7 +111,7 @@ public extension EnvironmentValues {
 private struct RegistryTitle: ViewModifier {
     @Environment(\.routeTitle) private var routeTitle
     let fallback: String
-    func body(content: Content) -> some View { content.navigationTitle(routeTitle ?? fallback) }
+    func body(content: Content) -> some View { content.sunnahNavTitle(routeTitle ?? fallback) }
 }
 
 public extension View {

@@ -108,7 +108,7 @@ struct AccountUserStatsScreen: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .navigationTitle("إحصائياتي")
+        .sunnahNavTitle("إحصائياتي")
         .task { await load() }
     }
 

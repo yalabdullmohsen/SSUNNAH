@@ -37,7 +37,7 @@ public struct TemplateHost<T: ScreenTemplate>: View {
             case .ready(let content): T(content: content)
             }
         }
-        .navigationTitle(T.title)
+        .sunnahNavTitle(T.title)
         .task { await load() }
     }
 

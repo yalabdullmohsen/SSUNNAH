@@ -34,7 +34,7 @@ struct AccountCalendarScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("تقويم الدروس")
+        .sunnahNavTitle("تقويم الدروس")
         .task { await load() }
         .sheet(item: $openEvent) { event in eventSheet(event) }
     }

@@ -88,7 +88,7 @@ struct AccountContactScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .navigationTitle("تواصل معنا")
+        .sunnahNavTitle("تواصل معنا")
     }
 
     @ViewBuilder
