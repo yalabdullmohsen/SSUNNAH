@@ -166,9 +166,12 @@ public struct PrayerTimesScreen: View {
 }
 
 /// اختيار المدينة: بحث في المدن المضمّنة دون اتصال، أو موقع الجهاز.
-struct CityPickerView: View {
+public struct CityPickerView: View {
     @ObservedObject var store: PrayerPreferencesStore
     let onUseDeviceLocation: () -> Void
+    public init(store: PrayerPreferencesStore, onUseDeviceLocation: @escaping () -> Void) {
+        self.store = store; self.onUseDeviceLocation = onUseDeviceLocation
+    }
     @Environment(\.dismiss) private var dismiss
     @State private var query = ""
 
@@ -196,7 +199,7 @@ struct CityPickerView: View {
         }
     }
 
-    var body: some View {
+    public var body: some View {
         NavigationStack {
             List {
                 Button {

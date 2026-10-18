@@ -74,8 +74,10 @@ public struct SunnahPageTitle: View {
         Text(text).font(AppearancePrefs.ui(.extraBold, 32, .largeTitle))
             .foregroundStyle(Sunnah.Colors.textPrimary)
             .lineLimit(2).minimumScaleFactor(0.7)
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
             .padding(.horizontal, Sunnah.Spacing.pageX)
+            .padding(.bottom, 14)
             .accessibilityAddTraits(.isHeader)
     }
 }
