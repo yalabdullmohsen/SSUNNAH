@@ -7,7 +7,7 @@
 # متغيرات (للاختبار والضبط): HYGIENE_MAX_SIMS(3) HYGIENE_IDLE_MIN(30) HYGIENE_ORPHAN_MIN(30) HYGIENE_PCT_MAX(80) HYGIENE_WINDOW
 #   HYGIENE_DRY=1 (يطبع الإجراءات "ACTION …" بلا تنفيذ) HYGIENE_USED/HYGIENE_LIMIT (يتجاوزان القياس)
 #   القرص: تحذير تحت HYGIENE_DISK_WARN_GB(12) ورفض (خروج 75) تحت HYGIENE_DISK_MIN_GB(8) بعد التنظيف التلقائي؛ HYGIENE_FREE_GB يتجاوز القياس.
-#   DerivedData: يُحذف الأقدم من HYGIENE_DD_HOURS(2) بلا استعمال (أي نافذة)، في HYGIENE_DD_ROOTS (افتراضي ssunnah-build وXcode DerivedData و~/.majalis-tools/dd)؛ headbuild يُبقي أحدث HYGIENE_HB_KEEP(2)؛ ثم simctl delete unavailable.
+#   DerivedData: يُحذف الأقدم من HYGIENE_DD_HOURS(2) بلا استعمال (أي نافذة)، في HYGIENE_DD_ROOTS (افتراضي ssunnah-build وXcode DerivedData و~/.majalis-tools/dd)؛ headbuild يُبقي أحدث HYGIENE_HB_KEEP(2).
 #     يخص النافذة الحالية (اسم يبدأ بـnX-) والمشترك (بلا بادئة)؛ ولا يُمسّ مجلد نافذة أخرى ولا شيء ما دامت أرشفة جارية أو العملية تذكر مساره. تقرير "DD-CLEAN" قبل كل حذف.
 #   HYGIENE_SIM_LIST=<ملف> (بديل خرج simctl list devices booted) HYGIENE_DEVICES=<جذر CoreSimulator/Devices> HYGIENE_PS_FILE=<ملف: pid ppid etime command>
 set -uo pipefail
@@ -124,11 +124,10 @@ limit_sims
 kill_orphans
 dd_clean
 hb_prune
-[ "${HYGIENE_DRY:-0}" = 1 ] || xcrun simctl delete unavailable >/dev/null 2>&1
 FREE=$(free_gb); log "المساحة الحرة ${FREE}GB"
 [ "$FREE" -lt "${HYGIENE_DISK_WARN_GB:-12}" ] && log "تحذير: المساحة الحرة ${FREE}GB < ${HYGIENE_DISK_WARN_GB:-12}GB"
 if [ "$FREE" -lt "${HYGIENE_DISK_MIN_GB:-8}" ]; then
-  log "رفض بدء البناء: المساحة الحرة ${FREE}GB < ${HYGIENE_DISK_MIN_GB:-8}GB. احذف DerivedData القديم/المحاكيات غير المستعملة (xcrun simctl delete unavailable) ثم أعد المحاولة."; exit 75
+  log "رفض بدء البناء: المساحة الحرة ${FREE}GB < ${HYGIENE_DISK_MIN_GB:-8}GB. احذف DerivedData القديم/المحاكيات غير المستعملة يدويًا ثم أعد المحاولة."; exit 75
 fi
 [ -n "${HYGIENE_USED:-}" ] || { sleep 1; usage_pct; }
 if [ "$PCT" -ge "$PCT_MAX" ]; then
