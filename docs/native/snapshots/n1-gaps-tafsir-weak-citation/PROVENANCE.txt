@@ -1,0 +1,7 @@
+git_sha=9b0ce0e459e2b296fca7543dc333955b7622caa8
+branch=n1/combo-shots2
+app=SunnahApp Debug (n1-sim2, iPhone)
+built_at=2026-10-18T12:50:24Z
+captured_at=2026-10-18T12:50:24Z
+covers=Sections/quran/TafsirScreens+Native.swift (tafsir-home, tafsir-xxxl); Sections/quran/PublishedScreens+Native.swift (published-hifz, published-people); Special/WeakHadithScreens.swift (weak-daif: حال فراغ لأن الضعيف pending_review مخفي)؛ Special/CitationScreen.swift (citation-c: حال «غير موجود»)؛ disclosure-stories-xxxl
+gaps=Citation بمحتوى حقيقي (يُجلب من الخادم، لا slug محلي)؛ WeakHadithDetailView (لا مادة معتمدة)؛ لقطة XXXL للإفصاح خرجت بلا ورقة مفتوحة واضحة؛ iPad لم يُصوَّر بعد؛ ورقة الإفصاح الصريحة بلا لقطة مستقلة
