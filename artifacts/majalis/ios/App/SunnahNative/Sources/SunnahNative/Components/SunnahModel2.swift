@@ -297,3 +297,28 @@ public extension View {
     /// شريط النموذج ٢ العلوي لجذور التبويبات: قائمة + بحث + حساب، ويخفي شريط التنقّل النظامي.
     func sunnahRootChrome() -> some View { modifier(SunnahRootChrome()) }
 }
+
+// MARK: - SubChrome
+
+private struct SunnahSubChrome: ViewModifier {
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.openRoute) private var openRoute
+    func body(content: Content) -> some View {
+        content
+            #if os(iOS)
+            .toolbar(.hidden, for: .navigationBar)
+            #endif
+            .safeAreaInset(edge: .top, spacing: 0) {
+                SunnahTopBar(onBack: { dismiss() }) {
+                    SunnahTopBarIcon(symbol: "magnifyingglass", label: "البحث") { openRoute("/search") }
+                }
+                .padding(.vertical, Sunnah.Spacing.s2)
+                .background(Sunnah.Colors.bg)
+            }
+    }
+}
+
+public extension View {
+    /// شريط الشاشات الفرعية (النموذج ٢): رجوع + بحث، ويخفي شريط التنقّل النظامي.
+    func sunnahSubChrome() -> some View { modifier(SunnahSubChrome()) }
+}
