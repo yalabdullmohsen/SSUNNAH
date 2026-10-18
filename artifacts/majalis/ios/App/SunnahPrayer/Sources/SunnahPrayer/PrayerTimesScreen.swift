@@ -3,7 +3,7 @@ import SwiftUI
 /// تنسيق الوقت بمنطقة الموقع لا بمنطقة الجهاز.
 public enum PrayerTimeFormat {
     /// أرقام عربية صراحةً؛ لا تتبع افتراض «ar» المتغيّر بين إصدارات النظام.
-    static let locale = Locale(identifier: "ar-u-nu-arab")
+    static let locale = Locale(identifier: "ar@numbers=arab")
 
     public static func clock(_ date: Date, in timeZone: TimeZone) -> String {
         let f = DateFormatter()

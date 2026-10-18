@@ -25,29 +25,6 @@ public struct RootTabView: View {
         NavigationStack(path: $router.stack) {
             screen(AppTab.home.rootRoute)
                 .sunnahNavTitle("الرئيسية")
-                #if os(iOS)
-                .navigationBarTitleDisplayMode(.large)
-                #endif
-                .toolbar {
-                    #if os(iOS)
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button { Sunnah.Haptics.select(); sunnahAnimate { showDrawer = true } } label: { Image(systemName: "line.3.horizontal") }
-                            .accessibilityLabel("القائمة")
-                    }
-                    #endif
-                    ToolbarItem(placement: .primaryAction) {
-                        Button { router.open(path: "/search") } label: { Image(systemName: "magnifyingglass") }
-                            .accessibilityLabel("البحث")
-                    }
-                    ToolbarItem(placement: .primaryAction) {
-                        Menu {
-                            Button { router.open(path: "/my-submissions") } label: { Label("مساهماتي", systemImage: "tray.full") }
-                            Button { router.open(path: "/login") } label: { Label("تسجيل الدخول", systemImage: "person.crop.circle.badge.plus") }
-                            Button { router.open(path: "/settings") } label: { Label("الإعدادات", systemImage: "gearshape") }
-                        } label: { Image(systemName: "person.crop.circle") }
-                            .accessibilityLabel("الحساب")
-                    }
-                }
                 .navigationDestination(for: Route.self) { screen($0).sunnahDestination($0) }
         }
         // الشريط عائم فوق المحتوى (الـNavigationStack لا يمرّر الـinset إلى ScrollView الداخلية)، فيُضاف هامش سفلي مرة واحدة لكل المحتوى القابل للتمرير حتى لا يختبئ آخر عنصر خلفه.
@@ -59,6 +36,7 @@ public struct RootTabView: View {
             }
         }
         .environment(\.immersiveReader, immersive)
+        .environment(\.openDrawer) { Sunnah.Haptics.select(); sunnahAnimate { showDrawer = true } }
         .environment(\.openRoute) { [router] in Sunnah.Haptics.select(); router.open(path: $0) }
         .overlay {
             if showDrawer {

@@ -297,7 +297,7 @@ struct MawarithCalculatorScreen: View {
 
     private static let money: NumberFormatter = {
         let f = NumberFormatter()
-        f.locale = Locale(identifier: "ar-u-nu-arab")
+        f.locale = Locale(identifier: "ar@numbers=arab")
         f.minimumFractionDigits = 0; f.maximumFractionDigits = 2
         return f
     }()

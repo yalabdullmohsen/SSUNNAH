@@ -134,7 +134,7 @@ struct AccountCalendarScreen: View {
 
     private func dayList(_ events: [AccountCalendarEvent], date: Date) -> some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-            Text(date.formatted(.dateTime.weekday(.wide).day().month(.wide).locale(Locale(identifier: "ar-u-nu-arab"))))
+            Text(date.formatted(.dateTime.weekday(.wide).day().month(.wide).locale(Locale(identifier: "ar@numbers=arab"))))
                 .font(Sunnah.Typography.cardTitle)
                 .foregroundStyle(calendar.isDateInToday(date) ? Sunnah.Colors.primary : Sunnah.Colors.textPrimary)
             if events.isEmpty {

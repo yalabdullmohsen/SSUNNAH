@@ -1,14 +1,13 @@
 import SwiftUI
 import SunnahPrayer
 
-/// الرئيسية: الصلاة القادمة (من محرك المواقيت) + الورد اليومي + آخر قراءة + شبكة أقسام التطبيق.
+/// الرئيسية (النموذج ٢): بطاقة خضراء موحّدة (التحية + التاريخ الهجري + المدينة + الصلاة القادمة + الخط الزمني) ← الورد وأذكار الوقت ← آية اليوم ← حديث اليوم.
 /// لا نص شرعي هنا: عناوين تنقّل فقط، والأرقام من حالة الجهاز المحلية.
 public struct HomeScreen: View {
     @StateObject private var store = PrayerPreferencesStore()
     @AppStorage("sunnah.wird.state.v1") private var wirdRaw = ""
     @AppStorage("mushaf.lastPage") private var lastPage = 0
     @Environment(\.openRoute) private var openRoute
-    @Environment(\.dynamicTypeSize) private var typeSize
     @State private var daily: HomeDailyContent?
 
     struct Shortcut: Identifiable { let title: String; let symbol: String; let route: String; var id: String { route } }
@@ -32,28 +31,25 @@ public struct HomeScreen: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: Sunnah.Spacing.s6) {
-                header
-                TimelineView(.periodic(from: .now, by: 1)) { ctx in
-                    nextPrayerCard(now: ctx.date)
+            VStack(spacing: Sunnah.Spacing.s4) {
+                TimelineView(.periodic(from: .now, by: 1)) { ctx in heroCard(now: ctx.date) }
+                HStack(alignment: .top, spacing: Sunnah.Spacing.s3) {
+                    wirdCard
+                    adhkarCard
                 }
-                wirdCard
+                .padding(.horizontal, Sunnah.Spacing.pageX)
                 if let daily {
                     ayahCard(daily)
                     hadithCard(daily.hadith)
                 }
                 if lastPage > 0 { lastReadCard }
-                VStack(spacing: Sunnah.Spacing.s3) {
-                    SunnahSectionHeader("أقسام التطبيق")
-                    LazyVGrid(columns: columns, spacing: Sunnah.Spacing.s3) {
-                        ForEach(Self.shortcuts) { item in tile(item) }
-                    }
-                }
                 SunnahContentFooter(title: "الرئيسية", id: "home", section: "الرئيسية", inset: false)
+                    .padding(.horizontal, Sunnah.Spacing.pageX)
             }
-            .padding(Sunnah.Spacing.pageX)
+            .padding(.top, Sunnah.Spacing.s2)
         }
         .background(Sunnah.Colors.bg)
+        .sunnahRootChrome()
         .environment(\.layoutDirection, .rightToLeft)
         .task {
             // فك JSON (آية/حديث اليوم + سورة) خارج الخيط الرئيسي كي لا يؤخّر أول إطار
@@ -62,125 +58,129 @@ public struct HomeScreen: View {
         }
     }
 
-    private var header: some View {
-        VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-            Text(Self.greeting(Date())).font(Sunnah.Typography.pageTitle).foregroundStyle(.white)
-            Text(Self.hijriDate(Date())).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.heroGold)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(Sunnah.Spacing.s5)
-        .sunnahMotifCorner(size: 170, alignment: .topLeading, tint: .white, opacity: 0.14).clipShape(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
-        .sunnahPatternedBackground(radius: Sunnah.Radius.hero)
-        .accessibilityElement(children: .combine)
-        .accessibilityIdentifier("home.header")
-    }
-
     static func greeting(_ d: Date) -> String {
         Calendar.current.component(.hour, from: d) < 12 ? "صباح الخير" : "مساء الخير"
     }
 
-    /// التاريخ الهجري (أم القرى) بأرقام لاتينية.
+    /// «الأحد ٧ جمادى الأولى ١٤٤٨ هـ» (أم القرى، أرقام عربية-هندية).
     static func hijriDate(_ d: Date) -> String {
         let f = DateFormatter()
         f.calendar = Calendar(identifier: .islamicUmmAlQura)
-        f.locale = Locale(identifier: "ar-u-nu-arab")
-        f.dateFormat = "d MMMM y"
-        return f.string(from: d)
+        f.locale = Sunnah.locale
+        f.dateFormat = "EEEE d MMMM y"
+        return f.string(from: d) + " هـ"
     }
 
-    private func ayahCard(_ d: HomeDailyContent) -> some View {
-        Button { openRoute("/mushaf") } label: {
-            SunnahCard {
-                VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                    Label("آية اليوم", systemImage: "book.closed").font(Sunnah.Typography.cardTitle)
-                        .foregroundStyle(Sunnah.Colors.primary)
-                    Divider().overlay(Sunnah.Colors.border)
-                    SunnahArabicText(d.ayahText, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
-                    Text(PrayerTimeFormat.arabicDigits(d.ayah.reference)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        .padding(.top, Sunnah.Spacing.s1)
+    private func heroCard(now: Date) -> some View {
+        let prefs = store.preferences
+        let day = PrayerCalculator.times(for: prefs.location, on: now, settings: prefs.settings)
+        let next = PrayerCalculator.next(after: now, location: prefs.location, settings: prefs.settings)
+        let zone = TimeZone(identifier: prefs.location.timeZoneIdentifier) ?? .current
+        let five: [Prayer] = [.fajr, .dhuhr, .asr, .maghrib, .isha]
+        return Button { openRoute("/native/prayer") } label: {
+            SunnahHeroCard {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(Self.greeting(now)).font(AppearancePrefs.ui(.extraBold, 28, .title)).foregroundStyle(.white)
+                            Text(Self.hijriDate(now)).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.heroGold)
+                        }
+                        Spacer(minLength: 8)
+                        Text(prefs.location.label).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(.white)
+                            .padding(.horizontal, 12).padding(.vertical, 6)
+                            .background(Color.white.opacity(0.18), in: Capsule())
+                    }
+                    Divider().overlay(Color.white.opacity(0.2))
+                    if let next {
+                        HStack(alignment: .bottom) {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("الصلاة القادمة").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
+                                Text(next.prayer.nameAr).font(AppearancePrefs.ui(.extraBold, 40, .largeTitle)).foregroundStyle(.white)
+                            }
+                            Spacer(minLength: 8)
+                            VStack(alignment: .trailing, spacing: 6) {
+                                Text(PrayerTimeFormat.clock(next.time, in: zone)).font(AppearancePrefs.ui(.extraBold, 28, .title)).foregroundStyle(.white)
+                                Text(Self.remaining(next.time.timeIntervalSince(now)))
+                                    .font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.goldInk)
+                                    .padding(.horizontal, 12).padding(.vertical, 5)
+                                    .background(Sunnah.Colors.heroGold, in: Capsule())
+                            }
+                        }
+                        if let day {
+                            SunnahPrayerTimeline(five.map { p in
+                                SunnahTimelineItem(id: p.rawValue, name: p.nameAr, time: PrayerTimeFormat.clock(day.time(p), in: zone), active: p == next.prayer)
+                            })
+                        }
+                    } else {
+                        Text("افتح المواقيت لتحديد موقعك وعرض الصلاة القادمة").font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(.white)
+                    }
                 }
             }
         }
-        .sunnahPressable()
+        .buttonStyle(.plain).sunnahPressable()
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("home.card.prayer")
+    }
+
+    /// «بعد ٦ س ١٤ د».
+    static func remaining(_ interval: TimeInterval) -> String {
+        let total = max(0, Int(interval.rounded(.down)))
+        let h = total / 3600, m = total % 3600 / 60
+        return Sunnah.digits(h > 0 ? "بعد \(h) س \(m) د" : "بعد \(m) د")
+    }
+
+    private func ayahCard(_ d: HomeDailyContent) -> some View {
+        SunnahHeaderCard(title: "آية اليوم", symbol: "book.closed") {
+            Button { openRoute("/mushaf") } label: {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                    SunnahArabicText(d.ayahText, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    Text(PrayerTimeFormat.arabicDigits(d.ayah.reference)).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                }
+            }
+            .buttonStyle(.plain)
+        }
         .accessibilityIdentifier("home.card.ayah")
     }
 
     private func hadithCard(_ h: HomeDailyHadith) -> some View {
-        Button { openRoute("/hadith") } label: {
-            SunnahCard {
+        SunnahHeaderCard(title: "حديث اليوم", symbol: "text.book.closed") {
+            Button { openRoute("/hadith") } label: {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                    Label("حديث اليوم", systemImage: "text.book.closed").font(Sunnah.Typography.cardTitle)
-                        .foregroundStyle(Sunnah.Colors.primary)
-                    Divider().overlay(Sunnah.Colors.border)
                     SunnahArabicText(h.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(PrayerTimeFormat.arabicDigits([h.narrator, h.source, h.number].compactMap { $0 }.joined(separator: " — ")))
-                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        .padding(.top, Sunnah.Spacing.s1)
+                        .font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }
+            .buttonStyle(.plain)
         }
-        .sunnahPressable()
-        .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.card.hadith")
-    }
-
-    private var columns: [GridItem] {
-        let n = typeSize.isAccessibilitySize ? 1 : (typeSize >= .xxLarge ? 2 : 3)
-        return Array(repeating: GridItem(.flexible(), spacing: Sunnah.Spacing.s3), count: n)
-    }
-
-    private func tile(_ item: Shortcut) -> some View {
-        Button { openRoute(item.route) } label: {
-            VStack(spacing: Sunnah.Spacing.s2) {
-                Image(systemName: item.symbol).font(Sunnah.Typography.sectionTitle)
-                    .foregroundStyle(Sunnah.Colors.primary).accessibilityHidden(true)
-                Text(item.title).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textPrimary)
-                    .multilineTextAlignment(.center)
-            }
-            .frame(maxWidth: .infinity, minHeight: 84)
-            .padding(Sunnah.Spacing.s3)
-            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card))
-            .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card).stroke(Sunnah.Colors.surface2, lineWidth: Sunnah.Spacing.hairline))
-        }
-        .sunnahPressable()
-        .accessibilityElement(children: .combine)
-        .accessibilityIdentifier("home.tile.\(item.route)")
-    }
-
-    @ViewBuilder
-    private func nextPrayerCard(now: Date) -> some View {
-        let prefs = store.preferences
-        if let next = PrayerCalculator.next(after: now, location: prefs.location, settings: prefs.settings) {
-            Button { openRoute("/native/prayer") } label: {
-                VStack(spacing: Sunnah.Spacing.s2) {
-                    Text("الصلاة القادمة").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.heroGold)
-                    Text(next.prayer.nameAr).font(Sunnah.Typography.pageTitle).foregroundStyle(.white)
-                    Text(PrayerTimeFormat.countdown(next.time.timeIntervalSince(now)))
-                        .font(Sunnah.Typography.body).foregroundStyle(.white.opacity(0.92)).monospacedDigit()
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, Sunnah.Spacing.s5).padding(.horizontal, Sunnah.Spacing.s4)
-                .sunnahMotifCorner(size: 150, alignment: .topTrailing, tint: .white, opacity: 0.12).clipShape(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
-                .sunnahPatternedBackground(radius: Sunnah.Radius.hero)
-            }
-            .sunnahPressable()
-            .accessibilityElement(children: .combine)
-            .accessibilityIdentifier("home.card.prayer")
-        } else {
-            Button { openRoute("/native/prayer") } label: {
-                SunnahCard {
-                    SunnahMessageState(symbol: "clock", title: "مواقيت الصلاة",
-                                       message: "افتح المواقيت لتحديد موقعك وعرض الصلاة القادمة")
-                }
-            }
-            .sunnahPressable()
-            .accessibilityIdentifier("home.card.prayer")
-        }
     }
 
     private var wird: WirdState {
         wirdRaw.data(using: .utf8).flatMap { try? JSONDecoder().decode(WirdState.self, from: $0) } ?? WirdState()
+    }
+
+    private func smallCard(title: String, symbol: String, tone: SunnahIconTile.Tone, trailing: String, progress: Double, footer: String, route: String, id: String) -> some View {
+        Button { openRoute(route) } label: {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                HStack {
+                    SunnahIconTile(symbol, tone: tone, size: 38)
+                    Spacer(minLength: 4)
+                    Text(trailing).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                }
+                Text(title).font(AppearancePrefs.ui(.extraBold, 16, .headline)).foregroundStyle(Sunnah.Colors.textPrimary).lineLimit(1).minimumScaleFactor(0.8)
+                Capsule().fill(Sunnah.Colors.primarySoft).frame(height: 6)
+                    .overlay(alignment: .leading) { GeometryReader { g in Capsule().fill(Sunnah.Colors.primary).frame(width: g.size.width * min(max(progress, 0), 1)) } }
+                Text(footer).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
+        }
+        .buttonStyle(.plain).sunnahPressable()
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier(id)
     }
 
     private var wirdCard: some View {
@@ -188,47 +188,36 @@ public struct HomeScreen: View {
         let c = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: Date())
         let today = String(format: "%04d-%02d-%02d", c.year ?? 0, c.month ?? 0, c.day ?? 0)
         let done = w.todayCount(today), goal = max(w.pagesPerDay, 1)
-        return Button { openRoute("/native/daily-wird") } label: {
-            SunnahCard {
-                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                    HStack {
-                        Label("الورد اليومي", systemImage: "book").font(Sunnah.Typography.cardTitle)
-                            .foregroundStyle(Sunnah.Colors.textPrimary)
-                        Spacer(minLength: Sunnah.Spacing.s2)
-                        if w.streak > 0 {
-                            Label(ar(w.streak), systemImage: "flame").font(Sunnah.Typography.secondary)
-                                .foregroundStyle(Sunnah.Colors.textSecondary)
-                        }
-                    }
-                    ProgressView(value: min(Double(done) / Double(goal), 1)).tint(Sunnah.Colors.primary)
-                    Text(done >= goal ? "أكملت وردك لهذا اليوم" : "\(ar(done)) من \(ar(goal)) صفحة")
-                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                }
-            }
-        }
-        .sunnahPressable()
-        .accessibilityElement(children: .combine)
-        .accessibilityIdentifier("home.card.wird")
+        return smallCard(title: "الورد اليومي", symbol: "book", tone: .mint, trailing: Sunnah.digits("\(done) / \(goal)"),
+                         progress: Double(done) / Double(goal),
+                         footer: done >= goal ? "أكملت وردك اليوم" : Sunnah.digits("\(goal - done) صفحات متبقية"),
+                         route: "/native/daily-wird", id: "home.card.wird")
+    }
+
+    private var adhkarCard: some View {
+        let morning = Calendar.current.component(.hour, from: Date()) < 12
+        return smallCard(title: morning ? "أذكار الصباح" : "أذكار المساء", symbol: morning ? "sun.max" : "moon", tone: .gold,
+                         trailing: morning ? "الصباح" : "المساء", progress: 0, footer: "ابدأ ذكرك",
+                         route: "/native/adhkar", id: "home.card.adhkar")
     }
 
     private var lastReadCard: some View {
         Button { openRoute("/mushaf") } label: {
-            SunnahCard {
-                HStack(spacing: Sunnah.Spacing.s3) {
-                    Image(systemName: "bookmark").font(Sunnah.Typography.sectionTitle)
-                        .foregroundStyle(Sunnah.Colors.primary).accessibilityHidden(true)
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                        Text("متابعة القراءة").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                        Text("آخر صفحة: \(ar(lastPage))").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                    }
-                    Spacer(minLength: 0)
+            HStack(spacing: Sunnah.Spacing.s3) {
+                SunnahIconTile("bookmark", size: 40)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("متابعة القراءة").font(AppearancePrefs.ui(.extraBold, 16, .headline)).foregroundStyle(Sunnah.Colors.textPrimary)
+                    Text("آخر صفحة: \(Sunnah.digits(lastPage))").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
+                Spacer(minLength: 0)
             }
+            .padding(16)
+            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
+            .padding(.horizontal, Sunnah.Spacing.pageX)
         }
-        .sunnahPressable()
+        .buttonStyle(.plain).sunnahPressable()
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.card.continue")
     }
-
-    private func ar(_ n: Int) -> String { PrayerTimeFormat.arabicDigits(String(n)) }
 }

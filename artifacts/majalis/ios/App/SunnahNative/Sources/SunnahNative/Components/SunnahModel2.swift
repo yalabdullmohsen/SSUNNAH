@@ -1,7 +1,7 @@
 import SwiftUI
 
 // مكوّنات «النموذج ٢» المعتمد (docs/native/design/model2/SPEC.md): تُبنى مرة وتسري على كل الشاشات.
-// القيم من Sunnah.* فقط؛ الأرقام عربية-هندية عبر `Sunnah.digits` وبيئة اللغة `ar-u-nu-arab`.
+// القيم من Sunnah.* فقط؛ الأرقام عربية-هندية عبر `Sunnah.digits` وبيئة اللغة `ar@numbers=arab`.
 
 public extension Sunnah {
     /// يحوّل أرقام 0-9 في النص إلى عربية-هندية (٠-٩) للنصوص المركَّبة يدويًا (`String(format:)`، أوقات من JSON…).
@@ -11,7 +11,7 @@ public extension Sunnah {
     }
     static func digits(_ n: Int) -> String { digits(String(n)) }
     /// لغة الواجهة الموحّدة: عربي بأرقام هندية.
-    static let locale = Locale(identifier: "ar-u-nu-arab")
+    static let locale = Locale(identifier: "ar@numbers=arab")
 }
 
 // MARK: - TopBar
@@ -259,4 +259,39 @@ public extension SunnahSettingsRow where Accessory == EmptyView {
     init(_ title: String, symbol: String, tone: SunnahIconTile.Tone = .mint, isLast: Bool = false) {
         self.init(title, symbol: symbol, tone: tone, isLast: isLast) { EmptyView() }
     }
+}
+
+// MARK: - RootChrome
+
+private struct OpenDrawerKey: EnvironmentKey { static let defaultValue: () -> Void = {} }
+public extension EnvironmentValues {
+    /// يفتح القائمة الجانبية (يحقنه RootTabView).
+    var openDrawer: () -> Void {
+        get { self[OpenDrawerKey.self] }
+        set { self[OpenDrawerKey.self] = newValue }
+    }
+}
+
+private struct SunnahRootChrome: ViewModifier {
+    @Environment(\.openDrawer) private var openDrawer
+    @Environment(\.openRoute) private var openRoute
+    func body(content: Content) -> some View {
+        content
+            #if os(iOS)
+            .toolbar(.hidden, for: .navigationBar)
+            #endif
+            .safeAreaInset(edge: .top, spacing: 0) {
+                SunnahTopBar(onMenu: { openDrawer() }) {
+                    SunnahTopBarIcon(symbol: "person.crop.circle", label: "الحساب") { openRoute("/my-submissions") }
+                    SunnahTopBarIcon(symbol: "magnifyingglass", label: "البحث") { openRoute("/search") }
+                }
+                .padding(.vertical, Sunnah.Spacing.s2)
+                .background(Sunnah.Colors.bg)
+            }
+    }
+}
+
+public extension View {
+    /// شريط النموذج ٢ العلوي لجذور التبويبات: قائمة + بحث + حساب، ويخفي شريط التنقّل النظامي.
+    func sunnahRootChrome() -> some View { modifier(SunnahRootChrome()) }
 }
