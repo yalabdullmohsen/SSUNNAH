@@ -30,6 +30,23 @@ final class MushafTests: XCTestCase {
         for n in [1, 2, 50, 300, 604] { XCTAssertEqual(try r.ensureFont(page: n), "QCF2\(String(format: "%03d", n))") }
     }
 
+    func testSearchAlifVariantFallsBackToBareIndex() throws {
+        // بيانات اصطناعية: الرسم العثماني «ٱلصَّـٰبِرِينَ» بألف خنجرية؛ إملاء المستخدم بألف كاملة يجب أن يجد الآية.
+        let dir = FileManager.default.temporaryDirectory.appendingPathComponent("alif-\(UUID())")
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: dir) }
+        for n in 1...114 {
+            let text = n == 2 ? "إِنَّ ٱللَّهَ مَعَ ٱلصَّـٰبِرِينَ" : n == 1 ? "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ" : "كَلَمَة"
+            let json = "{\"number\":\(n),\"ayahs\":[{\"numberInSurah\":1,\"text\":\"\(text)\"}]}"
+            try json.write(to: dir.appendingPathComponent(String(format: "surah-%03d.json", n)), atomically: true, encoding: .utf8)
+        }
+        let s = try MushafSearch(surahDirectory: dir, ayahPage: [:])
+        XCTAssertEqual(s.search("الصابرين").map(\.ayah), ["2:1"])
+        XCTAssertEqual(s.search("الصبرين").map(\.ayah), ["2:1"])
+        XCTAssertEqual(s.search("الحمد لله").first?.ayah, "1:1")
+        XCTAssertTrue(s.search("زززز").isEmpty)
+    }
+
     func testSearchAndStore() throws {
         let r = try repo(), idx = try r.index()
         guard let q = ProcessInfo.processInfo.environment["MUSHAF_QURAN"] else { throw XCTSkip() }
