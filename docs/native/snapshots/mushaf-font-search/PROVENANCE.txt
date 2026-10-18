@@ -1,0 +1,10 @@
+git_sha=1d308a396c0226d8ef8729d8a03be876a600276b
+branch=n3/mushaf-font-search
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/0b75b937fafa65ff/SunnahApp.app
+binary_sha256=b210b670806081d86dedf7e58663b29b01534e1f4268b5cec0c49d5f611564d0
+built_at=2026-10-18 22:55:17
+source_newest=2026-10-18 22:52:59
+captured_at=2026-10-18 22:56:11
+files: Mushaf/MushafMetrics.swift (MushafStyle: weightEm=0.022, gapFloor=0.7 — قابلان للضبط)، Mushaf/MushafReaderView.swift (سماكة الكلمات بظلّين أفقيين + حقل بحث في الرأس يفتح /quran/search)
+covers: before-p12-* = بناء 7207eb285f9fb494 (نفس مفتاح مصدر native-app قبل التعديل)؛ after-p12-* = بناء 0b75b937fafa65ff؛ البقرة ص12 فاتحًا وداكنًا؛ لا تغيير في التخطيط/الرأس/التذييل/نافذة الآية عدا الحقل
+gaps: الصورة المرجعية لم تصلني كملف فالقيم مضبوطة بالعين لا بقياس عليها؛ فتح البحث بالنقر لم يُختبر في المحاكي (الحقل Button → openRoute("/quran/search"))؛ لا لقطة iPad؛ نافذة الآية لم تُصوَّر بعد التعديل.
