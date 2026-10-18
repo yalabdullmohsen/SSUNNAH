@@ -60,7 +60,7 @@ struct QuranDocView: View {
                 }
             }
             .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
-            if let reportID { SunnahReportIssueButton(title: title, id: reportID, section: reportSection) }
+            if let reportID { SunnahContentFooter(title: title, id: reportID, section: reportSection) }
             }
         }
         .background(Sunnah.Colors.bg)

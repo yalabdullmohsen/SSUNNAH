@@ -1,11 +1,14 @@
 import SwiftUI
 
-/// مصدر نص واحد لإفصاح الذكاء الاصطناعي: يُعرض أسفل كل صفحة تفاصيل وفي «عن التطبيق» والإعدادات والترحيب.
+/// مصدر نص واحد لإفصاح الذكاء الاصطناعي: يُعرض عبر `SunnahContentFooter` أسفل كل شاشة محتوى شرعي (والمصحف ومواقيت الصلاة بالنمط الخفيف).
 public enum SunnahDisclosure {
     public static let title = "تنبيه"
 
     /// الصيغة المختصرة (حرفيًا من المالك).
     public static let short = "أُعدّ محتوى هذا التطبيق بمساعدة الذكاء الاصطناعي اعتمادًا على مصادر مذكورة في كل صفحة، وقد يقع فيه خطأ. للفتوى والأحكام الشرعية ارجعوا إلى أهل العلم. إن وجدتم خطأً فاضغطوا «إبلاغ عن خطأ»."
+
+    /// سطر الصفحات الحساسة (أحكام/فتاوى/أحاديث) بجوار أيقونة «!».
+    public static let fatwaHint = "للفتوى راجع أهل العلم"
 
     /// الصيغة الموسّعة: المعنى نفسه مع بيان الوسم ودرجة التوثيق.
     public static let long = "أُعدّ محتوى هذا التطبيق بمساعدة الذكاء الاصطناعي اعتمادًا على مصادر مذكورة في كل صفحة، وقد يقع فيه خطأ. للفتوى والأحكام الشرعية ارجعوا إلى أهل العلم. المحتوى التحريري موسوم «من إعداد سُنّة»، ودرجة التوثيق تتفاوت بحسب الوسم الظاهر في كل صفحة. إن وجدتم خطأً فاضغطوا «إبلاغ عن خطأ» أسفل الصفحة."
@@ -26,5 +29,42 @@ struct SunnahDisclosureNotice: View {
         .padding(.horizontal, inset ? Sunnah.Spacing.pageX : 0).padding(.top, Sunnah.Spacing.s4)
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("detail.disclosure")
+    }
+}
+
+/// أيقونة «!» الصغيرة في ذيل الصفحة: الرسالة الكاملة (نص ن5 الحرفي) تُعرض في Sheet **بضغطة المستخدم فقط**،
+/// ولا تُفتح تلقائيًا عند دخول أي شاشة (الاستثناء الوحيد: افتتاحية أول تشغيل في IntroView).
+struct SunnahDisclosureInfoButton: View {
+    let title: String; let id: String; let section: String
+    @State private var showing = false
+    @Environment(\.openURL) private var openURL
+    var body: some View {
+        Button { Sunnah.Haptics.select(); showing = true } label: {
+            Image(systemName: "info.circle").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                .frame(minWidth: 44, minHeight: 44)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(SunnahDisclosure.title).accessibilityHint("يعرض تنبيه الذكاء الاصطناعي")
+        .accessibilityIdentifier("detail.disclosureInfo")
+        #if DEBUG
+        .onAppear { if UserDefaults.standard.bool(forKey: "snapshotDisclosure") { showing = true } }
+        #endif
+        .sheet(isPresented: $showing) {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+                Label(SunnahDisclosure.title, systemImage: "info.circle").font(Sunnah.Typography.cardTitle)
+                Text(SunnahDisclosure.short).font(Sunnah.Typography.body).fixedSize(horizontal: false, vertical: true)
+                Spacer(minLength: 0)
+                Button {
+                    if let url = SunnahReportIssueButton.mailURL(title: title, id: id, section: section) { openURL(url) }
+                } label: { Label("إبلاغ عن خطأ", systemImage: "exclamationmark.bubble").frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.buttonHeight) }
+                    .accessibilityIdentifier("disclosure.report")
+                Button { showing = false } label: { Text("إغلاق").frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.buttonHeight) }
+                    .accessibilityIdentifier("disclosure.close")
+            }
+            .padding(Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s4)
+            .foregroundStyle(Sunnah.Colors.textPrimary)
+            .presentationDetents([.medium, .large])
+            .accessibilityIdentifier("disclosure.sheet")
+        }
     }
 }

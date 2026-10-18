@@ -167,7 +167,7 @@ struct WeakHadithDetailView: View {
                     ShareLink(item: item.shareText) { Label("مشاركة", systemImage: "square.and.arrow.up") }
                     Button { copy(item.shareText) } label: { Label("نسخ", systemImage: "doc.on.doc") }
                 }.font(Sunnah.Typography.secondary)
-                SunnahReportIssueButton(title: item.title, id: item.id, section: item.sourceName, inset: false)
+                SunnahContentFooter(title: item.title, id: item.id, section: item.sourceName, source: item.sourceName, inset: false, sensitive: true)
             }.padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)

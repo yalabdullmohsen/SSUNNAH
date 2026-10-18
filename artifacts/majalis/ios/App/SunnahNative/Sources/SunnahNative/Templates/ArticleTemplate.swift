@@ -23,7 +23,7 @@ public struct ArticleTemplate: View {
                     SunnahSectionView(section: sec, key: item.id, style: .body)
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
-                SunnahReportIssueButton(title: item.title, id: item.id, section: item.reportSection)
+                SunnahContentFooter(title: item.title, id: item.id, section: item.reportSection)
             }
             .frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, Sunnah.Spacing.pageX)
         }
