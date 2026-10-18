@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>القائمة الجانبية — محسّنة</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap">
+<style>
+body{margin:0}
+.r{width:390px;height:1000px;background:#8E8B84;color:#1E2A24;font-family:'Almarai',sans-serif;position:relative;overflow:hidden;direction:rtl}
+.r *{box-sizing:border-box}
+.r svg.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.r .dr{position:absolute;top:0;right:0;bottom:0;width:322px;background:#F5F2EA;border-radius:28px 0 0 28px;overflow:hidden;box-shadow:-10px 0 40px rgba(0,0,0,.18)}
+.r .hd{position:relative;background:#24523F;color:#fff;padding:60px 18px 18px;overflow:hidden}
+.r .hd svg.pt{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+.r .in{position:relative}
+.r .sr{height:48px;border-radius:24px;background:#fff;display:flex;align-items:center;gap:10px;padding:0 16px;font-size:14px;color:#7D857F;margin-top:14px}
+.r .sr svg{color:#1F5C45}
+.r .bd{padding:14px 14px 0;display:flex;flex-direction:column;gap:8px}
+.r .gh{font-size:13px;font-weight:800;color:#1F5C45;margin:8px 6px 0}
+.r .gp{background:#fff;border:1px solid #E7E1D3;border-radius:22px;padding:4px}
+.r .rw{display:flex;align-items:center;gap:12px;height:52px;padding:0 10px;border-radius:16px;font-size:15.5px;font-weight:700}
+.r .rw.on{background:#E6EFE9;color:#1F5C45;font-weight:800}
+.r .ti{width:34px;height:34px;border-radius:11px;background:#E6EFE9;color:#1F5C45;display:flex;align-items:center;justify-content:center}
+.r .rw.on .ti{background:#1F5C45;color:#fff}
+.r .rw em{margin-right:auto;color:#A9A596;font-style:normal}
+.r .ft{position:absolute;bottom:0;right:0;width:322px;padding:12px 18px 28px;display:flex;justify-content:space-between;align-items:center;background:#F5F2EA;border-top:1px solid #E7E1D3;font-size:13px;font-weight:700;color:#4E5852}
+</style>
+</helmet>
+<div class="r">
+<div class="dr">
+<div class="hd">
+<svg class="pt" aria-hidden="true"><defs><pattern id="oc" width="64" height="64" patternUnits="userSpaceOnUse"><g fill="none" stroke="#fff" stroke-opacity=".10" stroke-width="1.2"><rect x="16" y="16" width="32" height="32"/><rect x="16" y="16" width="32" height="32" transform="rotate(45 32 32)"/><path d="M26 22h12l4 4v12l-4 4H26l-4-4V26z"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#oc)"/></svg>
+<div class="in">
+<div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:34px;font-weight:800">سُنّة</div><div style="font-size:12.5px;color:#DCC88F;font-weight:700">مساء الخير · ٧ جمادى الأولى</div></div>
+<div style="width:44px;height:44px;border-radius:22px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center"><svg class="ic" viewBox="0 0 24 24" role="img" aria-label="إغلاق"><path d="M6 6l12 12M18 6L6 18"/></svg></div></div>
+<div class="sr"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>ابحث في التطبيق</div>
+</div>
+</div>
+<div class="bd">
+<div class="gh">الأساسي</div>
+<div class="gp">
+<div class="rw on"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M4 10.5L12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg></div>الرئيسية</div>
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M19.5 14.5A7.5 7.5 0 0 1 9.5 4.5a7.5 7.5 0 1 0 10 10z"/></svg></div>الصلاة<em>‹</em></div>
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M7 3.5h10a1.5 1.5 0 0 1 1.5 1.5v14.5H7.500A2.500 2.500 0 0 1 5 17V6a2.500 2.500 0 0 1 2-2.500zM5 17a2.500 2.500 0 0 1 2.500-2.500h11"/></svg></div>المصحف<em>‹</em></div>
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><circle cx="12" cy="9.5" r="5.5"/><path d="M12 15v6M9.5 21h5"/></svg></div>الأذكار<em>‹</em></div>
+</div>
+<div class="gh">العلم</div>
+<div class="gp">
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M7 4h10a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM9 9h6M9 13h6"/></svg></div>الحديث<em>‹</em></div>
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M5 4h4v16H5zM10 4h4v16h-4zM15.500 5l3.500-.8 2.800 15.300-3.500.8z"/></svg></div>القرآن وعلومه<em>‹</em></div>
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M3.5 9.5L12 4l8.5 5.5M5 10v8M9.5 10v8M14.500 10v8M19 10v8M3.500 20h17"/></svg></div>الفقه<em>‹</em></div>
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M2.5 9L12 4.5 21.5 9 12 13.5zM6.5 11v4.500c0 1.400 2.500 3 5.500 3s5.500-1.600 5.500-3V11"/></svg></div>الدروس<em>‹</em></div>
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M3.500 6.500l5.500-2 6 2 5.500-2v13l-5.500 2-6-2-5.500 2zM9 4.500v13M15 6.500v13"/></svg></div>السيرة<em>‹</em></div>
+<div class="rw"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M12 3l2.6 3.7 4.400-.6-.6 4.400L22 12l-3.600 1.500.6 4.400-4.400-.6L12 21l-2.600-3.700-4.400.6.6-4.400L2 12l3.600-1.500-.6-4.400 4.400.6z"/></svg></div>قصص الأنبياء<em>‹</em></div>
+</div>
+<div class="gh">أدوات</div>
+<div class="gp" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:8px;gap:4px">
+<div style="height:72px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12.5px;font-weight:800"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div>القبلة</div>
+<div style="height:72px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12.5px;font-weight:800"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><circle cx="12" cy="12" r="7.500" stroke-dasharray="1.500 3"/><circle cx="12" cy="4.500" r="1.500"/></svg></div>السبحة</div>
+<div style="height:72px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:12.5px;font-weight:800"><div class="ti"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></div>التقويم</div>
+</div>
+</div>
+<div class="ft"><span style="display:flex;align-items:center;gap:8px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg>الإعدادات</span><span style="display:flex;align-items:center;gap:8px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v.01M12 11v5"/></svg>عن التطبيق</span></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
