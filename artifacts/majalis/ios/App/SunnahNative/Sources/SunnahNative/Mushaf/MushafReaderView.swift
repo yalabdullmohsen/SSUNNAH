@@ -89,7 +89,11 @@ public struct MushafPageView: View {
                             let k = item.k, w = item.w
                             Group {
                                 if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]) }
-                                else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary) }
+                                else {
+                                    let t = layout.fontSize * MushafStyle.weightEm
+                                    Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary)
+                                        .shadow(color: Sunnah.Colors.textPrimary, radius: 0, x: t, y: 0).shadow(color: Sunnah.Colors.textPrimary, radius: 0, x: -t, y: 0)
+                                }
                             }
                                 .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
                                 .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
@@ -229,7 +233,18 @@ public struct MushafReaderView: View {
     private var pageHeader: some View {
         HStack {
             Text("الجزء \(Self.arabicDigits(index.juz(onPage: current)))")
-            Spacer()
+            Button { openRoute("/quran/search") } label: {
+                HStack(spacing: Sunnah.Spacing.s2) {
+                    Image(systemName: "magnifyingglass")
+                    Text("ابحث في القرآن").lineLimit(1)
+                    Spacer(minLength: 0)
+                }
+                .padding(.horizontal, Sunnah.Spacing.s3).frame(height: 30)
+                .background(Sunnah.Colors.mushafIvory, in: Capsule())
+                .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.5), lineWidth: 1))
+            }
+            .buttonStyle(.plain).padding(.horizontal, Sunnah.Spacing.s3)
+            .accessibilityLabel("ابحث في القرآن").accessibilityIdentifier("mushaf.search")
             Text(topSurahName(on: current))
         }
         .font(Sunnah.Typography.secondary)

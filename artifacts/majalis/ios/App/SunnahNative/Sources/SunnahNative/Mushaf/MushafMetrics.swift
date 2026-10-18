@@ -1,6 +1,14 @@
 import Foundation
 import CoreText
 
+/// مظهر خط الصفحة (قابل للضبط): خط QPC نفسه بسماكة وكثافة أعلى ليملأ كل سطر عرض الصفحة كالمرجع.
+enum MushafStyle {
+    /// سماكة الحبر المضافة بوحدة em من حجم الخط (تُرسم كظلّين أفقيين بلا تمويه)؛ 0 = الخط كما هو.
+    static let weightEm: CGFloat = 0.022
+    /// أدنى فراغ كلمات (نسبة من الطبيعي) يُقبل قبل تصغير الخط: الأقل يكبّر الخط ويكثّف السطر.
+    static let gapFloor: CGFloat = 0.7
+}
+
 /// قياس عرض كلمات السطر بخط الصفحة نفسه (Core Text) لتوزيع السطر على عرض الصفحة كما في المصحف المطبوع.
 enum MushafMetrics {
     static func textWidth(_ text: String, family: String, size: CGFloat) -> CGFloat {
@@ -75,7 +83,7 @@ enum MushafMetrics {
     /// أقصى تفاوت مسموح بين جانبي القرص (الحارس يفرض ≤30%).
     static let discSideRatio: CGFloat = 1.0
     /// أدنى فراغ كلمات (نسبة من الطبيعي) يُقبل لإفساح مكان للقرص قبل تصغير الخط.
-    static let minGapFactor: CGFloat = 0.9
+    static let minGapFactor: CGFloat = MushafStyle.gapFloor
 
     static let naturalGapEm: CGFloat = 0.12
     /// حجم البسملة في كل السور = نسبة ثابتة من عرض السطر (لا من حجم الصفحة الذي يتفاوت بين الصفحات): قياس 402×874 و834×1194 على الصفحات الـ112.
