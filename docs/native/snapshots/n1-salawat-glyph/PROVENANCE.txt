@@ -1,0 +1,7 @@
+git_sha=5b8daccde2cf8ef2929649214334feb0b260d513
+branch=n1/salawat-glyph
+app=SunnahApp Debug iOS Simulator (iPhone, n1-sim2)
+built_at=2026-10-18T16:44:31Z
+captured_at=2026-10-18T16:44:31Z
+covers=weak-daif-salawat (بانر الحديث الضعيف بعد تكبير ﷺ ×1.8) ; stories-salawat (قبل الرفع إلى 1.8، بلا ﷺ ظاهر — للمقارنة فقط)
+gaps=لا صفحة حديث بمحتوى ظاهر (الأحاديث الضعيفة pending_review مخفية)؛ SourceRef في الذيل مُضاف init فقط بلا شاشة مستهلكة بعد؛ iPad
