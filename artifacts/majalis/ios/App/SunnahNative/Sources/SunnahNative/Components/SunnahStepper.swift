@@ -11,11 +11,11 @@ public struct SunnahStepper: View {
     public var body: some View {
         VStack(spacing: Sunnah.Spacing.s3) {
             ProgressView(value: Double(index + 1), total: Double(max(count, 1))).tint(Sunnah.Colors.primary)
-                .accessibilityLabel("المرحلة \(index + 1) من \(count)")
+                .accessibilityLabel("المرحلة \((index + 1).arabicDigits) من \(count.arabicDigits)")
             HStack {
                 step(previousTitle, "chevron.right", enabled: index > 0) { index -= 1 }.accessibilityIdentifier("stepper.previous")
                 Spacer()
-                Text("\(index + 1) / \(count)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                Text("\((index + 1).arabicDigits) / \(count.arabicDigits)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                 Spacer()
                 step(nextTitle, "chevron.left", enabled: index < count - 1, trailingIcon: true) { index += 1 }.accessibilityIdentifier("stepper.next")
             }

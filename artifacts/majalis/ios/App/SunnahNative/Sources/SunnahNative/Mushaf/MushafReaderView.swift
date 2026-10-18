@@ -103,7 +103,7 @@ public struct MushafPageView: View {
                                     LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) }
                                         .exclusively(before: TapGesture().onEnded { selectedAyah = selectedAyah == w.v ? nil : w.v }),
                                     including: interactive ? .all : .none)
-                                .accessibilityLabel(w.isAyahEnd ? "آية \(w.v)" : "")
+                                .accessibilityLabel(w.isAyahEnd ? "آية \(w.v.arabicDigits)" : "")
                         }
                     }
                     .background {
@@ -314,7 +314,7 @@ public struct MushafReaderView: View {
     private var pageCartouche: some View {
         HStack {
             PageCartouche(text: Self.arabicDigits(current))
-                .accessibilityLabel("صفحة \(current)")
+                .accessibilityLabel("صفحة \(current.arabicDigits)")
                 .accessibilityIdentifier("mushaf.pageNumber")
             Spacer()
             Text("الحزب \(Self.arabicDigits(hizb(on: current)))")
@@ -325,7 +325,7 @@ public struct MushafReaderView: View {
     }
 
     static func arabicDigits(_ n: Int) -> String {
-        let d = Array("٠١٢٣٤٥٦٧٨٩"); return String(String(n).compactMap { $0.wholeNumberValue.map { d[$0] } })
+        ArabicNumerals.string(n)
     }
 
     /// السورة الجارية في أعلى الصفحة (آية أول سطر)، لا آخر سورة تبدأ فيها.
@@ -386,7 +386,7 @@ public struct MushafReaderView: View {
     private func selectionSheet(_ ayah: String) -> some View {
         VStack(spacing: Sunnah.Spacing.s3) {
             HStack(spacing: Sunnah.Spacing.s3) {
-                Text(reference(ayah)).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text(reference(ayah).arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 Spacer()
                 SunnahButton("إغلاق", style: .outline) { selected = nil }
             }
@@ -456,14 +456,14 @@ public struct MushafIndexView: View {
             case .surahs:
                 List(index.surahs) { s in
                     Button { open(s.firstPage) } label: {
-                        HStack { Text("\(s.id). \(s.name)"); Spacer(); Text("صفحة \(s.firstPage)").foregroundStyle(Sunnah.Colors.textSecondary) }
+                        HStack { Text("\(s.id.arabicDigits). \(s.name)"); Spacer(); Text("صفحة \(s.firstPage.arabicDigits)").foregroundStyle(Sunnah.Colors.textSecondary) }
                     }
                     .sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
             case .juz:
                 List(Array(index.juzStart.enumerated()), id: \.offset) { i, p in
-                    Button { open(p) } label: { HStack { Text("الجزء \(i + 1)"); Spacer(); Text("صفحة \(p)").foregroundStyle(Sunnah.Colors.textSecondary) } }
+                    Button { open(p) } label: { HStack { Text("الجزء \((i + 1).arabicDigits)"); Spacer(); Text("صفحة \(p.arabicDigits)").foregroundStyle(Sunnah.Colors.textSecondary) } }
                     .sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
@@ -477,7 +477,7 @@ public struct MushafIndexView: View {
                 let hits = search?.search(query) ?? []
                 List(hits) { h in
                     Button { open(h.page) } label: {
-                        VStack(alignment: .leading) { Text(h.text).lineLimit(2); Text("آية \(h.ayah) · صفحة \(h.page)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
+                        VStack(alignment: .leading) { Text(h.text).lineLimit(2); Text("آية \(h.ayah.arabicDigits) · صفحة \(h.page.arabicDigits)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
                     }
                     .sunnahRowChrome()
                 }
