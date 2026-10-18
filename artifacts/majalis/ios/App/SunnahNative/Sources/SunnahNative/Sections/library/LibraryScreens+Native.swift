@@ -260,9 +260,9 @@ public enum LibrarySection {
         }
         registry.registerView(id: "sections") {
             // «كل الأقسام» لا تربط بنفسها (النقر كان لا يفعل شيئًا)
-            LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { nav in
+            LibraryLoadedView(source: File.navigation, adapt: { nav in
                 LibraryAdapters.sectionsPage(nav)
-            }) { LibraryGroupedLinksView(groups: $0) })
+            }) { SunnahSectionsHub(groups: $0) }
         }
         registry.registerView(id: "sitemap") {
             LibrarySection.titled(LibraryLoadedView(source: File.navigation, adapt: { LibraryAdapters.sitemap($0) }) { LibraryGroupedLinksView(groups: $0) })

@@ -77,11 +77,18 @@ struct AppearanceOptionsView: View {
     @AppStorage(AppearancePrefs.fontKey) private var font = AppearancePrefs.AppFont.almarai.rawValue
     @AppStorage(AppearancePrefs.sizeKey) private var size = AppearancePrefs.TextSize.standard.rawValue
     var body: some View {
-        Picker("السمة", selection: $theme) { ForEach(AppearancePrefs.Theme.allCases) { Text($0.title).tag($0.rawValue) } }
-            .accessibilityIdentifier("settings.theme")
-        Picker("خط التطبيق", selection: $font) { ForEach(AppearancePrefs.AppFont.allCases) { Text($0.title).tag($0.rawValue) } }
-            .accessibilityIdentifier("settings.font")
-        Picker("حجم النص", selection: $size) { ForEach(AppearancePrefs.TextSize.allCases) { Text($0.title).tag($0.rawValue) } }
-            .accessibilityIdentifier("settings.textSize")
+        row("السمة", "settings.theme", AppearancePrefs.Theme.allCases.map { ($0.rawValue, $0.title) }, $theme)
+        row("خط التطبيق", "settings.font", AppearancePrefs.AppFont.allCases.map { ($0.rawValue, $0.title) }, $font)
+        row("حجم النص", "settings.textSize", AppearancePrefs.TextSize.allCases.map { ($0.rawValue, $0.title) }, $size, isLast: true)
+    }
+
+    private func row<ID: Hashable>(_ title: String, _ id: String, _ options: [(ID, String)], _ selection: Binding<ID>, isLast: Bool = false) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(title).font(AppearancePrefs.ui(.bold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.textSecondary)
+            SunnahSegmented(options, selection: selection)
+        }
+        .padding(.vertical, 14).frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(alignment: .bottom) { if !isLast { Rectangle().fill(Sunnah.Colors.border).frame(height: 1) } }
+        .accessibilityElement(children: .contain).accessibilityIdentifier(id)
     }
 }
