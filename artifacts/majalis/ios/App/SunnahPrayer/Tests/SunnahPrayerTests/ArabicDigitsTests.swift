@@ -3,8 +3,8 @@ import XCTest
 
 final class ArabicDigitsTests: XCTestCase {
     func testDigitsOnly() {
-        XCTAssertEqual(PrayerTimeFormat.arabicDigits("القرآن الكريم — ٩٣:٥"), "القرآن الكريم — 93:5")
-        XCTAssertEqual(PrayerTimeFormat.arabicDigits("٠ من ٥ صفحة"), "0 من 5 صفحة")
+        XCTAssertEqual(PrayerTimeFormat.arabicDigits("القرآن الكريم — 93:5"), "القرآن الكريم — ٩٣:٥")
+        XCTAssertEqual(PrayerTimeFormat.arabicDigits("0 من 5 صفحة"), "٠ من ٥ صفحة")
         XCTAssertEqual(PrayerTimeFormat.arabicDigits("بلا أرقام"), "بلا أرقام")
     }
 }

@@ -297,7 +297,7 @@ struct MawarithCalculatorScreen: View {
 
     private static let money: NumberFormatter = {
         let f = NumberFormatter()
-        f.locale = Locale(identifier: "ar-u-nu-latn")
+        f.locale = Locale(identifier: "ar-u-nu-arab")
         f.minimumFractionDigits = 0; f.maximumFractionDigits = 2
         return f
     }()
@@ -348,7 +348,7 @@ struct MawarithCalculatorScreen: View {
                     DisclosureGroup("خطوات الحساب بالتفصيل") {
                         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                             ForEach(Array(result.steps.enumerated()), id: \.offset) { _, s in
-                                Text("\(s.title): \(s.detail)".asLatinDigits).font(Sunnah.Typography.secondary)
+                                Text("\(s.title): \(s.detail)".asArabicDigits).font(Sunnah.Typography.secondary)
                                     .foregroundStyle(Sunnah.Colors.textPrimary)
                             }
                         }.padding(.top, Sunnah.Spacing.s2)

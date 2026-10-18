@@ -83,7 +83,7 @@ public struct HomeScreen: View {
     static func hijriDate(_ d: Date) -> String {
         let f = DateFormatter()
         f.calendar = Calendar(identifier: .islamicUmmAlQura)
-        f.locale = Locale(identifier: "ar-u-nu-latn")
+        f.locale = Locale(identifier: "ar-u-nu-arab")
         f.dateFormat = "d MMMM y"
         return f.string(from: d)
     }

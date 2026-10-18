@@ -74,7 +74,7 @@ public struct RootTabView: View {
         .tint(Sunnah.Colors.primary)
         .toggleStyle(SunnahToggleStyle())
         .environment(\.layoutDirection, .rightToLeft)
-        .environment(\.locale, Locale(identifier: "ar-u-nu-latn"))
+        .environment(\.locale, Sunnah.locale)
         .onOpenURL { router.open(url: $0) }
         #if DEBUG
         .task {   // لقطات التدقيق فقط: `-snapshotRoute <route>` (أي مسار مسجّل، مثل /fawaid أو /hadith/daif) يُفتح عند الإقلاع بلا حوار الرابط العميق

@@ -108,7 +108,7 @@ enum AccountCalendarMath {
     static var gregorian: Calendar {
         var c = Calendar(identifier: .gregorian)
         // الترتيب مهم: ضبط locale يعيد firstWeekday إلى السبت (7) فيُزاح التقويم يومًا كاملًا.
-        c.locale = Locale(identifier: "ar-u-nu-latn")
+        c.locale = Locale(identifier: "ar-u-nu-arab")
         c.firstWeekday = 1
         return c
     }
@@ -160,7 +160,7 @@ enum AccountCalendarMath {
     static func hijriMonthYear(_ date: Date) -> String {
         let f = DateFormatter()
         f.calendar = Calendar(identifier: .islamicUmmAlQura)
-        f.locale = Locale(identifier: "ar-u-nu-latn")
+        f.locale = Locale(identifier: "ar-u-nu-arab")
         f.dateFormat = "MMMM y"
         return f.string(from: date) + " هـ"
     }
@@ -168,7 +168,7 @@ enum AccountCalendarMath {
     static func monthTitle(_ date: Date) -> String {
         let f = DateFormatter()
         f.calendar = gregorian
-        f.locale = Locale(identifier: "ar-u-nu-latn")
+        f.locale = Locale(identifier: "ar-u-nu-arab")
         f.dateFormat = "MMMM y"
         return f.string(from: date)
     }

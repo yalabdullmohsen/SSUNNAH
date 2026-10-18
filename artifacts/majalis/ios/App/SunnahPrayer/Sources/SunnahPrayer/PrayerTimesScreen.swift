@@ -3,7 +3,7 @@ import SwiftUI
 /// تنسيق الوقت بمنطقة الموقع لا بمنطقة الجهاز.
 public enum PrayerTimeFormat {
     /// أرقام عربية صراحةً؛ لا تتبع افتراض «ar» المتغيّر بين إصدارات النظام.
-    static let locale = Locale(identifier: "ar-u-nu-latn")
+    static let locale = Locale(identifier: "ar-u-nu-arab")
 
     public static func clock(_ date: Date, in timeZone: TimeZone) -> String {
         let f = DateFormatter()
@@ -13,9 +13,9 @@ public enum PrayerTimeFormat {
         return f.string(from: date)
     }
 
-    /// أرقام لاتينية في كل مكان (أمر المالك 2026-10-14): يحوّل ٠-٩ العربية إن وُجدت إلى 0-9 ولا يلمس غيرها.
+    /// أرقام عربية-هندية موحّدة (النموذج ٢، قرار المالك 2026-10-18): يحوّل 0-9 اللاتينية إلى ٠-٩ ولا يلمس غيرها.
     public static func arabicDigits(_ s: String) -> String {
-        String(s.unicodeScalars.map { (0x0660...0x0669).contains($0.value) ? Character(Unicode.Scalar(48 + $0.value - 0x0660)!) : Character($0) })
+        String(s.unicodeScalars.map { (0x30...0x39).contains($0.value) ? Character(Unicode.Scalar(0x0660 + $0.value - 0x30)!) : Character($0) })
     }
 
     /// المتبقي بصيغة س:د:ث.
