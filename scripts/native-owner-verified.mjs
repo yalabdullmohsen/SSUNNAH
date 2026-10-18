@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-// هل يُعفى PR من needs-owner؟ نعم فقط إن حمل وسم visually-verified وكان كل ملف محمي فيه ملكًا (في OWNERSHIP.md) للنافذة صاحبة الفرع nX/.
+// هل يُعفى PR من needs-owner؟ نعم فقط إن حمل وسم visually-verified، وفرعه nX/، وكان كل ملف محمي فيه ملكًا (في OWNERSHIP.md) لنافذة n1–n4 (نافذة الفرع أو نافذة أخرى: اختبارات حارس القرآن مثلًا لـn3 وPR الأنبياء من n1). ملف بلا مالك ⇒ needs-owner.
 // الاستعمال: node scripts/native-owner-verified.mjs <branch> <labels-csv> < ملفات-محمية (سطر لكل ملف). يخرج 0 = أعفِه، 1 = أضف needs-owner.
 import { readFileSync } from 'node:fs';
 const [branch = '', labels = ''] = process.argv.slice(2);
-const win = (branch.match(/^(n[1-4])\//) || [])[1];
+const win = (branch.match(/^(n[1-5])\//) || [])[1];
 if (!win || !labels.split(',').includes('visually-verified')) process.exit(1);
 const md = readFileSync(process.env.OWNERSHIP_MD || 'docs/native/OWNERSHIP.md', 'utf8');
 const globs = []; let cur = null;
 for (const line of md.split('\n')) {
   const h = line.match(/^## (n[1-4])\b/); if (h) { cur = h[1]; continue; }
   if (line.startsWith('## ')) { cur = null; continue; }
-  const m = cur === win && line.match(/^- `([^`]+)`/); if (m) globs.push(m[1]);
+  const m = cur && line.match(/^- `([^`]+)`/); if (m) globs.push(m[1]);
 }
 const rx = g => new RegExp('^' + g.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '\0').replace(/\*/g, '[^/]*').replace(/\0/g, '.*') + '$');
 const own = globs.map(rx);
