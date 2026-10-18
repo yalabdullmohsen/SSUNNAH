@@ -20,7 +20,7 @@ for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json')).sort()) {
   const parts = []; let len = 0; let first = null, last = null
   // يبدأ من أول آية لها شرح في المقطع المرجعي؛ الشرح قد يغطي آيات تالية فنتجاوز ما قبل أقرب مفتاح تالٍ
   for (const a of ayat) {
-    const txt = t[String(a)]; if (!txt) continue
+    const txt = t[String(a)]; if (!txt || parts.includes(txt)) continue
     if (parts.length >= MAX_ENTRIES || len + txt.length > MAX_CHARS) break
     parts.push(txt); len += txt.length; first ??= a; last = a
   }
