@@ -115,6 +115,10 @@ node scripts/native-titles-guard.mjs >/tmp/native-titles-guard.$$ 2>&1 || { head
 rm -f /tmp/native-titles-guard.$$
 node scripts/native-tabbar-cover-guard.mjs >/tmp/native-tabbar-guard.$$ 2>&1 || { head -20 /tmp/native-tabbar-guard.$$; bad "حارس tabbar-cover: محتوى قد يختفي خلف شريط التبويب"; }
 rm -f /tmp/native-tabbar-guard.$$
+bash scripts/native-debug-hooks-guard.sh || bad "خطّاف DEBUG خارج #if DEBUG"
+bash scripts/native-nav-title-guard.sh || bad "عنوان تنقّل مكرر/مفقود (titles-unique)"
+bash scripts/native-content-footer-guard.sh || bad "شاشة محتوى بلا الذيل الموحّد أو تنبيه كامل داخلها"
+bash scripts/native-bottom-card-guard.sh || bad "بطاقة سفلية تغطي المحتوى"
 
 # 3) عدد المسارات المبنية مقابل 212
 built=$(grep -c . docs/native/MERGED_BUILT.txt)
