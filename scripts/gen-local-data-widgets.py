@@ -18,9 +18,28 @@ def fadail(ids):
 
 adhkar = [(i["text"].strip(), (i.get("source_name") or i.get("reference") or "").strip())
           for i in json.load(open(D / "adhkar/verified-adhkar.json")) if i["category_id"] == "adh-after-salah"]
-adhkar = [(t, s) for t, s in adhkar if t and s]
+import unicodedata
+_seen, _u = set(), []
+for t, s_ in adhkar:
+    if not (t and s_): continue
+    k = re.sub(r"[^\u0621-\u064A]", "", t)  # يطوي التشكيل وعلامات الترقيم: نص واحد لا يتكرر في الودجت
+    if k in _seen: continue
+    _seen.add(k); _u.append((t, s_))
+adhkar = _u
 asma = json.load(open(D / "aqidah/asma-husna.json")); asma = asma if isinstance(asma, list) else list(asma.values())[0]
-asma = [(f'{a["arabic"]} — {a["meaning"]}'.strip(), (a.get("reference") or "").strip()) for a in asma if a.get("documentation_status") == "sourced" and a.get("reference")]
+def clean_ref(r):
+    """سطر مصدر مقروء: «(الحشر: 22، 23) الحشر:22» ← «الحشر: 22، 23»؛ «﴿…﴾ البقرة:209» ← «البقرة: 209» (مع إبقاء التعليق بعد «—»)."""
+    r = r.strip(); head, sep, tail = r.partition(" — ")
+    m = re.match(r"^\(([^)]+)\)\s+\S+:\d+(?:-\d+)?$", head)
+    if m: head = m.group(1)
+    else:
+        m = re.match(r"^﴿[^﴾]+﴾\s+(\S+?):(\d+)$", head)
+        if m: head = f"{m.group(1)}: {m.group(2)}"
+    return head + sep + tail
+
+def end_dot(t): return t if t.endswith((".", "…", "؟", "!")) else t + "."
+
+asma = [(end_dot(f'{a["arabic"]} — {a["meaning"]}'.strip()), clean_ref(a["reference"])) for a in asma if a.get("documentation_status") == "sourced" and a.get("reference")]
 duha = fadail(["fadail-f32"])
 friday = fadail(["fadail-f99", "fadail-f104", "fadail-f63"])
 
