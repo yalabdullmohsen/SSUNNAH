@@ -1,0 +1,8 @@
+git_sha=73519416c2829569f1daa2406904549e14f2f397
+branch=n2/prophets-sunnah
+app=/private/tmp/claude-501/-Users-alabdullmohsen-ssunnah-n2/2f42d226-9b80-4889-9f92-2ea4bde9677c/scratchpad/app/SunnahApp.app
+binary_sha256=9360dfda19d6394ba25c9bd3c47b8107d5dc3cff11883c0ccce00397ebeae92c
+built_at=2026-10-18 21:04:12
+source_newest=2026-10-18 20:40:50
+captured_at=2026-10-18 21:07:25
+covers=harun covers=sulayman covers=yaqub covers=is-haq covers=yahya (من السنة، المؤشرات الزمنية 15/19/9/8/22)
