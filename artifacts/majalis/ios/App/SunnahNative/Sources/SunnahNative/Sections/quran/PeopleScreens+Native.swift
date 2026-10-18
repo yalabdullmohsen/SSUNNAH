@@ -63,9 +63,9 @@ struct QuranPersonView: View {
                 block("سبب الذكر", person.whyMentioned)
                 if !person.lessons.isEmpty {
                     Text("الدروس").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                    ForEach(person.lessons, id: \.self) { Text("• \($0)").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    ForEach(person.lessons, id: \.self) { Text("• \($0)".arabicDigits).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 }
-                let occ = PeopleAdapters.occurrenceText(person.occurrences) { surahNames[$0] ?? "سورة \($0)" }
+                let occ = PeopleAdapters.occurrenceText(person.occurrences) { surahNames[$0] ?? "سورة \($0)" }.map(\.arabicDigits)
                 if !occ.isEmpty {
                     Text("مواضع الذكر").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     ForEach(occ, id: \.self) { Text($0).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }

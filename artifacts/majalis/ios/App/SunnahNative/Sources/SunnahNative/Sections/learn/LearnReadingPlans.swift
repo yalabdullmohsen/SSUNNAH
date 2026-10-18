@@ -135,7 +135,7 @@ struct LearnReadingPlanCard: View {
                 switch plan.pace(at: now) {
                 case .behind:
                     if let p = plan.pagesPerRemainingDay(at: now) {
-                        Text("متأخر عن الخطة: اقرأ \(p) صفحة في كل يوم قراءة متبقٍ").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.danger)
+                        Text("متأخر عن الخطة: اقرأ \(p) صفحة في كل يوم قراءة متبقٍ".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.danger)
                     }
                 case .ahead:
                     Text("متقدّم على الخطة").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
@@ -196,7 +196,7 @@ struct LearnNewPlanForm: View {
             Section {
                 let plan = draft
                 if let p = plan.pagesPerRemainingDay(at: start) {
-                    Text("نحو \(p) صفحة في كل يوم قراءة").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    Text("نحو \(p) صفحة في كل يوم قراءة".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
                 Button("إنشاء الخطة") { onCreate(plan) }
                     .disabled(title.trimmingCharacters(in: .whitespaces).isEmpty || days.isEmpty)

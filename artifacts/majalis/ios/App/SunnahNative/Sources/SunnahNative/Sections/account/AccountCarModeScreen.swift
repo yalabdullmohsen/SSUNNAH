@@ -114,7 +114,7 @@ struct AccountCarModeScreen: View {
                         if let speaker = current.speakerName, !speaker.isEmpty {
                             Text(speaker).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
                         }
-                        Text("\(player.index + 1) / \(player.lessons.count)").font(Sunnah.Typography.secondary)
+                        Text("\(player.index + 1) / \(player.lessons.count)".arabicDigits).font(Sunnah.Typography.secondary)
                             .foregroundStyle(Sunnah.Colors.textSecondary).monospacedDigit()
                     }
                     .frame(maxWidth: .infinity)
@@ -132,7 +132,7 @@ struct AccountCarModeScreen: View {
                     ForEach(Array(player.lessons.enumerated()), id: \.element.id) { i, lesson in
                         Button { player.select(i) } label: {
                             HStack(spacing: Sunnah.Spacing.s3) {
-                                Text("\(i + 1)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary).monospacedDigit()
+                                Text("\(i + 1)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary).monospacedDigit()
                                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
                                     Text(lesson.title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                                     if let s = lesson.speakerName, !s.isEmpty {

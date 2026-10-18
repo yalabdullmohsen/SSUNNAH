@@ -5,7 +5,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 SN=artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative
-FILES=$(ls $SN/Mushaf/*.swift $SN/Components/SunnahStepper.swift $SN/Templates/ExplainerTemplate.swift)
+FILES=$(ls $SN/Mushaf/*.swift $SN/Components/SunnahStepper.swift $SN/Templates/ExplainerTemplate.swift; find $SN/Sections $SN/Special -name "*.swift")
 BAD=$(grep -nE '(Text|Label|accessibilityLabel|navigationTitle)\(.*"[^"]*\\\([^)]*\)' $FILES \
   | grep -vE 'arabicDigits|ArabicNumerals|digits-ok' \
   | grep -E '\\\((.*\.(id|page|firstPage|number|order|v|ayah|count)|index \+ 1|i \+ 1|current|p|\$0)\)' || true)

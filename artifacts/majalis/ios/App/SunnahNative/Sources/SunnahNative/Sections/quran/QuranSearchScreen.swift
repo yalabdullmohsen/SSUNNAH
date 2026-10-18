@@ -34,7 +34,7 @@ struct QuranSearchView: View {
                 } label: {
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
                         Text(h.text).font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
-                        Text("\(h.ayah) · صفحة \(h.page)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                        Text("\(h.ayah) · صفحة \(h.page)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                     }
                 }
             }

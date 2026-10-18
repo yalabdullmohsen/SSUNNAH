@@ -23,20 +23,27 @@ public struct SunnahContentFooter: View {
     }
 
     public var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: Sunnah.Spacing.s3) {
-                SunnahDisclosureInfoButton(title: title, id: id, section: section)
-                if style == .full { SunnahReportIssueIcon(title: title, id: id, section: section) }
+        VStack(spacing: Sunnah.Spacing.s3) {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                HStack(alignment: .center, spacing: Sunnah.Spacing.s2) {
+                    SunnahDisclosureInfoButton(title: title, id: id, section: section)
+                    Text(SunnahDisclosure.card).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true).frame(maxWidth: .infinity, alignment: .leading)
+                        .accessibilityIdentifier("detail.disclosureCard")
+                }
                 if sensitive {
-                    Text(SunnahDisclosure.fatwaHint).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                    Text(SunnahDisclosure.fatwaHint).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.textSecondary)
                         .accessibilityIdentifier("detail.fatwaHint")
                 }
-                Spacer(minLength: 0)
+                if style == .full { SunnahReportIssueButton(title: title, id: id, section: section, inset: false) }
+                SunnahSourceLine(source: source, inset: false)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, inset ? Sunnah.Spacing.pageX : 0).padding(.top, Sunnah.Spacing.s4)
-            SunnahSourceLine(source: source, inset: inset)
+            .padding(Sunnah.Spacing.s4)
+            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
         }
+        .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s4)
+        .padding(.bottom, Sunnah.Spacing.s4)
         .accessibilityIdentifier("detail.footer")
     }
 }

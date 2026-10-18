@@ -96,7 +96,7 @@ struct TafsirSurahView: View {
                     TafsirAttributionView(entry: book).listRowBackground(Sunnah.Colors.surface2)
                     ForEach(rows) { r in
                         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                            Text("\(r.ayah) ﴿\(r.number)﴾").font(Sunnah.Typography.quran)
+                            Text("\(r.ayah) ﴿\(r.number)﴾".arabicDigits).font(Sunnah.Typography.quran)
                                 .foregroundStyle(Sunnah.Colors.textPrimary)
                             if let t = r.tafsir {
                                 SunnahSectionedMarkdown(t, key: "tafsir-\(book.id)-\(surahId)-\(r.number)", style: .body).foregroundStyle(Sunnah.Colors.textSecondary)

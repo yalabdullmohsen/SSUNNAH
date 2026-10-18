@@ -187,7 +187,7 @@ struct AccountUserStatsScreen: View {
                 }
 
                 AccountSectionCard(title: "الإنجازات والشارات") {
-                    Text("\(stats.earnedKeys.count) من \(AccountTexts.badges.count) شارة محرزة")
+                    Text("\(stats.earnedKeys.count) من \(AccountTexts.badges.count) شارة محرزة".arabicDigits)
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     ForEach(badgeGroups, id: \.0) { category, defs in
                         Text(AccountBadgeDef.categoryLabels[category] ?? category).font(Sunnah.Typography.cardTitle)

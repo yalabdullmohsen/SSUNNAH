@@ -38,7 +38,7 @@ public struct SeerahPhasesView: View {
                                     SunnahChip(p.year)
                                     Text(p.desc).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                                     ForEach(p.keyEvents, id: \.self) {
-                                        Text("• \($0)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                                        Text("• \($0)".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                                     }
                                 }
                             }

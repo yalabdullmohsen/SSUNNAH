@@ -13,6 +13,9 @@ final class AppRouterTests: XCTestCase {
         XCTAssertEqual(AppTab.owning(path: "/qibla"), .prayer)
         XCTAssertEqual(AppTab.owning(path: "/quran/2"), .quran)
         XCTAssertEqual(AppTab.owning(path: "/lessons/123?x=1"), .home)
+        XCTAssertEqual(AppTab.owning(path: "/prophets/yusuf"), .sections)
+        XCTAssertEqual(AppTab.owning(path: "/adhkar"), .sections)
+        XCTAssertEqual(AppTab.owning(path: "/settings"), .more)
         XCTAssertEqual(AppTab.owning(path: "/hadith/5"), .home)
         XCTAssertEqual(AppTab.owning(path: "/lessonsx"), .home)
     }

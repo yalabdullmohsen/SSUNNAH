@@ -58,11 +58,11 @@ struct LearnOpenQuizRunner: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                     if state.finished {
-                        Text("عرفت \(state.known) من \(state.count)").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                        Text("عرفت \(state.known) من \(state.count)".arabicDigits).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                         SunnahButton("إعادة الأسئلة") { state.restart() }
                     } else {
                         let q = questions[state.index]
-                        Text("\(state.index + 1) / \(state.count)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                        Text("\(state.index + 1) / \(state.count)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                         Text(q.question).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                         if state.revealed {
                             SunnahCard {

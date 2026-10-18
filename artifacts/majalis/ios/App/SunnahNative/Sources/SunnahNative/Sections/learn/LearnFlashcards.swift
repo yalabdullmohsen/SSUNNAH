@@ -150,7 +150,7 @@ struct LearnFlashcardSession: View {
     }
 
     @ViewBuilder private func card(_ h: LearnHadith) -> some View {
-        Text("\(index + 1) من \(queue.count)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+        Text("\(index + 1) من \(queue.count)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
         ProgressView(value: Double(index), total: Double(queue.count)).tint(Sunnah.Colors.primary)
         SunnahCard {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
