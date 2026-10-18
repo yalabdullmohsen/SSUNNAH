@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>الإعدادات — نموذج ٢</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Amiri+Quran&display=swap">
+<style>
+body{margin:0}
+.r{width:390px;height:1040px;background:#F5F2EA;color:#1E2A24;font-family:'Almarai',sans-serif;position:relative;overflow:hidden;direction:rtl}
+.r *{box-sizing:border-box}
+.r svg.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.r .top{display:flex;justify-content:space-between;align-items:center;padding:56px 16px 0}
+.r .cap2{height:52px;padding:0 18px;border-radius:26px;background:#FBF9F4;border:1px solid #E2DCCD;display:flex;align-items:center;gap:22px;color:#1F5C45;box-shadow:0 2px 8px rgba(30,42,36,.05)}
+.r .cir{width:52px;height:52px;border-radius:26px;background:#FBF9F4;border:1px solid #E2DCCD;display:flex;align-items:center;justify-content:center;color:#1F5C45;box-shadow:0 2px 8px rgba(30,42,36,.05)}
+.r .ttl{font-size:32px;font-weight:800;padding:16px 20px 0}
+.r .pg{padding:14px 16px 0;display:flex;flex-direction:column;gap:14px}
+.r .hero{position:relative;overflow:hidden;border-radius:28px;background:#24523F;color:#fff;padding:22px;box-shadow:0 6px 18px rgba(36,82,63,.18)}
+.r .hero svg.pt{position:absolute;top:0;left:0;width:100%;height:100%;display:block}
+.r .hero svg.star{position:absolute;left:-36px;top:-40px;width:170px;height:170px;display:block}
+.r .in{position:relative}
+.r .gold{color:#DCC88F}
+.r .cd{background:#fff;border:1px solid #E7E1D3;border-radius:26px;padding:6px;box-shadow:0 2px 10px rgba(30,42,36,.04)}
+.r .rw{display:flex;align-items:center;gap:12px;height:60px;padding:0 12px;border-radius:20px}
+.r .rw+.rw{border-top:1px solid #F1ECE1}
+.r .rw b{flex:1;font-size:16px;font-weight:800}
+.r .rw em{font-style:normal;font-size:16px;font-weight:800;min-width:74px;text-align:left}
+.r .rw.dn b,.r .rw.dn em{color:#8E958F}
+.r .rw.nw{background:#E6EFE9;border-top-color:transparent}
+.r .rw.nw b,.r .rw.nw em{color:#1F5C45}
+.r .rw.nw+.rw{border-top-color:transparent}
+.r .tile{width:38px;height:38px;border-radius:12px;background:#F1EEE6;color:#6B746E;display:flex;align-items:center;justify-content:center}
+.r .rw.nw .tile{background:#1F5C45;color:#fff}
+.r .tg{width:48px;height:28px;border-radius:14px;background:#1F5C45;position:relative;flex:none}
+.r .tg i{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:11px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.r .tg.off{background:#D9D4C7}.r .tg.off i{left:auto;right:3px}
+.r .mini{background:#fff;border:1px solid #E7E1D3;border-radius:22px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px rgba(30,42,36,.04);font-size:15px;font-weight:800}
+.r .mini .tile{background:#E6EFE9;color:#1F5C45}
+.r .mut{font-size:12px;color:#6B746E;font-weight:700}
+.r .tab{position:absolute;bottom:18px;left:16px;right:16px;height:72px;border-radius:36px;background:rgba(251,249,244,.96);border:1px solid #E2DCCD;box-shadow:0 10px 30px rgba(30,42,36,.12);display:flex;justify-content:space-around;align-items:center;padding:0 6px}
+.r .tab span{width:66px;height:58px;border-radius:29px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:700;color:#4E5852}
+.r .tab span.on{background:#E6EFE9;color:#1F5C45;font-weight:800}
+
+.r .gh{font-size:14px;font-weight:800;color:#1F5C45;margin:4px 6px -4px}
+.r .tl2{background:#fff;border:1px solid #E7E1D3;border-radius:22px;padding:14px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 10px rgba(30,42,36,.04);min-height:72px}
+.r .tl2 b{display:block;font-size:15px;font-weight:800}
+.r .tl2 .tile{background:#E6EFE9;color:#1F5C45}
+.r .tl2 .tile.g{background:#F3EBD5;color:#7A5E1E}
+.r .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.r .sr{height:50px;border-radius:25px;background:#fff;border:1px solid #E7E1D3;display:flex;align-items:center;gap:10px;padding:0 18px;font-size:14px;color:#7D857F}
+.r .sr svg{color:#1F5C45}
+.r .btn{height:50px;border-radius:25px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;font-weight:800;padding:0 18px}
+.r .bp{background:#1F5C45;color:#fff}
+.r .bo{border:1.5px solid #1F5C45;color:#1F5C45;background:#fff}
+.r .bs{background:#E6EFE9;color:#1F5C45}
+.r .bgd{background:#F3EBD5;color:#6E5413}
+.r .ch{height:38px;padding:0 16px;border-radius:19px;display:inline-flex;align-items:center;font-size:13px;font-weight:800;background:#fff;border:1px solid #E7E1D3;color:#4E5852;white-space:nowrap}
+.r .ch.on{background:#1F5C45;border-color:#1F5C45;color:#fff}
+.r .cd2{background:#fff;border:1px solid #E7E1D3;border-radius:26px;padding:18px 20px;box-shadow:0 2px 10px rgba(30,42,36,.04)}
+.r .h2{display:flex;align-items:center;gap:8px;font-size:18px;font-weight:800;color:#1F5C45}
+.r .hr{height:1px;background:#EEE9DD;margin:12px 0}
+.r .rd{font-size:16px;line-height:2.1;color:#26332C}
+.r .ph{height:10px;border-radius:5px;background:#EDE8DC;margin:10px 0}
+.r .pill{height:26px;padding:0 10px;border-radius:13px;display:inline-flex;align-items:center;font-size:11.5px;font-weight:800;background:#E6EFE9;color:#1F5C45}
+.r .pill.g{background:#F3EBD5;color:#6E5413}
+
+.r .grp{background:#fff;border:1px solid #E7E1D3;border-radius:24px;padding:4px 14px;box-shadow:0 2px 10px rgba(30,42,36,.04)}
+.r .srw{display:flex;align-items:center;gap:12px;min-height:58px}
+.r .srw+.srw{border-top:1px solid #F1ECE1}
+.r .srw b{flex:1;font-size:15px;font-weight:800}
+.r .srw .tile{width:36px;height:36px;border-radius:12px;background:#E6EFE9;color:#1F5C45}
+.r .srw .tile.g{background:#F3EBD5;color:#7A5E1E}
+.r .seg{display:flex;gap:6px;background:#F3EFE6;border-radius:16px;padding:4px;width:100%}
+.r .seg span{flex:1;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#4E5852}
+.r .seg span.on{background:#fff;color:#1F5C45;box-shadow:0 1px 3px rgba(30,42,36,.12)}
+
+</style>
+</helmet>
+<div class="r">
+<div class="top">
+<div class="cir"><svg class="ic" viewBox="0 0 24 24" role="img" aria-label="القائمة"><path d="M5 8h14M5 12h14M5 16h14"/></svg></div>
+<div class="cap2"><svg class="ic" viewBox="0 0 24 24" role="img" aria-label="بحث"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><svg class="ic" viewBox="0 0 24 24" role="img" aria-label="الحساب"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18.5c1.2-2.300 3.200-3.500 5.500-3.500s4.300 1.200 5.500 3.500"/></svg></div>
+</div>
+<div class="ttl">الإعدادات</div>
+<div class="pg">
+<div class="gh">الصلاة</div>
+<div class="grp">
+<div class="srw"><div class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9M10 20a2 2 0 0 0 4 0"/></svg></div><b>تنبيهات الصلاة</b><div class="tg"><i></i></div></div>
+<div class="srw" style="flex-wrap:wrap;padding:12px 0;gap:10px"><div class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg></div><b>طريقة الحساب</b><div class="seg"><span class="on">الكويت</span><span>أم القرى</span><span>رابطة العالم</span></div></div>
+</div>
+<div class="gh">المصحف</div>
+<div class="grp" style="padding:14px">
+<div style="display:flex;align-items:center;gap:12px"><div class="tile" style="width:36px;height:36px;border-radius:12px;background:#F3EBD5;color:#7A5E1E"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><path d="M4 19l5-14h2l5 14M6 14h8M17 9h4M19 7v4"/></svg></div><b style="flex:1;font-size:15px;font-weight:800">حجم الخط</b><span class="mut" style="color:#1F5C45">كبير</span></div>
+<div style="position:relative;height:30px;display:flex;align-items:center;margin-top:8px"><div style="height:6px;width:100%;border-radius:3px;background:#E6EFE9"></div><div style="position:absolute;right:0;width:68%;height:6px;border-radius:3px;background:#1F5C45"></div><div style="position:absolute;right:calc(68% - 13px);width:26px;height:26px;border-radius:13px;background:#fff;border:2px solid #1F5C45"></div></div>
+<div style="margin-top:8px;background:#FBF9F4;border:1px solid #EEE9DD;border-radius:16px;padding:8px;text-align:center;font-family:'Amiri Quran',serif;font-size:22px;line-height:2;-webkit-text-stroke:.6px #1E2A24">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+</div>
+<div class="gh">المظهر</div>
+<div class="grp" style="padding:10px"><div class="seg"><span class="on">فاتح</span><span>داكن</span><span>تلقائي</span></div></div>
+<div class="gh">عن التطبيق</div>
+<div class="grp">
+<div class="srw"><div class="tile g"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v.01M12 11v5"/></svg></div><b style="font-size:13px;font-weight:700;line-height:1.7">التطبيق مُعدّ بمساعدة الذكاء الاصطناعي، والمصادر مذكورة مع كل محتوى.</b></div>
+<div class="srw"><div class="tile"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width:19px;height:19px"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg></div><b>تواصل معنا</b><span class="mut">info@ssunnah.com</span></div>
+</div>
+</div>
+<div class="tab">
+<span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>الرئيسية</span>
+<span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a1.5 1.5 0 0 1 1.5 1.5v14.5H7.500A2.500 2.500 0 0 1 5 17V6a2.500 2.500 0 0 1 2-2.500zM5 17a2.500 2.500 0 0 1 2.500-2.500h11"/></svg>المصحف</span>
+<span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>الصلاة</span>
+<span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg>الأقسام</span>
+<span class="on"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="fill:currentColor;stroke:none"><circle cx="6" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="18" cy="12" r="1.8"/></svg>المزيد</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1040}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
