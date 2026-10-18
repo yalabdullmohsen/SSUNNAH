@@ -24,14 +24,19 @@ enum SunnahWidgetKind {
     static let adhkarStreak = "sunnah.widget.adhkar.streak"
     static let quranAyah = "sunnah.widget.quran.ayah"
     static let mushafContinue = "sunnah.widget.mushaf.continue"
+    static let localDuha = "sunnah.widget.local.duha"
+    static let localAfterSalah = "sunnah.widget.local.after-salah"
+    static let localAsma = "sunnah.widget.local.asma"
+    static let localFridayFasting = "sunnah.widget.local.friday-fasting"
 
     static let prayerFamily: [String] = [prayerTimes, prayerAll, prayerStyled]
     static let calendarFamily: [String] = [calendarHijri, calendarRamadan]
     static let adhkarFamily: [String] = [adhkarTimeAware, adhkarRotating, adhkarStreak]
     static let quranFamily: [String] = [quranAyah]
     static let mushafFamily: [String] = [mushafContinue]
+    static let localDataFamily: [String] = [localDuha, localAfterSalah, localAsma, localFridayFasting]
 
-    static let allUnique: [String] = prayerFamily + calendarFamily + adhkarFamily + quranFamily + mushafFamily
+    static let allUnique: [String] = prayerFamily + calendarFamily + adhkarFamily + quranFamily + mushafFamily + localDataFamily
 }
 
 /// Keys allowed in the App Group suite. Anything else is rejected.
