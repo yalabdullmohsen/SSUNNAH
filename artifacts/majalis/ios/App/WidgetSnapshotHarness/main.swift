@@ -142,9 +142,13 @@ func registerWidgetFonts() -> [String] {
       ("7-achievement", ["small","medium","rect","circ"], { AnyView(AdhkarStreakView(entry: $0)) }),
       ("8-ayah-dua", ["small","medium","large","rect"], { AnyView(AyahOrDuaView(entry: $0)) }),
       ("9-mushaf", ["small","medium"], { AnyView(MushafContinueView(entry: $0)) }),
+      ("10-local-duha", ["small","medium","large","rect"], { AnyView(LocalDataWidgetView(spec: .duha, entry: $0).environment(\.layoutDirection, .rightToLeft)) }),
+      ("10-local-after-salah", ["small","medium","large","rect"], { AnyView(LocalDataWidgetView(spec: .afterSalah, entry: $0).environment(\.layoutDirection, .rightToLeft)) }),
+      ("10-local-asma", ["small","medium","large","rect"], { AnyView(LocalDataWidgetView(spec: .asma, entry: $0).environment(\.layoutDirection, .rightToLeft)) }),
+      ("10-local-friday-fasting", ["small","medium","large","rect"], { AnyView(LocalDataWidgetView(spec: .fridayFasting, entry: $0).environment(\.layoutDirection, .rightToLeft)) }),
     ]
     let windowOnly = v.hasPrefix("w")
-    for (n, fs, mk) in widgets where !windowOnly || n.hasPrefix("1") {
+    for (n, fs, mk) in widgets where (!windowOnly || n.hasPrefix("1")) && (!n.hasPrefix("10-") || v == "data") {
       for f in fams where fs.contains(f.name) {
         for s in [ColorScheme.light, .dark] { render(n, f, s, v, mk(e), out: out) }
       }

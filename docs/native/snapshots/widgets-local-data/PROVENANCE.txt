@@ -1,0 +1,10 @@
+git_sha=4f4f2e24c4923e33cf1d7d2af5c29ce358a1469f
+branch=n3/widget-shots
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/5deb6aa3f3929a4d/SunnahApp.app
+binary_sha256=28d0f4f9c06e653ab68c15235d8770eb1082eec7bd86bf48a72ed7b8c8702525
+built_at=2026-10-19 01:09:25
+source_newest=2026-10-19 01:05:27
+captured_at=2026-10-19 01:09:28
+files: PrayerWidget/SunnahLocalDataWidgets.swift
+covers: الودجتات الأربعة (الضحى، أذكار بعد الصلاة، الأسماء الحسنى، الجمعة والصيام) بأربعة أحجام (small/medium/large/rect) فاتحًا وداكنًا (32 لقطة) من WidgetSnapshotHarness (LocalDataWidgetView)؛ فُتحت الأربع large_light ورُئي كل عنوان ونص ومصدر؛ لم يُفتح غير ذلك واحدًا واحدًا
+gaps: لا لقطة على الشاشة الرئيسية الحقيقية ولا معرض الودجت في النظام؛ أرقام لاتينية في سطر المصدر («صحيح مسلم: 720»، «البقرة: 117؛ الأنعام: 101») — خارج نطاق #3556، أُبلغ بها
