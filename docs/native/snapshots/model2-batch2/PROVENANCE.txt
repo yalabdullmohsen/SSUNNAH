@@ -6,3 +6,4 @@ built_at=2026-10-19 00:59:47
 source_newest=2026-10-19 00:59:26
 captured_at=2026-10-19 01:02:37
 covers=DailyWirdScreen.swift (wird-khatma.png), AdhkarScreen.swift (adhkar.png), ProphetsStories.swift (prophets.png, story-top.png, story-sunnah.png, story-lessons.png), SunnahSectionsHub.swift (sections.png), SettingsScreens.swift (settings.png)
+covers=SirahScreens+Native.swift (story-route-yusuf.png: /prophets/yusuf، بُني 01:09:50 من HEAD قبل تعديل scripts/native-store-shots.sh فقط)
