@@ -199,6 +199,7 @@ public struct MushafReaderView: View {
             // أدوات المصحف (إغلاق، بحث، فهرس، علامة) مخفية افتراضيًا؛ تظهر بنقرة على الصفحة وتختفي بنقرة ثانية أو تلقائيًا.
             chrome
                 .padding(.horizontal, 12).padding(.top, max(Self.topSafeInset - 3, 40) - 13)
+                .ignoresSafeArea(edges: .top)
                 .opacity(chromeHide.visible ? 1 : 0)
                 .allowsHitTesting(chromeHide.visible)
                 .accessibilityHidden(!chromeHide.visible)
@@ -263,7 +264,7 @@ public struct MushafReaderView: View {
                     Spacer(minLength: 0)
                 }
                 .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafAccent)
-                .padding(.horizontal, Sunnah.Spacing.s3).frame(height: 26)
+                .padding(.horizontal, Sunnah.Spacing.s3).frame(maxWidth: .infinity).frame(height: 26)
                 .background(Sunnah.Colors.mushafIvory, in: Capsule())
                 .overlay(Capsule().stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.5), lineWidth: 1))
             }
