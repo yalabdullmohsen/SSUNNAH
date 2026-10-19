@@ -19,6 +19,7 @@ public struct ArticleTemplate: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s5) {
                 DetailHero(title: item.title, subtitle: item.subtitle, tags: item.tags)
+                readerControls
                 ForEach(sections) { sec in
                     SunnahSectionView(section: sec, key: item.id, style: .body)
                         .padding(.horizontal, Sunnah.Spacing.pageX)
@@ -31,12 +32,18 @@ public struct ArticleTemplate: View {
         .sunnahReadableWidth().background(Sunnah.Colors.bg).bodyTitledNavigation()
         .preferredColorScheme(night ? .dark : nil)
         .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.reportSection)
-        .toolbar {
-            SunnahCapsuleToolbar {
-                SunnahToolbarButton(systemImage: "textformat.size.smaller", glyphSize: 12, label: "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
-                SunnahToolbarButton(systemImage: "textformat.size.larger", glyphSize: 20, label: "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
-                SunnahToolbarButton(systemImage: night ? "sun.max" : "moon", label: night ? "الوضع النهاري" : "وضع الليل") { night.toggle() }
-            }
+    }
+
+    /// أدوات القراءة داخل الصفحة (بدل شريط أدوات النظام): خط أصغر/أكبر ووضع الليل.
+    private var readerControls: some View {
+        HStack(spacing: 4) {
+            SunnahToolbarButton(systemImage: "textformat.size.smaller", glyphSize: 12, label: "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
+            SunnahToolbarButton(systemImage: "textformat.size.larger", glyphSize: 20, label: "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
+            SunnahToolbarButton(systemImage: night ? "sun.max" : "moon", label: night ? "الوضع النهاري" : "وضع الليل") { night.toggle() }
         }
+        .padding(.horizontal, 6)
+        .background(Sunnah.Colors.surface, in: Capsule())
+        .overlay(Capsule().stroke(Sunnah.Colors.border, lineWidth: 1))
+        .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, Sunnah.Spacing.pageX)
     }
 }

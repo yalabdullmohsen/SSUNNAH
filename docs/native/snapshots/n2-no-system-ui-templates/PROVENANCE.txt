@@ -1,0 +1,2 @@
+التاريخ: 2026-10-19 — الجهاز: n2-sim (iPhone، iOS 26) — البناء: HEAD لفرع n2/no-system-ui-templates (native-head-build d441d004b547fb32)، فاتح/داكن، بحجمها الكامل.
+covers=SirahScreens+Native (/sahabah و/occasions و/seerah: SirahInlineItemsView مربعات SunnahTileGrid بدل القائمة، والتفصيل صفحة كاملة)

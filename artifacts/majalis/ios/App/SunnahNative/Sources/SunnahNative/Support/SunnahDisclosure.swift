@@ -52,21 +52,25 @@ struct SunnahDisclosureInfoButton: View {
         #if DEBUG
         .onAppear { if UserDefaults.standard.bool(forKey: "snapshotDisclosure") { showing = true } }
         #endif
-        .sheet(isPresented: $showing) {
+        .fullScreenCover(isPresented: $showing) {
+            // صفحة كاملة بشريط رجوع بدل الورقة؛ الرسالة نفسها حرفيًا.
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+                SunnahTopBar(onBack: { showing = false }) { EmptyView() }
                 Label(SunnahDisclosure.title, systemImage: "info.circle").font(Sunnah.Typography.cardTitle)
+                    .padding(.horizontal, Sunnah.Spacing.pageX)
                 Text(SunnahDisclosure.short).font(Sunnah.Typography.body).fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, Sunnah.Spacing.pageX)
                 Spacer(minLength: 0)
-                Button {
+                SunnahButton("إبلاغ عن خطأ", style: .primary) {
                     if let url = SunnahReportIssueButton.mailURL(title: title, id: id, section: section) { openURL(url) }
-                } label: { Label("إبلاغ عن خطأ", systemImage: "exclamationmark.bubble").frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.buttonHeight) }
-                    .accessibilityIdentifier("disclosure.report")
-                Button { showing = false } label: { Text("إغلاق").frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.buttonHeight) }
-                    .accessibilityIdentifier("disclosure.close")
+                }
+                .accessibilityIdentifier("disclosure.report").padding(.horizontal, Sunnah.Spacing.pageX)
+                SunnahButton("إغلاق", style: .outline) { showing = false }
+                    .accessibilityIdentifier("disclosure.close").padding(.horizontal, Sunnah.Spacing.pageX).padding(.bottom, Sunnah.Spacing.s4)
             }
-            .padding(Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s4)
             .foregroundStyle(Sunnah.Colors.textPrimary)
-            .presentationDetents([.medium, .large])
+            .background(Sunnah.Colors.bg.ignoresSafeArea())
+            .environment(\.layoutDirection, .rightToLeft)
             .accessibilityIdentifier("disclosure.sheet")
         }
     }

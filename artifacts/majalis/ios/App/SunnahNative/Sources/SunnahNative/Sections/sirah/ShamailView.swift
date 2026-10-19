@@ -43,11 +43,8 @@ public struct ShamailView: View {
             } else {
                 let current = tabs.first { $0.id == selected } ?? tabs[0]
                 VStack(spacing: 0) {
-                    Picker("القسم", selection: Binding(get: { current.id }, set: { selected = $0 })) {
-                        ForEach(tabs) { Text($0.label).tag($0.id) }
-                    }
-                    .pickerStyle(.segmented)
-                    .padding(Sunnah.Spacing.pageX)
+                    SunnahChipBar(options: tabs.map { .init(id: $0.id, title: $0.label) }, selection: Binding(get: { current.id }, set: { selected = $0 }))
+                        .padding(.vertical, Sunnah.Spacing.s2)
                     ScrollView {
                         LazyVStack(spacing: Sunnah.Spacing.s3) {
                             ForEach(Array(current.abwab.enumerated()), id: \.offset) { _, bab in
