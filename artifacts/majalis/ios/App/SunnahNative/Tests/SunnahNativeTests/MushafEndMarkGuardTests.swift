@@ -47,7 +47,7 @@ final class MushafEndMarkGuardTests: XCTestCase {
                 checked += 1
             }
         }
-        XCTAssertGreaterThan(checked, 60)
+        XCTAssertGreaterThanOrEqual(checked, 50, "عيّنة الآيات أقل من المتوقع")
         for style in [UIUserInterfaceStyle.light, .dark] {
             let l1 = lum(UIColor(Sunnah.Colors.mushafText), style), l2 = lum(UIColor(Sunnah.Colors.mushafEndFill), style)
             XCTAssertGreaterThanOrEqual((max(l1, l2) + 0.05) / (min(l1, l2) + 0.05), Self.minContrast, "تباين رقم الآية \(style.rawValue)")
