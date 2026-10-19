@@ -20,8 +20,8 @@ public struct SunnahChipBar<ID: Hashable>: View {
                 .padding(.horizontal, Sunnah.Spacing.pageX).padding(.vertical, Sunnah.Spacing.s2)
                 .background(GeometryReader { g in Color.clear.onAppear { barHeight = g.size.height }.onChange(of: g.size.height) { barHeight = $0 } })
             }
-            .ignoresSafeArea(.container, edges: .vertical)   // ScrollView الأفقي يضيف إزاحة المنطقة الآمنة العليا لمحتواه فيرتفع الشريط عن موضعه
             .frame(height: barHeight)
+            .ignoresSafeArea(.all, edges: .top)   // ScrollView الأفقي يضيف إزاحة المنطقة الآمنة العليا لمحتواه فيرتفع الشريط عن موضعه
             .onChange(of: selection) { id in withAnimation(.easeOut(duration: 0.2)) { proxy.scrollTo(id, anchor: .center) } }
         }
         .accessibilityIdentifier("chipBar")
