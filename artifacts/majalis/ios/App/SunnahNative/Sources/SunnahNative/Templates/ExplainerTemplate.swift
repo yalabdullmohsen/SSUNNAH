@@ -81,7 +81,6 @@ struct ExplainerScreen: View {
         SirahLoadedView(source: SirahSection.File.explainers, adapt: { (rows: [ExplainerData]) in rows.compactMap(\.displayable) }) { rows in
             ExplainerPicker(rows: rows)
         }
-        .sunnahSubChrome()   // شريط الرجوع المشترك يحجز مكانه فوق الشرائح فلا يغطي زر الرجوع أول شريحة
     }
 }
 
@@ -94,12 +93,13 @@ private struct ExplainerPicker: View {
         if rows.isEmpty {
             EmptyStateView(title: SirahSection.pendingTitle)
         } else if rows.count == 1 {
-            ExplainerTemplate(data: rows[0])
+            ExplainerTemplate(data: rows[0]).sunnahSubChrome()
         } else {
             VStack(spacing: 0) {
                 SunnahChipBar(options: rows.indices.map { .init(id: $0, title: rows[$0].title) }, selection: $selection)
                 ExplainerTemplate(data: rows[min(selection, rows.count - 1)]).id(selection)
             }
+            .sunnahSubChrome()   // شريط الرجوع المشترك يحجز مكانه فوق الشرائح فلا يغطي زر الرجوع أول شريحة
             #if DEBUG
             .onAppear { if let s = UserDefaults.standard.string(forKey: "snapshotExplainer"), let i = Int(s), rows.indices.contains(i) { selection = i } }
             #endif
