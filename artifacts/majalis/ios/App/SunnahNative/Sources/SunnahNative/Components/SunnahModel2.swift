@@ -315,8 +315,10 @@ private struct SunnahSubChrome<Accessory: View>: ViewModifier {
                         SunnahTopBarIcon(symbol: "magnifyingglass", label: "البحث") { openRoute("/search") }
                     }
                     .padding(.vertical, Sunnah.Spacing.s2)
+                    .frame(height: 52 + Sunnah.Spacing.s2 * 2)   // ارتفاع صريح: الأزرار 52 فلا يتقلّص الشريط فوق ما يليه
                     accessory
                 }
+                .fixedSize(horizontal: false, vertical: true)
                 .background(Sunnah.Colors.bg)
             }
     }
