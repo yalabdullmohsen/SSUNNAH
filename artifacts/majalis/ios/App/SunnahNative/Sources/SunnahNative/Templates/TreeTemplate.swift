@@ -27,7 +27,7 @@ public struct TreeTemplate: View {
     }
 }
 
-/// صف عقدة يتمدد بأبنائه (بديل `List(children:)`): الإزاحة بحسب العمق، والسهم يفتح/يطوي، والصف يفتح المسار إن وُجد.
+/// صف عقدة يتمدد بأبنائه (بديل قائمة النظام الشجرية): الإزاحة بحسب العمق، والسهم يفتح/يطوي، والصف يفتح المسار إن وُجد.
 private struct TreeRow: View {
     @Environment(\.openRoute) private var openRoute
     let node: TreeNode; let level: Int
