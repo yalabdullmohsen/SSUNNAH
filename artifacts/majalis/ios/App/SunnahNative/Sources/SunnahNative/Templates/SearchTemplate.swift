@@ -29,6 +29,12 @@ public struct SearchTemplate: View {
 
     public init(items: [ContentItem], detailBase: String, browseWhenEmpty: Bool = false) { self.items = items; self.detailBase = detailBase; self.browseWhenEmpty = browseWhenEmpty }
 
+    /// اقتراحات من الفهرس نفسه؛ إن لم يحوِ المعرّفات المعروفة فأوائل عناصره (لا صفحة بحث بلا اقتراح).
+    private var suggestionTitles: [String] {
+        let known = SearchTemplate.suggestedIDs.compactMap(item).map(\.title)
+        return known.isEmpty ? Array(items.prefix(6).map(\.title)) : known
+    }
+
     private var results: [ContentItem] {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
         if q.isEmpty, browseWhenEmpty { return items }
@@ -38,7 +44,7 @@ public struct SearchTemplate: View {
 
     public var body: some View {
         VStack(spacing: 0) {
-            SunnahSearchField(text: $query, prompt: "ابحث", suggestions: query.isEmpty ? SearchTemplate.suggestedIDs.compactMap(item).map(\.title) : [], idPrefix: "search.field")
+            SunnahSearchField(text: $query, prompt: "ابحث", suggestions: query.isEmpty ? suggestionTitles : [], idPrefix: "search.field")
                 .padding(.vertical, Sunnah.Spacing.s2)
                 .onSubmit(of: .search) { remember(query) }
             if results.isEmpty {
@@ -59,7 +65,8 @@ public struct SearchTemplate: View {
 
     /// قبل الكتابة: آخر عمليات البحث + أقسام سريعة (اقتراحات البحث شرائح تحت الحقل؛ من الفهرس نفسه فلا اقتراح بلا نتيجة).
     private var startPage: some View {
-        let quick = SearchTemplate.quickIDs.compactMap(item)
+        let known = SearchTemplate.quickIDs.compactMap(item)
+        let quick = known.isEmpty ? Array(items.prefix(8)) : known
         return ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 if !recent.isEmpty {
