@@ -61,5 +61,7 @@ public enum AppTab: String, CaseIterable, Identifiable, Hashable {
         ("/prayer", .prayer),
         ("/adhan", .prayer),
         ("/qibla", .prayer),
+        // قصص الأنبياء والأذكار تتبع «الأقسام»، والإعدادات تتبع «المزيد» (النموذج ٢)
+        ("/prophets", .sections), ("/adhkar", .sections), ("/settings", .more),
     ]
 }

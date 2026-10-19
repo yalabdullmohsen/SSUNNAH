@@ -96,7 +96,7 @@ struct AdhkarListView: View {
             SunnahHeroCard {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
-                        Text("\(digits(index + 1)) من \(digits(items.count))").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
+                        Text("\(digits(index + 1)) من \(digits(items.count))".arabicDigits).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
                         Spacer()
                         Text("التكرار \(digits(item.repeatCount))").font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.goldInk)
                             .padding(.horizontal, 12).padding(.vertical, 4).background(Sunnah.Colors.heroGold, in: Capsule())

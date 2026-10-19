@@ -43,7 +43,7 @@ struct AccountFeatureTourScreen: View {
                             .frame(minWidth: Sunnah.Spacing.s5, minHeight: Sunnah.Spacing.touch)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("الشريحة \(i + 1) من \(slides.count): \(slides[i].title)")
+                    .accessibilityLabel("الشريحة \(i + 1) من \(slides.count): \(slides[i].title)".arabicDigits)
                     .accessibilityAddTraits(i == index ? .isSelected : [])
                 }
             }
@@ -58,7 +58,7 @@ struct AccountFeatureTourScreen: View {
                 }
             }
 
-            Text("\(index + 1) / \(slides.count)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+            Text("\(index + 1) / \(slides.count)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                 .monospacedDigit().accessibilityHidden(true)
         }
         .padding(Sunnah.Spacing.pageX)

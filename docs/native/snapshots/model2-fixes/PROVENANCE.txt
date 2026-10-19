@@ -1,0 +1,10 @@
+git_sha=1482aac01c0601acdbfff50dfbc43b0486b8389d
+branch=n1/model2-fixes
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1-combo/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=8ac7df763b55b2b245408cc0624848caf3d6bcc92262e792a449b02caaf2a00a
+built_at=2026-10-19 01:44:52
+source_newest=2026-10-19 01:44:06
+captured_at=2026-10-19 01:53:38
+covers=Adhkar(AdhkarScreen),ProphetsStories,SettingsScreens,AppearancePrefs,SunnahContentFooter,SunnahReportIssueButton,AppTab
+covers=MutashabihatScreens,PeopleScreens,PeopleScreens+Native,PublishedScreens,PublishedScreens+Native,QuranLocalScreens,QuranLocalScreens+Native,QuranSearchScreen,TafsirScreens,TafsirScreens+Native,MawarithCalculatorScreen,LearnFlashcards,LearnQuizScreen,LearnReadingPlans,SeerahPhasesView,AdhkarExtraScreens,AccountCarModeScreen,AccountFeatureTourScreen,AccountSubmissionsScreens,AccountUserStatsScreen,AccountComponents
+note=لقطات الملفات الحسّاسة (18 لقطة) من بناء واحد من HEAD (n1-combo، 01:44:52) على n1-sim2 فاتحًا؛ quran-search حالته الابتدائية الفارغة كما تُرسم.

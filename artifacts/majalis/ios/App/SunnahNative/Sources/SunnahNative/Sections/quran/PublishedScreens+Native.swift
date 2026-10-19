@@ -90,7 +90,7 @@ struct TajweedChapterView: View {
     var surahNames: [Int: String] = QuranSection.surahNames()
     var body: some View {
         let ex = chapter.examples.map { e -> String in
-            let ref = PublishedAdapters.ayahText(surah: e.surah, ayah: e.ayah) { surahNames[$0] ?? "سورة \($0)" }
+            let ref = PublishedAdapters.ayahText(surah: e.surah, ayah: e.ayah) { surahNames[$0] ?? "سورة \($0)" }.arabicDigits
             return [e.text, e.note, "(\(ref))"].compactMap { $0 }.joined(separator: " — ")
         }
         QuranDocView(title: chapter.title, paragraphs: [chapter.summary] + chapter.body,
@@ -144,7 +144,7 @@ struct HifzPathView: View {
     var surahNames: [Int: String] = QuranSection.surahNames()
     private func unitSubtitle(_ u: HifzUnit) -> String? {
         var parts: [String] = []
-        if let r = u.ref { parts.append(PublishedAdapters.refText(r) { surahNames[$0] ?? "سورة \($0)" }) }
+        if let r = u.ref { parts.append(PublishedAdapters.refText(r) { surahNames[$0] ?? "سورة \($0)" }.arabicDigits) }
         if let n = u.repetitionTarget { parts.append("التكرار المقترح: \(n)") }
         return parts.isEmpty ? nil : parts.joined(separator: " · ")
     }
@@ -153,13 +153,13 @@ struct HifzPathView: View {
             Section {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                     if let d = path.shortDescription { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                    Text("المستوى: \(PublishedAdapters.hifzLevels[path.level] ?? path.level) · \(path.units.count) وحدة")
+                    Text("المستوى: \(PublishedAdapters.hifzLevels[path.level] ?? path.level) · \(path.units.count) وحدة".arabicDigits)
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }.sunnahRowChrome()
             if !path.learningObjectives.isEmpty {
                 Section("أهداف التعلّم") {
-                    ForEach(path.learningObjectives, id: \.self) { Text("• \($0)").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    ForEach(path.learningObjectives, id: \.self) { Text("• \($0)".arabicDigits).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                 }.sunnahRowChrome()
             }
             if let src = path.source {
@@ -277,7 +277,7 @@ struct QiraatView: View {
                     ForEach(file.diffs) { d in
                         SunnahNavigationLink {
                             QuranDocView(title: PublishedAdapters.diffKinds[d.kind] ?? d.kind,
-                                         paragraphs: [d.description, PublishedAdapters.ayahText(surah: d.surah, ayah: d.ayah) { surahNames[$0] ?? "سورة \($0)" }], sources: [d.source])
+                                         paragraphs: [d.description, PublishedAdapters.ayahText(surah: d.surah, ayah: d.ayah) { surahNames[$0] ?? "سورة \($0)" }.arabicDigits], sources: [d.source])
                         } label: { SunnahListRow(title: d.description, subtitle: nil) }
                     }
                 }.sunnahRowChrome()

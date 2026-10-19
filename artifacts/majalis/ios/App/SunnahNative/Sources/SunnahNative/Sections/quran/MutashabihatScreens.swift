@@ -69,7 +69,7 @@ struct MutashabihatDetailView: View {
                 }
                 ForEach(pair.refs, id: \.self) { r in
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        Text("\(r.surahName): \(r.ayah)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                        Text("\(r.surahName): \(r.ayah)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                         Text(QuranAyahPlainText.text(surah: r.surah, ayah: r.ayah) ?? "").font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
                     }
                     .padding(Sunnah.Spacing.s3).frame(maxWidth: .infinity, alignment: .leading)

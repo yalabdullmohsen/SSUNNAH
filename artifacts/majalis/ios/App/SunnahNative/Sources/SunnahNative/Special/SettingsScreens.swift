@@ -25,6 +25,21 @@ struct SettingsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 SunnahPageTitle("الإعدادات")
+                SunnahSettingsGroup("الصلاة") {
+                    link("إعدادات التنبيهات", "bell", "/notification-settings").id("prayer")
+                    link("وضع المسجد", "building.columns", "/mosque-mode")
+                    link("وضع السيارة", "car", "/car-mode", last: true)
+                }
+                SunnahSettingsGroup("المصحف") {
+                    TextSizeOptionsView()
+                }
+                SunnahSettingsGroup("المظهر") {
+                    SunnahNavigationLink { AppIconPickerView() } label: {
+                        SunnahSettingsRow("أيقونة التطبيق", symbol: "app.badge") { chevron }
+                    }
+                    .buttonStyle(.plain).accessibilityIdentifier("settings.appIcon")
+                    AppearanceOptionsView()
+                }
                 SunnahSettingsGroup("الحساب") {
                     if let email {
                         SunnahSettingsRow(email, symbol: "person.crop.circle")
@@ -36,18 +51,6 @@ struct SettingsView: View {
                     }
                     link("مساهماتي", "tray.full", "/my-submissions", last: true)
                 }
-                SunnahSettingsGroup("المظهر") {
-                    SunnahNavigationLink { AppIconPickerView() } label: {
-                        SunnahSettingsRow("أيقونة التطبيق", symbol: "app.badge") { chevron }
-                    }
-                    .buttonStyle(.plain).accessibilityIdentifier("settings.appIcon")
-                    AppearanceOptionsView()
-                }
-                SunnahSettingsGroup("الصلاة والتنبيهات") {
-                    link("إعدادات التنبيهات", "bell", "/notification-settings").id("prayer")
-                    link("وضع المسجد", "building.columns", "/mosque-mode")
-                    link("وضع السيارة", "car", "/car-mode", last: true)
-                }
                 SunnahSettingsGroup("البيانات والودجت") {
                     link("مركز دون اتصال", "arrow.down.circle", "/offline").id("data")
                     link("مركز الودجت", "square.grid.2x2", "/widget-center", last: true)
@@ -57,13 +60,19 @@ struct SettingsView: View {
                     link("حذف الحساب", "trash", "/account-deletion", last: true, tone: .gold)
                 }
                 SunnahSettingsGroup("عن التطبيق") {
+                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                        Label(SunnahDisclosure.title, systemImage: "info.circle").font(AppearancePrefs.ui(.extraBold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.primary)
+                        Text(SunnahDisclosure.short).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 14)
+                    .accessibilityElement(children: .combine).accessibilityIdentifier("detail.disclosure")
                     link("عن التطبيق", "info.circle", "/about").id("about")
                     link("المصادر والتراخيص", "doc.text", "/data-licenses")
                     link("سياسة الفتوى والمراجعة", "checkmark.shield", "/fatwa-policy")
                     link("جولة في التطبيق", "map", "/feature-tour")
                     link("تواصل معنا", "envelope", "/contact", last: true)
                 }
-                SunnahDisclosureNotice(inset: true)
             }
             .padding(.bottom, 96)
         }

@@ -138,7 +138,7 @@ struct HifzLoopScreen: View {
             Section("التكرار") {
                 Stepper("الهدف: \(loop.target) مرة", value: $loop.target, in: 1...200, step: 5)
                 ProgressView(value: loop.progress).tint(Sunnah.Colors.primary)
-                Text("\(loop.count) من \(loop.target)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text("\(loop.count) من \(loop.target)".arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 if loop.reachedTarget {
                     Text("بلغتَ هدف التكرار").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
                 }
@@ -178,7 +178,7 @@ struct MyHifzPathsView: View {
                         .sunnahRowChrome()
                     }
                 } header: {
-                    Text("\(path.title) · \(progress.doneCount(path: path.id, validUnits: Set(path.units.map(\.id)))) من \(path.units.count)")
+                    Text("\(path.title) · \(progress.doneCount(path: path.id, validUnits: Set(path.units.map(\.id)))) من \(path.units.count)".arabicDigits)
                 }
             }
         }
@@ -196,7 +196,7 @@ struct MemorizationHubView: View {
     var body: some View {
         VStack(spacing: 0) {
             let active = plans.filter { $0.status == .active }
-            Text(active.isEmpty ? "لا خطط حفظ جارية" : "خطط الحفظ الجارية: \(active.count)")
+            Text(active.isEmpty ? "لا خطط حفظ جارية" : "خطط الحفظ الجارية: \(active.count)".arabicDigits)
                 .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 .frame(maxWidth: .infinity, alignment: .leading).padding(Sunnah.Spacing.pageX)
             SectionsListTemplate(links: QuranLinks.memorization)

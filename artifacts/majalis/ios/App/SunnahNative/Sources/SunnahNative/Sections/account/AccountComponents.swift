@@ -81,7 +81,7 @@ struct AccountListBlock: View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
             ForEach(Array(items.enumerated()), id: \.offset) { index, item in
                 HStack(alignment: .firstTextBaseline, spacing: Sunnah.Spacing.s2) {
-                    Text(numbered ? "\(index + 1)." : "•").font(Sunnah.Typography.body)
+                    Text(numbered ? "\(index + 1).".arabicDigits : "•").font(Sunnah.Typography.body)
                         .foregroundStyle(Sunnah.Colors.primary).accessibilityHidden(true)
                     AccountRichText(item)
                 }

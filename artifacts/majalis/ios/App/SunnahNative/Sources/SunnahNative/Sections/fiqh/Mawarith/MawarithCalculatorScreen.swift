@@ -329,7 +329,7 @@ struct MawarithCalculatorScreen: View {
                     ForEach(result.shares, id: \.heir) { s in
                         SunnahCard {
                             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                                Text((MawarithLabels.heir[s.heir] ?? "") + (s.count > 1 ? " (\(s.count))" : ""))
+                                Text(((MawarithLabels.heir[s.heir] ?? "") + (s.count > 1 ? " (\(s.count))" : "")).arabicDigits)
                                     .font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                                 row("النصيب", "\(s.totalShare.ratioText) — " + fmt(decimal(s.totalShare.mul(estate.netForHeirsFraction))))
                                 if s.count > 1 {

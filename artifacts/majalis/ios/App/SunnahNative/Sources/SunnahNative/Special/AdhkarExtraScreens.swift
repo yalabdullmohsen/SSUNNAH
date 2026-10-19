@@ -9,7 +9,7 @@ struct TasbihView: View {
     var body: some View {
         VStack(spacing: Sunnah.Spacing.s6) {
             Picker("الهدف", selection: $target) {
-                ForEach(targets, id: \.self) { Text("\($0)").tag($0) }
+                ForEach(targets, id: \.self) { Text("\($0)".arabicDigits).tag($0) }
             }.pickerStyle(.segmented)
 
             Button {

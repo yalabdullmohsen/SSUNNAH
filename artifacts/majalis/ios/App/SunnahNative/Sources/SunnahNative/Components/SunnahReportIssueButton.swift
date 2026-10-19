@@ -32,13 +32,14 @@ public struct SunnahReportIssueButton: View {
             openURL(url) { accepted in if !accepted { copy() } }
         } label: {
             Label(copied ? "نُسخ نص البلاغ — الصقه في بريدك إلى \(AccountTexts.contactEmail)" : "إبلاغ عن خطأ في هذا المحتوى", systemImage: copied ? "checkmark.circle" : "exclamationmark.bubble")
-                .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
+                .font(AppearancePrefs.ui(.extraBold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.goldInk)
                 .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.buttonHeight)
-                .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.small, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
+                .frame(maxWidth: .infinity, minHeight: max(Sunnah.Spacing.buttonHeight, 48))
+                .background(Sunnah.Colors.heroGold.opacity(0.22), in: Capsule())
+                .overlay(Capsule().stroke(Sunnah.Colors.heroGold, lineWidth: 1))
         }
-        .buttonStyle(.plain)
-        .padding(.horizontal, inset ? Sunnah.Spacing.pageX : 0).padding(.vertical, Sunnah.Spacing.s4)
+        .buttonStyle(.plain).sunnahPressable()
+        .padding(.horizontal, inset ? Sunnah.Spacing.pageX : 0)
         .accessibilityIdentifier("detail.reportIssue")
     }
 

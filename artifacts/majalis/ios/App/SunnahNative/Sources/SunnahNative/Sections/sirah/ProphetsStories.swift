@@ -289,7 +289,7 @@ struct ProphetPageView: View {
                         }
                         if let path = SunnahAyahRange.mushafPath(a.ref) {
                             SunnahValueLink(value: Route.web(path: path)) {
-                                Text(SunnahAyahRange.display(a.ref)).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
+                                Text(SunnahAyahRange.display(a.ref).arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
                             }.accessibilityIdentifier("prophet.ayah.\(a.ref)")
                         }
                     }
@@ -299,12 +299,12 @@ struct ProphetPageView: View {
                     if let head = Self.stageHeading(para) {
                         Text(head).font(AppearancePrefs.ui(.extraBold, 16, .subheadline)).foregroundStyle(Sunnah.Colors.textPrimary).padding(.top, 4)
                     } else {
-                        SunnahArabicText(para, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
+                        SunnahArabicText(para.arabicDigits, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
                     }
                 }
             }
             if !sourceLine(sec).isEmpty {
-                Text("المصدر: \(sourceLine(sec))").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                Text("المصدر: \(sourceLine(sec).arabicDigits)").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
             }
         }
         .padding(18).frame(maxWidth: .infinity, alignment: .leading)
