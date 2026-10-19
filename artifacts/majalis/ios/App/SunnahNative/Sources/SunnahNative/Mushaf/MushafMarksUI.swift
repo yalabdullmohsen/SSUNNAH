@@ -103,6 +103,7 @@ struct MushafMarksScreen: View {
                                 Spacer()
                                 Text("صفحة \(b.page.arabicDigits)").foregroundStyle(Sunnah.Colors.textSecondary)
                             }
+                            .dynamicTypeSize(...DynamicTypeSize.accessibility1)   // أكبر من ذلك يكسر «الصفحة كاملة» وسط الكلمة
                         }
                         .sunnahRowChrome()
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {

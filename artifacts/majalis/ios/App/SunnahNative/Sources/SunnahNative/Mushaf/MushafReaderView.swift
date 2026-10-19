@@ -531,7 +531,7 @@ private struct MushafSheetActionLabelStyle: LabelStyle {
     func makeBody(configuration: Configuration) -> some View {
         VStack(spacing: 4) {
             configuration.icon
-            configuration.title.lineLimit(1).minimumScaleFactor(0.8)
+            configuration.title.lineLimit(1).minimumScaleFactor(0.6)
         }
         .frame(maxWidth: .infinity)
     }
