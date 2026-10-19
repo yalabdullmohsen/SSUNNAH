@@ -316,7 +316,7 @@ private struct SunnahSubChrome<Accessory: View>: ViewModifier {
                     }
                     .padding(.vertical, Sunnah.Spacing.s2)
                     .frame(height: 52 + Sunnah.Spacing.s2 * 2)   // ارتفاع صريح: الأزرار 52 فلا يتقلّص الشريط فوق ما يليه
-                    accessory.ignoresSafeArea(.container, edges: .top)   // مساحة الحالة محجوزة أعلاه؛ بدونها يزيح ScrollView الأفقي محتواه للأعلى
+                    accessory
                 }
                 .fixedSize(horizontal: false, vertical: true)
                 .background(Sunnah.Colors.bg)
