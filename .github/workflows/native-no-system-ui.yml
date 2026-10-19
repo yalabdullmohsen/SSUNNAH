@@ -1,0 +1,18 @@
+name: native no system ui
+# يمنع زيادة مكوّنات iOS الافتراضية (List/Form/Toggle/Picker/searchable/sheet…) في SunnahNative (scripts/native-no-system-ui-guard.sh). ubuntu رخيص.
+on:
+  pull_request:
+    branches: [native-app]
+    paths:
+      - 'artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/**'
+      - 'scripts/native-no-system-ui-guard.sh'
+      - 'docs/native/no-system-ui-baseline.json'
+permissions:
+  contents: read
+jobs:
+  no-system-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - run: bash scripts/native-no-system-ui-guard.sh
