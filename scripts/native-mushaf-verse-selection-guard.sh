@@ -14,7 +14,8 @@ grep -q 'testSelectionHighlightIsContinuousAcrossLines' "$T" 2>/dev/null || bad 
 grep -q 'testSheetStatesNeverClipOrHideSelectedAyah' "$H" 2>/dev/null || bad "اختبار القائمة السفلية (لا قطع/حجب) مفقود"
 grep -q 'selectedAyah = selectedAyah == w.v' "$R" || bad "النقر لم يعد يحدد الآية بمعرّفها w.v"
 grep -q 'MushafSoftBand' "$R" || bad "التظليل المتصل (شريط واحد لكل مقطع) مفقود"
-for k in '/tafsir/' 'offline-player' 'toggleBookmark' 'ShareLink' 'copy(text)'; do grep -q "$k" "$R" || bad "القائمة السفلية بلا «$k»"; done
+for k in '/tafsir/' 'offline-player' 'ShareLink' 'copy(text)'; do grep -q "$k" "$R" || bad "القائمة السفلية بلا «$k»"; done
+grep -qE 'toggleBookmark|toggleMark\(' "$R" || bad "القائمة السفلية بلا علامة (toggleMark/toggleBookmark)"
 if [ "${VERSE_GUARD_RUN:-}" = "1" ] && [ "$fail" = 0 ]; then
   export NATIVE_WINDOW="${NATIVE_WINDOW:-n3}"; . "$(dirname "$0")/native-sim.sh"
   export MUSHAF_DATA="$PWD/ios-native/Data/mushaf" TEST_RUNNER_MUSHAF_DATA="$PWD/ios-native/Data/mushaf"
