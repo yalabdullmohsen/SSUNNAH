@@ -39,11 +39,12 @@ public struct SearchTemplate: View {
     public var body: some View {
         Group {
             if results.isEmpty { query.isEmpty ? AnyView(startPage) : AnyView(EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass")) } else {
-                List(results) { item in
-                    Button { openRoute(item.path(base: detailBase)) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                        .sunnahPressable().sunnahRowChrome()
+                SunnahRowStack {
+                    ForEach(results) { item in
+                        Button { openRoute(item.path(base: detailBase)) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
+                            .sunnahPressable().sunnahStackRow()
+                    }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -56,39 +57,34 @@ public struct SearchTemplate: View {
     private var startPage: some View {
         let suggested = SearchTemplate.suggestedIDs.compactMap(item)
         let quick = SearchTemplate.quickIDs.compactMap(item)
-        return List {
+        return SunnahRowStack {
             if !recent.isEmpty {
-                Section {
-                    ForEach(recent, id: \.self) { term in
-                        Button { query = term } label: { Label(term, systemImage: "clock.arrow.circlepath") }
-                            .sunnahPressable().sunnahRowChrome()
-                    }
-                } header: {
-                    HStack {
-                        Text("آخر عمليات البحث").font(Sunnah.Typography.sectionTitle).accessibilityAddTraits(.isHeader)
-                        Spacer()
-                        Button("مسح") { recent = []; UserDefaults.standard.removeObject(forKey: SearchTemplate.recentKey) }
-                            .font(Sunnah.Typography.secondary)
-                    }
+                HStack {
+                    SunnahRowGroupHeader("آخر عمليات البحث")
+                    Button { recent = []; UserDefaults.standard.removeObject(forKey: SearchTemplate.recentKey) } label: {
+                        Text("مسح").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
+                            .frame(minWidth: 44, minHeight: 44).contentShape(Rectangle())
+                    }.buttonStyle(.plain).padding(.trailing, Sunnah.Spacing.pageX)
+                }
+                ForEach(recent, id: \.self) { term in
+                    Button { query = term } label: { Label(term, systemImage: "clock.arrow.circlepath") }
+                        .sunnahPressable().sunnahStackRow()
                 }
             }
             if !suggested.isEmpty {
-                Section {
-                    ForEach(suggested) { it in
-                        Button { query = it.title } label: { Label(it.title, systemImage: "magnifyingglass") }
-                            .sunnahPressable().sunnahRowChrome()
-                    }
-                } header: { Text("عمليات بحث مقترحة").font(Sunnah.Typography.sectionTitle).accessibilityAddTraits(.isHeader) }
+                SunnahRowGroupHeader("عمليات بحث مقترحة")
+                ForEach(suggested) { it in
+                    Button { query = it.title } label: { Label(it.title, systemImage: "magnifyingglass") }
+                        .sunnahPressable().sunnahStackRow()
+                }
             }
             if !quick.isEmpty {
-                Section {
-                    ForEach(quick) { it in
-                        Button { openRoute(it.path(base: detailBase)) } label: { SunnahListRow(title: it.title, subtitle: it.subtitle) }
-                            .sunnahPressable().sunnahRowChrome()
-                    }
-                } header: { Text("أقسام سريعة").font(Sunnah.Typography.sectionTitle).accessibilityAddTraits(.isHeader) }
+                SunnahRowGroupHeader("أقسام سريعة")
+                ForEach(quick) { it in
+                    Button { openRoute(it.path(base: detailBase)) } label: { SunnahListRow(title: it.title, subtitle: it.subtitle) }
+                        .sunnahPressable().sunnahStackRow()
+                }
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden)
     }
 }

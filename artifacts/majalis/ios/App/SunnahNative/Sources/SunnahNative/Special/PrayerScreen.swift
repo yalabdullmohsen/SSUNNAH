@@ -32,7 +32,7 @@ public struct PrayerScreen: View {
         }
         .background(Sunnah.Colors.bg)
         .sunnahRootChrome()
-        .sheet(isPresented: $showCityPicker) { CityPickerView(store: store, onUseDeviceLocation: refreshDeviceLocation) }
+        .fullScreenCover(isPresented: $showCityPicker) { CityPickerView(store: store, onUseDeviceLocation: refreshDeviceLocation) }
         .task { if store.preferences.usesDeviceLocation { refreshDeviceLocation() } }
         .environment(\.layoutDirection, .rightToLeft)
         .sunnahReadableWidth()
@@ -85,7 +85,7 @@ public struct PrayerScreen: View {
                         Text(PrayerTimeFormat.clock(item.time, in: zone)).font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
                             .lineLimit(1).fixedSize()
                         if item.prayer.isObligatory {
-                            Toggle("تنبيه \(item.prayer.nameAr)", isOn: alertBinding(item.prayer)).labelsHidden().toggleStyle(SunnahToggleStyle())
+                            SunnahSwitch(isOn: alertBinding(item.prayer)).accessibilityLabel("تنبيه \(item.prayer.nameAr)")
                                 .fixedSize()
                         } else {
                             Color.clear.frame(width: 48, height: 28).accessibilityHidden(true)

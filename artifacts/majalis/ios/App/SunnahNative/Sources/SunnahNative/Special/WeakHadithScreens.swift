@@ -95,16 +95,17 @@ struct WeakHadithListView: View {
                     } else if rows.isEmpty && q.isEmpty {
                         EmptyStateView(title: "لا مواد معتمدة بعد").frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {
-                    List(rows) { item in
-                        SunnahNavigationLink { WeakHadithDetailView(item: item) } label: {
-                            VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                                WeakHadithBadge(item: item)
-                                Text(item.title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                                Text("المحدّث: \(item.muhaddith)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                            }
-                        }.sunnahRowChrome()
+                    SunnahRowStack {
+                        ForEach(rows) { item in
+                            SunnahNavigationLink { WeakHadithDetailView(item: item) } label: {
+                                VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                                    WeakHadithBadge(item: item)
+                                    Text(item.title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                                    Text("المحدّث: \(item.muhaddith)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                                }
+                            }.sunnahStackRow()
+                        }
                     }
-                    .listStyle(.plain).scrollContentBackground(.hidden)
                     .sunnahSearchable(text: $query, prompt: "ابحث في \(title)")
                     #if DEBUG
                     // لقطات التدقيق فقط: `-snapshotSearchQuery <نص>` يملأ مربع البحث.

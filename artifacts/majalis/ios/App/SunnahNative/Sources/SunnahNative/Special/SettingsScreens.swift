@@ -126,19 +126,28 @@ struct VaultView: View {
     private func save(_ n: [String]) { raw = (try? String(data: JSONEncoder().encode(n), encoding: .utf8)) ?? "[]" }
 
     var body: some View {
-        List {
-            Section("ملاحظة جديدة") {
+        SunnahRowStack {
+            SunnahRowGroupHeader("ملاحظة جديدة")
+            VStack(spacing: Sunnah.Spacing.s3) {
                 TextField("اكتب ملاحظتك", text: $draft, axis: .vertical)
-                Button("حفظ") { save([draft] + notes); draft = "" }.disabled(draft.trimmingCharacters(in: .whitespaces).isEmpty)
-            }
-            Section("ملاحظاتي (على هذا الجهاز)") {
-                if notes.isEmpty { Text("لا ملاحظات بعد").foregroundStyle(Sunnah.Colors.textSecondary) }
-                ForEach(Array(notes.enumerated()), id: \.offset) { _, n in Text(n) }
-                    .onDelete { idx in var n = notes; n.remove(atOffsets: idx); save(n) }
+                    .font(Sunnah.Typography.body).frame(minHeight: 44).accessibilityIdentifier("vault.draft")
+                SunnahButton("حفظ") { save([draft] + notes); draft = "" }
+                    .disabled(draft.trimmingCharacters(in: .whitespaces).isEmpty).accessibilityIdentifier("vault.save")
+            }.sunnahStackRow()
+            SunnahRowGroupHeader("ملاحظاتي (على هذا الجهاز)")
+            if notes.isEmpty { Text("لا ملاحظات بعد").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, Sunnah.Spacing.pageX) }
+            ForEach(Array(notes.enumerated()), id: \.offset) { i, n in
+                HStack(alignment: .top) {
+                    Text(n).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Button { var all = notes; all.remove(at: i); save(all) } label: {
+                        Image(systemName: "trash").foregroundStyle(Sunnah.Colors.textSecondary)
+                            .frame(width: 44, height: 44).contentShape(Rectangle())
+                    }.buttonStyle(.plain).accessibilityLabel("حذف الملاحظة")
+                }.sunnahStackRow()
             }
         }
-        .scrollContentBackground(.hidden)
-        .background(Sunnah.Colors.bg)
         .sunnahNavTitle("خزنتي")
     }
 }
