@@ -29,7 +29,6 @@ struct ExplainerTemplate: View {
             }
         }
         .background(Sunnah.Colors.bg)
-        .bodyTitledNavigation()
         .accessibilityIdentifier("explainer")
         #if DEBUG
         .onAppear { let i = UserDefaults.standard.integer(forKey: "snapshotStage"); if i > 0, i < data.stages.count { index = i } }
@@ -94,12 +93,10 @@ private struct ExplainerPicker: View {
         if rows.isEmpty {
             EmptyStateView(title: SirahSection.pendingTitle)
         } else if rows.count == 1 {
-            ExplainerTemplate(data: rows[0])
+            ExplainerTemplate(data: rows[0]).sunnahSubChrome()
         } else {
-            VStack(spacing: 0) {
-                SunnahChipBar(options: rows.indices.map { .init(id: $0, title: rows[$0].title) }, selection: $selection)
-                ExplainerTemplate(data: rows[min(selection, rows.count - 1)]).id(selection)
-            }
+            ExplainerTemplate(data: rows[min(selection, rows.count - 1)]).id(selection)
+            .sunnahSubChrome(accessory: SunnahChipBar(options: rows.indices.map { .init(id: $0, title: rows[$0].title) }, selection: $selection))   // شريط الرجوع المشترك يحجز مكانه فوق الشرائح فلا يغطي زر الرجوع أول شريحة
             #if DEBUG
             .onAppear { if let s = UserDefaults.standard.string(forKey: "snapshotExplainer"), let i = Int(s), rows.indices.contains(i) { selection = i } }
             #endif
