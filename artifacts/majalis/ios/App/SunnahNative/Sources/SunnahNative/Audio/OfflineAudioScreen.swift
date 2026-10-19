@@ -40,22 +40,19 @@ private struct OfflineAudioList: View {
         if reciters.isEmpty {
             EmptyStateView(title: "لا قرّاء متاحون للتنزيل")
         } else {
-            List {
-                Section {
-                    ForEach(reciters) { reciter in
+            ScrollView {
+                LazyVStack(spacing: 0) {
+                    SunnahSectionLabel("المساحة المستعملة: \(OfflineAudioScreen.megabytes(downloader.store.totalBytes()))")
+                    SunnahGroupedCard(reciters) { reciter in
                         OfflineReciterRow(reciter: reciter, reciters: reciters, downloader: downloader)
-                            .sunnahRowChrome()
                     }
-                } header: {
-                    Text("المساحة المستعملة: \(OfflineAudioScreen.megabytes(downloader.store.totalBytes()))")
-                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                } footer: {
                     if let error = downloader.lastError {
                         Text(OfflineAudioScreen.message(error)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.danger)
+                            .frame(maxWidth: .infinity, alignment: .leading).padding(.top, Sunnah.Spacing.s2)
                     }
                 }
+                .padding(.horizontal, Sunnah.Spacing.s4)
             }
-            .listStyle(.plain).scrollContentBackground(.hidden)
         }
     }
 }
@@ -95,7 +92,7 @@ private struct OfflineReciterRow: View {
         }
         .frame(minHeight: Sunnah.Spacing.touch)
         .padding(.vertical, Sunnah.Spacing.s2)
-        .swipeActions {
+        .contextMenu {
             if count > 0 {
                 Button(role: .destructive) { downloader.remove(reciter.id) } label: { Label("حذف", systemImage: "trash") }
             }

@@ -36,17 +36,18 @@ struct QuranPeopleListView: View {
     let people: [QuranPerson]
     let surahNames: [Int: String]
     var body: some View {
-        List {
-            ForEach(PeopleAdapters.grouped(people), id: \.title) { g in
-                Section(g.title) {
-                    ForEach(g.people) { p in
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(PeopleAdapters.grouped(people), id: \.title) { g in
+                    SunnahSectionLabel(g.title)
+                    SunnahGroupedCard(g.people) { p in
                         SunnahNavigationLink { QuranPersonView(person: p, surahNames: surahNames) } label: { SunnahListRow(title: p.nameAr, subtitle: nil) }
                     }
                 }
-                .sunnahRowChrome()
             }
+            .padding(.horizontal, Sunnah.Spacing.s4)
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        .background(Sunnah.Colors.bg)
     }
 }
 

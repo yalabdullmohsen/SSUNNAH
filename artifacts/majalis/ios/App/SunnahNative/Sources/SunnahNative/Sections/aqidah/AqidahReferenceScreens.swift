@@ -67,8 +67,8 @@ public struct AqidahAsmaHusnaNativeScreen: ScreenTemplate {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
         .sunnahSearchable(text: $query, prompt: "ابحث عن اسم أو معنى")
-        .sheet(item: $selected) { n in
-            NavigationStack {
+        .navigationDestination(isPresented: Binding(get: { selected != nil }, set: { if !$0 { selected = nil } })) {
+            if let n = selected {
                 AqidahPage(title: n.arabic) {
                     HStack(spacing: Sunnah.Spacing.s2) { SunnahChip(n.status, selected: true); SunnahChip(n.category) }
                     AqidahTextBlock(title: "المعنى", text: n.meaning)

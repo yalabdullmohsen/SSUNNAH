@@ -34,23 +34,24 @@ struct MutashabihatListView: View {
     private var categories: [String] { var seen = Set<String>(); return pairs.map(\.category).filter { seen.insert($0).inserted } }
 
     var body: some View {
-        List {
-            ForEach(categories, id: \.self) { c in
-                Section(c) {
-                    ForEach(pairs.filter { $0.category == c }) { p in
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(categories, id: \.self) { c in
+                    SunnahSectionLabel(c)
+                    SunnahGroupedCard(pairs.filter { $0.category == c }) { p in
                         SunnahNavigationLink { MutashabihatDetailView(pair: p) } label: {
                             SunnahListRow(title: p.title, subtitle: p.refs.map { "\($0.surahName) \($0.ayah)" }.joined(separator: " · "))
                         }
-                        .sunnahRowChrome()
                     }
                 }
-            }
-            Section("المصدر") {
+                SunnahSectionLabel("المصدر")
                 Text("درة التنزيل وغرة التأويل للخطيب الإسكافي، والبرهان في متشابه القرآن للسخاوي، وملاك التأويل لأبي جعفر الغرناطي. نص الآيات من مصحف التطبيق.")
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .padding(.horizontal, Sunnah.Spacing.s4)
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
     }
 }

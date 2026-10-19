@@ -14,17 +14,18 @@ struct UlumQuranListView: View {
     private var tabs: [String] { var seen = Set<String>(); return items.compactMap(\.tags.first).filter { seen.insert($0).inserted } }
 
     var body: some View {
-        List {
-            ForEach(tabs, id: \.self) { tab in
-                Section(tab) {
-                    ForEach(items.filter { $0.tags.first == tab }) { i in
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(tabs, id: \.self) { tab in
+                    SunnahSectionLabel(tab)
+                    SunnahGroupedCard(items.filter { $0.tags.first == tab }) { i in
                         SunnahNavigationLink { UlumQuranDetailView(item: i) } label: { SunnahListRow(title: i.title, subtitle: i.subtitle) }
-                            .sunnahRowChrome()
                     }
                 }
             }
+            .padding(.horizontal, Sunnah.Spacing.s4)
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        .background(Sunnah.Colors.bg)
     }
 }
 

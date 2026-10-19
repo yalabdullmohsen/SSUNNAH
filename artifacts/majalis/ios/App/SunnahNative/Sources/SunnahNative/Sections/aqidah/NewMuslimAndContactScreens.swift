@@ -157,41 +157,52 @@ struct AqidahDiscoverIslamContactNativeScreen: View {
     }
 
     private var form: some View {
-        Form {
-            Section {
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+            SunnahCard {
+              VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                 Text("بياناتك تُستخدَم فقط للتواصل معك، ولا تُعرض لأي طرف آخر أبدًا.")
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                Toggle("أفضّل عدم كتابة اسمي", isOn: $isAnonymous)
+                SunnahSwitch("أفضّل عدم كتابة اسمي", isOn: $isAnonymous)
                 if !isAnonymous { TextField("الاسم (اختياري)", text: $name) }
                 picker("تفضيل جنس الداعية", $gender, DawahContactOptions.genders)
                 picker("الخلفية الدينية", $religion, DawahContactOptions.religions)
                 TextField("الدولة (اختياري)", text: $country)
+              }
             }
-            Section {
+            SunnahCard {
+              VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                 TextField("ما الذي تودّ التحدث عنه؟", text: $topic, axis: .vertical).lineLimit(4...8)
                 picker("وسيلة التواصل", $method, DawahContactOptions.methods)
                 TextField("بيانات التواصل", text: $contactValue)
                     .environment(\.layoutDirection, .leftToRight)
                     .aqidahPlainInput()
+              }
             }
-            Section {
-                Toggle("أوافق على استخدام بياناتي فقط لغرض التواصل معي في هذا الطلب.", isOn: $consent)
+            SunnahCard {
+              VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                SunnahSwitch("أوافق على استخدام بياناتي فقط لغرض التواصل معي في هذا الطلب.", isOn: $consent)
                 if let error { Text(error).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.danger) }
                 SunnahButton(busy ? "إرسال…" : "إرسال الطلب") { Task { await send() } }
                     .disabled(busy || submitter == nil)
                 if submitter == nil {
                     Text("الإرسال غير متاح في هذه النسخة.").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
+              }
             }
+            }
+            .padding(.horizontal, Sunnah.Spacing.s4)
         }
         .font(Sunnah.Typography.body)
-        .scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)
     }
 
     private func picker(_ label: String, _ selection: Binding<String>, _ options: [DawahContactOption]) -> some View {
-        Picker(label, selection: selection) {
-            ForEach(options, id: \.code) { Text($0.label).tag($0.code) }
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+            Text(label).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+            ScrollView(.horizontal, showsIndicators: false) {
+                SunnahSegmented(options.map { (id: $0.code, title: $0.label) }, selection: selection)
+            }
         }
     }
 

@@ -24,16 +24,12 @@ struct TafsirHomeView: View {
 
     private func content(_ idx: MushafIndex, _ books: [TafsirEntry]) -> some View {
         let book = books[min(selected, books.count - 1)]
-        return List {
-            Section {
-                Picker("التفسير", selection: $selected) {
-                    ForEach(Array(books.enumerated()), id: \.offset) { Text($1.name).tag($0) }
-                }.pickerStyle(.segmented)
+        return ScrollView {
+            LazyVStack(spacing: 0) {
+                SunnahSegmented(books.enumerated().map { (id: $0.offset, title: $0.element.name) }, selection: $selected)
+                    .padding(.vertical, Sunnah.Spacing.s2)
                 TafsirAttributionView(entry: book)
-            }
-            .sunnahRowChrome()
-            Section {
-                ForEach(idx.surahs, id: \.id) { s in
+                SunnahGroupedCard(idx.surahs) { s in
                     SunnahNavigationLink {
                         TafsirSurahView(book: book, surahId: s.id, surahName: s.name)
                     } label: {
@@ -41,9 +37,9 @@ struct TafsirHomeView: View {
                     }
                 }
             }
-            .sunnahRowChrome()
+            .padding(.horizontal, Sunnah.Spacing.s4)
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        .background(Sunnah.Colors.bg)
     }
 
     private func load() async {
@@ -92,23 +88,25 @@ struct TafsirSurahView: View {
             case .failed: ErrorStateView { Task { await load() } }
             case .unavailable: EmptyStateView(title: QuranSection.pendingTitle)
             case .ready(let rows):
-                List {
-                    TafsirAttributionView(entry: book).listRowBackground(Sunnah.Colors.surface2)
-                    ForEach(rows) { r in
-                        VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                            Text("\(r.ayah) ﴿\(r.number)﴾".arabicDigits).font(Sunnah.Typography.quran)
-                                .foregroundStyle(Sunnah.Colors.textPrimary)
-                            if let t = r.tafsir {
-                                SunnahSectionedMarkdown(t, key: "tafsir-\(book.id)-\(surahId)-\(r.number)", style: .body).foregroundStyle(Sunnah.Colors.textSecondary)
+                ScrollView {
+                    LazyVStack(spacing: 0) {
+                        TafsirAttributionView(entry: book).padding(.vertical, Sunnah.Spacing.s2)
+                        ForEach(rows) { r in
+                            VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                                Text("\(r.ayah) ﴿\(r.number)﴾".arabicDigits).font(Sunnah.Typography.quran)
+                                    .foregroundStyle(Sunnah.Colors.textPrimary)
+                                if let t = r.tafsir {
+                                    SunnahSectionedMarkdown(t, key: "tafsir-\(book.id)-\(surahId)-\(r.number)", style: .body).foregroundStyle(Sunnah.Colors.textSecondary)
+                                }
                             }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical, Sunnah.Spacing.s3)
+                            Divider()
                         }
-                        .padding(.vertical, Sunnah.Spacing.s2)
-                        .sunnahRowChrome()
+                        SunnahContentFooter(title: surahName, id: "tafsir-\(book.id)-\(surahId)", section: "التفسير", source: book.source.map { "المصدر: \($0.name)" } ?? book.name, inset: false)
                     }
-                    SunnahContentFooter(title: surahName, id: "tafsir-\(book.id)-\(surahId)", section: "التفسير", source: book.source.map { "المصدر: \($0.name)" } ?? book.name, inset: false)
-                        .listRowSeparator(.hidden).listRowBackground(Color.clear)
+                    .padding(.horizontal, Sunnah.Spacing.s4)
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
