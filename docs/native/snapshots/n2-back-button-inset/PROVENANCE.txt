@@ -1,0 +1,10 @@
+git_sha=9dacde315f1b7185fda048d7175951d744087dcd
+branch=n2/back-button-inset
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/f0a69c5c28a58c8e/SunnahApp.app
+binary_sha256=743a5128e5952a6657f720f29f5f954c396ca09d6d76e09709990bb0b9634106
+captured_at=2026-10-20 00:05
+route=/explainers -snapshotExplainer <0|1> -snapshotStage 0 (iPhone، فاتح/داكن)
+before=docs/native/snapshots/n2-explainers-sources/creation-of-man-stage1-light.png (الشرائح تتراكب على زر الرجوع)
+covers=ExplainerTemplate.swift (creation-of-man + miracles-of-the-prophet × فاتح/داكن: الشرائح تحت الشريط العلوي بلا تراكب)
+covers=SunnahModel2.swift (SunnahSubChrome: الشريط العلوي + الشرائح في safeAreaInset واحد)
+covers=SunnahChipBar.swift (إطار ثابت وScrollView في overlay)
