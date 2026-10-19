@@ -232,4 +232,34 @@ final class HomeNavigationUITests: XCTestCase {
             XCTAssertLessThanOrEqual(lowest, barTop + 1, "\(route): آخر عنصر (maxY=\(lowest)) خلف الشريط (top=\(barTop))")
         }
     }
+
+    /// «علاماتي»: سحب صف علامة يكشف «حذف» ثم النقر عليه يحذف الصف فعلًا؛ لقطتان (قبل/بعد) حقيقيتان من XCUITest لا simctl.
+    func testMarksSwipeToDelete() throws {
+        app.terminate()
+        app = XCUIApplication()
+        app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", "/mushaf/page/42",
+                                "-snapshotSeedMarks", "1", "-snapshotShowMarks", "1"]
+        app.launch()
+        let rows = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "صفحة"))
+        XCTAssertTrue(rows.firstMatch.waitForExistence(timeout: 30), "قائمة العلامات لم تظهر")
+        let before = rows.count
+        let row = rows.element(boundBy: 0)
+        let del = app.buttons["حذف"]
+        // RTL: إجراء trailing يُكشف بالسحب نحو الجهة الأمامية (يمينًا)؛ نجرّب الاتجاهين.
+        row.swipeRight(velocity: .slow)
+        if !del.waitForExistence(timeout: 2) { row.swipeLeft(velocity: .slow); _ = del.waitForExistence(timeout: 2) }
+        XCTAssertTrue(del.exists, "زر الحذف لم يظهر بعد السحب")
+        save(app.screenshot(), "marks-swipe-reveal")
+        del.tap()
+        sleep(1)
+        XCTAssertEqual(rows.count, before - 1, "الصف لم يُحذف")
+        save(app.screenshot(), "marks-swipe-after-delete")
+    }
+
+    private func save(_ shot: XCUIScreenshot, _ name: String) {
+        let a = XCTAttachment(screenshot: shot); a.name = name; a.lifetime = .keepAlways; add(a)
+        let dir = "/tmp/n3swipe"
+        try? FileManager.default.createDirectory(atPath: dir, withIntermediateDirectories: true)
+        try? shot.pngRepresentation.write(to: URL(fileURLWithPath: "\(dir)/\(name).png"))
+    }
 }
