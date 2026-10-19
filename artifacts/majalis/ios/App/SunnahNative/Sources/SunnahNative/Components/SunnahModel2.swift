@@ -300,7 +300,8 @@ public extension View {
 
 // MARK: - SubChrome
 
-private struct SunnahSubChrome: ViewModifier {
+private struct SunnahSubChrome<Accessory: View>: ViewModifier {
+    let accessory: Accessory
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openRoute) private var openRoute
     func body(content: Content) -> some View {
@@ -309,10 +310,13 @@ private struct SunnahSubChrome: ViewModifier {
             .toolbar(.hidden, for: .navigationBar)
             #endif
             .safeAreaInset(edge: .top, spacing: 0) {
-                SunnahTopBar(onBack: { dismiss() }) {
-                    SunnahTopBarIcon(symbol: "magnifyingglass", label: "البحث") { openRoute("/search") }
+                VStack(spacing: 0) {
+                    SunnahTopBar(onBack: { dismiss() }) {
+                        SunnahTopBarIcon(symbol: "magnifyingglass", label: "البحث") { openRoute("/search") }
+                    }
+                    .padding(.vertical, Sunnah.Spacing.s2)
+                    accessory
                 }
-                .padding(.vertical, Sunnah.Spacing.s2)
                 .background(Sunnah.Colors.bg)
             }
     }
@@ -320,7 +324,9 @@ private struct SunnahSubChrome: ViewModifier {
 
 public extension View {
     /// شريط الشاشات الفرعية (النموذج ٢): رجوع + بحث، ويخفي شريط التنقّل النظامي.
-    func sunnahSubChrome() -> some View { modifier(SunnahSubChrome()) }
+    func sunnahSubChrome() -> some View { modifier(SunnahSubChrome(accessory: EmptyView())) }
+    /// كالسابق مع عنصر (شريط شرائح مثلًا) يُحجز أسفل شريط الرجوع داخل الحيّز نفسه فلا يتداخل معه.
+    func sunnahSubChrome<A: View>(accessory: A) -> some View { modifier(SunnahSubChrome(accessory: accessory)) }
 }
 
 /// كبسولة ذهبية على البطاقة الخضراء («بعد … س»): نص داكن ثابت فوق الذهب فيبقى مقروءًا فاتحًا وداكنًا.
