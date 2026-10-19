@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// حارس بنية حقل `sources` في ios-native/Data: البنية المعيارية {ref (العنوان), url} + اختياري {type, quote, fetched, verified}.
+// حارس بنية حقل `sources` في ios-native/Data: البنية المعيارية {ref (العنوان), url} + اختياري {type, quote, fetched, verified}،
+// أو إحالة كتاب مطبوع كاملة {author, book, locator} (المؤلف + الكتاب + الموضع: سورة/آية أو رقم حديث) — قابلة للتحقق بلا رابط.
 // يفشل إن: (1) زاد عدد العناصر غير المعيارية في أي قسم عن docs/native/sources-shape-baseline.json،
 // (2) وُجد عنصر معيارٍ ناقص (ref أو url فارغ) في ملف يُفترض معياريًا بالكامل (STRICT)،
 // (3) ظهر قسم جديد ببنية غير معيارية. الاستعمال: node scripts/native-sources-shape-guard.mjs [--write-baseline]
@@ -10,7 +11,7 @@ const data = path.join(root, 'ios-native/Data')
 const baseFile = path.join(root, 'docs/native/sources-shape-baseline.json')
 const STRICT = ['sirah/islamic-landmarks.json'] // كل عناصر sources هنا معيارية، بلا استثناء
 const str = (v) => typeof v === 'string' && v.trim().length > 1
-const canonical = (s) => s && typeof s === 'object' && str(s.ref) && str(s.url)
+const canonical = (s) => s && typeof s === 'object' && ((str(s.ref) && str(s.url)) || (str(s.author) && str(s.book) && str(s.locator)))
 const shapeOf = (s) => (s && typeof s === 'object' ? Object.keys(s).sort().join(',') : typeof s)
 const count = {}, bad = [], shapes = {}
 const walk = (o, sec, file) => {
