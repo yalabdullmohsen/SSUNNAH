@@ -66,7 +66,7 @@ public struct AqidahAsmaHusnaNativeScreen: ScreenTemplate {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .searchable(text: $query, prompt: "ابحث عن اسم أو معنى")
+        .sunnahSearchable(text: $query, prompt: "ابحث عن اسم أو معنى")
         .sheet(item: $selected) { n in
             NavigationStack {
                 AqidahPage(title: n.arabic) {
@@ -156,7 +156,7 @@ public struct AqidahIslamicSectsNativeScreen: ScreenTemplate {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .searchable(text: $query, prompt: "ابحث عن فرقة")
+        .sunnahSearchable(text: $query, prompt: "ابحث عن فرقة")
     }
 }
 

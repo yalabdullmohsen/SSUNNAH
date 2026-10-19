@@ -50,7 +50,7 @@ public struct AqidahGroupedScreen<Page: AqidahGroupedPage>: ScreenTemplate {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .searchable(text: $query, prompt: "ابحث في الصفحة")
+        .sunnahSearchable(text: $query, prompt: "ابحث في الصفحة")
     }
 
     private func hint(expandable: Bool, open: Bool) -> String {

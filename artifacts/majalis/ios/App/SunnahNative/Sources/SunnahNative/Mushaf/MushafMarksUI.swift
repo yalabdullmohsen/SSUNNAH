@@ -114,6 +114,7 @@ struct MushafMarksScreen: View {
             }
         }
         .padding(.top, Sunnah.Spacing.s2)
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // أكبر من ذلك تُكسر «الصفحة كاملة» وسط الكلمة
     }
 
     private func chip(_ title: String, color: MushafMarkColor?) -> some View {

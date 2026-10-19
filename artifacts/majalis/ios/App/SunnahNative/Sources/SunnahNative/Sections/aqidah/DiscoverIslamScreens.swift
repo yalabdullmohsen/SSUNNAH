@@ -74,7 +74,7 @@ public struct AqidahDiscoverIslamQuestionsNativeScreen: ScreenTemplate {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .searchable(text: $query, prompt: "ابحث في الأسئلة")
+        .sunnahSearchable(text: $query, prompt: "ابحث في الأسئلة")
     }
 }
 

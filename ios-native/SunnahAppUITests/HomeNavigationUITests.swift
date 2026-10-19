@@ -259,6 +259,20 @@ final class HomeNavigationUITests: XCTestCase {
         save(app.screenshot(), "marks-swipe-after-delete")
     }
 
+    /// حقل البحث ظاهر ويُرشّح فعلًا (عطل `.searchable` تحت شريط تنقّل مخفي: لا حقل ولا ترشيح).
+    func testSearchableFieldVisibleAndFilters() throws {
+        app = XCUIApplication()
+        app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", "/hadith/sahih"]
+        app.launch()
+        let field = app.textFields["sunnah.searchable"]
+        XCTAssertTrue(field.waitForExistence(timeout: 30), "حقل البحث غير ظاهر")
+        field.tap(); field.typeText("الشهادتين")
+        sleep(1)
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "الشهادتين")).firstMatch.exists, "نتيجة البحث لم تظهر")
+        XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "على خمس")).firstMatch.exists, "الترشيح لم يعمل")
+        save(app.screenshot(), "searchable-sahih-typed")
+    }
+
     private func save(_ shot: XCUIScreenshot, _ name: String) {
         let a = XCTAttachment(screenshot: shot); a.name = name; a.lifetime = .keepAlways; add(a)
         let dir = "/tmp/n3swipe"
