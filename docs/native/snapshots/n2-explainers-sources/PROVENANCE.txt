@@ -1,6 +1,7 @@
 git_sha=9bd78c59cba4ee2b8ee2e8bf0436875c01976204
 branch=n2/explainers-sources
 app=/Users/alabdullmohsen/.majalis-tools/headbuild/6adcd454a4df93ab/SunnahApp.app
+binary_sha256=9777bbfd069b079dfda4ffb189d9edc06badc09512f519bbcb5577dc3eed6a2e
 captured_at=2026-10-19 21:35:28
 route=/explainers -snapshotExplainer <0|1> -snapshotStage 0 (iPhone، فاتح/داكن)
 covers=creation-of-man.json (المرحلة 1: أصل الخلق من طين؛ سبب البنية: مصادر على مستوى الشرح)
