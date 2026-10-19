@@ -29,6 +29,7 @@ struct BasmalaView: View {
                 }
             }
             .foregroundStyle(Sunnah.Colors.mushafText)
+            .mushafInkWeight(fontSize)
             .frame(maxWidth: .infinity)
             .environment(\.layoutDirection, .rightToLeft)
             .accessibilityElement(children: .ignore)
