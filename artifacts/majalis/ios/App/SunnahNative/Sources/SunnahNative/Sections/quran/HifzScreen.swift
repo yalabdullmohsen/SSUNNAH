@@ -67,7 +67,10 @@ struct HifzScreen: View {
                 .padding(.horizontal, Sunnah.Spacing.pageX).padding(.vertical, Sunnah.Spacing.s3)
             }
             .background(Sunnah.Colors.bg)
-            if let c = chooser { chooserCard(c) }
+            if let c = chooser {
+                Color.black.opacity(0.35).ignoresSafeArea().onTapGesture { chooser = nil }
+                chooserCard(c).padding(.bottom, 96)
+            }
         }
         .environment(\.layoutDirection, .rightToLeft)
         .navigationDestination(isPresented: $showPage) { MushafScreen(target: .page(openPage ?? 1)) }
@@ -282,7 +285,7 @@ struct HifzScreen: View {
 
     // MARK: مُنتقي الحالة (بطاقة مخصّصة بلا مكوّنات نظام)
     private func chooserCard(_ c: HifzTarget) -> some View {
-        VStack(spacing: Sunnah.Spacing.s3) {
+        VStack(spacing: Sunnah.Spacing.s1) {
             Text("حالة الحفظ: \(c.title)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
             ForEach(HifzState.allCases) { st in
                 Button {
@@ -292,7 +295,7 @@ struct HifzScreen: View {
                         RoundedRectangle(cornerRadius: 4, style: .continuous).fill(st.color).frame(width: 16, height: 16)
                         Text(st == .none ? "إزالة الحالة" : st.name).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                         Spacer()
-                    }.frame(minHeight: Sunnah.Spacing.touch).contentShape(Rectangle())
+                    }.frame(minHeight: 44).contentShape(Rectangle())
                 }.accessibilityIdentifier("hifz.choose.\(st.rawValue)")
             }
             SunnahButton("إلغاء", style: .outline) { chooser = nil }
@@ -305,8 +308,7 @@ struct HifzScreen: View {
     }
 
     private func seed() {
-        guard let first = juzStart.first else { return }
-        _ = first
+        guard !juzStart.isEmpty else { return }
         store.set(.memorized, pages: 1...60)
         store.set(.review, pages: 61...72)
         store.set(.partial, pages: 73...90)
