@@ -81,7 +81,7 @@ struct AccountSubmitContentScreen: View {
         .sunnahNavTitle("أضف محتوى")
     }
 
-    private func field<C: View>(_ title: String, counter: String, @ViewBuilder content: () -> C) -> some View {
+    private func field<C: View>(_ title: String, counter: String, @ViewBuilder content: @escaping () -> C) -> some View {
         AccountSectionCard(title: title) {
             content()
             Text(counter.arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
