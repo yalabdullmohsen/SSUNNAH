@@ -14,14 +14,19 @@ private struct RangePicker: View {
     private var maxAyah: Int { surahs.first { $0.id == surah }?.ayahs ?? 286 }
 
     var body: some View {
-        Section("المقطع") {
-            if surahs.isEmpty {
-                Stepper("السورة: \(surah)", value: $surah, in: 1...114)
-            } else {
-                Picker("السورة", selection: $surah) { ForEach(surahs) { Text($0.name).tag($0.id) } }
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+            SunnahSectionLabel("المقطع")
+            SunnahCard {
+                VStack(spacing: Sunnah.Spacing.s3) {
+                    if surahs.isEmpty {
+                        Stepper("السورة: \(surah)", value: $surah, in: 1...114)
+                    } else {
+                        SurahChoiceRow(items: surahs.map { SurahChoice(id: $0.id, name: $0.name) }, selection: $surah)
+                    }
+                    Stepper("من الآية: \(from)", value: $from, in: 1...maxAyah)
+                    Stepper("إلى الآية: \(to)", value: $to, in: from...max(from, maxAyah))
+                }
             }
-            Stepper("من الآية: \(from)", value: $from, in: 1...maxAyah)
-            Stepper("إلى الآية: \(to)", value: $to, in: from...max(from, maxAyah))
         }
         .onChange(of: surah) { _ in from = 1; to = min(to, maxAyah) }
         .onChange(of: from) { v in if to < v { to = v } }
@@ -48,22 +53,19 @@ struct MemorizationPlansScreen: View {
                                   actionTitle: "ابدأ خطة حفظ") { creating = true }
                     .frame(maxHeight: .infinity, alignment: .top)
             } else {
-                List {
+                lScroll {
+                    SunnahButton("خطة جديدة") { creating = true }
                     ForEach($plans) { $plan in
-                        MemorizationPlanCard(plan: $plan, title: rangeLabel(surahs, plan.surah, plan.ayahFrom, plan.ayahTo)) { save() }
-                            .sunnahRowChrome()
+                        SunnahCard {
+                            MemorizationPlanCard(plan: $plan, title: rangeLabel(surahs, plan.surah, plan.ayahFrom, plan.ayahTo)) { save() }
+                        }
                     }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .background(Sunnah.Colors.bg)
-        .toolbar { ToolbarItem(placement: .primaryAction) { Button("خطة جديدة") { creating = true } } }
-        .sheet(isPresented: $creating) {
-            NavigationStack {
-                NewMemorizationPlanForm(surahs: surahs) { plan in plans.insert(plan, at: 0); save(); creating = false }
-                    .toolbar { ToolbarItem(placement: .cancellationAction) { Button("إلغاء") { creating = false } } }
-            }
+        .navigationDestination(isPresented: $creating) {
+            NewMemorizationPlanForm(surahs: surahs) { plan in plans.insert(plan, at: 0); save(); creating = false }
         }
         .onAppear { surahs = quranSurahList(); plans = store.load([MemorizationPlan].self, .plans) ?? [] }
         .quranTitle("خطط الحفظ")
@@ -115,12 +117,11 @@ private struct NewMemorizationPlanForm: View {
     @State private var to = 7
 
     var body: some View {
-        Form {
+        lScroll {
             RangePicker(surahs: surahs, surah: $surah, from: $from, to: $to)
-            Section {
-                Button("إنشاء الخطة") { onCreate(MemorizationPlan(surah: surah, ayahFrom: from, ayahTo: to, startDate: Date())) }
-            }
+            SunnahButton("إنشاء الخطة") { onCreate(MemorizationPlan(surah: surah, ayahFrom: from, ayahTo: to, startDate: Date())) }
         }
+        .background(Sunnah.Colors.bg)
         .quranTitle("خطة جديدة")
     }
 }
@@ -133,23 +134,24 @@ struct HifzLoopScreen: View {
     @State private var surahs: [MushafSurah] = []
 
     var body: some View {
-        Form {
+        lScroll {
             RangePicker(surahs: surahs, surah: $loop.surah, from: $loop.ayahFrom, to: $loop.ayahTo)
-            Section("التكرار") {
-                Stepper("الهدف: \(loop.target) مرة", value: $loop.target, in: 1...200, step: 5)
-                ProgressView(value: loop.progress).tint(Sunnah.Colors.primary)
-                Text("\(loop.count) من \(loop.target)".arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                if loop.reachedTarget {
-                    Text("بلغتَ هدف التكرار").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
+            SunnahSectionLabel("التكرار")
+            SunnahCard {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                    Stepper("الهدف: \(loop.target) مرة", value: $loop.target, in: 1...200, step: 5)
+                    ProgressView(value: loop.progress).tint(Sunnah.Colors.primary)
+                    Text("\(loop.count) من \(loop.target)".arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                    if loop.reachedTarget {
+                        Text("بلغتَ هدف التكرار").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
+                    }
+                    SunnahButton("تمّت مرة") { loop.tick() }
+                    Button("تصفير العدّاد", role: .destructive) { loop.reset() }.disabled(loop.count == 0)
                 }
-                SunnahButton("تمّت مرة") { loop.tick() }
-                Button("تصفير العدّاد", role: .destructive) { loop.reset() }.disabled(loop.count == 0)
             }
-            Section {
-                Text(rangeLabel(surahs, loop.surah, loop.ayahFrom, loop.ayahTo)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-            }
+            Text(rangeLabel(surahs, loop.surah, loop.ayahFrom, loop.ayahTo)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
         }
-        .scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        .background(Sunnah.Colors.bg)
         .onAppear { surahs = quranSurahList(); loop = store.load(HifzLoop.self, .loop) ?? HifzLoop() }
         .onChange(of: loop) { store.save($0, .loop) }
         .quranTitle("تكرار الحفظ")
@@ -164,25 +166,24 @@ struct MyHifzPathsView: View {
     @State private var progress = HifzPathProgress()
 
     var body: some View {
-        List {
+        lScroll {
             ForEach(paths) { path in
-                Section {
-                    ForEach(path.units.sorted { $0.sequence < $1.sequence }) { unit in
-                        Button { progress.toggle(path: path.id, unit: unit.id); store.save(progress, .pathUnits) } label: {
-                            HStack {
-                                Image(systemName: progress.isDone(path: path.id, unit: unit.id) ? "checkmark.circle.fill" : "circle")
-                                    .foregroundStyle(Sunnah.Colors.primary)
-                                Text(unit.title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                            }
+                SunnahSectionLabel("\(path.title) · \(progress.doneCount(path: path.id, validUnits: Set(path.units.map(\.id)))) من \(path.units.count)".arabicDigits)
+                SunnahGroupedCard(path.units.sorted { $0.sequence < $1.sequence }) { unit in
+                    Button { progress.toggle(path: path.id, unit: unit.id); store.save(progress, .pathUnits) } label: {
+                        HStack {
+                            Image(systemName: progress.isDone(path: path.id, unit: unit.id) ? "checkmark.circle.fill" : "circle")
+                                .foregroundStyle(Sunnah.Colors.primary)
+                            Text(unit.title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                            Spacer()
                         }
-                        .sunnahRowChrome()
+                        .padding(Sunnah.Spacing.s3)
                     }
-                } header: {
-                    Text("\(path.title) · \(progress.doneCount(path: path.id, validUnits: Set(path.units.map(\.id)))) من \(path.units.count)".arabicDigits)
+                    .buttonStyle(.plain)
                 }
             }
         }
-        .scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        .background(Sunnah.Colors.bg)
         .onAppear { progress = store.load(HifzPathProgress.self, .pathUnits) ?? HifzPathProgress() }
     }
 }
@@ -220,15 +221,15 @@ struct MushafBookmarksScreen: View {
                                   actionTitle: "أضف علامة من المصحف") { openRoute("/mushaf") }
                     .frame(maxHeight: .infinity, alignment: .top)
             } else {
-                List(store.bookmarks) { b in
-                    SunnahNavigationLink {
-                        MushafScreen().onAppear { store.visit(page: b.page) }
-                    } label: {
-                        SunnahListRow(title: "آية \(b.ayah)", subtitle: "صفحة \(b.page)")
+                lScroll {
+                    SunnahGroupedCard(store.bookmarks) { b in
+                        SunnahNavigationLink {
+                            MushafScreen().onAppear { store.visit(page: b.page) }
+                        } label: {
+                            SunnahListRow(title: "آية \(b.ayah)", subtitle: "صفحة \(b.page)")
+                        }
                     }
-                    .sunnahRowChrome()
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .background(Sunnah.Colors.bg)
@@ -259,32 +260,71 @@ struct QuranMemorizationView: View {
     private let names = QuranSection.surahNames()
 
     var body: some View {
-        List {
-            Section {
-                Text("12 نوعًا من اختبارات الحفظ مع نظام المراجعة المتباعدة")
-                    .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                    .listRowBackground(Sunnah.Colors.bg)
-            }
-            Section("اختر نوع الاختبار") {
-                ForEach(Array(Self.types.enumerated()), id: \.element.id) { i, t in
-                    Button { selected = t.id } label: {
-                        HStack {
-                            SunnahListRow(title: t.label, subtitle: "نوع \(i + 1) — \(t.desc)")
-                            if selected == t.id { Image(systemName: "checkmark").foregroundStyle(Sunnah.Colors.primary) }
-                        }
+        lScroll {
+            Text("12 نوعًا من اختبارات الحفظ مع نظام المراجعة المتباعدة")
+                .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            SunnahSectionLabel("اختر نوع الاختبار")
+            SunnahGroupedCard(Self.types.enumerated().map { LType(index: $0.offset, t: $0.element) }) { x in
+                Button { selected = x.t.id } label: {
+                    HStack {
+                        SunnahListRow(title: x.t.label, subtitle: "نوع \(x.index + 1) — \(x.t.desc)")
+                        if selected == x.t.id { Image(systemName: "checkmark").foregroundStyle(Sunnah.Colors.primary) }
                     }
-                    .buttonStyle(.plain)
-                    .sunnahRowChrome()
                 }
+                .buttonStyle(.plain)
             }
-            Section("اختر السورة") {
-                Picker("السورة", selection: $surah) {
-                    ForEach(names.keys.sorted(), id: \.self) { n in Text("\(n). \(names[n] ?? "")").tag(n) }
-                }
-                .sunnahRowChrome()
+            SunnahSectionLabel("اختر السورة")
+            SunnahGroupedCard([LItem(id: "surah")]) { _ in
+                SurahChoiceRow(items: names.keys.sorted().map { SurahChoice(id: $0, name: "\($0). \(names[$0] ?? "")") }, selection: $surah)
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)
+    }
+}
+
+private struct LType: Identifiable {
+    let index: Int; let t: (id: String, label: String, desc: String)
+    var id: String { t.id }
+}
+
+private struct LItem: Identifiable { let id: String }
+private struct SurahChoice: Identifiable { let id: Int; let name: String }
+
+private func lScroll<C: View>(@ViewBuilder _ content: () -> C) -> some View {
+    ScrollView { LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s4) { content() }.padding(.horizontal, Sunnah.Spacing.s4) }
+        .background(Sunnah.Colors.bg)
+}
+
+/// اختيار السورة بصفحة كاملة (بدل Picker/قائمة منسدلة النظام).
+private struct SurahChoiceRow: View {
+    let items: [SurahChoice]
+    @Binding var selection: Int
+    var body: some View {
+        SunnahNavigationLink { SurahChoicePage(items: items, selection: $selection) } label: {
+            SunnahListRow(title: "السورة", subtitle: items.first { $0.id == selection }?.name)
+        }
+    }
+}
+
+private struct SurahChoicePage: View {
+    let items: [SurahChoice]
+    @Binding var selection: Int
+    @Environment(\.dismiss) private var dismiss
+    var body: some View {
+        lScroll {
+            SunnahGroupedCard(items) { it in
+                Button { selection = it.id; dismiss() } label: {
+                    HStack {
+                        Text(it.name).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        Spacer()
+                        if selection == it.id { Image(systemName: "checkmark").foregroundStyle(Sunnah.Colors.primary) }
+                    }
+                    .padding(Sunnah.Spacing.s3)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .quranTitle("اختر السورة")
     }
 }

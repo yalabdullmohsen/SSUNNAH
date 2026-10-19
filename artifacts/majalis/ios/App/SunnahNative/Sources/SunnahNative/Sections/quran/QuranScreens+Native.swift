@@ -42,7 +42,8 @@ struct QuranSurahList: View {
 
     var body: some View {
         if rows.isEmpty { EmptyStateView(title: QuranSection.pendingTitle) } else {
-            List(rows) { r in
+            ScrollView { LazyVStack(spacing: 0) {
+              SunnahGroupedCard(rows) { r in
                 SunnahNavigationLink {
                     MushafReaderView(repo: MushafRepository(bundle: .main) ?? MushafRepository(root: URL(fileURLWithPath: "/")),
                                      index: index, search: nil, store: store, startPage: r.firstPage)
@@ -51,9 +52,9 @@ struct QuranSurahList: View {
                     SunnahListRow(title: "\(showOrder ? r.revelationOrder ?? r.id : r.id). \(r.name)",
                                   subtitle: "\(r.placeName) · \(r.ayahs) آية · صفحة \(r.firstPage)")
                 }
-                .sunnahRowChrome()
-            }
-            .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+              }
+            }.padding(.horizontal, Sunnah.Spacing.s4) }
+            .background(Sunnah.Colors.bg)
         }
     }
 }

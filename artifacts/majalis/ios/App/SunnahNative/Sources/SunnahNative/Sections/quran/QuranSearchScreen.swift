@@ -25,23 +25,25 @@ struct QuranSearchView: View {
 
     private func results(_ l: Loaded) -> some View {
         let hits = l.search.search(query)
-        return List {
-            if query.count >= 2 && hits.isEmpty { EmptyStateView(title: "لا نتائج").frame(maxWidth: .infinity).listRowBackground(Color.clear).listRowSeparator(.hidden) }
-            ForEach(hits) { h in
-                SunnahNavigationLink {
-                    MushafReaderView(repo: l.repo, index: l.index, search: l.search, store: store, startPage: h.page)
-                        .environment(\.layoutDirection, .rightToLeft)
-                } label: {
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                        Text(h.text).font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
-                        Text("\(h.ayah) · صفحة \(h.page)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+        return ScrollView {
+            LazyVStack(spacing: 0) {
+                if query.count >= 2 && hits.isEmpty { EmptyStateView(title: "لا نتائج").frame(maxWidth: .infinity) }
+                SunnahGroupedCard(hits) { h in
+                    SunnahNavigationLink {
+                        MushafReaderView(repo: l.repo, index: l.index, search: l.search, store: store, startPage: h.page)
+                            .environment(\.layoutDirection, .rightToLeft)
+                    } label: {
+                        VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                            Text(h.text).font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
+                            Text("\(h.ayah) · صفحة \(h.page)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                        }
                     }
                 }
             }
-            .sunnahRowChrome()
+            .padding(.horizontal, Sunnah.Spacing.s4)
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
-        .searchable(text: $query, prompt: "ابحث في القرآن")
+        .background(Sunnah.Colors.bg)
+        .sunnahSearchable(text: $query, prompt: "ابحث في القرآن")
     }
 
     private func load() {

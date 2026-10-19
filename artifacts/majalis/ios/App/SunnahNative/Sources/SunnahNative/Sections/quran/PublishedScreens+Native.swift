@@ -71,17 +71,16 @@ struct QuranDocView: View {
 struct TajweedListView: View {
     let file: TajweedFile
     var body: some View {
-        List {
+        qScroll {
             if let i = file.intro {
-                SunnahNavigationLink { QuranDocView(title: i.title, paragraphs: i.paragraphs, sources: [i.source]) } label: { SunnahListRow(title: i.title, subtitle: nil) }
-                    .sunnahRowChrome()
+                SunnahGroupedCard([QItem(id: "intro")]) { _ in
+                    SunnahNavigationLink { QuranDocView(title: i.title, paragraphs: i.paragraphs, sources: [i.source]) } label: { SunnahListRow(title: i.title, subtitle: nil) }
+                }
             }
-            ForEach(file.chapters) { c in
+            SunnahGroupedCard(file.chapters) { c in
                 SunnahNavigationLink { TajweedChapterView(chapter: c) } label: { SunnahListRow(title: c.title, subtitle: c.summary) }
-                    .sunnahRowChrome()
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
 }
 
@@ -102,11 +101,11 @@ struct TajweedChapterView: View {
 struct SurahStoriesListView: View {
     let stories: [SurahStory]
     var body: some View {
-        List(stories) { s in
-            SunnahNavigationLink { SurahStoryView(story: s) } label: { SunnahListRow(title: "\(s.number). \(s.name)", subtitle: s.revelationPlace) }
-                .sunnahRowChrome()
+        qScroll {
+            SunnahGroupedCard(stories) { s in
+                SunnahNavigationLink { SurahStoryView(story: s) } label: { SunnahListRow(title: "\(s.number). \(s.name)", subtitle: s.revelationPlace) }
+            }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
 }
 
@@ -126,16 +125,14 @@ struct SurahStoryView: View {
 struct HifzPathsListView: View {
     let paths: [HifzPath]
     var body: some View {
-        List {
+        qScroll {
             ForEach(PublishedAdapters.hifzByCategory(paths), id: \.title) { g in
-                Section(g.title) {
-                    ForEach(g.paths) { p in
-                        SunnahNavigationLink { HifzPathView(path: p) } label: { SunnahListRow(title: p.title, subtitle: p.shortDescription) }
-                    }
-                }.sunnahRowChrome()
+                SunnahSectionLabel(g.title)
+                SunnahGroupedCard(g.paths) { p in
+                    SunnahNavigationLink { HifzPathView(path: p) } label: { SunnahListRow(title: p.title, subtitle: p.shortDescription) }
+                }
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
 }
 
@@ -149,29 +146,31 @@ struct HifzPathView: View {
         return parts.isEmpty ? nil : parts.joined(separator: " · ")
     }
     var body: some View {
-        List {
-            Section {
+        qScroll {
+            SunnahCard {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                     if let d = path.shortDescription { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                     Text("المستوى: \(PublishedAdapters.hifzLevels[path.level] ?? path.level) · \(path.units.count) وحدة".arabicDigits)
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                }
-            }.sunnahRowChrome()
+                }.frame(maxWidth: .infinity, alignment: .leading)
+            }
             if !path.learningObjectives.isEmpty {
-                Section("أهداف التعلّم") {
-                    ForEach(path.learningObjectives, id: \.self) { Text("• \($0)".arabicDigits).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                }.sunnahRowChrome()
+                SunnahSectionLabel("أهداف التعلّم")
+                SunnahCard {
+                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                        ForEach(path.learningObjectives, id: \.self) { Text("• \($0)".arabicDigits).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    }.frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
             if let src = path.source {
-                Section("المصدر") { Text(src).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }.sunnahRowChrome()
+                SunnahSectionLabel("المصدر")
+                Text(src).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).frame(maxWidth: .infinity, alignment: .leading)
             }
-            Section("الوحدات") {
-                ForEach(path.units) { u in
-                    SunnahNavigationLink { HifzUnitView(unit: u, surahNames: surahNames, siblings: path.units) } label: { SunnahListRow(title: u.title, subtitle: unitSubtitle(u)) }
-                }
-            }.sunnahRowChrome()
+            SunnahSectionLabel("الوحدات")
+            SunnahGroupedCard(path.units) { u in
+                SunnahNavigationLink { HifzUnitView(unit: u, surahNames: surahNames, siblings: path.units) } label: { SunnahListRow(title: u.title, subtitle: unitSubtitle(u)) }
+            }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .quranTitle(path.title)
     }
 }
@@ -229,16 +228,14 @@ struct HifzUnitView: View {
 struct QuranStatsView: View {
     let stats: [QuranStat]
     var body: some View {
-        List {
+        qScroll {
             ForEach(PublishedAdapters.statsByGroup(stats), id: \.title) { g in
-                Section(g.title) {
-                    ForEach(g.stats) { s in
-                        SunnahNavigationLink { QuranStatView(stat: s) } label: { SunnahListRow(title: s.label, subtitle: s.value) }
-                    }
-                }.sunnahRowChrome()
+                SunnahSectionLabel(g.title)
+                SunnahGroupedCard(g.stats) { s in
+                    SunnahNavigationLink { QuranStatView(stat: s) } label: { SunnahListRow(title: s.label, subtitle: s.value) }
+                }
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
 }
 
@@ -260,30 +257,27 @@ struct QiraatView: View {
     let file: QiraatFile
     var surahNames: [Int: String] = QuranSection.surahNames()
     var body: some View {
-        List {
-            ForEach(file.sections) { s in
+        qScroll {
+            SunnahGroupedCard(file.sections) { s in
                 SunnahNavigationLink { QuranDocView(title: s.title, paragraphs: s.body, sources: [s.source]) } label: { SunnahListRow(title: s.title, subtitle: nil) }
-            }.sunnahRowChrome()
-            Section("القراء العشرة") {
-                ForEach(file.ashara) { q in
-                    SunnahNavigationLink {
-                        QuranDocView(title: q.name, paragraphs: [q.nisba + (q.deathYearHijri.map { " — ت \($0)هـ" } ?? ""), q.bio],
-                                     sections: [("الراويان", q.rawis)], sources: [q.source])
-                    } label: { SunnahListRow(title: q.name, subtitle: q.rawis.joined(separator: "، ")) }
-                }
-            }.sunnahRowChrome()
+            }
+            SunnahSectionLabel("القراء العشرة")
+            SunnahGroupedCard(file.ashara) { q in
+                SunnahNavigationLink {
+                    QuranDocView(title: q.name, paragraphs: [q.nisba + (q.deathYearHijri.map { " — ت \($0)هـ" } ?? ""), q.bio],
+                                 sections: [("الراويان", q.rawis)], sources: [q.source])
+                } label: { SunnahListRow(title: q.name, subtitle: q.rawis.joined(separator: "، ")) }
+            }
             if !file.diffs.isEmpty {
-                Section("أمثلة الخلاف") {
-                    ForEach(file.diffs) { d in
-                        SunnahNavigationLink {
-                            QuranDocView(title: PublishedAdapters.diffKinds[d.kind] ?? d.kind,
-                                         paragraphs: [d.description, PublishedAdapters.ayahText(surah: d.surah, ayah: d.ayah) { surahNames[$0] ?? "سورة \($0)" }.arabicDigits], sources: [d.source])
-                        } label: { SunnahListRow(title: d.description, subtitle: nil) }
-                    }
-                }.sunnahRowChrome()
+                SunnahSectionLabel("أمثلة الخلاف")
+                SunnahGroupedCard(file.diffs) { d in
+                    SunnahNavigationLink {
+                        QuranDocView(title: PublishedAdapters.diffKinds[d.kind] ?? d.kind,
+                                     paragraphs: [d.description, PublishedAdapters.ayahText(surah: d.surah, ayah: d.ayah) { surahNames[$0] ?? "سورة \($0)" }.arabicDigits], sources: [d.source])
+                    } label: { SunnahListRow(title: d.description, subtitle: nil) }
+                }
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
 }
 
@@ -291,23 +285,31 @@ struct QiraatView: View {
 struct MiraclesListView: View {
     let items: [MiracleItem]
     var body: some View {
-        List(items) { m in
-            SunnahNavigationLink {
-                QuranDocView(title: m.title, paragraphs: m.body.components(separatedBy: "\n\n").filter { !$0.isEmpty }, sources: [m.scholarlySource])
-            } label: { SunnahListRow(title: m.title, subtitle: "\(m.category) · \(m.reference)") }
-                .sunnahRowChrome()
+        qScroll {
+            SunnahGroupedCard(items) { m in
+                SunnahNavigationLink {
+                    QuranDocView(title: m.title, paragraphs: m.body.components(separatedBy: "\n\n").filter { !$0.isEmpty }, sources: [m.scholarlySource])
+                } label: { SunnahListRow(title: m.title, subtitle: "\(m.category) · \(m.reference)") }
+            }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
 }
 
 struct AhrufListView: View {
     let sections: [AhrufSection]
     var body: some View {
-        List(sections) { s in
-            SunnahNavigationLink { QuranDocView(title: s.title, paragraphs: s.body, sources: s.sources) } label: { SunnahListRow(title: s.title, subtitle: nil) }
-                .sunnahRowChrome()
+        qScroll {
+            SunnahGroupedCard(sections) { s in
+                SunnahNavigationLink { QuranDocView(title: s.title, paragraphs: s.body, sources: s.sources) } label: { SunnahListRow(title: s.title, subtitle: nil) }
+            }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
+}
+
+private struct QItem: Identifiable { let id: String }
+
+/// حاوية تمرير موحّدة لقوائم المربعات: هامش 16 وخلفية النظام.
+private func qScroll<C: View>(@ViewBuilder _ content: () -> C) -> some View {
+    ScrollView { LazyVStack(spacing: 0) { content() }.padding(.horizontal, Sunnah.Spacing.s4) }
+        .background(Sunnah.Colors.bg)
 }

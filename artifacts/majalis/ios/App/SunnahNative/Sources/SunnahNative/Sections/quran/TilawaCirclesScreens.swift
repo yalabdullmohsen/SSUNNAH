@@ -6,13 +6,16 @@ struct TilawaReciter: Decodable, Identifiable, Hashable, Sendable { let id: Stri
 struct TilawaListView: View {
     let reciters: [TilawaReciter]
     var body: some View {
-        List(reciters.sorted { $0.order < $1.order }) { r in
-            SunnahNavigationLink { TilawaSurahListView(reciter: r) } label: { SunnahListRow(title: r.nameAr, subtitle: nil) }
-                .sunnahRowChrome()
-        }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        ScrollView { LazyVStack(spacing: 0) {
+            SunnahGroupedCard(reciters.sorted { $0.order < $1.order }) { r in
+                SunnahNavigationLink { TilawaSurahListView(reciter: r) } label: { SunnahListRow(title: r.nameAr, subtitle: nil) }
+            }
+        }.padding(.horizontal, Sunnah.Spacing.s4) }
+        .background(Sunnah.Colors.bg)
     }
 }
+
+private struct SurahNo: Identifiable { let id: Int }
 
 struct TilawaSurahListView: View {
     let reciter: TilawaReciter
@@ -21,14 +24,15 @@ struct TilawaSurahListView: View {
     var body: some View {
         Group {
             if let audio {
-                List(1...114, id: \.self) { n in
-                    SunnahNavigationLink {
-                        AudioPlayerTemplate(item: ContentItem(id: "\(reciter.id)-\(n)", title: surahNames[n] ?? "سورة \(n)", subtitle: reciter.nameAr, audioURL: audio.surahURL(n)))
-                            .quranTitle(surahNames[n] ?? "سورة \(n)")
-                    } label: { SunnahListRow(title: surahNames[n] ?? "سورة \(n)", subtitle: nil) }
-                        .sunnahRowChrome()
-                }
-                .listStyle(.plain).scrollContentBackground(.hidden)
+                ScrollView { LazyVStack(spacing: 0) {
+                    SunnahGroupedCard((1...114).map { SurahNo(id: $0) }) { s in
+                        let n = s.id
+                        SunnahNavigationLink {
+                            AudioPlayerTemplate(item: ContentItem(id: "\(reciter.id)-\(n)", title: surahNames[n] ?? "سورة \(n)", subtitle: reciter.nameAr, audioURL: audio.surahURL(n)))
+                                .quranTitle(surahNames[n] ?? "سورة \(n)")
+                        } label: { SunnahListRow(title: surahNames[n] ?? "سورة \(n)", subtitle: nil) }
+                    }
+                }.padding(.horizontal, Sunnah.Spacing.s4) }
             } else { EmptyStateView(title: "لا صوت متاح لهذا القارئ") }
         }
         .background(Sunnah.Colors.bg).quranTitle(reciter.nameAr)
@@ -94,11 +98,12 @@ struct QuranCircle: Decodable, Identifiable, Hashable, Sendable {
 struct QuranCirclesListView: View {
     let circles: [QuranCircle]
     var body: some View {
-        List(circles) { c in
-            SunnahNavigationLink { QuranCircleDetailView(circle: c) } label: { SunnahListRow(title: c.name, subtitle: c.sheikh_name) }
-                .sunnahRowChrome()
-        }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        ScrollView { LazyVStack(spacing: 0) {
+            SunnahGroupedCard(circles) { c in
+                SunnahNavigationLink { QuranCircleDetailView(circle: c) } label: { SunnahListRow(title: c.name, subtitle: c.sheikh_name) }
+            }
+        }.padding(.horizontal, Sunnah.Spacing.s4) }
+        .background(Sunnah.Colors.bg)
     }
 }
 
