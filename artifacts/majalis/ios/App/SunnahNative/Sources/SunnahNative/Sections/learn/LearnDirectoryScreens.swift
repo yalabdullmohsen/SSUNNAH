@@ -8,20 +8,19 @@ struct LearnUniversitiesScreen: View {
     @State private var query = ""
 
     var body: some View {
-        LearnLoadHost(LearnSources.universities) { (all: [LearnUniversity]) in
-            LearnList(items: filter(all), emptyTitle: query.isEmpty ? "المحتوى قيد التوثيق" : "لا نتائج") { u in
-                Button { openRoute("/universities/" + u.slug) } label: {
-                    SunnahListRow(title: u.nameAr, subtitle: learnLine(u.country, u.city))
+        VStack(spacing: Sunnah.Spacing.s2) {
+            SunnahButton("قارن", style: .secondary) { openRoute("/universities/compare") }
+                .padding(.horizontal, Sunnah.Spacing.pageX)
+            LearnLoadHost(LearnSources.universities) { (all: [LearnUniversity]) in
+                LearnList(items: filter(all), emptyTitle: query.isEmpty ? "المحتوى قيد التوثيق" : "لا نتائج") { u in
+                    Button { openRoute("/universities/" + u.slug) } label: {
+                        SunnahListRow(title: u.nameAr, subtitle: learnLine(u.country, u.city))
+                    }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
         }
         .sunnahSearchable(text: $query)
-        .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button("قارن") { openRoute("/universities/compare") }
-            }
-        }
         .sunnahNavTitle("الجامعات")
     }
 
@@ -83,10 +82,11 @@ struct LearnUniversitiesCompareScreen: View {
     var body: some View {
         LearnLoadHost(LearnSources.universities) { (all: [LearnUniversity]) in
             if all.isEmpty { EmptyStateView(title: "لا جامعات بعد") } else {
-                List {
+                SunnahRowStack {
                     let chosen = selection.slugs.compactMap { s in all.first { $0.slug == s } }
                     if chosen.count >= 2 {
-                        Section("المقارنة") {
+                        SunnahRowGroupHeader("المقارنة")
+                        VStack(spacing: 0) {
                             LearnCompareRow(label: "الدولة", values: chosen.map { $0.country ?? "—" })
                             LearnCompareRow(label: "المدينة", values: chosen.map { $0.city ?? "—" })
                             LearnCompareRow(label: "الاعتماد", values: chosen.map(\.accreditationLabel))
@@ -94,9 +94,10 @@ struct LearnUniversitiesCompareScreen: View {
                             LearnCompareRow(label: "الدرجات", values: chosen.map { $0.degreeLevels.isEmpty ? "—" : $0.degreeLevels.joined(separator: "، ") })
                             LearnCompareRow(label: "منح", values: chosen.map { $0.offersScholarship ? "نعم" : "لا" })
                         }
-                        .sunnahRowChrome()
+                        .sunnahStackRow()
                     }
-                    Section(selection.canAdd ? "اختر جامعتين إلى أربع" : "بلغت الحد الأقصى (أربع)") {
+                    SunnahRowGroupHeader(selection.canAdd ? "اختر جامعتين إلى أربع" : "بلغت الحد الأقصى (أربع)")
+                    VStack(spacing: 0) {
                         ForEach(all) { u in
                             Button { selection.toggle(u.slug) } label: {
                                 HStack(spacing: Sunnah.Spacing.s3) {
@@ -111,9 +112,8 @@ struct LearnUniversitiesCompareScreen: View {
                             .accessibilityAddTraits(selection.contains(u.slug) ? .isSelected : [])
                         }
                     }
-                    .sunnahRowChrome()
+                    .sunnahStackRow()
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
             }
         }
         .sunnahNavTitle("مقارنة الجامعات")
