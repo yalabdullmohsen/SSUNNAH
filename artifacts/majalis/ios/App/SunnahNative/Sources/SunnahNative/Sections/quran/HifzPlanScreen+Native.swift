@@ -35,7 +35,7 @@ struct HifzPlanScreen: View {
                     }.buttonStyle(.plain)
                 }
             }
-            .padding(.horizontal, Sunnah.Spacing.s4)
+            .padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, 110)
         }
         .background(Sunnah.Colors.bg)
         .onAppear {
@@ -142,7 +142,7 @@ private struct HifzPlanWizard: View {
             HStack(spacing: 6) {
                 ForEach(Self.days, id: \.0) { d in
                     Button { if weekdays.contains(d.0) { weekdays.remove(d.0) } else { weekdays.insert(d.0) }; finishShift = 0 } label: {
-                        SunnahChip(d.1, selected: weekdays.contains(d.0))
+                        HifzDayPill(text: d.1, selected: weekdays.contains(d.0))
                     }.buttonStyle(.plain).accessibilityLabel(d.2)
                 }
             }
@@ -159,6 +159,17 @@ private struct HifzPlanWizard: View {
             }
             SunnahButton(initial == nil ? "ابدأ الخطة" : "احفظ التعديل") { onDone(plan) }
         }
+    }
+}
+
+private struct HifzDayPill: View {
+    let text: String; let selected: Bool
+    var body: some View {
+        Text(text).font(Sunnah.Typography.tag).lineLimit(1).minimumScaleFactor(0.6)
+            .padding(.horizontal, 2).frame(maxWidth: .infinity, minHeight: 44)
+            .foregroundStyle(selected ? Sunnah.Colors.textOnPrimary : Sunnah.Colors.textPrimary)
+            .background(selected ? Sunnah.Colors.primary : Sunnah.Colors.surface, in: Capsule())
+            .overlay(Capsule().stroke(selected ? Sunnah.Colors.primary : Sunnah.Colors.border, lineWidth: 1))
     }
 }
 
