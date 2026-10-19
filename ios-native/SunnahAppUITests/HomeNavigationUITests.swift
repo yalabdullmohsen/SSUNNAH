@@ -240,14 +240,17 @@ final class HomeNavigationUITests: XCTestCase {
         app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", "/mushaf/page/42",
                                 "-snapshotSeedMarks", "1", "-snapshotShowMarks", "1"]
         app.launch()
-        let rows = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "صفحة"))
-        XCTAssertTrue(rows.firstMatch.waitForExistence(timeout: 30), "قائمة العلامات لم تظهر")
+        // الصفوف خلايا List داخل ورقة «علاماتي»؛ ننتظر نصّ صفّ فعلي (لا زر «علامة على الصفحة» في الشريط).
+        XCTAssertTrue(app.staticTexts["الصفحة كاملة"].firstMatch.waitForExistence(timeout: 30), "قائمة العلامات لم تظهر")
+        let rows = app.cells.containing(NSPredicate(format: "label == %@", "الصفحة كاملة"))
         let before = rows.count
+        XCTAssertGreaterThan(before, 0)
         let row = rows.element(boundBy: 0)
         let del = app.buttons["حذف"]
-        // RTL: إجراء trailing يُكشف بالسحب نحو الجهة الأمامية (يمينًا)؛ نجرّب الاتجاهين.
+        // RTL: إجراء trailing على الحافة اليسرى؛ يُكشف بسحب نحو اليمين، ونجرّب الاتجاه الآخر احتياطًا.
         row.swipeRight(velocity: .slow)
         if !del.waitForExistence(timeout: 2) { row.swipeLeft(velocity: .slow); _ = del.waitForExistence(timeout: 2) }
+        if !del.exists { print("TREE:", app.debugDescription.split(separator: "\n").filter { !$0.contains("StaticText") }.joined(separator: "\n")) }
         XCTAssertTrue(del.exists, "زر الحذف لم يظهر بعد السحب")
         save(app.screenshot(), "marks-swipe-reveal")
         del.tap()
