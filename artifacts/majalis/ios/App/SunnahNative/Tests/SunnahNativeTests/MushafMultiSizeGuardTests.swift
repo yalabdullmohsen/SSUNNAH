@@ -122,19 +122,19 @@ final class MushafMultiSizeGuardTests: XCTestCase {
             var lost = pl.layout; lost.discs[line]?[k] = nil
             XCTAssertNotNil(Self.discFailure(lost, endMarks: marks), "الحارس لم يفشل عند فقد قرص p\(n)")
         }
-        // ضمّ الرسم بالنموذج: القطر الممرَّر لـMushafEndMark هو ما يُرسم فعلًا (أخضر القرص يكبر بكبر القطر الممرَّر).
+        // ضمّ الرسم بالنموذج: حجم الخط الممرَّر لـMushafEndMark هو ما يحدد حجم الرسم فعلًا (مساحة الزخرفة تكبر بكبر القطر الممرَّر).
         let page1 = try repo.page(1), fam = try repo.ensureFont(page: 1)
         let glyph = try XCTUnwrap(page1.rows.flatMap { $0.w ?? [] }.first { $0.isAyahEnd }).c
-        func green(_ d: CGFloat) throws -> Int {
-            let ir = ImageRenderer(content: ZStack { Color.white; MushafEndMark(glyph: glyph, family: fam, fontSize: 40, diameter: d) }.frame(width: 100, height: 100)); ir.scale = 2
+        func green(_ fs: CGFloat) throws -> Int {
+            let ir = ImageRenderer(content: ZStack { Color.white; MushafEndMark(glyph: glyph, family: fam, fontSize: fs) }.frame(width: 100, height: 100)); ir.scale = 2
             let cg = try XCTUnwrap(ir.cgImage), w = cg.width, h = cg.height
             let ctx = CGContext(data: nil, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
             ctx.draw(cg, in: CGRect(x: 0, y: 0, width: w, height: h))
             let px = ctx.data!.assumingMemoryBound(to: UInt8.self)
-            return (0..<(w * h)).filter { Int(px[$0 * 4 + 1]) > Int(px[$0 * 4]) + 22 }.count
+            return (0..<(w * h)).filter { min(px[$0 * 4], px[$0 * 4 + 1], px[$0 * 4 + 2]) < 225 }.count   // حبر غير أبيض: زخرفة #3590 ذهبية لا خضراء
         }
-        let small = try green(16), big = try green(26)
-        XCTAssertGreaterThan(big, Int(Double(small) * 1.3), "القطر الممرَّر لا يتحكم برسم القرص (\(small) → \(big))")
+        let small = try green(16), big = try green(26)   // القطر الممرَّر مُهمَل عمدًا (#3590)؛ الرسم يتبع حجم الخط
+        XCTAssertGreaterThan(big, Int(Double(small) * 1.3), "حجم خط الزخرفة لا يتحكم برسمها (\(small) → \(big))")
     }
 
     /// قياس بكسلي على لقطة الشاشة لكل قرص نهاية آية: الفراغ الأفقي الصافي بين حدّ الدائرة وأقرب حبر في الجانبين (nil = لا جار)، وفراغ الكلمات المتوسط في السطر نفسه. سالب = حبر داخل القرص.
