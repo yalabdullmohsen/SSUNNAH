@@ -46,7 +46,7 @@ public struct GroupedListTemplate: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .searchable(text: $query)
+        .sunnahSearchable(text: $query)
     }
 
     @ViewBuilder private func row(_ item: ContentItem) -> some View {

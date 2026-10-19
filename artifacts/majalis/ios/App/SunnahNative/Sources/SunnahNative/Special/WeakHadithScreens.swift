@@ -105,7 +105,7 @@ struct WeakHadithListView: View {
                         }.sunnahRowChrome()
                     }
                     .listStyle(.plain).scrollContentBackground(.hidden)
-                    .searchable(text: $query, prompt: "ابحث في \(title)")
+                    .sunnahSearchable(text: $query, prompt: "ابحث في \(title)")
                     #if DEBUG
                     // لقطات التدقيق فقط: `-snapshotSearchQuery <نص>` يملأ مربع البحث.
                     .onAppear { if let q = UserDefaults.standard.string(forKey: "snapshotSearchQuery"), !q.isEmpty { query = q } }

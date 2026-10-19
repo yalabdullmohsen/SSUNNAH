@@ -155,7 +155,7 @@ struct LibrarySearchView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .searchable(text: $query)
+        .sunnahSearchable(text: $query)
     }
 }
 

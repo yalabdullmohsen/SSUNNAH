@@ -16,7 +16,7 @@ struct LearnUniversitiesScreen: View {
                 .buttonStyle(.plain)
             }
         }
-        .searchable(text: $query)
+        .sunnahSearchable(text: $query)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button("قارن") { openRoute("/universities/compare") }

@@ -48,7 +48,7 @@ public struct SearchTemplate: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .searchable(text: $query)
+        .sunnahSearchable(text: $query)
         .onSubmit(of: .search) { remember(query) }
     }
 

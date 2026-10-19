@@ -78,7 +78,7 @@ struct HadithListView: View {
                 }.sunnahRowChrome()
             }
             .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth().background(Sunnah.Colors.bg)
-            .searchable(text: $query, prompt: "ابحث في الأحاديث")
+            .sunnahSearchable(text: $query, prompt: "ابحث في الأحاديث")
             #if DEBUG
             // لقطات التدقيق فقط: `-snapshotSearchQuery <نص>` يملأ مربع البحث.
             .onAppear { if let q = UserDefaults.standard.string(forKey: "snapshotSearchQuery"), !q.isEmpty { query = q } }
@@ -175,7 +175,7 @@ struct HadithCollectionView: View {
                     }.sunnahRowChrome()
                 }
                 .listStyle(.plain).scrollContentBackground(.hidden)
-                .searchable(text: $query, prompt: "ابحث في \(title)")
+                .sunnahSearchable(text: $query, prompt: "ابحث في \(title)")
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
