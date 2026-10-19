@@ -91,26 +91,31 @@ struct MushafMarksScreen: View {
             .accessibilityIdentifier("mushaf.marks.filters")
             if marks.isEmpty { StateMessage(text: "لا علامات بعد") }
             else {
-                List {
+                ScrollView { LazyVStack(spacing: 0) {
                     ForEach(marks) { b in
-                        Button { open(b.page) } label: {
-                            HStack(spacing: Sunnah.Spacing.s3) {
-                                Circle().fill(b.color.color).frame(width: 12, height: 12)
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text(b.ayah.map { "آية \($0.arabicDigits)" } ?? "الصفحة كاملة").foregroundStyle(Sunnah.Colors.textPrimary)
-                                    Text(b.color.name).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                        HStack(spacing: 0) {
+                            Button { open(b.page) } label: {
+                                HStack(spacing: Sunnah.Spacing.s3) {
+                                    Circle().fill(b.color.color).frame(width: 12, height: 12)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(b.ayah.map { "آية \($0.arabicDigits)" } ?? "الصفحة كاملة").foregroundStyle(Sunnah.Colors.textPrimary)
+                                        Text(b.color.name).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                                    }
+                                    Spacer()
+                                    Text("صفحة \(b.page.arabicDigits)").foregroundStyle(Sunnah.Colors.textSecondary)
                                 }
-                                Spacer()
-                                Text("صفحة \(b.page.arabicDigits)").foregroundStyle(Sunnah.Colors.textSecondary)
+                                .padding(.horizontal, Sunnah.Spacing.s4)
+                                .frame(minHeight: Sunnah.Spacing.touch)
+                                .contentShape(Rectangle())
                             }
-                        }
-                        .sunnahRowChrome()
-                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                            Button(role: .destructive) { store.remove(b) } label: { Label("حذف", systemImage: "trash") }
+                            .buttonStyle(.plain)
+                            Button { store.remove(b) } label: {
+                                Image(systemName: "trash").frame(width: Sunnah.Spacing.touch, height: Sunnah.Spacing.touch).foregroundStyle(Sunnah.Colors.textSecondary).contentShape(Rectangle())
+                            }
+                            .buttonStyle(.plain).accessibilityLabel("حذف العلامة").accessibilityIdentifier("mushaf.marks.delete")
                         }
                     }
-                }
-                .listStyle(.plain).scrollContentBackground(.hidden)
+                } }
             }
         }
         .padding(.top, Sunnah.Spacing.s2)

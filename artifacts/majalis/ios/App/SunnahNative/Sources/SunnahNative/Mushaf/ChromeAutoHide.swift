@@ -8,7 +8,7 @@ public protocol ChromeCancellable { func cancel() }
 public final class ChromeAutoHide: ObservableObject {
     public typealias Scheduler = (TimeInterval, @escaping @MainActor () -> Void) -> ChromeCancellable
 
-    public static let delay: TimeInterval = 2
+    public static let delay: TimeInterval = 6
 
     @Published public private(set) var visible = false
     public var alwaysVisible = false { didSet { if alwaysVisible { visible = true; timer?.cancel() } else { rearm() } } }

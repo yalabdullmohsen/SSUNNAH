@@ -8,7 +8,6 @@ struct AccountContactScreen: View {
     /// موضوع مقترح من رابط ?topic= (يمرّره الموجّه حين يدعم الاستعلام).
     var topicParam: String = ""
     @State private var copied = false
-    @State private var expandedFAQ: String? = AccountTexts.contactFAQ.first?.id
 
     private var activeTopic: AccountContactTopic? {
         AccountContact.resolveTopicId(topicParam).flatMap { id in AccountTexts.contactTopics.first { $0.id == id } }
@@ -69,19 +68,11 @@ struct AccountContactScreen: View {
 
                 AccountSectionCard(title: "الأسئلة الشائعة") {
                     ForEach(AccountTexts.contactFAQ) { item in
-                        DisclosureGroup(isExpanded: Binding(
-                            get: { expandedFAQ == item.id },
-                            set: { expandedFAQ = $0 ? item.id : nil }
-                        )) {
+                        SunnahCollapsibleSection(id: "contact-faq-\(item.id)", title: item.question, startsCollapsed: item.id != AccountTexts.contactFAQ.first?.id) {
                             Text(item.answer).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.top, Sunnah.Spacing.s2)
-                        } label: {
-                            Text(item.question).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                                .frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.touch, alignment: .leading)
                         }
-                        .tint(Sunnah.Colors.primary)
                     }
                 }
             }

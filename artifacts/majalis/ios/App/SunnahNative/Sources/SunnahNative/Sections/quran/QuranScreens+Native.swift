@@ -77,7 +77,7 @@ public enum QuranSection {
                 QuranPeopleListView(people: people, surahNames: Self.surahNames())
             }.quranTitle("أعلام القرآن")
         }
-        registry.registerView(id: "quran.search") { QuranSearchView().quranTitle("البحث في القرآن") }
+        registry.registerView(id: "quran.search") { MushafScreen(startSearching: true) }   // البحث داخل صفحة المصحف نفسها
         registry.registerView(id: "quran.surahs") {
             QuranRowsView { idx, rows in QuranSurahList(rows: rows, index: idx) }.quranTitle("فهرس السور")
         }

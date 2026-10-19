@@ -5,6 +5,8 @@ import os
 struct MushafScreen: View {
     /// رابط عميق اختياري (`/mushaf/page/N` أو `/mushaf/ayah/S:A`)؛ بلا رابط تُفتح آخر صفحة محفوظة.
     var target: MushafRoute?
+    /// يفتح المصحف وحقل البحث مركَّز (مسار /quran/search).
+    var startSearching = false
     @StateObject private var store = MushafStore()
     @State private var state: Loaded?
     @Environment(\.platform) private var platform
@@ -15,7 +17,7 @@ struct MushafScreen: View {
     var body: some View {
         Group {
             if let s = state {
-                MushafReaderView(repo: s.repo, index: s.index, search: s.search, store: store, startPage: Self.startPage(target, s.index))
+                MushafReaderView(repo: s.repo, index: s.index, search: s.search, store: store, startPage: Self.startPage(target, s.index), startSearching: startSearching)
             } else {
                 ProgressView().screenState(.loading).task {
                     // الفهرس والمستودع خفيفان فتُفتح الصفحة فورًا؛ فهرس البحث يُبنى خلفيًا خارج الخيط الرئيسي ويصل لاحقًا.
