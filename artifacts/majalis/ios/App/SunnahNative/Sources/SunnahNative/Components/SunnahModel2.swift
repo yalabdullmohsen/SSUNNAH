@@ -27,10 +27,13 @@ public struct SunnahTopBar<Trailing: View>: View {
             if let onMenu { SunnahRoundButton(symbol: "line.3.horizontal", label: "القائمة", action: onMenu) }
             if let onBack { SunnahRoundButton(symbol: "chevron.forward", label: "رجوع", action: onBack) }
             Spacer(minLength: 0)
-            HStack(spacing: 4) { trailing }
-                .padding(.horizontal, 6).frame(height: 52)
-                .background(Sunnah.Colors.surface, in: Capsule())
-                .overlay(Capsule().stroke(Sunnah.Colors.border, lineWidth: 1))
+            // بلا أزرار جانبية ⇒ لا كبسولة فارغة (كانت تظهر مستطيلًا أبيض فارغًا في رأس الشاشات الفرعية).
+            if Trailing.self != EmptyView.self {
+                HStack(spacing: 4) { trailing }
+                    .padding(.horizontal, 6).frame(height: 52)
+                    .background(Sunnah.Colors.surface, in: Capsule())
+                    .overlay(Capsule().stroke(Sunnah.Colors.border, lineWidth: 1))
+            }
         }
         .padding(.horizontal, Sunnah.Spacing.pageX)
     }
