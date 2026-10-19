@@ -313,6 +313,8 @@ public struct MushafReaderView: View {
             MushafToolButton(symbol: "list.bullet", label: "الفهرس والعلامات", id: "mushaf.index") { searchFocused = false; showIndex = true }
             MushafToolButton(symbol: store.colors(ofPage: current).isEmpty ? "bookmark" : "bookmark.fill", label: "علامة على الصفحة", id: "mushaf.pageMark") { sunnahAnimate { pagePicker.toggle() } }
         }
+        .padding(.vertical, 3)
+        .background(Sunnah.Colors.mushafPaper.opacity(0.96), in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))   // الصفحة المُزاحة لا تمرّ تحت الأزرار
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // شريط بارتفاع ثابت: أكبر من ذلك يقتطع الحقل ويتداخل
     }
 
