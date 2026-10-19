@@ -7,19 +7,17 @@ struct LearnKnowledgeGraphScreen: View {
     var body: some View {
         LearnLoadHost(LearnSources.graph) { (graph: LearnKnowledgeGraph) in
             if graph.nodes.isEmpty { EmptyStateView() } else {
-                List {
+                SunnahRowStack {
                     ForEach(graph.groups) { group in
-                        Section(LearnKnowledgeGraph.kindLabel(group.kind)) {
-                            ForEach(group.nodes) { node in
-                                SunnahNavigationLink { LearnGraphNodeView(graph: graph, node: node) } label: {
-                                    SunnahListRow(title: node.titleAr)
-                                }
+                        SunnahRowGroupHeader(LearnKnowledgeGraph.kindLabel(group.kind))
+                        ForEach(group.nodes) { node in
+                            SunnahNavigationLink { LearnGraphNodeView(graph: graph, node: node) } label: {
+                                SunnahListRow(title: node.titleAr)
                             }
+                            .sunnahStackRow()
                         }
-                        .sunnahRowChrome()
                     }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
             }
         }
         .sunnahNavTitle("الرسم المعرفي")

@@ -10,16 +10,15 @@ struct LearnProgressScreen: View {
     @State private var confirmClear = false
 
     var body: some View {
-        List {
+        LearnCardsPage {
             if let s = summary {
-                Section("بطاقات المراجعة") {
+                AccountSectionCard(title: "بطاقات المراجعة") {
                     LearnInfoRow(label: "روجعت", value: "\(s.flashcards.total)")
                     LearnInfoRow(label: "مستحقة الآن", value: "\(s.flashcards.due)")
                     LearnInfoRow(label: "متقنة", value: "\(s.flashcards.mastered)")
                     Button("افتح البطاقات") { openRoute("/flashcards") }
                 }
-                .sunnahRowChrome()
-                Section("خطط القراءة") {
+                AccountSectionCard(title: "خطط القراءة") {
                     if s.activePlans.isEmpty {
                         SunnahMessageState(symbol: "book.closed", title: "لا خطط جارية", message: "ابدأ خطة قراءة من المكتبة.")
                     }
@@ -28,20 +27,16 @@ struct LearnProgressScreen: View {
                     }
                     Button("خطط القراءة") { openRoute("/reading-plans") }
                 }
-                .sunnahRowChrome()
-                Section("غرفة المذاكرة") {
+                AccountSectionCard(title: "غرفة المذاكرة") {
                     LearnInfoRow(label: "دورات عمل مكتملة", value: "\(s.studyCycles)")
                     Button("غرفة المذاكرة") { openRoute("/study-room") }
                 }
-                .sunnahRowChrome()
             }
-            Section("الخصوصية") {
+            AccountSectionCard(title: "الخصوصية") {
                 Text("هذه البيانات محفوظة على جهازك فقط.").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 Button("مسح بيانات التعلّم المحلية", role: .destructive) { confirmClear = true }
             }
-            .sunnahRowChrome()
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .confirmationDialog("مسح مراجعات البطاقات وخطط القراءة والملف البحثي وسجلّ المذاكرة؟", isPresented: $confirmClear, titleVisibility: .visible) {
             Button("مسح", role: .destructive) { store.clearAll(); summary = LearnLocalSummary.read(from: store) }
         }
@@ -66,8 +61,9 @@ struct LearnMyLearningScreen: View {
                                 QuickLink(id: "/study-room", title: "غرفة المذاكرة"), QuickLink(id: "/progress", title: "مركز التقدّم")]
 
     var body: some View {
-        List {
-            Section {
+        LearnCardsPage {
+            SunnahCard {
+              VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                 if let email = platform.authService.currentEmail {
                     SunnahListRow(title: String(email.split(separator: "@").first ?? Substring(email)), subtitle: email)
                 } else {
@@ -75,11 +71,11 @@ struct LearnMyLearningScreen: View {
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     Button("تسجيل الدخول") { openRoute("/login") }
                 }
+              }
             }
-            .sunnahRowChrome()
             if let s = summary {
                 if !s.activePlans.isEmpty {
-                    Section("أكمل من حيث توقفت") {
+                    AccountSectionCard(title: "أكمل من حيث توقفت") {
                         ForEach(s.activePlans.prefix(3)) { plan in
                             Button { openRoute("/reading-plans") } label: {
                                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
@@ -90,24 +86,20 @@ struct LearnMyLearningScreen: View {
                             .buttonStyle(.plain)
                         }
                     }
-                    .sunnahRowChrome()
                 }
-                Section("إحصائياتي") {
+                AccountSectionCard(title: "إحصائياتي") {
                     LearnInfoRow(label: "بطاقات روجعت", value: "\(s.flashcards.total)")
                     LearnInfoRow(label: "بطاقات متقنة", value: "\(s.flashcards.mastered)")
                     LearnInfoRow(label: "خطط قراءة جارية", value: "\(s.activePlans.count)")
                     LearnInfoRow(label: "دورات مذاكرة", value: "\(s.studyCycles)")
                 }
-                .sunnahRowChrome()
             }
-            Section("روابط سريعة") {
+            AccountSectionCard(title: "روابط سريعة") {
                 ForEach(Self.links) { link in
                     Button { openRoute(link.id) } label: { SunnahListRow(title: link.title) }.buttonStyle(.plain)
                 }
             }
-            .sunnahRowChrome()
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .onAppear { summary = LearnLocalSummary.read(from: store) }
         .sunnahNavTitle("تعلّمي")
     }
@@ -152,38 +144,35 @@ struct LearnResearcherScreen: View {
     @State private var loaded = false
 
     var body: some View {
-        Form {
-            Section("المعلومات الأساسية") {
-                TextField("الاسم المعروض", text: $profile.displayName)
-                TextField("الجهة / المؤسسة", text: $profile.institution)
-                Picker("التخصص", selection: $profile.specialization) {
-                    Text("اختر").tag("")
-                    ForEach(LearnResearcherProfile.specializations, id: \.self) { Text($0).tag($0) }
+        SunnahPage("الملف البحثي", trailing: { EmptyView() }) {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                AccountSectionCard(title: "المعلومات الأساسية") {
+                    TextField("الاسم المعروض", text: $profile.displayName).sunnahFieldChrome()
+                    TextField("الجهة / المؤسسة", text: $profile.institution).sunnahFieldChrome()
+                    TextField("نبذة", text: $profile.bio, axis: .vertical).lineLimit(3...8).sunnahFieldChrome()
                 }
-                TextField("نبذة", text: $profile.bio, axis: .vertical).lineLimit(3...8)
-            }
-            Section("الاهتمامات البحثية") {
-                ForEach(LearnResearcherProfile.interestTags, id: \.self) { tag in
-                    Toggle(tag, isOn: Binding(get: { profile.interests.contains(tag) }, set: { _ in profile.toggleInterest(tag) }))
+                SunnahRowGroupHeader("التخصص")
+                SunnahChoiceChips(options: LearnResearcherProfile.specializations.map { .init(id: $0, title: $0) }, selection: $profile.specialization)
+                AccountSectionCard(title: "الاهتمامات البحثية") {
+                    ForEach(LearnResearcherProfile.interestTags, id: \.self) { tag in
+                        SunnahSwitch(tag, isOn: Binding(get: { profile.interests.contains(tag) }, set: { _ in profile.toggleInterest(tag) }))
+                    }
                 }
-            }
-            Section("الأعمال والأبحاث") {
-                ForEach(profile.publications.indices, id: \.self) { i in
-                    TextField("عنوان العمل", text: $profile.publications[i])
+                AccountSectionCard(title: "الأعمال والأبحاث") {
+                    ForEach(profile.publications.indices, id: \.self) { i in
+                        TextField("عنوان العمل", text: $profile.publications[i]).sunnahFieldChrome()
+                    }
+                    Button("إضافة عمل") { profile.publications.append("") }
                 }
-                Button("إضافة عمل") { profile.publications.append("") }
-            }
-            Section {
-                Button("حفظ") { profile = profile.cleaned; store.save(profile, .researcher); savedProfile = profile }
+                SunnahButton("حفظ") { profile = profile.cleaned; store.save(profile, .researcher); savedProfile = profile }
                 if savedProfile == profile { Text("تم الحفظ على هذا الجهاز").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary) }
             }
+            .padding(.horizontal, Sunnah.Spacing.pageX)
         }
-        .scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         .onAppear {
             guard !loaded else { return }
             loaded = true
             profile = store.load(LearnResearcherProfile.self, .researcher) ?? LearnResearcherProfile()
         }
-        .sunnahNavTitle("الملف البحثي")
     }
 }

@@ -24,10 +24,7 @@ struct AccountIslamStatsScreen: View {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 AccountHeader(eyebrow: "إنفوجرافيك تفاعلي", title: "الإسلام في أرقام",
                               subtitle: "حقائق وإحصاءات عن الإسلام مع ذكر مصدر كل رقم وسنته — من انتشاره في العالم إلى القرآن وإسهامات الحضارة الإسلامية")
-                Picker("التبويب", selection: $tab) {
-                    ForEach(Tab.allCases) { Text($0.rawValue).tag($0) }
-                }
-                .pickerStyle(.segmented)
+                SunnahChipBar(options: Tab.allCases.map { .init(id: $0, title: $0.rawValue) }, selection: $tab)
 
                 switch tab {
                 case .global:

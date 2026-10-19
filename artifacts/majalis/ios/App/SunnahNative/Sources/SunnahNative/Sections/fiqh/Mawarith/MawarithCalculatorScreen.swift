@@ -230,8 +230,7 @@ struct MawarithCalculatorScreen: View {
                     moneyField("مؤن التجهيز", text: $funeral)
                     moneyField("الديون", text: $debts)
                     moneyField("الوصية", text: $bequest)
-                    Toggle("أجازها جميع الورثة", isOn: $bequestApproved)
-                        .font(Sunnah.Typography.body).tint(Sunnah.Colors.primary).frame(minHeight: 44)
+                    SunnahSwitch("أجازها جميع الورثة", isOn: $bequestApproved).frame(minHeight: 44)
                 }
             }
             SunnahCard {
@@ -260,13 +259,12 @@ struct MawarithCalculatorScreen: View {
 
     private var advancedOptions: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-            Toggle("الجدّ يحجب الإخوة (قول أبي حنيفة) بدل المقاسمة",
-                   isOn: Binding(get: { config.grandfatherWithSiblings == .grandfatherExcludes },
-                                 set: { config.grandfatherWithSiblings = $0 ? .grandfatherExcludes : .muqasama }))
-            Toggle("الردّ على الزوجين", isOn: $config.raddToSpouse)
-            Toggle("تشريك الأشقاء مع إخوة الأم في المشرَّكة", isOn: $config.mushtarakaShareWithMaternalSiblings)
+            SunnahSwitch("الجدّ يحجب الإخوة (قول أبي حنيفة) بدل المقاسمة",
+                         isOn: Binding(get: { config.grandfatherWithSiblings == .grandfatherExcludes },
+                                       set: { config.grandfatherWithSiblings = $0 ? .grandfatherExcludes : .muqasama }))
+            SunnahSwitch("الردّ على الزوجين", isOn: $config.raddToSpouse)
+            SunnahSwitch("تشريك الأشقاء مع إخوة الأم في المشرَّكة", isOn: $config.mushtarakaShareWithMaternalSiblings)
         }
-        .font(Sunnah.Typography.body).tint(Sunnah.Colors.primary)
     }
 
     private func calculate() {
@@ -345,24 +343,24 @@ struct MawarithCalculatorScreen: View {
                      + (result.radd ? " — وقع ردّ الفائض على أصحاب الفروض" : ""))
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 if !result.steps.isEmpty {
-                    DisclosureGroup("خطوات الحساب بالتفصيل") {
+                    SunnahCollapsibleSection(id: "mawarith-steps", title: "خطوات الحساب بالتفصيل", startsCollapsed: true) {
                         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                             ForEach(Array(result.steps.enumerated()), id: \.offset) { _, s in
                                 Text("\(s.title): \(s.detail)".asArabicDigits).font(Sunnah.Typography.secondary)
                                     .foregroundStyle(Sunnah.Colors.textPrimary)
                             }
                         }.padding(.top, Sunnah.Spacing.s2)
-                    }.font(Sunnah.Typography.body).tint(Sunnah.Colors.primary)
+                    }
                 }
                 if !result.hajbLog.isEmpty {
-                    DisclosureGroup("سجلّ الحجب (من حُجب ولماذا)") {
+                    SunnahCollapsibleSection(id: "mawarith-hajb", title: "سجلّ الحجب (من حُجب ولماذا)", startsCollapsed: true) {
                         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                             ForEach(Array(result.hajbLog.enumerated()), id: \.offset) { _, h in
                                 Text("\(MawarithLabels.heir[h.heir] ?? "") — \(h.type == .hirman ? "حجب حرمان كامل" : "حجب نقصان"): \(h.reason)")
                                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textPrimary)
                             }
                         }.padding(.top, Sunnah.Spacing.s2)
-                    }.font(Sunnah.Typography.body).tint(Sunnah.Colors.primary)
+                    }
                 }
                 SunnahButton("← تعديل البيانات", style: .secondary) { step = .estate }
                 SunnahButton("مسألة جديدة", style: .secondary) { reset() }
