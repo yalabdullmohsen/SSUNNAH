@@ -74,7 +74,7 @@ public struct SunnahPageTitle: View {
         Text(text).font(AppearancePrefs.ui(.extraBold, 32, .largeTitle))
             .foregroundStyle(Sunnah.Colors.textPrimary)
             .lineLimit(2).minimumScaleFactor(0.7)
-            .fixedSize(horizontal: false, vertical: true)
+            .fixedSize(horizontal: false, vertical: true).border(Color.blue, width: 3)
             .frame(maxWidth: .infinity, minHeight: 48, alignment: .leading)
             .padding(.horizontal, Sunnah.Spacing.pageX)
             .padding(.bottom, 14)
@@ -316,7 +316,7 @@ private struct SunnahSubChrome<Accessory: View>: ViewModifier {
                     }
                     .padding(.vertical, Sunnah.Spacing.s2)
                     .frame(height: 52 + Sunnah.Spacing.s2 * 2)   // ارتفاع صريح: الأزرار 52 فلا يتقلّص الشريط فوق ما يليه
-                    accessory
+                    accessory.border(Color.red, width: 3)
                 }
                 .fixedSize(horizontal: false, vertical: true)
                 .background(Sunnah.Colors.bg)
