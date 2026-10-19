@@ -38,6 +38,7 @@ enum SectionsCatalog {
         Entry(route: "/quran/hifz-loop", title: "تكرار الحفظ", group: "القرآن"),
         Entry(route: "/quran/makki-madani", title: "المكي والمدني", group: "القرآن"),
         Entry(route: "/quran/memorization-plans", title: "خطط الحفظ", group: "القرآن"),
+        Entry(route: "/quran/my-hifz", title: "حفظي", group: "القرآن"),
         Entry(route: "/quran/offline-player", title: "المشغّل دون اتصال", group: "القرآن"),
         Entry(route: "/quran/people", title: "أعلام القرآن", group: "القرآن"),
         Entry(route: "/quran/revelation-order", title: "ترتيب النزول", group: "القرآن"),

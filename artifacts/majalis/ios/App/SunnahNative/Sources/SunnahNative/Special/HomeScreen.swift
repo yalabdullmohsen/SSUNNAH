@@ -43,6 +43,7 @@ public struct HomeScreen: View {
                     hadithCard(daily.hadith)
                 }
                 if lastPage > 0 { lastReadCard }
+                hifzCard
                 SunnahContentFooter(title: "الرئيسية", id: "home", section: "الرئيسية", inset: false)
                     .padding(.horizontal, Sunnah.Spacing.pageX)
             }
@@ -216,5 +217,25 @@ public struct HomeScreen: View {
         .buttonStyle(.plain).sunnahPressable()
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("home.card.continue")
+    }
+
+    private var hifzCard: some View {
+        Button { openRoute("/quran/my-hifz") } label: {
+            HStack(spacing: Sunnah.Spacing.s3) {
+                SunnahIconTile("checkmark.seal", size: 40)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("حفظي").font(AppearancePrefs.ui(.extraBold, 16, .headline)).foregroundStyle(Sunnah.Colors.textPrimary)
+                    Text("خريطة المصحف وإحصائيات الحفظ").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                }
+                Spacer(minLength: 0)
+            }
+            .padding(16)
+            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
+            .padding(.horizontal, Sunnah.Spacing.pageX)
+        }
+        .buttonStyle(.plain).sunnahPressable()
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("home.card.hifz")
     }
 }

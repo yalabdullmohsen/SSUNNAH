@@ -144,6 +144,8 @@ public struct MushafReaderView: View {
     @State private var sheetHeight: CGFloat = 0
     @State private var ayahPicker = false
     @State private var pagePicker = false
+    @State private var hifzPicker = false
+    @StateObject private var hifz = HifzProgressStore()
     /// البحث داخل الصفحة: النص ونتائجه (أعلى 60) وتمدّد لوحة «المزيد»؛ الحقل في الشريط والنتائج لوحة فوق الصفحة.
     @State private var query = ""
     @State private var hits: [MushafSearchHit] = []
@@ -232,6 +234,7 @@ public struct MushafReaderView: View {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                     Text("علامة على الصفحة \(Self.arabicDigits(current))").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     MushafMarkPicker(active: store.colors(ofPage: current)) { store.toggleMark($0, ayah: nil, page: current) }
+                    HifzStatePicker(store: hifz, page: current)
                 }
                 .padding(Sunnah.Spacing.s3)
                 .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
@@ -259,7 +262,7 @@ public struct MushafReaderView: View {
         }
         .onChange(of: searchFocused) { _ in updatePin() }
         .onChange(of: query) { q in chromeHide.touch(); runSearch(q) }
-        .onChange(of: selected) { _ in ayahPicker = false }
+        .onChange(of: selected) { _ in ayahPicker = false; hifzPicker = false }
         .onChange(of: pagePicker) { _ in updatePin() }
         .onChange(of: current) { p in selected = nil; pagePicker = false; store.visit(page: p); repo.prefetch(around: p, size: pageSize) }
         .task {
@@ -273,6 +276,8 @@ public struct MushafReaderView: View {
             if UserDefaults.standard.bool(forKey: "snapshotShowChrome") { chromeHide.pin(true) }   // updatePin لا يلغيه: يُعاد ضبطه عند أي تغيّر حالة
             // `-snapshotMarkPicker 1` يفتح اختيار اللون في بطاقة الآية؛ `-snapshotSeedMarks 1` يزرع علامات ملوّنة في الصفحة الحالية؛ `-snapshotShowMarks 1` يفتح «علاماتي».
             if UserDefaults.standard.bool(forKey: "snapshotMarkPicker") { Task { try? await Task.sleep(nanoseconds: 500_000_000); ayahPicker = true } }
+            hifz.migrateIfNeeded(marks: store.bookmarks, index: index)
+            if UserDefaults.standard.bool(forKey: "snapshotHifzPicker") { Task { try? await Task.sleep(nanoseconds: 500_000_000); hifzPicker = true } }
             if UserDefaults.standard.bool(forKey: "snapshotPageMarkPicker") { chromeHide.pin(true); Task { try? await Task.sleep(nanoseconds: 500_000_000); pagePicker = true } }
             if UserDefaults.standard.bool(forKey: "snapshotSeedMarks"), store.bookmarks.isEmpty, let a = firstAyah(on: current) {
                 store.toggleMark(.hifz, ayah: a, page: current); store.toggleMark(.tadabbur, ayah: a, page: current)
@@ -454,6 +459,7 @@ public struct MushafReaderView: View {
                 Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }.accessibilityIdentifier("mushaf.sheet.tafsir")
                 Button { openRoute("/quran/offline-player") } label: { Label("القراء", systemImage: "headphones") }.accessibilityIdentifier("mushaf.sheet.reciters")
                 Button { sunnahAnimate { ayahPicker.toggle() } } label: { Label("علامة", systemImage: store.colors(ofAyah: ayah).isEmpty ? "bookmark" : "bookmark.fill") }.accessibilityIdentifier("mushaf.sheet.mark")
+                Button { sunnahAnimate { hifzPicker.toggle() } } label: { Label("حفظ", systemImage: hifz.progress.state(current) == .none ? "checkmark.circle" : "checkmark.circle.fill") }.accessibilityIdentifier("mushaf.sheet.hifz")
             }
             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafInk)
             .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // صف أزرار بأيقونة فوق الاسم: AX يقتطع الأسماء إلى «م…»
@@ -461,6 +467,7 @@ public struct MushafReaderView: View {
             if ayahPicker {
                 MushafMarkPicker(active: store.colors(ofAyah: ayah)) { store.toggleMark($0, ayah: ayah, page: current) }
             }
+            if hifzPicker { HifzStatePicker(store: hifz, page: current) }
         }
         .padding(Sunnah.Spacing.s4)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
