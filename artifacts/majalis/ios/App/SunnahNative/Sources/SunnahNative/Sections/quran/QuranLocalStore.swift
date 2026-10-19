@@ -6,6 +6,7 @@ struct QuranLocalStore: @unchecked Sendable {
         case plans = "sunnah.quran.memorization-plans.v1"
         case loop = "sunnah.quran.hifz-loop.v1"
         case pathUnits = "sunnah.quran.hifz-path-units.v1"
+        case hifzPlan = "sunnah.quran.hifz-plan.v1"
     }
 
     let defaults: UserDefaults
