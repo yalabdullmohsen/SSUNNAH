@@ -110,7 +110,7 @@ struct MushafMarksScreen: View {
                             }
                             .buttonStyle(.plain)
                             Button { store.remove(b) } label: {
-                                Image(systemName: "trash").frame(width: Sunnah.Spacing.touch, height: Sunnah.Spacing.touch).foregroundStyle(Sunnah.Colors.textSecondary)
+                                Image(systemName: "trash").frame(width: Sunnah.Spacing.touch, height: Sunnah.Spacing.touch).foregroundStyle(Sunnah.Colors.textSecondary).contentShape(Rectangle())
                             }
                             .buttonStyle(.plain).accessibilityLabel("حذف العلامة").accessibilityIdentifier("mushaf.marks.delete")
                         }

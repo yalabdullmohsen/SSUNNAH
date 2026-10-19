@@ -31,6 +31,8 @@ struct MushafSearchField: View {
                 .submitLabel(.search)
                 .autocorrectionDisabled()
                 .onSubmit(onSubmit)
+                .frame(maxWidth: .infinity, minHeight: 46)
+                .contentShape(Rectangle())
                 .accessibilityIdentifier("mushaf.search.field")
             if !query.isEmpty {
                 Button { query = "" } label: {
@@ -44,8 +46,6 @@ struct MushafSearchField: View {
         .frame(height: 46)
         .background(Sunnah.Colors.mushafIvory, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous).stroke(Sunnah.Colors.mushafGoldBrown.opacity(0.6), lineWidth: 1))
-        .contentShape(Rectangle())
-        .onTapGesture { focused.wrappedValue = true }
     }
 }
 

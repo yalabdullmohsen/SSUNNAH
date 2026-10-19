@@ -192,6 +192,8 @@ public struct MushafReaderView: View {
                 .frame(width: w, height: h)
                 .clipped()
                 pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
+                    .opacity(chromeHide.visible ? 0 : 1)   // الشريط يغطّي سطر الرأس: لا نص تحت الأزرار
+                    .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.25), value: chromeHide.visible)
                 pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
             }
             .frame(width: w, height: h)
@@ -238,7 +240,6 @@ public struct MushafReaderView: View {
                 .padding(.horizontal, Sunnah.Spacing.s4).padding(.top, Self.chromeBottom + 6)
                 .ignoresSafeArea(edges: .top)
                 .transition(.opacity)
-                .accessibilityIdentifier("mushaf.pageMarkPicker")
             }
         }
         .immersiveReader(revealed: false)
@@ -313,7 +314,6 @@ public struct MushafReaderView: View {
             MushafToolButton(symbol: store.colors(ofPage: current).isEmpty ? "bookmark" : "bookmark.fill", label: "علامة على الصفحة", id: "mushaf.pageMark") { sunnahAnimate { pagePicker.toggle() } }
         }
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // شريط بارتفاع ثابت: أكبر من ذلك يقتطع الحقل ويتداخل
-        .accessibilityIdentifier("mushaf.chrome")
     }
 
     private var searchPanel: some View {
@@ -458,7 +458,6 @@ public struct MushafReaderView: View {
             .labelStyle(MushafSheetActionLabelStyle())   // أيقونة فوق الاسم: لا التفاف حرفيًّا ولا اقتطاع على الشاشات الضيقة
             if ayahPicker {
                 MushafMarkPicker(active: store.colors(ofAyah: ayah)) { store.toggleMark($0, ayah: ayah, page: current) }
-                    .accessibilityIdentifier("mushaf.sheet.markPicker")
             }
         }
         .padding(Sunnah.Spacing.s4)
@@ -469,7 +468,6 @@ public struct MushafReaderView: View {
         .background(GeometryReader { g in Color.clear.preference(key: MushafSheetHeightKey.self, value: g.size.height) })
         .onPreferenceChange(MushafSheetHeightKey.self) { sheetHeight = $0 + Sunnah.Spacing.s3 }
         .transition(.move(edge: avoidancePlan(height: pageSize.height).sheetOnTop ? .top : .bottom).combined(with: .opacity))
-        .accessibilityIdentifier("mushaf.selection")
     }
 
     /// يتغيّر مع أي علامة فتُعاد رسم الصفحات المجاورة.

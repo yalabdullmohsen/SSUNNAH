@@ -145,7 +145,7 @@ final class HomeNavigationUITests: XCTestCase {
         XCTAssertTrue(back.waitForExistence(timeout: 10))
         let field = app.searchFields.firstMatch.exists ? app.searchFields.firstMatch : app.textFields.firstMatch
         XCTAssertTrue(field.waitForExistence(timeout: 10), "حقل البحث غير موجود")
-        field.tap(); field.typeText("الصلاة")
+        field.tap(); XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 10), "لوحة المفاتيح لم تظهر"); field.typeText("الصلاة")
         tapFirstInnerLink("نتيجة بحث")
     }
 
@@ -153,7 +153,7 @@ final class HomeNavigationUITests: XCTestCase {
         app.buttons["البحث"].tap()
         let field = app.searchFields.firstMatch.exists ? app.searchFields.firstMatch : app.textFields.firstMatch
         XCTAssertTrue(field.waitForExistence(timeout: 10), "حقل البحث غير موجود")
-        field.tap(); field.typeText("المواريث")
+        field.tap(); XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 10), "لوحة المفاتيح لم تظهر"); field.typeText("المواريث")
         tapFirstInnerLink("أداة المواريث")
     }
 
@@ -236,24 +236,26 @@ final class HomeNavigationUITests: XCTestCase {
     /// «علاماتي»: زر الحذف الظاهر في كل صف (لا سحب خفي) يحذف الصف فعلًا؛ لقطتان حقيقيتان من XCUITest لا simctl.
     func testMarksDeleteButton() throws {
         launchMushaf(["-snapshotSeedMarks", "1", "-snapshotShowMarks", "1"], showIndex: true)
-        let del = app.buttons["mushaf.marks.delete"]
-        XCTAssertTrue(del.firstMatch.waitForExistence(timeout: 30), "قائمة العلامات لم تظهر")
-        let before = del.count
+        let delQ = app.buttons.matching(identifier: "mushaf.marks.delete"); let del = delQ.firstMatch
+        XCTAssertTrue(del.waitForExistence(timeout: 30), "قائمة العلامات لم تظهر")
+        let before = delQ.count
         XCTAssertGreaterThan(before, 0)
-        XCTAssertGreaterThanOrEqual(del.firstMatch.frame.height, 44)
+        XCTAssertGreaterThanOrEqual(del.frame.height, 44)
         save(app.screenshot(), "marks-delete-before")
-        del.firstMatch.tap()
+        del.tap()
         sleep(1)
-        XCTAssertEqual(del.count, before - 1, "الصف لم يُحذف")
+        XCTAssertEqual(delQ.count, before - 1, "الصف لم يُحذف")
         save(app.screenshot(), "marks-delete-after")
     }
 
     private func launchMushaf(_ extra: [String] = [], showIndex: Bool = false) {
         app.terminate()
         app = XCUIApplication()
-        app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", showIndex ? "/mushaf/page/42" : "/mushaf/page/42"] + extra
+        app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", "/mushaf/page/42", "-snapshotShowChrome", "1"] + extra
         app.launch()
     }
+
+    private var markColor: XCUIElement { app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'mushaf.mark.'")).firstMatch }
 
     private func assertTouchable(_ el: XCUIElement, _ name: String) {
         XCTAssertTrue(el.waitForExistence(timeout: 30), "\(name) غير ظاهر")
@@ -271,7 +273,7 @@ final class HomeNavigationUITests: XCTestCase {
         XCTAssertTrue(field.waitForExistence(timeout: 10)); XCTAssertGreaterThanOrEqual(field.frame.height, 44)
         // علامة الصفحة تفتح المنتقي
         app.buttons["mushaf.pageMark"].tap()
-        XCTAssertTrue(app.otherElements["mushaf.pageMarkPicker"].waitForExistence(timeout: 5) || app.buttons["mushaf.mark.green"].waitForExistence(timeout: 5), "منتقي علامة الصفحة لم يظهر")
+        XCTAssertTrue(markColor.waitForExistence(timeout: 5), "منتقي علامة الصفحة لم يظهر")
         app.buttons["mushaf.pageMark"].tap()
         // الفهرس: صفحة كاملة، صف سورة ≥44 ينقل، والإغلاق يعيد للمصحف
         index.tap()
@@ -280,14 +282,15 @@ final class HomeNavigationUITests: XCTestCase {
         close.tap()
         XCTAssertTrue(app.textFields["mushaf.search.field"].waitForExistence(timeout: 10), "لم نعد للمصحف بعد إغلاق الفهرس")
         index.tap()
-        let surah = app.buttons["mushaf.index.surah.2"]
+        let surah = app.descendants(matching: .any)["mushaf.index.surah.2"]
         assertTouchable(surah, "صف سورة البقرة")
         surah.tap()
         XCTAssertTrue(app.buttons["mushaf.index"].waitForExistence(timeout: 10), "الفهرس لم يُغلق بعد الاختيار")
         save(app.screenshot(), "tools-after-index-jump")
         // الإغلاق يترك المصحف
         app.buttons["mushaf.close"].tap()
-        XCTAssertFalse(app.buttons["mushaf.close"].waitForExistence(timeout: 3), "المصحف لم يُغلق")
+        sleep(3); save(app.screenshot(), "tools-after-close")
+        XCTAssertFalse(app.buttons["mushaf.close"].exists, "المصحف لم يُغلق")
     }
 
     /// البحث داخل الصفحة: كتابة تُظهر لوحة النتائج، والشريط ثابت أثناء الكتابة بعد 6 ث، والنقر على نتيجة ينقل ويغلق اللوحة.
@@ -295,8 +298,8 @@ final class HomeNavigationUITests: XCTestCase {
         launchMushaf()
         let field = app.textFields["mushaf.search.field"]
         XCTAssertTrue(field.waitForExistence(timeout: 30))
-        field.tap(); field.typeText("الرحمن")
-        let panel = app.otherElements["mushaf.search.panel"]
+        field.tap(); XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 10), "لوحة المفاتيح لم تظهر"); field.typeText("الرحمن")
+        let panel = app.descendants(matching: .any)["mushaf.search.panel"]
         XCTAssertTrue(panel.waitForExistence(timeout: 10), "لوحة النتائج لم تظهر")
         let first = app.buttons["mushaf.search.result"].firstMatch
         XCTAssertTrue(first.waitForExistence(timeout: 10), "لا نتائج")
@@ -306,7 +309,7 @@ final class HomeNavigationUITests: XCTestCase {
         XCTAssertGreaterThanOrEqual(first.frame.height, 44)
         first.tap()
         XCTAssertFalse(panel.waitForExistence(timeout: 2), "اللوحة لم تُغلق بعد اختيار نتيجة")
-        XCTAssertTrue(app.otherElements["mushaf.selection"].waitForExistence(timeout: 5) || app.buttons["mushaf.sheet.mark"].waitForExistence(timeout: 5), "الآية لم تُظلَّل")
+        XCTAssertTrue(app.buttons["mushaf.sheet.mark"].waitForExistence(timeout: 5), "الآية لم تُظلَّل")
         save(app.screenshot(), "search-after-pick")
     }
 
@@ -315,7 +318,7 @@ final class HomeNavigationUITests: XCTestCase {
         launchMushaf()
         let field = app.textFields["mushaf.search.field"]
         XCTAssertTrue(field.waitForExistence(timeout: 30))
-        field.tap(); field.typeText("2:255")
+        field.tap(); XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 10), "لوحة المفاتيح لم تظهر"); field.typeText("2:255")
         let jump = app.buttons["mushaf.search.jump"]
         XCTAssertTrue(jump.waitForExistence(timeout: 10), "صف القفزة لم يظهر")
         jump.tap()
@@ -329,7 +332,7 @@ final class HomeNavigationUITests: XCTestCase {
         assertTouchable(app.buttons["mushaf.sheet.copy"], "نسخ"); assertTouchable(app.buttons["mushaf.sheet.share"], "مشاركة"); assertTouchable(app.buttons["mushaf.sheet.mark"], "علامة")
         app.buttons["mushaf.sheet.copy"].tap()
         app.buttons["mushaf.sheet.mark"].tap()
-        XCTAssertTrue(app.otherElements["mushaf.sheet.markPicker"].waitForExistence(timeout: 5) || app.buttons["mushaf.mark.green"].waitForExistence(timeout: 5), "منتقي علامة الآية لم يظهر")
+        XCTAssertTrue(markColor.waitForExistence(timeout: 5), "منتقي علامة الآية لم يظهر")
         app.buttons["mushaf.sheet.mark"].tap()
         app.buttons["mushaf.sheet.share"].tap()
         sleep(2)
@@ -350,7 +353,7 @@ final class HomeNavigationUITests: XCTestCase {
         app.launch()
         let field = app.textFields["sunnah.searchable"]
         XCTAssertTrue(field.waitForExistence(timeout: 30), "حقل البحث غير ظاهر")
-        field.tap(); field.typeText("الشهادتين")
+        field.tap(); XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout: 10), "لوحة المفاتيح لم تظهر"); field.typeText("الشهادتين")
         sleep(1)
         XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "الشهادتين")).firstMatch.exists, "نتيجة البحث لم تظهر")
         XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "على خمس")).firstMatch.exists, "الترشيح لم يعمل")
