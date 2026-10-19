@@ -111,7 +111,7 @@ struct AppearanceOptionRow<ID: Hashable>: View {
             SunnahSegmented(options, selection: selection)
         }
         .padding(.vertical, 14).frame(maxWidth: .infinity, alignment: .leading)
-        .overlay(alignment: .bottom) { if !isLast { Rectangle().fill(Sunnah.Colors.border).frame(height: 1) } }
+        .background(alignment: .bottom) { if !isLast { Rectangle().fill(Sunnah.Colors.border).frame(height: 1) } }
         .accessibilityElement(children: .contain).accessibilityIdentifier(id)
     }
 }

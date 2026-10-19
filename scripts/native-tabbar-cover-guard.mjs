@@ -24,13 +24,13 @@ const mod = root.match(/struct TabBarScrollMargin[\s\S]*$/)?.[0] ?? "";
 if (/else \{ content \}/.test(mod)) found.add("ios16-fallback");
 // شاشات «القراءة الكاملة»: كل ملف يبني MushafReaderView خارج المصحف يصل إلى قارئ يعلن .immersiveReader، والقارئ نفسه يعلنه،
 // فلا يتقاطع الشريط مع إطار النص ولا مع رقم الصفحة أيًّا كان مسار الفتح (/mushaf أو /quran أو بحث القرآن).
-// الدرج: لا أيقونة مكررة بين عناصره، الصف ≥ 52pt، الرأس تحت safe area (لا ignoresSafeArea في الدرج)، والمحدَّد يُبرَز لا يُعتَّم.
+// الدرج: لا أيقونة مكررة بين عناصره، الصف ≥ 52pt، الرأس تحت safe area (لا ignoresSafeArea في الدرج إلا لخلفية الرأس الخضراء `.background{…}.ignoresSafeArea(edges: .top)` — المحتوى يبقى تحت شريط الحالة)، والمحدَّد يُبرَز لا يُعتَّم.
 const drawer = readFileSync(join(SRC, "Components/SunnahDrawer.swift"), "utf8");
 const icons = [...drawer.matchAll(/Item\(title: "[^"]+", icon: "([^"]+)"/g)].map((m) => m[1]);
 const dup = icons.filter((x, i) => icons.indexOf(x) !== i);
 if (icons.length < 10) bad.push(`SunnahDrawer: عناصر قليلة (${icons.length}) أو تغيّرت صيغة Item`);
 if (dup.length) bad.push(`SunnahDrawer: أيقونة مكررة: ${[...new Set(dup)].join(", ")}`);
-if (/ignoresSafeArea/.test(drawer.replace(/\/\/.*$/gm, ""))) bad.push("SunnahDrawer: ignoresSafeArea ممنوع (الرأس يغطي شريط الحالة)");
+if (/ignoresSafeArea/.test(drawer.replace(/\/\/.*$/gm, "").replace(/\.background\s*\{[^\n]*\}\.ignoresSafeArea\(edges: \.top\)/g, ""))) bad.push("SunnahDrawer: ignoresSafeArea ممنوع (الرأس يغطي شريط الحالة)");
 if (/ignoresSafeArea\(edges: \.vertical\)/.test(root)) bad.push("RootTabView: الدرج بـignoresSafeArea(.vertical) يمتد تحت شريط الحالة");
 const rows = readFileSync(join(SRC, "Components/SunnahGroupedList.swift"), "utf8");
 if (!/minHeight: CGFloat = 52/.test(rows)) bad.push("SunnahCompactRow: الحد الأدنى للارتفاع ليس 52");
