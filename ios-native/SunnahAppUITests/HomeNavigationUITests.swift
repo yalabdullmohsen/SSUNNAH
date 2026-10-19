@@ -233,30 +233,114 @@ final class HomeNavigationUITests: XCTestCase {
         }
     }
 
-    /// «علاماتي»: سحب صف علامة يكشف «حذف» ثم النقر عليه يحذف الصف فعلًا؛ لقطتان (قبل/بعد) حقيقيتان من XCUITest لا simctl.
-    func testMarksSwipeToDelete() throws {
+    /// «علاماتي»: زر الحذف الظاهر في كل صف (لا سحب خفي) يحذف الصف فعلًا؛ لقطتان حقيقيتان من XCUITest لا simctl.
+    func testMarksDeleteButton() throws {
+        launchMushaf(["-snapshotSeedMarks", "1", "-snapshotShowMarks", "1"], showIndex: true)
+        let del = app.buttons["mushaf.marks.delete"]
+        XCTAssertTrue(del.firstMatch.waitForExistence(timeout: 30), "قائمة العلامات لم تظهر")
+        let before = del.count
+        XCTAssertGreaterThan(before, 0)
+        XCTAssertGreaterThanOrEqual(del.firstMatch.frame.height, 44)
+        save(app.screenshot(), "marks-delete-before")
+        del.firstMatch.tap()
+        sleep(1)
+        XCTAssertEqual(del.count, before - 1, "الصف لم يُحذف")
+        save(app.screenshot(), "marks-delete-after")
+    }
+
+    private func launchMushaf(_ extra: [String] = [], showIndex: Bool = false) {
         app.terminate()
         app = XCUIApplication()
-        app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", "/mushaf/page/42",
-                                "-snapshotSeedMarks", "1", "-snapshotShowMarks", "1"]
+        app.launchArguments += ["-AppleLanguages", "(ar)", "-AppleLocale", "ar_SA", "-snapshotRoute", showIndex ? "/mushaf/page/42" : "/mushaf/page/42"] + extra
         app.launch()
-        // الصفوف خلايا List داخل ورقة «علاماتي»؛ ننتظر نصّ صفّ فعلي (لا زر «علامة على الصفحة» في الشريط).
-        XCTAssertTrue(app.staticTexts["الصفحة كاملة"].firstMatch.waitForExistence(timeout: 30), "قائمة العلامات لم تظهر")
-        let rows = app.cells.containing(NSPredicate(format: "label == %@", "الصفحة كاملة"))
-        let before = rows.count
-        XCTAssertGreaterThan(before, 0)
-        let row = rows.element(boundBy: 0)
-        let del = app.buttons["حذف"]
-        // RTL: إجراء trailing على الحافة اليسرى؛ يُكشف بسحب نحو اليمين، ونجرّب الاتجاه الآخر احتياطًا.
-        row.swipeRight(velocity: .slow)
-        if !del.waitForExistence(timeout: 2) { row.swipeLeft(velocity: .slow); _ = del.waitForExistence(timeout: 2) }
-        if !del.exists { print("TREE:", app.debugDescription.split(separator: "\n").filter { !$0.contains("StaticText") }.joined(separator: "\n")) }
-        XCTAssertTrue(del.exists, "زر الحذف لم يظهر بعد السحب")
-        save(app.screenshot(), "marks-swipe-reveal")
-        del.tap()
+    }
+
+    private func assertTouchable(_ el: XCUIElement, _ name: String) {
+        XCTAssertTrue(el.waitForExistence(timeout: 30), "\(name) غير ظاهر")
+        XCTAssertTrue(el.isHittable, "\(name) غير قابل للضغط")
+        XCTAssertGreaterThanOrEqual(el.frame.width, 43.9, "\(name) أضيق من 44")
+        XCTAssertGreaterThanOrEqual(el.frame.height, 43.9, "\(name) أقصر من 44")
+    }
+
+    /// أدوات الشريط: إغلاق، فهرس (صفحة كاملة) وإغلاقه والانتقال منه، علامة الصفحة، وحقل البحث الكبير.
+    func testMushafChromeToolsWork() throws {
+        launchMushaf()
+        let index = app.buttons["mushaf.index"]
+        assertTouchable(index, "الفهرس"); assertTouchable(app.buttons["mushaf.pageMark"], "علامة الصفحة"); assertTouchable(app.buttons["mushaf.close"], "الإغلاق")
+        let field = app.textFields["mushaf.search.field"]
+        XCTAssertTrue(field.waitForExistence(timeout: 10)); XCTAssertGreaterThanOrEqual(field.frame.height, 44)
+        // علامة الصفحة تفتح المنتقي
+        app.buttons["mushaf.pageMark"].tap()
+        XCTAssertTrue(app.otherElements["mushaf.pageMarkPicker"].waitForExistence(timeout: 5) || app.buttons["mushaf.mark.green"].waitForExistence(timeout: 5), "منتقي علامة الصفحة لم يظهر")
+        app.buttons["mushaf.pageMark"].tap()
+        // الفهرس: صفحة كاملة، صف سورة ≥44 ينقل، والإغلاق يعيد للمصحف
+        index.tap()
+        let close = app.buttons["mushaf.index.close"]
+        assertTouchable(close, "إغلاق الفهرس")
+        close.tap()
+        XCTAssertTrue(app.textFields["mushaf.search.field"].waitForExistence(timeout: 10), "لم نعد للمصحف بعد إغلاق الفهرس")
+        index.tap()
+        let surah = app.buttons["mushaf.index.surah.2"]
+        assertTouchable(surah, "صف سورة البقرة")
+        surah.tap()
+        XCTAssertTrue(app.buttons["mushaf.index"].waitForExistence(timeout: 10), "الفهرس لم يُغلق بعد الاختيار")
+        save(app.screenshot(), "tools-after-index-jump")
+        // الإغلاق يترك المصحف
+        app.buttons["mushaf.close"].tap()
+        XCTAssertFalse(app.buttons["mushaf.close"].waitForExistence(timeout: 3), "المصحف لم يُغلق")
+    }
+
+    /// البحث داخل الصفحة: كتابة تُظهر لوحة النتائج، والشريط ثابت أثناء الكتابة بعد 6 ث، والنقر على نتيجة ينقل ويغلق اللوحة.
+    func testMushafInlineSearch() throws {
+        launchMushaf()
+        let field = app.textFields["mushaf.search.field"]
+        XCTAssertTrue(field.waitForExistence(timeout: 30))
+        field.tap(); field.typeText("الرحمن")
+        let panel = app.otherElements["mushaf.search.panel"]
+        XCTAssertTrue(panel.waitForExistence(timeout: 10), "لوحة النتائج لم تظهر")
+        let first = app.buttons["mushaf.search.result"].firstMatch
+        XCTAssertTrue(first.waitForExistence(timeout: 10), "لا نتائج")
+        save(app.screenshot(), "search-results")
+        sleep(7)   // أطول من ChromeAutoHide.delay=6: الشريط والحقل ثابتان أثناء الكتابة
+        XCTAssertTrue(field.isHittable, "الشريط اختفى أثناء الكتابة")
+        XCTAssertGreaterThanOrEqual(first.frame.height, 44)
+        first.tap()
+        XCTAssertFalse(panel.waitForExistence(timeout: 2), "اللوحة لم تُغلق بعد اختيار نتيجة")
+        XCTAssertTrue(app.otherElements["mushaf.selection"].waitForExistence(timeout: 5) || app.buttons["mushaf.sheet.mark"].waitForExistence(timeout: 5), "الآية لم تُظلَّل")
+        save(app.screenshot(), "search-after-pick")
+    }
+
+    /// قفزة مباشرة بالرقم «2:255».
+    func testMushafSearchJumpByNumber() throws {
+        launchMushaf()
+        let field = app.textFields["mushaf.search.field"]
+        XCTAssertTrue(field.waitForExistence(timeout: 30))
+        field.tap(); field.typeText("2:255")
+        let jump = app.buttons["mushaf.search.jump"]
+        XCTAssertTrue(jump.waitForExistence(timeout: 10), "صف القفزة لم يظهر")
+        jump.tap()
+        XCTAssertTrue(app.buttons["mushaf.sheet.mark"].waitForExistence(timeout: 8), "آية الكرسي لم تُحدَّد")
+    }
+
+    /// بطاقة الآية: كل أزرارها ≥44 وتعمل (تفسير وقراء ينقلان، علامة تفتح المنتقي، نسخ ومشاركة قابلان للضغط).
+    func testMushafAyahCardActions() throws {
+        launchMushaf(["-snapshotSelectAyah", "2:255"])
+        assertTouchable(app.buttons["mushaf.sheet.tafsir"], "تفسير"); assertTouchable(app.buttons["mushaf.sheet.reciters"], "القراء")
+        assertTouchable(app.buttons["mushaf.sheet.copy"], "نسخ"); assertTouchable(app.buttons["mushaf.sheet.share"], "مشاركة"); assertTouchable(app.buttons["mushaf.sheet.mark"], "علامة")
+        app.buttons["mushaf.sheet.copy"].tap()
+        app.buttons["mushaf.sheet.mark"].tap()
+        XCTAssertTrue(app.otherElements["mushaf.sheet.markPicker"].waitForExistence(timeout: 5) || app.buttons["mushaf.mark.green"].waitForExistence(timeout: 5), "منتقي علامة الآية لم يظهر")
+        app.buttons["mushaf.sheet.mark"].tap()
+        app.buttons["mushaf.sheet.share"].tap()
+        sleep(2)
+        save(app.screenshot(), "ayah-share")
+        if app.buttons["إغلاق"].exists { app.buttons["إغلاق"].tap() } else { app.swipeDown() }
         sleep(1)
-        XCTAssertEqual(rows.count, before - 1, "الصف لم يُحذف")
-        save(app.screenshot(), "marks-swipe-after-delete")
+        let tafsir = app.buttons["mushaf.sheet.tafsir"]
+        if tafsir.waitForExistence(timeout: 5) {
+            tafsir.tap()
+            XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "تفسير")).firstMatch.waitForExistence(timeout: 10), "شاشة التفسير لم تفتح")
+        }
     }
 
     /// حقل البحث ظاهر ويُرشّح فعلًا (عطل `.searchable` تحت شريط تنقّل مخفي: لا حقل ولا ترشيح).

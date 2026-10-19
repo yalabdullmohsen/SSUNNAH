@@ -5,10 +5,11 @@ import XCTest
 final class QuranTextGuardTests: XCTestCase {
     private static let legacyAllowlist: Set<String> = [
         "Sections/quran/MutashabihatScreens.swift",
-        "Sections/quran/QuranSearchScreen.swift",
         "Sections/quran/TafsirScreens+Native.swift",
         "Mushaf/MushafTafsirView.swift",
         "Templates/ExplainerTemplate.swift",
+        "Mushaf/MushafAyahShareImage.swift",   // صورة المشاركة تُرسم بخط النظام عمدًا (ImageRenderer)
+        "Special/AppearancePrefs.swift",       // معاينة حجم الخط
         "Components/SunnahArabicText.swift", // تعريف النمط نفسه
     ]
 

@@ -29,17 +29,12 @@ struct TafsirAyahView: View {
     private func content(_ books: [TafsirEntry], _ quran: TafsirQuranFile, _ files: [String: TafsirSurahFile]) -> some View {
         let book = books[min(selected, books.count - 1)]
         let row = files[book.id].flatMap { f in TafsirAdapters.rows(quran: quran, tafsir: f).first { $0.number == ayah } }
-        return List {
-            Section {
+        return ScrollView {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                 if books.count > 1 {
-                    Picker("التفسير", selection: $selected) {
-                        ForEach(Array(books.enumerated()), id: \.offset) { Text($1.name).tag($0) }
-                    }.pickerStyle(.segmented)
+                    SunnahSegmented(Array(books.enumerated()).map { ($0.offset, $0.element.name) }, selection: $selected)
                 }
                 TafsirAttributionView(entry: book)
-            }
-            .sunnahRowChrome()
-            Section {
                 if let row {
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                         Text("\(row.ayah) ﴿\(row.number.arabicDigits)﴾").font(Sunnah.Typography.quran).foregroundStyle(Sunnah.Colors.textPrimary)
@@ -51,9 +46,10 @@ struct TafsirAyahView: View {
                     Text(QuranSection.pendingTitle).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }
-            .sunnahRowChrome()
+            .padding(Sunnah.Spacing.s4)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+        .background(Sunnah.Colors.bg)
     }
 
     private func load() async {

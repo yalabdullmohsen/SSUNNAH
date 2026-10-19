@@ -6,10 +6,10 @@ import XCTest
 final class MushafAyahTextGuardTests: XCTestCase {
     /// ملف ← أقصى عدد مخالفات مسموح (سقف لا يُرفع).
     static let allowed: [String: Int] = [
-        "Sections/quran/QuranSearchScreen.swift": 1,        // نتائج البحث — تتحول إلى MushafAyahText (ن1)
         "Sections/quran/MutashabihatScreens.swift": 1,      // المتشابهات
         "Sections/quran/TafsirScreens+Native.swift": 1,     // التفسير
         "Mushaf/MushafTafsirView.swift": 1,                 // التفسير داخل المصحف
+        "Special/AppearancePrefs.swift": 1,                 // معاينة حجم الخط في الإعدادات
         "Components/SunnahArabicText.swift": 1,             // تعريف النمط العام `.quran` (لا استعمال)
     ]
 
