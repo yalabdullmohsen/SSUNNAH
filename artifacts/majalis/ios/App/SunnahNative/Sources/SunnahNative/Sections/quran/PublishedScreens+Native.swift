@@ -102,9 +102,9 @@ struct SurahStoriesListView: View {
     let stories: [SurahStory]
     var body: some View {
         qScroll {
-            SunnahGroupedCard(stories) { s in
-                SunnahNavigationLink { SurahStoryView(story: s) } label: { SunnahListRow(title: "\(s.number). \(s.name)", subtitle: s.revelationPlace) }
-            }
+            SunnahNavTileGrid(stories, idPrefix: "surah-story", padded: false, tile: { s in
+                SunnahTileItem(id: "\(s.number)", title: "\(s.number). \(s.name)", subtitle: s.revelationPlace, symbol: "book.closed")
+            }) { SurahStoryView(story: $0) }
         }
     }
 }
