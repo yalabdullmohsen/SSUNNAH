@@ -84,3 +84,47 @@ The app's content is prepared with AI assistance and may contain errors.
 ```
 
 لا تحتوي أي جملة ادعاء مراجعة شيخ. أزل وسوم [⏳]/[✅]/[pending]/[done] عند النسخ.
+
+---
+
+# النص النهائي للإرسال — 1.2.0 (108) ✅ (المنسّق، 19 أكتوبر)
+
+> كل سطر مدموج وراجع المنسّق لقطاته: التصميم الجديد (#3554، #3558، #3563، #3572)، المصحف (#3549–#3552، #3556)، العلامات الملوّنة (#3555)، قصص الأنبياء الـ25 (#3552، #3561، #3564، #3566). يُنسخ كما هو إلى App Store Connect. (مشاركة الآية صورة #3575 دُمجت بعد أرشفة 108 فلا تُذكر هنا.)
+
+## العربية (ar)
+
+```
+سُنّة 1.2.0 — إعادة بناء كاملة كتطبيق أصلي لـ iPhone وiPad، بتصميم جديد.
+
+• تصميم جديد بالكامل: بطاقات واضحة، وشريط تنقل عائم، وقائمة جانبية جديدة، وأرقام عربية موحّدة، مع الوضعين الفاتح والداكن.
+• المصحف الكامل (604 صفحات بالرسم العثماني) بخط أوضح، وحقل بحث، وأدوات تظهر عند النقر على الصفحة وتختفي أثناء القراءة.
+• خمس علامات ملوّنة (ورد، حفظ، مراجعة، تدبّر، عامة) على الآية أو الصفحة، وشاشة «علاماتي» لعرضها.
+• قصص الأنبياء الخمسة والعشرين في صفحة واحدة: مراحل القصة مع الآيات وتفسير السعدي، وقسم «من السنة»، ومصدر كل قسم.
+• يعمل بلا اتصال: المحتوى الأساسي مضمَّن في التطبيق (الأذكار، الأحاديث، الفقه، السيرة وغيرها). ميزات الحساب والمحتوى الجديد تحتاج اتصالًا.
+• مواقيت الصلاة واتجاه القبلة تُحسَب على جهازك، مع تذكيرات الصلاة.
+• حاسبة الفرائض (المواريث) تعمل على جهازك بلا اتصال.
+• أربعة ودجتات للشاشة الرئيسية بمصادرها: الضحى، أذكار بعد الصلاة، الأسماء الحسنى، الجمعة والصيام.
+• شروح مصوّرة: مراحل خلق الإنسان ومعجزات النبي ﷺ.
+• زر «إبلاغ عن خطأ» في صفحات المحتوى، وحفظ جلسة الدخول بأمان في سلسلة مفاتيح الجهاز.
+
+محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي اعتمادًا على مصادر مذكورة، وقد يقع فيه خطأ؛ للفتوى والأحكام ارجعوا إلى أهل العلم.
+```
+
+## English (en-US)
+
+```
+Sunnah 1.2.0 — rebuilt from the ground up as a fully native iPhone and iPad app, with a new design.
+
+• A completely new design: clear cards, a floating tab bar, a new side menu, consistent Arabic-Indic numerals, and Light and Dark appearance.
+• The complete Mushaf (604 pages, Uthmani script) with a clearer font, a search field, and tools that appear when you tap the page and stay out of the way while reading.
+• Five colored markers (daily portion, memorize, review, reflect, general) for any verse or page, plus a "My Markers" screen.
+• Stories of all 25 Prophets on a single page: the story in stages with the verses and al-Sa'di's tafsir, a "From the Sunnah" section, and the source of every section.
+• Works offline: core content is bundled in the app (adhkar, hadith, fiqh, seerah and more). Account features and new content need a connection.
+• Prayer times and Qibla calculated on your device, with prayer reminders.
+• Inheritance (Fara'id) calculator that runs on your device, offline.
+• Four Home Screen widgets with their sources: Duha, adhkar after prayer, the Beautiful Names, and Friday & fasting.
+• Illustrated explainers: stages of human creation and the miracles of the Prophet ﷺ.
+• A "Report an error" button on content pages, and your sign-in stored securely in the device Keychain.
+
+The app's content is prepared with AI assistance from cited sources and may contain errors; for rulings and fatwas, please consult qualified scholars.
+```
