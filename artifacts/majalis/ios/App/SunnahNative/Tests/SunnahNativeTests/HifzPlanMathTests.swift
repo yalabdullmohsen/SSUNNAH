@@ -92,4 +92,21 @@ final class HifzPlanMathTests: XCTestCase {
         XCTAssertEqual(Set(w.nearPages), [1, 2])
         XCTAssertTrue(w.farPages.isEmpty)
     }
+
+    func testPlanStateMarksAndProgress() {
+        var cal = Calendar(identifier: .gregorian); cal.timeZone = TimeZone(secondsFromGMT: 0)!
+        let day0 = cal.date(from: DateComponents(year: 2026, month: 1, day: 1))!
+        let plan = HifzPlan(start: .fatiha, firstPage: 1, lastPage: 10, linesPerDay: 15, weekdays: [], startDate: day0, reminderHour: nil)
+        var st = HifzPlanState(plan: plan)
+        XCTAssertEqual(st.remainingPages, 10)
+        st.markNew(page: 1, today: day0); st.markNew(page: 1, today: day0)
+        XCTAssertEqual(st.doneInPlan, 1)
+        st.markReview(page: 1, recalled: true, today: day0)
+        XCTAssertEqual(st.pages[0].strength, 1)
+        let day3 = cal.date(byAdding: .day, value: 3, to: day0)!
+        XCTAssertEqual(st.progress(today: day3, calendar: cal)?.state, .behind)
+        XCTAssertEqual(st.expectedFinish(today: day3, calendar: cal), cal.date(byAdding: .day, value: 11, to: day0))
+        let data = try! JSONEncoder().encode(st)
+        XCTAssertEqual(try! JSONDecoder().decode(HifzPlanState.self, from: data), st)
+    }
 }
