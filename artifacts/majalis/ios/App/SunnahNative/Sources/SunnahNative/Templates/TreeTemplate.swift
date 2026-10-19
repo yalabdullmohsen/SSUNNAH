@@ -20,39 +20,29 @@ public struct TreeTemplate: View {
     public init(roots: [TreeNode]) { self.roots = roots }
     public var body: some View {
         if roots.isEmpty { EmptyStateView() } else {
-            SunnahRowStack {
-                ForEach(roots) { node in TreeRow(node: node, level: 0) }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    ForEach(roots) { node in nodeView(node) }
+                }
+                .padding(.top, Sunnah.Spacing.s2).padding(.bottom, 96)
             }
+            .sunnahReadableWidth().background(Sunnah.Colors.bg)
         }
     }
-}
 
-/// صف عقدة يتمدد بأبنائه (بديل قائمة النظام الشجرية): الإزاحة بحسب العمق، والسهم يفتح/يطوي، والصف يفتح المسار إن وُجد.
-private struct TreeRow: View {
-    @Environment(\.openRoute) private var openRoute
-    let node: TreeNode; let level: Int
-    @State private var open = false
-    private var kids: [TreeNode] { node.children ?? [] }
-    var body: some View {
-        VStack(spacing: 0) {
-            HStack(spacing: Sunnah.Spacing.s2) {
-                Button { if let r = node.route { openRoute(r) } else if !kids.isEmpty { toggle() } } label: {
-                    SunnahListRow(title: node.title, subtitle: node.subtitle)
-                }
-                .sunnahPressable()
-                if !kids.isEmpty {
-                    Button { toggle() } label: {
-                        Image(systemName: open ? "chevron.up" : "chevron.down").foregroundStyle(Sunnah.Colors.textSecondary)
-                            .frame(minWidth: Sunnah.Spacing.touch, minHeight: Sunnah.Spacing.touch)
+    private func nodeView(_ node: TreeNode) -> AnyView {
+        if let kids = node.children, !kids.isEmpty {
+            return AnyView(SunnahExpandableCard(node.title, subtitle: node.subtitle) {
+                VStack(alignment: .leading, spacing: 10) {
+                    if let r = node.route {
+                        Button { openRoute(r) } label: { SunnahListRow(title: node.title, subtitle: node.subtitle) }.sunnahPressable()
                     }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel(open ? "طيّ \(node.title)" : "توسيع \(node.title)")
+                    ForEach(kids) { nodeView($0) }
                 }
-            }
-            .sunnahStackRow()
-            if open { ForEach(kids) { TreeRow(node: $0, level: level + 1) } }
+            })
         }
-        .padding(.leading, CGFloat(min(level, 4)) * Sunnah.Spacing.s4)
+        return AnyView(SunnahTileGrid([SunnahTileItem(id: node.id, title: node.title, subtitle: node.subtitle)], idPrefix: "tree.node") { _ in
+            if let r = node.route { openRoute(r) }
+        })
     }
-    private func toggle() { sunnahAnimate { open.toggle() } }
 }

@@ -34,14 +34,16 @@ public struct ArticleTemplate: View {
         .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.reportSection)
     }
 
-    /// أدوات القراءة داخل الصفحة (لا شريط تنقل نظام): حجم الخط ووضع الليل.
+    /// أدوات القراءة داخل الصفحة (بدل شريط أدوات النظام): خط أصغر/أكبر ووضع الليل.
     private var readerControls: some View {
-        HStack(spacing: Sunnah.Spacing.s3) {
-            SunnahRoundButton(symbol: "textformat.size.smaller", label: "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
-            SunnahRoundButton(symbol: "textformat.size.larger", label: "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
-            SunnahRoundButton(symbol: night ? "sun.max" : "moon", label: night ? "الوضع النهاري" : "وضع الليل") { night.toggle() }
-            Spacer(minLength: 0)
+        HStack(spacing: 4) {
+            SunnahToolbarButton(systemImage: "textformat.size.smaller", glyphSize: 12, label: "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
+            SunnahToolbarButton(systemImage: "textformat.size.larger", glyphSize: 20, label: "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
+            SunnahToolbarButton(systemImage: night ? "sun.max" : "moon", label: night ? "الوضع النهاري" : "وضع الليل") { night.toggle() }
         }
-        .padding(.horizontal, Sunnah.Spacing.pageX)
+        .padding(.horizontal, 6)
+        .background(Sunnah.Colors.surface, in: Capsule())
+        .overlay(Capsule().stroke(Sunnah.Colors.border, lineWidth: 1))
+        .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, Sunnah.Spacing.pageX)
     }
 }
