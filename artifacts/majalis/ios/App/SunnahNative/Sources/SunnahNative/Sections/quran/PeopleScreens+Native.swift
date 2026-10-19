@@ -40,9 +40,8 @@ struct QuranPeopleListView: View {
             LazyVStack(spacing: 0) {
                 ForEach(PeopleAdapters.grouped(people), id: \.title) { g in
                     SunnahSectionLabel(g.title)
-                    SunnahGroupedCard(g.people) { p in
-                        SunnahNavigationLink { QuranPersonView(person: p, surahNames: surahNames) } label: { SunnahListRow(title: p.nameAr, subtitle: nil) }
-                    }
+                    SunnahNavTileGrid(g.people, idPrefix: "person", padded: false,
+                                      tile: { SunnahTileItem(id: "\($0.id)", title: $0.nameAr, subtitle: g.title, symbol: "person") }) { QuranPersonView(person: $0, surahNames: surahNames) }
                 }
             }
             .padding(.horizontal, Sunnah.Spacing.s4)
