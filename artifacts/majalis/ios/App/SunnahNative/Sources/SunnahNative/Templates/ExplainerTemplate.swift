@@ -1,75 +1,65 @@
 import SwiftUI
 
-/// قالب مشترك لأي موضوع علمي/معجزة/مراحل: مراحل متسلسلة + السابق/التالي + مؤشر تقدم + انتقال ناعم (يحترم Reduce Motion)،
+/// شرح علمي/معجزة/مراحل: فصول متسلسلة في القارئ المشترك `SunnahSeriesReader` (سحب/تالٍ/سابق/تقدّم/متابعة)،
 /// وتحت كل مرحلة بطاقة الآيات والمصادر. الآيات عبر `QuranAyahText` فقط، والرسوم أصلية متجهية (docs/native/ASSETS_LICENSES.md).
+/// الشريط العلوي تضعه الشاشة المضيفة (شريط الشرائح عند تعدد الشروح).
 struct ExplainerTemplate: View {
     let data: ExplainerData
-    @State private var index = 0
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private let repo = MushafRepository(bundle: .main)
 
-    private var stage: ExplainerStageData { data.stages[min(index, data.stages.count - 1)] }
-
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                SunnahGeometricHeader(title: data.title)
-                VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-                    ProgressView(value: Double(index + 1), total: Double(data.stages.count))
-                        .tint(Sunnah.Colors.primary)
-                        .accessibilityLabel("المرحلة \((index + 1).arabicDigits) من \(data.stages.count.arabicDigits)")
-                    stageBody
-                        .id(stage.id)
-                        .transition(reduceMotion ? .opacity : .asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity), removal: .opacity))
-                    SunnahStepper(index: $index, count: data.stages.count, previousTitle: "المرحلة السابقة", nextTitle: "المرحلة التالية")
-                    if let note = data.scopeNote { SunnahArabicText(note, style: .reading).foregroundStyle(Sunnah.Colors.textSecondary) }
-                }
-                .padding(.horizontal, Sunnah.Spacing.pageX)
-                .animation(reduceMotion ? nil : .easeInOut(duration: 0.25), value: index)
-            }
-        }
-        .background(Sunnah.Colors.bg)
-        .accessibilityIdentifier("explainer")
+    private var chapters: [SeriesChapter] {
+        data.stages.map { SeriesChapter(id: $0.id, title: "المرحلة \($0.order.arabicDigits): \($0.title)", paragraphs: [$0.body]) }
+    }
+    private var start: Int? {
         #if DEBUG
-        .onAppear { let i = UserDefaults.standard.integer(forKey: "snapshotStage"); if i > 0, i < data.stages.count { index = i } }
+        let i = UserDefaults.standard.integer(forKey: "snapshotStage")
+        if i > 0, i < data.stages.count { return i }
         #endif
+        return nil
     }
 
-    private var stageBody: some View {
-        VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-            ExplainerArt(stageID: stage.id).frame(height: 180)
-            Text("المرحلة \(stage.order.arabicDigits): \(stage.title)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-            SunnahArabicText(stage.body, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
-            ForEach(Array((stage.views ?? []).enumerated()), id: \.offset) { _, v in
-                SunnahCard {
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        SunnahArabicText(v.text, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
-                        Text(v.source.display).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+    var body: some View {
+        SunnahSeriesReader(seriesID: "explainer." + data.id, seriesTitle: data.title, chapters: chapters, start: start, chrome: false,
+                           lead: { c in AnyView(ExplainerArt(stageID: c.id).frame(height: 180)) },
+                           extra: { c in AnyView(stageExtras(c.id)) })
+            .accessibilityIdentifier("explainer")
+    }
+
+    @ViewBuilder private func stageExtras(_ id: String) -> some View {
+        if let stage = data.stages.first(where: { $0.id == id }) {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+                ForEach(Array((stage.views ?? []).enumerated()), id: \.offset) { _, v in
+                    SunnahCard {
+                        VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                            SunnahArabicText(v.text, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
+                            Text(v.source.display).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                        }
                     }
                 }
-            }
-            if let repo {
-                ForEach(stage.ayahRef ?? [], id: \.self) { a in
-                    if let r = QuranAyahRange(surah: a.surah, from: a.from, to: a.to) {
-                        SunnahCard {
-                            VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                                QuranAyahText(range: r, repo: repo, paper: false)
-                                if let path = SunnahAyahRange.mushafPath(r.label) {
-                                    SunnahValueLink(value: Route.web(path: path)) {
-                                        Text(SunnahAyahRange.display(r.label)).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
+                if let repo {
+                    ForEach(stage.ayahRef ?? [], id: \.self) { a in
+                        if let r = QuranAyahRange(surah: a.surah, from: a.from, to: a.to) {
+                            SunnahCard {
+                                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                                    QuranAyahText(range: r, repo: repo, paper: false)
+                                    if let path = SunnahAyahRange.mushafPath(r.label) {
+                                        SunnahValueLink(value: Route.web(path: path)) {
+                                            Text(SunnahAyahRange.display(r.label)).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
-            }
-            SunnahCard {
-                VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                    ForEach(Array((stage.sources ?? []).enumerated()), id: \.offset) { _, s in
-                        Text(s.display).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                SunnahCard {
+                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                        ForEach(Array((stage.sources ?? []).enumerated()), id: \.offset) { _, s in
+                            Text(s.display).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                        }
                     }
                 }
+                if let note = data.scopeNote { SunnahArabicText(note, style: .reading).foregroundStyle(Sunnah.Colors.textSecondary) }
             }
         }
     }

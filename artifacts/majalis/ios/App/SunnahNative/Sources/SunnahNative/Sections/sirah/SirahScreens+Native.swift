@@ -111,7 +111,9 @@ public enum SirahSection {
         registry.registerView(id: "explainers") { ExplainerScreen() }
         registry.registerView(id: "prophets.tree") { SirahSection.inline(File.lineage, SirahAdapters.lineage, reader: .detail, symbol: "person.3") }
         registry.registerView(id: "sahabah") { SirahSection.inline(File.sahabah, SirahAdapters.sahabah, reader: .detail, symbol: "person.2") }
-        registry.registerView(id: "seerah") { SirahSection.inline(File.seerah, SirahAdapters.seerah, symbol: "scroll") }
+        registry.registerView(id: "seerah") {
+            SirahLoadedView(source: File.seerah, adapt: SirahAdapters.seerahChapters) { SunnahSeriesReader(seriesID: "seerah", seriesTitle: "السيرة النبوية", chapters: $0) }
+        }
         registry.registerView(id: "shamael") {
             SirahLoadedView(source: File.shamail, adapt: { (tabs: [ShamailTab]) in tabs }) { ShamailView(tabs: $0) }
                 .sunnahNavTitle(SirahSection.title)
@@ -142,8 +144,9 @@ public enum SirahSection {
         case "nations": return SirahSection.article(File.nations, SirahAdapters.nations, id: id)
         case "tarikh-islami": return SirahSection.article(File.history, SirahAdapters.history, id: id)
         case "teachers":
-            return AnyView(SirahLoadedView(source: File.lessons, adapt: { SirahAdapters.teacher(slug: c[1], rows: $0) }) { item in
-                if let item { DetailTemplate(item: item) } else { EmptyStateView() }
+            return AnyView(SirahLoadedView(source: File.lessons, adapt: SirahAdapters.teacherChapters) { (ch: [SeriesChapter]) in
+                SunnahSeriesReader(seriesID: "teachers", seriesTitle: "الدروس", chapters: ch,
+                                   start: ch.firstIndex { $0.id == c[1] || $0.title == c[1].removingPercentEncoding })
             })
         default: return nil
         }

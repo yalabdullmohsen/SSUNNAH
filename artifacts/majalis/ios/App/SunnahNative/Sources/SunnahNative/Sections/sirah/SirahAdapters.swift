@@ -162,6 +162,16 @@ enum SirahAdapters {
         }
     }
 
+    /// مراحل السيرة فصولًا للقارئ المتسلسل: الفترة = السنة، الأحداث = أبرز الأحداث، و«مرتبط» من أقسام التطبيق المذكورة في النص.
+    static func seerahChapters(_ rows: [SirahSeerahPhase]) -> [SeriesChapter] {
+        rows.sorted { ($0.num ?? .max) < ($1.num ?? .max) }.map { p in
+            let text = ([p.desc ?? ""] + (p.keyEvents ?? [])).joined(separator: " ")
+            return SeriesChapter(id: p.id, title: [p.num.map { "\($0). " }, p.title].compactMap { $0 }.joined(),
+                                 period: p.year, paragraphs: [p.desc].compactMap { $0 }.filter { !$0.isBlank },
+                                 events: p.keyEvents ?? [], related: SeriesRelated.sections(in: text))
+        }
+    }
+
     // MARK: الشمائل — لا يُعرض حديث بلا درجة ومصدر (DATA_CONTRACT §5.2)
 
     static let shamailTabs = ["khalq": "صفاته الخَلقية", "khuluq": "أخلاقه", "sira": "هديه وسيرته", "mahabbah": "محبته ﷺ"]
@@ -249,6 +259,20 @@ enum SirahAdapters {
                    [r.schedule, r.lessonTime].compactMap { $0 }.map(LessonTimeFormat.display).filter { !$0.isBlank }.joined(separator: " · ")])
         }
         return ContentItem(sirahID: slug, title: name, subtitle: "\(mine.count) درسًا", body: paragraphs(body))
+    }
+
+    /// مشايخ الدروس فصولًا متتابعة لقارئ السلسلة (الترتيب نفسه كقائمة المشايخ).
+    static func teacherChapters(_ rows: [SirahLessonRow]) -> [SeriesChapter] {
+        let groups = Dictionary(grouping: approvedWithSpeaker(rows), by: { $0.0 })
+        return teachers(rows).compactMap { link in
+            guard let mine = groups[link.title] else { return nil }
+            let paras = mine.map { pair -> String in
+                let r = pair.1
+                return lines([r.title, [r.mosque, r.city].compactMap { $0 }.filter { !$0.isBlank }.joined(separator: "، "),
+                              [r.schedule, r.lessonTime].compactMap { $0 }.map(LessonTimeFormat.display).filter { !$0.isBlank }.joined(separator: " · ")])
+            }.filter { !$0.isBlank }
+            return SeriesChapter(id: link.id, title: link.title, period: link.subtitle, paragraphs: paras)
+        }
     }
 
     // MARK: مساعدات نصية
