@@ -13,7 +13,6 @@ public struct GroupedListTemplate: View {
     @Environment(\.openRoute) private var openRoute
     let groups: [ContentGroup]
     @State private var query = ""
-    @State private var expanded: Set<String> = []
 
     public init(groups: [ContentGroup]) { self.groups = groups }
 
@@ -27,46 +26,38 @@ public struct GroupedListTemplate: View {
     }
 
     public var body: some View {
-        Group {
-            if groups.isEmpty { EmptyStateView() }
-            else if visible.isEmpty { EmptyStateView(title: "لا نتائج") }
+        VStack(spacing: 0) {
+            SunnahSearchField(text: $query, prompt: "ابحث", idPrefix: "grouped.search").padding(.vertical, Sunnah.Spacing.s2)
+            if groups.isEmpty { EmptyStateView().frame(maxHeight: .infinity) }
+            else if visible.isEmpty { EmptyStateView(title: "لا نتائج").frame(maxHeight: .infinity) }
             else {
-                List {
-                    ForEach(visible) { group in
-                        Section {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 14) {
+                        ForEach(visible) { group in
+                            Text(group.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.primary)
+                                .padding(.horizontal, Sunnah.Spacing.pageX + 4).accessibilityAddTraits(.isHeader)
                             ForEach(group.items) { item in row(item) }
-                        } header: {
-                            Text(group.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                                .textCase(nil).accessibilityAddTraits(.isHeader)
                         }
                     }
+                    .padding(.bottom, 96).id(query.isEmpty)
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth()
+                .sunnahReadableWidth()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .sunnahSearchable(text: $query)
     }
 
     @ViewBuilder private func row(_ item: ContentItem) -> some View {
-        let open = expanded.contains(item.id) || !query.isEmpty
-        VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-            Button {
+        if item.route == nil, let body = item.body {
+            SunnahExpandableCard(item.title, subtitle: item.subtitle, startsExpanded: !query.isEmpty) {
+                Text(body.arabicDigits).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        } else {
+            SunnahTileGrid([SunnahTileItem(id: item.id, title: item.title, subtitle: item.subtitle)], idPrefix: "grouped.item") { _ in
                 if let r = item.route { openRoute(r) }
-                else if item.body != nil { sunnahAnimate { toggle(item.id) } }
-            } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                .sunnahPressable()
-                .accessibilityValue(item.body == nil || item.route != nil ? "" : (open ? "موسَّع" : "مطوي"))
-            if open, item.route == nil, let body = item.body {
-                Text(body).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                    .frame(maxWidth: .infinity, alignment: .leading).transition(.opacity)
             }
         }
-        .sunnahRowChrome()
-    }
-
-    private func toggle(_ id: String) {
-        if expanded.contains(id) { expanded.remove(id) } else { expanded.insert(id) }
     }
 }
