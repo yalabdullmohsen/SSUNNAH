@@ -169,7 +169,8 @@ struct MyHifzPathsView: View {
         lScroll {
             ForEach(paths) { path in
                 SunnahSectionLabel("\(path.title) · \(progress.doneCount(path: path.id, validUnits: Set(path.units.map(\.id)))) من \(path.units.count)".arabicDigits)
-                SunnahGroupedCard(path.units.sorted { $0.sequence < $1.sequence }) { unit in
+                ForEach(path.units.sorted { $0.sequence < $1.sequence }) { unit in
+                  SunnahCard {
                     Button { progress.toggle(path: path.id, unit: unit.id); store.save(progress, .pathUnits) } label: {
                         HStack {
                             Image(systemName: progress.isDone(path: path.id, unit: unit.id) ? "checkmark.circle.fill" : "circle")
@@ -177,9 +178,9 @@ struct MyHifzPathsView: View {
                             Text(unit.title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                             Spacer()
                         }
-                        .padding(Sunnah.Spacing.s3)
                     }
                     .buttonStyle(.plain)
+                  }
                 }
             }
         }
@@ -222,12 +223,10 @@ struct MushafBookmarksScreen: View {
                     .frame(maxHeight: .infinity, alignment: .top)
             } else {
                 lScroll {
-                    SunnahGroupedCard(store.bookmarks) { b in
-                        SunnahNavigationLink {
-                            MushafScreen().onAppear { store.visit(page: b.page) }
-                        } label: {
-                            SunnahListRow(title: "آية \(b.ayah)", subtitle: "صفحة \(b.page)")
-                        }
+                    SunnahNavTileGrid(store.bookmarks, idPrefix: "bookmark", padded: false, tile: { b in
+                        SunnahTileItem(id: "\(b.id)", title: "آية \(b.ayah)", subtitle: "صفحة \(b.page)", symbol: "bookmark.fill")
+                    }) { b in
+                        MushafScreen().onAppear { store.visit(page: b.page) }
                     }
                 }
             }
@@ -265,17 +264,19 @@ struct QuranMemorizationView: View {
                 .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
             SunnahSectionLabel("اختر نوع الاختبار")
-            SunnahGroupedCard(Self.types.enumerated().map { LType(index: $0.offset, t: $0.element) }) { x in
-                Button { selected = x.t.id } label: {
-                    HStack {
-                        SunnahListRow(title: x.t.label, subtitle: "نوع \(x.index + 1) — \(x.t.desc)")
-                        if selected == x.t.id { Image(systemName: "checkmark").foregroundStyle(Sunnah.Colors.primary) }
+            ForEach(Self.types.enumerated().map { LType(index: $0.offset, t: $0.element) }) { x in
+                SunnahCard {
+                    Button { selected = x.t.id } label: {
+                        HStack {
+                            SunnahListRow(title: x.t.label, subtitle: "نوع \(x.index + 1) — \(x.t.desc)")
+                            if selected == x.t.id { Image(systemName: "checkmark").foregroundStyle(Sunnah.Colors.primary) }
+                        }
                     }
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
             SunnahSectionLabel("اختر السورة")
-            SunnahGroupedCard([LItem(id: "surah")]) { _ in
+            SunnahCard {
                 SurahChoiceRow(items: names.keys.sorted().map { SurahChoice(id: $0, name: "\($0). \(names[$0] ?? "")") }, selection: $surah)
             }
         }
@@ -288,7 +289,6 @@ private struct LType: Identifiable {
     var id: String { t.id }
 }
 
-private struct LItem: Identifiable { let id: String }
 private struct SurahChoice: Identifiable { let id: Int; let name: String }
 
 private func lScroll<C: View>(@ViewBuilder _ content: () -> C) -> some View {
@@ -313,16 +313,17 @@ private struct SurahChoicePage: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         lScroll {
-            SunnahGroupedCard(items) { it in
-                Button { selection = it.id; dismiss() } label: {
-                    HStack {
-                        Text(it.name).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                        Spacer()
-                        if selection == it.id { Image(systemName: "checkmark").foregroundStyle(Sunnah.Colors.primary) }
+            ForEach(items) { it in
+                SunnahCard {
+                    Button { selection = it.id; dismiss() } label: {
+                        HStack {
+                            Text(it.name).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                            Spacer()
+                            if selection == it.id { Image(systemName: "checkmark").foregroundStyle(Sunnah.Colors.primary) }
+                        }
                     }
-                    .padding(Sunnah.Spacing.s3)
+                    .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
             }
         }
         .quranTitle("اختر السورة")
