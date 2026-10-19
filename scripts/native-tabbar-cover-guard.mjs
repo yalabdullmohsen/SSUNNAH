@@ -44,7 +44,9 @@ for (const f of walk(SRC)) {
   if (r.startsWith("Mushaf/") || r === "Shell/RootTabView.swift" || r === "Intro/IntroView.swift") continue;
   readFileSync(f, "utf8").split("\n").forEach((l0, i) => {
     // خلفية لون فقط تمتد تحت الحواف (`.background(X.ignoresSafeArea())` أو `.background { X.ignoresSafeArea() }`) لا تحرّك المحتوى ولا تغطي الشريط: مستثناة.
-    const l = l0.replace(/\.background\(\s*[\w.]+\.ignoresSafeArea\(\)\s*\)/g, "").replace(/\.background\s*\{\s*[\w.]+\.ignoresSafeArea\(\)\s*\}/g, "");
+    const l = l0.replace(/\.background\(\s*[\w.]+\.ignoresSafeArea\(\)\s*\)/g, "").replace(/\.background\s*\{\s*[\w.]+\.ignoresSafeArea\(\)\s*\}/g, "")
+      // طبقة لون فقط (خلفية/تعتيم خلف بطاقة منبثقة) مثل `Color.black.opacity(0.35).ignoresSafeArea()` — بلا محتوى، مستثناة.
+      .replace(/\b(?:Color|Sunnah\.Colors)\.\w+(?:\.opacity\([^)]*\))?\.ignoresSafeArea\(\)/g, "");
     if (/ignoresSafeArea/.test(l) && !/edges:\s*\.top/.test(l) && !/\/\//.test(l.split("ignoresSafeArea")[0])) bad.push(`${r}:${i + 1}: ignoresSafeArea سفلي قد يغطّي شريط التبويب`);
   });
 }
