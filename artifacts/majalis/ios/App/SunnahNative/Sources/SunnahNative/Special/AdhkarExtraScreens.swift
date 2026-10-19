@@ -17,8 +17,8 @@ struct TasbihView: View {
                 #endif
             } label: {
                 VStack(spacing: Sunnah.Spacing.s2) {
-                    Text("\(count)").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                    Text("\(count % target) / \(target)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    Text("\(count)".arabicDigits).font(.system(size: 72, weight: .bold)).foregroundStyle(Sunnah.Colors.textPrimary)
+                    Text(count == 0 ? "اضغط للبدء" : "\(count % target) / \(target)".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
                 .frame(maxWidth: .infinity, minHeight: 220)
                 .background(Sunnah.Colors.surface, in: Circle())
