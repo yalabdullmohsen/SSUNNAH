@@ -19,12 +19,17 @@ public struct MushafPageView: View {
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
-    /// حجم غليف نهاية الآية نسبةً إلى خط النص (يُصغَّر الغليف كله: الزخرفة والقرص معًا)، موحَّد لكل الشاشات.
-    static let endMarkScale: CGFloat = 0.9
-    /// قطر قرص نهاية الآية بوحدة em من حجم غليف النهاية (لا خط النص)؛ حبر الحلقة ≈0.80em عرضًا فالقرص داخلها كليًا.
-    static let ayahDiscEm: CGFloat = 0.78
+    /// حجم غليف نهاية الآية نسبةً إلى خط النص، موحَّد لكل الشاشات: مقيس من المصحف المطبوع (مرجع المالك ص19 وص33):
+    /// الزخرفة ≈1.15em ارتفاعًا و≈0.88em عرضًا من خط النص.
+    static let endMarkScale: CGFloat = 1.16
+    /// ضغط أفقي للزخرفة حول مركز حبرها ليطابق تناسب المطبوع (العرض/الارتفاع ≈0.77).
+    static let endMarkSquash: CGFloat = 0.95
+    /// عرض الزخرفة المرئي بوحدة em من حجم غليف النهاية (حبر 0.80em × الضغط) — يحسب منه التخطيط الفراغ حولها.
+    static let ayahDiscEm: CGFloat = 0.76
     /// إزاحة القرص للأسفل (em) ليتمركز مع حبر الحلقة داخل الخط لا مع صندوق النص.
     static let ayahDiscDropEm: CGFloat = 0.07
+    /// شفافية تظليل الآية بلون علامتها (خفيف لا يغطي الحبر).
+    static let markTintOpacity: Double = 0.18
 
     public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil, interactive: Bool = true, markColors: [String: [MushafMarkColor]] = [:], pageMarks: [MushafMarkColor] = []) {
         self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah; self.onLongPress = onLongPress; self.interactive = interactive; self.markColors = markColors; self.pageMarks = pageMarks
@@ -92,23 +97,27 @@ public struct MushafPageView: View {
                         ForEach(run, id: \.k) { item in
                             let k = item.k, w = item.w
                             Group {
-                                if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]).overlay(alignment: .bottom) { if let cs = markColors[w.v], !cs.isEmpty { MushafMarkDots(colors: cs).offset(y: layout.fontSize * 0.32) } } }
-                                else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.textPrimary) }
+                                if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]) }
+                                else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.mushafText) }
                             }
                                 .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
                                 .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
                                 .padding(.vertical, 1)
                                 .contentShape(Rectangle())
+                                // قرار المالك: التحديد بالضغط المطوّل فقط؛ النقرة العادية تمرّ للصفحة (إظهار/إخفاء الأدوات، وإلغاء تحديد قائم).
                                 .gesture(
-                                    LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) }
-                                        .exclusively(before: TapGesture().onEnded { selectedAyah = selectedAyah == w.v ? nil : w.v }),
+                                    LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.v; onLongPress?(w.v) },
                                     including: interactive ? .all : .none)
                                 .accessibilityLabel(w.isAyahEnd ? "آية \(w.v.arabicDigits)" : "")
                         }
                     }
                     .background {
+                        // التحديد أولًا؛ وإلا تظليل خفيف بلون علامة الآية (أول ألوانها) على كامل الآية.
                         if let v = run.first?.w.v, selectedAyah == v {
                             MushafSoftBand(roundRight: true, roundLeft: true, radius: layout.fontSize * 0.28).fill(Sunnah.Colors.primarySoft)
+                                .padding(.horizontal, -gap / 2)
+                        } else if let v = run.first?.w.v, let c = markColors[v]?.first {
+                            MushafSoftBand(roundRight: true, roundLeft: true, radius: layout.fontSize * 0.28).fill(c.color.opacity(MushafPageView.markTintOpacity))
                                 .padding(.horizontal, -gap / 2)
                         }
                     }
@@ -139,6 +148,9 @@ public struct MushafReaderView: View {
     @State private var current: Int
     @State private var selected: String?
     @State private var showIndex = false
+    /// «المختصر الصوتي» (تفسير صوتي لكل سورة) فوق المصحف، يبدأ بسورة الآية المحددة إن وُجدت.
+    @State private var mukhtasarSurah: Int?
+    @State private var showMukhtasar = false
     @StateObject private var chromeHide = ChromeAutoHide()
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @State private var sheetHeight: CGFloat = 0
@@ -205,7 +217,7 @@ public struct MushafReaderView: View {
             .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.28), value: sheetHeight)
             .contentShape(Rectangle())
             
-            .onTapGesture { if searchFocused { searchFocused = false } else { chromeHide.toggle() } }
+            .onTapGesture { if searchFocused { searchFocused = false } else if selected != nil { selected = nil } else { chromeHide.toggle() } }
             .simultaneousGesture(DragGesture(minimumDistance: 0).onChanged { _ in chromeHide.touch() })
         }
         .ignoresSafeArea()
@@ -254,6 +266,10 @@ public struct MushafReaderView: View {
         .onChange(of: voiceOver) { chromeHide.alwaysVisible = $0 }
         .onAppear { chromeHide.alwaysVisible = voiceOver; updatePin() }
         .onDisappear { chromeHide.cancel() }
+        .fullScreenCover(isPresented: $showMukhtasar) {
+            MukhtasarAudioView(index: index, startSurah: mukhtasarSurah, close: { showMukhtasar = false },
+                               chooseRecitation: { showMukhtasar = false; openRoute("/quran/offline-player") })
+        }
         .fullScreenCover(isPresented: $showIndex) {
             MushafIndexView(index: index, store: store, close: { showIndex = false }) { page in current = page; showIndex = false }
         }
@@ -452,7 +468,7 @@ public struct MushafReaderView: View {
                     #endif
                 }
                 Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }.accessibilityIdentifier("mushaf.sheet.tafsir")
-                Button { openRoute("/quran/offline-player") } label: { Label("القراء", systemImage: "headphones") }.accessibilityIdentifier("mushaf.sheet.reciters")
+                Button { mukhtasarSurah = Int(ayah.split(separator: ":").first ?? ""); selected = nil; showMukhtasar = true } label: { Label("استماع", systemImage: "headphones") }.accessibilityIdentifier("mushaf.sheet.reciters")
                 Button { sunnahAnimate { ayahPicker.toggle() } } label: { Label("علامة", systemImage: store.colors(ofAyah: ayah).isEmpty ? "bookmark" : "bookmark.fill") }.accessibilityIdentifier("mushaf.sheet.mark")
             }
             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafInk)

@@ -28,7 +28,7 @@ struct BasmalaView: View {
                     Text(g).font(.custom(b.family, fixedSize: fontSize)).lineLimit(1).fixedSize()
                 }
             }
-            .foregroundStyle(Sunnah.Colors.textPrimary)
+            .foregroundStyle(Sunnah.Colors.mushafText)
             .frame(maxWidth: .infinity)
             .environment(\.layoutDirection, .rightToLeft)
             .accessibilityElement(children: .ignore)
