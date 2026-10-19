@@ -241,7 +241,8 @@ struct MukhtasarAudioView: View {
         VStack(spacing: 0) {
             header
             ScrollViewReader { proxy in
-                ZStack(alignment: .leading) {
+                // RTL: trailing = اليسار — شريط الأجزاء على الحافة اليسرى كما في المرجع، والمحتوى يفسح له.
+                ZStack(alignment: .trailing) {
                     ScrollView {
                         LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                             VStack(spacing: Sunnah.Spacing.s1) {
@@ -261,7 +262,7 @@ struct MukhtasarAudioView: View {
                                 .font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                                 .frame(maxWidth: .infinity).multilineTextAlignment(.center)
                         }
-                        .padding(.leading, 36).padding(.trailing, Sunnah.Spacing.s4)
+                        .padding(.trailing, 36).padding(.leading, Sunnah.Spacing.s4)
                         .padding(.bottom, player.surah == nil ? Sunnah.Spacing.s6 : 120)
                     }
                     juzRail(groups.map(\.juz)) { j in
@@ -270,7 +271,7 @@ struct MukhtasarAudioView: View {
                     }
                 }
                 .onAppear {
-                    if let s = startSurah, let g = groups.first(where: { $0.surahs.contains { $0.id == s } }) {
+                    if let s = startSurah, let g = groups.first(where: { $0.surahs.contains { $0.id == s } }), g.juz > 1 {   // الجزء الأول: يبقى رأس الإصدار ظاهرًا
                         DispatchQueue.main.async { proxy.scrollTo("juz-\(g.juz)", anchor: .top) }
                     }
                 }
@@ -386,7 +387,7 @@ struct MukhtasarAudioView: View {
             }
         }
         .frame(maxHeight: 560)
-        .padding(.leading, Sunnah.Spacing.s1)
+        .padding(.trailing, Sunnah.Spacing.s1)
     }
 
     private var playerBar: some View {
