@@ -168,7 +168,7 @@ struct MyHifzPathsView: View {
     var body: some View {
         lScroll {
             ForEach(paths) { path in
-                SunnahSectionLabel("\(path.title) · \(progress.doneCount(path: path.id, validUnits: Set(path.units.map(\.id)))) من \(path.units.count)".arabicDigits)
+                SunnahSectionLabel("\(path.title): \(progress.doneCount(path: path.id, validUnits: Set(path.units.map(\.id)))) من \(path.units.count)".arabicDigits)
                 ForEach(path.units.sorted { $0.sequence < $1.sequence }) { unit in
                   SunnahCard {
                     Button { progress.toggle(path: path.id, unit: unit.id); store.save(progress, .pathUnits) } label: {

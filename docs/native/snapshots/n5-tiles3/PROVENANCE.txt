@@ -1,0 +1,8 @@
+git_sha=9f1a437d042501ac311852381e1a495b832070a9
+branch=n5/tiles-3
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/f1cce94c04de8b1a/SunnahApp.app
+binary_sha256=041070cbc85b5d230ea3d3678b357ac2083475ba9b77079b4917cb8b4f1f80ca
+built_at=2026-10-20 00:01:52
+source_newest=2026-10-19 23:54:46
+captured_at=2026-10-20 00:03:07
+covers=QuranLocalScreens+Native
