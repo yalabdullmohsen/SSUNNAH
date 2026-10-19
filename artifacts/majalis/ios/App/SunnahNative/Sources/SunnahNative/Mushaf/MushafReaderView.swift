@@ -308,6 +308,7 @@ public struct MushafReaderView: View {
         .buttonStyle(.plain)
         .font(.system(size: 17, weight: .semibold))
         .foregroundStyle(Sunnah.Colors.mushafInk)
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // شريط بارتفاع ثابت: أكبر من ذلك يقتطع الحقل ويتداخل
         .accessibilityIdentifier("mushaf.chrome")
     }
 
@@ -413,6 +414,7 @@ public struct MushafReaderView: View {
                 Button { sunnahAnimate { ayahPicker.toggle() } } label: { Label("علامة", systemImage: store.colors(ofAyah: ayah).isEmpty ? "bookmark" : "bookmark.fill") }.accessibilityIdentifier("mushaf.sheet.mark")
             }
             .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafInk)
+            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // صف أزرار بأيقونة فوق الاسم: AX يقتطع الأسماء إلى «م…»
             .labelStyle(MushafSheetActionLabelStyle())   // أيقونة فوق الاسم: لا التفاف حرفيًّا ولا اقتطاع على الشاشات الضيقة
             if ayahPicker {
                 MushafMarkPicker(active: store.colors(ofAyah: ayah)) { store.toggleMark($0, ayah: ayah, page: current) }
@@ -458,6 +460,7 @@ public struct MushafIndexView: View {
     public var body: some View {
         VStack(spacing: Sunnah.Spacing.s2) {
             SunnahSegmented(Tab.allCases.map { ($0, $0.rawValue) }, selection: $tab)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // أربع تبويبات في سطر واحد: AX يكسر حروف «علاماتي»
                 .padding(.horizontal, Sunnah.Spacing.s4).padding(.top, Sunnah.Spacing.s4)
             switch tab {
             case .surahs:
