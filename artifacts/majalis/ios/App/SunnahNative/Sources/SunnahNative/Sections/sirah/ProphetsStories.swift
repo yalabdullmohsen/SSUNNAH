@@ -39,6 +39,8 @@ struct ProphetStory: Identifiable, Hashable {
     let sections: [ProphetSection: [String]]
     let ayat: [Ayah]
     let sources: [String]
+    /// المصادر بصيغة `SourceRef` الموحّدة لذيل الصفحة (تُنتَج من نص العرض نفسه).
+    var sourceRefs: [SourceRef] { sources.compactMap { SourceRef(raw: $0) } }
     let sectionSources: [ProphetSection: [String]]
 
     /// عناوين/عبارات داخلية لا تُعرض للمستخدم.
@@ -236,7 +238,7 @@ struct ProphetPageView: View {
                     }
                     SunnahStepper(index: $index, count: prophets.count, previousTitle: "النبي السابق", nextTitle: "النبي التالي")
                         .padding(.horizontal, Sunnah.Spacing.pageX)
-                    SunnahContentFooter(title: p.name, id: p.id, section: "قصص الأنبياء", inset: false)
+                    SunnahContentFooter(title: p.name, id: p.id, section: "قصص الأنبياء", sources: p.sourceRefs, inset: false)
                 }
                 .padding(.bottom, 96)
             }

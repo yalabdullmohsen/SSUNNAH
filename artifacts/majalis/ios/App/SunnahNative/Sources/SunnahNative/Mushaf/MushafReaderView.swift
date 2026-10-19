@@ -401,6 +401,12 @@ public struct MushafReaderView: View {
                 if let text = shareText(ayah) {
                     Button { copy(text) } label: { Label("نسخ", systemImage: "doc.on.doc") }
                     ShareLink(item: text) { Label("مشاركة", systemImage: "square.and.arrow.up") }
+                    #if os(iOS)
+                    if let img = MushafAyahShareCard.image(text: text, reference: reference(ayah)) {
+                        ShareLink(item: img, preview: SharePreview(reference(ayah), image: img)) { Label("صورة", systemImage: "photo") }
+                            .accessibilityIdentifier("mushaf.sheet.shareImage")
+                    }
+                    #endif
                 }
                 Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }
                 Button { openRoute("/quran/offline-player") } label: { Label("القراء", systemImage: "headphones") }

@@ -20,4 +20,13 @@ final class ProphetStorySectionsTests: XCTestCase {
         XCTAssertEqual(p.visibleSections, [.identity, .saadi, .verses])
         XCTAssertEqual(p.ayat.map(\.ref), ["2:30"])
     }
+    func testFooterSourcesUseUnifiedSourceRef() throws {
+        let k = try item(#"""
+        {"id":"prophet-nuh","title":"نوح","body":"## التعريف\nنص","review_status":"verified",
+         "sources":[{"book":"تفسير ابن كثير","locator":"سورة هود"},{"book":"المصحف"}],
+         "sections":[{"key":"identity","title":"التعريف","body":"نص","sources":[{"book":"المصحف"}]}]}
+        """#)
+        let p = try XCTUnwrap(ProphetStory(k))
+        XCTAssertEqual(p.sourceRefs.map(\.display), ["تفسير ابن كثير، سورة هود", "المصحف"])
+    }
 }
