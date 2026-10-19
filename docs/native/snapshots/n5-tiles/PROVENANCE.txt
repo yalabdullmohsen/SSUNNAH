@@ -1,0 +1,13 @@
+git_sha=98bd0a068eda6f920333170caeb56dfd9c90ee43
+branch=n5/tiles-1
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/8390ead70e2903e9/SunnahApp.app
+binary_sha256=a00d64e4e61ac18e119b566174a2d0b827d2572831e9fd09cc99af1e6c5be935
+built_at=2026-10-19 19:57:32
+source_newest=2026-10-19 19:42:47
+captured_at=2026-10-19 20:01:52
+covers=UlumQuranScreens
+covers=MutashabihatScreens
+covers=TilawaCirclesScreens
+covers=PeopleScreens+Native
+covers=OfflineAudioScreen
+covers=SunnahTileGrid

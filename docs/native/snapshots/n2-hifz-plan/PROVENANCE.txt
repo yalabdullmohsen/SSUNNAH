@@ -1,0 +1,9 @@
+git_sha=12bea4bf1c8f9abe99c1ec0019ad81c67f97d1ea
+branch=n2/hifz-plan
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/1dc711897914b538/SunnahApp.app
+binary_sha256=e7ff801a056ece7359fa48428acd056cd0c0ca541121063c50b71855136d3be4
+built_at=2026-10-19 20:18:28
+source_newest=2026-10-19 20:08:40
+captured_at=2026-10-19 20:23:27
+covers=QuranScreens+Native
+covers=HifzPlanScreen+Native

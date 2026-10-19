@@ -43,8 +43,10 @@ private struct OfflineAudioList: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     SunnahSectionLabel("المساحة المستعملة: \(OfflineAudioScreen.megabytes(downloader.store.totalBytes()))")
-                    SunnahGroupedCard(reciters) { reciter in
-                        OfflineReciterRow(reciter: reciter, reciters: reciters, downloader: downloader)
+                    VStack(spacing: Sunnah.Spacing.s3) {
+                        ForEach(reciters) { reciter in
+                            SunnahCard { OfflineReciterRow(reciter: reciter, reciters: reciters, downloader: downloader) }
+                        }
                     }
                     if let error = downloader.lastError {
                         Text(OfflineAudioScreen.message(error)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.danger)

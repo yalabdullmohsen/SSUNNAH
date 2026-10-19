@@ -1,14 +1,14 @@
 {
  "source": "artifacts/majalis/src/AppRoutes.tsx",
  "totals": {
-  "routesInFile": 425,
-  "kept": 212,
+  "routesInFile": 426,
+  "kept": 213,
   "dropped": 213
  },
  "templates": {
   "قائمة": 135,
   "تفاصيل": 29,
-  "خاصة": 8,
+  "خاصة": 9,
   "شبكة": 5,
   "مقال": 6,
   "أقسام": 18,
@@ -1300,6 +1300,13 @@
    "component": "QuranMemorizationPlansPage",
    "section": "القرآن",
    "template": "قائمة",
+   "owner": "ن3"
+  },
+  {
+   "path": "/quran/my-hifz",
+   "component": "NativeHifzScreen",
+   "section": "القرآن",
+   "template": "خاصة",
    "owner": "ن3"
   },
   {

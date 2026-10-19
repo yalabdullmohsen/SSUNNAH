@@ -1,0 +1,9 @@
+git_sha=a4bfcc8b45263ddf4e39c339e7140d9c7afa1453
+branch=n2/tiles-occasions-quran
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/86da507fd03f5abd/SunnahApp.app
+binary_sha256=fecaf07332d92220b42d19a0722f69ae80ad460fa1881a8a3cb452ebc3529e96
+built_at=2026-10-19 19:51:09
+source_newest=2026-10-19 19:40:11
+captured_at=2026-10-19 20:30:52
+covers=SirahScreens+Native
+covers=SunnahTileGrid

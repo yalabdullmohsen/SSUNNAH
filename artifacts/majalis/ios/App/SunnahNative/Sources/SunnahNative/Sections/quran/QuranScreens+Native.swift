@@ -133,7 +133,8 @@ public enum QuranSection {
         registry.registerView(id: "memorization") { MemorizationHubView().quranTitle("الحفظ") }
         registry.registerView(id: "quran-memorization") { QuranMemorizationView().quranTitle("حفظ القرآن") }
         registry.registerView(id: "quran-knowledge") { SectionsListTemplate(links: QuranLinks.knowledge).quranTitle("القرآن وعلومه") }
-        registry.registerView(id: "quran.memorization-plans") { MemorizationPlansScreen() }
+        registry.registerView(id: "quran.memorization-plans") { HifzPlanScreen() }
+        registry.registerView(id: "quran.my-hifz") { HifzScreen() }
         registry.registerView(id: "quran.hifz-loop") { HifzLoopScreen() }
         registry.registerView(id: "hifz-path.my") {
             QuranBundledLoader(name: "hifz-paths", isEmpty: { (p: [HifzPath]) in p.isEmpty }) { MyHifzPathsView(paths: $0) }.quranTitle("مساري في الحفظ")
