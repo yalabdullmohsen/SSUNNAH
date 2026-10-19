@@ -1,0 +1,10 @@
+git_sha=0915ca32b342831a6dc07421af633a8de1e04765
+branch=n3/system-ui-special
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/ad41e4b8833a253b/SunnahApp.app
+binary_sha256=2f3003ff987f8e471dac4e0e2716f20ddfee93b9054aaebb1f5fc3c85dc89866
+built_at=2026-10-19 16:04:35
+source_newest=2026-10-19 15:58:45
+captured_at=2026-10-19 16:08:16
+files: HadithScreens.swift WeakHadithScreens.swift SiteContentScreens.swift PrayerScreen.swift AdhkarExtraScreens.swift SettingsScreens.swift LibraryScreens+Native.swift SearchTemplate.swift SunnahRowStack.swift
+covers: hadith-books-light.png وhadith-sahih-light.png = HadithScreens.swift (كتب الحديث وقائمة الصحيح بصفوف SunnahRowStack وحقل بحث)؛ books-rulings-light.png = SiteContentScreens.swift (HadithBooksAndRulingsView: المتون وأحاديث الأحكام)؛ tasbih-light.png = AdhkarExtraScreens.swift (مقسّم الأهداف 33/99/100/1000)؛ vault-light.png = SettingsScreens.swift (خزنتي: حقل + زر حفظ)؛ prayer-dark.png = PrayerScreen.swift (مفاتيح التنبيه SunnahSwitch)؛ search-start-light.png = SearchTemplate.swift وLibraryScreens+Native.swift (صفحة «اللغة والمكتبة والبحث» بحقل بحث ظاهر وحالة بدء)؛ sitemap-light.png وsections-dark.png = LibraryScreens+Native.swift (مجموعات الروابط بصفوف SunnahRowStack)؛ learn-universities-light.png = SunnahRowStack.swift (انحدار: هامش sunnahStackRow على شاشة تعلّم قائمة)
+gaps: WeakHadithScreens.swift لا لقطة لشاشته (تحويل List→SunnahRowStack مماثل لقوائم الحديث)؛ قارئ المكتبة fullScreenCover وصفوف ملاحظات الخزنة بعد الحفظ وقائمة نتائج البحث لا لقطة لها؛ CityPickerView (وحدة SunnahPrayer) لم تُمسّ؛ لا اختبار جهاز حقيقي
