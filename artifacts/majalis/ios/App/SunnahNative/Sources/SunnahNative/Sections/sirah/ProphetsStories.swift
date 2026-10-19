@@ -220,75 +220,37 @@ struct ProphetsGridView: View {
 
 struct ProphetPageView: View {
     let prophets: [ProphetStory]
-    @State private var index: Int
+    let start: Int
     /// مستودع المصحف الذي تقرأ منه `QuranAyahText`؛ نص الآية لا يُعرض إلا عبره.
     private let repo = MushafRepository(bundle: .main)
-    init(prophets: [ProphetStory], start: Int) { self.prophets = prophets; _index = State(initialValue: start) }
-
-    private var p: ProphetStory { prophets[index] }
 
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 14) {
-                    SunnahPageTitle(p.name)
-                    jumpBar(proxy)
-                    ForEach(p.visibleSections, id: \.self) { sec in
-                        sectionCard(sec).id(sec)
-                    }
-                    SunnahStepper(index: $index, count: prophets.count, previousTitle: "النبي السابق", nextTitle: "النبي التالي")
-                        .padding(.horizontal, Sunnah.Spacing.pageX)
-                    SunnahContentFooter(title: p.name, id: p.id, section: "قصص الأنبياء", sources: p.sourceRefs, inset: false)
-                }
-                .padding(.bottom, 96)
-            }
-            .id(p.id)
-            .onAppear {
-                ProphetsReadingProgress.save(p.id)
-                #if DEBUG
-                if let s = UserDefaults.standard.string(forKey: "snapshotProphetSection"), let sec = ProphetSection(rawValue: s) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { proxy.scrollTo(sec, anchor: .top) }
-                }
-                #endif
-            }
-            .onChange(of: index) { _ in ProphetsReadingProgress.save(p.id); proxy.scrollTo(p.visibleSections.first, anchor: .top) }
+        SunnahSeriesReader(seriesID: "prophets", seriesTitle: "قصص الأنبياء", chapters: prophets.map(chapter), start: start,
+                           extra: { c in AnyView(verses(prophets.first { $0.id == c.id })) })
+            .accessibilityIdentifier("prophet.page")
+    }
+
+    private func chapter(_ p: ProphetStory) -> SeriesChapter {
+        var paras: [String] = []
+        for sec in p.visibleSections where sec != .verses {
+            paras.append("## " + sec.title)
+            for para in p.sections[sec] ?? [] { paras.append(Self.stageHeading(para) != nil ? "### " + para : para) }
+            let src = (p.sectionSources[sec] ?? p.sources).joined(separator: " · ")
+            if !src.isEmpty { paras.append("> المصدر: " + src) }
         }
-        .background(Sunnah.Colors.bg)
-        .sunnahSubChrome()
-        .environment(\.layoutDirection, .rightToLeft)
-        .sunnahReadableWidth()
-        .accessibilityIdentifier("prophet.page")
+        let text = paras.joined(separator: " ")
+        return SeriesChapter(id: p.id, title: p.name, paragraphs: paras,
+                             related: SeriesRelated.verses(p.ayat.map(\.ref)) + SeriesRelated.sections(in: text).filter { $0.route != "/prophets" },
+                             sources: p.sourceRefs)
     }
 
-    private func jumpBar(_ proxy: ScrollViewProxy) -> some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 8) {
-                ForEach(p.visibleSections, id: \.self) { sec in
-                    Button { withAnimation(.easeInOut(duration: 0.25)) { proxy.scrollTo(sec, anchor: .top) } } label: {
-                        Text(sec.title).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.primary)
-                            .padding(.horizontal, 16).frame(minHeight: 44)
-                            .background(Sunnah.Colors.primarySoft, in: Capsule())
-                    }
-                    .buttonStyle(.plain).accessibilityIdentifier("prophet.jump.\(sec.rawValue)")
-                }
-            }
-            .padding(.horizontal, Sunnah.Spacing.pageX)
-        }
-    }
-
-    private func sourceLine(_ sec: ProphetSection) -> String {
-        (p.sectionSources[sec] ?? p.sources).joined(separator: " · ")
-    }
-
-    @ViewBuilder private func sectionCard(_ sec: ProphetSection) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(sec.title).font(AppearancePrefs.ui(.extraBold, 18, .headline)).foregroundStyle(Sunnah.Colors.primary)
-            if sec == .verses {
-                ForEach(p.ayat.filter { repo != nil && QuranAyahRange.parse($0.ref) != nil }, id: \.self) { a in
+    @ViewBuilder private func verses(_ p: ProphetStory?) -> some View {
+        if let p, p.visibleSections.contains(.verses), let repo {
+            VStack(alignment: .leading, spacing: 12) {
+                Text(ProphetSection.verses.title).font(AppearancePrefs.ui(.extraBold, 18, .headline)).foregroundStyle(Sunnah.Colors.primary)
+                ForEach(p.ayat.filter { QuranAyahRange.parse($0.ref) != nil }, id: \.self) { a in
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        if let repo, let r = QuranAyahRange.parse(a.ref) {
-                            QuranAyahText(range: r, repo: repo, paper: false)
-                        }
+                        if let r = QuranAyahRange.parse(a.ref) { QuranAyahText(range: r, repo: repo, paper: false) }
                         if let path = SunnahAyahRange.mushafPath(a.ref) {
                             SunnahValueLink(value: Route.web(path: path)) {
                                 Text(SunnahAyahRange.display(a.ref).arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44)
@@ -296,23 +258,8 @@ struct ProphetPageView: View {
                         }
                     }
                 }
-            } else {
-                ForEach(Array((p.sections[sec] ?? []).enumerated()), id: \.offset) { _, para in
-                    if let head = Self.stageHeading(para) {
-                        Text(head.arabicDigits).font(AppearancePrefs.ui(.extraBold, 16, .subheadline)).foregroundStyle(Sunnah.Colors.textPrimary).padding(.top, 4)
-                    } else {
-                        SunnahArabicText(para.arabicDigits, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
-                    }
-                }
-            }
-            if !sourceLine(sec).isEmpty {
-                Text("المصدر: \(sourceLine(sec).arabicDigits)").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
             }
         }
-        .padding(18).frame(maxWidth: .infinity, alignment: .leading)
-        .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
-        .padding(.horizontal, Sunnah.Spacing.pageX)
     }
 
     /// فقرة قصيرة تبدأ بترقيم المراحل («١. …» أو «1. …») تُعرض عنوانًا فرعيًا.
