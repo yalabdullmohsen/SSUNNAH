@@ -1,0 +1,17 @@
+git_sha=a7da3ef3aa2f1706ca8365850f13b1abe0adb1b5
+branch=n3/digits-widgets-ci
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/4c3e59f80605316f/SunnahApp.app
+binary_sha256=9392f80dc672ca9aaedd93d9f46b5fa512145c2c4a6568f927e17b09353adac5
+built_at=2026-10-19 03:32:39
+source_newest=2026-10-19 03:30:57
+captured_at=2026-10-19 03:33:01
+files: WidgetFormat.swift ArabicNumerals.swift SunnahLocalDataWidgets.swift MushafMarksUI.swift MushafReaderView.swift HomeNavigationUITests.swift
+covers: marks-dark.png + marks-swipe-reveal.png + marks-swipe-after-delete.png => MushafMarksUI.swift (علاماتي داكنًا؛ كشف زر «حذف» بالسحب ثم حذف الصف فعليًا عبر XCUITest testMarksSwipeToDelete في HomeNavigationUITests.swift، 6 صفوف ← 5)
+covers: ayah-sheet-dark.png => MushafReaderView.swift (نافذة الآية داكنًا)
+covers: lockscreen-accessory-{rect,circ,inline}-{light,dark}.png => SunnahLocalDataWidgets.swift, WidgetFormat.swift, ArabicNumerals.swift (accessoryRectangular/Circular/Inline عبر WidgetSnapshotHarness؛ المصادر بأرقام هندية عبر WidgetFormat.arabicDigits المفوِّضة إلى PrayerTimeFormat.arabicDigits)
+gaps: لقطات الودجت renders من harness (ImageRenderer) لا شاشة قفل حقيقية — simctl لا يضع ودجتات؛ لا containerBackground فتبدو الخلفية الفاتحة مسطّحة
+gaps: ودجتات rect لا تعرض item.source فلا يظهر الأثر الرقمي فيها بصريًا؛ يغطيه اختبار WidgetArabicDigitsTests وحارس native-arabic-digits-guard.sh
+gaps: الأرقام اللاتينية باقية في أوقات/عدّادات الودجت (قرار مالك أقدم)؛ تغيّرت المصادر فقط
+gaps: EDGE-FAIL (العنوان يلامس الحافة العليا) في 10-local-after-salah و10-local-asma rect؛ لم يُقارَن بـorigin/native-app
+gaps: لا لقطات iPad (المحاكي حُذف)؛ الحارس غير مضاف إلى ci:local
+gaps: ayah-sheet-dark/marks-dark التُقطتا من بناء الالتزام الأول (الشيفرة المعدَّلة هنا لا تمسّ MushafReaderView/MushafMarksUI)
