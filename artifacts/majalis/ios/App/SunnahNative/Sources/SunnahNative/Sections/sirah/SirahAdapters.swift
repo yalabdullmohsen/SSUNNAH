@@ -166,7 +166,7 @@ enum SirahAdapters {
     static func seerahChapters(_ rows: [SirahSeerahPhase]) -> [SeriesChapter] {
         rows.sorted { ($0.num ?? .max) < ($1.num ?? .max) }.map { p in
             let text = ([p.desc ?? ""] + (p.keyEvents ?? [])).joined(separator: " ")
-            return SeriesChapter(id: p.id, title: [p.num.map { "\($0). " }, p.title].compactMap { $0 }.joined(),
+            return SeriesChapter(id: p.id, title: [p.num.map { "\($0.arabicDigits). " }, p.title].compactMap { $0 }.joined(),
                                  period: p.year, paragraphs: [p.desc].compactMap { $0 }.filter { !$0.isBlank },
                                  events: p.keyEvents ?? [], related: SeriesRelated.sections(in: text))
         }

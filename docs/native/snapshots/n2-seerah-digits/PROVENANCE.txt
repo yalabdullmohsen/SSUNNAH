@@ -1,0 +1,8 @@
+git_sha=651c172f726b0f6a19ca94ff425e49314f1d0d75
+branch=n2/seerah-digits
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/6acfb28f69de55e0/SunnahApp.app
+binary_sha256=ea6fef1cd15d78b5460d15bece7ac180b3d1010a847ba7d446e6397bdb9ff2db
+captured_at=2026-10-19T22:11:29Z
+route=/seerah
+before=عنوان المرحلة بأرقام لاتينية
+covers=SirahAdapters.swift (أرقام عربية في عناوين مراحل السيرة)
