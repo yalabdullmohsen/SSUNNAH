@@ -29,7 +29,6 @@ struct ExplainerTemplate: View {
             }
         }
         .background(Sunnah.Colors.bg)
-        .bodyTitledNavigation()
         .accessibilityIdentifier("explainer")
         #if DEBUG
         .onAppear { let i = UserDefaults.standard.integer(forKey: "snapshotStage"); if i > 0, i < data.stages.count { index = i } }
@@ -82,6 +81,7 @@ struct ExplainerScreen: View {
         SirahLoadedView(source: SirahSection.File.explainers, adapt: { (rows: [ExplainerData]) in rows.compactMap(\.displayable) }) { rows in
             ExplainerPicker(rows: rows)
         }
+        .sunnahSubChrome()   // شريط الرجوع المشترك يحجز مكانه فوق الشرائح فلا يغطي زر الرجوع أول شريحة
     }
 }
 
