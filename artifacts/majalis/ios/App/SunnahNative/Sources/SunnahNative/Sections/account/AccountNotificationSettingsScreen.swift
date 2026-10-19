@@ -93,30 +93,33 @@ struct AccountNotificationSettingsScreen: View {
                 if explainFor != nil { explainCard }
 
                 AccountSectionCard(title: "الصلاة") {
-                    Toggle(isOn: Binding(get: { model.optIn.prayer && model.permission == .granted },
-                                         set: { on in withPermission(on) { model.optIn.prayer = $0 } })) {
+                    HStack(spacing: Sunnah.Spacing.s3) {
                         rowLabel("تنبيهات الصلاة", "تنبيه صوتي قصير قبل الوقت وعند دخوله، بمواقيت موقعك")
+                        Spacer(minLength: 0)
+                        SunnahSwitch(isOn: Binding(get: { model.optIn.prayer && model.permission == .granted },
+                                                   set: { on in withPermission(on) { model.optIn.prayer = $0 } }))
                     }
-                    .tint(Sunnah.Colors.primary)
                     if model.optIn.prayer {
                         prayerOptions
                     }
                 }
 
                 SunnahCard {
-                    Toggle(isOn: Binding(get: { masterOn }, set: { on in withPermission(on) { model.optIn.adhkar = $0 } })) {
+                    HStack(spacing: Sunnah.Spacing.s3) {
                         rowLabel("تذكيرات المحتوى", contentStatus)
+                        Spacer(minLength: 0)
+                        SunnahSwitch(isOn: Binding(get: { masterOn }, set: { on in withPermission(on) { model.optIn.adhkar = $0 } }))
                     }
-                    .tint(Sunnah.Colors.primary)
                     .disabled(model.permission == .unsupported)
                 }
 
                 AccountSectionCard(title: "فئات التذكير") {
-                    Toggle(isOn: Binding(get: { masterOn && model.general.adhkarEnabled },
-                                         set: { model.general.adhkarEnabled = $0; save() })) {
+                    HStack(spacing: Sunnah.Spacing.s3) {
                         rowLabel("الأذكار", "الصباح بعد الفجر والمساء بعد العصر، والنوم والاستيقاظ وبعد الصلاة والصلاة على النبي ﷺ والاستغفار")
+                        Spacer(minLength: 0)
+                        SunnahSwitch(isOn: Binding(get: { masterOn && model.general.adhkarEnabled },
+                                                   set: { model.general.adhkarEnabled = $0; save() }))
                     }
-                    .tint(Sunnah.Colors.primary)
                     .disabled(!masterOn)
                     if masterOn && model.general.adhkarEnabled {
                         minutesStepper("أذكار الصباح بعد الفجر", value: $model.general.morningAfterFajrMinutes)
@@ -170,14 +173,15 @@ struct AccountNotificationSettingsScreen: View {
     private var prayerOptions: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
             ForEach(Prayer.allCases.filter(\.isObligatory), id: \.self) { p in
-                Toggle(isOn: Binding(get: { model.prayer.enabledPrayers.contains(p) },
-                                     set: { on in
-                                         if on { model.prayer.enabledPrayers.insert(p) } else { model.prayer.enabledPrayers.remove(p) }
-                                         save()
-                                     })) {
+                HStack(spacing: Sunnah.Spacing.s3) {
                     Text(p.nameAr).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    Spacer(minLength: 0)
+                    SunnahSwitch(isOn: Binding(get: { model.prayer.enabledPrayers.contains(p) },
+                                               set: { on in
+                                                   if on { model.prayer.enabledPrayers.insert(p) } else { model.prayer.enabledPrayers.remove(p) }
+                                                   save()
+                                               }))
                 }
-                .tint(Sunnah.Colors.primary)
             }
             minutesStepper("تنبيه قبل الدخول", value: $model.prayer.minutesBefore, range: 0...60, step: 5)
         }

@@ -30,65 +30,62 @@ struct AccountSubmitContentScreen: View {
     @State private var status: Status = .idle
 
     var body: some View {
-        Form {
-            Section {
+        ScrollView {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 AccountHeader(eyebrow: nil, title: "أضف محتوى", subtitle: "يصل مقترحك للأدمن لمراجعته قبل النشر.")
-                    .listRowBackground(Color.clear)
                 Button { draft.type = "درس" } label: {
-                    HStack(spacing: Sunnah.Spacing.s3) {
-                        Image(systemName: "graduationcap").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.primary)
-                            .accessibilityHidden(true)
-                        VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                            Text("أضف درساً علمياً").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                            Text("شارك درساً، محاضرة، أو موضوعاً علمياً مفيداً").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    SunnahCard {
+                        HStack(spacing: Sunnah.Spacing.s3) {
+                            Image(systemName: "graduationcap").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.primary)
+                                .accessibilityHidden(true)
+                            VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                                Text("أضف درساً علمياً").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                                Text("شارك درساً، محاضرة، أو موضوعاً علمياً مفيداً").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                            }
                         }
                     }
                 }
                 .buttonStyle(.plain)
-            }
 
-            switch status {
-            case .success(let message):
-                Section { Text(message).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.primary) }
-            case .error(let message):
-                Section { Text(message).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.danger) }
-            default:
-                EmptyView()
-            }
-
-            Section("نوع المحتوى") {
-                Picker("نوع المحتوى", selection: $draft.type) {
-                    ForEach(AccountSubmissionDraft.types, id: \.self) { Text($0).tag($0) }
+                switch status {
+                case .success(let message):
+                    SunnahCard { Text(message).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.primary) }
+                case .error(let message):
+                    SunnahCard { Text(message).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.danger) }
+                default:
+                    EmptyView()
                 }
-            }
-            Section {
-                TextField("اكتب عنواناً مختصراً للموضوع", text: Binding(get: { draft.title }, set: { draft.title = String($0.prefix(AccountSubmissionDraft.titleMax)) }))
-            } header: { Text("عنوان الموضوع") } footer: {
-                Text(AccountSubmissionDraft.counter(draft.title, max: AccountSubmissionDraft.titleMax).arabicDigits)
-            }
-            Section {
-                TextField("اكتب التفاصيل هنا...", text: Binding(get: { draft.details }, set: { draft.details = String($0.prefix(AccountSubmissionDraft.detailsMax)) }), axis: .vertical)
-                    .lineLimit(6...12)
-            } header: { Text("التفاصيل") } footer: {
-                Text(AccountSubmissionDraft.counter(draft.details, max: AccountSubmissionDraft.detailsMax).arabicDigits)
-            }
-            Section {
-                TextField("للنسب الصحيح", text: Binding(get: { draft.author }, set: { draft.author = String($0.prefix(AccountSubmissionDraft.authorMax)) }))
-            } header: { Text("اسمك (اختياري)") } footer: {
-                Text(AccountSubmissionDraft.counter(draft.author, max: AccountSubmissionDraft.authorMax).arabicDigits)
-            }
 
-            Section {
+                AccountSectionCard(title: "نوع المحتوى") {
+                    SunnahChipBar(options: AccountSubmissionDraft.types.map { .init(id: $0, title: $0) }, selection: $draft.type)
+                }
+                field("عنوان الموضوع", counter: AccountSubmissionDraft.counter(draft.title, max: AccountSubmissionDraft.titleMax)) {
+                    TextField("اكتب عنواناً مختصراً للموضوع", text: Binding(get: { draft.title }, set: { draft.title = String($0.prefix(AccountSubmissionDraft.titleMax)) }))
+                }
+                field("التفاصيل", counter: AccountSubmissionDraft.counter(draft.details, max: AccountSubmissionDraft.detailsMax)) {
+                    TextField("اكتب التفاصيل هنا...", text: Binding(get: { draft.details }, set: { draft.details = String($0.prefix(AccountSubmissionDraft.detailsMax)) }), axis: .vertical)
+                        .lineLimit(6...12)
+                }
+                field("اسمك (اختياري)", counter: AccountSubmissionDraft.counter(draft.author, max: AccountSubmissionDraft.authorMax)) {
+                    TextField("للنسب الصحيح", text: Binding(get: { draft.author }, set: { draft.author = String($0.prefix(AccountSubmissionDraft.authorMax)) }))
+                }
+
                 SunnahButton(status == .loading ? "إرسال…" : "إرسال المقترح") { Task { await submit() } }
                     .disabled(status == .loading || !draft.isValid)
                     .opacity(draft.isValid ? 1 : 0.5)
-                    .listRowBackground(Color.clear)
             }
+            .padding(Sunnah.Spacing.pageX)
         }
         .font(Sunnah.Typography.body)
-        .scrollContentBackground(.hidden)
         .background(Sunnah.Colors.bg)
         .sunnahNavTitle("أضف محتوى")
+    }
+
+    private func field<C: View>(_ title: String, counter: String, @ViewBuilder content: @escaping () -> C) -> some View {
+        AccountSectionCard(title: title) {
+            content()
+            Text(counter.arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+        }
     }
 
     @MainActor private func submit() async {

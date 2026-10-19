@@ -142,6 +142,7 @@ struct AccountQiblaScreen: View {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 AccountHeader(eyebrow: "الأدوات", title: "اتجاه القبلة", subtitle: "وجّه الجهاز حتى يشير السهم إلى الكعبة المشرفة.")
 
+                if (compass.accuracy ?? 0) > AccountQiblaMath.accuracyWarnDegrees && !calibrationDismissed { calibrationCard }
                 if manualMode { manualSection }
 
                 if let bearing, let place {
@@ -176,30 +177,30 @@ struct AccountQiblaScreen: View {
         .sunnahNavTitle("اتجاه القبلة")
         .onAppear { compass.start() }
         .onDisappear { compass.stop() }
-        .sheet(isPresented: Binding(
-            get: { (compass.accuracy ?? 0) > AccountQiblaMath.accuracyWarnDegrees && !calibrationDismissed },
-            set: { if !$0 { calibrationDismissed = true } }
-        )) {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
+    }
+
+    private var calibrationCard: some View {
+        SunnahCard {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                 Text("معايرة البوصلة").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 Text("دقة المستشعر منخفضة. حرّك الهاتف على شكل الرقم «8» في الهواء عدة مرات بعيدًا عن المعادن والمغناطيس، ثم أعد المحاولة.")
                     .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                 SunnahButton("حسنًا", style: .secondary) { calibrationDismissed = true }
             }
-            .padding(Sunnah.Spacing.s6)
-            .presentationDetents([.medium])
         }
     }
 
     private var manualSection: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
             if !error.isEmpty { notice(error, tone: Sunnah.Colors.danger) }
-            Picker("اختر مدينتك", selection: $selectedCity) {
-                ForEach(AccountTexts.qiblaCities) { Text($0.name).tag($0.name) }
+            SunnahCollapsibleSection(id: "qibla-city", title: "اختر مدينتك: \(selectedCity)", startsCollapsed: true) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 96), spacing: Sunnah.Spacing.s2)], alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                    ForEach(AccountTexts.qiblaCities) { c in
+                        Button { Sunnah.Haptics.select(); selectedCity = c.name } label: { SunnahChip(c.name, selected: c.name == selectedCity) }
+                            .buttonStyle(.plain)
+                    }
+                }
             }
-            .pickerStyle(.menu)
-            .tint(Sunnah.Colors.primary)
-            .frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.touch, alignment: .leading)
             SunnahButton("احسب القبلة") { applyCity() }
             SunnahButton(locating ? "جارٍ تحديد الموقع…" : "استخدم موقعي", style: .secondary) { Task { await useDeviceLocation() } }
                 .disabled(locating)

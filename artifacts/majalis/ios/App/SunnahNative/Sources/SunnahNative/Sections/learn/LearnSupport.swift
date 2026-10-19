@@ -148,8 +148,7 @@ struct LearnList<Item: Identifiable, Row: View>: View {
     @ViewBuilder let row: (Item) -> Row
     var body: some View {
         if items.isEmpty { EmptyStateView(title: emptyTitle) } else {
-            List(items) { item in row(item).sunnahRowChrome() }
-                .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
+            SunnahRowStack { ForEach(items) { item in row(item).sunnahStackRow() } }
         }
     }
 }

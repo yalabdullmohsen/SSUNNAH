@@ -91,22 +91,19 @@ struct LearnReadingPlansScreen: View {
                                   actionTitle: "أنشئ خطتك الأولى") { creating = true }
                     .frame(maxHeight: .infinity, alignment: .top)
             } else {
-                List {
+                SunnahRowStack {
+                    SunnahButton("خطة جديدة", style: .secondary) { creating = true }
+                        .padding(.horizontal, Sunnah.Spacing.pageX).padding(.bottom, Sunnah.Spacing.s2)
                     ForEach($plans) { $plan in
                         LearnReadingPlanCard(plan: $plan) { save() }
-                            .sunnahRowChrome()
+                            .sunnahStackRow()
                     }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .background(Sunnah.Colors.bg)
-        .toolbar { ToolbarItem(placement: .primaryAction) { Button("خطة جديدة") { creating = true } } }
-        .sheet(isPresented: $creating) {
-            NavigationStack {
-                LearnNewPlanForm { plan in plans.insert(plan, at: 0); save(); creating = false }
-                    .toolbar { ToolbarItem(placement: .cancellationAction) { Button("إلغاء") { creating = false } } }
-            }
+        .navigationDestination(isPresented: $creating) {
+            LearnNewPlanForm { plan in plans.insert(plan, at: 0); save(); creating = false }
         }
         .onAppear { plans = store.load([LearnReadingPlan].self, .readingPlans) ?? [] }
         .sunnahNavTitle("خطط القراءة")
@@ -178,31 +175,31 @@ struct LearnNewPlanForm: View {
     @State private var days: Set<Int> = Set(LearnReadingPlan.weekdays.map(\.id))
 
     var body: some View {
-        Form {
-            Section("الكتاب") {
-                TextField("عنوان الكتاب", text: $title)
-                Stepper("عدد الصفحات: \(pages)", value: $pages, in: 1...5000, step: 10)
-                Stepper("دقائق يوميًا: \(minutes)", value: $minutes, in: 5...240, step: 5)
-            }
-            Section("المدة") {
-                DatePicker("البداية", selection: $start, displayedComponents: .date)
-                DatePicker("النهاية", selection: $end, in: start..., displayedComponents: .date)
-            }
-            Section("أيام القراءة") {
-                ForEach(LearnReadingPlan.weekdays) { d in
-                    Toggle(d.label, isOn: Binding(get: { days.contains(d.id) }, set: { on in if on { days.insert(d.id) } else { days.remove(d.id) } }))
+        SunnahPage("خطة جديدة", trailing: { EmptyView() }) {
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                AccountSectionCard(title: "الكتاب") {
+                    TextField("عنوان الكتاب", text: $title).sunnahFieldChrome()
+                    Stepper("عدد الصفحات: \(pages)", value: $pages, in: 1...5000, step: 10)
+                    Stepper("دقائق يوميًا: \(minutes)", value: $minutes, in: 5...240, step: 5)
                 }
-            }
-            Section {
+                AccountSectionCard(title: "المدة") {
+                    DatePicker("البداية", selection: $start, displayedComponents: .date)
+                    DatePicker("النهاية", selection: $end, in: start..., displayedComponents: .date)
+                }
+                AccountSectionCard(title: "أيام القراءة") {
+                    ForEach(LearnReadingPlan.weekdays) { d in
+                        SunnahSwitch(d.label, isOn: Binding(get: { days.contains(d.id) }, set: { on in if on { days.insert(d.id) } else { days.remove(d.id) } }))
+                    }
+                }
                 let plan = draft
                 if let p = plan.pagesPerRemainingDay(at: start) {
                     Text("نحو \(p) صفحة في كل يوم قراءة".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
-                Button("إنشاء الخطة") { onCreate(plan) }
+                SunnahButton("إنشاء الخطة") { onCreate(plan) }
                     .disabled(title.trimmingCharacters(in: .whitespaces).isEmpty || days.isEmpty)
             }
+            .padding(.horizontal, Sunnah.Spacing.pageX)
         }
-        .sunnahNavTitle("خطة جديدة")
     }
 
     private var draft: LearnReadingPlan {
