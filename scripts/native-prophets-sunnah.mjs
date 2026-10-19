@@ -8,7 +8,7 @@ const root = path.join(path.dirname(new URL(import.meta.url).pathname), '..')
 const dir = path.join(root, 'artifacts/majalis/public/data/knowledge/prophets')
 const src = process.argv[2]
 if (!src || !fs.existsSync(src)) { console.error('مرّر مسار bukhari.json'); process.exit(1) }
-const PICK = { harun: [3706], sulayman: [3424], yaqub: [3382], 'is-haq': [3382], yahya: [3430], adam: [3326, 3409], ibrahim: [3350, 3356, 3372], ismail: [3362], lut: [3387], yusuf: [3382], ayyub: [3391], musa: [3405, 3404], yunus: [3413], dawud: [3420], isa: [3442, 3444] }
+const PICK = { nuh: [3337, 3338, 3339], muhammad: [3532, 3535], harun: [3706], sulayman: [3424], yaqub: [3382], 'is-haq': [3382], yahya: [3430], adam: [3326, 3409], ibrahim: [3350, 3356, 3372], ismail: [3362], lut: [3387], yusuf: [3382], ayyub: [3391], musa: [3405, 3404], yunus: [3413], dawud: [3420], isa: [3442, 3444] }
 const H = new Map(JSON.parse(fs.readFileSync(src, 'utf8')).hadiths.map((h) => [h.n, h]))
 const quoted = (t) => { const m = t.match(/‏\s*"‏\s*([\s\S]+?)\s*‏"‏/); return m ? m[1].trim() : null }
 let n = 0
