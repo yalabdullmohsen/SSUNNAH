@@ -1,4 +1,4 @@
-# WHATS_NEW — سُنّة 1.2.0
+# WHATS_NEW — سُنّة 1.2.0 (بناء 109)
 
 > نص «ما الجديد» لـ App Store Connect (حدّ 4000 حرف لكل لغة). كل سطر مبني على ميزة موجودة في `docs/native/FEATURE_PARITY.md`؛ لا نتحقق منه بتشغيل التطبيق هنا — **ن4 يطابقه على البناء الفعلي قبل الإرسال**، وأي سطر لا يعمل يُحذف.
 
@@ -20,6 +20,12 @@
 • قصص الأنبياء.
 • شروح مصوّرة: مراحل خلق الإنسان ومعجزات النبي ﷺ.
 • أربعة ودجتات للشاشة الرئيسية من بيانات التطبيق مع مصدرها: الضحى، أذكار بعد الصلاة، الأسماء الحسنى، الجمعة والصيام.
+• المصحف كالمطبوع: زخرفة أرقام الآيات بحجمها وألوانها، وخط أسود، وتحديد الآية بالضغط المطوّل، وتظليل الآية بلون علامتها.
+• بحث المصحف داخل الصفحة نفسها، متسامح مع الهمزات والتشكيل.
+• «حفظي»: خريطة المصحف بالأجزاء والسور والصفحات (محفوظ، جزئي، لم يُحفظ، يحتاج مراجعة) مع النسب والإحصائيات.
+• خطة حفظ القرآن: ورد يومي من حفظ جديد ومراجعة قريبة وبعيدة، وتقدّم وتذكير.
+• المختصر الصوتي في تفسير القرآن (إصدار مركز تفسير، بصوت عبدالله الأسمري وتلاوة صابر عبدالحكم): استماع وتنزيل لكل سورة من داخل المصحف.
+• تصميم جديد للأقسام بالمربعات، والمسبحة.
 
 محتوى التطبيق مُعدّ بمساعدة الذكاء الاصطناعي، وقد يقع فيه خطأ.
 ```
@@ -42,6 +48,12 @@ Sunnah 1.2.0 — rebuilt from the ground up as a fully native app for iPhone and
 • Stories of the Prophets.
 • Illustrated explainers: stages of human creation and the miracles of the Prophet ﷺ.
 • Four Home Screen widgets from the app's own data, each showing its source: Duha prayer, adhkar after prayer, the Beautiful Names, and Friday & fasting.
+• Mushaf like the printed copy: verse markers at their printed size and colors, black text, long-press to select a verse, and verses tinted with their bookmark color.
+• Mushaf search right on the page, tolerant of hamza and diacritics.
+• "My Hifz": a memorization map by juz, surah and page (memorized, partial, not yet, needs review) with percentages and statistics.
+• A Quran memorization plan: a daily portion of new memorization plus near and far review, with progress and reminders.
+• Al-Mukhtasar audio tafsir (Tafsir Center; narrated by Abdullah Al-Asmari, recited by Saber Abdelhakam): listen to or download each surah from inside the Mushaf.
+• New tile-based design for sections, and a refreshed tasbih counter.
 
 The app's content is prepared with AI assistance and may contain errors.
 ```
