@@ -29,6 +29,7 @@ struct AccountCalendarScreen: View {
                     case .day: dayList(AccountCalendarMath.events(on: selected, in: events, calendar: calendar), date: selected)
                     }
                 }
+                if let event = openEvent { SunnahCard { eventSheet(event) } }
                 AccountShareRow(title: "تقويم الدروس — سُنّة", path: "/calendar")
             }
             .padding(Sunnah.Spacing.pageX)
@@ -36,7 +37,6 @@ struct AccountCalendarScreen: View {
         .background(Sunnah.Colors.bg)
         .sunnahNavTitle("تقويم الدروس")
         .task { await load() }
-        .sheet(item: $openEvent) { event in eventSheet(event) }
     }
 
     // MARK: شريط الأدوات
@@ -53,10 +53,7 @@ struct AccountCalendarScreen: View {
                 navButton("chevron.forward", label: "الشهر التالي") { shiftMonth(1) }
             }
             HStack(spacing: Sunnah.Spacing.s2) {
-                Picker("طريقة العرض", selection: $mode) {
-                    ForEach(Mode.allCases, id: \.self) { Text($0.rawValue).tag($0) }
-                }
-                .pickerStyle(.segmented)
+                SunnahChipBar(options: Mode.allCases.map { .init(id: $0, title: $0.rawValue) }, selection: $mode)
                 if !calendar.isDate(cursor, equalTo: Date(), toGranularity: .month) {
                     Button("اليوم") { cursor = Date(); selected = Date() }
                         .font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary)
@@ -164,8 +161,6 @@ struct AccountCalendarScreen: View {
             SunnahButton("التفاصيل") { openEvent = nil; openRoute(event.path) }
             SunnahButton("إغلاق", style: .secondary) { openEvent = nil }
         }
-        .padding(Sunnah.Spacing.s6)
-        .presentationDetents([.medium, .large])
     }
 
     // MARK: البيانات
