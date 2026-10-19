@@ -48,6 +48,18 @@
 
 ممنوع: أي مظهر iOS افتراضي (List/Form insetGrouped، Toggle النظامي، Picker segmented النظامي، TabView الافتراضي).
 
+## بدائل واجهة النظام (إلزامية — حارس native-no-system-ui-guard)
+| بدل | استعمل | ملاحظات |
+|---|---|---|
+| List/Form + NavigationLink | `SunnahTileGrid([SunnahTileItem])` أو `SunnahSettingsGroup`/`SunnahSettingsRow` | مربعات عمودان، زاوية 26، لمس كامل، نقرة واحدة، معرّف `<prefix>.<id>` |
+| `.searchable` | `SunnahSearchField(text:prompt:suggestions:)` | 52pt ظاهر دائمًا أعلى المحتوى، اقتراحات شرائح تظهر والحقل فارغ |
+| `Toggle` | `SunnahSwitch(_:isOn:)` | 48×28، لمس ≥44، قيمة «مفعّل/معطّل» |
+| `Picker`/`.pickerStyle` | `SunnahSegmented(_ items:, selection:)` (2–4 خيارات) أو `SunnahChoiceChips(options:selection:)` (أكثر) | `Option(id:title:)` للشرائح |
+| `.sheet` لصفحة محتوى | `SunnahPage(title){…}` | صفحة كاملة بـTopBar رجوع، تُدفع كمسار أو `fullScreenCover` |
+| `DisclosureGroup` | `SunnahExpandableCard(title){…}` | يحترم «تقليل الحركة» |
+
+كل المكوّنات تحوّل النصوص بـ`.arabicDigits` وتستعمل رموز `Sunnah.*` فقط.
+
 ## الشاشات
 - **الرئيسية** (`R-Home2`): بطاقة خضراء موحّدة (التحية + التاريخ الهجري + المدينة + الصلاة القادمة + المتبقي + الخط الزمني) ← بطاقتان صغيرتان (الورد اليومي، أذكار الوقت) ← آية اليوم (مع استماع/مشاركة) ← حديث اليوم.
 - **الصلاة** (`N-Prayer`): بطاقة خضراء ← الأوقات الست في بطاقة واحدة (الماضية باهتة، القادمة نعناعية) مع مفتاح تنبيه لكل صلاة ← القبلة وطريقة الحساب.
