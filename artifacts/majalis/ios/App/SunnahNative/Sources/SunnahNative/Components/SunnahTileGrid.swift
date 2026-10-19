@@ -8,7 +8,7 @@ public struct SunnahTileItem: Identifiable, Hashable {
     public let symbol: String
     public let gold: Bool
     public init(id: String, title: String, subtitle: String? = nil, symbol: String = "doc.text", gold: Bool = false) {
-        self.id = id; self.title = title; self.subtitle = subtitle; self.symbol = symbol; self.gold = gold
+        self.id = id; self.title = title; self.subtitle = (subtitle?.contains(where: { $0.isLetter || $0.isNumber }) ?? false) ? subtitle : nil; self.symbol = symbol; self.gold = gold
     }
 }
 
