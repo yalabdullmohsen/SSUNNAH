@@ -178,8 +178,13 @@ public final class MukhtasarPlayer: ObservableObject {
     private var player: AVPlayer?
     private var observer: Any?
 
-    public func play(_ s: Int) {
-        if surah == s, let player { player.play(); playing = true; return }
+    /// الآية الجارية (إن شُغّلت آية بعينها) — يتوقف التشغيل تلقائيًا عند نهاية تفسيرها.
+    @Published public private(set) var ayah: Int?
+    private var boundary: Any?
+
+    /// تشغيل سورة من بداية «مقاصد السورة» (يتخطّى الإعلان الافتتاحي)، أو آية بعينها: من بدء تلاوتها إلى بدء الآية التالية بالضبط.
+    public func play(_ s: Int, ayah a: Int? = nil) {
+        if surah == s, ayah == a, let player { player.play(); playing = true; return }
         guard let url = MukhtasarAudio.playableURL(s) else { return }
         stop()
         #if os(iOS)
@@ -194,7 +199,14 @@ public final class MukhtasarPlayer: ObservableObject {
                 if let d = self.player?.currentItem?.duration.seconds, d.isFinite { self.duration = d }
             }
         }
-        player = p; surah = s; p.play(); playing = true
+        let range = MukhtasarIndex.range(surah: s, ayah: a)
+        if range.start > 0 { p.seek(to: CMTime(seconds: range.start, preferredTimescale: 600), toleranceBefore: .zero, toleranceAfter: .zero) }
+        if let end = range.end {
+            boundary = p.addBoundaryTimeObserver(forTimes: [NSValue(time: CMTime(seconds: end, preferredTimescale: 600))], queue: .main) { [weak self] in
+                MainActor.assumeIsolated { self?.player?.pause(); self?.playing = false }
+            }
+        }
+        player = p; surah = s; ayah = a; p.play(); playing = true
     }
 
     public func toggle() {
@@ -215,8 +227,9 @@ public final class MukhtasarPlayer: ObservableObject {
 
     public func stop() {
         if let observer, let player { player.removeTimeObserver(observer) }
-        player?.pause(); player = nil; observer = nil
-        surah = nil; playing = false; elapsed = 0; duration = 0
+        if let boundary, let player { player.removeTimeObserver(boundary) }
+        player?.pause(); player = nil; observer = nil; boundary = nil
+        surah = nil; ayah = nil; playing = false; elapsed = 0; duration = 0
     }
 
     static func clock(_ s: Double) -> String {
@@ -231,6 +244,8 @@ public final class MukhtasarPlayer: ObservableObject {
 struct MukhtasarAudioView: View {
     let index: MushafIndex
     var startSurah: Int?
+    /// آية محددة من المصحف: يُشغَّل تفسيرها هي بالضبط فور الفتح.
+    var startAyah: Int? = nil
     let close: () -> Void
     let chooseRecitation: () -> Void
     @ObservedObject private var downloader = MukhtasarDownloader.shared
@@ -280,7 +295,10 @@ struct MukhtasarAudioView: View {
         }
         .background(Sunnah.Colors.bg.ignoresSafeArea())
         .environment(\.layoutDirection, .rightToLeft)
-        .task { await MukhtasarAudio.refreshNames() }
+        .task {
+            await MukhtasarAudio.refreshNames()
+            if let s = startSurah, let a = startAyah, MukhtasarIndex.hasAyahs(s) { player.play(s, ayah: a) }
+        }
     }
 
     private func name(_ s: Int) -> String { index.surahs.first { $0.id == s }?.name ?? s.arabicDigits }
@@ -339,7 +357,7 @@ struct MukhtasarAudioView: View {
         let isActive = downloader.active == s.id, queued = downloader.queue.contains(s.id), done = downloader.isDownloaded(s.id)
         let current = player.surah == s.id
         return HStack(spacing: Sunnah.Spacing.s3) {
-            Button { current ? player.toggle() : player.play(s.id) } label: {
+            Button { current && player.ayah == nil ? player.toggle() : player.play(s.id) } label: {
                 HStack(spacing: Sunnah.Spacing.s2) {
                     if current { Image(systemName: player.playing ? "speaker.wave.2.fill" : "pause.fill").foregroundStyle(Sunnah.Colors.primary) }
                     Text("\(s.id.arabicDigits). \(s.name)").font(Sunnah.Typography.body)
@@ -393,7 +411,8 @@ struct MukhtasarAudioView: View {
     private var playerBar: some View {
         VStack(spacing: Sunnah.Spacing.s2) {
             HStack {
-                Text("تفسير سورة \(name(player.surah ?? 1))").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text(player.ayah.map { "تفسير الآية \($0.arabicDigits) من سورة \(name(player.surah ?? 1))" } ?? "تفسير سورة \(name(player.surah ?? 1))")
+                    .font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 Spacer()
                 Text("\(MukhtasarPlayer.clock(player.elapsed)) / \(MukhtasarPlayer.clock(player.duration))")
                     .font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)

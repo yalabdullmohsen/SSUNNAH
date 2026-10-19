@@ -98,7 +98,7 @@ public struct MushafPageView: View {
                             let k = item.k, w = item.w
                             Group {
                                 if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]) }
-                                else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.mushafText) }
+                                else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.mushafText).mushafInkWeight(layout.fontSize) }
                             }
                                 .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
                                 .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
@@ -150,6 +150,7 @@ public struct MushafReaderView: View {
     @State private var showIndex = false
     /// «المختصر الصوتي» (تفسير صوتي لكل سورة) فوق المصحف، يبدأ بسورة الآية المحددة إن وُجدت.
     @State private var mukhtasarSurah: Int?
+    @State private var mukhtasarAyah: Int?
     @State private var showMukhtasar = false
     @StateObject private var chromeHide = ChromeAutoHide()
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
@@ -270,7 +271,7 @@ public struct MushafReaderView: View {
         .onAppear { chromeHide.alwaysVisible = voiceOver; updatePin() }
         .onDisappear { chromeHide.cancel() }
         .fullScreenCover(isPresented: $showMukhtasar) {
-            MukhtasarAudioView(index: index, startSurah: mukhtasarSurah, close: { showMukhtasar = false },
+            MukhtasarAudioView(index: index, startSurah: mukhtasarSurah, startAyah: mukhtasarAyah, close: { showMukhtasar = false },
                                chooseRecitation: { showMukhtasar = false; openRoute("/quran/offline-player") })
         }
         .fullScreenCover(isPresented: $showIndex) {
@@ -473,7 +474,7 @@ public struct MushafReaderView: View {
                     #endif
                 }
                 Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }.accessibilityIdentifier("mushaf.sheet.tafsir")
-                Button { mukhtasarSurah = Int(ayah.split(separator: ":").first ?? ""); selected = nil; showMukhtasar = true } label: { Label("استماع", systemImage: "headphones") }.accessibilityIdentifier("mushaf.sheet.reciters")
+                Button { let parts = ayah.split(separator: ":"); mukhtasarSurah = Int(parts.first ?? ""); mukhtasarAyah = parts.count > 1 ? Int(parts[1]) : nil; selected = nil; showMukhtasar = true } label: { Label("استماع", systemImage: "headphones") }.accessibilityIdentifier("mushaf.sheet.reciters")
                 Button { sunnahAnimate { ayahPicker.toggle() } } label: { Label("علامة", systemImage: store.colors(ofAyah: ayah).isEmpty ? "bookmark" : "bookmark.fill") }.accessibilityIdentifier("mushaf.sheet.mark")
                 Button { sunnahAnimate { hifzPicker.toggle() } } label: { Label("حفظ", systemImage: hifz.progress.state(current) == .none ? "checkmark.circle" : "checkmark.circle.fill") }.accessibilityIdentifier("mushaf.sheet.hifz")
             }

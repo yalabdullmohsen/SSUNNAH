@@ -14,16 +14,19 @@ struct MushafEndMark: View {
     var body: some View {
         let fs = fontSize * MushafPageView.endMarkScale
         if let art = MushafEndMarkArt.parts(glyph: glyph, family: family, size: fs) {
+            // هامش رسم حول صندوق التخطيط (لا يغيّر العرض): Canvas يقصّ ما خارج إطاره، فكان طرف الزخرفة يُقطع في آخر السطر.
+            let m = fs * 0.12
             Canvas { ctx, _ in
                 // إحداثيات Core Text: الأصل على خط الأساس والمحور الصادي للأعلى؛ الإطار = العرض الطباعي × (الصاعد + النازل) كصندوق Text.
-                ctx.translateBy(x: art.inkMidX, y: art.ascent)
+                ctx.translateBy(x: art.inkMidX + m, y: art.ascent + m)
                 ctx.scaleBy(x: MushafPageView.endMarkSquash, y: -1)
                 ctx.translateBy(x: -art.inkMidX, y: 0)
                 ctx.fill(Path(art.silhouette), with: .color(Sunnah.Colors.mushafEndFill))
                 ctx.fill(Path(art.frame), with: .color(Sunnah.Colors.mushafEndGold))
                 ctx.fill(Path(art.digits), with: .color(Sunnah.Colors.mushafText))
             }
-            .frame(width: art.advance, height: art.ascent + art.descent)
+            .frame(width: art.advance + 2 * m, height: art.ascent + art.descent + 2 * m)
+            .padding(-m)
             .environment(\.layoutDirection, .leftToRight)
             .accessibilityHidden(true)
         } else {
@@ -117,4 +120,21 @@ enum MushafEndMarkArt {
         return Parts(advance: max(width, adv.width), ascent: CTFontGetAscent(font), descent: CTFontGetDescent(font), inkMidX: ink.midX,
                      silhouette: parts[sil], frame: frame, digits: digits)
     }
+}
+
+/// تثخين حبر خط المصحف كالمطبوع (قرار المالك: «أعرض وأغمق» كالمرجع): نسختان مزاحتان أفقيًا بجزء صغير من حجم الخط
+/// بنفس لون الحبر — لا يغيّر شكل الحروف ولا عرض السطر (الظل لا يدخل في التخطيط).
+struct MushafInkWeight: ViewModifier {
+    let fontSize: CGFloat
+    static let ratio: CGFloat = 0.014
+    func body(content: Content) -> some View {
+        let d = fontSize * Self.ratio
+        content
+            .shadow(color: Sunnah.Colors.mushafText, radius: 0, x: d, y: 0)
+            .shadow(color: Sunnah.Colors.mushafText, radius: 0, x: -d, y: 0)
+    }
+}
+
+extension View {
+    func mushafInkWeight(_ fontSize: CGFloat) -> some View { modifier(MushafInkWeight(fontSize: fontSize)) }
 }
