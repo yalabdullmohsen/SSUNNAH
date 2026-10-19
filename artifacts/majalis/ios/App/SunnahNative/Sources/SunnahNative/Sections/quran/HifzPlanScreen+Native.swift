@@ -24,7 +24,7 @@ struct HifzPlanScreen: View {
                     HifzPlanDashboard(state: $state, today: Date(), calendar: cal, onChange: persist, onEdit: { editing = true })
                 }
                 if legacyCount > 0 {
-                    NavigationLink { MemorizationPlansScreen() } label: {
+                    SunnahNavigationLink { MemorizationPlansScreen() } label: {
                         SunnahCard {
                             HStack {
                                 Text("خطط السور السابقة (\(legacyCount.arabicDigits))").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
