@@ -1,13 +1,11 @@
-git_sha=a2ca8254d66d7c5b828950fe2250116e7f531a99
+git_sha=33b6d6481c4cb0b347250f8f866ea639f483ec94
 branch=n3/hifz-map
-note: اللقطات من بناء 848731fd قبل إعادة التأسيس على native-app (دمج شاشة خطة ن2 فقط في QuranScreens+Native/QuranLocalStore)؛ شيفرة «حفظي» لم تتغيّر.
-app=/Users/alabdullmohsen/.majalis-tools/headbuild/848731fd8e806910/SunnahApp.app
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/6adcd454a4df93ab/SunnahApp.app
+binary_sha256=9777bbfd069b079dfda4ffb189d9edc06badc09512f519bbcb5577dc3eed6a2e
+built_at=2026-10-19 20:50:13
+source_newest=2026-10-19 20:42:39
+captured_at=2026-10-19 20:54:37
 binary_sha256=5a0401520571ae0b478d41633f6736ec290ce87444414230a63d23ada59e8598
-built_at=2026-10-19 20:23:18
-source_newest=2026-10-19 20:19:42
-captured_at=2026-10-19 20:42:06
-branch=n3/hifz-map
-note: اللقطات من بناء 848731fd قبل إعادة التأسيس على native-app (دمج شاشة خطة ن2 فقط في QuranScreens+Native/QuranLocalStore)؛ شيفرة «حفظي» لم تتغيّر.
 files: Sections/quran/HifzScreen.swift, Sections/quran/HifzProgress.swift, Mushaf/MushafReaderView.swift, Special/HomeScreen.swift, Design/Sunnah.swift, Sections/quran/QuranAdapters.swift (روابط «حفظي»), Sections/quran/QuranScreens+Native.swift (تسجيل المسار /quran/my-hifz؛ تظهر الشاشة في كل اللقطات أعلاه)
 covers: hifz-juz-{light,dark}.png = شاشة «حفظي» تبويب الأجزاء: بطاقة الملخص الخضراء والمفتاح وشبكة الأجزاء الثلاثين (HifzScreen.swift، HifzProgress.swift، Sunnah.swift: hifzReview)؛ hifz-pages-light.png = صفحات الجزء ٤ (HifzScreen.swift)؛ hifz-surah-light.png = تبويب السور بأشرطة النِّسَب (HifzScreen.swift)؛ hifz-stats-dark.png = تبويب الإحصائيات: التتابع اليومي وحلقات الأجزاء (HifzScreen.swift)؛ hifz-chooser-light.png = بطاقة اختيار الحالة عند الضغط المطوّل على الجزء ٢ (HifzScreen.swift)؛ mushaf-hifz-picker-{light,dark}.png = بطاقة الآية 2:255 بزر «حفظ» وصف «حالة الحفظ لهذه الصفحة» (MushafReaderView.swift)؛ mushaf-page-picker-light.png = منتقي علامة الصفحة ص٤٢ مع حالة الحفظ (MushafReaderView.swift)؛ home-hifz-light.png = بطاقة «حفظي» في الرئيسية (HomeScreen.swift)
 gaps: لم يُلتقط تحديد نطاق الصفحات (بطاقة النطاق مرئية جزئيًا أسفل hifz-pages فقط)؛ iPad غير مشمول؛ البيانات مزروعة بـ -snapshotSeedHifz (DEBUG فقط)؛ الاشتقاق والنِّسَب مغطّاة باختبارات HifzProgressTests لا باللقطات.
