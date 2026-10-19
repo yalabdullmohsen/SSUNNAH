@@ -20,13 +20,39 @@ public struct TreeTemplate: View {
     public init(roots: [TreeNode]) { self.roots = roots }
     public var body: some View {
         if roots.isEmpty { EmptyStateView() } else {
-            List(roots, children: \.children) { node in
-                Button { if let r = node.route { openRoute(r) } } label: {
-                    SunnahListRow(title: node.title, subtitle: node.subtitle)
-                }
-                .sunnahPressable().sunnahRowChrome()
+            SunnahRowStack {
+                ForEach(roots) { node in TreeRow(node: node, level: 0) }
             }
-            .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         }
     }
+}
+
+/// صف عقدة يتمدد بأبنائه (بديل `List(children:)`): الإزاحة بحسب العمق، والسهم يفتح/يطوي، والصف يفتح المسار إن وُجد.
+private struct TreeRow: View {
+    @Environment(\.openRoute) private var openRoute
+    let node: TreeNode; let level: Int
+    @State private var open = false
+    private var kids: [TreeNode] { node.children ?? [] }
+    var body: some View {
+        VStack(spacing: 0) {
+            HStack(spacing: Sunnah.Spacing.s2) {
+                Button { if let r = node.route { openRoute(r) } else if !kids.isEmpty { toggle() } } label: {
+                    SunnahListRow(title: node.title, subtitle: node.subtitle)
+                }
+                .sunnahPressable()
+                if !kids.isEmpty {
+                    Button { toggle() } label: {
+                        Image(systemName: open ? "chevron.up" : "chevron.down").foregroundStyle(Sunnah.Colors.textSecondary)
+                            .frame(minWidth: Sunnah.Spacing.touch, minHeight: Sunnah.Spacing.touch)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(open ? "طيّ \(node.title)" : "توسيع \(node.title)")
+                }
+            }
+            .sunnahStackRow()
+            if open { ForEach(kids) { TreeRow(node: $0, level: level + 1) } }
+        }
+        .padding(.leading, CGFloat(min(level, 4)) * Sunnah.Spacing.s4)
+    }
+    private func toggle() { sunnahAnimate { open.toggle() } }
 }

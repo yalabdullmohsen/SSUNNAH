@@ -31,22 +31,20 @@ public struct GroupedListTemplate: View {
             if groups.isEmpty { EmptyStateView() }
             else if visible.isEmpty { EmptyStateView(title: "لا نتائج") }
             else {
-                List {
+                SunnahRowStack {
                     ForEach(visible) { group in
-                        Section {
-                            ForEach(group.items) { item in row(item) }
-                        } header: {
-                            Text(group.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                                .textCase(nil).accessibilityAddTraits(.isHeader)
-                        }
+                        SunnahRowGroupHeader(group.title)
+                        ForEach(group.items) { item in row(item) }
                     }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth()
+                .sunnahReadableWidth()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .sunnahSearchable(text: $query)
+        .safeAreaInset(edge: .top, spacing: 0) {
+            SunnahSearchField(text: $query, idPrefix: "grouped.search").padding(.vertical, Sunnah.Spacing.s2).background(Sunnah.Colors.bg)
+        }
     }
 
     @ViewBuilder private func row(_ item: ContentItem) -> some View {
@@ -63,7 +61,7 @@ public struct GroupedListTemplate: View {
                     .frame(maxWidth: .infinity, alignment: .leading).transition(.opacity)
             }
         }
-        .sunnahRowChrome()
+        .sunnahStackRow()
     }
 
     private func toggle(_ id: String) {

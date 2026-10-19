@@ -55,11 +55,12 @@ public struct MapTemplate: View {
                     Button { if let r = s.route { openRoute(r) } } label: { SunnahListRow(title: s.title, subtitle: s.subtitle) }
                         .sunnahPressable().padding(Sunnah.Spacing.pageX).background(Sunnah.Colors.surface)
                 }
-                List(places) { p in
-                    Button { selected = p; sunnahAnimate { region.center = p.coordinate } } label: { SunnahListRow(title: p.title, subtitle: p.subtitle) }
-                        .sunnahPressable().sunnahRowChrome()
+                SunnahRowStack {
+                    ForEach(places) { p in
+                        Button { selected = p; sunnahAnimate { region.center = p.coordinate } } label: { SunnahListRow(title: p.title, subtitle: p.subtitle) }
+                            .sunnahPressable().sunnahStackRow()
+                    }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
             .background(Sunnah.Colors.bg)
         }

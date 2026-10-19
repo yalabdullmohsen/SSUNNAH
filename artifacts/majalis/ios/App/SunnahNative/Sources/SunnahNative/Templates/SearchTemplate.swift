@@ -37,58 +37,56 @@ public struct SearchTemplate: View {
     }
 
     public var body: some View {
-        Group {
-            if results.isEmpty { query.isEmpty ? AnyView(startPage) : AnyView(EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass")) } else {
-                List(results) { item in
-                    Button { openRoute(item.path(base: detailBase)) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                        .sunnahPressable().sunnahRowChrome()
+        VStack(spacing: 0) {
+            SunnahSearchField(text: $query, prompt: "ابحث في المحتوى", idPrefix: "search.field")
+                .padding(.vertical, Sunnah.Spacing.s2)
+                .onSubmit { remember(query) }
+            Group {
+                if results.isEmpty { query.isEmpty ? AnyView(startPage) : AnyView(EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass")) } else {
+                    SunnahRowStack {
+                        ForEach(results) { item in
+                            Button { openRoute(item.path(base: detailBase)) } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
+                                .sunnahPressable().sunnahStackRow()
+                        }
+                    }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .sunnahSearchable(text: $query)
-        .onSubmit(of: .search) { remember(query) }
     }
 
     /// قبل الكتابة: آخر عمليات البحث + اقتراحات + أقسام سريعة (عناصر الفهرس نفسه فلا اقتراح بلا نتيجة).
     private var startPage: some View {
         let suggested = SearchTemplate.suggestedIDs.compactMap(item)
         let quick = SearchTemplate.quickIDs.compactMap(item)
-        return List {
+        return SunnahRowStack {
             if !recent.isEmpty {
-                Section {
-                    ForEach(recent, id: \.self) { term in
-                        Button { query = term } label: { Label(term, systemImage: "clock.arrow.circlepath") }
-                            .sunnahPressable().sunnahRowChrome()
-                    }
-                } header: {
-                    HStack {
-                        Text("آخر عمليات البحث").font(Sunnah.Typography.sectionTitle).accessibilityAddTraits(.isHeader)
-                        Spacer()
-                        Button("مسح") { recent = []; UserDefaults.standard.removeObject(forKey: SearchTemplate.recentKey) }
-                            .font(Sunnah.Typography.secondary)
-                    }
+                HStack {
+                    SunnahRowGroupHeader("آخر عمليات البحث")
+                    Button("مسح") { recent = []; UserDefaults.standard.removeObject(forKey: SearchTemplate.recentKey) }
+                        .font(Sunnah.Typography.secondary).frame(minHeight: Sunnah.Spacing.touch)
+                        .padding(.horizontal, Sunnah.Spacing.pageX)
+                }
+                ForEach(recent, id: \.self) { term in
+                    Button { query = term } label: { Label(term, systemImage: "clock.arrow.circlepath") }
+                        .sunnahPressable().sunnahStackRow()
                 }
             }
             if !suggested.isEmpty {
-                Section {
-                    ForEach(suggested) { it in
-                        Button { query = it.title } label: { Label(it.title, systemImage: "magnifyingglass") }
-                            .sunnahPressable().sunnahRowChrome()
-                    }
-                } header: { Text("عمليات بحث مقترحة").font(Sunnah.Typography.sectionTitle).accessibilityAddTraits(.isHeader) }
+                SunnahRowGroupHeader("عمليات بحث مقترحة")
+                ForEach(suggested) { it in
+                    Button { query = it.title } label: { Label(it.title, systemImage: "magnifyingglass") }
+                        .sunnahPressable().sunnahStackRow()
+                }
             }
             if !quick.isEmpty {
-                Section {
-                    ForEach(quick) { it in
-                        Button { openRoute(it.path(base: detailBase)) } label: { SunnahListRow(title: it.title, subtitle: it.subtitle) }
-                            .sunnahPressable().sunnahRowChrome()
-                    }
-                } header: { Text("أقسام سريعة").font(Sunnah.Typography.sectionTitle).accessibilityAddTraits(.isHeader) }
+                SunnahRowGroupHeader("أقسام سريعة")
+                ForEach(quick) { it in
+                    Button { openRoute(it.path(base: detailBase)) } label: { SunnahListRow(title: it.title, subtitle: it.subtitle) }
+                        .sunnahPressable().sunnahStackRow()
+                }
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden)
     }
 }
