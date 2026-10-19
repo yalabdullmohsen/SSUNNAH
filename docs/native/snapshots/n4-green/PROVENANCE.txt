@@ -1,0 +1,10 @@
+git_sha=996c55344
+branch=mushaf-green-bold-mukhtasar-ayah
+captured_at=2026-10-19T21:51Z
+device=iPhone simulator (iOS), -AppleLanguages ar, RTL
+files:
+  page-23-light.png page-23-dark.png page-24-light.png page-24-dark.png page-27-light.png page-27-dark.png
+covers:
+  زخرفة نهاية الآية الخضراء بلا قصّ عند آخر السطر، حبر أثقل، الصفحات 23/24/27 فاتحًا وداكنًا
+gaps:
+  لا جهاز حقيقي؛ لا macOS؛ لقطات محاكي فقط
