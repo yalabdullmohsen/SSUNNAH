@@ -1,11 +1,11 @@
 {
   "version": 1,
   "contentType": "fiqh.books",
-  "checksum": "sha256:bfce87b470d7441ceeb4b613d5dc3bfa7ab6284fddb22a8e96178fec91fccf1c",
+  "checksum": "sha256:0d8805aa1c45f0b154d484a523d54cd0d710dd0809ffe89c5e461d67675f903e",
   "files": [
     {
       "file": "books.json",
-      "bytes": 5443547,
+      "bytes": 5433149,
       "bookCount": 19
     },
     {
