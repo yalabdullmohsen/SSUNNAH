@@ -1,0 +1,10 @@
+git_sha=963c5a95dbb6a0e9124a1d9c6dd47173ec2e3640
+branch=n3/tasbih-zero
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/57e9c5096028574b/SunnahApp.app
+binary_sha256=94a13de18260b611235d4da4f78d888391d68d78d1b170b7a407e1dd67d0ed9f
+built_at=2026-10-19 22:33:39
+source_newest=2026-10-19 22:28:19
+captured_at=2026-10-19 22:38:38
+files: Special/AdhkarExtraScreens.swift
+covers: tasbih-zero-light/dark = Special/AdhkarExtraScreens.swift (المسبحة عند الصفر: «ابدأ» بدل نقطة)؛ tasbih-count-light = Special/AdhkarExtraScreens.swift (العدّاد ١٢ / ٣٣ بأرقام عربية)
+gaps: iPad
