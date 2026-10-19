@@ -1,4 +1,4 @@
-git_sha=996c55344
+git_sha=996c55344384d500822632b3c83424e6e2414e48
 branch=mushaf-green-bold-mukhtasar-ayah
 captured_at=2026-10-19T21:51Z
 device=iPhone simulator (iOS), -AppleLanguages ar, RTL
