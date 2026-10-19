@@ -1,0 +1,7 @@
+git_sha=52ad063124cbb61c643b5496b434b235104e659f
+branch=mushaf-printed-endmark-mukhtasar (#3590)
+captured_at=2026-10-19 21:45:35
+source=iOS Simulator iPhone 17 Pro (iOS 26.5)؛ after/ من MushafEndMarkGuardTests (ENDMARK_SNAP_DIR)؛ mukhtasar/ من XCUITest تدفّق المختصر
+files: Mushaf/MushafEndMark.swift Mushaf/MushafReaderView.swift Mushaf/BasmalaView.swift Audio/MukhtasarAudio.swift Design/Sunnah.swift
+covers: after/page-{1,2,19,33,293,446}-{light,dark}.png = MushafEndMark.swift + MushafReaderView.swift (زخرفة نهاية الآية بحجم الطبعة وألوانها وأرقامها، فاتحًا وداكنًا)؛ mukhtasar/sheet.png = MushafReaderView.swift (قائمة الآية بزر «استماع»)؛ mukhtasar/mukhtasar-screen.png وmukhtasar-streaming.png وmukhtasar-downloaded.png = MukhtasarAudio.swift (شاشة المختصر الصوتي: تشغيل الفاتحة بثًا ثم تنزيلها واكتماله)
+gaps: حدّ 40 ملفًا: لم تُضمَّن لقطات صفحتي 19/33 بالإطار الكامل ولا مرحلة «التنزيل الجاري» (موجودة في ~/n4-endmark)؛ BasmalaView.swift وSunnah.swift بلا لقطة مستقلة؛ iPad؛ مراجع MushafVisual (macOS) لم تُعَد توليدها هنا

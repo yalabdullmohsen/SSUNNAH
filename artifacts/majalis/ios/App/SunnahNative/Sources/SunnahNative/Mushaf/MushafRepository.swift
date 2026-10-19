@@ -42,7 +42,7 @@ public final class MushafRepository: @unchecked Sendable {
         let n = Mushaf.clamp(n)
         lock.lock(); defer { lock.unlock() }
         if let hit = pages[n] { return hit }
-        let p = try JSONDecoder().decode(MushafPage.self, from: read(String(format: "pages/%03d.json", n)))
+        let p = try JSONDecoder().decode(MushafPage.self, from: read(String(format: "pages/%03d.json", n))).endMarksAttachedToLineEnds()
         pages[n] = p; pageOrder.append(n)
         if pageOrder.count > Self.pageCacheLimit { pages[pageOrder.removeFirst()] = nil }
         return p

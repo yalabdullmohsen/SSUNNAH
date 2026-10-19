@@ -69,6 +69,11 @@ public enum Sunnah {
         public static let mushafGold = dynamic(light: 0xD6BE8C, dark: 0xD6BE8C)
         public static let mushafGoldBrown = dynamic(light: 0xB5A177, dark: 0xB5A177)
         public static let mushafInk = dynamic(light: 0x265440, dark: 0xCFE3D6)
+        /// حبر نص المصحف كالمطبوع: أسود فاتحًا، عاجي داكنًا (قرار المالك: «نفس لون الخط» في المرجع).
+        public static let mushafText = dynamic(light: 0x000000, dark: 0xEDE6D6)
+        /// علامة نهاية الآية كالمطبوع: إطار وزخارف ذهبي بُنّي، وحشوة بيج؛ الرقم بـmushafText (تباين ≥ 4.5:1 على الحشوة).
+        public static let mushafEndGold = dynamic(light: 0x8A5A2B, dark: 0xC9A46A)
+        public static let mushafEndFill = dynamic(light: 0xF0E3D0, dark: 0x2E2A21)
         public static let goldDeco = dynamic(light: 0xB08D4A, dark: 0xD9C089)
         public static let goldSoft = dynamic(light: 0xD9C089, dark: 0x3A3320)
         public static let textPrimary = dynamic(light: 0x17241E, dark: 0xEFECE2)
