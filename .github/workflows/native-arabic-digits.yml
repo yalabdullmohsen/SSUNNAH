@@ -1,0 +1,18 @@
+name: native arabic digits
+# يمنع الأرقام اللاتينية في نصوص المصحف ومراحل القصة ومصادر الودجت (scripts/native-arabic-digits-guard.sh). ubuntu رخيص.
+on:
+  pull_request:
+    branches: [native-app]
+    paths:
+      - 'artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/**'
+      - 'artifacts/majalis/ios/App/PrayerWidget/**'
+      - 'scripts/native-arabic-digits-guard.sh'
+permissions:
+  contents: read
+jobs:
+  digits:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - run: bash scripts/native-arabic-digits-guard.sh

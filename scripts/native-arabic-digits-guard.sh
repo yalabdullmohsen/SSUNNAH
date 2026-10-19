@@ -10,4 +10,8 @@ BAD=$(grep -nE '(Text|Label|accessibilityLabel|navigationTitle)\(.*"[^"]*\\\([^)
   | grep -vE 'arabicDigits|ArabicNumerals|digits-ok' \
   | grep -E '\\\((.*\.(id|page|firstPage|number|order|v|ayah|count)|index \+ 1|i \+ 1|current|p|\$0)\)' || true)
 if [ -n "$BAD" ]; then echo "أرقام لاتينية في نص واجهة (استخدم .arabicDigits):"; echo "$BAD"; exit 1; fi
+# الودجت: مصدر العنصر يُعرض دائمًا عبر WidgetFormat.arabicDigits («صحيح مسلم: ٧٢٠»).
+W=artifacts/majalis/ios/App/PrayerWidget/SunnahLocalDataWidgets.swift
+if grep -nE 'Text\(item\.source\)' "$W"; then echo "مصدر ودجت بأرقام لاتينية (استخدم WidgetFormat.arabicDigits): $W"; exit 1; fi
+grep -q 'WidgetFormat.arabicDigits(item.source)' "$W" || { echo "ودجت المصدر لا يمرّ بـ WidgetFormat.arabicDigits: $W"; exit 1; }
 echo "arabic-digits-guard: OK"

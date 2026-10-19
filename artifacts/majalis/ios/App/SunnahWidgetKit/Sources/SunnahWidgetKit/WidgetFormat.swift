@@ -1,9 +1,13 @@
 import Foundation
+import SunnahPrayer
 
 /// تنسيق موحّد لنصوص الودجات: عربي بأرقام لاتينية 0-9 (قرار المالك)، ووحدات وجمع عربي صحيح.
 public enum WidgetFormat {
     /// لغة موحّدة لكل Text/DateFormatter/NumberFormatter: عربي بأرقام لاتينية.
     public static let locale = Locale(identifier: "ar-u-nu-latn")
+
+    /// أرقام عربية-هندية لأرقام المراجع («صحيح مسلم: ٧٢٠»)؛ تنفيذ واحد مشترك مع التطبيق (PrayerTimeFormat) لا نسخة ثانية.
+    public static func arabicDigits(_ s: String) -> String { PrayerTimeFormat.arabicDigits(s) }
 
     public static func digits(_ value: Int) -> String { String(value) }
 
