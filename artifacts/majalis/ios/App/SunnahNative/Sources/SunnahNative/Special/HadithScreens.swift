@@ -72,12 +72,14 @@ struct HadithListView: View {
 
     @ViewBuilder private var listBody: some View {
         if items.isEmpty { EmptyStateView() } else {
-            List(filtered) { item in
-                SunnahNavigationLink { HadithDetailView(item: item) } label: {
-                    SunnahListRow(title: item.title, subtitle: item.sourceName ?? item.chapter)
-                }.sunnahRowChrome()
+            SunnahRowStack {
+                ForEach(filtered) { item in
+                    SunnahNavigationLink { HadithDetailView(item: item) } label: {
+                        SunnahListRow(title: item.title, subtitle: item.sourceName ?? item.chapter)
+                    }.sunnahStackRow()
+                }
             }
-            .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth().background(Sunnah.Colors.bg)
+            .sunnahReadableWidth()
             .sunnahSearchable(text: $query, prompt: "ابحث في الأحاديث")
             #if DEBUG
             // لقطات التدقيق فقط: `-snapshotSearchQuery <نص>` يملأ مربع البحث.
@@ -140,15 +142,15 @@ struct HadithSahihScreen: ScreenTemplate {
 /// كتب الحديث المحزومة: صحيح البخاري وصحيح مسلم.
 struct HadithBooksView: View {
     var body: some View {
-        List {
+        SunnahRowStack {
             SunnahNavigationLink { HadithCollectionView(file: "bukhari", title: "صحيح البخاري", showNumber: true) } label: {
                 SunnahListRow(title: "صحيح البخاري", subtitle: "الجامع الصحيح")
-            }.sunnahRowChrome()
+            }.sunnahStackRow()
             SunnahNavigationLink { HadithCollectionView(file: "muslim", title: "صحيح مسلم", showNumber: false) } label: {
                 SunnahListRow(title: "صحيح مسلم", subtitle: "المسند الصحيح")
-            }.sunnahRowChrome()
+            }.sunnahStackRow()
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).sunnahReadableWidth().background(Sunnah.Colors.bg)
+        .sunnahReadableWidth()
     }
 }
 
@@ -168,13 +170,14 @@ struct HadithCollectionView: View {
             case .ready(let all):
                 let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
                 let rows = q.isEmpty ? all : all.filter { ArabicSearch.normalize($0.t).contains(q) }
-                List(rows) { row in
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                        SunnahArabicText(row.t, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
-                        if showNumber { Text("رقم \(row.n)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
-                    }.sunnahRowChrome()
+                SunnahRowStack {
+                    ForEach(rows) { row in
+                        VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                            SunnahArabicText(row.t, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
+                            if showNumber { Text("رقم \(row.n)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
+                        }.sunnahStackRow()
+                    }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
                 .sunnahSearchable(text: $query, prompt: "ابحث في \(title)")
             }
         }

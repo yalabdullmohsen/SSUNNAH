@@ -45,26 +45,26 @@ struct SirahInlineItemsView: View {
     var body: some View {
         Group {
             if items.isEmpty { EmptyStateView() } else {
-                List(items) { item in
-                    Button { open = item } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                        .buttonStyle(.plain).sunnahRowChrome()
+                ScrollView {
+                    SunnahTileGrid(items.map { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.subtitle) }, idPrefix: "sirah.item") { tile in
+                        open = items.first { $0.id == tile.id }
+                    }
+                    .padding(.vertical, Sunnah.Spacing.s2)
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .background(Sunnah.Colors.bg)
-        .sheet(item: $open) { item in
-            NavigationStack {
-                Group {
-                    switch reader {
-                    case .article: ArticleTemplate(item: item)
-                    case .detail: DetailTemplate(item: item)
-                    }
-                }
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) { Button("إغلاق") { open = nil } }
+        .fullScreenCover(item: $open) { item in
+            // صفحة كاملة بشريط رجوع (لا ورقة): نفس القارئ، والرجوع يغلقها.
+            VStack(spacing: 0) {
+                SunnahTopBar(onBack: { open = nil }) { EmptyView() }.padding(.vertical, Sunnah.Spacing.s2)
+                switch reader {
+                case .article: ArticleTemplate(item: item)
+                case .detail: DetailTemplate(item: item)
                 }
             }
+            .background(Sunnah.Colors.bg.ignoresSafeArea())
+            .environment(\.layoutDirection, .rightToLeft)
         }
     }
 }
