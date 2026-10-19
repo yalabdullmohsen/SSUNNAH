@@ -9,3 +9,15 @@ test('وحيد → مرجع', () => { const [o, s] = conv('قال ﴿قُلْ ه
 test('ملتبس يبقى', () => { const [o, s] = conv('﴿إِنَّ اللَّهَ عَزِيزٌ حَكِيمٌ﴾'); assert.equal(o, '﴿إِنَّ اللَّهَ عَزِيزٌ حَكِيمٌ﴾'); assert.equal(s.ambiguous, 1) })
 test('مجهول يبقى', () => { const [o, s] = conv('﴿كلام ليس من القرآن أبدا﴾'); assert.match(o, /﴿/); assert.equal(s.unmatched, 1) })
 test('مكرّرة بمواضع قليلة تُذكر مواضعها كلها', () => { const [o, s] = conv('﴿إِنِّى لَكُمْ رَسُولٌ أَمِينٌ﴾'); assert.match(o, /^\(الشعراء: 107، 125/); assert.doesNotMatch(o, /﴿/); assert.equal(s.repeated, 1) })
+import { convertByContext } from '../artifacts/majalis/scripts/native/lib/verse-match.mjs'
+test('سياق الآية: مطابقة نص الآية نفسها تتحوّل ولو قصيرة، وغيرها يبقى', () => {
+  const raw = JSON.stringify({ items: [
+    { id: 'tafsir-ayah-78-4', body: '## النص\n﴿كَلَّا سَيَعْلَمُونَ﴾\n' },
+    { id: 'tafsir-ayah-78-4', body: '## النص\n﴿وَٱلْجِبَالَ أَوْتَادًۭا﴾\n' },
+    { id: 'tafsir-surah-001', body: '﴿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ﴾' },
+    { id: 'tafsir-surah-002', body: '﴿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ الٓمٓ﴾' },
+    { id: 'tafsir-surah-002', body: '﴿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ الٓمٓصٓ﴾' }] }, null, 2) + '\n'
+  const it = JSON.parse(convertByContext(raw, q)).items
+  assert.match(it[0].body, /^## النص\n\(النبإ: 4\)/); assert.match(it[1].body, /﴿/)
+  assert.equal(it[2].body, '(الفاتحة: 1)'); assert.equal(it[3].body, '(البقرة: 1)'); assert.match(it[4].body, /﴿/)
+})

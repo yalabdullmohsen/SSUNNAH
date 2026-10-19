@@ -9,7 +9,7 @@
  */
 import { latinizeSources } from "./lib/latin-digits.mjs";
 import { arabicTags } from "./lib/tag-labels.mjs";
-import { loadQuran, makeMatcher, convertVerses } from "./lib/verse-match.mjs";
+import { loadQuran, makeMatcher, convertVerses, convertByContext } from "./lib/verse-match.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -34,7 +34,7 @@ const sha = (b) => crypto.createHash("sha256").update(b).digest("hex");
 const written = new Set();
 /* ﴿…﴾ حرفية → مرجع «(السورة: ن)» بمطابقة نص المصحف المحمي (قراءة فقط)؛ الملتبس يُترك */
 let _vq, _vm; const verseStats = { done: 0, ambiguous: 0, unmatched: 0 };
-const toVerseRefs = (raw) => { if (!raw.includes("﴿")) return raw; _vq ??= loadQuran(`${appRoot}/public/data/quran`); _vm ??= makeMatcher(_vq); return stripTrailingWord(convertVerses(raw, _vq, _vm, verseStats)); };
+const toVerseRefs = (raw) => { if (!raw.includes("﴿")) return raw; _vq ??= loadQuran(`${appRoot}/public/data/quran`); _vm ??= makeMatcher(_vq); return stripTrailingWord(convertVerses(convertByContext(raw, _vq), _vq, _vm, verseStats)); };
 /* بعد التحويل قد تبقى ﴿كلمة﴾ مفردة تتمّ آية سبق مرجعها «(السورة: ن)» في السلسلة نفسها: تبقى الكلمة بلا أقواس قرآنية (المرجع موجود؛ لا آية حرفية) */
 const stripTrailingWord = (raw) => raw.replace(/(\([^()"]*: ?\d+\)[^﴿"]*)﴿([^﴾\s"]+)﴾/g, "$1$2");
 const put = (rel, buf) => {

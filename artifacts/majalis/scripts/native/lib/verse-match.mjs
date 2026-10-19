@@ -57,3 +57,23 @@ export function convertVerses(raw, quran, match, stats = { done: 0, ambiguous: 0
     return `(${surahName(surah, quran)}: ${from}${to > from ? '-' + to : ''})`
   })
 }
+
+/** سياق المدخل (tafsir-ayah-S-A / tafsir-surah-NNN) يعيّن الآية: ﴿…﴾ التي تطابق نصَّ تلك الآية بعينها (ولو كلمة أو كلمتين، أو مسبوقة بالبسملة) تُحوَّل لمرجعها؛ غير المطابق يُترك. */
+export function convertByContext(raw, quran) {
+  let d; try { d = JSON.parse(raw) } catch { return raw }
+  if (!Array.isArray(d?.items)) return raw
+  let changed = false
+  for (const it of d.items) {
+    const m = /^tafsir-(?:ayah-(\d+)-(\d+)|surah-(\d+))/.exec(it?.id ?? ''); if (!m || typeof it.body !== 'string' || !it.body.includes('﴿')) continue
+    const s = Number(m[1] ?? m[3]), a = m[2] ? Number(m[2]) : 1; const ays = quran[s - 1]?.ay; if (!ays?.[a - 1]) continue
+    it.body = it.body.replace(/﴿([^﴾]*)﴾/g, (all, frag) => {
+      let f = frag.trim(); const ws = f.split(/\s+/)
+      if (s === 1 && flat(f) === BISMILLAH) return changed = true, `(${surahName(1, quran)}: 1)`
+      if (ws.length >= 4 && flat(ws.slice(0, 4).join(' ')) === BISMILLAH) f = ws.slice(4).join(' ')
+      const tgt = s !== 1 && ays[a - 1].startsWith(BISMILLAH) ? ays[a - 1].slice(BISMILLAH.length) : ays[a - 1]
+      if (f && flat(f) === tgt) { changed = true; return `(${surahName(s, quran)}: ${a})` }
+      return all
+    })
+  }
+  return changed ? JSON.stringify(d, null, /^[\[{]\n/.test(raw) ? 2 : 0) + (raw.endsWith('\n') ? '\n' : '') : raw
+}
