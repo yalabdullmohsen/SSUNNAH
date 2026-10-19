@@ -246,7 +246,7 @@ public struct SunnahSettingsRow<Accessory: View>: View {
         VStack(spacing: 0) {
             HStack(spacing: 12) {
                 SunnahIconTile(symbol, tone: tone, size: 38)
-                Text(title).font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text(title.arabicDigits).font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
                 Spacer(minLength: 8)
                 accessory
             }
@@ -321,4 +321,15 @@ private struct SunnahSubChrome: ViewModifier {
 public extension View {
     /// شريط الشاشات الفرعية (النموذج ٢): رجوع + بحث، ويخفي شريط التنقّل النظامي.
     func sunnahSubChrome() -> some View { modifier(SunnahSubChrome()) }
+}
+
+/// كبسولة ذهبية على البطاقة الخضراء («بعد … س»): نص داكن ثابت فوق الذهب فيبقى مقروءًا فاتحًا وداكنًا.
+public struct SunnahHeroCapsule: View {
+    let text: String
+    public init(_ text: String) { self.text = text }
+    public var body: some View {
+        Text(text.arabicDigits).font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.onHeroGold)
+            .padding(.horizontal, 12).padding(.vertical, 5)
+            .background(Sunnah.Colors.heroGold, in: Capsule())
+    }
 }

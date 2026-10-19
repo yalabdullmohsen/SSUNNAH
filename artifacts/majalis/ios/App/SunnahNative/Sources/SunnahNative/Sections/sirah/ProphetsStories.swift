@@ -186,7 +186,7 @@ struct ProphetsGridView: View {
                         Text(p.name).font(AppearancePrefs.ui(.extraBold, 24, .title2)).foregroundStyle(.white)
                     }
                     Spacer(minLength: 8)
-                    Text("أكمل").font(AppearancePrefs.ui(.extraBold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.goldInk)
+                    Text("أكمل").font(AppearancePrefs.ui(.extraBold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.onHeroGold)
                         .padding(.horizontal, 18).frame(minHeight: 44)
                         .background(Sunnah.Colors.heroGold, in: Capsule())
                 }
@@ -297,7 +297,7 @@ struct ProphetPageView: View {
             } else {
                 ForEach(Array((p.sections[sec] ?? []).enumerated()), id: \.offset) { _, para in
                     if let head = Self.stageHeading(para) {
-                        Text(head).font(AppearancePrefs.ui(.extraBold, 16, .subheadline)).foregroundStyle(Sunnah.Colors.textPrimary).padding(.top, 4)
+                        Text(head.arabicDigits).font(AppearancePrefs.ui(.extraBold, 16, .subheadline)).foregroundStyle(Sunnah.Colors.textPrimary).padding(.top, 4)
                     } else {
                         SunnahArabicText(para.arabicDigits, style: .reading).foregroundStyle(Sunnah.Colors.textPrimary)
                     }

@@ -43,7 +43,7 @@ public struct SunnahListRow: View {
         HStack(spacing: Sunnah.Spacing.s3) {
             if let icon {
                 Group {
-                    if icon.count <= 3 && icon.first?.isLetter != true || icon.count <= 2 { Text(icon).font(Sunnah.Typography.cardTitle) }
+                    if icon.count <= 3 && icon.first?.isLetter != true || icon.count <= 2 { Text(icon.arabicDigits).font(Sunnah.Typography.cardTitle) }
                     else { Image(systemName: icon).font(.system(size: 17, weight: .semibold)) }
                 }
                 .frame(width: 40, height: 40)
@@ -51,8 +51,8 @@ public struct SunnahListRow: View {
                 .background(Sunnah.Colors.primarySoft, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
             }
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                if let subtitle { Text(subtitle).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).lineLimit(2) }
+                Text(title.arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                if let subtitle { Text(subtitle.arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).lineLimit(2) }
             }
             Spacer(minLength: Sunnah.Spacing.s2)
             if showsChevron ?? envChevron { Image(systemName: "chevron.forward").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }

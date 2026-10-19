@@ -13,10 +13,10 @@ public struct SunnahMessageState: View {
         VStack(spacing: Sunnah.Spacing.s3) {
             Image(systemName: symbol).font(Sunnah.Typography.sectionTitle)
                 .foregroundStyle(Sunnah.Colors.textSecondary).accessibilityHidden(true)
-            Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+            Text(title.arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 .multilineTextAlignment(.center).accessibilityAddTraits(.isHeader)
             if let message {
-                Text(message).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                Text(message.arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
             }
             if let actionTitle, let action { SunnahButton(actionTitle, style: .secondary, action: action) }
@@ -93,10 +93,10 @@ public struct SunnahInviteState: View {
                 SunnahStarPattern().opacity(0.10).frame(width: 132, height: 132).clipShape(Circle())
                 Image(systemName: symbol).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.primary).accessibilityHidden(true)
             }
-            Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+            Text(title.arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 .multilineTextAlignment(.center).accessibilityAddTraits(.isHeader)
             if let message {
-                Text(message).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                Text(message.arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     .multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
             }
             SunnahButton(actionTitle, action: action).padding(.horizontal, Sunnah.Spacing.pageX)

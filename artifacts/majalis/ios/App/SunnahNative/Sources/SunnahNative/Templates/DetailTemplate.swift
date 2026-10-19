@@ -69,9 +69,9 @@ struct DetailHero: View {
     let title: String; var subtitle: String? = nil; var tags: [String] = []; var centered = false; var fillHeight: CGFloat? = nil
     var body: some View {
         VStack(alignment: centered ? .center : .leading, spacing: Sunnah.Spacing.s2) {
-            if let t = tags.first { Text(t).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.goldDeco) }
-            Text(title).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.onHero).accessibilityAddTraits(.isHeader)
-            if let s = subtitle, !s.isEmpty { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Color.white.opacity(0.82)) }
+            if let t = tags.first { Text(t.arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.goldDeco) }
+            Text(title.arabicDigits).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.onHero).accessibilityAddTraits(.isHeader)
+            if let s = subtitle, !s.isEmpty { Text(s.arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Color.white.opacity(0.82)) }
             if tags.count > 1 { HStack(spacing: Sunnah.Spacing.s2) { ForEach(tags.dropFirst(), id: \.self) { SunnahChip($0) } } }
         }
         .multilineTextAlignment(centered ? .center : .leading)

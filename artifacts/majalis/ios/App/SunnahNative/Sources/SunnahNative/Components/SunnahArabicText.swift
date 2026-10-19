@@ -31,7 +31,7 @@ public struct SunnahArabicText: View {
     @ScaledMetric private var size: CGFloat
 
     public init(_ text: String, style: Style = .reading) {
-        self.text = text
+        self.text = style == .quran ? text : text.arabicDigits
         self.attributed = nil
         self.style = style
         _size = ScaledMetric(wrappedValue: style.base.size, relativeTo: style.base.relativeTo)
@@ -40,9 +40,20 @@ public struct SunnahArabicText: View {
     /// فقرة Markdown داخل السطر (غليظ/مائل/روابط) بالتنسيق العربي نفسه.
     public init(markdown: String, style: Style = .reading) {
         self.text = markdown
-        self.attributed = SunnahMarkdown.inline(markdown)
+        self.attributed = Self.arabicDigits(SunnahMarkdown.inline(markdown))
         self.style = style
         _size = ScaledMetric(wrappedValue: style.base.size, relativeTo: style.base.relativeTo)
+    }
+
+    /// أرقام عربية-هندية موحّدة في النص المعروض؛ الروابط تبقى كما هي حتى لا تنكسر عناوينها.
+    static func arabicDigits(_ a: AttributedString) -> AttributedString {
+        var out = AttributedString()
+        for run in a.runs {
+            let plain = String(a[run.range].characters)
+            let piece = run.link == nil ? AttributedString(plain.arabicDigits, attributes: run.attributes) : AttributedString(a[run.range])
+            out.append(piece)
+        }
+        return out
     }
 
     /// كثافة التشكيل: نسبة علامات الحركات إلى الحروف.
