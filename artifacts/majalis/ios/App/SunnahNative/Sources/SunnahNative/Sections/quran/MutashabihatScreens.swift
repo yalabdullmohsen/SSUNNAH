@@ -38,11 +38,8 @@ struct MutashabihatListView: View {
             LazyVStack(spacing: 0) {
                 ForEach(categories, id: \.self) { c in
                     SunnahSectionLabel(c)
-                    SunnahGroupedCard(pairs.filter { $0.category == c }) { p in
-                        SunnahNavigationLink { MutashabihatDetailView(pair: p) } label: {
-                            SunnahListRow(title: p.title, subtitle: p.refs.map { "\($0.surahName) \($0.ayah)" }.joined(separator: " · "))
-                        }
-                    }
+                    SunnahNavTileGrid(pairs.filter { $0.category == c }, idPrefix: "mutashabihat", padded: false,
+                                      tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.refs.map { "\($0.surahName) \($0.ayah)" }.joined(separator: " · "), symbol: "text.quote") }) { MutashabihatDetailView(pair: $0) }
                 }
                 SunnahSectionLabel("المصدر")
                 Text("درة التنزيل وغرة التأويل للخطيب الإسكافي، والبرهان في متشابه القرآن للسخاوي، وملاك التأويل لأبي جعفر الغرناطي. نص الآيات من مصحف التطبيق.")
