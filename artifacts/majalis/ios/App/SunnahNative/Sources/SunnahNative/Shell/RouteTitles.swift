@@ -58,7 +58,7 @@ public enum RouteTitles {
         "/quran-hub": "القرآن الكريم", "/quran-hub/numbers": "أعداد القرآن", "/quran-hub/qiraat": "القراءات", "/quran-hub/seven-ahruf": "الأحرف السبعة",
         "/quran-hub/tajweed": "التجويد", "/quran-hub/tajweed/:chapter": "باب التجويد", "/quran-hub/terms": "مصطلحات علوم القرآن", "/quran-hub/tilawa": "التلاوة",
         "/quran-knowledge": "معارف القرآن", "/quran-memorization": "حفظ القرآن", "/quran/hifz-loop": "تكرار الحفظ", "/quran/makki-madani": "المكي والمدني",
-        "/quran/memorization-plans": "خطط الحفظ", "/quran/offline-player": "مشغّل القرآن دون اتصال", "/quran/people": "أعلام القرآن",
+        "/quran/memorization-plans": "خطط الحفظ", "/quran/my-hifz": "حفظي", "/quran/offline-player": "مشغّل القرآن دون اتصال", "/quran/people": "أعلام القرآن",
         "/quran/people/:slug": "تفاصيل العَلَم", "/quran/revelation-order": "ترتيب النزول", "/quran/search": "البحث في القرآن", "/quran/surah-stories": "قصص السور",
         "/quran/surah-stories/:number": "قصة السورة", "/quran/surahs": "فهرس السور", "/quran/worship-hub": "عبادات القرآن", "/tafsir": "التفسير", "/ulum-quran": "علوم القرآن",
         // اللغة والمكتبة والبحث

@@ -81,6 +81,8 @@ public enum Sunnah {
         public static let textOnPrimary = dynamic(light: 0xF7F4EC, dark: 0xF4F1E8)
         public static let danger = dynamic(light: 0xB0352B, dark: 0xEF8B80)
         /// مفتاح مطفأ (Toggle).
+        /// «يحتاج مراجعة» في خريطة الحفظ (برتقالي).
+        public static let hifzReview = dynamic(light: 0xC2621B, dark: 0xF0A25E)
         public static let switchOff = dynamic(light: 0xD8D2C4, dark: 0x2B3B33)
 
         private static func dynamic(light: UInt32, dark: UInt32) -> Color {

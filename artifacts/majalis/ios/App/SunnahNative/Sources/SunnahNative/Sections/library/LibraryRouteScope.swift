@@ -26,7 +26,7 @@ enum LibraryRouteScope {
         "/prayer-times", "/privacy", "/privacy-center", "/progress", "/prophetic-medicine", "/prophets", "/prophets/tree", "/qibla",
         "/quiz", "/quran-circles", "/quran-engine", "/quran-hub", "/quran-hub/numbers", "/quran-hub/qiraat", "/quran-hub/seven-ahruf",
         "/quran-hub/tajweed", "/quran-hub/tajweed/:chapter", "/quran-hub/terms", "/quran-hub/tilawa", "/quran-knowledge",
-        "/quran-memorization", "/quran/hifz-loop", "/quran/makki-madani", "/quran/memorization-plans", "/quran/offline-player",
+        "/quran-memorization", "/quran/hifz-loop", "/quran/makki-madani", "/quran/memorization-plans", "/quran/my-hifz", "/quran/offline-player",
         "/quran/people", "/quran/people/:slug", "/quran/revelation-order", "/quran/search", "/quran/surah-stories",
         "/quran/surah-stories/:number", "/quran/surahs", "/quran/worship-hub", "/raqaiq", "/reading-plans", "/register", "/researcher",
         "/riba", "/ruqya", "/sadaqa", "/sahabah", "/salah-guide", "/sawm", "/scientific-announcements/:id", "/search", "/sections",

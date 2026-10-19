@@ -7,9 +7,8 @@ struct TilawaListView: View {
     let reciters: [TilawaReciter]
     var body: some View {
         ScrollView { LazyVStack(spacing: 0) {
-            SunnahGroupedCard(reciters.sorted { $0.order < $1.order }) { r in
-                SunnahNavigationLink { TilawaSurahListView(reciter: r) } label: { SunnahListRow(title: r.nameAr, subtitle: nil) }
-            }
+            SunnahNavTileGrid(reciters.sorted { $0.order < $1.order }, idPrefix: "tilawa", padded: false,
+                              tile: { SunnahTileItem(id: "\($0.id)", title: $0.nameAr, subtitle: "تلاوة كاملة بصوته", symbol: "waveform") }) { TilawaSurahListView(reciter: $0) }
         }.padding(.horizontal, Sunnah.Spacing.s4) }
         .background(Sunnah.Colors.bg)
     }
@@ -25,12 +24,11 @@ struct TilawaSurahListView: View {
         Group {
             if let audio {
                 ScrollView { LazyVStack(spacing: 0) {
-                    SunnahGroupedCard((1...114).map { SurahNo(id: $0) }) { s in
+                    SunnahNavTileGrid((1...114).map { SurahNo(id: $0) }, idPrefix: "tilawa.surah", padded: false,
+                                      tile: { SunnahTileItem(id: "\($0.id)", title: surahNames[$0.id] ?? "سورة \($0.id)", subtitle: "سورة رقم \($0.id)", symbol: "play.circle") }) { s in
                         let n = s.id
-                        SunnahNavigationLink {
-                            AudioPlayerTemplate(item: ContentItem(id: "\(reciter.id)-\(n)", title: surahNames[n] ?? "سورة \(n)", subtitle: reciter.nameAr, audioURL: audio.surahURL(n)))
-                                .quranTitle(surahNames[n] ?? "سورة \(n)")
-                        } label: { SunnahListRow(title: surahNames[n] ?? "سورة \(n)", subtitle: nil) }
+                        AudioPlayerTemplate(item: ContentItem(id: "\(reciter.id)-\(n)", title: surahNames[n] ?? "سورة \(n)", subtitle: reciter.nameAr, audioURL: audio.surahURL(n)))
+                            .quranTitle(surahNames[n] ?? "سورة \(n)")
                     }
                 }.padding(.horizontal, Sunnah.Spacing.s4) }
             } else { EmptyStateView(title: "لا صوت متاح لهذا القارئ") }
@@ -99,9 +97,8 @@ struct QuranCirclesListView: View {
     let circles: [QuranCircle]
     var body: some View {
         ScrollView { LazyVStack(spacing: 0) {
-            SunnahGroupedCard(circles) { c in
-                SunnahNavigationLink { QuranCircleDetailView(circle: c) } label: { SunnahListRow(title: c.name, subtitle: c.sheikh_name) }
-            }
+            SunnahNavTileGrid(circles, idPrefix: "circle", padded: false,
+                              tile: { SunnahTileItem(id: $0.id, title: $0.name, subtitle: $0.sheikh_name, symbol: "person.2") }) { QuranCircleDetailView(circle: $0) }
         }.padding(.horizontal, Sunnah.Spacing.s4) }
         .background(Sunnah.Colors.bg)
     }

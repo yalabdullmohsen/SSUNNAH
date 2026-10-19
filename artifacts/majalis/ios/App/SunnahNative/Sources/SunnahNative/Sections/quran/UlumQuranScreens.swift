@@ -18,9 +18,8 @@ struct UlumQuranListView: View {
             LazyVStack(spacing: 0) {
                 ForEach(tabs, id: \.self) { tab in
                     SunnahSectionLabel(tab)
-                    SunnahGroupedCard(items.filter { $0.tags.first == tab }) { i in
-                        SunnahNavigationLink { UlumQuranDetailView(item: i) } label: { SunnahListRow(title: i.title, subtitle: i.subtitle) }
-                    }
+                    SunnahNavTileGrid(items.filter { $0.tags.first == tab }, idPrefix: "ulum", padded: false,
+                                      tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.subtitle, symbol: "book.closed") }) { UlumQuranDetailView(item: $0) }
                 }
             }
             .padding(.horizontal, Sunnah.Spacing.s4)

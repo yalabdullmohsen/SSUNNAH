@@ -40,13 +40,14 @@ struct SirahInlineItemsView: View {
     enum Reader { case article, detail }
     let items: [ContentItem]
     var reader: Reader = .article
+    var symbol = "doc.text"
     @State private var open: ContentItem?
 
     var body: some View {
         Group {
             if items.isEmpty { EmptyStateView() } else {
                 ScrollView {
-                    SunnahTileGrid(items.map { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.subtitle) }, idPrefix: "sirah.item") { tile in
+                    SunnahTileGrid(items.map { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.subtitle, symbol: symbol) }, idPrefix: "sirah.item") { tile in
                         open = items.first { $0.id == tile.id }
                     }
                     .padding(.vertical, Sunnah.Spacing.s2)
@@ -95,22 +96,22 @@ public enum SirahSection {
 
     /// معرّف الشاشة ← (مصدر، بناء). المعرّفات مطابقة لـGenerated/SirahScreens.swift.
     @MainActor public static func register(in registry: TemplateRegistry) {
-        registry.registerView(id: "fikr-waqia") { SirahSection.inline(File.fikrWaqia, { (f: SirahDarsFile) in SirahAdapters.darsSections(f.sections) }) }
+        registry.registerView(id: "fikr-waqia") { SirahSection.inline(File.fikrWaqia, { (f: SirahDarsFile) in SirahAdapters.darsSections(f.sections) }, symbol: "lightbulb") }
         registry.registerView(id: "islamic-landmarks") { SirahSection.list(File.landmarks, SirahAdapters.landmarks, base: "/islamic-landmarks") }
         registry.registerView(id: "islamic-landmarks.map") {
             SirahLoadedView(source: File.landmarks, adapt: SirahAdapters.landmarks) { CardGridTemplate(items: $0, detailBase: "/islamic-landmarks") }
                 .sunnahNavTitle(SirahSection.title)
         }
         registry.registerView(id: "nations") { SirahSection.list(File.nations, SirahAdapters.nations, base: "/nations") }
-        registry.registerView(id: "occasions") { SirahSection.inline(File.occasions, SirahAdapters.occasions, reader: .detail) }
+        registry.registerView(id: "occasions") { SirahSection.inline(File.occasions, SirahAdapters.occasions, reader: .detail, symbol: "calendar") }
         registry.registerView(id: "occasions-lessons") { SectionsListTemplate(links: SirahLinks.occasionsLessons).sunnahNavTitle(SirahSection.title) }
         registry.registerView(id: "prophets") {
             SirahLoadedView(source: File.prophets, adapt: { (rows: [SirahKnowledgeItem]) in ProphetStory.chronological(rows.compactMap(ProphetStory.init)) }) { ProphetsGridView(prophets: $0) }
         }
         registry.registerView(id: "explainers") { ExplainerScreen() }
-        registry.registerView(id: "prophets.tree") { SirahSection.inline(File.lineage, SirahAdapters.lineage, reader: .detail) }
-        registry.registerView(id: "sahabah") { SirahSection.inline(File.sahabah, SirahAdapters.sahabah, reader: .detail) }
-        registry.registerView(id: "seerah") { SirahSection.inline(File.seerah, SirahAdapters.seerah) }
+        registry.registerView(id: "prophets.tree") { SirahSection.inline(File.lineage, SirahAdapters.lineage, reader: .detail, symbol: "person.3") }
+        registry.registerView(id: "sahabah") { SirahSection.inline(File.sahabah, SirahAdapters.sahabah, reader: .detail, symbol: "person.2") }
+        registry.registerView(id: "seerah") { SirahSection.inline(File.seerah, SirahAdapters.seerah, symbol: "scroll") }
         registry.registerView(id: "shamael") {
             SirahLoadedView(source: File.shamail, adapt: { (tabs: [ShamailTab]) in tabs }) { ShamailView(tabs: $0) }
                 .sunnahNavTitle(SirahSection.title)
@@ -156,8 +157,8 @@ public enum SirahSection {
     }
 
     private static func inline<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem],
-                                                          reader: SirahInlineItemsView.Reader = .article) -> some View {
-        SirahLoadedView(source: source, adapt: adapt) { SirahInlineItemsView(items: $0, reader: reader) }
+                                                          reader: SirahInlineItemsView.Reader = .article, symbol: String = "doc.text") -> some View {
+        SirahLoadedView(source: source, adapt: adapt) { SirahInlineItemsView(items: $0, reader: reader, symbol: symbol) }
             .sunnahNavTitle(SirahSection.title)
     }
 
