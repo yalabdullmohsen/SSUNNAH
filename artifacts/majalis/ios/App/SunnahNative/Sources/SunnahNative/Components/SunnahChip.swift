@@ -12,7 +12,7 @@ public struct SunnahChip: View {
         if Self.isRenderable(text) { chip }
     }
     private var chip: some View {
-        Text(text).font(Sunnah.Typography.tag)
+        Text(text.arabicDigits).font(Sunnah.Typography.tag)
             .padding(.horizontal, 16).frame(minHeight: 38)
             .foregroundStyle(selected ? Sunnah.Colors.textOnPrimary : Sunnah.Colors.textPrimary)
             .background(selected ? Sunnah.Colors.primary : Sunnah.Colors.surface, in: Capsule())

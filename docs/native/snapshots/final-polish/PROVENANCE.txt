@@ -1,0 +1,11 @@
+git_sha=f13a9658d1281b08c669f87757f2f353b70bbc86
+branch=n1/final-polish
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1-combo/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=76792fe270cebc2a997f5734854e313d3ba6f5f62da735fb72df76366634aa27
+built_at=2026-10-19 08:15:03
+source_newest=2026-10-19 07:51:29
+captured_at=2026-10-19 08:28:28
+covers=Adhkar(AdhkarScreen),ProphetsStories,SettingsScreens,AppearancePrefs,SunnahContentFooter,SunnahReportIssueButton,AppTab
+covers=MutashabihatScreens,PeopleScreens,PeopleScreens+Native,PublishedScreens,PublishedScreens+Native,QuranLocalScreens,QuranLocalScreens+Native,QuranSearchScreen,TafsirScreens,TafsirScreens+Native,MawarithCalculatorScreen,LearnFlashcards,LearnQuizScreen,LearnReadingPlans,SeerahPhasesView,AdhkarExtraScreens,AccountCarModeScreen,AccountFeatureTourScreen,AccountSubmissionsScreens,AccountUserStatsScreen,AccountComponents
+covers=AppTab,SunnahChip,SunnahListRow,StateViews,SunnahModel2,SunnahArabicText,SunnahInfoGrid,DetailTemplate,QuizTemplate,LearnSupport,SeerahPhasesView,AccountSubmissionsScreens,Sunnah,HomeScreen,PrayerScreen,SunnahContentFooter,ProphetsStories
+note=38 لقطة (فاتح وداكن) من بناء HEAD على n1-sim2: الرئيسية/الصلاة بكبسولة داكنة، ذيل الأذكار، صفحة القصة داكنة بالنموذج ٢، وتمييز التبويب للسيارة/البطاقات/الاختبار/الإحصائيات/المساهمات/المسبحة/السيرة/التفسير/التجويد، وأرقام عربية في كل القوائم.

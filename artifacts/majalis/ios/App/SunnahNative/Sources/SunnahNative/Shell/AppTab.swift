@@ -51,17 +51,19 @@ public enum AppTab: String, CaseIterable, Identifiable, Hashable {
             .filter { normalized == $0.rootPath || normalized.hasPrefix($0.rootPath + "/") }
             .max { $0.rootPath.count < $1.rootPath.count }
         if let match { return match }
-        return prefixAliases.first { normalized == $0.prefix || normalized.hasPrefix($0.prefix + "/") }?.tab ?? .home
+        if let alias = prefixAliases.first(where: { normalized == $0.prefix || normalized.hasPrefix($0.prefix + "/") }) { return alias.tab }
+        // الجذر وحده للرئيسية؛ أي شاشة محتوى أخرى تتبع «الأقسام» لا «الرئيسية».
+        return normalized == "/" ? .home : .sections
     }
 
     /// مسارات تابعة لتبويب دون أن تبدأ بمساره الجذري.
     private static let prefixAliases: [(prefix: String, tab: AppTab)] = [
-        ("/quran", .quran),
-        ("/mushaf", .quran),
-        ("/prayer", .prayer),
-        ("/adhan", .prayer),
-        ("/qibla", .prayer),
-        // قصص الأنبياء والأذكار تتبع «الأقسام»، والإعدادات تتبع «المزيد» (النموذج ٢)
-        ("/prophets", .sections), ("/adhkar", .sections), ("/settings", .more),
+        ("/quran", .quran), ("/mushaf", .quran), ("/tafsir", .quran), ("/tajweed", .quran), ("/qiraat", .quran),
+        ("/mutashabihat", .quran), ("/hifz-path", .quran), ("/memorization", .quran), ("/listen", .quran),
+        ("/prayer", .prayer), ("/adhan", .prayer), ("/qibla", .prayer), ("/mosque-mode", .prayer),
+        // الإعدادات والحساب والمساهمات والإحصاءات والتعريف بالتطبيق تتبع «المزيد»
+        ("/settings", .more), ("/stats", .more), ("/my-submissions", .more), ("/submit", .more), ("/feature-tour", .more), ("/car-mode", .more),
+        ("/account", .more), ("/login", .more), ("/about", .more), ("/privacy", .more), ("/fatwa-policy", .more), ("/vault", .more),
+        ("/sources", .more), ("/bookmarks", .more), ("/favorites", .more),
     ]
 }

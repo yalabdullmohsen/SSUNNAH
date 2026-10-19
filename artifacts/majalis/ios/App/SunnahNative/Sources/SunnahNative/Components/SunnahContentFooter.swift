@@ -68,6 +68,6 @@ struct SunnahSourceLine: View {
         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
         .multilineTextAlignment(.leading)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, inset ? Sunnah.Spacing.pageX : 0).padding(.top, Sunnah.Spacing.s3)
+        .padding(.horizontal, inset ? Sunnah.Spacing.pageX : Sunnah.Spacing.s2).padding(.top, Sunnah.Spacing.s3)
     }
 }

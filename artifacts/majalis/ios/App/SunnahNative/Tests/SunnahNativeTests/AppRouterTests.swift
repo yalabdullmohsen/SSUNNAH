@@ -12,12 +12,16 @@ final class AppRouterTests: XCTestCase {
         XCTAssertEqual(AppTab.owning(path: "/prayer-times/riyadh"), .prayer)
         XCTAssertEqual(AppTab.owning(path: "/qibla"), .prayer)
         XCTAssertEqual(AppTab.owning(path: "/quran/2"), .quran)
-        XCTAssertEqual(AppTab.owning(path: "/lessons/123?x=1"), .home)
+        XCTAssertEqual(AppTab.owning(path: "/lessons/123?x=1"), .sections)
         XCTAssertEqual(AppTab.owning(path: "/prophets/yusuf"), .sections)
         XCTAssertEqual(AppTab.owning(path: "/adhkar"), .sections)
         XCTAssertEqual(AppTab.owning(path: "/settings"), .more)
-        XCTAssertEqual(AppTab.owning(path: "/hadith/5"), .home)
-        XCTAssertEqual(AppTab.owning(path: "/lessonsx"), .home)
+        XCTAssertEqual(AppTab.owning(path: "/"), .home)
+        for p in ["/tasbih", "/seerah", "/flashcards", "/quiz", "/reading-plans", "/mawarith/calculator"] { XCTAssertEqual(AppTab.owning(path: p), .sections, p) }
+        for p in ["/tafsir", "/quran-hub/tajweed", "/qiraat", "/mutashabihat"] { XCTAssertEqual(AppTab.owning(path: p), .quran, p) }
+        for p in ["/stats", "/my-submissions", "/submit", "/feature-tour", "/car-mode"] { XCTAssertEqual(AppTab.owning(path: p), .more, p) }
+        XCTAssertEqual(AppTab.owning(path: "/hadith/5"), .sections)
+        XCTAssertEqual(AppTab.owning(path: "/lessonsx"), .sections)
     }
 
     func testNormalize() {

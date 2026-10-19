@@ -32,7 +32,7 @@ public struct SunnahInfoGrid: View {
                 .foregroundStyle(Sunnah.Colors.primary).frame(width: 24).accessibilityHidden(true)
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
                 Text(item.label).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
-                Text(item.value ?? "").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text((item.value ?? "").arabicDigits).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer(minLength: 0)

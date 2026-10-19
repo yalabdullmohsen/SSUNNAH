@@ -64,18 +64,18 @@ struct AccountSubmitContentScreen: View {
             Section {
                 TextField("اكتب عنواناً مختصراً للموضوع", text: Binding(get: { draft.title }, set: { draft.title = String($0.prefix(AccountSubmissionDraft.titleMax)) }))
             } header: { Text("عنوان الموضوع") } footer: {
-                Text(AccountSubmissionDraft.counter(draft.title, max: AccountSubmissionDraft.titleMax))
+                Text(AccountSubmissionDraft.counter(draft.title, max: AccountSubmissionDraft.titleMax).arabicDigits)
             }
             Section {
                 TextField("اكتب التفاصيل هنا...", text: Binding(get: { draft.details }, set: { draft.details = String($0.prefix(AccountSubmissionDraft.detailsMax)) }), axis: .vertical)
                     .lineLimit(6...12)
             } header: { Text("التفاصيل") } footer: {
-                Text(AccountSubmissionDraft.counter(draft.details, max: AccountSubmissionDraft.detailsMax))
+                Text(AccountSubmissionDraft.counter(draft.details, max: AccountSubmissionDraft.detailsMax).arabicDigits)
             }
             Section {
                 TextField("للنسب الصحيح", text: Binding(get: { draft.author }, set: { draft.author = String($0.prefix(AccountSubmissionDraft.authorMax)) }))
             } header: { Text("اسمك (اختياري)") } footer: {
-                Text(AccountSubmissionDraft.counter(draft.author, max: AccountSubmissionDraft.authorMax))
+                Text(AccountSubmissionDraft.counter(draft.author, max: AccountSubmissionDraft.authorMax).arabicDigits)
             }
 
             Section {

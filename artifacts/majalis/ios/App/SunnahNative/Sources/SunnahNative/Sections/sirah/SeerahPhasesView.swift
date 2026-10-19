@@ -33,10 +33,10 @@ public struct SeerahPhasesView: View {
                         ForEach(phases.sorted { $0.num < $1.num }) { p in
                             SunnahCard {
                                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                                    Text("\(p.num). \(p.title)").font(Sunnah.Typography.cardTitle)
+                                    Text("\(p.num). \(p.title)".arabicDigits).font(Sunnah.Typography.cardTitle)
                                         .foregroundStyle(Sunnah.Colors.textPrimary).accessibilityAddTraits(.isHeader)
                                     SunnahChip(p.year)
-                                    Text(p.desc).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                                    Text(p.desc.arabicDigits).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
                                     ForEach(p.keyEvents, id: \.self) {
                                         Text("• \($0)".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                                     }

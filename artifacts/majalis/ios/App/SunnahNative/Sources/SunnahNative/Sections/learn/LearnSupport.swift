@@ -99,7 +99,7 @@ struct LearnInfoRow: View {
         if let value, !value.isEmpty {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
                 Text(label).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
-                Text(value).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text(value.arabicDigits).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .accessibilityElement(children: .combine)

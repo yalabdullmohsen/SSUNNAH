@@ -54,10 +54,7 @@ public struct PrayerScreen: View {
                         Spacer(minLength: 8)
                         VStack(alignment: .trailing, spacing: 6) {
                             Text(PrayerTimeFormat.clock(next.time, in: zone)).font(AppearancePrefs.ui(.extraBold, 28, .title)).foregroundStyle(.white)
-                            Text(HomeScreen.remaining(next.time.timeIntervalSince(now)))
-                                .font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.goldInk)
-                                .padding(.horizontal, 12).padding(.vertical, 5)
-                                .background(Sunnah.Colors.heroGold, in: Capsule())
+                            SunnahHeroCapsule(HomeScreen.remaining(next.time.timeIntervalSince(now)))
                         }
                     }
                 } else {

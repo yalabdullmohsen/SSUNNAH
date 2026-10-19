@@ -20,11 +20,11 @@ private struct QuizRunner: View {
         ScrollView {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 if index >= questions.count {
-                    Text("النتيجة: \(score) / \(questions.count)").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                    Text("النتيجة: \(score.arabicDigits) / \(questions.count.arabicDigits)").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     SunnahButton("إعادة الاختبار") { index = 0; picked = nil; score = 0; revealed = false }
                 } else {
                     let q = questions[index]
-                    Text("\(index + 1) / \(questions.count)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                    Text("\((index + 1).arabicDigits) / \(questions.count.arabicDigits)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                     Text(q.prompt).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     if q.isOpen { openBody(q) } else {
                     ForEach(Array(q.options.enumerated()), id: \.offset) { i, option in
