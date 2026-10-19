@@ -47,11 +47,12 @@ struct LibraryInlineItemsView: View {
             if items.isEmpty { EmptyStateView() } else {
                 switch layout {
                 case .list:
-                    List(items) { item in
-                        Button { open = item } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                            .buttonStyle(.plain).sunnahRowChrome()
+                    SunnahRowStack {
+                        ForEach(items) { item in
+                            Button { open = item } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
+                                .buttonStyle(.plain).sunnahStackRow()
+                        }
                     }
-                    .listStyle(.plain).scrollContentBackground(.hidden)
                 case .grid:
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: Sunnah.Spacing.cardMinWidth), spacing: Sunnah.Spacing.s3)], spacing: Sunnah.Spacing.s3) {
@@ -65,18 +66,25 @@ struct LibraryInlineItemsView: View {
             }
         }
         .background(Sunnah.Colors.bg)
-        .sheet(item: $open) { item in
-            NavigationStack {
+        .fullScreenCover(item: $open) { item in
+            VStack(spacing: 0) {
+                HStack {
+                    Button { open = nil } label: {
+                        Text("إغلاق").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.primary)
+                            .frame(minWidth: 64, minHeight: 44).contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain).accessibilityIdentifier("library.reader.close")
+                    Spacer()
+                }
+                .padding(.horizontal, Sunnah.Spacing.pageX)
                 Group {
                     switch reader {
                     case .article: ArticleTemplate(item: item)
                     case .detail: DetailTemplate(item: item)
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .cancellationAction) { Button("إغلاق") { open = nil } }
-                }
             }
+            .background(Sunnah.Colors.bg)
         }
     }
 }
@@ -88,20 +96,16 @@ struct LibraryGroupedLinksView: View {
 
     var body: some View {
         if groups.isEmpty { EmptyStateView() } else {
-            List {
+            SunnahRowStack {
                 ForEach(groups, id: \.title) { group in
-                    Section {
-                        ForEach(group.links) { link in
-                            Button { openRoute(link.route) } label: { SunnahListRow(title: link.title, subtitle: link.subtitle) }
-                                .buttonStyle(.plain).sunnahRowChrome()
-                                .accessibilityIdentifier("sections.item.\(link.route)")
-                        }
-                    } header: {
-                        Text(group.title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                    SunnahRowGroupHeader(group.title)
+                    ForEach(group.links) { link in
+                        Button { openRoute(link.route) } label: { SunnahListRow(title: link.title, subtitle: link.subtitle) }
+                            .buttonStyle(.plain).sunnahStackRow()
+                            .accessibilityIdentifier("sections.item.\(link.route)")
                     }
                 }
             }
-            .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
         }
     }
 }
@@ -111,26 +115,19 @@ struct LibraryResearchAssistantView: View {
     let insights: LibraryAdapters.ResearchInsights
 
     var body: some View {
-        List {
-            Section {
-                ForEach(insights.coverage, id: \.label) { row in
-                    SunnahListRow(title: row.label, subtitle: row.count == 0 ? "لا أبحاث منشورة بعد" : "\(row.count) بحثًا منشورًا")
-                        .sunnahRowChrome()
-                }
-            } header: {
-                Text("تغطية التصنيفات (الأقل أولًا)").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+        SunnahRowStack {
+            SunnahRowGroupHeader("تغطية التصنيفات (الأقل أولًا)")
+            ForEach(insights.coverage, id: \.label) { row in
+                SunnahListRow(title: row.label, subtitle: row.count == 0 ? "لا أبحاث منشورة بعد" : "\(row.count) بحثًا منشورًا")
+                    .sunnahStackRow()
             }
             if !insights.topKeywords.isEmpty {
-                Section {
-                    ForEach(insights.topKeywords, id: \.label) { row in
-                        SunnahListRow(title: row.label, subtitle: "\(row.count) بحثًا").sunnahRowChrome()
-                    }
-                } header: {
-                    Text("الموضوعات الأكثر بحثًا").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                SunnahRowGroupHeader("الموضوعات الأكثر بحثًا")
+                ForEach(insights.topKeywords, id: \.label) { row in
+                    SunnahListRow(title: row.label, subtitle: "\(row.count) بحثًا").sunnahStackRow()
                 }
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
 }
 
@@ -146,11 +143,12 @@ struct LibrarySearchView: View {
             if results.isEmpty {
                 (query.trimmingCharacters(in: .whitespacesAndNewlines).count < 2 ? EmptyStateView(title: "ابحث في المحتوى", message: "اكتب كلمة أو عبارة، مثل «الصلاة» أو «البقرة»، لتظهر النتائج هنا.", symbol: "magnifyingglass", declaresEmpty: false) : EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass"))
             } else {
-                List(results) { item in
-                    Button { openRoute(item.route ?? "/") } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                        .buttonStyle(.plain).sunnahRowChrome()
+                SunnahRowStack {
+                    ForEach(results) { item in
+                        Button { openRoute(item.route ?? "/") } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
+                            .buttonStyle(.plain).sunnahStackRow()
+                    }
                 }
-                .listStyle(.plain).scrollContentBackground(.hidden)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

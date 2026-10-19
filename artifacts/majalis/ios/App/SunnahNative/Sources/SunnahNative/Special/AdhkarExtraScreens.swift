@@ -8,9 +8,7 @@ struct TasbihView: View {
 
     var body: some View {
         VStack(spacing: Sunnah.Spacing.s6) {
-            Picker("الهدف", selection: $target) {
-                ForEach(targets, id: \.self) { Text("\($0)".arabicDigits).tag($0) }
-            }.pickerStyle(.segmented)
+            SunnahSegmented(targets.map { ($0, "\($0)".arabicDigits) }, selection: $target)
 
             Button {
                 count += 1

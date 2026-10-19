@@ -107,12 +107,13 @@ private struct ChipItemsView: View {
 /// «المتون الحديثية وأحاديث الأحكام»: الأربعون النووية متاحة، وبقية المتون غير منشورة بانتظار مصدر موثوق (كما في الموقع).
 private struct HadithBooksAndRulingsView: View {
     var body: some View {
-        List {
+        SunnahRowStack {
             Text("الأربعون النووية متاحة بمادتها المعتمدة؛ ولا يُنشر متن أو حكم على حديث في بقية الكتب حتى اعتماد مصدر موثوق ومراجعة علمية.")
-                .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).listRowBackground(Color.clear)
+                .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, Sunnah.Spacing.pageX).padding(.vertical, Sunnah.Spacing.s2)
             SunnahNavigationLink { ReaderDataScreens.arbaeenList() } label: {
                 SunnahListRow(title: "الأربعون النووية", subtitle: "42 حديثاً")
-            }.sunnahRowChrome()
+            }.sunnahStackRow()
             ForEach([("عمدة الأحكام", "جمع الإمام عبد الغني المقدسي للأحاديث المتفق عليها بين البخاري ومسلم في الأحكام الفقهية."),
                      ("بلوغ المرام", "جمع الحافظ ابن حجر العسقلاني لأحاديث الأحكام مع بيان درجتها، من أشهر مراجع فقه الحديث."),
                      ("المنتقى من أخبار المصطفى ﷺ", "جمع مجد الدين ابن تيمية (جدّ شيخ الإسلام) لأحاديث الأحكام مرتّبة على أبواب الفقه.")], id: \.0) { t, d in
@@ -120,10 +121,9 @@ private struct HadithBooksAndRulingsView: View {
                     Text(t).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textSecondary)
                     Text(d).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     Text("غير منشور بعد — بانتظار مصدر موثوق").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
-                }.sunnahRowChrome().opacity(0.7).accessibilityElement(children: .combine)
+                }.sunnahStackRow().opacity(0.7).accessibilityElement(children: .combine)
             }
         }
-        .listStyle(.plain).scrollContentBackground(.hidden).background(Sunnah.Colors.bg)
     }
 }
 

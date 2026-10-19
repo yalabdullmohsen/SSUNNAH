@@ -28,6 +28,7 @@ extension View {
     /// صف بطاقة كامل العرض داخل `SunnahRowStack`.
     func sunnahStackRow() -> some View {
         self.frame(maxWidth: .infinity, alignment: .leading).sunnahRowChrome()
+            .padding(.horizontal, Sunnah.Spacing.pageX).padding(.vertical, 5)
     }
 }
 
