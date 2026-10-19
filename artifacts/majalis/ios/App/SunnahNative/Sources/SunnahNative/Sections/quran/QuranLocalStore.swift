@@ -7,7 +7,9 @@ struct QuranLocalStore: @unchecked Sendable {
         case loop = "sunnah.quran.hifz-loop.v1"
         case pathUnits = "sunnah.quran.hifz-path-units.v1"
         case hifzPlan = "sunnah.quran.hifz-plan.v1"
+        case hifzPages = "sunnah.quran.hifz-pages.v1"
     }
+    static let migratedKey = "sunnah.quran.hifz-pages.migrated.v1"
 
     let defaults: UserDefaults
     init(defaults: UserDefaults = .standard) { self.defaults = defaults }
