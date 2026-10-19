@@ -196,13 +196,16 @@ const expCount = new Map();
 for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== "manifest.json"))
   for (const q of rd(`${qdir}/${f}`)) { const e = String(q.explanation || "").trim(); if (e) expCount.set(e, (expCount.get(e) || 0) + 1); }
 const TEMPLATE_MAX = 3;
-let qStripped = 0;
-for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== "manifest.json")) {
+let qStripped = 0, qDup = 0;
+/* سؤال+جواب متطابقان حرفيًا (بعد تطبيع المسافات) يُنشر مرة واحدة: التكرار لا يضيف علمًا ويُظهر الاختبار مكرّرًا */
+const seenQA = new Set();
+for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== "manifest.json").sort()) {
   const live = [];
   for (let q of rd(`${qdir}/${f}`)) {
     if (/^demo[-_]/i.test(String(q.id))) { reject("quiz", "demo"); continue; }
     if (held(q.id)) { reject("quiz", "محجوز"); continue; }
     if (!String(q.question || "").trim() || !String(q.answer || "").trim()) { reject("quiz", "سؤال/جواب فارغ"); continue; }
+    { const k = `${q.question}`.replace(/\s+/g, " ").trim() + "|" + `${q.answer}`.replace(/\s+/g, " ").trim(); if (seenQA.has(k)) { qDup++; continue; } seenQA.add(k); }
     if ((expCount.get(String(q.explanation || "").trim()) || 0) > TEMPLATE_MAX) { q = { ...q }; delete q.explanation; qStripped++; }
     else if (q.documentation_status !== "unsourced" && !String(q.explanation || "").trim()) { reject("quiz", "بلا شرح"); continue; }
     if (q.documentation_status !== "unsourced") {
@@ -214,7 +217,7 @@ for (const f of fs.readdirSync(qdir).filter((x) => x.endsWith(".json") && x !== 
 }
 json("quiz/manifest.json", { total: qn, chunks: qchunks });
 counts.quiz = qn;
-console.log("quiz-template-explanations-stripped:", qStripped);
+console.log("quiz-template-explanations-stripped:", qStripped, "quiz-duplicate-qa-dropped:", qDup);
 
 /* المصحف الأصلي (SwiftUI): بيانات صفحات QPC V2 الحالية + خطوطها مُعاد تغليفها TTF — لا بيانات ولا خطوط جديدة */
 {
