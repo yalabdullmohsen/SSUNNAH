@@ -4,17 +4,17 @@ import SwiftUI
 import UIKit
 @testable import SunnahNative
 
-/// حارس علامة نهاية الآية (كالمطبوع — قرار المالك 2026-10-20، مرجعه ص27: الحجم الطبيعي لغليف QPC، بلون المصحف الأخضر):
+/// حارس علامة نهاية الآية (كالمطبوع — قرار المالك 2026-10-20، مرجعه ص27 مقيسًا بالبكسل: ×1.24 من غليف QPC الطبيعي، بلون المصحف الأخضر):
 /// (1) حجم الزخرفة من خط النص: ارتفاع [minHeightOfFont, maxHeightOfFont] وعرض [minWidthOfFont, maxWidthOfFont]،
 /// (2) كل علامة تتفكك إلى محيط + إطار + أرقام (لا رقم يُرسم بلون الإطار)، (3) تباين الرقم على الحشوة ≥ minContrast فاتحًا وداكنًا،
 /// (4) لا سطر يبدأ بعلامة نهاية آية على الـ604 صفحة، ولا تضيع كلمة عند النقل.
 /// `ENDMARK_SNAP_DIR` + `ENDMARK_TAG` (before/after) لقطات الصفحات. دون `MUSHAF_DATA` يُتخطّى.
 final class MushafEndMarkGuardTests: XCTestCase {
     static let pages = [1, 2, 19, 33, 293, 446]
-    static let minHeightOfFont: CGFloat = 0.95
-    static let maxHeightOfFont: CGFloat = 1.05
-    static let minWidthOfFont: CGFloat = 0.76
-    static let maxWidthOfFont: CGFloat = 0.84
+    static let minHeightOfFont: CGFloat = 1.18
+    static let maxHeightOfFont: CGFloat = 1.30
+    static let minWidthOfFont: CGFloat = 0.89
+    static let maxWidthOfFont: CGFloat = 0.99
     static let minContrast: CGFloat = 4.5
 
     private func lum(_ c: UIColor, _ style: UIUserInterfaceStyle) -> CGFloat {
