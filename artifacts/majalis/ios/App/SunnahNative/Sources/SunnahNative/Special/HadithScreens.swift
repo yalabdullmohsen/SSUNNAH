@@ -60,7 +60,7 @@ extension HadithItem {
     /// اسم الكتاب/المصدر لبطاقات المحور.
     var collectionLabel: String {
         let names = ["bukhari": "صحيح البخاري", "muslim": "صحيح مسلم", "mutafaq": "متفق عليه", "tirmidhi": "جامع الترمذي",
-                     "nawawi40": "الأربعون النووية", "abudawud": "سنن أبي داود", "nasai": "سنن النسائي", "various": "أحاديث متفرقة"]
+                     "nawawi40": "الأربعون النووية", "abudawud": "سنن أبي داود", "nasai": "سنن النسائي", "ibnmajah": "سنن ابن ماجه", "various": "أحاديث متفرقة"]
         return names[collection ?? ""] ?? (collection ?? "أحاديث متفرقة")
     }
 }
