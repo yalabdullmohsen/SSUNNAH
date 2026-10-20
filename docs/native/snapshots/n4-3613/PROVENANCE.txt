@@ -1,0 +1,15 @@
+git_sha=ce4f76ba972d348df919c77b82147d8201fa90af
+binary_sha256=ba0d98fbca70427602171d9baef1958eaad55ad06f8edb425a0c174190b985d3
+branch=ui-cards-tasbih-report
+captured_at=2026-10-20T13:36Z
+device=iPhone 402x874 simulator (iOS), -AppleLanguages ar, RTL
+files:
+  adhkar-footer-dark.png adhkar-footer-light.png adhkar-long-dark.png adhkar-long-light.png adhkar-short-dark.png adhkar-short-light.png hadith-list-dark.png hadith-list-light.png sirah-chapter-dark.png sirah-chapter-end-dark.png sirah-chapter-end-light.png sirah-chapter-light.png sirah-chapters-sheet-dark.png sirah-chapters-sheet-light.png sunan-list-dark.png sunan-list-light.png surahs-dark.png surahs-light.png 
+covers=SunnahSeriesReader (فصل السيرة ببطاقة، ورقة الفصول، ذيل الصفحة)
+covers=AdhkarScreen (زر العدّ أسفل اليمين لذكر قصير وطويل، فوق الشريط السفلي)
+covers=SunnahContentFooter (ذيل صغير + «!» بلا بطاقة بيضاء)
+covers=HadithScreens (قائمة الأحاديث بعنوان ظاهر)
+covers=ArticleTemplate (السنن اليومية، أطول السور)
+covers=Sunnah (لون الخلفية الأفتح)
+gaps:
+  لا جهاز حقيقي؛ لقطات محاكي فقط. لا لقطة تفصيل سنّة يومية (لم تُنقر الخلية). السور الأطول = فهرس /quran/surahs. لقطات السيرة/السنن/السور/الأحاديث التُقطت قبل ce4f76ba (لم يمسّها)؛ الأذكار بعده.

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// الذيل الموحّد لكل شاشة محتوى شرعي: أيقونتا «!» والإبلاغ الصغيرتان (الرسالة الكاملة في Sheet بضغطة المستخدم فقط) + المصدر (إن وُجد في البيانات) وإلا رابط «مصادر التطبيق» + زر الإبلاغ.
+/// الذيل الموحّد لكل شاشة محتوى شرعي: أيقونتا «ⓘ» والإبلاغ «!» الصغيرتان (الرسالة الكاملة في Sheet بضغطة المستخدم فقط) + المصدر (إن وُجد في البيانات) وإلا رابط «مصادر التطبيق».
 /// `.light` للمصحف ومواقيت الصلاة: سطر الإفصاح ورابط المصادر فقط (لا إبلاغ عن محتوى مفرد).
 /// `scripts/native-content-footer-guard.sh` يفشل عند شاشة شرعية لا تستعمله.
 public struct SunnahContentFooter: View {
@@ -22,27 +22,26 @@ public struct SunnahContentFooter: View {
         self.init(title: title, id: id, section: section, source: joined.isEmpty ? nil : joined, style: style, inset: inset, sensitive: sensitive)
     }
 
+    /// ذيل خفيف بلا بطاقة (قرار المالك 2026-10-20: «البطاقة البيضاء الكبيرة» تُثقل الصفحة):
+    /// سطر واحد — «ⓘ» + جملة الإفصاح الصغيرة + أيقونة «!» للإبلاغ — ثم سطر المصدر، مفصولًا عن المحتوى بخط رفيع.
     public var body: some View {
-        VStack(spacing: Sunnah.Spacing.s3) {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                HStack(alignment: .center, spacing: Sunnah.Spacing.s2) {
-                    SunnahDisclosureInfoButton(title: title, id: id, section: section)
-                    Text(SunnahDisclosure.card).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.textSecondary)
-                        .fixedSize(horizontal: false, vertical: true).frame(maxWidth: .infinity, alignment: .leading)
-                        .accessibilityIdentifier("detail.disclosureCard")
-                }
-                if sensitive {
-                    Text(SunnahDisclosure.fatwaHint).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.textSecondary)
-                        .accessibilityIdentifier("detail.fatwaHint")
-                }
-                if style == .full { SunnahReportIssueButton(title: title, id: id, section: section, inset: false) }
-                SunnahSourceLine(source: source, inset: false)
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+            Rectangle().fill(Sunnah.Colors.border).frame(height: 1).padding(.bottom, Sunnah.Spacing.s2)
+            HStack(alignment: .center, spacing: Sunnah.Spacing.s1) {
+                SunnahDisclosureInfoButton(title: title, id: id, section: section)
+                Text(SunnahDisclosure.card).font(AppearancePrefs.ui(.regular, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true).frame(maxWidth: .infinity, alignment: .leading)
+                    .accessibilityIdentifier("detail.disclosureCard")
+                if style == .full { SunnahReportIssueIcon(title: title, id: id, section: section) }
             }
-            .padding(Sunnah.Spacing.s4)
-            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
+            if sensitive {
+                Text(SunnahDisclosure.fatwaHint).font(AppearancePrefs.ui(.regular, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .padding(.horizontal, Sunnah.Spacing.s2)
+                    .accessibilityIdentifier("detail.fatwaHint")
+            }
+            SunnahSourceLine(source: source, inset: false)
         }
-        .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s4)
+        .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s5)
         .padding(.bottom, Sunnah.Spacing.s4)
         .accessibilityIdentifier("detail.footer")
     }

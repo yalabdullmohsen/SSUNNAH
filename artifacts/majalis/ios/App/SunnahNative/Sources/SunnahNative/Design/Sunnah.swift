@@ -22,11 +22,11 @@ public enum Sunnah {
     }
 
     public enum Colors {
-        // السمة «أخضر عاجي» (مرجع design/Themes) — الليلي بحسب أمر 14 أكتوبر 2026.
-        public static let bg = dynamic(light: 0xF5F2EA, dark: 0x0F1A15)
+        // السمة «أخضر عاجي» (مرجع design/Themes) — الليلي بحسب أمر 14 أكتوبر 2026. الخلفية الفاتحة أبيض مائل للأخضر بدل البيج (قرار المالك 2026-10-20).
+        public static let bg = dynamic(light: 0xF1F4F1, dark: 0x0F1A15)
         public static let surface = dynamic(light: 0xFFFFFF, dark: 0x17251E)
-        public static let surface2 = dynamic(light: 0xF2ECDD, dark: 0x1E2E26)
-        public static let border = dynamic(light: 0xE7E1D3, dark: 0x23332B)
+        public static let surface2 = dynamic(light: 0xE9EFEA, dark: 0x1E2E26)
+        public static let border = dynamic(light: 0xDCE5DE, dark: 0x23332B)
         public static let beige = dynamic(light: 0xEFE6D4, dark: 0x1E2E26)
         public static let primary = dynamic(light: 0x1F5C45, dark: 0x6FBE9C)
         public static let primaryStrong = dynamic(light: 0x123B2C, dark: 0x1F5C46)
@@ -110,6 +110,12 @@ public enum Sunnah {
         public static func select() {
             #if canImport(UIKit) && !os(watchOS)
             UISelectionFeedbackGenerator().selectionChanged()
+            #endif
+        }
+        /// اكتمال (آخر عدّة في ذكر…).
+        public static func success() {
+            #if canImport(UIKit) && !os(watchOS)
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
             #endif
         }
     }

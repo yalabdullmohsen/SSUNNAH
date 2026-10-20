@@ -48,6 +48,9 @@ public struct AdhkarScreen: ScreenTemplate {
     }
 
     @State private var selected = ""
+    /// موضع كل تصنيف وعدّاته (مرفوعة هنا لأن زر العدّ عائم خارج التمرير).
+    @State private var indexBy: [String: Int] = [:]
+    @State private var done: [String: Int] = [:]
 
     public var body: some View {
         if categories.isEmpty {
@@ -55,17 +58,28 @@ public struct AdhkarScreen: ScreenTemplate {
                 .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
         } else {
             let current = categories.first(where: { $0.id == selected }) ?? categories[0]
+            let index = Binding(get: { min(indexBy[current.id, default: 0], current.items.count - 1) }, set: { indexBy[current.id] = $0 })
             ScrollView {
                 VStack(alignment: .leading, spacing: 14) {
                     SunnahPageTitle("الأذكار")
                     SunnahChipBar(options: categories.map { .init(id: $0.id, title: titles[$0.id] ?? Self.fallbackTitle) },
                                   selection: Binding(get: { current.id }, set: { selected = $0 }))
-                    AdhkarListView(items: current.items).id(current.id)
+                    AdhkarListView(items: current.items, index: index, done: $done)
                     SunnahContentFooter(title: "أذكار", id: "adhkar", section: "الأذكار", inset: false)
                 }
-                .padding(.bottom, 96)
+                .padding(.bottom, 96 + AdhkarTapCounter.size)
+                .environment(\.layoutDirection, .rightToLeft)
             }
             .background(Sunnah.Colors.bg)
+            // زر العدّ ثابت أسفل يمين الشاشة (تحت الإبهام): لا يتحرك مع طول الذكر ولا يكبر/يصغر عند الضغط.
+            .overlay(alignment: .bottomTrailing) {
+                AdhkarTapCounter(item: current.items[index.wrappedValue], done: $done)
+                    .padding(.trailing, Sunnah.Spacing.pageX)
+                    // الشريط السفلي عائم فوق المحتوى (لا يُحسب في الـsafe area هنا): يُرفع الزر فوقه وإلا اختفى خلفه (لقطة #3613).
+                    .padding(.bottom, SunnahTabBar.reservedHeight + Sunnah.Spacing.s3)
+                    .environment(\.layoutDirection, .rightToLeft)
+            }
+            .environment(\.layoutDirection, .leftToRight)   // محاذاة الزر فعليًا لليمين (يُعاد RTL للمحتوى أدناه)
             .sunnahRootChrome()
             .environment(\.layoutDirection, .rightToLeft)
             .sunnahReadableWidth()
@@ -80,25 +94,24 @@ public struct AdhkarScreen: ScreenTemplate {
     static let fallbackTitle = "أذكار"
 }
 
-/// أذكار تصنيف واحد (النموذج ٢): بطاقة خضراء للذكر الحالي ← عدّاد دائري ← إعادة/التالي. النص والمصدر والعدد من البيانات كما هي.
+/// أذكار تصنيف واحد (النموذج ٢): بطاقة خضراء للذكر الحالي ← إعادة/التالي؛ العدّ بزر عائم ثابت (`AdhkarTapCounter`).
+/// النص والمصدر والعدد من البيانات كما هي.
 struct AdhkarListView: View {
     let items: [AdhkarItem]
-    @State private var index = 0
-    @State private var done: [String: Int] = [:]
+    @Binding var index: Int
+    @Binding var done: [String: Int]
 
     private func digits(_ n: Int) -> String { PrayerTimeFormat.arabicDigits(String(n)) }
 
     var body: some View {
         let item = items[min(index, items.count - 1)]
-        let taps = done[item.id, default: 0]
-        let complete = taps >= item.repeatCount
         VStack(spacing: 14) {
             SunnahHeroCard {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
                         Text("\(digits(index + 1)) من \(digits(items.count))".arabicDigits).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
                         Spacer()
-                        Text("التكرار \(digits(item.repeatCount))").font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.goldInk)
+                        Text("التكرار \(digits(item.repeatCount))").font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.onHeroGold)   // goldInk داكنًا = لون الكبسولة نفسه فيختفي النص
                             .padding(.horizontal, 12).padding(.vertical, 4).background(Sunnah.Colors.heroGold, in: Capsule())
                     }
                     SunnahArabicText(item.text, style: .body).foregroundStyle(.white)
@@ -108,25 +121,6 @@ struct AdhkarListView: View {
                 }
             }
             .accessibilityIdentifier("adhkar.card")
-            Button { if !complete { done[item.id] = taps + 1 } } label: {
-                ZStack {
-                    Circle().stroke(Sunnah.Colors.primarySoft, lineWidth: 10)
-                    Circle().trim(from: 0, to: CGFloat(min(taps, item.repeatCount)) / CGFloat(max(item.repeatCount, 1)))
-                        .stroke(Sunnah.Colors.primary, style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                        .rotationEffect(.degrees(90)).scaleEffect(x: -1, y: 1)
-                    VStack(spacing: 2) {
-                        if complete {
-                            Image(systemName: "checkmark").font(.system(size: 40, weight: .heavy)).foregroundStyle(Sunnah.Colors.primary)
-                        } else {
-                            Text(digits(item.repeatCount - taps)).font(.system(size: 52, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.primary)
-                        }
-                        Text(complete ? "تمّ" : "المتبقي · اضغط للعدّ").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
-                    }
-                }
-                .frame(width: 176, height: 176)
-            }
-            .buttonStyle(.plain).sunnahPressable()
-            .accessibilityLabel("العدّاد \(taps) من \(item.repeatCount)").accessibilityIdentifier("adhkar.counter")
             HStack(spacing: 14) {
                 control("إعادة", "arrow.counterclockwise", filled: false) { done[item.id] = 0 }
                 control(index + 1 < items.count ? "التالي" : "من البداية", "chevron.left", filled: true) {
@@ -149,5 +143,55 @@ struct AdhkarListView: View {
             .overlay(Capsule().stroke(filled ? Color.clear : Sunnah.Colors.border, lineWidth: 1))
         }
         .buttonStyle(.plain).sunnahPressable()
+    }
+}
+
+/// زر العدّ العائم: حجم وموضع ثابتان (لا تحريك ولا تكبير عند الضغط، فلا ينتقل الإبهام)؛ لمسة اهتزازية لكل عدّة،
+/// وحلقة التقدم تمتلئ داخله. يبقى أسفل يمين الشاشة فوق شريط التبويب.
+struct AdhkarTapCounter: View {
+    static let size: CGFloat = 112
+    let item: AdhkarItem
+    @Binding var done: [String: Int]
+
+    private func digits(_ n: Int) -> String { PrayerTimeFormat.arabicDigits(String(n)) }
+
+    var body: some View {
+        let taps = done[item.id, default: 0]
+        let complete = taps >= item.repeatCount
+        Button {
+            guard !complete else { return }
+            done[item.id] = taps + 1
+            if taps + 1 >= item.repeatCount { Sunnah.Haptics.success() } else { Sunnah.Haptics.select() }
+        } label: {
+            ZStack {
+                Circle().fill(Sunnah.Colors.surface)
+                Circle().stroke(Sunnah.Colors.primarySoft, lineWidth: 8)
+                Circle().trim(from: 0, to: CGFloat(min(taps, item.repeatCount)) / CGFloat(max(item.repeatCount, 1)))
+                    .stroke(Sunnah.Colors.primary, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                VStack(spacing: 0) {
+                    if complete {
+                        Image(systemName: "checkmark").font(.system(size: 34, weight: .heavy)).foregroundStyle(Sunnah.Colors.primary)
+                    } else {
+                        Text(digits(item.repeatCount - taps)).font(.system(size: 40, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.primary)
+                            .monospacedDigit().contentTransition(.identity)
+                    }
+                    Text(complete ? "تمّ" : "اضغط").font(AppearancePrefs.ui(.bold, 11, .caption2)).foregroundStyle(Sunnah.Colors.textSecondary)
+                }
+            }
+            .frame(width: Self.size, height: Self.size)
+            .contentShape(Circle())
+            .shadow(color: .black.opacity(0.14), radius: 12, y: 4)
+        }
+        .buttonStyle(AdhkarStillButtonStyle())
+        .transaction { $0.animation = nil }
+        .accessibilityLabel("العدّاد \(taps) من \(item.repeatCount)").accessibilityIdentifier("adhkar.counter")
+    }
+}
+
+/// ضغط بلا تغيير حجم: تعتيم خفيف فقط.
+private struct AdhkarStillButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label.opacity(configuration.isPressed ? 0.85 : 1)
     }
 }
