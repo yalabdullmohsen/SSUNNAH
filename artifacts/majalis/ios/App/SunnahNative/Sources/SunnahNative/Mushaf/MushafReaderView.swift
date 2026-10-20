@@ -299,7 +299,7 @@ public struct MushafReaderView: View {
                 store.toggleMark(.review, ayah: nil, page: current); store.toggleMark(.wird, ayah: nil, page: current)
                 store.toggleMark(.general, ayah: "2:255", page: 42); store.toggleMark(.wird, ayah: "36:1", page: 440)
             }
-            if UserDefaults.standard.bool(forKey: "snapshotShowMarks") { showIndex = true }
+            if UserDefaults.standard.bool(forKey: "snapshotShowMarks") || UserDefaults.standard.string(forKey: "snapshotIndexTab") != nil { showIndex = true }
             #endif
             #if (DEBUG || MUSHAF_PROBE) && canImport(UIKit)
             MushafFlipProbe.runIfRequested(start: current) { current = $0 }
@@ -577,6 +577,8 @@ public struct MushafIndexView: View {
         self.index = index; self.store = store; self.close = close; self.open = open
         #if DEBUG
         if UserDefaults.standard.bool(forKey: "snapshotShowMarks") { _tab = State(initialValue: .marks) }
+        // `-snapshotIndexTab juz` يفتح فهرس المصحف على تبويب الأجزاء (الافتراضي السور).
+        if UserDefaults.standard.string(forKey: "snapshotIndexTab") == "juz" { _tab = State(initialValue: .juz) }
         #endif
     }
 
