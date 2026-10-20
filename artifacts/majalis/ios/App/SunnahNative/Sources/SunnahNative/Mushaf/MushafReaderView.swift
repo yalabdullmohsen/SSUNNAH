@@ -19,13 +19,13 @@ public struct MushafPageView: View {
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
-    /// حجم غليف نهاية الآية نسبةً إلى خط النص، موحَّد لكل الشاشات: مقيس من المصحف المطبوع (مرجع المالك ص19 وص33):
-    /// الزخرفة ≈1.15em ارتفاعًا و≈0.88em عرضًا من خط النص.
-    static let endMarkScale: CGFloat = 1.16
+    /// حجم غليف نهاية الآية نسبةً إلى خط النص: الحجم الطبيعي في خط QPC (كالمطبوع ومرجع المالك ص27 — قياس 2026-10-20:
+    /// عرض السطر = مجموع عروض الغلايف بلا فراغ مضاف، والزخرفة ≈0.80em عرضًا بخط الصفحة نفسه).
+    static let endMarkScale: CGFloat = 1.0
     /// ضغط أفقي للزخرفة حول مركز حبرها ليطابق تناسب المطبوع (العرض/الارتفاع ≈0.77).
-    static let endMarkSquash: CGFloat = 0.95
+    static let endMarkSquash: CGFloat = 1.0
     /// عرض الزخرفة المرئي بوحدة em من حجم غليف النهاية (حبر 0.80em × الضغط) — يحسب منه التخطيط الفراغ حولها.
-    static let ayahDiscEm: CGFloat = 0.76
+    static let ayahDiscEm: CGFloat = 0.80
     /// إزاحة القرص للأسفل (em) ليتمركز مع حبر الحلقة داخل الخط لا مع صندوق النص.
     static let ayahDiscDropEm: CGFloat = 0.07
     /// شفافية تظليل الآية بلون علامتها (خفيف لا يغطي الحبر).
@@ -148,10 +148,10 @@ public struct MushafReaderView: View {
     @State private var current: Int
     @State private var selected: String?
     @State private var showIndex = false
-    /// «المختصر الصوتي» (تفسير صوتي لكل سورة) فوق المصحف، يبدأ بسورة الآية المحددة إن وُجدت.
-    @State private var mukhtasarSurah: Int?
-    @State private var mukhtasarAyah: Int?
-    @State private var showMukhtasar = false
+    /// «تفسير» في بطاقة الآية: اختيار مكتوب/صوتي. الصوتي يشغّل تفسير الآية المحددة وحدها (المختصر) في مشغّل مصغّر فوق المصحف.
+    @State private var tafsirPicker = false
+    @ObservedObject private var mukhtasar = MukhtasarPlayer.shared
+    @ObservedObject private var mukhtasarDownloads = MukhtasarDownloader.shared
     @StateObject private var chromeHide = ChromeAutoHide()
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @State private var sheetHeight: CGFloat = 0
@@ -269,17 +269,14 @@ public struct MushafReaderView: View {
         }
         .onChange(of: voiceOver) { chromeHide.alwaysVisible = $0 }
         .onAppear { chromeHide.alwaysVisible = voiceOver; updatePin() }
-        .onDisappear { chromeHide.cancel() }
-        .fullScreenCover(isPresented: $showMukhtasar) {
-            MukhtasarAudioView(index: index, startSurah: mukhtasarSurah, startAyah: mukhtasarAyah, close: { showMukhtasar = false },
-                               chooseRecitation: { showMukhtasar = false; openRoute("/quran/offline-player") })
-        }
+        .onDisappear { chromeHide.cancel(); if tafsirAyahPlaying != nil { mukhtasar.stop() } }
+        .overlay(alignment: .bottom) { if selected == nil { ayahTafsirPlayer } }
         .fullScreenCover(isPresented: $showIndex) {
             MushafIndexView(index: index, store: store, close: { showIndex = false }) { page in current = page; showIndex = false }
         }
         .onChange(of: searchFocused) { _ in updatePin() }
         .onChange(of: query) { q in chromeHide.touch(); runSearch(q) }
-        .onChange(of: selected) { _ in ayahPicker = false; hifzPicker = false }
+        .onChange(of: selected) { _ in ayahPicker = false; hifzPicker = false; tafsirPicker = false }
         .onChange(of: pagePicker) { _ in updatePin() }
         .onChange(of: current) { p in selected = nil; pagePicker = false; store.visit(page: p); repo.prefetch(around: p, size: pageSize) }
         .task {
@@ -473,8 +470,8 @@ public struct MushafReaderView: View {
                     }
                     #endif
                 }
-                Button { openRoute("/tafsir/\(ayah)") } label: { Label("تفسير", systemImage: "text.book.closed") }.accessibilityIdentifier("mushaf.sheet.tafsir")
-                Button { let parts = ayah.split(separator: ":"); mukhtasarSurah = Int(parts.first ?? ""); mukhtasarAyah = parts.count > 1 ? Int(parts[1]) : nil; selected = nil; showMukhtasar = true } label: { Label("استماع", systemImage: "headphones") }.accessibilityIdentifier("mushaf.sheet.reciters")
+                Button { sunnahAnimate { ayahPicker = false; hifzPicker = false; tafsirPicker.toggle() } } label: { Label("تفسير", systemImage: "text.book.closed") }.accessibilityIdentifier("mushaf.sheet.tafsir")
+                Button { openRoute("/quran/offline-player") } label: { Label("استماع", systemImage: "headphones") }.accessibilityIdentifier("mushaf.sheet.reciters")
                 Button { sunnahAnimate { ayahPicker.toggle() } } label: { Label("علامة", systemImage: store.colors(ofAyah: ayah).isEmpty ? "bookmark" : "bookmark.fill") }.accessibilityIdentifier("mushaf.sheet.mark")
                 Button { sunnahAnimate { hifzPicker.toggle() } } label: { Label("حفظ", systemImage: hifz.progress.state(current) == .none ? "checkmark.circle" : "checkmark.circle.fill") }.accessibilityIdentifier("mushaf.sheet.hifz")
             }
@@ -485,6 +482,7 @@ public struct MushafReaderView: View {
                 MushafMarkPicker(active: store.colors(ofAyah: ayah)) { store.toggleMark($0, ayah: ayah, page: current) }
             }
             if hifzPicker { HifzStatePicker(store: hifz, page: current) }
+            if tafsirPicker { tafsirChoice(ayah) }
         }
         .padding(Sunnah.Spacing.s4)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
@@ -494,6 +492,77 @@ public struct MushafReaderView: View {
         .background(GeometryReader { g in Color.clear.preference(key: MushafSheetHeightKey.self, value: g.size.height) })
         .onPreferenceChange(MushafSheetHeightKey.self) { sheetHeight = $0 + Sunnah.Spacing.s3 }
         .transition(.move(edge: avoidancePlan(height: pageSize.height).sheetOnTop ? .top : .bottom).combined(with: .opacity))
+    }
+
+    private func ayahParts(_ ayah: String) -> (surah: Int, ayah: Int)? {
+        let p = ayah.split(separator: ":")
+        guard p.count == 2, let s = Int(p[0]), let a = Int(p[1]) else { return nil }
+        return (s, a)
+    }
+
+    /// خيارا التفسير: مكتوب (شاشة التفاسير) أو صوتي (المختصر لهذه الآية فقط، بلا قائمة سور ولا شاشة تنزيل).
+    private func tafsirChoice(_ ayah: String) -> some View {
+        HStack(spacing: Sunnah.Spacing.s3) {
+            SunnahButton("تفسير مكتوب", style: .outline) { openRoute("/tafsir/\(ayah)") }
+                .accessibilityIdentifier("mushaf.sheet.tafsir.text")
+            if let p = ayahParts(ayah), MukhtasarIndex.hasAyahs(p.surah) {
+                SunnahButton("تفسير صوتي") { selected = nil; mukhtasar.play(p.surah, ayah: p.ayah) }
+                    .accessibilityIdentifier("mushaf.sheet.tafsir.audio")
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .transition(.opacity)
+    }
+
+    /// الآية التي يجري تفسيرها صوتيًا (أو تُجهَّز)، إن وُجدت.
+    private var tafsirAyahPlaying: (Int, Int)? {
+        if let p = mukhtasar.preparing { return (p.surah, p.ayah) }
+        if let s = mukhtasar.surah, let a = mukhtasar.ayah { return (s, a) }
+        return nil
+    }
+
+    private func surahName(_ s: Int) -> String { index.surahs.first { $0.id == s }?.name ?? s.arabicDigits }
+
+    /// مشغّل مصغّر لتفسير الآية فوق المصحف: العنوان، تشغيل/إيقاف مؤقت، إنهاء؛ وحالة التجهيز (تنزيل ملف السورة مرة واحدة).
+    @ViewBuilder private var ayahTafsirPlayer: some View {
+        let dl = mukhtasarDownloads
+        if let p = tafsirAyahPlaying {
+            HStack(spacing: Sunnah.Spacing.s3) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("تفسير الآية \(p.1.arabicDigits) من سورة \(surahName(p.0))")
+                        .font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary).lineLimit(1)
+                    Group {
+                        if mukhtasar.preparing != nil {
+                            Text(dl.active == p.0 ? "تجهيز التفسير… \(Int(dl.progress * 100).arabicDigits)٪" : "تجهيز التفسير…")
+                        } else if mukhtasar.failedSurah == p.0 {
+                            Text("تعذّر التجهيز — تحقّق من الاتصال")
+                        } else {
+                            Text(MukhtasarAudio.title + " — مركز تفسير")
+                        }
+                    }
+                    .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).lineLimit(1)
+                }
+                Spacer(minLength: 0)
+                if mukhtasar.preparing != nil {
+                    ProgressView()
+                } else {
+                    Button { mukhtasar.toggle() } label: {
+                        Image(systemName: mukhtasar.playing ? "pause.fill" : "play.fill").font(.title3).frame(width: 44, height: 44)
+                    }
+                    .accessibilityLabel(mukhtasar.playing ? "إيقاف مؤقت" : "تشغيل").accessibilityIdentifier("mushaf.tafsirAudio.toggle")
+                }
+                Button { mukhtasar.stop() } label: { Image(systemName: "xmark").font(.body.weight(.semibold)).frame(width: 44, height: 44) }
+                    .accessibilityLabel("إنهاء التفسير").accessibilityIdentifier("mushaf.tafsirAudio.close")
+            }
+            .foregroundStyle(Sunnah.Colors.mushafInk)
+            .padding(.horizontal, Sunnah.Spacing.s4).padding(.vertical, Sunnah.Spacing.s2)
+            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.goldDeco.opacity(0.6), lineWidth: 1))
+            .shadow(color: .black.opacity(0.12), radius: 12, y: 4)
+            .padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, Sunnah.Spacing.s3)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
+            .accessibilityElement(children: .contain)
+        }
     }
 
     /// يتغيّر مع أي علامة فتُعاد رسم الصفحات المجاورة.

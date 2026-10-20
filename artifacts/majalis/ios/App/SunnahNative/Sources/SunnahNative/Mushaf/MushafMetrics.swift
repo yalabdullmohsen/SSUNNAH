@@ -4,7 +4,7 @@ import CoreText
 /// مظهر خط الصفحة (قابل للضبط): خط QPC نفسه بلا ظلال ولا تمويه؛ الحجم الأكبر (فراغ كلمات أضيق) يعطي الكثافة ويملأ السطر.
 enum MushafStyle {
     /// أدنى فراغ كلمات (نسبة من الطبيعي) يُقبل قبل تصغير الخط: الأقل يكبّر الخط ويكثّف السطر.
-    static let gapFloor: CGFloat = 0.7
+    static let gapFloor: CGFloat = 0
 }
 
 /// قياس عرض كلمات السطر بخط الصفحة نفسه (Core Text) لتوزيع السطر على عرض الصفحة كما في المصحف المطبوع.
@@ -102,7 +102,7 @@ enum MushafMetrics {
         guard l.ends.contains(true) else {
             if n < 2 { return (nat, false, [:]) }
             let g = (width - w.reduce(0, +)) / CGFloat(n - 1)
-            return g <= s * 0.6 ? (max(g, 0), true, [:]) : (nat, false, [:])
+            return g <= s * 0.6 ? (g, true, [:]) : (nat, false, [:])
         }
         // متوسط فراغ الحبر بين كلمتين عاديتين متجاورتين = g + هذا المتوسط.
         var ins: [CGFloat] = []
@@ -132,7 +132,7 @@ enum MushafMetrics {
             g = 0.5 * g + 0.5 * max(gn, 0); p = pads(g)
         }
         let gf = (width - sumW - padSum(p)) / CGFloat(n - 1)
-        return gf > s * 0.6 ? (nat, false, pads(nat)) : (max(gf, 0), true, p)
+        return gf > s * 0.6 ? (nat, false, pads(nat)) : (gf, true, p)
     }
 
     /// حجم موحّد للصفحة (أكبر حجم يتسع معه أعرض سطر مع حشوات الأقراص) ثم تبرير كل سطر.
@@ -168,7 +168,7 @@ enum MushafMetrics {
             let ks = l.ends.indices.filter { l.ends[$0] }
             if !ks.isEmpty { discs[l.i] = Dictionary(uniqueKeysWithValues: ks.map { ($0, discDiameter(fontSize: size)) }) }
             let r = solve(l, s: size, width: width, probe: probe)
-            if r.justified { gaps[l.i] = r.gap }
+            if r.justified { gaps[l.i] = max(r.gap, 0) }
             if !r.pads.isEmpty { endPads[l.i] = r.pads }
         }
         return Layout(fontSize: size, gaps: gaps, endPads: endPads, discs: discs)

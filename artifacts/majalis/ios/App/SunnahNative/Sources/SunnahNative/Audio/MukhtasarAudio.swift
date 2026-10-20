@@ -1,5 +1,6 @@
 import SwiftUI
 import AVFoundation
+import Combine
 
 /// «المختصر الصوتي»: التسجيل الصوتي للمختصر في تفسير القرآن الكريم — إصدار مركز تفسير للدراسات القرآنية،
 /// بصوت عبدالله الأسمري وتلاوة صابر عبدالحكم. مجاني، يُبث من نسخة المركز على أرشيف الإنترنت (archive.org/details/Mokhtasr_Asmari)
@@ -109,6 +110,14 @@ public final class MukhtasarDownloader: NSObject, ObservableObject, URLSessionDo
         next()
     }
 
+    /// تقديم سورة إلى رأس الطابور (تفسير آية طلبها المستخدم الآن): تُنزَّل قبل غيرها.
+    public func prioritize(_ surah: Int) {
+        failed = nil
+        guard !isDownloaded(surah), active != surah else { return }
+        queue.removeAll { $0 == surah }; queue.insert(surah, at: 0)
+        next()
+    }
+
     /// إيقاف سورة جارية أو إخراجها من الطابور.
     public func cancel(_ surah: Int) {
         queue.removeAll { $0 == surah }
@@ -180,38 +189,79 @@ public final class MukhtasarPlayer: ObservableObject {
 
     /// الآية الجارية (إن شُغّلت آية بعينها) — يتوقف التشغيل تلقائيًا عند نهاية تفسيرها.
     @Published public private(set) var ayah: Int?
-    private var boundary: Any?
+
+    /// تفسير آية ينتظر تنزيل ملف سورته (التقديم الدقيق يتطلب الملف محليًا: ملفات MP3 متغيرة المعدل لا يُقدَّم فيها بدقة أثناء البث).
+    @Published public private(set) var preparing: (surah: Int, ayah: Int)?
+    private var downloads: AnyCancellable?
+    private var statusObs: NSKeyValueObservation?
+    private var endTime: Double?
 
     /// تشغيل سورة من بداية «مقاصد السورة» (يتخطّى الإعلان الافتتاحي)، أو آية بعينها: من بدء تلاوتها إلى بدء الآية التالية بالضبط.
+    /// السبب الجذري لعطل «تحديد آية يشغّل السورة كلها»: كان التقديم يُطلب قبل جاهزية العنصر فيُهمَل ويبدأ من أول الملف،
+    /// والبث لا يقدّم بدقة في MP3 متغير المعدل. الآن: الآية من ملف محلي بتوقيت دقيق، والتقديم بعد readyToPlay، والنهاية بـforwardPlaybackEndTime.
     public func play(_ s: Int, ayah a: Int? = nil) {
-        if surah == s, ayah == a, let player { player.play(); playing = true; return }
+        if surah == s, ayah == a, let player {
+            if let endTime, elapsed >= endTime - 0.3 { startItem(s, ayah: a) } else { player.play(); playing = true }
+            return
+        }
+        if let a, MukhtasarAudio.localURL(s) == nil {
+            stop()
+            preparing = (s, a)
+            let dl = MukhtasarDownloader.shared
+            downloads = dl.$revision.combineLatest(dl.$failed).receive(on: RunLoop.main).sink { [weak self] _, failed in
+                guard let self, let p = self.preparing, p.surah == s, p.ayah == a else { return }
+                if MukhtasarAudio.localURL(s) != nil { self.preparing = nil; self.downloads = nil; self.startItem(s, ayah: a) }
+                else if failed == s { self.preparing = nil; self.downloads = nil; self.failedSurah = s }
+            }
+            dl.prioritize(s)
+            return
+        }
+        startItem(s, ayah: a)
+    }
+
+    /// تعذّر تجهيز تفسير الآية (لا اتصال مثلًا).
+    @Published public private(set) var failedSurah: Int?
+
+    private func startItem(_ s: Int, ayah a: Int?) {
         guard let url = MukhtasarAudio.playableURL(s) else { return }
         stop()
         #if os(iOS)
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio)
         try? AVAudioSession.sharedInstance().setActive(true)
         #endif
-        let p = AVPlayer(url: url)
+        let asset = AVURLAsset(url: url, options: url.isFileURL ? [AVURLAssetPreferPreciseDurationAndTimingKey: true] : nil)
+        let item = AVPlayerItem(asset: asset)
+        let range = MukhtasarIndex.range(surah: s, ayah: a)
+        if let end = range.end { item.forwardPlaybackEndTime = CMTime(seconds: end, preferredTimescale: 600) }
+        let p = AVPlayer(playerItem: item)
         observer = p.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: 600), queue: .main) { [weak self] t in
             MainActor.assumeIsolated {
                 guard let self else { return }
                 self.elapsed = t.seconds
                 if let d = self.player?.currentItem?.duration.seconds, d.isFinite { self.duration = d }
+                if let e = self.endTime, t.seconds >= e - 0.05 { self.player?.pause(); self.playing = false }
             }
         }
-        let range = MukhtasarIndex.range(surah: s, ayah: a)
-        if range.start > 0 { p.seek(to: CMTime(seconds: range.start, preferredTimescale: 600), toleranceBefore: .zero, toleranceAfter: .zero) }
-        if let end = range.end {
-            boundary = p.addBoundaryTimeObserver(forTimes: [NSValue(time: CMTime(seconds: end, preferredTimescale: 600))], queue: .main) { [weak self] in
-                MainActor.assumeIsolated { self?.player?.pause(); self?.playing = false }
-            }
+        // التقديم بعد الجاهزية فقط (قبلها يُهمَل)، ثم التشغيل.
+        statusObs = item.observe(\.status, options: [.initial, .new]) { [weak self] it, _ in
+            guard it.status == .readyToPlay else { return }
+            DispatchQueue.main.async { MainActor.assumeIsolated {
+                guard let self, self.player === p else { return }
+                self.statusObs = nil
+                let go = { p.play() }
+                if range.start > 0 {
+                    p.seek(to: CMTime(seconds: range.start, preferredTimescale: 600), toleranceBefore: .zero, toleranceAfter: .zero) { _ in go() }
+                } else { go() }
+            } }
         }
-        player = p; surah = s; ayah = a; p.play(); playing = true
+        player = p; surah = s; ayah = a; endTime = range.end; elapsed = range.start; failedSurah = nil; playing = true
     }
 
     public func toggle() {
         guard let player else { return }
-        if playing { player.pause(); playing = false } else { player.play(); playing = true }
+        if playing { player.pause(); playing = false }
+        else if let endTime, let s = surah, elapsed >= endTime - 0.3 { startItem(s, ayah: ayah) }   // انتهى تفسير الآية: إعادة من أولها
+        else { player.play(); playing = true }
     }
 
     public func skip(_ seconds: Double) {
@@ -227,8 +277,8 @@ public final class MukhtasarPlayer: ObservableObject {
 
     public func stop() {
         if let observer, let player { player.removeTimeObserver(observer) }
-        if let boundary, let player { player.removeTimeObserver(boundary) }
-        player?.pause(); player = nil; observer = nil; boundary = nil
+        statusObs = nil; downloads = nil; preparing = nil; endTime = nil
+        player?.pause(); player = nil; observer = nil
         surah = nil; ayah = nil; playing = false; elapsed = 0; duration = 0
     }
 
