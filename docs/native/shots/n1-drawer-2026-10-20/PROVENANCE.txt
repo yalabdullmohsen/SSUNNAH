@@ -1,0 +1,9 @@
+git_sha=ce98348194f67e144bb3e36896e692d4a51d2666
+branch=n1/redesign-drawer
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1-m2/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=4d31b6080178009cce7b4b50042ae2adc9f116f9793026056a41cac7e9d66478
+built_at=2026-10-20 20:04:55
+source_newest=2026-10-20 20:04:18
+captured_at=2026-10-20 20:08:16
+covers=SunnahDrawer (الدرج الجانبي: بلاط شبكي) فاتح وداكن
+note=قسم «اللغة والمكتبة والبحث» فيه 8 مسارات فلم يُحذف

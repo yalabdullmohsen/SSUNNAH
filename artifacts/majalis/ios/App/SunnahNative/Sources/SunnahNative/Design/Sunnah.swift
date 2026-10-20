@@ -72,8 +72,8 @@ public enum Sunnah {
         /// حبر نص المصحف كالمطبوع: أسود فاتحًا، عاجي داكنًا (قرار المالك: «نفس لون الخط» في المرجع).
         public static let mushafText = dynamic(light: 0x000000, dark: 0xEDE6D6)
         /// علامة نهاية الآية (قرار المالك 2026-10-20: هوية المصحف الخضراء بحجم المطبوع): إطار وزخارف أخضر، وحشوة خضراء فاتحة؛ الرقم بـmushafText (تباين ≥ 4.5:1).
-        public static let mushafEndGold = dynamic(light: 0x3F6B55, dark: 0x8FBFA6)
-        public static let mushafEndFill = dynamic(light: 0xE4EFE7, dark: 0x1E3328)
+        public static let mushafEndGold = dynamic(light: 0x2C6A4C, dark: 0x8FBFA6)   // إطار أخضر أغمق ومشبع كإطار المرجع الذهبي (كان باهتًا)
+        public static let mushafEndFill = dynamic(light: 0xD5EADB, dark: 0x1E3328)
         public static let goldDeco = dynamic(light: 0xB08D4A, dark: 0xD9C089)
         public static let goldSoft = dynamic(light: 0xD9C089, dark: 0x3A3320)
         public static let textPrimary = dynamic(light: 0x17241E, dark: 0xEFECE2)
@@ -84,6 +84,13 @@ public enum Sunnah {
         /// «يحتاج مراجعة» في خريطة الحفظ (برتقالي).
         public static let hifzReview = dynamic(light: 0xC2621B, dark: 0xF0A25E)
         public static let switchOff = dynamic(light: 0xD8D2C4, dark: 0x2B3B33)
+        /// درجات الحديث: خلفية فاتحة وحبر بتباين ≥ 4.5 (صحيح أخضر، ضعيف أحمر، موضوع برتقالي).
+        public static let gradeSahihBg = dynamic(light: 0xE3F1E8, dark: 0x1B3328)
+        public static let gradeSahihInk = dynamic(light: 0x1F5C45, dark: 0x8FD1B1)
+        public static let gradeDaifBg = dynamic(light: 0xFAE6E3, dark: 0x3A2220)
+        public static let gradeDaifInk = dynamic(light: 0x9C2B22, dark: 0xF0A59C)
+        public static let gradeMawduBg = dynamic(light: 0xFBEBD6, dark: 0x3A2C18)
+        public static let gradeMawduInk = dynamic(light: 0x8A4B0F, dark: 0xF0C48A)
 
         private static func dynamic(light: UInt32, dark: UInt32) -> Color {
             #if canImport(UIKit)
@@ -132,6 +139,8 @@ public enum Sunnah {
         public static let quran = Font.custom("Amiri-Regular", size: 24, relativeTo: .title3)
         /// القراءة الطويلة (أحاديث، شروح، مقالات): Noto Naskh Arabic.
         public static let hadith = Font.custom("NotoNaskhArabic-Regular", size: 19, relativeTo: .body)
+        /// قراءة الحديث بخط Amiri (قرار المالك 2026-10-20).
+        public static let amiriReading = Font.custom("Amiri-Regular", size: 22, relativeTo: .title3)
         public static let reading = Font.custom("NotoNaskhArabic-Regular", size: 18, relativeTo: .body)
         public static let readingBold = Font.custom("NotoNaskhArabic-Bold", size: 18, relativeTo: .body)
     }
