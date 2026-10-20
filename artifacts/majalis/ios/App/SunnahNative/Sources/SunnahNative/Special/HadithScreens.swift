@@ -74,12 +74,18 @@ struct HadithListView: View {
 
     @ViewBuilder private var listBody: some View {
         if items.isEmpty { EmptyStateView() } else {
-            SunnahRowStack {
-                if let title { SunnahPageTitle(title) }
-                ForEach(filtered) { item in
-                    SunnahNavigationLink { HadithDetailView(item: item) } label: {
-                        HadithRowLabel(grade: .sahih, title: item.title, subtitle: item.sourceName ?? item.chapter)
-                    }.hadithGradeRow(.sahih)
+            let rows = filtered.sorted { ArabicSearch.normalize($0.title) < ArabicSearch.normalize($1.title) }
+            let keys = query.isEmpty ? rows.map { SunnahJumpIndex<EmptyView>.key(for: $0.title) }.reduce(into: [String]()) { if !$0.contains($1) { $0.append($1) } } : []
+            SunnahJumpIndex(keys: keys, count: rows.count) {
+                SunnahRowStack {
+                    if let title { SunnahPageTitle(title) }
+                    ForEach(Array(rows.enumerated()), id: \.element.id) { idx, item in
+                        let k = SunnahJumpIndex<EmptyView>.key(for: item.title)
+                        SunnahNavigationLink { HadithDetailView(item: item) } label: {
+                            HadithRowLabel(grade: .sahih, title: item.title, subtitle: item.sourceName ?? item.chapter)
+                        }.hadithGradeRow(.sahih)
+                        .sunnahJumpAnchor(idx == 0 || SunnahJumpIndex<EmptyView>.key(for: rows[idx - 1].title) != k ? k : "-\(item.id)")
+                    }
                 }
             }
             .sunnahReadableWidth()
