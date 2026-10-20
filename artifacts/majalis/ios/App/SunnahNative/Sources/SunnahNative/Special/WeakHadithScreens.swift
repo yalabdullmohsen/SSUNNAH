@@ -28,6 +28,7 @@ public struct WeakHadithItem: Decodable, Identifiable, Hashable, Sendable {
 
     public var isMawdu: Bool { authenticityClass == "mawdu" }
     public var label: String { isMawdu ? "موضوع" : "ضعيف" }
+    var grade2: HadithGrade { isMawdu ? .mawdu : .daif }
 
     /// نص المشاركة والنسخ: الحكم والمحدّث والمصدر ملازمة للنص دائمًا.
     public var shareText: String {
@@ -98,12 +99,8 @@ struct WeakHadithListView: View {
                     SunnahRowStack {
                         ForEach(rows) { item in
                             SunnahNavigationLink { WeakHadithDetailView(item: item) } label: {
-                                VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                                    WeakHadithBadge(item: item)
-                                    Text(item.title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                                    Text("المحدّث: \(item.muhaddith)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                                }
-                            }.sunnahStackRow()
+                                HadithRowLabel(grade: item.grade2, title: item.title, subtitle: "المحدّث: \(item.muhaddith)")
+                            }.hadithGradeRow(item.grade2)
                         }
                     }
                     .sunnahSearchable(text: $query, prompt: "ابحث في \(title)")
@@ -150,35 +147,17 @@ struct WeakHadithDetailView: View {
         #endif
     }
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                WeakHadithWarningBanner()
-                WeakHadithBadge(item: item)
-                SunnahCard {
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        SunnahArabicText(item.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
-                        if let n = item.narrator { Text(n).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-                    }
-                }
-                SunnahCard {
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        Text("الحكم: \(item.grade)").font(Sunnah.Typography.cardTitle)
-                        Text("المحدّث: \(item.muhaddith)").font(Sunnah.Typography.body)
-                        Text("المصدر: \(item.sourceName)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        if let c = item.chapter { Text(c).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-                    }
-                }
-                if let e = item.explanation { SunnahCard { SunnahSectionedMarkdown(e, key: "weak-\(item.id)", style: .body).foregroundStyle(Sunnah.Colors.textPrimary) } }
-                HStack(spacing: Sunnah.Spacing.s3) {
-                    ShareLink(item: item.shareText) { Label("مشاركة", systemImage: "square.and.arrow.up") }
-                    Button { copy(item.shareText) } label: { Label("نسخ", systemImage: "doc.on.doc") }
-                }.font(Sunnah.Typography.secondary)
-                SunnahContentFooter(title: item.title, id: item.id, section: item.sourceName, source: item.sourceName, inset: false, sensitive: true)
-            }.padding(Sunnah.Spacing.pageX)
-        }
-        .background(Sunnah.Colors.bg)
+        HadithDetailLayout(grade: item.grade2, text: item.text, narrator: item.narrator, source: item.sourceName, gradeText: item.grade,
+                           muhaddith: item.muhaddith, chapter: item.chapter, explanation: item.explanation, key: "weak-\(item.id)",
+                           top: { WeakHadithWarningBanner().clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous)) },
+                           actions: {
+            HStack(spacing: Sunnah.Spacing.s3) {
+                ShareLink(item: item.shareText) { Label("مشاركة", systemImage: "square.and.arrow.up") }
+                Button { copy(item.shareText) } label: { Label("نسخ", systemImage: "doc.on.doc") }
+            }.font(Sunnah.Typography.secondary)
+        },
+                           footer: { SunnahContentFooter(title: item.title, id: item.id, section: item.sourceName, source: item.sourceName, inset: false, sensitive: true) })
         .sunnahNavTitle(item.label)
-        .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.sourceName)
     }
 }
 

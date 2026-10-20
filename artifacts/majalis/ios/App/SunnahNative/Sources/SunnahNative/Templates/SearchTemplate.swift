@@ -6,7 +6,10 @@ public struct SearchTemplate: View {
     let items: [ContentItem]; let detailBase: String
     /// قوائم قابلة للتصفح (مثل الأربعين النووية): عند خلو الحقل تُعرض كل العناصر لا رسالة «ابحث».
     let browseWhenEmpty: Bool
+    /// محور القسم: بطاقات كبيرة تحلّ محل «أقسام سريعة» قبل الكتابة، والبحث ثانوي فوقها.
+    let hub: [SectionLink]; let hubCounts: [String: Int]
     @State private var query = ""
+    @State private var browsing = false
     /// آخر عمليات البحث: محلية على الجهاز فقط (UserDefaults)، ثمانية كحد أقصى.
     @State private var recent: [String] = SearchTemplate.loadRecent()
 
@@ -27,7 +30,9 @@ public struct SearchTemplate: View {
     }
     private func item(_ id: String) -> ContentItem? { items.first { $0.id == id } }
 
-    public init(items: [ContentItem], detailBase: String, browseWhenEmpty: Bool = false) { self.items = items; self.detailBase = detailBase; self.browseWhenEmpty = browseWhenEmpty }
+    public init(items: [ContentItem], detailBase: String, browseWhenEmpty: Bool = false, hub: [SectionLink] = [], hubCounts: [String: Int] = [:]) {
+        self.items = items; self.detailBase = detailBase; self.browseWhenEmpty = browseWhenEmpty; self.hub = hub; self.hubCounts = hubCounts
+    }
 
     /// اقتراحات من الفهرس نفسه؛ إن لم يحوِ المعرّفات المعروفة فأوائل عناصره (لا صفحة بحث بلا اقتراح).
     private var suggestionTitles: [String] {
@@ -37,14 +42,14 @@ public struct SearchTemplate: View {
 
     private var results: [ContentItem] {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        if q.isEmpty, browseWhenEmpty { return items }
+        if q.isEmpty, browseWhenEmpty || browsing { return items }
         guard q.count >= 2 else { return [] }
         return items.filter { ([$0.title, $0.subtitle ?? ""] + $0.tags).contains { $0.localizedCaseInsensitiveContains(q) } }
     }
 
     public var body: some View {
         VStack(spacing: 0) {
-            SunnahSearchField(text: $query, prompt: "ابحث", suggestions: query.isEmpty ? suggestionTitles : [], idPrefix: "search.field")
+            SunnahSearchField(text: $query, prompt: "ابحث", suggestions: query.isEmpty && hub.isEmpty ? suggestionTitles : [], idPrefix: "search.field")
                 .padding(.vertical, Sunnah.Spacing.s2)
                 .onSubmit(of: .search) { remember(query) }
             if results.isEmpty {
@@ -80,7 +85,19 @@ public struct SearchTemplate: View {
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
                         .frame(minHeight: 44).padding(.horizontal, Sunnah.Spacing.pageX + 4)
                 }
-                if !quick.isEmpty {
+                if !hub.isEmpty {
+                    SunnahSectionHub(links: hub, counts: hubCounts, idPrefix: "search.hub")
+                    if !items.isEmpty {
+                        Button { Sunnah.Haptics.select(); sunnahAnimate { browsing = true } } label: {
+                            Text("تصفّح كل الأبحاث (\(items.count))".arabicDigits)
+                                .font(AppearancePrefs.ui(.extraBold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.primary)
+                                .frame(maxWidth: .infinity, minHeight: 50)
+                                .background(Sunnah.Colors.primarySoft, in: Capsule())
+                        }
+                        .buttonStyle(.plain).sunnahPressable().padding(.horizontal, Sunnah.Spacing.pageX)
+                        .accessibilityIdentifier("search.hub.browse")
+                    }
+                } else if !quick.isEmpty {
                     Text("أقسام سريعة").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.primary)
                         .padding(.horizontal, Sunnah.Spacing.pageX + 4).accessibilityAddTraits(.isHeader)
                     SunnahTileGrid(quick.map { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.subtitle) }, idPrefix: "search.quick") { t in
