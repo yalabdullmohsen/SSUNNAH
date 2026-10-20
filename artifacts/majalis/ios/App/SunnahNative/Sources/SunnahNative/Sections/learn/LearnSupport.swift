@@ -153,6 +153,33 @@ struct LearnList<Item: Identifiable, Row: View>: View {
     }
 }
 
+/// محور بلاط من عمودين: كل عنصر بلاطة بنقرة واحدة (بدل قائمة صفوف طويلة).
+struct LearnTileGrid<Item: Identifiable, Destination: View>: View {
+    let items: [Item]
+    var emptyTitle: String = "المحتوى قيد التوثيق"
+    let symbol: String
+    let title: (Item) -> String
+    let subtitle: (Item) -> String?
+    @ViewBuilder let destination: (Item) -> Destination
+
+    var body: some View {
+        if items.isEmpty { EmptyStateView(title: emptyTitle) } else {
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 14) {
+                    ForEach(items) { item in
+                        SunnahNavigationLink { destination(item) } label: {
+                            SunnahTile(title: title(item).arabicDigits, subtitle: subtitle(item)?.arabicDigits, symbol: symbol, tone: .mint)
+                        }
+                        .buttonStyle(.plain).sunnahPressable()
+                    }
+                }
+                .padding(Sunnah.Spacing.pageX)
+            }
+            .background(Sunnah.Colors.bg)
+        }
+    }
+}
+
 /// يجمع الأجزاء غير الفارغة بفاصل؛ nil إن لم يبقَ شيء (لا سطر ثانوي فارغ).
 func learnLine(_ parts: String?..., separator: String = " — ") -> String? {
     let kept = parts.compactMap { $0 }.filter { !$0.isEmpty }
