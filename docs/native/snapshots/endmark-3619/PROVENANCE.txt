@@ -1,0 +1,2 @@
+covers=MushafReaderView,Sunnah
+build=n4/n4-3619 (mushaf-endmark-ref-size @ 5551ff045) page=27 sizes=402x874,440x956 light+dark simulator=iPhone 17 Pro (ImageRenderer، ENDMARK_SNAP_DIR)

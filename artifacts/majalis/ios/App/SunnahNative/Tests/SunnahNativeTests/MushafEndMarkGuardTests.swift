@@ -82,10 +82,11 @@ final class MushafEndMarkGuardTests: XCTestCase {
         let env = ProcessInfo.processInfo.environment
         guard let dir = env["ENDMARK_SNAP_DIR"], let tag = env["ENDMARK_TAG"] else { throw XCTSkip("ENDMARK_SNAP_DIR/ENDMARK_TAG غير محددين") }
         let repo = try repo(), idx = try repo.index()
-        let size = CGSize(width: 402, height: 874)
+        let size = CGSize(width: Double(env["ENDMARK_W"] ?? "") ?? 402, height: Double(env["ENDMARK_H"] ?? "") ?? 874)
+        let pages = (env["ENDMARK_PAGES"] ?? "").split(separator: ",").compactMap { Int($0) }.nonEmpty ?? Self.pages
         let d = "\(dir)/\(tag)"; try? FileManager.default.createDirectory(atPath: d, withIntermediateDirectories: true)
         for style in [UIUserInterfaceStyle.light, .dark] {
-            for n in Self.pages {
+            for n in pages {
                 let view = ZStack { Sunnah.Colors.mushafPaper; MushafPageView(repo: repo, index: idx, number: n, selectedAyah: .constant(nil)) }
                     .frame(width: size.width, height: size.height).environment(\.colorScheme, style == .dark ? .dark : .light)
                 let ir = ImageRenderer(content: view); ir.scale = 3
@@ -95,4 +96,6 @@ final class MushafEndMarkGuardTests: XCTestCase {
         }
     }
 }
+
+private extension Array { var nonEmpty: [Element]? { isEmpty ? nil : self } }
 #endif
