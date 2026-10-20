@@ -227,6 +227,11 @@ console.log("quiz-template-explanations-stripped:", qStripped, "quiz-duplicate-q
   const surahs = chapters.map((c) => ({ id: c.id, name: c.name_arabic, ayahs: c.verses_count, firstPage: c.pages[0], lastPage: c.pages[1], place: c.revelation_place, bismillahPre: c.bismillah_pre }));
   const juzStart = {};
   const ayahPage = {};
+  // تصحيح أسطر مُثبَت بعرض غلايف خط QPC V2 نفسه (الخط مصمَّم فيتساوى عرض أسطر الصفحة): مصدر quran-v2 يضع «فَإِنَّمَآ» (2:181:5)
+  // آخر السطر 14 في ص27 فيصير عرضه 17.42em مقابل ≈15.6em لبقية الأسطر و13.96em للسطر 15، فيصغر خط الصفحة كلها ~10٪ وتتسع الفراغات.
+  // في المصحف المطبوع (مرجع المالك 2026-10-20) هي أول السطر 15؛ بعد النقل: 15.75 و15.63. نفس الموضع الذي ينقصه وسم end لـ2:181.
+  // المصدر (public/data/quran-v2) لا يُمسّ — التصحيح هنا فقط، والحارس MushafLineWidthGuardTests يفشل عند أي سطر أعرض من +5٪.
+  const LINE_FIX = new Map([[83893, 15]]);
   for (let p = 1; p <= 604; p++) {
     const verses = rd(`${q2}/pages/page-${pad(p)}.json`);
     const lines = new Map();
@@ -238,9 +243,10 @@ console.log("quiz-template-explanations-stripped:", qStripped, "quiz-duplicate-q
       // 2:181 في مصدر quran-v2 بلا كلمة من نوع end؛ آخر كلمة فيها هي رمز العلامة نفسه (التالي مباشرةً لما قبله) فتُعلَّم كغيرها دون مسّ الرمز أو النص
       const noEnd = !v.words.some((w) => w.char_type_name === "end");
       for (const [wi, w] of v.words.entries()) {
-        if (!lines.has(w.line_number)) lines.set(w.line_number, []);
+        const ln = LINE_FIX.get(w.id) ?? w.line_number;
+        if (!lines.has(ln)) lines.set(ln, []);
         const isEnd = w.char_type_name === "end" || (noEnd && wi === v.words.length - 1);
-        lines.get(w.line_number).push({ id: w.id, c: w.code_v2, v: key, ...(isEnd ? { e: 1 } : {}) });
+        lines.get(ln).push({ id: w.id, c: w.code_v2, v: key, ...(isEnd ? { e: 1 } : {}) });
       }
       if (v.verse_number === 1 && !starts.has(Number(key.split(":")[0]))) starts.set(Number(key.split(":")[0]), Math.min(...v.words.map((w) => w.line_number)));
     }

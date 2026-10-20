@@ -14,7 +14,7 @@ final class MushafCacheTests: XCTestCase {
         for n in [1, 2, 187, 604] {
             let f = try r.ensureFont(page: n), page = try r.page(n)
             let a = r.pageLayout(page, family: f, size: size), b = r.pageLayout(page, family: f, size: size)
-            let w = size.width * 0.94, m = MushafPageLayout.metrics(for: page, height: size.height)
+            let w = size.width - size.width * 0.03 * 2, m = MushafPageLayout.metrics(for: page, height: size.height)
             XCTAssertEqual(a.layout, MushafMetrics.layout(rows: m.rows, family: f, width: w, maxFont: CGFloat(m.rowHeight) * 0.8))
             XCTAssertEqual(a.layout, b.layout)
         }
