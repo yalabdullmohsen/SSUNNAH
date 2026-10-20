@@ -16,7 +16,7 @@
 1. اختبارات موجهة + build بلا أخطاء، وتحقق عملي (RTL والجوال).
 2. commit برسالة عربية ثم push.
 3. الفشل: حتى 10 دورات إصلاح، ثم وثّق وانتقل للمستقلة.
-4. المهمة لا تكتمل إلا بالدمج إلى `main` والنشر: PR Ready → Auto-merge squash (`.github/workflows/auto-merge-to-main.yml`) بعد Verify build → تحقق النشر (Vercel + `auto-deploy.yml` و`version.json`). إن تعذّر Auto-merge بعد نجاح البوابة: ادفع لـmain بعد build محلي ناجح. لا تطلب دمجًا يدويًا.
+4. المهمة لا تكتمل إلا بالدمج إلى `main` والنشر: PR Ready → Auto-merge squash (`.github/workflows/auto-merge-to-main.yml`) بعد Verify build → تحقق النشر (`auto-deploy.yml` و`version.json`؛ تطبيق Vercel أُزيل من GitHub في 2026-10-20 فلا فحوص Vercel على الـPRs ولا تُنتظر). إن تعذّر Auto-merge بعد نجاح البوابة: ادفع لـmain بعد build محلي ناجح. لا تطلب دمجًا يدويًا.
    - `scripts/content-runner.sh` على مساره التصميمي؛ نافذتا automation تدفعان عبر `scripts/commit-and-push-branch.sh`.
 5. اقترب انتهاء الوقت: أكمل الجارية فقط.
 
