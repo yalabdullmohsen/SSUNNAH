@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// قالب 8 — قائمة أقسام: مداخل لشاشات فرعية.
+/// قالب 8 — محور أقسام: بطاقات كبيرة تفتح الشاشات الفرعية مباشرة (SunnahSectionHub).
 public struct SectionsListTemplate: View {
     @Environment(\.openRoute) private var openRoute
     let links: [SectionLink]
@@ -8,13 +8,8 @@ public struct SectionsListTemplate: View {
     public var body: some View {
         if links.isEmpty { EmptyStateView() } else {
             ScrollView {
-                LazyVStack(spacing: Sunnah.Spacing.s3) {
-                    ForEach(links) { link in
-                        Button { openRoute(link.route) } label: { SunnahCard { SunnahListRow(title: link.title, subtitle: link.subtitle) } }
-                            .sunnahPressable()
-                    }
-                }
-                .padding(Sunnah.Spacing.pageX)
+                SunnahSectionHub(links: links, idPrefix: "sections.hub")
+                    .padding(.top, Sunnah.Spacing.pageX).padding(.bottom, 96)
             }
             .background(Sunnah.Colors.bg)
         }
