@@ -37,11 +37,24 @@ struct FiqhReadingView: View {
                         Text(title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                             .padding(.top, Sunnah.Spacing.s2).accessibilityAddTraits(.isHeader)
                     }
-                    ForEach(group.links) { link in
-                        Button { openRoute(link.route) } label: {
-                            SunnahCard { SunnahListRow(title: link.title, subtitle: link.subtitle) }
+                    if group.title != nil && group.title != "الأبواب" && group.links.count <= 24 {
+                        // محور بلاط: كتب الفقه والمباحث المساندة بنقرة واحدة (الأبواب الطويلة تبقى صفوفًا).
+                        LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 14) {
+                            ForEach(group.links) { link in
+                                Button { Sunnah.Haptics.select(); openRoute(link.route) } label: {
+                                    SunnahTile(title: link.title.arabicDigits, subtitle: link.subtitle?.arabicDigits, symbol: "book.closed", tone: .mint)
+                                }
+                                .buttonStyle(.plain).sunnahPressable()
+                                .accessibilityIdentifier("fiqh.tile.\(link.route)")
+                            }
                         }
-                        .buttonStyle(.plain)
+                    } else {
+                        ForEach(group.links) { link in
+                            Button { openRoute(link.route) } label: {
+                                SunnahCard { SunnahListRow(title: link.title, subtitle: link.subtitle) }
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
                 }
             }
