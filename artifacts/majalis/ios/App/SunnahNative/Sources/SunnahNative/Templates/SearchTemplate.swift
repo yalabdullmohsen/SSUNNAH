@@ -89,7 +89,7 @@ public struct SearchTemplate: View {
                     SunnahSectionHub(links: hub, counts: hubCounts, idPrefix: "search.hub")
                     if !items.isEmpty {
                         Button { Sunnah.Haptics.select(); sunnahAnimate { browsing = true } } label: {
-                            Text("تصفّح كل الأبحاث (\(Sunnah.digits("\(items.count)")))")
+                            Text("تصفّح كل الأبحاث (\(items.count))".arabicDigits)
                                 .font(AppearancePrefs.ui(.extraBold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.primary)
                                 .frame(maxWidth: .infinity, minHeight: 50)
                                 .background(Sunnah.Colors.primarySoft, in: Capsule())
