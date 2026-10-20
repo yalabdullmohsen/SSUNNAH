@@ -9,11 +9,15 @@ final class DisclosureTests: XCTestCase {
         XCTAssertTrue(SunnahDisclosure.long.contains("من إعداد سُنّة"))
     }
 
-    /// الإشعار يظهر في كل أنواع التفاصيل: كل شاشة تمرّ بزر الإبلاغ الذي يحمله، والحارس يفرض ذلك (scripts/native-detail-guard.mjs).
-    func testReportButtonCarriesDisclosure() throws {
+    /// الإفصاح في ورقة «!» تفتحها ضغطة المستخدم عبر الذيل الموحّد، لا إشعارًا فوق زر الإبلاغ (حارس scripts/native-detail-guard.mjs).
+    func testDisclosureLivesInFooterSheetNotAboveReportButton() throws {
+        // نسبةً إلى حزمة SunnahNative نفسها (…/Tests/SunnahNativeTests/<ملف>) فلا يتأثر بعمق المسار (worktree).
         var root = URL(fileURLWithPath: #filePath)
-        for _ in 0..<8 { root.deleteLastPathComponent() }
-        let p = root.appendingPathComponent("artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Components/SunnahReportIssueButton.swift")
-        XCTAssertTrue(try String(contentsOf: p, encoding: .utf8).contains("SunnahDisclosureNotice("))
+        for _ in 0..<3 { root.deleteLastPathComponent() }
+        let comps = root.appendingPathComponent("Sources/SunnahNative/Components")
+        let button = try String(contentsOf: comps.appendingPathComponent("SunnahReportIssueButton.swift"), encoding: .utf8)
+        let footer = try String(contentsOf: comps.appendingPathComponent("SunnahContentFooter.swift"), encoding: .utf8)
+        XCTAssertFalse(button.contains("SunnahDisclosureNotice("), "الإشعار ممنوع فوق زر الإبلاغ")
+        XCTAssertTrue(footer.contains("SunnahDisclosureInfoButton("), "الذيل الموحّد لا يحمل ورقة الإفصاح")
     }
 }

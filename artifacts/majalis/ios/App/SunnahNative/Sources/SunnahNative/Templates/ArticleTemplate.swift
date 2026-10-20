@@ -4,7 +4,7 @@ import SwiftUI
 public struct ArticleTemplate: View {
     let item: ContentItem
     @AppStorage("reader.sizeStep") private var sizeStep = 0
-    @AppStorage("reader.night") private var night = false
+    @AppStorage("reader.night") private var night = false  // يُغيَّر من SunnahReaderDisplayMenu
     @Environment(\.dynamicTypeSize) private var systemSize
     private let sections: [SunnahMarkdownSection]
     public init(item: ContentItem) { self.item = item; self.sections = SunnahMarkdown.sections(item.body ?? "") }
@@ -19,7 +19,7 @@ public struct ArticleTemplate: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s5) {
                 DetailHero(title: item.title, subtitle: item.subtitle, tags: item.tags)
-                readerControls
+                SunnahReaderDisplayMenu().padding(.horizontal, Sunnah.Spacing.pageX)
                 ForEach(sections) { sec in
                     SunnahSectionView(section: sec, key: item.id, style: .body)
                         .padding(.horizontal, Sunnah.Spacing.pageX)
@@ -32,18 +32,5 @@ public struct ArticleTemplate: View {
         .sunnahReadableWidth().background(Sunnah.Colors.bg).bodyTitledNavigation()
         .preferredColorScheme(night ? .dark : nil)
         .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.reportSection)
-    }
-
-    /// أدوات القراءة داخل الصفحة (بدل شريط أدوات النظام): خط أصغر/أكبر ووضع الليل.
-    private var readerControls: some View {
-        HStack(spacing: 4) {
-            SunnahToolbarButton(systemImage: "textformat.size.smaller", glyphSize: 12, label: "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
-            SunnahToolbarButton(systemImage: "textformat.size.larger", glyphSize: 20, label: "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
-            SunnahToolbarButton(systemImage: night ? "sun.max" : "moon", label: night ? "الوضع النهاري" : "وضع الليل") { night.toggle() }
-        }
-        .padding(.horizontal, 6)
-        .background(Sunnah.Colors.surface, in: Capsule())
-        .overlay(Capsule().stroke(Sunnah.Colors.border, lineWidth: 1))
-        .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, Sunnah.Spacing.pageX)
     }
 }

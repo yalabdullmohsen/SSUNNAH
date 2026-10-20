@@ -54,7 +54,7 @@ final class CalendarCorrectnessTests: XCTestCase {
     }
 
     func testHijriDateOfOctober14_2026() {
-        XCTAssertEqual(AccountCalendarMath.hijriMonthYear(noon(2026, 10, 14)), "جمادى الأولى 1448 هـ")
+        XCTAssertEqual(AccountCalendarMath.hijriMonthYear(noon(2026, 10, 14)), "جمادى الأولى ١٤٤٨ هـ")
         var c = Calendar(identifier: .islamicUmmAlQura)
         c.timeZone = ref.timeZone
         let p = c.dateComponents([.year, .month, .day], from: noon(2026, 10, 14))

@@ -1,0 +1,11 @@
+git_sha=cc41dfdb5081bbd18ee26e2342b578c46cd1bfca
+branch=n2/series-reader
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/758b60fba76d547d/SunnahApp.app
+binary_sha256=8bf7dffe59b4dcdcbe67749e4345efa58812a8357a5035137e22be5ecca1ee1b
+captured_at=2026-10-20 01:00
+route=/seerah, /prophets -snapshotProphet 2, /explainers -snapshotExplainer 0 -snapshotStage 2, /teachers/x (iPhone، فاتح/داكن)
+before=لا لقطة سابقة (القارئ المتسلسل جديد؛ الصفحات القديمة بصف أزرار ٤/ع/القمر في الرأس)
+covers=SirahScreens+Native.swift (تسجيل المسارات؛ السيرة والأنبياء والدروس عبر SunnahSeriesReader: seerah-light/dark وprophet-light/dark وteachers-light)
+covers=ExplainerTemplate.swift (الشروح عبر القارئ: explainer-light، شريط التقدّم والرسم والآيات)
+covers=ArticleTemplate.swift (استبدال صف الأزرار بقائمة العرض الموحّدة؛ ظاهر في كل اللقطات)
+covers=SirahAdapters.swift (seerahChapters وteacherChapters: فصول السيرة والمشايخ؛ seerah-light وteachers-light)
