@@ -1,11 +1,11 @@
-git_sha=f6ee101c9391d04caa6cf11d61285cf46385daab
+git_sha=15d8990c50e1d9a25afd270fce1756269562aef2
 branch=n2/hadith-fix-1
-app=/Users/alabdullmohsen/.majalis-tools/headbuild/ff7f5a3abd7ab45b/SunnahApp.app
-binary_sha256=1737d59428fd900191475f4115596c7a7dec8ec8502e98b0739a3f07fb2b5c03
-captured_at=2026-10-21T00:06Z
-route=/hadith, /hadith/sahih, /hadith/daif (بـSNAP_DETAIL=1؛ الضعيف/الموضوع مخفيان في Release حتى الاعتماد)
-before=لقطات #3628: عنوان مكرر، عناوين من منتصف النص، شريط القفز لاصق بالبطاقات، تحذير مكرر، أزرار تحت الشريط
-covers=Special/HadithScreens.swift (عنوان واحد وdisplayTitle للعناوين)
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/4a48312b86ade482/SunnahApp.app
+binary_sha256=0c21ba7ca1b50e1f40c7cca0e16e12be61b78b1617a7eed11cdffb44a9a22067
+captured_at=2026-10-21T00:51Z
+route=/hadith, /hadith/sahih, /hadith/daif (بـSNAP_DETAIL=1؛ الضعيف/الموضوع مخفيان في Release حتى الاعتماد؛ لقطة daif من الجولة الأولى ولم تتغير)
+before=لقطات #3628 ومراجعة المنسّق: فراغ بين البطاقة 2 و3 (معرّف قفز مكرر)، عناوين تبدأ بآية، المحور ببطاقة واحدة
+covers=Special/HadithScreens.swift (مرساة قفز لأول صف فقط، عنوان لا يبدأ بآية، معاينة المتن بسطرين، بلاطات الكتب في المحور)
 covers=Special/WeakHadithScreens.swift (تحذير الضعيف مرة واحدة)
-covers=Components/SunnahHadithKit.swift (أزرار نسخ/مشاركة فوق الطيّ)
+covers=Components/SunnahHadithKit.swift (أزرار نسخ/مشاركة فوق الطيّ، HadithCategoryTile، معاينة المتن)
 covers=Components/SunnahJumpIndex.swift (هامش محجوز لشريط القفز)
