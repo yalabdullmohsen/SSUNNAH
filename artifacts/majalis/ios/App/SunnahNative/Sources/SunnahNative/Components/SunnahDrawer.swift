@@ -43,11 +43,10 @@ public struct SunnahDrawer: View {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                     ForEach(Self.groups, id: \.title) { g in
                         SunnahSectionLabel(g.title)
-                        VStack(spacing: 0) { ForEach(g.items) { row($0) } }.modifier(MenuCard())
+                        LazyVGrid(columns: Self.columns, spacing: Sunnah.Spacing.s2) { ForEach(g.items) { tile($0) } }
                     }
                     SunnahSectionLabel("أدوات")
-                    HStack(spacing: Sunnah.Spacing.s2) { ForEach(Self.tools) { toolCell($0) } }
-                        .padding(Sunnah.Spacing.s3).modifier(MenuCard())
+                    LazyVGrid(columns: Self.columns, spacing: Sunnah.Spacing.s2) { ForEach(Self.tools) { tile($0) } }
                 }.padding(.horizontal, Sunnah.Spacing.s3).padding(.bottom, Sunnah.Spacing.s4)
             }
             HStack {
@@ -90,34 +89,24 @@ public struct SunnahDrawer: View {
         .background { ZStack { Sunnah.Colors.hero; SunnahOctagonOrnament() }.ignoresSafeArea(edges: .top) }
     }
 
-    private func row(_ item: Item) -> some View {
+    private static let columns = [GridItem(.flexible(), spacing: Sunnah.Spacing.s2), GridItem(.flexible(), spacing: Sunnah.Spacing.s2)]
+
+    /// بلاطة شبكية: أيقونة ملوّنة ناعمة فوق العنوان؛ المحدَّدة تأخذ خلفية خضراء ناعمة.
+    private func tile(_ item: Item) -> some View {
         let sel = Self.isSelected(item, current: selectedPath)
         return Button { go(item.path) } label: {
-            HStack(spacing: Sunnah.Spacing.s3) {
-                SunnahIconTile(item.icon, tone: .mint, size: 38)
-                Text(item.title).font(AppearancePrefs.ui(.bold, 16, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
-                Spacer()
-                Image(systemName: "chevron.left").font(.system(size: 12, weight: .semibold)).foregroundStyle(Sunnah.Colors.textSecondary)
+            VStack(alignment: .leading, spacing: 8) {
+                SunnahIconTile(item.icon, tone: Self.gold.contains(item.path) ? .gold : .mint, size: 36)
+                Text(item.title).font(AppearancePrefs.ui(.bold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.textPrimary)
+                    .lineLimit(1).minimumScaleFactor(0.85)
             }
-            .padding(.horizontal, Sunnah.Spacing.s3).frame(height: 52)
-            .background(sel ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-            .padding(4)
-        }.buttonStyle(.plain)
+            .frame(maxWidth: .infinity, minHeight: 84, alignment: .leading).padding(Sunnah.Spacing.s3)
+            .background(sel ? Sunnah.Colors.primarySoft : Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous).stroke(sel ? Sunnah.Colors.primary : Sunnah.Colors.border, lineWidth: 1))
+        }.buttonStyle(.plain).sunnahPressable()
+        .accessibilityAddTraits(sel ? .isSelected : [])
     }
 
-    private func toolCell(_ item: Item) -> some View {
-        Button { go(item.path) } label: {
-            VStack(spacing: 6) {
-                SunnahIconTile(item.icon, tone: .mint, size: 38)
-                Text(item.title).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textPrimary)
-            }.frame(maxWidth: .infinity, minHeight: 64)
-        }.buttonStyle(.plain)
-    }
+    private static let gold: Set<String> = ["/adhkar", "/seerah", "/lessons", "/qibla", "/zakat"]
 }
 
-private struct MenuCard: ViewModifier {
-    func body(content: Content) -> some View {
-        content.background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
-    }
-}

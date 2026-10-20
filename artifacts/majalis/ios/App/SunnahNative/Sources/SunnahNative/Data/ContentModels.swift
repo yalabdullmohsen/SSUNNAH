@@ -87,8 +87,10 @@ public struct SectionLink: Identifiable, Hashable, Sendable, Decodable {
     public let title: String
     public var subtitle: String?
     public let route: String
-    public init(id: String, title: String, subtitle: String? = nil, route: String) {
-        self.id = id; self.title = title; self.subtitle = subtitle; self.route = route
+    /// عدد عناصر الوجهة إن عُرف (يعرضه محور القسم).
+    public var count: Int?
+    public init(id: String, title: String, subtitle: String? = nil, route: String, count: Int? = nil) {
+        self.id = id; self.title = title; self.subtitle = subtitle; self.route = route; self.count = count
     }
 }
 
