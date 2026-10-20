@@ -102,7 +102,9 @@ acquire() {
     if [ "$pos" -lt "$free" ]; then
       for i in $(seq 1 "$MAX"); do
         if mkdir "$DIR/slot-$i" 2>/dev/null; then
-          echo "pid=$$ worktree=$ROOT cmd=$(basename "$1") started=$(date +%s)" > "$DIR/slot-$i/owner"; SLOT=$i; return 0
+          echo "pid=$$ worktree=$ROOT cmd=$(basename "$1") started=$(date +%s)" > "$DIR/slot-$i/owner"; SLOT=$i
+          # تخرج التذكرة من الطابور فور أخذ الخانة: بقاؤها كان يحسب حامل الخانة في دور المنتظرين فتبقى الخانة الحرّة محجوبة (عطل 2026-10-20: ن4 انتظر ساعتين وخانة 2 حرّة).
+          rm -f "$DIR/queue/$TICKET"; return 0
         fi
       done
     fi
