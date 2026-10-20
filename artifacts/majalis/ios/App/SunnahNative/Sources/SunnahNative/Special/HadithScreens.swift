@@ -78,8 +78,8 @@ struct HadithListView: View {
                 if let title { SunnahPageTitle(title) }
                 ForEach(filtered) { item in
                     SunnahNavigationLink { HadithDetailView(item: item) } label: {
-                        SunnahListRow(title: item.title, subtitle: item.sourceName ?? item.chapter)
-                    }.sunnahStackRow()
+                        HadithRowLabel(grade: .sahih, title: item.title, subtitle: item.sourceName ?? item.chapter)
+                    }.hadithGradeRow(.sahih)
                 }
             }
             .sunnahReadableWidth()
@@ -95,32 +95,50 @@ struct HadithListView: View {
 struct HadithDetailView: View {
     let item: HadithItem
     var body: some View {
+        HadithDetailLayout(grade: .sahih, text: item.text, narrator: item.narrator, source: item.sourceName, gradeText: item.grade,
+                           chapter: item.chapter, explanation: item.explanation, key: "hadith-\(item.id)",
+                           footerTitle: item.title, footerID: item.id, footerSection: item.collection ?? "الحديث", footerSource: item.collection,
+                           top: { EmptyView() }, actions: { EmptyView() })
+        .sunnahNavTitle(item.title)
+    }
+}
+
+/// صفحة محور الحديث: بطاقة كبيرة لكل تصنيف بعدد أحاديثه؛ تُخفى بطاقة الضعيف/الموضوع حتى اعتماد مادتها (DATA_CONTRACT §5.2).
+struct HadithHubView: View {
+    @Environment(\.contentLoader) private var loader
+    let sahih: [HadithItem]
+    @State private var counts: [HadithGrade: Int] = [:]
+
+    var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                SunnahCard {
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        SunnahArabicText(item.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
-                        if let narrator = item.narrator {
-                            Text(narrator).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        }
-                    }
+            VStack(spacing: Sunnah.Spacing.s3) {
+                SunnahPageTitle("الأحاديث")
+                SunnahNavigationLink { HadithListView(items: sahih, title: "الأحاديث الصحيحة") } label: {
+                    HadithHubCard(grade: .sahih, title: "الأحاديث الصحيحة", count: sahih.count)
+                }.buttonStyle(.plain).sunnahPressable().accessibilityIdentifier("hadith.hub.sahih")
+                if (counts[.daif] ?? 0) > 0 {
+                    SunnahNavigationLink { WeakHadithListView(file: "weak-daif", title: "الأحاديث الضعيفة") } label: {
+                        HadithHubCard(grade: .daif, title: "الأحاديث الضعيفة", count: counts[.daif] ?? 0)
+                    }.buttonStyle(.plain).sunnahPressable().accessibilityIdentifier("hadith.hub.daif")
                 }
-                SunnahCard {
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        if let source = item.sourceName { Text(source).font(Sunnah.Typography.cardTitle) }
-                        if let grade = item.grade { Text(grade).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.primary) }
-                        if let chapter = item.chapter { Text(chapter).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-                    }
+                if (counts[.mawdu] ?? 0) > 0 {
+                    SunnahNavigationLink { WeakHadithListView(file: "weak-mawdu", title: "الأحاديث الموضوعة") } label: {
+                        HadithHubCard(grade: .mawdu, title: "الأحاديث الموضوعة", count: counts[.mawdu] ?? 0)
+                    }.buttonStyle(.plain).sunnahPressable().accessibilityIdentifier("hadith.hub.mawdu")
                 }
-                if let explanation = item.explanation {
-                    SunnahCard { SunnahSectionedMarkdown(explanation, key: "hadith-\(item.id)", style: .body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                }
-                SunnahContentFooter(title: item.title, id: item.id, section: item.collection ?? "الحديث", source: item.collection, inset: false, sensitive: true)
-            }.padding(Sunnah.Spacing.pageX)
+            }
+            .padding(.horizontal, Sunnah.Spacing.pageX).padding(.bottom, Sunnah.Spacing.s4)
         }
         .sunnahReadableWidth().background(Sunnah.Colors.bg)
-        .sunnahNavTitle(item.title)
-        .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.collection ?? "الحديث")
+        .task { await loadCounts() }
+    }
+
+    private func loadCounts() async {
+        for (grade, file) in [(HadithGrade.daif, "weak-daif"), (.mawdu, "weak-mawdu")] {
+            if let all = try? await loader.load([WeakHadithItem].self, from: .bundled(name: file, subdirectory: "Data/hadith")) {
+                counts[grade] = WeakHadithListView.visibleRows(all, file: file, normalizedQuery: "").count
+            }
+        }
     }
 }
 
@@ -130,7 +148,7 @@ struct HadithScreen: ScreenTemplate {
     static let source = ContentSource.bundled(name: "verified-sahih", subdirectory: "Data/hadith")
     let content: [HadithItem]
     init(content: [HadithItem]) { self.content = content }
-    var body: some View { HadithListView(items: content, title: "الأحاديث") }
+    var body: some View { HadithHubView(sahih: content) }
 }
 
 struct HadithSahihScreen: ScreenTemplate {
