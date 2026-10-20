@@ -1,0 +1,7 @@
+git_sha=6e22052b9ba113fdb31095b07562a9713edebe3c
+branch=n1/section-hub
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1-m2/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=6c61080a0290d2e7af17c919c2c85d8ba27a1d8378583192c9be5c82cb16ab84
+built_at=2026-10-20 20:52:15
+source_newest=2026-10-20 20:44:50
+captured_at=2026-10-20 21:08:23
