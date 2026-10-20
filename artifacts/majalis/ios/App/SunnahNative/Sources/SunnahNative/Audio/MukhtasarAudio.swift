@@ -527,6 +527,10 @@ enum MukhtasarSegments {
         return dir
     }
 
+    /// عدد الأجزاء المتوازية، وأصغر جزء (لا تقسيم للمقاطع الصغيرة).
+    static let parallelParts = 6
+    static let minPartBytes = 256 * 1024
+
     static func file(surah: Int, ayah: Int) -> URL { folder.appendingPathComponent(String(format: "%03d-%03d.mp3", surah, ayah)) }
 
     /// يعيد ملف المقطع (من الذاكرة المؤقتة أو بتنزيله). يتحقق أن الخادم أعاد المدى نفسه من ملف بالحجم المتوقع (206 + Content-Range)،
@@ -535,11 +539,31 @@ enum MukhtasarSegments {
         let dest = file(surah: surah, ayah: ayah)
         if FileManager.default.fileExists(atPath: dest.path) { return dest }
         guard let remote = MukhtasarAudio.remoteURL(surah) else { return nil }
-        var req = URLRequest(url: remote, timeoutInterval: 30)
-        req.setValue("bytes=\(seg.lo)-\(seg.hi - 1)", forHTTPHeaderField: "Range")
-        guard let (data, resp) = try? await URLSession.shared.data(for: req), let http = resp as? HTTPURLResponse,
-              http.statusCode == 206, data.count == seg.hi - seg.lo,
-              (http.value(forHTTPHeaderField: "Content-Range") ?? "").hasSuffix("/\(seg.size)") else { return nil }
+        // أرشيف الإنترنت يحدّ سرعة الاتصال الواحد (~110KB/ث: مقطع البقرة ١٧٨ = 2.2MB ⇒ 20ث، قياس ن4 2026-10-21)،
+        // فيُقسَّم المقطع إلى أجزاء تُنزَّل بالتوازي (طلبات Range متزامنة) ثم تُضمّ بالترتيب ⇒ الزمن ≈ ÷ عدد الأجزاء.
+        let total = seg.hi - seg.lo
+        let parts = max(1, min(parallelParts, total / minPartBytes))
+        let step = (total + parts - 1) / parts
+        let ranges: [(Int, Int)] = (0..<parts).map { i in (seg.lo + i * step, min(seg.lo + (i + 1) * step, seg.hi)) }
+        let pieces: [Data]? = await withTaskGroup(of: (Int, Data?).self) { group in
+            for (i, r) in ranges.enumerated() {
+                group.addTask {
+                    var req = URLRequest(url: remote, timeoutInterval: 30)
+                    req.setValue("bytes=\(r.0)-\(r.1 - 1)", forHTTPHeaderField: "Range")
+                    guard let (data, resp) = try? await URLSession.shared.data(for: req), let http = resp as? HTTPURLResponse,
+                          http.statusCode == 206, data.count == r.1 - r.0,
+                          (http.value(forHTTPHeaderField: "Content-Range") ?? "").hasSuffix("/\(seg.size)") else { return (i, nil) }
+                    return (i, data)
+                }
+            }
+            var out = [Data?](repeating: nil, count: ranges.count)
+            for await (i, d) in group { out[i] = d }
+            return out.contains { $0 == nil } ? nil : out.compactMap { $0 }
+        }
+        guard let pieces else { return nil }
+        var data = Data(capacity: total)
+        pieces.forEach { data.append($0) }
+        guard data.count == total else { return nil }
         let tmp = folder.appendingPathComponent(UUID().uuidString + ".part")
         do { try data.write(to: tmp); try? FileManager.default.removeItem(at: dest); try FileManager.default.moveItem(at: tmp, to: dest) }
         catch { try? FileManager.default.removeItem(at: tmp); return nil }
