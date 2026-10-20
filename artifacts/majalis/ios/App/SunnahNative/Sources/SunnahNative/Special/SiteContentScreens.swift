@@ -47,7 +47,8 @@ enum SiteContent {
     static func join(_ parts: [(String, String?)]) -> String? {
         let lines = parts.compactMap { label, v -> String? in
             guard let v = v?.trimmingCharacters(in: .whitespacesAndNewlines), !v.isEmpty else { return nil }
-            return label.isEmpty ? v : "\(label) — \(v)"
+            // تسمية عريضة «**المصدر:** …» ⇒ قسم بعنوان داخل بطاقته (لا «المصدر — …» نصًا عائمًا)؛ المصدر/المرجع يُجمعان مطويين آخر الصفحة.
+            return label.isEmpty ? v : "**\(label.replacingOccurrences(of: "؟", with: "")):** \(v)"
         }
         return lines.isEmpty ? nil : lines.joined(separator: "\n\n")
     }
@@ -64,7 +65,7 @@ enum SiteContent {
 
     static func sunan(_ f: Sunan, _ cat: String) -> [ContentItem] {
         f.sunan.filter { cat == all || $0.category == cat }.map {
-            ContentItem(id: $0.id, title: $0.title, subtitle: $0.time, body: join([("", $0.text), ("المصدر", $0.source), ("كيف؟", $0.howTo)]))
+            ContentItem(id: $0.id, title: $0.title, subtitle: $0.time, body: join([("", $0.text), ("المصدر", $0.source), ("طريقة التطبيق", $0.howTo)]))
         }
     }
 
