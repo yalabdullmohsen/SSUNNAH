@@ -487,18 +487,8 @@ export function evaluateEligibility(input = {}) {
         waitBlockers.push(`Vercel deployment not ready (${vercelDeploy.state})`);
       }
     } else if (vercelDeploy.state === "missing") {
+      // تطبيق Vercel أُزيل من GitHub (2026-10-20، الحساب محجوب): غياب حالته هو الوضع الطبيعي — لا تحذير ولا انتظار.
       vercelPreviewKind = "missing";
-      if (isContentAudit || !req.previewSmoke) {
-        warnings.push(
-          `Vercel – majalis-majalis status missing — OK for lane ${pathLane.lane}`,
-        );
-      } else if (input.strictVercel === true) {
-        warnings.push(
-          "Vercel deployment status missing — لا ننتظر Preview؛ الإنتاج من main فقط",
-        );
-      } else {
-        warnings.push("Vercel – majalis-majalis status not reported yet");
-      }
     } else if (vercelDeploy.state === "fail") {
       vercelPreviewKind = "failed";
       // Preview/rate-limit لا يمنع الدمج أبدًا — البناء الحقيقي داخل Verify build

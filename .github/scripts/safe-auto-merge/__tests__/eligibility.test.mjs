@@ -514,3 +514,14 @@ describe("checks + report", () => {
     assert.equal(s.deletedFiles, 1);
   });
 });
+
+describe("Vercel removed (2026-10-20)", () => {
+  it("is eligible with no Vercel status at all and emits no Vercel warning", () => {
+    const r = evaluateEligibility(
+      base({ checks: greenChecks.filter((c) => !c.name.startsWith("Vercel")), strictVercel: true }),
+    );
+    assert.equal(r.eligible, true, JSON.stringify(r.blockers ?? r));
+    assert.ok(!(r.warnings || []).some((w) => /Vercel/i.test(w)), JSON.stringify(r.warnings));
+  });
+});
+
