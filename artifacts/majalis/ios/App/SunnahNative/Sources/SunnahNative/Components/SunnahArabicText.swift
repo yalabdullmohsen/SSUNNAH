@@ -5,13 +5,14 @@ import SwiftUI
 /// اللون من المستدعي (`.foregroundStyle`). لا يُستعمل لنص المصحف نفسه (خطوط QPC في قارئ المصحف).
 public struct SunnahArabicText: View {
     public enum Style {
-        case body, hadith, quran, reading
+        case body, hadith, quran, reading, amiri
         var font: Font {
             switch self {
             case .body: return Sunnah.Typography.body
             case .hadith: return Sunnah.Typography.hadith
             case .quran: return Sunnah.Typography.quran
             case .reading: return Sunnah.Typography.reading
+            case .amiri: return Sunnah.Typography.amiriReading
             }
         }
         /// الحجم الأساسي ونمط Dynamic Type المقابل (يطابق Sunnah.Typography).
@@ -21,6 +22,7 @@ public struct SunnahArabicText: View {
             case .hadith: return (19, .body)
             case .quran: return (24, .title3)
             case .reading: return (18, .body)
+            case .amiri: return (22, .title3)
             }
         }
     }

@@ -261,6 +261,16 @@ enum LibraryAdapters {
 
 /// روابط ثابتة للتنقل (ليست محتوى): مطابقة لـIslamicDirectoryHubPage.
 enum LibraryLinks {
+    /// محور «اللغة والمكتبة والبحث»: كل وجهات القسم عدا الصفحة نفسها (تُتصفَّح أبحاثها من الزر).
+    static let hub: [SectionLink] = [
+        SectionLink(id: "assistant", title: "مساعد البحث", subtitle: "أسئلة وإحصاءات عن الأبحاث", route: "/academic-research/assistant"),
+        SectionLink(id: "submit", title: "تقديم بحث", subtitle: "إرسال بحث للمراجعة", route: "/academic-research/submit"),
+        SectionLink(id: "arabic", title: "النحو والعربية", subtitle: "دروس اللغة العربية", route: "/arabic-language"),
+        SectionLink(id: "glossary", title: "المصطلحات", subtitle: "معاني المصطلحات الشرعية", route: "/islamic-glossary"),
+        SectionLink(id: "mawsuaat", title: "الموسوعات", subtitle: "مراجع موسعة مبوّبة", route: "/mawsuaat"),
+        SectionLink(id: "directory", title: "الدليل الإسلامي", subtitle: "الجامعات والمؤسسات والمساجد", route: "/islamic-directory"),
+        SectionLink(id: "cards", title: "البطاقات", subtitle: "بطاقات مراجعة سريعة", route: "/cards"),
+    ].filter { LibraryRouteScope.contains($0.route) }
     static let directory = [
         SectionLink(id: "universities", title: "دليل الجامعات والكليات الشرعية", route: "/universities"),
         SectionLink(id: "institutions", title: "المؤسسات الإسلامية", route: "/institutions"),

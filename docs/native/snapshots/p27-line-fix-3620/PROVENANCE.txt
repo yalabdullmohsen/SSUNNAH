@@ -1,0 +1,2 @@
+covers=MushafReaderView,Sunnah,HizbQuarters
+build=n4 mushaf-p27-line-fix @ 2ae3e1ede page=27 sizes=402x874,440x956 light+dark simulator=iPhone 17 Pro (ImageRenderer، ENDMARK_SNAP_DIR) — سطر 15 يبدأ بـ«فإنما»
