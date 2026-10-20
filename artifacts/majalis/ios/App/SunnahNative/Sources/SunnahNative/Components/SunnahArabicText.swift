@@ -18,9 +18,9 @@ public struct SunnahArabicText: View {
         var base: (size: CGFloat, relativeTo: Font.TextStyle) {
             switch self {
             case .body: return (16, .body)
-            case .hadith: return (19, .body)
+            case .hadith: return (21, .body)
             case .quran: return (24, .title3)
-            case .reading: return (18, .body)
+            case .reading: return (20, .body)
             }
         }
     }

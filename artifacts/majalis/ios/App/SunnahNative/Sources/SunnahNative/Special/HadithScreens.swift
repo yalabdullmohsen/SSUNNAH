@@ -120,7 +120,6 @@ struct HadithDetailView: View {
         }
         .sunnahReadableWidth().background(Sunnah.Colors.bg)
         .sunnahNavTitle(item.title)
-        .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.collection ?? "الحديث")
     }
 }
 
