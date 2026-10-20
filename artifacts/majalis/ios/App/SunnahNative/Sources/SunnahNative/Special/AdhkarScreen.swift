@@ -74,7 +74,9 @@ public struct AdhkarScreen: ScreenTemplate {
             // زر العدّ ثابت أسفل يمين الشاشة (تحت الإبهام): لا يتحرك مع طول الذكر ولا يكبر/يصغر عند الضغط.
             .overlay(alignment: .bottomTrailing) {
                 AdhkarTapCounter(item: current.items[index.wrappedValue], done: $done)
-                    .padding(.trailing, Sunnah.Spacing.pageX).padding(.bottom, Sunnah.Spacing.s4)
+                    .padding(.trailing, Sunnah.Spacing.pageX)
+                    // الشريط السفلي عائم فوق المحتوى (لا يُحسب في الـsafe area هنا): يُرفع الزر فوقه وإلا اختفى خلفه (لقطة #3613).
+                    .padding(.bottom, SunnahTabBar.reservedHeight + Sunnah.Spacing.s3)
                     .environment(\.layoutDirection, .rightToLeft)
             }
             .environment(\.layoutDirection, .leftToRight)   // محاذاة الزر فعليًا لليمين (يُعاد RTL للمحتوى أدناه)
@@ -109,7 +111,7 @@ struct AdhkarListView: View {
                     HStack {
                         Text("\(digits(index + 1)) من \(digits(items.count))".arabicDigits).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
                         Spacer()
-                        Text("التكرار \(digits(item.repeatCount))").font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.goldInk)
+                        Text("التكرار \(digits(item.repeatCount))").font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.onHeroGold)   // goldInk داكنًا = لون الكبسولة نفسه فيختفي النص
                             .padding(.horizontal, 12).padding(.vertical, 4).background(Sunnah.Colors.heroGold, in: Capsule())
                     }
                     SunnahArabicText(item.text, style: .body).foregroundStyle(.white)
