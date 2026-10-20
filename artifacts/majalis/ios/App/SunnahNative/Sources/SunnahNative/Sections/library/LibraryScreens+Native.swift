@@ -229,7 +229,7 @@ public enum LibrarySection {
 
     @MainActor public static func register(in registry: TemplateRegistry) {
         registry.registerView(id: "academic-research") {
-            LibrarySection.titled(LibraryLoadedView(source: File.research, adapt: { LibraryAdapters.research($0) }) { SearchTemplate(items: $0, detailBase: "/academic-research") })
+            LibrarySection.titled(LibraryLoadedView(source: File.research, adapt: { LibraryAdapters.research($0) }) { LibraryHubScreen(items: $0) })
         }
         registry.registerView(id: "academic-research.assistant") {
             LibrarySection.titled(LibraryLoadedView(source: File.research, adapt: { LibraryAdapters.insights($0) }) { LibraryResearchAssistantView(insights: $0) })
@@ -345,5 +345,25 @@ struct LibrarySourceDetailView: View {
             let feed = try? await loader.load(LibraryFeedFile.self, from: LibrarySection.File.feed)
             if let item = LibraryAdapters.source(id: id, accounts: accounts, feed: feed) { phase = .ready(item) } else { phase = .missing }
         } catch { phase = .failed }
+    }
+}
+
+
+/// صفحة «اللغة والمكتبة والبحث»: محور ببطاقات الوجهات وعدد عناصرها، والبحث في الأبحاث ثانويًا فوقه.
+struct LibraryHubScreen: View {
+    @Environment(\.contentLoader) private var loader
+    let items: [ContentItem]
+    @State private var counts: [String: Int] = [:]
+
+    var body: some View {
+        SearchTemplate(items: items, detailBase: "/academic-research", hub: LibraryLinks.hub, hubCounts: counts)
+            .task {
+                var c: [String: Int] = [:]
+                if let d = try? await loader.load([LibraryDarsSection].self, from: LibrarySection.File.arabic) { c["/arabic-language"] = LibraryAdapters.darsSections(d).count }
+                if let d = try? await loader.load([LibraryDarsSection].self, from: LibrarySection.File.mawsuaat) { c["/mawsuaat"] = LibraryAdapters.darsSections(d).count }
+                if let g = try? await loader.load([LibraryGlossaryTerm].self, from: LibrarySection.File.glossary) { c["/islamic-glossary"] = LibraryAdapters.glossary(g).count }
+                c["/islamic-directory"] = LibraryLinks.directory.count
+                counts = c
+            }
     }
 }

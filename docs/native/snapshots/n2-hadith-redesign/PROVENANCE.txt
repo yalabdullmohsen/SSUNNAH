@@ -1,0 +1,13 @@
+git_sha=263675a4dad95970750545ed3eee11f4e50ce03b
+branch=n2/hadith-redesign
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/f9001f3fcc081691/SunnahApp.app
+binary_sha256=fa66ebc55cefeb5e83cf6f4dd3e7be40f5b363a607df41f9bf481c4adaf8cbb4
+captured_at=2026-10-20T18:37Z
+route=/hadith, /hadith/sahih, /hadith/daif (ضعيف/موضوع بـSNAP_DETAIL=1 لأن بياناتهما pending_review وتُخفى في Release)
+before=لا لقطات قبل: الشاشات السابقة قوائم بلا ألوان درجات
+covers=Special/HadithScreens.swift (محور 3 بطاقات وقائمة وتفاصيل)
+covers=Special/WeakHadithScreens.swift (ضعيف/موضوع ملوّنة)
+covers=Components/SunnahHadithKit.swift (شارات وبطاقات ومخطط التفاصيل)
+covers=Components/SunnahJumpIndex.swift (شريط القفز)
+covers=Components/SunnahArabicText.swift (نمط Amiri)
+covers=Templates/ListTemplate.swift (فهرس تلقائي >30)

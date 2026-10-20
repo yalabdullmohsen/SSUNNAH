@@ -1,6 +1,6 @@
 #!/bin/bash
 # حارس علامة نهاية الآية (ن3): الزخرفة بحجم المطبوع وطبقاتها (حشوة/إطار/أرقام)، ولا سطر يبدأ بعلامة نهاية.
-# ثابت: الارتفاع [0.95,1.05]، العرض [0.76,0.84] من خط النص، minContrast ≥ 4.5.
+# ثابت: الارتفاع [1.18,1.30]، العرض [0.89,0.99] من خط النص، minContrast ≥ 4.5.
 # ENDMARK_GUARD_RUN=1: يشغّل الاختبار فعليًا على المحاكي.
 set -u
 cd "$(dirname "$0")/.."
@@ -9,8 +9,8 @@ fail=0; bad() { echo "✗ $1"; fail=1; }
 val() { sed -n "s/.*static let $1: [A-Za-z]* = \([0-9.]*\).*/\1/p" "$T" | head -1; }
 hmn=$(val minHeightOfFont); hmx=$(val maxHeightOfFont); wmn=$(val minWidthOfFont); wmx=$(val maxWidthOfFont); con=$(val minContrast)
 for v in "$hmn" "$hmx" "$wmn" "$wmx" "$con"; do [ -n "$v" ] || bad "تعذّر قراءة ثوابت الحارس من $T"; done
-# قرار المالك (2026-10-20): الزخرفة بحجمها الطبيعي في خط QPC (≈0.99em × 0.80em) كالمطبوع — النطاق لا يتّسع.
-awk -v a="${hmn:-0}" -v b="${hmx:-9}" -v c="${wmn:-0}" -v d="${wmx:-9}" -v f="${con:-0}" 'BEGIN{exit !(a>=0.95 && b<=1.05 && c>=0.76 && d<=0.84 && f>=4.5)}' \
+# قرار المالك (2026-10-20): الزخرفة ×1.24 من غليف QPC (≈1.23em × 0.94em) مقيسة من مرجع المالك ص27 — النطاق لا يتّسع.
+awk -v a="${hmn:-0}" -v b="${hmx:-9}" -v c="${wmn:-0}" -v d="${wmx:-9}" -v f="${con:-0}" 'BEGIN{exit !(a>=1.18 && b<=1.30 && c>=0.89 && d<=0.99 && f>=4.5)}' \
   || bad "ثوابت الزخرفة ضعفت: h=[$hmn,$hmx] w=[$wmn,$wmx] contrast=$con"
 for f in testEndMarkMatchesPrintedSizeAndLayers testNoLineStartsWithAyahEndOnAll604Pages testEndMarkMoveKeepsWordsAndOrder; do
   grep -q "func $f" "$T" || bad "اختبار $f مفقود"
