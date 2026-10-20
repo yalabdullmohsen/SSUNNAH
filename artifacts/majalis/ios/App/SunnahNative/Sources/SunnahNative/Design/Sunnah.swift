@@ -137,12 +137,12 @@ public enum Sunnah {
         public static var tag: Font { AppearancePrefs.ui(.bold, 12, .caption) }
         /// نصوص شرعية بخط Amiri: الآية والحديث/الأثر (خط المصحف QPC غير مضمَّن بانتظار قرار الترخيص).
         public static let quran = Font.custom("Amiri-Regular", size: 24, relativeTo: .title3)
-        /// القراءة الطويلة (أحاديث، شروح، مقالات): Noto Naskh Arabic.
-        public static let hadith = Font.custom("NotoNaskhArabic-Regular", size: 19, relativeTo: .body)
+        /// القراءة الطويلة (أحاديث، قصص الأنبياء، شروح، مقالات): Amiri — خط نسخ كتبي احترافي (قرار المالك 2026-10-20 بدل Noto Naskh).
+        public static let hadith = Font.custom("Amiri-Regular", size: 21, relativeTo: .body)
         /// قراءة الحديث بخط Amiri (قرار المالك 2026-10-20).
         public static let amiriReading = Font.custom("Amiri-Regular", size: 22, relativeTo: .title3)
-        public static let reading = Font.custom("NotoNaskhArabic-Regular", size: 18, relativeTo: .body)
-        public static let readingBold = Font.custom("NotoNaskhArabic-Bold", size: 18, relativeTo: .body)
+        public static let reading = Font.custom("Amiri-Regular", size: 20, relativeTo: .body)
+        public static let readingBold = Font.custom("Amiri-Bold", size: 20, relativeTo: .body)
     }
 }
 

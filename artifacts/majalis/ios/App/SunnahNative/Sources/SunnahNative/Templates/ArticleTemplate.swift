@@ -32,6 +32,5 @@ public struct ArticleTemplate: View {
         .dynamicTypeSize(size)
         .sunnahReadableWidth().background(Sunnah.Colors.bg).bodyTitledNavigation()
         .preferredColorScheme(night ? .dark : nil)
-        .sunnahReportIssueToolbar(title: item.title, id: item.id, section: item.reportSection)
     }
 }
