@@ -502,7 +502,7 @@ public struct MushafReaderView: View {
 
     /// خيارا التفسير: مكتوب (شاشة التفاسير) أو صوتي (المختصر لهذه الآية فقط، بلا قائمة سور ولا شاشة تنزيل).
     private func tafsirChoice(_ ayah: String) -> some View {
-        HStack(spacing: Sunnah.Spacing.s3) {
+        SunnahActionRow {
             SunnahButton("تفسير مكتوب", style: .outline) { openRoute("/tafsir/\(ayah)") }
                 .accessibilityIdentifier("mushaf.sheet.tafsir.text")
             if let p = ayahParts(ayah), MukhtasarIndex.hasAyahs(p.surah) {
