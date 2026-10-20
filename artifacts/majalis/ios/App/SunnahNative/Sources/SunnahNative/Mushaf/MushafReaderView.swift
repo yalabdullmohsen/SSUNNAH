@@ -334,7 +334,7 @@ public struct MushafReaderView: View {
             MushafToolButton(symbol: store.colors(ofPage: current).isEmpty ? "bookmark" : "bookmark.fill", label: "علامة على الصفحة", id: "mushaf.pageMark") { sunnahAnimate { pagePicker.toggle() } }
         }
         .padding(.vertical, 3)
-        .background(Sunnah.Colors.mushafPaper.opacity(0.96), in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))   // الصفحة المُزاحة لا تمرّ تحت الأزرار
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))   // طبقة شفافة تختفي بعد ثانية من عدم النشاط وتظهر بلمسة
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // شريط بارتفاع ثابت: أكبر من ذلك يقتطع الحقل ويتداخل
     }
 
@@ -456,29 +456,18 @@ public struct MushafReaderView: View {
             }
             // الآية كاملة بخط المصحف (تمتد على سطور/صفحتين) داخل تمرير محدود الارتفاع فلا تطول القائمة بلا حد.
             ScrollView {
-                MushafAyahText(ayah: ayah, repo: repo, size: 22, collapseAbove: .max, paper: false, plainText: shareText(ayah))
+                MushafAyahText(ayah: ayah, repo: repo, size: 22, collapseAbove: 16, paper: false, plainText: shareText(ayah))
             }
-            .frame(maxHeight: min(pageSize.height * 0.28, 230))
+            .frame(maxHeight: min(pageSize.height * 0.2, 150))
             .fixedSize(horizontal: false, vertical: true)
-            HStack(spacing: Sunnah.Spacing.s3) {
-                if let text = shareText(ayah) {
-                    Button { copy(text) } label: { Label("نسخ", systemImage: "doc.on.doc") }.accessibilityIdentifier("mushaf.sheet.copy")
-                    ShareLink(item: text) { Label("مشاركة", systemImage: "square.and.arrow.up") }.accessibilityIdentifier("mushaf.sheet.share")
-                    #if os(iOS)
-                    if let img = MushafAyahShareCard.image(text: text, reference: reference(ayah)) {
-                        ShareLink(item: img, preview: SharePreview(reference(ayah), image: img)) { Label("صورة", systemImage: "photo") }
-                            .accessibilityIdentifier("mushaf.sheet.shareImage")
-                    }
-                    #endif
-                }
-                Button { sunnahAnimate { ayahPicker = false; hifzPicker = false; tafsirPicker.toggle() } } label: { Label("تفسير", systemImage: "text.book.closed") }.accessibilityIdentifier("mushaf.sheet.tafsir")
-                Button { openRoute("/quran/offline-player") } label: { Label("استماع", systemImage: "headphones") }.accessibilityIdentifier("mushaf.sheet.reciters")
-                Button { sunnahAnimate { ayahPicker.toggle() } } label: { Label("علامة", systemImage: store.colors(ofAyah: ayah).isEmpty ? "bookmark" : "bookmark.fill") }.accessibilityIdentifier("mushaf.sheet.mark")
-                Button { sunnahAnimate { hifzPicker.toggle() } } label: { Label("حفظ", systemImage: hifz.progress.state(current) == .none ? "checkmark.circle" : "checkmark.circle.fill") }.accessibilityIdentifier("mushaf.sheet.hifz")
-            }
-            .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.mushafInk)
-            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // صف أزرار بأيقونة فوق الاسم: AX يقتطع الأسماء إلى «م…»
-            .labelStyle(MushafSheetActionLabelStyle())   // أيقونة فوق الاسم: لا التفاف حرفيًّا ولا اقتطاع على الشاشات الضيقة
+            MushafAyahActionBar(
+                text: shareText(ayah), reference: reference(ayah),
+                marked: !store.colors(ofAyah: ayah).isEmpty, hifzDone: hifz.progress.state(current) != .none,
+                tafsir: { sunnahAnimate { ayahPicker = false; hifzPicker = false; tafsirPicker.toggle() } },
+                listen: { openRoute("/quran/offline-player") },
+                mark: { sunnahAnimate { ayahPicker.toggle() } },
+                hifz: { sunnahAnimate { hifzPicker.toggle() } },
+                copy: { copy($0) })
             if ayahPicker {
                 MushafMarkPicker(active: store.colors(ofAyah: ayah)) { store.toggleMark($0, ayah: ayah, page: current) }
             }
@@ -591,15 +580,24 @@ public struct MushafIndexView: View {
         #endif
     }
 
-    private func row(_ title: String, _ trailing: String, _ id: String, _ page: Int) -> some View {
-        Button { open(page) } label: {
-            HStack { Text(title); Spacer(); Text(trailing).foregroundStyle(Sunnah.Colors.textSecondary) }
-                .padding(.horizontal, Sunnah.Spacing.s4)
-                .frame(minHeight: Sunnah.Spacing.touch)
-                .contentShape(Rectangle())
+    @State private var query = ""
+
+    private var filtered: [MushafSurah] {
+        let q = query.trimmingCharacters(in: .whitespaces)
+        guard !q.isEmpty else { return index.surahs }
+        let mapped = String(q.map { c -> Character in
+            if let d = "٠١٢٣٤٥٦٧٨٩".firstIndex(of: c) { return Character(String("٠١٢٣٤٥٦٧٨٩".distance(from: "٠١٢٣٤٥٦٧٨٩".startIndex, to: d))) }
+            return c
+        })
+        let n = Int(mapped)
+        return index.surahs.filter { $0.name.contains(q) || (n != nil && $0.id == n) }
+    }
+
+    private func quarterPages(juz: Int) -> [Int] {
+        (0..<8).map { k in
+            let s = HizbQuarters.starts[(juz - 1) * 8 + k]
+            return index.ayahPage["\(s.surah):\(s.ayah)"] ?? index.juzStart[juz - 1]
         }
-        .buttonStyle(.plain)
-        .accessibilityIdentifier(id)
     }
 
     public var body: some View {
@@ -612,13 +610,16 @@ public struct MushafIndexView: View {
             .padding(.horizontal, Sunnah.Spacing.s4).padding(.top, Sunnah.Spacing.s4)
             switch tab {
             case .surahs:
-                ScrollView { LazyVStack(spacing: 0) {
-                    ForEach(index.surahs) { s in row("\(s.id.arabicDigits). \(s.name)", "صفحة \(s.firstPage.arabicDigits)", "mushaf.index.surah.\(s.id)", s.firstPage) }
-                } }
+                MushafIndexSearchField(text: $query).padding(.horizontal, Sunnah.Spacing.s4)
+                ScrollView { LazyVStack(spacing: Sunnah.Spacing.s2) {
+                    ForEach(filtered) { s in MushafSurahCard(surah: s) { Sunnah.Haptics.select(); open(s.firstPage) } }
+                }.padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, Sunnah.Spacing.s4) }
             case .juz:
-                ScrollView { LazyVStack(spacing: 0) {
-                    ForEach(Array(index.juzStart.enumerated()), id: \.offset) { i, p in row("الجزء \((i + 1).arabicDigits)", "صفحة \(p.arabicDigits)", "mushaf.index.juz.\(i + 1)", p) }
-                } }
+                ScrollView { LazyVStack(spacing: Sunnah.Spacing.s2) {
+                    ForEach(Array(index.juzStart.enumerated()), id: \.offset) { i, p in
+                        MushafJuzCard(juz: i + 1, page: p, quarterPages: quarterPages(juz: i + 1)) { Sunnah.Haptics.select(); open($0) }
+                    }
+                }.padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, Sunnah.Spacing.s4) }
             case .marks:
                 MushafMarksScreen(store: store, open: open)
             }
@@ -652,17 +653,5 @@ private struct MushafSoftBand: Shape {
         if tl > 0 { p.addArc(center: CGPoint(x: r.minX + tl, y: r.minY + tl), radius: tl, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false) }
         p.closeSubpath()
         return p
-    }
-}
-
-/// أزرار بطاقة الآية: أيقونة فوق الاسم بعرض متساوٍ، فتتسع الخمسة على أضيق جوال.
-private struct MushafSheetActionLabelStyle: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        VStack(spacing: 4) {
-            configuration.icon
-            configuration.title.lineLimit(1).minimumScaleFactor(0.6)
-        }
-        .frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.touch)
-        .contentShape(Rectangle())
     }
 }
