@@ -23,7 +23,7 @@ struct MushafEndMark: View {
                 ctx.translateBy(x: -art.inkMidX, y: 0)
                 ctx.fill(Path(art.silhouette), with: .color(Sunnah.Colors.mushafEndFill))
                 ctx.fill(Path(art.frame), with: .color(Sunnah.Colors.mushafEndGold))
-                ctx.fill(Path(art.digits), with: .color(Sunnah.Colors.mushafText))
+                ctx.fill(Path(art.digits), with: .color(Sunnah.Colors.mushafEndDigits))
             }
             .frame(width: art.advance + 2 * m, height: art.ascent + art.descent + 2 * m)
             .padding(-m)
@@ -122,16 +122,20 @@ enum MushafEndMarkArt {
     }
 }
 
-/// تثخين حبر خط المصحف كالمطبوع (قرار المالك: «أعرض وأغمق» كالمرجع): نسختان مزاحتان أفقيًا بجزء صغير من حجم الخط
-/// بنفس لون الحبر — لا يغيّر شكل الحروف ولا عرض السطر (الظل لا يدخل في التخطيط).
+/// حبر خط المصحف بسماكة الخط الأصلية كمرجع المالك ص27 (قرار 2026-10-20 مساءً: التثخين بنسختين مزاحتين جعله «غامقًا جدًا» فأُلغي).
+/// يبقى المعدِّل نقطةً واحدة لضبط الحبر مستقبلًا (`ratio` = 0 ⇒ بلا أي ظل).
 struct MushafInkWeight: ViewModifier {
     let fontSize: CGFloat
-    static let ratio: CGFloat = 0.014
-    func body(content: Content) -> some View {
-        let d = fontSize * Self.ratio
-        content
-            .shadow(color: Sunnah.Colors.mushafText, radius: 0, x: d, y: 0)
-            .shadow(color: Sunnah.Colors.mushafText, radius: 0, x: -d, y: 0)
+    static let ratio: CGFloat = 0
+    @ViewBuilder func body(content: Content) -> some View {
+        if Self.ratio > 0 {
+            let d = fontSize * Self.ratio
+            content
+                .shadow(color: Sunnah.Colors.mushafText, radius: 0, x: d, y: 0)
+                .shadow(color: Sunnah.Colors.mushafText, radius: 0, x: -d, y: 0)
+        } else {
+            content
+        }
     }
 }
 
