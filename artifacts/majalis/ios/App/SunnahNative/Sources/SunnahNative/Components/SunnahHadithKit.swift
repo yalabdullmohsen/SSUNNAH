@@ -153,6 +153,8 @@ struct HadithDetailLayout<Top: View, Actions: View, Footer: View>: View {
                 .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(grade.ink.opacity(0.25), lineWidth: 1))
                 .sunnahElevation()
 
+                actions()
+
                 HadithFlow {
                     if let narrator, !narrator.isEmpty { HadithMetaChip(symbol: "person.fill", text: narrator) }
                     if let source, !source.isEmpty { HadithMetaChip(symbol: "book.closed.fill", text: source) }
@@ -169,7 +171,6 @@ struct HadithDetailLayout<Top: View, Actions: View, Footer: View>: View {
                         }
                     }
                 }
-                actions()
                 footer()
             }
             .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s3)
