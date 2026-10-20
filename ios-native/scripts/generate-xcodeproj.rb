@@ -61,7 +61,7 @@ t.build_configurations.each do |c|
   s['ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES'] = 'AppIcon-StarDish AppIcon-ZellijDark'
   s['ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS'] = 'YES'
   s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
-  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '111'
+  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '112'
   s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '1,2'
   s['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'; s['GENERATE_INFOPLIST_FILE'] = 'NO'
   s['ENABLE_USER_SCRIPT_SANDBOXING'] = 'NO'
@@ -96,7 +96,7 @@ wt.build_configurations.each do |c|
   s['INFOPLIST_FILE'] = "#{wroot}/PrayerWidget/Info.plist"
   s['CODE_SIGN_ENTITLEMENTS'] = "#{wroot}/PrayerWidget/PrayerWidget.entitlements"
   s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
-  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '111'
+  s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '112'
   s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '1,2'
   s['IPHONEOS_DEPLOYMENT_TARGET'] = '16.2'; s['GENERATE_INFOPLIST_FILE'] = 'NO'
   s['SKIP_INSTALL'] = 'YES'; s['PRODUCT_NAME'] = '$(TARGET_NAME)'
@@ -136,7 +136,7 @@ wk.build_configurations.each { |c| c.build_settings['ASSETCATALOG_COMPILER_APPIC
     s['INFOPLIST_FILE'] = "SunnahWatchResources/#{plist}"
     s['CODE_SIGN_ENTITLEMENTS'] = "SunnahWatchResources/#{ent}"
     s['DEVELOPMENT_TEAM'] = '5D8TX37HTS'
-    s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '111'
+    s['MARKETING_VERSION'] = '1.2.0'; s['CURRENT_PROJECT_VERSION'] = '112'
     s['SWIFT_VERSION'] = '5.0'; s['TARGETED_DEVICE_FAMILY'] = '4'
     s['WATCHOS_DEPLOYMENT_TARGET'] = wver; s['GENERATE_INFOPLIST_FILE'] = 'NO'
     s['SDKROOT'] = 'watchos'; s['SKIP_INSTALL'] = 'YES'; s['PRODUCT_NAME'] = '$(TARGET_NAME)'
