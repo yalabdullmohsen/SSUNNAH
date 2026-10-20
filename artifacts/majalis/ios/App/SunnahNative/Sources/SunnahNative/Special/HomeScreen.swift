@@ -15,15 +15,11 @@ public struct HomeScreen: View {
     static let shortcuts: [Shortcut] = [
         .init(title: "القرآن", symbol: "book.closed", route: "/quran-hub"),
         .init(title: "الحديث", symbol: "text.book.closed", route: "/hadith"),
-        .init(title: "الدروس", symbol: "graduationcap", route: "/lessons"),
-        .init(title: "الفقه", symbol: "scalemass", route: "/fiqh"),
-        .init(title: "العقيدة", symbol: "sparkles", route: "/tawhid"),
-        .init(title: "السيرة", symbol: "moon.stars", route: "/seerah"),
         .init(title: "الأذكار", symbol: "hands.sparkles", route: "/native/adhkar"),
+        .init(title: "الفقه", symbol: "scalemass", route: "/fiqh"),
+        .init(title: "الدروس", symbol: "graduationcap", route: "/lessons"),
         .init(title: "القبلة", symbol: "location.north.line", route: "/qibla"),
         .init(title: "التقويم", symbol: "calendar", route: "/calendar"),
-        .init(title: "الصلاة", symbol: "clock", route: "/prayer-times"),
-        .init(title: "الإحصاءات", symbol: "chart.bar", route: "/stats"),
         .init(title: "كل الأقسام", symbol: "square.grid.2x2", route: "/sections")
     ]
 
@@ -33,6 +29,7 @@ public struct HomeScreen: View {
         ScrollView {
             VStack(spacing: Sunnah.Spacing.s4) {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in heroCard(now: ctx.date) }
+                shortcutGrid
                 HStack(alignment: .top, spacing: Sunnah.Spacing.s3) {
                     wirdCard
                     adhkarCard
@@ -120,6 +117,28 @@ public struct HomeScreen: View {
         .accessibilityIdentifier("home.card.prayer")
     }
 
+    /// شبكة بلاط الأقسام الأكثر استعمالًا (٤ أعمدة، زاوية ناعمة، ضغط بصري).
+    private var shortcutGrid: some View {
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: Sunnah.Spacing.s3), count: 4), spacing: Sunnah.Spacing.s3) {
+            ForEach(Self.shortcuts) { s in
+                Button { openRoute(s.route) } label: {
+                    VStack(spacing: 8) {
+                        SunnahIconTile(s.symbol, size: 44)
+                        Text(s.title).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textPrimary)
+                            .lineLimit(1).minimumScaleFactor(0.8)
+                    }
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity)
+                    .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
+                }
+                .buttonStyle(.plain).sunnahPressable()
+                .accessibilityIdentifier("home.shortcut.\(s.id)")
+            }
+        }
+        .padding(.horizontal, Sunnah.Spacing.pageX)
+    }
+
     /// «بعد ٦ س ١٤ د».
     static func remaining(_ interval: TimeInterval) -> String {
         let total = max(0, Int(interval.rounded(.down)))
@@ -131,7 +150,7 @@ public struct HomeScreen: View {
         SunnahHeaderCard(title: "آية اليوم", symbol: "book.closed") {
             Button { openRoute("/mushaf") } label: {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                    SunnahArabicText(d.ayahText, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    SunnahArabicText(d.ayahText, style: .quran).foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(PrayerTimeFormat.arabicDigits(d.ayah.reference)).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
             }
@@ -144,7 +163,7 @@ public struct HomeScreen: View {
         SunnahHeaderCard(title: "حديث اليوم", symbol: "text.book.closed") {
             Button { openRoute("/hadith") } label: {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                    SunnahArabicText(h.text, style: .body).foregroundStyle(Sunnah.Colors.textPrimary)
+                    SunnahArabicText(h.text, style: .amiri).foregroundStyle(Sunnah.Colors.textPrimary)
                     Text(PrayerTimeFormat.arabicDigits([h.narrator, h.source, h.number].compactMap { $0 }.joined(separator: " — ")))
                         .font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
