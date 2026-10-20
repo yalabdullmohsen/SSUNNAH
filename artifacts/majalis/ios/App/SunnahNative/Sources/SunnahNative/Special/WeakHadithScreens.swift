@@ -83,7 +83,6 @@ struct WeakHadithListView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            WeakHadithWarningBanner()
             Group {
                 switch phase {
                 case .loading: LoadingStateView()
@@ -92,10 +91,12 @@ struct WeakHadithListView: View {
                     let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
                     let rows = Self.visibleRows(all, file: file, normalizedQuery: q)
                     if let first = Self.pinned(rows) {
-                        WeakHadithDetailView(item: first)
+                        WeakHadithDetailView(item: first)   // التحذير داخل التفاصيل: مرة واحدة
                     } else if rows.isEmpty && q.isEmpty {
                         EmptyStateView(title: "لا مواد معتمدة بعد").frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else {
+                    VStack(spacing: 0) {
+                    WeakHadithWarningBanner()
                     SunnahRowStack {
                         ForEach(rows) { item in
                             SunnahNavigationLink { WeakHadithDetailView(item: item) } label: {
@@ -108,6 +109,7 @@ struct WeakHadithListView: View {
                     // لقطات التدقيق فقط: `-snapshotSearchQuery <نص>` يملأ مربع البحث.
                     .onAppear { if let q = UserDefaults.standard.string(forKey: "snapshotSearchQuery"), !q.isEmpty { query = q } }
                     #endif
+                    }
                     }
                 }
             }

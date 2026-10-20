@@ -20,6 +20,51 @@ public struct HadithItem: Decodable, Identifiable, Hashable, Sendable {
     }
 }
 
+extension HadithItem {
+    /// عنوان العرض: بعض العناوين المصدّرة قصٌّ حرفي لأول 55 حرفًا من المتن (يبدأ من منتصف كلمة أو بعلامات اتجاه)؛ تُنظَّف ثم تُشتق من أول عبارة كاملة في المتن.
+    var displayTitle: String {
+        let invisible: Set<Character> = ["\u{200F}", "\u{200E}", "\u{202B}", "\u{202C}", "\u{FEFF}"]
+        func clean(_ s: String) -> String {
+            String(s.filter { !invisible.contains($0) }).split(whereSeparator: \.isWhitespace).joined(separator: " ")
+        }
+        let t = clean(title)
+        let body = clean(text)
+        let chopped = t.count >= 50 && !t.contains("…") && body.hasPrefix(t)
+        let broken = t.unicodeScalars.first.map { (0x064B...0x065F).contains($0.value) || $0.value == 0x0670 } ?? true
+        let verseStart = t.hasPrefix("{") || t.hasPrefix("﴿")
+        guard chopped || broken || verseStart else { return t }
+        var start = body
+        if verseStart {
+            // المتن يبدأ بآية بين قوسين: العنوان من الكلام الذي بعدها، فإن قصر فالآية بلا أقواس.
+            if let close = body.firstIndex(where: { $0 == "}" || $0 == "﴾" }) {
+                let rest = String(body[body.index(after: close)...]).drop { ".،؛: ".contains($0) }
+                if rest.count >= 12 { start = String(rest) } else { return String(t.filter { !"{}﴿﴾".contains($0) }).trimmingCharacters(in: .whitespaces) }
+            }
+        }
+        if let f = start.unicodeScalars.first, (0x064B...0x065F).contains(f.value), let sp = start.firstIndex(of: " ") { start = String(start[start.index(after: sp)...]) }
+        let stops: Set<Character> = ["،", ".", ":", "؛", "؟", "!"]
+        let head = String(start.prefix(70))
+        if let i = head.firstIndex(where: { stops.contains($0) }), head.distance(from: head.startIndex, to: i) >= 12 { return String(head[..<i]) }
+        if start.count <= 70 { return start }
+        let cut = head.lastIndex(of: " ").map { String(head[..<$0]) } ?? head
+        return cut + "…"
+    }
+
+    /// معاينة المتن للصف: المتن منظَّفًا من علامات الاتجاه؛ تُحذف إن طابقت العنوان.
+    var previewText: String? {
+        let invisible: Set<Character> = ["\u{200F}", "\u{200E}", "\u{202B}", "\u{202C}", "\u{FEFF}"]
+        let body = String(text.filter { !invisible.contains($0) }).split(whereSeparator: \.isWhitespace).joined(separator: " ")
+        return body == displayTitle || body.isEmpty ? nil : body
+    }
+
+    /// اسم الكتاب/المصدر لبطاقات المحور.
+    var collectionLabel: String {
+        let names = ["bukhari": "صحيح البخاري", "muslim": "صحيح مسلم", "mutafaq": "متفق عليه", "tirmidhi": "جامع الترمذي",
+                     "nawawi40": "الأربعون النووية", "abudawud": "سنن أبي داود", "nasai": "سنن النسائي", "ibnmajah": "سنن ابن ماجه", "various": "أحاديث متفرقة"]
+        return names[collection ?? ""] ?? (collection ?? "أحاديث متفرقة")
+    }
+}
+
 /// صف من البخاري/مسلم: n الرقم، t النص، b الكتاب، h رقمه في الكتاب.
 public struct HadithRaw: Decodable, Identifiable, Hashable, Sendable {
     public let n: Int
@@ -61,7 +106,7 @@ struct HadithListView: View {
     private var filtered: [HadithItem] {
         let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
         guard !q.isEmpty else { return items }
-        return items.filter { ArabicSearch.normalize($0.title + " " + $0.text).contains(q) }
+        return items.filter { ArabicSearch.normalize($0.displayTitle + " " + $0.text).contains(q) }
     }
 
     var body: some View {
@@ -72,19 +117,33 @@ struct HadithListView: View {
         #endif
     }
 
+    /// ترتيب بأول حرف فعلي (الأقواس وعلامات الترقيم في البداية لا تدخل) كي يتسلسل الفهرس بلا تكرار.
+    private static func sortKey(_ title: String) -> String {
+        let n = ArabicSearch.normalize(title.trimmingCharacters(in: .whitespacesAndNewlines))
+        return String(n.drop { !$0.isLetter })
+    }
+
+    /// معرّفات أول صف لكل حرف: مرساة القفز فريدة، فلا تتكرر معرّفات العرض.
+    private static func firstRowIDs(_ rows: [HadithItem]) -> Set<String> {
+        var seen = Set<String>(); var ids = Set<String>()
+        for r in rows where seen.insert(SunnahJumpIndex<EmptyView>.key(for: r.displayTitle)).inserted { ids.insert(r.id) }
+        return ids
+    }
+
     @ViewBuilder private var listBody: some View {
         if items.isEmpty { EmptyStateView() } else {
-            let rows = filtered.sorted { ArabicSearch.normalize($0.title) < ArabicSearch.normalize($1.title) }
-            let keys = query.isEmpty ? rows.map { SunnahJumpIndex<EmptyView>.key(for: $0.title) }.reduce(into: [String]()) { if !$0.contains($1) { $0.append($1) } } : []
+            let rows = filtered.sorted { Self.sortKey($0.displayTitle) < Self.sortKey($1.displayTitle) }
+            let firsts = Self.firstRowIDs(rows)
+            let keys = query.isEmpty ? rows.map { SunnahJumpIndex<EmptyView>.key(for: $0.displayTitle) }.reduce(into: [String]()) { if !$0.contains($1) { $0.append($1) } } : []
             SunnahJumpIndex(keys: keys, count: rows.count) {
                 SunnahRowStack {
                     if let title { SunnahPageTitle(title) }
-                    ForEach(Array(rows.enumerated()), id: \.element.id) { idx, item in
-                        let k = SunnahJumpIndex<EmptyView>.key(for: item.title)
+                    ForEach(rows) { item in
+                        let k = SunnahJumpIndex<EmptyView>.key(for: item.displayTitle)
                         SunnahNavigationLink { HadithDetailView(item: item) } label: {
-                            HadithRowLabel(grade: .sahih, title: item.title, subtitle: item.sourceName ?? item.chapter)
+                            HadithRowLabel(grade: .sahih, title: item.displayTitle, subtitle: item.sourceName ?? item.chapter, preview: item.previewText)
                         }.hadithGradeRow(.sahih)
-                        .sunnahJumpAnchor(idx == 0 || SunnahJumpIndex<EmptyView>.key(for: rows[idx - 1].title) != k ? k : "-\(item.id)")
+                        .sunnahJumpAnchor(firsts.contains(item.id) ? k : "-\(item.id)")
                     }
                 }
             }
@@ -105,7 +164,7 @@ struct HadithDetailView: View {
                            chapter: item.chapter, explanation: item.explanation, key: "hadith-\(item.id)",
                            top: { EmptyView() }, actions: { EmptyView() },
                            footer: { SunnahContentFooter(title: item.title, id: item.id, section: item.collection ?? "الحديث", source: item.collection, inset: false, sensitive: true) })
-        .sunnahNavTitle(item.title)
+        .sunnahNavTitle(item.displayTitle)
     }
 }
 
@@ -115,13 +174,25 @@ struct HadithHubView: View {
     let sahih: [HadithItem]
     @State private var counts: [HadithGrade: Int] = [:]
 
+    /// بطاقات الكتب: الصحيح مجمَّعًا بمصدره، الأكثر أحاديث أولًا.
+    private var categories: [(label: String, items: [HadithItem])] {
+        Dictionary(grouping: sahih, by: \.collectionLabel).map { (label: $0.key, items: $0.value) }
+            .sorted { $0.items.count != $1.items.count ? $0.items.count > $1.items.count : $0.label < $1.label }
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: Sunnah.Spacing.s3) {
-                SunnahPageTitle("الأحاديث")
                 SunnahNavigationLink { HadithListView(items: sahih, title: "الأحاديث الصحيحة") } label: {
                     HadithHubCard(grade: .sahih, title: "الأحاديث الصحيحة", count: sahih.count)
                 }.buttonStyle(.plain).sunnahPressable().accessibilityIdentifier("hadith.hub.sahih")
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: Sunnah.Spacing.s3), GridItem(.flexible(), spacing: Sunnah.Spacing.s3)], spacing: Sunnah.Spacing.s3) {
+                    ForEach(categories, id: \.label) { c in
+                        SunnahNavigationLink { HadithListView(items: c.items, title: c.label) } label: {
+                            HadithCategoryTile(title: c.label, count: c.items.count)
+                        }.buttonStyle(.plain).sunnahPressable().accessibilityIdentifier("hadith.hub.cat.\(c.label)")
+                    }
+                }
                 if (counts[.daif] ?? 0) > 0 {
                     SunnahNavigationLink { WeakHadithListView(file: "weak-daif", title: "الأحاديث الضعيفة") } label: {
                         HadithHubCard(grade: .daif, title: "الأحاديث الضعيفة", count: counts[.daif] ?? 0)
