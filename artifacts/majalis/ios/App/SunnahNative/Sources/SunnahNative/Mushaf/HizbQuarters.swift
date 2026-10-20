@@ -71,4 +71,18 @@ public enum HizbQuarters {
         let p = ayahID.split(separator: ":").compactMap { Int($0) }
         return p.count == 2 ? hizb(surah: p[0], ayah: p[1]) : nil
     }
+
+    /// تسمية الموضع كما في المصحف المطبوع أسفل الصفحة: «الحزب ٣» / «ربع الحزب ٣» / «نصف الحزب ٣» / «ثلاثة أرباع الحزب ٣».
+    public static func label(ayahID: String) -> String? {
+        let p = ayahID.split(separator: ":").compactMap { Int($0) }
+        guard p.count == 2 else { return nil }
+        let q = quarter(surah: p[0], ayah: p[1])
+        let h = ArabicNumerals.string((q - 1) / 4 + 1)
+        switch (q - 1) % 4 {
+        case 1: return "ربع الحزب \(h)"
+        case 2: return "نصف الحزب \(h)"
+        case 3: return "ثلاثة أرباع الحزب \(h)"
+        default: return "الحزب \(h)"
+        }
+    }
 }
