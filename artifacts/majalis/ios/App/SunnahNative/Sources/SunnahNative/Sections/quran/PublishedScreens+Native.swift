@@ -225,17 +225,46 @@ struct HifzUnitView: View {
     }
 }
 
+/// «معلومات عن القرآن» في صفحة واحدة: شريط مجموعات + شبكة بطاقات حقائق (القيمة كبيرة والعنوان تحتها)؛ اللمس يفتح التفصيل بمصدره.
 struct QuranStatsView: View {
     let stats: [QuranStat]
+    @State private var group = ""
+    private var groups: [(title: String, stats: [QuranStat])] { PublishedAdapters.statsByGroup(stats) }
+    private var current: [QuranStat] { groups.first { $0.title == group }?.stats ?? groups.first?.stats ?? [] }
     var body: some View {
-        qScroll {
-            ForEach(PublishedAdapters.statsByGroup(stats), id: \.title) { g in
-                SunnahSectionLabel(g.title)
-                SunnahGroupedCard(g.stats) { s in
-                    SunnahNavigationLink { QuranStatView(stat: s) } label: { SunnahListRow(title: s.label, subtitle: s.value) }
+        ScrollView {
+            VStack(alignment: .leading, spacing: 14) {
+                SunnahChipBar(options: groups.map { .init(id: $0.title, title: $0.title) }, selection: Binding(get: { group.isEmpty ? (groups.first?.title ?? "") : group }, set: { group = $0 }))
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 14) {
+                    ForEach(current) { s in
+                        SunnahNavigationLink { QuranStatView(stat: s) } label: { factCard(s) }
+                            .buttonStyle(.plain).sunnahPressable()
+                            .accessibilityElement(children: .combine)
+                            .accessibilityIdentifier("quran.fact.\(s.id)")
+                    }
                 }
+                .padding(.horizontal, Sunnah.Spacing.pageX)
+            }
+            .padding(.bottom, 96)
+        }
+        .background(Sunnah.Colors.bg)
+        .environment(\.layoutDirection, .rightToLeft)
+    }
+    private func factCard(_ s: QuranStat) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(Sunnah.digits(s.value)).font(AppearancePrefs.ui(.extraBold, 30, .title)).foregroundStyle(Sunnah.Colors.primary)
+                .minimumScaleFactor(0.6).lineLimit(1)
+            Text(s.label).font(AppearancePrefs.ui(.bold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.textPrimary)
+                .multilineTextAlignment(.leading).lineLimit(3)
+            Spacer(minLength: 0)
+            if let k = PublishedAdapters.statKinds[s.kind], s.kind != "agreed" {
+                Text(k).font(AppearancePrefs.ui(.bold, 11, .caption2)).foregroundStyle(Sunnah.Colors.primary)
+                    .padding(.horizontal, 10).padding(.vertical, 3).background(Sunnah.Colors.primarySoft, in: Capsule())
             }
         }
+        .padding(16).frame(maxWidth: .infinity, minHeight: 132, alignment: .topLeading)
+        .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
     }
 }
 
