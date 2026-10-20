@@ -103,8 +103,8 @@ struct HadithDetailView: View {
     var body: some View {
         HadithDetailLayout(grade: .sahih, text: item.text, narrator: item.narrator, source: item.sourceName, gradeText: item.grade,
                            chapter: item.chapter, explanation: item.explanation, key: "hadith-\(item.id)",
-                           footerTitle: item.title, footerID: item.id, footerSection: item.collection ?? "الحديث", footerSource: item.collection,
-                           top: { EmptyView() }, actions: { EmptyView() })
+                           top: { EmptyView() }, actions: { EmptyView() },
+                           footer: { SunnahContentFooter(title: item.title, id: item.id, section: item.collection ?? "الحديث", source: item.collection, inset: false, sensitive: true) })
         .sunnahNavTitle(item.title)
     }
 }

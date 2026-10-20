@@ -149,14 +149,14 @@ struct WeakHadithDetailView: View {
     var body: some View {
         HadithDetailLayout(grade: item.grade2, text: item.text, narrator: item.narrator, source: item.sourceName, gradeText: item.grade,
                            muhaddith: item.muhaddith, chapter: item.chapter, explanation: item.explanation, key: "weak-\(item.id)",
-                           footerTitle: item.title, footerID: item.id, footerSection: item.sourceName, footerSource: item.sourceName,
                            top: { WeakHadithWarningBanner().clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous)) },
                            actions: {
             HStack(spacing: Sunnah.Spacing.s3) {
                 ShareLink(item: item.shareText) { Label("مشاركة", systemImage: "square.and.arrow.up") }
                 Button { copy(item.shareText) } label: { Label("نسخ", systemImage: "doc.on.doc") }
             }.font(Sunnah.Typography.secondary)
-        })
+        },
+                           footer: { SunnahContentFooter(title: item.title, id: item.id, section: item.sourceName, source: item.sourceName, inset: false, sensitive: true) })
         .sunnahNavTitle(item.label)
     }
 }

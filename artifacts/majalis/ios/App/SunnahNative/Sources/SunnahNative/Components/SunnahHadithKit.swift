@@ -122,7 +122,7 @@ struct HadithHubCard: View {
 }
 
 /// صفحة الحديث المشتركة: النص بخط Amiri في بطاقة مركزية، ثم شارات الراوي والمصدر والدرجة، ثم الفائدة، بلا فراغات.
-struct HadithDetailLayout<Top: View, Actions: View>: View {
+struct HadithDetailLayout<Top: View, Actions: View, Footer: View>: View {
     let grade: HadithGrade
     let text: String
     var narrator: String?
@@ -132,9 +132,10 @@ struct HadithDetailLayout<Top: View, Actions: View>: View {
     var chapter: String?
     var explanation: String?
     let key: String
-    let footerTitle: String; let footerID: String; let footerSection: String; let footerSource: String?
     @ViewBuilder var top: () -> Top
     @ViewBuilder var actions: () -> Actions
+    /// الذيل الموحّد: يمرّره المستدعي بـ`SunnahContentFooter(..., inset: false, sensitive: true)`.
+    @ViewBuilder var footer: () -> Footer
 
     var body: some View {
         ScrollView {
@@ -169,7 +170,7 @@ struct HadithDetailLayout<Top: View, Actions: View>: View {
                     }
                 }
                 actions()
-                SunnahContentFooter(title: footerTitle, id: footerID, section: footerSection, source: footerSource, inset: false, sensitive: true)
+                footer()
             }
             .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s3)
         }
