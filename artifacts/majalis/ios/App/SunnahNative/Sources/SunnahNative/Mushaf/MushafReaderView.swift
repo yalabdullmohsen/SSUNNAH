@@ -270,7 +270,8 @@ public struct MushafReaderView: View {
         .onChange(of: voiceOver) { chromeHide.alwaysVisible = $0 }
         .onAppear { chromeHide.alwaysVisible = voiceOver; updatePin() }
         .onDisappear { chromeHide.cancel(); if tafsirAyahPlaying != nil { mukhtasar.stop() } }
-        .overlay(alignment: .bottom) { if selected == nil { ayahTafsirPlayer } }
+        // أعلى الصفحة فوق سطر اسم السورة/الجزء (لا يغطي آخر سطر من الآيات ولا رقم الصفحة).
+        .overlay(alignment: .top) { if selected == nil { ayahTafsirPlayer } }
         .fullScreenCover(isPresented: $showIndex) {
             MushafIndexView(index: index, store: store, close: { showIndex = false }) { page in current = page; showIndex = false }
         }
@@ -529,15 +530,16 @@ public struct MushafReaderView: View {
         if let p = tafsirAyahPlaying {
             HStack(spacing: Sunnah.Spacing.s3) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("تفسير الآية \(p.1.arabicDigits) من سورة \(surahName(p.0))")
-                        .font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary).lineLimit(1)
+                    Text("تفسير الآية \(p.1.arabicDigits) · \(surahName(p.0))")
+                        .font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                        .lineLimit(1).minimumScaleFactor(0.8)
                     Group {
                         if mukhtasar.preparing != nil {
                             Text(dl.active == p.0 ? "تجهيز التفسير… \(Int(dl.progress * 100).arabicDigits)٪" : "تجهيز التفسير…")
                         } else if mukhtasar.failedSurah == p.0 {
                             Text("تعذّر التجهيز — تحقّق من الاتصال")
                         } else {
-                            Text(MukhtasarAudio.title + " — مركز تفسير")
+                            Text(MukhtasarAudio.title)
                         }
                     }
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).lineLimit(1)
@@ -559,8 +561,8 @@ public struct MushafReaderView: View {
             .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.goldDeco.opacity(0.6), lineWidth: 1))
             .shadow(color: .black.opacity(0.12), radius: 12, y: 4)
-            .padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, Sunnah.Spacing.s3)
-            .transition(.move(edge: .bottom).combined(with: .opacity))
+            .padding(.horizontal, Sunnah.Spacing.s4).padding(.top, Sunnah.Spacing.s1)
+            .transition(.move(edge: .top).combined(with: .opacity))
             .accessibilityElement(children: .contain)
         }
     }
