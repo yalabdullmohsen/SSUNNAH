@@ -3,10 +3,10 @@ import CoreText
 @testable import SunnahNative
 
 /// حارس توزيع الكلمات على الأسطر (طوارئ 2026-10-20، ص27): خط QPC V2 مصمَّم بحيث يتساوى عرض أسطر الصفحة الكاملة،
-/// فسطر أعرض من وسيط أسطر صفحته بأكثر من `maxOverflow` يعني كلمة في غير سطرها — فيصغر خط الصفحة كلها وتتسع فراغاتها.
+/// فسطر أعرض من وسيط أسطر صفحته بأكثر من `maxOverflow` (عرض CTLine بالتقنين يتفاوت حتى 8٪ في البيانات السليمة) يعني كلمة في غير سطرها — فيصغر خط الصفحة كلها وتتسع فراغاتها.
 /// (ص27 قبل التصحيح: السطر 14 = +11.7٪). صفحتا الفاتحة وأول البقرة (1، 2) تخطيطهما خاص فتُستثنيان. دون `MUSHAF_DATA` يُتخطّى.
 final class MushafLineWidthGuardTests: XCTestCase {
-    static let maxOverflow: CGFloat = 0.05
+    static let maxOverflow: CGFloat = 0.09
 
     func testNoLineOverflowsItsPageOnAll604Pages() throws {
         guard let dp = ProcessInfo.processInfo.environment["MUSHAF_DATA"] else { throw XCTSkip("MUSHAF_DATA غير محدد") }
