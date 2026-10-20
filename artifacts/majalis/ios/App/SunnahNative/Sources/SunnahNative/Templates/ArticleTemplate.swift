@@ -21,7 +21,8 @@ public struct ArticleTemplate: View {
                 DetailHero(title: item.title, subtitle: item.subtitle, tags: item.tags)
                 SunnahReaderDisplayMenu().padding(.horizontal, Sunnah.Spacing.pageX)
                 ForEach(sections) { sec in
-                    SunnahSectionView(section: sec, key: item.id, style: .body)
+                    // كل قسم في بطاقة بإطار (لا نص عائم على الخلفية).
+                    SunnahCard { SunnahSectionView(section: sec, key: item.id, style: .body) }
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
                 SunnahContentFooter(title: item.title, id: item.id, section: item.reportSection)

@@ -123,6 +123,7 @@ struct SunnahSeriesReader: View {
     var extra: ((SeriesChapter) -> AnyView)? = nil
     @State private var index: Int
     @State private var forward = true
+    @State private var showChapters = false
     @AppStorage("reader.sizeStep") private var sizeStep = 0
     @AppStorage("reader.night") private var night = false
     @Environment(\.dynamicTypeSize) private var systemSize
@@ -162,11 +163,12 @@ struct SunnahSeriesReader: View {
                     header.id("top")
                     VStack(alignment: .leading, spacing: Sunnah.Spacing.s5) {
                         if let lead { lead(chapter) }
-                        body_(chapter)
+                        // النص داخل بطاقة بإطار (لا نص عائم على الخلفية)، ثم الأحداث في بطاقتها، ثم التالي/السابق مباشرة، ثم «مرتبط» مختصرًا.
+                        SunnahCard { body_(chapter) }.accessibilityIdentifier("series.body")
                         if let extra { extra(chapter) }
-                        if !chapter.events.isEmpty { timeline(chapter.events) }
-                        if !chapter.related.isEmpty { relatedSection(chapter.related) }
+                        if !chapter.events.isEmpty { SunnahCard { timeline(chapter.events) } }
                         navCards(proxy)
+                        if !chapter.related.isEmpty { relatedSection(chapter.related) }
                         SunnahContentFooter(title: chapter.title, id: chapter.id, section: seriesTitle, sources: chapter.sources, inset: false)
                     }
                     .id(chapter.id)
@@ -203,8 +205,66 @@ struct SunnahSeriesReader: View {
                     .font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
             }
             progressBar
-            SunnahReaderDisplayMenu()
+            HStack(alignment: .top, spacing: Sunnah.Spacing.s2) {
+                SunnahReaderDisplayMenu()
+                chaptersButton
+            }
         }
+        .sheet(isPresented: $showChapters) { chaptersSheet }
+    }
+
+    /// وصول سريع لأي فصل: قائمة الفصول مرقّمة مع تمييز الحالي.
+    private var chaptersButton: some View {
+        Button { Sunnah.Haptics.select(); showChapters = true } label: {
+            HStack(spacing: Sunnah.Spacing.s2) {
+                Image(systemName: "list.number")
+                Text("الفصول").font(AppearancePrefs.ui(.bold, 13, .footnote))
+            }
+            .foregroundStyle(Sunnah.Colors.primary).padding(.horizontal, 16).frame(minHeight: 44)
+            .background(Sunnah.Colors.surface, in: Capsule())
+            .overlay(Capsule().stroke(Sunnah.Colors.border, lineWidth: 1))
+        }
+        .buttonStyle(.plain).sunnahPressable()
+        .accessibilityLabel("قائمة الفصول").accessibilityIdentifier("series.chapters")
+    }
+
+    private var chaptersSheet: some View {
+        ScrollViewReader { p in
+            ScrollView {
+                LazyVStack(spacing: Sunnah.Spacing.s2) {
+                    Text(seriesTitle).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                        .frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, Sunnah.Spacing.s2)
+                    ForEach(Array(chapters.enumerated()), id: \.element.id) { i, c in
+                        Button {
+                            Sunnah.Haptics.select(); forward = i > index
+                            withAnimation(.easeInOut(duration: 0.25)) { index = i }
+                            SeriesProgress.save(seriesID, c.id); showChapters = false
+                        } label: {
+                            HStack(spacing: Sunnah.Spacing.s3) {
+                                Text((i + 1).arabicDigits).font(Sunnah.Typography.cardTitle)
+                                    .foregroundStyle(i == index ? Color.white : Sunnah.Colors.primary)
+                                    .frame(width: 36, height: 36)
+                                    .background(i == index ? Sunnah.Colors.primary : Sunnah.Colors.primarySoft, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
+                                Text(c.title.arabicDigits).font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
+                                    .multilineTextAlignment(.leading)
+                                Spacer(minLength: 0)
+                                if let per = c.period, !per.isEmpty { Text(per.arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
+                            }
+                            .padding(.horizontal, Sunnah.Spacing.s3).frame(minHeight: 56)
+                            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                            .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(i == index ? Sunnah.Colors.primary : Sunnah.Colors.border, lineWidth: i == index ? 1.5 : 1))
+                        }
+                        .buttonStyle(.plain).id(c.id)
+                        .accessibilityAddTraits(i == index ? .isSelected : [])
+                    }
+                }
+                .padding(Sunnah.Spacing.pageX)
+            }
+            .background(Sunnah.Colors.bg)
+            .onAppear { p.scrollTo(chapter.id, anchor: .center) }
+        }
+        .environment(\.layoutDirection, .rightToLeft)
+        .presentationDetents([.medium, .large])
     }
 
     private var progressBar: some View {
@@ -255,23 +315,25 @@ struct SunnahSeriesReader: View {
         .accessibilityIdentifier("series.timeline")
     }
 
+    /// «مرتبط»: شرائح صغيرة قابلة للتمرير أفقيًا (لا بطاقات كبيرة تزاحم النص).
     private func relatedSection(_ links: [SeriesLink]) -> some View {
-        VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-            Text("مرتبط").font(AppearancePrefs.ui(.extraBold, 17, .headline)).foregroundStyle(Sunnah.Colors.primary)
-            ForEach(links) { l in
-                Button { Sunnah.Haptics.select(); openRoute(l.route) } label: {
-                    HStack(spacing: Sunnah.Spacing.s3) {
-                        Image(systemName: l.kind.symbol).foregroundStyle(Sunnah.Colors.primary).frame(width: 28)
-                        Text(l.title.arabicDigits).font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
-                        Spacer(minLength: 0)
-                        Text(l.kind.title).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
-                        Image(systemName: "chevron.left").font(.system(size: 12, weight: .semibold)).foregroundStyle(Sunnah.Colors.textSecondary)
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+            Text("مرتبط").font(AppearancePrefs.ui(.extraBold, 15, .subheadline)).foregroundStyle(Sunnah.Colors.textSecondary)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: Sunnah.Spacing.s2) {
+                    ForEach(links) { l in
+                        Button { Sunnah.Haptics.select(); openRoute(l.route) } label: {
+                            HStack(spacing: Sunnah.Spacing.s2) {
+                                Image(systemName: l.kind.symbol).font(.system(size: 13, weight: .semibold))
+                                Text(l.title.arabicDigits).font(AppearancePrefs.ui(.bold, 13, .footnote)).lineLimit(1)
+                            }
+                            .foregroundStyle(Sunnah.Colors.primary).padding(.horizontal, 14).frame(minHeight: 44)
+                            .background(Sunnah.Colors.primarySoft, in: Capsule())
+                        }
+                        .buttonStyle(.plain).sunnahPressable().accessibilityIdentifier("series.related")
+                        .accessibilityLabel("\(l.kind.title): \(l.title)")
                     }
-                    .padding(.horizontal, Sunnah.Spacing.s4).frame(minHeight: 52)
-                    .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
                 }
-                .buttonStyle(.plain).sunnahPressable().accessibilityIdentifier("series.related")
             }
         }
     }

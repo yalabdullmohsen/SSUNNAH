@@ -54,6 +54,8 @@ enum ArabicSearch {
 /// الأحاديث الصحيحة الموثَّقة: بحث ثم تفاصيل (الراوي والمصدر والدرجة والشرح).
 struct HadithListView: View {
     let items: [HadithItem]
+    /// عنوان الصفحة فوق القائمة (كان مكانه فراغًا فوق حقل البحث).
+    var title: String? = nil
     @State private var query = ""
 
     private var filtered: [HadithItem] {
@@ -73,6 +75,7 @@ struct HadithListView: View {
     @ViewBuilder private var listBody: some View {
         if items.isEmpty { EmptyStateView() } else {
             SunnahRowStack {
+                if let title { SunnahPageTitle(title) }
                 ForEach(filtered) { item in
                     SunnahNavigationLink { HadithDetailView(item: item) } label: {
                         SunnahListRow(title: item.title, subtitle: item.sourceName ?? item.chapter)
@@ -127,7 +130,7 @@ struct HadithScreen: ScreenTemplate {
     static let source = ContentSource.bundled(name: "verified-sahih", subdirectory: "Data/hadith")
     let content: [HadithItem]
     init(content: [HadithItem]) { self.content = content }
-    var body: some View { HadithListView(items: content) }
+    var body: some View { HadithListView(items: content, title: "الأحاديث") }
 }
 
 struct HadithSahihScreen: ScreenTemplate {
@@ -136,7 +139,7 @@ struct HadithSahihScreen: ScreenTemplate {
     static let source = ContentSource.bundled(name: "verified-sahih", subdirectory: "Data/hadith")
     let content: [HadithItem]
     init(content: [HadithItem]) { self.content = content }
-    var body: some View { HadithListView(items: content) }
+    var body: some View { HadithListView(items: content, title: Self.title) }
 }
 
 /// كتب الحديث المحزومة: صحيح البخاري وصحيح مسلم.
