@@ -193,27 +193,33 @@ public final class MukhtasarPlayer: ObservableObject {
     /// تفسير آية ينتظر تنزيل ملف سورته (التقديم الدقيق يتطلب الملف محليًا: ملفات MP3 متغيرة المعدل لا يُقدَّم فيها بدقة أثناء البث).
     @Published public private(set) var preparing: (surah: Int, ayah: Int)?
     private var downloads: AnyCancellable?
+    private var segmentTask: Task<Void, Never>?
     private var statusObs: NSKeyValueObservation?
     private var endTime: Double?
+    private var elapsedStart: Double = 0
 
     /// تشغيل سورة من بداية «مقاصد السورة» (يتخطّى الإعلان الافتتاحي)، أو آية بعينها: من بدء تلاوتها إلى بدء الآية التالية بالضبط.
     /// السبب الجذري لعطل «تحديد آية يشغّل السورة كلها»: كان التقديم يُطلب قبل جاهزية العنصر فيُهمَل ويبدأ من أول الملف،
     /// والبث لا يقدّم بدقة في MP3 متغير المعدل. الآن: الآية من ملف محلي بتوقيت دقيق، والتقديم بعد readyToPlay، والنهاية بـforwardPlaybackEndTime.
     public func play(_ s: Int, ayah a: Int? = nil) {
         if surah == s, ayah == a, let player {
-            if let endTime, elapsed >= endTime - 0.3 { startItem(s, ayah: a) } else { player.play(); playing = true }
+            if let endTime, elapsed >= endTime - 0.3 { restart() } else { player.play(); playing = true }
             return
         }
         if let a, MukhtasarAudio.localURL(s) == nil {
+            // تفسير آية والسورة غير منزّلة: يُنزَّل مقطع الآية وحده (طلب HTTP Range بمواضع البايت المولّدة) ثم يُشغَّل محليًا بدقة —
+            // كان يُنزَّل ملف السورة كاملًا أولًا (البقرة مئات الميغابايت) فيتأخر التشغيل دقائق (شكوى يوسف 2026-10-20).
             stop()
             preparing = (s, a)
-            let dl = MukhtasarDownloader.shared
-            downloads = dl.$revision.combineLatest(dl.$failed).receive(on: RunLoop.main).sink { [weak self] _, failed in
-                guard let self, let p = self.preparing, p.surah == s, p.ayah == a else { return }
-                if MukhtasarAudio.localURL(s) != nil { self.preparing = nil; self.downloads = nil; self.startItem(s, ayah: a) }
-                else if failed == s { self.preparing = nil; self.downloads = nil; self.failedSurah = s }
+            guard let seg = MukhtasarIndex.segment(surah: s, ayah: a) else { preparing = nil; failedSurah = s; return }
+            segmentTask = Task { [weak self] in
+                let file = await MukhtasarSegments.fetch(surah: s, ayah: a, seg)
+                await MainActor.run {
+                    guard let self, let p = self.preparing, p.surah == s, p.ayah == a else { return }
+                    self.preparing = nil
+                    if let file { self.startSegment(file, surah: s, ayah: a, seg) } else { self.failedSurah = s }
+                }
             }
-            dl.prioritize(s)
             return
         }
         startItem(s, ayah: a)
@@ -222,8 +228,14 @@ public final class MukhtasarPlayer: ObservableObject {
     /// تعذّر تجهيز تفسير الآية (لا اتصال مثلًا).
     @Published public private(set) var failedSurah: Int?
 
-    private func startItem(_ s: Int, ayah a: Int?) {
-        guard let url = MukhtasarAudio.playableURL(s) else { return }
+    /// تشغيل مقطع آية منزَّل: من بداية الآية داخله (`lead`) إلى نهايتها، بتوقيت دقيق (ملف محلي).
+    private func startSegment(_ file: URL, surah s: Int, ayah a: Int, _ seg: MukhtasarIndex.Segment) {
+        startItem(s, ayah: a, url: file, range: (seg.lead, seg.length.map { seg.lead + $0 }))
+        MukhtasarSegments.prefetchNext(surah: s, after: a)
+    }
+
+    private func startItem(_ s: Int, ayah a: Int?, url explicit: URL? = nil, range custom: (start: Double, end: Double?)? = nil) {
+        guard let url = explicit ?? MukhtasarAudio.playableURL(s) else { return }
         stop()
         #if os(iOS)
         try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .spokenAudio)
@@ -231,7 +243,7 @@ public final class MukhtasarPlayer: ObservableObject {
         #endif
         let asset = AVURLAsset(url: url, options: url.isFileURL ? [AVURLAssetPreferPreciseDurationAndTimingKey: true] : nil)
         let item = AVPlayerItem(asset: asset)
-        let range = MukhtasarIndex.range(surah: s, ayah: a)
+        let range = custom ?? MukhtasarIndex.range(surah: s, ayah: a)
         if let end = range.end { item.forwardPlaybackEndTime = CMTime(seconds: end, preferredTimescale: 600) }
         let p = AVPlayer(playerItem: item)
         observer = p.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: 600), queue: .main) { [weak self] t in
@@ -254,13 +266,21 @@ public final class MukhtasarPlayer: ObservableObject {
                 } else { go() }
             } }
         }
-        player = p; surah = s; ayah = a; endTime = range.end; elapsed = range.start; failedSurah = nil; playing = true
+        player = p; surah = s; ayah = a; endTime = range.end; elapsed = range.start; elapsedStart = range.start; failedSurah = nil; playing = true
+    }
+
+    /// إعادة المقطع الجاري من أوله (نفس الملف والنطاق).
+    private func restart() {
+        guard let player, let item = player.currentItem else { return }
+        let start = max(elapsedStart, 0)
+        item.seek(to: CMTime(seconds: start, preferredTimescale: 600), toleranceBefore: .zero, toleranceAfter: .zero) { _ in }
+        player.play(); playing = true
     }
 
     public func toggle() {
         guard let player else { return }
         if playing { player.pause(); playing = false }
-        else if let endTime, let s = surah, elapsed >= endTime - 0.3 { startItem(s, ayah: ayah) }   // انتهى تفسير الآية: إعادة من أولها
+        else if let endTime, elapsed >= endTime - 0.3 { restart() }   // انتهى تفسير الآية: إعادة من أولها
         else { player.play(); playing = true }
     }
 
@@ -277,7 +297,7 @@ public final class MukhtasarPlayer: ObservableObject {
 
     public func stop() {
         if let observer, let player { player.removeTimeObserver(observer) }
-        statusObs = nil; downloads = nil; preparing = nil; endTime = nil
+        statusObs = nil; downloads = nil; segmentTask?.cancel(); segmentTask = nil; preparing = nil; endTime = nil
         player?.pause(); player = nil; observer = nil
         surah = nil; ayah = nil; playing = false; elapsed = 0; duration = 0
     }
@@ -498,3 +518,39 @@ struct MukhtasarAudioView: View {
         .buttonStyle(.plain).accessibilityLabel(label)
     }
 }
+
+/// مقاطع الآيات المنزّلة (طلب HTTP Range من ملف السورة على أرشيف الإنترنت) — مخزّنة مؤقتًا لإعادة الاستماع بلا شبكة.
+enum MukhtasarSegments {
+    static var folder: URL {
+        let dir = MukhtasarAudio.folder.appendingPathComponent("segments", isDirectory: true)
+        if !FileManager.default.fileExists(atPath: dir.path) { try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true) }
+        return dir
+    }
+
+    static func file(surah: Int, ayah: Int) -> URL { folder.appendingPathComponent(String(format: "%03d-%03d.mp3", surah, ayah)) }
+
+    /// يعيد ملف المقطع (من الذاكرة المؤقتة أو بتنزيله). يتحقق أن الخادم أعاد المدى نفسه من ملف بالحجم المتوقع (206 + Content-Range)،
+    /// وإلا لا يُستعمل (ملف مختلف عن الذي وُلّدت منه المواضع) ⇒ nil.
+    static func fetch(surah: Int, ayah: Int, _ seg: MukhtasarIndex.Segment) async -> URL? {
+        let dest = file(surah: surah, ayah: ayah)
+        if FileManager.default.fileExists(atPath: dest.path) { return dest }
+        guard let remote = MukhtasarAudio.remoteURL(surah) else { return nil }
+        var req = URLRequest(url: remote, timeoutInterval: 30)
+        req.setValue("bytes=\(seg.lo)-\(seg.hi - 1)", forHTTPHeaderField: "Range")
+        guard let (data, resp) = try? await URLSession.shared.data(for: req), let http = resp as? HTTPURLResponse,
+              http.statusCode == 206, data.count == seg.hi - seg.lo,
+              (http.value(forHTTPHeaderField: "Content-Range") ?? "").hasSuffix("/\(seg.size)") else { return nil }
+        let tmp = folder.appendingPathComponent(UUID().uuidString + ".part")
+        do { try data.write(to: tmp); try? FileManager.default.removeItem(at: dest); try FileManager.default.moveItem(at: tmp, to: dest) }
+        catch { try? FileManager.default.removeItem(at: tmp); return nil }
+        return dest
+    }
+
+    /// تنزيل مقطع الآية التالية في الخلفية فيبدأ فورًا إن انتقل إليها المستخدم.
+    static func prefetchNext(surah: Int, after ayah: Int) {
+        let next = ayah + 1
+        guard let seg = MukhtasarIndex.segment(surah: surah, ayah: next), seg.lo != MukhtasarIndex.segment(surah: surah, ayah: ayah)?.lo else { return }
+        Task.detached(priority: .utility) { _ = await fetch(surah: surah, ayah: next, seg) }
+    }
+}
+
