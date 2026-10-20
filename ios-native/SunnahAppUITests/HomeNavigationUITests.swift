@@ -342,6 +342,11 @@ final class HomeNavigationUITests: XCTestCase {
         let tafsir = app.buttons["mushaf.sheet.tafsir"]
         if tafsir.waitForExistence(timeout: 5) {
             tafsir.tap()
+            // «تفسير» يعرض خياري المكتوب والصوتي (المختصر لهذه الآية فقط).
+            let written = app.buttons["mushaf.sheet.tafsir.text"]
+            XCTAssertTrue(written.waitForExistence(timeout: 5), "خيار التفسير المكتوب لم يظهر")
+            XCTAssertTrue(app.buttons["mushaf.sheet.tafsir.audio"].exists, "خيار التفسير الصوتي لم يظهر")
+            written.tap()
             XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "تفسير")).firstMatch.waitForExistence(timeout: 10), "شاشة التفسير لم تفتح")
         }
     }

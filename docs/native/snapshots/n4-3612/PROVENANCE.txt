@@ -1,0 +1,13 @@
+git_sha=39e1058ff952c155b8f27cdf6629c000a9ef5cef
+binary_sha256=200370f9702af7fba45f9199f4353cd4236c722e93bcf57c025d2ecac9cdc27c
+branch=mushaf-natural-tafsir-choice
+captured_at=2026-10-20T10:55Z
+device=iPhone 402x874 simulator (iOS), -AppleLanguages ar, RTL
+files:
+  card-2-255-tafsir-choice.png card-2-255.png miniplayer-after-25s.png miniplayer-playing.png miniplayer-preparing.png page-27-dark.png page-27-light.png 
+covers=MushafReaderView (خط طبيعي أكبر، زخرفة خضراء بلا قصّ ص27 فاتحًا وداكنًا، بطاقة آية 2:255، خيارا التفسير المكتوب/الصوتي، المشغّل المصغّر)
+covers=MukhtasarAudio (تشغيل تفسير الآية: تحضير ثم تشغيل؛ من سجل مؤقت: elapsed يبدأ عند بداية الآية 13508.66 ويتوقف عند نهايتها 13622.41)
+gaps:
+  لا جهاز حقيقي؛ لقطات محاكي فقط. سجل elapsed من بناء مؤقت بـNSLog (لا يُدمج) وليس من هذا الملف الثنائي.
+  ملاحظات: عنوان المشغّل المصغّر مقطوع («سورة الـ…») ويتداخل مع شريط الصفحة السفلي.
+  SirahAdaptersTests.testSectionRegistersEveryGeneratedIdAndResolvesParams يفشل وهو غير مرتبط بـ#3612.
