@@ -12,12 +12,21 @@ public enum MukhtasarIndex {
     public static func entry(_ surah: Int) -> Entry? { generated[surah] }
     public static func hasAyahs(_ surah: Int) -> Bool { !(generated[surah]?.ayahs.isEmpty ?? true) }
 
-    /// نطاق التشغيل: الآية ⇒ [بدايتها، بداية التالية)، وآخر آية حتى نهاية الملف؛ السورة ⇒ من بداية المقاصد.
+    /// أقل مدة معقولة بين بدايتي آيتين (تلاوة + تفسير)؛ ما دونها يعني أن الآيات تُليت مجتمعة ثم فُسّرت معًا.
+    static let groupGap: Double = 4
+
+    /// نطاق التشغيل: الآية ⇒ [بداية مجموعتها، بداية الآية التالية للمجموعة) — المختصر يجمع أحيانًا آيات متتالية
+    /// في تلاوة واحدة يعقبها تفسيرها؛ فتُشغَّل المجموعة كاملة (لا آية مجاورة غيرها). آخر مجموعة حتى نهاية الملف.
+    /// السورة ⇒ من بداية المقاصد بعد الإعلان.
     public static func range(surah: Int, ayah: Int?) -> (start: Double, end: Double?) {
         guard let e = generated[surah] else { return (introSkip, nil) }
         guard let a = ayah, a >= 1, a <= e.ayahs.count else { return (e.start, nil) }
-        let start = e.ayahs[a - 1]
-        let end = a < e.ayahs.count ? e.ayahs[a] : nil
+        let t = e.ayahs
+        var lo = a - 1, hi = a - 1
+        while lo > 0, t[lo] - t[lo - 1] < groupGap { lo -= 1 }
+        while hi + 1 < t.count, t[hi + 1] - t[hi] < groupGap { hi += 1 }
+        let start = t[lo]
+        let end = hi + 1 < t.count ? t[hi + 1] : nil
         return (start, end.map { max($0 - 0.15, start) })
     }
 }
