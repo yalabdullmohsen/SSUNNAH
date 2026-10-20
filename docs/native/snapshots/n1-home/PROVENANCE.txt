@@ -1,0 +1,7 @@
+git_sha=ee2d84a7ec5ba50f38e91bd4bbc33a40b2229dbf
+branch=n1/home-redesign
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/76e82e7372821f17/SunnahApp.app
+binary_sha256=873d3a8aa224e8d89c71c44aa1bb37d37e5cb24150a7114c762d6bf3adb10adf
+built_at=2026-10-21 01:49:37
+source_newest=2026-10-21 01:47:42
+captured_at=2026-10-21 01:51:01
