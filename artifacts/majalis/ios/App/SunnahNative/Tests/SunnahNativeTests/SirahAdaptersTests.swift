@@ -111,11 +111,11 @@ final class SirahAdaptersTests: XCTestCase {
                    "prophets", "prophets.tree", "sahabah", "seerah", "shamael", "stories", "tarikh-islami", "teachers"] {
             XCTAssertNotNil(registry.view(for: id), id)
         }
-        for p in ["/islamic-landmarks/l1", "/nations/aad", "/tarikh-islami/x", "/teachers/a"] {
+        for p in ["/islamic-landmarks/l1", "/nations/aad", "/tarikh-islami/x", "/teachers/a", "/prophets/nuh"] {   // قصة النبي بصفحتها (#3605)
             XCTAssertNotNil(SirahSection.resolve(path: p), p)
         }
         // خارج ROUTE_TEMPLATE_MAP: لا مسار تفاصيل؛ العنصر يُقرأ في شاشته.
-        for p in ["/prophets/nuh", "/stories/s", "/sahabah/x", "/seerah/x", "/shamael/x", "/occasions/x", "/fikr-waqia/x"] {
+        for p in ["/stories/s", "/sahabah/x", "/seerah/x", "/shamael/x", "/occasions/x", "/fikr-waqia/x"] {
             XCTAssertNil(SirahSection.resolve(path: p), p)
         }
         XCTAssertNil(SirahSection.resolve(path: "/prophets/tree"))
