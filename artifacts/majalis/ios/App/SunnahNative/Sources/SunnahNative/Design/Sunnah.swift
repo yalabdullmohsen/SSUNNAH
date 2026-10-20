@@ -72,8 +72,8 @@ public enum Sunnah {
         /// حبر نص المصحف كالمطبوع: أسود فاتحًا، عاجي داكنًا (قرار المالك: «نفس لون الخط» في المرجع).
         public static let mushafText = dynamic(light: 0x000000, dark: 0xEDE6D6)
         /// علامة نهاية الآية (قرار المالك 2026-10-20: هوية المصحف الخضراء بحجم المطبوع): إطار وزخارف أخضر، وحشوة خضراء فاتحة؛ الرقم بـmushafText (تباين ≥ 4.5:1).
-        public static let mushafEndGold = dynamic(light: 0x3F6B55, dark: 0x8FBFA6)
-        public static let mushafEndFill = dynamic(light: 0xE4EFE7, dark: 0x1E3328)
+        public static let mushafEndGold = dynamic(light: 0x2C6A4C, dark: 0x8FBFA6)   // إطار أخضر أغمق ومشبع كإطار المرجع الذهبي (كان باهتًا)
+        public static let mushafEndFill = dynamic(light: 0xD5EADB, dark: 0x1E3328)
         public static let goldDeco = dynamic(light: 0xB08D4A, dark: 0xD9C089)
         public static let goldSoft = dynamic(light: 0xD9C089, dark: 0x3A3320)
         public static let textPrimary = dynamic(light: 0x17241E, dark: 0xEFECE2)
