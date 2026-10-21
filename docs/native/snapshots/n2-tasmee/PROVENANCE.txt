@@ -1,0 +1,12 @@
+git_sha=75fac85a9 (+ تعديلات غير مُلتزَمة وقت البناء، تُلتزَم في هذا الـcommit)
+key=n2-tasmee
+sdk=iphonesimulator27.1
+binary_sha256=ac6c29165f79757acccdb94fea202591decafc7bdbbf1001780c82dafde06946 (SunnahApp.debug.dylib)
+built_at=2026-10-22T01:26+03:00
+build=Debug, CODE_SIGNING_ALLOWED=NO
+captured_at=2026-10-21T22:28Z
+locale=ar (RTL)
+devices=iPhone 402x874 simulator
+screens=/mushaf/page/150 مع زر الميكروفون العائم (فاتح، داكن)
+upload=لا
+gaps: محاكي فقط؛ حالات إخفاء الآيات/التقرير/الموافقة لم تُلتقط (تحتاج محركًا وهميًا)؛ لا أرقام زمن/أداء.

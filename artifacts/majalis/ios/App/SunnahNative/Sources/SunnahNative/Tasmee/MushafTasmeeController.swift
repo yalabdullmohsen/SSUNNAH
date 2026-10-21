@@ -171,6 +171,7 @@ final class MushafTasmeeBox: ObservableObject {
     func attach(_ engine: RecitationEngineControlling?) {
         guard controller == nil, let engine else { return }
         let c = MushafTasmeeController(engine: engine)
+        objectWillChange.send()
         controller = c
         bag = c.objectWillChange.sink { [weak self] _ in self?.objectWillChange.send() }
     }

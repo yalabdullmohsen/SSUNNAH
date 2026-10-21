@@ -130,7 +130,7 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .overlay(alignment: .bottomLeading) { overlay }
+            .overlay(alignment: .bottom) { overlay }
             .sunnahSheet(isPresented: consentBinding) {
                 if let t = box.controller { MushafTasmeeConsent(tasmee: t).presentationDetents([.medium]) }
             }
@@ -139,7 +139,7 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
                     MushafTasmeeReport(report: r) { t.dismissReport() }.presentationDetents([.medium])
                 }
             }
-            .onAppear { box.attach(engine) }
+            .task(id: engine.map(ObjectIdentifier.init)) { box.attach(engine) }   // المنصّة تُبنى بعد أول إطار: المحرك يصل متأخرًا (task يلتقط القيمة الجديدة، onChange يلتقط القديمة)
             .onChange(of: box.controller?.followPage) { p in
                 if let p, p != current { current = p }
             }

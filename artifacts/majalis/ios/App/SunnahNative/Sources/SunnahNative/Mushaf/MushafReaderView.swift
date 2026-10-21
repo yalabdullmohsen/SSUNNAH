@@ -357,7 +357,7 @@ public struct MushafReaderView: View {
     @ViewBuilder private var tasmeeOverlay: some View {
         if let t = tasmeeBox.controller, selected == nil {
             MushafTasmeeOverlay(tasmee: t) { t.micTapped(page: current, ayah: nil, repo: repo, search: search) }
-                .padding(.leading, Sunnah.Spacing.s4).padding(.bottom, Self.bottomSafeInset + 72)
+                .padding(.bottom, max(Sunnah.Spacing.s2, Self.bottomSafeInset - 40))   // صف التذييل: بين شارة الصفحة وتسمية الحزب، تحت آخر سطر فلا يغطي نصًّا
         }
     }
     private func updatePin() { chromeHide.pin(selected != nil || searchFocused || pagePicker) }
