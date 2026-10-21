@@ -1,8 +1,0 @@
-git_sha: 11c41a154dcac8a0cc80f8077f494298e92a4dc8
-branch: n2/more-cards
-app: /Users/alabdullmohsen/.majalis-tools/headbuild/fee91f1f12a927bd/SunnahApp.app
-binary_sha256: cd3b2d133e93e016ef186691df1bcf8063f739c492ba7b5e9e0b7b3ed961c095
-captured_at: 2026-10-21 17:58 +03
-route: /c/test
-before: بلا (شاشة قائمة سابقة بصفوف/شرائح مخصصة ومكررة)
-covers: عنوان واحد، بطاقات SunnahItemCard، شريط شرائح مشترك، حالة فارغة مشتركة (فاتح/داكن)
