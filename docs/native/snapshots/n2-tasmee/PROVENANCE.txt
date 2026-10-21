@@ -1,10 +1,10 @@
-git_sha=75fac85a9 (+ تعديلات غير مُلتزَمة وقت البناء، تُلتزَم في هذا الـcommit)
+git_sha=23ad8c3ef + تعديل موضع الزر
 key=n2-tasmee
 sdk=iphonesimulator27.1
-binary_sha256=ac6c29165f79757acccdb94fea202591decafc7bdbbf1001780c82dafde06946 (SunnahApp.debug.dylib)
-built_at=2026-10-22T01:26+03:00
+binary_sha256=38d37097e7a574eb85ca2d2aa2cd8e5e1e4b7946abea05bf28be27f9a1933722 (SunnahApp.debug.dylib)
+built_at=2026-10-22T01:31+03:00
 build=Debug, CODE_SIGNING_ALLOWED=NO
-captured_at=2026-10-21T22:28Z
+captured_at=2026-10-21T22:32Z
 locale=ar (RTL)
 devices=iPhone 402x874 simulator
 screens=/mushaf/page/150 مع زر الميكروفون العائم (فاتح، داكن)
