@@ -1,9 +1,9 @@
-git_sha=5837f6ab21fb2e20115a3af459c3406bbd525540
+git_sha=4a7fa0b1312173fc15cee28dec5f8bc1c0dc8a42
 branch=n3/prayer-adhkar-wird-redesign
-app=/Users/alabdullmohsen/.majalis-tools/headbuild/6f780810e8c5f40b/SunnahApp.app
-binary_sha256=b73ea76c222aaa07c2092ae89d4eac11f3ad2afd16862e22d59c85a24f05a205
-built_at=2026-10-21 23:33:22
-source_newest=2026-10-21 23:04:22
-captured_at=2026-10-21 23:45:42
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/1fb446b23d8b103c/SunnahApp.app
+binary_sha256=57113d14056ae9f390e8d4a0be04e0534d82bffdd1eb079ecdd371b4b02c95a9
+built_at=2026-10-22 00:59:36
+source_newest=2026-10-22 00:25:11
+captured_at=2026-10-22 01:01:50
 covers=Special/AdhkarScreen
 covers=Special/PrayerScreen
