@@ -1,0 +1,8 @@
+git_sha=ab4f2e06af9b8dd620c156fe81dc79f27f0925ec
+branch=n2/library-redesign
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/c361794fd2962ab7/SunnahApp.app
+binary_sha256=e4da221640af690bb06a78c63cee9f23d8846b3a9f63b69d94059cf3d8d750f5
+captured_at=2026-10-21 17:28
+route=/academic-research /arabic-language /search /islamic-glossary
+before=لا لقطات قبل مخصّصة؛ البحث السابق: قائمة صفوف مسطّحة بلا تصنيف
+covers=Sections/library (بلاطات المجموعات، بطاقات الفهرس، البحث المصنّف، حالتا الفراغ/التحميل)، Templates/ArticleTemplate (Amiri + عنوان واحد)، Components/StateViews
