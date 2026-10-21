@@ -104,7 +104,7 @@ struct AccountNotificationSettingsScreen: View {
                     }
                 }
 
-                SunnahCard {
+                AccountSectionCard(title: "المحتوى") {
                     HStack(spacing: Sunnah.Spacing.s3) {
                         rowLabel("تذكيرات المحتوى", contentStatus)
                         Spacer(minLength: 0)

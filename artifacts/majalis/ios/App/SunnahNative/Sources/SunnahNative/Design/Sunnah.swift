@@ -50,9 +50,9 @@ public enum Sunnah {
         public static let heroGold = dynamic(light: 0xD9C089, dark: 0xD9C089)
         public static let primarySoft = dynamic(light: 0xE6EFE9, dark: 0x1B2F26)
         /// ذهبي للنصوص، وذهبي للزخرفة، وذهبي فاتح (أزرار ثانوية).
-        public static let gold = dynamic(light: 0x8A6D32, dark: 0xD9C089)
+        public static let gold = dynamic(light: 0x7A5F28, dark: 0xD9C089)
         /// لون محيط صفحة المصحف (ترويسة، علامة نهاية الآية، الصفحة): أخضر هادئ؛ الداكن درجة أفتح بتباين ≥ 4.5:1.
-        public static let mushafAccent = dynamic(light: 0x5C8A72, dark: 0x8FBFA6)
+        public static let mushafAccent = dynamic(light: 0x44705A, dark: 0x8FBFA6)
         /// قرص نهاية الآية: فاتحًا أغمق قليلًا من mushafAccent ليبلغ تباين رقم الآية العاجي ≥ 4.5:1 (كان 3.7:1)؛ الداكن كما هو (7.3:1).
         public static let mushafEndDisc = dynamic(light: 0x4A7560, dark: 0x8FBFA6)
         /// ورق صفحة المصحف (مرجع التصميم الجديد): عاجي دافئ فاتحًا، ونفس الخلفية الليلية داكنًا.
@@ -84,7 +84,7 @@ public enum Sunnah {
         public static let danger = dynamic(light: 0xB0352B, dark: 0xEF8B80)
         /// مفتاح مطفأ (Toggle).
         /// «يحتاج مراجعة» في خريطة الحفظ (برتقالي).
-        public static let hifzReview = dynamic(light: 0xC2621B, dark: 0xF0A25E)
+        public static let hifzReview = dynamic(light: 0xA3510F, dark: 0xF0A25E)
         public static let switchOff = dynamic(light: 0xD8D2C4, dark: 0x2B3B33)
         /// درجات الحديث: خلفية فاتحة وحبر بتباين ≥ 4.5 (صحيح أخضر، ضعيف أحمر، موضوع برتقالي).
         public static let gradeSahihBg = dynamic(light: 0xE3F1E8, dark: 0x1B3328)
