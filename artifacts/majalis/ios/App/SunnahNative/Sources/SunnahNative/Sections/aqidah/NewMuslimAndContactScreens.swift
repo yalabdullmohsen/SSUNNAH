@@ -200,9 +200,7 @@ struct AqidahDiscoverIslamContactNativeScreen: View {
     private func picker(_ label: String, _ selection: Binding<String>, _ options: [DawahContactOption]) -> some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
             Text(label).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-            ScrollView(.horizontal, showsIndicators: false) {
-                SunnahSegmented(options.map { (id: $0.code, title: $0.label) }, selection: selection)
-            }
+            SunnahChoiceChips(options: options.map { .init(id: $0.code, title: $0.label) }, selection: selection, inset: 0)
         }
     }
 

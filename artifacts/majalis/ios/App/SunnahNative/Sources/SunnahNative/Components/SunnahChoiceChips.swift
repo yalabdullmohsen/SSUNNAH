@@ -5,7 +5,9 @@ public struct SunnahChoiceChips<ID: Hashable>: View {
     public struct Option: Identifiable { public let id: ID; public let title: String
         public init(id: ID, title: String) { self.id = id; self.title = title } }
     let options: [Option]; @Binding var selection: ID
-    public init(options: [Option], selection: Binding<ID>) { self.options = options; _selection = selection }
+    /// الهامش الأفقي؛ يُمرَّر 0 داخل بطاقة تضع هامشها بنفسها.
+    let inset: CGFloat
+    public init(options: [Option], selection: Binding<ID>, inset: CGFloat = Sunnah.Spacing.pageX) { self.options = options; _selection = selection; self.inset = inset }
     public var body: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 96), spacing: Sunnah.Spacing.s2, alignment: .leading)], alignment: .leading, spacing: Sunnah.Spacing.s2) {
             ForEach(options) { o in
@@ -13,6 +15,6 @@ public struct SunnahChoiceChips<ID: Hashable>: View {
                     .buttonStyle(.plain).accessibilityAddTraits(o.id == selection ? .isSelected : [])
             }
         }
-        .padding(.horizontal, Sunnah.Spacing.pageX)
+        .padding(.horizontal, inset)
     }
 }
