@@ -5,7 +5,6 @@
 ## 1) ربط مطلوب في ملف مشترك (ن2/ن3)
 - في جذر التطبيق بعد `GeneratedScreens.registerAll(in:)`: استدعاء `AqidahSection.register(in:)`. يسجّل المعرّفات الـ21 نفسها فيحلّ محلّ شاشات `AqidahScreens` المولَّدة (السجل قاموس، والأخير يفوز).
 - في محلّل المسارات: `AqidahSection.resolve(path:)` **قبل** `GeneratedScreens.resolve(path:)` لمسارات المعاملات الستة (`/discover-islam/{articles,doubts,questions}/:slug`، `/discover-islam/new-muslim/:day`، `/islamic-sects/:id`، `/tawhid/:slug`).
-- منفذ `DawahContactSubmitting` (إدخال صف في `dawah_contact_requests` بأعمدة `DawahContactRequest`) يُحقن بـ`.environment(\.dawahContact, …)`. بدونه يظهر النموذج والإرسال معطّل مع تنبيه.
 - بعد الربط يمكن حذف `AqidahScreens` من المولّد أو إبقاؤه؛ لا تعارض أسماء.
 
 ## 2) نقص في القوالب
@@ -42,7 +41,6 @@
 | `discover-islam-new-muslim.json` | /discover-islam/new-muslim، /:day | `new_muslim_path` | `{id,day_number,audience,title,content_ar}` |
 | `tazkiya.json` | /tazkiya | `pages/tazkiya/TazkiyaHubPage.tsx` (البطاقات) | `SectionLink[]` = `{id,title,subtitle,route}` (روابط تنقل فقط) |
 
-`/discover-islam/contact` بلا ملف (نموذج).
 
 ## 4) قرارات
 - التقدّم في مسار المسلم الجديد محفوظ على الجهاز فقط (`aqidah.newMuslim.completed`). مزامنته مع `new_muslim_progress` للمستخدم المسجَّل تحتاج منفذ مصادقة، وهي مؤجلة.

@@ -61,16 +61,6 @@ struct AqidahDiscoverIslamScreen: ScreenTemplate {
     var body: some View { ListTemplate(items: content, detailBase: "/discover-islam") }
 }
 
-struct AqidahDiscoverIslamContactScreen: ScreenTemplate {
-    static let id = "discover-islam.contact"
-    static let title = "العقيدة والتزكية"
-    static let source = ContentSource.bundled(name: "discover-islam-contact")
-    typealias Content = [ContentItem]
-    let content: Content
-    init(content: Content) { self.content = content }
-    var body: some View { ListTemplate(items: content, detailBase: "/discover-islam/contact") }
-}
-
 struct AqidahDiscoverIslamDoubtsScreen: ScreenTemplate {
     static let id = "discover-islam.doubts"
     static let title = "العقيدة والتزكية"
@@ -220,7 +210,6 @@ public enum AqidahScreens {
         registry.register(AqidahAmradQalbiyyaScreen.self)
         registry.register(AqidahAsmaHusnaScreen.self)
         registry.register(AqidahDiscoverIslamScreen.self)
-        registry.register(AqidahDiscoverIslamContactScreen.self)
         registry.register(AqidahDiscoverIslamDoubtsScreen.self)
         registry.register(AqidahDiscoverIslamHowToConvertScreen.self)
         registry.register(AqidahDiscoverIslamNewMuslimScreen.self)

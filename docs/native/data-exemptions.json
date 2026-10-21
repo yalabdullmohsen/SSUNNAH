@@ -17,7 +17,6 @@
   "worship": "فارغ مقصود: «قيد التوثيق» حتى اعتماد المصدر؛ مقرَّر في route-audit.md",
   "academic-research/submit": "فارغ مقصود: نموذج إرسال بلا قائمة بيانات",
   "aqidah/islamic-sects": "فارغ مقصود: لا سجل PUBLISHED في الموقع؛ تعرض الشاشة حالة فارغة مرتبة",
-  "aqidah/discover-islam-contact": "فارغ مقصود: صفحة DiscoverIslamContactPage نموذج إرسال طلب تواصل (submitDawahContactRequest، شبكة/حساب) ولا قائمة محتوى منشورة",
   "library/academic-research-assistant": "فارغ مقصود: ResearchAssistantPage أداة اقتراح تُحسب على بيانات academic-research المصدَّرة (lib/researches/assistant.ts)، لا ملف بيانات مستقل",
   "library/academic-research-submit": "فارغ مقصود: ResearchSubmitPage نموذج تقديم يُحفظ في localStorage (lib/researches/service.ts) ولا محتوى منشور",
   "hadith/arbaeen-love-of-allah": "فارغ رسمي (قراءة الزائر 2026-10-13): قراءة SELECT بالمفتاح العام من /api/public-config على arbaeen_love_of_allah بشرط review_status=published أعادت 0 صف (RLS)، فالموقع يعرض للزائر العنوان والمقدمة فقط. الملف مُصدَّر [] عبر لقطة scripts/native/snapshots؛ أعد read-arbaeen-love-public.mjs عند نشر صفوف فيمتلئ تلقائيًا ويُلغى هذا الإعفاء"

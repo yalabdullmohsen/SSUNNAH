@@ -45,19 +45,6 @@
         <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
       </array>
     </dict>
-    <!-- رقم الهاتف — قد يدخله المستخدم كوسيلة تواصل في طلب الدعوة (dawah_contact_requests.contact_value) -->
-    <dict>
-      <key>NSPrivacyCollectedDataType</key>
-      <string>NSPrivacyCollectedDataTypePhoneNumber</string>
-      <key>NSPrivacyCollectedDataTypeLinked</key>
-      <true/>
-      <key>NSPrivacyCollectedDataTypeTracking</key>
-      <false/>
-      <key>NSPrivacyCollectedDataTypePurposes</key>
-      <array>
-        <string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
-      </array>
-    </dict>
     <!-- معرّف مستخدم Supabase — يربط كل جداول الحساب -->
     <dict>
       <key>NSPrivacyCollectedDataType</key>
