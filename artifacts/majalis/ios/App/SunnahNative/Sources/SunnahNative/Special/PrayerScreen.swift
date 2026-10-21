@@ -45,16 +45,30 @@ public struct PrayerScreen: View {
         return SunnahHeroCard {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                 if let next {
-                    HStack(alignment: .bottom) {
+                    // عند أحجام الخط الكبيرة (AX) لا يتسع العمودان جنبًا لجنب فيتّسع الـHStack خارج الشاشة؛ نرصّهما رأسيًا
+                    ViewThatFits(in: .horizontal) {
+                        HStack(alignment: .bottom) {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("الصلاة القادمة").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
+                                Text(next.prayer.nameAr).font(AppearancePrefs.ui(.extraBold, 40, .largeTitle)).foregroundStyle(.white)
+                                Text(HomeScreen.hijriDate(now)).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
+                            }
+                            Spacer(minLength: 8)
+                            VStack(alignment: .trailing, spacing: 6) {
+                                Text(PrayerTimeFormat.clock(next.time, in: zone)).font(AppearancePrefs.ui(.extraBold, 28, .title)).foregroundStyle(.white)
+                                SunnahHeroCapsule(HomeScreen.remaining(next.time.timeIntervalSince(now)))
+                            }
+                        }
+                        VStack(alignment: .leading, spacing: 12) {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("الصلاة القادمة").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
                             Text(next.prayer.nameAr).font(AppearancePrefs.ui(.extraBold, 40, .largeTitle)).foregroundStyle(.white)
                             Text(HomeScreen.hijriDate(now)).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
                         }
-                        Spacer(minLength: 8)
-                        VStack(alignment: .trailing, spacing: 6) {
+                        VStack(alignment: .leading, spacing: 6) {
                             Text(PrayerTimeFormat.clock(next.time, in: zone)).font(AppearancePrefs.ui(.extraBold, 28, .title)).foregroundStyle(.white)
                             SunnahHeroCapsule(HomeScreen.remaining(next.time.timeIntervalSince(now)))
+                        }
                         }
                     }
                 } else {

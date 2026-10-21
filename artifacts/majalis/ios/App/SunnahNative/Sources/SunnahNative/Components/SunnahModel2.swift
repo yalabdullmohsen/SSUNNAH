@@ -144,6 +144,9 @@ public struct SunnahPrayerTimeline: View {
                         Text(it.name).font(AppearancePrefs.ui(.bold, 12, .caption))
                         Text(Sunnah.digits(it.time)).font(AppearancePrefs.ui(.bold, 12, .caption))
                     }
+                    // خمسة أعمدة متجاورة: عند AX تتكسر الكلمة حرفًا حرفًا، فنسقّف الخط ونصغّر لسطر واحد بدل التكسير
+                    .lineLimit(1).minimumScaleFactor(0.5)
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                     .foregroundStyle(it.active ? Sunnah.Colors.heroGold : Color.white.opacity(0.85))
                     .frame(maxWidth: .infinity)
                     .accessibilityElement(children: .combine)

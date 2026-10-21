@@ -177,7 +177,10 @@ struct AdhkarTapCounter: View {
                             .monospacedDigit().contentTransition(.identity)
                     }
                     Text(complete ? "تمّ" : "اضغط").font(AppearancePrefs.ui(.bold, 11, .caption2)).foregroundStyle(Sunnah.Colors.textSecondary)
+                        .lineLimit(1).minimumScaleFactor(0.7)
                 }
+                .padding(.horizontal, 14)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // الدائرة بحجم ثابت: سقف الخط يبقي الرقم والتسمية داخلها عند AX
             }
             .frame(width: Self.size, height: Self.size)
             .contentShape(Circle())
