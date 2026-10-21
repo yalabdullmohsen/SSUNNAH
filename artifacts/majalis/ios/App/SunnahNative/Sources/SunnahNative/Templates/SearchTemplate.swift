@@ -55,11 +55,12 @@ public struct SearchTemplate: View {
             if results.isEmpty {
                 if query.isEmpty { startPage } else { EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass").frame(maxHeight: .infinity) }
             } else {
-                ScrollView {
-                    SunnahTileGrid(results.map { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.subtitle) }, idPrefix: "search.result") { t in
-                        if let it = item(t.id) { openRoute(it.path(base: detailBase)) }
+                SunnahCardStack {
+                    ForEach(Array(results.enumerated()), id: \.element.id) { i, it in
+                        Button { Sunnah.Haptics.select(); openRoute(it.path(base: detailBase)) } label: { SunnahItemCard(title: it.title, subtitle: it.subtitle, gold: i % 3 == 1) }
+                            .buttonStyle(.plain).sunnahPressable()
+                            .accessibilityIdentifier("search.result.\(it.id)")
                     }
-                    .padding(.bottom, 96)
                 }
             }
         }
