@@ -47,10 +47,10 @@ struct LibraryInlineItemsView: View {
             if items.isEmpty { EmptyStateView() } else {
                 switch layout {
                 case .list:
-                    SunnahRowStack {
-                        ForEach(items) { item in
-                            Button { open = item } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                                .buttonStyle(.plain).sunnahStackRow()
+                    SunnahCardStack {
+                        ForEach(Array(items.enumerated()), id: \.element.id) { i, item in
+                            Button { Sunnah.Haptics.select(); open = item } label: { SunnahItemCard(title: item.title, subtitle: item.subtitle, gold: i % 3 == 1) }
+                                .buttonStyle(.plain).sunnahPressable()
                         }
                     }
                 case .grid:
@@ -139,14 +139,31 @@ struct LibrarySearchView: View {
 
     var body: some View {
         let results = LibraryAdapters.search(index, query: query)
+        let groups = Dictionary(grouping: results, by: { $0.subtitle ?? "أخرى" })
+        let order = results.reduce(into: [String]()) { if !$0.contains($1.subtitle ?? "أخرى") { $0.append($1.subtitle ?? "أخرى") } }
         Group {
             if results.isEmpty {
-                (query.trimmingCharacters(in: .whitespacesAndNewlines).count < 2 ? EmptyStateView(title: "ابحث في المحتوى", message: "اكتب كلمة أو عبارة، مثل «الصلاة» أو «البقرة»، لتظهر النتائج هنا.", symbol: "magnifyingglass", declaresEmpty: false) : EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass"))
+                if query.trimmingCharacters(in: .whitespacesAndNewlines).count < 2 {
+                    VStack(spacing: Sunnah.Spacing.s3) {
+                        SunnahMessageState(symbol: "magnifyingglass", title: "ابحث في المكتبة", message: "اكتب كلمة أو عبارة لتظهر النتائج مصنّفة حسب القسم.").screenState(.empty)
+                        HStack(spacing: Sunnah.Spacing.s2) {
+                            ForEach(["الصلاة", "البقرة", "الصيام"], id: \.self) { w in
+                                Button { Sunnah.Haptics.select(); query = w } label: { SunnahChip(w) }.buttonStyle(.plain).sunnahPressable()
+                            }
+                        }
+                        Spacer(minLength: 0)
+                    }
+                } else {
+                    EmptyStateView(title: "لا نتائج", message: "جرّب كلمة أخرى أو تحقّق من الإملاء.", symbol: "magnifyingglass")
+                }
             } else {
-                SunnahRowStack {
-                    ForEach(results) { item in
-                        Button { openRoute(item.route ?? "/") } label: { SunnahListRow(title: item.title, subtitle: item.subtitle) }
-                            .buttonStyle(.plain).sunnahStackRow()
+                SunnahCardStack {
+                    ForEach(order, id: \.self) { kind in
+                        SunnahCardGroupHeader(title: kind, count: groups[kind]?.count)
+                        ForEach(groups[kind] ?? []) { item in
+                            Button { Sunnah.Haptics.select(); openRoute(item.route ?? "/") } label: { SunnahItemCard(title: item.title, symbol: Self.symbol(kind)) }
+                                .buttonStyle(.plain).sunnahPressable()
+                        }
                     }
                 }
             }
@@ -154,6 +171,21 @@ struct LibrarySearchView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
         .sunnahSearchable(text: $query)
+    }
+}
+
+extension LibrarySearchView {
+    static func symbol(_ kind: String) -> String {
+        switch kind {
+        case "تفسير", "سورة": return "book"
+        case "حديث": return "text.quote"
+        case "ذكر": return "sparkles"
+        case "سؤال وجواب": return "questionmark.bubble"
+        case "نبي", "أمة", "تاريخ": return "clock.arrow.circlepath"
+        case "درس": return "graduationcap"
+        case "علَم": return "person"
+        default: return "doc.text"
+        }
     }
 }
 
