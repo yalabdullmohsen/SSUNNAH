@@ -1,4 +1,5 @@
 #!/bin/bash
+if [ -z "${BUILD_SLOT_HELD:-}" ]; then exec bash "$(cd "$(dirname "$0")" && pwd)/build-slot.sh" -- bash "$0" "$@"; fi  # بوابة الخانة الواحدة
 # يبني أداة لقطات الويدجت (WidgetSnapshotHarness) على محاكي iOS ويشغّلها؛ ينجح فقط إن طبعت EDGE-OK.
 # الاستعمال: [PRODUCTS=<Build/Products/…-iphonesimulator>] bash scripts/native-edge-check.sh [UDID]
 # PRODUCTS: ناتج xcodebuild حديث لـSunnahApp على المحاكي (فيه Adhan/SunnahPrayer/SunnahWidgetKit .swiftmodule و.o)؛
