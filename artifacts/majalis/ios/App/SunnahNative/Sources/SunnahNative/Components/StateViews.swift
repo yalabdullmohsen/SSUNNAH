@@ -40,13 +40,13 @@ public struct EmptyStateView: View {
 public struct LoadingStateView: View {
     public init() {}
     public var body: some View {
-        VStack(spacing: Sunnah.Spacing.s3) {
+        VStack(spacing: Sunnah.Spacing.s2) {
             ProgressView().tint(Sunnah.Colors.primary)
-            Text("جارٍ التحميل").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+            Text("جارٍ التحميل…").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
         }
         .frame(maxWidth: .infinity).padding(Sunnah.Spacing.s6)
-        .accessibilityElement(children: .combine)
-        .screenState(.loading)
+            .accessibilityLabel("جارٍ التحميل")
+            .screenState(.loading)
     }
 }
 
