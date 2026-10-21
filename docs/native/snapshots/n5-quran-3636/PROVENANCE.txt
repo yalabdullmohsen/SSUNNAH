@@ -1,0 +1,7 @@
+git_sha=8f0d2f007e69da57b86ccc75fecacb20354165fe
+branch=n5/quran-sub-titles
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/a103348a95bb7a3c/SunnahApp.app
+binary_sha256=03f11539f7229dd6c9d4c5b6e3b6fa860c584d80f1a1980ac4d619b08be586d4
+built_at=2026-10-21 20:21:57
+source_newest=2026-10-21 18:04:10
+captured_at=2026-10-21 20:30:16
