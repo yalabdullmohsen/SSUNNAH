@@ -124,6 +124,6 @@ struct QuranCircleDetailView: View {
             .padding(Sunnah.Spacing.s4).frame(maxWidth: .infinity, alignment: .leading)
             }
         }
-        .background(Sunnah.Colors.bg).quranTitle(circle.name)
+        .background(Sunnah.Colors.bg).heroTitledNavigation(circle.name)
     }
 }

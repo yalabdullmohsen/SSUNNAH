@@ -79,6 +79,6 @@ struct MutashabihatDetailView: View {
         }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
-        .quranTitle(pair.title)
+        .heroTitledNavigation(pair.title)
     }
 }
