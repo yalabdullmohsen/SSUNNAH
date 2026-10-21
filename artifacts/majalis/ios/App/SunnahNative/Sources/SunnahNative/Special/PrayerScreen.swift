@@ -45,17 +45,25 @@ public struct PrayerScreen: View {
         return SunnahHeroCard {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                 if let next {
-                    HStack(alignment: .bottom) {
+                    HStack(alignment: .top) {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("الصلاة القادمة").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
                             Text(next.prayer.nameAr).font(AppearancePrefs.ui(.extraBold, 40, .largeTitle)).foregroundStyle(.white)
-                            Text(HomeScreen.hijriDate(now)).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.heroGold)
                         }
                         Spacer(minLength: 8)
                         VStack(alignment: .trailing, spacing: 6) {
                             Text(PrayerTimeFormat.clock(next.time, in: zone)).font(AppearancePrefs.ui(.extraBold, 28, .title)).foregroundStyle(.white)
                             SunnahHeroCapsule(HomeScreen.remaining(next.time.timeIntervalSince(now)))
                         }
+                    }
+                    Divider().overlay(Color.white.opacity(0.25))
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(SunnahClockFormat.countdown(next.time.timeIntervalSince(now)))
+                            .font(.system(size: 44, weight: .heavy, design: .rounded)).monospacedDigit()
+                            .foregroundStyle(Sunnah.Colors.heroGold).minimumScaleFactor(0.6).lineLimit(1)
+                            .environment(\.layoutDirection, .leftToRight)
+                        Spacer(minLength: 8)
+                        Text(HomeScreen.hijriDate(now)).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(.white.opacity(0.85))
                     }
                 } else {
                     Text("تعذّر حساب المواقيت لهذا الموقع").font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(.white)
@@ -71,7 +79,7 @@ public struct PrayerScreen: View {
         let today = PrayerCalculator.times(for: prefs.location, on: now, settings: prefs.settings)
         let next = PrayerCalculator.next(after: now, location: prefs.location, settings: prefs.settings)
         let symbols: [Prayer: String] = [.fajr: "sunrise", .sunrise: "sun.max", .dhuhr: "sun.max.fill", .asr: "sun.haze", .maghrib: "sunset", .isha: "moon.stars"]
-        return VStack(spacing: 4) {
+        return VStack(spacing: 10) {
             if let today {
                 ForEach(today.ordered, id: \.prayer) { item in
                     let isNext = item.prayer == next?.prayer
@@ -92,17 +100,15 @@ public struct PrayerScreen: View {
                         }
                     }
                     .opacity(past ? 0.55 : 1)
-                    .padding(.horizontal, 10).frame(minHeight: 58)
-                    .background(isNext ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .padding(.horizontal, 14).frame(minHeight: 64)
+                    .background(isNext ? Sunnah.Colors.primarySoft : Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(isNext ? Sunnah.Colors.primary : Sunnah.Colors.border, lineWidth: isNext ? 1.5 : 1))
                     .accessibilityElement(children: .contain)
                 }
             } else {
                 Text("تعذّر حساب المواقيت لهذا الموقع").font(AppearancePrefs.ui(.bold, 15, .body)).padding()
             }
         }
-        .padding(8)
-        .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
         .padding(.horizontal, Sunnah.Spacing.pageX)
     }
 
