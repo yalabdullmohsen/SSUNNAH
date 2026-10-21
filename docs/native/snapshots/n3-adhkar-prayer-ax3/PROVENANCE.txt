@@ -1,0 +1,7 @@
+git_sha=463d3869f
+branch=n3/prayer-adhkar-wird-redesign
+app=~/.majalis-tools/n3-3637-build/dd/.../SunnahApp.app (Debug، محاكي n3-quran، AX3)
+captured_at=2026-10-21 23:16
+files: Special/AdhkarScreen.swift، Special/PrayerScreen.swift
+covers: فهرس الأذكار، تفاصيل أذكار الصباح، والصلاة — AX3 فاتحًا؛ تفاصيل الأذكار والصلاة داكنًا
+gaps: لم تُلتقط نهاية تمرير تفاصيل الأذكار (لا تمرير عبر simctl)؛ لقطة التفاصيل عند السكون يظهر فيها العدّاد فوق سطر المصدر وأزرار «التالي/إعادة» لأن المحتوى أطول من النافذة، والمنتظر أن تنتهي نافذة التمرير فوق العدّاد عند آخر التمرير (safeAreaInset) — غير مُثبَت بلقطة. لقطات التفاصيل بُنيت بتعديل مؤقت يفتح التصنيف مباشرة (لم يُدمج)
