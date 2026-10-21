@@ -4,7 +4,7 @@
 #            native-debug-hooks-guard.sh <App.app>  ← فحص المصدر + البحث عن الرموز في binary البناء (Release أو الأرشيف)
 set -uo pipefail
 cd "${GUARD_REPO:-$(cd "$(dirname "$0")/.." && pwd)}" || exit 2
-SYMS='SnapshotScroll|snapshotScroll|SNAP_DRAWER|SNAP_ROUTE|SNAP_SCROLL|SNAP_BOTTOM|SNAP_DETAIL|SnapBottomAnchor|snapFirst|snapShowsPending'
+SYMS='SnapshotScroll|snapshotScroll|snapshotAdhkarCategory|SNAP_DRAWER|SNAP_ROUTE|SNAP_SCROLL|SNAP_BOTTOM|SNAP_DETAIL|SnapBottomAnchor|snapFirst|snapShowsPending'
 DIRS=${GUARD_DIRS:-"artifacts/majalis/ios/App/SunnahNative/Sources ios-native"}
 bad=0
 # shellcheck disable=SC2086

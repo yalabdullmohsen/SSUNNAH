@@ -64,6 +64,12 @@ public struct AdhkarScreen: ScreenTemplate {
             .sunnahRootChrome()
             .environment(\.layoutDirection, .rightToLeft)
             .sunnahReadableWidth()
+            #if DEBUG
+            // لقطات التدقيق فقط: `-snapshotAdhkarCategory first|<id>` يفتح تفاصيل تصنيف (مع -snapshotScroll end لنهاية التمرير).
+            .onAppear {
+                if let v = UserDefaults.standard.string(forKey: "snapshotAdhkarCategory") { selected = v == "first" ? (categories.first?.id ?? "") : v }
+            }
+            #endif
             .task {
                 let rows: [AdhkarCategoryTitle]? = try? await loader.load(from: .bundled(name: "categories", subdirectory: "Data/adhkar"))
                 titles = Dictionary((rows ?? []).map { ($0.id, $0.name) }, uniquingKeysWith: { a, _ in a })
