@@ -20,6 +20,8 @@ S=artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative
 grep -Eq 'static let mushafEndGold = mushafAccent$' $S/Design/Sunnah.swift || bad "mushafEndGold ليس مساويًا لـmushafAccent"
 grep -q 'Self.green.applying(t), with: .color(Sunnah.Colors.mushafAccent)' $S/Mushaf/SurahBanner.swift || bad "إطار لافتة السورة لم يعد mushafAccent"
 grep -q 'art.frame), with: .color(Sunnah.Colors.mushafEndGold)' $S/Mushaf/MushafEndMark.swift || bad "إطار الزخرفة لا يستعمل mushafEndGold"
+grep -Eq 'mushafEndFill = dynamic\(light: 0x44705A' $S/Design/Sunnah.swift || bad "حشوة الزخرفة فاتحًا ليست أخضر سُنّة (mushafAccent)"
+grep -Eq 'mushafEndDigits = dynamic\(light: 0xF6F0DE, dark: 0xF1EBDA' $S/Design/Sunnah.swift || bad "رقم الآية ليس عاجيًا"
 grep -q 'func testEndMarkFrameEqualsSurahBannerFrame' "$T" || bad "اختبار مساواة الإطارين مفقود"
 grep -q 'endMarksAttachedToLineEnds()' artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Mushaf/MushafRepository.swift || bad "المستودع لا يعيد علامات النهاية إلى آخر السطر"
 if [ "${ENDMARK_GUARD_RUN:-}" = "1" ] && [ "$fail" = 0 ]; then
