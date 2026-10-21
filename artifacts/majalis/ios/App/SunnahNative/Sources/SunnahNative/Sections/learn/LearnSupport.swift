@@ -137,7 +137,7 @@ struct LearnDetailPage<Content: View>: View {
             .padding(.bottom, Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
-        .sunnahNavTitle(title)
+        .heroTitledNavigation(title)
     }
 }
 
@@ -149,6 +149,33 @@ struct LearnList<Item: Identifiable, Row: View>: View {
     var body: some View {
         if items.isEmpty { EmptyStateView(title: emptyTitle) } else {
             SunnahRowStack { ForEach(items) { item in row(item).sunnahStackRow() } }
+        }
+    }
+}
+
+/// محور بلاط من عمودين: كل عنصر بلاطة بنقرة واحدة (بدل قائمة صفوف طويلة).
+struct LearnTileGrid<Item: Identifiable, Destination: View>: View {
+    let items: [Item]
+    var emptyTitle: String = "المحتوى قيد التوثيق"
+    let symbol: String
+    let title: (Item) -> String
+    let subtitle: (Item) -> String?
+    @ViewBuilder let destination: (Item) -> Destination
+
+    var body: some View {
+        if items.isEmpty { EmptyStateView(title: emptyTitle) } else {
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 14) {
+                    ForEach(items) { item in
+                        SunnahNavigationLink { destination(item) } label: {
+                            SunnahTile(title: title(item).arabicDigits, subtitle: subtitle(item)?.arabicDigits, symbol: symbol, tone: .mint)
+                        }
+                        .buttonStyle(.plain).sunnahPressable()
+                    }
+                }
+                .padding(Sunnah.Spacing.pageX)
+            }
+            .background(Sunnah.Colors.bg)
         }
     }
 }
