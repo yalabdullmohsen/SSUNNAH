@@ -1,7 +1,7 @@
-git_sha=da7b005d82ef26dd8f5994ccfde3c8076ef86139
+git_sha=55e398343d96f4a04218d4c379a8b2186f3be697
 branch=n1/sirah-redesign
 app=/Users/alabdullmohsen/.majalis-tools/headbuild/df2d4433af76d02b/SunnahApp.app
-binary_sha256=0867a338fc53e9f46b9bf37930fdb37ad949d76eaecb802a87ea85cde7811134
-built_at=2026-10-21 02:26:09
+binary_sha256=50c4ce2238498c16cbecf3fe3bfaa8b062c55548763d70bfd078bacbcb31c833
+built_at=2026-10-21 11:54:27
 source_newest=2026-10-21 02:23:53
-captured_at=2026-10-21 02:28:20
+captured_at=2026-10-21 12:09:04
