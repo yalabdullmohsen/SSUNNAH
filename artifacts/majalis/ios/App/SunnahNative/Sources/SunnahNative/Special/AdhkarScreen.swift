@@ -189,7 +189,9 @@ struct AdhkarTapCounter: View {
         }
         .buttonStyle(AdhkarStillButtonStyle())
         .transaction { $0.animation = nil }
-        .accessibilityLabel("العدّاد \(taps) من \(item.repeatCount)").accessibilityIdentifier("adhkar.counter")
+        .accessibilityLabel("العدّاد \(digits(taps)) من \(digits(item.repeatCount))")
+        .accessibilityHint(complete ? "اكتمل الذكر" : "اضغط مرتين للعدّ")
+        .accessibilityIdentifier("adhkar.counter")
     }
 }
 
