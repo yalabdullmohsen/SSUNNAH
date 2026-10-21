@@ -15,6 +15,12 @@ awk -v a="${hmn:-0}" -v b="${hmx:-9}" -v c="${wmn:-0}" -v d="${wmx:-9}" -v f="${
 for f in testEndMarkMatchesPrintedSizeAndLayers testNoLineStartsWithAyahEndOnAll604Pages testEndMarkMoveKeepsWordsAndOrder; do
   grep -q "func $f" "$T" || bad "اختبار $f مفقود"
 done
+# لون إطار الزخرفة = لون إطار لافتة السورة (mushafAccent) فاتحًا وداكنًا: اسم مستعار لا قيمة مستقلة، ولافتة السورة تملأ إطارها بـmushafAccent.
+S=artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative
+grep -Eq 'static let mushafEndGold = mushafAccent$' $S/Design/Sunnah.swift || bad "mushafEndGold ليس مساويًا لـmushafAccent"
+grep -q 'Self.green.applying(t), with: .color(Sunnah.Colors.mushafAccent)' $S/Mushaf/SurahBanner.swift || bad "إطار لافتة السورة لم يعد mushafAccent"
+grep -q 'art.frame), with: .color(Sunnah.Colors.mushafEndGold)' $S/Mushaf/MushafEndMark.swift || bad "إطار الزخرفة لا يستعمل mushafEndGold"
+grep -q 'func testEndMarkFrameEqualsSurahBannerFrame' "$T" || bad "اختبار مساواة الإطارين مفقود"
 grep -q 'endMarksAttachedToLineEnds()' artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Mushaf/MushafRepository.swift || bad "المستودع لا يعيد علامات النهاية إلى آخر السطر"
 if [ "${ENDMARK_GUARD_RUN:-}" = "1" ] && [ "$fail" = 0 ]; then
   export NATIVE_WINDOW="${NATIVE_WINDOW:-n3}"; . "$(dirname "$0")/native-sim.sh"
