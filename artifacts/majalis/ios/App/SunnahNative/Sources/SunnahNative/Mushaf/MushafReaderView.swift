@@ -16,6 +16,8 @@ public struct MushafPageView: View {
     /// آية ← ألوان علاماتها، وألوان علامات الصفحة (أثر بصري خفيف).
     var markColors: [String: [MushafMarkColor]] = [:]
     var pageMarks: [MushafMarkColor] = []
+    /// التسميع: (سطر، عمود) ← طلاء الكلمة؛ nil = العرض العادي بلا أي أثر.
+    var tasmeePaint: ((Int, Int) -> TasmeeWordPaint?)? = nil
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
@@ -31,7 +33,8 @@ public struct MushafPageView: View {
     /// شفافية تظليل الآية بلون علامتها (خفيف لا يغطي الحبر).
     static let markTintOpacity: Double = 0.18
 
-    public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil, interactive: Bool = true, markColors: [String: [MushafMarkColor]] = [:], pageMarks: [MushafMarkColor] = []) {
+    public init(repo: MushafRepository, index: MushafIndex, number: Int, selectedAyah: Binding<String?>, onLongPress: ((String) -> Void)? = nil, interactive: Bool = true, markColors: [String: [MushafMarkColor]] = [:], pageMarks: [MushafMarkColor] = [], tasmeePaint: ((Int, Int) -> TasmeeWordPaint?)? = nil) {
+        self.tasmeePaint = tasmeePaint
         self.repo = repo; self.index = index; self.number = number; _selectedAyah = selectedAyah; self.onLongPress = onLongPress; self.interactive = interactive; self.markColors = markColors; self.pageMarks = pageMarks
         if let family = try? repo.ensureFont(page: number), let page = try? repo.page(number) {
             _page = State(initialValue: page); _family = State(initialValue: family)
@@ -100,6 +103,7 @@ public struct MushafPageView: View {
                                 if w.isAyahEnd { MushafEndMark(glyph: w.c, family: family, fontSize: layout.fontSize, diameter: layout.discs[i]?[k]) }
                                 else { Text(w.c).lineLimit(1).fixedSize().font(.custom(family, fixedSize: layout.fontSize)).foregroundStyle(Sunnah.Colors.mushafText).mushafInkWeight(layout.fontSize) }
                             }
+                                .tasmeePainted(tasmeePaint?(i, k), radius: layout.fontSize * 0.2)
                                 .padding(.leading, w.isAyahEnd ? layout.endPads[i]?[k]?.lead ?? 0 : 0)
                                 .padding(.trailing, w.isAyahEnd ? layout.endPads[i]?[k]?.trail ?? 0 : 0)
                                 .padding(.vertical, 1)
@@ -168,6 +172,8 @@ public struct MushafReaderView: View {
     @FocusState private var searchFocused: Bool
     @State private var pageSize = CGSize(width: 402, height: 874)
     @Environment(\.openRoute) private var openRoute
+    @Environment(\.platform) private var platform
+    @StateObject private var tasmeeBox = MushafTasmeeBox()
 
     public init(repo: MushafRepository, index: MushafIndex, search: MushafSearch?, store: MushafStore, startPage: Int? = nil, initialSelection: String? = nil, startSearching: Bool = false) {
         _openSearch = State(initialValue: startSearching)
@@ -185,8 +191,8 @@ public struct MushafReaderView: View {
                 Sunnah.Colors.mushafPaper
                 Group {
                 #if os(iOS)
-                MushafPager(current: $current, count: Mushaf.pageCount, renderKey: AnyHashable("\(selected ?? "")|\(current)|\(marksKey)")) { n in
-                    MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current, markColors: store.ayahColors(onPage: n), pageMarks: store.colors(ofPage: n))
+                MushafPager(current: $current, count: Mushaf.pageCount, renderKey: AnyHashable("\(selected ?? "")|\(current)|\(marksKey)|\(tasmeeBox.renderKey)")) { n in
+                    MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current, markColors: store.ayahColors(onPage: n), pageMarks: store.colors(ofPage: n), tasmeePaint: tasmeeBox.controller?.paint(page: n))
                 }
                 #else
                 TabView(selection: $current) {
@@ -272,6 +278,7 @@ public struct MushafReaderView: View {
         .onDisappear { chromeHide.cancel(); if tafsirAyahPlaying != nil { mukhtasar.stop() } }
         // أعلى الصفحة فوق سطر اسم السورة/الجزء (لا يغطي آخر سطر من الآيات ولا رقم الصفحة).
         .overlay(alignment: .top) { if selected == nil { ayahTafsirPlayer } }
+        .modifier(MushafTasmeeHost(box: tasmeeBox, engine: platform.recitationEngine, current: $current, overlay: tasmeeOverlay))
         .fullScreenCover(isPresented: $showIndex) {
             MushafIndexView(index: index, store: store, close: { showIndex = false }) { page in current = page; showIndex = false }
         }
@@ -347,6 +354,12 @@ public struct MushafReaderView: View {
     }
 
     /// الشريط ثابت ما دام الحقل مركَّزًا أو بطاقة آية أو منتقي علامة مفتوحًا؛ وإلا يبدأ العدّ.
+    @ViewBuilder private var tasmeeOverlay: some View {
+        if let t = tasmeeBox.controller, selected == nil {
+            MushafTasmeeOverlay(tasmee: t) { t.micTapped(page: current, ayah: nil, repo: repo, search: search) }
+                .padding(.leading, Sunnah.Spacing.s4).padding(.bottom, Self.bottomSafeInset + 72)
+        }
+    }
     private func updatePin() { chromeHide.pin(selected != nil || searchFocused || pagePicker) }
 
     private func runSearch(_ q: String) {

@@ -75,7 +75,7 @@ struct SunnahApp: App {
     /// تُستدعى مرة واحدة بعد أول إطار.
     private static func makePlatform() -> PlatformServices {
         defer { PerformanceMetrics.shared.mark("platformBuilt") }
-        return PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore()))
+        return PlatformServices(auth: KeychainAuthStore(), sharedData: SharedDataPublisher(), offlineAudio: OfflineAudioAdapter(), liveActivity: LiveActivityAdapter(), authService: SupabaseAuthAdapter(store: KeychainAuthStore()), recitationEngine: RecitationEngineAdapter())
     }
 
     /// شاشة مسجّلة في السجل، وإلا العنصر النائب لحين ظهور قالبها.

@@ -118,13 +118,17 @@ public struct PlatformServices: Sendable {
     public var offlineAudio: OfflineAudioProviding
     public var liveActivity: LiveActivityControlling
     public var authService: AuthServicing
+    /// محرك التسميع على الجهاز؛ nil = الميزة مخفية (المحاكي/الاختبارات بلا محرك).
+    public var recitationEngine: RecitationEngineControlling?
     public init(auth: AuthSessionStoring = InMemoryAuthStore(),
                 sharedData: SharedDataPublishing = NoSharedData(),
                 offlineAudio: OfflineAudioProviding = NoOfflineAudio(),
                 liveActivity: LiveActivityControlling = NoLiveActivity(),
-                authService: AuthServicing = NoAuthService()) {
+                authService: AuthServicing = NoAuthService(),
+                recitationEngine: RecitationEngineControlling? = nil) {
         self.auth = auth; self.sharedData = sharedData; self.offlineAudio = offlineAudio
         self.liveActivity = liveActivity; self.authService = authService
+        self.recitationEngine = recitationEngine
     }
 }
 
@@ -186,6 +190,8 @@ public enum RecitationModelStatus: Sendable, Equatable {
 @MainActor
 public protocol RecitationEngineControlling: AnyObject {
     var modelStatus: RecitationModelStatus { get }
+    /// حجم تنزيل النموذج بالبايت لعرضه في شاشة الموافقة (nil = غير معروف).
+    var modelDownloadBytes: Int64? { get }
     var onPartial: ((RecitationPartial) -> Void)? { get set }
     /// كلام مرصود ولا يعود نص («لم يتضح الصوت»).
     var onUnclear: (() -> Void)? { get set }
@@ -196,4 +202,8 @@ public protocol RecitationEngineControlling: AnyObject {
     func start(prompt: String?) async throws
     func setPrompt(_ text: String?) async
     func stop() async
+}
+
+public extension RecitationEngineControlling {
+    var modelDownloadBytes: Int64? { nil }
 }

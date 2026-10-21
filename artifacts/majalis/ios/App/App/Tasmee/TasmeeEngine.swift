@@ -28,6 +28,8 @@ enum TasmeeEngineEvent {
 final class TasmeeEngine {
     struct Config {
         var hopSec = 0.5
+        /// طوابع زمنية للكلمات في البث المستمر؛ معطّلة افتراضيًا لحين قياسها بـtasmee-bench (تزيد كلفة الفك، ولا قياس جهاز بعد).
+        var streamWordTimestamps = false
         /// 6 ث: قياس اصطناعي (base، العتبات المعتمدة) p95 1.18 ث بدل 1.37 عند 10 ث، إنذار 1.38% وكشف 100%؛ q6: p95 1.18، إنذار 1.03% وكشف 99%
         var windowSec = 6.0
         var vadRms: Float = 0.006
@@ -302,7 +304,7 @@ final class TasmeeEngine {
             let opts = DecodingOptions(
                 verbose: false, task: .transcribe, language: "ar", temperature: 0,
                 usePrefillPrompt: promptTokens == nil, detectLanguage: false, skipSpecialTokens: true,
-                withoutTimestamps: true, wordTimestamps: false, windowClipTime: 0, promptTokens: promptTokens,
+                withoutTimestamps: !config.streamWordTimestamps, wordTimestamps: config.streamWordTimestamps, windowClipTime: 0, promptTokens: promptTokens,
                 suppressBlank: true, supressTokens: suppressTokens, compressionRatioThreshold: nil, logProbThreshold: nil,
                 firstTokenLogProbThreshold: nil, noSpeechThreshold: nil
             )
