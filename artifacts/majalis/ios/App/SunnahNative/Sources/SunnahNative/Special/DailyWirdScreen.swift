@@ -90,9 +90,9 @@ struct DailyWirdView: View {
                     }
                     Divider().overlay(Sunnah.Colors.border)
                     HStack {
-                        SunnahStatCell(ar(state.weekly(today: today, last7: (0..<7).map(key))), "هذا الأسبوع")
-                        SunnahStatCell(ar(state.monthlyTotal), "هذا الشهر")
-                        SunnahStatCell(ar(state.totalPagesEver), "المجموع")
+                        SunnahStatCell("\(ar(state.weekly(today: today, last7: (0..<7).map(key)))) صفحة", "هذا الأسبوع")
+                        SunnahStatCell("\(ar(state.monthlyTotal)) صفحة", "هذا الشهر")
+                        SunnahStatCell("\(ar(state.totalPagesEver)) صفحة", "المجموع")
                     }
                 }
                 SunnahProgressCard("المداومة", symbol: "flame", tone: .gold) {

@@ -85,13 +85,13 @@ public struct PrayerScreen: View {
                     let isNext = item.prayer == next?.prayer
                     let past = item.time < now && !isNext
                     HStack(spacing: 12) {
-                        SunnahIconTile(symbols[item.prayer] ?? "clock", tone: isNext ? .mint : .gold, size: 40)
+                        SunnahIconTile(symbols[item.prayer] ?? "clock", tone: isNext ? .mint : .gold, size: 40).opacity(past ? 0.55 : 1)
                         Text(item.prayer.nameAr).font(AppearancePrefs.ui(isNext ? .extraBold : .bold, 17, .body))
                             .foregroundStyle(isNext ? Sunnah.Colors.primary : Sunnah.Colors.textPrimary)
-                            .lineLimit(1).fixedSize()
+                            .lineLimit(1).fixedSize().opacity(past ? 0.55 : 1)
                         Spacer(minLength: 4)
                         Text(PrayerTimeFormat.clock(item.time, in: zone)).font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
-                            .lineLimit(1).fixedSize()
+                            .lineLimit(1).fixedSize().opacity(past ? 0.55 : 1)
                         if item.prayer.isObligatory {
                             SunnahSwitch(isOn: alertBinding(item.prayer)).accessibilityLabel("تنبيه \(item.prayer.nameAr)")
                                 .fixedSize()
@@ -99,7 +99,6 @@ public struct PrayerScreen: View {
                             Color.clear.frame(width: 48, height: 28).accessibilityHidden(true)
                         }
                     }
-                    .opacity(past ? 0.55 : 1)
                     .padding(.horizontal, 14).frame(minHeight: 64)
                     .background(isNext ? Sunnah.Colors.primarySoft : Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
                     .overlay(RoundedRectangle(cornerRadius: 22, style: .continuous).stroke(isNext ? Sunnah.Colors.primary : Sunnah.Colors.border, lineWidth: isNext ? 1.5 : 1))
