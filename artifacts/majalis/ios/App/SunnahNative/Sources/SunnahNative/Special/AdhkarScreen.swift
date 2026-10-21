@@ -74,10 +74,11 @@ public struct AdhkarScreen: ScreenTemplate {
             // زر العدّ ثابت أسفل يمين الشاشة (تحت الإبهام): لا يتحرك مع طول الذكر ولا يكبر/يصغر عند الضغط.
             .overlay(alignment: .bottomTrailing) {
                 AdhkarTapCounter(item: current.items[index.wrappedValue], done: $done)
+                    .environment(\.layoutDirection, .rightToLeft)
+                    // الهامش بعد الـenvironment: وإلا حُسب .trailing يسارًا في RTL فالتصق الزر بحافة الشاشة اليمنى
                     .padding(.trailing, Sunnah.Spacing.pageX)
                     // الشريط السفلي عائم فوق المحتوى (لا يُحسب في الـsafe area هنا): يُرفع الزر فوقه وإلا اختفى خلفه (لقطة #3613).
                     .padding(.bottom, SunnahTabBar.reservedHeight + Sunnah.Spacing.s3)
-                    .environment(\.layoutDirection, .rightToLeft)
             }
             .environment(\.layoutDirection, .leftToRight)   // محاذاة الزر فعليًا لليمين (يُعاد RTL للمحتوى أدناه)
             .sunnahRootChrome()
