@@ -1,0 +1,6 @@
+git_sha=45c3cd53535df4918192551594979445601267e6
+branch=n3/endmark-color-eq-surah-frame
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/4d134294baa5940f/SunnahApp.app
+binary_sha256=e0008d22af1d24089ba14f58c5804b6df5efd348fdb38ecfebe803bee5a0c5b1
+built_at=2026-10-21 23:53:39
+covers=Design/Sunnah
