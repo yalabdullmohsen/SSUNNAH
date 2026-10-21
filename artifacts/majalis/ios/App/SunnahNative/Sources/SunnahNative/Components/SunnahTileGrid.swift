@@ -15,9 +15,9 @@ public struct SunnahTileItem: Identifiable, Hashable {
 /// شبكة مربعات بعمودين (النموذج ٢): بديل صفوف القوائم ذات السهم. اللمس على المربع كله، والدخول بنقرة واحدة.
 /// المعرّف لكل مربع: `<idPrefix>.<item.id>`.
 public struct SunnahTileGrid: View {
-    let items: [SunnahTileItem]; let idPrefix: String; let onSelect: (SunnahTileItem) -> Void
-    public init(_ items: [SunnahTileItem], idPrefix: String = "tile", onSelect: @escaping (SunnahTileItem) -> Void) {
-        self.items = items; self.idPrefix = idPrefix; self.onSelect = onSelect
+    let items: [SunnahTileItem]; let idPrefix: String; let padded: Bool; let onSelect: (SunnahTileItem) -> Void
+    public init(_ items: [SunnahTileItem], idPrefix: String = "tile", padded: Bool = true, onSelect: @escaping (SunnahTileItem) -> Void) {
+        self.items = items; self.idPrefix = idPrefix; self.padded = padded; self.onSelect = onSelect
     }
     public var body: some View {
         LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 14) {
@@ -29,7 +29,7 @@ public struct SunnahTileGrid: View {
                 .accessibilityIdentifier("\(idPrefix).\(item.id)")
             }
         }
-        .padding(.horizontal, Sunnah.Spacing.pageX)
+        .padding(.horizontal, padded ? Sunnah.Spacing.pageX : 0)
     }
 }
 
