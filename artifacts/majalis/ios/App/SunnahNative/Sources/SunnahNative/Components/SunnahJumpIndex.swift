@@ -20,6 +20,7 @@ struct SunnahJumpIndex<Content: View>: View {
         if count > Self.threshold && keys.count > 1 {
             ScrollViewReader { proxy in
                 content()
+                    .safeAreaInset(edge: .trailing, spacing: 0) { Color.clear.frame(width: 36) }
                     .overlay(alignment: .trailing) { rail(proxy) }
             }
         } else {

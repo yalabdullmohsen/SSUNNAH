@@ -83,12 +83,16 @@ extension View {
 
 /// محتوى صف حديث: شارة الدرجة + العنوان + سطر ثانوي.
 struct HadithRowLabel: View {
-    let grade: HadithGrade; let title: String; let subtitle: String?; var badgeText: String? = nil
+    let grade: HadithGrade; let title: String; let subtitle: String?; var badgeText: String? = nil; var preview: String? = nil
     var body: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
             HadithGradeBadge(grade: grade, text: badgeText)
             Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 .multilineTextAlignment(.leading)
+            if let preview, !preview.isEmpty {
+                Text(preview).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .lineLimit(2).multilineTextAlignment(.leading)
+            }
             if let subtitle, !subtitle.isEmpty {
                 Text(subtitle.arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     .multilineTextAlignment(.leading)
@@ -117,6 +121,23 @@ struct HadithHubCard: View {
         .frame(maxWidth: .infinity, minHeight: 112, alignment: .leading)
         .background(grade.background, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(grade.ink.opacity(0.2), lineWidth: 1))
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// بلاطة كتاب/تصنيف في شبكة المحور: اسمه وعدد أحاديثه بألوان الصحيح.
+struct HadithCategoryTile: View {
+    let title: String; let count: Int
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Image(systemName: "book.closed.fill").font(.system(size: 20, weight: .semibold)).foregroundStyle(HadithGrade.sahih.ink).accessibilityHidden(true)
+            Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary).multilineTextAlignment(.leading)
+            Text("\(count.arabicDigits) حديث").font(Sunnah.Typography.secondary).foregroundStyle(HadithGrade.sahih.ink)
+        }
+        .padding(Sunnah.Spacing.s4)
+        .frame(maxWidth: .infinity, minHeight: 104, alignment: .leading)
+        .background(HadithGrade.sahih.background, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 24, style: .continuous).stroke(HadithGrade.sahih.ink.opacity(0.2), lineWidth: 1))
         .accessibilityElement(children: .combine)
     }
 }
@@ -153,6 +174,8 @@ struct HadithDetailLayout<Top: View, Actions: View, Footer: View>: View {
                 .overlay(RoundedRectangle(cornerRadius: 28, style: .continuous).stroke(grade.ink.opacity(0.25), lineWidth: 1))
                 .sunnahElevation()
 
+                actions()
+
                 HadithFlow {
                     if let narrator, !narrator.isEmpty { HadithMetaChip(symbol: "person.fill", text: narrator) }
                     if let source, !source.isEmpty { HadithMetaChip(symbol: "book.closed.fill", text: source) }
@@ -169,7 +192,6 @@ struct HadithDetailLayout<Top: View, Actions: View, Footer: View>: View {
                         }
                     }
                 }
-                actions()
                 footer()
             }
             .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s3)

@@ -74,6 +74,8 @@ public enum Sunnah {
         /// علامة نهاية الآية (قرار المالك 2026-10-20: هوية المصحف الخضراء بحجم المطبوع): إطار وزخارف أخضر، وحشوة خضراء فاتحة؛ الرقم بـmushafText (تباين ≥ 4.5:1).
         public static let mushafEndGold = dynamic(light: 0x2C6A4C, dark: 0x8FBFA6)   // إطار أخضر أغمق ومشبع كإطار المرجع الذهبي (كان باهتًا)
         public static let mushafEndFill = dynamic(light: 0xD5EADB, dark: 0x1E3328)
+        /// رقم الآية داخل الزخرفة: أخضر غامق (طلب المالك)، تباين ≥ 4.5 على الحشوة فاتحًا وداكنًا.
+        public static let mushafEndDigits = dynamic(light: 0x1B4D36, dark: 0xCFE8DA)
         public static let goldDeco = dynamic(light: 0xB08D4A, dark: 0xD9C089)
         public static let goldSoft = dynamic(light: 0xD9C089, dark: 0x3A3320)
         public static let textPrimary = dynamic(light: 0x17241E, dark: 0xEFECE2)
@@ -137,12 +139,12 @@ public enum Sunnah {
         public static var tag: Font { AppearancePrefs.ui(.bold, 12, .caption) }
         /// نصوص شرعية بخط Amiri: الآية والحديث/الأثر (خط المصحف QPC غير مضمَّن بانتظار قرار الترخيص).
         public static let quran = Font.custom("Amiri-Regular", size: 24, relativeTo: .title3)
-        /// القراءة الطويلة (أحاديث، شروح، مقالات): Noto Naskh Arabic.
-        public static let hadith = Font.custom("NotoNaskhArabic-Regular", size: 19, relativeTo: .body)
+        /// القراءة الطويلة (أحاديث، قصص الأنبياء، شروح، مقالات): Amiri — خط نسخ كتبي احترافي (قرار المالك 2026-10-20 بدل Noto Naskh).
+        public static let hadith = Font.custom("Amiri-Regular", size: 21, relativeTo: .body)
         /// قراءة الحديث بخط Amiri (قرار المالك 2026-10-20).
         public static let amiriReading = Font.custom("Amiri-Regular", size: 22, relativeTo: .title3)
-        public static let reading = Font.custom("NotoNaskhArabic-Regular", size: 18, relativeTo: .body)
-        public static let readingBold = Font.custom("NotoNaskhArabic-Bold", size: 18, relativeTo: .body)
+        public static let reading = Font.custom("Amiri-Regular", size: 20, relativeTo: .body)
+        public static let readingBold = Font.custom("Amiri-Bold", size: 20, relativeTo: .body)
     }
 }
 

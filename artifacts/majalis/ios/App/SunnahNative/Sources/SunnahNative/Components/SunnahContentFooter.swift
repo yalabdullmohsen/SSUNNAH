@@ -22,25 +22,26 @@ public struct SunnahContentFooter: View {
         self.init(title: title, id: id, section: section, source: joined.isEmpty ? nil : joined, style: style, inset: inset, sensitive: sensitive)
     }
 
-    /// ذيل خفيف بلا بطاقة (قرار المالك 2026-10-20: «البطاقة البيضاء الكبيرة» تُثقل الصفحة):
-    /// سطر واحد — «ⓘ» + جملة الإفصاح الصغيرة + أيقونة «!» للإبلاغ — ثم سطر المصدر، مفصولًا عن المحتوى بخط رفيع.
+    /// بطاقة صغيرة واحدة أسفل الصفحة فقط (قرار المالك 2026-10-20 مساءً: لا إبلاغ أعلى الصفحة ولا في وسطها):
+    /// «ⓘ» + جملة الإفصاح بخط صغير + «!» للإبلاغ، وتحتها المصدر بخط صغير — كلها داخل البطاقة نفسها.
     public var body: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-            Rectangle().fill(Sunnah.Colors.border).frame(height: 1).padding(.bottom, Sunnah.Spacing.s2)
             HStack(alignment: .center, spacing: Sunnah.Spacing.s1) {
                 SunnahDisclosureInfoButton(title: title, id: id, section: section)
-                Text(SunnahDisclosure.card).font(AppearancePrefs.ui(.regular, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                Text(SunnahDisclosure.card).font(AppearancePrefs.ui(.regular, 11, .caption2)).foregroundStyle(Sunnah.Colors.textSecondary)
                     .fixedSize(horizontal: false, vertical: true).frame(maxWidth: .infinity, alignment: .leading)
                     .accessibilityIdentifier("detail.disclosureCard")
                 if style == .full { SunnahReportIssueIcon(title: title, id: id, section: section) }
             }
             if sensitive {
-                Text(SunnahDisclosure.fatwaHint).font(AppearancePrefs.ui(.regular, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                Text(SunnahDisclosure.fatwaHint).font(AppearancePrefs.ui(.regular, 11, .caption2)).foregroundStyle(Sunnah.Colors.textSecondary)
                     .padding(.horizontal, Sunnah.Spacing.s2)
                     .accessibilityIdentifier("detail.fatwaHint")
             }
-            SunnahSourceLine(source: source, inset: false)
+            SunnahSourceLine(source: source, inset: false, compact: true)
         }
+        .padding(.horizontal, Sunnah.Spacing.s2).padding(.vertical, Sunnah.Spacing.s1)
+        .background(Sunnah.Colors.surface2.opacity(0.6), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
         .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.s5)
         .padding(.bottom, Sunnah.Spacing.s4)
         .accessibilityIdentifier("detail.footer")
@@ -51,6 +52,8 @@ public struct SunnahContentFooter: View {
 struct SunnahSourceLine: View {
     var source: String?
     var inset = true
+    /// داخل بطاقة الذيل الصغيرة: خط أصغر وبلا هامش علوي كبير.
+    var compact = false
     var body: some View {
         Group {
             if let source, !source.isEmpty {
@@ -64,9 +67,10 @@ struct SunnahSourceLine: View {
                 .accessibilityIdentifier("detail.sourcesLink")
             }
         }
-        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+        .font(compact ? AppearancePrefs.ui(.regular, 12, .caption) : Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
         .multilineTextAlignment(.leading)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, inset ? Sunnah.Spacing.pageX : Sunnah.Spacing.s2).padding(.top, Sunnah.Spacing.s3)
+        .padding(.horizontal, inset ? Sunnah.Spacing.pageX : Sunnah.Spacing.s2).padding(.top, compact ? 0 : Sunnah.Spacing.s3)
+        .padding(.bottom, compact ? Sunnah.Spacing.s1 : 0)
     }
 }

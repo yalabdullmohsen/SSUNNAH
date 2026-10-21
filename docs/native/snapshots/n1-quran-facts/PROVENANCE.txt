@@ -1,0 +1,8 @@
+git_sha=d12810af04fde76331fc5f3f193a8c1bd955635e
+branch=n1/quran-facts
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/dc4fab7a4a1e86be/SunnahApp.app
+binary_sha256=ae366b06db19084eb82f28ac18dc3c597a301b8049d3aaaf03cf8c4ff3c4bdec
+built_at=2026-10-21 00:19:06
+source_newest=2026-10-21 00:14:47
+captured_at=2026-10-21 00:20:28
+covers=PublishedScreens+Native
