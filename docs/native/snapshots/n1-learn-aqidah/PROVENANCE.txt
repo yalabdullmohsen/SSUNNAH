@@ -1,0 +1,7 @@
+git_sha=1cb26a85ac38703733acc0f3ce459b9d7ed62b29
+branch=n1/learn-aqidah-redesign
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/1205d689f4dbe0e6/SunnahApp.app
+binary_sha256=8cec2f1d79c3ca99435b0777a33505b2aa5296b87a851260091c6def12b72072
+built_at=2026-10-21 23:21:18
+source_newest=2026-10-21 23:12:12
+captured_at=2026-10-21 23:27:36
