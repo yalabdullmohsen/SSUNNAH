@@ -44,7 +44,7 @@ public struct SunnahSectionHub: View {
             Spacer(minLength: 0)
         }
         .padding(16)
-        .frame(maxWidth: .infinity, minHeight: 148, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: (link.subtitle ?? "").isEmpty ? 120 : 148, alignment: .topLeading)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
         .contentShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
