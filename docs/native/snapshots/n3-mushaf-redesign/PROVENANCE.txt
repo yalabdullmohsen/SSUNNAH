@@ -1,0 +1,10 @@
+git_sha=0ec578dbad41ef4337d7df8a18f2fcf32e431d08
+branch=n3/mushaf-redesign
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/60d5a3147e343c93/SunnahApp.app
+binary_sha256=d58c5fe002803d1a2af7e9ddec79e6fa025724858db823e59b094fdcc4cbd327
+built_at=2026-10-21 11:53:06
+source_newest=2026-10-20 22:34:50
+captured_at=2026-10-21 12:25:29
+files: ChromeAutoHide.swift MushafAyahActionBar.swift MushafIndexCards.swift MushafReaderView.swift ChromeAutoHideTests.swift
+covers: reader-chrome-{before,after}-{light,dark}.png = سطر أدوات المصحف المثبّت (ChromeAutoHide.swift، MushafReaderView.swift)؛ reader-ayah-{before,after}-{light,dark}.png = شريط إجراءات الآية (تفسير/استماع/علامة/حفظ/المزيد + إغلاق) فوق الآية ٣ من الفاتحة (MushafAyahActionBar.swift، MushafReaderView.swift)؛ index-surah-{before,after}-{light,dark}.png وindex-juz-{before,after}-{light,dark}.png = بطاقات فهرس السور والأجزاء (MushafIndexCards.swift)؛ search-{before,after}-{light,dark}.png = شريط البحث ولوحة «اذهب إلى» (MushafReaderView.swift)
+gaps: ChromeAutoHideTests.swift اختبار منطق بلا شاشة (لا لقطة)؛ لقطات before من بناء origin/native-app + cherry-pick محلي لوسيط -snapshotIndexTab فقط (غير مدفوع)؛ لم يُوضع visually-verified (للمنسّق)؛ محاكٍ لا جهاز

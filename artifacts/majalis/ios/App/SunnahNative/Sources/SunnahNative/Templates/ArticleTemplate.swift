@@ -22,7 +22,7 @@ public struct ArticleTemplate: View {
                 SunnahReaderDisplayMenu().padding(.horizontal, Sunnah.Spacing.pageX)
                 ForEach(sections) { sec in
                     // كل قسم في بطاقة بإطار (لا نص عائم على الخلفية).
-                    SunnahCard { SunnahSectionView(section: sec, key: item.id, style: .body) }
+                    SunnahCard { SunnahSectionView(section: sec, key: item.id, style: .amiri) }
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
                 SunnahContentFooter(title: item.title, id: item.id, section: item.reportSection)
@@ -30,7 +30,7 @@ public struct ArticleTemplate: View {
             .frame(maxWidth: .infinity, alignment: .leading).padding(.bottom, Sunnah.Spacing.pageX)
         }
         .dynamicTypeSize(size)
-        .sunnahReadableWidth().background(Sunnah.Colors.bg).bodyTitledNavigation()
+        .sunnahReadableWidth().background(Sunnah.Colors.bg).heroTitledNavigation()
         .preferredColorScheme(night ? .dark : nil)
     }
 }

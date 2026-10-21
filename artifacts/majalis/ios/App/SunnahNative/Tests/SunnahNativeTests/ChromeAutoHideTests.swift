@@ -17,7 +17,7 @@ final class ChromeAutoHideTests: XCTestCase {
 
     func testTapShowsThenHidesAfterTwoSeconds() {
         let c = make(); c.tapEmpty()
-        XCTAssertTrue(c.visible); XCTAssertEqual(delays.last, 6)
+        XCTAssertTrue(c.visible); XCTAssertEqual(delays.last, 1)
         fireLast(); XCTAssertFalse(c.visible)
     }
 

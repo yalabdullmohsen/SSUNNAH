@@ -91,6 +91,11 @@ extension View {
 }
 
 extension View {
+    /// العنوان في ترويسة الصفحة (DetailHero) وحدها: شريط التنقل بلا عنوان فلا يتكرر.
+    func heroTitledNavigation() -> some View { bodyTitledNavigation() }
+}
+
+extension View {
     /// شريط تنقل فوق ترويسة خضراء: خلفية بلون الترويسة نفسه ونمط داكن، فيبقى عنوان الشريط وساعة الحالة وأيقوناتها فاتحة في الوضعين وبعد تمرير الترويسة.
     func heroNavigationBar() -> some View { modifier(HeroNavigationBar()) }
 }

@@ -103,38 +103,47 @@ public struct AppIconPickerView: View {
 
     public var body: some View {
         ScrollView {
-            VStack(spacing: Sunnah.Spacing.s3) {
-                ForEach(AppIconChoice.allCases) { choice in
-                    Button { Task { await model.choose(choice) } } label: { card(choice) }
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
+                SunnahSettingsGroup("اختر الأيقونة") {
+                    ForEach(Array(AppIconChoice.allCases.enumerated()), id: \.element) { index, choice in
+                        Button { Task { await model.choose(choice) } } label: {
+                            row(choice, isLast: index == AppIconChoice.allCases.count - 1)
+                        }
                         .buttonStyle(.plain)
                         .accessibilityIdentifier("appicon.\(choice.rawValue)")
                         .accessibilityLabel(choice.title)
                         .accessibilityValue(model.selected == choice ? "محدَّدة" : "")
                         .accessibilityAddTraits(model.selected == choice ? [.isButton, .isSelected] : .isButton)
+                    }
                 }
                 if let message = model.errorMessage {
                     Text(message).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.danger)
+                        .padding(.horizontal, Sunnah.Spacing.pageX + 4)
                 }
             }
-            .padding(Sunnah.Spacing.pageX)
+            .padding(.top, Sunnah.Spacing.s3)
         }
         .background(Sunnah.Colors.bg)
         .sunnahNavTitle("أيقونة التطبيق")
     }
 
-    private func card(_ choice: AppIconChoice) -> some View {
-        SunnahCard {
-            HStack(spacing: Sunnah.Spacing.s4) {
+    private func row(_ choice: AppIconChoice, isLast: Bool) -> some View {
+        VStack(spacing: 0) {
+            HStack(spacing: Sunnah.Spacing.s3) {
                 Image(choice.previewAsset)
-                    .resizable().scaledToFit().frame(width: 64, height: 64)
-                    .clipShape(RoundedRectangle(cornerRadius: 64 * 0.2237, style: .continuous))
-                    .overlay(RoundedRectangle(cornerRadius: 64 * 0.2237, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: Sunnah.Spacing.hairline))
-                Text(choice.title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                    .resizable().scaledToFit().frame(width: 52, height: 52)
+                    .clipShape(RoundedRectangle(cornerRadius: 52 * 0.2237, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 52 * 0.2237, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: Sunnah.Spacing.hairline))
+                    .accessibilityHidden(true)
+                Text(choice.title).font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
                 Spacer(minLength: Sunnah.Spacing.s2)
                 if model.selected == choice {
-                    Image(systemName: "checkmark.circle.fill").font(.title2).foregroundStyle(Sunnah.Colors.primary)
+                    Image(systemName: "checkmark.circle.fill").font(.title3).foregroundStyle(Sunnah.Colors.primary).accessibilityHidden(true)
                 }
             }
+            .frame(minHeight: 72)
+            .contentShape(Rectangle())
+            if !isLast { Divider().overlay(Sunnah.Colors.border) }
         }
     }
 }

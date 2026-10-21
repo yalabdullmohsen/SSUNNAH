@@ -61,12 +61,14 @@ struct AccountSectionCard<Content: View>: View {
     let title: String
     @ViewBuilder let content: () -> Content
 
+    /// مثل `SunnahSettingsGroup`: عنوان أخضر فوق بطاقة المحتوى.
     var body: some View {
-        SunnahCard {
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                Text(title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                    .accessibilityAddTraits(.isHeader)
-                content()
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+            Text(title).font(AppearancePrefs.ui(.extraBold, 15, .subheadline)).foregroundStyle(Sunnah.Colors.primary)
+                .padding(.horizontal, Sunnah.Spacing.s1)
+                .accessibilityAddTraits(.isHeader)
+            SunnahCard {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) { content() }
             }
         }
     }
@@ -230,9 +232,10 @@ struct AccountLinkRow: View {
     let title: String
     var subtitle: String?
     let path: String
+    var symbol = "doc.text"
 
     var body: some View {
-        Button { openRoute(path) } label: { SunnahListRow(title: title, subtitle: subtitle) }
+        Button { openRoute(path) } label: { SunnahListRow(title: title, subtitle: subtitle, icon: symbol) }
             .buttonStyle(.plain)
     }
 }

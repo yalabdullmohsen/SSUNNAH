@@ -107,22 +107,19 @@ struct LearnDurusScreen: View {
 
     var body: some View {
         LearnLoadHost(source) { (list: LearnDarsList) in
-            LearnList(items: list.sections) { section in
-                SunnahNavigationLink {
-                    LearnList(items: section.lessons) { lesson in
-                        SunnahNavigationLink {
-                            LearnDetailPage(title: lesson.title) {
-                                if let s = lesson.summary { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-                                if let b = lesson.body { Text(b).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                            }
-                        } label: {
-                            SunnahListRow(title: lesson.title, subtitle: lesson.summary)
+            LearnTileGrid(items: list.sections, symbol: "lightbulb",
+                          title: { $0.title }, subtitle: { learnLine($0.num, "\($0.lessons.count) درسًا") }) { section in
+                LearnList(items: section.lessons) { lesson in
+                    SunnahNavigationLink {
+                        LearnDetailPage(title: lesson.title) {
+                            if let s = lesson.summary { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
+                            if let b = lesson.body { Text(b).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
                         }
+                    } label: {
+                        SunnahListRow(title: lesson.title, subtitle: lesson.summary)
                     }
-                    .sunnahNavTitle(section.title)
-                } label: {
-                    SunnahListRow(title: section.title, subtitle: learnLine(section.num, "\(section.lessons.count) درسًا"))
                 }
+                .sunnahNavTitle(section.title)
             }
         }
         .sunnahNavTitle(title)
