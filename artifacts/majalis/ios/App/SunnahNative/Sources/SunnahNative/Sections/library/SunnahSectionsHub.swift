@@ -48,8 +48,7 @@ struct SunnahSectionsHub: View {
                         .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, 6)
                 }
                 if matches.isEmpty {
-                    Text("لا نتائج مطابقة").font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textSecondary)
-                        .frame(maxWidth: .infinity).padding(.top, 24)
+                    EmptyStateView(title: "لا نتائج مطابقة", message: "جرّب كلمة أخرى أو امسح البحث", symbol: "magnifyingglass")
                 }
                 ForEach(matches, id: \.title) { group in
                     SunnahSettingsGroup(group.title) {

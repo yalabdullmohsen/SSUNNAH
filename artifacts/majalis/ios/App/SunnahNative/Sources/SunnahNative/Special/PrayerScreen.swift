@@ -97,7 +97,7 @@ public struct PrayerScreen: View {
                     .accessibilityElement(children: .contain)
                 }
             } else {
-                Text("تعذّر حساب المواقيت لهذا الموقع").font(AppearancePrefs.ui(.bold, 15, .body)).padding()
+                SunnahMessageState(symbol: "location.slash", title: "تعذّر حساب المواقيت لهذا الموقع")
             }
         }
         .padding(8)
