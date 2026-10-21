@@ -1,0 +1,7 @@
+git_sha=b73891c698a43e25ea66ef98935b3d1224869932
+branch=n1/remove-contact-daiya
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/8d4d4705db408774/SunnahApp.app
+binary_sha256=82fde43fb9312511528af8f03bb9e84072284dd705974c1f0b48326a04d9d97a
+built_at=2026-10-22 02:22:25
+source_newest=2026-10-22 01:53:14
+captured_at=2026-10-22 02:52:42
