@@ -47,7 +47,7 @@ public enum Sunnah {
         public static let heroBottom = dynamic(light: 0x123B2C, dark: 0x123B2C)
         /// نص فوق ذهب البطاقة الخضراء (كبسولة «بعد … س»): داكن في الوضعين، تباين ≥ ٤٫٥:١ على #D9C089.
         public static let onHeroGold = dynamic(light: 0x3B2D05, dark: 0x3B2D05)
-        public static let heroGold = dynamic(light: 0xD9C089, dark: 0xD9C089)
+        public static let heroGold = dynamic(light: 0xE3CE9A, dark: 0xE3CE9A)
         public static let primarySoft = dynamic(light: 0xE6EFE9, dark: 0x1B2F26)
         /// ذهبي للنصوص، وذهبي للزخرفة، وذهبي فاتح (أزرار ثانوية).
         public static let gold = dynamic(light: 0x7A5F28, dark: 0xD9C089)
