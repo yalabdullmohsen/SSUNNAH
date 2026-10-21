@@ -1,0 +1,8 @@
+git_sha=92d22dc6bb23550c6a2654d3606f04604d31bc2f
+branch=n5/visual-sweep
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/ccaee5fab7a1fe6d/SunnahApp.app
+binary_sha256=d8f02e448a0138084202e7ff44faac2ff18d740970f2d5b219a6b493cc71af3e
+built_at=2026-10-21 16:31:16
+source_newest=2026-10-21 16:24:10
+captured_at=2026-10-21 16:43:14
+covers=Sections/fiqh/FiqhReadingView (hub + book: الفقه وكتاب الطهارة فاتح/داكن)

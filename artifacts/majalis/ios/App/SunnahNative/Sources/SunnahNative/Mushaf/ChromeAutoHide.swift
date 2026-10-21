@@ -2,13 +2,13 @@ import Foundation
 
 public protocol ChromeCancellable { func cancel() }
 
-/// مؤقت إخفاء زر الخروج: يظهر بلمسة فراغ ويختفي بعد ثانيتين من آخر تفاعل.
+/// مؤقت إخفاء زر الخروج: يظهر بلمسة فراغ ويختفي بعد ثانية من آخر تفاعل.
 /// يبقى ظاهرًا ما دامت البطاقة مفتوحة (`pinned`) أو مع VoiceOver (`alwaysVisible`).
 @MainActor
 public final class ChromeAutoHide: ObservableObject {
     public typealias Scheduler = (TimeInterval, @escaping @MainActor () -> Void) -> ChromeCancellable
 
-    public static let delay: TimeInterval = 6
+    public static let delay: TimeInterval = 1
 
     @Published public private(set) var visible = false
     public var alwaysVisible = false { didSet { if alwaysVisible { visible = true; timer?.cancel() } else { rearm() } } }

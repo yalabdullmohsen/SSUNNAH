@@ -75,21 +75,7 @@ struct ReaderChipPicker: View {
     let options: [(id: String, label: String)]
     @Binding var selection: String
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: Sunnah.Spacing.s2) {
-                ForEach(options, id: \.id) { o in
-                    Button { selection = o.id } label: {
-                        Text(o.label).font(Sunnah.Typography.secondary)
-                            .padding(.horizontal, Sunnah.Spacing.s3).frame(minHeight: 44)
-                            .foregroundStyle(selection == o.id ? Color.white : Sunnah.Colors.textPrimary)
-                            .background(selection == o.id ? Sunnah.Colors.primary : Sunnah.Colors.surface, in: Capsule())
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityAddTraits(selection == o.id ? .isSelected : [])
-                }
-            }
-            .padding(.horizontal, Sunnah.Spacing.pageX)
-        }
+        SunnahChipBar(options: options.map { .init(id: $0.id, title: $0.label) }, selection: $selection)
     }
 }
 

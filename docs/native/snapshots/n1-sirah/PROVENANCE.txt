@@ -1,0 +1,8 @@
+git_sha=55e398343d96f4a04218d4c379a8b2186f3be697
+branch=n1/sirah-redesign
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/df2d4433af76d02b/SunnahApp.app
+binary_sha256=50c4ce2238498c16cbecf3fe3bfaa8b062c55548763d70bfd078bacbcb31c833
+built_at=2026-10-21 11:54:27
+source_newest=2026-10-21 02:23:53
+captured_at=2026-10-21 12:09:04
+covers=Sections/sirah/SirahScreens+Native (landmarks-*.png: محور المعالم بلاطات CardGridTemplate)

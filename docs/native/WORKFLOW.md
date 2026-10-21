@@ -33,7 +33,7 @@ NATIVE_WINDOW=n1 APP=<SunnahApp.app> MODE=light BOARD=<dir> OPEN=inapp bash scri
 `FORCE_EXPORT=1` يتجاوز الكاش. لا حاجة لتشغيل `native-export-data.sh` يدويًا قبل البناء. إن لم تتغيّر مدخلات الداتا في فرعك فلن تدفع كلفة التصدير مطلقًا.
 
 ## بوابة البناء `scripts/build-slot.sh` (إلزامية لكل النوافذ، ن4)
-سبب الإضافة: استنفاد حدّ العمليات `ulimit -u` (fork) أسقط كل النوافذ. الآن **ببناءين/قياسين متزامنين على الأكثر عبر كل الـworktrees**، والباقي ينتظر دوره (طابور FIFO)، مع تنظيف تلقائي لليتامى وتحذير من الحمل.
+سبب الإضافة: استنفاد حدّ العمليات `ulimit -u` (fork) أسقط كل النوافذ. الآن **ببناء/قياس واحد في كل مرة (BUILD_SLOTS=1؛ الـswap شبه ممتلئ) عبر كل الـworktrees**، والباقي ينتظر دوره (طابور FIFO)، مع تنظيف تلقائي لليتامى وتحذير من الحمل.
 - الاستعمال: `bash scripts/build-slot.sh -- xcodebuild …` (أو أي أمر ثقيل: xctest، xctrace، سكربت قياس). `status` يعرض الخانات والطابور وحمل العمليات؛ `reap` ينظّف يتامى worktree الحالي.
 - كل سكربتات `scripts/native-*.sh` وسكربتات المحاكي تمر عليه تلقائيًا (سطر `BUILD_SLOT_HELD` في أولها)؛ التداخل آمن (لا قفل ذاتي). `native-build-locked.sh` يأخذ قفل الـDerivedData ثم الخانة.
 - **التنظيف:** عند البدء وعند الانتهاء/الإشارة (INT/TERM) تُقتل عمليات `xcodebuild|xctest|XCTRunner|swift-*|xctrace|fswatch` **اليتيمة** (أبوها launchd أو ميت) **التي يحمل سطر أمرها مسار worktree هذا** أو `BUILD_SLOT_PATTERNS` (مثل DerivedData) فقط. لا `pkill` بالاسم ولا قتل لعمليات نافذة أخرى.
@@ -58,3 +58,10 @@ NATIVE_WINDOW=n1 APP=<SunnahApp.app> MODE=light BOARD=<dir> OPEN=inapp bash scri
 ## بناء HEAD المشترك للمحاكي
 `bash scripts/native-head-build.sh` يبني SunnahApp للمحاكي مرة واحدة لكل شجرة مصدر نظيفة (المفتاح من `native-head-key.sh`) ويخزّنه في `~/.majalis-tools/headbuild/<key>/` (+ PROVENANCE.txt وهاش الـbinary)؛ يمرّ عبر build-slot فيخدم كل النوافذ ببناء واحد، و`--lookup` يطبع المسار دون بناء.
 `native-snapshot.sh` يستعمله تلقائيًا و`native-shot-guard.sh` يقبله؛ نافذة بتعديلات غير مدفوعة في ios-native/SunnahNative تبني لنفسها (الأمر يرفض بخروج 3). أوامر `archive` تأخذ أولوية قبل بناءات الاختبار في build-slot.
+
+## قواعد البناء والاختبار (خانة واحدة)
+- كل `xcodebuild` / `swift build` / `swift test` / `simctl boot` عبر `scripts/build-slot.sh --` فقط؛ hook على مستوى المستخدم (`~/.majalis-tools/build-gate-hook.sh`) يرفض غير ذلك.
+- شغّل البناء في الخلفية وأكمل كتابة الكود أثناء الانتظار؛ لا تحجز الجلسة على الانتظار.
+- الاختبار أثناء العمل للأهداف المتأثرة فقط (`--filter`)، والكامل مرة قبل الدمج.
+- لا تحذف DerivedData ولا مخزن headbuild؛ محاكي واحد مشترك لكل نافذة (`NATIVE_WINDOW`).
+- لا تُحمّل نموذج WhisperKit في الاختبارات إلا عند الحاجة الفعلية؛ استعمل mock بدله.

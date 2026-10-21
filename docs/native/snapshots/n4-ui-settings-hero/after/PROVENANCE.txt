@@ -1,0 +1,7 @@
+git_sha=08575333d4af2dd2ebb9832a6178dbe511a19ab9
+branch=n4/settings-hero-a11y
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/8f15bcf1fcfda5d5/SunnahApp.app
+binary_sha256=b1c178d49e611eb3f5a0d372ee0d4a38b484e57d10b87eb1e834c3e699c4c949
+built_at=2026-10-21 17:16:10
+source_newest=2026-10-21 16:59:52
+captured_at=2026-10-21 17:38:29

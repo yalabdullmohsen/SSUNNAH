@@ -57,27 +57,8 @@ public struct AdhkarScreen: ScreenTemplate {
             EmptyStateView(title: "الأذكار قيد التوثيق")
                 .frame(maxWidth: .infinity, maxHeight: .infinity).background(Sunnah.Colors.bg)
         } else {
-            let current = categories.first(where: { $0.id == selected }) ?? categories[0]
-            let index = Binding(get: { min(indexBy[current.id, default: 0], current.items.count - 1) }, set: { indexBy[current.id] = $0 })
-            ScrollView {
-                VStack(alignment: .leading, spacing: 14) {
-                    SunnahPageTitle("الأذكار")
-                    SunnahChipBar(options: categories.map { .init(id: $0.id, title: titles[$0.id] ?? Self.fallbackTitle) },
-                                  selection: Binding(get: { current.id }, set: { selected = $0 }))
-                    AdhkarListView(items: current.items, index: index, done: $done)
-                    SunnahContentFooter(title: "أذكار", id: "adhkar", section: "الأذكار", inset: false)
-                }
-                .padding(.bottom, 96 + AdhkarTapCounter.size)
-                .environment(\.layoutDirection, .rightToLeft)
-            }
-            .background(Sunnah.Colors.bg)
-            // زر العدّ ثابت أسفل يمين الشاشة (تحت الإبهام): لا يتحرك مع طول الذكر ولا يكبر/يصغر عند الضغط.
-            .overlay(alignment: .bottomTrailing) {
-                AdhkarTapCounter(item: current.items[index.wrappedValue], done: $done)
-                    .padding(.trailing, Sunnah.Spacing.pageX)
-                    // الشريط السفلي عائم فوق المحتوى (لا يُحسب في الـsafe area هنا): يُرفع الزر فوقه وإلا اختفى خلفه (لقطة #3613).
-                    .padding(.bottom, SunnahTabBar.reservedHeight + Sunnah.Spacing.s3)
-                    .environment(\.layoutDirection, .rightToLeft)
+            Group {
+                if let current = categories.first(where: { $0.id == selected }) { detail(current) } else { catalog }
             }
             .environment(\.layoutDirection, .leftToRight)   // محاذاة الزر فعليًا لليمين (يُعاد RTL للمحتوى أدناه)
             .sunnahRootChrome()
@@ -87,6 +68,79 @@ public struct AdhkarScreen: ScreenTemplate {
                 let rows: [AdhkarCategoryTitle]? = try? await loader.load(from: .bundled(name: "categories", subdirectory: "Data/adhkar"))
                 titles = Dictionary((rows ?? []).map { ($0.id, $0.name) }, uniquingKeysWith: { a, _ in a })
             }
+        }
+    }
+
+    /// فهرس الأذكار: بلاطة بأيقونة لكل تصنيف وعدد أذكاره.
+    private var catalog: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 14) {
+                SunnahPageTitle("الأذكار")
+                SunnahTileGrid(categories.map { c in
+                    SunnahTileItem(id: c.id, title: titles[c.id] ?? Self.fallbackTitle,
+                                   subtitle: Sunnah.digits("\(c.items.count) ذكرًا"), symbol: Self.symbol(c.id), gold: c.id == "adh-evening" || c.id == "adh-sleep")
+                }, idPrefix: "adhkar.cat") { selected = $0.id }
+                SunnahContentFooter(title: "أذكار", id: "adhkar", section: "الأذكار", inset: false)
+            }
+            .padding(.bottom, 96)
+            .environment(\.layoutDirection, .rightToLeft)
+        }
+        .background(Sunnah.Colors.bg)
+    }
+
+    private func detail(_ current: AdhkarCategory) -> some View {
+        let index = Binding(get: { min(indexBy[current.id, default: 0], current.items.count - 1) }, set: { indexBy[current.id] = $0 })
+        return ScrollView {
+            VStack(alignment: .leading, spacing: 14) {
+                Button { selected = "" } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "square.grid.2x2").font(.system(size: 15, weight: .semibold))
+                        Text("كل الأذكار").font(AppearancePrefs.ui(.bold, 14, .subheadline))
+                    }
+                    .foregroundStyle(Sunnah.Colors.primary).frame(minHeight: 44).padding(.horizontal, Sunnah.Spacing.pageX)
+                }
+                .buttonStyle(.plain).accessibilityIdentifier("adhkar.back")
+                SunnahPageTitle(titles[current.id] ?? Self.fallbackTitle)
+                AdhkarListView(items: current.items, index: index, done: $done)
+                SunnahContentFooter(title: "أذكار", id: "adhkar", section: "الأذكار", inset: false)
+            }
+            .padding(.bottom, Sunnah.Spacing.s4)
+            .environment(\.layoutDirection, .rightToLeft)
+        }
+        .background(Sunnah.Colors.bg)
+        // زر العدّ ثابت أسفل يمين الشاشة (تحت الإبهام): لا يتحرك مع طول الذكر ولا يكبر/يصغر عند الضغط.
+        // safeAreaInset لا overlay: نافذة التمرير تنتهي فوق الزر بقدر ارتفاعه، فلا يغطّي سطرًا من الذكر بأي حجم خط (AX3).
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            HStack {
+                Spacer(minLength: 0)
+                AdhkarTapCounter(item: current.items[index.wrappedValue], done: $done)
+                    .environment(\.layoutDirection, .rightToLeft)
+            }
+            .padding(.trailing, Sunnah.Spacing.pageX)
+            // الشريط السفلي عائم فوق المحتوى (لا يُحسب في الـsafe area هنا): يُرفع الزر فوقه وإلا اختفى خلفه (لقطة #3613).
+            .padding(.bottom, SunnahTabBar.reservedHeight + Sunnah.Spacing.s3)
+        }
+    }
+
+    /// أيقونة التصنيف بمعرّفه (عرض فقط)؛ المجهول يأخذ أيقونة عامة.
+    static func symbol(_ id: String) -> String {
+        switch id {
+        case "adh-morning": return "sunrise"
+        case "adh-evening": return "sunset"
+        case "adh-sleep": return "moon.stars"
+        case "adh-wakeup": return "sun.max"
+        case "adh-after-salah", "adh-salah", "adh-mosque": return "building.columns"
+        case "adh-wudu": return "drop"
+        case "adh-food": return "fork.knife"
+        case "adh-travel", "adh-vehicle": return "car"
+        case "adh-clothing": return "tshirt"
+        case "adh-home-out": return "house"
+        case "adh-rain": return "cloud.rain"
+        case "adh-wind": return "wind"
+        case "adh-distress": return "heart"
+        case "adh-istighfar", "adh-istikharah": return "hands.sparkles"
+        case "adh-salawat": return "text.book.closed"
+        default: return "book.closed"
         }
     }
 
@@ -177,7 +231,10 @@ struct AdhkarTapCounter: View {
                             .monospacedDigit().contentTransition(.identity)
                     }
                     Text(complete ? "تمّ" : "اضغط").font(AppearancePrefs.ui(.bold, 11, .caption2)).foregroundStyle(Sunnah.Colors.textSecondary)
+                        .lineLimit(1).minimumScaleFactor(0.7)
                 }
+                .padding(.horizontal, 14)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // الدائرة بحجم ثابت: سقف الخط يبقي الرقم والتسمية داخلها عند AX
             }
             .frame(width: Self.size, height: Self.size)
             .contentShape(Circle())
@@ -185,7 +242,9 @@ struct AdhkarTapCounter: View {
         }
         .buttonStyle(AdhkarStillButtonStyle())
         .transaction { $0.animation = nil }
-        .accessibilityLabel("العدّاد \(taps) من \(item.repeatCount)").accessibilityIdentifier("adhkar.counter")
+        .accessibilityLabel("العدّاد \(digits(taps)) من \(digits(item.repeatCount))")
+        .accessibilityHint(complete ? "اكتمل الذكر" : "اضغط مرتين للعدّ")
+        .accessibilityIdentifier("adhkar.counter")
     }
 }
 

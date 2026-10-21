@@ -52,23 +52,23 @@ struct AccountPrivacyCenterScreen: View {
                 }
 
                 AccountSectionCard(title: "حذف الحساب") {
-                    AccountLinkRow(title: "حذف الحساب نهائيًا", path: "/account-deletion")
+                    AccountLinkRow(title: "حذف الحساب نهائيًا", path: "/account-deletion", symbol: "trash")
                 }
 
                 AccountSectionCard(title: "سياسات ومستندات") {
-                    AccountLinkRow(title: "سياسة الخصوصية", path: "/privacy")
+                    AccountLinkRow(title: "سياسة الخصوصية", path: "/privacy", symbol: "hand.raised")
                     // قرار المالك: اتفاقية Apple القياسية (EULA) بدل صفحة شروط مخصصة.
                     if let eula = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/") {
-                        Link(destination: eula) { SunnahListRow(title: "شروط الاستخدام (اتفاقية Apple القياسية)", subtitle: nil) }
+                        Link(destination: eula) { SunnahListRow(title: "شروط الاستخدام (اتفاقية Apple القياسية)", subtitle: nil, showsChevron: true, icon: "checkmark.shield") }
                             .buttonStyle(.plain)
                     }
                     // روابط ثابتة على GitHub Pages (يتحقق حارس الروابط من 200)؛ لا نطاق موقع في التطبيق.
                     ForEach(Self.staticPages, id: \.title) { page in
                         if let url = URL(string: page.url) {
-                            Link(destination: url) { SunnahListRow(title: page.title, subtitle: nil) }.buttonStyle(.plain)
+                            Link(destination: url) { SunnahListRow(title: page.title, subtitle: nil, showsChevron: true, icon: "link") }.buttonStyle(.plain)
                         }
                     }
-                    AccountLinkRow(title: "إعدادات الكثافة وتوفير البيانات", path: "/settings")
+                    AccountLinkRow(title: "إعدادات الكثافة وتوفير البيانات", path: "/settings", symbol: "gearshape")
                 }
             }
             .padding(Sunnah.Spacing.pageX)

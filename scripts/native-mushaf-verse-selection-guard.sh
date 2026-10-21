@@ -7,6 +7,7 @@ cd "$(dirname "$0")/.."
 S=artifacts/majalis/ios/App/SunnahNative
 fail=0; bad() { echo "✗ $1"; fail=1; }
 R=$S/Sources/SunnahNative/Mushaf/MushafReaderView.swift
+A=$S/Sources/SunnahNative/Mushaf/MushafAyahActionBar.swift   # أزرار البطاقة السفلية انتقلت إليه
 T=$S/Tests/SunnahNativeTests/MushafVerseSelectionTests.swift
 H=$S/Tests/SunnahNativeTests/MushafSelectionSheetTests.swift
 grep -q 'testTapOnAnyWordSelectsWholeAyahOnAll604Pages' "$T" 2>/dev/null || bad "اختبار «نقر كل كلمة = الآية كاملة» على الـ604 مفقود"
@@ -16,8 +17,8 @@ grep -q 'LongPressGesture(minimumDuration: 0.4).onEnded { _ in selectedAyah = w.
 # قرار المالك (2026-10-19): التحديد بالضغط المطوّل فقط — النقرة العادية لا تحدد الآية
 grep -q 'TapGesture().onEnded { selectedAyah' "$R" && bad "عادت النقرة العادية تحدد الآية (المطلوب: ضغط مطوّل فقط)"
 grep -q 'MushafSoftBand' "$R" || bad "التظليل المتصل (شريط واحد لكل مقطع) مفقود"
-for k in '/tafsir/' 'offline-player' 'ShareLink' 'copy(text)'; do grep -q "$k" "$R" || bad "القائمة السفلية بلا «$k»"; done
-grep -qE 'toggleBookmark|toggleMark\(' "$R" || bad "القائمة السفلية بلا علامة (toggleMark/toggleBookmark)"
+for k in '/tafsir/' 'offline-player' 'ShareLink' 'copy(text)'; do grep -qF -- "$k" "$R" "$A" || bad "القائمة السفلية بلا «${k}»"; done
+grep -qE 'toggleBookmark|toggleMark\(' "$R" "$A" || bad "القائمة السفلية بلا علامة (toggleMark/toggleBookmark)"
 if [ "${VERSE_GUARD_RUN:-}" = "1" ] && [ "$fail" = 0 ]; then
   export NATIVE_WINDOW="${NATIVE_WINDOW:-n3}"; . "$(dirname "$0")/native-sim.sh"
   export MUSHAF_DATA="$PWD/ios-native/Data/mushaf" TEST_RUNNER_MUSHAF_DATA="$PWD/ios-native/Data/mushaf"

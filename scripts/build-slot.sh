@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# بوابة البناء والقياس لكل نوافذ native: ببناءين متزامنين على الأكثر عبر كل الـworktrees، والباقي ينتظر دوره (FIFO).
+# بوابة البناء والقياس لكل نوافذ native: ببناء واحد في كل مرة (الـswap شبه ممتلئ) عبر كل الـworktrees، والباقي ينتظر دوره (FIFO).
 # استعمال:
 #   bash scripts/build-slot.sh -- <أمر…>     تشغيل الأمر داخل خانة (xcodebuild / simctl القياس / xctrace…)
 #   bash scripts/build-slot.sh status          الخانات والطابور وحمل العمليات
 #   bash scripts/build-slot.sh reap            تنظيف يتامى هذا الـworktree فقط
 # الأولوية: ن3 (0) ثم ن1 (1) ثم ن2 (2) ثم ن4 (3) ضمن الطابور؛ BUILD_SLOT_PRIO يتجاوزها.
-# متغيرات: BUILD_SLOTS (افتراضي 2)، BUILD_SLOT_PATTERNS (مسارات إضافية مفصولة بـ: تُنظَّف يتاماها، مثل DerivedData)،
+# متغيرات: BUILD_SLOTS (افتراضي 1)، BUILD_SLOT_PATTERNS (مسارات إضافية مفصولة بـ: تُنظَّف يتاماها، مثل DerivedData)،
 #          BUILD_SLOT_HELD=1 (يُضبط تلقائيًا داخل الخانة فلا يحدث قفل ذاتي عند التداخل).
 # لا يقتل إلا عمليات المستخدم الحالي التي تحمل مسار هذا الـworktree/الأنماط وأبوها launchd (pid 1) أو أبوها ميت — لا pkill بالاسم.
 set -uo pipefail
 DIR="${BUILD_SLOT_DIR:-$HOME/.majalis-tools/build-slots}"
-MAX="${BUILD_SLOTS:-2}"
+MAX="${BUILD_SLOTS:-1}"
 UIDN=$(id -u)
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 PROCS_RE='(xcodebuild|xctest|XCTRunner|xcbuild|swift-build|swift-frontend|swiftc|xctrace|fswatch|SourceKitService)'
@@ -115,6 +115,7 @@ acquire() {
 
 [ -n "${BUILD_SLOT_HELD:-}" ] || bash "$(dirname "$0")/native-sim-hygiene.sh" || exit $? # نظافة المحاكيات/العمليات + رفض عند ≥80٪
 check_load
+[ -x "$HOME/.majalis-tools/maint/memwait.sh" ] && bash "$HOME/.majalis-tools/maint/memwait.sh"   # ينتظر هدوء الذاكرة (swap<3GB وحر≥15٪) قبل أخذ الخانة؛ يمنع تعليق الماك
 acquire "$@"
 reap_orphans
 export BUILD_SLOT_HELD=1
