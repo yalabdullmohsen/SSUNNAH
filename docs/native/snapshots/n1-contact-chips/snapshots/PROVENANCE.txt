@@ -1,0 +1,7 @@
+git_sha=caf960d0a5a12bc153e349dba70537f315a82065
+branch=n1/contact-picker-chips
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/ab2167ed5f02b8a2/SunnahApp.app
+binary_sha256=954f75a2250a55838ec8e9ed96d900808973497a4193cb555b80c0f8b2834895
+built_at=2026-10-22 01:17:22
+source_newest=2026-10-22 00:53:05
+captured_at=2026-10-22 01:42:10
