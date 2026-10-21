@@ -49,7 +49,7 @@ public struct SearchTemplate: View {
 
     public var body: some View {
         VStack(spacing: 0) {
-            SunnahSearchField(text: $query, prompt: "ابحث", suggestions: query.isEmpty && hub.isEmpty ? suggestionTitles : [], idPrefix: "search.field")
+            SunnahSearchField(text: $query, prompt: "ابحث", suggestions: query.isEmpty && hub.isEmpty && !browseWhenEmpty ? suggestionTitles : [], idPrefix: "search.field")
                 .padding(.vertical, Sunnah.Spacing.s2)
                 .onSubmit(of: .search) { remember(query) }
             if results.isEmpty {
