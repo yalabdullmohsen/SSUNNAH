@@ -1,8 +1,9 @@
-git_sha=ab4f2e06af9b8dd620c156fe81dc79f27f0925ec
+git_sha=305013d7a9da5aabf34433d312c93a5b919e55c6
 branch=n2/library-redesign
-app=/Users/alabdullmohsen/.majalis-tools/headbuild/c361794fd2962ab7/SunnahApp.app
-binary_sha256=e4da221640af690bb06a78c63cee9f23d8846b3a9f63b69d94059cf3d8d750f5
-captured_at=2026-10-21 17:28
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/7ba40f8f44cc4503/SunnahApp.app
+binary_sha256=1a53e49ef48f29a307b4f07073be6e2e5e9c5864db19a1e4d9f61a51a0c37a30
+captured_at=2026-10-21 17:35
 route=/academic-research /arabic-language /search /islamic-glossary
 before=لا لقطات قبل مخصّصة؛ البحث السابق: قائمة صفوف مسطّحة بلا تصنيف
 covers=Sections/library (بلاطات المجموعات، بطاقات الفهرس، البحث المصنّف، حالتا الفراغ/التحميل)، Templates/ArticleTemplate (Amiri + عنوان واحد)، Components/StateViews
+fix=عنوان الشاشة الفرعية من RouteTitles (حقن routeTitle في RootTabView) بدل عنوان المحور
