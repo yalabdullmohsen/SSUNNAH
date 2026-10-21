@@ -1,4 +1,0 @@
-covers=FiqhReadingView
-source=scripts/native-snapshot.sh fiqh (NATIVE_WINDOW=n5)
-build_key=b7223256c6bc00cf
-before=صفوف بطاقات؛ after=بلاط 2×N فاتح/داكن RTL

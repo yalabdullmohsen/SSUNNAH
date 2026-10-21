@@ -17,10 +17,7 @@ struct FiqhReadingView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
         .heroNavigationBar()
-        .sunnahNavTitle(reading?.title ?? "")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)   // العنوان في الـHero؛ لا عنوان كبير مكرَّر
-        #endif
+        .heroTitledNavigation(reading?.title ?? "")   // العنوان في الـHero وحدها
     }
 
     private func content(_ reading: FiqhReading) -> some View {
@@ -40,9 +37,10 @@ struct FiqhReadingView: View {
                     if group.title != nil && group.title != "الأبواب" && group.links.count <= 24 {
                         // محور بلاط: كتب الفقه والمباحث المساندة بنقرة واحدة (الأبواب الطويلة تبقى صفوفًا).
                         LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 14) {
-                            ForEach(group.links) { link in
+                            ForEach(Array(group.links.enumerated()), id: \.element.id) { i, link in
                                 Button { Sunnah.Haptics.select(); openRoute(link.route) } label: {
-                                    SunnahTile(title: link.title.arabicDigits, subtitle: link.subtitle?.arabicDigits, symbol: "book.closed", tone: .mint)
+                                    SunnahTile(title: link.title.arabicDigits, subtitle: link.subtitle?.arabicDigits,
+                                               symbol: FiqhBookStyle.symbol(for: link.title), tone: i % 2 == 0 ? .mint : .gold)
                                 }
                                 .buttonStyle(.plain).sunnahPressable()
                                 .accessibilityIdentifier("fiqh.tile.\(link.route)")
@@ -158,5 +156,21 @@ struct FiqhLoadHost<Value, Content: View>: View {
     private func reload() async {
         phase = .loading
         do { phase = .ready(try await load(loader)) } catch { phase = .failed }
+    }
+}
+
+/// أيقونة كل كتاب فقهي في محور البلاط (بحسب كلمة في عنوانه)، فلا تتشابه البلاطات.
+enum FiqhBookStyle {
+    static let symbols: [(String, String)] = [
+        ("الطهارة", "drop"), ("الصلاة", "building.columns"), ("الزكاة", "banknote"), ("الصيام", "moon.stars"),
+        ("الحج", "map"), ("الاعتكاف", "house"), ("الجنائز", "leaf"), ("البيوع", "cart"), ("المعاملات", "cart"),
+        ("النكاح", "person.2"), ("الأسرة", "person.2"), ("الطلاق", "person.2.slash"), ("المواريث", "chart.pie"),
+        ("الفرائض", "chart.pie"), ("الأيمان", "hand.raised"), ("النذور", "hand.raised"), ("الأطعمة", "fork.knife"),
+        ("الذبائح", "fork.knife"), ("اللباس", "tshirt"), ("الزينة", "tshirt"), ("القضاء", "scalemass"),
+        ("الحدود", "scalemass"), ("الجنايات", "scalemass"), ("الأضحية", "calendar"), ("الآداب", "heart.text.square"),
+        ("القواعد", "list.bullet.rectangle"), ("الأصول", "list.bullet.rectangle"), ("المصطلحات", "character.book.closed"),
+    ]
+    static func symbol(for title: String) -> String {
+        symbols.first { title.contains($0.0) }?.1 ?? "book.closed"
     }
 }
