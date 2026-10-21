@@ -33,6 +33,7 @@ public struct SunnahSearchField: View {
                     }
                     .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
+                .fixedSize(horizontal: false, vertical: true)
             }
         }
     }
