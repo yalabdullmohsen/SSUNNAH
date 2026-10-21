@@ -74,10 +74,11 @@ public struct AdhkarScreen: ScreenTemplate {
             // زر العدّ ثابت أسفل يمين الشاشة (تحت الإبهام): لا يتحرك مع طول الذكر ولا يكبر/يصغر عند الضغط.
             .overlay(alignment: .bottomTrailing) {
                 AdhkarTapCounter(item: current.items[index.wrappedValue], done: $done)
+                    .environment(\.layoutDirection, .rightToLeft)
+                    // الهامش بعد الـenvironment: وإلا حُسب .trailing يسارًا في RTL فالتصق الزر بحافة الشاشة اليمنى
                     .padding(.trailing, Sunnah.Spacing.pageX)
                     // الشريط السفلي عائم فوق المحتوى (لا يُحسب في الـsafe area هنا): يُرفع الزر فوقه وإلا اختفى خلفه (لقطة #3613).
                     .padding(.bottom, SunnahTabBar.reservedHeight + Sunnah.Spacing.s3)
-                    .environment(\.layoutDirection, .rightToLeft)
             }
             .environment(\.layoutDirection, .leftToRight)   // محاذاة الزر فعليًا لليمين (يُعاد RTL للمحتوى أدناه)
             .sunnahRootChrome()
@@ -177,7 +178,10 @@ struct AdhkarTapCounter: View {
                             .monospacedDigit().contentTransition(.identity)
                     }
                     Text(complete ? "تمّ" : "اضغط").font(AppearancePrefs.ui(.bold, 11, .caption2)).foregroundStyle(Sunnah.Colors.textSecondary)
+                        .lineLimit(1).minimumScaleFactor(0.7)
                 }
+                .padding(.horizontal, 14)
+                .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // الدائرة بحجم ثابت: سقف الخط يبقي الرقم والتسمية داخلها عند AX
             }
             .frame(width: Self.size, height: Self.size)
             .contentShape(Circle())
@@ -185,7 +189,9 @@ struct AdhkarTapCounter: View {
         }
         .buttonStyle(AdhkarStillButtonStyle())
         .transaction { $0.animation = nil }
-        .accessibilityLabel("العدّاد \(taps) من \(item.repeatCount)").accessibilityIdentifier("adhkar.counter")
+        .accessibilityLabel("العدّاد \(digits(taps)) من \(digits(item.repeatCount))")
+        .accessibilityHint(complete ? "اكتمل الذكر" : "اضغط مرتين للعدّ")
+        .accessibilityIdentifier("adhkar.counter")
     }
 }
 
