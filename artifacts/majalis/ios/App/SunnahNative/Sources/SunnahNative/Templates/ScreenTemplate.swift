@@ -91,19 +91,6 @@ extension View {
 }
 
 extension View {
-    /// شاشة بترويسة DetailHero: العنوان يظهر في الترويسة وحدها (لا عنوان كبير ولا مضمّن مكرَّر في الشريط)،
-    /// ويبقى `navigationTitle` لزر الرجوع في الشاشة التالية ولـVoiceOver.
-    func heroTitledNavigation(_ title: String) -> some View {
-        #if os(iOS)
-        return navigationTitle(title).navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .principal) { Color.clear.frame(width: 1, height: 1).accessibilityHidden(true) } }
-        #else
-        return navigationTitle(title)
-        #endif
-    }
-}
-
-extension View {
     /// شريط تنقل فوق ترويسة خضراء: خلفية بلون الترويسة نفسه ونمط داكن، فيبقى عنوان الشريط وساعة الحالة وأيقوناتها فاتحة في الوضعين وبعد تمرير الترويسة.
     func heroNavigationBar() -> some View { modifier(HeroNavigationBar()) }
 }
