@@ -131,10 +131,10 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .bottomLeading) { overlay }
-            .sheet(isPresented: consentBinding) {
+            .sunnahSheet(isPresented: consentBinding) {
                 if let t = box.controller { MushafTasmeeConsent(tasmee: t).presentationDetents([.medium]) }
             }
-            .sheet(isPresented: reportBinding) {
+            .sunnahSheet(isPresented: reportBinding) {
                 if let t = box.controller, case .finished(let r) = t.phase {
                     MushafTasmeeReport(report: r) { t.dismissReport() }.presentationDetents([.medium])
                 }
