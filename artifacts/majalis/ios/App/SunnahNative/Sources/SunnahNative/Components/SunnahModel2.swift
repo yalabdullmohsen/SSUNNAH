@@ -82,6 +82,7 @@ public struct SunnahPageTitle: View {
             .padding(.horizontal, Sunnah.Spacing.pageX)
             .padding(.bottom, 14)
             .accessibilityAddTraits(.isHeader)
+            .preference(key: BodyTitleShownKey.self, value: true)
     }
 }
 
