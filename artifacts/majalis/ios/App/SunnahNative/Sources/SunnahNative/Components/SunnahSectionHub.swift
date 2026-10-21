@@ -1,6 +1,7 @@
 import SwiftUI
 
 /// محور القسم (النموذج ٢): بطاقات كبيرة بزوايا ناعمة، لكل منها أيقونة وعنوان ووصف وعدد عناصرها، تفتح المحتوى مباشرة.
+/// لا يضيف هامش الصفحة: الحاوية (ScrollView/LearnCardsPage…) هي التي تضعه، فلا يتضاعف داخل الصفحات المبطّنة.
 /// يحلّ محل «قائمة داخل قائمة» في صفحات الأقسام؛ العدّاد يظهر فقط حين يُعرف.
 public struct SunnahSectionHub: View {
     @Environment(\.openRoute) private var openRoute
@@ -21,7 +22,6 @@ public struct SunnahSectionHub: View {
                     .accessibilityIdentifier("\(idPrefix).\(link.route)")
             }
         }
-        .padding(.horizontal, Sunnah.Spacing.pageX)
     }
 
     private func card(_ link: SectionLink, gold: Bool) -> some View {
