@@ -25,7 +25,7 @@ public struct RootTabView: View {
         NavigationStack(path: $router.stack) {
             screen(AppTab.home.rootRoute)
                 .sunnahNavTitle("الرئيسية")
-                .navigationDestination(for: Route.self) { screen($0).sunnahDestination($0) }
+                .navigationDestination(for: Route.self) { screen($0).environment(\.routeTitle, RouteTitles.title(for: $0)).sunnahDestination($0) }
         }
         // الشريط عائم فوق المحتوى (الـNavigationStack لا يمرّر الـinset إلى ScrollView الداخلية)، فيُضاف هامش سفلي مرة واحدة لكل المحتوى القابل للتمرير حتى لا يختبئ آخر عنصر خلفه.
         .modifier(TabBarScrollMargin(height: tabBarShown ? SunnahTabBar.reservedHeight : 0))
