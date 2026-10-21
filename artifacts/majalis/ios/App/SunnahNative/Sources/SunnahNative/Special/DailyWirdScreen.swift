@@ -59,7 +59,8 @@ struct DailyWirdView: View {
     }()
     private func key(_ offset: Int) -> String { Self.fmt.string(from: Calendar.current.date(byAdding: .day, value: -offset, to: Date()) ?? Date()) }
     private var today: String { key(0) }
-    private func ar(_ n: Int) -> String { n.formatted(.number.grouping(.never).locale(Locale(identifier: "ar@numbers=arab"))) }
+    // الصفر العربي «٠» يُرسم نقطة تشبه رمز القائمة في الخط فيُعرض «0» اللاتيني ليُقرأ رقمًا
+    private func ar(_ n: Int) -> String { n == 0 ? "0" : n.formatted(.number.grouping(.never).locale(Locale(identifier: "ar@numbers=arab"))) }
 
     var body: some View {
         let done = state.todayCount(today)
