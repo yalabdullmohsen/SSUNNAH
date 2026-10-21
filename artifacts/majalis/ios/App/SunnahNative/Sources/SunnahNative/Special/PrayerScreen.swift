@@ -94,10 +94,10 @@ public struct PrayerScreen: View {
                         SunnahIconTile(symbols[item.prayer] ?? "clock", tone: isNext ? .mint : .gold, size: 40)
                         Text(item.prayer.nameAr).font(AppearancePrefs.ui(isNext ? .extraBold : .bold, 17, .body))
                             .foregroundStyle(isNext ? Sunnah.Colors.primary : Sunnah.Colors.textPrimary)
-                            .lineLimit(1).fixedSize()
+                            .lineLimit(1).minimumScaleFactor(0.6)
                         Spacer(minLength: 4)
                         Text(PrayerTimeFormat.clock(item.time, in: zone)).font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
-                            .lineLimit(1).fixedSize()
+                            .lineLimit(1).minimumScaleFactor(0.6).layoutPriority(1)
                         if item.prayer.isObligatory {
                             SunnahSwitch(isOn: alertBinding(item.prayer)).accessibilityLabel("تنبيه \(item.prayer.nameAr)")
                                 .fixedSize()
@@ -105,6 +105,8 @@ public struct PrayerScreen: View {
                             Color.clear.frame(width: 48, height: 28).accessibilityHidden(true)
                         }
                     }
+                    // الصف يحوي أيقونة ومفتاحًا بحجمين ثابتين: سقف الخط يمنع فيضه خارج الشاشة عند AX
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility2)
                     .opacity(past ? 0.55 : 1)
                     .padding(.horizontal, 10).frame(minHeight: 58)
                     .background(isNext ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
