@@ -78,7 +78,7 @@ public struct AdhkarScreen: ScreenTemplate {
                 SunnahPageTitle("الأذكار")
                 SunnahTileGrid(categories.map { c in
                     SunnahTileItem(id: c.id, title: titles[c.id] ?? Self.fallbackTitle,
-                                   subtitle: Sunnah.digits("\(c.items.count) ذكرًا"), symbol: Self.symbol(c.id), gold: c.id == "adh-evening" || c.id == "adh-sleep")
+                                   subtitle: ArabicCount.label(c.items.count, one: "ذكر واحد", two: "ذكران", few: "أذكار", many: "ذكرًا", genitive: "ذكر"), symbol: Self.symbol(c.id), gold: c.id == "adh-evening" || c.id == "adh-sleep")
                 }, idPrefix: "adhkar.cat") { selected = $0.id }
                 SunnahContentFooter(title: "أذكار", id: "adhkar", section: "الأذكار", inset: false)
             }
