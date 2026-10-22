@@ -1,14 +1,7 @@
 # المواضع القائمة (2026-10-22) المسموحة مؤقتًا. تُحذف عند إصلاحها، ولا يُضاف إليها.
-Sections/quran/PublishedScreens+Native.swift|\(PublishedAdapters.hifzLevels[path.level] ?? path.level) · \(path.units.count) وحدة"
-Sections/quran/PublishedScreens+Native.swift|\(n) مرة"
-Sections/quran/PublishedScreens+Native.swift|\(story.revelationPlace) — \(story.ayahCount) آية"
-Sections/quran/QuranLocalScreens+Native.swift|\(loop.target) مرة"
-Sections/quran/QuranScreens+Native.swift|\(r.placeName) · \(r.ayahs) آية 
-Sections/quran/TafsirScreens+Native.swift|\(s.ayahs) آية"
 Sections/sirah/SirahAdapters.swift|\(groups[name]?.count ?? 0) درسًا"
 Sections/sirah/SirahAdapters.swift|\(lessons.count) موضوعًا"
 Sections/sirah/SirahAdapters.swift|\(mine.count) درسًا"
-Special/AdhkarScreen.swift|\(c.items.count) ذكرًا"
 Special/DailyWirdScreen.swift|\(ar(d)) يوم"
 Special/DailyWirdScreen.swift|\(ar(max(0, goal - done))) صفحة 
 Special/DailyWirdScreen.swift|\(ar(n)) صفحة"
