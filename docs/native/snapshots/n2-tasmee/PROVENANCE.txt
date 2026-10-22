@@ -1,7 +1,9 @@
-git_sha=23ad8c3ef + تعديل موضع الزر
+git_sha=24cf4a3fb90427eb25988fa498953636f47a3161
+note=البناء من هذا الالتزام + تعديل موضع الزر (أُلتزم لاحقًا في 23ad8c3ef)
 key=n2-tasmee
 sdk=iphonesimulator27.1
-binary_sha256=38d37097e7a574eb85ca2d2aa2cd8e5e1e4b7946abea05bf28be27f9a1933722 (SunnahApp.debug.dylib)
+binary_sha256=38d37097e7a574eb85ca2d2aa2cd8e5e1e4b7946abea05bf28be27f9a1933722
+binary=SunnahApp.debug.dylib
 built_at=2026-10-22T01:31+03:00
 build=Debug, CODE_SIGNING_ALLOWED=NO
 captured_at=2026-10-21T22:32Z
