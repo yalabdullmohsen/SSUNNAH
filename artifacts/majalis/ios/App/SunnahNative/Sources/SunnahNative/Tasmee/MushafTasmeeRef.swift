@@ -20,7 +20,7 @@ public struct MushafTasmeeRef: Sendable {
         var words: [TasmeeRefWord] = [], pages: [Int] = [], byKey: [String: Int] = [:]
         var slots: [Int: [MushafWordSlot: String]] = [:], skipped: [String] = []
         var counters: [String: Int] = [:]
-        var bad = Set<String>()
+        var bad = Set<String>(), checked = Set<String>()
         var started = fromVerse == nil
         let last = min(Mushaf.pageCount, startPage + pageCount - 1)
         guard startPage >= 1, startPage <= last else {
@@ -39,10 +39,12 @@ public struct MushafTasmeeRef: Sendable {
                     if !started { if w.v == fromVerse { started = true } else { continue } }
                     let i = (counters[w.v] ?? 0) + 1
                     counters[w.v] = i
-                    guard !bad.contains(w.v) else { continue }
-                    guard let text = textWord(search, w.v, i) else {
-                        bad.insert(w.v); skipped.append(w.v); continue
+                    // تُقارَن الآية كاملة (عبر الصفحات) قبل ربط أي كلمة منها؛ الفحص عند أول كلمة زائدة كان يربط ما قبلها بتخمين،
+                    // ولا يكشف آية كلماتها في النص أكثر من الرسم.
+                    if checked.insert(w.v).inserted, textCount(search, w.v) != glyphCount(repo: repo, verse: w.v, page: n) {
+                        bad.insert(w.v); skipped.append(w.v)
                     }
+                    guard !bad.contains(w.v), let text = textWord(search, w.v, i) else { continue }
                     let k = key(w.v, i)
                     byKey[k] = words.count
                     words.append(TasmeeRefWord(id: k, text: text)); pages.append(n)
@@ -58,6 +60,26 @@ public struct MushafTasmeeRef: Sendable {
         guard let t = s.ayahText(verse) else { return nil }
         let ws = t.split(whereSeparator: { $0.isWhitespace })
         return i <= ws.count ? String(ws[i - 1]) : nil
+    }
+
+    private static func textCount(_ s: MushafSearch, _ verse: String) -> Int? {
+        s.ayahText(verse)?.split(whereSeparator: { $0.isWhitespace }).count
+    }
+
+    private static func lineWords(_ p: MushafPage, _ verse: String) -> Int {
+        p.rows.filter { $0.k == "l" }.flatMap { $0.w ?? [] }.filter { $0.v == verse && !$0.isAyahEnd }.count
+    }
+
+    /// كلمات الآية في الرسم كله: ما قبل `page` + هذه الصفحة + ما يتصل بعدها ما دامت الآية تختم الصفحة.
+    private static func glyphCount(repo: MushafRepository, verse: String, page: Int) -> Int {
+        var total = wordsBefore(repo: repo, verse: verse, page: page), n = page
+        while n <= Mushaf.pageCount, let p = try? repo.page(n) {
+            let c = lineWords(p, verse)
+            total += c
+            if c == 0 || lastVerse(p) != verse { break }
+            n += 1
+        }
+        return total
     }
 
     private static func firstVerse(repo: MushafRepository, page n: Int) -> String? {
