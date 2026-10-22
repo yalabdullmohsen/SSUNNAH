@@ -519,3 +519,10 @@ public struct LearnDarsSection: Decodable, Identifiable, Hashable, Sendable {
     public let title: String
     public let lessons: [Item]
 }
+
+extension LearnUniversity {
+    /// بحث الدليل: الاسمان والدولة والمدينة، بتطبيع ArabicText («الازهر» ⇐ «الأزهر»، «عمان» ⇐ «عمّان»).
+    func matches(_ query: String) -> Bool {
+        [nameAr, nameEn ?? "", country ?? "", city ?? ""].contains { ArabicText.matches($0, query: query) }
+    }
+}
