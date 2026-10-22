@@ -150,7 +150,7 @@ private struct HifzPlanWizard: View {
             SunnahCard {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                     Text(targetFinish.map { HifzFormat.date($0) } ?? "—").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                    Text("الوتيرة: \(HifzFormat.pace(effectiveLines)) · \((pages.1 - pages.0 + 1).arabicDigits) صفحة").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    Text("الوتيرة: \(HifzFormat.pace(effectiveLines)) · \(ArabicCount.label(pages.1 - pages.0 + 1, one: "صفحة واحدة", two: "صفحتان", few: "صفحات", many: "صفحة", genitive: "صفحة"))").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     HStack(spacing: Sunnah.Spacing.s2) {
                         Button { finishShift -= 1 } label: { SunnahChip("أسبوع أبكر") }.buttonStyle(.plain)
                         Button { finishShift += 1 } label: { SunnahChip("أسبوع أبعد") }.buttonStyle(.plain)
@@ -285,9 +285,10 @@ private struct HifzPlanDashboard: View {
 
 enum HifzFormat {
     static func pace(_ lines: Int) -> String {
-        lines % HifzPlanMath.linesPerPage == 0
-            ? (lines / HifzPlanMath.linesPerPage == 1 ? "صفحة يوميًا" : "\((lines / HifzPlanMath.linesPerPage).arabicDigits) صفحات يوميًا")
-            : "\(lines.arabicDigits) سطرًا يوميًا"
+        let unit = lines % HifzPlanMath.linesPerPage == 0
+            ? ArabicCount.label(lines / HifzPlanMath.linesPerPage, one: "صفحة", two: "صفحتان", few: "صفحات", many: "صفحة", genitive: "صفحة")
+            : ArabicCount.label(lines, one: "سطر", two: "سطران", few: "أسطر", many: "سطرًا", genitive: "سطر")
+        return unit + " يوميًا"
     }
 
     static func date(_ d: Date) -> String {
@@ -298,8 +299,8 @@ enum HifzFormat {
     static func status(_ p: HifzPlanMath.Progress) -> String {
         switch p.state {
         case .onTrack: return "أنت على الجدول"
-        case .ahead: return "متقدّم عن الجدول بنحو \(abs(p.deltaDays).arabicDigits) يومًا"
-        case .behind: return "متأخر عن الجدول بنحو \(abs(p.deltaDays).arabicDigits) يومًا"
+        case .ahead: return "متقدّم عن الجدول بنحو " + ArabicCount.label(abs(p.deltaDays), one: "يوم", two: "يومين", few: "أيام", many: "يومًا", genitive: "يوم")
+        case .behind: return "متأخر عن الجدول بنحو " + ArabicCount.label(abs(p.deltaDays), one: "يوم", two: "يومين", few: "أيام", many: "يومًا", genitive: "يوم")
         }
     }
 }
@@ -333,7 +334,7 @@ enum HifzReminder {
         var parts: [String] = []
         if let p = w.newPages.first { parts.append("حفظ جديد: صفحة \(p.arabicDigits)") }
         let review = w.nearPages.count + w.farPages.count
-        if review > 0 { parts.append("مراجعة \(review.arabicDigits) صفحات") }
+        if review > 0 { parts.append("مراجعة " + ArabicCount.label(review, one: "صفحة واحدة", two: "صفحتين", few: "صفحات", many: "صفحة", genitive: "صفحة")) }
         return parts.isEmpty ? "حان وقت وردك" : parts.joined(separator: " · ")
     }
 }
