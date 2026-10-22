@@ -59,49 +59,72 @@ struct DailyWirdView: View {
     }()
     private func key(_ offset: Int) -> String { Self.fmt.string(from: Calendar.current.date(byAdding: .day, value: -offset, to: Date()) ?? Date()) }
     private var today: String { key(0) }
-    private func ar(_ n: Int) -> String { n.formatted(.number.grouping(.never).locale(Locale(identifier: "ar@numbers=arab"))) }
+    // الصفر العربي «٠» يُرسم نقطة تشبه رمز القائمة في الخط فيُعرض «0» اللاتيني ليُقرأ رقمًا
+    private func ar(_ n: Int) -> String { n == 0 ? "0" : n.formatted(.number.grouping(.never).locale(Locale(identifier: "ar@numbers=arab"))) }
 
     var body: some View {
         let done = state.todayCount(today)
         let goal = max(state.pagesPerDay, 1)
         ScrollView {
-            VStack(spacing: Sunnah.Spacing.s6) {
-                card {
-                    ring(value: Double(done) / Double(goal), title: ar(done), subtitle: "من \(ar(state.pagesPerDay)) صفحة")
-                    HStack(spacing: Sunnah.Spacing.s3) {
-                        ForEach([1, 2, 5], id: \.self) { n in
-                            Button("+\(ar(n))") { mutate { $0.add(n, today: today, yesterday: key(1)) } }
-                                .buttonStyle(.borderedProminent).tint(Sunnah.Colors.primary).frame(minHeight: 44)
-                                .disabled(done >= goal).accessibilityLabel("أضف \(ar(n)) صفحة")
+            VStack(spacing: 14) {
+                SunnahProgressCard("وردك اليوم", symbol: "book.pages") {
+                    HStack(spacing: 20) {
+                        SunnahProgressRing(value: Double(done) / Double(goal), lineWidth: 11, size: 128) {
+                            VStack(spacing: 2) {
+                                Text(done == 0 ? "لم تبدأ" : ar(done)).font(done == 0 ? AppearancePrefs.ui(.extraBold, 22, .title3) : .system(size: 38, weight: .heavy, design: .rounded))
+                                    .foregroundStyle(Sunnah.Colors.textPrimary).minimumScaleFactor(0.6).lineLimit(1)
+                                Text("من \(ar(state.pagesPerDay)) صفحة").font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                            }
+                        }
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(done >= goal ? "أكملت وردك لهذا اليوم" : "\(ar(max(0, goal - done))) صفحة متبقية")
+                                .font(AppearancePrefs.ui(.extraBold, 15, .body)).foregroundStyle(Sunnah.Colors.primary)
+                            HStack(spacing: Sunnah.Spacing.s2) {
+                                ForEach([1, 2, 5], id: \.self) { n in
+                                    Button("+\(ar(n))") { mutate { $0.add(n, today: today, yesterday: key(1)) } }
+                                        .buttonStyle(.borderedProminent).tint(Sunnah.Colors.primary).frame(minHeight: 44)
+                                        .disabled(done >= goal).accessibilityLabel("أضف \(ar(n)) صفحة")
+                                }
+                            }
+                            if done > 0 { Button("إعادة ضبط اليوم", role: .destructive) { mutate { $0.resetToday(today: today) } }.frame(minHeight: 44) }
                         }
                     }
-                    Text(done >= goal ? "أكملت وردك لهذا اليوم" : "\(ar(max(0, goal - done))) صفحة متبقية")
-                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                    if done > 0 { Button("إعادة ضبط اليوم", role: .destructive) { mutate { $0.resetToday(today: today) } }.frame(minHeight: 44) }
+                    Divider().overlay(Sunnah.Colors.border)
                     HStack {
-                        stat("هذا الأسبوع", "\(ar(state.weekly(today: today, last7: (0..<7).map(key)))) صفحة")
-                        stat("هذا الشهر", "\(ar(state.monthlyTotal)) صفحة")
-                        stat("المجموع", "\(ar(state.totalPagesEver)) صفحة")
+                        SunnahStatCell("\(ar(state.weekly(today: today, last7: (0..<7).map(key)))) صفحة", "هذا الأسبوع")
+                        SunnahStatCell("\(ar(state.monthlyTotal)) صفحة", "هذا الشهر")
+                        SunnahStatCell("\(ar(state.totalPagesEver)) صفحة", "المجموع")
                     }
                 }
-                card {
-                    Label("\(ar(state.streak)) يوم متواصل", systemImage: "flame").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                    if state.streak > 0 { Text(WirdState.streakMessage(state.streak)).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-                    if let d = state.daysToKhatma { Text("الختمة بعد نحو \(ar(d)) يوم").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
+                SunnahProgressCard("المداومة", symbol: "flame", tone: .gold) {
+                    HStack(spacing: 16) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("\(ar(state.streak)) يوم متواصل").font(AppearancePrefs.ui(.extraBold, 20, .title3)).foregroundStyle(Sunnah.Colors.textPrimary)
+                            if state.streak > 0 { Text(WirdState.streakMessage(state.streak)).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.textSecondary) }
+                        }
+                        Spacer(minLength: 0)
+                    }
                 }
-                card {
-                    Text("تقدم الختمة").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                    ring(value: Double(state.pagesInKhatma) / Double(WirdState.quranPages), title: ar(state.khatmas > 0 ? state.khatmas : state.pagesInKhatma),
-                         subtitle: state.khatmas > 0 ? "ختمة مكتملة" : "صفحة من \(ar(WirdState.quranPages))")
-                    stat("ختمات مكتملة", state.khatmas > 0 ? ar(state.khatmas) : "لم تكتمل بعد")
+                SunnahProgressCard("تقدم الختمة", symbol: "checkmark.seal") {
+                    HStack(spacing: 20) {
+                        SunnahProgressRing(value: Double(state.pagesInKhatma) / Double(WirdState.quranPages), lineWidth: 11, size: 112) {
+                            Text(ar(state.pagesInKhatma)).font(.system(size: 30, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.textPrimary)
+                                .minimumScaleFactor(0.6).lineLimit(1)
+                        }
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("صفحة من \(ar(WirdState.quranPages))").font(AppearancePrefs.ui(.bold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.textSecondary)
+                            Text(state.khatmas > 0 ? "\(ar(state.khatmas)) ختمة مكتملة" : "لم تكتمل ختمة بعد").font(AppearancePrefs.ui(.extraBold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
+                            if let d = state.daysToKhatma { Text("الختمة بعد نحو \(ar(d)) يوم").font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.primary) }
+                        }
+                    }
                 }
-                card {
+                SunnahProgressCard("الهدف اليومي", symbol: "target", tone: .gold) {
                     Stepper(value: Binding(get: { state.pagesPerDay }, set: { v in mutate { $0.pagesPerDay = v } }), in: 1...30) {
-                        Text("الهدف اليومي: \(ar(state.pagesPerDay)) صفحة").font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                        Text("\(ar(state.pagesPerDay)) صفحة في اليوم").font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
                     }.frame(minHeight: 44)
                 }
             }
-            .padding(Sunnah.Spacing.pageX)
+            .padding(.vertical, Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
         .sunnahNavTitle("الورد اليومي")
@@ -111,28 +134,5 @@ struct DailyWirdView: View {
     private func mutate(_ f: (inout WirdState) -> Void) {
         f(&state)
         if let d = try? JSONEncoder().encode(state), let s = String(data: d, encoding: .utf8) { raw = s }
-    }
-
-    private func card<C: View>(@ViewBuilder _ c: () -> C) -> some View {
-        VStack(spacing: Sunnah.Spacing.s3, content: c).frame(maxWidth: .infinity).padding(Sunnah.Spacing.s4)
-            .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 16))
-    }
-
-    private func stat(_ t: String, _ v: String) -> some View {
-        VStack(spacing: 2) {
-            Text(t).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-            Text(v).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-        }.frame(maxWidth: .infinity)
-    }
-
-    private func ring(value: Double, title: String, subtitle: String) -> some View {
-        ZStack {
-            Circle().stroke(Sunnah.Colors.primary.opacity(0.15), lineWidth: 9)
-            Circle().trim(from: 0, to: min(max(value, 0), 1)).stroke(Sunnah.Colors.primary, style: StrokeStyle(lineWidth: 9, lineCap: .round)).rotationEffect(.degrees(-90))
-            VStack(spacing: 2) {
-                Text(title == ar(0) ? "لم تبدأ" : title).font(title == ar(0) ? AppearancePrefs.ui(.extraBold, 26, .title2) : .system(size: 40, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.textPrimary).minimumScaleFactor(0.6).lineLimit(1)
-                Text(subtitle).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-            }
-        }.frame(width: 148, height: 148)
     }
 }

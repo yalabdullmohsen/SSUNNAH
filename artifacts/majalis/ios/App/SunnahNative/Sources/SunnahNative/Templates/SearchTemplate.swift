@@ -88,6 +88,7 @@ public struct SearchTemplate: View {
                 }
                 if !hub.isEmpty {
                     SunnahSectionHub(links: hub, counts: hubCounts, idPrefix: "search.hub")
+                        .padding(.horizontal, Sunnah.Spacing.pageX)
                     if !items.isEmpty {
                         Button { Sunnah.Haptics.select(); sunnahAnimate { browsing = true } } label: {
                             Text("تصفّح كل الأبحاث (\(items.count))".arabicDigits)

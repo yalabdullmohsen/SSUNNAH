@@ -1,0 +1,9 @@
+git_sha=c25fec89e7d2a7ac753a05241d80af85d691270d
+branch=n3/native-perf
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/e96e50ed1edbfca0/SunnahApp.app
+binary_sha256=d90b3e542dbe2b7e41453e9aeb9f2816cc132742e399fdd0a80c272074125c56
+built_at=2026-10-22 01:14:27
+source_newest=2026-10-22 01:02:10
+captured_at=2026-10-22 01:16:39
+covers=Special/HadithScreens
+covers=Shell/RouteResolver
