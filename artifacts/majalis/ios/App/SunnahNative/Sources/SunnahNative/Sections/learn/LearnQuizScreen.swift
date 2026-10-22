@@ -6,7 +6,7 @@ struct LearnQuizScreen: View {
     var body: some View {
         LearnLoadHost(LearnSources.quizManifest) { (manifest: LearnQuizManifest) in
             LearnTileGrid(items: manifest.chunks.filter { $0.count > 0 }, emptyTitle: "لا أسئلة موثّقة بعد", idPrefix: "quiz",
-                          tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: "\($0.count) سؤالًا".arabicDigits, symbol: "questionmark.circle") },
+                          tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: ArabicCount.label($0.count, one: "سؤال واحد", two: "سؤالان", few: "أسئلة", many: "سؤالًا", genitive: "سؤال"), symbol: "questionmark.circle") },
                           destination: { chunk in
                 LearnLoadHost(LearnSources.quizChunk(chunk)) { (questions: [LearnOpenQuestion]) in
                     LearnOpenQuizRunner(questions: questions)

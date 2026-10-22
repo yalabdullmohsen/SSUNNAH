@@ -106,7 +106,7 @@ struct LearnDurusScreen: View {
     var body: some View {
         LearnLoadHost(source) { (list: LearnDarsList) in
             LearnTileGrid(items: list.sections, idPrefix: "durus",
-                          tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: learnLine($0.num, "\($0.lessons.count) درسًا"), symbol: "book") },
+                          tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: learnLine($0.num, ArabicCount.label($0.lessons.count, one: "درس واحد", two: "درسان", few: "دروس", many: "درسًا", genitive: "درس")), symbol: "book") },
                           destination: { section in
                 LearnTileGrid(items: section.lessons, idPrefix: "durus-lesson",
                               tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.summary, symbol: "doc.text") },

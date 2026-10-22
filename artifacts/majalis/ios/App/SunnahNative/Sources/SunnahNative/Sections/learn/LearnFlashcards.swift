@@ -132,7 +132,7 @@ struct LearnFlashcardSession: View {
                 if queue.isEmpty {
                     EmptyStateView(title: "لا بطاقات مستحقة الآن")
                 } else if index >= queue.count {
-                    EmptyStateView(title: "أنهيت مراجعة \(queue.count) بطاقة")
+                    EmptyStateView(title: "أنهيت مراجعة " + ArabicCount.label(queue.count, one: "بطاقة واحدة", two: "بطاقتين", few: "بطاقات", many: "بطاقة", genitive: "بطاقة"))
                     SunnahButton("جلسة جديدة") { startSession() }
                 } else {
                     card(queue[index])
@@ -191,14 +191,7 @@ struct LearnFlashcardSession: View {
         case 7: return "أسبوع"
         case 14: return "أسبوعان"
         case 28...31: return "شهر"
-        case 100...:
-            // المئات: تمييز ما ينتهي بـ0–2 مجرور مفرد، و3–10 جمع، و11–99 منصوب مفرد.
-            switch days % 100 {
-            case 0...2: return "\(days.arabicDigits) يوم"
-            case 3...10: return "\(days.arabicDigits) أيام"
-            default: return "\(days.arabicDigits) يومًا"
-            }
-        default: return TasmeeProgressFormat.counted(days, one: "يوم", two: "يومان", few: "أيام", many: "يومًا")
+        default: return ArabicCount.label(days, one: "يوم", two: "يومان", few: "أيام", many: "يومًا", genitive: "يوم")
         }
     }
 }
