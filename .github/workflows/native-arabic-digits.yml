@@ -7,6 +7,8 @@ on:
       - 'artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/**'
       - 'artifacts/majalis/ios/App/PrayerWidget/**'
       - 'scripts/native-arabic-digits-guard.sh'
+      - 'scripts/native-arabic-count-guard.sh'
+      - 'scripts/native-arabic-count-baseline.txt'
 permissions:
   contents: read
 jobs:
