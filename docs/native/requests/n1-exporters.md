@@ -17,7 +17,6 @@
 - `Data/aqidah/asma-husna.json` ← Generated/AqidahScreens.swift
 - `Data/aqidah/discover-islam.json` ← Generated/AqidahScreens.swift
 - `Data/aqidah/discover-islam-articles.json` ← Generated/AqidahScreens.swift
-- `Data/aqidah/discover-islam-contact.json` ← Generated/AqidahScreens.swift
 - `Data/aqidah/discover-islam-doubts.json` ← Generated/AqidahScreens.swift
 - `Data/aqidah/discover-islam-how-to-convert.json` ← Generated/AqidahScreens.swift
 - `Data/aqidah/discover-islam-new-muslim.json` ← Generated/AqidahScreens.swift

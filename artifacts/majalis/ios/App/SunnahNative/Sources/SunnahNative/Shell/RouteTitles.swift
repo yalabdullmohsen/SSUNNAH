@@ -36,7 +36,7 @@ public enum RouteTitles {
         "/tarikh-islami": "التاريخ الإسلامي", "/tarikh-islami/:id": "تفاصيل الحدث التاريخي", "/teachers": "المعلمون", "/teachers/:slug": "تفاصيل المعلم",
         // العقيدة والتزكية
         "/adab-talab-ilm": "آداب طلب العلم", "/akhlaq": "الأخلاق", "/alamat-saah": "علامات الساعة", "/amrad-qalbiyya": "أمراض القلوب", "/asma-husna": "الأسماء الحسنى",
-        "/discover-islam": "اكتشف الإسلام", "/discover-islam/articles/:slug": "مقال اكتشف الإسلام", "/discover-islam/contact": "تواصل مع اكتشف الإسلام",
+        "/discover-islam": "اكتشف الإسلام", "/discover-islam/articles/:slug": "مقال اكتشف الإسلام",
         "/discover-islam/doubts": "الشبهات", "/discover-islam/doubts/:slug": "تفاصيل الشبهة", "/discover-islam/how-to-convert": "كيف أصبح مسلمًا",
         "/discover-islam/new-muslim": "مسار المسلم الجديد", "/discover-islam/new-muslim/:day": "يوم المسلم الجديد", "/discover-islam/questions": "الأسئلة الشائعة",
         "/discover-islam/questions/:slug": "تفاصيل السؤال", "/hikam-salaf": "حكم السلف", "/iman-topics": "موضوعات الإيمان", "/islamic-sects": "الفرق الإسلامية",

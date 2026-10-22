@@ -708,13 +708,6 @@
    "owner": "ن2"
   },
   {
-   "path": "/discover-islam/contact",
-   "component": "DiscoverIslamContactPage",
-   "section": "العقيدة والتزكية",
-   "template": "قائمة",
-   "owner": "ن2"
-  },
-  {
    "path": "/discover-islam/doubts",
    "component": "DiscoverIslamDoubtsPage",
    "section": "العقيدة والتزكية",

@@ -4,7 +4,6 @@
   },
   "exempt" : {
     "adhkar/categories.json" : "تنقل: أسماء فئات لا نص شرعي",
-    "aqidah/discover-islam-contact.json" : "بيانات اتصال",
     "aqidah/discover-islam.json" : "روابط تنقل إلى شاشات (عنوان+مسار) بلا نص شرعي",
     "aqidah/tazkiya.json" : "بطاقات تنقل لمدخل التزكية (عنوان+مسار) بلا نص شرعي",
     "fiqh/book-aliases.json" : "مرادفات بحث لأسماء كتب",
