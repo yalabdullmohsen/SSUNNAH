@@ -38,7 +38,8 @@ enum MushafAyahWords {
     static func mushafAlignedWords(ayahText: String, wordCount: Int) -> [String] {
         var raw = ayahText.split(whereSeparator: \.isWhitespace).map(String.init).filter { $0 != "\u{06DE}" && $0 != "\u{06E9}" }
         if raw.count == wordCount + 4, raw.prefix(4).map(QuranWordMatch.normalizeQuranWord) == basmalaNormalized { raw.removeFirst(4) }
-        var words = raw.map { QuranWordMatch.normalizeQuranWord($0) }
+        // علامة الوقف المستقلة («رَيْبَ ۛ فِيهِ») تُطبَّع فارغة، وQPC يضمّها إلى الكلمة قبلها؛ عدّها كلمةً كان يُفشل المحاذاة في 42% من الآيات.
+        var words = raw.map { QuranWordMatch.normalizeQuranWord($0) }.filter { !$0.isEmpty }
         // «إِلْ يَاسِينَ» (37:130): Tanzil يفصلها كلمتين والمصحف (QPC) كلمة واحدة بجلايفين؛ نضمّهما عند الفرق بالعدد بواحد فقط.
         if words.count == wordCount + 1, let i = words.indices.dropLast().first(where: { (words[$0], words[$0 + 1]) == elYasin }) {
             words.replaceSubrange(i...(i + 1), with: [words[i] + words[i + 1]])
