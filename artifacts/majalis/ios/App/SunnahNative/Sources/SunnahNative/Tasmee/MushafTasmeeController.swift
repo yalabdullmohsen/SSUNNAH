@@ -181,27 +181,32 @@ public final class MushafTasmeeController: ObservableObject {
 }
 
 /// طلاء كلمة المصحف أثناء التسميع.
-public enum TasmeeWordPaint: Sendable { case hidden, correct, wrong, skipped, error }
+public enum TasmeeWordPaint: Sendable { case hidden, correct, wrong, skipped, error, current }
 
 extension View {
     /// مخفية = شفافة (تحجز موضعها)؛ خطأ = خلفية حمراء خفيفة؛ متجاوزة = كهرمانية مع تنبيه.
     @ViewBuilder func tasmeePainted(_ paint: TasmeeWordPaint?, radius: CGFloat) -> some View {
-        switch paint {
-        case .none, .some(.correct): self
-        case .some(.hidden): self.opacity(0)
-        case .some(.wrong):
-            self.background(RoundedRectangle(cornerRadius: radius).fill(Color.red.opacity(0.18)).padding(.horizontal, -2))
-                .accessibilityHint("خطأ في التلاوة")
-        case .some(.error):
-            // خطأ في وضع البوابة: لا تظهر الكلمة، ويبقى موضعها محجوزًا بإشارة حمراء خفيفة.
-            self.opacity(0)
-                .background(RoundedRectangle(cornerRadius: radius).fill(Color.red.opacity(0.22)).padding(.horizontal, -2))
-                .accessibilityHint("خطأ في التلاوة")
-        case .some(.skipped):
-            self.background(RoundedRectangle(cornerRadius: radius).fill(Color.orange.opacity(0.22)).padding(.horizontal, -2))
-                .overlay(alignment: .top) { Image(systemName: "exclamationmark.triangle.fill").font(.system(size: 8)).foregroundStyle(Color.orange).offset(y: -4) }
-                .accessibilityHint("كلمة متجاوزة")
+        let hidden = paint == .hidden || paint == .error || paint == .current
+        let tint: Color? = switch paint {
+        case .some(.error): Color.red.opacity(0.22)
+        case .some(.skipped): Color.orange.opacity(0.22)
+        case .some(.current): Sunnah.Colors.primary.opacity(0.16)
+        default: nil
         }
+        // الكشف بنعومة ~180ms؛ الكلمة الحالية تتوهّج بإطار أخضر خفيف.
+        self.opacity(hidden ? 0 : 1)
+            .background {
+                if let tint {
+                    RoundedRectangle(cornerRadius: radius).fill(tint).padding(.horizontal, -2)
+                        .overlay { if paint == .current { RoundedRectangle(cornerRadius: radius).stroke(Sunnah.Colors.primary.opacity(0.5), lineWidth: 1).padding(.horizontal, -2) } }
+                        .shadow(color: paint == .current ? Sunnah.Colors.primary.opacity(0.35) : .clear, radius: 4)
+                }
+            }
+            .overlay(alignment: .top) {
+                if paint == .skipped { Image(systemName: "exclamationmark.triangle.fill").font(.system(size: 8)).foregroundStyle(Color.orange).offset(y: -4) }
+            }
+            .animation(.easeOut(duration: 0.18), value: paint)
+            .accessibilityHint(paint == .error || paint == .wrong ? "خطأ في التلاوة" : paint == .skipped ? "كلمة متجاوزة" : "")
     }
 }
 
@@ -210,15 +215,21 @@ extension MushafTasmeeController {
     public func paint(page: Int) -> ((Int, Int) -> TasmeeWordPaint?)? {
         guard let slots = ref?.keysByPage[page], isActive || isFinished else { return nil }
         let hide = hideVerses
+        let cur = currentKey
         return { r, c in
             guard let key = slots[MushafWordSlot(row: r, col: c)] else { return nil }
             switch self.states[key] ?? .pending {
             case .correct: return .correct
             case .wrong: return .error
             case .skipped: return .skipped
-            case .pending: return hide ? .hidden : nil
+            case .pending: return key == cur ? .current : (hide ? .hidden : nil)
             }
         }
+    }
+    /// الكلمة المنتظَرة الآن (تتوهّج) أثناء الاستماع فقط.
+    var currentKey: String? {
+        guard phase == .listening, let s = session, let ref, s.matcher.next < ref.words.count else { return nil }
+        return ref.words[s.matcher.next].id
     }
     var isFinished: Bool { if case .finished = phase { return true }; return false }
 }
