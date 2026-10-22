@@ -100,7 +100,7 @@ struct AdhkarCollectionView: View {
         case "morning": return "sun.max.fill"
         case "evening": return "sunset.fill"
         case "sleep": return "moon.zzz.fill"
-        default: return "hands.sparkles.fill"
+        default: return "heart.text.square.fill"
         }
     }
 
@@ -202,7 +202,7 @@ struct RotatingAdhkarView: View {
             if let dhikr {
                 filled(dhikr)
             } else {
-                SunnahCalmCard(symbol: "sparkles", phrase: "افتح سُنّة", compact: family == .accessoryRectangular)
+                SunnahCalmCard(symbol: "moon.stars", phrase: "افتح سُنّة", compact: family == .accessoryRectangular)
             }
         }
         .modifier(AdhkarSurface())
@@ -278,7 +278,7 @@ struct AdhkarStreakView: View {
             if streak != nil || goal != nil {
                 content(streak, goal)
             } else {
-                SunnahCalmCard(symbol: "sparkles", phrase: "افتح سُنّة", compact: family == .accessoryCircular)
+                SunnahCalmCard(symbol: "moon.stars", phrase: "افتح سُنّة", compact: family == .accessoryCircular)
             }
         }
         .modifier(AdhkarSurface())

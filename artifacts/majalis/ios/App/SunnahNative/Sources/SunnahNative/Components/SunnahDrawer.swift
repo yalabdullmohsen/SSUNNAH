@@ -15,8 +15,8 @@ public struct SunnahDrawer: View {
     struct Group { let title: String; let items: [Item] }
 
     static let groups: [Group] = [
-        Group(title: "الأساسي", items: [Item(title: "الرئيسية", icon: "house", path: "/"), Item(title: "الصلاة", icon: "moon.stars", path: "/prayer-times"), Item(title: "المصحف", icon: "character.book.closed", path: "/mushaf"), Item(title: "الأذكار", icon: "hands.sparkles", path: "/adhkar")]),
-        Group(title: "العلم", items: [Item(title: "الحديث", icon: "quote.bubble", path: "/hadith"), Item(title: "القرآن وعلومه", icon: "books.vertical", path: "/quran-hub"), Item(title: "الفقه", icon: "building.columns", path: "/fiqh"), Item(title: "الدروس", icon: "graduationcap", path: "/lessons"), Item(title: "السيرة", icon: "map", path: "/seerah"), Item(title: "قصص الأنبياء", icon: "sparkle", path: "/prophets")]),
+        Group(title: "الأساسي", items: [Item(title: "الرئيسية", icon: "house", path: "/"), Item(title: "الصلاة", icon: "moon.stars", path: "/prayer-times"), Item(title: "المصحف", icon: "character.book.closed", path: "/mushaf"), Item(title: "الأذكار", icon: "heart.text.square", path: "/adhkar")]),
+        Group(title: "العلم", items: [Item(title: "الحديث", icon: "quote.bubble", path: "/hadith"), Item(title: "القرآن وعلومه", icon: "books.vertical", path: "/quran-hub"), Item(title: "الفقه", icon: "building.columns", path: "/fiqh"), Item(title: "الدروس", icon: "graduationcap", path: "/lessons"), Item(title: "السيرة", icon: "map", path: "/seerah"), Item(title: "قصص الأنبياء", icon: "book.closed", path: "/prophets")]),
     ]
     static let tools: [Item] = [Item(title: "القبلة", icon: "location.north.line", path: "/qibla"), Item(title: "السبحة", icon: "circle.dotted", path: "/tasbih"), Item(title: "التقويم", icon: "calendar", path: "/calendar"), Item(title: "الزكاة", icon: "banknote", path: "/zakat")]
     static let footer: [Item] = [Item(title: "الإعدادات", icon: "gearshape", path: "/settings"), Item(title: "عن التطبيق", icon: "info.circle", path: "/about")]

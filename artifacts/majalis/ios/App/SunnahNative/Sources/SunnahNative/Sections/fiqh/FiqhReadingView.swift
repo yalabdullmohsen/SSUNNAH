@@ -166,8 +166,8 @@ enum FiqhBookStyle {
         ("الحج", "map"), ("الاعتكاف", "house"), ("الجنائز", "leaf"), ("البيوع", "cart"), ("المعاملات", "cart"),
         ("النكاح", "person.2"), ("الأسرة", "person.2"), ("الطلاق", "person.2.slash"), ("المواريث", "chart.pie"),
         ("الفرائض", "chart.pie"), ("الأيمان", "hand.raised"), ("النذور", "hand.raised"), ("الأطعمة", "fork.knife"),
-        ("الذبائح", "fork.knife"), ("اللباس", "tshirt"), ("الزينة", "tshirt"), ("القضاء", "scalemass"),
-        ("الحدود", "scalemass"), ("الجنايات", "scalemass"), ("الأضحية", "calendar"), ("الآداب", "heart.text.square"),
+        ("الذبائح", "fork.knife"), ("اللباس", "tshirt"), ("الزينة", "tshirt"), ("القضاء", "building.columns"),
+        ("الحدود", "building.columns"), ("الجنايات", "building.columns"), ("الأضحية", "calendar"), ("الآداب", "heart.text.square"),
         ("القواعد", "list.bullet.rectangle"), ("الأصول", "list.bullet.rectangle"), ("المصطلحات", "character.book.closed"),
     ]
     static func symbol(for title: String) -> String {

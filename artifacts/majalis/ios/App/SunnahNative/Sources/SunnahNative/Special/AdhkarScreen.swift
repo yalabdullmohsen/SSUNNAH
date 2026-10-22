@@ -138,7 +138,7 @@ public struct AdhkarScreen: ScreenTemplate {
         case "adh-rain": return "cloud.rain"
         case "adh-wind": return "wind"
         case "adh-distress": return "heart"
-        case "adh-istighfar", "adh-istikharah": return "hands.sparkles"
+        case "adh-istighfar", "adh-istikharah": return "heart.text.square"
         case "adh-salawat": return "text.book.closed"
         default: return "book.closed"
         }
