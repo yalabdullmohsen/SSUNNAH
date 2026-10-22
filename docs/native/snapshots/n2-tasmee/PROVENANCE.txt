@@ -1,17 +1,17 @@
-git_sha=b79f64d4200d4e43cf7fb31acb0092eeffff4186
+git_sha=a6ed7f72ea89aa3903c1dbc267526ced29860210
 note=البناء من رأس الفرع نفسه؛ لقطات تشغيل حقيقي بمحرك وهمي (DEBUG فقط) على محاكٍ
-key=4d0a1028a9a6127c
+key=c2f95fd03b84a7f1
 sdk=iphonesimulator27.1
-binary_sha256=fb7d64340d12b0b65648ed76d93a42d0986e652665a2cd05dcb3b5eb96add83d
+binary_sha256=c4996c7117f828e5696712faeb7781edb7940cb49606c82b889f96c440068f40
 binary=SunnahApp.app
-built_at=2026-10-22 16:03:19
+built_at=2026-10-22 17:15:50
 build=Debug CODE_SIGNING_ALLOWED=NO
 captured_at=2026-10-22
 locale=ar (RTL)
 devices=iPhone 402x874 simulator
 upload=لا
-older_build=لقطات 01–03 من بناء 8412728 (key=b1552bdbca8687ab, binary_sha256=df9d72f0069e54bdfea5286f09e9400f650068ac30014066bbc071398a76c068)؛ 04 و05 فاتح/داكن من b79f64d (إصلاح تغطية تسمية الحزب + زر إيقاف أحمر داكن)؛ الملفات المغطاة بـ01–03 لم تتغير بين الرأسين.
-gaps: لا محاكي iPhone SE متاح محليًا فلا لقطة SE؛ 06 (كلمة خاطئة حمراء) و07 (تلميح بعد 3 محاولات) لم تُرفع بعد؛ وضع التكرار مغطى باختبارات TasmeeRepeatDriverTests (12) لا بلقطة؛ محاكي فقط، لا أرقام أداء.
+older_build=لقطات 01–03 من بناء 8412728 (key=b1552bdbca8687ab, binary_sha256=df9d72f0069e54bdfea5286f09e9400f650068ac30014066bbc071398a76c068)؛ 04 و05 فاتح/داكن من b79f64d، و07 من a6ed7f72e (إصلاح تغطية تسمية الحزب + زر إيقاف أحمر داكن)؛ الملفات المغطاة بـ01–03 لم تتغير بين الرأسين.
+gaps: لا محاكي iPhone SE متاح محليًا فلا لقطة SE؛ 06 (كلمة خاطئة حمراء) لم تُرفع: اللقطة تُظهر زر التلميح لكن الكلمة المنتظَرة بقيت بطلاء «الحالية» لا الأحمر، قيد التحقيق؛ وضع التكرار مغطى باختبارات TasmeeRepeatDriverTests (12) لا بلقطة؛ محاكي فقط، لا أرقام أداء.
 
 # 01-default-no-mic-light.png / 01-default-no-mic-dark.png
 covers: Mushaf/MushafReaderView.swift (المصحف الافتراضي بلا زر ميكروفون ولا موجة)
@@ -27,6 +27,9 @@ covers: Tasmee/MushafTasmeeViews.swift, Tasmee/MushafTasmeeController.swift (ج�
 
 # 05-word-revealed-light.png / 05-word-revealed-dark.png
 covers: Tasmee/TasmeeMatcher.swift, Tasmee/TasmeeSession.swift (كلمات مكشوفة بعد التسميع والباقي مخفي)
+
+# 07-hint-after-3-light.png / 07-hint-after-3-dark.png
+covers: Tasmee/MushafTasmeeViews.swift, Tasmee/MushafTasmeeController.swift, Tasmee/TasmeeMatcher.swift (زر «تلميح» بعد 3 محاولات خاطئة متمايزة)
 
 # report-light.png / report-dark.png
 git_sha=dd2ff79adaaeb09ef2c29f4a9e40e4ceca41b2cd
