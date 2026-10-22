@@ -142,7 +142,7 @@ final class TasmeeModelStore {
 
     /// ينزّل الأرشيف مستكملًا من `.part` (Range)، يتحقق من الحجم وSHA-256، يفكّه في مجلد مؤقت، يتحقق من كل ملف، ثم يستبدل المجلد النهائي.
     /// `progress(received, total)` بالبايت (حجم الأرشيف). إعادة المحاولة عند الانقطاع بتراجع أسّي.
-    func download(_ m: TasmeeManifest, maxRetries: Int = 6, progress: @escaping (Int64, Int64) -> Void) async throws {
+    func download(_ m: TasmeeManifest, maxRetries: Int = 6, allowCellular: Bool = false, progress: @escaping (Int64, Int64) -> Void) async throws {
         guard let url = URL(string: m.archive.url), url.scheme == "https" else { throw TasmeeModelError.badURL }
         resetCancel()
         let fm = FileManager.default
@@ -154,7 +154,7 @@ final class TasmeeModelStore {
         var attempt = 0
         while true {
             do {
-                try await fetch(url, to: part, expected: m.archive) { progress($0, m.archive.size) }
+                try await fetch(url, to: part, expected: m.archive, allowCellular: allowCellular) { progress($0, m.archive.size) }
                 break
             } catch TasmeeModelError.cancelled {
                 throw TasmeeModelError.cancelled
@@ -214,7 +214,17 @@ final class TasmeeModelStore {
         return URLSession(configuration: c)
     }()
 
-    private func fetch(_ url: URL, to part: URL, expected a: TasmeeManifest.Archive, onBytes: @escaping (Int64) -> Void) async throws {
+    /// جلسة بعد موافقة المستخدم الصريحة على حجم التنزيل: Wi-Fi أو بيانات الجوال/نقطة الاتصال؛ تحترم وضع البيانات المنخفضة (constrained).
+    private static let cellularSession: URLSession = {
+        let c = URLSessionConfiguration.default
+        c.allowsCellularAccess = true
+        c.allowsExpensiveNetworkAccess = true
+        c.allowsConstrainedNetworkAccess = false
+        c.waitsForConnectivity = false
+        return URLSession(configuration: c)
+    }()
+
+    private func fetch(_ url: URL, to part: URL, expected a: TasmeeManifest.Archive, allowCellular: Bool = false, onBytes: @escaping (Int64) -> Void) async throws {
         let fm = FileManager.default
         var offset = (try? fm.attributesOfItem(atPath: part.path)[.size] as? Int64) ?? nil ?? 0
         if offset > a.size { try? fm.removeItem(at: part); offset = 0 }
@@ -224,8 +234,8 @@ final class TasmeeModelStore {
             if offset > 0 { req.setValue("bytes=\(offset)-", forHTTPHeaderField: "Range") }
             let bytes: URLSession.AsyncBytes, resp: URLResponse
             do {
-                (bytes, resp) = try await Self.wifiOnlySession.bytes(for: req)
-            } catch let e as URLError where e.networkUnavailableReason != nil {
+                (bytes, resp) = try await (allowCellular ? Self.cellularSession : Self.wifiOnlySession).bytes(for: req)
+            } catch let e as URLError where e.networkUnavailableReason != nil && !allowCellular {
                 throw TasmeeModelError.wifiRequired
             }
             guard let http = resp as? HTTPURLResponse else { throw TasmeeModelError.badStatus(0) }

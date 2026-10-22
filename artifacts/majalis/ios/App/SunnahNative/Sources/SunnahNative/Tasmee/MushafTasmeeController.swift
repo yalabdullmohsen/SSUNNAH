@@ -2,13 +2,13 @@ import SwiftUI
 import AVFoundation
 import Combine
 
-/// متحكّم التسميع داخل المصحف: زر الميكروفون ← موافقة تنزيل النموذج (Wi-Fi فقط) ← إذن الميكروفون ← جلسة حيّة تلوّن كلمات الصفحة نفسها.
+/// متحكّم التسميع داخل المصحف: زر الميكروفون ← موافقة تنزيل النموذج (Wi-Fi أو بيانات الجوال) ← إذن الميكروفون ← جلسة حيّة تلوّن كلمات الصفحة نفسها.
 /// المطابقة في `TasmeeSession`/`TasmeeMatcher`؛ نص القرآن يُقرأ ولا يُعدَّل.
 @MainActor
 public final class MushafTasmeeController: ObservableObject {
     public enum Phase: Equatable {
         case idle
-        case consent            // موافقة التنزيل (الحجم + Wi-Fi فقط)
+        case consent            // موافقة التنزيل (الحجم + نوع الاتصال)
         case downloading(Double)
         case preparing
         case needsMic           // الإذن مرفوض → توجيه للإعدادات
@@ -112,7 +112,7 @@ public final class MushafTasmeeController: ObservableObject {
             try await engine.downloadModel { [weak self] p in Task { @MainActor in
                 if case .downloading = self?.phase { self?.phase = .downloading(p) } } }
             await beginWithPermission()
-        } catch { phase = .failed("تعذّر تنزيل النموذج. تأكّد من اتصال Wi-Fi ثم أعد المحاولة.") }
+        } catch { phase = .failed(((error as? LocalizedError)?.errorDescription).map { "\($0) أعد المحاولة." } ?? "تعذّر تنزيل النموذج. تأكّد من الاتصال بالإنترنت ثم أعد المحاولة.") }
     }
 
     public func beginWithPermission() async {
