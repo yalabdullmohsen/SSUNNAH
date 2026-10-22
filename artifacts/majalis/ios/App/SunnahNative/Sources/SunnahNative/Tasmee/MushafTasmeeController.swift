@@ -23,6 +23,10 @@ public final class MushafTasmeeController: ObservableObject {
     @Published public private(set) var hint: String?
     /// وضع «إخفاء الآيات»: المعلّقة مخفية وتظهر الكلمة فور مطابقتها.
     @Published public var hideVerses = true { didSet { version &+= 1 } }
+    /// اهتزاز خفيف عند الخطأ؛ يُحفظ اختيار المستخدم.
+    @Published public var hapticsOn = UserDefaults.standard.object(forKey: "tasmee.haptics") as? Bool ?? true {
+        didSet { UserDefaults.standard.set(hapticsOn, forKey: "tasmee.haptics") }
+    }
     /// صفحة يجب أن يتبعها القارئ (تتغيّر حين يعبر التسميع صفحة).
     @Published public private(set) var followPage: Int?
     @Published public private(set) var ref: MushafTasmeeRef?
@@ -103,7 +107,7 @@ public final class MushafTasmeeController: ObservableObject {
         hint = nil; version &+= 1
         if e.state == .wrong {
             #if os(iOS)
-            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            if hapticsOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             #endif
             if (e.attempts ?? 0) >= 3 { offersHint = true }
         } else if e.state == .correct {

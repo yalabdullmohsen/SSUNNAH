@@ -32,6 +32,13 @@ struct MushafTasmeeOverlay: View {
                     }
                     .accessibilityLabel(tasmee.hideVerses ? "إظهار الآيات" : "إخفاء الآيات")
                     .accessibilityIdentifier("mushaf.tasmee.hide")
+                    Button { tasmee.hapticsOn.toggle() } label: {
+                        Image(systemName: tasmee.hapticsOn ? "waveform" : "waveform.slash").font(.system(size: 17, weight: .semibold))
+                            .frame(width: 44, height: 44).background(Circle().fill(Sunnah.Colors.bg.opacity(0.92)))
+                            .foregroundStyle(Sunnah.Colors.primary)
+                    }
+                    .accessibilityLabel(tasmee.hapticsOn ? "إيقاف الاهتزاز" : "تشغيل الاهتزاز")
+                    .accessibilityIdentifier("mushaf.tasmee.haptics")
                 }
                 Button(action: onTap) {
                     ZStack {
