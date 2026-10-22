@@ -6,7 +6,7 @@ cd "${GUARD_REPO:-$(cd "$(dirname "$0")/.." && pwd)}" || exit 2
 DIRS=${GUARD_DIRS:-"artifacts/majalis/ios/App/SunnahNative/Sources"}
 ALLOW=${GUARD_ALLOW:-scripts/native-nav-title-allow.txt}
 # shellcheck disable=SC2086
-hits=$(git ls-files $DIRS | grep '\.swift$' | grep -v '/Components/SunnahNavTitle\.swift$' \
+hits=$(git ls-files $DIRS | grep '\.swift$' | grep -vE '/Components/(SunnahNavTitle|HeroTitledNavigation)\.swift$' \
   | xargs grep -HnE '(^|[^A-Za-z])navigationTitle\((\)|[^")]|"[^"])' 2>/dev/null \
   | grep -vE '^[^:]+:[0-9]+:[[:space:]]*///' || true)
 bad=0
