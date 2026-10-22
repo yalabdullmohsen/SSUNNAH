@@ -210,11 +210,11 @@ public struct SunnahTile: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             SunnahIconTile(symbol, tone: tone)
-            Text(title).font(AppearancePrefs.ui(.extraBold, 16, .headline)).foregroundStyle(Sunnah.Colors.textPrimary).lineLimit(2, reservesSpace: subtitle != nil).fixedSize(horizontal: false, vertical: true)
-            if let subtitle { Text(subtitle).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary).lineLimit(3, reservesSpace: true).fixedSize(horizontal: false, vertical: true) }
+            Text(title).font(AppearancePrefs.ui(.extraBold, 16, .headline)).foregroundStyle(Sunnah.Colors.textPrimary).fixedSize(horizontal: false, vertical: true)
+            if let subtitle { Text(subtitle).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary).fixedSize(horizontal: false, vertical: true) }
         }
         .padding(16)
-        .frame(maxWidth: .infinity, minHeight: 112, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: 112, maxHeight: .infinity, alignment: .topLeading)
         .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
         .contentShape(RoundedRectangle(cornerRadius: 26, style: .continuous))
