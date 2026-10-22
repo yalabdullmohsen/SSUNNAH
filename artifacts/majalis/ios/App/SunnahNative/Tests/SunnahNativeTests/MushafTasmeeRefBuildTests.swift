@@ -85,6 +85,19 @@ final class MushafTasmeeRefBuildTests: XCTestCase {
         XCTAssertEqual(build(10, 1, from: "112:4").words.map(\.id), ["112:4#1", "112:4#2"])
     }
 
+    func testStandalonePauseMarksAreNotWords() throws {
+        // 2:2 «ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًۭى لِّلْمُتَّقِينَ»: 7 كلمات في الرسم، و«ۛ» علامتان مستقلتان.
+        XCTAssertEqual(MushafTasmeeRef.textWords("لَا رَيْبَ ۛ فِيهِ ۛ هُدًۭى").count, 4)
+        XCTAssertEqual(MushafTasmeeRef.textWords("ذَٰلِكَ ۖ وَمَن").map(String.init), ["ذَٰلِكَ", "وَمَن"])
+        let n = try XCTUnwrap(Self.search!.ayahText("2:2")).split(separator: " ").count
+        XCTAssertGreaterThan(n, 7, "النص فيه علامات وقف مستقلة")
+        try write(20, [MushafRow(k: "l", w: words("2:2", 7))])
+        let r = build(20, 1)
+        XCTAssertEqual(r.skippedVerses, [])
+        XCTAssertEqual(r.words.map(\.id), (1...7).map { "2:2#\($0)" })
+        XCTAssertFalse(r.words.contains { $0.text.unicodeScalars.allSatisfy { (0x06D6...0x06ED).contains($0.value) } })
+    }
+
     func testOutOfRangeStartIsEmpty() {
         XCTAssertTrue(build(0, 2).words.isEmpty)
         XCTAssertTrue(build(605, 1).words.isEmpty)
