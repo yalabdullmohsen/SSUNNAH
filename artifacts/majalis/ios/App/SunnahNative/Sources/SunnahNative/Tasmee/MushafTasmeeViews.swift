@@ -173,11 +173,10 @@ struct MushafTasmeeReport: View {
 }
 
 /// يجمع طبقات التسميع (الزر العائم، الموافقة، التقرير، متابعة الصفحة) في مُعدِّل واحد.
-struct MushafTasmeeHost<Overlay: View>: ViewModifier {
+struct MushafTasmeeHost: ViewModifier {
     @ObservedObject var box: MushafTasmeeBox
     let engine: RecitationEngineControlling?
     @Binding var current: Int
-    let overlay: Overlay
     let surahName: (Int) -> String
 
     private var consentBinding: Binding<Bool> {
@@ -191,7 +190,6 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .overlay(alignment: .bottom) { overlay }
             .sunnahSheet(isPresented: Binding(get: { box.controller?.showModeSheet ?? false }, set: { box.controller?.showModeSheet = $0 })) {
                 if let t = box.controller { TasmeeModeSheet { t.startWith($0) }.presentationDetents([.large]) }
             }
