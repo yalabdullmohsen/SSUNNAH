@@ -6,7 +6,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 ROOT=artifacts/majalis/ios/App
 BAD=$(grep -rnE --include='*.swift' \
-  '"([a-z0-9.]*\.)?(plus|cross|sparkles?|scalemass|staroflife|asterisk|plusminus)(\.[a-z0-9.]+)?"|"[a-z.]*\.(badge\.plus|plus)"|[✦✚✛✜✝✞✟☩☨✢✣✤✥✧⁜+]\s*"|"[^"]*[✦✚✛✜✝✞✟☩☨✢✣✤✥✧]' \
+  '"([a-z0-9.]*\.)?(plus|cross|sparkles?|moon\.stars|scalemass|staroflife|asterisk|plusminus)(\.[a-z0-9.]+)?"|"[a-z.]*\.(badge\.plus|plus)"|[✦✚✛✜✝✞✟☩☨✢✣✤✥✧⁜+]\s*"|"[^"]*[✦✚✛✜✝✞✟☩☨✢✣✤✥✧]' \
   $ROOT 2>/dev/null | grep -vE '/\.build/|/Tests/|cross-ok|\+ ?"|" ?\+|"\+"' || true)
 if [ -n "$BAD" ]; then echo "رموز بشكل صليب/نجمة رباعية ممنوعة (قرار المالك):"; echo "$BAD" | head -20; exit 1; fi
 echo "no-cross-icons-guard: OK"

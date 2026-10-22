@@ -32,7 +32,7 @@ struct MushafSurahCard: View {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
                     Text(surah.name).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     HStack(spacing: Sunnah.Spacing.s2) {
-                        Label(makki ? "مكية" : "مدنية", systemImage: makki ? "moon.stars" : "building.columns")
+                        Label(makki ? "مكية" : "مدنية", systemImage: makki ? "moon" : "building.columns")
                         Text("·")
                         Text("\(surah.ayahs.arabicDigits) آية")
                     }

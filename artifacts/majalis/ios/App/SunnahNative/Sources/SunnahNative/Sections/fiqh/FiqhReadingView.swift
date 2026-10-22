@@ -162,7 +162,7 @@ struct FiqhLoadHost<Value, Content: View>: View {
 /// أيقونة كل كتاب فقهي في محور البلاط (بحسب كلمة في عنوانه)، فلا تتشابه البلاطات.
 enum FiqhBookStyle {
     static let symbols: [(String, String)] = [
-        ("الطهارة", "drop"), ("الصلاة", "building.columns"), ("الزكاة", "banknote"), ("الصيام", "moon.stars"),
+        ("الطهارة", "drop"), ("الصلاة", "building.columns"), ("الزكاة", "banknote"), ("الصيام", "moon"),
         ("الحج", "map"), ("الاعتكاف", "house"), ("الجنائز", "leaf"), ("البيوع", "cart"), ("المعاملات", "cart"),
         ("النكاح", "person.2"), ("الأسرة", "person.2"), ("الطلاق", "person.2.slash"), ("المواريث", "chart.pie"),
         ("الفرائض", "chart.pie"), ("الأيمان", "hand.raised"), ("النذور", "hand.raised"), ("الأطعمة", "fork.knife"),

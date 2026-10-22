@@ -202,7 +202,7 @@ struct RotatingAdhkarView: View {
             if let dhikr {
                 filled(dhikr)
             } else {
-                SunnahCalmCard(symbol: "moon.stars", phrase: "افتح سُنّة", compact: family == .accessoryRectangular)
+                SunnahCalmCard(symbol: "moon", phrase: "افتح سُنّة", compact: family == .accessoryRectangular)
             }
         }
         .modifier(AdhkarSurface())
@@ -278,7 +278,7 @@ struct AdhkarStreakView: View {
             if streak != nil || goal != nil {
                 content(streak, goal)
             } else {
-                SunnahCalmCard(symbol: "moon.stars", phrase: "افتح سُنّة", compact: family == .accessoryCircular)
+                SunnahCalmCard(symbol: "moon", phrase: "افتح سُنّة", compact: family == .accessoryCircular)
             }
         }
         .modifier(AdhkarSurface())

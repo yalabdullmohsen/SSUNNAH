@@ -217,7 +217,7 @@ struct SunnahPrayerControl: ControlWidget {
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: "com.sunnah.control.prayer") {
             ControlWidgetButton(action: OpenURLIntent(SunnahWidgetDeepLinkFactory.prayer())) {
-                Label("مواقيت الصلاة", systemImage: "moon.stars.fill")
+                Label("مواقيت الصلاة", systemImage: "moon.fill")
             }
         }
         .displayName("مواقيت الصلاة")
