@@ -210,8 +210,8 @@ public struct SunnahTile: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             SunnahIconTile(symbol, tone: tone)
-            Text(title).font(AppearancePrefs.ui(.extraBold, 16, .headline)).foregroundStyle(Sunnah.Colors.textPrimary).lineLimit(2)
-            if let subtitle { Text(subtitle).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary).lineLimit(2) }
+            Text(title).font(AppearancePrefs.ui(.extraBold, 16, .headline)).foregroundStyle(Sunnah.Colors.textPrimary).lineLimit(2, reservesSpace: subtitle != nil).fixedSize(horizontal: false, vertical: true)
+            if let subtitle { Text(subtitle).font(AppearancePrefs.ui(.bold, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary).lineLimit(3, reservesSpace: true).fixedSize(horizontal: false, vertical: true) }
         }
         .padding(16)
         .frame(maxWidth: .infinity, minHeight: 112, alignment: .topLeading)
