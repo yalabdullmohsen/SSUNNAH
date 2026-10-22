@@ -112,7 +112,7 @@ struct HadithHubCard: View {
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 4) {
                 Text(title).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                Text("\(count.arabicDigits) حديث").font(Sunnah.Typography.secondary).foregroundStyle(grade.ink)
+                Text(ArabicCount.label(count, one: "حديث واحد", two: "حديثان", few: "أحاديث", many: "حديثًا", genitive: "حديث")).font(Sunnah.Typography.secondary).foregroundStyle(grade.ink)
             }
             Spacer(minLength: 0)
             Image(systemName: "chevron.forward").font(.system(size: 14, weight: .bold)).foregroundStyle(grade.ink).accessibilityHidden(true)
@@ -132,7 +132,7 @@ struct HadithCategoryTile: View {
         VStack(alignment: .leading, spacing: 6) {
             Image(systemName: "book.closed.fill").font(.system(size: 20, weight: .semibold)).foregroundStyle(HadithGrade.sahih.ink).accessibilityHidden(true)
             Text(title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary).multilineTextAlignment(.leading)
-            Text("\(count.arabicDigits) حديث").font(Sunnah.Typography.secondary).foregroundStyle(HadithGrade.sahih.ink)
+            Text(ArabicCount.label(count, one: "حديث واحد", two: "حديثان", few: "أحاديث", many: "حديثًا", genitive: "حديث")).font(Sunnah.Typography.secondary).foregroundStyle(HadithGrade.sahih.ink)
         }
         .padding(Sunnah.Spacing.s4)
         .frame(maxWidth: .infinity, minHeight: 104, alignment: .leading)

@@ -201,7 +201,7 @@ struct AccountNotificationSettingsScreen: View {
         Stepper(value: Binding(get: { value.wrappedValue }, set: { value.wrappedValue = $0; save() }), in: range, step: step) {
             VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
                 Text(title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                Text(value.wrappedValue == 0 ? "عند الوقت" : "\(value.wrappedValue) دقيقة")
+                Text(value.wrappedValue == 0 ? "عند الوقت" : ArabicCount.label(value.wrappedValue, one: "دقيقة واحدة", two: "دقيقتان", few: "دقائق", many: "دقيقة", genitive: "دقيقة"))
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
             }
         }

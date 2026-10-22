@@ -215,7 +215,7 @@ struct HifzScreen: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("التتابع اليومي").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        Text(streak == 0 ? "ابدأ اليوم" : "\(streak.arabicDigits) \(streak == 1 ? "يوم" : "أيام") متتالية")
+                        Text(streak == 0 ? "ابدأ اليوم" : ArabicCount.label(streak, one: "يوم واحد", two: "يومان متتاليان", few: "أيام متتالية", many: "يومًا متتاليًا", genitive: "يوم متتالٍ"))
                             .font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     }
                     Spacer()
@@ -261,7 +261,7 @@ struct HifzScreen: View {
                 stepperRow("من صفحة", $rangeFrom, id: "from")
                 stepperRow("إلى صفحة", $rangeTo, id: "to")
                 SunnahSegmented(HifzState.allCases.map { (id: $0, title: $0 == .none ? "إزالة" : ($0 == .partial ? "جزئي" : ($0 == .review ? "مراجعة" : "محفوظ"))) }, selection: $rangeState)
-                SunnahButton("تطبيق على \((abs(rangeTo - rangeFrom) + 1).arabicDigits) صفحة") {
+                SunnahButton("تطبيق على " + ArabicCount.label(abs(rangeTo - rangeFrom) + 1, one: "صفحة واحدة", two: "صفحتين", few: "صفحات", many: "صفحة", genitive: "صفحة")) {
                     store.set(rangeState, pages: min(rangeFrom, rangeTo)...max(rangeFrom, rangeTo))
                 }.accessibilityIdentifier("hifz.range.apply")
             }

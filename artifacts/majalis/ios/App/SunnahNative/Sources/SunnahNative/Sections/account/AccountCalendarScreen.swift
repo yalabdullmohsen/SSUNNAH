@@ -115,7 +115,7 @@ struct AccountCalendarScreen: View {
                         .opacity(inMonth ? 1 : 0.5)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("\(calendar.component(.day, from: day))، \(count) درس")
+                    .accessibilityLabel("\(calendar.component(.day, from: day).arabicDigits)، " + ArabicCount.label(count, one: "درس واحد", two: "درسان", few: "دروس", many: "درسًا", genitive: "درس"))
                 }
             }
         }

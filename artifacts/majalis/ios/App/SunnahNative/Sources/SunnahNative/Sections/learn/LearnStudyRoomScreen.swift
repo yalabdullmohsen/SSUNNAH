@@ -66,14 +66,14 @@ struct LearnStudyRoomScreen: View {
                             Button { timer.preset = p; timer.reset() } label: { SunnahChip(p.label, selected: timer.preset == p) }
                                 .buttonStyle(.plain)
                                 .disabled(timer.phase != .idle)
-                                .accessibilityLabel("\(p.work) دقيقة عمل و\(p.rest) راحة")
+                                .accessibilityLabel(ArabicCount.label(p.work, one: "دقيقة واحدة", two: "دقيقتان", few: "دقائق", many: "دقيقة", genitive: "دقيقة") + " عمل و" + ArabicCount.label(p.rest, one: "دقيقة واحدة", two: "دقيقتان", few: "دقائق", many: "دقيقة", genitive: "دقيقة") + " راحة")
                         }
                     }
                     Text(phaseTitle).font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textSecondary)
                     Text(String(format: "%02d:%02d", left / 60, left % 60))
                         .font(Sunnah.Typography.pageTitle).monospacedDigit()
                         .foregroundStyle(Sunnah.Colors.textPrimary)
-                        .accessibilityLabel("المتبقي \(left / 60) دقيقة و\(left % 60) ثانية")
+                        .accessibilityLabel("المتبقي " + ArabicCount.label(left / 60, one: "دقيقة واحدة", two: "دقيقتان", few: "دقائق", many: "دقيقة", genitive: "دقيقة") + " و" + ArabicCount.label(left % 60, one: "ثانية واحدة", two: "ثانيتان", few: "ثوانٍ", many: "ثانية", genitive: "ثانية"))
                     Text("دورات مكتملة: \(timer.completedWork)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                     if timer.isRunning {
                         SunnahButton("إيقاف مؤقت") { timer.pause(at: Date()) }

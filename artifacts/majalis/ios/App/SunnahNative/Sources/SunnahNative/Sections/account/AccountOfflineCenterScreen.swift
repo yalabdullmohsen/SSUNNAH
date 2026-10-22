@@ -67,7 +67,7 @@ struct AccountOfflineCenterScreen: View {
                             HStack {
                                 Text(pack.label).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                                 Spacer(minLength: Sunnah.Spacing.s2)
-                                Text(pack.records > 0 ? "\(pack.records) سجل" : "فارغ")
+                                Text(pack.records > 0 ? ArabicCount.label(pack.records, one: "سجل واحد", two: "سجلان", few: "سجلات", many: "سجلًا", genitive: "سجل") : "فارغ")
                                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary).monospacedDigit()
                             }
                             .frame(minHeight: Sunnah.Spacing.touch)
