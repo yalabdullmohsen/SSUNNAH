@@ -9,17 +9,11 @@ public enum MushafRoute: Equatable, Sendable {
     public static func parse(_ path: String) -> MushafRoute? {
         let parts = path.split(separator: "?", maxSplits: 1, omittingEmptySubsequences: false).map(String.init)
         let comps = parts[0].split(separator: "/").map(String.init)
-        // صيغة الودجت القائمة: `/mushaf?page=N[&ayah=س:آ]` — الآية أولى إن صحّت، وإلا الصفحة.
-        if comps == ["mushaf"], parts.count == 2 {
-            var q: [String: String] = [:]
-            for kv in parts[1].split(separator: "&") {
-                let p = kv.split(separator: "=", maxSplits: 1).map(String.init)
-                if p.count == 2 { q[p[0]] = p[1] }
-            }
-            if let a = q["ayah"], let r = parse("/mushaf/ayah/\(a)") { return r }
-            if let n = q["page"] { return parse("/mushaf/page/\(n)") }
-            return nil
-        }
+        let q = parts.count == 2 ? query(parts[1]) : [:]
+        // `?ayah=س:آ` أولى إن صحّت، في صيغة الودجت `/mushaf?page=N&ayah=…` وصيغة الويب `/mushaf/page/N?ayah=2%3A255`.
+        if let a = q["ayah"], comps == ["mushaf"] || (comps.count == 3 && comps[0] == "mushaf" && comps[1] == "page"),
+           let r = parse("/mushaf/ayah/\(a)") { return r }
+        if comps == ["mushaf"] { return q["page"].flatMap { parse("/mushaf/page/\($0)") } }
         guard comps.count == 3, comps[0] == "mushaf" else { return nil }
         switch comps[1] {
         case "page":
@@ -31,5 +25,15 @@ public enum MushafRoute: Equatable, Sendable {
             return .ayah(surah: p[0], ayah: p[1])
         default: return nil
         }
+    }
+
+    /// قيم الاستعلام بعد فكّ الترميز (`2%3A255` ← `2:255`).
+    private static func query(_ s: String) -> [String: String] {
+        var q: [String: String] = [:]
+        for kv in s.split(separator: "&") {
+            let p = kv.split(separator: "=", maxSplits: 1).map(String.init)
+            if p.count == 2 { q[p[0]] = p[1].removingPercentEncoding ?? p[1] }
+        }
+        return q
     }
 }

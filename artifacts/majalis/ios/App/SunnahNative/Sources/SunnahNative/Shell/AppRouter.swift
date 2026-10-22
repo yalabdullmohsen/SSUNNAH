@@ -10,7 +10,9 @@ public final class AppRouter: ObservableObject {
     /// يدفع المسار فوق الرئيسية؛ جذر الرئيسية "/" يصفّر المكدّس، ولا تكرار للوجهة نفسها.
     public func open(path raw: String) {
         let path = Route.normalize(raw)
-        if path == AppTab.home.rootPath {
+        // الجذر يُقارن بلا استعلام/مرساة: «/?utm_source=x» رئيسية لا وجهة فوقها.
+        let base = path.split(whereSeparator: { $0 == "?" || $0 == "#" }).first.map(String.init) ?? path
+        if base == AppTab.home.rootPath {
             stack = []
         } else if stack.last != .web(path: path) {
             stack.append(.web(path: path))
