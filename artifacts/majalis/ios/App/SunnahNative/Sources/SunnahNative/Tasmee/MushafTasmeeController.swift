@@ -203,7 +203,9 @@ public final class MushafTasmeeController: ObservableObject {
             guard sa.count == 2, let s = Int(sa[0]), let a = Int(sa[1]) else { return nil }
             return (s, a, w)
         }
-        guard let first = pos(0), let last = pos(reached - 1) else { return nil }
+        guard let first = pos(0) else { return nil }
+        // آخر آية بلغها القارئ من سورة البداية: الجلسة قد تعبر إلى سورة تالية (صفحة 604)، وأحداثها تحمل سورتها.
+        guard let last = (0..<reached).reversed().lazy.compactMap(pos).first(where: { $0.surah == first.surah }) else { return nil }
         var events: [TasmeeSessionEvent] = []
         for x in m.mistakes {
             guard let p = pos(x.index) else { continue }
