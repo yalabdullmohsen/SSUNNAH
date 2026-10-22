@@ -115,6 +115,7 @@ acquire() {
 
 [ -n "${BUILD_SLOT_HELD:-}" ] || bash "$(dirname "$0")/native-sim-hygiene.sh" || exit $? # نظافة المحاكيات/العمليات + رفض عند ≥80٪
 check_load
+[ -x "$HOME/.majalis-tools/maint/memwait.sh" ] && bash "$HOME/.majalis-tools/maint/memwait.sh"   # ينتظر هدوء الذاكرة (swap<3GB وحر≥15٪) قبل أخذ الخانة؛ يمنع تعليق الماك
 acquire "$@"
 reap_orphans
 export BUILD_SLOT_HELD=1

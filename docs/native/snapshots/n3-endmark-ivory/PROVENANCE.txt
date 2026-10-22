@@ -1,0 +1,8 @@
+git_sha=323920aed806775bcac82019b438e6f9ad84d638
+branch=n3/endmark-green-ivory
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/3f41d8db90cdd753/SunnahApp.app
+binary_sha256=addd566b16b97edcfbe7ce8571e7d8822d3ef094347fbc80a1e4b445f4bf3170
+built_at=2026-10-22 01:51:16
+source_newest=2026-10-22 01:48:35
+captured_at=2026-10-22 01:52:04
+covers=Design/Sunnah

@@ -1,0 +1,11 @@
+git_sha=0854334b5215067c705e0a633da36f1ecb271e91
+branch=n3/prayer-adhkar-wird-redesign
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/6a9fd3e59abf2308/SunnahApp.app
+binary_sha256=f417d5d00772ec42124a4c3e901c6cb5bdd55b8b0a04d52335f9a00d1bd4e90f
+built_at=2026-10-21 18:22:37
+source_newest=2026-10-21 18:19:45
+captured_at=2026-10-21 18:28:12
+files: SunnahProgress.swift PrayerScreen.swift AdhkarScreen.swift DailyWirdScreen.swift
+covers: after|before/prayer-{light,dark}.png = شاشة الصلاة: بطاقة الصلاة القادمة بعدّ تنازلي كبير وبطاقات مواقيت مستقلة (PrayerScreen.swift)؛ adhkar-{light,dark}.png = فهرس الأذكار بلاطات بأيقونات (AdhkarScreen.swift)؛ wird-{light,dark}.png = الورد اليومي ببطاقات تقدّم وحلقات (DailyWirdScreen.swift) عبر المكوّن المشترك SunnahProgress.swift
+gaps: لا لقطة لتفصيل تصنيف الأذكار ولا عدّاد الأذكار الثابت (لم يُمسّا؛ AdhkarListView/AdhkarTapCounter كما هما)؛ AdhkarExtraScreens.swift لم يُعدَّل؛ لا iPad ولا XXXL؛ لقطات من المحاكي لا جهاز؛ لقطات after لشاشة الورد/الصلاة تحتاج مراجعة بصرية للتمرير السفلي
+note: before = origin/native-app قبل التعديل (البناء 4b3492024486366f)؛ after = فرع PR ببناء 6a9fd3e59abf2308

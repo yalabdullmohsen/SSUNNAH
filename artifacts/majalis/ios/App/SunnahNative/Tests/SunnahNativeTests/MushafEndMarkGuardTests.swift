@@ -17,6 +17,11 @@ final class MushafEndMarkGuardTests: XCTestCase {
     static let maxWidthOfFont: CGFloat = 0.99
     static let minContrast: CGFloat = 4.5
 
+    private func rgb(_ c: Color, _ style: UIUserInterfaceStyle) -> [CGFloat] {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        UIColor(c).resolvedColor(with: UITraitCollection(userInterfaceStyle: style)).getRed(&r, green: &g, blue: &b, alpha: &a)
+        return [r, g, b]
+    }
     private func lum(_ c: UIColor, _ style: UIUserInterfaceStyle) -> CGFloat {
         var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         c.resolvedColor(with: UITraitCollection(userInterfaceStyle: style)).getRed(&r, green: &g, blue: &b, alpha: &a)
@@ -49,6 +54,9 @@ final class MushafEndMarkGuardTests: XCTestCase {
         }
         XCTAssertGreaterThanOrEqual(checked, 50, "عيّنة الآيات أقل من المتوقع")
         for style in [UIUserInterfaceStyle.light, .dark] {
+            XCTAssertEqual(rgb(Sunnah.Colors.mushafEndGold, style), rgb(Sunnah.Colors.mushafAccent, style), "إطار زخرفة الآية ≠ إطار لافتة السورة \(style.rawValue)")
+        }
+        for style in [UIUserInterfaceStyle.light, .dark] {
             let l1 = lum(UIColor(Sunnah.Colors.mushafEndDigits), style), l2 = lum(UIColor(Sunnah.Colors.mushafEndFill), style)
             XCTAssertGreaterThanOrEqual((max(l1, l2) + 0.05) / (min(l1, l2) + 0.05), Self.minContrast, "تباين رقم الآية \(style.rawValue)")
         }
@@ -78,6 +86,12 @@ final class MushafEndMarkGuardTests: XCTestCase {
     }
 
     /// لقطات قبل/بعد للصفحات المرجعية (لا فحص بكسلي؛ الحجم والطبقات مفحوصة أعلاه من مسار الغليف).
+    func testEndMarkFrameEqualsSurahBannerFrame() {
+        for style in [UIUserInterfaceStyle.light, .dark] {
+            XCTAssertEqual(rgb(Sunnah.Colors.mushafEndGold, style), rgb(Sunnah.Colors.mushafAccent, style), "إطار زخرفة الآية ≠ إطار لافتة السورة \(style.rawValue)")
+        }
+    }
+
     @MainActor func testEndMarkSnapshots() throws {
         let env = ProcessInfo.processInfo.environment
         guard let dir = env["ENDMARK_SNAP_DIR"], let tag = env["ENDMARK_TAG"] else { throw XCTSkip("ENDMARK_SNAP_DIR/ENDMARK_TAG غير محددين") }
