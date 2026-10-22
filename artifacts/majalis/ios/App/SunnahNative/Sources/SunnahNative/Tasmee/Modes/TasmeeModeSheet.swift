@@ -68,11 +68,7 @@ public struct TasmeeModeSheet: View {
             VStack(spacing: 0) {
                 ForEach(TasmeeMode.allCases, id: \.self) { m in
                     Button { Sunnah.Haptics.select(); options.mode = m } label: {
-                        HStack(spacing: Sunnah.Spacing.s2) {
-                            SunnahListRow(title: m.title, subtitle: m.summary, showsChevron: false, icon: m.icon)
-                            Image(systemName: options.mode == m ? "checkmark.circle.fill" : "circle")
-                                .foregroundStyle(options.mode == m ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
-                        }
+                        TasmeeModeRow(mode: m, selected: options.mode == m)
                         .padding(.horizontal, Sunnah.Spacing.pageX)
                     }
                     .buttonStyle(.plain)
@@ -99,6 +95,29 @@ public struct TasmeeModeSheet: View {
             .padding(.horizontal, Sunnah.Spacing.pageX)
             SunnahButton("ابدأ") { options.save(defaults); onStart(options) }
                 .padding(.horizontal, Sunnah.Spacing.pageX)
+        }
+    }
+}
+
+/// صف وضع واحد؛ الصف المشترك يقتطع الوصف بسطرين، فمع أحجام الإتاحة يُعرض الوصف كاملًا تحت العنوان.
+struct TasmeeModeRow: View {
+    let mode: TasmeeMode
+    let selected: Bool
+    @Environment(\.dynamicTypeSize) private var typeSize
+
+    var body: some View {
+        HStack(spacing: Sunnah.Spacing.s2) {
+            if typeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                    SunnahListRow(title: mode.title, showsChevron: false, icon: mode.icon)
+                    Text(mode.summary).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true).padding(.horizontal, Sunnah.Spacing.pageX)
+                }
+            } else {
+                SunnahListRow(title: mode.title, subtitle: mode.summary, showsChevron: false, icon: mode.icon)
+            }
+            Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+                .foregroundStyle(selected ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
         }
     }
 }
