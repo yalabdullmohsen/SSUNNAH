@@ -72,6 +72,9 @@ public final class MushafTasmeeController: ObservableObject {
         switch phase { case .listening, .preparing, .downloading, .needsMic, .failed: true; default: false }
     }
     public var modelBytes: Int64? { engine.modelDownloadBytes }
+    public var isFailed: Bool { if case .failed = phase { true } else { false } }
+    /// إغلاق رسالة الفشل: ترجع الجلسة إلى idle فيختفي الشريط وتبقى الصفحة نظيفة.
+    public func dismissFailure() { if isFailed { phase = .idle } }
 
     /// الضغطة على الزر: خامل ← ورقة الأوضاع أولًا، ثم `start`؛ أثناء الاستماع تُنهي الجلسة.
     public func micPressed(page: Int, repo: MushafRepository, search: MushafSearch?) {
