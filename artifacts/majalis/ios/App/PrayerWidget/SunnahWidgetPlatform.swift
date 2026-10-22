@@ -636,7 +636,7 @@ struct SunnahTwoZone<Primary: View, Secondary: View>: View {
 
 /// حالة فارغة مصمَّمة: أيقونة + عبارة واحدة قصيرة، بلا شرح.
 struct SunnahCalmCard: View {
-    var symbol = "moon.stars"
+    var symbol = "moon"
     var phrase = "افتح سُنّة"
     var compact = false
     @SunnahFamily private var family

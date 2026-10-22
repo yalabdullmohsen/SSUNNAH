@@ -12,6 +12,8 @@ public enum RouteResolver {
 
     public static func registerAll(in registry: TemplateRegistry) {
         // التسجيل: مولَّد القوالب أولًا ثم الأقسام (تستبدل المعرّفات نفسها) ثم الشاشات الخاصة.
+        // فك ملفي الضعيف/الموضوع لعدّ المعتمد كان يجري على الرئيسي عند أول فحص مسار؛ يُسخَّن الآن في الخلفية (القيمة نفسها، والكاش مقفول).
+        Task.detached(priority: .utility) { WeakHadithAvailability.gatedRoutes.values.forEach { _ = WeakHadithAvailability.approvedCount($0) } }
         GeneratedScreens.registerAll(in: registry)
         SirahSection.register(in: registry)
         AqidahSection.register(in: registry)

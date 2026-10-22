@@ -301,7 +301,7 @@ extension PrayerWidgetEntry {
 
     /// رمز شاشة القفل: جرس عند التنبيه (لا ألوان ثابتة على القفل؛ النظام يلوّن).
     var lockSymbol: String {
-        isAlertWindow ? "bell.fill" : (focus.key?.symbol(filled: focus.isCurrent) ?? "moon.stars")
+        isAlertWindow ? "bell.fill" : (focus.key?.symbol(filled: focus.isCurrent) ?? "moon")
     }
 
     /// لون العدّاد على الخلفية الزمردية: أبيض ← تنبيه عنبري (≤10د) ← ذهبي بعد الأذان.
@@ -342,7 +342,7 @@ struct InlinePrayerWidgetView: View {
                     }
                 }
             } icon: {
-                Image(systemName: entry.focus.key?.symbol(filled: entry.focus.isCurrent) ?? "moon.stars")
+                Image(systemName: entry.focus.key?.symbol(filled: entry.focus.isCurrent) ?? "moon")
             }
             .accessibilityLabel(Text(PrayerCounterA11y.label(entry)))
         }
@@ -356,7 +356,7 @@ struct CircularPrayerWidgetView: View {
         ZStack {
             AccessoryWidgetBackground()
             if entry.needsAppOpenAction {
-                Image(systemName: "moon.stars")
+                Image(systemName: "moon")
                     .font(WidgetType.icon(20))
                     .widgetAccentable()
             } else {

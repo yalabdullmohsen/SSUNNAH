@@ -78,9 +78,9 @@ struct SunnahReaderDisplayMenu: View {
                     HStack {
                         Text("حجم الخط").font(AppearancePrefs.ui(.bold, 14, .subheadline)).foregroundStyle(Sunnah.Colors.textPrimary)
                         Spacer()
-                        stepButton("minus", "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
+                        stepButton("textformat.size.smaller", "تصغير الخط") { sizeStep = max(-2, sizeStep - 1) }
                         Text(sizeStep.arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary).frame(minWidth: 28)
-                        stepButton("plus", "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
+                        stepButton("textformat.size.larger", "تكبير الخط") { sizeStep = min(4, sizeStep + 1) }
                     }
                     Divider().overlay(Sunnah.Colors.border)
                     Button { Sunnah.Haptics.select(); night.toggle() } label: {

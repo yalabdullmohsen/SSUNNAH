@@ -99,7 +99,6 @@ enum SectionsCatalog {
         Entry(route: "/amrad-qalbiyya", title: "الأمراض القلبية", group: "العقيدة والتزكية"),
         Entry(route: "/asma-husna", title: "الأسماء الحسنى", group: "العقيدة والتزكية"),
         Entry(route: "/discover-islam", title: "التعريف", group: "العقيدة والتزكية"),
-        Entry(route: "/discover-islam/contact", title: "تواصل معنا", group: "العقيدة والتزكية"),
         Entry(route: "/discover-islam/doubts", title: "الشبهات والرد عليها", group: "العقيدة والتزكية"),
         Entry(route: "/discover-islam/how-to-convert", title: "كيف أدخل في الإسلام", group: "العقيدة والتزكية"),
         Entry(route: "/discover-islam/new-muslim", title: "المسلم الجديد", group: "العقيدة والتزكية"),

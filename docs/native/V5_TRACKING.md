@@ -99,7 +99,6 @@
 | `/asma-husna` | قائمة | العقيدة والتزكية | ✅ |
 | `/discover-islam` | قائمة | العقيدة والتزكية | ✅ |
 | `/discover-islam/articles/:slug` | مقال | العقيدة والتزكية | — |
-| `/discover-islam/contact` | قائمة | العقيدة والتزكية | ✅ |
 | `/discover-islam/doubts` | قائمة | العقيدة والتزكية | ✅ |
 | `/discover-islam/doubts/:slug` | تفاصيل | العقيدة والتزكية | — |
 | `/discover-islam/how-to-convert` | قائمة | العقيدة والتزكية | ✅ |

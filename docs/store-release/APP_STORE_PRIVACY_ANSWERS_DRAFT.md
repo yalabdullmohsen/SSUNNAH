@@ -23,7 +23,6 @@ App Privacy → «Do you or your third-party partners collect data from this app
 |---|---|---|---|---|---|
 | Contact Info | Email Address | Yes | No | App Functionality | Supabase Auth والمراسلات |
 | Contact Info | Name | Yes | No | App Functionality | `profiles.full_name` والشهادات |
-| Contact Info | Phone Number | Yes | No | App Functionality | `dawah_contact_requests.contact_value` (اختياري) |
 | Identifiers | User ID | Yes | No | App Functionality | معرّف Supabase |
 | Identifiers | Device ID | Yes | No | App Functionality | رمز APNs في `push_subscriptions` |
 | User Content | Other User Content | Yes | No | App Functionality | ملاحظات، مفضلة، تقييمات، بلاغات، خطط |

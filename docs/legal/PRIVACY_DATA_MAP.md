@@ -26,7 +26,6 @@
 | أحداث سلوك/توصيات | `user_behavior_events`, … | توصيات | نعم (CASCADE) |
 | اشتراكات دفع | `push_subscriptions` | Web/Capacitor push | **غير مؤكد** (غالباً بلا `user_id`) |
 | سجلات أخطاء/عرض | `client_error_logs`, `content_views`, … | تشخيص/إحصاء | **غير مؤكد** (`SET NULL` محتمل) |
-| طلبات دعوة | `dawah_contact_requests` | تواصل | **غير مؤكد** |
 
 ## محلي (الجهاز / المتصفح)
 

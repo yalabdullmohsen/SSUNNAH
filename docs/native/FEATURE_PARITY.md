@@ -117,7 +117,6 @@
 - [x] `/asma-husna` — AsmaaHusnaPage — قائمة
 - [x] `/discover-islam` — DiscoverIslamPage — قائمة
 - [x] `/discover-islam/articles/:slug` — DiscoverIslamArticleDetailPage — مقال
-- [x] `/discover-islam/contact` — DiscoverIslamContactPage — قائمة
 - [x] `/discover-islam/doubts` — DiscoverIslamDoubtsPage — قائمة
 - [x] `/discover-islam/doubts/:slug` — DiscoverIslamDoubtDetailPage — تفاصيل
 - [x] `/discover-islam/how-to-convert` — HowToBecomeMuslimPage — قائمة

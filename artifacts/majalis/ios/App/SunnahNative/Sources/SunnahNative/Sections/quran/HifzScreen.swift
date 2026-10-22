@@ -271,9 +271,9 @@ struct HifzScreen: View {
         HStack {
             Text(title).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
             Spacer()
-            roundButton("minus", "إنقاص", id: "hifz.range.\(id).minus") { v.wrappedValue = max(1, v.wrappedValue - 1) }
+            roundButton("chevron.down", "إنقاص", id: "hifz.range.\(id).minus") { v.wrappedValue = max(1, v.wrappedValue - 1) }
             Text(v.wrappedValue.arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary).frame(minWidth: 48)
-            roundButton("plus", "زيادة", id: "hifz.range.\(id).plus") { v.wrappedValue = min(Mushaf.pageCount, v.wrappedValue + 1) }
+            roundButton("chevron.up", "زيادة", id: "hifz.range.\(id).plus") { v.wrappedValue = min(Mushaf.pageCount, v.wrappedValue + 1) }
         }
     }
     private func roundButton(_ icon: String, _ label: String, id: String, _ action: @escaping () -> Void) -> some View {

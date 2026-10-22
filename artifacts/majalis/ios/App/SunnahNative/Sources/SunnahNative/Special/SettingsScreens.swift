@@ -47,7 +47,7 @@ struct SettingsView: View {
                             SunnahSettingsRow("تسجيل الخروج", symbol: "rectangle.portrait.and.arrow.right", tone: .gold)
                         }.buttonStyle(.plain)
                     } else {
-                        link("تسجيل الدخول", "person.crop.circle.badge.plus", "/login")
+                        link("تسجيل الدخول", "person.crop.circle.badge.checkmark", "/login")
                     }
                     link("مساهماتي", "tray.full", "/my-submissions", last: true)
                 }

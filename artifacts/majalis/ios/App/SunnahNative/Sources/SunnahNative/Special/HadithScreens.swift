@@ -97,16 +97,51 @@ enum ArabicSearch {
 }
 
 /// الأحاديث الصحيحة الموثَّقة: بحث ثم تفاصيل (الراوي والمصدر والدرجة والشرح).
+/// فهرس قائمة الأحاديث: الترتيب وحرف القفز والنص المطبَّع يُحسبون مرة واحدة لا في كل تقييم `body`
+/// (كان الفرز يطبّع العنوان في كل مقارنة، والبحث يطبّع كل النصوص عند كل ضغطة).
+final class HadithListIndex: ObservableObject {
+    struct Entry { let item: HadithItem; let key: String; let blob: String }
+    let entries: [Entry]
+    /// أحرف القفز بترتيب ظهورها (قائمة كاملة بلا بحث).
+    let keys: [String]
+
+    /// ترتيب بأول حرف فعلي (الأقواس وعلامات الترقيم في البداية لا تدخل) كي يتسلسل الفهرس بلا تكرار.
+    private static func sortKey(_ title: String) -> String {
+        let n = ArabicSearch.normalize(title.trimmingCharacters(in: .whitespacesAndNewlines))
+        return String(n.drop { !$0.isLetter })
+    }
+
+    init(_ items: [HadithItem]) {
+        let ordered = items.map { (item: $0, sort: Self.sortKey($0.displayTitle)) }.sorted { $0.sort < $1.sort }
+        entries = ordered.map { Entry(item: $0.item, key: SunnahJumpIndex<EmptyView>.key(for: $0.item.displayTitle),
+                                      blob: ArabicSearch.normalize($0.item.displayTitle + " " + $0.item.text)) }
+        var seen = Set<String>(); var order: [String] = []
+        for e in entries where seen.insert(e.key).inserted { order.append(e.key) }
+        keys = order
+    }
+
+    /// `q` مطبَّع ومقتطع؛ الفارغ = القائمة كاملة.
+    func rows(matching q: String) -> [Entry] { q.isEmpty ? entries : entries.filter { $0.blob.contains(q) } }
+
+    /// معرّفات أول صف لكل حرف: مرساة القفز فريدة، فلا تتكرر معرّفات العرض.
+    static func firstRowIDs(_ rows: [Entry]) -> Set<String> {
+        var seen = Set<String>(); var ids = Set<String>()
+        for r in rows where seen.insert(r.key).inserted { ids.insert(r.item.id) }
+        return ids
+    }
+}
+
+/// الأحاديث الصحيحة الموثَّقة: بحث ثم تفاصيل (الراوي والمصدر والدرجة والشرح).
 struct HadithListView: View {
     let items: [HadithItem]
     /// عنوان الصفحة فوق القائمة (كان مكانه فراغًا فوق حقل البحث).
     var title: String? = nil
     @State private var query = ""
+    @StateObject private var index: HadithListIndex
 
-    private var filtered: [HadithItem] {
-        let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
-        guard !q.isEmpty else { return items }
-        return items.filter { ArabicSearch.normalize($0.displayTitle + " " + $0.text).contains(q) }
+    init(items: [HadithItem], title: String? = nil) {
+        self.items = items; self.title = title
+        _index = StateObject(wrappedValue: HadithListIndex(items))
     }
 
     var body: some View {
@@ -117,33 +152,20 @@ struct HadithListView: View {
         #endif
     }
 
-    /// ترتيب بأول حرف فعلي (الأقواس وعلامات الترقيم في البداية لا تدخل) كي يتسلسل الفهرس بلا تكرار.
-    private static func sortKey(_ title: String) -> String {
-        let n = ArabicSearch.normalize(title.trimmingCharacters(in: .whitespacesAndNewlines))
-        return String(n.drop { !$0.isLetter })
-    }
-
-    /// معرّفات أول صف لكل حرف: مرساة القفز فريدة، فلا تتكرر معرّفات العرض.
-    private static func firstRowIDs(_ rows: [HadithItem]) -> Set<String> {
-        var seen = Set<String>(); var ids = Set<String>()
-        for r in rows where seen.insert(SunnahJumpIndex<EmptyView>.key(for: r.displayTitle)).inserted { ids.insert(r.id) }
-        return ids
-    }
-
     @ViewBuilder private var listBody: some View {
         if items.isEmpty { EmptyStateView() } else {
-            let rows = filtered.sorted { Self.sortKey($0.displayTitle) < Self.sortKey($1.displayTitle) }
-            let firsts = Self.firstRowIDs(rows)
-            let keys = query.isEmpty ? rows.map { SunnahJumpIndex<EmptyView>.key(for: $0.displayTitle) }.reduce(into: [String]()) { if !$0.contains($1) { $0.append($1) } } : []
+            let rows = index.rows(matching: ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces)))
+            let firsts = HadithListIndex.firstRowIDs(rows)
+            let keys = query.isEmpty ? index.keys : []
             SunnahJumpIndex(keys: keys, count: rows.count) {
                 SunnahRowStack {
                     if let title { SunnahPageTitle(title) }
-                    ForEach(rows) { item in
-                        let k = SunnahJumpIndex<EmptyView>.key(for: item.displayTitle)
+                    ForEach(rows, id: \.item.id) { row in
+                        let item = row.item
                         SunnahNavigationLink { HadithDetailView(item: item) } label: {
                             HadithRowLabel(grade: .sahih, title: item.displayTitle, subtitle: item.sourceName ?? item.chapter, preview: item.previewText)
                         }.hadithGradeRow(.sahih)
-                        .sunnahJumpAnchor(firsts.contains(item.id) ? k : "-\(item.id)")
+                        .sunnahJumpAnchor(firsts.contains(item.id) ? row.key : "-\(item.id)")
                     }
                 }
             }
@@ -258,16 +280,17 @@ struct HadithCollectionView: View {
     let file: String; let title: String; let showNumber: Bool
     @State private var phase: Phase = .loading
     @State private var query = ""
-    private enum Phase { case loading, failed, ready([HadithRaw]) }
+    /// `norm[i]` = النص المطبَّع للحديث `i`، يُحسب مرة واحدة بعد التحميل لا عند كل ضغطة مفتاح.
+    private enum Phase { case loading, failed, ready([HadithRaw], norm: [String]) }
 
     var body: some View {
         Group {
             switch phase {
             case .loading: LoadingStateView()
             case .failed: ErrorStateView { Task { await load() } }
-            case .ready(let all):
+            case .ready(let all, let norm):
                 let q = ArabicSearch.normalize(query.trimmingCharacters(in: .whitespaces))
-                let rows = q.isEmpty ? all : all.filter { ArabicSearch.normalize($0.t).contains(q) }
+                let rows = q.isEmpty ? all : all.indices.filter { norm[$0].contains(q) }.map { all[$0] }
                 SunnahRowStack {
                     ForEach(rows) { row in
                         VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
@@ -288,7 +311,9 @@ struct HadithCollectionView: View {
         phase = .loading
         do {
             let f = try await loader.load(HadithCollectionFile.self, from: .bundled(name: file, subdirectory: "Data/hadith"))
-            phase = .ready(f.hadiths)
+            let hadiths = f.hadiths
+            let norm = await Task.detached(priority: .userInitiated) { hadiths.map { ArabicSearch.normalize($0.t) } }.value
+            phase = .ready(hadiths, norm: norm)
         } catch { phase = .failed }
     }
 }

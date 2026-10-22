@@ -9,7 +9,7 @@ public struct SectionsListTemplate: View {
         if links.isEmpty { EmptyStateView() } else {
             ScrollView {
                 SunnahSectionHub(links: links, idPrefix: "sections.hub")
-                    .padding(.top, Sunnah.Spacing.pageX).padding(.bottom, 96)
+                    .padding(.horizontal, Sunnah.Spacing.pageX).padding(.top, Sunnah.Spacing.pageX).padding(.bottom, 96)
             }
             .background(Sunnah.Colors.bg)
         }
