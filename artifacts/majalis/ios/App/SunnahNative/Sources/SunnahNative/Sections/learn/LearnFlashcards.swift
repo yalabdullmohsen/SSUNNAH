@@ -184,12 +184,21 @@ struct LearnFlashcardSession: View {
         index += 1; flipped = false
     }
 
+    /// موعد المراجعة التالية بعدد عربي سليم وأرقام عربية: «يومان»، «٥ أيام»، «١٥ يومًا»، «١٠٠ يوم».
     static func intervalLabel(_ days: Int) -> String {
         switch days {
         case ...1: return "غدًا"
         case 7: return "أسبوع"
+        case 14: return "أسبوعان"
         case 28...31: return "شهر"
-        default: return "\(days) أيام"
+        case 100...:
+            // المئات: تمييز ما ينتهي بـ0–2 مجرور مفرد، و3–10 جمع، و11–99 منصوب مفرد.
+            switch days % 100 {
+            case 0...2: return "\(days.arabicDigits) يوم"
+            case 3...10: return "\(days.arabicDigits) أيام"
+            default: return "\(days.arabicDigits) يومًا"
+            }
+        default: return TasmeeProgressFormat.counted(days, one: "يوم", two: "يومان", few: "أيام", many: "يومًا")
         }
     }
 }
