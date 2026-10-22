@@ -42,10 +42,10 @@ final class TasmeeSnapshotEngine: RecitationEngineControlling, RecitationLevelRe
             onPartial?(RecitationPartial(seq: seq, text: (words.prefix(n) + (extra.map { [$0] } ?? [])).joined(separator: " "), finishedAtMs: ms))
             try? await Task.sleep(nanoseconds: 350_000_000)
         }
-        /// كلمة خاطئة شبيهة بالمرجع (حرف واحد مبدَّل) كي يصنّفها المطابِق «خاطئة» لا «زائدة»؛ التكرار مرّتين يُثبّتها، وتنوّع `v` يزيد المحاولات.
+        /// كلمة خاطئة شبيهة بالمرجع (نصف حروفها مبدَّل: تشابه فوق عتبة «خاطئة» ودون عتبة القبول، وإلا قُبلت صحيحة) كي يصنّفها المطابِق «خاطئة» لا «زائدة»؛ التكرار مرّتين يُثبّتها، وتنوّع `v` يزيد المحاولات.
         func wrongTry(_ v: Int) async {
             let letters = Array(words[4].unicodeScalars.filter { $0.properties.generalCategory != .nonspacingMark }.map(Character.init))
-            var w = letters; w[(v + 1) % max(1, w.count - 1)] = ["ز", "ط", "ك"][v % 3]
+            var w = letters; for k in 0..<max(2, w.count / 2) { w[(v + 2 * k + 1) % w.count] = ["ز", "ط", "ك"][(v + k) % 3] }
             for _ in 0..<2 { await say(4, extra: String(w)) }
         }
         switch stage {
