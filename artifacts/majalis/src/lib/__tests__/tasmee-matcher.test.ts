@@ -208,4 +208,44 @@ console.log("=== الكلمة الزائدة: «دقيق» فقط، بتثبيت
   }
 }
 
+console.log("=== وضع البوابة: لا تتقدّم الكلمة بعد خطأ حتى تُقال صحيحة ===");
+{
+  const m = new TasmeeMatcher(ref, { gateOnError: true });
+  const pre = spoken.slice(0, 3).join(" ");
+  assert.equal(m.ingest(pre, 100).filter((e) => e.state === "correct").length, 3);
+  assert.equal(m.next, 3);
+  // قفز: نطق الكلمة ٥ بدل ٤ — لا كشف، ولا تقدّم، والخطأ يُثبَّت بعد نتيجتين متطابقتين
+  const skip = pre + " " + spoken[4];
+  assert.deepEqual(m.ingest(skip, 200), [], "نتيجة واحدة لا تكفي لتثبيت الخطأ");
+  const ev = m.ingest(skip, 300);
+  assert.equal(ev.length, 1);
+  assert.equal(ev[0]!.index, 3);
+  assert.equal(ev[0]!.state, "wrong");
+  assert.equal(ev[0]!.attempts, 1);
+  assert.equal(m.next, 3, "المؤشر لم يتقدّم");
+  assert.notEqual(m.state[4], "correct", "الكلمة التالية لم تُكشف");
+  assert.deepEqual(m.ingest(skip, 400), [], "تكرار الخطأ نفسه لا يُعاد تنبيهه");
+  // نطق صحيح: تُكشف الكلمة المتوقعة (وما بعدها إن كانت متتالية)
+  const ok = m.ingest(spoken.slice(0, 4).join(" "), 500);
+  assert.deepEqual(ok.map((e) => [e.index, e.state]), [[3, "correct"]]);
+  assert.equal(m.next, 4);
+  assert.equal(m.state[3], "correct");
+  assert.equal(m.attemptsFor(3), 1, "المحاولة تبقى في سجلّ الأخطاء بعد التصحيح");
+  assert.deepEqual(m.mistakes.map((x) => x.index), [3]);
+}
+{
+  // الوضع الافتراضي لم يتغيّر: القفز يقدّم المؤشر
+  const m = new TasmeeMatcher(ref);
+  const ev = m.ingest(spoken.slice(0, 3).join(" ") + " " + spoken[4], 100);
+  assert.ok(ev.some((e) => e.state === "skipped"));
+  assert.equal(m.next, 5);
+}
+{
+  // تلاوة سليمة كاملة في وضع البوابة = كشف كامل بلا أخطاء
+  const m = new TasmeeMatcher(ref, { gateOnError: true });
+  spoken.forEach((_, k) => m.ingest(spoken.slice(0, k + 1).join(" "), (k + 1) * 400));
+  assert.equal(m.next, ref.length);
+  assert.deepEqual(m.mistakes, []);
+}
+
 console.log("tasmee-matcher.test.ts: ok");

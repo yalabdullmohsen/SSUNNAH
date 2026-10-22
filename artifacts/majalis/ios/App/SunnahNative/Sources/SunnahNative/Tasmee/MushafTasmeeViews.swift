@@ -12,6 +12,15 @@ struct MushafTasmeeOverlay: View {
                 Text(h).font(Sunnah.Typography.secondary).padding(.horizontal, 12).padding(.vertical, 6)
                     .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
             }
+            if tasmee.offersHint, tasmee.phase == .listening {
+                Button { tasmee.requestHint() } label: {
+                    Label("تلميح", systemImage: "lightbulb.fill").font(Sunnah.Typography.secondary)
+                        .padding(.horizontal, 12).padding(.vertical, 6)
+                        .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
+                        .foregroundStyle(Sunnah.Colors.primary)
+                }
+                .accessibilityIdentifier("mushaf.tasmee.hint")
+            }
             HStack(spacing: Sunnah.Spacing.s2) {
                 if tasmee.isActive || tasmee.phase == .needsMic {
                     Button { tasmee.hideVerses.toggle() } label: {
@@ -118,6 +127,7 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
     let engine: RecitationEngineControlling?
     @Binding var current: Int
     let overlay: Overlay
+    let surahName: (Int) -> String
 
     private var consentBinding: Binding<Bool> {
         Binding(get: { switch box.controller?.phase { case .consent, .downloading: return true; default: return false } },
@@ -136,7 +146,11 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
             }
             .sunnahSheet(isPresented: reportBinding) {
                 if let t = box.controller, case .finished(let r) = t.phase {
-                    MushafTasmeeReport(report: r) { t.dismissReport() }.presentationDetents([.medium])
+                    if let rec = t.lastRecord {
+                        TasmeeReportScreen(record: rec, surahName: surahName(rec.surah)) { _ in t.dismissReport() }
+                    } else {
+                        MushafTasmeeReport(report: r) { t.dismissReport() }.presentationDetents([.medium])
+                    }
                 }
             }
             .task(id: engine.map(ObjectIdentifier.init)) { box.attach(engine) }   // المنصّة تُبنى بعد أول إطار: المحرك يصل متأخرًا (task يلتقط القيمة الجديدة، onChange يلتقط القديمة)

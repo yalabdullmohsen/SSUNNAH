@@ -278,7 +278,7 @@ public struct MushafReaderView: View {
         .onDisappear { chromeHide.cancel(); if tafsirAyahPlaying != nil { mukhtasar.stop() } }
         // أعلى الصفحة فوق سطر اسم السورة/الجزء (لا يغطي آخر سطر من الآيات ولا رقم الصفحة).
         .overlay(alignment: .top) { if selected == nil { ayahTafsirPlayer } }
-        .modifier(MushafTasmeeHost(box: tasmeeBox, engine: platform.recitationEngine, current: $current, overlay: tasmeeOverlay))
+        .modifier(MushafTasmeeHost(box: tasmeeBox, engine: platform.recitationEngine, current: $current, overlay: tasmeeOverlay, surahName: surahName))
         .fullScreenCover(isPresented: $showIndex) {
             MushafIndexView(index: index, store: store, close: { showIndex = false }) { page in current = page; showIndex = false }
         }

@@ -29,10 +29,12 @@ public final class TasmeeSession {
     private var lastPrompt = ""
 
     public init(engine: RecitationEngineControlling, ref: [TasmeeRefWord],
-                strictness: TasmeeStrictness = .normal, promptWords: Int = 0) {
+                strictness: TasmeeStrictness = .normal, promptWords: Int = 0, gateOnError: Bool = false) {
         self.engine = engine
         self.promptWords = promptWords
-        self.matcher = TasmeeMatcher(ref: ref, params: strictness.params)
+        var params = strictness.params
+        params.gateOnError = gateOnError
+        self.matcher = TasmeeMatcher(ref: ref, params: params)
     }
 
     private func promptText() -> String { promptWords > 0 ? matcher.upcomingText(promptWords) : "" }
