@@ -27,10 +27,11 @@ final class TasmeeGatedSessionTests: XCTestCase {
         var events: [TasmeeWordEvent] = []
         s.onWord = { events.append($0) }
         try await s.start()
-        for i in 0..<2 { e.onPartial?(RecitationPartial(seq: i, text: "الرحمن", finishedAtMs: Double(1000 + i * 300))) }
+        // الحارس يحفظ أول نافذة (إحماء) ويرفض المكرَّر حرفيًا؛ فنصوص متمايزة والكلمة الخاطئة ثابتة.
+        for (i, t) in ["شيء", "الرحمن", "الرحمن ذلك"].enumerated() { e.onPartial?(RecitationPartial(seq: i, text: t, finishedAtMs: Double(1000 + i * 300))) }
         XCTAssertEqual(s.matcher.next, 0, "الخطأ لا يقدّم التتبّع")
         XCTAssertTrue(events.contains { $0.index == 0 && $0.state == .wrong })
-        e.onPartial?(RecitationPartial(seq: 2, text: "بسم الله", finishedAtMs: 2000))
+        e.onPartial?(RecitationPartial(seq: 3, text: "بسم الله", finishedAtMs: 2000))
         XCTAssertEqual(s.matcher.next, 2)
         XCTAssertEqual(s.matcher.mistakes.map(\.index), [0], "الخطأ يبقى في السجل بعد تصحيحه")
     }

@@ -5,6 +5,8 @@ struct MushafTasmeeOverlay: View {
     @ObservedObject var tasmee: MushafTasmeeController
     let onTap: () -> Void
     @Environment(\.openURL) private var openURL
+    @State private var dragBase = CGSize.zero
+    @GestureState private var drag = CGSize.zero
 
     var body: some View {
         VStack(spacing: Sunnah.Spacing.s2) {
@@ -45,6 +47,11 @@ struct MushafTasmeeOverlay: View {
                 .accessibilityIdentifier("mushaf.tasmee.mic")
             }
         }
+        .offset(x: dragBase.width + drag.width, y: dragBase.height + drag.height)
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 12)
+                .updating($drag) { v, st, _ in st = v.translation }
+                .onEnded { v in dragBase.width += v.translation.width; dragBase.height += v.translation.height })
         .environment(\.layoutDirection, .rightToLeft)
     }
 }
