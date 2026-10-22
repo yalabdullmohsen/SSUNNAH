@@ -9,7 +9,7 @@ enum LibraryRouteScope {
         "/amrad-qalbiyya", "/annual-courses/:id", "/arabic-language", "/arbaeen-nawawi", "/arbaeen-nawawi/:id", "/arkan", "/arkan-iman",
         "/asma-husna", "/auth/callback", "/auth/update-password", "/c/:slug", "/calendar", "/car-mode", "/cards", "/competitions",
         "/competitions/:id", "/contact", "/daily-wird", "/dalail-nubuwwah", "/data-licenses", "/discover-islam",
-        "/discover-islam/articles/:slug", "/discover-islam/contact", "/discover-islam/doubts", "/discover-islam/doubts/:slug",
+        "/discover-islam/articles/:slug", "/discover-islam/doubts", "/discover-islam/doubts/:slug",
         "/discover-islam/how-to-convert", "/discover-islam/new-muslim", "/discover-islam/new-muslim/:day", "/discover-islam/questions",
         "/discover-islam/questions/:slug", "/duas", "/duas-quran", "/durus-imaniyya", "/durus-mutanawwia", "/fadail-aamal", "/family",
         "/fatwa-policy", "/fawaid", "/feature-tour", "/fikr-waqia", "/fiqh", "/fiqh-qawaid", "/fiqh/books/:bookId",

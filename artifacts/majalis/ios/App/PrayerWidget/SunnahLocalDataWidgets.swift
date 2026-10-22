@@ -148,9 +148,9 @@ enum LocalDataWidgetKind: CaseIterable {
     var symbol: String {
         switch self {
         case .duha: return "sun.max"
-        case .afterSalah: return "hands.sparkles"
-        case .asma: return "sparkles"
-        case .fridayFasting: return "moon.stars"
+        case .afterSalah: return "heart.text.square"
+        case .asma: return "moon"
+        case .fridayFasting: return "moon"
         }
     }
     var pool: [WidgetLocalContent.Item] {

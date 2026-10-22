@@ -135,15 +135,14 @@ final class AqidahSectionTests: XCTestCase {
         XCTAssertEqual(AqidahSection.destination(path: "/islamic-sects/ahl"), .sect(id: "ahl"))
         XCTAssertEqual(AqidahSection.destination(path: "/tawhid/wala-bara"), .tawhidTopic(slug: "wala-bara"))
         XCTAssertNil(AqidahSection.destination(path: "/tawhid"))
-        XCTAssertNil(AqidahSection.destination(path: "/discover-islam/contact"))
         XCTAssertNil(AqidahSection.destination(path: "/tawhid/a/b"))
         XCTAssertNotNil(AqidahSection.resolve(path: "/tawhid/wala-bara"))
         XCTAssertNil(AqidahSection.resolve(path: "/akhlaq"))
     }
 
     @MainActor
-    func testRegistersAll21ParamlessRoutes() {
-        XCTAssertEqual(AqidahSection.ids.count, 21)
+    func testRegistersAll20ParamlessRoutes() {
+        XCTAssertEqual(AqidahSection.ids.count, 20)
         let registry = TemplateRegistry()
         AqidahSection.register(in: registry)
         for id in AqidahSection.ids { XCTAssertNotNil(registry.view(for: id), id) }
@@ -156,33 +155,6 @@ final class AqidahSectionTests: XCTestCase {
         } catch {
             XCTAssertEqual(error as? ContentError, .missingBundledFile("Data/aqidah/akhlaq"))
         }
-    }
-
-    // MARK: طلب التواصل
-
-    func testContactRequestValidationAndColumns() throws {
-        XCTAssertThrowsError(try DawahContactRequest.make(name: "", isAnonymous: true, gender: "male", religion: "christian", country: "",
-                                                          topic: "t", contactMethod: "email", contactValue: "v", consent: false)) {
-            XCTAssertEqual($0 as? DawahContactRequest.Invalid, .consentRequired)
-        }
-        XCTAssertThrowsError(try DawahContactRequest.make(name: "", isAnonymous: true, gender: "male", religion: "christian", country: "",
-                                                          topic: " ", contactMethod: "email", contactValue: "v", consent: true)) {
-            XCTAssertEqual($0 as? DawahContactRequest.Invalid, .topicRequired)
-        }
-        let r = try DawahContactRequest.make(name: "اسم", isAnonymous: true, gender: "no_preference", religion: "prefer_not_to_say",
-                                             country: " ", topic: " موضوع ", contactMethod: "email", contactValue: " a@b.c ",
-                                             consent: true, trackingCode: "abc1234567")
-        XCTAssertNil(r.name, "المجهول لا يُرسل اسمه")
-        XCTAssertNil(r.country)
-        XCTAssertEqual(r.topic, "موضوع")
-        XCTAssertEqual(r.contactValue, "a@b.c")
-        let json = try JSONSerialization.jsonObject(with: JSONEncoder().encode(r)) as? [String: Any]
-        XCTAssertEqual(json?["tracking_code"] as? String, "abc1234567")
-        XCTAssertEqual(json?["privacy_consent"] as? Bool, true)
-        XCTAssertEqual(json?["preferred_daee_gender"] as? String, "no_preference")
-        let generated = try DawahContactRequest.make(name: "", isAnonymous: false, gender: "male", religion: "jewish", country: "",
-                                                     topic: "t", contactMethod: "phone", contactValue: "1", consent: true)
-        XCTAssertEqual(generated.trackingCode.count, 10)
     }
 }
 

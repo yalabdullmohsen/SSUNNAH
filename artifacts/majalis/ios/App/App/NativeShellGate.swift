@@ -126,9 +126,6 @@ struct NativeShellRoot: View {
             return AnyView(IslamicSectsView(records: IslamicSectsView.records(fromJSON: data)))
         case "/islamic-directory":
             return AnyView(DirectoryHubView(onOpen: { router.open(path: $0) }))
-        case "/discover-islam/contact":
-            return AnyView(ConnectionGate(path: route.path, router: router,
-                title: "التواصل مع داعية", message: "يحتاج إرسال الطلب إلى اتصال بالإنترنت.", action: "فتح النموذج"))
         case "/academic-research/assistant":
             return AnyView(ConnectionGate(path: route.path, router: router,
                 title: "مساعد البحث", message: "يعتمد المساعد على الاتصال بالإنترنت.", action: "فتح المساعد"))

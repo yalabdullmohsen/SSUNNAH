@@ -48,32 +48,42 @@ struct LearnFawaidScreen: View {
     var body: some View {
         LearnLoadHost(load: { try await LearnSources.loadIfExported([LearnFaidah].self, from: LearnSources.fawaid, with: $0) }) { (all: [LearnFaidah]) in
             let categories = Array(Set(all.compactMap(\.category))).sorted()
-            VStack(spacing: Sunnah.Spacing.s2) {
-                if !categories.isEmpty {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: Sunnah.Spacing.s2) {
-                            Button { category = nil } label: { SunnahChip("الكل", selected: category == nil) }.buttonStyle(.plain)
-                            ForEach(categories, id: \.self) { c in
-                                Button { category = c } label: { SunnahChip(c, selected: category == c) }.buttonStyle(.plain)
-                                    .accessibilityAddTraits(category == c ? .isSelected : [])
+            ScrollView {
+                LazyVStack(spacing: Sunnah.Spacing.s3) {
+                    SunnahSearchField(text: $query, idPrefix: "sunnah.searchable")
+                    if !categories.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: Sunnah.Spacing.s2) {
+                                Button { category = nil } label: { SunnahChip("الكل", selected: category == nil) }.buttonStyle(.plain)
+                                ForEach(categories, id: \.self) { c in
+                                    Button { category = c } label: { SunnahChip(c, selected: category == c) }.buttonStyle(.plain)
+                                        .accessibilityAddTraits(category == c ? .isSelected : [])
+                                }
                             }
+                            .padding(.horizontal, Sunnah.Spacing.pageX)
                         }
-                        .padding(.horizontal, Sunnah.Spacing.pageX)
+                        .fixedSize(horizontal: false, vertical: true)
+                    }
+                    let list = LearnFaidah.filter(all, query: query, category: category)
+                    if list.isEmpty { EmptyStateView(title: "لا نتائج") } else {
+                        ForEach(list) { f in
+                            SunnahCard {
+                                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                                    SunnahArabicText(f.text, style: .body)
+                                    if let line = learnLine(f.authorName, f.source, separator: " — ") {
+                                        Text(line).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .padding(.horizontal, Sunnah.Spacing.pageX)
+                        }
                     }
                 }
-                LearnList(items: LearnFaidah.filter(all, query: query, category: category), emptyTitle: "لا نتائج") { f in
-                    VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                        Text(f.text).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
-                        if let line = learnLine(f.authorName, f.source, separator: " — ") {
-                            Text(line).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
-                        }
-                    }
-                    .padding(.vertical, Sunnah.Spacing.s2)
-                    .accessibilityElement(children: .combine)
-                }
+                .padding(.vertical, Sunnah.Spacing.s2)
             }
+            .background(Sunnah.Colors.bg)
         }
-        .sunnahSearchable(text: $query)
         .sunnahNavTitle("الفوائد")
     }
 }

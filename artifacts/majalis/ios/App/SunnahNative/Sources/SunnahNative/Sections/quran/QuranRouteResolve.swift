@@ -10,19 +10,19 @@ extension QuranSection {
         case (3, "quran-hub") where c[1] == "tajweed":
             let key = id(2)
             return AnyView(QuranBundledLoader(name: "tajweed", isEmpty: { (f: TajweedFile) in f.chapters.isEmpty }) { (f: TajweedFile) in
-                if let ch = f.chapters.first(where: { $0.id == key }) { TajweedChapterView(chapter: ch).quranTitle(ch.title) }
+                if let ch = f.chapters.first(where: { $0.id == key }) { TajweedChapterView(chapter: ch).heroTitledNavigation(ch.title) }
                 else { EmptyStateView(title: pendingTitle) }
             })
         case (3, "quran") where c[1] == "people":
             let key = id(2)
             return AnyView(QuranPeopleLoader { people in
-                if let p = people.first(where: { $0.slug == key }) { QuranPersonView(person: p, surahNames: surahNames()).quranTitle(p.nameAr) }
+                if let p = people.first(where: { $0.slug == key }) { QuranPersonView(person: p, surahNames: surahNames()).heroTitledNavigation(p.nameAr) }
                 else { EmptyStateView(title: pendingTitle) }
             })
         case (3, "quran") where c[1] == "surah-stories":
             let key = Int(id(2))
             return AnyView(QuranBundledLoader(name: "surah-stories", isEmpty: { (s: [SurahStory]) in s.isEmpty }) { (s: [SurahStory]) in
-                if let st = s.first(where: { $0.number == key }) { SurahStoryView(story: st).quranTitle(st.name) }
+                if let st = s.first(where: { $0.number == key }) { SurahStoryView(story: st).heroTitledNavigation(st.name) }
                 else { EmptyStateView(title: pendingTitle) }
             })
         case (3, "hifz-path") where c[1] == "c":
@@ -37,7 +37,7 @@ extension QuranSection {
             return AnyView(hifzLoader { paths in
                 if let p = paths.first(where: { $0.slug == slug }) {
                     if let uid = unitId {
-                        if let u = p.units.first(where: { $0.id == uid }) { HifzUnitView(unit: u, surahNames: surahNames(), siblings: p.units).quranTitle(u.title) }
+                        if let u = p.units.first(where: { $0.id == uid }) { HifzUnitView(unit: u, surahNames: surahNames(), siblings: p.units).heroTitledNavigation(u.title) }
                         else { EmptyStateView(title: pendingTitle) }
                     } else { HifzPathView(path: p) }
                 } else { EmptyStateView(title: pendingTitle) }

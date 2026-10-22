@@ -1,0 +1,7 @@
+git_sha=b47e2d4bf727c3a056d2c0840bafad708af4bac8
+branch=HEAD
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/0cd4a6d463b385ab/SunnahApp.app
+binary_sha256=efc2099e6f6745e3721833382c039057a4c96eda93b561375a7597a5f185d51e
+built_at=2026-10-22 06:19:49
+source_newest=2026-10-21 22:06:49
+captured_at=2026-10-22 06:24:05

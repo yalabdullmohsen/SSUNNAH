@@ -1,0 +1,15 @@
+git_sha=a12506b241b881f589abeab4450e7feccdb95b5a
+branch=n1/no-cross-icons
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/ddc895407387de8c/SunnahApp.app
+binary_sha256=4f3f4114ad1f870a33e10ae8ac3ebd3fe133b0ab5c9c0df60a5485cce4355321
+built_at=2026-10-22 07:22:54
+source_newest=2026-10-22 07:20:31
+captured_at=2026-10-22 07:23:07
+--- /fiqh/worship (FiqhReadingView.swift)
+git_sha=9b27f3a37dba6fefd3cc91d1cc69c79666cf28eb
+branch=n1/no-cross-icons
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/ddc895407387de8c/SunnahApp.app
+binary_sha256=4f3f4114ad1f870a33e10ae8ac3ebd3fe133b0ab5c9c0df60a5485cce4355321
+built_at=2026-10-22 07:22:54
+source_newest=2026-10-22 07:20:31
+captured_at=2026-10-22 07:40:31

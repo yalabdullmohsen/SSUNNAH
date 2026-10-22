@@ -7,7 +7,7 @@ private typealias Brand = SunnahBrandColors
 
 private func prayerSymbol(for key: String) -> String {
     switch key.lowercased() {
-    case "fajr": return "moon.stars.fill"
+    case "fajr": return "moon.fill"
     case "dhuhr": return "sun.max.fill"
     case "asr": return "sun.haze.fill"
     case "maghrib": return "sunset.fill"

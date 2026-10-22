@@ -7,7 +7,7 @@ public enum AqidahSection {
     /// المسارات بلا معاملات (21) — المعرّف = المسار بالنقطة بدل الشرطة المائلة.
     public static let ids: [String] = [
         "adab-talab-ilm", "akhlaq", "alamat-saah", "amrad-qalbiyya", "asma-husna",
-        "discover-islam", "discover-islam.contact", "discover-islam.doubts", "discover-islam.how-to-convert",
+        "discover-islam", "discover-islam.doubts", "discover-islam.how-to-convert",
         "discover-islam.new-muslim", "discover-islam.questions", "hikam-salaf", "iman-topics", "islamic-sects",
         "janna-naar", "malaika", "raqaiq", "tawhid", "tazkiya", "tazkiya-topics", "usra-mujtama",
     ]
@@ -33,7 +33,6 @@ public enum AqidahSection {
         registry.register(AqidahDiscoverIslamQuestionsNativeScreen.self)
         registry.register(AqidahDiscoverIslamDoubtsNativeScreen.self)
         registry.register(AqidahNewMuslimPathScreen.self)
-        registry.registerView(id: "discover-islam.contact") { AqidahDiscoverIslamContactNativeScreen() }
     }
 
     /// مسار ذو معامل → نوع الوجهة (منطق خالص قابل للاختبار).

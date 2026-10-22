@@ -52,7 +52,15 @@ struct AqidahPage<Content: View>: View {
             }
         }
         .background(Sunnah.Colors.bg)
-        .sunnahNavTitle(title)
+        .modifier(AqidahNavTitle(title: title, hasHero: hero != nil))
+    }
+}
+
+/// مع الترويسة الخضراء العنوان فيها وحدها (شريط التنقل بلا عنوان)، وبدونها يظهر في الشريط.
+private struct AqidahNavTitle: ViewModifier {
+    let title: String; let hasHero: Bool
+    func body(content: Content) -> some View {
+        if hasHero { content.bodyTitledNavigation() } else { content.sunnahNavTitle(title) }
     }
 }
 
@@ -142,22 +150,18 @@ struct AqidahSourcesList: View {
     }
 }
 
-/// قائمة صفوف قابلة للنقر تفتح مسارًا.
+/// بلاطات بعمودين تفتح مسارًا؛ الهامش الأفقي على الحاوية لا على الشبكة.
 struct AqidahLinkList<Item: Identifiable>: View {
     @Environment(\.openRoute) private var openRoute
     let items: [Item]
     let title: (Item) -> String
     let subtitle: (Item) -> String?
     let path: (Item) -> String
+    var symbol = "book.closed"
 
     var body: some View {
-        LazyVStack(spacing: Sunnah.Spacing.s3) {
-            ForEach(items) { item in
-                Button { openRoute(path(item)) } label: {
-                    SunnahCard { SunnahListRow(title: title(item), subtitle: subtitle(item)) }
-                }
-                .buttonStyle(.plain)
-            }
-        }
+        let tiles = items.map { SunnahTileItem(id: "\($0.id)", title: title($0), subtitle: subtitle($0), symbol: symbol) }
+        let paths = Dictionary(uniqueKeysWithValues: zip(tiles.map(\.id), items.map(path)))
+        SunnahTileGrid(tiles, idPrefix: "aqidah", padded: false) { openRoute(paths[$0.id] ?? "") }
     }
 }

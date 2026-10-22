@@ -4,7 +4,8 @@
 #   bash scripts/build-slot.sh -- <أمر…>     تشغيل الأمر داخل خانة (xcodebuild / simctl القياس / xctrace…)
 #   bash scripts/build-slot.sh status          الخانات والطابور وحمل العمليات
 #   bash scripts/build-slot.sh reap            تنظيف يتامى هذا الـworktree فقط
-# الأولوية: ن3 (0) ثم ن1 (1) ثم ن2 (2) ثم ن4 (3) ضمن الطابور؛ BUILD_SLOT_PRIO يتجاوزها.
+# الترتيب: الأقدم أولًا بوقت الدخول فقط (لا أولوية للنوافذ)؛ التذكرة «وقت-pid» وتحمل وقت بدء العملية فلا يُخلط pid مُعاد استعماله بعملية حيّة.
+# التذاكر والخانات التي ماتت عمليتها تُحذف تلقائيًا؛ الخانة الفارغة تُؤخذ فورًا؛ انتظار الذاكرة (memwait) يجري بعد أخذ الخانة لا قبلها فلا يحجز المنتظرون الطابور.
 # متغيرات: BUILD_SLOTS (افتراضي 1)، BUILD_SLOT_PATTERNS (مسارات إضافية مفصولة بـ: تُنظَّف يتاماها، مثل DerivedData)،
 #          BUILD_SLOT_HELD=1 (يُضبط تلقائيًا داخل الخانة فلا يحدث قفل ذاتي عند التداخل).
 # لا يقتل إلا عمليات المستخدم الحالي التي تحمل مسار هذا الـworktree/الأنماط وأبوها launchd (pid 1) أو أبوها ميت — لا pkill بالاسم.
@@ -15,6 +16,9 @@ UIDN=$(id -u)
 ROOT=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 PROCS_RE='(xcodebuild|xctest|XCTRunner|xcbuild|swift-build|swift-frontend|swiftc|xctrace|fswatch|SourceKitService)'
 log() { echo "build-slot: $*" >&2; }
+now() { date +%s; }
+pstart() { LC_ALL=C ps -o lstart= -p "$1" 2>/dev/null | sed 's/^ *//;s/ *$//'; }   # وقت بدء العملية؛ فارغ إن ماتت
+alive() { [ -n "$1" ] && [ "$(pstart "$1")" = "$2" ] && [ -n "$2" ]; }               # alive <pid> <وقت-البدء المسجّل>
 
 proc_load() { # → "used limit"
   local used lim sys; used=$(ps -u "$UIDN" -o pid= | wc -l | tr -d ' ')
@@ -51,22 +55,18 @@ reap_orphans() { # يتامى هذا الـworktree: أبوها 1 (أو ميت) 
   return 0
 }
 
-# أولوية الطابور (الأصغر أولًا): ن3 قياس الأداء=0، ن1=1، ن2=2، ن4/غيرها=3 (بناءاتها قصيرة). تُستنتج من اسم الـworktree أو BUILD_SLOT_PRIO.
-prio() {
-  [ -n "${BUILD_SLOT_PRIO:-}" ] && { echo "$BUILD_SLOT_PRIO"; return; }
-  case " $* " in *" archive "*) echo '!'; return;; esac   # الأرشفة (بناء RC) قبل بناءات اختبار النوافذ
-  case "$(basename "$ROOT")" in n3-*|*quran*) echo 0;; n1-*) echo 1;; n2-*) echo 2;; *) echo 3;; esac
-}
 live_tickets() { local t; for t in "$DIR"/queue/*; do [ -e "$t" ] || continue
-  if kill -0 "$(basename "$t" | sed 's/.*-0*//')" 2>/dev/null; then basename "$t"; else rm -f "$t"; fi; done | sort; }
+  if alive "$(basename "$t" | sed 's/.*-0*//')" "$(cat "$t" 2>/dev/null)"; then basename "$t"; else rm -f "$t"; fi; done | sort; }
 slot_pid() { sed -n 's/^pid=\([0-9]*\).*/\1/p' "$1/owner" 2>/dev/null; }
+# خانة حيّة: صاحبها حيّ؛ وخانة بلا owner بعد (mkdir ثم الكتابة) لا تُعدّ ميتة قبل 10 ثوانٍ.
+slot_alive() { local d=$1 p; p=$(slot_pid "$d")
+  if [ -z "$p" ]; then [ $(( $(now) - $(stat -f %m "$d" 2>/dev/null || echo 0) )) -lt 10 ]; else alive "$p" "$(cat "$d/start" 2>/dev/null)"; fi; }
 
 status() {
   local i p read_u read_l; read -r read_u read_l < <(proc_load)
   echo "العمليات: $read_u / $read_l ($(( read_u * 100 / read_l ))%)  الخانات القصوى: $MAX"
   for i in $(seq 1 "$MAX"); do
-    p=$(slot_pid "$DIR/slot-$i")
-    if [ -n "$p" ] && kill -0 "$p" 2>/dev/null; then echo "خانة $i: مشغولة — $(cat "$DIR/slot-$i/owner")"; else echo "خانة $i: حرّة"; fi
+    if [ -d "$DIR/slot-$i" ] && slot_alive "$DIR/slot-$i"; then echo "خانة $i: مشغولة — $(cat "$DIR/slot-$i/owner")"; else echo "خانة $i: حرّة"; fi
   done
   echo "في الطابور: $(live_tickets | wc -l | tr -d ' ')"
 }
@@ -82,7 +82,7 @@ esac
 [ -n "${BUILD_SLOT_HELD:-}" ] && exec "$@"
 
 mkdir -p "$DIR/queue"
-TICKET="$(prio "$@")-$(date +%s)-$(printf %07d $$)"; : > "$DIR/queue/$TICKET"
+TICKET="$(now)-$(printf %07d $$)"; pstart $$ > "$DIR/queue/$TICKET"
 SLOT=""
 release() { [ -n "$SLOT" ] && rm -rf "$DIR/slot-$SLOT"; rm -f "$DIR/queue/$TICKET"; }
 CHILD=""
@@ -91,32 +91,31 @@ trap on_sig INT TERM HUP
 trap release EXIT
 
 acquire() {
-  local i p pos free announced=0
+  local i pos free announced=0
   while :; do
     free=0; for i in $(seq 1 "$MAX"); do
-      p=$(slot_pid "$DIR/slot-$i")
-      if [ -d "$DIR/slot-$i" ] && { [ -z "$p" ] || ! kill -0 "$p" 2>/dev/null; }; then rm -rf "$DIR/slot-$i"; fi
+      if [ -d "$DIR/slot-$i" ] && ! slot_alive "$DIR/slot-$i"; then rm -rf "$DIR/slot-$i"; fi
       [ -d "$DIR/slot-$i" ] || free=$((free+1))
     done
     pos=$(live_tickets | grep -n "^$TICKET$" | cut -d: -f1); pos=$(( ${pos:-1} - 1 ))
     if [ "$pos" -lt "$free" ]; then
       for i in $(seq 1 "$MAX"); do
         if mkdir "$DIR/slot-$i" 2>/dev/null; then
-          echo "pid=$$ worktree=$ROOT cmd=$(basename "$1") started=$(date +%s)" > "$DIR/slot-$i/owner"; SLOT=$i
+          echo "pid=$$ worktree=$ROOT cmd=$(basename "$1") started=$(now)" > "$DIR/slot-$i/owner"; pstart $$ > "$DIR/slot-$i/start"; SLOT=$i
           # تخرج التذكرة من الطابور فور أخذ الخانة: بقاؤها كان يحسب حامل الخانة في دور المنتظرين فتبقى الخانة الحرّة محجوبة (عطل 2026-10-20: ن4 انتظر ساعتين وخانة 2 حرّة).
           rm -f "$DIR/queue/$TICKET"; return 0
         fi
       done
     fi
     [ "$announced" = 0 ] && { log "كل الخانات ($MAX) مشغولة — دورك رقم $((pos+1)) في الطابور"; announced=1; }
-    sleep 3
+    sleep 1
   done
 }
 
 [ -n "${BUILD_SLOT_HELD:-}" ] || bash "$(dirname "$0")/native-sim-hygiene.sh" || exit $? # نظافة المحاكيات/العمليات + رفض عند ≥80٪
 check_load
-[ -x "$HOME/.majalis-tools/maint/memwait.sh" ] && bash "$HOME/.majalis-tools/maint/memwait.sh"   # ينتظر هدوء الذاكرة (swap<3GB وحر≥15٪) قبل أخذ الخانة؛ يمنع تعليق الماك
 acquire "$@"
+[ -x "$HOME/.majalis-tools/maint/memwait.sh" ] && bash "$HOME/.majalis-tools/maint/memwait.sh"   # بعد أخذ الخانة: ينتظر هدوء الذاكرة (swap<3GB وحر≥15٪) وهو صاحب الخانة الوحيد فلا يحجز غيره الطابور؛ يمنع تعليق الماك
 reap_orphans
 export BUILD_SLOT_HELD=1
 "$@" &

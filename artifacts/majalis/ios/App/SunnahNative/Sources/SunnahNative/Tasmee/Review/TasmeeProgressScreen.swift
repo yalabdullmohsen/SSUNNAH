@@ -52,7 +52,7 @@ public struct TasmeeProgressScreen: View {
             if due.isEmpty {
                 Text("لا آيات مستحقة للمراجعة الآن.").font(AppearancePrefs.ui(.regular, 15, .body)).foregroundStyle(Sunnah.Colors.textSecondary)
             } else {
-                Text("\(TasmeeProgressFormat.ayahs(due.count)) مستحقة").font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text("\(TasmeeProgressFormat.ayahs(due.count)) مستحقة").font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary) // digits-ok: ayahs() يحوّل العدد إلى أرقام عربية داخليًا
                 ForEach(Array(due.prefix(5)), id: \.id) { i in
                     Text("\(surahName(i.surah)) · \(i.ayah.arabicDigits)").font(AppearancePrefs.ui(.regular, 15, .body))
                         .foregroundStyle(Sunnah.Colors.textSecondary)

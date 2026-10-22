@@ -91,7 +91,7 @@ public struct PrayerScreen: View {
         let zone = prefs.location.timeZone
         let today = PrayerCalculator.times(for: prefs.location, on: now, settings: prefs.settings)
         let next = PrayerCalculator.next(after: now, location: prefs.location, settings: prefs.settings)
-        let symbols: [Prayer: String] = [.fajr: "sunrise", .sunrise: "sun.max", .dhuhr: "sun.max.fill", .asr: "sun.haze", .maghrib: "sunset", .isha: "moon.stars"]
+        let symbols: [Prayer: String] = [.fajr: "sunrise", .sunrise: "sun.max", .dhuhr: "sun.max.fill", .asr: "sun.haze", .maghrib: "sunset", .isha: "moon"]
         return VStack(spacing: 10) {
             if let today {
                 ForEach(today.ordered, id: \.prayer) { item in
@@ -120,7 +120,7 @@ public struct PrayerScreen: View {
                     .accessibilityElement(children: .contain)
                 }
             } else {
-                Text("تعذّر حساب المواقيت لهذا الموقع").font(AppearancePrefs.ui(.bold, 15, .body)).padding()
+                SunnahMessageState(symbol: "location.slash", title: "تعذّر حساب المواقيت لهذا الموقع")
             }
         }
         .padding(.horizontal, Sunnah.Spacing.pageX)

@@ -1,0 +1,8 @@
+git_sha=5e8c789261e1340ab168a7acc67d7a8835c60b63
+branch=n5/quran-sub-titles
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/c2067762d6c0c7a5/SunnahApp.app
+binary_sha256=96537bca390e929ac33bf420254d49c69a2c52e0f1acd800856689464f5e5180
+built_at=2026-10-22 12:04:57
+source_newest=2026-10-22 09:59:41
+captured_at=2026-10-22 12:15:13
+covers=MutashabihatScreens TilawaCirclesScreens QuranRouteResolve PrayerScreen ScreenTemplate

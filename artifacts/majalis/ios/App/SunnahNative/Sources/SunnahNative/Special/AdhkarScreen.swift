@@ -127,7 +127,7 @@ public struct AdhkarScreen: ScreenTemplate {
         switch id {
         case "adh-morning": return "sunrise"
         case "adh-evening": return "sunset"
-        case "adh-sleep": return "moon.stars"
+        case "adh-sleep": return "moon"
         case "adh-wakeup": return "sun.max"
         case "adh-after-salah", "adh-salah", "adh-mosque": return "building.columns"
         case "adh-wudu": return "drop"
@@ -138,7 +138,7 @@ public struct AdhkarScreen: ScreenTemplate {
         case "adh-rain": return "cloud.rain"
         case "adh-wind": return "wind"
         case "adh-distress": return "heart"
-        case "adh-istighfar", "adh-istikharah": return "hands.sparkles"
+        case "adh-istighfar", "adh-istikharah": return "heart.text.square"
         case "adh-salawat": return "text.book.closed"
         default: return "book.closed"
         }

@@ -5,16 +5,14 @@ import SwiftUI
 struct LearnQuizScreen: View {
     var body: some View {
         LearnLoadHost(LearnSources.quizManifest) { (manifest: LearnQuizManifest) in
-            LearnList(items: manifest.chunks.filter { $0.count > 0 }, emptyTitle: "لا أسئلة موثّقة بعد") { chunk in
-                SunnahNavigationLink {
-                    LearnLoadHost(LearnSources.quizChunk(chunk)) { (questions: [LearnOpenQuestion]) in
-                        LearnOpenQuizRunner(questions: questions)
-                    }
-                    .sunnahNavTitle(chunk.title)
-                } label: {
-                    SunnahListRow(title: chunk.title, subtitle: "\(chunk.count) سؤالًا")
+            LearnTileGrid(items: manifest.chunks.filter { $0.count > 0 }, emptyTitle: "لا أسئلة موثّقة بعد", idPrefix: "quiz",
+                          tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: "\($0.count) سؤالًا".arabicDigits, symbol: "questionmark.circle") },
+                          destination: { chunk in
+                LearnLoadHost(LearnSources.quizChunk(chunk)) { (questions: [LearnOpenQuestion]) in
+                    LearnOpenQuizRunner(questions: questions)
                 }
-            }
+                .sunnahNavTitle(chunk.title)
+            })
         }
         .sunnahNavTitle("تحدي الأسئلة")
     }
@@ -67,7 +65,7 @@ struct LearnOpenQuizRunner: View {
                         if state.revealed {
                             SunnahCard {
                                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                                    Text(q.answer).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
+                                    SunnahArabicText(q.answer, style: .body)
                                     if let e = q.explanation { Text(e).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
                                     if let r = q.reference { Text("المرجع: " + r).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary) }
                                 }
