@@ -173,22 +173,30 @@ enum AccountCalendarMath {
         return f.string(from: date)
     }
 
-    // MARK: - ICS (مطابق لـ generateIcs في الويب)
+    // MARK: - ICS (بنية generateIcs في الويب، مع تحليل «م/ص» والأرقام العربية وانتقال النهاية إلى اليوم التالي)
 
-    static func icsTime(_ date: Date, time: String?, calendar: Calendar = gregorian) -> String {
-        let p = calendar.dateComponents([.year, .month, .day], from: date)
-        let d = String(format: "%04d%02d%02d", p.year ?? 0, p.month ?? 0, p.day ?? 0)
-        guard let time, !time.isEmpty else { return d + "T060000" }
-        let parts = time.filter { $0.isASCII && ($0.isNumber || $0 == ":") }.split(separator: ":", omittingEmptySubsequences: false)
-        let h = parts.first.flatMap { Int($0) } ?? 0
+    /// الساعة والدقيقة بنظام 24 ساعة من نص وقت الدرس، بأرقام لاتينية أو عربية. «م/مساءً» بعد الرقم تضيف 12 لما دون 12، و«ص» تجعل 12 صفرًا.
+    /// يعيد nil إذا لم يوجد في النص وقت صالح («بعد المغرب»).
+    static func clock(_ time: String) -> (hour: Int, minute: Int)? {
+        let s = time.asLatinDigits
+        guard let r = s.range(of: #"[0-9]{1,2}(:[0-9]{2})?"#, options: .regularExpression) else { return nil }
+        let parts = s[r].split(separator: ":")
+        guard var h = Int(parts[0]), h < 24 else { return nil }
         let m = parts.count > 1 ? Int(parts[1]) ?? 0 : 0
-        return d + String(format: "T%02d%02d00", h == 0 ? 6 : h, m)
+        guard m < 60 else { return nil }
+        let suffix = s[r.upperBound...].trimmingCharacters(in: .whitespaces)
+        if suffix.hasPrefix("م"), h < 12 { h += 12 } else if suffix.hasPrefix("ص"), h == 12 { h = 0 }
+        return (h, m)
     }
 
-    /// يزيد أول عدد في نص الوقت بساعة (نهاية الحدث).
-    static func plusOneHour(_ time: String) -> String {
-        guard let r = time.range(of: "[0-9]+", options: .regularExpression), let n = Int(time[r]) else { return time }
-        return time.replacingCharacters(in: r, with: String(n + 1))
+    /// «yyyyMMdd'T'HHmm00» لوقت الدرس بعد إضافة `plusHours` ساعة. بلا وقت صالح تكون البداية 06:00.
+    /// إذا تجاوز الوقت منتصف الليل انتقل إلى اليوم التالي، فلا تظهر قيمة غير صالحة مثل «T240000».
+    static func icsTime(_ date: Date, time: String?, plusHours: Int = 0, calendar: Calendar = gregorian) -> String {
+        let c = time.flatMap(clock) ?? (hour: 6, minute: 0)
+        let total = (c.hour + plusHours) * 60 + c.minute
+        let day = calendar.date(byAdding: .day, value: total / 1440, to: date) ?? date
+        let p = calendar.dateComponents([.year, .month, .day], from: day)
+        return String(format: "%04d%02d%02dT%02d%02d00", p.year ?? 0, p.month ?? 0, p.day ?? 0, total % 1440 / 60, total % 60)
     }
 
     static func ics(_ items: [(date: Date, event: AccountCalendarEvent)], monthLabel: String, stamp: Date = Date(), calendar: Calendar = gregorian) -> String {
@@ -202,8 +210,8 @@ enum AccountCalendarMath {
         sf.dateFormat = "yyyyMMdd'T'HHmmss"
         for (date, ev) in items {
             let key = icsTime(date, time: nil, calendar: calendar).prefix(8)
-            let start = icsTime(date, time: ev.time.isEmpty ? nil : ev.time, calendar: calendar)
-            let end = icsTime(date, time: ev.time.isEmpty ? nil : plusOneHour(ev.time), calendar: calendar)
+            let start = icsTime(date, time: ev.time, calendar: calendar)
+            let end = icsTime(date, time: ev.time, plusHours: 1, calendar: calendar)
             lines += [
                 "BEGIN:VEVENT", "UID:\(ev.id)-\(key)@ssunnah.com", "DTSTAMP:\(sf.string(from: stamp))",
                 "DTSTART;TZID=Asia/Kuwait:\(start)", "DTEND;TZID=Asia/Kuwait:\(end)", "SUMMARY:\(ev.title)",
