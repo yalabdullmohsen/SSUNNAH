@@ -98,7 +98,7 @@ public enum TasmeeReportFormat {
         case .wrong: return "خاطئة"
         case .skipped: return "متروكة"
         case .extra: return "زائدة"
-        case .tashkeelMaybe: return "تشكيل"
+        case .tashkeelMaybe: return "تشكيل (محتمل)"
         case .correct: return "صحيحة"
         }
     }
