@@ -337,6 +337,9 @@ public struct MushafReaderView: View {
         HStack(spacing: Sunnah.Spacing.s2) {
             MushafToolButton(symbol: "xmark", label: "إغلاق المصحف", id: "mushaf.close") { openRoute("/") }
             MushafSearchField(query: $query, focused: $searchFocused) { submitSearch() }
+            if let t = tasmeeBox.controller {
+                MushafToolButton(symbol: "mic", label: "التسميع", id: "mushaf.tasmee.open") { searchFocused = false; t.micPressed(page: current, repo: repo, search: search) }
+            }
             MushafToolButton(symbol: "list.bullet", label: "الفهرس والعلامات", id: "mushaf.index") { searchFocused = false; showIndex = true }
             MushafToolButton(symbol: store.colors(ofPage: current).isEmpty ? "bookmark" : "bookmark.fill", label: "علامة على الصفحة", id: "mushaf.pageMark") { sunnahAnimate { pagePicker.toggle() } }
         }
@@ -355,7 +358,7 @@ public struct MushafReaderView: View {
 
     /// الشريط ثابت ما دام الحقل مركَّزًا أو بطاقة آية أو منتقي علامة مفتوحًا؛ وإلا يبدأ العدّ.
     @ViewBuilder private var tasmeeOverlay: some View {
-        if let t = tasmeeBox.controller, selected == nil {
+        if let t = tasmeeBox.controller, selected == nil, t.showsSessionControls {
             MushafTasmeeOverlay(tasmee: t) { t.micPressed(page: current, repo: repo, search: search) }
                 .padding(.bottom, Sunnah.Spacing.s2).offset(y: Sunnah.Spacing.s3)   // صف التذييل: بين شارة الصفحة وتسمية الحزب، منزَل تحت آخر سطر فلا يلاصق كلمة
         }

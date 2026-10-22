@@ -14,6 +14,15 @@ struct MushafTasmeeOverlay: View {
                 Text(h).font(Sunnah.Typography.secondary).padding(.horizontal, 12).padding(.vertical, 6)
                     .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
             }
+            if case .failed(let m) = tasmee.phase {
+                Text(m).font(Sunnah.Typography.secondary).padding(.horizontal, 12).padding(.vertical, 6)
+                    .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
+            }
+            if let r = tasmee.repeatStatus, tasmee.phase == .listening {
+                Text(r).font(Sunnah.Typography.secondary).padding(.horizontal, 12).padding(.vertical, 6)
+                    .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
+                    .accessibilityIdentifier("mushaf.tasmee.repeat")
+            }
             if tasmee.offersHint, tasmee.phase == .listening {
                 Button { tasmee.requestHint() } label: {
                     Label("تلميح", systemImage: "lightbulb.fill").font(Sunnah.Typography.secondary)

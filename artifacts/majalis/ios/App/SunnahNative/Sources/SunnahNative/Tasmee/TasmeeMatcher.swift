@@ -74,6 +74,7 @@ public final class TasmeeMatcher {
     private var pendingExtras: [TasmeeExtraEvent] = []
     private var wrongSeen: [String: Int] = [:]
     private var heardByWord: [Int: [String]] = [:]
+    private var archivedHeard: [Int: [String]] = [:]
 
     public init(ref: [TasmeeRefWord], params: TasmeeMatchParams = TasmeeMatchParams()) {
         self.ref = ref
@@ -87,7 +88,20 @@ public final class TasmeeMatcher {
 
     /// الكلمات التي أُخطئ فيها (ولو صُحّحت لاحقًا) مع الكلمات المسموعة.
     public var mistakes: [(index: Int, said: [String])] {
-        heardByWord.keys.sorted().map { (index: $0, said: heardByWord[$0]!) }
+        let all = archivedHeard.merging(heardByWord) { old, new in old + new.filter { !old.contains($0) } }
+        return all.keys.sorted().map { (index: $0, said: all[$0]!) }
+    }
+
+    /// يعيد المؤشر إلى `index` (إعادة آية في وضع التكرار): تعود الكلمات من هناك معلّقة، وتبقى أخطاؤها السابقة في السجلّ دون أن تمنع تنبيه الخطأ نفسه ثانيةً.
+    public func rewind(to index: Int) {
+        let i = min(max(index, 0), ref.count)
+        for k in i..<ref.count { state[k] = .pending }
+        for (k, heard) in heardByWord where k >= i {
+            archivedHeard[k] = (archivedHeard[k] ?? []) + heard.filter { !(archivedHeard[k] ?? []).contains($0) }
+            heardByWord[k] = nil
+        }
+        next = i
+        stable.removeAll(); extraSeen.removeAll(); extraReported.removeAll(); pendingExtras = []; wrongSeen.removeAll()
     }
 
     public func upcomingText(_ count: Int) -> String {
@@ -98,7 +112,7 @@ public final class TasmeeMatcher {
         state = Array(repeating: .pending, count: ref.count)
         next = 0
         stable.removeAll(); extraSeen.removeAll(); extraReported.removeAll(); pendingExtras = []
-        wrongSeen.removeAll(); heardByWord.removeAll()
+        wrongSeen.removeAll(); heardByWord.removeAll(); archivedHeard.removeAll()
     }
 
     public func drainExtras() -> [TasmeeExtraEvent] {

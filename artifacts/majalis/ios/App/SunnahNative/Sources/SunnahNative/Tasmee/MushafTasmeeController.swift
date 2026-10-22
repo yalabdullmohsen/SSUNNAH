@@ -57,12 +57,19 @@ public final class MushafTasmeeController: ObservableObject {
     public let engine: RecitationEngineControlling
     public var strictness: TasmeeStrictness = .normal
     private var session: TasmeeSession?
+    private var repeatDriver: TasmeeRepeatDriver?
+    /// وضع التكرار: «القراءة n من N» للآية الجارية؛ nil خارج الوضع.
+    @Published public private(set) var repeatStatus: String?
     private var lastFollowed = 0
 
     public init(engine: RecitationEngineControlling) { self.engine = engine }
 
     public var isActive: Bool {
         switch phase { case .listening, .preparing, .downloading: true; default: false }
+    }
+    /// أدوات الجلسة (الميكروفون/الموجة/الإنهاء) تظهر أثناء الجلسة فقط؛ الصفحة الافتراضية نظيفة والدخول من أدوات المصحف.
+    public var showsSessionControls: Bool {
+        switch phase { case .listening, .preparing, .downloading, .needsMic, .failed: true; default: false }
     }
     public var modelBytes: Int64? { engine.modelDownloadBytes }
 
@@ -118,7 +125,14 @@ public final class MushafTasmeeController: ObservableObject {
         guard let ref else { return }
         states = [:]; hint = nil; lastRecord = nil; startedAt = Date(); offersHint = false; hintsUsed = 0; hintStage = 0; lastFollowed = 0; followPage = nil; version &+= 1
         let s = TasmeeSession(engine: engine, ref: ref.words, strictness: strictness, gateOnError: true)
-        s.onWord = { [weak self] e in self?.apply(e) }
+        repeatDriver = options.mode == .repeat ? TasmeeRepeatDriver(ref: ref.words, target: options.repeatTarget) : nil
+        repeatStatus = repeatDriver.map { Self.repeatText(streak: 0, target: $0.counter.target) }
+        s.onWord = { [weak self] e in
+            guard let self else { return }
+            if self.repeatDriver?.consume(e) == false { return }
+            self.apply(e)
+        }
+        s.onBatchEnd = { [weak self] in self?.runRepeatAction() }
         s.onHint = { [weak self] m in self?.hint = m }
         engine.onFailure = { [weak self] m in self?.phase = .failed(m) }
         session = s
@@ -130,6 +144,24 @@ public final class MushafTasmeeController: ObservableObject {
         } catch { session = nil; phase = .failed("تعذّر بدء التسميع") }
     }
 
+    static func repeatText(streak: Int, target: Int) -> String { Sunnah.digits("القراءة \(min(streak + 1, target)) من \(target)") }
+
+    /// نهاية دفعة أحداث في وضع التكرار: أعد الآية (تُخفى كلماتها من جديد) أو انتقل لما بعدها أو أنهِ الجلسة.
+    private func runRepeatAction() {
+        guard let action = repeatDriver?.takeAction(), let s = session, let ref else { return }
+        switch action {
+        case .finish:
+            repeatStatus = nil
+            Task { await stop() }
+        case .rewind(let to, let streak, let target):
+            s.rewind(to: to)
+            for w in ref.words[to...] { states[w.id] = nil }
+            offersHint = false; hintStage = 0; hint = nil
+            repeatStatus = Self.repeatText(streak: streak, target: target)
+            version &+= 1
+        }
+    }
+
     private func apply(_ e: TasmeeWordEvent) {
         states[e.id] = e.state
         hint = nil; version &+= 1
@@ -138,7 +170,7 @@ public final class MushafTasmeeController: ObservableObject {
             if hapticsOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             if soundOn { AudioServicesPlaySystemSound(1053) }
             #endif
-            if (e.attempts ?? 0) >= 3 { offersHint = true }
+            if (e.attempts ?? 0) >= 3, options.allowsHints { offersHint = true }
         } else if e.state == .correct {
             offersHint = false; hintStage = 0
         }
@@ -150,7 +182,7 @@ public final class MushafTasmeeController: ObservableObject {
 
     public func stop() async {
         guard let s = session else { phase = .idle; return }
-        session = nil
+        session = nil; repeatDriver = nil; repeatStatus = nil
         (engine as? RecitationLevelReporting)?.onLevel = nil
         level = 0
         let report = await s.stop()
@@ -189,7 +221,7 @@ public final class MushafTasmeeController: ObservableObject {
 
     /// تلميح يختاره المستخدم بعد ٣ محاولات خاطئة: أول حرف ثم الكلمة؛ يُحتسب ولا يقدّم التتبّع.
     public func requestHint() {
-        guard let s = session, let ref, s.matcher.next < ref.words.count else { return }
+        guard options.allowsHints, let s = session, let ref, s.matcher.next < ref.words.count else { return }
         let word = ref.words[s.matcher.next].text
         hintStage += 1; hintsUsed += 1
         hint = hintStage == 1 ? String(word.prefix(1)) + " …" : word
