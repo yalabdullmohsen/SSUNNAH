@@ -119,13 +119,13 @@ public final class MushafTasmeeController: ObservableObject {
         guard let s = session else { phase = .idle; return }
         session = nil
         let report = await s.stop()
-        lastRecord = makeRecord(s.matcher)
+        lastRecord = Self.makeRecord(s.matcher, startedAt: startedAt, hints: hintsUsed)
         if let r = lastRecord { TasmeeHistoryStore.shared.append(r) }
         phase = .finished(report)
     }
 
     /// سجل الجلسة من حالة المطابِق: أخطاء (ولو صُحّحت) ومتجاوزات فقط؛ الصوت لا يُحفظ.
-    private func makeRecord(_ m: TasmeeMatcher) -> TasmeeSessionRecord? {
+    static func makeRecord(_ m: TasmeeMatcher, startedAt: Date, hints hintsUsed: Int) -> TasmeeSessionRecord? {
         let reached = m.next
         guard reached > 0 else { return nil }
         func pos(_ i: Int) -> (surah: Int, ayah: Int, word: Int)? {
