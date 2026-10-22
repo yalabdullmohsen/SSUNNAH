@@ -92,8 +92,8 @@ public struct TasmeeModeSheet: View {
                     Text("عدد القراءات الصحيحة: \(options.repeatTarget)".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textPrimary)
                     Spacer()
                     HStack(spacing: Sunnah.Spacing.s2) {
-                        stepButton("minus", "أنقص", options.repeatTarget > TasmeeModeOptions.repeatRange.lowerBound) { options.repeatTarget -= 1 }
-                        stepButton("plus", "زد", options.repeatTarget < TasmeeModeOptions.repeatRange.upperBound) { options.repeatTarget += 1 }
+                        stepButton("chevron.down", "أنقص", options.repeatTarget > TasmeeModeOptions.repeatRange.lowerBound) { options.repeatTarget -= 1 }
+                        stepButton("chevron.up", "زد", options.repeatTarget < TasmeeModeOptions.repeatRange.upperBound) { options.repeatTarget += 1 }
                     }
                     .accessibilityElement(children: .contain)
                 }
