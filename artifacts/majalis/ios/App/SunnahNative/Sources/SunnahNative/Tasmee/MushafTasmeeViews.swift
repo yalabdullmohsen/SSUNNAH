@@ -23,6 +23,7 @@ struct MushafTasmeeOverlay: View {
                 }
                 .accessibilityIdentifier("mushaf.tasmee.hint")
             }
+            if tasmee.phase == .listening { TasmeeWaveform(level: tasmee.level) }
             HStack(spacing: Sunnah.Spacing.s2) {
                 if tasmee.isActive || tasmee.phase == .needsMic {
                     Button { tasmee.hideVerses.toggle() } label: {
@@ -67,6 +68,26 @@ struct MushafTasmeeOverlay: View {
                 .updating($drag) { v, st, _ in st = v.translation }
                 .onEnded { v in dragBase.width += v.translation.width; dragBase.height += v.translation.height })
         .environment(\.layoutDirection, .rightToLeft)
+    }
+}
+
+/// موجة الميكروفون الحية: أعمدة تتبع مستوى RMS الفعلي (كل عمود يحمل مستوى أقدم، فتنساب من اليمين لليسار).
+struct TasmeeWaveform: View {
+    let level: Float
+    @State private var history = Array(repeating: Float(0), count: 15)
+
+    var body: some View {
+        HStack(alignment: .center, spacing: 3) {
+            ForEach(history.indices, id: \.self) { i in
+                Capsule().fill(Sunnah.Colors.primary.opacity(0.85))
+                    .frame(width: 3, height: 4 + CGFloat(history[i]) * 24)
+            }
+        }
+        .frame(height: 28)
+        .padding(.horizontal, 12).padding(.vertical, 4)
+        .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
+        .onChange(of: level) { v in withAnimation(.linear(duration: 0.08)) { history.removeFirst(); history.append(v) } }
+        .accessibilityHidden(true)
     }
 }
 
@@ -162,6 +183,9 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
     func body(content: Content) -> some View {
         content
             .overlay(alignment: .bottom) { overlay }
+            .sunnahSheet(isPresented: Binding(get: { box.controller?.showModeSheet ?? false }, set: { box.controller?.showModeSheet = $0 })) {
+                if let t = box.controller { TasmeeModeSheet { t.startWith($0) }.presentationDetents([.large]) }
+            }
             .sunnahSheet(isPresented: consentBinding) {
                 if let t = box.controller { MushafTasmeeConsent(tasmee: t).presentationDetents([.medium]) }
             }

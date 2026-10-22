@@ -104,6 +104,9 @@ final class TasmeeEngine {
 
     // MARK: الجلسة
 
+    /// مستوى الصوت الحي المطبَّع 0…1 لموجة الميكروفون؛ يُستدعى من خيط الالتقاط.
+    var onLevel: ((Float) -> Void)?
+
     func setPrompt(_ text: String?) { lock.lock(); promptText = text; lock.unlock() }
 
     /// `feedFile` (Debug/TestFlight فقط): ملف صوتي يُغذّى بإيقاع الزمن الحقيقي بدل الميكروفون لاختبار التكامل على المحاكي.
@@ -204,6 +207,12 @@ final class TasmeeEngine {
             }
             guard err == nil, let ch = out.floatChannelData?[0] else { return }
             let chunk = Array(UnsafeBufferPointer(start: ch, count: Int(out.frameLength)))
+            if let report = self.onLevel {
+                var sum: Float = 0
+                for x in chunk { sum += x * x }
+                let rms = chunk.isEmpty ? 0 : (sum / Float(chunk.count)).squareRoot()
+                report(rms > 0 ? min(1, max(0, (20 * log10(rms) + 50) / 50)) : 0)
+            }
             self.append(chunk)
         }
         audioEngine.prepare()

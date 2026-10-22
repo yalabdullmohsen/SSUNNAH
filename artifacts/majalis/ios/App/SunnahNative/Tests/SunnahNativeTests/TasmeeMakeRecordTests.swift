@@ -26,4 +26,18 @@ final class TasmeeMakeRecordTests: XCTestCase {
         XCTAssertEqual(r?.hints, 2)
         XCTAssertEqual(r?.count(.wrong), 1)
     }
+
+    func testRecordCarriesChosenMode() {
+        let m = TasmeeMatcher(ref: ref, params: TasmeeStrictness.normal.params)
+        _ = m.ingest("بسم", timeMs: 1000)
+        XCTAssertEqual(MushafTasmeeController.makeRecord(m, startedAt: Date(), hints: 0, mode: .exam)?.mode, .exam)
+    }
+
+    func testMaskLevelsForPendingWords() {
+        var o = TasmeeModeOptions(); o.mode = .graded
+        o.level = .firstLetter; XCTAssertEqual(o.mask(position: 1, count: 4), .firstLetter)
+        o.level = .alternate; XCTAssertEqual([1, 2, 3, 4].map { o.mask(position: $0, count: 4) }, [.hidden, .shown, .hidden, .shown])
+        o.level = .ayahEnd; XCTAssertEqual([1, 2, 3, 4].map { o.mask(position: $0, count: 4) }, [.shown, .shown, .hidden, .hidden])
+        o.mode = .follow; XCTAssertEqual(o.mask(position: 1, count: 4), .shown)
+    }
 }

@@ -23,10 +23,18 @@ public final class MushafTasmeeController: ObservableObject {
     @Published public private(set) var hint: String?
     /// وضع «إخفاء الآيات»: المعلّقة مخفية وتظهر الكلمة فور مطابقتها.
     @Published public var hideVerses = true { didSet { version &+= 1 } }
+    /// خيارات الوضع المختار من ورقة الأوضاع (آخر اختيار محفوظ)؛ تحدّد القناع والسجل.
+    @Published public private(set) var options = TasmeeModeOptions.load()
+    /// ورقة اختيار الوضع تظهر عند ضغط الميكروفون وهو خامل.
+    @Published public var showModeSheet = false
     /// اهتزاز خفيف عند الخطأ؛ يُحفظ اختيار المستخدم.
     @Published public var hapticsOn = UserDefaults.standard.object(forKey: "tasmee.haptics") as? Bool ?? true {
         didSet { UserDefaults.standard.set(hapticsOn, forKey: "tasmee.haptics") }
     }
+    /// مستوى الصوت الحي المنعَّم (0…1) لموجة الميكروفون؛ 0 حين لا جلسة أو لا محرك يبلّغ.
+    @Published public private(set) var level: Float = 0
+    /// تنعيم: صعود سريع وهبوط أبطأ حتى لا ترتجف الأعمدة.
+    func ingestLevel(_ raw: Float) { level = raw > level ? raw : level * 0.7 + raw * 0.3 }
     /// صوت تنبيه قصير عند الخطأ (افتراضيًا مُغلق)؛ يُحفظ اختيار المستخدم.
     @Published public var soundOn = UserDefaults.standard.object(forKey: "tasmee.sound") as? Bool ?? false {
         didSet { UserDefaults.standard.set(soundOn, forKey: "tasmee.sound") }
@@ -57,6 +65,21 @@ public final class MushafTasmeeController: ObservableObject {
         switch phase { case .listening, .preparing, .downloading: true; default: false }
     }
     public var modelBytes: Int64? { engine.modelDownloadBytes }
+
+    /// الضغطة على الزر: خامل ← ورقة الأوضاع أولًا، ثم `start`؛ أثناء الاستماع تُنهي الجلسة.
+    public func micPressed(page: Int, repo: MushafRepository, search: MushafSearch?) {
+        pendingStart = (page, repo, search)
+        if phase == .listening { micTapped(page: page, ayah: nil, repo: repo, search: search) } else { showModeSheet = true }
+    }
+
+    /// اختيار المستخدم من الورقة: يُطبَّق على الاهتزاز والصوت والإخفاء ثم تبدأ الجلسة.
+    public func startWith(_ o: TasmeeModeOptions) {
+        options = o; hapticsOn = o.haptics; soundOn = o.sound; hideVerses = o.mode != .follow
+        showModeSheet = false
+        guard let p = pendingStart else { return }
+        micTapped(page: p.page, ayah: nil, repo: p.repo, search: p.search)
+    }
+    private var pendingStart: (page: Int, repo: MushafRepository, search: MushafSearch?)?
 
     /// الضغطة على الزر: تبدأ الجلسة أو تُنهيها أو تفتح الموافقة.
     public func micTapped(page: Int, ayah: String?, repo: MushafRepository, search: MushafSearch?) {
@@ -101,6 +124,7 @@ public final class MushafTasmeeController: ObservableObject {
         session = s
         do {
             try await engine.load()
+            (engine as? RecitationLevelReporting)?.onLevel = { [weak self] v in Task { @MainActor in self?.ingestLevel(v) } }
             try await s.start()
             phase = .listening
         } catch { session = nil; phase = .failed("تعذّر بدء التسميع") }
@@ -127,14 +151,16 @@ public final class MushafTasmeeController: ObservableObject {
     public func stop() async {
         guard let s = session else { phase = .idle; return }
         session = nil
+        (engine as? RecitationLevelReporting)?.onLevel = nil
+        level = 0
         let report = await s.stop()
-        lastRecord = Self.makeRecord(s.matcher, startedAt: startedAt, hints: hintsUsed)
+        lastRecord = Self.makeRecord(s.matcher, startedAt: startedAt, hints: hintsUsed, mode: options.mode)
         if let r = lastRecord { TasmeeHistoryStore.shared.append(r) }
         phase = .finished(report)
     }
 
     /// سجل الجلسة من حالة المطابِق: أخطاء (ولو صُحّحت) ومتجاوزات فقط؛ الصوت لا يُحفظ.
-    static func makeRecord(_ m: TasmeeMatcher, startedAt: Date, hints hintsUsed: Int) -> TasmeeSessionRecord? {
+    static func makeRecord(_ m: TasmeeMatcher, startedAt: Date, hints hintsUsed: Int, mode: TasmeeMode = .recite) -> TasmeeSessionRecord? {
         let reached = m.next
         guard reached > 0 else { return nil }
         func pos(_ i: Int) -> (surah: Int, ayah: Int, word: Int)? {
@@ -156,7 +182,7 @@ public final class MushafTasmeeController: ObservableObject {
             guard let p = pos(i) else { continue }
             events.append(TasmeeSessionEvent(surah: p.surah, ayah: p.ayah, wordIndex: p.word, kind: .skipped, expected: m.ref[i].text))
         }
-        return TasmeeSessionRecord(startedAt: startedAt, durationSec: Date().timeIntervalSince(startedAt), mode: .recite,
+        return TasmeeSessionRecord(startedAt: startedAt, durationSec: Date().timeIntervalSince(startedAt), mode: mode,
                                    surah: first.surah, fromAyah: first.ayah, toAyah: last.ayah, totalWords: reached,
                                    events: events, hints: hintsUsed)
     }
@@ -190,7 +216,7 @@ public final class MushafTasmeeController: ObservableObject {
 }
 
 /// طلاء كلمة المصحف أثناء التسميع.
-public enum TasmeeWordPaint: Sendable { case hidden, correct, wrong, skipped, error, current }
+public enum TasmeeWordPaint: Sendable { case hidden, faint, correct, wrong, skipped, error, current }
 
 extension View {
     /// مخفية = شفافة (تحجز موضعها)؛ خطأ = خلفية حمراء خفيفة؛ متجاوزة = كهرمانية مع تنبيه.
@@ -203,7 +229,7 @@ extension View {
         default: nil
         }
         // الكشف بنعومة ~180ms؛ الكلمة الحالية تتوهّج بإطار أخضر خفيف.
-        self.opacity(hidden ? 0 : 1)
+        self.opacity(hidden ? 0 : paint == .faint ? 0.28 : 1)
             .background {
                 if let tint {
                     RoundedRectangle(cornerRadius: radius).fill(tint).padding(.horizontal, -2)
@@ -225,13 +251,24 @@ extension MushafTasmeeController {
         guard let slots = ref?.keysByPage[page], isActive || isFinished else { return nil }
         let hide = hideVerses
         let cur = currentKey
+        let opts = options
+        let counts = verseWordCounts
         return { r, c in
             guard let key = slots[MushafWordSlot(row: r, col: c)] else { return nil }
             switch self.states[key] ?? .pending {
             case .correct: return .correct
             case .wrong: return .error
             case .skipped: return .skipped
-            case .pending: return key == cur ? .current : (hide ? .hidden : nil)
+            case .pending:
+                if key == cur { return .current }
+                guard hide else { return nil }
+                let parts = key.split(separator: "#")
+                guard parts.count == 2, let pos = Int(parts[1]) else { return .hidden }
+                switch opts.mask(position: pos, count: counts[String(parts[0])] ?? pos) {
+                case .shown: return nil
+                case .firstLetter: return .faint
+                case .hidden: return .hidden
+                }
             }
         }
     }
@@ -239,6 +276,12 @@ extension MushafTasmeeController {
     var currentKey: String? {
         guard phase == .listening, let s = session, let ref, s.matcher.next < ref.words.count else { return nil }
         return ref.words[s.matcher.next].id
+    }
+    /// عدد كلمات كل آية في المرجع (لقناع «نصف الآية الأخير»).
+    var verseWordCounts: [String: Int] {
+        var c: [String: Int] = [:]
+        for w in ref?.words ?? [] { if let v = w.id.split(separator: "#").first { c[String(v), default: 0] += 1 } }
+        return c
     }
     var isFinished: Bool { if case .finished = phase { return true }; return false }
 }

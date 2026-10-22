@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// منافذ الخدمات الأصلية: تعرّفها الحزمة وينفّذها هدف التطبيق بتوصيل الأصناف الجوهرية الموجودة
@@ -206,4 +207,25 @@ public protocol RecitationEngineControlling: AnyObject {
 
 public extension RecitationEngineControlling {
     var modelDownloadBytes: Int64? { nil }
+}
+
+/// محرك يبلّغ مستوى الصوت الحي (0…1 مطبَّع) لموجة الميكروفون؛ اختياري فلا يلزم كل محرك.
+@MainActor
+public protocol RecitationLevelReporting: AnyObject {
+    var onLevel: ((Float) -> Void)? { get set }
+}
+
+/// تحويل RMS الخام (0…1) إلى مستوى عرض 0…1 على مقياس ديسيبل (−50 dB = صمت، 0 dB = أعلى مستوى).
+public enum AudioLevel {
+    public static func rms(_ samples: UnsafeBufferPointer<Float>) -> Float {
+        guard !samples.isEmpty else { return 0 }
+        var sum: Float = 0
+        for x in samples { sum += x * x }
+        return (sum / Float(samples.count)).squareRoot()
+    }
+    public static func normalized(rms: Float, floorDb: Float = -50) -> Float {
+        guard rms > 0 else { return 0 }
+        let db = 20 * log10(rms)
+        return min(1, max(0, (db - floorDb) / -floorDb))
+    }
 }

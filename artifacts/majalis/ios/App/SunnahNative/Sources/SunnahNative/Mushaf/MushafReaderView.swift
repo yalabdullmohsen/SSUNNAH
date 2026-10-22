@@ -356,7 +356,7 @@ public struct MushafReaderView: View {
     /// الشريط ثابت ما دام الحقل مركَّزًا أو بطاقة آية أو منتقي علامة مفتوحًا؛ وإلا يبدأ العدّ.
     @ViewBuilder private var tasmeeOverlay: some View {
         if let t = tasmeeBox.controller, selected == nil {
-            MushafTasmeeOverlay(tasmee: t) { t.micTapped(page: current, ayah: nil, repo: repo, search: search) }
+            MushafTasmeeOverlay(tasmee: t) { t.micPressed(page: current, repo: repo, search: search) }
                 .padding(.bottom, Sunnah.Spacing.s2).offset(y: Sunnah.Spacing.s3)   // صف التذييل: بين شارة الصفحة وتسمية الحزب، منزَل تحت آخر سطر فلا يلاصق كلمة
         }
     }
