@@ -37,21 +37,22 @@ final class TasmeeSnapshotEngine: RecitationEngineControlling, RecitationLevelRe
     private func script() async {
         guard let words = controller?.ref?.words.map(\.text), words.count > 8 else { return }
         var seq = 0, ms = 0.0
-        func say(_ n: Int, extra: String? = nil) async {
+        func say(_ n: Int, from: Int = 0, extra: String? = nil) async {
             seq += 1; ms += 900
-            onPartial?(RecitationPartial(seq: seq, text: (words.prefix(n) + (extra.map { [$0] } ?? [])).joined(separator: " "), finishedAtMs: ms))
+            onPartial?(RecitationPartial(seq: seq, text: (words.prefix(n).dropFirst(from) + (extra.map { [$0] } ?? [])).joined(separator: " "), finishedAtMs: ms))
             try? await Task.sleep(nanoseconds: 350_000_000)
         }
-        /// كلمة خاطئة شبيهة بالمرجع (حرف واحد مبدَّل) كي يصنّفها المطابِق «خاطئة» لا «زائدة»؛ التكرار مرّتين يُثبّتها، وتنوّع `v` يزيد المحاولات.
+        /// كلمة خاطئة شبيهة بالمرجع (نصف حروفها مبدَّل: تشابه فوق عتبة «خاطئة» ودون عتبة القبول، وإلا قُبلت صحيحة) كي يصنّفها المطابِق «خاطئة» لا «زائدة»؛ التكرار مرّتين يُثبّتها، وتنوّع `v` يزيد المحاولات.
         func wrongTry(_ v: Int) async {
             let letters = Array(words[4].unicodeScalars.filter { $0.properties.generalCategory != .nonspacingMark }.map(Character.init))
-            var w = letters; w[(v + 1) % max(1, w.count - 1)] = ["ز", "ط", "ك"][v % 3]
-            for _ in 0..<2 { await say(4, extra: String(w)) }
+            var w = letters; for k in 0..<max(2, w.count / 2) { w[(v + 2 * k + 1) % w.count] = ["ز", "ط", "ك"][(v + k) % 3] }
+            // الجلسة ترفض النص المكرَّر حرفيًا، فنُغيّر نافذة الكلمات السابقة بين المحاولتين والكلمة الخاطئة واحدة.
+            for drop in 0..<2 { await say(4, from: drop, extra: String(w)) }
         }
         switch stage {
         case "revealed": await say(3); await say(6)
-        case "wrong": await say(4); await wrongTry(0)
-        case "hint": await say(4); for v in 0..<3 { await wrongTry(v) }
+        case "wrong": await say(3); await say(4); await wrongTry(0)
+        case "hint": await say(3); await say(4); for v in 0..<3 { await wrongTry(v) }
         default: break
         }
     }
