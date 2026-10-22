@@ -139,7 +139,7 @@ struct HifzLoopScreen: View {
             SunnahSectionLabel("التكرار")
             SunnahCard {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                    Stepper("الهدف: \(loop.target) مرة", value: $loop.target, in: 1...200, step: 5)
+                    Stepper("الهدف: " + ArabicCount.label(loop.target, one: "مرة واحدة", two: "مرتان", few: "مرات", many: "مرة", genitive: "مرة"), value: $loop.target, in: 1...200, step: 5)
                     ProgressView(value: loop.progress).tint(Sunnah.Colors.primary)
                     Text("\(loop.count) من \(loop.target)".arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     if loop.reachedTarget {
