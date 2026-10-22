@@ -132,7 +132,7 @@ struct LearnFlashcardSession: View {
                 if queue.isEmpty {
                     EmptyStateView(title: "لا بطاقات مستحقة الآن")
                 } else if index >= queue.count {
-                    EmptyStateView(title: "أنهيت مراجعة \(queue.count) بطاقة")
+                    EmptyStateView(title: "أنهيت مراجعة " + ArabicCount.label(queue.count, one: "بطاقة واحدة", two: "بطاقتين", few: "بطاقات", many: "بطاقة", genitive: "بطاقة"))
                     SunnahButton("جلسة جديدة") { startSession() }
                 } else {
                     card(queue[index])
@@ -184,12 +184,14 @@ struct LearnFlashcardSession: View {
         index += 1; flipped = false
     }
 
+    /// موعد المراجعة التالية بعدد عربي سليم وأرقام عربية: «يومان»، «٥ أيام»، «١٥ يومًا»، «١٠٠ يوم».
     static func intervalLabel(_ days: Int) -> String {
         switch days {
         case ...1: return "غدًا"
         case 7: return "أسبوع"
+        case 14: return "أسبوعان"
         case 28...31: return "شهر"
-        default: return "\(days) أيام"
+        default: return ArabicCount.label(days, one: "يوم", two: "يومان", few: "أيام", many: "يومًا", genitive: "يوم")
         }
     }
 }
