@@ -1,0 +1,7 @@
+git_sha=342753427470824c5b020d8583e3379deba48fa2 note=البناء من رأس الفرع نفسه؛ لقطات تشغيل حقيقي بمحرك وهمي (DEBUG فقط) مع منح الميكروفون والتعرّف مسبقًا key=71b36127d1c10f26 sdk=27.1 binary_sha256=2ff0d8ad91bae8c710c492868e3693f1ab6cd497906cb694eef4f20212f1e84f binary=SunnahApp.app built_at=2026-10-22 19:18:30 build=Debug CODE_SIGNING_ALLOWED=NO captured_at=2026-10-22 19:20 locale=ar (RTL) devices=iPhone محاكي upload=لا
+
+# overlay-hidden-light.png / overlay-hidden-dark.png
+covers: Mushaf/MushafReaderView.swift (شريط التسميع السفلي داخل قارئ المصحف، مرحلة الإخفاء، فاتح/داكن)
+
+# overlay-revealed-light.png / overlay-revealed-dark.png
+covers: Mushaf/MushafReaderView.swift (شريط التسميع السفلي داخل قارئ المصحف، مرحلة الكشف، فاتح/داكن)
