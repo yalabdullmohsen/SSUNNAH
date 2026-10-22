@@ -15,8 +15,8 @@ public struct HomeScreen: View {
     static let shortcuts: [Shortcut] = [
         .init(title: "القرآن", symbol: "book.closed", route: "/quran-hub"),
         .init(title: "الحديث", symbol: "text.book.closed", route: "/hadith"),
-        .init(title: "الأذكار", symbol: "hands.sparkles", route: "/native/adhkar"),
-        .init(title: "الفقه", symbol: "scalemass", route: "/fiqh"),
+        .init(title: "الأذكار", symbol: "heart.text.square", route: "/native/adhkar"),
+        .init(title: "الفقه", symbol: "building.columns", route: "/fiqh"),
         .init(title: "الدروس", symbol: "graduationcap", route: "/lessons"),
         .init(title: "القبلة", symbol: "location.north.line", route: "/qibla"),
         .init(title: "التقويم", symbol: "calendar", route: "/calendar"),

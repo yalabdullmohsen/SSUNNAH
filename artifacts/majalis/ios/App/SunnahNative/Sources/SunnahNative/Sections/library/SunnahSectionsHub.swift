@@ -10,7 +10,7 @@ struct SunnahSectionsHub: View {
     private struct Featured { let route: String; let title: String; let subtitle: String; let symbol: String; let gold: Bool }
     private static let knowledge: [Featured] = [
         .init(route: "/hadith", title: "الحديث", subtitle: "مع درجة الصحة", symbol: "text.book.closed", gold: false),
-        .init(route: "/prophets", title: "قصص الأنبياء", subtitle: "٢٥ نبيًّا", symbol: "sparkle", gold: true),
+        .init(route: "/prophets", title: "قصص الأنبياء", subtitle: "٢٥ نبيًّا", symbol: "book.closed", gold: true),
         .init(route: "/seerah", title: "السيرة", subtitle: "السيرة النبوية", symbol: "map", gold: true),
         .init(route: "/fiqh", title: "الفقه", subtitle: "المسائل بأدلتها", symbol: "building.columns", gold: false),
         .init(route: "/tawhid", title: "العقيدة", subtitle: "أصول الإيمان", symbol: "shield", gold: false),

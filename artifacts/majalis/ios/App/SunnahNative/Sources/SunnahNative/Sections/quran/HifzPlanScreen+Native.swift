@@ -182,8 +182,8 @@ private struct HifzStepRow: View {
         HStack {
             Text("\(title) \(value.arabicDigits)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
             Spacer()
-            stepper("minus", enabled: value > range.lowerBound, label: "أنقص") { value -= 1; changed(value) }
-            stepper("plus", enabled: value < range.upperBound, label: "زِد") { value += 1; changed(value) }
+            stepper("chevron.down", enabled: value > range.lowerBound, label: "أنقص") { value -= 1; changed(value) }
+            stepper("chevron.up", enabled: value < range.upperBound, label: "زِد") { value += 1; changed(value) }
         }
     }
     private func stepper(_ symbol: String, enabled: Bool, label: String, _ action: @escaping () -> Void) -> some View {

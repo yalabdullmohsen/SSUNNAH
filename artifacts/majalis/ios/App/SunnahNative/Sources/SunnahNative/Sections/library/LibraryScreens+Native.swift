@@ -179,7 +179,7 @@ extension LibrarySearchView {
         switch kind {
         case "تفسير", "سورة": return "book"
         case "حديث": return "text.quote"
-        case "ذكر": return "sparkles"
+        case "ذكر": return "heart.text.square"
         case "سؤال وجواب": return "questionmark.bubble"
         case "نبي", "أمة", "تاريخ": return "clock.arrow.circlepath"
         case "درس": return "graduationcap"

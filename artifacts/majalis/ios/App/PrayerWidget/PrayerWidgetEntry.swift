@@ -24,7 +24,7 @@ enum PrayerSlotKey: String, CaseIterable, Codable {
 
     var symbolName: String {
         switch self {
-        case .fajr: return "moon.stars.fill"
+        case .fajr: return "moon.fill"
         case .sunrise: return "sunrise.fill"
         case .dhuhr: return "sun.max.fill"
         case .asr: return "sun.haze.fill"
