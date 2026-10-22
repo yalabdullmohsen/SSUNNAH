@@ -12,3 +12,9 @@ devices=iPhone 402x874 simulator
 screens=/mushaf/page/150 مع زر الميكروفون العائم (فاتح، داكن)
 upload=لا
 gaps: محاكي فقط؛ حالات إخفاء الآيات/التقرير/الموافقة لم تُلتقط (تحتاج محركًا وهميًا)؛ لا أرقام زمن/أداء.
+
+# report-light.png / report-dark.png
+git_sha=dd2ff79adaaeb09ef2c29f4a9e40e4ceca41b2cd
+source=TasmeeStatesSnapshotTests (ImageRenderer داخل اختبار المحاكي عبر الطابور)؛ ليست لقطة تطبيق مبني فلا هاش binary لها
+covers: MushafTasmeeReport (تقرير الجلسة: ٤٠ صحيحة/٤ خطأ/٣ متجاوزة، فاتح وداكن)
+gaps: الموجة الحية وورقة الأوضاع والموافقة وإخفاء الآيات لا تُرسم بـImageRenderer؛ تحتاج لقطة تشغيل بمحرك وهمي
