@@ -100,7 +100,7 @@ struct TasmeeWaveform: View {
     }
 }
 
-/// شاشة الموافقة قبل أول تنزيل: الحجم، Wi-Fi فقط، ونص الميكروفون الواضح.
+/// شاشة الموافقة قبل أول تنزيل: الحجم، وأنه قد يكون عبر بيانات الجوال، ونص الميكروفون الواضح.
 struct MushafTasmeeConsent: View {
     @ObservedObject var tasmee: MushafTasmeeController
 
@@ -114,7 +114,7 @@ struct MushafTasmeeConsent: View {
             Text("التسميع على جهازك").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
             SunnahCard {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                    Label("يُنزَّل نموذج التعرّف على التلاوة مرة واحدة (\(sizeText)) عبر Wi-Fi فقط.", systemImage: "wifi")
+                    Label("يُنزَّل نموذج التعرّف على التلاوة مرة واحدة (\(sizeText)) عبر Wi-Fi أو بيانات الجوال.", systemImage: "arrow.down.circle")
                     Label("نموذج مفتوح الرخصة (Apache-2.0) يعمل على جهازك بلا إنترنت بعد التنزيل.", systemImage: "cpu")
                     Label("سيُطلب إذن الميكروفون بعد التنزيل لتسجيل تلاوتك. تُعالج التلاوة على جهازك فقط ولا تُرسل ولا تُحفظ.", systemImage: "mic")
                 }
