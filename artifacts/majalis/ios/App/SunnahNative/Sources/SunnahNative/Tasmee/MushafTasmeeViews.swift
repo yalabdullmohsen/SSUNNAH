@@ -59,7 +59,7 @@ struct MushafTasmeeOverlay: View {
                 }
                 Button(action: onTap) {
                     ZStack {
-                        Circle().fill(tasmee.phase == .listening ? Sunnah.Colors.danger : Sunnah.Colors.primary)
+                        Circle().fill(tasmee.phase == .listening ? Color(red: 0.69, green: 0.21, blue: 0.17) : Sunnah.Colors.primary)   // أحمر ثابت داكن: الأيقونة بيضاء فيبقى التباين ≥3:1 في الوضعين
                         switch tasmee.phase {
                         case .preparing, .downloading: ProgressView().tint(.white)
                         default: Image(systemName: tasmee.phase == .listening ? "stop.fill" : "mic.fill").font(.system(size: 20, weight: .semibold)).foregroundStyle(.white)

@@ -403,10 +403,12 @@ public struct MushafReaderView: View {
                 .accessibilityLabel("صفحة \(current.arabicDigits)")
                 .accessibilityIdentifier("mushaf.pageNumber")
             Spacer()
-            Text(firstAyah(on: current).flatMap(HizbQuarters.label(ayahID:)) ?? "الحزب \(Self.arabicDigits(hizb(on: current)))")
-                .font(Sunnah.Typography.secondary)
-                .foregroundStyle(Sunnah.Colors.mushafAccent)
-                .accessibilityIdentifier("mushaf.hizb")
+            if tasmeeBox.controller?.showsSessionControls != true {   // أثناء الجلسة يشغل شريطُ التحكم هذا الصف فتُخفى التسمية بدل أن تُقصّ
+                Text(firstAyah(on: current).flatMap(HizbQuarters.label(ayahID:)) ?? "الحزب \(Self.arabicDigits(hizb(on: current)))")
+                    .font(Sunnah.Typography.secondary)
+                    .foregroundStyle(Sunnah.Colors.mushafAccent)
+                    .accessibilityIdentifier("mushaf.hizb")
+            }
         }
     }
 
