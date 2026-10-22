@@ -1,0 +1,9 @@
+git_sha=5d3cbdf515dcd6f48ad8e837c7519bbbb4d3147c
+branch=HEAD
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/4b3492024486366f/SunnahApp.app
+binary_sha256=9483db01d4cfd9ce17708dd153403ff05147d0450fb0c74dc74d2b9913243680
+built_at=2026-10-21 20:30:31
+note=اللقطات التُقطت من بناء المفتاح 4b3492024486366f ثم أُعيد بناؤه من الشجرة نفسها (origin/native-app@5d3cbdf51) لتوليد هذا الملف بعد إخلاء الكاش
+files: ax3-{home,prayer,adhkar,hadith}-{light,dark}.png
+covers: نفس الشاشات والحجم قبل الإصلاح (origin/native-app)
+gaps: لا شيء

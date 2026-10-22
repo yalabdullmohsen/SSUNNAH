@@ -14,7 +14,6 @@ public struct AqidahDiscoverIslamNativeScreen: ScreenTemplate {
         Entry(id: "doubts", title: "الشبهات والتفنيدات", route: "/discover-islam/doubts"),
         Entry(id: "how-to-convert", title: "كيف أصبح مسلمًا؟", route: "/discover-islam/how-to-convert"),
         Entry(id: "new-muslim", title: "مسار الثلاثين يومًا", route: "/discover-islam/new-muslim"),
-        Entry(id: "contact", title: "تواصل سرّي مع داعية", route: "/discover-islam/contact"),
     ]
 
     let articles: [DawahArticle]

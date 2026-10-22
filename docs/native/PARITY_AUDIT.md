@@ -33,7 +33,6 @@
 | aqidah/discover-islam-articles | 13 | 13 | 0 |  |
 | aqidah/discover-islam-new-muslim | 30 | 30 | 0 |  |
 | aqidah/discover-islam | 5 | 5 | 0 |  |
-| aqidah/discover-islam-contact | 0 | 0 | 0 | فارغ عمدًا: نموذج تواصل (شبكة/حساب): 1 |
 | aqidah/tazkiya | 4 | 4 | 0 |  |
 | audio/surah-reciters | 29 | 29 | 0 |  |
 | fiqh/sujood-sahw | 8 | 8 | 0 |  |

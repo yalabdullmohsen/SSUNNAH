@@ -33,7 +33,6 @@
 `/fikr-waqia`، `/islamic-landmarks`، `/islamic-landmarks/:id`، `/islamic-landmarks/map`، `/nations`، `/nations/:slug`، `/occasions`، `/occasions-lessons`، `/prophets`، `/prophets/tree`، `/sahabah`، `/seerah`، `/shamael`، `/stories`، `/tarikh-islami`، `/tarikh-islami/:id`، `/teachers`، `/teachers/:slug`
 
 ### العقيدة والتزكية (27)
-`/adab-talab-ilm`، `/akhlaq`، `/alamat-saah`، `/amrad-qalbiyya`، `/asma-husna`، `/discover-islam`، `/discover-islam/articles/:slug`، `/discover-islam/contact`، `/discover-islam/doubts`، `/discover-islam/doubts/:slug`، `/discover-islam/how-to-convert`، `/discover-islam/new-muslim`، `/discover-islam/new-muslim/:day`، `/discover-islam/questions`، `/discover-islam/questions/:slug`، `/hikam-salaf`، `/iman-topics`، `/islamic-sects`، `/islamic-sects/:id`، `/janna-naar`، `/malaika`، `/raqaiq`، `/tawhid`، `/tawhid/:slug`، `/tazkiya`، `/tazkiya-topics`، `/usra-mujtama`
 
 ### الفقه والعبادات (39)
 `/amr-bil-maruf`، `/arkan`، `/arkan-iman`، `/fadail-aamal`، `/family`، `/fiqh`، `/fiqh-qawaid`، `/fiqh/books/:bookId`، `/fiqh/books/:bookId/chapters/:chapterId`، `/fiqh/books/:bookId/lessons/:lessonId`، `/fiqh/topics/:topicId`، `/fiqh/usul`، `/hajj`، `/janaza`، `/jumuah`، `/madhahib`، `/madhahib/:id`، `/maqasid-sharia`، `/mawarith`، `/mawarith/calculator`، `/nikah`، `/prayer-ranks`، `/prayer-times`، `/prophetic-medicine`، `/riba`، `/ruqya`، `/sadaqa`، `/salah-guide`، `/sawm`، `/sins-and-rights`، `/sins-and-rights/:slug`، `/sujood-sahw`، `/tahara`، `/talaq`، `/tawba`، `/udhiya`، `/waqf`، `/worship`، `/zakat`

@@ -1,0 +1,7 @@
+git_sha=22debdc575631ed1ebe51d85715cf952a3439512
+branch=n1/ivory-green-tokens
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/868c85ac080b955a/SunnahApp.app
+binary_sha256=dcf259dc44a7f340d8b088638efd62b824e0d9ad9006296fb104fb9b8d731f3a
+built_at=2026-10-22 07:05:36
+source_newest=2026-10-22 07:03:01
+captured_at=2026-10-22 07:06:22

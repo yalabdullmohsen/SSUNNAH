@@ -73,6 +73,10 @@ du -sk ios-native/Data/* | sort -rn | head -10 | awk '{printf "  %7.1f MB  %s\n"
 [ "$DMB" -le 500 ] || bad "حجم ios-native/Data ${DMB} MB يتجاوز السقف 500 MB"
 [ "$DMB" -le 250 ] || echo "⚠ تحذير: حجم ios-native/Data ${DMB} MB يتجاوز 250 MB"
 
+# 2ك) ممنوع أي رمز بشكل صليب/نجمة رباعية (قرار المالك 2026-10-22)
+bash scripts/native-no-cross-icons-guard.sh >/tmp/native-nocross.$$ 2>&1 || { head -20 /tmp/native-nocross.$$; bad "رموز بشكل صليب/نجمة رباعية (scripts/native-no-cross-icons-guard.sh)"; }
+rm -f /tmp/native-nocross.$$
+
 # 2ي) أصول الساعة (SunnahWatch/Complications): أيقونة، bundle id، إصدار مطابق، entitlements، privacy — يمنع رفض ASC 90391/90713
 bash scripts/native-watch-assets-guard.sh >/tmp/native-watch-guard.$$ 2>&1 || { head -20 /tmp/native-watch-guard.$$; bad "حارس أصول الساعة: أيقونة/إصدار/bundle id/entitlements/privacy"; }
 rm -f /tmp/native-watch-guard.$$

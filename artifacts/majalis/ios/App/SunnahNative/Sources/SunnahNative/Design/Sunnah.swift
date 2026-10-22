@@ -22,11 +22,11 @@ public enum Sunnah {
     }
 
     public enum Colors {
-        // السمة «أخضر عاجي» (مرجع design/Themes) — الليلي بحسب أمر 14 أكتوبر 2026. الخلفية الفاتحة أبيض مائل للأخضر بدل البيج (قرار المالك 2026-10-20).
-        public static let bg = dynamic(light: 0xF1F4F1, dark: 0x0F1A15)
-        public static let surface = dynamic(light: 0xFFFFFF, dark: 0x17251E)
-        public static let surface2 = dynamic(light: 0xE9EFEA, dark: 0x1E2E26)
-        public static let border = dynamic(light: 0xDCE5DE, dark: 0x23332B)
+        // السمة «أخضر عاجي» (مرجع design/Themes) — الليلي بحسب أمر 14 أكتوبر 2026. الفاتح (قرار المالك 2026-10-22): خلفية أخضر مريمي هادئ وبطاقات عاجية بدل الأبيض.
+        public static let bg = dynamic(light: 0xEAF0E8, dark: 0x0F1A15)
+        public static let surface = dynamic(light: 0xFBF8F1, dark: 0x17251E)
+        public static let surface2 = dynamic(light: 0xF3F1E7, dark: 0x1E2E26)
+        public static let border = dynamic(light: 0xDDE3D6, dark: 0x23332B)
         public static let beige = dynamic(light: 0xEFE6D4, dark: 0x1E2E26)
         public static let primary = dynamic(light: 0x1F5C45, dark: 0x6FBE9C)
         public static let primaryStrong = dynamic(light: 0x123B2C, dark: 0x1F5C46)
@@ -47,12 +47,12 @@ public enum Sunnah {
         public static let heroBottom = dynamic(light: 0x123B2C, dark: 0x123B2C)
         /// نص فوق ذهب البطاقة الخضراء (كبسولة «بعد … س»): داكن في الوضعين، تباين ≥ ٤٫٥:١ على #D9C089.
         public static let onHeroGold = dynamic(light: 0x3B2D05, dark: 0x3B2D05)
-        public static let heroGold = dynamic(light: 0xD9C089, dark: 0xD9C089)
+        public static let heroGold = dynamic(light: 0xE3CE9A, dark: 0xE3CE9A)
         public static let primarySoft = dynamic(light: 0xE6EFE9, dark: 0x1B2F26)
         /// ذهبي للنصوص، وذهبي للزخرفة، وذهبي فاتح (أزرار ثانوية).
-        public static let gold = dynamic(light: 0x8A6D32, dark: 0xD9C089)
+        public static let gold = dynamic(light: 0x7A5F28, dark: 0xD9C089)
         /// لون محيط صفحة المصحف (ترويسة، علامة نهاية الآية، الصفحة): أخضر هادئ؛ الداكن درجة أفتح بتباين ≥ 4.5:1.
-        public static let mushafAccent = dynamic(light: 0x5C8A72, dark: 0x8FBFA6)
+        public static let mushafAccent = dynamic(light: 0x44705A, dark: 0x8FBFA6)
         /// قرص نهاية الآية: فاتحًا أغمق قليلًا من mushafAccent ليبلغ تباين رقم الآية العاجي ≥ 4.5:1 (كان 3.7:1)؛ الداكن كما هو (7.3:1).
         public static let mushafEndDisc = dynamic(light: 0x4A7560, dark: 0x8FBFA6)
         /// ورق صفحة المصحف (مرجع التصميم الجديد): عاجي دافئ فاتحًا، ونفس الخلفية الليلية داكنًا.
@@ -72,10 +72,12 @@ public enum Sunnah {
         /// حبر نص المصحف كالمطبوع: أسود فاتحًا، عاجي داكنًا (قرار المالك: «نفس لون الخط» في المرجع).
         public static let mushafText = dynamic(light: 0x000000, dark: 0xEDE6D6)
         /// علامة نهاية الآية (قرار المالك 2026-10-20: هوية المصحف الخضراء بحجم المطبوع): إطار وزخارف أخضر، وحشوة خضراء فاتحة؛ الرقم بـmushafText (تباين ≥ 4.5:1).
-        public static let mushafEndGold = dynamic(light: 0x2C6A4C, dark: 0x8FBFA6)   // إطار أخضر أغمق ومشبع كإطار المرجع الذهبي (كان باهتًا)
-        public static let mushafEndFill = dynamic(light: 0xD5EADB, dark: 0x1E3328)
-        /// رقم الآية داخل الزخرفة: أخضر غامق (طلب المالك)، تباين ≥ 4.5 على الحشوة فاتحًا وداكنًا.
-        public static let mushafEndDigits = dynamic(light: 0x1B4D36, dark: 0xCFE8DA)
+        /// قرار المالك: إطار زخرفة رقم الآية = إطار لافتة السورة تمامًا (فاتحًا وداكنًا): اسم مستعار لـmushafAccent لا قيمة مستقلة.
+        public static let mushafEndGold = mushafAccent
+        /// قرار المالك (2026-10-22): داخل الزخرفة أخضر سُنّة (فاتحًا = mushafAccent نفسه، داكنًا أخضر أعمق ليتميّز عن الإطار الفاتح) ورقم الآية عاجي.
+        public static let mushafEndFill = dynamic(light: 0x44705A, dark: 0x2E5944)
+        /// رقم الآية داخل الزخرفة: عاجي، تباين ≥ 4.5 على الحشوة الخضراء فاتحًا وداكنًا.
+        public static let mushafEndDigits = dynamic(light: 0xF6F0DE, dark: 0xF1EBDA)
         public static let goldDeco = dynamic(light: 0xB08D4A, dark: 0xD9C089)
         public static let goldSoft = dynamic(light: 0xD9C089, dark: 0x3A3320)
         public static let textPrimary = dynamic(light: 0x17241E, dark: 0xEFECE2)
@@ -84,7 +86,7 @@ public enum Sunnah {
         public static let danger = dynamic(light: 0xB0352B, dark: 0xEF8B80)
         /// مفتاح مطفأ (Toggle).
         /// «يحتاج مراجعة» في خريطة الحفظ (برتقالي).
-        public static let hifzReview = dynamic(light: 0xC2621B, dark: 0xF0A25E)
+        public static let hifzReview = dynamic(light: 0xA3510F, dark: 0xF0A25E)
         public static let switchOff = dynamic(light: 0xD8D2C4, dark: 0x2B3B33)
         /// درجات الحديث: خلفية فاتحة وحبر بتباين ≥ 4.5 (صحيح أخضر، ضعيف أحمر، موضوع برتقالي).
         public static let gradeSahihBg = dynamic(light: 0xE3F1E8, dark: 0x1B3328)

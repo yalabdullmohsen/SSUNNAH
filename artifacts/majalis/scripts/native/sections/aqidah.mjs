@@ -247,9 +247,6 @@ export default async function exportAqidah({ json, rd, held, reject, counts, app
       .map((m) => ({ id: m[1].replace(/^\/discover-islam\//, "").replace(/\//g, "-"), title: m[2], tags: [], route: m[1] }));
     out("discover-islam", items);
     cnt("discover-islam", items.length);
-    out("discover-islam-contact", []);
-    cnt("discover-islam-contact", 0);
-    reject(`${A}-contact`, "فارغ عمدًا: نموذج تواصل (شبكة/حساب)");
   }
 
   /* مدخل التزكية: روابط تنقل فقط */

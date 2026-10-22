@@ -1,0 +1,8 @@
+git_sha=9f1b9ba6c0b359d00d56e53aeda33dc7157fa6b1
+branch=n3/dynamic-type-ax3
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/8e62797eec7fb76c/SunnahApp.app
+binary_sha256=6eceffa3ed16cc6f29144bc6b7593de729e1923ac57843bb0ccfa5decc4989e4
+built_at=2026-10-21 20:20:55
+files: ax3-{home,prayer,adhkar,hadith}-{light,dark}.png
+covers: Dynamic Type AX3 (accessibility-extra-extra-extra-large) — الرئيسية، الصلاة، الأذكار، الحديث، فاتح وداكن، iPhone 17 Pro
+gaps: المصحف بحجم ثابت (محتوى محمي) فلا لقطة؛ VoiceOver لا يُلتقط بلقطة

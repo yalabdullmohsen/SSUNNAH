@@ -97,12 +97,12 @@ public enum SirahSection {
     /// معرّف الشاشة ← (مصدر، بناء). المعرّفات مطابقة لـGenerated/SirahScreens.swift.
     @MainActor public static func register(in registry: TemplateRegistry) {
         registry.registerView(id: "fikr-waqia") { SirahSection.inline(File.fikrWaqia, { (f: SirahDarsFile) in SirahAdapters.darsSections(f.sections) }, symbol: "lightbulb") }
-        registry.registerView(id: "islamic-landmarks") { SirahSection.list(File.landmarks, SirahAdapters.landmarks, base: "/islamic-landmarks") }
+        registry.registerView(id: "islamic-landmarks") { SirahSection.grid(File.landmarks, SirahAdapters.landmarks, base: "/islamic-landmarks") }
         registry.registerView(id: "islamic-landmarks.map") {
             SirahLoadedView(source: File.landmarks, adapt: SirahAdapters.landmarks) { CardGridTemplate(items: $0, detailBase: "/islamic-landmarks") }
                 .sunnahNavTitle(SirahSection.title)
         }
-        registry.registerView(id: "nations") { SirahSection.list(File.nations, SirahAdapters.nations, base: "/nations") }
+        registry.registerView(id: "nations") { SirahSection.grid(File.nations, SirahAdapters.nations, base: "/nations") }
         registry.registerView(id: "occasions") { SirahSection.inline(File.occasions, SirahAdapters.occasions, reader: .detail, symbol: "calendar") }
         registry.registerView(id: "occasions-lessons") { SectionsListTemplate(links: SirahLinks.occasionsLessons).sunnahNavTitle(SirahSection.title) }
         registry.registerView(id: "prophets") {
@@ -156,6 +156,12 @@ public enum SirahSection {
 
     private static func list<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem], base: String) -> some View {
         SirahLoadedView(source: source, adapt: adapt) { ListTemplate(items: $0, detailBase: base) }
+            .sunnahNavTitle(SirahSection.title)
+    }
+
+    /// محور بلاطات: شبكة بطاقات بدل قائمة صفوف.
+    private static func grid<Raw: Decodable & Sendable>(_ source: ContentSource, _ adapt: @escaping (Raw) -> [ContentItem], base: String) -> some View {
+        SirahLoadedView(source: source, adapt: adapt) { CardGridTemplate(items: $0, detailBase: base) }
             .sunnahNavTitle(SirahSection.title)
     }
 

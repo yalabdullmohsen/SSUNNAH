@@ -107,10 +107,10 @@ struct MawarithCalculatorScreen: View {
             Text(label).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary)
             Spacer()
             HStack(spacing: Sunnah.Spacing.s3) {
-                roundButton("minus", "إنقاص عدد \(label)", enabled: value > range.lowerBound) { set(value - 1) }
+                roundButton("chevron.down", "إنقاص عدد \(label)", enabled: value > range.lowerBound) { set(value - 1) }
                 Text("\(value)").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                     .frame(minWidth: 28)
-                roundButton("plus", "زيادة عدد \(label)", enabled: value < range.upperBound) { set(value + 1) }
+                roundButton("chevron.up", "زيادة عدد \(label)", enabled: value < range.upperBound) { set(value + 1) }
             }
         }
         .frame(minHeight: 44)

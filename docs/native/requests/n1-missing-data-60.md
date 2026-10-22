@@ -8,7 +8,6 @@
 |---|---|---|
 | 1 | `Data/audio/surah-reciters.json` | Audio/OfflineRecitation.swift |
 | 2 | `Data/aqidah/discover-islam.json` | Generated/AqidahScreens.swift |
-| 3 | `Data/aqidah/discover-islam-contact.json` | Generated/AqidahScreens.swift |
 | 4 | `Data/fiqh/arkan.json` | Generated/FiqhScreens.swift |
 | 5 | `Data/fiqh/arkan-iman.json` | Generated/FiqhScreens.swift |
 | 6 | `Data/fiqh/fadail-aamal.json` | Generated/FiqhScreens.swift |
@@ -87,4 +86,3 @@
 
 ## قرارات DUP (فحص بصري 2026-10-12)
 - `/seerah`, `/shamael`: شاشة «لا يوجد محتوى بعد» (ملفا البيانات مفقودان أعلاه) ← ليست محتوى مشتركًا؛ تُصنَّف الآن ERROR:لا يوجد محتوى ← ن1.
-- `/contact` (account): محتوى حقيقي، وتطابقها مع `/discover-islam/contact` تطابق alias لنفس الشاشة ← قاعدة DUP تستثني المسارات المتحدة الاسم الأخير.
