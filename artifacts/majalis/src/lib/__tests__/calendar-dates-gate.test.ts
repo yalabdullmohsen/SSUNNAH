@@ -19,7 +19,7 @@ import {
   hijriMonthYearLabel,
   weekColumnIndex,
 } from "../calendar-dates";
-import { eventsForDate, type CalendarEvent } from "../calendar-events";
+import { eventsForDate, weekdaysOf, type CalendarEvent } from "../calendar-events";
 import { gregorianToHijri } from "../hijri-utils";
 
 function kuwaitDate(iso: string): Date {
@@ -123,6 +123,20 @@ function kuwaitDate(iso: string): Date {
   assert.equal(mon.length, 1);
   assert.equal(mon[0]!.id, "c");
   assert.equal(eventsForDate(kuwaitDate("2026-08-19"), events).length, 0);
+}
+
+// ── 6ب) درس بأكثر من يوم: «الثلاثاء والخميس» يظهر في اليومين، والنص غير المفهوم لا يُخمَّن ──
+{
+  const events: CalendarEvent[] = [
+    { id: "m", title: "م", sheikh: "", mosque: "", time: "", day: "الثلاثاء والخميس", href: "/lessons", recurring: true },
+    { id: "r", title: "ر", sheikh: "", mosque: "", time: "", day: "من الأحد إلى الخميس يومياً", href: "/lessons", recurring: true },
+  ];
+  assert.deepEqual(weekdaysOf("الاثنين والخميس"), [1, 4]);
+  assert.deepEqual(weekdaysOf("الإثنين"), [1]);
+  assert.deepEqual(weekdaysOf("طوال الأسبوع"), []);
+  assert.deepEqual(eventsForDate(kuwaitDate("2026-08-18"), events).map((e) => e.id), ["m"], "الثلاثاء");
+  assert.deepEqual(eventsForDate(kuwaitDate("2026-08-20"), events).map((e) => e.id), ["m"], "الخميس");
+  assert.equal(eventsForDate(kuwaitDate("2026-08-16"), events).length, 0, "الأحد: النطاق لا يُخمَّن");
 }
 
 // ── 7) أسبوع = 7 أيام ──
