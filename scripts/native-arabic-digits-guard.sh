@@ -19,3 +19,5 @@ W=artifacts/majalis/ios/App/PrayerWidget/SunnahLocalDataWidgets.swift
 if grep -nE 'Text\(item\.source\)' "$W"; then echo "مصدر ودجت بأرقام لاتينية (استخدم WidgetFormat.arabicDigits): $W"; exit 1; fi
 grep -q 'WidgetFormat.arabicDigits(item.source)' "$W" || { echo "ودجت المصدر لا يمرّ بـ WidgetFormat.arabicDigits: $W"; exit 1; }
 echo "arabic-digits-guard: OK"
+# الأعداد العربية: لا تمييز ثابت بعد عدد (ArabicCount).
+bash scripts/native-arabic-count-guard.sh
