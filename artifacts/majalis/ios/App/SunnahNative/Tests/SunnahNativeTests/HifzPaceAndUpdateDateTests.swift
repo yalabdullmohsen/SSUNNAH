@@ -56,9 +56,9 @@ final class HifzPaceAndUpdateDateTests: XCTestCase {
         XCTAssertEqual(AccountUpdates.parseDate("2026-10-22")?.timeIntervalSince1970, 1_792_627_200)
     }
 
-    func testParseDateFallsBackToDayPartForNonISOTimestamps() {
-        // صيغة Postgres بمسافة بدل T: يُؤخذ اليوم فقط.
-        XCTAssertEqual(AccountUpdates.parseDate("2026-10-22 10:15:30+00")?.timeIntervalSince1970, 1_792_627_200)
+    func testParseDateFallsBackToLeadingDayPart() {
+        // نص يبدأ بتاريخ ثم كلام: يُؤخذ اليوم فقط.
+        XCTAssertEqual(AccountUpdates.parseDate("2026-10-22 بعد العصر")?.timeIntervalSince1970, 1_792_627_200)
     }
 
     func testParseDateRejectsGarbage() {
