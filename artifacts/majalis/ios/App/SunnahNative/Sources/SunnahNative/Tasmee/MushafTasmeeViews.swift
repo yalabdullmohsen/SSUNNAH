@@ -127,6 +127,7 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
     let engine: RecitationEngineControlling?
     @Binding var current: Int
     let overlay: Overlay
+    let surahName: (Int) -> String
 
     private var consentBinding: Binding<Bool> {
         Binding(get: { switch box.controller?.phase { case .consent, .downloading: return true; default: return false } },
@@ -145,7 +146,11 @@ struct MushafTasmeeHost<Overlay: View>: ViewModifier {
             }
             .sunnahSheet(isPresented: reportBinding) {
                 if let t = box.controller, case .finished(let r) = t.phase {
-                    MushafTasmeeReport(report: r) { t.dismissReport() }.presentationDetents([.medium])
+                    if let rec = t.lastRecord {
+                        TasmeeReportScreen(record: rec, surahName: surahName(rec.surah)) { _ in t.dismissReport() }
+                    } else {
+                        MushafTasmeeReport(report: r) { t.dismissReport() }.presentationDetents([.medium])
+                    }
                 }
             }
             .task(id: engine.map(ObjectIdentifier.init)) { box.attach(engine) }   // المنصّة تُبنى بعد أول إطار: المحرك يصل متأخرًا (task يلتقط القيمة الجديدة، onChange يلتقط القديمة)

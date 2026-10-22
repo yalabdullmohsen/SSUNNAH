@@ -34,6 +34,9 @@ public final class MushafTasmeeController: ObservableObject {
     /// عدد التلميحات المستخدمة في الجلسة (تُحتسب في السجل).
     public private(set) var hintsUsed = 0
     private var hintStage = 0
+    private var startedAt = Date()
+    /// سجل الجلسة المنتهية (يُحفظ في TasmeeHistoryStore ويغذّي شاشة التقرير)؛ nil إن لم تُسمَّع كلمة.
+    @Published public private(set) var lastRecord: TasmeeSessionRecord?
 
     public let engine: RecitationEngineControlling
     public var strictness: TasmeeStrictness = .normal
@@ -82,7 +85,7 @@ public final class MushafTasmeeController: ObservableObject {
 
     private func startSession() async {
         guard let ref else { return }
-        states = [:]; hint = nil; offersHint = false; hintsUsed = 0; hintStage = 0; lastFollowed = 0; followPage = nil; version &+= 1
+        states = [:]; hint = nil; lastRecord = nil; startedAt = Date(); offersHint = false; hintsUsed = 0; hintStage = 0; lastFollowed = 0; followPage = nil; version &+= 1
         let s = TasmeeSession(engine: engine, ref: ref.words, strictness: strictness, gateOnError: true)
         s.onWord = { [weak self] e in self?.apply(e) }
         s.onHint = { [weak self] m in self?.hint = m }
@@ -116,7 +119,37 @@ public final class MushafTasmeeController: ObservableObject {
         guard let s = session else { phase = .idle; return }
         session = nil
         let report = await s.stop()
+        lastRecord = makeRecord(s.matcher)
+        if let r = lastRecord { TasmeeHistoryStore.shared.append(r) }
         phase = .finished(report)
+    }
+
+    /// سجل الجلسة من حالة المطابِق: أخطاء (ولو صُحّحت) ومتجاوزات فقط؛ الصوت لا يُحفظ.
+    private func makeRecord(_ m: TasmeeMatcher) -> TasmeeSessionRecord? {
+        let reached = m.next
+        guard reached > 0 else { return nil }
+        func pos(_ i: Int) -> (surah: Int, ayah: Int, word: Int)? {
+            let id = m.ref[i].id
+            let parts = id.split(separator: "#")
+            guard parts.count == 2, let w = Int(parts[1]) else { return nil }
+            let sa = parts[0].split(separator: ":")
+            guard sa.count == 2, let s = Int(sa[0]), let a = Int(sa[1]) else { return nil }
+            return (s, a, w)
+        }
+        guard let first = pos(0), let last = pos(reached - 1) else { return nil }
+        var events: [TasmeeSessionEvent] = []
+        for x in m.mistakes {
+            guard let p = pos(x.index) else { continue }
+            events.append(TasmeeSessionEvent(surah: p.surah, ayah: p.ayah, wordIndex: p.word, kind: .wrong,
+                                             said: x.said.last, expected: m.ref[x.index].text, attempts: x.said.count))
+        }
+        for i in 0..<reached where m.state[i] == .skipped {
+            guard let p = pos(i) else { continue }
+            events.append(TasmeeSessionEvent(surah: p.surah, ayah: p.ayah, wordIndex: p.word, kind: .skipped, expected: m.ref[i].text))
+        }
+        return TasmeeSessionRecord(startedAt: startedAt, durationSec: Date().timeIntervalSince(startedAt), mode: .recite,
+                                   surah: first.surah, fromAyah: first.ayah, toAyah: last.ayah, totalWords: reached,
+                                   events: events, hints: hintsUsed)
     }
 
     /// تلميح يختاره المستخدم بعد ٣ محاولات خاطئة: أول حرف ثم الكلمة؛ يُحتسب ولا يقدّم التتبّع.
