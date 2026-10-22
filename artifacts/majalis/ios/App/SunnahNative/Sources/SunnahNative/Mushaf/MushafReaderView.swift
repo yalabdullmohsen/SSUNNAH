@@ -18,6 +18,9 @@ public struct MushafPageView: View {
     var pageMarks: [MushafMarkColor] = []
     /// التسميع: (سطر، عمود) ← طلاء الكلمة؛ nil = العرض العادي بلا أي أثر.
     var tasmeePaint: ((Int, Int) -> TasmeeWordPaint?)? = nil
+    /// رقم نسخة حالة التسميع: قيمة قابلة للمقارنة تُبطل عرض الصفحة عند تغيّر الحالة (الإغلاق وحده لا يُقارَن فلا يُعاد الرسم).
+    var tasmeeVersion = 0
+    func tasmeeVersion(_ v: Int) -> Self { var c = self; c.tasmeeVersion = v; return c }
     @State private var page: MushafPage?
     @State private var family: String?
     @State private var failed = false
@@ -192,7 +195,7 @@ public struct MushafReaderView: View {
                 Group {
                 #if os(iOS)
                 MushafPager(current: $current, count: Mushaf.pageCount, renderKey: AnyHashable("\(selected ?? "")|\(current)|\(marksKey)|\(tasmeeBox.renderKey)")) { n in
-                    MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current, markColors: store.ayahColors(onPage: n), pageMarks: store.colors(ofPage: n), tasmeePaint: tasmeeBox.controller?.paint(page: n))
+                    MushafPageView(repo: repo, index: index, number: n, selectedAyah: $selected, onLongPress: { _ in Sunnah.Haptics.select() }, interactive: n == current, markColors: store.ayahColors(onPage: n), pageMarks: store.colors(ofPage: n), tasmeePaint: tasmeeBox.controller?.paint(page: n)).tasmeeVersion(tasmeeBox.controller?.version ?? 0)
                 }
                 #else
                 TabView(selection: $current) {
