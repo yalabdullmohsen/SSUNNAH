@@ -12,6 +12,15 @@ struct MushafTasmeeOverlay: View {
                 Text(h).font(Sunnah.Typography.secondary).padding(.horizontal, 12).padding(.vertical, 6)
                     .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
             }
+            if tasmee.offersHint, tasmee.phase == .listening {
+                Button { tasmee.requestHint() } label: {
+                    Label("تلميح", systemImage: "lightbulb.fill").font(Sunnah.Typography.secondary)
+                        .padding(.horizontal, 12).padding(.vertical, 6)
+                        .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
+                        .foregroundStyle(Sunnah.Colors.primary)
+                }
+                .accessibilityIdentifier("mushaf.tasmee.hint")
+            }
             HStack(spacing: Sunnah.Spacing.s2) {
                 if tasmee.isActive || tasmee.phase == .needsMic {
                     Button { tasmee.hideVerses.toggle() } label: {

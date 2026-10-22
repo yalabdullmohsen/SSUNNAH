@@ -29,6 +29,12 @@ public final class MushafTasmeeController: ObservableObject {
     /// يزداد مع كل تغيّر يُغيّر رسم الصفحة (مفتاح إعادة الرسم للمُقلِّب).
     @Published public private(set) var version = 0
 
+    /// قاعدة الخطأ: الكلمة الخاطئة تبقى مخفية بإشارة حمراء خفيفة ولا يتقدّم التتبّع حتى تُقال صحيحة.
+    @Published public private(set) var offersHint = false
+    /// عدد التلميحات المستخدمة في الجلسة (تُحتسب في السجل).
+    public private(set) var hintsUsed = 0
+    private var hintStage = 0
+
     public let engine: RecitationEngineControlling
     public var strictness: TasmeeStrictness = .normal
     private var session: TasmeeSession?
@@ -76,8 +82,8 @@ public final class MushafTasmeeController: ObservableObject {
 
     private func startSession() async {
         guard let ref else { return }
-        states = [:]; hint = nil; lastFollowed = 0; followPage = nil; version &+= 1
-        let s = TasmeeSession(engine: engine, ref: ref.words, strictness: strictness)
+        states = [:]; hint = nil; offersHint = false; hintsUsed = 0; hintStage = 0; lastFollowed = 0; followPage = nil; version &+= 1
+        let s = TasmeeSession(engine: engine, ref: ref.words, strictness: strictness, gateOnError: true)
         s.onWord = { [weak self] e in self?.apply(e) }
         s.onHint = { [weak self] m in self?.hint = m }
         engine.onFailure = { [weak self] m in self?.phase = .failed(m) }
@@ -92,6 +98,14 @@ public final class MushafTasmeeController: ObservableObject {
     private func apply(_ e: TasmeeWordEvent) {
         states[e.id] = e.state
         hint = nil; version &+= 1
+        if e.state == .wrong {
+            #if os(iOS)
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            #endif
+            if (e.attempts ?? 0) >= 3 { offersHint = true }
+        } else if e.state == .correct {
+            offersHint = false; hintStage = 0
+        }
         guard let ref, e.index + 1 < ref.pages.count else { return }
         // المتابعة: حين يصبح الكلمة التالية في صفحة أبعد من الأخيرة المتابَعة.
         let nextPage = ref.pages[min(e.index + 1, ref.pages.count - 1)]
@@ -103,6 +117,14 @@ public final class MushafTasmeeController: ObservableObject {
         session = nil
         let report = await s.stop()
         phase = .finished(report)
+    }
+
+    /// تلميح يختاره المستخدم بعد ٣ محاولات خاطئة: أول حرف ثم الكلمة؛ يُحتسب ولا يقدّم التتبّع.
+    public func requestHint() {
+        guard let s = session, let ref, s.matcher.next < ref.words.count else { return }
+        let word = ref.words[s.matcher.next].text
+        hintStage += 1; hintsUsed += 1
+        hint = hintStage == 1 ? String(word.prefix(1)) + " …" : word
     }
 
     public func dismissReport() { phase = .idle; states = [:]; followPage = nil; version &+= 1 }
@@ -126,7 +148,7 @@ public final class MushafTasmeeController: ObservableObject {
 }
 
 /// طلاء كلمة المصحف أثناء التسميع.
-public enum TasmeeWordPaint: Sendable { case hidden, correct, wrong, skipped }
+public enum TasmeeWordPaint: Sendable { case hidden, correct, wrong, skipped, error }
 
 extension View {
     /// مخفية = شفافة (تحجز موضعها)؛ خطأ = خلفية حمراء خفيفة؛ متجاوزة = كهرمانية مع تنبيه.
@@ -136,6 +158,11 @@ extension View {
         case .some(.hidden): self.opacity(0)
         case .some(.wrong):
             self.background(RoundedRectangle(cornerRadius: radius).fill(Color.red.opacity(0.18)).padding(.horizontal, -2))
+                .accessibilityHint("خطأ في التلاوة")
+        case .some(.error):
+            // خطأ في وضع البوابة: لا تظهر الكلمة، ويبقى موضعها محجوزًا بإشارة حمراء خفيفة.
+            self.opacity(0)
+                .background(RoundedRectangle(cornerRadius: radius).fill(Color.red.opacity(0.22)).padding(.horizontal, -2))
                 .accessibilityHint("خطأ في التلاوة")
         case .some(.skipped):
             self.background(RoundedRectangle(cornerRadius: radius).fill(Color.orange.opacity(0.22)).padding(.horizontal, -2))
@@ -154,7 +181,7 @@ extension MushafTasmeeController {
             guard let key = slots[MushafWordSlot(row: r, col: c)] else { return nil }
             switch self.states[key] ?? .pending {
             case .correct: return .correct
-            case .wrong: return .wrong
+            case .wrong: return .error
             case .skipped: return .skipped
             case .pending: return hide ? .hidden : nil
             }

@@ -14,6 +14,10 @@ public struct TasmeeWordEvent: Sendable, Equatable {
     public let id: String
     public let state: TasmeeWordState
     public let timeMs: Double
+    /// وضع البوابة: الكلمة المسموعة (مطبَّعة) عند الخطأ.
+    public var said: String? = nil
+    /// وضع البوابة: عدد المحاولات الخاطئة المتمايزة على هذه الكلمة حتى الآن.
+    public var attempts: Int? = nil
 }
 
 public struct TasmeeExtraEvent: Sendable, Equatable {
@@ -33,6 +37,10 @@ public struct TasmeeMatchParams: Sendable, Equatable {
     public var extraStableHyps = 2
     public var extraMinLen = 3
     public var extraSelfCorrectSim = 0.3
+    /// وضع البوابة (التسميع من الحفظ): لا تتقدّم الكلمة التالية إلا بنطقها صحيحة.
+    public var gateOnError = false
+    /// نتائج متتالية لازمة لتثبيت الكلمة الخاطئة قبل التنبيه.
+    public var wrongStableHyps = 2
     public init() {}
 }
 
@@ -64,12 +72,22 @@ public final class TasmeeMatcher {
     private var extraSeen: [String: Int] = [:]
     private var extraReported = Set<String>()
     private var pendingExtras: [TasmeeExtraEvent] = []
+    private var wrongSeen: [String: Int] = [:]
+    private var heardByWord: [Int: [String]] = [:]
 
     public init(ref: [TasmeeRefWord], params: TasmeeMatchParams = TasmeeMatchParams()) {
         self.ref = ref
         self.params = params
         self.forms = ref.map { QuranWordMatch.quranWordForms($0.text) }
         self.state = Array(repeating: .pending, count: ref.count)
+    }
+
+    /// عدد المحاولات الخاطئة المتمايزة على كلمة (وضع البوابة)؛ تبقى بعد تصحيحها لتغذّي سجلّ الأخطاء.
+    public func attempts(for index: Int) -> Int { heardByWord[index]?.count ?? 0 }
+
+    /// الكلمات التي أُخطئ فيها (ولو صُحّحت لاحقًا) مع الكلمات المسموعة.
+    public var mistakes: [(index: Int, said: [String])] {
+        heardByWord.keys.sorted().map { (index: $0, said: heardByWord[$0]!) }
     }
 
     public func upcomingText(_ count: Int) -> String {
@@ -80,6 +98,7 @@ public final class TasmeeMatcher {
         state = Array(repeating: .pending, count: ref.count)
         next = 0
         stable.removeAll(); extraSeen.removeAll(); extraReported.removeAll(); pendingExtras = []
+        wrongSeen.removeAll(); heardByWord.removeAll()
     }
 
     public func drainExtras() -> [TasmeeExtraEvent] {
@@ -190,6 +209,7 @@ public final class TasmeeMatcher {
         for c in candidates { stable[c] = (stable[c] ?? 0) + 1 }
 
         let ready = candidates.filter { (stable[$0] ?? 0) >= params.stableHyps }.sorted()
+        if params.gateOnError { return ingestGated(toks, matched, ready, timeMs) }
         guard let j = ready.last else { return [] }
 
         let prevTok = matched.last(where: { $0.word < next })?.tok ?? -1
@@ -216,6 +236,46 @@ public final class TasmeeMatcher {
         push(j, .correct)
         next = j + 1
         stable.removeAll()
+        return events
+    }
+
+    /// وضع البوابة: يكشف المتتالية الصحيحة من الكلمة التالية فقط؛ ما عداها خطأ يُسجَّل على الكلمة التالية ولا يُقدّم المؤشر.
+    private func ingestGated(_ toks: [String], _ matched: [Match], _ ready: [Int], _ timeMs: Double) -> [TasmeeWordEvent] {
+        var events: [TasmeeWordEvent] = []
+        let set = Set(ready)
+        var j = next
+        while set.contains(j) { j += 1 }
+        for g in next..<j {
+            state[g] = .correct
+            events.append(TasmeeWordEvent(index: g, id: ref[g].id, state: .correct, timeMs: timeMs))
+        }
+        if j > next {
+            next = j
+            stable.removeAll(); wrongSeen.removeAll()
+            return events
+        }
+        let w = next
+        let matchedToks = Set(matched.map(\.tok))
+        var said: String? = matched.first(where: { $0.word > w }).map { toks[$0.tok] }
+        if said == nil {
+            var best = params.wrongSim
+            for (i, tk) in toks.enumerated() where !matchedToks.contains(i) {
+                let s = sim(tk, w)
+                if s >= best { best = s; said = tk }
+            }
+        }
+        guard let heardTok = said else { wrongSeen.removeAll(); return events }
+        let n = (wrongSeen[heardTok] ?? 0) + 1
+        wrongSeen = [heardTok: n]
+        if n < params.wrongStableHyps { return events }
+        var heard = heardByWord[w] ?? []
+        if heard.contains(heardTok) { return events }
+        heard.append(heardTok)
+        heardByWord[w] = heard
+        state[w] = .wrong
+        var e = TasmeeWordEvent(index: w, id: ref[w].id, state: .wrong, timeMs: timeMs)
+        e.said = heardTok; e.attempts = heard.count
+        events.append(e)
         return events
     }
 }
