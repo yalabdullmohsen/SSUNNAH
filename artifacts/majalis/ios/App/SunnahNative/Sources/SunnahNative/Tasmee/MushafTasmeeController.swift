@@ -27,6 +27,10 @@ public final class MushafTasmeeController: ObservableObject {
     @Published public var hapticsOn = UserDefaults.standard.object(forKey: "tasmee.haptics") as? Bool ?? true {
         didSet { UserDefaults.standard.set(hapticsOn, forKey: "tasmee.haptics") }
     }
+    /// صوت تنبيه قصير عند الخطأ (افتراضيًا مُغلق)؛ يُحفظ اختيار المستخدم.
+    @Published public var soundOn = UserDefaults.standard.object(forKey: "tasmee.sound") as? Bool ?? false {
+        didSet { UserDefaults.standard.set(soundOn, forKey: "tasmee.sound") }
+    }
     /// صفحة يجب أن يتبعها القارئ (تتغيّر حين يعبر التسميع صفحة).
     @Published public private(set) var followPage: Int?
     @Published public private(set) var ref: MushafTasmeeRef?
@@ -108,6 +112,7 @@ public final class MushafTasmeeController: ObservableObject {
         if e.state == .wrong {
             #if os(iOS)
             if hapticsOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
+            if soundOn { AudioServicesPlaySystemSound(1053) }
             #endif
             if (e.attempts ?? 0) >= 3 { offersHint = true }
         } else if e.state == .correct {

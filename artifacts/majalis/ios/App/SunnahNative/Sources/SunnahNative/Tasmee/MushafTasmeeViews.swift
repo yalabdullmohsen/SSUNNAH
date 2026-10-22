@@ -39,6 +39,13 @@ struct MushafTasmeeOverlay: View {
                     }
                     .accessibilityLabel(tasmee.hapticsOn ? "إيقاف الاهتزاز" : "تشغيل الاهتزاز")
                     .accessibilityIdentifier("mushaf.tasmee.haptics")
+                    Button { tasmee.soundOn.toggle() } label: {
+                        Image(systemName: tasmee.soundOn ? "speaker.wave.2.fill" : "speaker.slash.fill").font(.system(size: 17, weight: .semibold))
+                            .frame(width: 44, height: 44).background(Circle().fill(Sunnah.Colors.bg.opacity(0.92)))
+                            .foregroundStyle(Sunnah.Colors.primary)
+                    }
+                    .accessibilityLabel(tasmee.soundOn ? "إيقاف صوت التنبيه" : "تشغيل صوت التنبيه")
+                    .accessibilityIdentifier("mushaf.tasmee.sound")
                 }
                 Button(action: onTap) {
                     ZStack {
