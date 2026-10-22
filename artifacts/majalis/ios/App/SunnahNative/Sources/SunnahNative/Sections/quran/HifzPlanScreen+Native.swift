@@ -21,6 +21,8 @@ struct HifzPlanScreen: View {
                     HifzPlanWizard(initial: state.plan, juzStarts: juzStarts) { plan in
                         state.plan = plan; editing = false; persist()
                     }
+                    // الحالة تُعبّأ في init مرة واحدة: إن وصل فهرس الأجزاء بعد فتح المعالج يُعاد بناؤه ليأخذ حدوده (لا الصيغة الاحتياطية).
+                    .id(juzStarts.count)
                 } else {
                     HifzPlanDashboard(state: $state, today: Date(), calendar: cal, onChange: persist, onEdit: { editing = true })
                 }
