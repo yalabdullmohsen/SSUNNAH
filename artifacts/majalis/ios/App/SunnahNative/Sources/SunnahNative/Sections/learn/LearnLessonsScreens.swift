@@ -15,16 +15,12 @@ struct LearnLessonsScreen: View {
 }
 
 struct LearnLessonList: View {
-    @Environment(\.openRoute) private var openRoute
     let lessons: [LearnLesson]; let emptyTitle: String
 
     var body: some View {
-        LearnList(items: lessons, emptyTitle: emptyTitle) { lesson in
-            Button { openRoute("/lessons/" + lesson.id) } label: {
-                SunnahListRow(title: lesson.title, subtitle: lesson.listSubtitle)
-            }
-            .buttonStyle(.plain)
-        }
+        LearnTileGrid(items: lessons, emptyTitle: emptyTitle, idPrefix: "lessons",
+                      tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.listSubtitle, symbol: "book") },
+                      destination: { LearnLessonDetail(lesson: $0) })
     }
 }
 

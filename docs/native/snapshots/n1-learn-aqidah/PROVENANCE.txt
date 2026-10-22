@@ -1,0 +1,8 @@
+git_sha=43fad6180295630e3485b0bff3a569be7cd7ce2c
+branch=n1/learn-aqidah-redesign
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/fd78471c13dc30ce/SunnahApp.app
+binary_sha256=5ab4276357eb87bd22064c6a6a1ee264b0b28a2eff649e53dcc97d3af7a586a3
+built_at=2026-10-22 11:37:06
+source_newest=2026-10-22 11:20:26
+captured_at=2026-10-22 11:49:11
+covers=SunnahModel2 SunnahTileGrid AqidahComponents AqidahReferenceScreens DiscoverIslamScreens LearnCoursesFawaid LearnDirectoryScreens LearnKnowledgeScreens LearnLessonsScreens LearnQuizScreen LearnSupport 

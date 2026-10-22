@@ -141,6 +141,45 @@ struct LearnDetailPage<Content: View>: View {
     }
 }
 
+/// نص تفصيلي بخط Amiri داخل بطاقة، لكل صفحات التعلّم.
+struct LearnBodyText: View {
+    let text: String
+    init(_ text: String) { self.text = text }
+    var body: some View {
+        SunnahCard { SunnahArabicText(text, style: .body).frame(maxWidth: .infinity, alignment: .leading) }
+    }
+}
+
+/// فهرس بلاطات بعمودين (SunnahNavTileGrid) داخل تمرير بحالة فراغ موحّدة؛ `header` اختياري فوق الشبكة (بحث/مرشحات/زر).
+struct LearnTileGrid<Item: Identifiable, Destination: View, Header: View>: View {
+    let items: [Item]
+    var emptyTitle: String = "المحتوى قيد التوثيق"
+    var idPrefix = "learn"
+    let tile: (Item) -> SunnahTileItem
+    @ViewBuilder let destination: (Item) -> Destination
+    @ViewBuilder let header: () -> Header
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: Sunnah.Spacing.s3) {
+                header()
+                if items.isEmpty { EmptyStateView(title: emptyTitle) } else {
+                    SunnahNavTileGrid(items, idPrefix: idPrefix, tile: tile, destination: destination)
+                }
+            }
+            .padding(.vertical, Sunnah.Spacing.s2)
+        }
+        .background(Sunnah.Colors.bg)
+    }
+}
+
+extension LearnTileGrid where Header == EmptyView {
+    init(items: [Item], emptyTitle: String = "المحتوى قيد التوثيق", idPrefix: String = "learn",
+         tile: @escaping (Item) -> SunnahTileItem, @ViewBuilder destination: @escaping (Item) -> Destination) {
+        self.init(items: items, emptyTitle: emptyTitle, idPrefix: idPrefix, tile: tile, destination: destination, header: { EmptyView() })
+    }
+}
+
 /// قائمة مُنسَّقة بنمط القوالب (ListTemplate) لعناصر غير ContentItem.
 struct LearnList<Item: Identifiable, Row: View>: View {
     let items: [Item]
@@ -149,33 +188,6 @@ struct LearnList<Item: Identifiable, Row: View>: View {
     var body: some View {
         if items.isEmpty { EmptyStateView(title: emptyTitle) } else {
             SunnahRowStack { ForEach(items) { item in row(item).sunnahStackRow() } }
-        }
-    }
-}
-
-/// محور بلاط من عمودين: كل عنصر بلاطة بنقرة واحدة (بدل قائمة صفوف طويلة).
-struct LearnTileGrid<Item: Identifiable, Destination: View>: View {
-    let items: [Item]
-    var emptyTitle: String = "المحتوى قيد التوثيق"
-    let symbol: String
-    let title: (Item) -> String
-    let subtitle: (Item) -> String?
-    @ViewBuilder let destination: (Item) -> Destination
-
-    var body: some View {
-        if items.isEmpty { EmptyStateView(title: emptyTitle) } else {
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible(), spacing: 14)], spacing: 14) {
-                    ForEach(items) { item in
-                        SunnahNavigationLink { destination(item) } label: {
-                            SunnahTile(title: title(item).arabicDigits, subtitle: subtitle(item)?.arabicDigits, symbol: symbol, tone: .mint)
-                        }
-                        .buttonStyle(.plain).sunnahPressable()
-                    }
-                }
-                .padding(Sunnah.Spacing.pageX)
-            }
-            .background(Sunnah.Colors.bg)
         }
     }
 }

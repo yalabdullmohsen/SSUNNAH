@@ -54,11 +54,9 @@ struct LearnKnowledgeSectionScreen: View {
     var body: some View {
         let section = self.section
         LearnLoadHost(load: { try await LearnSources.loadKnowledge(section: section, with: $0) }) { (items: [LearnKnowledgeItem]) in
-            LearnList(items: items, emptyTitle: "لا محتوى معتمد في هذا القسم بعد") { item in
-                SunnahNavigationLink { LearnKnowledgeItemView(item: item) } label: {
-                    SunnahListRow(title: item.title, subtitle: item.summary ?? Self.lead(item.body))
-                }
-            }
+            LearnTileGrid(items: items, emptyTitle: "لا محتوى معتمد في هذا القسم بعد", idPrefix: "knowledge",
+                          tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.summary ?? Self.lead($0.body), symbol: "book.closed") },
+                          destination: { LearnKnowledgeItemView(item: $0) })
         }
         .sunnahNavTitle(LearnKnowledgeSections.titles[section] ?? "المعرفة")
     }
@@ -73,13 +71,13 @@ struct LearnKnowledgeItemView: View {
                     HStack(spacing: Sunnah.Spacing.s2) { ForEach(item.tags, id: \.self) { SunnahChip($0) } }
                 }
             }
-            if !item.body.isEmpty { SunnahSectionedMarkdown(item.body, key: "knowledge-\(item.id)", style: .body) }
+            if !item.body.isEmpty { SunnahCard { SunnahSectionedMarkdown(item.body, key: "knowledge-\(item.id)", style: .body) } }
             if !item.evidences.isEmpty {
                 Text("الأدلة").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary).accessibilityAddTraits(.isHeader)
                 ForEach(Array(item.evidences.enumerated()), id: \.offset) { _, e in
                     SunnahCard {
                         VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
-                            if let t = e.text { Text(t).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                            if let t = e.text { SunnahArabicText(t, style: .body) }
                             if let line = learnLine(e.ref, e.grade, e.gradedBy, separator: " · ") {
                                 Text(line).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                             }
@@ -107,20 +105,19 @@ struct LearnDurusScreen: View {
 
     var body: some View {
         LearnLoadHost(source) { (list: LearnDarsList) in
-            LearnTileGrid(items: list.sections, symbol: "lightbulb",
-                          title: { $0.title }, subtitle: { learnLine($0.num, "\($0.lessons.count) درسًا") }) { section in
-                LearnList(items: section.lessons) { lesson in
-                    SunnahNavigationLink {
-                        LearnDetailPage(title: lesson.title) {
-                            if let s = lesson.summary { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
-                            if let b = lesson.body { Text(b).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                        }
-                    } label: {
-                        SunnahListRow(title: lesson.title, subtitle: lesson.summary)
+            LearnTileGrid(items: list.sections, idPrefix: "durus",
+                          tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: learnLine($0.num, "\($0.lessons.count) درسًا"), symbol: "book") },
+                          destination: { section in
+                LearnTileGrid(items: section.lessons, idPrefix: "durus-lesson",
+                              tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: $0.summary, symbol: "doc.text") },
+                              destination: { lesson in
+                    LearnDetailPage(title: lesson.title) {
+                        if let s = lesson.summary { Text(s).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary) }
+                        if let b = lesson.body { LearnBodyText(b) }
                     }
-                }
+                })
                 .sunnahNavTitle(section.title)
-            }
+            })
         }
         .sunnahNavTitle(title)
     }

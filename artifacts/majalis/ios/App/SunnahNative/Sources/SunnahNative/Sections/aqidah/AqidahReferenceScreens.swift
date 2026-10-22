@@ -145,18 +145,22 @@ public struct AqidahIslamicSectsNativeScreen: ScreenTemplate {
             if sects.isEmpty {
                 EmptyStateView(title: "لا توجد سجلات منشورة",
                                message: "يُعرض للعامة ما اكتملت مراجعته واعتماده فقط. لا فتوى شرعية من التطبيق.")
-            }
-            else if shown.isEmpty { EmptyStateView(title: "لا نتائج مطابقة") }
-            else {
+            } else {
                 ScrollView {
-                    AqidahLinkList(items: shown, title: { $0.name }, subtitle: { ([$0.publicationStatus == AqidahContent.underReview ? "قيد المراجعة" : "", $0.category, $0.era].filter { !$0.isEmpty }).joined(separator: " · ") }, path: { "/islamic-sects/" + $0.id })
-                        .padding(Sunnah.Spacing.pageX)
+                    VStack(spacing: Sunnah.Spacing.s3) {
+                        SunnahSearchField(text: $query, prompt: "ابحث عن فرقة", idPrefix: "sunnah.searchable")
+                        if shown.isEmpty { EmptyStateView(title: "لا نتائج مطابقة") } else {
+                            AqidahLinkList(items: shown, title: { $0.name }, subtitle: { ([$0.publicationStatus == AqidahContent.underReview ? "قيد المراجعة" : "", $0.category, $0.era].filter { !$0.isEmpty }).joined(separator: " · ") }, path: { "/islamic-sects/" + $0.id }, symbol: "person.3")
+                                .padding(.horizontal, Sunnah.Spacing.pageX)
+                        }
+                    }
+                    .padding(.vertical, Sunnah.Spacing.s2)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .sunnahSearchable(text: $query, prompt: "ابحث عن فرقة")
+        .sunnahNavTitle(Self.title)
     }
 }
 

@@ -27,7 +27,7 @@ public struct AqidahDiscoverIslamNativeScreen: ScreenTemplate {
                     Text("مقالات").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                         .accessibilityAddTraits(.isHeader)
                     AqidahLinkList(items: articles, title: { $0.titleAr }, subtitle: { $0.summaryAr },
-                                   path: { "/discover-islam/articles/" + $0.slug })
+                                   path: { "/discover-islam/articles/" + $0.slug }, symbol: "doc.text")
                 }
             }
             .padding(Sunnah.Spacing.pageX)
@@ -62,18 +62,24 @@ public struct AqidahDiscoverIslamQuestionsNativeScreen: ScreenTemplate {
         let shown = questions.filter { AqidahContent.matches(query, [$0.title, $0.shortAnswer]) }
         Group {
             if questions.isEmpty { EmptyStateView() }
-            else if shown.isEmpty { EmptyStateView(title: "لا نتائج مطابقة") }
             else {
                 ScrollView {
-                    AqidahLinkList(items: shown, title: { $0.title }, subtitle: { $0.shortAnswer },
-                                   path: { "/discover-islam/questions/" + $0.slug })
-                        .padding(Sunnah.Spacing.pageX)
+                    VStack(spacing: Sunnah.Spacing.s3) {
+                        SunnahSearchField(text: $query, prompt: "ابحث في الأسئلة", idPrefix: "sunnah.searchable")
+                        if shown.isEmpty { EmptyStateView(title: "لا نتائج مطابقة") }
+                        else {
+                            AqidahLinkList(items: shown, title: { $0.title }, subtitle: { $0.shortAnswer },
+                                           path: { "/discover-islam/questions/" + $0.slug }, symbol: "questionmark.circle")
+                                .padding(.horizontal, Sunnah.Spacing.pageX)
+                        }
+                    }
+                    .padding(.vertical, Sunnah.Spacing.s2)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Sunnah.Colors.bg)
-        .sunnahSearchable(text: $query, prompt: "ابحث في الأسئلة")
+        .sunnahNavTitle("أسئلة وأجوبة")
     }
 }
 

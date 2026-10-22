@@ -8,19 +8,17 @@ struct LearnUniversitiesScreen: View {
     @State private var query = ""
 
     var body: some View {
-        VStack(spacing: Sunnah.Spacing.s2) {
-            SunnahButton("قارن", style: .secondary) { openRoute("/universities/compare") }
-                .padding(.horizontal, Sunnah.Spacing.pageX)
-            LearnLoadHost(LearnSources.universities) { (all: [LearnUniversity]) in
-                LearnList(items: filter(all), emptyTitle: query.isEmpty ? "المحتوى قيد التوثيق" : "لا نتائج") { u in
-                    Button { openRoute("/universities/" + u.slug) } label: {
-                        SunnahListRow(title: u.nameAr, subtitle: learnLine(u.country, u.city))
-                    }
-                    .buttonStyle(.plain)
+        LearnLoadHost(LearnSources.universities) { (all: [LearnUniversity]) in
+            LearnTileGrid(items: filter(all), emptyTitle: query.isEmpty ? "المحتوى قيد التوثيق" : "لا نتائج", idPrefix: "universities",
+                          tile: { SunnahTileItem(id: $0.slug, title: $0.nameAr, subtitle: learnLine($0.country, $0.city), symbol: "graduationcap") },
+                          destination: { LearnUniversityDetail(university: $0) }) {
+                VStack(spacing: Sunnah.Spacing.s2) {
+                    SunnahSearchField(text: $query, idPrefix: "sunnah.searchable")
+                    SunnahButton("قارن", style: .secondary) { openRoute("/universities/compare") }
+                        .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
             }
         }
-        .sunnahSearchable(text: $query)
         .sunnahNavTitle("الجامعات")
     }
 
@@ -49,7 +47,7 @@ struct LearnUniversityDetail: View {
             LearnInfoRow(label: "الاسم بالإنجليزية", value: university.nameEn)
             LearnInfoRow(label: "الدولة", value: university.country)
             LearnInfoRow(label: "المدينة", value: university.city)
-            if let about = university.about { Text(about).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+            if let about = university.about { LearnBodyText(about) }
             if let programs = university.programs, !programs.isEmpty {
                 Text("البرامج").font(Sunnah.Typography.sectionTitle).foregroundStyle(Sunnah.Colors.textPrimary).accessibilityAddTraits(.isHeader)
                 ForEach(Array(programs.enumerated()), id: \.offset) { _, p in
@@ -145,39 +143,39 @@ struct LearnInstitutionsScreen: View {
     private static let types = [TypeFilter(id: nil, label: "الكل"), TypeFilter(id: "mosque", label: "المساجد"), TypeFilter(id: "center", label: "المراكز"),
                                 TypeFilter(id: "library", label: "المكتبات"), TypeFilter(id: "university", label: "الجامعات")]
 
+    private static func symbol(_ type: String?) -> String {
+        switch type {
+        case "mosque": "building.columns"
+        case "library": "books.vertical"
+        case "university": "graduationcap"
+        default: "building.2"
+        }
+    }
+
     var body: some View {
         LearnLoadHost(load: { try await LearnSources.loadIfExported([LearnInstitution].self, from: LearnSources.institutions, with: $0) }) { (loaded: [LearnInstitution]) in
             // المؤسسة غير المعتمدة تُعرض بعلامة «قيد المراجعة» ظاهرة، وتتحول إلى «معتمد» حين تصل حالتها من الشبكة.
-            let all = loaded
-            if all.isEmpty { EmptyStateView(title: "قيد التوثيق") } else {
-                VStack(spacing: Sunnah.Spacing.s2) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: Sunnah.Spacing.s2) {
-                            ForEach(Self.types, id: \.label) { t in
-                                Button { selectedType = t.id } label: { SunnahChip(t.label, selected: selectedType == t.id) }
-                                    .buttonStyle(.plain)
-                                    .accessibilityAddTraits(selectedType == t.id ? .isSelected : [])
-                            }
-                        }
-                        .padding(.horizontal, Sunnah.Spacing.pageX)
-                    }
-                    LearnList(items: all.filter { selectedType == nil || $0.type == selectedType }, emptyTitle: "لا مؤسسات في هذا النوع") { inst in
-                        SunnahNavigationLink {
-                            LearnDetailPage(title: inst.name) {
-                                if let t = inst.typeLabel { SunnahChip(t) }
-                                if !inst.isReviewed { SunnahChip(LearnInstitution.pendingBadge) }
-                                LearnInfoRow(label: "المدينة", value: inst.city)
-                                LearnInfoRow(label: "الدولة", value: inst.country)
-                                if let d = inst.description { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                                LearnExternalLink(title: "الموقع الرسمي", urlString: inst.website)
-                            }
-                        } label: {
-                            HStack(spacing: Sunnah.Spacing.s2) {
-                                SunnahListRow(title: inst.name, subtitle: learnLine(inst.typeLabel, inst.city))
-                                if !inst.isReviewed { SunnahChip(LearnInstitution.pendingBadge) }
-                            }
+            LearnTileGrid(items: loaded.filter { selectedType == nil || $0.type == selectedType }, emptyTitle: loaded.isEmpty ? "قيد التوثيق" : "لا مؤسسات في هذا النوع", idPrefix: "institutions",
+                          tile: { SunnahTileItem(id: $0.id, title: $0.name, subtitle: learnLine($0.typeLabel, $0.city, $0.isReviewed ? nil : LearnInstitution.pendingBadge), symbol: Self.symbol($0.type)) },
+                          destination: { inst in
+                LearnDetailPage(title: inst.name) {
+                    if let t = inst.typeLabel { SunnahChip(t) }
+                    if !inst.isReviewed { SunnahChip(LearnInstitution.pendingBadge) }
+                    LearnInfoRow(label: "المدينة", value: inst.city)
+                    LearnInfoRow(label: "الدولة", value: inst.country)
+                    if let d = inst.description { LearnBodyText(d) }
+                    LearnExternalLink(title: "الموقع الرسمي", urlString: inst.website)
+                }
+            }) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: Sunnah.Spacing.s2) {
+                        ForEach(Self.types, id: \.label) { t in
+                            Button { selectedType = t.id } label: { SunnahChip(t.label, selected: selectedType == t.id) }
+                                .buttonStyle(.plain)
+                                .accessibilityAddTraits(selectedType == t.id ? .isSelected : [])
                         }
                     }
+                    .padding(.horizontal, Sunnah.Spacing.pageX)
                 }
             }
         }
@@ -189,15 +187,11 @@ struct LearnInstitutionsScreen: View {
 
 /// /competitions — إعلانات مسابقات خارجية (ليست أسئلة). المنشور في الإنتاج اليوم صفر، فالحالة الفارغة صريحة.
 struct LearnCompetitionsScreen: View {
-    @Environment(\.openRoute) private var openRoute
     var body: some View {
         LearnLoadHost(LearnSources.competitions) { (list: [LearnCompetition]) in
-            LearnList(items: list, emptyTitle: "لا توجد مسابقات حالياً") { c in
-                Button { openRoute("/competitions/" + c.id) } label: {
-                    SunnahListRow(title: c.title, subtitle: learnLine(c.organizerName, c.registrationStatus))
-                }
-                .buttonStyle(.plain)
-            }
+            LearnTileGrid(items: list, emptyTitle: "لا توجد مسابقات حالياً", idPrefix: "competitions",
+                          tile: { SunnahTileItem(id: $0.id, title: $0.title, subtitle: learnLine($0.organizerName, $0.registrationStatus), symbol: "trophy") },
+                          destination: { LearnCompetitionDetailScreen(id: $0.id) })
         }
         .sunnahNavTitle("المسابقات")
     }
@@ -215,7 +209,7 @@ struct LearnCompetitionDetailScreen: View {
                     LearnInfoRow(label: "الفئة", value: c.genderTarget)
                     LearnInfoRow(label: "المكان", value: c.location)
                     LearnInfoRow(label: "الجوائز", value: c.prizeText)
-                    if let d = c.description { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
+                    if let d = c.description { LearnBodyText(d) }
                     LearnExternalLink(title: "التسجيل", urlString: c.registrationUrl)
                     LearnExternalLink(title: "المصدر" + (c.sourceName.map { ": " + $0 } ?? ""), urlString: c.sourceUrl)
                 }
