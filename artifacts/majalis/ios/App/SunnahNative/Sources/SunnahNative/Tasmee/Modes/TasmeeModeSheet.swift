@@ -61,11 +61,20 @@ public struct TasmeeModeSheet: View {
         .environment(\.layoutDirection, .rightToLeft)
     }
 
+    private func stepButton(_ icon: String, _ label: String, _ enabled: Bool, _ action: @escaping () -> Void) -> some View {
+        Button { Sunnah.Haptics.select(); action() } label: {
+            Image(systemName: icon).font(.body.weight(.bold)).foregroundStyle(enabled ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
+                .frame(width: 44, height: 44)
+                .background(Sunnah.Colors.surface, in: Circle()).overlay(Circle().stroke(Sunnah.Colors.border, lineWidth: Sunnah.Spacing.hairline))
+        }
+        .buttonStyle(.plain).disabled(!enabled).accessibilityLabel(label)
+    }
+
     var content: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
             Text("اختر وضع التسميع").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
                 .padding(.horizontal, Sunnah.Spacing.pageX)
-            VStack(spacing: 0) {
+            VStack(spacing: Sunnah.Spacing.s2) {
                 ForEach(TasmeeMode.allCases, id: \.self) { m in
                     Button { Sunnah.Haptics.select(); options.mode = m } label: {
                         TasmeeModeRow(mode: m, selected: options.mode == m)
@@ -82,13 +91,18 @@ public struct TasmeeModeSheet: View {
                 HStack {
                     Text("عدد القراءات الصحيحة: \(options.repeatTarget)".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textPrimary)
                     Spacer()
-                    Stepper("", value: $options.repeatTarget, in: TasmeeModeOptions.repeatRange).labelsHidden()
+                    HStack(spacing: Sunnah.Spacing.s2) {
+                        stepButton("minus", "أنقص", options.repeatTarget > TasmeeModeOptions.repeatRange.lowerBound) { options.repeatTarget -= 1 }
+                        stepButton("plus", "زد", options.repeatTarget < TasmeeModeOptions.repeatRange.upperBound) { options.repeatTarget += 1 }
+                    }
+                    .accessibilityElement(children: .contain)
                 }
                 .padding(.horizontal, Sunnah.Spacing.pageX)
             }
             VStack(spacing: Sunnah.Spacing.s1) {
                 SunnahSwitch("إخفاء أرقام الآيات", isOn: $options.hideAyahNumbers)
                     .disabled(options.mode == .exam || (options.mode == .graded && options.level == .page))
+                    .accessibilityHint(options.effectiveHideNumbers && !options.hideAyahNumbers ? "مخفية تلقائيًا في هذا الوضع" : "")
                 SunnahSwitch("اهتزاز عند الخطأ", isOn: $options.haptics)
                 SunnahSwitch("صوت تنبيه", isOn: $options.sound)
             }
@@ -99,25 +113,29 @@ public struct TasmeeModeSheet: View {
     }
 }
 
-/// صف وضع واحد؛ الصف المشترك يقتطع الوصف بسطرين، فمع أحجام الإتاحة يُعرض الوصف كاملًا تحت العنوان.
+/// بطاقة وضع قابلة للاختيار بشكل «سُنّة»: أيقونة + عنوان + وصف كامل، وحد أخضر وعلامة عند الاختيار.
 struct TasmeeModeRow: View {
     let mode: TasmeeMode
     let selected: Bool
-    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
-        HStack(spacing: Sunnah.Spacing.s2) {
-            if typeSize.isAccessibilitySize {
-                VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                    SunnahListRow(title: mode.title, showsChevron: false, icon: mode.icon)
-                    Text(mode.summary).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                        .fixedSize(horizontal: false, vertical: true).padding(.horizontal, Sunnah.Spacing.pageX)
-                }
-            } else {
-                SunnahListRow(title: mode.title, subtitle: mode.summary, showsChevron: false, icon: mode.icon)
+        HStack(alignment: .top, spacing: Sunnah.Spacing.s3) {
+            Image(systemName: mode.icon).font(.title3).foregroundStyle(selected ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
+                .frame(width: 28).accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+                Text(mode.title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Text(mode.summary).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
+            Spacer(minLength: 0)
             Image(systemName: selected ? "checkmark.circle.fill" : "circle")
-                .foregroundStyle(selected ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
+                .foregroundStyle(selected ? Sunnah.Colors.primary : Sunnah.Colors.border).accessibilityHidden(true)
         }
+        .padding(Sunnah.Spacing.s4)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.card, style: .continuous)
+            .stroke(selected ? Sunnah.Colors.primary : Sunnah.Colors.border, lineWidth: selected ? 2 : Sunnah.Spacing.hairline))
+        .accessibilityElement(children: .combine)
     }
 }

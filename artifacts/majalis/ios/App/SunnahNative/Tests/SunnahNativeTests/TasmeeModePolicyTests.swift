@@ -43,4 +43,12 @@ final class TasmeeModePolicyTests: XCTestCase {
         let l = TasmeeModeOptions.load(d)
         XCTAssertEqual(l.mode, .graded); XCTAssertEqual(l.level, .ayahEnd); XCTAssertEqual(l.repeatTarget, 20)
     }
+    func testLoadToleratesMissingKeysAndCorruptData() {
+        let d = UserDefaults(suiteName: "tasmee.modes.test2")!; d.removePersistentDomain(forName: "tasmee.modes.test2")
+        d.set(Data(#"{"mode":"graded","level":"مجهول","sound":true}"#.utf8), forKey: TasmeeModeOptions.storageKey)
+        let l = TasmeeModeOptions.load(d)
+        XCTAssertEqual(l.mode, .graded); XCTAssertEqual(l.level, .firstLetter); XCTAssertTrue(l.sound); XCTAssertEqual(l.repeatTarget, 3)
+        d.set(Data("x".utf8), forKey: TasmeeModeOptions.storageKey)
+        XCTAssertEqual(TasmeeModeOptions.load(d), TasmeeModeOptions())
+    }
 }

@@ -23,6 +23,17 @@ public struct TasmeeModeOptions: Codable, Sendable, Equatable {
     public var repeatTarget = 3
     public init() {}
 
+    /// فكّ متسامح: مفتاح ناقص (حقل أُضيف لاحقًا) أو قيمة enum مجهولة لا تُصفّر بقية التفضيلات.
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        mode = (try? c.decodeIfPresent(TasmeeMode.self, forKey: .mode)) ?? mode
+        level = (try? c.decodeIfPresent(TasmeeHideLevel.self, forKey: .level)) ?? level
+        hideAyahNumbers = (try? c.decodeIfPresent(Bool.self, forKey: .hideAyahNumbers)) ?? hideAyahNumbers
+        haptics = (try? c.decodeIfPresent(Bool.self, forKey: .haptics)) ?? haptics
+        sound = (try? c.decodeIfPresent(Bool.self, forKey: .sound)) ?? sound
+        repeatTarget = (try? c.decodeIfPresent(Int.self, forKey: .repeatTarget)) ?? repeatTarget
+    }
+
     public static let repeatRange = 1...20
 
     /// أرقام الآيات تُخفى قسرًا في الاختبار وفي مستوى «الصفحة كاملة».
