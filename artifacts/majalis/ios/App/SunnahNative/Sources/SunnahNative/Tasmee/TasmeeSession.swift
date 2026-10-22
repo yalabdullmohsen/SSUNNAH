@@ -20,6 +20,8 @@ public final class TasmeeSession {
     public var onWord: ((TasmeeWordEvent) -> Void)?
     public var onExtra: ((TasmeeExtraEvent) -> Void)?
     public var onHint: ((String) -> Void)?
+    /// بعد معالجة كل نص جزئي (وبعد أحداث كلماته): نقطة آمنة لإعادة المؤشر (`rewind`) دون أن تتداخل مع أحداث الدفعة نفسها.
+    public var onBatchEnd: (() -> Void)?
 
     private let engine: RecitationEngineControlling
     private let promptWords: Int
@@ -29,10 +31,12 @@ public final class TasmeeSession {
     private var lastPrompt = ""
 
     public init(engine: RecitationEngineControlling, ref: [TasmeeRefWord],
-                strictness: TasmeeStrictness = .normal, promptWords: Int = 0) {
+                strictness: TasmeeStrictness = .normal, promptWords: Int = 0, gateOnError: Bool = false) {
         self.engine = engine
         self.promptWords = promptWords
-        self.matcher = TasmeeMatcher(ref: ref, params: strictness.params)
+        var params = strictness.params
+        params.gateOnError = gateOnError
+        self.matcher = TasmeeMatcher(ref: ref, params: params)
     }
 
     private func promptText() -> String { promptWords > 0 ? matcher.upcomingText(promptWords) : "" }
@@ -56,12 +60,23 @@ public final class TasmeeSession {
         let evs = matcher.ingest(p.text, timeMs: p.finishedAtMs)
         for x in matcher.drainExtras() { extras += 1; onExtra?(x) }
         for e in evs { onWord?(e) }
+        onBatchEnd?()
         if !evs.isEmpty {
             let next = promptText()
             if next != lastPrompt {
                 lastPrompt = next
                 Task { await engine.setPrompt(next.isEmpty ? nil : next) }
             }
+        }
+    }
+
+    /// يعيد المطابِق إلى كلمة (وضع التكرار) ويحدّث نصّ التلميح للمحرك.
+    public func rewind(to index: Int) {
+        matcher.rewind(to: index)
+        let next = promptText()
+        if next != lastPrompt {
+            lastPrompt = next
+            Task { await engine.setPrompt(next.isEmpty ? nil : next) }
         }
     }
 

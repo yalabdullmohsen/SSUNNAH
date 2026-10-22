@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 
 /// منافذ الخدمات الأصلية: تعرّفها الحزمة وينفّذها هدف التطبيق بتوصيل الأصناف الجوهرية الموجودة
@@ -118,13 +119,17 @@ public struct PlatformServices: Sendable {
     public var offlineAudio: OfflineAudioProviding
     public var liveActivity: LiveActivityControlling
     public var authService: AuthServicing
+    /// محرك التسميع على الجهاز؛ nil = الميزة مخفية (المحاكي/الاختبارات بلا محرك).
+    public var recitationEngine: RecitationEngineControlling?
     public init(auth: AuthSessionStoring = InMemoryAuthStore(),
                 sharedData: SharedDataPublishing = NoSharedData(),
                 offlineAudio: OfflineAudioProviding = NoOfflineAudio(),
                 liveActivity: LiveActivityControlling = NoLiveActivity(),
-                authService: AuthServicing = NoAuthService()) {
+                authService: AuthServicing = NoAuthService(),
+                recitationEngine: RecitationEngineControlling? = nil) {
         self.auth = auth; self.sharedData = sharedData; self.offlineAudio = offlineAudio
         self.liveActivity = liveActivity; self.authService = authService
+        self.recitationEngine = recitationEngine
     }
 }
 
@@ -186,6 +191,8 @@ public enum RecitationModelStatus: Sendable, Equatable {
 @MainActor
 public protocol RecitationEngineControlling: AnyObject {
     var modelStatus: RecitationModelStatus { get }
+    /// حجم تنزيل النموذج بالبايت لعرضه في شاشة الموافقة (nil = غير معروف).
+    var modelDownloadBytes: Int64? { get }
     var onPartial: ((RecitationPartial) -> Void)? { get set }
     /// كلام مرصود ولا يعود نص («لم يتضح الصوت»).
     var onUnclear: (() -> Void)? { get set }
@@ -196,4 +203,29 @@ public protocol RecitationEngineControlling: AnyObject {
     func start(prompt: String?) async throws
     func setPrompt(_ text: String?) async
     func stop() async
+}
+
+public extension RecitationEngineControlling {
+    var modelDownloadBytes: Int64? { nil }
+}
+
+/// محرك يبلّغ مستوى الصوت الحي (0…1 مطبَّع) لموجة الميكروفون؛ اختياري فلا يلزم كل محرك.
+@MainActor
+public protocol RecitationLevelReporting: AnyObject {
+    var onLevel: ((Float) -> Void)? { get set }
+}
+
+/// تحويل RMS الخام (0…1) إلى مستوى عرض 0…1 على مقياس ديسيبل (−50 dB = صمت، 0 dB = أعلى مستوى).
+public enum AudioLevel {
+    public static func rms(_ samples: UnsafeBufferPointer<Float>) -> Float {
+        guard !samples.isEmpty else { return 0 }
+        var sum: Float = 0
+        for x in samples { sum += x * x }
+        return (sum / Float(samples.count)).squareRoot()
+    }
+    public static func normalized(rms: Float, floorDb: Float = -50) -> Float {
+        guard rms > 0 else { return 0 }
+        let db = 20 * log10(rms)
+        return min(1, max(0, (db - floorDb) / -floorDb))
+    }
 }

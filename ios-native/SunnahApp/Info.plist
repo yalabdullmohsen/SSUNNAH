@@ -16,6 +16,7 @@
 	<array><dict><key>CFBundleTypeRole</key><string>Editor</string><key>CFBundleURLName</key><string>com.yousef.majlisilm</string><key>CFBundleURLSchemes</key><array><string>majlisilm</string></array></dict></array>
 	<key>ITSAppUsesNonExemptEncryption</key><false/>
 	<key>LSRequiresIPhoneOS</key><true/>
+	<key>NSMicrophoneUsageDescription</key><string>يُستخدم الميكروفون لتسجيل تلاوتك في وضع التسميع داخل المصحف. تُعالج التلاوة على جهازك فقط ولا تُرسل ولا تُحفظ.</string>
 	<key>NSLocationWhenInUseUsageDescription</key><string>يستخدم التطبيق موقعك لحساب مواقيت الصلاة واتجاه القبلة. يُحفَظ الموقع التقريبي على جهازك فقط ولا يُرسَل إلى خوادمنا.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict><key>UIApplicationSupportsMultipleScenes</key><false/></dict>
