@@ -12,7 +12,7 @@
 | محتوى آخر للمستخدم (مساهمات/مفضلة) | كالسابق | `NSPrivacyCollectedDataTypeOtherUserContent` |
 | تفاعل المنتج (متابعة القراءة/الإنجازات) | كالسابق | `NSPrivacyCollectedDataTypeProductInteraction` |
 | الموقع | **لا يُجمع**: يبقى على الجهاز لحساب المواقيت/القبلة ولا يُرسل | `Info.plist: NSLocationWhenInUseUsageDescription`؛ لا إرسال للموقع في `RemoteTransport` |
-| الصحة/المالية/جهات الاتصال/الصور/الصوت | لا | لا مفاتيح كاميرا/ميكروفون/جهات اتصال في `Info.plist` |
+| الصحة/المالية/جهات الاتصال/الصور/الصوت | لا | لا مفاتيح كاميرا/جهات اتصال في `Info.plist`. الميكروفون للتسميع فقط (قرار المالك 2026-10-22): معالجة على الجهاز، لا إرسال ولا حفظ ← لا يُعدّ جمعًا للصوت |
 | واجهات «السبب المطلوب» | UserDefaults (CA92.1, 1C8F.1)، File timestamp (C617.1) | `PrivacyInfo.xcprivacy` |
 | الخلفية | audio + fetch؛ BGTask: `com.yousef.majlisilm.prayer-refresh` | `Info.plist` |
 | التشفير (Export Compliance) | `ITSAppUsesNonExemptEncryption=false`: صحيح لأن التشفير الوحيد HTTPS القياسي | `Info.plist` سطر 17؛ لا CryptoKit/CommonCrypto/SecKey/CCCrypt في `ios-native` ولا `SunnahNative/Sources` |
