@@ -88,8 +88,13 @@ public enum SunnahMarkdown {
         guard let colon = line.firstIndex(where: { $0 == ":" || $0 == "：" }) else { return nil }
         var label = String(line[line.startIndex..<colon]).trimmingCharacters(in: .whitespaces)
         var rest = String(line[line.index(after: colon)...])
-        if bold { if label.hasSuffix("**") { label = String(label.dropLast(2)).trimmingCharacters(in: .whitespaces) } else if rest.hasPrefix("**") { rest = String(rest.dropFirst(2)) } }
-        guard !label.isEmpty, label.count <= 24, !label.contains("﴿"), bold || knownLabels.contains(label) else { return nil }
+        // التسمية العريضة تُغلق عند النقطتين («**x:**» أو «**x**:»)؛ سطر عريض كامل فيه نقطتان (حديث، وقت) ليس تسمية.
+        if bold {
+            if label.hasSuffix("**") { label = String(label.dropLast(2)).trimmingCharacters(in: .whitespaces) }
+            else if rest.hasPrefix("**") { rest = String(rest.dropFirst(2)) }
+            else { return nil }
+        }
+        guard !label.isEmpty, label.count <= 24, !label.contains("﴿"), !label.contains("*"), bold || knownLabels.contains(label) else { return nil }
         let tail = p.components(separatedBy: "\n").dropFirst().joined(separator: "\n")
         let body = ([rest.trimmingCharacters(in: .whitespaces)] + (tail.isEmpty ? [] : [tail])).filter { !$0.isEmpty }.joined(separator: "\n")
         return (label, body)
