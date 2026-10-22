@@ -10,6 +10,7 @@ struct HifzPlanScreen: View {
     @State private var state = HifzPlanState(plan: nil)
     @State private var legacyCount = 0
     @State private var editing = false
+    @State private var juzStarts: [Int] = []
 
     private var cal: Calendar { Calendar.current }
 
@@ -17,7 +18,7 @@ struct HifzPlanScreen: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
                 if state.plan == nil || editing {
-                    HifzPlanWizard(initial: state.plan) { plan in
+                    HifzPlanWizard(initial: state.plan, juzStarts: juzStarts) { plan in
                         state.plan = plan; editing = false; persist()
                     }
                 } else {
@@ -38,6 +39,7 @@ struct HifzPlanScreen: View {
             .padding(.horizontal, Sunnah.Spacing.s4).padding(.bottom, 110)
         }
         .background(Sunnah.Colors.bg)
+        .task { juzStarts = await Task.detached { (try? MushafRepository(bundle: .main)?.index())?.juzStart ?? [] }.value }
         .onAppear {
             state = store.loadHifzPlan()
             legacyCount = (store.load([MemorizationPlan].self, .plans) ?? []).count
@@ -53,20 +55,30 @@ struct HifzPlanScreen: View {
 
 // MARK: - المعالج
 
-private struct HifzPlanWizard: View {
+struct HifzPlanWizard: View {
     enum Goal: Hashable { case whole, juzAmma, juzRange }
     enum StartKind: Hashable { case fatiha, nas, resume }
 
     let initial: HifzPlan?
+    let juzStarts: [Int]
     let onDone: (HifzPlan) -> Void
 
-    @State private var goal: Goal = .whole
-    @State private var juzFrom = 1
-    @State private var juzTo = 30
-    @State private var startKind: StartKind = .fatiha
-    @State private var resumePage = 1
-    @State private var lines = 15
-    @State private var weekdays: Set<Int> = []
+    @State private var goal: Goal
+    @State private var juzFrom: Int
+    @State private var juzTo: Int
+    @State private var startKind: StartKind
+    @State private var resumePage: Int
+    @State private var lines: Int
+    @State private var weekdays: Set<Int>
+
+    /// التعديل يبدأ من الخطة المحفوظة (الهدف والبداية والوتيرة والأيام)، لا من القيم الافتراضية.
+    init(initial: HifzPlan?, juzStarts: [Int], onDone: @escaping (HifzPlan) -> Void) {
+        self.initial = initial; self.juzStarts = juzStarts; self.onDone = onDone
+        let s = HifzPlanWizardMath.seed(initial, juzStarts: juzStarts)
+        _goal = State(initialValue: s.goal); _juzFrom = State(initialValue: s.juzFrom); _juzTo = State(initialValue: s.juzTo)
+        _startKind = State(initialValue: s.startKind); _resumePage = State(initialValue: s.resumePage)
+        _lines = State(initialValue: s.lines); _weekdays = State(initialValue: s.weekdays)
+    }
     @State private var finishShift = 0   // أسابيع مضافة إلى التاريخ المحسوب
     private let cal = Calendar.current
     private let today = Date()
@@ -74,15 +86,11 @@ private struct HifzPlanWizard: View {
     private static let pace: [(Int, String)] = [(5, "٥ أسطر"), (10, "١٠ أسطر"), (15, "صفحة"), (30, "صفحتان")]
     private static let days: [(Int, String, String)] = [(7, "سبت", "السبت"), (1, "أحد", "الأحد"), (2, "اثنين", "الاثنين"), (3, "ثلاثاء", "الثلاثاء"), (4, "أربعاء", "الأربعاء"), (5, "خميس", "الخميس"), (6, "جمعة", "الجمعة")]
 
-    /// بداية الجزء j (مصحف المدينة: الجزء 1 ص1، والجزء n≥2 ص 2+20(n−1)−… = 22 للثاني).
-    static func juzStart(_ j: Int) -> Int { j <= 1 ? 1 : 2 + (j - 1) * 20 }
-    static func juzEnd(_ j: Int) -> Int { j >= 30 ? HifzPlanMath.pageCount : juzStart(j + 1) - 1 }
-
     private var pages: (Int, Int) {
         switch goal {
         case .whole: return (1, HifzPlanMath.pageCount)
-        case .juzAmma: return (Self.juzStart(30), HifzPlanMath.pageCount)
-        case .juzRange: return (Self.juzStart(juzFrom), Self.juzEnd(max(juzFrom, juzTo)))
+        case .juzAmma: return (HifzPlanWizardMath.juzStart(30, juzStarts), HifzPlanMath.pageCount)
+        case .juzRange: return (HifzPlanWizardMath.juzStart(juzFrom, juzStarts), HifzPlanWizardMath.juzEnd(max(juzFrom, juzTo), juzStarts))
         }
     }
 
@@ -159,6 +167,44 @@ private struct HifzPlanWizard: View {
             }
             SunnahButton(initial == nil ? "ابدأ الخطة" : "احفظ التعديل") { onDone(plan) }
         }
+    }
+}
+
+/// حدود الأجزاء وتعبئة المعالج من خطة محفوظة (نقية للاختبار).
+enum HifzPlanWizardMath {
+    /// بداية الجزء من فهرس المصحف (`MushafIndex.juzStart`، كما في خريطة «حفظي»)؛ الصيغة التقريبية احتياط إن غاب الفهرس.
+    /// الصيغة 2+20(j−1) تخطئ صفحة في الجزأين 7 (121) و11 (201).
+    static func juzStart(_ j: Int, _ starts: [Int]) -> Int {
+        starts.count == 30 ? HifzProgress.juzPages(j, juzStart: starts).lowerBound : (j <= 1 ? 1 : 2 + (j - 1) * 20)
+    }
+    static func juzEnd(_ j: Int, _ starts: [Int]) -> Int {
+        starts.count == 30 ? HifzProgress.juzPages(j, juzStart: starts).upperBound
+            : (j >= 30 ? HifzPlanMath.pageCount : juzStart(j + 1, starts) - 1)
+    }
+    /// الجزء الذي فيه الصفحة.
+    static func juz(ofPage p: Int, _ starts: [Int]) -> Int {
+        (1...30).last { juzStart($0, starts) <= p } ?? 1
+    }
+
+    struct Seed: Equatable {
+        var goal: HifzPlanWizard.Goal, juzFrom: Int, juzTo: Int
+        var startKind: HifzPlanWizard.StartKind, resumePage: Int, lines: Int, weekdays: Set<Int>
+    }
+
+    static func seed(_ plan: HifzPlan?, juzStarts: [Int]) -> Seed {
+        guard let p = plan else { return Seed(goal: .whole, juzFrom: 1, juzTo: 30, startKind: .fatiha, resumePage: 1, lines: 15, weekdays: []) }
+        let last = HifzPlanMath.pageCount
+        let goal: HifzPlanWizard.Goal = p.firstPage <= 1 && p.lastPage >= last ? .whole
+            : (p.firstPage == juzStart(30, juzStarts) && p.lastPage >= last ? .juzAmma : .juzRange)
+        let (kind, resume): (HifzPlanWizard.StartKind, Int) = {
+            switch p.start {
+            case .fatiha: return (.fatiha, p.firstPage)
+            case .nas: return (.nas, p.firstPage)
+            case .resume(let page): return (.resume, page)
+            }
+        }()
+        return Seed(goal: goal, juzFrom: juz(ofPage: p.firstPage, juzStarts), juzTo: juz(ofPage: p.lastPage, juzStarts),
+                    startKind: kind, resumePage: resume, lines: max(1, p.linesPerDay), weekdays: p.weekdays)
     }
 }
 
