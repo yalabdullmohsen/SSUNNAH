@@ -118,13 +118,13 @@ struct LibraryResearchAssistantView: View {
         SunnahRowStack {
             SunnahRowGroupHeader("تغطية التصنيفات (الأقل أولًا)")
             ForEach(insights.coverage, id: \.label) { row in
-                SunnahListRow(title: row.label, subtitle: row.count == 0 ? "لا أبحاث منشورة بعد" : "\(row.count) بحثًا منشورًا")
+                SunnahListRow(title: row.label, subtitle: row.count == 0 ? "لا أبحاث منشورة بعد" : ArabicCount.label(row.count, one: "بحث واحد منشور", two: "بحثان منشوران", few: "أبحاث منشورة", many: "بحثًا منشورًا", genitive: "بحث منشور"))
                     .sunnahStackRow()
             }
             if !insights.topKeywords.isEmpty {
                 SunnahRowGroupHeader("الموضوعات الأكثر بحثًا")
                 ForEach(insights.topKeywords, id: \.label) { row in
-                    SunnahListRow(title: row.label, subtitle: "\(row.count) بحثًا").sunnahStackRow()
+                    SunnahListRow(title: row.label, subtitle: ArabicCount.label(row.count, one: "بحث واحد", two: "بحثان", few: "أبحاث", many: "بحثًا", genitive: "بحث")).sunnahStackRow()
                 }
             }
         }

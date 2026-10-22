@@ -34,7 +34,7 @@ public struct SunnahSectionHub: View {
                         .font(AppearancePrefs.ui(.extraBold, 12, .caption)).foregroundStyle(Sunnah.Colors.primary)
                         .padding(.horizontal, 10).frame(minHeight: 26)
                         .background(Sunnah.Colors.primarySoft, in: Capsule())
-                        .accessibilityLabel("\(Sunnah.digits("\(n)")) عنصرًا")
+                        .accessibilityLabel(ArabicCount.label(n, one: "عنصر واحد", two: "عنصران", few: "عناصر", many: "عنصرًا", genitive: "عنصر"))
                 }
             }
             Text(link.title).font(AppearancePrefs.ui(.extraBold, 16, .headline)).foregroundStyle(Sunnah.Colors.textPrimary).lineLimit(2)

@@ -67,7 +67,7 @@ enum LibraryAdapters {
             let lessons = s.lessons.filter { !$0.title.isBlank }
             guard !lessons.isEmpty else { return nil }
             let body = lessons.map { l in paragraphs([l.title, l.summary, isEcho(l.body, of: l.summary) ? nil : l.body]) }
-            return ContentItem(libraryID: s.id, title: s.title, subtitle: "\(lessons.count) موضوعًا", body: paragraphs(body))
+            return ContentItem(libraryID: s.id, title: s.title, subtitle: ArabicCount.label(lessons.count, one: "موضوع واحد", two: "موضوعان", few: "موضوعات", many: "موضوعًا", genitive: "موضوع"), body: paragraphs(body))
         }
     }
 

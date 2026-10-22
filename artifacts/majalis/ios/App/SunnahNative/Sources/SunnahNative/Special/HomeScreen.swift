@@ -207,7 +207,7 @@ public struct HomeScreen: View {
         let done = w.todayCount(today), goal = max(w.pagesPerDay, 1)
         return smallCard(title: "الورد اليومي", symbol: "book", tone: .mint, trailing: Sunnah.digits("\(done) / \(goal)"),
                          progress: Double(done) / Double(goal),
-                         footer: done >= goal ? "أكملت وردك اليوم" : Sunnah.digits("\(goal - done) صفحات متبقية"),
+                         footer: done >= goal ? "أكملت وردك اليوم" : ArabicCount.label(goal - done, one: "صفحة واحدة متبقية", two: "صفحتان متبقيتان", few: "صفحات متبقية", many: "صفحة متبقية", genitive: "صفحة متبقية"),
                          route: "/native/daily-wird", id: "home.card.wird")
     }
 
