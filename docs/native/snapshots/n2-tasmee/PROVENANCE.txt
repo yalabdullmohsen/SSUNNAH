@@ -1,16 +1,17 @@
-git_sha=8412728507823b4885ab1c9758cbb1680a85366b
+git_sha=b79f64d4200d4e43cf7fb31acb0092eeffff4186
 note=البناء من رأس الفرع نفسه؛ لقطات تشغيل حقيقي بمحرك وهمي (DEBUG فقط) على محاكٍ
-key=b1552bdbca8687ab
+key=4d0a1028a9a6127c
 sdk=iphonesimulator27.1
-binary_sha256=df9d72f0069e54bdfea5286f09e9400f650068ac30014066bbc071398a76c068
+binary_sha256=fb7d64340d12b0b65648ed76d93a42d0986e652665a2cd05dcb3b5eb96add83d
 binary=SunnahApp.app
-built_at=2026-10-22 15:04:42
+built_at=2026-10-22 16:03:19
 build=Debug CODE_SIGNING_ALLOWED=NO
 captured_at=2026-10-22
 locale=ar (RTL)
 devices=iPhone 402x874 simulator
 upload=لا
-gaps: 06 (كلمة خاطئة حمراء) و07 (تلميح بعد 3 محاولات) لم تُرفع بعد؛ وضع التكرار مغطى باختبارات TasmeeRepeatDriverTests (12) لا بلقطة؛ محاكي فقط، لا أرقام أداء.
+older_build=لقطات 01–03 من بناء 8412728 (key=b1552bdbca8687ab, binary_sha256=df9d72f0069e54bdfea5286f09e9400f650068ac30014066bbc071398a76c068)؛ 04 و05 فاتح/داكن من b79f64d (إصلاح تغطية تسمية الحزب + زر إيقاف أحمر داكن)؛ الملفات المغطاة بـ01–03 لم تتغير بين الرأسين.
+gaps: لا محاكي iPhone SE متاح محليًا فلا لقطة SE؛ 06 (كلمة خاطئة حمراء) و07 (تلميح بعد 3 محاولات) لم تُرفع بعد؛ وضع التكرار مغطى باختبارات TasmeeRepeatDriverTests (12) لا بلقطة؛ محاكي فقط، لا أرقام أداء.
 
 # 01-default-no-mic-light.png / 01-default-no-mic-dark.png
 covers: Mushaf/MushafReaderView.swift (المصحف الافتراضي بلا زر ميكروفون ولا موجة)
