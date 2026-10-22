@@ -118,18 +118,42 @@ struct TasmeeModeRow: View {
     let mode: TasmeeMode
     let selected: Bool
 
+    @Environment(\.dynamicTypeSize) private var typeSize
+    @ScaledMetric(relativeTo: .title3) private var iconWidth: CGFloat = 28
+
+    private var icon: some View {
+        Image(systemName: mode.icon).font(.title3).foregroundStyle(selected ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
+            .frame(width: iconWidth).accessibilityHidden(true)
+    }
+    private var texts: some View {
+        VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
+            Text(mode.title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                .fixedSize(horizontal: false, vertical: true)
+            Text(mode.summary).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+    private var check: some View {
+        Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+            .foregroundStyle(selected ? Sunnah.Colors.primary : Sunnah.Colors.border).accessibilityHidden(true)
+    }
+
     var body: some View {
-        HStack(alignment: .top, spacing: Sunnah.Spacing.s3) {
-            Image(systemName: mode.icon).font(.title3).foregroundStyle(selected ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
-                .frame(width: 28).accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: Sunnah.Spacing.s1) {
-                Text(mode.title).font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                Text(mode.summary).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
+        Group {
+            if typeSize.isAccessibilitySize {
+                // الخط الكبير: الأيقونة والعلامة فوق النص بدل اقتسام العرض فلا يتداخلان مع العنوان.
+                VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
+                    HStack { icon; Spacer(minLength: 0); check }
+                    texts
+                }
+            } else {
+                HStack(alignment: .top, spacing: Sunnah.Spacing.s3) {
+                    icon
+                    texts
+                    Spacer(minLength: 0)
+                    check
+                }
             }
-            Spacer(minLength: 0)
-            Image(systemName: selected ? "checkmark.circle.fill" : "circle")
-                .foregroundStyle(selected ? Sunnah.Colors.primary : Sunnah.Colors.border).accessibilityHidden(true)
         }
         .padding(Sunnah.Spacing.s4)
         .frame(maxWidth: .infinity, alignment: .leading)
