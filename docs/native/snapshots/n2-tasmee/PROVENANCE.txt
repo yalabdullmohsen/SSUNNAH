@@ -1,20 +1,33 @@
-git_sha=24cf4a3fb90427eb25988fa498953636f47a3161
-note=البناء من هذا الالتزام + تعديل موضع الزر (أُلتزم لاحقًا في 23ad8c3ef)
-key=n2-tasmee
+git_sha=8412728507823b4885ab1c9758cbb1680a85366b
+note=البناء من رأس الفرع نفسه؛ لقطات تشغيل حقيقي بمحرك وهمي (DEBUG فقط) على محاكٍ
+key=b1552bdbca8687ab
 sdk=iphonesimulator27.1
-binary_sha256=38d37097e7a574eb85ca2d2aa2cd8e5e1e4b7946abea05bf28be27f9a1933722
-binary=SunnahApp.debug.dylib
-built_at=2026-10-22T01:31+03:00
-build=Debug, CODE_SIGNING_ALLOWED=NO
-captured_at=2026-10-21T22:32Z
+binary_sha256=df9d72f0069e54bdfea5286f09e9400f650068ac30014066bbc071398a76c068
+binary=SunnahApp.app
+built_at=2026-10-22 15:04:42
+build=Debug CODE_SIGNING_ALLOWED=NO
+captured_at=2026-10-22
 locale=ar (RTL)
 devices=iPhone 402x874 simulator
-screens=/mushaf/page/150 مع زر الميكروفون العائم (فاتح، داكن)
 upload=لا
-gaps: محاكي فقط؛ حالات إخفاء الآيات/التقرير/الموافقة لم تُلتقط (تحتاج محركًا وهميًا)؛ لا أرقام زمن/أداء.
+gaps: 06 (كلمة خاطئة حمراء) و07 (تلميح بعد 3 محاولات) لم تُرفع بعد؛ وضع التكرار مغطى باختبارات TasmeeRepeatDriverTests (12) لا بلقطة؛ محاكي فقط، لا أرقام أداء.
+
+# 01-default-no-mic-light.png / 01-default-no-mic-dark.png
+covers: Mushaf/MushafReaderView.swift (المصحف الافتراضي بلا زر ميكروفون ولا موجة)
+
+# 02-options-with-tasmee-light.png / 02-options-with-tasmee-dark.png
+covers: Mushaf/MushafReaderView.swift (خيارات المصحف عند لمس الشاشة وفيها مدخل «التسميع»)
+
+# 03-mode-sheet-light.png / 03-mode-sheet-dark.png
+covers: Tasmee/MushafTasmeeViews.swift (ورقة أوضاع التسميع)
+
+# 04-hidden-words-wave-light.png / 04-hidden-words-wave-dark.png
+covers: Tasmee/MushafTasmeeViews.swift, Tasmee/MushafTasmeeController.swift (جلسة نشطة: آية مخفية + الزر + الموجة)
+
+# 05-word-revealed-light.png / 05-word-revealed-dark.png
+covers: Tasmee/TasmeeMatcher.swift, Tasmee/TasmeeSession.swift (كلمات مكشوفة بعد التسميع والباقي مخفي)
 
 # report-light.png / report-dark.png
 git_sha=dd2ff79adaaeb09ef2c29f4a9e40e4ceca41b2cd
-source=TasmeeStatesSnapshotTests (ImageRenderer داخل اختبار المحاكي عبر الطابور)؛ ليست لقطة تطبيق مبني فلا هاش binary لها
-covers: MushafTasmeeReport (تقرير الجلسة: ٤٠ صحيحة/٤ خطأ/٣ متجاوزة، فاتح وداكن)
-gaps: الموجة الحية وورقة الأوضاع والموافقة وإخفاء الآيات لا تُرسم بـImageRenderer؛ تحتاج لقطة تشغيل بمحرك وهمي
+source=TasmeeStatesSnapshotTests (ImageRenderer)؛ ليست لقطة تطبيق مبني
+covers: MushafTasmeeReport (تقرير الجلسة)
