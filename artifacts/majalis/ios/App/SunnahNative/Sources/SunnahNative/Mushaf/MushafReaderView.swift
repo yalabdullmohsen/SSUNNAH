@@ -279,6 +279,13 @@ public struct MushafReaderView: View {
         // أعلى الصفحة فوق سطر اسم السورة/الجزء (لا يغطي آخر سطر من الآيات ولا رقم الصفحة).
         .overlay(alignment: .top) { if selected == nil { ayahTafsirPlayer } }
         .modifier(MushafTasmeeHost(box: tasmeeBox, engine: debugTasmeeEngine(platform.recitationEngine), current: $current, overlay: tasmeeOverlay, surahName: surahName))
+        #if DEBUG
+        .task(id: search != nil) {   // لقطات التسميع: ينتظر اكتمال تحميل نص المصحف ثم يشغّل الجلسة الوهمية (`-tasmeeStage`)
+            guard search != nil, UserDefaults.standard.string(forKey: "tasmeeStage") != nil else { return }
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            if let t = tasmeeBox.controller { await TasmeeSnapshotEngine.autoStart(t, page: current, repo: repo, search: search) }
+        }
+        #endif
         .fullScreenCover(isPresented: $showIndex) {
             MushafIndexView(index: index, store: store, close: { showIndex = false }) { page in current = page; showIndex = false }
         }
@@ -296,7 +303,6 @@ public struct MushafReaderView: View {
             if let a = UserDefaults.standard.string(forKey: "snapshotSelectAyah"), !a.isEmpty { selected = a }
             // `-snapshotShowChrome 1` يُظهر سطر الأدوات ثابتًا (لقطة وضع الأدوات).
             if UserDefaults.standard.bool(forKey: "snapshotShowChrome") { chromeHide.pin(true) }   // updatePin لا يلغيه: يُعاد ضبطه عند أي تغيّر حالة
-            if UserDefaults.standard.string(forKey: "tasmeeStage") != nil { Task { try? await Task.sleep(nanoseconds: 800_000_000); if let t = tasmeeBox.controller { await TasmeeSnapshotEngine.autoStart(t, page: current, repo: repo, search: search) } } }
             // `-snapshotMarkPicker 1` يفتح اختيار اللون في بطاقة الآية؛ `-snapshotSeedMarks 1` يزرع علامات ملوّنة في الصفحة الحالية؛ `-snapshotShowMarks 1` يفتح «علاماتي».
             if UserDefaults.standard.bool(forKey: "snapshotMarkPicker") { Task { try? await Task.sleep(nanoseconds: 500_000_000); ayahPicker = true } }
             hifz.migrateIfNeeded(marks: store.bookmarks, index: index)
