@@ -28,4 +28,11 @@ final class ArabicNumeralsTests: XCTestCase {
         try p.run(); p.waitUntilExit(); XCTAssertEqual(p.terminationStatus, 0)
         #endif
     }
+
+    /// الأرقام المركّبة «١ / ٤» تُعزل اتجاهيًا فلا تنعكس في RTL؛ ومراجع الآيات لا تتأثر.
+    func testRatioIsIsolated() {
+        XCTAssertEqual("1 / 4".arabicDigits, "\u{2066}١ / ٤\u{2069}")
+        XCTAssertEqual("النتيجة: 3 / 10".arabicDigits, "النتيجة: \u{2066}٣ / ١٠\u{2069}")
+        XCTAssertEqual("36:1".arabicDigits, "٣٦:١")
+    }
 }

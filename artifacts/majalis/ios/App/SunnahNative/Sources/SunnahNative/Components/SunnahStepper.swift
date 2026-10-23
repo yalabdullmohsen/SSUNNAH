@@ -15,7 +15,7 @@ public struct SunnahStepper: View {
             HStack {
                 step(previousTitle, "chevron.right", enabled: index > 0) { index -= 1 }.accessibilityIdentifier("stepper.previous")
                 Spacer()
-                Text("\((index + 1).arabicDigits) / \(count.arabicDigits)").font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
+                Text("\(index + 1) / \(count)".arabicDigits).font(Sunnah.Typography.tag).foregroundStyle(Sunnah.Colors.textSecondary)
                 Spacer()
                 step(nextTitle, "chevron.left", enabled: index < count - 1, trailingIcon: true) { index += 1 }.accessibilityIdentifier("stepper.next")
             }
