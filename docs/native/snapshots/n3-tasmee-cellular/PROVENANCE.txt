@@ -1,0 +1,7 @@
+git_sha=d4c0af267ca5d60717203e5394adb7e1a7e9b270
+branch=n3/tasmee-cellular
+app=/Users/alabdullmohsen/.majalis-tools/dd-n3-cellular/Build/Products/Debug-iphonesimulator/SunnahNativeTests.xctest
+binary_sha256=59c612efd0ecb1c063b0e4937b50fb4a8e24470cc485bd97a05c016c500ebe7f
+built_at=2026-10-23 04:07:23
+source_newest=2026-10-23 03:55:56
+captured_at=2026-10-23 04:07:37

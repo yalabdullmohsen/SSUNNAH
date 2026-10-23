@@ -15,8 +15,18 @@ struct MushafTasmeeOverlay: View {
                     .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
             }
             if case .failed(let m) = tasmee.phase {
-                Text(m).font(Sunnah.Typography.secondary).padding(.horizontal, 12).padding(.vertical, 6)
-                    .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
+                VStack(spacing: Sunnah.Spacing.s2) {
+                    Text(m).font(Sunnah.Typography.secondary).multilineTextAlignment(.center)
+                    HStack(spacing: Sunnah.Spacing.s3) {
+                        Button("إعادة المحاولة", action: onTap)
+                            .buttonStyle(SunnahButtonStyle(.primary)).accessibilityIdentifier("mushaf.tasmee.retry")
+                        Button("إغلاق") { tasmee.dismissFailure() }
+                            .buttonStyle(SunnahButtonStyle(.outline)).accessibilityIdentifier("mushaf.tasmee.dismiss")
+                    }
+                }
+                .padding(.horizontal, 16).padding(.vertical, 8)
+                .background(RoundedRectangle(cornerRadius: 16).fill(Sunnah.Colors.bg.opacity(0.92)))
+                .accessibilityIdentifier("mushaf.tasmee.error")
             }
             if let r = tasmee.repeatStatus, tasmee.phase == .listening {
                 Text(r).font(Sunnah.Typography.secondary).padding(.horizontal, 12).padding(.vertical, 6)
@@ -57,18 +67,20 @@ struct MushafTasmeeOverlay: View {
                     .accessibilityLabel(tasmee.soundOn ? "إيقاف صوت التنبيه" : "تشغيل صوت التنبيه")
                     .accessibilityIdentifier("mushaf.tasmee.sound")
                 }
-                Button(action: onTap) {
-                    ZStack {
-                        Circle().fill(tasmee.phase == .listening ? Color(red: 0.69, green: 0.21, blue: 0.17) : Sunnah.Colors.primary)   // أحمر ثابت داكن: الأيقونة بيضاء فيبقى التباين ≥3:1 في الوضعين
-                        switch tasmee.phase {
-                        case .preparing, .downloading: ProgressView().tint(.white)
-                        default: Image(systemName: tasmee.phase == .listening ? "stop.fill" : "mic.fill").font(.system(size: 20, weight: .semibold)).foregroundStyle(.white)
+                if !tasmee.isFailed {   // بعد الفشل لا زر ميكروفون: التسميع اختياري، والمحاولة من «إعادة المحاولة»
+                    Button(action: onTap) {
+                        ZStack {
+                            Circle().fill(tasmee.phase == .listening ? Color(red: 0.69, green: 0.21, blue: 0.17) : Sunnah.Colors.primary)   // أحمر ثابت داكن: الأيقونة بيضاء فيبقى التباين ≥3:1 في الوضعين
+                            switch tasmee.phase {
+                            case .preparing, .downloading: ProgressView().tint(.white)
+                            default: Image(systemName: tasmee.phase == .listening ? "stop.fill" : "mic.fill").font(.system(size: 20, weight: .semibold)).foregroundStyle(.white)
+                            }
                         }
+                        .frame(width: 56, height: 56).shadow(color: .black.opacity(0.18), radius: 6, y: 2)
                     }
-                    .frame(width: 56, height: 56).shadow(color: .black.opacity(0.18), radius: 6, y: 2)
+                    .accessibilityLabel(tasmee.phase == .listening ? "إنهاء التسميع" : "ابدأ التسميع")
+                    .accessibilityIdentifier("mushaf.tasmee.mic")
                 }
-                .accessibilityLabel(tasmee.phase == .listening ? "إنهاء التسميع" : "ابدأ التسميع")
-                .accessibilityIdentifier("mushaf.tasmee.mic")
             }
         }
         .offset(x: dragBase.width + drag.width, y: dragBase.height + drag.height)
