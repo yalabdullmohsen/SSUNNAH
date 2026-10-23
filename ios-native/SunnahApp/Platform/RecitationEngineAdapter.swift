@@ -9,6 +9,7 @@ final class RecitationEngineAdapter: RecitationEngineControlling {
     private let manifest: TasmeeManifest?
     private var downloading = false
     private var downloadProgress = 0.0
+    private var loadTask: Task<Void, Error>?
 
     var onPartial: ((RecitationPartial) -> Void)?
     var onUnclear: (() -> Void)?
@@ -51,10 +52,19 @@ final class RecitationEngineAdapter: RecitationEngineControlling {
         try store.delete(manifest.modelId)
     }
 
+    /// idempotent: النموذج المحمَّل لا يُعاد تحميله، والتحميلات المتزامنة (تسخين + بدء) تشترك في مهمة واحدة.
     func load() async throws {
+        if engine.isLoaded { return }
+        if let loadTask { return try await loadTask.value }
         guard let manifest, store.isInstalled(manifest) else { throw TasmeeModelError.io("النموذج غير مثبّت") }
-        try await engine.load(modelFolder: try store.modelDir(manifest.modelId))
+        let dir = try store.modelDir(manifest.modelId)
+        let task = Task { try await engine.load(modelFolder: dir) }
+        loadTask = task
+        defer { loadTask = nil }
+        try await task.value
     }
+
+    func prewarm() async { try? await load() }
 
     func start(prompt: String?) async throws { try engine.start(prompt: prompt, keepSessionAudio: false) }
     func setPrompt(_ text: String?) async { engine.setPrompt(text) }
