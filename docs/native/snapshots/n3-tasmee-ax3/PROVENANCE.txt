@@ -1,0 +1,10 @@
+git_sha=7906239bfbf4d3f27748b5780d0deb0b81b8fb58
+branch=n3/tasmee-ax3-fix
+app=/Users/alabdullmohsen/.majalis-tools/n3-th-dd/Build/Products/Debug-iphonesimulator/SunnahNativeTests.xctest
+binary_sha256=d02c4d75e745ea3f08f457a0eb49e0c9e92061684907e6dc8836492981919838
+built_at=2026-10-22 12:43:39
+source_newest=2026-10-22 12:33:25
+captured_at=2026-10-22 12:44:24
+files: Tasmee/Modes/TasmeeModeSheet.swift, Tasmee/Review/TasmeeReportScreen.swift, Tasmee/Review/TasmeeProgressScreen.swift
+covers: بطاقة الوضع عند AX3 (عمودية: الأيقونة والعلامة فوق العنوان بلا تداخل، فُتحت لقطة modes-se-ax3) وتقرير/متابعة بنصوص ≥13 بالعرض 375/430/700 فاتحًا وداكنًا + AX3 (21 لقطة، ImageRenderer، RTL)
+gaps: محاكٍ/ImageRenderer فقط؛ لا جهاز ولا تمرير حقيقي

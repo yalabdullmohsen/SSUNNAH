@@ -67,7 +67,7 @@ enum LibraryAdapters {
             let lessons = s.lessons.filter { !$0.title.isBlank }
             guard !lessons.isEmpty else { return nil }
             let body = lessons.map { l in paragraphs([l.title, l.summary, isEcho(l.body, of: l.summary) ? nil : l.body]) }
-            return ContentItem(libraryID: s.id, title: s.title, subtitle: "\(lessons.count) موضوعًا", body: paragraphs(body))
+            return ContentItem(libraryID: s.id, title: s.title, subtitle: ArabicCount.label(lessons.count, one: "موضوع واحد", two: "موضوعان", few: "موضوعات", many: "موضوعًا", genitive: "موضوع"), body: paragraphs(body))
         }
     }
 
@@ -207,11 +207,18 @@ enum LibraryAdapters {
 
     // MARK: البحث — تطبيع عربي (تشكيل، تطويل، همزات، تاء مربوطة، ألف مقصورة)
 
+    /// يطابق normalizeArabic في الويب (src/shared/arabic-normalize.ts) الذي بُني به حقل `norm` في الفهرس:
+    /// الهمزة المفردة تُحذف وعلامات الترقيم تصير مسافة، وإلا لم تجد «الوضوء» ما خُزّن «الوضو».
     static func normalize(_ s: String) -> String {
         var out = ""
-        for u in s.unicodeScalars {
+        let scalars = Array(s.unicodeScalars)
+        for (i, u) in scalars.enumerated() {
             switch u.value {
-            case 0x064B...0x065F, 0x0670, 0x06D6...0x06ED, 0x0640: continue
+            case 0x064B...0x065F, 0x0670, 0x06D6...0x06ED, 0x0640, 0x0621: continue
+            case 0x0626 where i + 1 < scalars.count && scalars[i + 1].value == 0x0648: out.unicodeScalars.append("\u{0648}")   // ئو → وو
+            case 0x06A9: out.unicodeScalars.append("\u{0643}")
+            case 0x0672, 0x0673: out.unicodeScalars.append("\u{0627}")
+            case _ where ",.;!?،؛؟«»\"'()[]{}-—…".unicodeScalars.contains(u): out.unicodeScalars.append(" ")
             case 0x0622, 0x0623, 0x0625, 0x0671: out.unicodeScalars.append("\u{0627}")
             case 0x0629: out.unicodeScalars.append("\u{0647}")
             case 0x0649: out.unicodeScalars.append("\u{064A}")

@@ -40,6 +40,12 @@ test("يفشل: git_sha ليس من أسلاف HEAD", () => {
 test("يفشل: git_sha غير صالح", () => {
   assert.equal(run(repoWithShots(() => "git_sha=zzz\n")).status, 1);
 });
+test("يفشل بإرشاد: حقول PROVENANCE على سطر واحد (مكتوب يدويًا)", () => {
+  const r = run(repoWithShots(() => `git_sha=${"a".repeat(40)} binary_sha256=${"b".repeat(64)} note=يدوي\n`));
+  assert.equal(r.status, 1);
+  assert.match(r.stderr, /git_sha غير صالح/);
+  assert.match(r.stderr, /native-shot-guard\.sh/);
+});
 test("ينجح: لقطات مع PROVENANCE صحيح", () => {
   assert.equal(run(repoWithShots(good)).status, 0);
 });

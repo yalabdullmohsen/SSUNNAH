@@ -17,6 +17,10 @@ export type TasmeeWordEvent = {
   state: Exclude<TasmeeWordState, "pending">;
   /** لحظة القرار (ms) كما مُرّرت إلى ingest */
   timeMs: number;
+  /** وضع البوابة: الكلمة المسموعة (مطبَّعة) في حالة الخطأ */
+  said?: string;
+  /** وضع البوابة: عدد المحاولات الخاطئة المتمايزة على هذه الكلمة حتى الآن */
+  attempts?: number;
 };
 
 /** كلمة زائدة سُمعت بين كلمتين متتاليتين من النص (مستوى «دقيق» فقط، وبعد ثباتها في نتيجتين). */
@@ -49,6 +53,10 @@ export type TasmeeMatchParams = {
   extraMinLen: number;
   /** كلمة مسموعة تسبق مباشرةً الكلمة الصحيحة وتشبهها بهذا القدر فأكثر تُعدّ محاولة قبل تصحيح ذاتي لا زيادة */
   extraSelfCorrectSim: number;
+  /** وضع البوابة (التسميع من الحفظ): لا تتقدّم الكلمة التالية إلا بنطقها صحيحة؛ الخطأ أو القفز يُسجَّل عليها ولا يكشفها ولا يتجاوزها */
+  gateOnError: boolean;
+  /** عدد النتائج المتتالية اللازمة لتثبيت الكلمة الخاطئة قبل التنبيه (يمنع وميض الخطأ على نتيجة جزئية ناقصة) */
+  wrongStableHyps: number;
 };
 
 export const DEFAULT_TASMEE_PARAMS: TasmeeMatchParams = {
@@ -62,6 +70,8 @@ export const DEFAULT_TASMEE_PARAMS: TasmeeMatchParams = {
   extraStableHyps: 2,
   extraMinLen: 3,
   extraSelfCorrectSim: 0.3,
+  gateOnError: false,
+  wrongStableHyps: 2,
 };
 
 export class TasmeeMatcher {
@@ -74,6 +84,8 @@ export class TasmeeMatcher {
   private extraSeen = new Map<string, number>();
   private extraReported = new Set<string>();
   private pendingExtras: TasmeeExtraEvent[] = [];
+  private wrongSeen = new Map<string, number>();
+  private heardByWord = new Map<number, Set<string>>();
 
   constructor(ref: readonly TasmeeRefWord[], params: Partial<TasmeeMatchParams> = {}) {
     this.ref = ref;
@@ -89,6 +101,16 @@ export class TasmeeMatcher {
 
   get state(): readonly TasmeeWordState[] {
     return this.states;
+  }
+
+  /** عدد المحاولات الخاطئة المتمايزة على كلمة (وضع البوابة)؛ يبقى بعد تصحيحها ليغذّي سجلّ الأخطاء. */
+  attemptsFor(index: number): number {
+    return this.heardByWord.get(index)?.size ?? 0;
+  }
+
+  /** الكلمات التي أُخطئ فيها (ولو صُحّحت لاحقًا) مع الكلمات المسموعة — وضع البوابة. */
+  get mistakes(): Array<{ index: number; said: string[] }> {
+    return [...this.heardByWord.entries()].sort((a, b) => a[0] - b[0]).map(([index, s]) => ({ index, said: [...s] }));
   }
 
   /** نص الكلمات القادمة (للـprompt الموجَّه للنموذج). */
@@ -218,6 +240,7 @@ export class TasmeeMatcher {
     for (const c of candidates) this.stable.set(c, (this.stable.get(c) ?? 0) + 1);
 
     const ready = [...candidates].filter((c) => (this.stable.get(c) ?? 0) >= this.params.stableHyps).sort((a, b) => a - b);
+    if (this.params.gateOnError) return this.ingestGated(toks, matched, ready, timeMs);
     const j = ready[ready.length - 1];
     if (j === undefined) return [];
 
@@ -246,6 +269,54 @@ export class TasmeeMatcher {
     push(j, "correct");
     this.nextIdx = j + 1;
     this.stable.clear();
+    return events;
+  }
+
+  /** وضع البوابة: يكشف المتتالية الصحيحة من الكلمة التالية فقط؛ ما عداها خطأ يُسجَّل على الكلمة التالية ولا يُقدّم المؤشر. */
+  private ingestGated(toks: string[], matched: Array<{ tok: number; word: number }>, ready: number[], timeMs: number): TasmeeWordEvent[] {
+    const events: TasmeeWordEvent[] = [];
+    const set = new Set(ready);
+    let j = this.nextIdx;
+    while (set.has(j)) j++;
+    for (let g = this.nextIdx; g < j; g++) {
+      this.states[g] = "correct";
+      events.push({ index: g, id: this.ref[g]!.id, state: "correct", timeMs });
+    }
+    if (j > this.nextIdx) {
+      this.nextIdx = j;
+      this.stable.clear();
+      this.wrongSeen.clear();
+      return events;
+    }
+    const w = this.nextIdx;
+    const matchedToks = new Set(matched.map((m) => m.tok));
+    const ahead = matched.find((m) => m.word > w);
+    let said: string | undefined = ahead ? toks[ahead.tok] : undefined;
+    if (said === undefined) {
+      let best = this.params.wrongSim;
+      toks.forEach((tk, i) => {
+        if (matchedToks.has(i)) return;
+        const s = bestWordSimilarity(tk, this.forms[w]!);
+        if (s >= best) {
+          best = s;
+          said = tk;
+        }
+      });
+    }
+    if (said === undefined) {
+      this.wrongSeen.clear();
+      return events;
+    }
+    const n = (this.wrongSeen.get(said) ?? 0) + 1;
+    this.wrongSeen.clear();
+    this.wrongSeen.set(said, n);
+    if (n < this.params.wrongStableHyps) return events;
+    const heard = this.heardByWord.get(w) ?? new Set<string>();
+    if (heard.has(said)) return events;
+    heard.add(said);
+    this.heardByWord.set(w, heard);
+    this.states[w] = "wrong";
+    events.push({ index: w, id: this.ref[w]!.id, state: "wrong", timeMs, said, attempts: heard.size });
     return events;
   }
 }

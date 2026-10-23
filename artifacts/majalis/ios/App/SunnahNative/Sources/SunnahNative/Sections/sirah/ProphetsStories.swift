@@ -117,7 +117,7 @@ struct ProphetsGridView: View {
 
     private var filtered: [(Int, ProphetStory)] {
         let q = query.trimmingCharacters(in: .whitespaces)
-        return prophets.enumerated().filter { q.isEmpty || $0.element.name.contains(q) }.map { ($0.offset, $0.element) }
+        return prophets.enumerated().filter { ArabicText.matches($0.element.name, query: q) }.map { ($0.offset, $0.element) }
     }
     private var columns: [GridItem] {
         hSize == .regular ? [GridItem(.adaptive(minimum: 170), spacing: 14)]

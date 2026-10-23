@@ -120,7 +120,7 @@ public struct TasmeeProgressScreen: View {
                     HStack(spacing: 4) {
                         RoundedRectangle(cornerRadius: 3).stroke(TasmeeProgressFormat.fill(st), lineWidth: st == .untouched ? 0 : 2)
                             .background(Sunnah.Colors.surface2, in: RoundedRectangle(cornerRadius: 3)).frame(width: 14, height: 14)
-                        Text(TasmeeProgressFormat.label(st)).font(AppearancePrefs.ui(.regular, 12, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
+                        Text(TasmeeProgressFormat.label(st)).font(AppearancePrefs.ui(.regular, 13, .caption)).foregroundStyle(Sunnah.Colors.textSecondary)
                     }
                 }
             }
@@ -150,14 +150,9 @@ public enum TasmeeProgressFormat {
     }
     static let weekdays = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"]
 
-    /// عدّ بصيغة المفرد/المثنى/الجمع العربية.
+    /// عدّ بصيغة المفرد/المثنى/الجمع العربية عبر `ArabicCount` (يعتبر آخر رقمين: «١٠٣ آيات» لا «١٠٣ آية»).
     static func counted(_ n: Int, one: String, two: String, few: String, many: String) -> String {
-        switch n {
-        case 1: return one
-        case 2: return two
-        case 3...10: return "\(n.arabicDigits) \(few)"
-        default: return "\(n.arabicDigits) \(many)"
-        }
+        ArabicCount.label(n, one: one, two: two, few: few, many: many, genitive: many)
     }
     public static func ayahs(_ n: Int) -> String { counted(n, one: "آية واحدة", two: "آيتان", few: "آيات", many: "آية") }
     public static func times(_ n: Int) -> String { counted(n, one: "مرة واحدة", two: "مرتان", few: "مرات", many: "مرة") }

@@ -27,12 +27,14 @@ public enum Route: Hashable {
 
     /// يحوّل رابطًا (عميقًا أو من النطاق) إلى مسار؛ nil لما هو خارج التطبيق.
     public static func path(from url: URL, hosts: Set<String> = AppHosts.web) -> String? {
-        if url.scheme == AppHosts.scheme {
+        // المخطط والنطاق لا يفرّقان بين حالة الأحرف (RFC 3986)؛ «SSunnah.com» و«MajlisIlm://» رابطان صالحان.
+        let scheme = url.scheme?.lowercased() ?? ""
+        if scheme == AppHosts.scheme {
             // majlisilm://prayer-times → /prayer-times
             let host = url.host.map { "/" + $0 } ?? ""
             return normalize(host + url.path + query(url))
         }
-        guard ["http", "https"].contains(url.scheme ?? ""), let host = url.host, hosts.contains(host) else {
+        guard ["http", "https"].contains(scheme), let host = url.host?.lowercased(), hosts.contains(host) else {
             return nil
         }
         return normalize((url.path.isEmpty ? "/" : url.path) + query(url))

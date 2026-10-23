@@ -26,6 +26,15 @@ const DAY_MAP: Record<string, number> = {
   السبت: 6,
 };
 
+/** أيام الأسبوع المذكورة في نص اليوم: «الاثنين» أو «الثلاثاء والخميس». ما فيه غير أسماء الأيام («من الأحد إلى الخميس»، «طوال الأسبوع») ⇒ []. */
+export function weekdaysOf(day: string): number[] {
+  const parts = day.trim().split(/[\s،,]+/).filter(Boolean)
+    .map((p) => (p.startsWith("و") && !(p in DAY_MAP) ? p.slice(1) : p))
+    .map((p) => (p === "الإثنين" || p === "الأثنين" ? "الاثنين" : p))
+    .filter(Boolean);
+  return parts.length > 0 && parts.every((p) => p in DAY_MAP) ? parts.map((p) => DAY_MAP[p]!) : [];
+}
+
 export function eventsFromLessons(lessons: KuwaitLessonRecord[]): CalendarEvent[] {
   const mapped = lessons.map((l) => ({
     id: l.id,
@@ -52,7 +61,7 @@ export function eventsForDate(date: Date, events: CalendarEvent[]): CalendarEven
       return e.date === dateStr;
     }
     if (e.recurring !== false && e.day) {
-      return DAY_MAP[e.day] === weekday;
+      return weekdaysOf(e.day).includes(weekday);
     }
     return false;
   });

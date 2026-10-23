@@ -47,20 +47,28 @@ public struct TasmeeSessionRecord: Codable, Sendable, Equatable, Identifiable {
 
     /// عدد الكلمات التي أُخطئ فيها (كلمة خاطئة أو متروكة)، كل موضع مرة واحدة.
     public var errorWords: Int {
-        Set(events.filter { $0.kind == .wrong || $0.kind == .skipped }.map { "\($0.ayah):\($0.wordIndex)" }).count
+        Set(events.filter { $0.kind == .wrong || $0.kind == .skipped }.map { "\($0.surah):\($0.ayah):\($0.wordIndex)" }).count
     }
 
     /// نسبة الصحة 0…1: الكلمات الخالية من خطأ أو نظرة ÷ إجمالي الكلمات. الزيادة والتشكيل المحتمل لا يُحسبان خطأً.
     public var accuracy: Double {
         guard totalWords > 0 else { return 0 }
         let bad = Set(events.filter { $0.kind == .wrong || $0.kind == .skipped || $0.usedPeek }
-            .map { "\($0.ayah):\($0.wordIndex)" }).count
+            .map { "\($0.surah):\($0.ayah):\($0.wordIndex)" }).count   // الجلسة قد تعبر سورتين (صفحة 604)
         return max(0, Double(totalWords - bad) / Double(totalWords))
     }
 
-    /// الآيات التي فيها خطأ أو نظرة، مرتّبة.
+    /// الآيات التي فيها خطأ أو نظرة من سورة السجل، مرتّبة (أرقام آيات سورة أخرى في الجلسة نفسها لا تُخلط بها).
     public var weakAyahs: [Int] {
-        Array(Set(events.filter { $0.isError || $0.usedPeek }.map(\.ayah))).sorted()
+        Array(Set(events.filter { ($0.isError || $0.usedPeek) && $0.surah == surah }.map(\.ayah))).sorted()
+    }
+
+    /// كل آية فيها خطأ أو نظرة بسورتها، ولو عبرت الجلسة سورتين.
+    public var weakVerses: [(surah: Int, ayah: Int)] {
+        Set(events.filter { $0.isError || $0.usedPeek }.map { "\($0.surah):\($0.ayah)" }).compactMap { k -> (surah: Int, ayah: Int)? in
+            let p = k.split(separator: ":").compactMap { Int($0) }
+            return p.count == 2 ? (p[0], p[1]) : nil
+        }.sorted { ($0.surah, $0.ayah) < ($1.surah, $1.ayah) }
     }
 
     /// الأخطاء مجمّعة بالآية (للتفصيل في التقرير).

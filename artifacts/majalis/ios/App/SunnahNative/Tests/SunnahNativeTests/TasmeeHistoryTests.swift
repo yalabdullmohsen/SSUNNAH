@@ -24,6 +24,14 @@ final class TasmeeHistoryTests: XCTestCase {
         XCTAssertEqual(r.accuracy, 0.75, accuracy: 1e-9)
     }
 
+    func testErrorKindLabelsMarkTashkeelAsMaybe() {
+        XCTAssertEqual(TasmeeReportFormat.label(.tashkeelMaybe), "تشكيل (محتمل)")
+        XCTAssertEqual(TasmeeReportFormat.label(.wrong), "خاطئة")
+        XCTAssertEqual(TasmeeReportFormat.label(.skipped), "متروكة")
+        XCTAssertEqual(TasmeeReportFormat.label(.extra), "زائدة")
+        XCTAssertEqual(TasmeeReportFormat.detail(.init(surah: 1, ayah: 1, wordIndex: 0, kind: .wrong, said: "أ", expected: "ب")), "قلتَ: أ، الصواب: ب")
+    }
+
     func testCodableRoundTrip() throws {
         let r = rec(1, errs: [(2, 1)])
         XCTAssertEqual(try JSONDecoder().decode(TasmeeSessionRecord.self, from: JSONEncoder().encode(r)), r)

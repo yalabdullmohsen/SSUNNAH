@@ -1,0 +1,10 @@
+git_sha=9e3910802e269bc720989f0faa8d36360d997a7b
+branch=n3/tasmee-modes
+app=/Users/alabdullmohsen/.majalis-tools/n3-th-dd/Build/Products/Debug-iphonesimulator/SunnahNativeTests.xctest
+binary_sha256=fd4a65d65189dec6850906b3f30f5de1c1c4869d633066923197526981b4b143
+built_at=2026-10-22 10:14:23
+source_newest=2026-10-22 10:04:11
+captured_at=2026-10-22 10:21:45
+files: Tasmee/Modes/TasmeeModeSheet.swift, Tasmee/Review/TasmeeReportScreen.swift, Tasmee/Review/TasmeeProgressScreen.swift
+covers: ورقة الأوضاع (modes) وتقرير الجلسة (report) وشاشة التقدّم (progress) بالعرض 375/430/700 فاتحًا وداكنًا، وAX3 عند 375 (21 لقطة) عبر ImageRenderer لـcontent بالـRTL؛ فُتحت لقطة AX3 للأوضاع ووُجد الوصف كاملًا بلا اقتطاع
+gaps: لا لقطة على جهاز ولا ورقة داخل المصحف الحقيقي ولا حركة حلقة النسبة (instant)؛ محاكٍ/ImageRenderer فقط؛ بلا ScrollView فلا يُثبت سلوك التمرير

@@ -1,0 +1,5 @@
+git_sha=fdc10929a5174769f4d7c2dd82fc0493ab716342
+binary_sha256=07e003dcea9a75224241617289706c68364bc13131e336b096eb18ee788d985f
+sdk=27.1
+window=n1
+note=لقطات المتجر 1.2.0 (8 مسارات × 69/65 × فاتح/داكن) على HEAD بعد tab-bar flush

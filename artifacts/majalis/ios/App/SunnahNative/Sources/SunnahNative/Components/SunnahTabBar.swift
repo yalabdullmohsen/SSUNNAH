@@ -1,9 +1,10 @@
 import SwiftUI
 
-/// الشريط السفلي العائم: ارتفاع 72، زوايا 26، أبيض شفاف، والتبويب النشط بخلفية أخضر فاتح.
+/// الشريط السفلي: شريط نحيف ملتصق بأسفل الشاشة (ارتفاع 52)، خلفيته تمتد حتى الحافة السفلية فلا يظهر تحته أي محتوى، والتبويب النشط بخلفية أخضر فاتح.
+/// قاعدة عامة لكل الشاشات: يُعرض عبر `safeAreaInset(edge: .bottom)` في RootTabView، والخلفية وحدها تتجاوز منطقة مؤشّر الرئيسية.
 public struct SunnahTabBar: View {
-    /// ارتفاع الشريط العائم + الهامش السفلي (68 + s2) الذي يحجزه المحتوى القابل للتمرير.
-    public static let reservedHeight: CGFloat = 72 + Sunnah.Spacing.s2
+    /// ارتفاع الشريط الذي يحجزه المحتوى القابل للتمرير (منطقة مؤشّر الرئيسية يحجزها النظام).
+    public static let reservedHeight: CGFloat = 52
 
     let selected: AppTab
     let onSelect: (AppTab) -> Void
@@ -17,26 +18,32 @@ public struct SunnahTabBar: View {
                 Button {
                     Sunnah.Haptics.select(); onSelect(tab)
                 } label: {
-                    VStack(spacing: 3) {
-                        Image(systemName: tab.systemImage).font(.system(size: 19, weight: on ? .bold : .regular))
-                        Text(tab.title).font(Sunnah.Typography.tag).lineLimit(1).minimumScaleFactor(0.75)   // XXXL على SE: التسميات المتجاورة كانت تتلامس (0.85 لم يكفِ: بقي فاصل ~2pt)
+                    VStack(spacing: 2) {
+                        Image(systemName: tab.systemImage).font(.system(size: 17, weight: on ? .bold : .regular))
+                        Text(tab.title).font(Sunnah.Typography.tag).lineLimit(1).minimumScaleFactor(0.75)   // XXXL على SE: التسميات المتجاورة كانت تتلامس
                     }
-                    .frame(maxWidth: .infinity, minHeight: 60)
+                    .frame(maxWidth: .infinity, minHeight: 44)   // مساحة لمس ≥44
                     .foregroundStyle(on ? Sunnah.Colors.primary : Sunnah.Colors.textSecondary)
-                    .background(on ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .background(on ? Sunnah.Colors.primarySoft : .clear, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
                 .accessibilityAddTraits(on ? .isSelected : [])
             }
         }
-        .padding(6)
-        .frame(height: 72)
-        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // الشريط بارتفاع ثابت: أحجام إمكانية الوصول كانت تقتطع التسميات (الرئيـ…)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 26, style: .continuous))
-        .background(Sunnah.Colors.surface.opacity(0.85), in: RoundedRectangle(cornerRadius: 26, style: .continuous))
-        .overlay(RoundedRectangle(cornerRadius: 26, style: .continuous).stroke(Sunnah.Colors.border, lineWidth: 1))
-        .shadow(color: .black.opacity(0.1), radius: 14, y: 6)
-        .padding(.horizontal, Sunnah.Spacing.s4)
-        .padding(.bottom, Sunnah.Spacing.s2)
+        .padding(.horizontal, Sunnah.Spacing.s2)
+        .padding(.vertical, 4)
+        .frame(height: Self.reservedHeight)
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)   // الشريط بارتفاع ثابت: أحجام إمكانية الوصول كانت تقتطع التسميات
+        .frame(maxWidth: .infinity)
+        .background {
+            // الخلفية تمتد حتى الحافة السفلية (تحت مؤشّر الرئيسية) فلا يظهر محتوى الصفحة تحت الشريط.
+            ZStack {
+                Sunnah.Colors.surface
+                Rectangle().fill(.regularMaterial).opacity(0.35)
+            }
+            .ignoresSafeArea(edges: .bottom)
+        }
+        .overlay(alignment: .top) { Rectangle().fill(Sunnah.Colors.border).frame(height: 0.5) }
     }
 }

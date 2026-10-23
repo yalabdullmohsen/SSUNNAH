@@ -34,7 +34,7 @@ struct MushafSurahCard: View {
                     HStack(spacing: Sunnah.Spacing.s2) {
                         Label(makki ? "مكية" : "مدنية", systemImage: makki ? "moon" : "building.columns")
                         Text("·")
-                        Text("\(surah.ayahs.arabicDigits) آية")
+                        Text(ArabicCount.label(surah.ayahs, one: "آية واحدة", two: "آيتان", few: "آيات", many: "آية", genitive: "آية"))
                     }
                     .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }
@@ -51,7 +51,7 @@ struct MushafSurahCard: View {
         }
         .buttonStyle(.plain)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("سورة \(surah.name)، \(makki ? "مكية" : "مدنية")، \(surah.ayahs.arabicDigits) آية، صفحة \(surah.firstPage.arabicDigits)")
+        .accessibilityLabel("سورة \(surah.name)، \(makki ? "مكية" : "مدنية")، \(ArabicCount.label(surah.ayahs, one: "آية واحدة", two: "آيتان", few: "آيات", many: "آية", genitive: "آية"))، صفحة \(surah.firstPage.arabicDigits)")
         .accessibilityAddTraits(.isButton)
         .accessibilityIdentifier("mushaf.index.surah.\(surah.id)")
     }
