@@ -66,6 +66,7 @@ public struct TasmeeProgressScreen: View {
     private var heatmapCard: some View {
         let days = TasmeeDayHeatmap.build(sessions: store.sessions, now: now)
         let active = days.filter { $0.level > 0 }.count
+        let total = days.count
         let weeks = stride(from: 0, to: days.count, by: 7).map { Array(days[$0..<min($0 + 7, days.count)]) }
         return section("نشاط آخر ١٢ أسبوعًا") {
             HStack(spacing: 4) {
@@ -81,7 +82,7 @@ public struct TasmeeProgressScreen: View {
             }
             .frame(maxWidth: .infinity)
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel("سمّعتَ في \(dayLabel(active)) من آخر \(dayLabel(days.count))")
+            .accessibilityLabel("سمّعتَ في \(dayLabel(active)) من آخر \(dayLabel(total))") // digits-ok: dayLabel عبر ArabicCount
         }
     }
 
