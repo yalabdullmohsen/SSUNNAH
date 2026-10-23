@@ -101,8 +101,10 @@ public struct TasmeeModeSheet: View {
                     .accessibilityElement(children: .contain)
                 }
                 .padding(.horizontal, Sunnah.Spacing.pageX)
-                SunnahSwitch("اسمع ثم سمّع (تلقين بصوت القارئ)", isOn: $options.talqin)
-                    .padding(.horizontal, Sunnah.Spacing.pageX)
+                if TasmeeAyahPlayer.talqinEnabled {
+                    SunnahSwitch("اسمع ثم سمّع (تلقين بصوت القارئ)", isOn: $options.talqin)
+                        .padding(.horizontal, Sunnah.Spacing.pageX)
+                }
             }
             VStack(spacing: Sunnah.Spacing.s1) {
                 SunnahSwitch("إخفاء أرقام الآيات", isOn: $options.hideAyahNumbers)

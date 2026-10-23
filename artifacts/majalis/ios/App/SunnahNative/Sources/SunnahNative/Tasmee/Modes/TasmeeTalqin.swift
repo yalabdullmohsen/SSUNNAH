@@ -12,6 +12,8 @@ public protocol TasmeeAyahAudioPlaying: AnyObject {
 /// نفس مصدر تلاوة الآيات المستعمل في الويب (everyayah، مجلد قارئ واحد)، بلا تغيير في الروابط ولا النص.
 @MainActor
 public final class TasmeeAyahPlayer: TasmeeAyahAudioPlaying {
+    /// علم محلي مطفأ افتراضيًا: ترخيص everyayah غير موثَّق؛ ما دام false لا يظهر المفتاح ولا يحدث أي اتصال.
+    public static let talqinEnabled = false
     public static let folder = "Abdul_Basit_Murattal_192kbps"
     private var player: AVPlayer?
     private var observers: [NSObjectProtocol] = []
@@ -29,7 +31,7 @@ public final class TasmeeAyahPlayer: TasmeeAyahAudioPlaying {
 
     public func play(verse: String) async {
         stop()
-        guard let url = Self.url(verse: verse) else { return }
+        guard Self.talqinEnabled, let url = Self.url(verse: verse) else { return }
         let item = AVPlayerItem(url: url)
         let p = AVPlayer(playerItem: item)
         player = p

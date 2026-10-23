@@ -161,7 +161,7 @@ public final class MushafTasmeeController: ObservableObject {
         do {
             try await engine.load()
             // التلقين: يُسمَع صوت القارئ للآية الأولى قبل فتح الميكروفون.
-            if options.mode == .repeat, options.talqin, let v = ref.words.first.map({ Self.verseKey($0.id) }) { await audio.play(verse: v) }
+            if options.mode == .repeat, TasmeeAyahPlayer.talqinEnabled, options.talqin, let v = ref.words.first.map({ Self.verseKey($0.id) }) { await audio.play(verse: v) }
             (engine as? RecitationLevelReporting)?.onLevel = { [weak self] v in Task { @MainActor in self?.ingestLevel(v) } }
             try await s.start()
             phase = .listening
@@ -203,7 +203,7 @@ public final class MushafTasmeeController: ObservableObject {
             offersHint = false; hintStage = 0; hint = nil
             repeatStatus = Self.repeatText(streak: streak, target: target)
             version &+= 1
-            if options.talqin { talqinPlay(verse: Self.verseKey(ref.words[to].id), session: s) }
+            if TasmeeAyahPlayer.talqinEnabled, options.talqin { talqinPlay(verse: Self.verseKey(ref.words[to].id), session: s) }
         }
     }
 
