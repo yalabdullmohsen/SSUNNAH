@@ -33,7 +33,7 @@ struct TafsirHomeView: View {
                     SunnahNavigationLink {
                         TafsirSurahView(book: book, surahId: s.id, surahName: s.name)
                     } label: {
-                        SunnahListRow(title: "\(s.id). \(s.name)", subtitle: "\(s.ayahs) آية")
+                        SunnahListRow(title: "\(s.id). \(s.name)", subtitle: ArabicCount.label(s.ayahs, one: "آية واحدة", two: "آيتان", few: "آيات", many: "آية", genitive: "آية"))
                     }
                 }
             }

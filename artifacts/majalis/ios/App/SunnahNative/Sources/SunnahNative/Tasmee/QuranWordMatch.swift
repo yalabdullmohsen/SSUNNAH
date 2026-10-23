@@ -115,11 +115,16 @@ public enum QuranWordMatch {
         }
     }
 
-    /// صيغتا الكلمة المرجعية: القياسية، وصيغة تحوّل الألف الخنجرية إلى ألف.
+    /// صيغ الكلمة المرجعية: القياسية، وصيغة تحوّل الألف الخنجرية إلى ألف، وصيغة تحوّل معها الياء الصغيرة «ۦ» داخل الكلمة إلى ياء
+    /// («إِبْرَٰهِۦمَ» ⇐ «إبراهيم»، «ٱلنَّبِيِّۦنَ» ⇐ «النبيين»، «إِۦلَٰفِهِمْ» ⇐ «إيلافهم»؛ 35 موضعًا). «ۦ» الختامية صلةٌ لا تُكتب («بِهِۦ» = «به») فتبقى محذوفة.
     public static func quranWordForms(_ raw: String) -> [String] {
         let plain = normalizeQuranWord(raw)
-        let withAlef = normalizeQuranWord(raw.replacingOccurrences(of: "\u{0670}", with: "ا"))
-        return plain == withAlef ? [plain] : [plain, withAlef]
+        let alefText = raw.replacingOccurrences(of: "\u{0670}", with: "ا")
+        let withAlef = normalizeQuranWord(alefText)
+        let withYeh = normalizeQuranWord(alefText.replacingOccurrences(of: "\u{06E6}(?=\\p{L})", with: "ي", options: .regularExpression))
+        var forms = [plain]
+        for f in [withAlef, withYeh] where !forms.contains(f) { forms.append(f) }
+        return forms
     }
 
     public static func bestWordSimilarity(_ heard: String, _ forms: [String]) -> Double {

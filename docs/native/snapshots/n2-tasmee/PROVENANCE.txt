@@ -1,4 +1,4 @@
-git_sha=a6ed7f72ea89aa3903c1dbc267526ced29860210
+git_sha=4c536baa5ff2dcca1a849707bc3db35459d91d81
 note=البناء من رأس الفرع نفسه؛ لقطات تشغيل حقيقي بمحرك وهمي (DEBUG فقط) على محاكٍ
 key=c2f95fd03b84a7f1
 sdk=iphonesimulator27.1
@@ -10,8 +10,8 @@ captured_at=2026-10-22
 locale=ar (RTL)
 devices=iPhone 402x874 simulator
 upload=لا
-older_build=لقطات 01–03 من بناء 8412728 (key=b1552bdbca8687ab, binary_sha256=df9d72f0069e54bdfea5286f09e9400f650068ac30014066bbc071398a76c068)؛ 04 و05 فاتح/داكن من b79f64d، و07 من a6ed7f72e (إصلاح تغطية تسمية الحزب + زر إيقاف أحمر داكن)؛ الملفات المغطاة بـ01–03 لم تتغير بين الرأسين.
-gaps: لا محاكي iPhone SE متاح محليًا فلا لقطة SE؛ 06 (كلمة خاطئة حمراء) لم تُرفع: اللقطة تُظهر زر التلميح لكن الكلمة المنتظَرة بقيت بطلاء «الحالية» لا الأحمر، قيد التحقيق؛ وضع التكرار مغطى باختبارات TasmeeRepeatDriverTests (12) لا بلقطة؛ محاكي فقط، لا أرقام أداء.
+older_build=06 من بناء Debug بشيفرة الإصلاح نفسها مع سجلات تشخيص مؤقتة أُزيلت قبل الإيداع (سلوك الرسم مطابق)؛ لقطات 01–03 من بناء 8412728 (key=b1552bdbca8687ab, binary_sha256=df9d72f0069e54bdfea5286f09e9400f650068ac30014066bbc071398a76c068)؛ 04 و05 فاتح/داكن من b79f64d، و07 من a6ed7f72e (إصلاح تغطية تسمية الحزب + زر إيقاف أحمر داكن)؛ الملفات المغطاة بـ01–03 لم تتغير بين الرأسين.
+gaps: لا محاكي iPhone SE متاح محليًا فلا لقطة SE؛ وضع التكرار مغطى باختبارات TasmeeRepeatDriverTests (12) لا بلقطة؛ محاكي فقط، لا أرقام أداء.
 
 # 01-default-no-mic-light.png / 01-default-no-mic-dark.png
 covers: Mushaf/MushafReaderView.swift (المصحف الافتراضي بلا زر ميكروفون ولا موجة)
@@ -27,6 +27,9 @@ covers: Tasmee/MushafTasmeeViews.swift, Tasmee/MushafTasmeeController.swift (ج�
 
 # 05-word-revealed-light.png / 05-word-revealed-dark.png
 covers: Tasmee/TasmeeMatcher.swift, Tasmee/TasmeeSession.swift (كلمات مكشوفة بعد التسميع والباقي مخفي)
+
+# 06-wrong-word-red-light.png / 06-wrong-word-red-dark.png
+covers: Mushaf/MushafReaderView.swift, Tasmee/MushafTasmeeController.swift (كلمة خاطئة بالأحمر وبقيت مخفية)
 
 # 07-hint-after-3-light.png / 07-hint-after-3-dark.png
 covers: Tasmee/MushafTasmeeViews.swift, Tasmee/MushafTasmeeController.swift, Tasmee/TasmeeMatcher.swift (زر «تلميح» بعد 3 محاولات خاطئة متمايزة)

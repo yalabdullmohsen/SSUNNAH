@@ -25,7 +25,7 @@ struct LearnUniversitiesScreen: View {
     private func filter(_ list: [LearnUniversity]) -> [LearnUniversity] {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !q.isEmpty else { return list }
-        return list.filter { u in [u.nameAr, u.nameEn ?? "", u.country ?? "", u.city ?? ""].contains { $0.localizedCaseInsensitiveContains(q) } }
+        return list.filter { $0.matches(q) }
     }
 }
 

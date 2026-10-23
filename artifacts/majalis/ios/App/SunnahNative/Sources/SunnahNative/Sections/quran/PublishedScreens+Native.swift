@@ -118,7 +118,7 @@ struct SurahStoryView: View {
         if !story.mainStories.isEmpty { secs.append(("القصص", story.mainStories)) }
         if !story.lessons.isEmpty { secs.append(("الدروس", story.lessons)) }
         if let v = story.virtues { secs.append(("الفضل", [v])) }
-        return QuranDocView(title: "سورة \(story.name)", paragraphs: ["\(story.revelationPlace) — \(story.ayahCount) آية"], sections: secs, sources: [story.source])
+        return QuranDocView(title: "سورة \(story.name)", paragraphs: ["\(story.revelationPlace) — \(ArabicCount.label(story.ayahCount, one: "آية واحدة", two: "آيتان", few: "آيات", many: "آية", genitive: "آية"))"], sections: secs, sources: [story.source])
     }
 }
 
@@ -150,7 +150,7 @@ struct HifzPathView: View {
             SunnahCard {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s2) {
                     if let d = path.shortDescription { Text(d).font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textPrimary) }
-                    Text("المستوى: \(PublishedAdapters.hifzLevels[path.level] ?? path.level) · \(path.units.count) وحدة".arabicDigits)
+                    Text("المستوى: \(PublishedAdapters.hifzLevels[path.level] ?? path.level) · \(ArabicCount.label(path.units.count, one: "وحدة واحدة", two: "وحدتان", few: "وحدات", many: "وحدة", genitive: "وحدة"))".arabicDigits)
                         .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                 }.frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -191,7 +191,7 @@ struct HifzUnitView: View {
                     SunnahCard {
                         VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
                             if let r = unit.ref { row("الموضع", PublishedAdapters.refText(r, surahName: name)) }
-                            if let n = unit.repetitionTarget { row("التكرار المقترح", "\(n) مرة") }
+                            if let n = unit.repetitionTarget { row("التكرار المقترح", ArabicCount.label(n, one: "مرة واحدة", two: "مرتان", few: "مرات", many: "مرة", genitive: "مرة")) }
                             if let c = unit.completionCriteria { row("معيار الإتمام", c) }
                         }
                     }

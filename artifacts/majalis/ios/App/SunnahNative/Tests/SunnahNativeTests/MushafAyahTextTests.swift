@@ -40,6 +40,14 @@ final class MushafAyahTextTests: XCTestCase {
     }
 
     /// نسبة الآيات التي يطابق فيها عدد كلمات نص Tanzil عدد كلمات المصحف (دون رمز النهاية). الإبراز يعمل فقط عند التطابق.
+    func testStandalonePauseMarksDoNotBreakAlignment() {
+        // 2:2: سبع كلمات في QPC، و«ۛ» مرتان مستقلتين في نص Tanzil.
+        let text = "ذَٰلِكَ ٱلْكِتَٰبُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًۭى لِّلْمُتَّقِينَ"
+        XCTAssertEqual(MushafAyahWords.mushafAlignedWords(ayahText: text, wordCount: 7).count, 7)
+        XCTAssertEqual(MushafAyahWords.matchingWords(query: "فيه", ayahText: text, wordCount: 7), [4])
+        XCTAssertEqual(MushafAyahWords.matchingWords(query: "هدى", ayahText: "قَالُوا۟ ۖ هُدًى", wordCount: 2), [1])
+    }
+
     func testWordCountAgreementAcrossAllAyahs() throws {
         let (repo, idx, qdir) = try env()
         var total = 0, same = 0, missing = 0

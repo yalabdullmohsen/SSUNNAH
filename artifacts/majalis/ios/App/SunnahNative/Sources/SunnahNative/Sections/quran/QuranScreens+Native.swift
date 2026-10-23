@@ -50,7 +50,7 @@ struct QuranSurahList: View {
                         .environment(\.layoutDirection, .rightToLeft)
                 } label: {
                     SunnahListRow(title: "\(showOrder ? r.revelationOrder ?? r.id : r.id). \(r.name)",
-                                  subtitle: "\(r.placeName) · \(r.ayahs) آية · صفحة \(r.firstPage)")
+                                  subtitle: "\(r.placeName) · \(ArabicCount.label(r.ayahs, one: "آية واحدة", two: "آيتان", few: "آيات", many: "آية", genitive: "آية")) · صفحة \(r.firstPage)")
                 }
               }
             }.padding(.horizontal, Sunnah.Spacing.s4) }

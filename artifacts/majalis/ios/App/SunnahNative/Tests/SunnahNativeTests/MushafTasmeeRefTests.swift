@@ -1,7 +1,7 @@
 import XCTest
 @testable import SunnahNative
 
-/// حارس مُحوِّل كلمات المصحف إلى مرجع التسميع: لكل آية في المصحف (6236) عدد كلمات النص العثماني المقسَّم بالمسافات
+/// حارس مُحوِّل كلمات المصحف إلى مرجع التسميع: لكل آية في المصحف (6236) عدد كلمات النص العثماني (بتقسيم المرجع نفسه، بلا علامات الوقف المستقلة)
 /// يساوي عدد كلمات الصفحة غير علامات النهاية في مصدر QPC المُلتزَم. أي فرق يعني أن الكلمة ستُلوَّن بغير نصها، فيُفشل الاختبار.
 /// المصدر `public/data/quran` و`public/data/quran-v2` (يُكتشفان من موضع الملف، أو `MUSHAF_SRC`)؛ غيابهما يُفشل ولا يتخطّى.
 final class MushafTasmeeRefTests: XCTestCase {
@@ -37,7 +37,7 @@ final class MushafTasmeeRefTests: XCTestCase {
         XCTAssertEqual(counts.count, 6236)
         var bad: [String] = []
         for (k, c) in counts {
-            let n = search.ayahText(k)?.split(whereSeparator: { $0.isWhitespace }).count
+            let n = search.ayahText(k).map { MushafTasmeeRef.textWords($0).count }
             if n != c { bad.append("\(k): نص=\(n ?? -1) مصدر=\(c)") }
         }
         // آيتان معروفتان يختلف تقسيم الكلمات فيهما؛ المُحوِّل يتجاوزهما (لا تسميع فيهما) ولا يخمّن.
