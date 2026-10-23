@@ -621,7 +621,7 @@ public struct MushafIndexView: View {
             return c
         })
         let n = Int(mapped)
-        return index.surahs.filter { $0.name.contains(q) || (n != nil && $0.id == n) }
+        return index.surahs.filter { MushafSurahFilter.matches($0, query: q, number: n) }
     }
 
     private func quarterPages(juz: Int) -> [Int] {
@@ -684,5 +684,12 @@ private struct MushafSoftBand: Shape {
         if tl > 0 { p.addArc(center: CGPoint(x: r.minX + tl, y: r.minY + tl), radius: tl, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false) }
         p.closeSubpath()
         return p
+    }
+}
+
+/// تصفية قائمة السور: الاسم بتطبيع ArabicText («الانعام» تجد «الأنعام»، «ال عمران» تجد «آل عمران») أو رقم السورة.
+enum MushafSurahFilter {
+    static func matches(_ s: MushafSurah, query: String, number: Int?) -> Bool {
+        ArabicText.matches(s.name, query: query) || (number != nil && s.id == number)
     }
 }
