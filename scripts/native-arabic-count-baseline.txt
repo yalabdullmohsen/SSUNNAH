@@ -2,7 +2,6 @@
 Special/DailyWirdScreen.swift|\(ar(d)) يوم"
 Special/DailyWirdScreen.swift|\(ar(max(0, goal - done))) صفحة 
 Special/DailyWirdScreen.swift|\(ar(n)) صفحة"
-Special/DailyWirdScreen.swift|\(ar(state.monthlyTotal)) صفحة"
 Special/DailyWirdScreen.swift|\(ar(state.pagesPerDay)) صفحة 
 Special/DailyWirdScreen.swift|\(ar(state.pagesPerDay)) صفحة"
 Special/DailyWirdScreen.swift|\(ar(state.streak)) يوم 
