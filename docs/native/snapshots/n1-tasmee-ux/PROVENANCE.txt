@@ -1,0 +1,8 @@
+git_sha=27f99b45be6c144df442d22eac3d21080395c03e
+branch=n1/tasmee-ux
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/0fea83ab367ac438/SunnahApp.app
+binary_sha256=35e0d32e152919af9d97dea9a245f115eeab95ff414972c193853fe7aa93eae0
+built_at=2026-10-23 12:59:57
+source_newest=2026-10-23 12:46:35
+captured_at=2026-10-23 13:01:30
+covers=التسميع v2 ج: sheet/hidden/wrong/hint/revealed فاتح وداكن
