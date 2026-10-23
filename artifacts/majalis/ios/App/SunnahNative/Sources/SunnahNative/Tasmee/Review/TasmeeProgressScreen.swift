@@ -19,6 +19,7 @@ public struct TasmeeProgressScreen: View {
     @ViewBuilder var content: some View {
         summaryCard
         reviewCard
+        heatmapCard
         goalsCard
         errorLogCard
         mapCard
@@ -59,6 +60,28 @@ public struct TasmeeProgressScreen: View {
                 }
                 SunnahButton("ابدأ المراجعة") { onReview(due) }
             }
+        }
+    }
+
+    private var heatmapCard: some View {
+        let days = TasmeeDayHeatmap.build(sessions: store.sessions, now: now)
+        let active = days.filter { $0.level > 0 }.count
+        let weeks = stride(from: 0, to: days.count, by: 7).map { Array(days[$0..<min($0 + 7, days.count)]) }
+        return section("نشاط آخر ١٢ أسبوعًا") {
+            HStack(spacing: 4) {
+                ForEach(weeks.indices, id: \.self) { w in
+                    VStack(spacing: 4) {
+                        ForEach(weeks[w].indices, id: \.self) { d in
+                            RoundedRectangle(cornerRadius: 3)
+                                .fill(Sunnah.Colors.primary.opacity(weeks[w][d].level == 0 ? 0.08 : 0.2 + 0.2 * Double(weeks[w][d].level)))
+                                .frame(width: 18, height: 18)
+                        }
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("سمّعتَ في \(active.arabicDigits) يومًا من آخر \(days.count.arabicDigits) يومًا")
         }
     }
 
