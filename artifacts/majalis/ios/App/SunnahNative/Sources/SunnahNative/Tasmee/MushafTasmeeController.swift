@@ -54,6 +54,9 @@ public final class MushafTasmeeController: ObservableObject {
     /// سجل الجلسة المنتهية (يُحفظ في TasmeeHistoryStore ويغذّي شاشة التقرير)؛ nil إن لم تُسمَّع كلمة.
     @Published public private(set) var lastRecord: TasmeeSessionRecord?
 
+    /// آية تُركت كلها قبل موضع القارئ؛ تظهر «تجاوزتَ الآية N» مع «ارجع إليها».
+    @Published public private(set) var skippedAyah: TasmeeSkippedAyah?
+
     public let engine: RecitationEngineControlling
     public var strictness: TasmeeStrictness = .normal
     private var session: TasmeeSession?
@@ -130,7 +133,7 @@ public final class MushafTasmeeController: ObservableObject {
 
     private func startSession() async {
         guard let ref else { return }
-        states = [:]; hint = nil; lastRecord = nil; startedAt = Date(); offersHint = false; hintsUsed = 0; hintStage = 0; lastFollowed = 0; followPage = nil; version &+= 1
+        states = [:]; hint = nil; skippedAyah = nil; lastRecord = nil; startedAt = Date(); offersHint = false; hintsUsed = 0; hintStage = 0; lastFollowed = 0; followPage = nil; version &+= 1
         let s = TasmeeSession(engine: engine, ref: ref.words, strictness: strictness, gateOnError: true)
         repeatDriver = options.mode == .repeat ? TasmeeRepeatDriver(ref: ref.words, target: options.repeatTarget) : nil
         repeatStatus = repeatDriver.map { Self.repeatText(streak: 0, target: $0.counter.target) }
@@ -181,14 +184,34 @@ public final class MushafTasmeeController: ObservableObject {
         } else if e.state == .correct {
             offersHint = false; hintStage = 0
         }
+        refreshSkippedAyah()
         guard let ref, e.index + 1 < ref.pages.count else { return }
         // المتابعة: حين يصبح الكلمة التالية في صفحة أبعد من الأخيرة المتابَعة.
         let nextPage = ref.pages[min(e.index + 1, ref.pages.count - 1)]
         if nextPage > lastFollowed { lastFollowed = nextPage; followPage = nextPage }
     }
 
+    private func refreshSkippedAyah() {
+        guard let m = session?.matcher else { skippedAyah = nil; return }
+        let words = (0..<m.next).map { i -> (surah: Int, ayah: Int) in
+            let sa = m.ref[i].id.split(separator: "#").first?.split(separator: ":") ?? []
+            return (sa.count == 2 ? Int(sa[0]) ?? 0 : 0, sa.count == 2 ? Int(sa[1]) ?? 0 : 0)
+        }
+        skippedAyah = TasmeeSkippedAyahDetector.fullySkipped(words: words, states: m.state, reached: m.next).last
+    }
+
+    /// «ارجع إليها»: يعيد المطابِق إلى أول كلمة في الآية المتجاوَزة.
+    public func returnToSkippedAyah() {
+        guard let k = skippedAyah, let s = session, let ref,
+              let to = ref.words.firstIndex(where: { $0.id.hasPrefix("\(k.surah):\(k.ayah)#") }) else { return }
+        s.rewind(to: to)
+        for w in ref.words[to...] { states[w.id] = nil }
+        offersHint = false; hintStage = 0; hint = nil; skippedAyah = nil; version &+= 1
+    }
+
     public func stop() async {
         guard let s = session else { phase = .idle; return }
+        skippedAyah = nil
         session = nil; repeatDriver = nil; repeatStatus = nil
         (engine as? RecitationLevelReporting)?.onLevel = nil
         level = 0
