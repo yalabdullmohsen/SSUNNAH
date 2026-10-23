@@ -123,4 +123,10 @@ final class ArabicDigitsPolicyTests: XCTestCase {
         }
         XCTAssertTrue(bad.isEmpty, "\(bad)")
     }
+
+    func testRemainingInlineShortArabicMinutes() {
+        XCTAssertEqual(WidgetFormat.remainingInline(name: "العصر", seconds: 16 * 60), "\u{200F}بقي على العصر ١٦ د")
+        XCTAssertEqual(WidgetFormat.remainingInline(name: "العصر", seconds: 16 * 60 - 20), "\u{200F}بقي على العصر ١٦ د")
+        XCTAssertEqual(WidgetFormat.remainingInline(name: "الفجر", seconds: 3 * 3600 + 12 * 60), "\u{200F}بقي على الفجر ٣ س ١٢ د")
+    }
 }

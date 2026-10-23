@@ -336,8 +336,12 @@ struct InlinePrayerWidgetView: View {
                         // «مضى على <الصلاة>» بعدّاد تصاعدي حيّ يحسبه النظام (Text(timerInterval:)) بلا إعادة تحميل.
                         Text(WidgetFormat.rtl("مضى على \(name)"))
                         entry.elapsedText(since: src.start).monospacedDigit().environment(\.locale, WidgetFormat.locale)
+                    } else if !entry.allowsLiveCountdown, case .countDown(let until) = entry.clockMode {
+                        // «بقي على العصر ١٦ د»: مدة مختصرة بالدقائق عند تعطيل العدّ الحي (معاينة/لقطة).
+                        Text(WidgetFormat.remainingInline(name: name, seconds: Int(until.timeIntervalSince(entry.date))))
                     } else {
-                        Text(WidgetFormat.rtl("\(name) بعد"))
+                        // حيًّا: «بقي على <الصلاة>» + عدّاد النظام (لا نصّ دقائق ثابت يتقادم بين مدخلات الجدول الزمني).
+                        Text(WidgetFormat.rtl("بقي على \(name)"))
                         PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
                     }
                 }

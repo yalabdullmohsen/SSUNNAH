@@ -93,6 +93,12 @@ public enum WidgetFormat {
         }
     }
 
+    /// السطر المضمّن: «بقي على العصر ١٦ د» (دقائق مقرَّبة للأعلى حتى لا يظهر «٠ د» والصلاة لم تدخل)، RTL صريح.
+    public static func remainingInline(name: String, seconds: Int) -> String {
+        let s = max(0, seconds)
+        return stateAndName("بقي على", name) + " " + duration(seconds: (s + 59) / 60 * 60)
+    }
+
     /// مدة ثابتة للعرض: «3 س 12 د» أو «45 د».
     public static func duration(seconds: Int) -> String {
         let minutes = max(0, seconds) / 60
