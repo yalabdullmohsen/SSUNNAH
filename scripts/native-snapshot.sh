@@ -44,11 +44,14 @@ for s in "$@"; do
       xcrun simctl ui "$SIM" appearance $mode; xcrun simctl terminate "$SIM" $BID >/dev/null 2>&1
       CT=$(xcrun simctl get_app_container "$SIM" $BID data 2>/dev/null)/tmp; rm -f "$CT/snapshot-ready.json"
       xcrun simctl launch "$SIM" $BID -snapshotRoute "$eff" >/dev/null 2>&1
+      T0=$(python3 -c 'import time;print(time.time())')
       st=NOT_READY; end=$(( $(date +%s) + ${SNAP_TIMEOUT:-25} ))
       while [ "$(date +%s)" -lt "$end" ]; do
         if [ -s "$CT/snapshot-ready.json" ]; then st=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['state'])" "$CT/snapshot-ready.json" 2>/dev/null || echo NOT_READY); break; fi
         sleep 0.25
       done
+      # مقدّمة الإقلاع البارد (IntroPolicy.maxHold=3ث) وتحميل صفحة المصحف قد يغطّيان الشاشة وقد يُعلَن screen.ready خلفها؛ أدنى مهلة 6ث من الإقلاع قبل اللقطة
+      python3 -c 'import time,sys;d=float(sys.argv[1])+6-time.time();d>0 and time.sleep(d)' "$T0"
       [ "$mode" = light ] && STATE_L=$st || STATE_D=$st
       xcrun simctl io "$SIM" screenshot "$BOARD/snapshots/$sec/$slug-$mode.png" >/dev/null 2>&1
     done; }
