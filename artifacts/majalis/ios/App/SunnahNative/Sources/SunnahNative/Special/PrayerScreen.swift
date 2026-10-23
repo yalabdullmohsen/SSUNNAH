@@ -72,7 +72,7 @@ public struct PrayerScreen: View {
                     Divider().overlay(Color.white.opacity(0.25))
                     HStack(alignment: .firstTextBaseline) {
                         Text(SunnahClockFormat.countdown(next.time.timeIntervalSince(now)))
-                            .font(.system(size: 44, weight: .heavy, design: .rounded)).monospacedDigit()
+                            .font(AppearancePrefs.ui(.extraBold, 44, .largeTitle)).monospacedDigit()
                             .foregroundStyle(Sunnah.Colors.heroGold).minimumScaleFactor(0.6).lineLimit(1)
                             .environment(\.layoutDirection, .leftToRight)
                         Spacer(minLength: 8)

@@ -11,7 +11,7 @@ struct MushafOrnamentBadge: View {
             RoundedRectangle(cornerRadius: 8, style: .continuous)
                 .stroke(Sunnah.Colors.goldDeco, lineWidth: 1).rotationEffect(.degrees(45)).padding(4)
             Text(number.arabicDigits)
-                .font(.system(.subheadline, design: .rounded).weight(.bold))
+                .font(AppearancePrefs.ui(.bold, 15, .subheadline))
                 .foregroundStyle(Sunnah.Colors.primaryStrong)
                 .minimumScaleFactor(0.6).lineLimit(1)
         }
@@ -84,8 +84,8 @@ struct MushafJuzCard: View {
                 ForEach(Array(quarterPages.enumerated()), id: \.offset) { k, p in
                     Button { open(p) } label: {
                         VStack(spacing: 2) {
-                            Text(k % 4 == 0 ? "حزب" : ["", "ربع", "نصف", "ثلاثة أرباع"][k % 4]).font(.caption2)
-                            Text("ص \(p.arabicDigits)").font(.caption.weight(.semibold))
+                            Text(k % 4 == 0 ? "حزب" : ["", "ربع", "نصف", "ثلاثة أرباع"][k % 4]).font(AppearancePrefs.ui(.regular, 11, .caption2))
+                            Text("ص \(p.arabicDigits)").font(Sunnah.Typography.tag)
                         }
                         .foregroundStyle(k % 4 == 0 ? Sunnah.Colors.primaryStrong : Sunnah.Colors.textSecondary)
                         .frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.touch)

@@ -1,5 +1,8 @@
 // تفضيلات «المظهر»: السمة + خط التطبيق + حجم النص. تُطبَّق عالميًا عبر `.sunnahAppearance()` عند الجذر.
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 public enum AppearancePrefs {
     public static let themeKey = "sunnah.appearance.theme"
@@ -46,6 +49,43 @@ public enum AppearancePrefs {
     }
 }
 
+#if canImport(UIKit)
+public extension AppearancePrefs {
+    /// UIFont بخط التطبيق (مع UIFontMetrics لـDynamic Type) للاستعمال في UIKit (شريط التنقل). نقطة الحقيقة نفسها لـ`ui(_:_:_:)`.
+    static func uiFont(_ weight: Weight, _ size: CGFloat, _ style: UIFont.TextStyle) -> UIFont {
+        let base: UIFont
+        if let name = font.face(weight), let f = UIFont(name: name, size: size) { base = f }
+        else { base = .systemFont(ofSize: size, weight: weight == .regular ? .regular : (weight == .bold ? .bold : .heavy)) }
+        return UIFontMetrics(forTextStyle: style).scaledFont(for: base)
+    }
+
+    /// يضبط خط شريط التنقل (العنوان الكبير/المضمّن/زر الرجوع) بخط التطبيق في standard/scrollEdge/compact.
+    /// نقطة الإقلاع الوحيدة: `SunnahAppearanceModifier` (عند الجذر وعند تغيير الخط).
+    static func applyNavigationBarAppearance() {
+        let large: [NSAttributedString.Key: Any] = [.font: uiFont(.extraBold, 34, .largeTitle)]
+        let inline: [NSAttributedString.Key: Any] = [.font: uiFont(.bold, 17, .headline)]
+        let button: [NSAttributedString.Key: Any] = [.font: uiFont(.bold, 17, .body)]
+        func make(_ configure: (UINavigationBarAppearance) -> Void) -> UINavigationBarAppearance {
+            let a = UINavigationBarAppearance()
+            configure(a)
+            a.largeTitleTextAttributes = large
+            a.titleTextAttributes = inline
+            for item in [a.buttonAppearance, a.doneButtonAppearance, a.backButtonAppearance] {
+                item.normal.titleTextAttributes = button
+                item.highlighted.titleTextAttributes = button
+            }
+            return a
+        }
+        let bar = UINavigationBar.appearance()
+        let standard = make { $0.configureWithDefaultBackground() }
+        bar.standardAppearance = standard
+        bar.compactAppearance = make { $0.configureWithDefaultBackground() }
+        bar.compactScrollEdgeAppearance = make { $0.configureWithTransparentBackground() }
+        bar.scrollEdgeAppearance = make { $0.configureWithTransparentBackground() }
+    }
+}
+#endif
+
 public extension AppearancePrefs {
     /// حجم النظام + إزاحة التفضيل الداخلي، بحدّ أعلى accessibility3 لتفادي كسر التخطيط.
     static func effectiveSize(system: DynamicTypeSize, pref: TextSize) -> DynamicTypeSize {
@@ -61,12 +101,19 @@ public struct SunnahAppearanceModifier: ViewModifier {
     @AppStorage(AppearancePrefs.themeKey) private var theme = AppearancePrefs.Theme.system.rawValue
     @AppStorage(AppearancePrefs.fontKey) private var font = AppearancePrefs.AppFont.almarai.rawValue
     @AppStorage(AppearancePrefs.sizeKey) private var size = AppearancePrefs.TextSize.standard.rawValue
-    public init() {}
+    public init() {
+        #if canImport(UIKit)
+        AppearancePrefs.applyNavigationBarAppearance()
+        #endif
+    }
     public func body(content: Content) -> some View {
         content
             .id(font)
             .preferredColorScheme((AppearancePrefs.Theme(rawValue: theme) ?? .system).scheme)
             .dynamicTypeSize(AppearancePrefs.effectiveSize(system: systemSize, pref: AppearancePrefs.TextSize(rawValue: size) ?? .standard))
+            #if canImport(UIKit)
+            .onChange(of: font) { _ in AppearancePrefs.applyNavigationBarAppearance() }
+            #endif
     }
 }
 

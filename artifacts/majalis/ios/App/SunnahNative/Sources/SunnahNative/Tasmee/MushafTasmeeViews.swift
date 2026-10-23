@@ -146,7 +146,7 @@ struct MushafTasmeeReport: View {
             Text("تقرير التسميع").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
             SunnahCard {
                 VStack(alignment: .leading, spacing: Sunnah.Spacing.s3) {
-                    Text(Sunnah.digits("\(accuracy)٪")).font(.system(size: 44, weight: .bold, design: .rounded)).foregroundStyle(Sunnah.Colors.primary)
+                    Text(Sunnah.digits("\(accuracy)٪")).font(AppearancePrefs.ui(.extraBold, 44, .largeTitle)).foregroundStyle(Sunnah.Colors.primary)
                         .accessibilityLabel("نسبة الصحة \(accuracy) بالمئة")
                     row("كلمات صحيحة", report.correct, "checkmark.circle.fill", Sunnah.Colors.primary)
                     row("أخطاء", report.wrong, "xmark.circle.fill", Sunnah.Colors.danger)
