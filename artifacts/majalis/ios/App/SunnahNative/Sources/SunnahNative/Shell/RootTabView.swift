@@ -48,6 +48,9 @@ public struct RootTabView: View {
                 }
             }
         }
+        #if DEBUG
+        .overlay { if let k = TasmeeSnapshotScreen.requested { TasmeeSnapshotScreen(kind: k) } }   // `-tasmeeSnapshotView reminder|share`
+        #endif
         .sunnahNavigationMotion(depth: router.stack.count)
         .tint(Sunnah.Colors.primary)
         .toggleStyle(SunnahToggleStyle())
