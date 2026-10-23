@@ -233,6 +233,20 @@ enum SirahAdapters {
         name.trimmingCharacters(in: .whitespacesAndNewlines).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed.subtracting(CharacterSet(charactersIn: "/"))) ?? name
     }
 
+    /// دروس كل شيخ مجمّعة بمفتاح الاسم بلا ألقاب (كـ`sheikhNameKey` في الويب)، فـ«الشيخ فلان» و«فلان» شيخ واحد
+    /// برابط واحد `/teachers/<المفتاح>`؛ والعنوان أول صيغة وردت للاسم.
+    private static func teacherGroups(_ rows: [SirahLessonRow]) -> [(key: String, name: String, rows: [(String, SirahLessonRow)])] {
+        var order: [String] = []
+        var byKey: [String: [(String, SirahLessonRow)]] = [:]
+        for pair in approvedWithSpeaker(rows) {
+            let k = SheikhName.key(pair.0)
+            guard !k.isEmpty else { continue }
+            if byKey[k] == nil { order.append(k) }
+            byKey[k, default: []].append(pair)
+        }
+        return order.map { k in (k, byKey[k]![0].0, byKey[k]!) }
+    }
+
     private static func approvedWithSpeaker(_ rows: [SirahLessonRow]) -> [(String, SirahLessonRow)] {
         rows.compactMap { r in
             guard r.status == "approved", let n = r.speakerName?.trimmingCharacters(in: .whitespacesAndNewlines), !n.isEmpty else { return nil }
@@ -241,12 +255,10 @@ enum SirahAdapters {
     }
 
     static func teachers(_ rows: [SirahLessonRow]) -> [SectionLink] {
-        let groups = Dictionary(grouping: approvedWithSpeaker(rows), by: { $0.0 })
-        return groups.keys.sorted { a, b in
-            let (ca, cb) = (groups[a]?.count ?? 0, groups[b]?.count ?? 0)
-            return ca != cb ? ca > cb : a < b
-        }.map { name in
-            SectionLink(id: teacherSlug(name), title: name, subtitle: lessonCount(groups[name]?.count ?? 0), route: "/teachers/" + teacherSlug(name))
+        teacherGroups(rows).sorted { a, b in
+            a.rows.count != b.rows.count ? a.rows.count > b.rows.count : a.name < b.name
+        }.map { g in
+            SectionLink(id: teacherSlug(g.key), title: g.name, subtitle: lessonCount(g.rows.count), route: "/teachers/" + teacherSlug(g.key))
         }
     }
 
@@ -256,7 +268,9 @@ enum SirahAdapters {
     }
 
     static func teacher(slug: String, rows: [SirahLessonRow]) -> ContentItem? {
-        let mine = approvedWithSpeaker(rows).filter { teacherSlug($0.0) == slug || $0.0 == slug.removingPercentEncoding }
+        // المفتاح بلا ألقاب (رابط الويب)، أو الاسم كما ورد (روابط ما قبل التوحيد).
+        let decoded = slug.removingPercentEncoding ?? slug
+        let mine = approvedWithSpeaker(rows).filter { SheikhName.key($0.0) == decoded || teacherSlug($0.0) == slug || $0.0 == decoded }
         guard let name = mine.first?.0 else { return nil }
         let body = mine.map { pair -> String in
             let r = pair.1
@@ -268,9 +282,9 @@ enum SirahAdapters {
 
     /// مشايخ الدروس فصولًا متتابعة لقارئ السلسلة (الترتيب نفسه كقائمة المشايخ).
     static func teacherChapters(_ rows: [SirahLessonRow]) -> [SeriesChapter] {
-        let groups = Dictionary(grouping: approvedWithSpeaker(rows), by: { $0.0 })
+        let groups = Dictionary(uniqueKeysWithValues: teacherGroups(rows).map { (teacherSlug($0.key), $0.rows) })
         return teachers(rows).compactMap { link in
-            guard let mine = groups[link.title] else { return nil }
+            guard let mine = groups[link.id] else { return nil }
             let paras = mine.map { pair -> String in
                 let r = pair.1
                 return lines([r.title, [r.mosque, r.city].compactMap { $0 }.filter { !$0.isBlank }.joined(separator: "، "),
