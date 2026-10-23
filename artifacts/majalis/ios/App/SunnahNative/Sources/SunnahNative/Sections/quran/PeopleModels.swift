@@ -38,7 +38,7 @@ enum PeopleAdapters {
     static func occurrenceText(_ occ: [QuranOccurrence], surahName: (Int) -> String) -> [String] {
         let by = Dictionary(grouping: occ, by: \.surah)
         return by.keys.sorted().map { s in
-            let ayahs = by[s]!.map(\.ayah).sorted()
+            let ayahs = Set(by[s]!.map(\.ayah)).sorted()
             return "\(surahName(s)): \(ayahs.map(String.init).joined(separator: "، "))"
         }
     }
