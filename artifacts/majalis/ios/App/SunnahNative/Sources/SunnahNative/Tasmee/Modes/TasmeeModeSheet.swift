@@ -45,6 +45,8 @@ public extension TasmeeHideLevel {
 /// ورقة اختيار وضع التسميع من زر الميكروفون؛ تحفظ آخر اختيار وتُعيده عبر `onStart`.
 public struct TasmeeModeSheet: View {
     @State private var options: TasmeeModeOptions
+    @State private var showGuide = false
+    @State private var showIntro: Bool
     private let defaults: UserDefaults
     private let onStart: (TasmeeModeOptions) -> Void
     private let resume: TasmeeResumePoint?
@@ -54,6 +56,7 @@ public struct TasmeeModeSheet: View {
                 onResume: ((TasmeeModeOptions) -> Void)? = nil, onStart: @escaping (TasmeeModeOptions) -> Void) {
         self.defaults = defaults; self.onStart = onStart; self.resume = resume; self.onResume = onResume
         _options = State(initialValue: TasmeeModeOptions.load(defaults))
+        _showIntro = State(initialValue: !TasmeeGuide.introSeen(defaults))
     }
 
     public var body: some View {
@@ -62,6 +65,11 @@ public struct TasmeeModeSheet: View {
         }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
+        .sunnahSheet(isPresented: $showIntro) {
+            TasmeeIntroCardsView { TasmeeGuide.markIntroSeen(defaults); showIntro = false }
+                .presentationDetents([.medium]).interactiveDismissDisabled()
+        }
+        .sunnahSheet(isPresented: $showGuide) { TasmeeGuideView().presentationDetents([.large]) }
     }
 
     private func stepButton(_ icon: String, _ label: String, _ enabled: Bool, _ action: @escaping () -> Void) -> some View {
@@ -75,8 +83,16 @@ public struct TasmeeModeSheet: View {
 
     var content: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
-            Text("اختر وضع التسميع").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
-                .padding(.horizontal, Sunnah.Spacing.pageX)
+            HStack {
+                Text("اختر وضع التسميع").font(Sunnah.Typography.cardTitle).foregroundStyle(Sunnah.Colors.textPrimary)
+                Spacer()
+                Button { Sunnah.Haptics.select(); showGuide = true } label: {
+                    Label("؟ الدليل", systemImage: "questionmark.circle").font(Sunnah.Typography.secondary)
+                        .foregroundStyle(Sunnah.Colors.primary).frame(minHeight: Sunnah.Spacing.touch)
+                }
+                .buttonStyle(.plain).accessibilityLabel("دليل التسميع")
+            }
+            .padding(.horizontal, Sunnah.Spacing.pageX)
             VStack(spacing: Sunnah.Spacing.s2) {
                 ForEach(TasmeeMode.allCases, id: \.self) { m in
                     Button { Sunnah.Haptics.select(); options.mode = m } label: {
