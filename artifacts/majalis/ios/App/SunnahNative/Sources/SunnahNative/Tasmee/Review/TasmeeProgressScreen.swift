@@ -81,8 +81,12 @@ public struct TasmeeProgressScreen: View {
             }
             .frame(maxWidth: .infinity)
             .accessibilityElement(children: .ignore)
-            .accessibilityLabel("سمّعتَ في \(active.arabicDigits) يومًا من آخر \(days.count.arabicDigits) يومًا")
+            .accessibilityLabel("سمّعتَ في \(dayLabel(active)) من آخر \(dayLabel(days.count))")
         }
+    }
+
+    private func dayLabel(_ n: Int) -> String {
+        ArabicCount.label(n, one: "يوم", two: "يومين", few: "أيام", many: "يومًا", genitive: "يوم")
     }
 
     private var goalsCard: some View {
