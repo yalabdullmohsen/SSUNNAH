@@ -44,4 +44,18 @@ public enum TasmeeBenchmark {
         let p95 = lat.isEmpty ? 0 : lat[min(lat.count - 1, Int(Double(lat.count) * 0.95))]
         return TasmeeBenchReport(words: ref.count, correct: correctAt.count, falseErrors: falseErrors, medianLatencyMs: median, p95LatencyMs: p95)
     }
+
+    /// ملف تغذية JSON للمقارنة الخارجية (مخرجات نماذج ن3):
+    /// `{"ref":["كلمة",…],"partials":[{"text":"…","finishedAtMs":123}],"spokenAtMs":[…]}`
+    public struct Feed: Codable, Sendable {
+        public let ref: [String]
+        public let partials: [TasmeeBenchPartial]
+        public let spokenAtMs: [Double]?
+    }
+
+    public static func run(feedJSON: Data, params: TasmeeMatchParams = TasmeeStrictness.normal.params) throws -> TasmeeBenchReport {
+        let f = try JSONDecoder().decode(Feed.self, from: feedJSON)
+        let ref = f.ref.enumerated().map { TasmeeRefWord(id: "\($0.offset)", text: $0.element) }
+        return run(ref: ref, partials: f.partials, spokenAtMs: f.spokenAtMs ?? [], params: params)
+    }
 }

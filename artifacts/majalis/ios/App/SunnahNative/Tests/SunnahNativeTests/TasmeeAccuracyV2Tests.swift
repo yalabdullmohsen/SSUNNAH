@@ -58,4 +58,12 @@ final class TasmeeBenchmarkTests: XCTestCase {
         XCTAssertEqual(r.p95LatencyMs, 400)
         XCTAssertTrue(r.meetsTargets)
     }
+
+    func testFeedFileJSONRunsBenchmark() throws {
+        let json = #"{"ref":["الحمد","لله","رب","العالمين"],"partials":[{"text":"الحمد لله","finishedAtMs":900},{"text":"الحمد لله رب العالمين","finishedAtMs":1500}],"spokenAtMs":[500,600,1000,1300]}"#
+        let r = try TasmeeBenchmark.run(feedJSON: Data(json.utf8))
+        XCTAssertEqual(r.words, 4)
+        XCTAssertEqual(r.correct, 4)
+        XCTAssertEqual(r.falseErrors, 0)
+    }
 }
