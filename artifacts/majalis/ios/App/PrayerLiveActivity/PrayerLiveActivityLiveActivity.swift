@@ -84,6 +84,7 @@ struct PrayerLiveActivityWidget: Widget {
         switch state.phase {
         case .upcoming:
             Text(timerInterval: Date.now...state.prayerTime, countsDown: true)
+                .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                 .font(.headline.monospacedDigit())
                 .foregroundStyle(.white)
                 .frame(maxWidth: 72)
@@ -91,6 +92,7 @@ struct PrayerLiveActivityWidget: Widget {
         case .active:
             // مضى على الأذان: عدّ تصاعدي من لحظة الأذان
             Text(state.prayerTime, style: .timer)
+                .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                 .font(.headline.monospacedDigit())
                 .foregroundStyle(Brand.gold)
                 .frame(maxWidth: 72)
@@ -98,6 +100,7 @@ struct PrayerLiveActivityWidget: Widget {
         case .completed:
             if let end = state.nextPrayerTime, end > Date() {
                 Text(timerInterval: Date.now...end, countsDown: true)
+                    .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                     .font(.headline.monospacedDigit())
                     .foregroundStyle(.white)
                     .frame(maxWidth: 72)
@@ -119,12 +122,14 @@ struct PrayerLiveActivityWidget: Widget {
         switch state.phase {
         case .upcoming:
             Text(timerInterval: Date.now...state.prayerTime, countsDown: true)
+                .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                 .font(.caption2.monospacedDigit())
                 .foregroundStyle(.white)
                 .frame(maxWidth: 44)
                 .accessibilityLabel("العد التنازلي")
         case .active:
             Text(state.prayerTime, style: .timer)
+                .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                 .font(.caption2.monospacedDigit())
                 .foregroundStyle(Brand.gold)
                 .frame(maxWidth: 44)
@@ -132,6 +137,7 @@ struct PrayerLiveActivityWidget: Widget {
         case .completed:
             if let end = state.nextPrayerTime, end > Date() {
                 Text(timerInterval: Date.now...end, countsDown: true)
+                    .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                     .font(.caption2.monospacedDigit())
                     .foregroundStyle(.white)
                     .frame(maxWidth: 44)
@@ -176,7 +182,7 @@ struct PrayerLiveActivityWidget: Widget {
             }
         }
         .environment(\.layoutDirection, .rightToLeft)
-        .environment(\.locale, Locale(identifier: "ar"))
+        .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
     }
 
     private func bottomCopy(state: PrayerActivityAttributes.ContentState) -> String {
@@ -259,7 +265,7 @@ private struct LockScreenPrayerView: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .environment(\.layoutDirection, .rightToLeft)
-        .environment(\.locale, Locale(identifier: "ar"))
+        .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
     }
 
     private var lockTitle: String {
@@ -295,12 +301,14 @@ private struct LockScreenPrayerView: View {
         switch state.phase {
         case .upcoming:
             Text(timerInterval: Date.now...state.prayerTime, countsDown: true)
+                .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                 .font(.title3.monospacedDigit().bold())
                 .foregroundStyle(.white)
                 .frame(minWidth: 64, alignment: .trailing)
                 .accessibilityLabel("العد التنازلي")
         case .active:
             Text(state.prayerTime, style: .timer)
+                .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                 .font(.title3.monospacedDigit().bold())
                 .foregroundStyle(Brand.gold)
                 .frame(minWidth: 64, alignment: .trailing)
@@ -308,6 +316,7 @@ private struct LockScreenPrayerView: View {
         case .completed:
             if let end = state.nextPrayerTime, end > Date() {
                 Text(timerInterval: Date.now...end, countsDown: true)
+                    .environment(\.locale, Locale(identifier: "ar@numbers=arab"))
                     .font(.title3.monospacedDigit().bold())
                     .foregroundStyle(.white)
                     .frame(minWidth: 64, alignment: .trailing)

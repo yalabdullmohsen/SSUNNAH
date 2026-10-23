@@ -1,24 +1,35 @@
 import Foundation
 import SunnahPrayer
 
-/// تنسيق موحّد لنصوص الودجات: عربي بأرقام لاتينية 0-9 (قرار المالك)، ووحدات وجمع عربي صحيح.
+/// تنسيق موحّد لنصوص الودجات: عربي بأرقام عربية-هندية ٠-٩ موحّدة مع التطبيق (طلب المالك 2026-10-23)، ووحدات وجمع عربي صحيح.
 public enum WidgetFormat {
-    /// لغة موحّدة لكل Text/DateFormatter/NumberFormatter: عربي بأرقام لاتينية.
-    public static let locale = Locale(identifier: "ar-u-nu-latn")
+    /// لغة موحّدة لكل Text/DateFormatter/NumberFormatter: عربي بأرقام عربية-هندية (تشمل Text(timerInterval:) و.timer الحيّة).
+    public static let locale = Locale(identifier: "ar@numbers=arab")
+
+    /// علامة اتجاه يمين-يسار: تثبّت اتجاه الفقرة RTL في سياقات لا تحترم البيئة (accessory على شاشة القفل).
+    public static let rlm = "\u{200F}"
+
+    /// نص بترتيب RTL صريح: RLM في البداية.
+    public static func rtl(_ s: String) -> String { s.hasPrefix(rlm) ? s : rlm + s }
+
+    /// «بقي على العصر» / «حان وقت العصر» نصًّا واحدًا مرتَّبًا (الفعل ثم الاسم) باتجاه RTL صريح، لا نصّين متجاورين.
+    public static func stateAndName(_ state: String, _ name: String) -> String {
+        rtl(name.isEmpty ? state : "\(state) \(name)")
+    }
 
     /// أرقام عربية-هندية لأرقام المراجع («صحيح مسلم: ٧٢٠»)؛ تنفيذ واحد مشترك مع التطبيق (PrayerTimeFormat) لا نسخة ثانية.
     public static func arabicDigits(_ s: String) -> String { PrayerTimeFormat.arabicDigits(s) }
 
-    public static func digits(_ value: Int) -> String { String(value) }
+    public static func digits(_ value: Int) -> String { arabicDigits(String(value)) }
 
-    /// 4:27 ص — الساعة والدقيقة بأرقام لاتينية (12 ساعة) مع لاحقة ص/م منفصلة لتصغيرها في العرض.
+    /// 4:27 ص — الساعة والدقيقة بأرقام عربية (12 ساعة) مع لاحقة ص/م منفصلة لتصغيرها في العرض.
     public static func timeParts(_ date: Date, timeZone: TimeZone) -> (clock: String, suffix: String) {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = timeZone
         let c = cal.dateComponents([.hour, .minute], from: date)
         let h24 = c.hour ?? 0, m = c.minute ?? 0
         let h12 = h24 % 12 == 0 ? 12 : h24 % 12
-        return ("\(h12):\(m < 10 ? "0" : "")\(m)", h24 < 12 ? "ص" : "م")
+        return (arabicDigits("\(h12):\(m < 10 ? "0" : "")\(m)"), h24 < 12 ? "ص" : "م")
     }
 
     public static func time(_ date: Date, timeZone: TimeZone) -> String {
@@ -37,7 +48,7 @@ public enum WidgetFormat {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = timeZone
         let c = cal.dateComponents([.year, .month, .day], from: date)
-        return "\(c.day ?? 0) \(gregorianMonthsAr[c.month ?? 0]) \(c.year ?? 0)"
+        return "\(digits(c.day ?? 0)) \(gregorianMonthsAr[c.month ?? 0]) \(digits(c.year ?? 0))"
     }
 
     public static func weekday(_ date: Date, timeZone: TimeZone) -> String {

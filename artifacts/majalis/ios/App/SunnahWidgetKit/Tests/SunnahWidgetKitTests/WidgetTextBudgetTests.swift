@@ -10,9 +10,9 @@ final class WidgetTextBudgetTests: XCTestCase {
         XCTAssertEqual(HijriCalendar.monthNamesAr.map(\.count).max(), 12) // جمادى الآخرة
     }
 
-    func testHijriShortHasNoYearAndLatinDigits() {
+    func testHijriShortHasNoYearAndArabicDigits() {
         let s = HijriCalendar.short(HijriDate(year: 1448, month: 4, day: 27))
-        XCTAssertEqual(s, "27 ربيع الآخر")
+        XCTAssertEqual(s, "٢٧ ربيع الآخر")
     }
 
     func testProgressClamped() {

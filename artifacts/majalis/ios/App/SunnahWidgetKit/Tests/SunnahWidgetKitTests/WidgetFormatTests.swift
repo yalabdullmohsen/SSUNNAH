@@ -3,25 +3,25 @@ import XCTest
 
 final class WidgetFormatTests: XCTestCase {
     func testDigits() {
-        XCTAssertEqual(WidgetFormat.digits(1447), "1447")
+        XCTAssertEqual(WidgetFormat.digits(1447), "١٤٤٧")
     }
 
     func testArabicDayPlurals() {
-        XCTAssertEqual(WidgetFormat.days(0), "0 يوم")
-        XCTAssertEqual(WidgetFormat.days(1), "1 يوم")
-        XCTAssertEqual(WidgetFormat.days(2), "2 يومان")
-        XCTAssertEqual(WidgetFormat.days(3), "3 أيام")
-        XCTAssertEqual(WidgetFormat.days(7), "7 أيام")
-        XCTAssertEqual(WidgetFormat.days(10), "10 أيام")
-        XCTAssertEqual(WidgetFormat.days(11), "11 يومًا")
-        XCTAssertEqual(WidgetFormat.days(100), "100 يومًا")
-        XCTAssertEqual(WidgetFormat.days(-5), "0 يوم")
+        XCTAssertEqual(WidgetFormat.days(0), "٠ يوم")
+        XCTAssertEqual(WidgetFormat.days(1), "١ يوم")
+        XCTAssertEqual(WidgetFormat.days(2), "٢ يومان")
+        XCTAssertEqual(WidgetFormat.days(3), "٣ أيام")
+        XCTAssertEqual(WidgetFormat.days(7), "٧ أيام")
+        XCTAssertEqual(WidgetFormat.days(10), "١٠ أيام")
+        XCTAssertEqual(WidgetFormat.days(11), "١١ يومًا")
+        XCTAssertEqual(WidgetFormat.days(100), "١٠٠ يومًا")
+        XCTAssertEqual(WidgetFormat.days(-5), "٠ يوم")
     }
 
     func testDuration() {
-        XCTAssertEqual(WidgetFormat.duration(seconds: 45 * 60), "45 د")
-        XCTAssertEqual(WidgetFormat.duration(seconds: 3 * 3600 + 12 * 60 + 59), "3 س 12 د")
-        XCTAssertEqual(WidgetFormat.duration(seconds: -10), "0 د")
+        XCTAssertEqual(WidgetFormat.duration(seconds: 45 * 60), "٤٥ د")
+        XCTAssertEqual(WidgetFormat.duration(seconds: 3 * 3600 + 12 * 60 + 59), "٣ س ١٢ د")
+        XCTAssertEqual(WidgetFormat.duration(seconds: -10), "٠ د")
     }
 }
 
@@ -30,16 +30,16 @@ final class WidgetFormatEdgeCaseTests: XCTestCase {
         XCTAssertEqual(WidgetFormat.daysUntil(0), "اليوم")
         XCTAssertEqual(WidgetFormat.daysUntil(1), "غدًا")
         XCTAssertEqual(WidgetFormat.daysUntil(2), "بعد يومين")
-        XCTAssertEqual(WidgetFormat.daysUntil(3), "بعد 3 أيام")
-        XCTAssertEqual(WidgetFormat.daysUntil(11), "بعد 11 يومًا")
+        XCTAssertEqual(WidgetFormat.daysUntil(3), "بعد ٣ أيام")
+        XCTAssertEqual(WidgetFormat.daysUntil(11), "بعد ١١ يومًا")
         XCTAssertEqual(WidgetFormat.daysUntil(-5), "اليوم")
     }
 
     func testStreak() {
         XCTAssertEqual(WidgetFormat.streak(1), "يوم واحد")
-        XCTAssertEqual(WidgetFormat.streak(0), "0 يوم")
-        XCTAssertEqual(WidgetFormat.streak(2), "2 يومان")
-        XCTAssertEqual(WidgetFormat.streak(7), "7 أيام")
+        XCTAssertEqual(WidgetFormat.streak(0), "٠ يوم")
+        XCTAssertEqual(WidgetFormat.streak(2), "٢ يومان")
+        XCTAssertEqual(WidgetFormat.streak(7), "٧ أيام")
     }
 
     func testDayUnitMatchesDays() {
@@ -49,23 +49,37 @@ final class WidgetFormatEdgeCaseTests: XCTestCase {
     }
 }
 
-final class LatinDigitsPolicyTests: XCTestCase {
-    private func assertLatin(_ s: String, _ what: String, file: StaticString = #filePath, line: UInt = #line) {
-        let bad = s.unicodeScalars.filter { ("\u{0660}"..."\u{0669}").contains($0) || ("\u{06F0}"..."\u{06F9}").contains($0) }
-        XCTAssertTrue(bad.isEmpty, "\(what) يحوي أرقامًا غير لاتينية: \(s)", file: file, line: line)
+final class ArabicDigitsPolicyTests: XCTestCase {
+    private func assertArabic(_ s: String, _ what: String, file: StaticString = #filePath, line: UInt = #line) {
+        let bad = s.unicodeScalars.filter { ("0"..."9").contains($0) || ("\u{06F0}"..."\u{06F9}").contains($0) }
+        XCTAssertTrue(bad.isEmpty, "\(what) يحوي أرقامًا لاتينية/فارسية: \(s)", file: file, line: line)
     }
 
-    func testFormattersEmitOnlyLatinDigits() {
+    func testFormattersEmitNoLatinDigits() {
         let tz = TimeZone(identifier: "Asia/Kuwait")!
         let d = Date(timeIntervalSince1970: 1_791_500_000)
-        assertLatin(WidgetFormat.digits(1448), "digits")
-        assertLatin(WidgetFormat.days(142), "days")
-        assertLatin(WidgetFormat.daysUntil(5), "daysUntil")
-        assertLatin(WidgetFormat.duration(seconds: 3 * 3600 + 720), "duration")
-        assertLatin(LiveClock.format(seconds: 12_345), "clock")
-        assertLatin(HijriCalendar.display(HijriCalendar.date(d, timeZone: tz)), "hijri")
-        assertLatin(WidgetFormat.time(d, timeZone: tz), "time")
-        assertLatin(WidgetFormat.gregorian(d, timeZone: tz), "gregorian")
+        assertArabic(WidgetFormat.digits(1448), "digits")
+        assertArabic(WidgetFormat.days(142), "days")
+        assertArabic(WidgetFormat.daysUntil(5), "daysUntil")
+        assertArabic(WidgetFormat.duration(seconds: 3 * 3600 + 720), "duration")
+        assertArabic(LiveClock.format(seconds: 12_345), "clock")
+        assertArabic(HijriCalendar.display(HijriCalendar.date(d, timeZone: tz)), "hijri")
+        assertArabic(WidgetFormat.time(d, timeZone: tz), "time")
+        assertArabic(WidgetFormat.gregorian(d, timeZone: tz), "gregorian")
+    }
+
+    func testRTLStateAndNameOrderIsExplicit() {
+        let t = WidgetFormat.stateAndName("بقي على", "العصر")
+        XCTAssertEqual(t, "\u{200F}بقي على العصر")
+        XCTAssertEqual(WidgetFormat.stateAndName("حان وقت", "الظهر"), "\u{200F}حان وقت الظهر")
+        XCTAssertEqual(WidgetFormat.stateAndName("حان وقت", ""), "\u{200F}حان وقت")
+        XCTAssertEqual(WidgetFormat.rtl(WidgetFormat.rtl("مضى")), "\u{200F}مضى")
+    }
+
+    func testLocaleUsesArabicIndicNumbering() {
+        XCTAssertEqual(WidgetFormat.locale.identifier, "ar@numbers=arab")
+        let f = NumberFormatter(); f.locale = WidgetFormat.locale
+        XCTAssertEqual(f.string(from: 53), "٥٣")
     }
 
     func testTimeParts() {
@@ -74,21 +88,21 @@ final class LatinDigitsPolicyTests: XCTestCase {
             var c = Calendar(identifier: .gregorian); c.timeZone = tz
             return c.date(from: DateComponents(year: 2026, month: 10, day: 9, hour: h, minute: m))!
         }
-        XCTAssertEqual(WidgetFormat.time(at(4, 27), timeZone: tz), "4:27 ص")
-        XCTAssertEqual(WidgetFormat.time(at(0, 5), timeZone: tz), "12:05 ص")
-        XCTAssertEqual(WidgetFormat.time(at(12, 0), timeZone: tz), "12:00 م")
-        XCTAssertEqual(WidgetFormat.time(at(17, 36), timeZone: tz), "5:36 م")
+        XCTAssertEqual(WidgetFormat.time(at(4, 27), timeZone: tz), "٤:٢٧ ص")
+        XCTAssertEqual(WidgetFormat.time(at(0, 5), timeZone: tz), "١٢:٠٥ ص")
+        XCTAssertEqual(WidgetFormat.time(at(12, 0), timeZone: tz), "١٢:٠٠ م")
+        XCTAssertEqual(WidgetFormat.time(at(17, 36), timeZone: tz), "٥:٣٦ م")
     }
 
     func testGregorianAndWeekday() {
         let tz = TimeZone(identifier: "Asia/Kuwait")!
         var c = Calendar(identifier: .gregorian); c.timeZone = tz
         let d = c.date(from: DateComponents(year: 2026, month: 10, day: 9, hour: 12))!
-        XCTAssertEqual(WidgetFormat.gregorian(d, timeZone: tz), "9 أكتوبر 2026")
+        XCTAssertEqual(WidgetFormat.gregorian(d, timeZone: tz), "٩ أكتوبر ٢٠٢٦")
         XCTAssertEqual(WidgetFormat.weekday(d, timeZone: tz), "الجمعة")
     }
 
-    /// لا رقم هندي/فارسي في أي نص مصدري للودجات ولا لغة بلا nu-latn.
+    /// لا رقم هندي/فارسي حرفي في مصدر الودجات (التحويل يتم عبر arabicDigits) ولا لغة عربية بلا nu-arab صريح.
     func testWidgetSourcesHaveNoIndicDigitsOrArabicIndicLocale() throws {
         let app = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
             .deletingLastPathComponent().deletingLastPathComponent()
@@ -101,8 +115,8 @@ final class LatinDigitsPolicyTests: XCTestCase {
                     if line.unicodeScalars.contains(where: { ("\u{0660}"..."\u{0669}").contains($0) || ("\u{06F0}"..."\u{06F9}").contains($0) }) {
                         bad.append("\(f.lastPathComponent): \(line.prefix(80))")
                     }
-                    if line.contains("Locale(identifier: \"ar\")") || line.contains("numbers=arab") {
-                        bad.append("\(f.lastPathComponent): locale بلا أرقام لاتينية")
+                    if line.contains("Locale(identifier: \"ar\")") || line.contains("nu-latn") {
+                        bad.append("\(f.lastPathComponent): لغة بأرقام لاتينية صريحة")
                     }
                 }
             }

@@ -105,9 +105,9 @@ struct PrayerElapsedCaption: View {
         if let src = entry.elapsedCaptionSource {
             Group {
                 if let name = src.name {
-                    Text("مضى على \(name) ") + elapsed(since: src.start)
+                    Text(WidgetFormat.rtl("مضى على \(name) ")) + elapsed(since: src.start)
                 } else {
-                    Text("مضى على الأذان")
+                    Text(WidgetFormat.rtl("مضى على الأذان"))
                 }
             }
             .font(WidgetType.secondary(size)).monospacedDigit()
@@ -180,7 +180,7 @@ struct SmallPrayerWidgetView: View {
                 SunnahCalmCard().foregroundStyle(PrayerHomeStyle.ink)
             } else {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(entry.stateTitle)
+                    Text(WidgetFormat.rtl(entry.stateTitle))
                         .font(WidgetType.thuluth(13))
                         .foregroundStyle(PrayerHomeStyle.sub)
                     SunnahCounterFace(entry: entry, size: 26, showsIcon: false)
@@ -212,7 +212,7 @@ struct MediumPrayerWidgetView: View {
             } else {
                 SunnahTwoZone {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(entry.stateTitle)
+                        Text(WidgetFormat.rtl(entry.stateTitle))
                             .font(WidgetType.thuluth(14))
                             .foregroundStyle(PrayerHomeStyle.sub)
                         SunnahCounterFace(entry: entry, size: 34, showsIcon: false)
@@ -246,7 +246,7 @@ struct LargePrayerWidgetView: View {
             } else {
                 VStack(alignment: .leading, spacing: 12) {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(entry.stateTitle)
+                        Text(WidgetFormat.rtl(entry.stateTitle))
                             .font(WidgetType.thuluth(17))
                             .foregroundStyle(PrayerHomeStyle.sub)
                             .lineLimit(1)
@@ -334,16 +334,18 @@ struct InlinePrayerWidgetView: View {
                 HStack(spacing: 4) {
                     if entry.focus.isCurrent, let src = entry.elapsedCaptionSource {
                         // «مضى على <الصلاة>» بعدّاد تصاعدي حيّ يحسبه النظام (Text(timerInterval:)) بلا إعادة تحميل.
-                        Text("مضى على \(name)")
+                        Text(WidgetFormat.rtl("مضى على \(name)"))
                         entry.elapsedText(since: src.start).monospacedDigit().environment(\.locale, WidgetFormat.locale)
                     } else {
-                        Text("\(name) بعد")
+                        Text(WidgetFormat.rtl("\(name) بعد"))
                         PrayerLiveClock(mode: entry.clockMode, now: entry.date, live: entry.allowsLiveCountdown)
                     }
                 }
             } icon: {
                 Image(systemName: entry.focus.key?.symbol(filled: entry.focus.isCurrent) ?? "moon")
             }
+            .environment(\.layoutDirection, .rightToLeft)
+            .environment(\.locale, WidgetFormat.locale)
             .accessibilityLabel(Text(PrayerCounterA11y.label(entry)))
         }
     }
@@ -397,7 +399,8 @@ struct RectangularPrayerWidgetView: View {
                     Image(systemName: entry.lockSymbol)
                         .font(WidgetType.icon(WidgetType.minSize))
                         .accessibilityHidden(true)
-                    Text("\(entry.stateTitle) \(entry.focus.key?.nameAr ?? "")")
+                    Text(WidgetFormat.stateAndName(entry.stateTitle, entry.focus.key?.nameAr ?? ""))
+                        .environment(\.layoutDirection, .rightToLeft)
                         .font(WidgetType.thuluth(14))
                         .lineLimit(1)
                         .minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
@@ -479,7 +482,7 @@ private struct PrayerPreviousBlock: View {
     var body: some View {
         if let name = entry.currentNameAr, let start = entry.currentDate, start <= entry.date {
             VStack(alignment: .leading, spacing: 2) {
-                Text("مضى على \(name)")
+                Text(WidgetFormat.rtl("مضى على \(name)"))
                     .font(WidgetType.ruqaa(14))
                     .foregroundStyle(PrayerHomeStyle.sub)
                     .lineLimit(1).minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
@@ -491,7 +494,7 @@ private struct PrayerPreviousBlock: View {
             }
         } else {
             VStack(alignment: .leading, spacing: 2) {
-                Text(entry.stateTitle).font(WidgetType.ruqaa(14)).foregroundStyle(PrayerHomeStyle.sub)
+                Text(WidgetFormat.rtl(entry.stateTitle)).font(WidgetType.ruqaa(14)).foregroundStyle(PrayerHomeStyle.sub)
                 SunnahCounterFace(entry: entry, size: counterSize, showsIcon: false)
                     .foregroundStyle(entry.homeCounterColor)
             }
@@ -520,13 +523,11 @@ private struct PrayerNextBlock: View {
     }
 }
 
-/// «حان وقت العشاء» بنصّين في HStack (RTL: الأول يمينًا) لا بنص واحد مدمج.
+/// «حان وقت العشاء» نصًّا واحدًا بـRLM واتجاه RTL صريح (HStack يعكس الترتيب في سياقات LTR كشاشة القفل).
 private extension PrayerWidgetEntry {
     func stateAndName(_ key: PrayerSlotKey, size: CGFloat) -> some View {
-        HStack(spacing: 4) {
-            Text(stateTitle)
-            Text(key.nameAr)
-        }
+        Text(WidgetFormat.stateAndName(stateTitle, key.nameAr))
+        .environment(\.layoutDirection, .rightToLeft)
         .font(WidgetType.ruqaa(size)).foregroundStyle(PrayerHomeStyle.sub)
         .lineLimit(1).minimumScaleFactor(CGFloat(WidgetTextBudget.minScale))
     }
@@ -548,7 +549,7 @@ struct SmallDesignedPrayerView: View {
         switch design {
         case .calligraphy:
             VStack(alignment: .leading, spacing: 4) {
-                Text(entry.stateTitle).font(WidgetType.ruqaa(15)).foregroundStyle(PrayerHomeStyle.sub)
+                Text(WidgetFormat.rtl(entry.stateTitle)).font(WidgetType.ruqaa(15)).foregroundStyle(PrayerHomeStyle.sub)
                 if let key = focus.key {
                     Text(key.nameAr)
                         .font(WidgetType.ruqaa(34, bold: true))
@@ -650,7 +651,7 @@ struct MediumDesignedPrayerView: View {
         default: // calligraphy
             SunnahTwoZone {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(entry.stateTitle).font(WidgetType.ruqaa(16)).foregroundStyle(PrayerHomeStyle.sub)
+                    Text(WidgetFormat.rtl(entry.stateTitle)).font(WidgetType.ruqaa(16)).foregroundStyle(PrayerHomeStyle.sub)
                     SunnahCounterFace(entry: entry, size: 34, showsIcon: false).foregroundStyle(entry.homeCounterColor)
                     PrayerElapsedCaption(entry: entry, size: 13)
                 }
