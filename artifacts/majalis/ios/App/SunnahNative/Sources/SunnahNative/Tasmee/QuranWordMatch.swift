@@ -124,6 +124,11 @@ public enum QuranWordMatch {
         let withYeh = normalizeQuranWord(alefText.replacingOccurrences(of: "\u{06E6}(?=\\p{L})", with: "ي", options: .regularExpression))
         var forms = [plain]
         for f in [withAlef, withYeh] where !forms.contains(f) { forms.append(f) }
+        // لام شمسية: «الذين» ↔ «اللذين» (تشديد اللام يُسمَع لامًا مضاعفة)
+        if plain.hasPrefix("ال"), plain.unicodeScalars.count >= 4, let c = plain.unicodeScalars.dropFirst(2).first, "تثدذرزسشصضطظن".unicodeScalars.contains(c) {
+            let doubled = "الل" + String(plain.dropFirst(2))
+            if !forms.contains(doubled) { forms.append(doubled) }
+        }
         return forms
     }
 

@@ -39,7 +39,7 @@ public final class TasmeeSession {
         self.matcher = TasmeeMatcher(ref: ref, params: params)
     }
 
-    private func promptText() -> String { promptWords > 0 ? matcher.upcomingText(promptWords) : "" }
+    private func promptText() -> String { promptWords > 0 ? matcher.confirmedText(promptWords) : "" }
 
     public func start() async throws {
         active = true

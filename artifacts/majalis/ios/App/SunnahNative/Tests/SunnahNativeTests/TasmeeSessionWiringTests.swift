@@ -29,11 +29,11 @@ final class TasmeeSessionWiringTests: XCTestCase {
 
     // MARK: الجلسة
 
-    func testStartSendsUpcomingWordsAsPromptOrNil() async throws {
+    func testStartSendsNoPromptBeforeAnyConfirmedWord() async throws {
         let e = SpyEngine()
         try await TasmeeSession(engine: e, ref: words, promptWords: 2).start()
         try await TasmeeSession(engine: e, ref: words).start()
-        XCTAssertEqual(e.startPrompts, ["بِسْمِ ٱللَّهِ", nil])
+        XCTAssertEqual(e.startPrompts, [nil, nil], "التلقين من المؤكَّد فقط: لا شيء قبل أول كلمة")
     }
 
     func testWarmupAndRepeatsAreCountedButNotMatched() async throws {
@@ -82,7 +82,7 @@ final class TasmeeSessionWiringTests: XCTestCase {
         XCTAssertEqual(r.states, [.pending, .pending, .pending])
     }
 
-    func testPromptAdvancesWithRevealedWordsThenClears() async throws {
+    func testPromptFollowsLastConfirmedWords() async throws {
         let e = SpyEngine()
         let s = TasmeeSession(engine: e, ref: words, promptWords: 2)
         try await s.start()
@@ -91,7 +91,7 @@ final class TasmeeSessionWiringTests: XCTestCase {
         await settle { e.setPrompts.count >= 1 }
         e.onPartial?(partial(2, "بسم الله الرحمن", 200))
         await settle { e.setPrompts.count >= 2 }
-        XCTAssertEqual(e.setPrompts, ["ٱلرَّحْمَٰنِ", nil])
+        XCTAssertEqual(e.setPrompts, ["بِسْمِ ٱللَّهِ", "ٱللَّهِ ٱلرَّحْمَٰنِ"], "آخر كلمات مؤكَّدة لا القادمة")
     }
 
     /// يترك مهام التلميح (Task على MainActor) تنفذ قبل الفحص.
