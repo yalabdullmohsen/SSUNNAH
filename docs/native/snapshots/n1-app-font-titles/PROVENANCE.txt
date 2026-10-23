@@ -1,0 +1,8 @@
+git_sha=c80088a439068fcd4aebb84d294485b6ebef8433
+branch=n1/app-font-titles
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/a62af6df07230b77/SunnahApp.app
+binary_sha256=3dd7799998ee270ce189e709f9b0d9e73c9a7a948ca2bf3efea7d23a8d0d368b
+built_at=2026-10-23 17:09:01
+source_newest=2026-10-23 13:56:12
+captured_at=2026-10-23 19:41:27
+covers=عناوين شريط التنقل بخط Almarai/Naskh: الرئيسية، الأقسام (SectionsScreen)، فهرس السور (ترويسة المصحف)، الصلاة PrayerScreen، المزيد، تفصيل /hadith/books — فاتح/داكن، /mushaf (القارئ: مطابق بايتيًا للبناء النظيف e69aaf18 فاتحًا)، /mushaf/bookmarks. الصلاة: العنوان SunnahPageTitle بخط التطبيق (موحّد مع بقية العناوين). ملاحظة: لقطة /mushaf فاتحة سابقة ظهر فيها نمط المقدّمة فقط = سباق توقيت لقطة (مقدّمة الإقلاع + تحميل الصفحة تحت screen.ready) لا خلل #3758؛ عولج بمهلة 6ث في native-snapshot.sh

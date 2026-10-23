@@ -227,7 +227,7 @@ struct AdhkarTapCounter: View {
                     if complete {
                         Image(systemName: "checkmark").font(.system(size: 34, weight: .heavy)).foregroundStyle(Sunnah.Colors.primary)
                     } else {
-                        Text(digits(item.repeatCount - taps)).font(.system(size: 40, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.primary)
+                        Text(digits(item.repeatCount - taps)).font(AppearancePrefs.ui(.extraBold, 40, .largeTitle)).foregroundStyle(Sunnah.Colors.primary)
                             .monospacedDigit().contentTransition(.identity)
                     }
                     Text(complete ? "تمّ" : "اضغط").font(AppearancePrefs.ui(.bold, 11, .caption2)).foregroundStyle(Sunnah.Colors.textSecondary)

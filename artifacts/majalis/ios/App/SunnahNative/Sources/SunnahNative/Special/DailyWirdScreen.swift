@@ -111,7 +111,7 @@ struct DailyWirdView: View {
                 SunnahProgressCard("تقدم الختمة", symbol: "checkmark.seal") {
                     HStack(spacing: 20) {
                         SunnahProgressRing(value: Double(state.pagesInKhatma) / Double(WirdState.quranPages), lineWidth: 11, size: 112) {
-                            Text(ar(state.pagesInKhatma)).font(.system(size: 30, weight: .heavy, design: .rounded)).foregroundStyle(Sunnah.Colors.textPrimary)
+                            Text(ar(state.pagesInKhatma)).font(AppearancePrefs.ui(.extraBold, 30, .title)).foregroundStyle(Sunnah.Colors.textPrimary)
                                 .minimumScaleFactor(0.6).lineLimit(1)
                         }
                         VStack(alignment: .leading, spacing: 6) {

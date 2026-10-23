@@ -125,6 +125,7 @@ bash scripts/native-nav-title-guard.sh || bad "عنوان تنقّل مكرر/م
 bash scripts/native-content-footer-guard.sh || bad "شاشة محتوى بلا الذيل الموحّد أو تنبيه كامل داخلها"
 bash scripts/native-bottom-card-guard.sh || bad "بطاقة سفلية تغطي المحتوى"
 bash scripts/native-no-system-ui-guard.sh || bad "مكوّن iOS افتراضي جديد (List/Form/Toggle/Picker/searchable/sheet…) — استعمل المكوّنات المشتركة"
+bash scripts/native-no-system-text-font-guard.sh || bad "Text بخط نظام مباشر — استعمل Sunnah.Typography/AppearancePrefs.ui"
 if [ "${RC_FINAL:-}" = "1" ]; then bash scripts/native-no-system-ui-guard.sh | grep -q "المتبقي 0 " || bad "RC_FINAL: ما زالت مكوّنات iOS افتراضية في الواجهة (الهدف 0؛ قرار يوسف 19 أكتوبر)"; fi
 
 # 3) عدد المسارات المبنية مقابل 212
