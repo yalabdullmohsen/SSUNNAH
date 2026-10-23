@@ -1,0 +1,10 @@
+git_sha=17a73360e60c3a9543a2b9825411e8a81fb230fb
+branch=n1/tasmee-guide
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1g/Build/Products/Debug-iphonesimulator/SunnahNativeTests.xctest
+binary_sha256=1d6a48749edae615b7b57505f27e5ab1a6bae33014ec2ffa077f72ad42b02276
+built_at=2026-10-23 19:30:07
+source_newest=2026-10-23 18:57:06
+captured_at=2026-10-23 19:31:13
+files: TasmeeGuide.swift TasmeeModeSheet.swift AccountContactScreen.swift
+covers: guide-light.png guide-dark.png guide-se-light.png = TasmeeGuide.swift (صفحة «دليل التسميع»: 7 بطاقات، فاتح/داكن/SE 375)؛ intro1-light.png intro2-light.png intro3-light.png intro4-light.png intro1-dark.png intro2-dark.png intro3-dark.png intro4-dark.png = TasmeeGuide.swift (بطاقات أول تشغيل الأربع)؛ mode-sheet-light.png mode-sheet-dark.png mode-sheet-se-light.png = TasmeeModeSheet.swift (ورقة الأوضاع مع زر «؟ الدليل»)
+gaps: لقطات عبر ImageRenderer داخل XCTest لا على التطبيق الكامل؛ ImageRenderer لا يرسم ScrollView/TabView فتُعرض المحتويات مباشرة (التمرير والتصفّح الأفقي غير ملتقطين)؛ AccountContactScreen.swift (بطاقة «دليل التسميع» في الدعم) غير ملتقطة؛ لا لقطة AX3؛ العرض فوق المصحف الحقيقي غير ملتقط

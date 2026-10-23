@@ -8,6 +8,7 @@ struct AccountContactScreen: View {
     /// موضوع مقترح من رابط ?topic= (يمرّره الموجّه حين يدعم الاستعلام).
     var topicParam: String = ""
     @State private var copied = false
+    @State private var showTasmeeGuide = false
 
     private var activeTopic: AccountContactTopic? {
         AccountContact.resolveTopicId(topicParam).flatMap { id in AccountTexts.contactTopics.first { $0.id == id } }
@@ -66,6 +67,12 @@ struct AccountContactScreen: View {
                     mailButton("إرسال بريد", subject: "للإعلان والشراكات")
                 }
 
+                AccountSectionCard(title: "دليل التسميع") {
+                    Text("شرح أوضاع التسميع وإعداداته وخصوصيته.")
+                        .font(Sunnah.Typography.body).foregroundStyle(Sunnah.Colors.textSecondary)
+                    SunnahButton("افتح دليل التسميع", style: .secondary) { showTasmeeGuide = true }
+                }
+
                 AccountSectionCard(title: "الأسئلة الشائعة") {
                     ForEach(AccountTexts.contactFAQ) { item in
                         SunnahCollapsibleSection(id: "contact-faq-\(item.id)", title: item.question, startsCollapsed: item.id != AccountTexts.contactFAQ.first?.id) {
@@ -79,6 +86,7 @@ struct AccountContactScreen: View {
             .padding(Sunnah.Spacing.pageX)
         }
         .background(Sunnah.Colors.bg)
+        .sunnahSheet(isPresented: $showTasmeeGuide) { TasmeeGuideView().presentationDetents([.large]) }
         .sunnahNavTitle("تواصل معنا")
     }
 
