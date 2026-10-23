@@ -76,7 +76,11 @@ public final class MushafTasmeeController: ObservableObject {
     /// الضغطة على الزر: خامل ← ورقة الأوضاع أولًا، ثم `start`؛ أثناء الاستماع تُنهي الجلسة.
     public func micPressed(page: Int, repo: MushafRepository, search: MushafSearch?) {
         pendingStart = (page, repo, search)
-        if phase == .listening { micTapped(page: page, ayah: nil, repo: repo, search: search) } else { showModeSheet = true }
+        if phase == .listening { micTapped(page: page, ayah: nil, repo: repo, search: search) } else {
+            showModeSheet = true
+            // تسخين: النموذج يُحمَّل أثناء اختيار المستخدم للوضع فيبدأ الاستماع فور «ابدأ»
+            if engine.modelStatus == .installed { Task { await engine.prewarm() } }
+        }
     }
 
     /// اختيار المستخدم من الورقة: يُطبَّق على الاهتزاز والصوت والإخفاء ثم تبدأ الجلسة.

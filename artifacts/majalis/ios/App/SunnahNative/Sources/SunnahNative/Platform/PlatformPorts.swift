@@ -200,6 +200,8 @@ public protocol RecitationEngineControlling: AnyObject {
     func downloadModel(progress: @escaping @Sendable (Double) -> Void) async throws
     func deleteModel() throws
     func load() async throws
+    /// تحميل النموذج في الخلفية قبل ضغط «ابدأ» (تسخين) لتبدأ الجلسة خلال ≤ 1ث؛ يُتجاهَل الفشل (يُعاد عند البدء).
+    func prewarm() async
     func start(prompt: String?) async throws
     func setPrompt(_ text: String?) async
     func stop() async
@@ -207,6 +209,7 @@ public protocol RecitationEngineControlling: AnyObject {
 
 public extension RecitationEngineControlling {
     var modelDownloadBytes: Int64? { nil }
+    func prewarm() async { try? await load() }
 }
 
 /// محرك يبلّغ مستوى الصوت الحي (0…1 مطبَّع) لموجة الميكروفون؛ اختياري فلا يلزم كل محرك.
