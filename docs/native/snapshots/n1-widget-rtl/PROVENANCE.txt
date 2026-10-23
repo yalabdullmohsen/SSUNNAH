@@ -1,0 +1,14 @@
+git_sha=f2e8c274a48d5df2e4d898f3d5de2355b90f437d
+branch=n1/widget-rtl
+app=/private/tmp/claude-501/-Users-alabdullmohsen-majalis-correct/fa2ad3a2-bd21-412a-aaa6-9de2d72f85b0/scratchpad/bundle
+binary_sha256=00a99537ec17bc69ecdf424c70206c3a78f7d73f0e951af5b1642b1284df9e34
+built_at=2026-10-23 14:53:03
+source_newest=2026-10-23 04:06:40
+captured_at=2026-10-23 14:53:03
+files: PrayerWidgetViews.swift WidgetFormat.swift PrayerLiveActivityLiveActivity.swift
+covers: after-*.png => PrayerWidgetViews.swift, WidgetFormat.swift (ودجت الصلاة بعد التعديل: small/medium/large/rect/circ/inline فاتحًا وداكنًا، حالة data؛ ومتغيّرا w5/w3001 لعائلتي القفل rect/circ/inline)
+covers: before-*.png => الأب 22a2c9a3c (نفس الحزام ios-widget-snapshot بلا تعديل الفرع) للمقارنة
+gaps: لقطات من حزام ImageRenderer (WidgetSnapshotHarness) لا شاشة قفل حقيقية — simctl لا يضع ودجتات؛ لا containerBackground
+gaps: حالة data تعتمد على ساعة التشغيل فتختلف بين قبل وبعد (حان وقت/بقي على)؛ المقارنة المتطابقة الحالة عبر w5/w3001 (rect/circ/inline)
+gaps: binary_sha256 أعلاه لحزام "after" المبني من HEAD؛ built_at هو وقت نسخه إلى حزمة الحارس لا وقت البناء (بُني قبله بدقائق)
+gaps: النشاط الحي (Live Activity/Dynamic Island) لم يُلتقط؛ EDGE-FAIL قديم في 10-local-after-salah/asma rect (ودجتان لا يمسّهما الفرع)
