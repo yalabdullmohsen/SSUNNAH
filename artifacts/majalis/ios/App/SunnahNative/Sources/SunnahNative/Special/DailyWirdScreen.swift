@@ -12,6 +12,8 @@ struct WirdState: Codable, Equatable {
     var totalPagesEver = 0
     /// آخر يوم احتُسب في السلسلة. اختياري لتبقى البيانات المحفوظة قبله قابلة للقراءة.
     var streakDay: String?
+    /// شهر `monthlyTotal` («yyyy-MM»). اختياري للبيانات القديمة، وحينها يُستنتج من `lastDate`.
+    var monthKey: String?
 
     /// السلسلة تتغير مرة واحدة في اليوم عند أول إكمال للهدف: تزيد إن اكتمل هدف الأمس، وإلا تبدأ من 1.
     /// الحكم من سجل الأمس لا من `lastDate`، فإكمال الهدف على دفعات في اليوم نفسه يُحتسب كذلك.
@@ -22,6 +24,9 @@ struct WirdState: Codable, Equatable {
             streak = (weeklyLogs[yesterday] ?? 0) >= pagesPerDay ? streak + 1 : 1
             streakDay = today
         }
+        let month = Self.month(of: today)
+        if (monthKey ?? (lastDate.isEmpty ? nil : Self.month(of: lastDate))) != month { monthlyTotal = 0 }
+        monthKey = month
         completedToday = next; lastDate = today
         monthlyTotal += n; totalPagesEver += n
         weeklyLogs[today] = next
@@ -36,6 +41,9 @@ struct WirdState: Codable, Equatable {
     }
 
     func todayCount(_ today: String) -> Int { lastDate == today ? completedToday : 0 }
+    /// «هذا الشهر»: صفر إن لم يُقرأ شيء منذ بداية شهر `today`.
+    func monthly(today: String) -> Int { (monthKey ?? Self.month(of: lastDate)) == Self.month(of: today) ? monthlyTotal : 0 }
+    static func month(of day: String) -> String { String(day.prefix(7)) }
     var khatmas: Int { totalPagesEver / Self.quranPages }
     var pagesInKhatma: Int { totalPagesEver % Self.quranPages }
     var daysToKhatma: Int? { pagesPerDay > 0 ? Int((Double(Self.quranPages - pagesInKhatma) / Double(pagesPerDay)).rounded(.up)) : nil }
@@ -95,7 +103,7 @@ struct DailyWirdView: View {
                     Divider().overlay(Sunnah.Colors.border)
                     HStack {
                         SunnahStatCell("\(ar(state.weekly(today: today, last7: (0..<7).map(key)))) صفحة", "هذا الأسبوع")
-                        SunnahStatCell("\(ar(state.monthlyTotal)) صفحة", "هذا الشهر")
+                        SunnahStatCell(ArabicCount.label(state.monthly(today: today), one: "صفحة واحدة", two: "صفحتان", few: "صفحات", many: "صفحة", genitive: "صفحة"), "هذا الشهر")
                         SunnahStatCell("\(ar(state.totalPagesEver)) صفحة", "المجموع")
                     }
                 }
