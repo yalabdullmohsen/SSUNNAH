@@ -11,11 +11,13 @@ public final class TasmeeHistoryStore: ObservableObject {
         var sessions: [TasmeeSessionRecord] = []
         var review: [TasmeeReviewItem] = []
         var goals: [TasmeeGoal] = []
+        var weakWords: [TasmeeWeakWord]? = nil
     }
 
     @Published public private(set) var sessions: [TasmeeSessionRecord] = []
     @Published public private(set) var review: [TasmeeReviewItem] = []
     @Published public private(set) var goals: [TasmeeGoal] = []
+    @Published public private(set) var weakWords: [TasmeeWeakWord] = []
 
     private let url: URL?
     private let maxSessions = 500
@@ -52,6 +54,7 @@ public final class TasmeeHistoryStore: ObservableObject {
                 else { review.remove(at: i) }
             }
         }
+        weakWords = TasmeeWeakWordBank.apply(r, to: weakWords, calendar: calendar)
         save()
     }
 
@@ -82,11 +85,11 @@ public final class TasmeeHistoryStore: ObservableObject {
     private func load() {
         guard let url, let d = try? Data(contentsOf: url),
               let p = try? JSONDecoder().decode(Payload.self, from: d) else { return }
-        sessions = p.sessions; review = p.review; goals = p.goals
+        sessions = p.sessions; review = p.review; goals = p.goals; weakWords = p.weakWords ?? []
     }
 
     private func save() {
-        guard let url, let d = try? JSONEncoder().encode(Payload(sessions: sessions, review: review, goals: goals)) else { return }
+        guard let url, let d = try? JSONEncoder().encode(Payload(sessions: sessions, review: review, goals: goals, weakWords: weakWords)) else { return }
         try? d.write(to: url, options: .atomic)
     }
 }
