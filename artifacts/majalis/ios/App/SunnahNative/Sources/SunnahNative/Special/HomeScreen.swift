@@ -39,6 +39,7 @@ public struct HomeScreen: View {
                     ayahCard(daily)
                     hadithCard(daily.hadith)
                 }
+                TasmeeTodayCard()
                 if lastPage > 0 { lastReadCard }
                 hifzCard
                 SunnahContentFooter(title: "الرئيسية", id: "home", section: "الرئيسية", inset: false)

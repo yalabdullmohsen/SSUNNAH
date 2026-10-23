@@ -283,6 +283,11 @@ public struct MushafReaderView: View {
         .overlay(alignment: .top) { if selected == nil { ayahTafsirPlayer } }
         .overlay(alignment: .bottom) { tasmeeOverlay }
         .modifier(MushafTasmeeHost(box: tasmeeBox, engine: debugTasmeeEngine(platform.recitationEngine), current: $current, surahName: surahName))
+        .task(id: search != nil) {   // «تسميع اليوم» من الرئيسية: يفتح ورقة أوضاع التسميع عند جاهزية النص
+            guard search != nil, TasmeeAutoStart.consume() else { return }
+            try? await Task.sleep(nanoseconds: 400_000_000)
+            tasmeeBox.controller?.micPressed(page: current, repo: repo, search: search)
+        }
         #if DEBUG
         .task(id: search != nil) {   // لقطات التسميع: ينتظر اكتمال تحميل نص المصحف ثم يشغّل الجلسة الوهمية (`-tasmeeStage`)
             guard search != nil, UserDefaults.standard.string(forKey: "tasmeeStage") != nil else { return }
