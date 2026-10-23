@@ -42,11 +42,11 @@ final class GoalStreakWidgetV5GateTests: XCTestCase {
         XCTAssertTrue(src.contains("cue: \"تابع\""))
     }
 
-    func testStreakUnitsAreShortAndLatin() {
+    func testStreakUnitsAreShortAndArabic() {
         for n in [0, 1, 2, 3, 10, 11, 365] {
             let unit = WidgetFormat.dayUnit(n)
             XCTAssertLessThanOrEqual(WidgetTextBudget.wordCount(unit), 2)
-            XCTAssertEqual(WidgetFormat.digits(n), String(n))
+            XCTAssertEqual(WidgetFormat.digits(n), WidgetFormat.arabicDigits(String(n)))
         }
     }
 

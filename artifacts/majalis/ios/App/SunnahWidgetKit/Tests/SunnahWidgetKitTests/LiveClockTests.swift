@@ -6,31 +6,31 @@ final class LiveClockTests: XCTestCase {
     private let t0 = Date(timeIntervalSince1970: 1_791_000_000)
 
     func testFormatUnderAndOverHour() {
-        XCTAssertEqual(LiveClock.format(seconds: 0), "00:00")
-        XCTAssertEqual(LiveClock.format(seconds: 390), "06:30")
-        XCTAssertEqual(LiveClock.format(seconds: 3599), "59:59")
-        XCTAssertEqual(LiveClock.format(seconds: 3600), "1:00:00")
-        XCTAssertEqual(LiveClock.format(seconds: 3600 + 6 * 60 + 30), "1:06:30")
-        XCTAssertEqual(LiveClock.format(seconds: -5), "00:00")
+        XCTAssertEqual(LiveClock.format(seconds: 0), "٠٠:٠٠")
+        XCTAssertEqual(LiveClock.format(seconds: 390), "٠٦:٣٠")
+        XCTAssertEqual(LiveClock.format(seconds: 3599), "٥٩:٥٩")
+        XCTAssertEqual(LiveClock.format(seconds: 3600), "١:٠٠:٠٠")
+        XCTAssertEqual(LiveClock.format(seconds: 3600 + 6 * 60 + 30), "١:٠٦:٣٠")
+        XCTAssertEqual(LiveClock.format(seconds: -5), "٠٠:٠٠")
     }
 
     func testMinutesBeforePrayerCountsDown() {
         let next = t0.addingTimeInterval(14 * 60)
         let mode = LiveClock.resolve(now: t0, elapsedStart: nil, nextDate: next, nextHasStarted: false)
         XCTAssertEqual(mode, .countDown(until: next))
-        XCTAssertEqual(LiveClock.staticText(mode, now: t0), "14:00")
+        XCTAssertEqual(LiveClock.staticText(mode, now: t0), "١٤:٠٠")
     }
 
     func testAtEntryInstantStartsCountUpAtZero() {
         let mode = LiveClock.resolve(now: t0, elapsedStart: t0, nextDate: t0.addingTimeInterval(3 * 3600), nextHasStarted: false)
         XCTAssertEqual(mode, .countUp(since: t0))
-        XCTAssertEqual(LiveClock.staticText(mode, now: t0), "00:00")
+        XCTAssertEqual(LiveClock.staticText(mode, now: t0), "٠٠:٠٠")
     }
 
     func testSecondsAfterEntryCountsUp() {
         let now = t0.addingTimeInterval(7)
         let mode = LiveClock.resolve(now: now, elapsedStart: t0, nextDate: t0.addingTimeInterval(3 * 3600), nextHasStarted: false)
-        XCTAssertEqual(LiveClock.staticText(mode, now: now), "00:07")
+        XCTAssertEqual(LiveClock.staticText(mode, now: now), "٠٠:٠٧")
     }
 
     func testStartedWithoutElapsedWindow() {
@@ -70,7 +70,7 @@ final class LiveClockTests: XCTestCase {
             let m = LiveClock.resolve(now: t0, elapsedStart: nil, nextDate: next, nextHasStarted: false)
             texts.append(LiveClock.staticText(m, now: t0)!)
         }
-        XCTAssertEqual(Set(texts), ["12:05"])
+        XCTAssertEqual(Set(texts), ["١٢:٠٥"])
     }
 
     /// كل الودجات تستعمل المحلّل نفسه: لا مسارات عدّ مستقلة في ملفات الودجات.
