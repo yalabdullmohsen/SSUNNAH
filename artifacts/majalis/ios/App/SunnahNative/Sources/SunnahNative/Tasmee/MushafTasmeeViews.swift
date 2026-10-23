@@ -23,6 +23,18 @@ struct MushafTasmeeOverlay: View {
                     .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
                     .accessibilityIdentifier("mushaf.tasmee.repeat")
             }
+            if let k = tasmee.skippedAyah, tasmee.phase == .listening {
+                HStack(spacing: 8) {
+                    Text(k.message).font(Sunnah.Typography.secondary)
+                    Button("ارجع إليها") { tasmee.returnToSkippedAyah() }
+                        .font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.primary)
+                        .accessibilityIdentifier("mushaf.tasmee.skipped.back")
+                }
+                .padding(.horizontal, 12).padding(.vertical, 6)
+                .background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
+                .accessibilityElement(children: .combine)
+                .accessibilityIdentifier("mushaf.tasmee.skipped")
+            }
             if tasmee.offersHint, tasmee.phase == .listening {
                 Button { tasmee.requestHint() } label: {
                     Label("تلميح", systemImage: "lightbulb.fill").font(Sunnah.Typography.secondary)
