@@ -65,7 +65,14 @@ public final class MushafTasmeeController: ObservableObject {
     @Published public private(set) var repeatStatus: String?
     private var lastFollowed = 0
 
-    public init(engine: RecitationEngineControlling) { self.engine = engine }
+    /// مشغّل صوت الآية لوضع التلقين (قابل للحقن في الاختبار).
+    var audio: TasmeeAyahAudioPlaying
+    private var savedVerse: String?
+
+    public init(engine: RecitationEngineControlling, audio: TasmeeAyahAudioPlaying? = nil) {
+        self.engine = engine
+        self.audio = audio ?? TasmeeAyahPlayer()
+    }
 
     public var isActive: Bool {
         switch phase { case .listening, .preparing, .downloading: true; default: false }
@@ -90,11 +97,16 @@ public final class MushafTasmeeController: ObservableObject {
     }
 
     /// اختيار المستخدم من الورقة: يُطبَّق على الاهتزاز والصوت والإخفاء ثم تبدأ الجلسة.
-    public func startWith(_ o: TasmeeModeOptions) {
+    public func startWith(_ o: TasmeeModeOptions, resume: Bool = false) {
         options = o; hapticsOn = o.haptics; soundOn = o.sound; hideVerses = o.mode != .follow
         showModeSheet = false
         guard let p = pendingStart else { return }
-        micTapped(page: p.page, ayah: nil, repo: p.repo, search: p.search)
+        // الاستئناف: من أول آية لم تُتمّ (حُفظت في UserDefaults ولو أُغلق التطبيق) وفي صفحتها.
+        if resume, let r = TasmeeResumePoint.load() {
+            micTapped(page: r.page, ayah: r.verse, repo: p.repo, search: p.search)
+        } else {
+            micTapped(page: p.page, ayah: nil, repo: p.repo, search: p.search)
+        }
     }
     private var pendingStart: (page: Int, repo: MushafRepository, search: MushafSearch?)?
 
@@ -133,7 +145,7 @@ public final class MushafTasmeeController: ObservableObject {
 
     private func startSession() async {
         guard let ref else { return }
-        states = [:]; hint = nil; skippedAyah = nil; lastRecord = nil; startedAt = Date(); offersHint = false; hintsUsed = 0; hintStage = 0; lastFollowed = 0; followPage = nil; version &+= 1
+        states = [:]; hint = nil; skippedAyah = nil; lastRecord = nil; startedAt = Date(); offersHint = false; hintsUsed = 0; hintStage = 0; lastFollowed = 0; followPage = nil; savedVerse = nil; version &+= 1
         let s = TasmeeSession(engine: engine, ref: ref.words, strictness: strictness, gateOnError: true)
         repeatDriver = options.mode == .repeat ? TasmeeRepeatDriver(ref: ref.words, target: options.repeatTarget) : nil
         repeatStatus = repeatDriver.map { Self.repeatText(streak: 0, target: $0.counter.target) }
@@ -148,10 +160,32 @@ public final class MushafTasmeeController: ObservableObject {
         session = s
         do {
             try await engine.load()
+            // التلقين: يُسمَع صوت القارئ للآية الأولى قبل فتح الميكروفون.
+            if options.mode == .repeat, options.talqin, let v = ref.words.first.map({ Self.verseKey($0.id) }) { await audio.play(verse: v) }
             (engine as? RecitationLevelReporting)?.onLevel = { [weak self] v in Task { @MainActor in self?.ingestLevel(v) } }
             try await s.start()
             phase = .listening
         } catch { session = nil; phase = .failed("تعذّر بدء التسميع") }
+    }
+
+    static func verseKey(_ wordId: String) -> String { String(wordId.split(separator: "#").first ?? "") }
+
+    /// وضع التلقين: يوقف الاستماع إلى أن ينتهي صوت القارئ، ثم يعود للاستماع من أول الآية.
+    private func talqinPlay(verse: String, session s: TasmeeSession) {
+        s.isPaused = true
+        Task { [weak self, weak s] in
+            await self?.audio.play(verse: verse)
+            s?.isPaused = false
+        }
+    }
+
+    /// حفظ نقطة الاستئناف عند تغيّر الآية الجارية (أول آية لم تُتمّ).
+    private func saveResume(wordIndex i: Int) {
+        guard let ref, i < ref.words.count else { return }
+        let v = Self.verseKey(ref.words[i].id)
+        guard v != savedVerse else { return }
+        savedVerse = v
+        TasmeeResumePoint(verse: v, page: ref.pages[i]).save()
     }
 
     static func repeatText(streak: Int, target: Int) -> String { Sunnah.digits("القراءة \(min(streak + 1, target)) من \(target)") }
@@ -169,6 +203,7 @@ public final class MushafTasmeeController: ObservableObject {
             offersHint = false; hintStage = 0; hint = nil
             repeatStatus = Self.repeatText(streak: streak, target: target)
             version &+= 1
+            if options.talqin { talqinPlay(verse: Self.verseKey(ref.words[to].id), session: s) }
         }
     }
 
@@ -185,6 +220,11 @@ public final class MushafTasmeeController: ObservableObject {
             offersHint = false; hintStage = 0
         }
         refreshSkippedAyah()
+        if e.state == .correct {
+            // وضع التكرار: الاستئناف من آية التكرار الجارية لا من التالية قبل إتقانها.
+            let at = repeatDriver?.verseStart ?? e.index + 1
+            if at < (ref?.words.count ?? 0) { saveResume(wordIndex: at) } else { TasmeeResumePoint.clear(); savedVerse = nil }
+        }
         guard let ref, e.index + 1 < ref.pages.count else { return }
         // المتابعة: حين يصبح الكلمة التالية في صفحة أبعد من الأخيرة المتابَعة.
         let nextPage = ref.pages[min(e.index + 1, ref.pages.count - 1)]
@@ -213,6 +253,7 @@ public final class MushafTasmeeController: ObservableObject {
         guard let s = session else { phase = .idle; return }
         skippedAyah = nil
         session = nil; repeatDriver = nil; repeatStatus = nil
+        audio.stop()
         (engine as? RecitationLevelReporting)?.onLevel = nil
         level = 0
         let report = await s.stop()

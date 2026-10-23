@@ -47,9 +47,12 @@ public struct TasmeeModeSheet: View {
     @State private var options: TasmeeModeOptions
     private let defaults: UserDefaults
     private let onStart: (TasmeeModeOptions) -> Void
+    private let resume: TasmeeResumePoint?
+    private let onResume: ((TasmeeModeOptions) -> Void)?
 
-    public init(defaults: UserDefaults = .standard, onStart: @escaping (TasmeeModeOptions) -> Void) {
-        self.defaults = defaults; self.onStart = onStart
+    public init(defaults: UserDefaults = .standard, resume: TasmeeResumePoint? = nil,
+                onResume: ((TasmeeModeOptions) -> Void)? = nil, onStart: @escaping (TasmeeModeOptions) -> Void) {
+        self.defaults = defaults; self.onStart = onStart; self.resume = resume; self.onResume = onResume
         _options = State(initialValue: TasmeeModeOptions.load(defaults))
     }
 
@@ -98,6 +101,8 @@ public struct TasmeeModeSheet: View {
                     .accessibilityElement(children: .contain)
                 }
                 .padding(.horizontal, Sunnah.Spacing.pageX)
+                SunnahSwitch("اسمع ثم سمّع (تلقين بصوت القارئ)", isOn: $options.talqin)
+                    .padding(.horizontal, Sunnah.Spacing.pageX)
             }
             VStack(spacing: Sunnah.Spacing.s1) {
                 SunnahSwitch("إخفاء أرقام الآيات", isOn: $options.hideAyahNumbers)
@@ -109,6 +114,10 @@ public struct TasmeeModeSheet: View {
             .padding(.horizontal, Sunnah.Spacing.pageX)
             SunnahButton("ابدأ") { options.save(defaults); onStart(options) }
                 .padding(.horizontal, Sunnah.Spacing.pageX)
+            if resume != nil, let onResume {
+                SunnahButton("استئناف من حيث توقفت", style: .outline) { options.save(defaults); onResume(options) }
+                    .padding(.horizontal, Sunnah.Spacing.pageX)
+            }
         }
     }
 }

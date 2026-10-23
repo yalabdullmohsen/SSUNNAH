@@ -215,7 +215,7 @@ struct MushafTasmeeHost: ViewModifier {
     func body(content: Content) -> some View {
         content
             .sunnahSheet(isPresented: Binding(get: { box.controller?.showModeSheet ?? false }, set: { box.controller?.showModeSheet = $0 })) {
-                if let t = box.controller { TasmeeModeSheet { t.startWith($0) }.presentationDetents([.large]) }
+                if let t = box.controller { TasmeeModeSheet(resume: TasmeeResumePoint.load(), onResume: { t.startWith($0, resume: true) }) { t.startWith($0) }.presentationDetents([.large]) }
             }
             .sunnahSheet(isPresented: consentBinding) {
                 if let t = box.controller { MushafTasmeeConsent(tasmee: t).presentationDetents([.medium]) }
