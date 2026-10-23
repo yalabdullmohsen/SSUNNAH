@@ -5,12 +5,13 @@ public struct TasmeeReportScreen: View {
     let record: TasmeeSessionRecord
     let surahName: String
     let onReplayWeak: ([Int]) -> Void
+    var ayahWords: (Int) -> [String] = { _ in [] }
     @State private var shown = 0.0
     var instant = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
-    public init(record: TasmeeSessionRecord, surahName: String, onReplayWeak: @escaping ([Int]) -> Void) {
-        self.record = record; self.surahName = surahName; self.onReplayWeak = onReplayWeak
+    public init(record: TasmeeSessionRecord, surahName: String, ayahWords: @escaping (Int) -> [String] = { _ in [] }, onReplayWeak: @escaping ([Int]) -> Void) {
+        self.record = record; self.surahName = surahName; self.ayahWords = ayahWords; self.onReplayWeak = onReplayWeak
     }
 
     private var percent: Int { Int((record.accuracy * 100).rounded()) }
@@ -62,6 +63,22 @@ public struct TasmeeReportScreen: View {
         .padding(.horizontal, Sunnah.Spacing.pageX)
     }
 
+    /// نص الآية نفسه والكلمات الخطأ/المتروكة معلَّمة في موضعها (أحمر + خط سفلي)؛ لا شيء إن لم يتوفر النص.
+    @ViewBuilder private func markedAyah(_ ayah: Int) -> some View {
+        let words = ayahWords(ayah)
+        if !words.isEmpty {
+            let bad = Set(record.errors(inAyah: ayah).map(\.wordIndex))
+            words.enumerated().reduce(Text("")) { acc, w in
+                let t = Text(w.element + " ")
+                return acc + (bad.contains(w.offset) ? t.foregroundColor(Sunnah.Colors.danger).underline() : t.foregroundColor(Sunnah.Colors.textPrimary))
+            }
+            .font(AppearancePrefs.ui(.regular, 20, .title3)).lineSpacing(6)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .environment(\.layoutDirection, .rightToLeft)
+            .accessibilityLabel(words.enumerated().map { bad.contains($0.offset) ? "خطأ: \($0.element)" : $0.element }.joined(separator: " "))
+        }
+    }
+
     private func ayahCard(_ ayah: Int) -> some View {
         SunnahCard {
             VStack(alignment: .leading, spacing: 8) {
@@ -71,6 +88,7 @@ public struct TasmeeReportScreen: View {
                     Text("نظرتَ إلى الآية أثناء التسميع").font(AppearancePrefs.ui(.regular, 15, .body))
                         .foregroundStyle(Sunnah.Colors.textSecondary)
                 }
+                markedAyah(ayah)
                 ForEach(Array(record.errors(inAyah: ayah).enumerated()), id: \.offset) { _, e in
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
                         Text(TasmeeReportFormat.label(e.kind)).font(AppearancePrefs.ui(.bold, 13, .caption))

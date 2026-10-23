@@ -36,23 +36,17 @@ struct MushafTasmeeOverlay: View {
             HStack(spacing: Sunnah.Spacing.s2) {
                 if tasmee.isActive || tasmee.phase == .needsMic {
                     Button { tasmee.hideVerses.toggle() } label: {
-                        Image(systemName: tasmee.hideVerses ? "eye.slash.fill" : "eye.fill").font(.system(size: 17, weight: .semibold))
-                            .frame(width: 44, height: 44).background(Circle().fill(Sunnah.Colors.bg.opacity(0.92)))
-                            .foregroundStyle(Sunnah.Colors.primary)
+                        TasmeeControlLabel(symbol: tasmee.hideVerses ? "eye.slash.fill" : "eye.fill", caption: tasmee.hideVerses ? "مخفية" : "ظاهرة")
                     }
                     .accessibilityLabel(tasmee.hideVerses ? "إظهار الآيات" : "إخفاء الآيات")
                     .accessibilityIdentifier("mushaf.tasmee.hide")
                     Button { tasmee.hapticsOn.toggle() } label: {
-                        Image(systemName: tasmee.hapticsOn ? "waveform" : "waveform.slash").font(.system(size: 17, weight: .semibold))
-                            .frame(width: 44, height: 44).background(Circle().fill(Sunnah.Colors.bg.opacity(0.92)))
-                            .foregroundStyle(Sunnah.Colors.primary)
+                        TasmeeControlLabel(symbol: tasmee.hapticsOn ? "waveform" : "waveform.slash", caption: tasmee.hapticsOn ? "اهتزاز" : "بلا اهتزاز")
                     }
                     .accessibilityLabel(tasmee.hapticsOn ? "إيقاف الاهتزاز" : "تشغيل الاهتزاز")
                     .accessibilityIdentifier("mushaf.tasmee.haptics")
                     Button { tasmee.soundOn.toggle() } label: {
-                        Image(systemName: tasmee.soundOn ? "speaker.wave.2.fill" : "speaker.slash.fill").font(.system(size: 17, weight: .semibold))
-                            .frame(width: 44, height: 44).background(Circle().fill(Sunnah.Colors.bg.opacity(0.92)))
-                            .foregroundStyle(Sunnah.Colors.primary)
+                        TasmeeControlLabel(symbol: tasmee.soundOn ? "speaker.wave.2.fill" : "speaker.slash.fill", caption: tasmee.soundOn ? "صوت" : "بلا صوت")
                     }
                     .accessibilityLabel(tasmee.soundOn ? "إيقاف صوت التنبيه" : "تشغيل صوت التنبيه")
                     .accessibilityIdentifier("mushaf.tasmee.sound")
@@ -199,7 +193,7 @@ struct MushafTasmeeHost: ViewModifier {
             .sunnahSheet(isPresented: reportBinding) {
                 if let t = box.controller, case .finished(let r) = t.phase {
                     if let rec = t.lastRecord {
-                        TasmeeReportScreen(record: rec, surahName: surahName(rec.surah)) { _ in t.dismissReport() }
+                        TasmeeReportScreen(record: rec, surahName: surahName(rec.surah), ayahWords: { t.ayahWords(surah: rec.surah, ayah: $0) }) { _ in t.dismissReport() }
                     } else {
                         MushafTasmeeReport(report: r) { t.dismissReport() }.presentationDetents([.medium])
                     }
@@ -209,5 +203,19 @@ struct MushafTasmeeHost: ViewModifier {
             .onChange(of: box.controller?.followPage) { p in
                 if let p, p != current { current = p }
             }
+    }
+}
+
+/// زر تحكم في الجلسة: أيقونة داخل دائرة 44 وتحتها اسمها المقروء (لا أيقونات غامضة).
+struct TasmeeControlLabel: View {
+    let symbol: String, caption: String
+    var body: some View {
+        VStack(spacing: 2) {
+            Image(systemName: symbol).font(.system(size: 17, weight: .semibold))
+                .frame(width: 44, height: 44).background(Circle().fill(Sunnah.Colors.bg.opacity(0.92)))
+            Text(caption).font(.caption2.weight(.semibold)).lineLimit(1).minimumScaleFactor(0.7)
+                .padding(.horizontal, 6).background(Capsule().fill(Sunnah.Colors.bg.opacity(0.92)))
+        }
+        .foregroundStyle(Sunnah.Colors.primary)
     }
 }

@@ -86,6 +86,19 @@ public final class MushafTasmeeController: ObservableObject {
         guard let p = pendingStart else { return }
         micTapped(page: p.page, ayah: nil, repo: p.repo, search: p.search)
     }
+    /// كلمات الآية من المرجع المحمَّل (للتقرير)؛ فارغة إن لم تكن الآية ضمن الجلسة.
+    public func ayahWords(surah: Int, ayah: Int) -> [String] {
+        let prefix = "\(surah):\(ayah)#"
+        return (ref?.words ?? []).filter { $0.id.hasPrefix(prefix) }.map(\.text)
+    }
+
+    /// «سمّع من هنا»: يبدأ فورًا من الآية المحددة بآخر وضع محفوظ بلا ورقة أوضاع.
+    public func startHere(ayah: String, page: Int, repo: MushafRepository, search: MushafSearch?) {
+        let o = TasmeeModeOptions.load()
+        options = o; hapticsOn = o.haptics; soundOn = o.sound; hideVerses = o.mode != .follow
+        if phase == .listening { return }
+        micTapped(page: page, ayah: ayah, repo: repo, search: search)
+    }
     private var pendingStart: (page: Int, repo: MushafRepository, search: MushafSearch?)?
 
     /// الضغطة على الزر: تبدأ الجلسة أو تُنهيها أو تفتح الموافقة.
@@ -170,7 +183,7 @@ public final class MushafTasmeeController: ObservableObject {
             if hapticsOn { UIImpactFeedbackGenerator(style: .light).impactOccurred() }
             if soundOn { AudioServicesPlaySystemSound(1053) }
             #endif
-            if (e.attempts ?? 0) >= 3, options.allowsHints { offersHint = true }
+            if (e.attempts ?? 0) >= 1, options.allowsHints { offersHint = true }
         } else if e.state == .correct {
             offersHint = false; hintStage = 0
         }
@@ -257,7 +270,7 @@ extension View {
     @ViewBuilder func tasmeePainted(_ paint: TasmeeWordPaint?, radius: CGFloat) -> some View {
         let hidden = paint == .hidden || paint == .error || paint == .current
         let tint: Color? = switch paint {
-        case .some(.error): Color.red.opacity(0.22)
+        case .some(.error): Color.red.opacity(0.3)
         case .some(.skipped): Color.orange.opacity(0.22)
         case .some(.current): Sunnah.Colors.primary.opacity(0.16)
         default: nil
@@ -271,10 +284,15 @@ extension View {
                         .shadow(color: paint == .current ? Sunnah.Colors.primary.opacity(0.35) : .clear, radius: 4)
                 }
             }
+            .overlay(alignment: .bottom) {
+                // هيكل خافت للكلمة المخفية: يُري موضعها دون كشفها.
+                if paint == .hidden { Capsule().fill(Sunnah.Colors.textSecondary.opacity(0.18)).frame(height: 3).padding(.horizontal, 1) }
+            }
             .overlay(alignment: .top) {
                 if paint == .skipped { Image(systemName: "exclamationmark.triangle.fill").font(.system(size: 8)).foregroundStyle(Color.orange).offset(y: -4) }
             }
             .animation(.easeOut(duration: 0.18), value: paint)
+            .modifier(TasmeeShake(active: paint == .error))
             .accessibilityHint(paint == .error || paint == .wrong ? "خطأ في التلاوة" : paint == .skipped ? "كلمة متجاوزة" : "")
     }
 }
@@ -333,4 +351,20 @@ final class MushafTasmeeBox: ObservableObject {
         bag = c.objectWillChange.sink { [weak self] _ in self?.objectWillChange.send() }
     }
     var renderKey: String { controller.map { "t\($0.version)" } ?? "" }
+}
+
+/// اهتزاز أفقي قصير عند الخطأ (يُعطَّل مع «تقليل الحركة»).
+struct TasmeeShake: ViewModifier {
+    let active: Bool
+    @State private var dx: CGFloat = 0
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func body(content: Content) -> some View {
+        content.offset(x: dx)
+            .onChange(of: active) { on in
+                guard on, !reduceMotion else { return }
+                withAnimation(.linear(duration: 0.05).repeatCount(6, autoreverses: true)) { dx = 3 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.32) { dx = 0 }
+            }
+    }
 }

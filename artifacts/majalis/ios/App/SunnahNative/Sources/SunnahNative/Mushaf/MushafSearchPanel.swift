@@ -3,12 +3,16 @@ import SwiftUI
 /// زر أداة في شريط المصحف: هدف لمس 44×44 على الأقل، ولمسه يعيد عدّ إخفاء الشريط.
 struct MushafToolButton: View {
     let symbol: String, label: String, id: String
+    var title: String? = nil
     var action: () -> Void
     var body: some View {
         Button(action: action) {
-            Image(systemName: symbol).font(.system(size: 18, weight: .semibold))
-                .frame(width: Sunnah.Spacing.touch, height: Sunnah.Spacing.touch)
-                .contentShape(Rectangle())
+            HStack(spacing: Sunnah.Spacing.s1) {
+                Image(systemName: symbol).font(.system(size: 18, weight: .semibold))
+                if let title { Text(title).font(Sunnah.Typography.secondary.weight(.semibold)).lineLimit(1) }
+            }
+            .frame(minWidth: Sunnah.Spacing.touch, minHeight: Sunnah.Spacing.touch)
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .foregroundStyle(Sunnah.Colors.mushafInk)

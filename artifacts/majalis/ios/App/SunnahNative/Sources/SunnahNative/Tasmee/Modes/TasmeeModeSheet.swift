@@ -57,6 +57,14 @@ public struct TasmeeModeSheet: View {
         ScrollView {
             content.padding(.vertical, Sunnah.Spacing.s4)
         }
+        .safeAreaInset(edge: .bottom) {
+            // «ابدأ» مثبّت دائمًا ظاهر دون تمرير.
+            SunnahButton("ابدأ") { options.save(defaults); onStart(options) }
+                .padding(.horizontal, Sunnah.Spacing.pageX)
+                .padding(.vertical, Sunnah.Spacing.s3)
+                .background(Sunnah.Colors.bg)
+                .accessibilityIdentifier("tasmee.mode.start")
+        }
         .background(Sunnah.Colors.bg)
         .environment(\.layoutDirection, .rightToLeft)
     }
@@ -107,8 +115,6 @@ public struct TasmeeModeSheet: View {
                 SunnahSwitch("صوت تنبيه", isOn: $options.sound)
             }
             .padding(.horizontal, Sunnah.Spacing.pageX)
-            SunnahButton("ابدأ") { options.save(defaults); onStart(options) }
-                .padding(.horizontal, Sunnah.Spacing.pageX)
         }
     }
 }
