@@ -24,4 +24,10 @@ final class TasmeeErrorMapTests: XCTestCase {
         XCTAssertEqual(TasmeeErrorMap.pageWeakness(ayahs: [(2, 1), (2, 3)], map: m), .strong)
         XCTAssertEqual(TasmeeErrorMap.pageWeakness(ayahs: [], map: m), .none)
     }
+
+    func testPagesTakesMaxPerPageAndIgnoresUnknown() {
+        let m: [String: TasmeeAyahWeakness] = ["1:1": .mild, "1:2": .strong, "2:1": .medium, "9:9": .strong]
+        let r = TasmeeErrorMap.pages(map: m, ayahPage: ["1:1": 1, "1:2": 1, "2:1": 2])
+        XCTAssertEqual(r, [1: .strong, 2: .medium])
+    }
 }

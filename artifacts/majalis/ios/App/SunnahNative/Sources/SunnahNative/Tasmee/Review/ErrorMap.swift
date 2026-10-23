@@ -22,4 +22,14 @@ public enum TasmeeErrorMap {
     public static func pageWeakness(ayahs: [(surah: Int, ayah: Int)], map: [String: TasmeeAyahWeakness]) -> TasmeeAyahWeakness {
         ayahs.map { map["\($0.surah):\($0.ayah)"] ?? .none }.max() ?? .none
     }
+
+    /// أشدّ درجة لكل صفحة، من فهرس الآية←الصفحة الجاهز (قراءة فقط؛ لا مسّ بتعيين الصفحات).
+    public static func pages(map: [String: TasmeeAyahWeakness], ayahPage: [String: Int]) -> [Int: TasmeeAyahWeakness] {
+        var out: [Int: TasmeeAyahWeakness] = [:]
+        for (k, w) in map where w > .none {
+            guard let pg = ayahPage[k] else { continue }
+            out[pg] = max(out[pg] ?? .none, w)
+        }
+        return out
+    }
 }

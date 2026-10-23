@@ -41,6 +41,7 @@ struct HifzTarget: Equatable { let title: String; let pages: ClosedRange<Int> }
 struct HifzScreen: View {
     @StateObject private var store = HifzProgressStore()
     @State private var index: MushafIndex?
+    @ObservedObject private var history = TasmeeHistoryStore.shared
     @State private var tab = UserDefaults.standard.integer(forKey: "snapshotHifzTab")
     @State private var openJuz: Int? = { let j = UserDefaults.standard.integer(forKey: "snapshotHifzJuz"); return j > 0 ? j : nil }()
     @State private var chooser: HifzTarget?
@@ -87,6 +88,10 @@ struct HifzScreen: View {
     }
 
     private var p: HifzProgress { store.progress }
+    /// خريطة الأخطاء: أشدّ ضعف تسميع لكل صفحة (فارغة قبل تحميل الفهرس).
+    private var weakPages: [Int: TasmeeAyahWeakness] {
+        TasmeeErrorMap.pages(map: TasmeeErrorMap.weakness(history.weakWords), ayahPage: index?.ayahPage ?? [:])
+    }
     private var juzStart: [Int] { index?.juzStart ?? [] }
 
     // MARK: ملخص
@@ -172,13 +177,20 @@ struct HifzScreen: View {
     }
     private func pageCell(_ n: Int) -> some View {
         let st = p.state(n)
+        let weak = weakPages[n] ?? .none
         return Text(n.arabicDigits).font(Sunnah.Typography.cardTitle).foregroundStyle(st == .none ? Sunnah.Colors.textPrimary : Sunnah.Colors.textOnPrimary)
             .frame(maxWidth: .infinity, minHeight: Sunnah.Spacing.touch + 8)
             .background(RoundedRectangle(cornerRadius: 12, style: .continuous).fill(st.color))
+            .overlay(alignment: .topLeading) {
+                if weak > .none {
+                    HStack(spacing: 2) { ForEach(0..<weak.rawValue, id: \.self) { _ in Circle().fill(Sunnah.Colors.danger).frame(width: 6, height: 6) } }
+                        .padding(5).background(Capsule().fill(Sunnah.Colors.surface)).padding(3)
+                }
+            }
             .contentShape(Rectangle())
             .onTapGesture { openPage = n; showPage = true }
             .onLongPressGesture(minimumDuration: 0.4) { Sunnah.Haptics.select(); chooser = HifzTarget(title: "صفحة \(n.arabicDigits)", pages: n...n) }
-            .accessibilityElement(children: .ignore).accessibilityLabel("صفحة \(n.arabicDigits)، \(st.name)")
+            .accessibilityElement(children: .ignore).accessibilityLabel("صفحة \(n.arabicDigits)، \(st.name)\(weak > .none ? "، فيها مواضع ضعيفة في التسميع" : "")")
             .accessibilityAddTraits(.isButton).accessibilityIdentifier("hifz.page.\(n)")
     }
 
