@@ -14,7 +14,7 @@ enum SirahAdapters {
             let body = lessons.map { l in
                 paragraphs([l.title, l.summary, l.body == l.summary ? nil : l.body])
             }
-            return ContentItem(sirahID: s.id, title: s.title, subtitle: "\(lessons.count) موضوعًا", body: paragraphs(body))
+            return ContentItem(sirahID: s.id, title: s.title, subtitle: ArabicCount.label(lessons.count, one: "موضوع واحد", two: "موضوعان", few: "موضوعات", many: "موضوعًا", genitive: "موضوع"), body: paragraphs(body))
         }
     }
 
@@ -246,8 +246,13 @@ enum SirahAdapters {
             let (ca, cb) = (groups[a]?.count ?? 0, groups[b]?.count ?? 0)
             return ca != cb ? ca > cb : a < b
         }.map { name in
-            SectionLink(id: teacherSlug(name), title: name, subtitle: "\(groups[name]?.count ?? 0) درسًا", route: "/teachers/" + teacherSlug(name))
+            SectionLink(id: teacherSlug(name), title: name, subtitle: lessonCount(groups[name]?.count ?? 0), route: "/teachers/" + teacherSlug(name))
         }
+    }
+
+    /// «درس واحد»، «درسان»، «٥ دروس»، «١٥ درسًا».
+    static func lessonCount(_ n: Int) -> String {
+        ArabicCount.label(n, one: "درس واحد", two: "درسان", few: "دروس", many: "درسًا", genitive: "درس")
     }
 
     static func teacher(slug: String, rows: [SirahLessonRow]) -> ContentItem? {
@@ -258,7 +263,7 @@ enum SirahAdapters {
             return lines([r.title, [r.mosque, r.city].compactMap { $0 }.filter { !$0.isBlank }.joined(separator: "، "),
                    [r.schedule, r.lessonTime].compactMap { $0 }.map(LessonTimeFormat.display).filter { !$0.isBlank }.joined(separator: " · ")])
         }
-        return ContentItem(sirahID: slug, title: name, subtitle: "\(mine.count) درسًا", body: paragraphs(body))
+        return ContentItem(sirahID: slug, title: name, subtitle: lessonCount(mine.count), body: paragraphs(body))
     }
 
     /// مشايخ الدروس فصولًا متتابعة لقارئ السلسلة (الترتيب نفسه كقائمة المشايخ).

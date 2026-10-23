@@ -96,10 +96,14 @@ final class SirahAdaptersTests: XCTestCase {
         let rows: [SirahLessonRow] = try decode(#"[{"id":"1","title":"د","speaker_name":"الشيخ أ","status":"approved"},{"id":"2","title":"د2","speaker_name":"الشيخ أ","status":"approved"},{"id":"3","title":"د3","speaker_name":"الشيخ ب"},{"id":"4","title":"د4","speaker_name":" ","status":"approved"}]"#)
         let links = SirahAdapters.teachers(rows)
         XCTAssertEqual(links.map(\.title), ["الشيخ أ"])
-        XCTAssertEqual(links[0].subtitle, "2 درسًا")
+        XCTAssertEqual(links[0].subtitle, "درسان")
         let slug = links[0].id
         XCTAssertEqual(links[0].route, "/teachers/" + slug)
         XCTAssertEqual(SirahAdapters.teacher(slug: slug, rows: rows)?.title, "الشيخ أ")
+        XCTAssertEqual(SirahAdapters.teacher(slug: slug, rows: rows)?.subtitle, "درسان")
+        XCTAssertEqual(SirahAdapters.lessonCount(1), "درس واحد")
+        XCTAssertEqual(SirahAdapters.lessonCount(5), "\(5.arabicDigits) دروس")
+        XCTAssertEqual(SirahAdapters.lessonCount(15), "\(15.arabicDigits) درسًا")
         XCTAssertNil(SirahAdapters.teacher(slug: SirahAdapters.teacherSlug("الشيخ ب"), rows: rows))
     }
 
