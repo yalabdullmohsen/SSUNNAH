@@ -1,8 +1,8 @@
-git_sha=27f99b45be6c144df442d22eac3d21080395c03e
+git_sha=5d959d55b779cba6dabe5dbf2cce7961c3acd061
 branch=n1/tasmee-ux
-app=/Users/alabdullmohsen/.majalis-tools/headbuild/0fea83ab367ac438/SunnahApp.app
-binary_sha256=35e0d32e152919af9d97dea9a245f115eeab95ff414972c193853fe7aa93eae0
-built_at=2026-10-23 12:59:57
-source_newest=2026-10-23 12:46:35
-captured_at=2026-10-23 13:01:30
-covers=التسميع v2 ج: sheet/hidden/wrong/hint/revealed فاتح وداكن
+app=/Users/alabdullmohsen/.majalis-tools/dd/n1-tasmee-ux/Build/Products/Debug-iphonesimulator/SunnahApp.app
+binary_sha256=00c511656e3759b7555d63a343534d03d6cffbccf0ceb9a49e9ee843628acab9
+built_at=2026-10-23 22:26:42
+source_newest=2026-10-23 15:28:08
+captured_at=2026-10-24 00:09:10
+covers=التسميع v2 ج (#3752): sheet/hidden/wrong/hint/revealed/current/report/longpress/tafsirbar فاتح وداكن، من بناء واحد
