@@ -17,12 +17,12 @@ struct MushafTasmeeOverlay: View {
             if case .failed(let m) = tasmee.phase {
                 VStack(spacing: Sunnah.Spacing.s2) {
                     Text(m).font(Sunnah.Typography.secondary).multilineTextAlignment(.center)
-                    HStack(spacing: Sunnah.Spacing.s2) {
-                        Button("إعادة المحاولة", action: onTap).accessibilityIdentifier("mushaf.tasmee.retry")
-                        Button("إغلاق") { tasmee.dismissFailure() }.accessibilityIdentifier("mushaf.tasmee.dismiss")
+                    HStack(spacing: Sunnah.Spacing.s3) {
+                        Button("إعادة المحاولة", action: onTap)
+                            .buttonStyle(SunnahButtonStyle(.primary)).accessibilityIdentifier("mushaf.tasmee.retry")
+                        Button("إغلاق") { tasmee.dismissFailure() }
+                            .buttonStyle(SunnahButtonStyle(.outline)).accessibilityIdentifier("mushaf.tasmee.dismiss")
                     }
-                    .font(Sunnah.Typography.secondary.weight(.semibold)).foregroundStyle(Sunnah.Colors.primary)
-                    .frame(minHeight: 44)
                 }
                 .padding(.horizontal, 16).padding(.vertical, 8)
                 .background(RoundedRectangle(cornerRadius: 16).fill(Sunnah.Colors.bg.opacity(0.92)))
