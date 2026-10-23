@@ -73,6 +73,8 @@ public final class TasmeeMatcher {
     private var extraReported = Set<String>()
     private var pendingExtras: [TasmeeExtraEvent] = []
     private var wrongSeen: [String: Int] = [:]
+    /// خطأ مرشَّح شُوهد في النافذة السابقة (g|tok)؛ لا يُؤكَّد إلا بظهوره في نافذتين متتاليتين.
+    private var wrongCandidates = Set<String>()
     private var heardByWord: [Int: [String]] = [:]
     private var archivedHeard: [Int: [String]] = [:]
 
@@ -101,18 +103,29 @@ public final class TasmeeMatcher {
             heardByWord[k] = nil
         }
         next = i
-        stable.removeAll(); extraSeen.removeAll(); extraReported.removeAll(); pendingExtras = []; wrongSeen.removeAll()
+        stable.removeAll(); extraSeen.removeAll(); extraReported.removeAll(); pendingExtras = []; wrongSeen.removeAll(); wrongCandidates.removeAll()
     }
 
     public func upcomingText(_ count: Int) -> String {
         ref.dropFirst(next).prefix(count).map(\.text).joined(separator: " ")
     }
 
+    /// آخر `count` كلمات ثُبّتت صحيحةً قبل المؤشر (تلقين النموذج بما قيل فعلًا لا بما سيُقال، منعًا للهلوسة).
+    public func confirmedText(_ count: Int) -> String {
+        var words: [String] = []
+        var k = next - 1
+        while k >= 0, words.count < count {
+            if state[k] == .correct { words.append(ref[k].text) }
+            k -= 1
+        }
+        return words.reversed().joined(separator: " ")
+    }
+
     public func reset() {
         state = Array(repeating: .pending, count: ref.count)
         next = 0
         stable.removeAll(); extraSeen.removeAll(); extraReported.removeAll(); pendingExtras = []
-        wrongSeen.removeAll(); heardByWord.removeAll(); archivedHeard.removeAll()
+        wrongSeen.removeAll(); heardByWord.removeAll(); archivedHeard.removeAll(); wrongCandidates.removeAll()
     }
 
     public func drainExtras() -> [TasmeeExtraEvent] {
@@ -166,7 +179,7 @@ public final class TasmeeMatcher {
         for key in Array(extraSeen.keys) where !seenNow.contains(key) { extraSeen.removeValue(forKey: key) }
     }
 
-    /// محاذاة semi-global DP: تطابق +2، استبدال/حذف −1، بداية ونهاية حرّتان.
+    /// محاذاة semi-global DP: تطابق +2، استبدال/حذف −1، بداية ونهاية حرّتان. تدعم أيضًا دمج كلمتين مسموعتين في كلمة مرجعية (+3) وانقسام مسموعة إلى كلمتين مرجعيتين (+4) («إن الذين» ↔ «انالذين»).
     private func align(_ toks: [String]) -> [Match] {
         let m = toks.count
         let lo = max(0, next - m - params.back)
@@ -178,6 +191,9 @@ public final class TasmeeMatcher {
         var from = Array(repeating: Array(repeating: 0, count: r + 1), count: m + 1)
         for j in 0...r { dp[0][j] = 0 }
         let acc: [[Bool]] = toks.map { t in (0..<r).map { accepts(t, lo + $0) } }
+        // دمج: مسموعتان ← مرجعية؛ تقسيم: مسموعة ← مرجعيتان
+        func mergeOK(_ i: Int, _ j: Int) -> Bool { i >= 2 && j >= 1 && accepts(toks[i - 2] + toks[i - 1], lo + j - 1) }
+        func splitOK(_ i: Int, _ j: Int) -> Bool { i >= 1 && j >= 2 && acceptsSplit(toks[i - 1], lo + j - 2) }
         for i in 1...m {
             for j in 0...r {
                 var best = dp[i - 1][j] - 1
@@ -188,6 +204,8 @@ public final class TasmeeMatcher {
                     let skip = dp[i][j - 1] - 1
                     if skip > best { best = skip; how = 3 }
                 }
+                if mergeOK(i, j), dp[i - 2][j - 1] + 3 > best { best = dp[i - 2][j - 1] + 3; how = 4 }
+                if splitOK(i, j), dp[i - 1][j - 2] + 4 > best { best = dp[i - 1][j - 2] + 4; how = 5 }
                 dp[i][j] = best
                 from[i][j] = how
             }
@@ -203,11 +221,24 @@ public final class TasmeeMatcher {
                 i -= 1; j -= 1
             } else if how == 3 {
                 j -= 1
+            } else if how == 4 {
+                out.append((i - 1, lo + j - 1)); out.append((i - 2, lo + j - 1))
+                i -= 2; j -= 1
+            } else if how == 5 {
+                out.append((i - 1, lo + j - 1)); out.append((i - 1, lo + j - 2))
+                i -= 1; j -= 2
             } else {
                 i -= 1
             }
         }
         return out.reversed()
+    }
+
+    /// كلمة مسموعة واحدة تلصق كلمتين مرجعيتين متجاورتين (`idx`, `idx+1`).
+    private func acceptsSplit(_ token: String, _ idx: Int) -> Bool {
+        guard idx + 1 < ref.count else { return false }
+        let joined = forms[idx][0] + forms[idx + 1][0]
+        return QuranWordMatch.wordSimilarity(token, joined) >= params.thrLong
     }
 
     /// يستقبل نصًّا جزئيًّا ويُرجع الكلمات التي حُسمت حالتها الآن.
@@ -237,16 +268,34 @@ public final class TasmeeMatcher {
             events.append(TasmeeWordEvent(index: index, id: ref[index].id, state: st, timeMs: timeMs))
         }
         var ui = 0
+        var seenNow = Set<String>()
+        var held = false
         for g in next..<j {
             if ready.contains(g) {
                 push(g, .correct)
-            } else if ui < unmatchedBetween.count && sim(toks[unmatchedBetween[ui]], g) >= params.wrongSim {
+            } else if ui < unmatchedBetween.count, sim(toks[unmatchedBetween[ui]], g) >= params.wrongSim {
+                let tok = toks[unmatchedBetween[ui]]
                 ui += 1
-                push(g, .wrong)
+                // لا خطأ على كلمة تطابق السابقة أو التالية للمرجع (انزياح محاذاة لا خطأ قراءة)
+                if (g > 0 && accepts(tok, g - 1)) || (g + 1 < ref.count && accepts(tok, g + 1)) {
+                    push(g, .skipped)
+                    continue
+                }
+                // الخطأ يُؤكَّد بظهور الكلمة نفسها في نافذتين متتاليتين (يليها تطابق لاحق بالضرورة: j)
+                let key = "\(g)|\(tok)"
+                seenNow.insert(key)
+                if wrongCandidates.contains(key) {
+                    push(g, .wrong)
+                } else {
+                    held = true
+                    break
+                }
             } else {
                 push(g, .skipped)
             }
         }
+        wrongCandidates = seenNow
+        if held { next = max(next, events.last.map { $0.index + 1 } ?? next); stable.removeAll(); return events }
         push(j, .correct)
         next = j + 1
         stable.removeAll()
