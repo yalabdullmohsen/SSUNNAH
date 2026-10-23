@@ -117,21 +117,34 @@ struct TasmeeReminderSheet: View {
     @Binding var minutes: Int
     @State private var denied = false
 
-    private var time: Binding<Date> {
-        Binding(get: { Calendar.current.date(bySettingHour: minutes / 60, minute: minutes % 60, second: 0, of: Date()) ?? Date() },
-                set: { let c = Calendar.current.dateComponents([.hour, .minute], from: $0)
-                    minutes = (c.hour ?? 20) * 60 + (c.minute ?? 0)
-                    if on { TasmeeDailyReminder.schedule(minutes: minutes) } })
+    private func shift(_ delta: Int) {
+        minutes = ((minutes + delta) % 1440 + 1440) % 1440
+        if on { TasmeeDailyReminder.schedule(minutes: minutes) }
+    }
+
+    private var timeRow: some View {
+        HStack(spacing: Sunnah.Spacing.s3) {
+            Text("الوقت").font(AppearancePrefs.ui(.bold, 15, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
+            Spacer(minLength: Sunnah.Spacing.s3)
+            Button { shift(-15) } label: { Image(systemName: "minus.circle").frame(minWidth: 44, minHeight: 44) }
+                .accessibilityLabel("قبل ١٥ دقيقة")
+            Text(String(format: "%02d:%02d", minutes / 60, minutes % 60).arabicDigits)
+                .font(AppearancePrefs.ui(.extraBold, 17, .body)).foregroundStyle(Sunnah.Colors.textPrimary)
+                .environment(\.layoutDirection, .leftToRight)
+            Button { shift(15) } label: { Image(systemName: "plus.circle").frame(minWidth: 44, minHeight: 44) }
+                .accessibilityLabel("بعد ١٥ دقيقة")
+        }
+        .buttonStyle(.plain).foregroundStyle(Sunnah.Colors.primary)
     }
 
     var body: some View {
         VStack(alignment: .leading, spacing: Sunnah.Spacing.s4) {
             Text("تذكير تسميع اليوم").font(AppearancePrefs.ui(.extraBold, 18, .title3)).foregroundStyle(Sunnah.Colors.textPrimary)
-            Toggle("ذكّرني يوميًا", isOn: Binding(get: { on }, set: { v in
+            SunnahSwitch("ذكّرني يوميًا", isOn: Binding(get: { on }, set: { v in
                 if v { Task { let ok = await TasmeeDailyReminder.enable(minutes: minutes); on = ok; denied = !ok } }
                 else { on = false; denied = false; TasmeeDailyReminder.disable() }
-            })).font(AppearancePrefs.ui(.bold, 16, .body)).tint(Sunnah.Colors.primary)
-            if on { DatePicker("الوقت", selection: time, displayedComponents: .hourAndMinute).font(AppearancePrefs.ui(.bold, 16, .body)) }
+            }))
+            if on { timeRow }
             if denied {
                 Text("الإشعارات مغلقة لسُنّة. فعّلها من إعدادات الجهاز ثم أعد المحاولة.")
                     .font(AppearancePrefs.ui(.regular, 14, .footnote)).foregroundStyle(Sunnah.Colors.danger)
