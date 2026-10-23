@@ -21,6 +21,8 @@ public struct TasmeeModeOptions: Codable, Sendable, Equatable {
     public var sound = false
     /// التكرار: عدد القراءات الصحيحة المتتالية المطلوبة (1…20).
     public var repeatTarget = 3
+    /// التلقين (في وضع التكرار): يُشغَّل صوت القارئ للآية قبل كل قراءة.
+    public var talqin = false
     public init() {}
 
     /// فكّ متسامح: مفتاح ناقص (حقل أُضيف لاحقًا) أو قيمة enum مجهولة لا تُصفّر بقية التفضيلات.
@@ -32,6 +34,7 @@ public struct TasmeeModeOptions: Codable, Sendable, Equatable {
         haptics = (try? c.decodeIfPresent(Bool.self, forKey: .haptics)) ?? haptics
         sound = (try? c.decodeIfPresent(Bool.self, forKey: .sound)) ?? sound
         repeatTarget = (try? c.decodeIfPresent(Int.self, forKey: .repeatTarget)) ?? repeatTarget
+        talqin = (try? c.decodeIfPresent(Bool.self, forKey: .talqin)) ?? talqin
     }
 
     public static let repeatRange = 1...20

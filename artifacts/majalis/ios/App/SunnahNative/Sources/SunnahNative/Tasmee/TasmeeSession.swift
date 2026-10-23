@@ -27,6 +27,8 @@ public final class TasmeeSession {
     private let promptWords: Int
     private let guardRail = HallucinationGuard()
     private var active = false
+    /// أثناء تشغيل صوت القارئ (التلقين) تُهمَل النصوص الجزئية فلا يُحسب صوت القارئ على المستخدم.
+    public var isPaused = false
     private var partials = 0, hints = 0, extras = 0
     private var lastPrompt = ""
 
@@ -54,7 +56,7 @@ public final class TasmeeSession {
     }
 
     func handle(_ p: RecitationPartial) {
-        guard active else { return }
+        guard active, !isPaused else { return }
         partials += 1
         guard guardRail.decide(p.text, atMs: p.finishedAtMs) == .use else { return }
         let evs = matcher.ingest(p.text, timeMs: p.finishedAtMs)

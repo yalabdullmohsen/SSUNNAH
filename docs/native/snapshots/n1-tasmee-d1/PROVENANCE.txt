@@ -1,0 +1,11 @@
+git_sha=e4860e632eda9e2a655687ceb41257ee00d4db78
+branch=n1/tasmee-d1
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/7ce787a62cd362d4/SunnahApp.app
+binary_sha256=6d73c494281b902e3cb48b77ec1bf3cee48f3a115fb83624856b506f84fdeecd
+built_at=2026-10-24 00:02:40
+source_newest=2026-10-23 13:19:47
+captured_at=2026-10-24 00:03:25
+files: Tasmee/Modes/TasmeeModeSheet.swift (مفتاح التلقين خلف TasmeeAyahPlayer.talqinEnabled=false)
+covers=TasmeeModeSheet (ورقة أوضاع التسميع فاتحًا وداكنًا: الأوضاع الخمسة وخيارات إخفاء الأرقام/الاهتزاز/صوت التنبيه وزر «ابدأ»، وغياب مفتاح «اسمع ثم سمّع» بعد إطفاء العلم)
+device=iPhone 17 Pro simulator (n1-sim-b)، بناء Debug من HEAD عبر build-slot، الوصول بـ-snapshotRoute /mushaf/page/150 -tasmeeStage sheet (DEBUG فقط)
+gaps: لا يغطي TasmeeTalqin.swift ولا MushafTasmeeController.swift (لا تغيير مرئي: المسار خامل مع العلم مطفأ)، ولا جلسة نشطة ولا iPad/AX3؛ محاكٍ فقط، لا جهاز حقيقي
