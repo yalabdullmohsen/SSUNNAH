@@ -56,14 +56,20 @@ public struct MushafTasmeeRef: Sendable {
         return MushafTasmeeRef(words: words, pages: pages, indexByKey: byKey, keysByPage: slots, skippedVerses: skipped)
     }
 
+    /// كلمات نص الآية كما تقابل كلمات الرسم: علامة الوقف المستقلة («ۛ» في «رَيْبَ ۛ فِيهِ»، U+06D6…U+06ED) ليست كلمة في QPC.
+    /// عدّها كلمةً كان يجعل 2640 آية تختلف عن رسمها فتُستثنى من التسميع.
+    static func textWords(_ text: String) -> [Substring] {
+        text.split(whereSeparator: { $0.isWhitespace }).filter { !$0.unicodeScalars.allSatisfy { (0x06D6...0x06ED).contains($0.value) } }
+    }
+
     private static func textWord(_ s: MushafSearch, _ verse: String, _ i: Int) -> String? {
         guard let t = s.ayahText(verse) else { return nil }
-        let ws = t.split(whereSeparator: { $0.isWhitespace })
+        let ws = textWords(t)
         return i <= ws.count ? String(ws[i - 1]) : nil
     }
 
     private static func textCount(_ s: MushafSearch, _ verse: String) -> Int? {
-        s.ayahText(verse)?.split(whereSeparator: { $0.isWhitespace }).count
+        s.ayahText(verse).map { textWords($0).count }
     }
 
     private static func lineWords(_ p: MushafPage, _ verse: String) -> Int {

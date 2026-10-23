@@ -2,13 +2,13 @@ import SwiftUI
 import AVFoundation
 import Combine
 
-/// متحكّم التسميع داخل المصحف: زر الميكروفون ← موافقة تنزيل النموذج (Wi-Fi فقط) ← إذن الميكروفون ← جلسة حيّة تلوّن كلمات الصفحة نفسها.
+/// متحكّم التسميع داخل المصحف: زر الميكروفون ← موافقة تنزيل النموذج (Wi-Fi أو بيانات الجوال) ← إذن الميكروفون ← جلسة حيّة تلوّن كلمات الصفحة نفسها.
 /// المطابقة في `TasmeeSession`/`TasmeeMatcher`؛ نص القرآن يُقرأ ولا يُعدَّل.
 @MainActor
 public final class MushafTasmeeController: ObservableObject {
     public enum Phase: Equatable {
         case idle
-        case consent            // موافقة التنزيل (الحجم + Wi-Fi فقط)
+        case consent            // موافقة التنزيل (الحجم + نوع الاتصال)
         case downloading(Double)
         case preparing
         case needsMic           // الإذن مرفوض → توجيه للإعدادات
@@ -112,7 +112,7 @@ public final class MushafTasmeeController: ObservableObject {
             try await engine.downloadModel { [weak self] p in Task { @MainActor in
                 if case .downloading = self?.phase { self?.phase = .downloading(p) } } }
             await beginWithPermission()
-        } catch { phase = .failed("تعذّر تنزيل النموذج. تأكّد من اتصال Wi-Fi ثم أعد المحاولة.") }
+        } catch { phase = .failed(((error as? LocalizedError)?.errorDescription).map { "\($0) أعد المحاولة." } ?? "تعذّر تنزيل النموذج. تأكّد من الاتصال بالإنترنت ثم أعد المحاولة.") }
     }
 
     public func beginWithPermission() async {
@@ -203,7 +203,9 @@ public final class MushafTasmeeController: ObservableObject {
             guard sa.count == 2, let s = Int(sa[0]), let a = Int(sa[1]) else { return nil }
             return (s, a, w)
         }
-        guard let first = pos(0), let last = pos(reached - 1) else { return nil }
+        guard let first = pos(0) else { return nil }
+        // آخر آية بلغها القارئ من سورة البداية: الجلسة قد تعبر إلى سورة تالية (صفحة 604)، وأحداثها تحمل سورتها.
+        guard let last = (0..<reached).reversed().lazy.compactMap(pos).first(where: { $0.surah == first.surah }) else { return nil }
         var events: [TasmeeSessionEvent] = []
         for x in m.mistakes {
             guard let p = pos(x.index) else { continue }

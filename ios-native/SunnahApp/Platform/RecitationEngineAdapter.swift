@@ -39,7 +39,7 @@ final class RecitationEngineAdapter: RecitationEngineControlling {
     func downloadModel(progress: @escaping @Sendable (Double) -> Void) async throws {
         guard let manifest else { throw TasmeeModelError.io("manifest") }
         downloading = true; defer { downloading = false }
-        try await store.download(manifest) { [weak self] got, total in
+        try await store.download(manifest, allowCellular: true) { [weak self] got, total in
             let p = total > 0 ? Double(got) / Double(total) : 0
             Task { @MainActor in self?.downloadProgress = p }
             progress(p)

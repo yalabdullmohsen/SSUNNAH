@@ -1,0 +1,7 @@
+git_sha=46015a91639a31a9792a27b7899a013ffaaa3a15
+branch=n1/tabbar-flush
+binary_sha256=30b07b036db21b041b05b26df76ddd95d56957c002e9b1a35eed579d63c26c0b
+built_at=2026-10-23 01:01:11
+source_newest=2026-10-23 00:26:33
+captured_at=2026-10-23 02:07:04
+covers=SunnahTabBar

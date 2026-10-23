@@ -1,6 +1,7 @@
 name: content-sensitive gate
 # قاعدة يوسف: PR يمسّ نصًا شرعيًا لا يُدمج إلا بوسم visually-verified بعد فحص لقطة بصرية.
-# لا فشل أحمر: الوظيفة تنجح دائمًا وتنشر commit status باسم «content-sensitive» (pending ← success عند الوسم).
+# لا فشل أحمر: الوظيفة تنجح دائمًا وتنشر commit status باسم «content-sensitive» (pending ← success عند الوسم أو عند لقطة مسمّاة لكل ملف حسّاس).
+# القرار في scripts/content-sensitive-gate.sh (مختبَر بـscripts/test-content-sensitive-gate.sh)؛ الوسم يسقط عند synchronize فقط إن مسّت الدفعة ملفًا حسّاسًا.
 # المسارات الحسّاسة في .github/content-sensitive-paths (مختبَرة بـscripts/test-content-sensitive-paths.sh).
 on:
   pull_request:
@@ -26,22 +27,15 @@ jobs:
           PR: ${{ github.event.pull_request.number }}
           SHA: ${{ github.event.pull_request.head.sha }}
           ACTION: ${{ github.event.action }}
+          BEFORE: ${{ github.event.before }}
           BASE_REF: ${{ github.base_ref }}
           REPO: ${{ github.repository }}
         run: |
           LABELS=$(gh pr view "$PR" --json labels --jq '[.labels[].name]|join(",")')
-          has() { case ",$LABELS," in *,"$1",*) return 0;; esac; return 1; }
-          # التحقق البصري كان للنسخة السابقة: commit جديد يُسقط الوسم
-          if [ "$ACTION" = synchronize ] && has visually-verified; then
-            gh pr edit "$PR" --remove-label visually-verified || true
-            LABELS=$(echo ",$LABELS," | sed 's/,visually-verified,/,/; s/^,//; s/,$//')
-          fi
-          HIT=$(git diff --name-only "origin/${BASE_REF}...${SHA}" | bash scripts/content-sensitive-check.sh | head -5)
-          SENS=no; has content-sensitive && SENS=yes; [ -n "$HIT" ] && SENS=yes
-          if [ $SENS = no ]; then STATE=success; DESC="غير حسّاس"
-          elif has visually-verified; then
-            if COV=$(bash scripts/native-sensitive-coverage.sh "origin/${BASE_REF}" "$SHA" 2>&1); then STATE=success; DESC="حسّاس وتم التحقق البصري ✓"
-            else STATE=pending; DESC="الوسم بلا لقطة مسمّاة لكل ملف حسّاس: $(echo "$COV" | grep '✗' | head -2 | sed 's/.*: //' | tr '\n' ' ' | cut -c1-90)"; echo "$COV"; fi
-          else STATE=pending; DESC="بانتظار التحقق البصري — أضف وسم visually-verified بعد فحص اللقطة"; fi
-          echo "$STATE — $DESC"; [ -n "$HIT" ] && echo "$HIT"
+          export LABELS ACTION BASE_REF SHA BEFORE
+          OUT=$(bash scripts/content-sensitive-gate.sh)
+          echo "$OUT"
+          eval "$(echo "$OUT" | grep -E '^(STATE|DROP_LABEL)=')"
+          DESC=$(echo "$OUT" | sed -n 's/^DESC=//p' | cut -c1-135)
+          [ "$DROP_LABEL" = yes ] && { gh pr edit "$PR" --remove-label visually-verified || true; }
           gh api "repos/$REPO/statuses/$SHA" -f state=$STATE -f context=content-sensitive -f description="$DESC"

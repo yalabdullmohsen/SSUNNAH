@@ -30,7 +30,7 @@ struct SunnahSectionsHub: View {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !q.isEmpty else { return groups }
         return groups.compactMap { g in
-            let links = g.links.filter { $0.title.contains(q) || ($0.subtitle ?? "").contains(q) }
+            let links = g.links.filter { ArabicText.matches($0.title, query: q) || ArabicText.matches($0.subtitle ?? "", query: q) }
             return links.isEmpty ? nil : LibraryAdapters.NavGroup(title: g.title, links: links)
         }
     }
