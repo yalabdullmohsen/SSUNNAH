@@ -216,8 +216,8 @@ public struct MushafReaderView: View {
                 .frame(width: w, height: h)
                 .clipped()
                 pageHeader.padding(.horizontal, w * 0.032).position(x: w / 2, y: h * MushafPageLayout.headerCenter)
-                    .opacity(chromeHide.visible ? 0 : 1)   // الشريط يغطّي سطر الرأس: لا نص تحت الأزرار
-                    .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.25), value: chromeHide.visible)
+                    .opacity(chromeShown ? 0 : 1)   // الشريط يغطّي سطر الرأس: لا نص تحت الأزرار
+                    .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.25), value: chromeShown)
                 pageCartouche.padding(.horizontal, w * 0.04).position(x: w / 2, y: h * MushafPageLayout.footerCenter)
             }
             .frame(width: w, height: h)
@@ -246,10 +246,10 @@ public struct MushafReaderView: View {
             .ignoresSafeArea(edges: .top)
             // أي لمس على الأدوات يعيد عدّ الإخفاء (والشريط ثابت أثناء التركيز على حقل البحث).
             .simultaneousGesture(DragGesture(minimumDistance: 0).onChanged { _ in chromeHide.touch() })
-            .opacity(chromeHide.visible ? 1 : 0)
-            .allowsHitTesting(chromeHide.visible)
-            .accessibilityHidden(!chromeHide.visible)
-            .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.25), value: chromeHide.visible)
+            .opacity(chromeShown ? 1 : 0)
+            .allowsHitTesting(chromeShown)
+            .accessibilityHidden(!chromeShown)
+            .animation(Sunnah.Motion.reduced ? nil : .easeInOut(duration: 0.25), value: chromeShown)
         }
         .overlay(alignment: .top) {
             if pagePicker {
@@ -279,8 +279,8 @@ public struct MushafReaderView: View {
         .onChange(of: voiceOver) { chromeHide.alwaysVisible = $0 }
         .onAppear { chromeHide.alwaysVisible = voiceOver; updatePin() }
         .onDisappear { chromeHide.cancel(); if tafsirAyahPlaying != nil { mukhtasar.stop() } }
-        // أعلى الصفحة فوق سطر اسم السورة/الجزء (لا يغطي آخر سطر من الآيات ولا رقم الصفحة).
-        .overlay(alignment: .top) { if selected == nil { ayahTafsirPlayer } }
+        // شريط سفلي فوق رقم الصفحة: لا يغطي أي سطر من الآيات ولا سطر اسم السورة.
+        .overlay(alignment: .bottom) { if selected == nil { ayahTafsirPlayer.padding(.bottom, pageSize.height * (1 - MushafPageLayout.footerCenter) + Sunnah.Spacing.s4) } }
         .overlay(alignment: .bottom) { tasmeeOverlay }
         .modifier(MushafTasmeeHost(box: tasmeeBox, engine: debugTasmeeEngine(platform.recitationEngine), current: $current, surahName: surahName))
         #if DEBUG
@@ -306,6 +306,8 @@ public struct MushafReaderView: View {
             // لقطات التدقيق فقط: `-snapshotSelectAyah 37:130` يحدّد الآية كأن المستخدم لمسها (يُظهر التظليل وبطاقة الآية).
             if let a = UserDefaults.standard.string(forKey: "snapshotSelectAyah"), !a.isEmpty { selected = a }
             // `-snapshotShowChrome 1` يُظهر سطر الأدوات ثابتًا (لقطة وضع الأدوات).
+            // `-snapshotTafsirAudio 1` يشغّل مختصر التفسير لأول آية في الصفحة (لقطة شريط الإيجاز الصوتي).
+            if UserDefaults.standard.bool(forKey: "snapshotTafsirAudio"), let a = firstAyah(on: current), let p = ayahParts(a) { mukhtasar.play(p.surah, ayah: p.ayah) }
             if UserDefaults.standard.bool(forKey: "snapshotShowChrome") { chromeHide.pin(true) }   // updatePin لا يلغيه: يُعاد ضبطه عند أي تغيّر حالة
             // `-snapshotMarkPicker 1` يفتح اختيار اللون في بطاقة الآية؛ `-snapshotSeedMarks 1` يزرع علامات ملوّنة في الصفحة الحالية؛ `-snapshotShowMarks 1` يفتح «علاماتي».
             if UserDefaults.standard.bool(forKey: "snapshotMarkPicker") { Task { try? await Task.sleep(nanoseconds: 500_000_000); ayahPicker = true } }
@@ -349,7 +351,7 @@ public struct MushafReaderView: View {
             MushafToolButton(symbol: "xmark", label: "إغلاق المصحف", id: "mushaf.close") { openRoute("/") }
             MushafSearchField(query: $query, focused: $searchFocused) { submitSearch() }
             if let t = tasmeeBox.controller {
-                MushafToolButton(symbol: "mic", label: "التسميع", id: "mushaf.tasmee.open") { searchFocused = false; t.micPressed(page: current, repo: repo, search: search) }
+                MushafToolButton(symbol: "mic", label: "التسميع", id: "mushaf.tasmee.open", title: "تسميع") { searchFocused = false; t.micPressed(page: current, repo: repo, search: search) }
             }
             MushafToolButton(symbol: "list.bullet", label: "الفهرس والعلامات", id: "mushaf.index") { searchFocused = false; showIndex = true }
             MushafToolButton(symbol: store.colors(ofPage: current).isEmpty ? "bookmark" : "bookmark.fill", label: "علامة على الصفحة", id: "mushaf.pageMark") { sunnahAnimate { pagePicker.toggle() } }
@@ -374,6 +376,8 @@ public struct MushafReaderView: View {
                 .padding(.bottom, Sunnah.Spacing.s2).offset(y: Sunnah.Spacing.s3)   // صف التذييل: بين شارة الصفحة وتسمية الحزب، منزَل تحت آخر سطر فلا يلاصق كلمة
         }
     }
+    /// الشريط العلوي مخفي طوال جلسة التسميع (يغطّي سطر الرأس ويشتّت)؛ أدوات الجلسة السفلية تكفي، وينتهي الإخفاء بانتهاء الجلسة.
+    private var chromeShown: Bool { chromeHide.visible && tasmeeBox.controller?.showsSessionControls != true }
     private func updatePin() { chromeHide.pin(selected != nil || searchFocused || pagePicker) }
 
     private func runSearch(_ q: String) {
@@ -497,6 +501,13 @@ public struct MushafReaderView: View {
                 mark: { sunnahAnimate { ayahPicker.toggle() } },
                 hifz: { sunnahAnimate { hifzPicker.toggle() } },
                 copy: { copy($0) })
+            if let t = tasmeeBox.controller {
+                SunnahButton("سمّع من هنا", style: .outline) {
+                    selected = nil
+                    t.startHere(ayah: ayah, page: current, repo: repo, search: search)
+                }
+                .accessibilityIdentifier("mushaf.sheet.tasmeeHere")
+            }
             if ayahPicker {
                 MushafMarkPicker(active: store.colors(ofAyah: ayah)) { store.toggleMark($0, ayah: ayah, page: current) }
             }
@@ -579,8 +590,8 @@ public struct MushafReaderView: View {
             .background(Sunnah.Colors.surface, in: RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: Sunnah.Radius.hero, style: .continuous).stroke(Sunnah.Colors.goldDeco.opacity(0.6), lineWidth: 1))
             .shadow(color: .black.opacity(0.12), radius: 12, y: 4)
-            .padding(.horizontal, Sunnah.Spacing.s4).padding(.top, Sunnah.Spacing.s1)
-            .transition(.move(edge: .top).combined(with: .opacity))
+            .padding(.horizontal, Sunnah.Spacing.s4)
+            .transition(.move(edge: .bottom).combined(with: .opacity))
             .accessibilityElement(children: .contain)
         }
     }

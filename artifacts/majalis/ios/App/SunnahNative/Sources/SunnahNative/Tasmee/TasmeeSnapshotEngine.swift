@@ -53,6 +53,8 @@ final class TasmeeSnapshotEngine: RecitationEngineControlling, RecitationLevelRe
         case "revealed": await say(3); await say(6)
         case "wrong": await say(3); await say(4); await wrongTry(0)
         case "hint": await say(3); await say(4); for v in 0..<3 { await wrongTry(v) }
+        case "current": await say(2); await say(4)
+        case "report": await say(3); await say(4); await wrongTry(0); try? await Task.sleep(nanoseconds: 900_000_000); await controller?.stop()
         default: break
         }
     }
