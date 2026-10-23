@@ -36,15 +36,16 @@ public final class TasmeeHistoryStore: ObservableObject {
     public func append(_ r: TasmeeSessionRecord, calendar: Calendar = .current) {
         sessions.append(r)
         if sessions.count > maxSessions { sessions.removeFirst(sessions.count - maxSessions) }
-        let weak = Set(r.weakAyahs)
-        for a in weak {
-            if let i = review.firstIndex(where: { $0.surah == r.surah && $0.ayah == a }) {
+        // كل آية ضعيفة بسورتها الحقيقية (لا تُنسب آية من سورة تالية إلى سورة السجل).
+        for v in r.weakVerses {
+            if let i = review.firstIndex(where: { $0.surah == v.surah && $0.ayah == v.ayah }) {
                 review[i] = TasmeeSpacing.failed(review[i], now: r.startedAt, calendar: calendar)
             } else {
-                review.append(TasmeeReviewItem(surah: r.surah, ayah: a,
+                review.append(TasmeeReviewItem(surah: v.surah, ayah: v.ayah,
                                                dueAt: TasmeeSpacing.due(afterBox: 0, from: r.startedAt, calendar: calendar)))
             }
         }
+        let weak = Set(r.weakAyahs)
         for a in r.fromAyah...max(r.fromAyah, r.toAyah) where !weak.contains(a) {
             if let i = review.firstIndex(where: { $0.surah == r.surah && $0.ayah == a }), review[i].dueAt <= r.startedAt {
                 if let up = TasmeeSpacing.passed(review[i], now: r.startedAt, calendar: calendar) { review[i] = up }

@@ -36,6 +36,32 @@ final class TasmeeMatcherTests: XCTestCase {
         XCTAssertEqual(m2.drainExtras().first?.heard, QuranWordMatch.normalizeQuranWord("زائدةكلمة"))
     }
 
+    func testGateBlocksAdvanceUntilWordSaidCorrectly() {
+        var p = TasmeeMatchParams(); p.gateOnError = true
+        let m = TasmeeMatcher(ref: ref(["الحمد", "الرحمن", "الرحيم", "مالك", "يوم", "الدين"]), params: p)
+        XCTAssertEqual(m.ingest("الحمد", timeMs: 1).map(\.index), [0])
+        // قفز إلى «مالك» بدل «الرحمن»: لا يُثبَّت من نتيجة واحدة
+        XCTAssertTrue(m.ingest("الحمد مالك", timeMs: 2).isEmpty)
+        let wrong = m.ingest("الحمد مالك", timeMs: 3)
+        XCTAssertEqual(wrong.map(\.state), [.wrong])
+        XCTAssertEqual(wrong.first?.index, 1)
+        XCTAssertEqual(wrong.first?.attempts, 1)
+        XCTAssertEqual(m.next, 1)
+        XCTAssertNotEqual(m.state[3], .correct)
+        XCTAssertTrue(m.ingest("الحمد مالك", timeMs: 4).isEmpty)
+        XCTAssertEqual(m.ingest("الحمد الرحمن", timeMs: 5).map(\.state), [.correct])
+        XCTAssertEqual(m.next, 2)
+        XCTAssertEqual(m.state[1], .correct)
+        XCTAssertEqual(m.attempts(for: 1), 1)
+        XCTAssertEqual(m.mistakes.map(\.index), [1])
+    }
+
+    func testDefaultModeStillAdvancesOnSkip() {
+        let m = TasmeeMatcher(ref: ref(["الحمد", "الرحمن", "الرحيم", "مالك"]))
+        _ = m.ingest("الحمد مالك", timeMs: 1)
+        XCTAssertEqual(m.next, 4)
+    }
+
     func testHallucinationGuard() {
         let g = HallucinationGuard()
         XCTAssertEqual(g.decide("ا", atMs: 0), .warmup)

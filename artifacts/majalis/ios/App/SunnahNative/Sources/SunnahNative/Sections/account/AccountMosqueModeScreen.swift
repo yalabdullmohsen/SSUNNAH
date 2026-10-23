@@ -98,7 +98,7 @@ struct AccountMosqueModeScreen: View {
                 switch AccountPrayerPhase.resolve(now: now, slots: slots) {
                 case let .elapsed(prayer, since, _, nextIn)?:
                     Text("مضى على دخول وقت \(prayer.nameAr)").font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
-                    Text("\(Int(since / 60)) دقيقة").font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.primary)
+                    Text(ArabicCount.label(Int(since / 60), one: "دقيقة واحدة", two: "دقيقتان", few: "دقائق", many: "دقيقة", genitive: "دقيقة")).font(Sunnah.Typography.pageTitle).foregroundStyle(Sunnah.Colors.primary)
                         .monospacedDigit()
                     if let nextIn {
                         Text("الصلاة التالية بعد \(PrayerTimeFormat.countdown(nextIn))")

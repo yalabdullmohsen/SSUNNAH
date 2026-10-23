@@ -119,6 +119,23 @@ public struct LearnQuizManifest: Decodable, Sendable {
     }
     public let total: Int
     public let chunks: [Chunk]
+
+    /// باب واحد لكل عنوان: التصدير يقسم الباب الكبير ملفات («السيرة-002» و«السيرة-003»)، فتُضمّ بترتيب أول ظهور.
+    public struct Topic: Identifiable, Hashable, Sendable {
+        public let title: String
+        public let chunks: [Chunk]
+        public var id: String { title }
+        public var count: Int { chunks.reduce(0) { $0 + $1.count } }
+    }
+
+    public var topics: [Topic] {
+        var order: [String] = [], byTitle: [String: [Chunk]] = [:]
+        for c in chunks where c.count > 0 {
+            if byTitle[c.title] == nil { order.append(c.title) }
+            byTitle[c.title, default: []].append(c)
+        }
+        return order.map { Topic(title: $0, chunks: byTitle[$0] ?? []) }
+    }
 }
 
 /// سؤال مفتوح كما في الملفات (بلا خيارات): سؤال، جواب، شرح، مرجع.
@@ -501,4 +518,11 @@ public struct LearnDarsSection: Decodable, Identifiable, Hashable, Sendable {
     public var num: String?
     public let title: String
     public let lessons: [Item]
+}
+
+extension LearnUniversity {
+    /// بحث الدليل: الاسمان والدولة والمدينة، بتطبيع ArabicText («الازهر» ⇐ «الأزهر»، «عمان» ⇐ «عمّان»).
+    func matches(_ query: String) -> Bool {
+        [nameAr, nameEn ?? "", country ?? "", city ?? ""].contains { ArabicText.matches($0, query: query) }
+    }
 }

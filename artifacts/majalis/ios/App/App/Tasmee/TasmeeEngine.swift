@@ -28,6 +28,8 @@ enum TasmeeEngineEvent {
 final class TasmeeEngine {
     struct Config {
         var hopSec = 0.5
+        /// طوابع زمنية للكلمات في البث المستمر؛ معطّلة افتراضيًا لحين قياسها بـtasmee-bench (تزيد كلفة الفك، ولا قياس جهاز بعد).
+        var streamWordTimestamps = false
         /// 6 ث: قياس اصطناعي (base، العتبات المعتمدة) p95 1.18 ث بدل 1.37 عند 10 ث، إنذار 1.38% وكشف 100%؛ q6: p95 1.18، إنذار 1.03% وكشف 99%
         var windowSec = 6.0
         var vadRms: Float = 0.006
@@ -101,6 +103,9 @@ final class TasmeeEngine {
     }
 
     // MARK: الجلسة
+
+    /// مستوى الصوت الحي المطبَّع 0…1 لموجة الميكروفون؛ يُستدعى من خيط الالتقاط.
+    var onLevel: ((Float) -> Void)?
 
     func setPrompt(_ text: String?) { lock.lock(); promptText = text; lock.unlock() }
 
@@ -202,6 +207,12 @@ final class TasmeeEngine {
             }
             guard err == nil, let ch = out.floatChannelData?[0] else { return }
             let chunk = Array(UnsafeBufferPointer(start: ch, count: Int(out.frameLength)))
+            if let report = self.onLevel {
+                var sum: Float = 0
+                for x in chunk { sum += x * x }
+                let rms = chunk.isEmpty ? 0 : (sum / Float(chunk.count)).squareRoot()
+                report(rms > 0 ? min(1, max(0, (20 * log10(rms) + 50) / 50)) : 0)
+            }
             self.append(chunk)
         }
         audioEngine.prepare()
@@ -302,7 +313,7 @@ final class TasmeeEngine {
             let opts = DecodingOptions(
                 verbose: false, task: .transcribe, language: "ar", temperature: 0,
                 usePrefillPrompt: promptTokens == nil, detectLanguage: false, skipSpecialTokens: true,
-                withoutTimestamps: true, wordTimestamps: false, windowClipTime: 0, promptTokens: promptTokens,
+                withoutTimestamps: !config.streamWordTimestamps, wordTimestamps: config.streamWordTimestamps, windowClipTime: 0, promptTokens: promptTokens,
                 suppressBlank: true, supressTokens: suppressTokens, compressionRatioThreshold: nil, logProbThreshold: nil,
                 firstTokenLogProbThreshold: nil, noSpeechThreshold: nil
             )

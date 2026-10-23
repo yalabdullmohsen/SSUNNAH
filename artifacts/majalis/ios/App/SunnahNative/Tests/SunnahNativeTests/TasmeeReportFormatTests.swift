@@ -33,6 +33,16 @@ final class TasmeeReportFormatTests: XCTestCase {
         XCTAssertEqual(TasmeeProgressFormat.goalTitle(TasmeeGoal(kind: .surahWeekly, surah: 18, weekday: 2), surahName: { _ in "الكهف" }), "الكهف كل يوم الاثنين")
     }
 
+    /// العدد فوق المئة يُعامل بآخر رقمين كـ`ArabicCount`: «١٠٣ آيات» و«١١٢ مرة» و«١٠٠ آية».
+    func testCountsAboveHundredUseLastTwoDigits() {
+        XCTAssertEqual(TasmeeProgressFormat.ayahs(103), "١٠٣ آيات")
+        XCTAssertEqual(TasmeeProgressFormat.ayahs(110), "١١٠ آيات")
+        XCTAssertEqual(TasmeeProgressFormat.ayahs(100), "١٠٠ آية")
+        XCTAssertEqual(TasmeeProgressFormat.times(112), "١١٢ مرة")
+        XCTAssertEqual(TasmeeProgressFormat.ayahs(10), "١٠ آيات")
+        XCTAssertEqual(TasmeeProgressFormat.ayahs(1), "آية واحدة")
+    }
+
     func testStrengthLabels() {
         XCTAssertEqual(TasmeeProgressFormat.label(.strong), "قوية")
         XCTAssertEqual(TasmeeProgressFormat.label(.needsReview), "تحتاج مراجعة")

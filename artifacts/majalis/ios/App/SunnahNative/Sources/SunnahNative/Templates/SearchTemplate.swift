@@ -44,7 +44,12 @@ public struct SearchTemplate: View {
         let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
         if q.isEmpty, browseWhenEmpty || browsing { return items }
         guard q.count >= 2 else { return [] }
-        return items.filter { ([$0.title, $0.subtitle ?? ""] + $0.tags).contains { $0.localizedCaseInsensitiveContains(q) } }
+        return items.filter { SearchTemplate.matches($0, query: q) }
+    }
+
+    /// تطابق متسامح (ArabicText): «الازهر» تجد «الأزهر»، و«عمان» تجد «عمّان».
+    static func matches(_ item: ContentItem, query: String) -> Bool {
+        ([item.title, item.subtitle ?? ""] + item.tags).contains { ArabicText.matches($0, query: query) }
     }
 
     public var body: some View {

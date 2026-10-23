@@ -105,6 +105,17 @@ enum AccountCalendarMath {
         return d == "الإثنين" || d == "الأثنين" ? "الاثنين" : d
     }
 
+    /// أيام الأسبوع (0…6) المذكورة في نص اليوم: «الاثنين» أو «الثلاثاء والخميس» (مطابق لـ weekdaysOf في الويب).
+    /// ما فيه غير أسماء الأيام («من الأحد إلى الخميس»، «طوال الأسبوع») ⇒ [] فلا يُخمَّن.
+    static func weekdays(_ day: String) -> [Int] {
+        let parts = day.split(whereSeparator: { $0.isWhitespace || $0 == "،" || $0 == "," }).map { p -> String in
+            let t = String(p)
+            return normalizeDay(t.hasPrefix("و") && !weekdayLabels.contains(t) ? String(t.dropFirst()) : t)
+        }.filter { !$0.isEmpty }
+        let idx = parts.compactMap { weekdayLabels.firstIndex(of: $0) }
+        return !parts.isEmpty && idx.count == parts.count ? idx : []
+    }
+
     static var gregorian: Calendar {
         var c = Calendar(identifier: .gregorian)
         // الترتيب مهم: ضبط locale يعيد firstWeekday إلى السبت (7) فيُزاح التقويم يومًا كاملًا.
@@ -129,7 +140,7 @@ enum AccountCalendarMath {
             let match: Bool
             if e.day.isEmpty && e.date == nil { match = false }
             else if let d = e.date, !e.recurring { match = d == key }
-            else if e.recurring, !e.day.isEmpty { match = weekdayLabels.firstIndex(of: e.day) == weekday }
+            else if e.recurring, !e.day.isEmpty { match = weekdays(e.day).contains(weekday) }
             else { match = false }
             return match && seen.insert(e.id).inserted
         }

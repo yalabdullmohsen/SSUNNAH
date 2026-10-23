@@ -118,8 +118,9 @@ public struct MushafSearch: Sendable {
         return MushafJump(page: sr.firstPage, ayah: nil, title: sr.name)
     }
 
-    private static func surahKey(_ s: String) -> String {
-        var k = dropAlif(QuranWordMatch.normalizeArabic(s))   // «ال» تبقى: الكلمتان تُقارَنان بنفس المفتاح
+    private static func surahKey(_ s: String, dropAlif drop: Bool = true) -> String {
+        let n = QuranWordMatch.normalizeArabic(s)
+        var k = drop ? dropAlif(n) : n   // «ال» تبقى: الكلمتان تُقارَنان بنفس المفتاح
         if k.hasPrefix("سوره ") { k.removeFirst(5) }
         return k.split(separator: " ").map { w -> String in
             let x = String(w); return x.hasPrefix("ل") && x.count > 3 ? String(x.dropFirst()) : x
@@ -129,7 +130,12 @@ public struct MushafSearch: Sendable {
     private static func surahMatch(_ text: String, _ index: MushafIndex) -> MushafSurah? {
         let k = surahKey(text)
         guard k.count >= 2 else { return nil }
-        if let exact = index.surahs.first(where: { surahKey($0.name) == k }) { return exact }
+        // حذف الألف يجمع أسماءً مختلفة («الناس» و«النساء» ⇒ «لنس»): التطابق بالألف أولًا، ثم بدونه إن كان فريدًا.
+        let strict = surahKey(text, dropAlif: false)
+        if let exact = index.surahs.first(where: { surahKey($0.name, dropAlif: false) == strict }) { return exact }
+        let loose = index.surahs.filter { surahKey($0.name) == k }
+        if loose.count == 1 { return loose[0] }
+        if loose.count > 1 { return nil }
         guard k.count >= 3 else { return nil }
         let pre = index.surahs.filter { surahKey($0.name).hasPrefix(k) }
         return pre.count == 1 ? pre[0] : nil

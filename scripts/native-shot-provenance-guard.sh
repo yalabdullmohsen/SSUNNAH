@@ -11,8 +11,10 @@ for d in $dirs; do
   p="$d/PROVENANCE.txt"
   [ -f "$p" ] || { bad "$d: لقطات مضافة بلا PROVENANCE.txt (شغّل native-shot-guard.sh على اللقط)"; continue; }
   sha=$(sed -n 's/^git_sha=//p' "$p" | head -1)
-  echo "$sha" | grep -Eq '^[0-9a-f]{40}$' || { bad "$p: git_sha غير صالح"; continue; }
-  grep -Eq '^binary_sha256=[0-9a-f]{64}$' "$p" || bad "$p: binary_sha256 مفقود"
+  # الصيغة حقل في كل سطر كما يكتبها native-shot-guard.sh؛ ملف مكتوب يدويًا على سطر واحد يُرفض بإرشاد صريح.
+  hint="(حقل واحد في كل سطر: git_sha=<40 hex> ثم binary_sha256=… — ولّده بـscripts/native-shot-guard.sh ولا تكتبه يدويًا)"
+  echo "$sha" | grep -Eq '^[0-9a-f]{40}$' || { bad "$p: git_sha غير صالح $hint"; continue; }
+  grep -Eq '^binary_sha256=[0-9a-f]{64}$' "$p" || bad "$p: binary_sha256 مفقود $hint"
   if git cat-file -e "$sha^{commit}" 2>/dev/null; then git merge-base --is-ancestor "$sha" HEAD || bad "$p: git_sha ليس من أسلاف HEAD (لقطات من فرع آخر)"; fi
 done
 [ "$fail" = 0 ] && echo "✓ لقطات PR كلها بمصدر موثّق (PROVENANCE.txt)"

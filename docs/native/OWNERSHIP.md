@@ -39,13 +39,14 @@
 - `scripts/native-data-check.mjs`
 - `scripts/native-export-data.sh`
 - `ios-native/scripts/prepare-data.sh`
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Tasmee/**` (قرار المنسّق 22 أكتوبر: التسميع ملك ن2)
+- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Mushaf/MushafTasmee*`
 
 ## n3 — المصحف وأداؤه
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Sections/account/AccountWidgetCenterScreen.swift` (مركز الودجات فقط؛ قرار يوسف 2026-10-17)
 - `artifacts/majalis/ios/App/SunnahNative/Tests/SunnahNativeTests/WidgetCenterTests.swift`
 - `docs/native/WIDGET_CENTER_SPEC.md`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Mushaf/**`
-- `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Tasmee/**`
 - `artifacts/majalis/ios/App/SunnahNative/Sources/SunnahNative/Audio/**`
 - `artifacts/majalis/ios/App/SunnahNative/Tests/SunnahNativeTests/Mushaf*`
 - `artifacts/majalis/ios/App/SunnahNative/Tests/SunnahNativeTests/Quran*`

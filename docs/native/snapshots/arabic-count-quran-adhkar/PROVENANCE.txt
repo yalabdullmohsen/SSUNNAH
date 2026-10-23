@@ -1,0 +1,10 @@
+git_sha=4b81c8f7fd175b258283ab1bb511b061b8a37c71
+branch=n2/3686-shots
+app=/Users/alabdullmohsen/.majalis-tools/headbuild/6753ad0b41a5e599/SunnahApp.app
+binary_sha256=ac038cab6d64708138e5f31af613f84fd029d59b2b9a68bbc750bee20bcebf99
+built_at=2026-10-22 21:16:35
+source_newest=2026-10-22 15:54:47
+captured_at=2026-10-22 21:19:21
+files: QuranScreens+Native.swift TafsirScreens+Native.swift QuranLocalScreens+Native.swift PublishedScreens+Native.swift AdhkarScreen.swift
+covers: surah-list-light.png surah-list-dark.png = QuranScreens+Native.swift (فهرس السور: «٧ آيات» و«٢٨٦ آية»)؛ adhkar-categories-light.png adhkar-categories-dark.png = AdhkarScreen.swift (أعداد الأذكار: «٣ أذكار» و«١٢ ذكرًا»)؛ hifz-plan-light.png hifz-plan-dark.png = PublishedScreens+Native.swift (مسار جزء عمّ: «مبتدئ · ٣٧٠ وحدة»)؛ hifz-paths-light.png hifz-paths-dark.png = PublishedScreens+Native.swift (قائمة مسارات الحفظ)
+gaps: TafsirScreens+Native.swift وQuranLocalScreens+Native.swift (مُحفِّز «الهدف: … مرة») لم يُلتقطا لأن مسارهما لا يُفتح بـ-snapshotRoute مباشرة؛ حالتا المثنى «آيتان/ذكران» لا تظهران في بيانات هذه الشاشات وتُغطّيهما اختبارات ArabicCount

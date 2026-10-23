@@ -193,7 +193,7 @@ struct AccountMySubmissionsScreen: View {
                         EmptyStateView(title: "لا يتوفر محتوى هنا الآن.")
                         SunnahButton("ارفع درساً", style: .secondary) { openRoute("/upload") }
                     } else {
-                        Text("\(list.count) مساهمة".arabicDigits).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
+                        Text(ArabicCount.label(list.count, one: "مساهمة واحدة", two: "مساهمتان", few: "مساهمات", many: "مساهمة", genitive: "مساهمة")).font(Sunnah.Typography.secondary).foregroundStyle(Sunnah.Colors.textSecondary)
                         ForEach(list) { row($0) }
                     }
                 } else if !loading {

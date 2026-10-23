@@ -32,7 +32,7 @@ enum SeriesProgress {
 enum SeriesRelated {
     static func people(in text: String, from known: [(name: String, route: String)], limit: Int = 6) -> [SeriesLink] {
         var out: [SeriesLink] = []
-        for k in known where text.contains(k.name) && !out.contains(where: { $0.route == k.route }) {
+        for k in known where mentions(text, k.name) && !out.contains(where: { $0.route == k.route }) {
             out.append(SeriesLink(kind: .person, title: k.name, route: k.route))
             if out.count == limit { break }
         }
@@ -47,8 +47,30 @@ enum SeriesRelated {
             (.hadith, "الأحاديث", "/hadith", ["حديث", "قال رسول الله", "قال النبي"]),
         ]
         return table.compactMap { k, title, route, words in
-            words.contains { text.contains($0) } ? SeriesLink(kind: k, title: title, route: route) : nil
+            words.contains { mentions(text, $0) } ? SeriesLink(kind: k, title: title, route: route) : nil
         }
+    }
+    /// السوابق المتصلة المقبولة قبل الكلمة (حرف عطف/جر و«ال»)؛ ما عداها جزء من كلمة أخرى.
+    private static let prefixes: Set<String> = ["", "و", "ف", "ب", "ل", "ك", "وب", "ول", "فب", "فل", "ال", "وال", "فال", "بال", "كال"]
+    /// ورود الكلمة كلمةً تامة لا جزءًا من غيرها: «عثمان» لا تطابق «العثماني»، ولا «عمر» تطابق «عمران» أو «عمرة»، ولا «أحد» تطابق «الأحداث».
+    static func mentions(_ text: String, _ word: String) -> Bool {
+        let s = Array(text.unicodeScalars), w = Array(word.unicodeScalars)
+        guard !w.isEmpty, s.count >= w.count else { return false }
+        // التشكيل (Mn) لا يفصل الكلمة ولا يُعدّ حرفًا: «عمرُ» تطابق «عمر».
+        func mark(_ c: Unicode.Scalar) -> Bool { c.properties.generalCategory == .nonspacingMark }
+        func letter(_ c: Unicode.Scalar) -> Bool { c.properties.isAlphabetic && !mark(c) }
+        for i in 0...(s.count - w.count) where s[i..<(i + w.count)].elementsEqual(w) {
+            var j = i + w.count
+            while j < s.count, mark(s[j]) { j += 1 }
+            if j < s.count, letter(s[j]) { continue }
+            var lead = String.UnicodeScalarView(), k = i - 1
+            while k >= 0, letter(s[k]) || mark(s[k]) {
+                if !mark(s[k]) { lead.insert(s[k], at: lead.startIndex) }
+                k -= 1
+            }
+            if prefixes.contains(String(lead)) { return true }
+        }
+        return false
     }
     static func verses(_ refs: [String]) -> [SeriesLink] {
         refs.compactMap { r in SunnahAyahRange.mushafPath(r).map { SeriesLink(kind: .verse, title: SunnahAyahRange.display(r), route: $0) } }

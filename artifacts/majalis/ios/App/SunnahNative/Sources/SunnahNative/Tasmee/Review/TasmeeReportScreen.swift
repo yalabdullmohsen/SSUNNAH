@@ -73,7 +73,7 @@ public struct TasmeeReportScreen: View {
                 }
                 ForEach(Array(record.errors(inAyah: ayah).enumerated()), id: \.offset) { _, e in
                     HStack(alignment: .firstTextBaseline, spacing: 8) {
-                        Text(TasmeeReportFormat.label(e.kind)).font(AppearancePrefs.ui(.bold, 12, .caption))
+                        Text(TasmeeReportFormat.label(e.kind)).font(AppearancePrefs.ui(.bold, 13, .caption))
                             .foregroundStyle(Sunnah.Colors.danger)
                         Text(TasmeeReportFormat.detail(e)).font(AppearancePrefs.ui(.regular, 15, .body))
                             .foregroundStyle(Sunnah.Colors.textPrimary)
@@ -98,7 +98,7 @@ public enum TasmeeReportFormat {
         case .wrong: return "خاطئة"
         case .skipped: return "متروكة"
         case .extra: return "زائدة"
-        case .tashkeelMaybe: return "تشكيل"
+        case .tashkeelMaybe: return "تشكيل (محتمل)"
         case .correct: return "صحيحة"
         }
     }

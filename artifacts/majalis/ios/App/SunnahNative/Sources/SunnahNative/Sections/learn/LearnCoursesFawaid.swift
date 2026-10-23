@@ -35,7 +35,7 @@ struct LearnFaidah: Codable, Identifiable, Hashable, Sendable {
         return all.filter { f in
             f.hasPublicSource && !f.text.isEmpty
                 && (category == nil || f.category == category)
-                && (q.isEmpty || [f.text, f.source ?? "", f.authorName ?? ""].contains { $0.localizedCaseInsensitiveContains(q) })
+                && (q.isEmpty || [f.text, f.source ?? "", f.authorName ?? ""].contains { ArabicText.matches($0, query: q) })
         }
     }
 }
