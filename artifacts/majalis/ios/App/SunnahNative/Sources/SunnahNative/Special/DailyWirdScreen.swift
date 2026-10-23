@@ -10,14 +10,17 @@ struct WirdState: Codable, Equatable {
     var streak = 0
     var weeklyLogs: [String: Int] = [:]
     var totalPagesEver = 0
+    /// آخر يوم احتُسب في السلسلة. اختياري لتبقى البيانات المحفوظة قبله قابلة للقراءة.
+    var streakDay: String?
 
-    /// نفس منطق الموقع: السلسلة تزيد حين يُكمَل الهدف أول مرة اليوم وأمس مكتمل.
+    /// السلسلة تتغير مرة واحدة في اليوم عند أول إكمال للهدف: تزيد إن اكتمل هدف الأمس، وإلا تبدأ من 1.
+    /// الحكم من سجل الأمس لا من `lastDate`، فإكمال الهدف على دفعات في اليوم نفسه يُحتسب كذلك.
     mutating func add(_ n: Int, today: String, yesterday: String) {
         let prev = lastDate == today ? completedToday : 0
         let next = prev + n
-        if next >= pagesPerDay, prev < pagesPerDay {
-            if lastDate == yesterday, (weeklyLogs[yesterday] ?? 0) >= pagesPerDay { streak += 1 }
-            else if lastDate != today { streak = 1 }
+        if next >= pagesPerDay, prev < pagesPerDay, streakDay != today {
+            streak = (weeklyLogs[yesterday] ?? 0) >= pagesPerDay ? streak + 1 : 1
+            streakDay = today
         }
         completedToday = next; lastDate = today
         monthlyTotal += n; totalPagesEver += n
@@ -100,7 +103,7 @@ struct DailyWirdView: View {
                     HStack(spacing: 16) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("\(ar(state.streak)) يوم متواصل").font(AppearancePrefs.ui(.extraBold, 20, .title3)).foregroundStyle(Sunnah.Colors.textPrimary)
-                            if state.streak > 0 { Text(WirdState.streakMessage(state.streak)).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.textSecondary) }
+                            if !WirdState.streakMessage(state.streak).isEmpty { Text(WirdState.streakMessage(state.streak)).font(AppearancePrefs.ui(.bold, 13, .footnote)).foregroundStyle(Sunnah.Colors.textSecondary) }
                         }
                         Spacer(minLength: 0)
                     }
