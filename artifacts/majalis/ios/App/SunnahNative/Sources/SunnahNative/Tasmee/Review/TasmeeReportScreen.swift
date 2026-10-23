@@ -29,6 +29,7 @@ public struct TasmeeReportScreen: View {
     /// محتوى الصفحة بلا إطار التمرير (للّقطات والاختبارات). `instant` يعرض الحلقة مكتملة بلا حركة.
     @ViewBuilder var content: some View {
             resultCard
+            TasmeeShareButton(record: record, surahName: surahName).padding(.horizontal, Sunnah.Spacing.pageX)
             if !record.weakAyahs.isEmpty {
                 ForEach(record.weakAyahs, id: \.self) { ayahCard($0) }
                 SunnahButton("أعد الآيات الضعيفة") { onReplayWeak(record.weakAyahs) }

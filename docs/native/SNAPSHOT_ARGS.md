@@ -11,6 +11,7 @@
 | `-snapshotRoute /explainers -snapshotExplainer <i> -snapshotStage <n>` | يختار الشرح ذا الفهرس <i> (عند وجود أكثر من شرح) والمرحلة ذات الفهرس <n> (من 0) | `Templates/ExplainerTemplate.swift` (#3470) |
 | `-snapshotRoute /prophets -snapshotProphet <i> -snapshotProphetSection <rawValue>` | قسم من صفحة النبي (`verses` / `identity` / `saadi` / `sunnah`…) | `Sections/sirah/ProphetsStories.swift` (#3461) |
 | `-snapshotRoute <route> -snapshotDisclosure 1` | يفتح ورقة الإفصاح فور ظهور الشاشة | `Support/SunnahDisclosure.swift` (#3476) |
+| `-tasmeeSnapshotView reminder\|share` | يعرض ورقة التذكير (مفتاح مفعّل + صف ±١٥ د عند ٠٥:١٥) أو TasmeeShareCard ببيانات ثابتة فوق الجذر، ويكتب علامة الجاهزية | `Tasmee/Review/TasmeeSnapshotScreen.swift` |
 
 ## الصيغة
 ```

@@ -1,0 +1,9 @@
+git_sha=6575957fc193167760de7f4a4b1c5d7617177ed5
+branch=n1/tasmee-d2
+app=/tmp/n1d2app/SunnahApp.app
+binary_sha256=f5e76465c6d095b7df275c9ed9cdec13ea9f60acadc741fafc65acfc0dea2512
+built_at=2026-10-23 23:57:17
+source_newest=2026-10-23 22:38:03
+captured_at=2026-10-23 23:58:51
+covers=TasmeeReminderSheet (SunnahSwitch مفعّل + صف الوقت ±١٥ د عند ٠٥:١٥) وTasmeeShareCard (بيانات ثابتة: الفاتحة ١-٧) فاتحًا وداكنًا، عبر الوسيط DEBUG -tasmeeSnapshotView reminder|share؛ الورقة معروضة ملء الشاشة لا كورقة منبثقة، ولا تشمل بطاقة TasmeeTodayCard في الرئيسية ولا شاشة التقرير الكاملة
+build_note=البناء من شجرة HEAD مع تعديل الوسيط غير المُلتزَم به وقت البناء (الالتزام التالي يحتويه)
