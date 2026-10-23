@@ -180,13 +180,18 @@ final class TasmeeEngine {
 
     private func configureSession() throws {
         let s = AVAudioSession.sharedInstance()
-        try s.setCategory(.playAndRecord, mode: .measurement, options: [.allowBluetooth, .duckOthers])
+        // عزل الضوضاء والصدى (voice processing + AGC) خلف مفتاح معطّل افتراضيًا إلى أن يثبت القياس تفوّقه على .measurement.
+        try s.setCategory(.playAndRecord, mode: Self.voiceIsolationEnabled ? .default : .measurement, options: [.allowBluetooth, .duckOthers])
         try s.setPreferredSampleRate(sampleRate)
         try s.setActive(true)
     }
 
+    static var voiceIsolationEnabled: Bool { UserDefaults.standard.bool(forKey: "tasmee.voiceIsolation") }
+
     private func startCapture() throws {
         let input = audioEngine.inputNode
+        // يجب قبل قراءة الصيغة لأن المعالجة تغيّرها؛ الفشل غير قاتل فنكمل بالمسار العادي.
+        if Self.voiceIsolationEnabled, !input.isVoiceProcessingEnabled { try? input.setVoiceProcessingEnabled(true) }
         let inFormat = input.outputFormat(forBus: 0)
         guard let outFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: sampleRate, channels: 1, interleaved: false),
               let conv = AVAudioConverter(from: inFormat, to: outFormat) else {
